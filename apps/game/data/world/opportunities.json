@@ -1,0 +1,53 @@
+{
+  "_description": "世界机会点系统配置（ADR-024）。事件 → WorldNews → WorldOpportunity（有坐标/价值/过期的持久热点）。NPC 知晓消息后关联机会点，经 Utility 评估收益-风险决定是否前往。默认 enabled=false 保护零漂移。",
+  "enabled": false,
+  "_typesComment": "各机会类型默认参数。value 为基础价值；lifespanDays 为存活天数（过期消失）；maxClaims 为可被领取/参与的上限（满后不再吸引新 NPC）；rewardSource 为 reward.json 中对应的收益分布键；riskKey 为 risk.json 中对应风险键。",
+  "types": {
+    "monster_corpse": {
+      "name": "妖兽尸骸",
+      "value": 600,
+      "lifespanDays": 15,
+      "maxClaims": 8,
+      "rewardSource": "opportunity_corpse",
+      "riskKey": "plunder"
+    },
+    "secret_realm": {
+      "name": "秘境入口",
+      "value": 1000,
+      "lifespanDays": 20,
+      "maxClaims": 30,
+      "rewardSource": "opportunity_secret_realm",
+      "riskKey": "plunder"
+    },
+    "auction": {
+      "name": "拍卖会",
+      "value": 400,
+      "lifespanDays": 30,
+      "maxClaims": 50,
+      "rewardSource": "opportunity_auction",
+      "riskKey": null
+    },
+    "treasure": {
+      "name": "天材地宝",
+      "value": 700,
+      "lifespanDays": 12,
+      "maxClaims": 5,
+      "rewardSource": "opportunity_treasure",
+      "riskKey": "plunder"
+    },
+    "wealth_target": {
+      "name": "怀璧之人",
+      "value": 0,
+      "lifespanDays": 20,
+      "maxClaims": 99,
+      "rewardSource": null,
+      "riskKey": null
+    }
+  },
+  "_decisionComment": "机会决策参数：minScore 为生成前往 Goal 的最低 Utility 分；distanceCostPerTile 为路程对价值的折损；goalPriority 为机会 Goal 的基础优先级（与 Need.priority 同口径）。",
+  "decision": {
+    "minScore": 50,
+    "distanceCostPerTile": 0.3,
+    "goalPriority": 55
+  }
+}

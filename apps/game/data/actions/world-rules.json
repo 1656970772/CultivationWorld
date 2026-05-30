@@ -1,0 +1,57 @@
+[
+  {
+    "id": "rule_modifier_spawn",
+    "name": "世界状态生成",
+    "description": "根据概率随机生成世界状态",
+    "category": "world_rule",
+    "weight": 1,
+    "preconditions": {},
+    "effects": {},
+    "costs": [],
+    "yields": [],
+    "executorId": "world_modifier_spawn",
+    "params": {
+      "spawnChance": 0.05,
+      "maxActiveModifiers": 3
+    }
+  },
+  {
+    "id": "rule_modifier_decay",
+    "name": "世界状态消退",
+    "description": "已有世界状态按持续时间消退",
+    "category": "world_rule",
+    "weight": 1,
+    "preconditions": {},
+    "effects": {},
+    "costs": [],
+    "yields": [],
+    "executorId": "world_modifier_decay"
+  },
+  {
+    "id": "rule_natural_disaster",
+    "name": "天灾",
+    "description": "随机天灾影响区域势力",
+    "category": "world_rule",
+    "weight": 1,
+    "preconditions": {},
+    "effects": {},
+    "costs": [],
+    "yields": [],
+    "executorId": "world_natural_disaster",
+    "params": {
+      "disasterChance": 0.02
+    }
+  },
+  {
+    "id": "rule_resource_regen",
+    "name": "资源再生",
+    "description": "每日自然资源恢复",
+    "category": "world_rule",
+    "weight": 1,
+    "preconditions": {},
+    "effects": {},
+    "costs": [],
+    "yields": [],
+    "executorId": "world_resource_regen"
+  }
+]

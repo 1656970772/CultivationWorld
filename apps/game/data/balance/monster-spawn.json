@@ -1,0 +1,95 @@
+{
+  "_description": "妖兽分布参数：控制地图上妖兽实例的总量、境界梯度与地形分布。",
+  "totalMonsters": 400,
+  "spawnSeed": 1337,
+  "_comment_danger": "危险梯度：距任意势力总部越近越安全（低阶），越远 / 越靠地图北部深山越危险（高阶）。",
+  "safeRadius": 25,
+  "safeMaxGrade": 2,
+  "dangerByDistance": [
+    { "maxDist": 25, "minGrade": 1, "maxGrade": 2 },
+    { "maxDist": 60, "minGrade": 1, "maxGrade": 4 },
+    { "maxDist": 120, "minGrade": 2, "maxGrade": 6 },
+    { "maxDist": 9999, "minGrade": 3, "maxGrade": 9 }
+  ],
+  "_comment_north": "北部深山额外提升上限（万妖山一带）：y < northDepthY 时 maxGrade 至少为 northMinMaxGrade。",
+  "northDepthY": 40,
+  "northMinMaxGrade": 7,
+  "_comment_vein": "灵脉格附近提高稀有妖兽（rare/epic/legendary）出现概率。",
+  "veinRareBonus": 0.35,
+  "wanderRadius": 12,
+  "senseRange": 5,
+  "rarityWeight": {
+    "common": 100,
+    "uncommon": 50,
+    "rare": 20,
+    "epic": 8,
+    "legendary": 3,
+    "mythic": 1
+  },
+  "_comment_combat": "妖兽与 NPC 的战斗平衡。killChanceFactor 越小越温和；huntCooldownDays 猎食后休整天数；retreatGradeGap 仅猎杀比自己低这么多 order 的 NPC。",
+  "combat": {
+    "killChanceFactor": 0.22,
+    "huntChancePerTick": 0.5,
+    "huntCooldownDays": 6,
+    "minOrderGapToHunt": 10,
+    "npcCounterDamageBase": 35,
+    "npcCounterOrderWeight": 2.5
+  },
+  "_comment_behaviorByTier": "行为树分档（BT tier）的感知/移动/战斗差异参数，由 MonsterSpawner 按 grade 选取后覆盖全局 combat 默认值。grade 1-2=tier1，3-4=tier2，5+=tier3。",
+  "behaviorByTier": {
+    "tier1": {
+      "senseRange": 5,
+      "wanderRadius": 8,
+      "huntChancePerTick": 0.5,
+      "huntCooldownDays": 4,
+      "minOrderGapToHunt": 0,
+      "killChanceFactor": 0.18,
+      "npcCounterDamageBase": 28,
+      "npcCounterOrderWeight": 2.0
+    },
+    "tier2": {
+      "senseRange": 9,
+      "wanderRadius": 14,
+      "huntChancePerTick": 0.55,
+      "huntCooldownDays": 6,
+      "minOrderGapToHunt": 5,
+      "killChanceFactor": 0.22,
+      "npcCounterDamageBase": 35,
+      "npcCounterOrderWeight": 2.5
+    },
+    "tier3": {
+      "senseRange": 14,
+      "wanderRadius": 22,
+      "huntChancePerTick": 0.65,
+      "huntCooldownDays": 8,
+      "minOrderGapToHunt": 10,
+      "killChanceFactor": 0.26,
+      "npcCounterDamageBase": 42,
+      "npcCounterOrderWeight": 3.0
+    }
+  },
+  "_comment_lifespan": "妖兽寿元（与 NPC 同一套到寿曲线，按阶位决定，整体比同等修为人类更长——妖兽天生寿元长）。baseYears/varianceYears 单位为年；death 段为寿元曲线参数，与 game-config.json naturalDeath 同义（age<startRatio*maxAge 不死，到 100% 必死）。",
+  "lifespan": {
+    "byGrade": {
+      "1": { "baseYears": 150,  "varianceYears": 30 },
+      "2": { "baseYears": 220,  "varianceYears": 50 },
+      "3": { "baseYears": 350,  "varianceYears": 80 },
+      "4": { "baseYears": 800,  "varianceYears": 150 },
+      "5": { "baseYears": 1100, "varianceYears": 200 },
+      "6": { "baseYears": 1500, "varianceYears": 250 },
+      "7": { "baseYears": 1900, "varianceYears": 300 },
+      "8": { "baseYears": 2600, "varianceYears": 400 },
+      "9": { "baseYears": 3500, "varianceYears": 500 }
+    },
+    "initialAgeRatioMin": 0.2,
+    "initialAgeRatioMax": 0.7,
+    "death": { "startRatio": 0.95, "minChance": 0.0002, "maxChance": 1.0 }
+  },
+  "_comment_population": "妖兽种群动态。respawnEnabled 是否补充；respawnTargetRatio 维持在初始数量的比例；respawnPerTickMax 每 tick 最多补充数。妖兽自然死亡现由 lifespan 寿元曲线决定（到寿而终），不再用固定每 tick 概率。",
+  "population": {
+    "daysPerYear": 360,
+    "respawnEnabled": true,
+    "respawnTargetRatio": 0.85,
+    "respawnPerTickMax": 2
+  }
+}

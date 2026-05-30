@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>玄天大陆 - 世界模拟器</title>
+  <link rel="stylesheet" href="css/simulation.css">
+  <script src="https://cdn.jsdelivr.net/npm/pixi.js@8/dist/pixi.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <header id="header">
+      <h1>玄天大陆 · 世界模拟器</h1>
+      <div id="controls">
+        <button id="btn-tick">推进 1 天</button>
+        <button id="btn-tick10">推进 10 天</button>
+        <button id="btn-tick100">推进 100 天</button>
+        <button id="btn-auto" data-running="false">自动运行</button>
+        <span class="separator">|</span>
+        <button id="btn-toggle-faction-ai" data-enabled="false" class="toggle-btn off">势力AI: 关</button>
+        <span class="separator">|</span>
+        <button id="btn-toggle-render" data-enabled="false" class="toggle-btn off">渲染画面: 关</button>
+        <span class="separator">|</span>
+        <span id="speed-label">速度:</span>
+        <input type="range" id="speed-slider" min="1" max="20" value="5">
+        <span id="speed-display">5 天/秒</span>
+      </div>
+      <div id="world-stats">
+        <span id="stat-day">第 0 天</span>
+        <span id="stat-factions">势力: 0/0</span>
+        <span id="stat-npcs">NPC: 0/0</span>
+        <span id="stat-monsters">妖兽: 0/0</span>
+        <span id="stat-modifiers">世界状态: 无</span>
+      </div>
+    </header>
+
+    <main id="main">
+      <section id="factions-panel">
+        <h2>势力一览</h2>
+        <div id="factions-grid"></div>
+      </section>
+
+      <section id="log-panel">
+        <h2>世界日志 <button id="btn-clear-log" class="small-btn">清空</button></h2>
+        <div id="log-container"></div>
+      </section>
+
+      <section id="detail-panel">
+        <h2>详情</h2>
+        <div id="detail-content">
+          <p class="hint">点击势力卡片查看详情</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- 渲染视图：开启"渲染画面"后显示，叠加在数据面板之上 -->
+    <div id="render-view" class="hidden">
+      <div id="render-canvas-wrap">
+        <div id="zoom-controls">
+          <button id="btn-zoom-in" title="放大">+</button>
+          <button id="btn-zoom-out" title="缩小">−</button>
+          <button id="btn-zoom-reset" title="复位全图">⤢</button>
+        </div>
+      </div>
+      <aside id="entity-panel">
+        <div id="entity-panel-header">
+          <h2>实体跟随</h2>
+          <button id="btn-stop-follow" class="small-btn">取消跟随</button>
+        </div>
+        <div id="follow-status" class="hint">从下方列表选择 NPC 或妖兽进行跟随，或直接点击地图上的实体。</div>
+        <div class="entity-tabs">
+          <button class="entity-tab active" data-tab="npc">NPC</button>
+          <button class="entity-tab" data-tab="monster">妖兽</button>
+          <button class="entity-tab" data-tab="faction">势力</button>
+        </div>
+        <div id="entity-list"></div>
+
+        <section id="npc-event-log" class="collapsible">
+          <div id="npc-event-header" class="collapse-header" data-target="npc-event-list">
+            <span class="collapse-arrow"></span>
+            <h3 id="npc-event-title">行为事件日志</h3>
+            <button id="btn-clear-npc-events" class="small-btn">清空</button>
+          </div>
+          <div id="npc-event-list" class="collapse-body">
+            <div class="npc-event-empty">选择并跟随一个 NPC，这里会显示它的行为事件。</div>
+          </div>
+        </section>
+
+        <div id="map-legend" class="collapsible collapsed">
+          <div class="collapse-header" data-target="map-legend-body">
+            <span class="collapse-arrow"></span>
+            <h3>图例</h3>
+          </div>
+          <div id="map-legend-body" class="collapse-body">
+          <div class="legend-group">
+            <div class="legend-title">阵营领地</div>
+            <div class="legend-row"><span class="legend-swatch" style="background:#3fa7d6"></span>正派宗门</div>
+            <div class="legend-row"><span class="legend-swatch" style="background:#b23a6b"></span>邪修宗门</div>
+            <div class="legend-row"><span class="legend-swatch" style="background:#7a2e2e"></span>魔道</div>
+            <div class="legend-row"><span class="legend-swatch" style="background:#d4a437"></span>凡俗王朝</div>
+            <div class="legend-row"><span class="legend-swatch" style="background:#8a93a6"></span>中立势力</div>
+            <div class="legend-row"><span class="legend-swatch" style="background:#ab47bc"></span>矿区</div>
+          </div>
+          <div class="legend-group">
+            <div class="legend-title">建筑</div>
+            <div class="legend-row"><span class="legend-icon sq" style="background:#ffe082"></span>主殿 / 坊市</div>
+            <div class="legend-row"><span class="legend-icon dia" style="background:#4dd0e1"></span>任务殿（接任务/兑奖）</div>
+            <div class="legend-row"><span class="legend-icon ci" style="background:#aed581"></span>修炼场</div>
+            <div class="legend-row"><span class="legend-icon sq" style="background:#9575cd"></span>藏经阁</div>
+            <div class="legend-row"><span class="legend-icon sq" style="background:#ff8a65"></span>炼丹房</div>
+            <div class="legend-row"><span class="legend-icon sq" style="background:#bcaaa4"></span>山门</div>
+            <div class="legend-row"><span class="legend-icon dia" style="background:#f06292"></span>采矿点</div>
+            <div class="legend-row"><span class="legend-icon tri" style="background:#90a4ae"></span>守卫位</div>
+          </div>
+          <div class="legend-group">
+            <div class="legend-title">实体 / 地形</div>
+            <div class="legend-row"><span class="legend-icon person" style="background:#3fa7d6"></span>NPC 小人（按势力上色）</div>
+            <div class="legend-row"><span class="legend-icon person" style="background:#ffffff"></span>散修（白色小人）</div>
+            <div class="legend-row"><span class="legend-icon bull" style="background:#ff7043"></span>妖兽 牛头（阶位 1→9 橙红→紫）</div>
+            <div class="legend-row"><span class="legend-swatch" style="background:#90B060"></span>平原</div>
+            <div class="legend-row"><span class="legend-swatch" style="background:#2D5A27"></span>森林</div>
+            <div class="legend-row"><span class="legend-swatch" style="background:#8B7355"></span>山脉</div>
+            <div class="legend-row"><span class="legend-swatch" style="background:#4A90D9"></span>河流</div>
+          </div>
+          <div class="hint">放大地图可看到院墙轮廓与建筑图标。</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script type="module" src="js/simulation-main.js"></script>
+</body>
+</html>

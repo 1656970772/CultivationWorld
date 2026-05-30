@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>修仙世界模拟报告</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+:root{--bg:#0d1117;--card:#161b22;--border:#21262d;--text:#c9d1d9;--dim:#8b949e;--blue:#58a6ff;--green:#3fb950;--orange:#f0883e;--red:#f85149;--purple:#bc8cff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+
+/* ── 头部 ── */
+.hero{text-align:center;padding:48px 20px 32px;background:linear-gradient(180deg,#161b2288,transparent)}
+.hero h1{font-size:32px;color:var(--blue);animation:fadeDown .6s ease}
+.hero .sub{color:var(--dim);margin-top:8px;font-size:14px;animation:fadeDown .8s ease}
+
+/* ── 卡片网格 ── */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;padding:0 24px;max-width:1200px;margin:0 auto 24px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 16px;text-align:center;animation:fadeUp .5s ease both}
+.card:nth-child(1){animation-delay:.1s}.card:nth-child(2){animation-delay:.15s}.card:nth-child(3){animation-delay:.2s}
+.card:nth-child(4){animation-delay:.25s}.card:nth-child(5){animation-delay:.3s}.card:nth-child(6){animation-delay:.35s}
+.card .v{font-size:32px;font-weight:700;background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.card .l{font-size:12px;color:var(--dim);margin-top:6px}
+
+/* ── 区块 ── */
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+section{margin-bottom:40px;animation:fadeUp .6s ease both}
+section h2{font-size:20px;color:var(--blue);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.row{display:grid;gap:20px}
+.row-2{grid-template-columns:1fr 1fr}
+.row-3{grid-template-columns:1fr 1fr 1fr}
+
+/* ── 图表容器 ── */
+.chart-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;position:relative}
+.chart-box h3{font-size:14px;color:var(--dim);margin-bottom:12px}
+.chart-box canvas{width:100%!important}
+
+/* ── 表格 ── */
+.tbl-wrap{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#1c2128;color:var(--blue);text-align:left;padding:10px 12px;position:sticky;top:0;z-index:1}
+td{padding:8px 12px;border-top:1px solid var(--border)}
+tr:hover td{background:#1c212844}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.dead{opacity:.5}
+.bar-cell{width:120px}
+.mini-bar{height:16px;border-radius:3px;background:var(--border);position:relative;overflow:hidden}
+.mini-bar .fill{height:100%;border-radius:3px;transition:width 1s ease}
+.mini-bar .lbl{position:absolute;right:4px;top:0;line-height:16px;font-size:10px;color:#fff}
+
+/* ── 标签 ── */
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px}
+.tag-ok{background:#23863633;color:var(--green)}
+.tag-dead{background:#f8514933;color:var(--red)}
+.tag-neutral{background:#23863622;color:var(--green)}
+.tag-cult{background:#1f6feb22;color:var(--blue)}
+.tag-wander{background:#f0883e22;color:var(--orange)}
+
+/* ── 诊断 ── */
+.diag{border-radius:8px;padding:14px 18px;margin:8px 0;font-size:14px}
+.diag-warn{background:#f0883e18;border:1px solid var(--orange);color:var(--orange)}
+.diag-ok{background:#23863618;border:1px solid var(--green);color:var(--green)}
+
+/* ── 折叠 ── */
+details{margin:12px 0}
+summary{cursor:pointer;color:var(--blue);font-weight:600;padding:8px 0;user-select:none}
+details[open] summary{margin-bottom:8px}
+
+/* ── 页脚 ── */
+.footer{text-align:center;color:var(--dim);padding:40px 20px;border-top:1px solid var(--border);font-size:12px;margin-top:40px}
+
+/* ── 动画 ── */
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:800px){.row-2,.row-3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1 id="title">修仙世界模拟报告</h1>
+  <div class="sub" id="subtitle">加载中…</div>
+</div>
+
+<div class="cards" id="cards"></div>
+
+<div class="container">
+
+<!-- 时间线 -->
+<section>
+  <h2>📈 时间线趋势</h2>
+  <div class="row row-2">
+    <div class="chart-box"><h3>NPC 存活 / 死亡</h3><canvas id="chartNpcLife"></canvas></div>
+    <div class="chart-box"><h3>平均真气 & 最高真气</h3><canvas id="chartQi"></canvas></div>
+  </div>
+  <div class="row row-2" style="margin-top:20px">
+    <div class="chart-box"><h3>势力平均灵石</h3><canvas id="chartStone"></canvas></div>
+    <div class="chart-box"><h3>平均修炼进度 & 累计突破</h3><canvas id="chartProgress"></canvas></div>
+  </div>
+</section>
+
+<!-- 行为分布 -->
+<section>
+  <h2>🎯 行为分布</h2>
+  <div class="row row-2">
+    <div class="chart-box"><h3>势力行为</h3><canvas id="chartFactionAct"></canvas></div>
+    <div class="chart-box"><h3>NPC 行为</h3><canvas id="chartNpcAct"></canvas></div>
+  </div>
+</section>
+
+<!-- 势力资源 -->
+<section>
+  <h2>🏯 势力资源</h2>
+  <div class="chart-box"><h3>灵石对比（初始 vs 最终）</h3><canvas id="chartFactionStone"></canvas></div>
+  <div class="tbl-wrap" style="margin-top:16px" id="factionTableWrap"></div>
+</section>
+
+<!-- GOAP -->
+<section>
+  <h2>🧠 GOAP 规划统计</h2>
+  <div class="row row-2">
+    <div class="chart-box"><h3>势力 GOAP</h3><canvas id="chartGoapFaction"></canvas></div>
+    <div class="chart-box"><h3>NPC GOAP</h3><canvas id="chartGoapNpc"></canvas></div>
+  </div>
+</section>
+
+<!-- NPC 花名册 -->
+<section>
+  <h2>👤 NPC 花名册</h2>
+  <div id="npcRoster"></div>
+</section>
+
+<!-- 道侣 & 出生 -->
+<section>
+  <h2>💕 道侣 & 出生</h2>
+  <div class="row row-2">
+    <div id="companionSection"></div>
+    <div id="birthSection"></div>
+  </div>
+</section>
+
+<!-- 突破 & 死亡 -->
+<section>
+  <h2>⚡ 突破事件</h2>
+  <div id="breakthroughSection"></div>
+</section>
+<section>
+  <h2>💀 死亡记录</h2>
+  <div id="deathSection"></div>
+</section>
+
+<!-- 诊断 -->
+<section>
+  <h2>🔍 诊断</h2>
+  <div id="diagSection"></div>
+</section>
+
+</div>
+
+<div class="footer" id="footer"></div>
+
+<script src="report-data.js"></script>
+<script>
+const D = window.REPORT_DATA;
+if (!D) { document.getElementById('subtitle').textContent = '❌ 未找到 report-data.js'; }
+else { render(D); }
+
+function render(D) {
+  document.getElementById('subtitle').textContent =
+    `${D.totalDays} 天 · ${D.elapsed}s · ${D.totalFactions} 势力 · ${D.totalNPCs} NPC`;
+
+  // ── 卡片 ──
+  const cards = [
+    { v: `${D.summary.aliveFactions}/${D.totalFactions}`, l: '存活势力' },
+    { v: `${D.summary.aliveNPCs}/${D.totalNPCs}`, l: '存活 NPC' },
+    { v: D.summary.breakthroughSuccess, l: '突破成功' },
+    { v: D.summary.breakthroughFail, l: '突破失败' },
+    { v: D.summary.totalDeaths, l: 'NPC 死亡' },
+    { v: D.summary.avgQi.toFixed(1), l: '平均真气' },
+    { v: D.summary.companionPairs || 0, l: '道侣配对' },
+    { v: D.summary.totalBirths || 0, l: '诞生后代' },
+    { v: `${D.summary.genderMale||0}♂/${D.summary.genderFemale||0}♀`, l: '性别分布' },
+    { v: D.summary.attacks, l: '攻伐' },
+    { v: D.summary.alliances, l: '结盟' },
+  ];
+  document.getElementById('cards').innerHTML = cards.map(c =>
+    `<div class="card"><div class="v">${c.v}</div><div class="l">${c.l}</div></div>`
+  ).join('');
+
+  const tl = D.timeline;
+  const days = tl.map(t => `第${t.day}天`);
+  const chartOpts = { responsive: true, animation: { duration: 1200, easing: 'easeOutQuart' },
+    plugins: { legend: { labels: { color: '#8b949e', font: { size: 11 } } } },
+    scales: { x: { ticks: { color: '#8b949e', font: { size: 10 } }, grid: { color: '#21262d' } },
+              y: { ticks: { color: '#8b949e' }, grid: { color: '#21262d' } } } };
+
+  // ── NPC 存活/死亡 ──
+  new Chart(document.getElementById('chartNpcLife'), { type: 'line', data: {
+    labels: days,
+    datasets: [
+      { label: '存活', data: tl.map(t => t.aliveNPC), borderColor: '#3fb950', backgroundColor: '#3fb95022', fill: true, tension: .3 },
+      { label: '死亡', data: tl.map(t => t.deadNPC), borderColor: '#f85149', backgroundColor: '#f8514922', fill: true, tension: .3 },
+    ]
+  }, options: chartOpts });
+
+  // ── 真气 ──
+  new Chart(document.getElementById('chartQi'), { type: 'line', data: {
+    labels: days,
+    datasets: [
+      { label: '平均真气', data: tl.map(t => t.avgQi), borderColor: '#58a6ff', backgroundColor: '#58a6ff22', fill: true, tension: .3 },
+      { label: '最高真气', data: tl.map(t => t.maxQi), borderColor: '#bc8cff', backgroundColor: '#bc8cff22', fill: true, tension: .3 },
+    ]
+  }, options: chartOpts });
+
+  // ── 灵石 ──
+  new Chart(document.getElementById('chartStone'), { type: 'line', data: {
+    labels: days,
+    datasets: [
+      { label: '平均灵石', data: tl.map(t => t.avgStone), borderColor: '#f0883e', backgroundColor: '#f0883e22', fill: true, tension: .3 },
+    ]
+  }, options: chartOpts });
+
+  // ── 修炼进度 & 突破 ──
+  const progOpts = JSON.parse(JSON.stringify(chartOpts));
+  progOpts.scales.y1 = { position: 'right', ticks: { color: '#8b949e' }, grid: { display: false } };
+  new Chart(document.getElementById('chartProgress'), { type: 'line', data: {
+    labels: days,
+    datasets: [
+      { label: '平均修炼进度', data: tl.map(t => t.avgProgress), borderColor: '#3fb950', tension: .3, yAxisID: 'y' },
+      { label: '累计突破', data: tl.map(t => t.breakthroughs), borderColor: '#f0883e', borderDash: [5,3], tension: .3, yAxisID: 'y1' },
+    ]
+  }, options: progOpts });
+
+  // ── 势力行为饼图 ──
+  const faPalette = ['#58a6ff','#3fb950','#f0883e','#f85149','#bc8cff','#79c0ff','#d2a8ff','#8b949e','#56d364','#e3b341'];
+  const faNames = D.factionActions.map(a => a.name);
+  new Chart(document.getElementById('chartFactionAct'), { type: 'doughnut', data: {
+    labels: faNames, datasets: [{ data: D.factionActions.map(a => a.count), backgroundColor: faPalette.slice(0, faNames.length) }]
+  }, options: { responsive: true, animation: { duration: 1000 }, plugins: { legend: { position: 'right', labels: { color: '#c9d1d9', font: { size: 11 } } } } } });
+
+  // ── NPC 行为饼图 ──
+  const naNames = D.npcActions.map(a => a.name);
+  new Chart(document.getElementById('chartNpcAct'), { type: 'doughnut', data: {
+    labels: naNames, datasets: [{ data: D.npcActions.map(a => a.count), backgroundColor: faPalette.slice(0, naNames.length) }]
+  }, options: { responsive: true, animation: { duration: 1000 }, plugins: { legend: { position: 'right', labels: { color: '#c9d1d9', font: { size: 11 } } } } } });
+
+  // ── 势力灵石柱状图 ──
+  const fNames = D.factions.map(f => f.name);
+  new Chart(document.getElementById('chartFactionStone'), { type: 'bar', data: {
+    labels: fNames,
+    datasets: [
+      { label: '初始灵石', data: D.factions.map(f => f.initStone), backgroundColor: '#21262d', borderRadius: 4 },
+      { label: '最终灵石', data: D.factions.map(f => f.finalStone), backgroundColor: '#58a6ff88', borderRadius: 4 },
+    ]
+  }, options: { ...chartOpts, plugins: { ...chartOpts.plugins, legend: { labels: { color: '#8b949e' } } },
+    scales: { ...chartOpts.scales, x: { ...chartOpts.scales.x, ticks: { ...chartOpts.scales.x.ticks, maxRotation: 45 } } } } });
+
+  // ── 势力表格 ──
+  let ftHtml = '<table><tr><th>势力</th><th>类型</th><th class="num">灵石</th><th class="num">弟子</th><th class="num">粮食</th><th class="num">稳定</th><th class="num">领地</th><th>状态</th></tr>';
+  for (const f of D.factions) {
+    const tag = f.isNeutral ? '<span class="tag tag-neutral">中立</span>' : '<span class="tag tag-cult">宗门</span>';
+    const st = f.destroyed ? '<span class="tag tag-dead">覆灭</span>' : '<span class="tag tag-ok">存活</span>';
+    ftHtml += `<tr${f.destroyed?' class="dead"':''}><td>${f.name}</td><td>${tag}</td>
+    <td class="num">${f.initStone}→${f.finalStone}</td><td class="num">${f.initDisc}→${f.finalDisc}</td>
+    <td class="num">${f.initFood}→${f.finalFood}</td><td class="num">${f.stability}</td>
+    <td class="num">${f.territory}</td><td>${st}</td></tr>`;
+  }
+  ftHtml += '</table>';
+  document.getElementById('factionTableWrap').innerHTML = ftHtml;
+
+  // ── GOAP 甜甜圈 ──
+  const doughnutOpts = { responsive: true, animation: { duration: 800 }, plugins: { legend: { labels: { color: '#c9d1d9' } } } };
+  new Chart(document.getElementById('chartGoapFaction'), { type: 'doughnut', data: {
+    labels: ['GOAP成功','贪心回退'], datasets: [{ data: [D.goap.factionOk, D.goap.factionFb], backgroundColor: ['#3fb950','#f0883e'] }]
+  }, options: doughnutOpts });
+  new Chart(document.getElementById('chartGoapNpc'), { type: 'doughnut', data: {
+    labels: ['GOAP成功','贪心回退'], datasets: [{ data: [D.goap.npcOk, D.goap.npcFb], backgroundColor: ['#3fb950','#f0883e'] }]
+  }, options: doughnutOpts });
+
+  // ── NPC 花名册 ──
+  let rosterHtml = '';
+  for (const group of D.npcRoster) {
+    const alive = group.members.filter(m => m.alive).length;
+    rosterHtml += `<details${group.members.length <= 20 ? ' open' : ''}><summary>${group.factionName} (${alive}/${group.members.length} 存活)</summary>`;
+    rosterHtml += '<div class="tbl-wrap"><table><tr><th>姓名</th><th>性别</th><th>境界</th><th>职务</th><th class="num">年龄/寿命</th><th class="num">真气</th><th class="bar-cell">修炼进度</th><th class="num">灵石</th><th>道侣</th><th class="num">子女</th><th>状态</th></tr>';
+    for (const m of group.members) {
+      const p = m.progress * 100;
+      const color = p >= 90 ? '#f0883e' : p >= 50 ? '#58a6ff' : '#3fb950';
+      const bar = `<div class="mini-bar"><div class="fill" style="width:${p.toFixed(0)}%;background:${color}"></div><div class="lbl">${p.toFixed(1)}%</div></div>`;
+      const st = m.alive ? '🟢' : '💀';
+      const genderIcon = m.gender === 'female' ? '<span style="color:#ff79c6">♀</span>' : '<span style="color:#79c0ff">♂</span>';
+      const companionLabel = m.daoCompanionId ? `💕 ${m.daoCompanionId}` : '-';
+      rosterHtml += `<tr${m.alive?'':' class="dead"'}><td>${m.name}</td><td>${genderIcon}</td><td>${m.rankName}</td><td>${m.role}</td>
+      <td class="num">${m.age}/${m.maxAge}</td><td class="num">${m.qi.toFixed(1)}</td><td>${bar}</td>
+      <td class="num">${m.stone}</td><td>${companionLabel}</td><td class="num">${m.childrenCount||0}</td><td>${st}</td></tr>`;
+    }
+    rosterHtml += '</table></div></details>';
+  }
+  document.getElementById('npcRoster').innerHTML = rosterHtml;
+
+  // ── 道侣 ──
+  const companionLog = D.companionLog || [];
+  if (companionLog.length === 0) {
+    document.getElementById('companionSection').innerHTML = '<p style="color:#8b949e">暂无道侣配对</p>';
+  } else {
+    let cHtml = '<div class="tbl-wrap"><table><tr><th>天</th><th>修士</th><th>道侣</th><th>所属</th></tr>';
+    for (const c of companionLog) {
+      cHtml += `<tr><td class="num">${c.day}</td><td>${c.npc1Name}</td><td>${c.npc2Name}</td><td>${c.faction||'-'}</td></tr>`;
+    }
+    cHtml += '</table></div>';
+    document.getElementById('companionSection').innerHTML = cHtml;
+  }
+
+  // ── 出生 ──
+  const birthLog = D.birthLog || [];
+  if (birthLog.length === 0) {
+    document.getElementById('birthSection').innerHTML = '<p style="color:#8b949e">暂无出生记录</p>';
+  } else {
+    let bthHtml = '<div class="tbl-wrap"><table><tr><th>天</th><th>后代</th><th>性别</th><th>父</th><th>母</th><th>势力</th></tr>';
+    for (const b of birthLog) {
+      const gIcon = b.childGender === 'female' ? '♀' : '♂';
+      bthHtml += `<tr><td class="num">${b.day}</td><td>${b.childName}</td><td>${gIcon}</td><td>${b.fatherName}</td><td>${b.motherName}</td><td>${b.factionId||'-'}</td></tr>`;
+    }
+    bthHtml += '</table></div>';
+    document.getElementById('birthSection').innerHTML = bthHtml;
+  }
+
+  // ── 突破 ──
+  if (D.breakthroughs.length === 0) {
+    document.getElementById('breakthroughSection').innerHTML = '<p style="color:#8b949e">暂无突破事件</p>';
+  } else {
+    let bHtml = '<div class="tbl-wrap"><table><tr><th>天</th><th>NPC</th><th>从→到</th><th>结果</th><th class="num">真气</th></tr>';
+    for (const b of D.breakthroughs) {
+      const res = b.success ? '<span style="color:#3fb950">✅ 成功</span>' : '<span style="color:#f85149">❌ 失败</span>';
+      const qi = b.success ? `消耗 ${b.qiConsumed||0}` : `损失 ${b.qiLost||0}`;
+      bHtml += `<tr><td class="num">${b.day}</td><td>${b.npcName}</td><td>${b.fromRank} → ${b.toRank||b.targetRank||'?'}</td><td>${res}</td><td class="num">${qi}</td></tr>`;
+    }
+    bHtml += '</table></div>';
+    document.getElementById('breakthroughSection').innerHTML = bHtml;
+  }
+
+  // ── 死亡 ──
+  if (D.deaths.length === 0) {
+    document.getElementById('deathSection').innerHTML = '<p style="color:#8b949e">暂无死亡</p>';
+  } else {
+    let dHtml = `<details><summary>展开全部 ${D.deaths.length} 条记录</summary><div class="tbl-wrap"><table><tr><th>天</th><th>NPC</th><th>境界</th><th class="num">年龄/寿命</th><th>死因</th><th>所属</th></tr>`;
+    for (const d of D.deaths.slice(-300)) {
+      const cause = d.cause === 'natural' ? '寿终' : d.cause === 'quest' ? `任务(${d.questName||''})` : d.cause||'?';
+      dHtml += `<tr><td class="num">${d.day}</td><td>${d.npcName||d.npcId}</td><td>${d.rankName||'?'}</td>
+      <td class="num">${d.ageYears??'?'}/${d.maxAgeYears??'?'}</td><td>${cause}</td><td>${d.factionName||'散修'}</td></tr>`;
+    }
+    dHtml += '</table></div></details>';
+    document.getElementById('deathSection').innerHTML = dHtml;
+  }
+
+  // ── 诊断 ──
+  if (D.diagnostics.length === 0) {
+    document.getElementById('diagSection').innerHTML = '<div class="diag diag-ok">✅ 未发现明显异常</div>';
+  } else {
+    document.getElementById('diagSection').innerHTML = D.diagnostics.map(d => `<div class="diag diag-warn">⚠️ ${d}</div>`).join('');
+  }
+
+  document.getElementById('footer').textContent = `报告模板 v1 · 数据生成于 ${D.generatedAt} · 模拟 ${D.totalDays} 天 · 耗时 ${D.elapsed}s`;
+}
+</script>
+</body>
+</html>

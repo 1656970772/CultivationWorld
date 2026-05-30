@@ -1,0 +1,123 @@
+[
+  {
+    "id": "rule_001",
+    "name": "势力攻伐",
+    "description": "当两个势力关系恶劣且一方实力占优时，可能发动攻伐",
+    "conditions": {
+      "relation_below": -50,
+      "attacker_power_ratio": 1.3,
+      "attacker_stability_above": 40
+    },
+    "event_type": "war",
+    "probability": 0.15,
+    "cooldown": 10
+  },
+  {
+    "id": "rule_002",
+    "name": "结盟提议",
+    "description": "关系友好的势力之间可能提出结盟",
+    "conditions": {
+      "relation_above": 40,
+      "common_enemy": true
+    },
+    "event_type": "alliance",
+    "probability": 0.1,
+    "cooldown": 20
+  },
+  {
+    "id": "rule_003",
+    "name": "叛变事件",
+    "description": "掌门忠诚度低且势力不稳定时可能发生叛变",
+    "conditions": {
+      "leader_loyalty_below": 40,
+      "stability_below": 35
+    },
+    "event_type": "betrayal",
+    "probability": 0.05,
+    "cooldown": 30
+  },
+  {
+    "id": "rule_004",
+    "name": "稳定度崩溃",
+    "description": "势力稳定度极低时可能发生内乱或分裂",
+    "conditions": {
+      "stability_below": 20
+    },
+    "event_type": "civil_war",
+    "probability": 0.1,
+    "cooldown": 15
+  },
+  {
+    "id": "rule_005",
+    "name": "资源掠夺",
+    "description": "邪派势力资源匮乏时会掠夺周边",
+    "conditions": {
+      "faction_type": "evil",
+      "resource_below_ratio": 0.3
+    },
+    "event_type": "raid",
+    "probability": 0.2,
+    "cooldown": 7
+  },
+  {
+    "id": "rule_006",
+    "name": "妖兽入侵",
+    "description": "妖族扩张突破边界时入侵人族领地",
+    "conditions": {
+      "faction_type": "demon",
+      "border_contact_with": ["righteous", "mortal_kingdom"],
+      "leader_ambition_above": 60
+    },
+    "event_type": "demon_invasion",
+    "probability": 0.1,
+    "cooldown": 15
+  },
+  {
+    "id": "rule_007",
+    "name": "贸易协定",
+    "description": "中立/凡人势力之间可能建立贸易",
+    "conditions": {
+      "either_type": ["neutral", "mortal_kingdom"],
+      "relation_above": 20
+    },
+    "event_type": "trade",
+    "probability": 0.12,
+    "cooldown": 15
+  },
+  {
+    "id": "rule_008",
+    "name": "掌门陨落",
+    "description": "战争中或年老时掌门可能死亡",
+    "conditions": {
+      "at_war": true,
+      "or_random": true
+    },
+    "event_type": "leader_death",
+    "probability": 0.03,
+    "cooldown": 0
+  },
+  {
+    "id": "rule_009",
+    "name": "秘境争夺",
+    "description": "秘境开启期间，周边势力争夺资源",
+    "conditions": {
+      "world_modifier_active": "secret_realm",
+      "near_secret_realm": true
+    },
+    "event_type": "realm_contest",
+    "probability": 0.25,
+    "cooldown": 5
+  },
+  {
+    "id": "rule_010",
+    "name": "正邪大战",
+    "description": "当魔气上涨且正邪对立达到极点时，触发大规模正邪冲突",
+    "conditions": {
+      "world_modifier_active": "demon_qi_rising",
+      "righteous_evil_relation_below": -70
+    },
+    "event_type": "great_war",
+    "probability": 0.08,
+    "cooldown": 50
+  }
+]

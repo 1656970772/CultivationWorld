@@ -1,0 +1,60 @@
+{
+  "_description": "经济与资源平衡参数 — 修改此文件可调整资源产出、薪俸、稳定度等经济数值",
+  "resourceRegen": {
+    "_comment": "每天每单位领地的基础资源产出",
+    "foodPerTerritory": 2,
+    "stonePerTerritory": 1,
+    "disciplesPerDay": 1,
+    "maxDisciplesBase": 100,
+    "maxDisciplesPerTerritory": 30
+  },
+  "veinOutput": {
+    "_comment": "灵脉地块的每日灵石产出（低级灵石单位）",
+    "low_spirit_vein": 2,
+    "mid_spirit_vein": 100,
+    "high_spirit_vein": 500,
+    "top_spirit_vein": 5000
+  },
+  "stability": {
+    "_comment": "稳定度系统：低于 naturalRecoveryMax 时每天自然恢复 naturalRecoveryRate 点；高于 decayThreshold 时每天衰减 decayRate 点",
+    "naturalRecoveryMax": 80,
+    "naturalRecoveryRate": 1,
+    "decayThreshold": 50,
+    "decayRate": 0.5,
+    "paymentShortfallPenalty": 5
+  },
+  "dailyCosts": {
+    "_comment": "每天的资源消耗。弟子数 < minDisciplesForFoodCost 时豁免粮食消耗",
+    "foodPerDisciple": 0.04,
+    "foodPerTerritory": 0.5,
+    "stonePerDisciple": 0.02,
+    "stonePerTerritory": 0.5,
+    "minDisciplesForFoodCost": 10
+  },
+  "salary": {
+    "_comment": "月俸系统：每 paymentIntervalDays 天结算一次，从宗门灵石中扣除",
+    "paymentIntervalDays": 30,
+    "roles": {
+      "leader": 200,
+      "heir": 60,
+      "elder": 80,
+      "general": 50,
+      "officer": 50,
+      "core_disciple": 20,
+      "disciple": 5,
+      "outer_disciple": 2,
+      "wanderer": 0
+    }
+  },
+  "formation": {
+    "_comment": "宗门大阵每月维护费用：baseCost + territoryCount × costPerTerritory",
+    "baseCost": 100,
+    "costPerTerritory": 20
+  },
+  "modifierEffects": {
+    "_comment": "modifier效果对稳定度的影响倍率",
+    "evilAggressionStabilityGain": 2,
+    "righteousDefenseStabilityGain": 1,
+    "allStabilityMultiplier": 10
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "description": "实体移动速度配置：每 tick（每游戏日）可移动的格数。NPC 统一为 1（每走1格=1天）；妖兽按阶位 grade。",
+  "npcSpeedByRank": {
+    "mortal": 1,
+    "qi_refining": 1,
+    "foundation_building": 1,
+    "golden_core": 1,
+    "nascent_soul": 1,
+    "spirit_transformation": 1,
+    "default": 1
+  },
+  "monsterSpeedByGrade": {
+    "1": 2,
+    "2": 3,
+    "3": 4,
+    "4": 6,
+    "5": 8,
+    "6": 10,
+    "7": 12,
+    "8": 14,
+    "9": 16,
+    "default": 3
+  },
+  "monsterSpeedAttributeWeight": 0.05,
+  "notes": "monsterSpeedAttributeWeight 用于在 grade 基础上叠加妖兽 attributes.speed 的影响（speed * weight 取整后相加）。"
+}

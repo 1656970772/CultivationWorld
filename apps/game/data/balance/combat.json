@@ -1,0 +1,56 @@
+{
+  "_description": "战斗与外交平衡参数 — 修改此文件可调整宗门战争、结盟、贸易的数值",
+  "attack": {
+    "_comment": "攻击战力公式：攻方战力 = disciples × attackerPowerMultiplier × (1 + stability / attackerStabilityFactor)",
+    "attackerPowerMultiplier": 1.2,
+    "attackerStabilityFactor": 200,
+    "defenderPowerMultiplier": 1.0,
+    "defenderStabilityFactor": 100,
+    "winLootRatio": 0.2,
+    "winDefenderDisciplineLossRatio": 0.08,
+    "winDefenderMinDisciples": 5,
+    "winDefenderStabilityLoss": 15,
+    "winAttackerDisciplineLossRatio": 0.05,
+    "winAttackerMinDisciples": 5,
+    "winAttackerStabilityLoss": 5,
+    "loseAttackerDisciplineLossRatio": 0.10,
+    "loseAttackerMinDisciples": 5,
+    "loseAttackerStabilityLoss": 10,
+    "loseDefenderStabilityGain": 5,
+    "winRelationChange": -20,
+    "loseRelationChange": -10,
+    "maxTerritoryPerFaction": 20
+  },
+  "alliance": {
+    "minRelation": 20,
+    "maxRelation": 60,
+    "relationGain": 20
+  },
+  "trade": {
+    "stoneRatio": 0.1,
+    "maxTradeAmount": 200,
+    "foodExchangeRate": 2,
+    "relationGain": 3,
+    "minRelation": 20
+  },
+  "diplomacy": {
+    "_comment": "敌意门槛：关系值 ≤ hostileThreshold 视为敌对；正邪对立时关系值 ≤ alignmentHostileThreshold 即敌对。attackReachDistance：势力间地理可达阈值（总部曼哈顿距离），超出则攻不到",
+    "hostileThreshold": -50,
+    "alignmentHostileThreshold": 0,
+    "weakEnemyStabilityThreshold": 30,
+    "weakEnemyDisciplesThreshold": 50,
+    "maxTerritory": 50,
+    "attackReachDistance": 60
+  },
+  "military": {
+    "_comment": "军事综合实力公式：disciples × disciplesWeight + territory × territoryWeight + stability × stabilityWeight",
+    "disciplesWeight": 1.0,
+    "territoryWeight": 10,
+    "stabilityWeight": 0.5
+  },
+  "relations": {
+    "_comment": "关系自然衰减：若绝对值 < decayThresholdPos 则每天向0衰减1点",
+    "decayThresholdPos": 60,
+    "decayThresholdNeg": -60
+  }
+}

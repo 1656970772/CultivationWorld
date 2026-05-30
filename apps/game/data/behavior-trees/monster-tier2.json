@@ -1,0 +1,61 @@
+{
+  "id": "bt_monster_tier2",
+  "description": "妖兽二阶行为树（grade 3-4，领地本能）：休整 → 濒死逃跑 → 领地防御+呼群 → 受伤撤退 → 领地巡逻。",
+  "root": {
+    "type": "sequence",
+    "name": "monster-root",
+    "children": [
+      { "type": "hook", "name": "pre-tick", "hook": "monsterPreTick" },
+      { "type": "hook", "name": "sense",    "hook": "monsterSense" },
+      {
+        "type": "selector",
+        "name": "behavior",
+        "children": [
+          {
+            "type": "sequence",
+            "name": "rest",
+            "comment": "休整中",
+            "children": [
+              { "type": "condition", "name": "is-resting", "condition": { "key": "behaviorState", "op": "eq", "value": "rest" } },
+              { "type": "hook", "name": "do-rest", "hook": "monsterRest" }
+            ]
+          },
+          {
+            "type": "sequence",
+            "name": "flee-critical",
+            "comment": "濒死（HP ≤ 15%）逃命",
+            "children": [
+              { "type": "condition", "name": "critical-hp", "condition": { "key": "hpRatio", "op": "lte", "value": 0.15 } },
+              { "type": "hook", "name": "do-flee", "hook": "monsterFlee" }
+            ]
+          },
+          {
+            "type": "sequence",
+            "name": "defend-territory",
+            "comment": "领地入侵者：呼唤同族协同作战后追杀",
+            "children": [
+              { "type": "condition", "name": "has-target", "condition": { "key": "hasTarget", "op": "true" } },
+              { "type": "hook", "name": "call-pack", "hook": "monsterCallPack", "defaultStatus": "success" },
+              { "type": "hook", "name": "do-hunt", "hook": "monsterChaseOrAttack" }
+            ]
+          },
+          {
+            "type": "sequence",
+            "name": "retreat-hurt",
+            "comment": "受伤（HP ≤ 45%）撤回老巢休整",
+            "children": [
+              { "type": "condition", "name": "hurt", "condition": { "key": "hpRatio", "op": "lte", "value": 0.45 } },
+              { "type": "hook", "name": "return-to-lair", "hook": "monsterReturnToLair" }
+            ]
+          },
+          {
+            "type": "hook",
+            "name": "patrol",
+            "comment": "常态：系统性领地巡逻",
+            "hook": "monsterPatrolTerritory"
+          }
+        ]
+      }
+    ]
+  }
+}

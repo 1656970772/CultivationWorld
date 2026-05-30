@@ -1,0 +1,187 @@
+[
+  {
+    "type": "war",
+    "name": "攻伐之战",
+    "description": "{attacker}对{defender}发动了攻伐！",
+    "duration": 3,
+    "effects": {
+      "attacker_disciple_loss_ratio": 0.1,
+      "defender_disciple_loss_ratio": 0.15,
+      "territory_change": true
+    },
+    "player_options": [
+      { "id": "assist_attacker", "text": "协助{attacker}", "cost": 3, "effect": "attacker_bonus" },
+      { "id": "assist_defender", "text": "协助{defender}", "cost": 3, "effect": "defender_bonus" },
+      { "id": "observe", "text": "隔岸观火", "cost": 0, "effect": "none" }
+    ],
+    "info_spread_speed": 3,
+    "info_max_radius": 50,
+    "info_reliability": 0.9
+  },
+  {
+    "type": "alliance",
+    "name": "结盟",
+    "description": "{faction1}与{faction2}缔结了同盟！",
+    "duration": 0,
+    "effects": {
+      "relation_change": 20,
+      "mutual_defense": true
+    },
+    "player_options": [
+      { "id": "congratulate", "text": "送上贺礼（消耗少量行动点）", "cost": 1, "effect": "relation_boost" },
+      { "id": "ignore", "text": "不予理会", "cost": 0, "effect": "none" }
+    ],
+    "info_spread_speed": 5,
+    "info_max_radius": 80,
+    "info_reliability": 0.95
+  },
+  {
+    "type": "betrayal",
+    "name": "叛变",
+    "description": "{traitor}背叛了{faction}！",
+    "duration": 1,
+    "effects": {
+      "faction_stability_loss": 25,
+      "leader_change": true,
+      "disciple_loss_ratio": 0.2
+    },
+    "player_options": [
+      { "id": "support_traitor", "text": "支持叛变者", "cost": 2, "effect": "traitor_wins" },
+      { "id": "support_faction", "text": "支持原势力", "cost": 2, "effect": "faction_wins" },
+      { "id": "ignore", "text": "不介入", "cost": 0, "effect": "none" }
+    ],
+    "info_spread_speed": 4,
+    "info_max_radius": 60,
+    "info_reliability": 0.7
+  },
+  {
+    "type": "civil_war",
+    "name": "内乱",
+    "description": "{faction}爆发了严重的内乱！",
+    "duration": 5,
+    "effects": {
+      "stability_loss": 30,
+      "territory_loss_ratio": 0.2,
+      "disciple_loss_ratio": 0.25
+    },
+    "player_options": [
+      { "id": "mediate", "text": "居中调停", "cost": 3, "effect": "stability_recover" },
+      { "id": "exploit", "text": "趁火打劫（获取资源）", "cost": 2, "effect": "gain_resources" },
+      { "id": "ignore", "text": "静观其变", "cost": 0, "effect": "none" }
+    ],
+    "info_spread_speed": 4,
+    "info_max_radius": 70,
+    "info_reliability": 0.85
+  },
+  {
+    "type": "raid",
+    "name": "掠夺",
+    "description": "{raider}对{target}发起了掠夺！",
+    "duration": 1,
+    "effects": {
+      "resource_stolen_ratio": 0.15,
+      "relation_change": -15
+    },
+    "player_options": [
+      { "id": "intercept", "text": "拦截掠夺者", "cost": 3, "effect": "stop_raid" },
+      { "id": "join_raid", "text": "参与掠夺", "cost": 2, "effect": "share_loot" },
+      { "id": "ignore", "text": "视而不见", "cost": 0, "effect": "none" }
+    ],
+    "info_spread_speed": 2,
+    "info_max_radius": 30,
+    "info_reliability": 0.6
+  },
+  {
+    "type": "demon_invasion",
+    "name": "妖族入侵",
+    "description": "{demon_faction}的妖兽大军入侵了{target}的领地！",
+    "duration": 5,
+    "effects": {
+      "target_disciple_loss_ratio": 0.2,
+      "target_territory_loss_ratio": 0.15,
+      "demon_territory_gain": true
+    },
+    "player_options": [
+      { "id": "join_defense", "text": "加入防御", "cost": 4, "effect": "defense_bonus" },
+      { "id": "evacuate_civilians", "text": "疏散平民", "cost": 2, "effect": "save_civilians" },
+      { "id": "flee", "text": "远离战场", "cost": 1, "effect": "none" }
+    ],
+    "info_spread_speed": 5,
+    "info_max_radius": 80,
+    "info_reliability": 0.95
+  },
+  {
+    "type": "trade",
+    "name": "贸易协定",
+    "description": "{faction1}与{faction2}达成了贸易协定",
+    "duration": 0,
+    "effects": {
+      "resource_exchange": true,
+      "relation_change": 10
+    },
+    "player_options": [
+      { "id": "participate", "text": "参与交易（获取少量资源）", "cost": 1, "effect": "gain_small_resource" },
+      { "id": "ignore", "text": "不参与", "cost": 0, "effect": "none" }
+    ],
+    "info_spread_speed": 3,
+    "info_max_radius": 40,
+    "info_reliability": 0.8
+  },
+  {
+    "type": "leader_death",
+    "name": "掌门陨落",
+    "description": "{faction}的掌门{leader}陨落了！",
+    "duration": 0,
+    "effects": {
+      "stability_loss": 20,
+      "leader_change": true,
+      "mourning_period": 5
+    },
+    "player_options": [
+      { "id": "mourn", "text": "前往吊唁", "cost": 2, "effect": "relation_boost" },
+      { "id": "ignore", "text": "不理会", "cost": 0, "effect": "none" }
+    ],
+    "info_spread_speed": 6,
+    "info_max_radius": 100,
+    "info_reliability": 0.95
+  },
+  {
+    "type": "realm_contest",
+    "name": "秘境争夺",
+    "description": "秘境中发现了{treasure}，{factions}纷纷派人争夺！",
+    "duration": 3,
+    "effects": {
+      "participants_conflict": true,
+      "treasure_reward": true
+    },
+    "player_options": [
+      { "id": "enter_realm", "text": "进入秘境探索", "cost": 4, "effect": "treasure_chance" },
+      { "id": "ambush_exit", "text": "在秘境出口守株待兔", "cost": 3, "effect": "intercept_treasure" },
+      { "id": "ignore", "text": "不参与", "cost": 0, "effect": "none" }
+    ],
+    "info_spread_speed": 4,
+    "info_max_radius": 60,
+    "info_reliability": 0.75
+  },
+  {
+    "type": "great_war",
+    "name": "正邪大战",
+    "description": "正道与邪道之间爆发了一场席卷天下的大战！",
+    "duration": 10,
+    "effects": {
+      "all_righteous_at_war": true,
+      "all_evil_at_war": true,
+      "massive_disciple_loss": true,
+      "territory_upheaval": true
+    },
+    "player_options": [
+      { "id": "join_righteous", "text": "加入正道阵营", "cost": 5, "effect": "righteous_boost" },
+      { "id": "join_evil", "text": "加入邪道阵营", "cost": 5, "effect": "evil_boost" },
+      { "id": "profit", "text": "浑水摸鱼", "cost": 2, "effect": "gain_resources" },
+      { "id": "hide", "text": "找个地方躲起来", "cost": 0, "effect": "none" }
+    ],
+    "info_spread_speed": 8,
+    "info_max_radius": 100,
+    "info_reliability": 1.0
+  }
+]

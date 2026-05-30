@@ -1,0 +1,162 @@
+[
+  {
+    "id": "need_survival",
+    "name": "生存",
+    "description": "确保势力存续，避免覆灭",
+    "basePriority": 10,
+    "evaluatorType": "faction_survival",
+    "evaluatorConfig": {
+      "basePriority": 10,
+      "rules": [
+        { "condition": { "key": "stability", "op": "lt", "value": 20 }, "priorityBoost": 80, "urgencyBoost": 90 },
+        { "condition": { "key": "stability", "op": "lt", "value": 40 }, "priorityBoost": 50, "urgencyBoost": 60 },
+        { "condition": { "key": "disciples", "op": "lt", "value": 50 }, "priorityBoost": 70, "urgencyBoost": 80 },
+        { "condition": { "key": "food", "op": "lt", "value": 100 }, "priorityBoost": 40, "urgencyBoost": 50 }
+      ],
+      "satisfiedCondition": { "key": "stability", "op": "gte", "value": 60 }
+    },
+    "goalState": {
+      "stability": { "op": "gte", "value": 40 },
+      "disciples": { "op": "gte", "value": 30 }
+    }
+  },
+  {
+    "id": "need_defense",
+    "name": "防御",
+    "description": "保护领地，加强边境防御",
+    "basePriority": 5,
+    "evaluatorType": "faction_defense",
+    "evaluatorConfig": {
+      "basePriority": 5,
+      "rules": [
+        { "condition": { "key": "borderThreat", "op": "gt", "value": 0 }, "priorityBoost": 40, "urgencyBoost": 50 },
+        { "condition": { "key": "underAttack", "op": "eq", "value": true }, "priorityBoost": 70, "urgencyBoost": 90 },
+        { "condition": { "key": "stability", "op": "lt", "value": 50 }, "priorityBoost": 20, "urgencyBoost": 30 }
+      ],
+      "satisfiedCondition": { "key": "borderThreat", "op": "lte", "value": 0 }
+    },
+    "goalState": {
+      "borderThreat": { "op": "lte", "value": 1 },
+      "stability": { "op": "gte", "value": 50 }
+    }
+  },
+  {
+    "id": "need_expansion",
+    "name": "扩张",
+    "description": "拓展领土，增加势力范围",
+    "basePriority": 3,
+    "evaluatorType": "faction_expansion",
+    "evaluatorConfig": {
+      "basePriority": 3,
+      "rules": [
+        { "condition": { "key": "territoryCount", "op": "lt", "value": 10 }, "priorityBoost": 30, "urgencyBoost": 20 },
+        { "condition": { "key": "stability", "op": "gte", "value": 60 }, "priorityBoost": 15, "urgencyBoost": 5 },
+        { "condition": { "key": "hasAdjacentUnowned", "op": "eq", "value": true }, "priorityBoost": 10, "urgencyBoost": 5 }
+      ],
+      "satisfiedCondition": null
+    },
+    "goalState": {
+      "territoryCount": { "op": "gte", "value": 10 }
+    }
+  },
+  {
+    "id": "need_development",
+    "name": "发展",
+    "description": "积累资源，壮大内部",
+    "basePriority": 5,
+    "evaluatorType": "faction_development",
+    "evaluatorConfig": {
+      "basePriority": 5,
+      "rules": [
+        { "condition": { "key": "low_spirit_stone", "op": "lt", "value": 300 }, "priorityBoost": 30, "urgencyBoost": 20 },
+        { "condition": { "key": "food", "op": "lt", "value": 300 }, "priorityBoost": 35, "urgencyBoost": 30 },
+        { "condition": { "key": "disciples", "op": "lt", "value": 50 }, "priorityBoost": 25, "urgencyBoost": 15 }
+      ],
+      "satisfiedCondition": null
+    },
+    "goalState": {
+      "low_spirit_stone": { "op": "gte", "value": 500 },
+      "food": { "op": "gte", "value": 500 }
+    }
+  },
+  {
+    "id": "need_diplomacy",
+    "name": "外交",
+    "description": "建立盟友关系，减少敌对",
+    "basePriority": 4,
+    "evaluatorType": "faction_diplomacy",
+    "evaluatorConfig": {
+      "basePriority": 4,
+      "rules": [
+        { "condition": { "key": "allyCount", "op": "lt", "value": 1 }, "priorityBoost": 30, "urgencyBoost": 20 },
+        { "condition": { "key": "enemyCount", "op": "gte", "value": 3 }, "priorityBoost": 30, "urgencyBoost": 25 },
+        { "condition": { "key": "enemyCount", "op": "gte", "value": 1 }, "priorityBoost": 15, "urgencyBoost": 10 },
+        { "condition": { "key": "hasNeutralFaction", "op": "eq", "value": true }, "priorityBoost": 20, "urgencyBoost": 10 },
+        { "condition": { "key": "stability", "op": "lt", "value": 50 }, "priorityBoost": 15, "urgencyBoost": 10 }
+      ],
+      "satisfiedCondition": null
+    },
+    "goalState": {
+      "allyCount": { "op": "gte", "value": 1 }
+    }
+  },
+  {
+    "id": "need_military",
+    "name": "军事",
+    "description": "消灭敌对势力，扩大军事优势",
+    "basePriority": 3,
+    "evaluatorType": "faction_military",
+    "evaluatorConfig": {
+      "basePriority": 3,
+      "rules": [
+        { "condition": { "key": "militaryAdvantage", "op": "gt", "value": 0.3 }, "priorityBoost": 30, "urgencyBoost": 15 },
+        { "condition": { "key": "stability", "op": "gte", "value": 70 }, "priorityBoost": 10, "urgencyBoost": 5 },
+        { "condition": { "key": "hasWeakEnemy", "op": "eq", "value": true }, "priorityBoost": 35, "urgencyBoost": 25 },
+        { "condition": { "key": "hasAdjacentEnemy", "op": "eq", "value": true }, "priorityBoost": 15, "urgencyBoost": 10 }
+      ],
+      "satisfiedCondition": null
+    },
+    "goalState": {
+      "enemyCount": { "op": "lte", "value": 0 }
+    }
+  },
+  {
+    "id": "need_prestige",
+    "name": "声望",
+    "description": "提升势力声望，吸引人才",
+    "basePriority": 4,
+    "evaluatorType": "configurable",
+    "evaluatorConfig": {
+      "basePriority": 4,
+      "rules": [
+        { "condition": { "key": "stability", "op": "gte", "value": 70 }, "priorityBoost": 20, "urgencyBoost": 10 },
+        { "condition": { "key": "low_spirit_stone", "op": "gte", "value": 2000 }, "priorityBoost": 15, "urgencyBoost": 5 },
+        { "condition": { "key": "disciples", "op": "lt", "value": 80 }, "priorityBoost": 25, "urgencyBoost": 20 }
+      ],
+      "satisfiedCondition": null
+    },
+    "goalState": {
+      "disciples": { "op": "gte", "value": 200 },
+      "stability": { "op": "gte", "value": 80 }
+    }
+  },
+  {
+    "id": "need_cultivation_support",
+    "name": "修炼支援",
+    "description": "提供弟子修炼环境和资源",
+    "basePriority": 3,
+    "evaluatorType": "configurable",
+    "evaluatorConfig": {
+      "basePriority": 3,
+      "rules": [
+        { "condition": { "key": "disciples", "op": "gte", "value": 100 }, "priorityBoost": 20, "urgencyBoost": 10 },
+        { "condition": { "key": "stability", "op": "gte", "value": 50 }, "priorityBoost": 10, "urgencyBoost": 5 },
+        { "condition": { "key": "low_spirit_stone", "op": "gte", "value": 500 }, "priorityBoost": 15, "urgencyBoost": 10 }
+      ],
+      "satisfiedCondition": null
+    },
+    "goalState": {
+      "stability": { "op": "gte", "value": 70 }
+    }
+  }
+]

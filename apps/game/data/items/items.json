@@ -1,0 +1,89 @@
+{
+  "_description": "可转移物品定义（ADR-025）。供游历/夺宝/机会点掉落写入 NPC inventory，并作为怀璧其罪的标的。每项含 value（身家估值，进 assetScore）、grade（品阶，影响暴露概率）、transferable（可否被抢夺/转移）、combatBonus（装备后战力加成系数，可选）。",
+  "items": [
+    {
+      "id": "item_spirit_herb",
+      "name": "灵草",
+      "category": "material",
+      "grade": 1,
+      "value": 80,
+      "transferable": true,
+      "stackable": true,
+      "description": "寻常灵草，炼丹基础材料"
+    },
+    {
+      "id": "item_rare_ore",
+      "name": "玄铁精矿",
+      "category": "material",
+      "grade": 2,
+      "value": 300,
+      "transferable": true,
+      "stackable": true,
+      "description": "炼器良材，价值不菲"
+    },
+    {
+      "id": "item_qi_pill",
+      "name": "聚气丹",
+      "category": "pill",
+      "grade": 1,
+      "value": 120,
+      "transferable": true,
+      "stackable": true,
+      "description": "服用可恢复真气的丹药"
+    },
+    {
+      "id": "item_breakthrough_pill",
+      "name": "破境丹",
+      "category": "pill",
+      "grade": 3,
+      "value": 1500,
+      "transferable": true,
+      "stackable": true,
+      "description": "助益突破瓶颈的珍稀丹药"
+    },
+    {
+      "id": "item_artifact_low",
+      "name": "下品法器",
+      "category": "artifact",
+      "grade": 1,
+      "value": 500,
+      "transferable": true,
+      "stackable": false,
+      "combatBonus": 0.05,
+      "description": "炼气筑基通用法器"
+    },
+    {
+      "id": "item_artifact_mid",
+      "name": "中品法宝",
+      "category": "artifact",
+      "grade": 2,
+      "value": 4000,
+      "transferable": true,
+      "stackable": false,
+      "combatBonus": 0.12,
+      "description": "结丹修士梦寐以求的法宝"
+    },
+    {
+      "id": "item_artifact_high",
+      "name": "上品古宝",
+      "category": "artifact",
+      "grade": 3,
+      "value": 30000,
+      "transferable": true,
+      "stackable": false,
+      "combatBonus": 0.25,
+      "description": "上古遗留的珍稀古宝，怀之招祸"
+    },
+    {
+      "id": "item_artifact_immortal",
+      "name": "仙家灵宝",
+      "category": "artifact",
+      "grade": 4,
+      "value": 200000,
+      "transferable": true,
+      "stackable": false,
+      "combatBonus": 0.5,
+      "description": "蕴含天地法则的灵宝，足以引来杀身之祸"
+    }
+  ]
+}

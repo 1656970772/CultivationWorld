@@ -1,0 +1,97 @@
+[
+  {
+    "id": "need_npc_survival",
+    "name": "长寿",
+    "description": "寿元将尽时寻求续命手段，延长寿命",
+    "basePriority": 10,
+    "evaluatorType": "configurable",
+    "evaluatorConfig": {
+      "basePriority": 10,
+      "rules": [
+        { "condition": { "key": "lifeRatio", "op": "gte", "value": 0.9 }, "priorityBoost": 85, "urgencyBoost": 90 },
+        { "condition": { "key": "lifeRatio", "op": "gte", "value": 0.8 }, "priorityBoost": 55, "urgencyBoost": 60 },
+        { "condition": { "key": "alive", "op": "eq", "value": false }, "priorityBoost": -100, "urgencyBoost": 0 }
+      ],
+      "satisfiedCondition": { "key": "lifeRatio", "op": "lt", "value": 0.8 }
+    },
+    "goalState": {
+      "lifeRatio": { "op": "lt", "value": 0.8 }
+    }
+  },
+  {
+    "id": "need_npc_heal",
+    "name": "回血",
+    "description": "受伤后疗伤恢复。受伤程度越高越紧迫，伤愈前压过日常修炼。",
+    "basePriority": 5,
+    "evaluatorType": "configurable",
+    "evaluatorConfig": {
+      "basePriority": 5,
+      "rules": [
+        { "condition": { "key": "injuryLevel", "op": "gte", "value": 1 }, "priorityBoost": 40, "urgencyBoost": 35 },
+        { "condition": { "key": "injuryLevel", "op": "gte", "value": 3 }, "priorityBoost": 40, "urgencyBoost": 45 }
+      ],
+      "satisfiedCondition": { "key": "injuryLevel", "op": "lt", "value": 1 }
+    },
+    "goalState": {
+      "injuryLevel": { "op": "lt", "value": 1 }
+    }
+  },
+  {
+    "id": "need_npc_cultivation",
+    "name": "修炼",
+    "description": "提升境界修为，是修士本业。GOAP 目标为修满当前境界（totalProgress=cultivationProgress+insight>=1）：闭关推进 cultivationProgress 但有境界 cultivationCap 上限，撞顶后 A* 自然推导出『外出游历攒 insight』补足；贡献充足时赴修炼场（+100%加速），不足时推导出『接→做→交任务攒贡献→进修炼场』经济链。",
+    "basePriority": 30,
+    "evaluatorType": "configurable",
+    "evaluatorConfig": {
+      "basePriority": 30,
+      "rules": [
+        { "condition": { "key": "totalProgress", "op": "lt", "value": 0.85 }, "priorityBoost": 20, "urgencyBoost": 10 },
+        { "condition": { "key": "totalProgress", "op": "lt", "value": 0.3 }, "priorityBoost": 10, "urgencyBoost": 8 },
+        { "condition": { "key": "factionAtPeace", "op": "eq", "value": true }, "priorityBoost": 10, "urgencyBoost": 5 }
+      ],
+      "satisfiedCondition": null
+    },
+    "goalState": {
+      "totalProgress": { "op": "gte", "value": 1.0 }
+    }
+  },
+  {
+    "id": "need_npc_loyalty_duty",
+    "name": "职责",
+    "description": "履行势力职责，按境界完成月度贡献额度。月度额度未达标（monthlyQuotaMet=false）时优先级飙升，驱动弟子做任务攒贡献；势力危难时长老/掌门额外加码。",
+    "basePriority": 5,
+    "evaluatorType": "configurable",
+    "evaluatorConfig": {
+      "basePriority": 5,
+      "rules": [
+        { "condition": { "key": "monthlyQuotaMet", "op": "eq", "value": false }, "priorityBoost": 45, "urgencyBoost": 40 },
+        { "condition": { "key": "isLeader", "op": "eq", "value": true }, "priorityBoost": 20, "urgencyBoost": 15 },
+        { "condition": { "key": "isElder", "op": "eq", "value": true }, "priorityBoost": 10, "urgencyBoost": 10 },
+        { "condition": { "key": "factionInDanger", "op": "eq", "value": true }, "priorityBoost": 25, "urgencyBoost": 30 }
+      ],
+      "satisfiedCondition": { "key": "monthlyQuotaMet", "op": "eq", "value": true }
+    },
+    "goalState": {
+      "questTurnedIn": { "op": "eq", "value": true }
+    }
+  },
+  {
+    "id": "need_npc_ambition",
+    "name": "晋升",
+    "description": "对更高职位的进取心。基础优先级很低，主要由性格『野心(ambition)』驱动（见 personality.json → needBoosts.ambition）：野心越高，越主动发起挑战上位（act_npc_challenge）。晋入稀缺顶层(elder/heir)受名额限制，满员则需击败现任。已至阶梯顶端(roleRank>=5)则满足。",
+    "basePriority": 2,
+    "evaluatorType": "configurable",
+    "evaluatorConfig": {
+      "basePriority": 2,
+      "rules": [
+        { "condition": { "key": "factionAtPeace", "op": "eq", "value": true }, "priorityBoost": 5, "urgencyBoost": 3 },
+        { "condition": { "key": "cultivationProgress", "op": "gte", "value": 0.6 }, "priorityBoost": 35, "urgencyBoost": 18 },
+        { "condition": { "key": "injuryLevel", "op": "gte", "value": 1 }, "priorityBoost": -30, "urgencyBoost": 0 }
+      ],
+      "satisfiedCondition": { "key": "roleRank", "op": "gte", "value": 5 }
+    },
+    "goalState": {
+      "roleRank": { "op": "gte", "value": 5 }
+    }
+  }
+]

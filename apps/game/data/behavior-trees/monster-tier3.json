@@ -1,0 +1,79 @@
+{
+  "id": "bt_monster_tier3",
+  "description": "妖兽三阶行为树（grade 5-6，初级智慧）：休整 → 极度恐惧逃跑 → 狂暴冲击 → 仇恨追杀 → 受伤退守 → 有猎物时呼群出击 → 大范围领地巡逻。",
+  "root": {
+    "type": "sequence",
+    "name": "monster-root",
+    "children": [
+      { "type": "hook", "name": "pre-tick",         "hook": "monsterPreTick" },
+      { "type": "hook", "name": "sense",             "hook": "monsterSense" },
+      { "type": "hook", "name": "update-instincts",  "hook": "monsterUpdateInstincts" },
+      {
+        "type": "selector",
+        "name": "behavior",
+        "children": [
+          {
+            "type": "sequence",
+            "name": "rest",
+            "children": [
+              { "type": "condition", "name": "is-resting", "condition": { "key": "behaviorState", "op": "eq", "value": "rest" } },
+              { "type": "hook", "name": "do-rest", "hook": "monsterRest" }
+            ]
+          },
+          {
+            "type": "sequence",
+            "name": "terror-flee",
+            "comment": "极度恐惧（fear ≥ 75）时逃离，优先于战斗",
+            "children": [
+              { "type": "condition", "name": "terrified", "condition": { "key": "emotionFear", "op": "gte", "value": 75 } },
+              { "type": "hook", "name": "do-flee", "hook": "monsterFlee" }
+            ]
+          },
+          {
+            "type": "sequence",
+            "name": "berserk",
+            "comment": "极度愤怒（rage ≥ 80）进入狂暴状态，无视伤势冲击",
+            "children": [
+              { "type": "condition", "name": "enraged", "condition": { "key": "emotionRage", "op": "gte", "value": 80 } },
+              { "type": "hook", "name": "do-berserk", "hook": "monsterBerserkAttack" }
+            ]
+          },
+          {
+            "type": "sequence",
+            "name": "hunt-grudge",
+            "comment": "有记仇目标：优先追猎（记住击伤过自己的修士）",
+            "children": [
+              { "type": "condition", "name": "has-grudge", "condition": { "key": "grudgeTargetId", "op": "exists" } },
+              { "type": "hook", "name": "do-grudge-hunt", "hook": "monsterHuntGrudge" }
+            ]
+          },
+          {
+            "type": "sequence",
+            "name": "retreat",
+            "comment": "受伤（HP ≤ 30%）且未狂暴时，撤退蓄力",
+            "children": [
+              { "type": "condition", "name": "hurt", "condition": { "key": "hpRatio", "op": "lte", "value": 0.3 } },
+              { "type": "hook", "name": "do-retreat", "hook": "monsterReturnToLair" }
+            ]
+          },
+          {
+            "type": "sequence",
+            "name": "hunt",
+            "comment": "感知到猎物：呼群后追杀",
+            "children": [
+              { "type": "condition", "name": "has-target", "condition": { "key": "hasTarget", "op": "true" } },
+              { "type": "hook", "name": "call-pack",  "hook": "monsterCallPack", "defaultStatus": "success" },
+              { "type": "hook", "name": "do-hunt",    "hook": "monsterChaseOrAttack" }
+            ]
+          },
+          {
+            "type": "hook",
+            "name": "patrol",
+            "comment": "常态：大范围巡逻领地，偶尔进化修炼",
+            "hook": "monsterPatrolTerritory"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,416 @@
+[
+  {
+    "id": "act_npc_cultivate",
+    "name": "修炼",
+    "description": "闭关修炼，提升闭关进度。受境界 cultivationCap 上限约束（前置 cultivationProgress<cap 由实体按当前境界动态注入），撞顶后须靠游历补足。effects 同时推进 totalProgress 供 GOAP 目标判定。",
+    "category": "npc",
+    "weight": 1,
+    "valueScore": 1,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" },
+      "cultivationProgress": { "op": "lt", "value": 1.0 }
+    },
+    "effects": {
+      "cultivationProgress": { "op": "add", "value": 0.001 },
+      "totalProgress": { "op": "add", "value": 0.001 }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 30,
+    "requiresTravel": false,
+    "targetResolver": "self",
+    "executorId": "npc_cultivate"
+  },
+  {
+    "id": "act_npc_train_chamber",
+    "name": "赴修炼场修炼",
+    "description": "前往宗门修炼场修炼，消耗门派贡献，修炼速度提升100%（翻倍）。同样受境界 cultivationCap 上限约束（cap 前置由实体动态注入）。",
+    "category": "npc",
+    "weight": 0.5,
+    "valueScore": 2,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" },
+      "hasFaction": { "op": "true" },
+      "contribution": { "op": "gte", "value": 10 },
+      "cultivationProgress": { "op": "lt", "value": 1.0 }
+    },
+    "effects": {
+      "cultivationProgress": { "op": "add", "value": 0.002 },
+      "totalProgress": { "op": "add", "value": 0.002 }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 30,
+    "requiresTravel": true,
+    "targetResolver": "training",
+    "distanceCostPerTile": 0.01,
+    "executorId": "npc_train_chamber"
+  },
+  {
+    "id": "act_npc_heal",
+    "name": "疗伤",
+    "description": "受伤后静心疗养，恢复伤势",
+    "category": "npc",
+    "weight": 1,
+    "valueScore": 5,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" },
+      "injuryLevel": { "op": "gte", "value": 1 }
+    },
+    "effects": {
+      "injuryLevel": { "op": "add", "value": -1 }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 10,
+    "requiresTravel": false,
+    "targetResolver": "self",
+    "executorId": "npc_heal"
+  },
+  {
+    "id": "act_npc_serve_faction",
+    "name": "履行职责",
+    "description": "为势力效力，完成日常职责",
+    "category": "npc",
+    "weight": 1,
+    "valueScore": 4,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" },
+      "hasFaction": { "op": "true" }
+    },
+    "effects": {
+      "dutyFulfilled": { "op": "set", "value": true }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 20,
+    "requiresTravel": true,
+    "targetResolver": "main_hall",
+    "executorId": "npc_serve_faction"
+  },
+  {
+    "id": "act_npc_seek_elixir",
+    "name": "寻找续命丹药",
+    "description": "寿元将近时寻找延寿手段",
+    "category": "npc",
+    "weight": 3,
+    "valueScore": 15,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" },
+      "lifeRatio": { "op": "gte", "value": 0.8 }
+    },
+    "effects": {
+      "lifeRatio": { "op": "add", "value": -0.1 }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 60,
+    "requiresTravel": true,
+    "targetResolver": "alchemy",
+    "distanceCostPerTile": 0.01,
+    "executorId": "npc_seek_elixir"
+  },
+  {
+    "id": "act_npc_challenge",
+    "name": "挑战上位",
+    "description": "挑战更高职位的NPC",
+    "category": "npc",
+    "weight": 4,
+    "valueScore": 10,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" },
+      "roleRank": { "op": "lt", "value": 5 }
+    },
+    "effects": {
+      "roleRank": { "op": "add", "value": 1 }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 15,
+    "requiresTravel": true,
+    "targetResolver": "main_hall",
+    "executorId": "npc_challenge"
+  },
+  {
+    "id": "act_npc_assist_faction",
+    "name": "辅助势力",
+    "description": "为势力提供修炼指导和管理，境界越高贡献越大",
+    "category": "npc",
+    "weight": 2,
+    "valueScore": 6,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" },
+      "hasFaction": { "op": "true" }
+    },
+    "effects": {
+      "dutyFulfilled": { "op": "set", "value": true }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 20,
+    "requiresTravel": false,
+    "targetResolver": "self",
+    "executorId": "npc_assist_faction"
+  },
+  {
+    "id": "act_npc_explore",
+    "name": "游历历练",
+    "description": "外出游历大世界寻机缘：产出游历感悟(insight)推进突破总进度，是闭关撞 cultivationCap 上限后唯一能继续推进 totalProgress 的途径。归来时按机缘事件表 roll 收益、按 risk.json 结算风险（受伤/资源掉落/陨落）。effects 的 insight 增量取事件表期望值的保守估计，供 GOAP 规划折叠。",
+    "category": "npc",
+    "weight": 3,
+    "valueScore": 14,
+    "riskKey": "explore",
+    "preconditions": {
+      "alive": { "op": "true" },
+      "totalProgress": { "op": "lt", "value": 1.0 }
+    },
+    "effects": {
+      "insight": { "op": "add", "value": 0.005 },
+      "totalProgress": { "op": "add", "value": 0.005 }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 90,
+    "requiresTravel": true,
+    "targetResolver": "wander_far",
+    "distanceCostPerTile": 0.02,
+    "executorId": "npc_explore"
+  },
+  {
+    "id": "act_npc_accept_quest",
+    "name": "接取任务",
+    "description": "宗门弟子赴任务堂、散修赴悬赏阁/坊市接取任务",
+    "category": "npc",
+    "weight": 1,
+    "valueScore": 3,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" },
+      "canTakeQuest": { "op": "true" },
+      "hasActiveQuest": { "op": "false" }
+    },
+    "effects": {
+      "hasActiveQuest": { "op": "set", "value": true }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 2,
+    "requiresTravel": true,
+    "targetResolver": "quest_hall",
+    "executorId": "npc_accept_quest"
+  },
+  {
+    "id": "act_npc_do_quest",
+    "name": "执行任务",
+    "description": "外出执行宗门任务，存在危险",
+    "category": "npc",
+    "weight": 2,
+    "valueScore": 7,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" },
+      "hasActiveQuest": { "op": "true" },
+      "questComplete": { "op": "false" }
+    },
+    "effects": {
+      "questComplete": { "op": "set", "value": true }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 1,
+    "requiresTravel": true,
+    "targetResolver": "quest_target",
+    "executorId": "npc_do_quest"
+  },
+  {
+    "id": "act_npc_hunt_enemy",
+    "name": "追踪仇人",
+    "description": "复仇行为链第一步（ADR-020）：依执念锁定的仇人坐标长途追踪，抵达仇人所在格/邻格。requiresTravel 走 revenge_target resolver。effects 置 nearRevengeTarget=true，供后续击杀行为前置；hasRevengeTarget 由实体按执念派生注入。",
+    "category": "npc",
+    "weight": 3,
+    "valueScore": 8,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" },
+      "hasRevengeTarget": { "op": "true" },
+      "nearRevengeTarget": { "op": "false" }
+    },
+    "effects": {
+      "nearRevengeTarget": { "op": "set", "value": true }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 5,
+    "requiresTravel": true,
+    "targetResolver": "revenge_target",
+    "distanceCostPerTile": 0.02,
+    "executorId": "npc_hunt_enemy"
+  },
+  {
+    "id": "act_npc_kill_enemy",
+    "name": "击杀仇人",
+    "description": "复仇行为链终点（ADR-020）：与仇人同格/邻格时发动 PvP，用 npcCombatPower 比拼战力定胜负。胜则给仇人写 _deathInfo{cause:'slain', killerId, killerFactionId}，effect 置 enemyKilled=true（执念达成）；负则自身受伤/陨落（risk.json pvp 分项）。前置含实力门槛 totalProgress，使 GOAP 在实力不足时先 cultivate 变强。",
+    "category": "npc",
+    "weight": 4,
+    "valueScore": 20,
+    "riskKey": "pvp",
+    "preconditions": {
+      "alive": { "op": "true" },
+      "hasRevengeTarget": { "op": "true" },
+      "nearRevengeTarget": { "op": "true" },
+      "totalProgress": { "op": "gte", "value": 0.3 }
+    },
+    "effects": {
+      "enemyKilled": { "op": "set", "value": true }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 1,
+    "requiresTravel": false,
+    "targetResolver": "self",
+    "executorId": "npc_kill_enemy"
+  },
+  {
+    "id": "act_npc_turn_in_quest",
+    "name": "交付任务",
+    "description": "宗门弟子向任务堂、散修向悬赏阁/坊市交付任务领取奖励",
+    "category": "npc",
+    "weight": 1,
+    "valueScore": 9,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" },
+      "canTakeQuest": { "op": "true" },
+      "questComplete": { "op": "true" }
+    },
+    "effects": {
+      "questComplete": { "op": "set", "value": false },
+      "hasActiveQuest": { "op": "set", "value": false },
+      "questTurnedIn": { "op": "set", "value": true },
+      "contribution": { "op": "add", "value": 5 }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 2,
+    "requiresTravel": true,
+    "targetResolver": "quest_hall",
+    "executorId": "npc_turn_in_quest"
+  },
+  {
+    "id": "act_npc_raid_treasure",
+    "name": "夺取天材地宝",
+    "description": "夺宝流终点行为（ADR-022/ADR-023，参考凡人修仙传 杀人夺宝/闯秘境）：远赴险地争夺天材地宝/秘境机缘。高风险高期望收益（reward.json obsession_plunder），按 risk.json plunder 键结算受伤/陨落。effect 置 treasureObtained=true（执念达成）。",
+    "category": "npc",
+    "weight": 3,
+    "valueScore": 18,
+    "riskKey": "plunder",
+    "preconditions": {
+      "alive": { "op": "true" }
+    },
+    "effects": {
+      "treasureObtained": { "op": "set", "value": true }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 60,
+    "requiresTravel": true,
+    "targetResolver": "wander_far",
+    "distanceCostPerTile": 0.02,
+    "executorId": "npc_raid_treasure"
+  },
+  {
+    "id": "act_npc_seclude",
+    "name": "归隐养老",
+    "description": "养老流终点行为（ADR-023，项目推演设定；参考太上长老闭关、炼气终老等间接元素）：回归洞府/宗门安养余生，低风险静修。effect 置 atPeace=true（执念达成）。",
+    "category": "npc",
+    "weight": 1,
+    "valueScore": 6,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" }
+    },
+    "effects": {
+      "atPeace": { "op": "set", "value": true }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 40,
+    "requiresTravel": false,
+    "targetResolver": "self",
+    "executorId": "npc_seclude"
+  },
+  {
+    "id": "act_npc_take_disciple",
+    "name": "收徒传承",
+    "description": "传承流终点行为（ADR-023，参考大道争锋 传承道统：寻找传人→收徒→传授功法；遮天 大帝晚年收徒）：高境界修士赴宗门主殿收徒并传授衣钵功法。effect 置 discipleRaised=true（执念达成）。",
+    "category": "npc",
+    "weight": 2,
+    "valueScore": 10,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" },
+      "roleRank": { "op": "gte", "value": 3 }
+    },
+    "effects": {
+      "discipleRaised": { "op": "set", "value": true }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 30,
+    "requiresTravel": true,
+    "targetResolver": "main_hall",
+    "executorId": "npc_take_disciple"
+  },
+  {
+    "id": "act_npc_seize_power",
+    "name": "夺取掌门之位",
+    "description": "夺权流终点行为（ADR-023，参考凡人修仙传/大道争锋 掌门继任之争）：临近权力阶梯顶端者发动夺位（拉拢长老、压制竞争对手或挑战现任）。按 risk.json power 键结算冲突风险。成功 effect 置 isFactionLeader=true（执念达成）。前置 roleRank>=4 使其须先沿 act_npc_challenge 阶梯爬到接近顶层。",
+    "category": "npc",
+    "weight": 4,
+    "valueScore": 16,
+    "riskKey": "power",
+    "preconditions": {
+      "alive": { "op": "true" },
+      "hasFaction": { "op": "true" },
+      "roleRank": { "op": "gte", "value": 4 }
+    },
+    "effects": {
+      "isFactionLeader": { "op": "set", "value": true }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 20,
+    "requiresTravel": true,
+    "targetResolver": "main_hall",
+    "executorId": "npc_seize_power"
+  },
+  {
+    "id": "act_npc_goto_opportunity",
+    "name": "奔赴机缘",
+    "description": "机会点终点行为（ADR-024，信息传播系统）：NPC 知晓世界消息后，前往关联的 WorldOpportunity（妖兽尸骸/秘境入口/拍卖会/天材地宝）。到达后按机会点 rewardSource/riskKey 结算收益与风险，产出真实物品写入背包。effect 置 arrivedAtOpportunity=true，结算后由决策周期复位。",
+    "category": "npc",
+    "weight": 3,
+    "valueScore": 14,
+    "riskKey": "plunder",
+    "preconditions": {
+      "alive": { "op": "true" }
+    },
+    "effects": {
+      "arrivedAtOpportunity": { "op": "set", "value": true }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 30,
+    "requiresTravel": true,
+    "targetResolver": "nearest_opportunity",
+    "distanceCostPerTile": 0.02,
+    "executorId": "npc_goto_opportunity"
+  }
+]

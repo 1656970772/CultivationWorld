@@ -1,0 +1,22 @@
+{
+  "name": "worlddynamic-tauri-editor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "玄天大陆数据编辑器 Tauri 桌面壳",
+  "scripts": {
+    "editor:serve": "python serve.py",
+    "editor:prepare": "node tools/build-tauri-frontend.mjs",
+    "editor:dev": "set \"PATH=%USERPROFILE%\\.cargo\\bin;%PATH%\" && tauri dev",
+    "editor:build": "set \"PATH=%USERPROFILE%\\.cargo\\bin;%PATH%\" && tauri build",
+    "desktop:prepare": "npm run editor:prepare",
+    "tauri:dev": "npm run editor:dev",
+    "tauri:build": "npm run editor:build"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.0.0"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.0.0"
+  }
+}

@@ -1,0 +1,235 @@
+/**
+ * FactionActions - 势力行为执行器
+ *
+ * 每种势力行为的具体执行逻辑，注册到 ActionPool。
+ *
+ * 【资源真相源约定】（修复历史双轨 bug）
+ * FactionEntity 的 tick 流程：onPreTick 把 inventory→state，Action.execute 依次跑
+ * costs(扣 inventory)→executor→yields(加 inventory)→_applyEffects(改 state)，onPostTick 用
+ * state 覆盖回 inventory。因此 state 是资源（low_spirit_stone/disciples/food）的**单一真相源**，
+ * 而 inventory 的 costs/yields 增减会被 onPostTick 的 state 覆盖而丢失（历史 bug 根因）。
+ *
+ * 统一约定（每个资源键只被改一次）：
+ *   - 资源（low_spirit_stone/disciples/food）的"消耗与产出"全部声明在 JSON 的 `effects`（走 state）；
+ *     `costs`/`yields`（走 inventory）不再用于这三种资源，避免被 state 覆盖造成的双轨。
+ *   - executor 只负责 effects 无法表达的逻辑：跨实体作用（贸易/结盟/论道）、世界调用（扩张/攻伐）、
+ *     对本门 NPC 的批量影响（开放秘境）、以及非资源派生状态（formation/territory 等）。
+ *     executor **不再重复增减上述三种资源**（除非该资源变化是动态、且对应 JSON 不含该键）。
+ * 详见 docs/decisions/adr-015。
+ */
+import { ActionExecutor } from '../abstract/action.js';
+import { ActionPool } from '../pools/action-pool.js';
+
+export class FactionDevelopExecutor extends ActionExecutor {
+  run(entity, worldContext, action) {
+    // 资源产出已由 JSON effects 结算（灵石/粮草/弟子）；此处仅追加"领地灵脉规模红利"，
+    // 该红利随 territoryCount 动态变化，JSON 无法表达，且 effects 不含此项，故无双计。
+    const territoryCount = entity.state.get('territoryCount') || 1;
+    const veinBonus = Math.floor(territoryCount * 0.5);
+    if (veinBonus > 0) {
+      entity.state.set('low_spirit_stone', (entity.state.get('low_spirit_stone') || 0) + veinBonus);
+    }
+    return { veinBonus, description: `内部发展完成，灵脉额外产出 ${veinBonus} 灵石` };
+  }
+}
+
+export class FactionRecruitExecutor extends ActionExecutor {
+  run(entity, worldContext, action) {
+    // 弟子招募量由 JSON effects 固定结算；此处不再重复增减 disciples（修复双计）。
+    return { description: '发布招募令，新弟子入门' };
+  }
+}
+
+export class FactionExpandExecutor extends ActionExecutor {
+  run(entity, worldContext, action) {
+    const territoryCount = entity.state.get('territoryCount') || 0;
+    if (territoryCount >= 20) {
+      return { success: false, description: '领地已达上限' };
+    }
+    if (!worldContext.expandTerritory) {
+      return { success: false, description: '无法扩张：缺少世界上下文' };
+    }
+    const result = worldContext.expandTerritory(entity.id);
+    if (result.success) {
+      const territory = entity.state.get('territory') || [];
+      territory.push(result.tileKey);
+      entity.state.set('territory', territory);
+    }
+    return result;
+  }
+}
+
+export class FactionDefendExecutor extends ActionExecutor {
+  run(entity, worldContext, action) {
+    const stability = entity.state.get('stability') || 50;
+    entity.state.set('stability', Math.min(100, stability + 5));
+    const borderThreat = entity.state.get('borderThreat') || 0;
+    entity.state.set('borderThreat', Math.max(0, borderThreat - 1));
+    return { description: '加强了边境防御' };
+  }
+}
+
+export class FactionAttackExecutor extends ActionExecutor {
+  run(entity, worldContext, action) {
+    if (!worldContext.attackEnemy) {
+      return { success: false, description: '无法攻击：缺少世界上下文' };
+    }
+    // stability 变化已在 attackEnemy 内部处理（胜利 -5 / 失败 -10）
+    return worldContext.attackEnemy(entity.id);
+  }
+}
+
+export class FactionAllyExecutor extends ActionExecutor {
+  run(entity, worldContext, action) {
+    if (!worldContext.formAlliance) {
+      return { success: false, description: '无法结盟：缺少世界上下文' };
+    }
+    const result = worldContext.formAlliance(entity.id);
+    return result;
+  }
+}
+
+export class FactionTradeExecutor extends ActionExecutor {
+  run(entity, worldContext, action) {
+    const allFactions = worldContext.entityRegistry
+      ? worldContext.entityRegistry.getByType('faction').filter(f => f.alive && f.id !== entity.id)
+      : [];
+
+    // 找到关系最好的盟友或友好势力
+    let bestPartner = null;
+    let bestRelation = 20; // 最低贸易关系门槛
+
+    for (const f of allFactions) {
+      const rel = entity.state.get('relations')?.[f.id] || 0;
+      if (rel > bestRelation) {
+        bestRelation = rel;
+        bestPartner = f;
+      }
+    }
+
+    if (!bestPartner) return { success: false, reason: '无合适贸易伙伴' };
+
+    // 双方互利贸易：己方用灵石换粮草（粮草+100 已在 JSON effects 结算，此处结算灵石支出与对方收支）。
+    // 资源统一走 state（单一真相源），避免 onPostTick 用 state 覆盖 inventory 导致的丢失。
+    const myStone = entity.state.get('low_spirit_stone') || 0;
+    const tradeAmount = Math.min(Math.floor(myStone * 0.1), 200);
+
+    if (tradeAmount <= 0) return { success: false, reason: '灵石不足以贸易' };
+
+    entity.state.set('low_spirit_stone', myStone - tradeAmount);
+
+    // 对方：收灵石、付粮草。改对方 state，其下一 tick 的 onPreTick/onPostTick 会同步到 inventory。
+    bestPartner.state.set('low_spirit_stone', (bestPartner.state.get('low_spirit_stone') || 0) + tradeAmount);
+    const partnerFood = bestPartner.state.get('food') || 0;
+    bestPartner.state.set('food', Math.max(0, partnerFood - tradeAmount * 2));
+
+    // 贸易增进双方关系
+    const currentRel = entity.state.get('relations')?.[bestPartner.id] || 0;
+    const partnerRel = bestPartner.state.get('relations')?.[entity.id] || 0;
+
+    const relations = entity.state.get('relations') || {};
+    relations[bestPartner.id] = Math.min(currentRel + 3, 100);
+    entity.state.set('relations', { ...relations });
+
+    const partnerRelations = bestPartner.state.get('relations') || {};
+    partnerRelations[entity.id] = Math.min(partnerRel + 3, 100);
+    bestPartner.state.set('relations', { ...partnerRelations });
+
+    return {
+      success: true,
+      partnerId: bestPartner.id,
+      partnerName: bestPartner.name,
+      tradeAmount,
+      description: `与 ${bestPartner.name} 完成贸易，交换 ${tradeAmount} 灵石`,
+    };
+  }
+}
+
+export class FactionStabilizeExecutor extends ActionExecutor {
+  run(entity, worldContext, action) {
+    const stability = entity.state.get('stability') || 50;
+    entity.state.set('stability', Math.min(100, stability + 10));
+    return { description: '安抚了内部秩序' };
+  }
+}
+
+export class FactionHostConferenceExecutor extends ActionExecutor {
+  run(entity, worldContext, action) {
+    const allFactions = worldContext.entityRegistry
+      ? worldContext.entityRegistry.getByType('faction').filter(f => f.alive && f.id !== entity.id)
+      : [];
+
+    let boostedCount = 0;
+    for (const other of allFactions) {
+      const myRelations = entity.state.get('relations') || {};
+      const rel = myRelations[other.id] || 0;
+      if (rel >= 20) {
+        // 己方对对方关系 +5
+        myRelations[other.id] = Math.min(rel + 5, 100);
+        entity.state.set('relations', { ...myRelations });
+
+        // 对方对己方关系 +5
+        const otherRelations = other.state.get('relations') || {};
+        otherRelations[entity.id] = Math.min((otherRelations[entity.id] || 0) + 5, 100);
+        other.state.set('relations', { ...otherRelations });
+
+        boostedCount++;
+      }
+    }
+
+    return {
+      success: true,
+      boostedCount,
+      description: `举办论道大会，与 ${boostedCount} 个友好势力增进了关系`,
+    };
+  }
+}
+
+export class FactionBuildFormationExecutor extends ActionExecutor {
+  run(entity, worldContext, action) {
+    entity.state.set('formationBuilt', true);
+    entity.state.set('formationStrength', 3);
+    return {
+      success: true,
+      description: '护山大阵布置完毕，门派防御大幅提升',
+    };
+  }
+}
+
+export class FactionOpenSecretRealmExecutor extends ActionExecutor {
+  run(entity, worldContext, action) {
+    const allNpcs = worldContext.entityRegistry
+      ? worldContext.entityRegistry.getAliveByType('npc').filter(
+          n => n.state.get('factionId') === entity.id
+        )
+      : [];
+
+    for (const npc of allNpcs) {
+      const progress = npc.state.get('cultivationProgress') || 0;
+      npc.state.set('cultivationProgress', Math.min(1, progress + 0.05));
+    }
+
+    return {
+      success: true,
+      benefitCount: allNpcs.length,
+      description: `开放秘境，${allNpcs.length} 名弟子修炼进度提升`,
+    };
+  }
+}
+
+/**
+ * 注册所有势力行为执行器到 ActionPool
+ */
+export function registerFactionExecutors() {
+  ActionPool.registerExecutor('faction_develop', new FactionDevelopExecutor());
+  ActionPool.registerExecutor('faction_recruit', new FactionRecruitExecutor());
+  ActionPool.registerExecutor('faction_expand', new FactionExpandExecutor());
+  ActionPool.registerExecutor('faction_defend', new FactionDefendExecutor());
+  ActionPool.registerExecutor('faction_attack', new FactionAttackExecutor());
+  ActionPool.registerExecutor('faction_ally', new FactionAllyExecutor());
+  ActionPool.registerExecutor('faction_trade', new FactionTradeExecutor());
+  ActionPool.registerExecutor('faction_stabilize', new FactionStabilizeExecutor());
+  ActionPool.registerExecutor('faction_host_conference', new FactionHostConferenceExecutor());
+  ActionPool.registerExecutor('faction_build_formation', new FactionBuildFormationExecutor());
+  ActionPool.registerExecutor('faction_open_secret_realm', new FactionOpenSecretRealmExecutor());
+}

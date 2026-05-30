@@ -1,0 +1,97 @@
+{
+  "_description": "Utility 选目标层考量因素配置（ADR-020）。把目标的『想做程度』拆成多个 consideration，每个经响应曲线映射到 [0,1] 后相乘，得到乘法式效用：score = priority × Π(consideration)。对齐《模拟人生》《环世界》的 Utility AI 做法。",
+  "_howItWorks": "按 Goal 的 sourceId(need_xxx / obsession_xxx) 匹配 considerations 组。每个 consideration: { id, inputKey, source(entity|world|derived), curve(linear|quadratic|inverse|threshold|logistic), params }。curve 把输入映射到 [0,1]。缺省/未匹配的目标不挂考量因素，score 退化为纯 priority（零漂移）。",
+  "enabled": false,
+  "_enabledComment": "总开关。false 时所有目标不挂考量因素，行为与重构前完全一致（保证黄金指纹回归零漂移）。设 true 启用乘法式 Utility 选目标。",
+  "considerationsBySource": {
+    "need_npc_cultivation": [
+      {
+        "id": "bottleneck",
+        "_comment": "瓶颈程度：totalProgress 越低越想突破(越接近0效用越高)，接近1则该目标效用降低",
+        "inputKey": "totalProgress",
+        "source": "entity",
+        "curve": "inverse",
+        "params": { "slope": 0.8, "shift": 0 }
+      }
+    ],
+    "need_npc_survival": [
+      {
+        "id": "lifeCrisis",
+        "_comment": "寿命危机度：lifeRatio 越高(越接近寿元)，延寿目标效用越高",
+        "inputKey": "lifeRatio",
+        "source": "entity",
+        "curve": "logistic",
+        "params": { "k": 12, "mid": 0.85 }
+      }
+    ],
+    "need_npc_heal": [
+      {
+        "id": "injurySeverity",
+        "_comment": "伤势严重度：injuryLevel 越高越想疗伤",
+        "inputKey": "injuryLevel",
+        "source": "entity",
+        "curve": "linear",
+        "params": { "slope": 0.34, "shift": 0, "base": 0 }
+      }
+    ],
+    "obsession_supremacy": [
+      {
+        "id": "bottleneck",
+        "inputKey": "totalProgress",
+        "source": "entity",
+        "curve": "inverse",
+        "params": { "slope": 0.7, "shift": 0 }
+      }
+    ],
+    "obsession_longevity": [
+      {
+        "id": "lifeCrisis",
+        "_comment": "长生执念：寿元越接近上限，求长生目标效用越高",
+        "inputKey": "lifeRatio",
+        "source": "entity",
+        "curve": "logistic",
+        "params": { "k": 10, "mid": 0.7 }
+      }
+    ],
+    "obsession_plunder": [
+      {
+        "id": "plunderExpectedValue",
+        "_comment": "夺宝流（ADR-022）：期望收益(reward.json 经 derived.expectedValue 注入)越高越想去；赌狗流在此放大",
+        "inputKey": "expectedValue",
+        "source": "derived",
+        "curve": "linear",
+        "params": { "slope": 1, "shift": 0, "base": 0.1 }
+      }
+    ],
+    "obsession_retire": [
+      {
+        "id": "ageWeariness",
+        "_comment": "养老流（项目推演设定）：寿元越接近上限、越倦怠，养老目标效用越高",
+        "inputKey": "lifeRatio",
+        "source": "entity",
+        "curve": "logistic",
+        "params": { "k": 14, "mid": 0.82 }
+      }
+    ],
+    "obsession_legacy": [
+      {
+        "id": "legacyUrgency",
+        "_comment": "传承流（大道争锋）：寿元将尽时收徒传承的紧迫度急升",
+        "inputKey": "lifeRatio",
+        "source": "entity",
+        "curve": "logistic",
+        "params": { "k": 14, "mid": 0.8 }
+      }
+    ],
+    "obsession_power": [
+      {
+        "id": "powerReadiness",
+        "_comment": "夺权流（凡人/大道争锋）：修为越充足越有资本争夺掌门位",
+        "inputKey": "cultivationProgress",
+        "source": "entity",
+        "curve": "linear",
+        "params": { "slope": 1.2, "shift": 0.2, "base": 0.2 }
+      }
+    ]
+  }
+}

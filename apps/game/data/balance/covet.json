@@ -1,0 +1,35 @@
+{
+  "_description": "怀璧其罪 / 觊觎抢夺系统配置（ADR-025）。NPC 暴露高 assetScore 被目击 → 生成 wealth_exposed 消息 → 听闻者评估『抢夺 vs 放他一马』。默认 enabled=false 保护零漂移。",
+  "enabled": false,
+  "_exposeComment": "暴露触发：NPC 持有 assetScore >= exposeThreshold 且周围 witnessDistance 内有其他 NPC 目击时，生成 wealth_exposed 消息。exposeChancePerDay 控制每日暴露概率（不必每天都暴露）。",
+  "expose": {
+    "exposeThreshold": 500,
+    "witnessDistance": 3,
+    "exposeChancePerDay": 0.15
+  },
+  "_covetComment": "起贪念条件：目标 assetScore 高、自身战力 > 目标战力 × powerSafetyFactor、且贪婪/勇敢性格达标。greedScore = assetScore × (courage/100) × (1 - justice/150)。",
+  "covet": {
+    "minAssetScore": 500,
+    "powerSafetyFactor": 1.2,
+    "courageThreshold": 55,
+    "minGreedScore": 300
+  },
+  "_spareComment": "放他一马判定：满足任一即放过（按权重累加 spareScore，>= spareThreshold 则放过）。体现身份/恩义/性格对掠夺的约束。",
+  "spare": {
+    "spareThreshold": 1.0,
+    "sameFactionWeight": 0.7,
+    "protectedRoleWeight": 0.5,
+    "gratitudeDivisor": 80,
+    "gratitudeMaxWeight": 1.0,
+    "daoCompanionWeight": 1.0,
+    "justiceDivisor": 120,
+    "diplomacyDivisor": 150,
+    "protectedRoles": ["leader", "heir", "elder"]
+  },
+  "_robComment": "抢夺结算：胜率 = myPower/(myPower+targetPower)。胜则转移可转移物品与部分灵石；lootStoneRatio 抢走的灵石比例；killChanceOnWin 胜后击杀对方的概率（杀人夺宝）。",
+  "rob": {
+    "lootStoneRatio": 0.6,
+    "killChanceOnWin": 0.3,
+    "loserInjuryOnLoss": 2
+  }
+}

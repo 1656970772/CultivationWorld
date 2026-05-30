@@ -1,0 +1,185 @@
+{
+  "_description": "风险系统配置表 — 数据驱动。游历等高风险行为归来时结算风险。设计为可扩展：新增风险分项、调整权重、新增性格加成，只需改本表，无需改核心代码。详见 ADR-016 / wiki/rules/risk-system.md。",
+  "_howItWorks": "每个高风险行为(actionId)引用一组风险分项(items)。结算流程：①对每个分项算出『触发概率 = baseChance × 境界系数 × (1 + 性格加成)』；②逐项独立 roll，命中则结算其效果(effect)；③totalRisk 为各分项 baseChance 之和(仅用于展示/调试『总风险百分比』)。性格加成见 personalityModifiers。",
+  "explore": {
+    "_comment": "游历风险。境界越高越能扛(rankMitigation 降低受伤/死亡)，但所到之处也越凶险——此处先用 rankMitigation 体现『修为越高越安全』，后续可叠加『目的地危险度』。",
+    "rankMitigation": {
+      "_comment": "境界对受伤/死亡风险的减免系数(乘算)：境界越高越能保命。资源掉落/挑战失败不受此影响。",
+      "mortal": 1.0,
+      "disciple": 1.0,
+      "qi_refining": 0.9,
+      "foundation_building": 0.75,
+      "golden_core": 0.6,
+      "nascent_soul": 0.45,
+      "spirit_transformation": 0.3
+    },
+    "items": [
+      {
+        "id": "injury",
+        "name": "受伤风险",
+        "baseChance": 0.12,
+        "appliesRankMitigation": true,
+        "effect": { "type": "injury", "amountMin": 1, "amountMax": 2 },
+        "personalityModifiers": [
+          {
+            "trait": "courage",
+            "minThreshold": 50,
+            "maxChanceBoost": 0.15,
+            "_comment": "勇敢≥50 才会冒进；越勇敢越容易受伤。50→无加成，100→受伤概率额外+0.15(绝对值叠加后再 clamp)。"
+          }
+        ]
+      },
+      {
+        "id": "resource_loss",
+        "name": "资源掉落风险",
+        "baseChance": 0.08,
+        "appliesRankMitigation": false,
+        "effect": { "type": "resource_loss", "itemId": "low_spirit_stone", "lossRatioMin": 0.05, "lossRatioMax": 0.2 },
+        "personalityModifiers": []
+      },
+      {
+        "id": "challenge_fail",
+        "name": "职位挑战失败风险",
+        "baseChance": 0.0,
+        "appliesRankMitigation": false,
+        "effect": { "type": "morale_loss", "amountMin": 5, "amountMax": 15 },
+        "_comment": "预留：游历途中遭遇厮杀/挑战失利，先置 0 不启用。后续可接入职位/战力对比。",
+        "personalityModifiers": []
+      },
+      {
+        "id": "death",
+        "name": "死亡风险",
+        "baseChance": 0.005,
+        "appliesRankMitigation": true,
+        "effect": { "type": "death", "cause": "explore" },
+        "_comment": "陨落于游历途中。初期权重很低，避免大量减员；后续按目的地危险度/战力差放大。",
+        "personalityModifiers": [
+          {
+            "trait": "courage",
+            "minThreshold": 70,
+            "maxChanceBoost": 0.01,
+            "_comment": "极度勇敢(≥70)者轻身犯险，死亡概率小幅上升。"
+          }
+        ]
+      }
+    ]
+  },
+  "plunder": {
+    "_comment": "夺宝风险（ADR-022/ADR-023，参考凡人修仙传 杀人夺宝）：闯秘境/争天材地宝比寻常游历凶险得多——既有环境之险，也有同道厮杀。境界越高越能保命（rankMitigation），勇敢者更易冒进受伤/陨落。",
+    "rankMitigation": {
+      "mortal": 1.0,
+      "disciple": 1.0,
+      "qi_refining": 0.9,
+      "foundation_building": 0.75,
+      "golden_core": 0.6,
+      "nascent_soul": 0.45,
+      "spirit_transformation": 0.3
+    },
+    "items": [
+      {
+        "id": "plunder_injury",
+        "name": "夺宝厮杀受伤风险",
+        "baseChance": 0.25,
+        "appliesRankMitigation": true,
+        "effect": { "type": "injury", "amountMin": 1, "amountMax": 3 },
+        "personalityModifiers": [
+          {
+            "trait": "courage",
+            "minThreshold": 50,
+            "maxChanceBoost": 0.2,
+            "_comment": "勇敢者冒进，夺宝受伤概率上升。"
+          }
+        ]
+      },
+      {
+        "id": "plunder_death",
+        "name": "夺宝陨落风险",
+        "baseChance": 0.06,
+        "appliesRankMitigation": true,
+        "effect": { "type": "death", "cause": "plunder" },
+        "personalityModifiers": [
+          {
+            "trait": "courage",
+            "minThreshold": 70,
+            "maxChanceBoost": 0.03,
+            "_comment": "极度勇敢者轻身犯险，陨落概率小幅上升。"
+          }
+        ]
+      }
+    ]
+  },
+  "power": {
+    "_comment": "夺权风险（ADR-023，参考凡人修仙传/大道争锋 掌门之争）：夺位涉及与现任/竞争者的厮杀与政治倾轧。谨慎者评估到夺权凶险更愿规避（Utility 风险厌恶放大）。",
+    "rankMitigation": {
+      "mortal": 1.0,
+      "disciple": 1.0,
+      "qi_refining": 0.95,
+      "foundation_building": 0.85,
+      "golden_core": 0.7,
+      "nascent_soul": 0.55,
+      "spirit_transformation": 0.4
+    },
+    "items": [
+      {
+        "id": "power_injury",
+        "name": "夺权冲突受伤风险",
+        "baseChance": 0.2,
+        "appliesRankMitigation": true,
+        "effect": { "type": "injury", "amountMin": 1, "amountMax": 2 },
+        "personalityModifiers": [
+          {
+            "trait": "caution",
+            "minThreshold": 50,
+            "maxChanceBoost": -0.08,
+            "_comment": "谨慎者评估夺权风险更高，从而更不愿贸然夺位。"
+          }
+        ]
+      },
+      {
+        "id": "power_death",
+        "name": "夺权失败陨落风险",
+        "baseChance": 0.05,
+        "appliesRankMitigation": true,
+        "effect": { "type": "death", "cause": "power_struggle" },
+        "personalityModifiers": []
+      }
+    ]
+  },
+  "pvp": {
+    "_comment": "复仇 PvP 风险（ADR-020）：仅作为『追求复仇这条路有多危险』的期望损失供 Utility/GOAP 折算（estimateGoalRisk/computeDecisionCost）。真正的胜负与致死由 NPCKillEnemyExecutor 按 npcCombatPower 比拼结算，不在此处掷骰，避免双重结算。",
+    "rankMitigation": {
+      "mortal": 1.0,
+      "disciple": 1.0,
+      "qi_refining": 0.9,
+      "foundation_building": 0.75,
+      "golden_core": 0.6,
+      "nascent_soul": 0.45,
+      "spirit_transformation": 0.3
+    },
+    "items": [
+      {
+        "id": "pvp_injury",
+        "name": "厮杀受伤风险",
+        "baseChance": 0.3,
+        "appliesRankMitigation": true,
+        "effect": { "type": "injury", "amountMin": 1, "amountMax": 3 },
+        "personalityModifiers": [
+          {
+            "trait": "caution",
+            "minThreshold": 50,
+            "maxChanceBoost": -0.1,
+            "_comment": "谨慎者评估到 PvP 风险更高，从而更不愿贸然复仇（在 Utility 风险厌恶中放大规避）。"
+          }
+        ]
+      },
+      {
+        "id": "pvp_death",
+        "name": "厮杀陨落风险",
+        "baseChance": 0.15,
+        "appliesRankMitigation": true,
+        "effect": { "type": "death", "cause": "slain" },
+        "personalityModifiers": []
+      }
+    ]
+  }
+}

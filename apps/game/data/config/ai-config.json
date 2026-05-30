@@ -1,0 +1,61 @@
+{
+  "_description": "GOAP AI 规划器配置 — 调整 maxIterations 可影响 AI 决策质量与性能的权衡",
+  "faction": {
+    "_comment": "势力 AI：复杂决策需要更多迭代次数",
+    "maxDepth": 10,
+    "maxIterations": 800,
+    "topNeedsCount": 3
+  },
+  "npc": {
+    "_comment": "NPC AI：个体决策相对简单。decisionInterval 决策周期（天）：每次大决策后随机休整 min~max 天，期间原地修炼，到期才重新评估需求并规划，使各 NPC 决策时机错开、避免同 tick 齐步行动。",
+    "maxDepth": 10,
+    "maxIterations": 300,
+    "topNeedsCount": 3,
+    "decisionIntervalMin": 3,
+    "decisionIntervalMax": 12,
+    "decision": {
+      "_comment": "GOAP 规划器参数（ADR-021 重构后）：step cost 只用纯路径代价，风险/价值/上头等均已迁移至 utility 段。costFloor 防止 A* cost 归零或为负。",
+      "costFloor": 0.1
+    },
+    "utility": {
+      "_comment": "Utility 选目标层参数（ADR-021）。所有『选什么目标』的价值评估在此配置，GOAP 只负责『如何实现目标』。需配合 data/balance/utility.json 的 enabled 开关一起使用——utility.json enabled=false 时本段的大多数功能亦不生效。",
+      "lambdaRisk": 40,
+      "_lambdaComment": "lambdaRisk 把『期望风险损失(0~1 量级)』放大到与目标优先级(几十量级)可比，作为目标分数的惩罚项。",
+      "riskAversion": {
+        "_comment": "风险厌恶：目标有风险时按 weight×caution 比例降低目标分数。caution=50 时 mult=weight；caution=100 时 mult=2×weight。",
+        "enabled": true,
+        "weight": 0.3
+      },
+      "emotionRisk": {
+        "_comment": "情绪修正风险厌恶（ADR-021）：anger(0-100) 降低风险权重（更激进），fear(0-100) 提高风险权重（更保守）。anger=100 时风险厌恶归零；fear=100 时风险厌恶翻倍。",
+        "enabled": true,
+        "angerFactor": 1.0,
+        "fearFactor": 1.0
+      },
+      "headstrong": {
+        "_comment": "上头随机扰动（ADR-021 迁入）：以 chance 概率让某目标分数 ×mult 暴增，模拟 NPC 冲动选择。在目标级 roll，而非旧架构的 GOAP 行为级。命中会在 NPC state 打 lastDecisionHeadstrong 标记。",
+        "enabled": true,
+        "chance": 0.03,
+        "mult": 1.8
+      },
+      "pathPreference": {
+        "_comment": "路径偏好（ADR-021 迁入）：breakthroughPathOrder=explore_first 时给探索类目标加 exploreFirstBonus 优先级分，使 NPC 优先选探索目标而非修炼，而非旧架构的降低 GOAP action cost。",
+        "enabled": true,
+        "exploreFirstBonus": 40
+      },
+      "expectedValue": {
+        "_comment": "期望收益（ADR-022）：收益分布数据在 data/balance/reward.json（按 goal sourceId 配置 outcomes 的 prob×value）。NPC 看到的目标价值是 Σ(prob×value) 期望，经 utility.json 的 expectedValue consideration 曲线映射到 [0,1] 参与乘法效用，与 riskAversion(风险惩罚) 对称构成『收益吸引 × 风险惩罚』。开关在 reward.json enabled。",
+        "enabled": true
+      }
+    }
+  },
+  "monster": {
+    "_comment": "妖兽行为树分档说明（数值平衡见 data/balance/monster-spawn.json behaviorByTier）。grade 1-2=tier1，3-4=tier2，5+=tier3。grade 6+（元婴等价）当前用 tier3，后续接完整 GOBT。",
+    "tierGradeMap": { "tier1": [1, 2], "tier2": [3, 4], "tier3": [5, 6, 7, 8, 9] }
+  },
+  "default": {
+    "_comment": "默认规划器参数（当实体未指定时使用）",
+    "maxDepth": 10,
+    "maxIterations": 1000
+  }
+}

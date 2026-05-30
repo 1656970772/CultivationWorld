@@ -1,0 +1,46 @@
+{
+  "id": "bt_npc_default",
+  "description": "NPC 默认行为树（GOBT，ADR-018）。等价迁移旧四段式：onPreTick → 评估需求 → 规划/执行。即时反应分支默认留空，由阶段5接入情绪/恩怨抢占。",
+  "root": {
+    "type": "sequence",
+    "name": "npc-root",
+    "children": [
+      {
+        "type": "hook",
+        "name": "pre-tick",
+        "hook": "onPreTick"
+      },
+      {
+        "type": "selector",
+        "name": "npc-behavior",
+        "children": [
+          {
+            "type": "selector",
+            "name": "reactions",
+            "comment": "即时反应分支：情绪/恩怨驱动的本能抢占。心魔过高→强制静心。threshold 默认 101(不可达)以不破坏既有平衡，调参时下调即可启用。",
+            "children": [
+              { "type": "emotion_reaction", "name": "suppress-inner-demon", "emotion": "inner_demon", "threshold": 101, "actionId": "act_npc_cultivate" }
+            ]
+          },
+          {
+            "type": "sequence",
+            "name": "deliberate",
+            "comment": "深思熟虑：评估需求后由 PlannerNode 选目标(Utility)+规划(GOAP)+执行。",
+            "children": [
+              {
+                "type": "hook",
+                "name": "evaluate-needs",
+                "hook": "btEvaluateNeeds"
+              },
+              {
+                "type": "planner",
+                "name": "npc-planner",
+                "realtimeReselect": false
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,557 @@
+[
+  {
+    "_comment": "=== 下乘（grade:1）=== 炼气至筑基，修炼效率低，无加成 ===",
+    "id": "tech_basic_qi",
+    "name": "基础引气诀",
+    "grade": 1,
+    "gradeName": "下乘",
+    "school": "orthodox",
+    "schoolName": "正道",
+    "description": "最基础的引气入体功法，各大宗门弟子入门必修，修炼虽慢但稳健，不易走火入魔",
+    "source": "参考自凡人修仙传：引气诀，炼气期弟子标配功法",
+    "rankRequired": "mortal",
+    "rankCeiling": "foundation_building",
+    "factionAffinities": ["orthodox", "neutral"],
+    "effects": {
+      "cultivationSpeedMultiplier": 0.8,
+      "breakthroughBonus": 0.0,
+      "lifespanBonus": 0,
+      "combatBonus": 0.0,
+      "specialEffects": []
+    }
+  },
+  {
+    "id": "tech_mortal_war",
+    "name": "武道入门诀",
+    "grade": 1,
+    "gradeName": "下乘",
+    "school": "neutral",
+    "schoolName": "综合",
+    "description": "凡人王国中流传的武道基础功法，以身体锻炼为主，仅能修炼至炼气初期，修士们往往将其作为辅助强化体魄",
+    "source": "参考自牧神记：凡人武道；黎明之剑：凡人国度中的武学体系",
+    "rankRequired": "mortal",
+    "rankCeiling": "qi_refining",
+    "factionAffinities": ["neutral", "mortal_kingdom"],
+    "effects": {
+      "cultivationSpeedMultiplier": 0.9,
+      "breakthroughBonus": 0.0,
+      "lifespanBonus": 0,
+      "combatBonus": 0.0,
+      "specialEffects": []
+    }
+  },
+  {
+    "id": "tech_wood_spirit",
+    "name": "木灵心法",
+    "grade": 1,
+    "gradeName": "下乘",
+    "school": "orthodox",
+    "schoolName": "正道",
+    "description": "木系功法入门，以感应草木灵气为主，修炼进度与所处环境灵气浓度强相关，适合药草师辅助修炼",
+    "source": "参考自凡人修仙传：木系灵根修士，草木灵气修炼体系",
+    "rankRequired": "mortal",
+    "rankCeiling": "foundation_building",
+    "factionAffinities": ["orthodox", "pill"],
+    "effects": {
+      "cultivationSpeedMultiplier": 1.0,
+      "breakthroughBonus": 0.0,
+      "lifespanBonus": 0,
+      "combatBonus": 0.0,
+      "specialEffects": [
+        { "type": "herb_affinity", "value": 1.2, "description": "灵草采集效率提升20%" }
+      ]
+    }
+  },
+
+  {
+    "_comment": "=== 中乘（grade:2）=== 筑基至金丹，有基础加成 ===",
+    "id": "tech_sword_green",
+    "name": "青元剑诀",
+    "grade": 2,
+    "gradeName": "中乘",
+    "school": "sword",
+    "schoolName": "剑道",
+    "description": "剑道流派中流传广泛的中阶功法，以剑意共鸣灵气，修炼速度快，配合飞剑法器战斗力大增",
+    "source": "参考自凡人修仙传：青元剑诀，韩立参考传承之一，灵界剑修青元子的核心功法",
+    "rankRequired": "qi_refining",
+    "rankCeiling": "golden_core",
+    "factionAffinities": ["sword"],
+    "effects": {
+      "cultivationSpeedMultiplier": 1.5,
+      "breakthroughBonus": 0.0,
+      "lifespanBonus": 0,
+      "combatBonus": 0.10,
+      "specialEffects": [
+        { "type": "sword_resonance", "value": 1.15, "description": "持剑战斗伤害额外+15%" }
+      ]
+    }
+  },
+  {
+    "id": "tech_ghost_yin",
+    "name": "幽冥鬼气功",
+    "grade": 2,
+    "gradeName": "中乘",
+    "school": "ghost",
+    "schoolName": "幽冥道",
+    "description": "幽冥教传承功法，以阴冥之气淬炼元神，修炼速度较快但需在阴气浓厚之地修炼，旁人难以察觉修为深浅",
+    "source": "参考自仙逆：幽冥系术法；凡人修仙传：阴冥道法，魔界传承",
+    "rankRequired": "qi_refining",
+    "rankCeiling": "golden_core",
+    "factionAffinities": ["ghost"],
+    "effects": {
+      "cultivationSpeedMultiplier": 1.5,
+      "breakthroughBonus": 0.0,
+      "lifespanBonus": 0,
+      "combatBonus": 0.0,
+      "specialEffects": [
+        { "type": "stealth_aura", "value": 1, "description": "修为气息难以被他人察觉" }
+      ]
+    }
+  },
+  {
+    "id": "tech_blood_forge",
+    "name": "血炼诀",
+    "grade": 2,
+    "gradeName": "中乘",
+    "school": "blood",
+    "schoolName": "血煞道",
+    "description": "以己血为引炼化灵气，修炼速度极快但代价是消耗自身寿元。血煞门标志性功法，以伤换速",
+    "source": "参考自凡人修仙传：梵圣真魔功变体，血煞道修炼体系",
+    "rankRequired": "qi_refining",
+    "rankCeiling": "golden_core",
+    "factionAffinities": ["blood"],
+    "effects": {
+      "cultivationSpeedMultiplier": 1.8,
+      "breakthroughBonus": 0.0,
+      "lifespanBonus": -20,
+      "combatBonus": 0.0,
+      "specialEffects": [
+        { "type": "blood_power", "value": 1.2, "description": "血系法术威力+20%" }
+      ]
+    }
+  },
+  {
+    "id": "tech_five_poison",
+    "name": "五毒心经",
+    "grade": 2,
+    "gradeName": "中乘",
+    "school": "poison",
+    "schoolName": "毒道",
+    "description": "以毒蝎帮五大毒虫之毒气为媒介修炼，对修炼者有极高要求，需能抵御反噬的毒素。修炼后与毒性天然相容",
+    "source": "参考自凡人修仙传：蛊毒体系；斗破苍穹：毒道修炼",
+    "rankRequired": "qi_refining",
+    "rankCeiling": "golden_core",
+    "factionAffinities": ["poison"],
+    "effects": {
+      "cultivationSpeedMultiplier": 1.4,
+      "breakthroughBonus": 0.0,
+      "lifespanBonus": 0,
+      "combatBonus": 0.0,
+      "specialEffects": [
+        { "type": "poison_immunity", "value": 1, "description": "对普通毒素免疫，高阶毒素抵抗力大幅提升" }
+      ]
+    }
+  },
+  {
+    "id": "tech_iron_body",
+    "name": "铁身功",
+    "grade": 2,
+    "gradeName": "中乘",
+    "school": "body",
+    "schoolName": "炼体",
+    "description": "以肉身为修炼核心，锤炼筋骨皮肉，肉身强度远超同境修士，物理防御极高，适合正面硬战",
+    "source": "参考自完美世界：炼体传承；牧神记：霸体修炼",
+    "rankRequired": "qi_refining",
+    "rankCeiling": "golden_core",
+    "factionAffinities": ["body", "demon"],
+    "effects": {
+      "cultivationSpeedMultiplier": 1.3,
+      "breakthroughBonus": 0.0,
+      "lifespanBonus": 0,
+      "combatBonus": 0.15,
+      "specialEffects": [
+        { "type": "physical_defense", "value": 1.3, "description": "物理防御+30%" }
+      ]
+    }
+  },
+  {
+    "id": "tech_pill_heart",
+    "name": "炼丹心诀",
+    "grade": 2,
+    "gradeName": "中乘",
+    "school": "pill",
+    "schoolName": "丹道",
+    "description": "药王谷专传功法，以感应药材灵性来引导修炼，修炼速度一般但辅助炼丹极为高效，炼丹成功率大幅提升",
+    "source": "参考自凡人修仙传：药王谷炼丹体系，炼丹师修炼路径",
+    "rankRequired": "qi_refining",
+    "rankCeiling": "golden_core",
+    "factionAffinities": ["pill"],
+    "effects": {
+      "cultivationSpeedMultiplier": 1.2,
+      "breakthroughBonus": 0.0,
+      "lifespanBonus": 0,
+      "combatBonus": 0.0,
+      "specialEffects": [
+        { "type": "alchemy_bonus", "value": 1.4, "description": "炼丹成功率+40%" }
+      ]
+    }
+  },
+  {
+    "id": "tech_formation",
+    "name": "阵法玄诀",
+    "grade": 2,
+    "gradeName": "中乘",
+    "school": "formation",
+    "schoolName": "阵道",
+    "description": "专注于阵法运用的修炼功法，以布设阵法时对灵气的感悟来提升修炼效率。修炼后与各类阵法天然契合",
+    "source": "参考自凡人修仙传：阵法七类，从聚灵阵到复合大阵的感悟体系",
+    "rankRequired": "qi_refining",
+    "rankCeiling": "golden_core",
+    "factionAffinities": ["formation"],
+    "effects": {
+      "cultivationSpeedMultiplier": 1.2,
+      "breakthroughBonus": 0.0,
+      "lifespanBonus": 0,
+      "combatBonus": 0.0,
+      "specialEffects": [
+        { "type": "formation_efficiency", "value": 1.5, "description": "布置阵法时灵石消耗减少50%" }
+      ]
+    }
+  },
+  {
+    "id": "tech_demon_qi",
+    "name": "魔气凝聚功",
+    "grade": 2,
+    "gradeName": "中乘",
+    "school": "evil",
+    "schoolName": "魔道",
+    "description": "将外界魔气凝聚入体转化为己用的功法，修炼速度快，但周身气息带有魔意，正道修士见之多有戒备",
+    "source": "参考自凡人修仙传：六极真魔功前期；大道争锋：魔门六宗修炼体系",
+    "rankRequired": "qi_refining",
+    "rankCeiling": "golden_core",
+    "factionAffinities": ["evil"],
+    "effects": {
+      "cultivationSpeedMultiplier": 1.6,
+      "breakthroughBonus": 0.0,
+      "lifespanBonus": 0,
+      "combatBonus": 0.0,
+      "specialEffects": [
+        { "type": "demonic_aura", "value": 1, "description": "正道修士自动感知修炼者有魔道气息" }
+      ]
+    }
+  },
+  {
+    "id": "tech_taoist_inner",
+    "name": "太玄内功",
+    "grade": 2,
+    "gradeName": "中乘",
+    "school": "taoist",
+    "schoolName": "道法",
+    "description": "玄真观入门道法，以天地自然之道感悟修炼，慢工出细活，有一定突破加成。修炼心性稳健",
+    "source": "参考自阳神：太清道术；凡人修仙传：道法体系，玄真观传承路径",
+    "rankRequired": "qi_refining",
+    "rankCeiling": "golden_core",
+    "factionAffinities": ["taoist"],
+    "effects": {
+      "cultivationSpeedMultiplier": 1.4,
+      "breakthroughBonus": 0.05,
+      "lifespanBonus": 0,
+      "combatBonus": 0.0,
+      "specialEffects": []
+    }
+  },
+
+  {
+    "_comment": "=== 上乘（grade:3）=== 金丹至化神，有显著加成 ===",
+    "id": "tech_great_taoist",
+    "name": "太清玄功",
+    "grade": 3,
+    "gradeName": "上乘",
+    "school": "taoist",
+    "schoolName": "道法",
+    "description": "玄真观正统传承的上乘功法，参悟天地阴阳大道，可修至元婴，修炼后寿元有所延长，突破关卡时得天独厚",
+    "source": "参考自阳神：太清道术，以意念参悟天道；凡人修仙传：道法流派高阶功法",
+    "rankRequired": "foundation_building",
+    "rankCeiling": "nascent_soul",
+    "factionAffinities": ["taoist"],
+    "effects": {
+      "cultivationSpeedMultiplier": 2.0,
+      "breakthroughBonus": 0.05,
+      "lifespanBonus": 50,
+      "combatBonus": 0.0,
+      "specialEffects": [
+        { "type": "dao_comprehension", "value": 1.2, "description": "感悟功法残片时效率+20%" }
+      ]
+    }
+  },
+  {
+    "id": "tech_blazing_sword",
+    "name": "烈阳剑诀",
+    "grade": 3,
+    "gradeName": "上乘",
+    "school": "sword",
+    "schoolName": "剑道",
+    "description": "天剑宗独传的上乘剑道功法，以烈阳之火融入剑意，每一剑都蕴含毁灭性的火焰灵气，战力提升显著",
+    "source": "参考自凡人修仙传：天剑宗剑道传承；完美世界：剑道极境修炼",
+    "rankRequired": "foundation_building",
+    "rankCeiling": "nascent_soul",
+    "factionAffinities": ["sword"],
+    "effects": {
+      "cultivationSpeedMultiplier": 2.0,
+      "breakthroughBonus": 0.0,
+      "lifespanBonus": 0,
+      "combatBonus": 0.20,
+      "specialEffects": [
+        { "type": "fire_sword_resonance", "value": 1.3, "description": "剑道攻击附带烈焰，伤害+30%" }
+      ]
+    }
+  },
+  {
+    "id": "tech_soul_devour",
+    "name": "噬魂功",
+    "grade": 3,
+    "gradeName": "上乘",
+    "school": "ghost",
+    "schoolName": "幽冥道",
+    "description": "幽冥教秘传，以吞噬他人元神为修炼手段，修炼速度极快，但需持续消耗目标修士的元神，寿元损耗较大",
+    "source": "参考自仙逆：元神吞噬秘法；凡人修仙传：夺舍秘术相关描写",
+    "rankRequired": "foundation_building",
+    "rankCeiling": "nascent_soul",
+    "factionAffinities": ["ghost"],
+    "effects": {
+      "cultivationSpeedMultiplier": 2.2,
+      "breakthroughBonus": 0.0,
+      "lifespanBonus": -50,
+      "combatBonus": 0.15,
+      "specialEffects": [
+        { "type": "soul_absorption", "value": 1, "description": "击杀目标有概率吸取对方残余元神强化自身" }
+      ]
+    }
+  },
+  {
+    "id": "tech_dragon_body",
+    "name": "龙象体诀",
+    "grade": 3,
+    "gradeName": "上乘",
+    "school": "body",
+    "schoolName": "炼体",
+    "description": "结合龙族肉身强度与大象力量的炼体秘诀，以蛟龙血脉为引导淬炼肉身，是炼体道的顶尖功法，可修至化神",
+    "source": "参考自斗破苍穹：龙象般若功；完美世界：炼体至尊，不灭经；凡人修仙传：炼体修士",
+    "rankRequired": "foundation_building",
+    "rankCeiling": "spirit_transformation",
+    "factionAffinities": ["body", "demon"],
+    "effects": {
+      "cultivationSpeedMultiplier": 2.2,
+      "breakthroughBonus": 0.0,
+      "lifespanBonus": 0,
+      "combatBonus": 0.25,
+      "specialEffects": [
+        { "type": "dragon_body", "value": 1.4, "description": "肉身防御+40%，战斗中有概率无视低阶法术" }
+      ]
+    }
+  },
+  {
+    "id": "tech_heaven_kill",
+    "name": "天煞魔功",
+    "grade": 3,
+    "gradeName": "上乘",
+    "school": "evil",
+    "schoolName": "魔道",
+    "description": "血煞门最强的上乘功法，以天煞之力入体修炼，战力暴增但寿元大幅消耗，不择手段的修炼之道",
+    "source": "参考自凡人修仙传：六极真魔功，以天煞魔力换取战力；大道争锋：魔道至极",
+    "rankRequired": "foundation_building",
+    "rankCeiling": "spirit_transformation",
+    "factionAffinities": ["evil", "blood"],
+    "effects": {
+      "cultivationSpeedMultiplier": 2.5,
+      "breakthroughBonus": 0.0,
+      "lifespanBonus": -100,
+      "combatBonus": 0.30,
+      "specialEffects": [
+        { "type": "killing_intent", "value": 1.2, "description": "修炼者杀念极重，每次击杀敌人后短暂提升战力20%" }
+      ]
+    }
+  },
+  {
+    "id": "tech_jade_void",
+    "name": "玉霄真功",
+    "grade": 3,
+    "gradeName": "上乘",
+    "school": "orthodox",
+    "schoolName": "正道",
+    "description": "青云宗正统上乘功法，以玉虚之道感悟天地，修炼后身心通透，突破关卡时天道助力，寿元亦有延长",
+    "source": "参考自凡人修仙传：大衍诀前身，正道正统修炼体系；一念永恒：正道仙家功法",
+    "rankRequired": "foundation_building",
+    "rankCeiling": "spirit_transformation",
+    "factionAffinities": ["orthodox"],
+    "effects": {
+      "cultivationSpeedMultiplier": 2.0,
+      "breakthroughBonus": 0.10,
+      "lifespanBonus": 100,
+      "combatBonus": 0.0,
+      "specialEffects": [
+        { "type": "righteous_aura", "value": 1, "description": "对魔道修炼者的压制效果增强" }
+      ]
+    }
+  },
+  {
+    "id": "tech_yin_yang",
+    "name": "阴阳两仪诀",
+    "grade": 3,
+    "gradeName": "上乘",
+    "school": "neutral",
+    "schoolName": "综合",
+    "description": "以阴阳平衡为修炼核心的上乘功法，单修效果良好，但与道侣同修时修炼速度额外提升，是双修功法中最稳健的",
+    "source": "参考自凡人修仙传：道侣双修体系；大道争锋：阴阳大道修炼",
+    "rankRequired": "foundation_building",
+    "rankCeiling": "spirit_transformation",
+    "factionAffinities": ["neutral", "orthodox"],
+    "effects": {
+      "cultivationSpeedMultiplier": 2.2,
+      "breakthroughBonus": 0.0,
+      "lifespanBonus": 0,
+      "combatBonus": 0.0,
+      "specialEffects": [
+        { "type": "dual_cultivation_bonus", "value": 1.3, "description": "有道侣时修炼速度额外×1.3" }
+      ]
+    }
+  },
+  {
+    "id": "tech_divination",
+    "name": "天机推演法",
+    "grade": 3,
+    "gradeName": "上乘",
+    "school": "divination",
+    "schoolName": "天机",
+    "description": "天机阁独传，以推演天机感悟道理来提升修为，修炼后神识感知范围大增，能预判危险，突破时天机加持",
+    "source": "参考自大道争锋：天机推演，以观天道来修炼；凡人修仙传：神识修炼体系",
+    "rankRequired": "foundation_building",
+    "rankCeiling": "nascent_soul",
+    "factionAffinities": ["divination"],
+    "effects": {
+      "cultivationSpeedMultiplier": 1.8,
+      "breakthroughBonus": 0.10,
+      "lifespanBonus": 0,
+      "combatBonus": 0.0,
+      "specialEffects": [
+        { "type": "sense_range_bonus", "value": 3, "description": "神识感知范围+3格" },
+        { "type": "danger_premonition", "value": 1, "description": "有一定概率预知危险" }
+      ]
+    }
+  },
+  {
+    "id": "tech_demon_god",
+    "name": "妖神诀",
+    "grade": 3,
+    "gradeName": "上乘",
+    "school": "demon",
+    "schoolName": "妖道",
+    "description": "万妖山传承的上乘妖道功法，以妖族天赋血脉引导灵气修炼，战力大增，修炼后气息带有强烈妖性",
+    "source": "参考自凡人修仙传：妖道修炼体系，化形妖修的功法；斗破苍穹：妖族修炼秘法",
+    "rankRequired": "foundation_building",
+    "rankCeiling": "spirit_transformation",
+    "factionAffinities": ["demon"],
+    "effects": {
+      "cultivationSpeedMultiplier": 2.0,
+      "breakthroughBonus": 0.0,
+      "lifespanBonus": 0,
+      "combatBonus": 0.20,
+      "specialEffects": [
+        { "type": "beast_affinity", "value": 1.5, "description": "与妖兽沟通能力增强，野外行动时妖兽不主动攻击" }
+      ]
+    }
+  },
+
+  {
+    "_comment": "=== 仙家（grade:4）=== 化神顶阶，传说级，极难获取 ===",
+    "id": "tech_great_dao",
+    "name": "大衍诀",
+    "grade": 4,
+    "gradeName": "仙家",
+    "school": "orthodox",
+    "schoolName": "正道",
+    "description": "正道至高功法，相传是上古大能参悟天地大衍之数所创，修炼大道运转之理，千古流传，修炼此功法者天道自有助益",
+    "source": "参考自凡人修仙传：大衍诀，韩立的本命功法，正道至强功法之一",
+    "rankRequired": "foundation_building",
+    "rankCeiling": "spirit_transformation",
+    "factionAffinities": ["orthodox"],
+    "effects": {
+      "cultivationSpeedMultiplier": 3.0,
+      "breakthroughBonus": 0.20,
+      "lifespanBonus": 200,
+      "combatBonus": 0.0,
+      "specialEffects": [
+        { "type": "dao_resonance", "value": 1.5, "description": "所有道法秘术威力+50%" },
+        { "type": "heaven_dao_blessing", "value": 1, "description": "突破关卡时天道震动，大幅降低天劫威力" }
+      ]
+    }
+  },
+  {
+    "id": "tech_six_extremes",
+    "name": "六极真魔功",
+    "grade": 4,
+    "gradeName": "仙家",
+    "school": "evil",
+    "schoolName": "魔道",
+    "description": "魔道最顶级的功法，以六极之魔力入体，修炼速度天下无双，但代价是大幅消耗寿元。凡人修仙传中六道极圣以此独霸乱星海",
+    "source": "参考自凡人修仙传：六极真魔功，六道极圣的本命功法，乱星海顶级魔修",
+    "rankRequired": "golden_core",
+    "rankCeiling": "spirit_transformation",
+    "factionAffinities": ["evil"],
+    "effects": {
+      "cultivationSpeedMultiplier": 3.5,
+      "breakthroughBonus": 0.0,
+      "lifespanBonus": -200,
+      "combatBonus": 0.40,
+      "specialEffects": [
+        { "type": "six_extremes_domain", "value": 1.5, "description": "施展魔道领域，范围内敌人战力下降50%" },
+        { "type": "death_aura", "value": 1, "description": "修炼者气息带有死亡法则，令对手士气大减" }
+      ]
+    }
+  },
+  {
+    "id": "tech_nine_turns",
+    "name": "九转炼体诀",
+    "grade": 4,
+    "gradeName": "仙家",
+    "school": "body",
+    "schoolName": "炼体",
+    "description": "九次淬炼肉身至极限的顶级炼体功法，每次转化都将肉身提升至更高层次，九转后肉身接近仙人之躯，几乎无法被同阶消灭",
+    "source": "参考自完美世界：不灭经，肉身达到顶峰；牧神记：霸体九转，体修终极之路",
+    "rankRequired": "golden_core",
+    "rankCeiling": "spirit_transformation",
+    "factionAffinities": ["body"],
+    "effects": {
+      "cultivationSpeedMultiplier": 3.0,
+      "breakthroughBonus": 0.0,
+      "lifespanBonus": 0,
+      "combatBonus": 0.35,
+      "specialEffects": [
+        { "type": "immortal_body", "value": 1.6, "description": "肉身伤害减免60%，并可自动恢复轻伤" }
+      ]
+    }
+  },
+  {
+    "id": "tech_eternal_life",
+    "name": "万古长生诀",
+    "grade": 4,
+    "gradeName": "仙家",
+    "school": "taoist",
+    "schoolName": "道法",
+    "description": "以长生大道为修炼核心，感悟天地间最纯粹的生命法则，寿元大幅延长，突破关卡时有天道庇佑，是道法流派的终极传承",
+    "source": "参考自仙逆：长生相关修炼；凡人修仙传：寻求长生大道的修仙者；一念永恒：永恒法则",
+    "rankRequired": "golden_core",
+    "rankCeiling": "spirit_transformation",
+    "factionAffinities": ["taoist"],
+    "effects": {
+      "cultivationSpeedMultiplier": 2.8,
+      "breakthroughBonus": 0.15,
+      "lifespanBonus": 300,
+      "combatBonus": 0.0,
+      "specialEffects": [
+        { "type": "eternal_vitality", "value": 1, "description": "每次使用续命丹药时额外延长50%寿元" },
+        { "type": "lifespan_armor", "value": 0.5, "description": "寿元损耗类攻击威力减半" }
+      ]
+    }
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "_description": "游戏全局配置 — 地图尺寸、玩家初始参数、时间系统、NPC初始化规则",
+  "map": {
+    "width": 300,
+    "height": 300
+  },
+  "player": {
+    "actionsPerDay": 5,
+    "initialSenseRange": 5,
+    "initialX": 150,
+    "initialY": 150
+  },
+  "time": {
+    "_comment": "游戏内1年 = daysPerYear 天",
+    "daysPerYear": 360
+  },
+  "npc": {
+    "_comment": "NPC 初始化时年龄随机区间（占最大寿元的比例）",
+    "initialAgeRatioMin": 0.3,
+    "initialAgeRatioMax": 0.7,
+    "_comment2": "无 ranks 数据时的默认凡人寿元范围（年）",
+    "fallbackMaxAgeYearsBase": 80,
+    "fallbackMaxAgeYearsVariance": 40
+  },
+  "naturalDeath": {
+    "_comment": "自然死亡判定：寿元比例 > startRatio 时开始触发，概率按二次曲线从 minChance 增至 maxChance",
+    "startRatio": 0.95,
+    "minChance": 0.0002,
+    "maxChance": 1.0
+  },
+  "reliability": {
+    "_comment": "情报可信度阈值：> confirmedThreshold 显示为\"确认\"，> messageThreshold 显示为\"消息\"，其余为\"传闻\"",
+    "confirmedThreshold": 0.7,
+    "messageThreshold": 0.3
+  }
+}

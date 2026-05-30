@@ -1,0 +1,115 @@
+[
+  {
+    "id": "plain",
+    "type": "plain",
+    "name": "平原",
+    "moveCost": 1,
+    "passable": true,
+    "color": "#90B060",
+    "description": "宜居之地，适合建宗门",
+    "resourceMultiplier": 1
+  },
+  {
+    "id": "mountain",
+    "type": "mountain",
+    "name": "山脉",
+    "moveCost": 1,
+    "passable": true,
+    "color": "#8B7355",
+    "description": "天然屏障，易守难攻",
+    "defenseBonus": 1.5,
+    "resourceMultiplier": 0.5
+  },
+  {
+    "id": "forest",
+    "type": "forest",
+    "name": "森林",
+    "moveCost": 1,
+    "passable": true,
+    "color": "#2D5A27",
+    "description": "灵药资源丰富",
+    "resourceMultiplier": 1.5
+  },
+  {
+    "id": "river",
+    "type": "river",
+    "name": "河流",
+    "moveCost": -1,
+    "passable": false,
+    "color": "#4A90D9",
+    "description": "不可通行，需绕行",
+    "resourceMultiplier": 0
+  },
+  {
+    "id": "swamp",
+    "type": "swamp",
+    "name": "沼泽",
+    "moveCost": 2,
+    "passable": true,
+    "color": "#5A6B3C",
+    "description": "移动消耗双倍",
+    "resourceMultiplier": 0.3
+  },
+  {
+    "id": "desert",
+    "type": "desert",
+    "name": "沙漠",
+    "moveCost": 1,
+    "passable": true,
+    "color": "#C2A64D",
+    "description": "荒芜之地，低资源",
+    "resourceMultiplier": 0.2
+  },
+  {
+    "id": "low_spirit_vein",
+    "type": "low_spirit_vein",
+    "name": "低级矿脉",
+    "moveCost": 1,
+    "passable": true,
+    "color": "#9B7FBF",
+    "description": "低级灵石矿脉，散修和小门派日常采集来源",
+    "resourceMultiplier": 2,
+    "spiritBonus": 1,
+    "produceResource": "low_spirit_stone",
+    "produceAmount": 2
+  },
+  {
+    "id": "mid_spirit_vein",
+    "type": "mid_spirit_vein",
+    "name": "中级矿脉",
+    "moveCost": 1,
+    "passable": true,
+    "color": "#8E44AD",
+    "description": "蕴含中阶灵气的矿脉，中型宗门核心资源",
+    "resourceMultiplier": 3,
+    "spiritBonus": 2,
+    "produceResource": "mid_spirit_stone",
+    "produceAmount": 1
+  },
+  {
+    "id": "high_spirit_vein",
+    "type": "high_spirit_vein",
+    "name": "高级矿脉",
+    "moveCost": 1,
+    "passable": true,
+    "color": "#6C3483",
+    "description": "极为稀有的高阶灵脉，顶级宗门争夺的战略资源",
+    "resourceMultiplier": 4,
+    "spiritBonus": 3,
+    "produceResource": "high_spirit_stone",
+    "produceAmount": 1
+  },
+  {
+    "id": "top_spirit_vein",
+    "type": "top_spirit_vein",
+    "name": "极品矿脉",
+    "moveCost": 1,
+    "passable": true,
+    "color": "#4A0E6B",
+    "description": "传说中的天地灵根所化，蕴含极品灵气，整片大陆也仅有数处",
+    "resourceMultiplier": 5,
+    "spiritBonus": 5,
+    "produceResource": "top_spirit_stone",
+    "produceAmount": 1
+  }
+]

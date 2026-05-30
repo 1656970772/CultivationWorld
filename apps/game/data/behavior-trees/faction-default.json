@@ -1,0 +1,25 @@
+{
+  "id": "bt_faction_default",
+  "description": "势力默认行为树（GOBT，ADR-018）。等价迁移旧四段式：onPreTick → 评估需求 → 规划/执行。势力无决策冷却，每 tick 评估，空闲即规划。",
+  "root": {
+    "type": "sequence",
+    "name": "faction-root",
+    "children": [
+      {
+        "type": "hook",
+        "name": "pre-tick",
+        "hook": "onPreTick"
+      },
+      {
+        "type": "hook",
+        "name": "evaluate-needs",
+        "hook": "btEvaluateNeeds"
+      },
+      {
+        "type": "planner",
+        "name": "faction-planner",
+        "realtimeReselect": false
+      }
+    ]
+  }
+}

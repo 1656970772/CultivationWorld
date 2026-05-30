@@ -1,0 +1,61 @@
+{
+  "_description": "性格系统配置表 — 数据驱动。NPC 的 personality（ambition/caution/loyalty/diplomacy，0-100）通过本表换算为对各需求优先级/紧迫度的加成。设计为可扩展：新增性格维度或新增『某维度 → 某需求』的加成，只需在此增配，无需改代码。详见 wiki/rules/personality.md。",
+  "_howItWorks": "每条 boost：当 trait 值 ≥ minThreshold 时，对目标 need 施加 priority/urgency 加成。加成量 = round((trait - minThreshold) / (100 - minThreshold) × maxBoost)，即在阈值处为 0、满值(100)时为 maxBoost，线性插值。requireState 为可选门控（仅当实体 state 满足该条件时才生效）。",
+  "traits": {
+    "ambition": {
+      "name": "野心",
+      "description": "对权力与地位的渴求。野心越高，越主动追求职位晋升、挑战上位；后续可扩展影响夺权、叛离、自立门户等。",
+      "default": 50
+    },
+    "caution": {
+      "name": "谨慎",
+      "description": "趋利避害的程度。谨慎越高，越倾向稳妥行为（疗伤、闭关），回避高风险任务/挑战。预留扩展位。",
+      "default": 50
+    },
+    "loyalty": {
+      "name": "忠诚",
+      "description": "对宗门的归属与奉献。忠诚越高，越愿履行职责、危难时挺身。预留扩展位（继任排序已使用 loyalty）。",
+      "default": 50
+    },
+    "diplomacy": {
+      "name": "外交",
+      "description": "处理关系的能力与倾向。预留扩展位（势力外交、结盟倾向）。",
+      "default": 50
+    },
+    "courage": {
+      "name": "勇敢",
+      "description": "面对危险的胆魄。勇敢越高，越愿外出游历/冒险犯难，但游历途中受伤/陨落风险也越高（见 risk.json 的 personalityModifiers）。与谨慎(caution)互补但不等价。",
+      "default": 50
+    },
+    "justice": {
+      "name": "正义感",
+      "description": "对公道与是非的坚持。正义感越高，越倾向行侠仗义、惩恶扬善、为弱者出头。本期仅落地『字段+出生赋值+遗传变异』，暂不接决策逻辑（后续接入行侠/除魔/护道等行为）。",
+      "default": 50
+    }
+  },
+  "needBoosts": {
+    "_comment": "trait → 该维度对各需求的加成列表。当前仅落地 ambition→晋升需求；其余维度留空待扩展。",
+    "ambition": [
+      {
+        "need": "need_npc_ambition",
+        "minThreshold": 50,
+        "maxPriorityBoost": 55,
+        "maxUrgencyBoost": 35,
+        "_comment": "野心≥50 才有进取心；野心越高越想晋升。50→0 加成，100→满加成。与本境修为达标(cultivationProgress>=0.6)叠加后可压过修炼需求，驱动『先修为后争位』。"
+      }
+    ],
+    "caution": [],
+    "loyalty": [
+      {
+        "need": "need_npc_loyalty_duty",
+        "minThreshold": 50,
+        "maxPriorityBoost": 20,
+        "maxUrgencyBoost": 10,
+        "_comment": "忠诚越高越尽职。"
+      }
+    ],
+    "diplomacy": [],
+    "courage": [],
+    "justice": []
+  }
+}

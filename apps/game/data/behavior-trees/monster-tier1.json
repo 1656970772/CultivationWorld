@@ -1,0 +1,51 @@
+{
+  "id": "bt_monster_tier1",
+  "description": "妖兽一阶行为树（grade 1-2，纯本能）：休整 → 重伤逃跑 → 感知猎物追杀 → 游荡。",
+  "root": {
+    "type": "sequence",
+    "name": "monster-root",
+    "children": [
+      { "type": "hook", "name": "pre-tick", "hook": "monsterPreTick" },
+      { "type": "hook", "name": "sense",    "hook": "monsterSense" },
+      {
+        "type": "selector",
+        "name": "behavior",
+        "children": [
+          {
+            "type": "sequence",
+            "name": "rest",
+            "comment": "休整中：恢复 HP，等恢复完毕再行动",
+            "children": [
+              { "type": "condition", "name": "is-resting", "condition": { "key": "behaviorState", "op": "eq", "value": "rest" } },
+              { "type": "hook", "name": "do-rest", "hook": "monsterRest" }
+            ]
+          },
+          {
+            "type": "sequence",
+            "name": "flee",
+            "comment": "重伤（HP ≤ 25%）立即逃窜",
+            "children": [
+              { "type": "condition", "name": "low-hp", "condition": { "key": "hpRatio", "op": "lte", "value": 0.25 } },
+              { "type": "hook", "name": "do-flee", "hook": "monsterFlee" }
+            ]
+          },
+          {
+            "type": "sequence",
+            "name": "hunt",
+            "comment": "感知范围内有猎物：追杀",
+            "children": [
+              { "type": "condition", "name": "has-target", "condition": { "key": "hasTarget", "op": "true" } },
+              { "type": "hook", "name": "do-hunt", "hook": "monsterChaseOrAttack" }
+            ]
+          },
+          {
+            "type": "hook",
+            "name": "wander",
+            "comment": "无事可做：在 home 附近随机游荡",
+            "hook": "monsterWander"
+          }
+        ]
+      }
+    ]
+  }
+}

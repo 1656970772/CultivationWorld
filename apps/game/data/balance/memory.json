@@ -1,0 +1,60 @@
+{
+  "description": "记忆系统配置（GOBT 长期心智，ADR-019）。定义各类重大事件写入 NPC 记忆时的初始强度、每日衰减、以及对个人恩怨/恩义图的增量。强度 0-100。",
+  "capacity": 32,
+  "events": {
+    "betrayed": {
+      "name": "被背叛",
+      "intensity": 90,
+      "decay": 0.05,
+      "grudgeGain": 80
+    },
+    "sect_destroyed": {
+      "name": "门派被灭",
+      "intensity": 100,
+      "decay": 0.02,
+      "grudgeGain": 100
+    },
+    "companion_lost": {
+      "name": "道侣陨落",
+      "intensity": 95,
+      "decay": 0.03,
+      "grudgeGain": 60
+    },
+    "inheritance": {
+      "name": "获得传承",
+      "intensity": 70,
+      "decay": 0.1,
+      "grudgeGain": 0
+    },
+    "demoted": {
+      "name": "被贬谪",
+      "intensity": 50,
+      "decay": 0.3,
+      "grudgeGain": 0
+    },
+    "attacked": {
+      "name": "势力遭攻击",
+      "intensity": 45,
+      "decay": 0.4,
+      "grudgeGain": 25
+    },
+    "humiliated": {
+      "name": "受辱",
+      "intensity": 55,
+      "decay": 0.25,
+      "grudgeGain": 35
+    },
+    "saved_by": {
+      "name": "被救",
+      "intensity": 70,
+      "decay": 0.08,
+      "gratitudeGain": 70
+    },
+    "promoted": {
+      "name": "晋升",
+      "intensity": 40,
+      "decay": 0.5,
+      "grudgeGain": 0
+    }
+  }
+}
