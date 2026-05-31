@@ -1,6 +1,8 @@
 # 游戏数据配置规则
 
-> 最后更新：2026-05-30（信息传播与机会点 + 实物与怀璧其罪，ADR-024/025）：新增 `data/world/news.json`（新闻类型传播参数 + 五渠道开关：半径/口耳/城镇/宗门/商会）、`data/world/opportunities.json`（机会点类型 value/存活/上限/掉落源/风险键 + 决策阈值）、`data/balance/covet.json`（怀璧暴露阈值 + 觊觎起念 + 放他一马权重 + 抢夺结算）、`data/items/items.json`（可转移法宝/材料/丹药，含 value/grade/transferable/combatBonus）；`reward.json` 新增 `opportunity_*` 掉落表（outcome 带 itemId/qty 发放真实物品）；`npc-actions.json` 新增 `act_npc_goto_opportunity`（targetResolver `nearest_opportunity`）；`npc-state` 新增 `arrivedAtOpportunity`/`targetOpportunityId`/`equippedArtifactId`；`constants.js` 新增 `NewsType`/`OpportunityType` 枚举；`goal.js` 新增 `GoalSource.OPPORTUNITY`。代码侧：新增 `engine/world/info-propagation.js`、`engine/world/opportunity.js`、`engine/npc/info-actions.js`；`ItemDefinition` 领域字段并入 properties；`_npcCombatPower` 接通法宝 `combatBonus`。所有系统默认 `enabled=false` 零漂移（`test-goal-equivalence` 主路径通过，新增 `tools/test-info-propagation.mjs` 验证）。详见 ADR-024、ADR-025、systems/opportunity-system.md、systems/item-covet.md、wiki/rules/wealth-exposed.md。）
+> 最后更新：2026-05-30（妖兽资源化模拟闭环，ADR-026）：`resources.json` 新增 `monster_core_g1..g9` 与 `beast_material_g1..g9` 品阶化妖丹/妖材；`economy.json` 新增 `monsterResources`，定义斩妖任务类型、尸骸机会最低等阶、品阶捐献贡献和狩猎失败风险；`npc-actions.json` 新增 `act_npc_accept_hunt_quest` 并修正多日任务完成结算；`npc-needs.json` 新增猎妖资源、活跃任务收尾、材料上交、破境辅助和法器装备需求；`npcExchange.options.*` 支持 `requiredFactionItems`，兑换丹药/法器会检查并消耗宗门库存；`locationTarget:"monster"` 接取时额外写入 `NPCState.questTargetMonsterId`，斩妖执行时真实击杀目标妖兽并按 `monsters.json.drops` 结算材料。）
+> 历史更新：2026-05-30（V1 任务奖励与 NPC 消费闭环）：`quest-templates.json` 新增 `rewardProfiles`，按 `qt_*` 任务类型配置额外材料、丹药、法宝线索、功法书与宗门稳定度；`economy.json` 新增 `npcMaterialDonation` 与 `npcExchange`，定义材料上交、贡献/灵石兑换和丹药使用参数；`npc-actions.json` 新增 `act_npc_donate_materials`、`act_npc_redeem_qi_pill`、`act_npc_use_qi_pill`、`act_npc_redeem_breakthrough_pill`、`act_npc_use_breakthrough_pill`、`act_npc_redeem_artifact`。`action.js` 支持可选 `plannerEffects`，用于让 GOAP 看到背包派生状态变化，而运行时仍由执行器写真实库存与状态。新增 NPC GOAP 派生键：`lowSpiritStone`、`qiPillCount`、`breakthroughPillCount`、`donatableMaterialCount`、`hasEquippedArtifact`。）
+> 历史更新：2026-05-30（信息传播与机会点 + 实物与怀璧其罪，ADR-024/025）：新增 `data/world/news.json`（新闻类型传播参数 + 五渠道开关：半径/口耳/城镇/宗门/商会）、`data/world/opportunities.json`（机会点类型 value/存活/上限/掉落源/风险键 + 决策阈值）、`data/balance/covet.json`（怀璧暴露阈值 + 觊觎起念 + 放他一马权重 + 抢夺结算）、`data/items/items.json`（可转移法宝/材料/丹药，含 value/grade/transferable/combatBonus）；`reward.json` 新增 `opportunity_*` 掉落表（outcome 带 itemId/qty 发放真实物品）；`npc-actions.json` 新增 `act_npc_goto_opportunity`（targetResolver `nearest_opportunity`）；`npc-state` 新增 `arrivedAtOpportunity`/`targetOpportunityId`/`equippedArtifactId`；`constants.js` 新增 `NewsType`/`OpportunityType` 枚举；`goal.js` 新增 `GoalSource.OPPORTUNITY`。代码侧：新增 `engine/world/info-propagation.js`、`engine/world/opportunity.js`、`engine/npc/info-actions.js`；`ItemDefinition` 领域字段并入 properties；`_npcCombatPower` 接通法宝 `combatBonus`。所有系统默认 `enabled=false` 零漂移（`test-goal-equivalence` 主路径通过，新增 `tools/test-info-propagation.mjs` 验证）。详见 ADR-024、ADR-025、systems/opportunity-system.md、systems/item-covet.md、wiki/rules/wealth-exposed.md。）
 > 历史更新：2026-05-30（价值-风险决策系统 + 修炼曲线改造：`ai-config.json → npc.decision` 新增决策系数块（`lambdaRisk`/`lambdaValue`/`headstrongChance`/`headstrongValueBonus`/`costFloor`/`exploreFirstCostFactor`）；`npc-actions.json` 每个行为新增 `valueScore`（基础价值）与 `riskKey`（映射 `risk.json`，游历=`explore`，其余 `null`）；`resources.json` 每个道具新增 `value` 字段（预留，本期不参与决策）；`cultivation.json` 新增 `cultivationDecayK`（闭关边际递减系数，默认 2.5）与 `minCultivationRatio`（突破最低闭关占比，默认 0.3，亦为 insight 封顶 `1-该值`）；`personality.json` 新增 `justice`(正义感) 维度 + `needBoosts.justice` 占位（仅字段+赋值+遗传，不接逻辑）；`social.json → birth` 新增 `personalityMutationRange`（courage/justice 走双亲均值+变异遗传）；`npc-state` 新增 `lastDecisionHeadstrong`/`headstrongActionId`/`breakthroughPathOrder` 状态字段。代码侧：`action.js` 加 `valueScore`/`riskKey`/`getBaseCost`，`goap-planner.plan()` 支持可选 `costFn`（慢/快路径均当次固定），`behavior-system.plan()` 透传 costFn，`npc-actions.js` 新增 `estimateRiskCost`/`computeActionValue`/`computeDecisionCost` 与修炼指数衰减/insight 封顶，`npc-entity` 进规划前 roll 上头并构建固定 cost 表、规划后标记上头、突破后 roll 顺序随机。详见 ADR-017、wiki/rules/travel-and-risk.md、wiki/rules/personality.md。）
 > 历史更新：2026-05-30（游历感悟与风险系统：突破进度双源化 `totalProgress = cultivationProgress(闭关) + insight(游历)`，闭关有境界上限 `cultivation.json → cultivationCap`，撞顶后由 GOAP 自然推导出"外出游历攒 insight"（闭关行为前置 `cultivationProgress<cap` 由 `npc-entity._applyCultivationCapPreconditions` 按境界动态注入）；`act_npc_explore` 改为产出 insight，归来按 `cultivation.json → actions.explore.fortuneEvents` 机缘事件表 roll、按新增 `data/balance/risk.json` 结算风险分项（受伤/资源掉落/职位挑战失败/陨落，权重 + 境界减免 + 性格加成）；`personality.json` 新增 `courage`(勇敢) 维度（勇敢↑→游历受伤/陨落↑，经 risk.json `personalityModifiers`）；`npc-needs` 修炼/突破需求 goalState 改用 totalProgress；`npc-state` 新增 `insight`、`totalProgress`（set 时自动同步）；补全 `tick-manager._randomWanderTarget` 实现 wander_far。详见 ADR-016、wiki/rules/travel-and-risk.md。）
 > 历史更新：2026-05-30（性格系统：新增 `data/balance/personality.json`（性格维度定义 + needBoosts 性格→需求加成表，数据驱动可扩展）；新增需求 `need_npc_ambition`（晋升，野心驱动、修为饱和后压过修炼，触发 `act_npc_challenge`）；`ConfigurableEvaluator` 支持读 `entityState.personality` 施加加成；性格不进 GOAP 状态键。详见 wiki/rules/personality.md。）
@@ -125,10 +127,14 @@ apps/game/data/
 | `exchangeRate` | number | 否 | 兑换比率（currency 类型专用，低级=1，中级=100，高级=10000，极品=1000000）|
 | `qiValue` | number | 否 | 折算真气价值（部分丹药/灵石）|
 | `value` | number | 否 | 统一相对价值（ADR-017 预留）。供后续「行为预期产出道具」的价值期望计算（`computeActionValue`）使用；**本期仅加字段、不参与决策**。以低级灵石=1 为基准，参考 `exchangeRate`/`qiValue` 标定 |
+| `grade` | number | 否 | 品阶化材料使用，妖丹/妖材为 1~9，对应妖兽 `grade` |
+| `transferable` | boolean | 否 | 是否可转移；妖兽材料默认 `true`，可进入身家估值与后续抢夺系统 |
 | `description` | string | 是 | 描述文本 |
 | `source` | string | 否 | 世界观参考来源标注 |
 
 **扩展规则**：新增资源类型后，需检查 `actions/` 目录下的行为配置是否需要引用新资源。新增资源需标注 `source` 来源。
+
+**妖兽资源规则（ADR-026）**：`monster_core` / `beast_material` 为旧任务兼容 ID；真实妖兽死亡结算按妖兽等阶映射到 `monster_core_gN` / `beast_material_gN`（N=1~9）。这些品阶资源可由 NPC 持有、上交宗门换贡献，并作为宗门炼丹/炼器兑换的库存消耗。宗门缺妖兽材料时由 `need_npc_hunt_resources` + `act_npc_accept_hunt_quest` 驱动 NPC 主动接斩妖类任务；身上有可捐材料时由 `need_npc_donate_materials` 推动上交。
 
 ### terrains.json — 地形类型定义
 
@@ -197,7 +203,7 @@ apps/game/data/
 | `habitat` | string[] | 是 | 栖息地（引用 `terrains.json` 的 `type`）|
 | `attributes` | object | 是 | 属性：`strength`/`speed`/`defense`/`sense`/`vitality` |
 | `innateAbility` | object | 是 | 天赋神通：`{ name, description }` |
-| `drops` | array | 是 | 掉落物：`[{ itemId, chance, coreGrade?, material? }]` |
+| `drops` | array | 是 | 掉落物：`[{ itemId, chance, coreGrade?, material? }]`；运行时按妖兽 `grade` 映射为 `monster_core_gN` / `beast_material_gN` |
 | `canTransform` | boolean | 是 | 是否可化形为人 |
 | `transformRealm` | string | 否 | 化形所需最低境界（`canTransform:true` 时填写）|
 | `isAncient` | boolean | 是 | 是否为上古异兽 |
@@ -448,10 +454,23 @@ apps/game/data/
 | `locationTarget` | string | 否 | 任务发生地解析方式：`hq`（本门总部；**散修→最近悬赏阁/坊市**）/ `monster`（最近妖兽）/ `terrain:<类型>`（最近的该地形格，如 `terrain:forest`）。弟子接取任务时据此**锁定一个固定坐标**，执行任务行为时需先移动到该坐标再完成（路程=格数天）。地形若全图不存在则回退到最近平原。|
 | `description` | string | 是 | 描述文本 |
 
-> **任务固定坐标流程（2026-05-29）**：`接取任务(在总部) → 执行任务(走到 locationTarget 锁定的坐标) → 交付任务(走回总部)`。接取时坐标写入 NPC 状态 `questTargetX/questTargetY`，由行为 `act_npc_do_quest` 的 `targetResolver: quest_target` 读取。
+> **任务固定坐标流程（2026-05-29）**：`接取任务(在总部) → 执行任务(走到 locationTarget 锁定的坐标) → 交付任务(走回总部)`。接取时坐标写入 NPC 状态 `questTargetX/questTargetY`，由行为 `act_npc_do_quest` 的 `targetResolver: quest_target` 读取。ADR-026 后，`locationTarget:"monster"` 还会写入 `questTargetMonsterId`，斩妖任务执行时按该 id 结算具体妖兽死亡与掉落。
 >
 > **散修悬赏（2026-05-29）**：散修（无 `factionId`）复用同一套任务模板与"接→做→交"三连流程，但接/交地点改为**最近的悬赏阁(`org_bounty`)/坊市(`org_market`)**（解析见 `TickManager._nearestBountyOrg`，优先悬赏阁、其次坊市，再按距离择近）。交付时散修**不上缴宗门分成、不获贡献点**，但灵石奖励按 `cultivation.json → bounty.wandererRewardMultiplier` 加成（默认 1.5 倍，赏金由悬赏阁/坊市库存垫付）。详见 ADR-009。
 
+#### rewardProfiles — V1 任务额外奖励
+
+`rewardProfiles` 为对象，键为 `questTypes[].id`（如 `qt_herb`）。基础灵石、贡献、任务危险度仍由 `difficulties` 控制；`rewardProfiles` 只配置额外实物、稳定度和宗门库存反哺。
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| `npcItems[]` | array | 固定给 NPC 的物品规则，常用于 `spirit_herb`、`ore`、`monster_core`、`beast_material` |
+| `factionItems[]` | array | 仅宗门成员交付时进入宗门库存的物品规则，散修不反哺宗门 |
+| `randomItems[]` | array | 按 `chance` 掷骰的稀有奖励，V1 用于秘境任务产出 `item_breakthrough_pill`、`item_artifact_low/mid`、`technique_book_mid` |
+| `factionStability` | number | 宗门成员交付后提升本宗稳定度；散修交付悬赏不触发 |
+| `maxStability` | number | 可选，稳定度提升上限；缺省为 105 |
+
+物品规则字段：`itemId` 使用已存在资源或实物 ID；`qty` 为固定数量；`qtyBase + floor(difficulty * qtyPerLevel)` 为按难度缩放数量；`minQty/maxQty` 控制数量上下限；`chance` 缺省为 1；`minLevel` 表示最低任务难度。
 #### rankMaxDifficulty — 境界可接最高难度
 
 > **注意**：此配置现已迁移至 `data/balance/cultivation.json` 的 `rankMaxDifficulty` 字段（数据来源统一）。`quest-templates.json` 中的同名字段仍保留作向后兼容，但以 cultivation.json 为准。
@@ -477,6 +496,7 @@ apps/game/data/
 | `weight` | number | 是 | GOAP 搜索代价权重（越小越优先被选择）|
 | `preconditions` | object | 是 | 前置条件 `{ key: { op, value } }`，空对象 `{}` 表示无前置 |
 | `effects` | object | 是 | 执行效果 `{ key: { op, value } }` |
+| `plannerEffects` | object | 否 | 仅供 GOAP 规划使用的效果。缺省时等同 `effects`；当真实执行由 executor 操作库存/派生状态时，可用此字段表达 `lowSpiritStone`、`qiPillCount` 等规划可见变化 |
 | `costs` | array | 是 | 消耗物品列表 `[{ itemId, amount }]` |
 | `yields` | array | 是 | 产出物品列表 `[{ itemId, amount }]` |
 | `executorId` | string | 是 | 关联的代码执行器 ID |
@@ -516,7 +536,7 @@ apps/game/data/
 
 ### npc-actions.json — NPC 行为
 
-当前已定义：修炼（原地闭关）、赴修炼场修炼（消耗贡献换 +25% 速度）、履行职责、寻找续命丹药、挑战上位、辅助势力、游历、接取/执行/交付任务。
+当前已定义：修炼（原地闭关）、赴修炼场修炼（消耗贡献换 +25% 速度）、履行职责、寻找续命丹药、挑战上位、辅助势力、游历、接取/执行/交付任务；V1 经济闭环新增材料上交、兑换/服用聚气丹、兑换/服用破境丹、兑换并自动装备低阶法器。
 
 **价值-风险字段（ADR-017，每个行为）**：
 
@@ -560,6 +580,11 @@ apps/game/data/
 | `dailyCosts.*` | 每日弟子与领地维护消耗 |
 | `salary.roles.*` | 各职位每月俸禄 |
 | `formation.*` | 大阵每月维护费公式 |
+| `npcMaterialDonation.*` | V1 NPC 材料捐献参数：可捐 `itemId`、单次数量、贡献/月贡献收益、宗门库存入库数量 |
+| `monsterResources.*` | 妖兽资源化闭环参数（ADR-026）：斩妖任务类型、重选目标范围、狩猎战力偏置、失败风险、品阶捐献贡献、尸骸机会最低等阶与价值 |
+| `npcExchange.options.*` | V1 贡献兑换项：`itemId`、`qty`、`contributionCost`、`stoneCost`，用于聚气丹、破境丹和低阶法器 |
+| `npcExchange.options.*.requiredFactionItems[]` | 兑换前要求宗门库存具备并在成功后消耗的材料，如 `monster_core_g3`、`beast_material_g2`、`spirit_herb`、`ore` |
+| `npcExchange.useItems.*` | V1 消耗品使用效果：丹药对应 `qiGain`、`progressGain`、`breakthroughBonus` 等 |
 
 ### cultivation.json — 修炼与突破参数
 

@@ -37,6 +37,58 @@
     }
   },
   {
+    "id": "need_npc_active_quest",
+    "name": "完成当前任务",
+    "description": "已经接下的任务必须优先推进到完成或交付，避免多日斩妖被执念、修炼或其他目标长期打断。",
+    "basePriority": 0,
+    "evaluatorType": "configurable",
+    "evaluatorConfig": {
+      "basePriority": 0,
+      "rules": [
+        {
+          "condition": { "key": "hasActiveQuest", "op": "eq", "value": true },
+          "priorityBoost": 96,
+          "urgencyBoost": 85
+        },
+        {
+          "condition": { "key": "questComplete", "op": "eq", "value": true },
+          "priorityBoost": 10,
+          "urgencyBoost": 10
+        }
+      ],
+      "satisfiedCondition": { "key": "hasActiveQuest", "op": "eq", "value": false }
+    },
+    "goalState": {
+      "questTurnedIn": { "op": "eq", "value": true }
+    }
+  },
+  {
+    "id": "need_npc_donate_materials",
+    "name": "上交材料",
+    "description": "身上带有灵药、矿石、妖丹、妖材等可上交材料时，优先送回宗门换贡献并补宗门库存，避免关键修炼材料长期滞留个人背包。",
+    "basePriority": 0,
+    "evaluatorType": "configurable",
+    "evaluatorConfig": {
+      "basePriority": 0,
+      "rules": [
+        {
+          "condition": { "key": "donatableMaterialCount", "op": "gte", "value": 1 },
+          "priorityBoost": 82,
+          "urgencyBoost": 65
+        },
+        {
+          "condition": { "key": "factionNeedsHuntMaterials", "op": "eq", "value": true },
+          "priorityBoost": 10,
+          "urgencyBoost": 10
+        }
+      ],
+      "satisfiedCondition": { "key": "donatableMaterialCount", "op": "lt", "value": 1 }
+    },
+    "goalState": {
+      "donatableMaterialCount": { "op": "lt", "value": 1 }
+    }
+  },
+  {
     "id": "need_npc_cultivation",
     "name": "修炼",
     "description": "提升境界修为，是修士本业。GOAP 目标为修满当前境界（totalProgress=cultivationProgress+insight>=1）：闭关推进 cultivationProgress 但有境界 cultivationCap 上限，撞顶后 A* 自然推导出『外出游历攒 insight』补足；贡献充足时赴修炼场（+100%加速），不足时推导出『接→做→交任务攒贡献→进修炼场』经济链。",
@@ -53,6 +105,100 @@
     },
     "goalState": {
       "totalProgress": { "op": "gte", "value": 1.0 }
+    }
+  },
+  {
+    "id": "need_npc_breakthrough_aid",
+    "name": "准备破境丹",
+    "description": "修炼接近当前境界瓶颈时，若宗门有妖丹辅材且自身贡献/灵石足够，兑换并服用破境丹，为突破判定积累加成。",
+    "basePriority": 0,
+    "evaluatorType": "configurable",
+    "evaluatorConfig": {
+      "basePriority": 0,
+      "rules": [
+        {
+          "condition": { "key": "totalProgress", "op": "gte", "value": 0.85 },
+          "priorityBoost": 72,
+          "urgencyBoost": 58
+        },
+        {
+          "condition": { "key": "factionHasBreakthroughPillMaterial", "op": "eq", "value": false },
+          "priorityBoost": 12,
+          "urgencyBoost": 12
+        }
+      ],
+      "satisfiedCondition": { "key": "breakthroughAidBonus", "op": "gte", "value": 0.08 }
+    },
+    "goalState": {
+      "breakthroughAidBonus": { "op": "gte", "value": 0.08 }
+    }
+  },
+  {
+    "id": "need_npc_combat_gear",
+    "name": "配备法器",
+    "description": "没有法器的宗门成员会在材料、贡献、灵石条件允许时兑换低阶法器；缺妖材时可反向推动猎妖与上交材料。",
+    "basePriority": 0,
+    "evaluatorType": "configurable",
+    "evaluatorConfig": {
+      "basePriority": 0,
+      "rules": [
+        {
+          "condition": { "key": "hasEquippedArtifact", "op": "eq", "value": false },
+          "priorityBoost": 46,
+          "urgencyBoost": 32
+        },
+        {
+          "condition": { "key": "factionHasArtifactMaterial", "op": "eq", "value": false },
+          "priorityBoost": 8,
+          "urgencyBoost": 8
+        }
+      ],
+      "satisfiedCondition": { "key": "hasEquippedArtifact", "op": "eq", "value": true }
+    },
+    "goalState": {
+      "hasEquippedArtifact": { "op": "true" }
+    }
+  },
+  {
+    "id": "need_npc_hunt_resources",
+    "name": "猎取妖兽资源",
+    "description": "宗门缺少破境丹或法器所需的妖丹、妖材时，弟子会把猎杀妖兽视作修炼经济的一环：接猎妖任务、斩杀目标、上交材料，补齐宗门库存。",
+    "basePriority": 8,
+    "evaluatorType": "configurable",
+    "evaluatorConfig": {
+      "basePriority": 8,
+      "rules": [
+        {
+          "condition": { "key": "factionHasBreakthroughPillMaterial", "op": "eq", "value": false },
+          "priorityBoost": 24,
+          "urgencyBoost": 20,
+          "goalStateOverride": {
+            "factionHasBreakthroughPillMaterial": { "op": "true" }
+          }
+        },
+        {
+          "condition": { "key": "factionNeedsHuntMaterials", "op": "eq", "value": true },
+          "priorityBoost": 12,
+          "urgencyBoost": 10,
+          "goalStateOverride": {
+            "factionNeedsHuntMaterials": { "op": "false" }
+          }
+        },
+        {
+          "condition": { "key": "totalProgress", "op": "gte", "value": 0.7 },
+          "priorityBoost": 10,
+          "urgencyBoost": 12
+        },
+        {
+          "condition": { "key": "hasActiveQuest", "op": "eq", "value": true },
+          "priorityBoost": -20,
+          "urgencyBoost": 0
+        }
+      ],
+      "satisfiedCondition": { "key": "factionNeedsHuntMaterials", "op": "eq", "value": false }
+    },
+    "goalState": {
+      "factionNeedsHuntMaterials": { "op": "false" }
     }
   },
   {

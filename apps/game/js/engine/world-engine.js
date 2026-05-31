@@ -67,6 +67,7 @@ export class WorldEngine {
     this._entityConfig = {
       gameConfig: this._gameConfig,
       cultivationConfig: this._balanceConfig.cultivation,
+      economyConfig: this._balanceConfig.economy,
       personalityConfig: this._balanceConfig.personality,
       aiConfig: this._aiConfig.npc || {},
       memoryConfig: this._balanceConfig.memory,

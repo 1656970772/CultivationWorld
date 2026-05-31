@@ -72,7 +72,9 @@ export class PlannerNode extends BTNode {
   /** 规划：构建 costFn + 收集额外目标 → BehaviorSystem.plan。 */
   _doPlan(entity, worldContext) {
     const bs = entity.behaviorSystem;
-    const goapState = entity.state.toGOAPState();
+    const goapState = typeof entity.buildGOAPState === 'function'
+      ? entity.buildGOAPState(worldContext)
+      : entity.state.toGOAPState();
     const costFn = typeof entity.buildDecisionCostFn === 'function'
       ? entity.buildDecisionCostFn(worldContext)
       : null;
@@ -105,7 +107,10 @@ export class PlannerNode extends BTNode {
     if (this.realtimeReselect && !bs.isBusy() && typeof entity.buildDecisionCostFn === 'function') {
       const costFn = entity.buildDecisionCostFn(worldContext);
       if (costFn && typeof bs.reselectCurrentAction === 'function') {
-        bs.reselectCurrentAction(entity.state.toGOAPState(), worldContext, costFn);
+        const goapState = typeof entity.buildGOAPState === 'function'
+          ? entity.buildGOAPState(worldContext)
+          : entity.state.toGOAPState();
+        bs.reselectCurrentAction(goapState, worldContext, costFn);
       }
     }
 

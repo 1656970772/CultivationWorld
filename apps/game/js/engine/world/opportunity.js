@@ -103,17 +103,18 @@ export class OpportunitySystem {
    * @param {string|null} [args.subjectId]
    * @returns {WorldOpportunity|null}
    */
-  spawn({ type, pos, currentDay, value = null, subjectId = null }) {
+  spawn({ type, pos, currentDay, value = null, subjectId = null, rewardSource = undefined, riskKey = undefined, maxClaims = undefined, name = undefined }) {
     if (!this.enabled || !type || !pos) return null;
     const tc = this.typeConfig(type);
     const opp = new WorldOpportunity({
       type, pos, createdDay: currentDay,
       value: value != null ? value : (tc.value ?? 0),
       expireDay: currentDay + (tc.lifespanDays ?? 15),
-      maxClaims: tc.maxClaims ?? 99,
-      rewardSource: tc.rewardSource ?? null,
-      riskKey: tc.riskKey ?? null,
-      subjectId, name: tc.name,
+      maxClaims: maxClaims ?? tc.maxClaims ?? 99,
+      rewardSource: rewardSource !== undefined ? rewardSource : (tc.rewardSource ?? null),
+      riskKey: riskKey !== undefined ? riskKey : (tc.riskKey ?? null),
+      subjectId,
+      name: name || tc.name,
     });
     this.opportunities.push(opp);
     this._byId.set(opp.id, opp);

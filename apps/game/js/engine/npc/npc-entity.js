@@ -14,6 +14,11 @@ import { RelationshipGraph } from './relationship.js';
 import { ObsessionSystem, Obsession } from '../abstract/obsession-system.js';
 import { EmotionSystem } from '../abstract/emotion-system.js';
 import { Goal, GoalSource } from '../abstract/goal.js';
+import {
+  canFactionProvideExchangeMaterials,
+  countDonatableMaterials,
+  factionNeedsMonsterExchangeMaterials,
+} from './npc-economy.js';
 
 /** NPC 共享 BTLoader（已注册 planner 节点）。PlannerNode 无内部状态，可被各 NPC 安全复用。 */
 const NPC_BT_LOADER = createBTLoader();
@@ -38,6 +43,7 @@ export class NPCEntity extends BaseEntity {
     this._obsessionConfig = entityConfig.obsessionConfig || {};
     this._emotionConfig = entityConfig.emotionConfig || {};
     this._utilityConfig = entityConfig.utilityConfig || {};
+    this._economyConfig = entityConfig.economyConfig || {};
     this.initStaticData(npcConfig);
     this.state = new NPCState(npcConfig, ranksData, entityConfig.gameConfig || {});
     // 把性格暴露到 state 上（仅作只读引用，存于专用字段，不进 _values，故不污染 GOAP 状态键）
@@ -351,7 +357,9 @@ export class NPCEntity extends BaseEntity {
   _initNeeds(config) {
     const needIds = config.needIds || [
       'need_npc_survival', 'need_npc_heal',
-      'need_npc_cultivation', 'need_npc_loyalty_duty',
+      'need_npc_active_quest', 'need_npc_donate_materials',
+      'need_npc_cultivation', 'need_npc_breakthrough_aid',
+      'need_npc_combat_gear', 'need_npc_hunt_resources', 'need_npc_loyalty_duty',
       'need_npc_ambition',
     ];
 
@@ -368,7 +376,12 @@ export class NPCEntity extends BaseEntity {
       'act_npc_serve_faction', 'act_npc_heal',
       'act_npc_seek_elixir', 'act_npc_challenge',
       'act_npc_assist_faction', 'act_npc_explore',
+      'act_npc_accept_hunt_quest',
       'act_npc_accept_quest', 'act_npc_do_quest', 'act_npc_turn_in_quest',
+      'act_npc_donate_materials',
+      'act_npc_redeem_qi_pill', 'act_npc_use_qi_pill',
+      'act_npc_redeem_breakthrough_pill', 'act_npc_use_breakthrough_pill',
+      'act_npc_redeem_artifact',
       // 流派分化行为（ADR-022/ADR-023）：夺宝/养老/传承/夺权。
       // 这些行为的执念目标（treasureObtained/atPeace/discipleRaised/isFactionLeader）默认无人持有，
       // 仅当 NPC 经 obsession.json 规则 roll/触发到对应执念时，其 Goal 才进入 Utility 选择，
@@ -462,6 +475,30 @@ export class NPCEntity extends BaseEntity {
   }
 
   /** @override */
+  buildGOAPState(worldContext) {
+    const flat = super.buildGOAPState(worldContext);
+    flat.lowSpiritStone = this.inventory?.getAmount('low_spirit_stone') || 0;
+    flat.qiPillCount = this.inventory?.getAmount('item_qi_pill') || 0;
+    flat.breakthroughPillCount = this.inventory?.getAmount('item_breakthrough_pill') || 0;
+    flat.donatableMaterialCount = countDonatableMaterials(this, this._economyConfig);
+    flat.hasEquippedArtifact = !!this.state.get('equippedArtifactId');
+    flat.factionHasQiPillMaterial = canFactionProvideExchangeMaterials(this, worldContext, 'qi_pill');
+    flat.factionHasBreakthroughPillMaterial = canFactionProvideExchangeMaterials(this, worldContext, 'breakthrough_pill');
+    flat.factionHasArtifactMaterial = canFactionProvideExchangeMaterials(this, worldContext, 'artifact_low');
+    flat.factionNeedsHuntMaterials = factionNeedsMonsterExchangeMaterials(this, worldContext);
+    return flat;
+  }
+
+  _refreshEconomyMaterialState(worldContext) {
+    this.state.set('donatableMaterialCount', countDonatableMaterials(this, this._economyConfig));
+    this.state.set('hasEquippedArtifact', !!this.state.get('equippedArtifactId'));
+    this.state.set('factionHasQiPillMaterial', canFactionProvideExchangeMaterials(this, worldContext, 'qi_pill'));
+    this.state.set('factionHasBreakthroughPillMaterial', canFactionProvideExchangeMaterials(this, worldContext, 'breakthrough_pill'));
+    this.state.set('factionHasArtifactMaterial', canFactionProvideExchangeMaterials(this, worldContext, 'artifact_low'));
+    this.state.set('factionNeedsHuntMaterials', factionNeedsMonsterExchangeMaterials(this, worldContext));
+  }
+
+  /** @override */
   onPreTick(worldContext) {
     this.state.advanceAge();
 
@@ -497,6 +534,7 @@ export class NPCEntity extends BaseEntity {
       return;
     }
 
+    this._refreshEconomyMaterialState(worldContext);
     this._tryBreakthrough();
 
     this.state.set('dutyFulfilled', false);
@@ -577,6 +615,7 @@ export class NPCEntity extends BaseEntity {
     const physiqueType = this._cultivationConfig.physique?.types?.[this.state.get('physiqueId')];
     const talentBonus = (rootGrade?.breakthroughBonus ?? 0) + (physiqueType?.breakthroughBonus ?? 0);
     const techniqueBonus = this.state.get('techniqueBreakthroughBonus') || 0;
+    const aidBonus = this.state.get('breakthroughAidBonus') || 0;
 
     const ageDays = this.state.get('ageDays') || 0;
     const maxAgeDays = this.state.get('maxAgeDays') || 1;
@@ -584,9 +623,10 @@ export class NPCEntity extends BaseEntity {
     const agePenaltyMultiplier = breakthroughCfg.agePenaltyMultiplier ?? 0.7;
     const ageModifier = ageDays > maxAgeDays * agePenaltyThreshold ? agePenaltyMultiplier : 1.0;
 
-    const baseRate = Math.max(0, Math.min(1, successRate + talentBonus + techniqueBonus));
+    const baseRate = Math.max(0, Math.min(1, successRate + talentBonus + techniqueBonus + aidBonus));
     const finalRate = baseRate * ageModifier;
     const roll = Math.random();
+    if (aidBonus !== 0) this.state.set('breakthroughAidBonus', 0);
 
     if (roll < finalRate) {
       this.state.set('rankId', nextRank.id);
@@ -621,6 +661,7 @@ export class NPCEntity extends BaseEntity {
         toRank: nextRank.name,
         success: true,
         qiConsumed: qiRequired,
+        aidBonus,
       };
     } else {
       const failureProgress = breakthroughCfg.failureProgressReset ?? 0.3;
@@ -639,6 +680,7 @@ export class NPCEntity extends BaseEntity {
         targetRank: nextRank.name,
         success: false,
         qiLost: Math.floor(currentQi * (1 - failureQiRetention)),
+        aidBonus,
       };
     }
   }

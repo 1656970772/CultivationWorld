@@ -92,8 +92,18 @@ export class NPCState extends RuntimeState {
       activeQuestDifficulty: 0,
       activeQuestDiffName: null,
       questDaysRemaining: 0,
+      questTargetX: null,
+      questTargetY: null,
+      // 斩妖/除害/猎灵兽任务锁定的具体妖兽实例 id，用于把任务目标与地图活体妖兽绑定。
+      questTargetMonsterId: null,
       questComplete: false,
       questTurnedIn: false,
+      factionHasQiPillMaterial: false,
+      factionHasBreakthroughPillMaterial: false,
+      factionHasArtifactMaterial: false,
+      factionNeedsHuntMaterials: false,
+      donatableMaterialCount: 0,
+      hasEquippedArtifact: false,
       // 复仇行为链派生状态（ADR-020）：hasRevengeTarget 由 NPCEntity.onPreTick 按执念/恩怨刷新；
       // nearRevengeTarget 由追踪行为标记、击杀后清空；enemyKilled 为执念达成标志。
       hasRevengeTarget: false,
@@ -115,6 +125,7 @@ export class NPCState extends RuntimeState {
       daoCompanionId: npcConfig.daoCompanionId || null,
       childrenCount: 0,
       techniqueId: npcConfig.techniqueId || null,
+      breakthroughAidBonus: npcConfig.breakthroughAidBonus || 0,
       actionStatus: 'idle',
       actionRemaining: 0,
       // 价值-风险决策（ADR-017）：上头标记。lastDecisionHeadstrong 表示上次大决策的首个行为

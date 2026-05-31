@@ -41,6 +41,8 @@ const configs = {
   balanceEmotion:     loadJSON('data/balance/emotion.json'),
   balanceUtility:     loadJSON('data/balance/utility.json'),
   balanceReward:      loadJSON('data/balance/reward.json'),
+  monsters:           loadJSON('data/definitions/monsters.json'),
+  monsterSpawn:       loadJSON('data/balance/monster-spawn.json'),
   // 信息传播 / 机会点 / 怀璧其罪系统（ADR-024/025）。默认 enabled=false 零漂移。
   worldNews:          loadJSON('data/world/news.json'),
   worldOpportunities: loadJSON('data/world/opportunities.json'),
@@ -125,6 +127,56 @@ let fGoapOk = 0, fFallback = 0, nGoapOk = 0, nFallback = 0;
 let companionPairs = 0, totalBirths = 0;
 // 复仇/PvP 统计（ADR-020）
 let huntTriggers = 0, killTriggers = 0, pvpSlain = 0, pvpEnemySlain = 0, pvpWounded = 0;
+const economyActionCounts = {
+  material_donate: 0,
+  redeem_qi_pill: 0,
+  use_qi_pill: 0,
+  redeem_breakthrough_pill: 0,
+  use_breakthrough_pill: 0,
+  redeem_artifact: 0,
+  quest_item_reward: 0,
+};
+const huntQuestIds = new Set(configs.balanceEconomy.monsterResources?.huntQuestTypeIds || [
+  'qt_slay_monster',
+  'qt_exterminate',
+  'qt_hunt_beast',
+]);
+const monsterResourceStats = {
+  deaths: 0,
+  questHuntDeaths: 0,
+  deathsByCause: {},
+  huntQuestActionTicks: 0,
+  huntQuestAccepted: 0,
+  huntQuestCompleted: 0,
+  huntQuestFailed: 0,
+  huntQuestFailureOutcomes: {},
+  drops: {},
+};
+const eventTypeCounts = {};
+
+function addCount(map, key, amount = 1) {
+  if (!key) return;
+  map[key] = (map[key] || 0) + amount;
+}
+
+function addDrops(drops) {
+  for (const drop of drops || []) {
+    addCount(monsterResourceStats.drops, drop.itemId, drop.qty || 1);
+  }
+}
+
+function collectMonsterMaterialInventory(entities) {
+  const totals = {};
+  for (const entity of entities) {
+    const all = entity.inventory?.getAll?.() || {};
+    for (const [itemId, qty] of Object.entries(all)) {
+      if (/^(monster_core|beast_material)(_g\d+)?$/.test(itemId) && qty > 0) {
+        addCount(totals, itemId, qty);
+      }
+    }
+  }
+  return totals;
+}
 
 function actName(raw) {
   if (!raw || raw === 'idle') return '空闲';
@@ -135,6 +187,13 @@ function actName(raw) {
 const t0 = performance.now();
 for (let day = 1; day <= TOTAL_DAYS; day++) {
   const tick = engine.tick();
+
+  for (const md of tick.monsterDeaths || []) {
+    monsterResourceStats.deaths++;
+    addCount(monsterResourceStats.deathsByCause, md.cause || 'unknown');
+    if (md.cause === 'quest_hunt') monsterResourceStats.questHuntDeaths++;
+    addDrops(md.dropItems);
+  }
 
   for (const fd of tick.factionDecisions) {
     const n = fd.execution?.status === 'idle' ? '空闲'
@@ -172,6 +231,30 @@ for (let day = 1; day <= TOTAL_DAYS; day++) {
     // 复仇行为链统计（ADR-020）：按本 tick 执行结算的行为/结果累计。
     const exAid = nl.execution?.action?.id || nl.execution?.result?.actionId || '';
     const outcome = nl.execution?.result?.outcome;
+    const result = nl.execution?.result || {};
+    if (result.eventType) eventTypeCounts[result.eventType] = (eventTypeCounts[result.eventType] || 0) + 1;
+    if (exAid === 'act_npc_donate_materials' || result.eventType === 'material_donate') economyActionCounts.material_donate++;
+    if (exAid === 'act_npc_redeem_qi_pill' || result.eventType === 'redeem_qi_pill') economyActionCounts.redeem_qi_pill++;
+    if (exAid === 'act_npc_use_qi_pill' || result.eventType === 'use_qi_pill') economyActionCounts.use_qi_pill++;
+    if (exAid === 'act_npc_redeem_breakthrough_pill' || result.eventType === 'redeem_breakthrough_pill') economyActionCounts.redeem_breakthrough_pill++;
+    if (exAid === 'act_npc_use_breakthrough_pill' || result.eventType === 'use_breakthrough_pill') economyActionCounts.use_breakthrough_pill++;
+    if (exAid === 'act_npc_redeem_artifact' || result.eventType === 'redeem_artifact_low') economyActionCounts.redeem_artifact++;
+    if (result.eventType === 'quest_item_reward' || (result.extraRewards?.questItemReward || 0) > 0) economyActionCounts.quest_item_reward++;
+    if (exAid === 'act_npc_accept_hunt_quest') {
+      monsterResourceStats.huntQuestActionTicks++;
+    }
+    if ((result.actionId === 'act_npc_accept_hunt_quest' || result.actionId === 'act_npc_accept_quest')
+        && result.success
+        && huntQuestIds.has(result.questTypeId)) {
+      monsterResourceStats.huntQuestAccepted++;
+    }
+    if (exAid === 'act_npc_do_quest' && huntQuestIds.has(result.questTypeId)) {
+      if (result.outcome === 'complete') monsterResourceStats.huntQuestCompleted++;
+      else if (result.success === false) {
+        monsterResourceStats.huntQuestFailed++;
+        addCount(monsterResourceStats.huntQuestFailureOutcomes, result.outcome || 'unknown');
+      }
+    }
     if (exAid === 'act_npc_hunt_enemy') huntTriggers++;
     if (exAid === 'act_npc_kill_enemy') killTriggers++;
     if (outcome === 'enemy_slain') pvpEnemySlain++;
@@ -193,6 +276,7 @@ for (let day = 1; day <= TOTAL_DAYS; day++) {
   }
 
   for (const evt of tick.events || []) {
+    if (evt.type) eventTypeCounts[evt.type] = (eventTypeCounts[evt.type] || 0) + 1;
     if (evt.type === 'dao_companion') companionPairs++;
     if (evt.type === 'birth') totalBirths++;
   }
@@ -226,11 +310,17 @@ const revengeObsessionsAlive = obsessionCounts['revenge'] || 0;
 console.log(`[复仇PvP] 追踪触发: ${huntTriggers}，击杀触发: ${killTriggers}`);
 console.log(`[复仇PvP] 手刃仇人: ${pvpEnemySlain}，寻仇被反杀: ${pvpSlain}，寻仇负伤: ${pvpWounded}`);
 console.log(`[复仇PvP] PvP 致死总数(cause=slain): ${slainDeaths}，存活NPC持有复仇执念: ${revengeObsessionsAlive}`);
+console.log(`[妖兽资源] 猎妖接取: ${monsterResourceStats.huntQuestAccepted}，完成: ${monsterResourceStats.huntQuestCompleted}，失败: ${monsterResourceStats.huntQuestFailed}`);
+console.log(`[妖兽资源] 妖兽死亡: ${monsterResourceStats.deaths}，任务击杀: ${monsterResourceStats.questHuntDeaths}，掉落: ${JSON.stringify(monsterResourceStats.drops)}`);
 
 // ── 构建数据 ───────────────────────
 const finalSnap = snapshots[snapshots.length - 1];
 const allNPCs = Object.entries(finalSnap.npcs);
 const allFactions = Object.entries(finalSnap.factions);
+const monsterResourceInventory = {
+  npc: collectMonsterMaterialInventory(engine.entityRegistry.getByType('npc').filter(e => e.alive !== false)),
+  faction: collectMonsterMaterialInventory(engine.entityRegistry.getByType('faction').filter(e => e.alive !== false)),
+};
 
 const aliveNPCs = allNPCs.filter(([, n]) => n.alive);
 const aliveQi = aliveNPCs.map(([, n]) => n.qi || 0);
@@ -353,6 +443,12 @@ const reportData = {
   companionLog: engine.tickManager.companionLog || [],
   birthLog: engine.tickManager.birthLog || [],
   worldEvents: { modifiers: worldMod, disasters, attacks, alliances, factionDeaths: factionDeaths.length, companionPairs, totalBirths },
+  economyActionCounts,
+  monsterResourceStats: {
+    ...monsterResourceStats,
+    inventory: monsterResourceInventory,
+  },
+  eventTypeCounts,
   revengePvp: {
     huntTriggers, killTriggers,
     enemySlain: pvpEnemySlain, slainByEnemy: pvpSlain, wounded: pvpWounded,

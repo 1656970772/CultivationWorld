@@ -51,6 +51,82 @@
     "baseCost": 100,
     "costPerTerritory": 20
   },
+  "monsterResources": {
+    "_comment": "妖兽资源化闭环：斩妖类任务锁定具体妖兽，胜利后按妖兽 drops 产出品阶化妖丹/妖材；高阶妖兽尸骸会形成机会点。",
+    "huntQuestTypeIds": ["qt_slay_monster", "qt_exterminate", "qt_hunt_beast"],
+    "retargetGradeGap": 2,
+    "huntPowerBias": 80,
+    "huntFailureDeathChance": 0.01,
+    "huntFailureInjury": 1,
+    "corpseOpportunityMinGrade": 3,
+    "corpseValueBase": 240,
+    "corpseValuePerGrade": 180,
+    "donation": {
+      "enabled": true,
+      "maxGrade": 9,
+      "coreBaseContribution": 12,
+      "materialBaseContribution": 10,
+      "gradeMultiplier": 1.35
+    }
+  },
+  "npcMaterialDonation": {
+    "_comment": "V1 NPC材料捐献：宗门成员上交任务产出的材料，换取个人贡献/月贡献，材料进入宗门库存。",
+    "enabled": true,
+    "maxStacksPerAction": 1,
+    "items": [
+      { "itemId": "spirit_herb", "contribution": 10, "monthlyContribution": 10, "factionQty": 1 },
+      { "itemId": "ore", "contribution": 10, "monthlyContribution": 10, "factionQty": 1 },
+      { "itemId": "monster_core", "contribution": 18, "monthlyContribution": 18, "factionQty": 1 },
+      { "itemId": "beast_material", "contribution": 14, "monthlyContribution": 14, "factionQty": 1 }
+    ]
+  },
+  "npcExchange": {
+    "_comment": "V1 NPC兑换与消耗：贡献+低级灵石兑换丹药/法器，丹药和法器进入实际背包与装备链。",
+    "enabled": true,
+    "options": {
+      "qi_pill": {
+        "itemId": "item_qi_pill",
+        "qty": 1,
+        "contributionCost": 8,
+        "stoneCost": 20,
+        "requiredFactionItems": [
+          { "itemId": "spirit_herb", "qty": 1 }
+        ]
+      },
+      "breakthrough_pill": {
+        "itemId": "item_breakthrough_pill",
+        "qty": 1,
+        "contributionCost": 80,
+        "stoneCost": 250,
+        "requiredFactionItems": [
+          { "itemId": "monster_core_g3", "qty": 1 }
+        ]
+      },
+      "artifact_low": {
+        "itemId": "item_artifact_low",
+        "qty": 1,
+        "contributionCost": 120,
+        "stoneCost": 500,
+        "requiredFactionItems": [
+          { "itemId": "beast_material_g2", "qty": 2 },
+          { "itemId": "ore", "qty": 2 }
+        ]
+      }
+    },
+    "useItems": {
+      "qiPill": {
+        "itemId": "item_qi_pill",
+        "qiGain": 120,
+        "progressGain": 0.01
+      },
+      "breakthroughPill": {
+        "itemId": "item_breakthrough_pill",
+        "qiGain": 300,
+        "breakthroughBonus": 0.08,
+        "maxBreakthroughBonus": 0.25
+      }
+    }
+  },
   "modifierEffects": {
     "_comment": "modifier效果对稳定度的影响倍率",
     "evilAggressionStabilityGain": 2,

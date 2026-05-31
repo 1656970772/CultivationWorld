@@ -394,7 +394,7 @@ export class TickManager {
        * 据任务类型的 locationTarget 解析任务发生地（接取任务时调用，锁定固定坐标）。
        * 返回 {x,y}|null。
        */
-      resolveQuestLocation(entity, questType) {
+      resolveQuestLocation(entity, questType, difficulty = null) {
         const sp = entity?.spatial;
         const here = sp ? { x: sp.tileX, y: sp.tileY } : null;
         const target = questType?.locationTarget || 'hq';
@@ -413,7 +413,28 @@ export class TickManager {
         if (target === 'monster') {
           const monsters = self.entityRegistry.getAliveByType('monster')
             .filter(m => m.hasSpatial && m.hasSpatial());
-          return self._nearestEntityPos(here, monsters) || here;
+          const economy = self.balanceConfig?.economy || {};
+          const gap = economy.monsterResources?.retargetGradeGap ?? 2;
+          const wanted = Number(difficulty) || null;
+          const sameBand = wanted
+            ? monsters.filter(m => Math.abs((m.grade || 1) - wanted) <= gap)
+            : monsters;
+          const pool = sameBand.length > 0 ? sameBand : monsters;
+          let best = null;
+          let bestDist = Infinity;
+          for (const m of pool) {
+            const pos = self._entityPos(m);
+            if (!pos) continue;
+            const base = here || pos;
+            const dist = Math.abs(pos.x - base.x) + Math.abs(pos.y - base.y);
+            if (dist < bestDist) {
+              best = { monster: m, pos };
+              bestDist = dist;
+            }
+          }
+          return best
+            ? { x: best.pos.x, y: best.pos.y, monsterId: best.monster.id }
+            : here;
         }
         if (target.startsWith('terrain:')) {
           const terrainType = target.slice('terrain:'.length);
@@ -1045,6 +1066,8 @@ export class TickManager {
         grade: monster.grade,
         cause: info.cause || 'unknown',
         killerName: info.killerName || null,
+        killerNpcId: info.killerNpcId || null,
+        dropItems: Array.isArray(info.dropItems) ? info.dropItems : [],
         ageYears: info.ageYears ?? null,
         maxAgeYears: info.maxAgeYears ?? null,
         x: pos?.x ?? null,
@@ -1074,6 +1097,7 @@ export class TickManager {
 
     // 仅对悬赏/任务链发位置事件（散修悬赏为主，宗门任务同样记录）
     const bountyActionMap = {
+      act_npc_accept_hunt_quest: isWanderer ? 'wanderer_bounty_accept' : 'quest_accept',
       act_npc_accept_quest: isWanderer ? 'wanderer_bounty_accept' : 'quest_accept',
       act_npc_do_quest: isWanderer ? 'wanderer_bounty_do' : 'quest_do',
       act_npc_turn_in_quest: isWanderer ? 'wanderer_bounty_turn_in' : 'quest_turn_in',
@@ -1175,12 +1199,24 @@ export class TickManager {
     const opp = this.opportunitySystem;
 
     // 妖王陨落（高阶妖兽死亡）→ monster_king_death + 尸骸机会
+    const monsterResourceCfg = this.balanceConfig?.economy?.monsterResources || {};
+    const corpseMinGrade = monsterResourceCfg.corpseOpportunityMinGrade ?? 3;
     for (const md of (tickLog.monsterDeaths || [])) {
-      if ((md.grade ?? 0) < 3) continue; // 仅高阶妖兽视为"妖王"
+      if ((md.grade ?? 0) < corpseMinGrade) continue; // 仅高阶妖兽视为"妖王"
       if (typeof md.x !== 'number') continue;
       let oppId = null;
       if (opp.enabled) {
-        const o = opp.spawn({ type: OpportunityType.MONSTER_CORPSE, pos: { x: md.x, y: md.y }, currentDay: day });
+        const grade = Math.max(1, Math.min(9, md.grade || 1));
+        const value = (monsterResourceCfg.corpseValueBase ?? 240)
+          + grade * (monsterResourceCfg.corpseValuePerGrade ?? 180);
+        const o = opp.spawn({
+          type: OpportunityType.MONSTER_CORPSE,
+          pos: { x: md.x, y: md.y },
+          currentDay: day,
+          value,
+          rewardSource: `opportunity_corpse_g${grade}`,
+          name: `${grade}阶妖兽尸骸`,
+        });
         oppId = o?.id ?? null;
       }
       const news = info.publishNews({

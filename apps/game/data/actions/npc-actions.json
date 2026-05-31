@@ -184,6 +184,30 @@
     "executorId": "npc_explore"
   },
   {
+    "id": "act_npc_accept_hunt_quest",
+    "name": "接取猎妖任务",
+    "description": "宗门缺少妖丹/妖材等炼丹炼器材料时，弟子优先去任务堂接取斩妖、除害、猎灵兽任务。",
+    "category": "npc",
+    "weight": 0.5,
+    "valueScore": 12,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" },
+      "canTakeQuest": { "op": "true" },
+      "hasActiveQuest": { "op": "false" },
+      "factionNeedsHuntMaterials": { "op": "true" }
+    },
+    "effects": {
+      "hasActiveQuest": { "op": "set", "value": true }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 2,
+    "requiresTravel": true,
+    "targetResolver": "quest_hall",
+    "executorId": "npc_accept_quest"
+  },
+  {
     "id": "act_npc_accept_quest",
     "name": "接取任务",
     "description": "宗门弟子赴任务堂、散修赴悬赏阁/坊市接取任务",
@@ -219,8 +243,10 @@
       "hasActiveQuest": { "op": "true" },
       "questComplete": { "op": "false" }
     },
-    "effects": {
-      "questComplete": { "op": "set", "value": true }
+    "effects": {},
+    "plannerEffects": {
+      "questComplete": { "op": "set", "value": true },
+      "donatableMaterialCount": { "op": "add", "value": 1 }
     },
     "costs": [],
     "yields": [],
@@ -302,6 +328,175 @@
     "requiresTravel": true,
     "targetResolver": "quest_hall",
     "executorId": "npc_turn_in_quest"
+  },
+  {
+    "id": "act_npc_donate_materials",
+    "name": "上交材料",
+    "description": "将任务获得的灵药、灵矿、妖兽内丹或灵兽材料上交宗门，换取贡献与月贡献，并让材料进入宗门库存。",
+    "category": "npc",
+    "weight": 1,
+    "valueScore": 5,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" },
+      "hasFaction": { "op": "true" },
+      "donatableMaterialCount": { "op": "gte", "value": 1 }
+    },
+    "effects": {},
+    "plannerEffects": {
+      "contribution": { "op": "add", "value": 10 },
+      "monthlyContribution": { "op": "add", "value": 10 },
+      "donatableMaterialCount": { "op": "add", "value": -1 },
+      "factionHasQiPillMaterial": { "op": "set", "value": true },
+      "factionHasBreakthroughPillMaterial": { "op": "set", "value": true },
+      "factionHasArtifactMaterial": { "op": "set", "value": true },
+      "factionNeedsHuntMaterials": { "op": "set", "value": false }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 2,
+    "requiresTravel": true,
+    "targetResolver": "main_hall",
+    "executorId": "npc_donate_materials"
+  },
+  {
+    "id": "act_npc_redeem_qi_pill",
+    "name": "兑换聚气丹",
+    "description": "消耗宗门贡献与低级灵石兑换聚气丹，为下一步修炼提供真实丹药输入。",
+    "category": "npc",
+    "weight": 1,
+    "valueScore": 8,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" },
+      "hasFaction": { "op": "true" },
+      "contribution": { "op": "gte", "value": 8 },
+      "lowSpiritStone": { "op": "gte", "value": 20 },
+      "factionHasQiPillMaterial": { "op": "true" },
+      "qiPillCount": { "op": "lt", "value": 1 }
+    },
+    "effects": {},
+    "plannerEffects": {
+      "contribution": { "op": "add", "value": -8 },
+      "lowSpiritStone": { "op": "add", "value": -20 },
+      "qiPillCount": { "op": "add", "value": 1 }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 2,
+    "requiresTravel": true,
+    "targetResolver": "main_hall",
+    "executorId": "npc_redeem_qi_pill"
+  },
+  {
+    "id": "act_npc_use_qi_pill",
+    "name": "服用聚气丹",
+    "description": "消耗聚气丹，提升真气与修炼进度，让兑换资源进入修炼闭环。",
+    "category": "npc",
+    "weight": 1,
+    "valueScore": 10,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" },
+      "qiPillCount": { "op": "gte", "value": 1 },
+      "totalProgress": { "op": "lt", "value": 1.0 }
+    },
+    "effects": {},
+    "plannerEffects": {
+      "qiPillCount": { "op": "add", "value": -1 },
+      "qi": { "op": "add", "value": 120 },
+      "cultivationProgress": { "op": "add", "value": 0.01 },
+      "totalProgress": { "op": "add", "value": 0.01 }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 1,
+    "requiresTravel": false,
+    "targetResolver": "self",
+    "executorId": "npc_use_qi_pill"
+  },
+  {
+    "id": "act_npc_redeem_breakthrough_pill",
+    "name": "兑换破境丹",
+    "description": "消耗贡献与低级灵石兑换破境丹，准备下一次突破判定。",
+    "category": "npc",
+    "weight": 2,
+    "valueScore": 12,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" },
+      "hasFaction": { "op": "true" },
+      "contribution": { "op": "gte", "value": 80 },
+      "lowSpiritStone": { "op": "gte", "value": 250 },
+      "factionHasBreakthroughPillMaterial": { "op": "true" },
+      "breakthroughPillCount": { "op": "lt", "value": 1 }
+    },
+    "effects": {},
+    "plannerEffects": {
+      "contribution": { "op": "add", "value": -80 },
+      "lowSpiritStone": { "op": "add", "value": -250 },
+      "breakthroughPillCount": { "op": "add", "value": 1 }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 2,
+    "requiresTravel": true,
+    "targetResolver": "main_hall",
+    "executorId": "npc_redeem_breakthrough_pill"
+  },
+  {
+    "id": "act_npc_use_breakthrough_pill",
+    "name": "服用破境丹",
+    "description": "消耗破境丹，写入一次性突破加成，并补充少量真气。",
+    "category": "npc",
+    "weight": 1,
+    "valueScore": 12,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" },
+      "breakthroughPillCount": { "op": "gte", "value": 1 }
+    },
+    "effects": {},
+    "plannerEffects": {
+      "breakthroughPillCount": { "op": "add", "value": -1 },
+      "qi": { "op": "add", "value": 300 },
+      "breakthroughAidBonus": { "op": "add", "value": 0.08 }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 1,
+    "requiresTravel": false,
+    "targetResolver": "self",
+    "executorId": "npc_use_breakthrough_pill"
+  },
+  {
+    "id": "act_npc_redeem_artifact",
+    "name": "兑换低阶法器",
+    "description": "消耗贡献与低级灵石兑换低阶法器，并自动装备更优法宝。",
+    "category": "npc",
+    "weight": 3,
+    "valueScore": 14,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" },
+      "hasFaction": { "op": "true" },
+      "contribution": { "op": "gte", "value": 120 },
+      "lowSpiritStone": { "op": "gte", "value": 500 },
+      "factionHasArtifactMaterial": { "op": "true" },
+      "hasEquippedArtifact": { "op": "false" }
+    },
+    "effects": {},
+    "plannerEffects": {
+      "contribution": { "op": "add", "value": -120 },
+      "lowSpiritStone": { "op": "add", "value": -500 },
+      "hasEquippedArtifact": { "op": "set", "value": true }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 2,
+    "requiresTravel": true,
+    "targetResolver": "main_hall",
+    "executorId": "npc_redeem_artifact"
   },
   {
     "id": "act_npc_raid_treasure",

@@ -39,6 +39,7 @@ export class Action {
     this.description = config.description || '';
     this.preconditions = config.preconditions || {};
     this.effects = config.effects || {};
+    this.plannerEffects = config.plannerEffects || this.effects;
     this.costs = config.costs || [];
     this.yields = config.yields || [];
     this.weight = config.weight ?? 1;
@@ -58,7 +59,7 @@ export class Action {
 
     // 预计算：effects/preconditions 在 Action 构造后不可变，GOAP 热路径上被反复读取。
     // 规范化 effects 为 { key: {op,value} } 形式并缓存，免去 getEffects() 每次重建对象 + Object.entries。
-    this._effectsNorm = this._normalizeEffects(this.effects);
+    this._effectsNorm = this._normalizeEffects(this.plannerEffects);
     this._effectEntries = Object.entries(this._effectsNorm); // [ [key, {op,value}], ... ]
     this._preconditionEntries = Object.entries(this.preconditions);
     // GOAP 规划代价（getPlanCost 在搜索中每节点调用，结果恒定，预存）

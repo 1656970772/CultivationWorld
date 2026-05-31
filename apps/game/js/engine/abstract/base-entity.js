@@ -153,6 +153,13 @@ export class BaseEntity {
   }
 
   /**
+   * 构建 GOAP 可见状态。子类可在运行时状态之外注入库存、装备等派生字段。
+   */
+  buildGOAPState(worldContext) {
+    return this.state?.toGOAPState ? this.state.toGOAPState() : {};
+  }
+
+  /**
    * 收集额外目标（执念等，ADR-019），与需求目标合并参与 Utility 选择。
    * 基类默认无额外目标；NPC 在执念阶段覆写。
    * @returns {import('./goal.js').Goal[]}
@@ -179,7 +186,7 @@ export class BaseEntity {
     if (!this.behaviorSystem) return;
 
     if (!this.behaviorSystem.hasPlan()) {
-      const goapState = this.state.toGOAPState();
+      const goapState = this.buildGOAPState(worldContext);
       this.behaviorSystem.plan(this.needSystem, goapState, worldContext);
     }
     this._tickLog.plan = this.behaviorSystem.getLastPlanResult();
@@ -197,7 +204,7 @@ export class BaseEntity {
 
     if (result?.status === 'replan') {
       this.behaviorSystem.clearPlan();
-      const goapState = this.state.toGOAPState();
+      const goapState = this.buildGOAPState(worldContext);
       this.behaviorSystem.plan(this.needSystem, goapState, worldContext);
       if (this.behaviorSystem.hasPlan()) {
         return this.behaviorSystem.executeStep(this, worldContext);

@@ -92,7 +92,8 @@ docs/
 │   ├── adr-022-expected-value-utility.md # ADR-022：期望收益模型（Score=Σ(prob×reward)−riskCost，与风险厌恶对称，支撑赌狗流/稳健流分化）
 │   ├── adr-023-archetype-goal-system.md # ADR-023：流派目标体系（夺宝/养老/传承/夺权四种执念 + 专属 goalState/终点行为 + 条件触发机制）
 │   ├── adr-024-info-propagation-opportunity.md # ADR-024：信息传播与机会点系统（事件→消息→多渠道传播→机会点→Utility 决策→前往）
-│   └── adr-025-item-covet-system.md   # ADR-025：实物系统与怀璧其罪（可转移物品/assetScore/暴露/觊觎抢夺或放过）
+│   ├── adr-025-item-covet-system.md   # ADR-025：实物系统与怀璧其罪（可转移物品/assetScore/暴露/觊觎抢夺或放过）
+│   └── adr-026-monster-resource-loop.md # ADR-026：妖兽资源化模拟闭环（猎妖→上交→炼丹/炼器→修炼/战力）
 ├── plans/
 │   └── implementation-plan.md         # 实施计划（6阶段 + 11个子Agent）
 └── superpowers/
@@ -140,6 +141,7 @@ docs/
 - `decisions/adr-021-utility-goap-separation.md` —— Utility-GOAP 职责分离：将价值/风险/情绪/上头/路径偏好全部从 GOAP step cost 迁移到 Utility 选目标层，GOAP step cost 退化为纯路径代价 `getPlanCost()`，所有"差异化"由 Utility 决定（修仙 NPC 稳健流/赌狗流/复仇流分化的根本）
 - `decisions/adr-022-expected-value-utility.md` —— 期望收益模型：在 Utility 层引入 `ExpectedValue=Σ(prob×value)`，与 ADR-021 风险厌恶对称（吸引项 vs 惩罚项），收益分布数据驱动于 reward.json（如秘境仙器 1%/法宝 10%/材料 60%/空手 29%），赌狗流=高期望收益吸引+低风险厌恶
 - `decisions/adr-023-archetype-goal-system.md` —— 流派目标体系：新增夺宝/养老/传承/夺权四种执念，各有专属 goalState（treasureObtained/atPeace/discipleRaised/isFactionLeader）与终点行为，新增"条件触发"机制（随寿元/境界演化），让同境界 NPC 在相同局面下做出差异化选择；养老流诚实标注为项目推演设定
+- `decisions/adr-026-monster-resource-loop.md` —— 妖兽资源化模拟闭环：斩妖任务锁定具体妖兽，死亡按等阶产出妖丹/妖材，NPC 上交换贡献，宗门兑换丹药/法器消耗库存，高阶尸骸生成机会点
 - `worldbuilding/wiki/README.md` —— 已敲定设定 Wiki 的导航与维护规则
 - `worldbuilding/wiki/rules/natural-death.md` —— NPC 自然死亡规则设定
 - `worldbuilding/wiki/rules/leader-succession.md` —— 掌门继任与无候选覆灭规则

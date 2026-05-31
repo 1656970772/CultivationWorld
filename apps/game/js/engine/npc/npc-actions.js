@@ -6,6 +6,21 @@
 import { ActionExecutor } from '../abstract/action.js';
 import { ActionPool } from '../pools/action-pool.js';
 import { ItemRegistry } from '../items/item-registry.js';
+import { applyQuestRewardProfile, describeQuestExtraRewards } from './quest-rewards.js';
+import {
+  donateMaterials,
+  factionNeedsMonsterExchangeMaterials,
+  missingFactionExchangeItems,
+  redeemExchangeItem,
+  useQiPill,
+  useBreakthroughPill,
+  grantItemAndMaybeEquip,
+} from './npc-economy.js';
+import {
+  describeMonsterDrops,
+  isMonsterHuntQuest,
+  settleMonsterHunt,
+} from '../monster/monster-resources.js';
 
 function getCultivationConfig(worldContext) {
   return worldContext.balanceConfig?.cultivation || {};
@@ -13,6 +28,60 @@ function getCultivationConfig(worldContext) {
 
 function getRiskConfig(worldContext) {
   return worldContext.balanceConfig?.risk || {};
+}
+
+function getEconomyConfig(worldContext) {
+  return worldContext.balanceConfig?.economy || {};
+}
+
+function isAliveMonster(monster) {
+  return !!monster && monster.alive !== false && monster.state?.get?.('alive') !== false;
+}
+
+function resolveQuestTargetMonster(entity, worldContext, difficulty) {
+  const registry = worldContext?.entityRegistry;
+  if (!registry) return null;
+
+  const lockedId = entity.state.get('questTargetMonsterId');
+  const locked = lockedId ? registry.getById?.(lockedId) : null;
+  if (isAliveMonster(locked)) return locked;
+
+  const monsters = typeof registry.getAliveByType === 'function'
+    ? registry.getAliveByType('monster').filter(m => m?.hasSpatial?.() || m?.spatial)
+    : [];
+  if (monsters.length === 0) return null;
+
+  const cfg = getEconomyConfig(worldContext)?.monsterResources || {};
+  const gap = cfg.retargetGradeGap ?? 2;
+  const qx = entity.state.get('questTargetX');
+  const qy = entity.state.get('questTargetY');
+  const here = (typeof qx === 'number' && typeof qy === 'number')
+    ? { x: qx, y: qy }
+    : (entity.spatial ? { x: entity.spatial.tileX, y: entity.spatial.tileY } : { x: 0, y: 0 });
+
+  const desired = Number(difficulty) || 1;
+  const sameBand = monsters.filter(m => Math.abs((m.grade || 1) - desired) <= gap);
+  const pool = sameBand.length > 0 ? sameBand : monsters;
+  let best = null;
+  let bestDist = Infinity;
+  for (const m of pool) {
+    const sp = m.spatial;
+    const x = sp?.tileX ?? sp?.x;
+    const y = sp?.tileY ?? sp?.y;
+    if (typeof x !== 'number' || typeof y !== 'number') continue;
+    const dist = Math.abs(x - here.x) + Math.abs(y - here.y);
+    if (dist < bestDist) {
+      bestDist = dist;
+      best = m;
+    }
+  }
+  if (best) {
+    entity.state.set('questTargetMonsterId', best.id);
+    const sp = best.spatial;
+    entity.state.set('questTargetX', sp.tileX ?? sp.x);
+    entity.state.set('questTargetY', sp.tileY ?? sp.y);
+  }
+  return best;
 }
 
 /** 按 [{weight}] 列表做加权随机，返回选中项（无有效权重返回首项/null） */
@@ -26,6 +95,59 @@ function weightedPickFrom(list) {
     if (roll < 0) return e;
   }
   return list[list.length - 1];
+}
+
+function gradedResourceValue(baseItemId, grade) {
+  const safeGrade = Math.max(1, Math.min(9, Math.floor(Number(grade) || 1)));
+  const itemId = `${baseItemId}_g${safeGrade}`;
+  const def = ItemRegistry.get(itemId) || ItemRegistry.get(baseItemId);
+  return Number(def?.properties?.value ?? def?.value ?? 0);
+}
+
+function expectedHuntMaterialValue(difficulty) {
+  const grade = Math.max(1, Math.min(9, Math.floor(Number(difficulty) || 1)));
+  return gradedResourceValue('monster_core', grade) + gradedResourceValue('beast_material', grade);
+}
+
+function monsterResourceGrade(itemId) {
+  const match = /_g(\d+)$/.exec(itemId || '');
+  if (match) return Math.max(1, Math.min(9, Number(match[1]) || 1));
+  if (itemId === 'beast_material') return 2;
+  if (itemId === 'monster_core') return 3;
+  return null;
+}
+
+function preferredHuntGrade(entity, worldContext) {
+  const missing = [
+    ...missingFactionExchangeItems(entity, worldContext, 'breakthrough_pill'),
+    ...missingFactionExchangeItems(entity, worldContext, 'artifact_low'),
+  ];
+  const grades = missing
+    .map(m => monsterResourceGrade(m.itemId))
+    .filter(g => Number.isFinite(g));
+  return grades.length > 0 ? Math.max(...grades) : null;
+}
+
+function pickQuestCandidate(entity, worldContext, available, opts = {}) {
+  if (!Array.isArray(available) || available.length === 0) return null;
+  const economy = getEconomyConfig(worldContext);
+  const needsHuntMaterials = factionNeedsMonsterExchangeMaterials(entity, worldContext);
+  const preferredGrade = preferredHuntGrade(entity, worldContext);
+  const weighted = available.map((candidate) => {
+    const hunt = isMonsterHuntQuest(candidate.quest.id, economy);
+    let weight = 1;
+    if (hunt) {
+      const gradeFit = preferredGrade
+        ? 1 / (1 + Math.abs(candidate.difficulty - preferredGrade))
+        : 0.5;
+      weight += 2 + expectedHuntMaterialValue(candidate.difficulty) / 500 + gradeFit * 10;
+      if (needsHuntMaterials || opts.forceMonsterHunt) weight += 8;
+    } else if (needsHuntMaterials) {
+      weight *= 0.25;
+    }
+    return { ...candidate, weight };
+  });
+  return weightedPickFrom(weighted);
 }
 
 /**
@@ -575,9 +697,12 @@ export class NPCAcceptQuestExecutor extends ActionExecutor {
     const maxDiff = rankMaxDifficulty[rankId] ?? 2;
 
     const { difficulties, questTypes, randomQuestSpawnChance } = questTemplates;
+    const forceMonsterHunt = action?.id === 'act_npc_accept_hunt_quest';
+    const economy = getEconomyConfig(worldContext);
 
     const available = [];
     for (const qt of questTypes) {
+      if (forceMonsterHunt && !isMonsterHuntQuest(qt.id, economy)) continue;
       const [minD, maxD] = qt.difficultyRange;
       const effectiveMax = Math.min(maxD, maxDiff);
       if (minD > effectiveMax) continue;
@@ -600,7 +725,7 @@ export class NPCAcceptQuestExecutor extends ActionExecutor {
       return { success: false, description: `${entity.name} 没有可接取的任务` };
     }
 
-    const picked = available[Math.floor(Math.random() * available.length)];
+    const picked = pickQuestCandidate(entity, worldContext, available, { forceMonsterHunt });
     const diffInfo = difficulties.find(d => d.level === picked.difficulty);
 
     entity.state.set('hasActiveQuest', true);
@@ -614,14 +739,16 @@ export class NPCAcceptQuestExecutor extends ActionExecutor {
     // 锁定任务发生地（固定坐标），弟子做任务时需先走过去
     let questLoc = null;
     if (typeof worldContext.resolveQuestLocation === 'function') {
-      questLoc = worldContext.resolveQuestLocation(entity, picked.quest);
+      questLoc = worldContext.resolveQuestLocation(entity, picked.quest, picked.difficulty);
     }
     if (questLoc && typeof questLoc.x === 'number') {
       entity.state.set('questTargetX', questLoc.x);
       entity.state.set('questTargetY', questLoc.y);
+      entity.state.set('questTargetMonsterId', questLoc.monsterId || null);
     } else {
       entity.state.set('questTargetX', null);
       entity.state.set('questTargetY', null);
+      entity.state.set('questTargetMonsterId', null);
     }
 
     const dist = (questLoc && entity.spatial)
@@ -630,6 +757,7 @@ export class NPCAcceptQuestExecutor extends ActionExecutor {
 
     return {
       success: true,
+      questTypeId: picked.quest.id,
       questType: picked.quest.name,
       difficulty: picked.difficulty,
       difficultyName: diffInfo?.name,
@@ -644,6 +772,7 @@ export class NPCDoQuestExecutor extends ActionExecutor {
   run(entity, worldContext, action) {
     const questTemplates = worldContext.questTemplates;
     const difficulty = entity.state.get('activeQuestDifficulty') || 1;
+    const questTypeId = entity.state.get('activeQuestTypeId');
     const questName = entity.state.get('activeQuestTypeName') || '任务';
     const diffName = entity.state.get('activeQuestDiffName') || '';
     const daysLeft = entity.state.get('questDaysRemaining') || 1;
@@ -674,6 +803,7 @@ export class NPCDoQuestExecutor extends ActionExecutor {
       return {
         success: false,
         outcome: 'death',
+        questTypeId,
         description: `${entity.name} 在执行${diffName}${questName}任务中殒命`,
       };
     }
@@ -689,11 +819,45 @@ export class NPCDoQuestExecutor extends ActionExecutor {
     }
 
     if (daysLeft <= 1) {
+      if (isMonsterHuntQuest(questTypeId, getEconomyConfig(worldContext))) {
+        const monster = resolveQuestTargetMonster(entity, worldContext, difficulty);
+        const hunt = settleMonsterHunt(entity, monster, worldContext);
+        if (!hunt.success) {
+          entity.state.set('questDaysRemaining', 0);
+          entity.state.set('questComplete', false);
+          entity.state.set('hasActiveQuest', false);
+          entity.state.set('questTargetMonsterId', null);
+          const reason = hunt.outcome === 'target_lost'
+            ? '目标妖兽已失踪'
+            : (hunt.outcome === 'death' ? '殒身' : '受创败退');
+          return {
+            success: false,
+            outcome: hunt.outcome,
+            questTypeId,
+            winChance: hunt.winChance,
+            description: `${entity.name} 执行${diffName}${questName}任务失败：${reason}`,
+          };
+        }
+        const lootDesc = describeMonsterDrops(hunt.drops);
+        entity.state.set('questDaysRemaining', 0);
+        entity.state.set('questComplete', true);
+        return {
+          success: true,
+          outcome: 'complete',
+          questTypeId,
+          monsterId: monster?.id || null,
+          monsterName: monster?.name || monster?.staticData?.name || null,
+          monsterDrops: hunt.drops,
+          description: `${entity.name} 完成了${diffName}${questName}任务，斩杀${monster?.name || '妖兽'}，取得${lootDesc}`,
+        };
+      }
+
       entity.state.set('questDaysRemaining', 0);
       entity.state.set('questComplete', true);
       return {
         success: true,
         outcome: 'complete',
+        questTypeId,
         description: `${entity.name} 完成了${diffName}${questName}任务`,
       };
     }
@@ -703,6 +867,7 @@ export class NPCDoQuestExecutor extends ActionExecutor {
     return {
       success: true,
       outcome: 'in_progress',
+      questTypeId,
       daysLeft: daysLeft - 1,
       description: `${entity.name} 正在执行${diffName}${questName}任务（剩余${daysLeft - 1}天）`,
     };
@@ -713,6 +878,7 @@ export class NPCTurnInQuestExecutor extends ActionExecutor {
   run(entity, worldContext, action) {
     const questTemplates = worldContext.questTemplates;
     const difficulty = entity.state.get('activeQuestDifficulty') || 1;
+    const questTypeId = entity.state.get('activeQuestTypeId');
     const questName = entity.state.get('activeQuestTypeName') || '任务';
     const diffName = entity.state.get('activeQuestDiffName') || '';
     const factionId = entity.state.get('factionId');
@@ -730,6 +896,7 @@ export class NPCTurnInQuestExecutor extends ActionExecutor {
     const rewardStones = isWanderer ? Math.round(baseReward * wandererBonus) : baseReward;
 
     let bountyOrgName = null;
+    let faction = null;
     if (isWanderer) {
       // 悬赏由悬赏阁/坊市垫付：从其库存扣除（不足则照常发放，视作公共平台兜底）
       const org = worldContext._resolveBountyOrgFor
@@ -741,13 +908,20 @@ export class NPCTurnInQuestExecutor extends ActionExecutor {
         if (orgStone > 0) org.inventory.remove('low_spirit_stone', Math.min(rewardStones, orgStone));
       }
     } else if (worldContext.entityRegistry) {
-      const faction = worldContext.entityRegistry.getById(factionId);
+      faction = worldContext.entityRegistry.getById(factionId);
       if (faction && faction.alive) {
         faction.inventory.add('low_spirit_stone', factionStones);
       }
     }
 
     entity.inventory.add('low_spirit_stone', rewardStones);
+    const extraRewards = applyQuestRewardProfile(
+      entity,
+      isWanderer ? null : faction,
+      questTemplates,
+      difficulty,
+      questTypeId,
+    );
 
     if (!isWanderer) {
       const contribution = entity.state.get('contribution') || 0;
@@ -768,20 +942,63 @@ export class NPCTurnInQuestExecutor extends ActionExecutor {
     entity.state.set('activeQuestDifficulty', 0);
     entity.state.set('activeQuestDiffName', null);
     entity.state.set('questDaysRemaining', 0);
+    entity.state.set('questTargetX', null);
+    entity.state.set('questTargetY', null);
+    entity.state.set('questTargetMonsterId', null);
 
     const description = isWanderer
       ? `${entity.name} 向${bountyOrgName || '悬赏阁'}交付了${diffName}${questName}悬赏，领取 ${rewardStones} 灵石`
       : `${entity.name} 交付了${diffName}${questName}任务，获得 ${rewardStones} 灵石、${rewardContribution} 贡献点，宗门获得 ${factionStones} 灵石`;
 
+    const extraDescription = describeQuestExtraRewards(extraRewards);
+
     return {
       success: true,
+      eventType: extraRewards.questItemReward > 0 ? 'quest_item_reward' : 'quest_turn_in',
       isWanderer,
       rewardStones,
       rewardContribution: isWanderer ? 0 : rewardContribution,
       factionStones: isWanderer ? 0 : factionStones,
+      extraRewards,
       bountyOrgName,
-      description,
+      description: `${description}${extraDescription}`,
     };
+  }
+}
+
+export class NPCDonateMaterialsExecutor extends ActionExecutor {
+  run(entity, worldContext, action) {
+    return donateMaterials(entity, worldContext);
+  }
+}
+
+export class NPCRedeemQiPillExecutor extends ActionExecutor {
+  run(entity, worldContext, action) {
+    return redeemExchangeItem(entity, worldContext, 'qi_pill');
+  }
+}
+
+export class NPCUseQiPillExecutor extends ActionExecutor {
+  run(entity, worldContext, action) {
+    return useQiPill(entity, worldContext);
+  }
+}
+
+export class NPCRedeemBreakthroughPillExecutor extends ActionExecutor {
+  run(entity, worldContext, action) {
+    return redeemExchangeItem(entity, worldContext, 'breakthrough_pill');
+  }
+}
+
+export class NPCUseBreakthroughPillExecutor extends ActionExecutor {
+  run(entity, worldContext, action) {
+    return useBreakthroughPill(entity, worldContext);
+  }
+}
+
+export class NPCRedeemArtifactExecutor extends ActionExecutor {
+  run(entity, worldContext, action) {
+    return redeemExchangeItem(entity, worldContext, 'artifact_low');
   }
 }
 
@@ -961,7 +1178,22 @@ export class NPCRaidTreasureExecutor extends ActionExecutor {
 export function rollAndGrantReward(entity, rewardCfg, sourceKey) {
   const outcomes = rewardCfg?.rewardsBySource?.[sourceKey]?.outcomes;
   const result = { outcome: null, qiGain: 0, grantedItems: [] };
-  if (!Array.isArray(outcomes) || outcomes.length === 0) return result;
+  if (!Array.isArray(outcomes) || outcomes.length === 0) {
+    const match = /^opportunity_corpse_g(\d+)$/.exec(sourceKey || '');
+    if (!match) return result;
+    const grade = Math.max(1, Math.min(9, Number(match[1]) || 1));
+    const materialId = ItemRegistry.has(`beast_material_g${grade}`) ? `beast_material_g${grade}` : 'beast_material';
+    const coreId = ItemRegistry.has(`monster_core_g${grade}`) ? `monster_core_g${grade}` : 'monster_core';
+    const materialQty = Math.max(1, Math.floor(grade / 3));
+    grantItemAndMaybeEquip(entity, materialId, materialQty);
+    result.grantedItems.push({ itemId: materialId, qty: materialQty });
+    if (Math.random() < Math.min(0.85, 0.25 + grade * 0.06)) {
+      grantItemAndMaybeEquip(entity, coreId, 1);
+      result.grantedItems.push({ itemId: coreId, qty: 1 });
+    }
+    result.outcome = { id: `corpse_grade_${grade}`, value: Math.min(1, grade / 9) };
+    return result;
+  }
   let roll = Math.random();
   let picked = outcomes[outcomes.length - 1];
   for (const o of outcomes) {
@@ -971,7 +1203,7 @@ export function rollAndGrantReward(entity, rewardCfg, sourceKey) {
   result.outcome = picked;
   if (picked.itemId) {
     const qty = picked.qty ?? 1;
-    entity.inventory.add(picked.itemId, qty);
+    grantItemAndMaybeEquip(entity, picked.itemId, qty);
     result.grantedItems.push({ itemId: picked.itemId, qty });
   } else if ((picked.value ?? 0) > 0) {
     const qiGain = Math.round(picked.value * 200);
@@ -1141,6 +1373,12 @@ export function registerNPCExecutors() {
   ActionPool.registerExecutor('npc_accept_quest', new NPCAcceptQuestExecutor());
   ActionPool.registerExecutor('npc_do_quest', new NPCDoQuestExecutor());
   ActionPool.registerExecutor('npc_turn_in_quest', new NPCTurnInQuestExecutor());
+  ActionPool.registerExecutor('npc_donate_materials', new NPCDonateMaterialsExecutor());
+  ActionPool.registerExecutor('npc_redeem_qi_pill', new NPCRedeemQiPillExecutor());
+  ActionPool.registerExecutor('npc_use_qi_pill', new NPCUseQiPillExecutor());
+  ActionPool.registerExecutor('npc_redeem_breakthrough_pill', new NPCRedeemBreakthroughPillExecutor());
+  ActionPool.registerExecutor('npc_use_breakthrough_pill', new NPCUseBreakthroughPillExecutor());
+  ActionPool.registerExecutor('npc_redeem_artifact', new NPCRedeemArtifactExecutor());
   ActionPool.registerExecutor('npc_hunt_enemy', new NPCHuntEnemyExecutor());
   ActionPool.registerExecutor('npc_kill_enemy', new NPCKillEnemyExecutor());
   // 流派分化行为（ADR-022/ADR-023）：夺宝/养老/传承/夺权。

@@ -208,7 +208,9 @@ export class BehaviorSystem {
     }
 
     const action = this.currentPlan[this.currentActionIndex];
-    const stateSnapshot = entity.state.toGOAPState();
+    const stateSnapshot = typeof entity.buildGOAPState === 'function'
+      ? entity.buildGOAPState(worldContext)
+      : entity.state.toGOAPState();
 
     // 仅在行为尚未启动时检查前置条件（启动后跨 tick 不再因临时状态变化中断移动）
     const lifecycleActive = this._lifecycle.phase !== 'idle' && this._lifecycle.actionId === action.id;
