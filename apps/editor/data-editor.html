@@ -58,6 +58,17 @@
 
       <aside class="detail-card-panel" aria-label="详情卡预留区">
         <section id="detail-card" class="detail-card"></section>
+
+        <!-- ADR-031：历史快照面板 -->
+        <section id="history-panel" class="history-panel" aria-label="历史快照">
+          <header class="history-header">
+            <button id="history-toggle" type="button" class="history-toggle" aria-label="折叠/展开">▼</button>
+            <h3>历史快照 (<span id="snapshot-count">0</span>)</h3>
+            <button id="prune-old-btn" type="button" class="secondary-btn compact" title="清空 30 天前的快照">清理</button>
+          </header>
+          <div id="history-list" class="history-list"></div>
+          <p class="history-hint">每次保存前自动备份。点「恢复此版本」会先把当前内容再备份一次再恢复（不丢中间态）。</p>
+        </section>
       </aside>
     </main>
   </div>

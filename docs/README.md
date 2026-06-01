@@ -2,7 +2,7 @@
 
 > 项目代号：WorldDynamic
 > 创建日期：2026-05-23
-> 最后更新：2026-06-01（核心引擎类重构 ADR-030）
+> 最后更新：2026-06-01（核心引擎类重构 ADR-030 + 编辑器 v2 重写 ADR-031）
 
 ## 文档结构
 
@@ -101,7 +101,8 @@ docs/
 │   ├── adr-027-relationship-network.md # ADR-027：关系网系统（NPC/妖兽/势力统一有向带类型关系图，事件驱动+可视化+存档）
 │   ├── adr-028-relationship-driven-decisions.md # ADR-028：关系驱动决策（关系边驱动 NPC Goal 护短/报恩/复仇 + 妖群协防/领地防御，goalsEnabled 默认开可回退）
 │   ├── adr-029-master-disciple-interactions.md # ADR-029：师徒互动（师傅传功/护徒、徒弟尽孝、继承遗志复仇+执念延续、夺舍轻度，复用二期架构）
-│   └── adr-030-core-class-refactor.md # ADR-030：核心引擎类重构（tick-manager/npc-actions/npc-entity 按职责拆分为服务/策略/协作者，对外接口不变，零漂移）
+│   └── adr-030-core-class-refactor.md   # ADR-030：核心引擎类重构（tick-manager/npc-actions/npc-entity 按职责拆分为服务/策略/协作者，对外接口不变，零漂移）
+│   └── adr-031-editor-rewrite-v2.md     # ADR-031：编辑器 v2 重写（适配 game/data 全部数据集 + 写回 + 快照回滚，自动扫描+schema 推断）
 ├── plans/
 │   └── implementation-plan.md         # 实施计划（6阶段 + 11个子Agent）
 └── superpowers/

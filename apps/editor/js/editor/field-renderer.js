@@ -54,6 +54,10 @@ export class FieldRenderer {
         return this.createOptions(field, item, onChange);
       case 'tileSummary':
         return this.createTileSummary(field, item, onChange);
+      case 'object':
+        return this.createObject(field, item, onChange);
+      case 'objectArray':
+        return this.createObjectArray(field, item, onChange);
       default:
         return this.createText(field, item, onChange);
     }
@@ -385,6 +389,152 @@ export class FieldRenderer {
       add.addEventListener('click', () => {
         options.push({ id: 'new_option', text: '新选项', cost: 0, effect: 'none' });
         setValueAtPath(item, field.path, options);
+        onChange({ rerender: true });
+      });
+      container.append(add);
+    };
+
+    renderRows();
+    return container;
+  }
+
+  /**
+   * 嵌套对象（ADR-031 schema-inferrer 推断 type=object）。
+   * 渲染为可折叠面板 + 递归 createControl。
+   * @param {{path:string,label:string,fields:Array}} field
+   * @param {Object} item 父对象（item[field.path] 是当前对象）
+   * @param {Function} onChange
+   */
+  createObject(field, item, onChange) {
+    const container = createElement('div', 'object-editor');
+    const value = getValueAtPath(item, field.path) || {};
+    // 写入 item：如果还没有，初始化为空对象
+    if (typeof value !== 'object' || Array.isArray(value)) {
+      setValueAtPath(item, field.path, {});
+    }
+
+    const header = createElement('div', 'object-header');
+    const toggle = createElement('button', 'object-toggle', '▾');
+    toggle.type = 'button';
+    const title = createElement('span', 'object-title', field.label);
+    header.append(toggle, title);
+
+    const body = createElement('div', 'object-body');
+    const fields = field.fields || [];
+    for (const sub of fields) {
+      body.append(this.renderField(sub, item, onChange));
+    }
+    if (fields.length === 0) {
+      body.append(createElement('p', 'object-empty', '（无子字段）'));
+    }
+
+    toggle.addEventListener('click', () => {
+      const collapsed = body.style.display === 'none';
+      body.style.display = collapsed ? '' : 'none';
+      toggle.textContent = collapsed ? '▾' : '▸';
+    });
+
+    container.append(header, body);
+    return container;
+  }
+
+  /**
+   * 对象数组（ADR-031 schema-inferrer 推断 type=objectArray）。
+   * 渲染为表格行，每行是对象的一个实例。
+   * @param {{path:string,label:string,itemFields:Array}} field
+   * @param {Object} item 父对象（item[field.path] 是数组）
+   * @param {Function} onChange
+   */
+  createObjectArray(field, item, onChange) {
+    const arr = getValueAtPath(item, field.path) || [];
+    if (!Array.isArray(arr)) {
+      setValueAtPath(item, field.path, []);
+    }
+    const container = createElement('div', 'object-array-editor');
+
+    const renderRows = () => {
+      container.replaceChildren();
+      const itemFields = field.itemFields || [];
+      arr.forEach((row, index) => {
+        const wrap = createElement('div', 'object-array-row');
+        const head = createElement('div', 'object-array-row-head');
+        const title = createElement('span', 'object-array-row-title', `#${index + 1}`);
+        const moveUp = createElement('button', 'icon-btn', '↑');
+        const moveDown = createElement('button', 'icon-btn', '↓');
+        const remove = createElement('button', 'icon-btn danger', '删');
+        head.append(title, moveUp, moveDown, remove);
+
+        const body = createElement('div', 'object-array-row-body');
+        for (const sub of itemFields) {
+          body.append(this.renderField(sub, row, onChange));
+        }
+        if (itemFields.length === 0) {
+          // 没有推断字段（样本太小），用 JSON 编辑
+          const json = createElement('textarea', 'textarea code-editor');
+          json.rows = 4;
+          json.spellcheck = false;
+          json.value = JSON.stringify(row, null, 2);
+          json.addEventListener('input', () => {
+            try {
+              const parsed = JSON.parse(json.value || 'null');
+              arr[index] = parsed;
+              setValueAtPath(item, field.path, arr);
+              json.classList.remove('invalid');
+              onChange();
+            } catch { json.classList.add('invalid'); }
+          });
+          body.append(json);
+        }
+
+        moveUp.type = 'button';
+        moveDown.type = 'button';
+        remove.type = 'button';
+        moveUp.addEventListener('click', () => {
+          if (index === 0) return;
+          [arr[index - 1], arr[index]] = [arr[index], arr[index - 1]];
+          setValueAtPath(item, field.path, arr);
+          onChange({ rerender: true });
+        });
+        moveDown.addEventListener('click', () => {
+          if (index === arr.length - 1) return;
+          [arr[index + 1], arr[index]] = [arr[index], arr[index + 1]];
+          setValueAtPath(item, field.path, arr);
+          onChange({ rerender: true });
+        });
+        remove.addEventListener('click', () => {
+          arr.splice(index, 1);
+          setValueAtPath(item, field.path, arr);
+          onChange({ rerender: true });
+        });
+
+        wrap.append(head, body);
+        container.append(wrap);
+      });
+
+      const add = createElement('button', 'secondary-btn compact', '添加一项');
+      add.type = 'button';
+      add.addEventListener('click', () => {
+        // 复制第一行作为模板，否则空对象
+        let next;
+        if (arr.length > 0) {
+          next = JSON.parse(JSON.stringify(arr[0]));
+          // 去掉 id/unique 字段以避免冲突
+          if ('id' in next) delete next.id;
+        } else {
+          next = {};
+          // 按 itemFields 给个空模板
+          for (const sub of (field.itemFields || [])) {
+            if (sub.type === 'number' || sub.type === 'range') next[sub.path] = 0;
+            else if (sub.type === 'boolean') next[sub.path] = false;
+            else if (sub.type === 'text' || sub.type === 'textarea') next[sub.path] = '';
+            else if (sub.type === 'tags') next[sub.path] = [];
+            else if (sub.type === 'object') next[sub.path] = {};
+            else if (sub.type === 'objectArray') next[sub.path] = [];
+            else next[sub.path] = null;
+          }
+        }
+        arr.push(next);
+        setValueAtPath(item, field.path, arr);
         onChange({ rerender: true });
       });
       container.append(add);

@@ -1,24 +1,38 @@
-import { DataStore } from './data-store.js';
+/**
+ * DataEditorApp —— 编辑器主应用（ADR-031 重写版）
+ *
+ * 数据源：DataStore（自动扫描 game/data + 写回 + 快照）。
+ * Schema：DataStore.listDatasets() 返回 Dataset 元信息；编辑器不依赖 schema-registry 硬编码。
+ * 字段推断：用 schema-inferrer 从样本 JSON 推断 FieldDef 树。
+ *
+ * 主要 UI：
+ * - 左侧卷宗导航（按 category 分组）
+ * - 中间记录列表
+ * - 右侧表单（递归渲染 FieldDef）
+ * - 详情卡（预留）
+ * - 顶部历史快照面板（可折叠）
+ *
+ * 跨平台：所有数据 IO 走 DataStore；DataStore 内部按 Tauri/FSA/Node 适配。
+ */
+import { DataStore, stableStringify } from './data-store.js';
 import { FieldRenderer, createElement } from './field-renderer.js';
-import {
-  DATASET_ORDER,
-  DATASET_SCHEMAS,
-  cloneEmptyItem,
-  getDatasetSchema,
-  getSchemaKey
-} from './schema-registry.js';
-import { validateAllData } from './validation.js';
+import { inferSchema } from './schema-inferrer.js';
+import { scanDatasets } from './dataset-scanner.js';
 
 class DataEditorApp {
   constructor() {
-    this.store = new DataStore(DATASET_SCHEMAS);
-    this.datasets = {};
-    this.issues = [];
+    this.store = new DataStore();
+    /** @type {Dataset[]} */
+    this.datasets = [];
+    /** @type {Record<string, any>} key → 已加载数据 */
+    this.data = {};
+    /** @type {Record<string, SchemaTree>} key → 推断的 schema 树 */
+    this.schemas = {};
     this.dirtyDatasets = new Set();
-    this.activeDataset = 'factions';
+    this.activeDataset = null;
     this.selectedIndex = 0;
     this.searchText = '';
-    this.fieldRenderer = new FieldRenderer(this.datasets);
+    this.fieldRenderer = new FieldRenderer(this.data);
 
     this.elements = {
       sourceLabel: document.getElementById('source-label'),
@@ -38,13 +52,23 @@ class DataEditorApp {
       saveAllBtn: document.getElementById('save-all-btn'),
       addRecordBtn: document.getElementById('add-record-btn'),
       duplicateRecordBtn: document.getElementById('duplicate-record-btn'),
-      deleteRecordBtn: document.getElementById('delete-record-btn')
+      deleteRecordBtn: document.getElementById('delete-record-btn'),
+      // 新的（ADR-031）
+      historyPanel: document.getElementById('history-panel'),
+      historyToggle: document.getElementById('history-toggle'),
+      historyList: document.getElementById('history-list'),
+      snapshotCount: document.getElementById('snapshot-count'),
+      pruneOldBtn: document.getElementById('prune-old-btn'),
     };
   }
 
   async init() {
     this.bindEvents();
-    await this.reloadData();
+    try {
+      await this.reloadData();
+    } catch (e) {
+      this.toast(e.message, 'error');
+    }
   }
 
   bindEvents() {
@@ -52,7 +76,6 @@ class DataEditorApp {
       this.searchText = this.elements.recordSearch.value.trim().toLowerCase();
       this.renderRecordList();
     });
-
     this.elements.pickDirBtn.addEventListener('click', () => this.pickDirectory());
     this.elements.reloadBtn.addEventListener('click', () => this.reloadData());
     this.elements.saveDatasetBtn.addEventListener('click', () => this.saveActiveDataset());
@@ -60,20 +83,44 @@ class DataEditorApp {
     this.elements.addRecordBtn.addEventListener('click', () => this.addRecord());
     this.elements.duplicateRecordBtn.addEventListener('click', () => this.duplicateRecord());
     this.elements.deleteRecordBtn.addEventListener('click', () => this.deleteRecord());
+    if (this.elements.historyToggle) {
+      this.elements.historyToggle.addEventListener('click', () => this.toggleHistoryPanel());
+    }
+    if (this.elements.pruneOldBtn) {
+      this.elements.pruneOldBtn.addEventListener('click', () => this.pruneOldSnapshots());
+    }
   }
 
   async reloadData() {
+    this.setBusy(true);
     try {
-      this.setBusy(true);
-      this.datasets = await this.store.loadAll();
-      this.fieldRenderer.updateDatasets(this.datasets);
-      this.runValidation();
-      this.selectedIndex = 0;
+      this.datasets = await this.store.listDatasets();
+      if (this.datasets.length === 0) {
+        this.toast('未发现任何 JSON 数据集，请检查 game/data 路径。', 'error');
+        this.renderAll();
+        return;
+      }
+      // 加载全部数据 + 推断 schema
+      this.data = {};
+      this.schemas = {};
+      for (const d of this.datasets) {
+        try {
+          const info = await this.store.loadDataset(d.key);
+          this.data[d.key] = info.data;
+          this.schemas[d.key] = inferSchema(info.data);
+        } catch (e) {
+          console.warn(`load ${d.key} failed`, e);
+          this.data[d.key] = null;
+        }
+      }
+      this.fieldRenderer.updateDatasets(this.data);
       this.dirtyDatasets.clear();
+      if (!this.activeDataset || !this.datasets.find(d => d.key === this.activeDataset)) {
+        this.activeDataset = this.datasets[0].key;
+      }
+      this.selectedIndex = 0;
       this.renderAll();
-      this.toast('数据已加载。');
-    } catch (error) {
-      this.toast(error.message, 'error');
+      this.toast(`已加载 ${this.datasets.length} 个数据集。`);
     } finally {
       this.setBusy(false);
     }
@@ -82,88 +129,87 @@ class DataEditorApp {
   async pickDirectory() {
     try {
       this.setBusy(true);
-      const pickedDatasets = await this.store.pickProjectDirectory();
-      if (pickedDatasets === null) return;
-      this.datasets = pickedDatasets;
-      this.fieldRenderer.updateDatasets(this.datasets);
-      this.runValidation();
-      this.selectedIndex = 0;
-      this.dirtyDatasets.clear();
-      this.renderAll();
-      this.toast('已打开项目。');
-    } catch (error) {
-      this.toast(error.message, 'error');
+      await this.store.pickProjectDirectory();
+      await this.reloadData();
+    } catch (e) {
+      this.toast(e.message, 'error');
     } finally {
       this.setBusy(false);
     }
   }
 
   renderAll() {
-    this.elements.sourceLabel.textContent = this.store.sourceLabel;
+    this.elements.sourceLabel.textContent = this.store.sourceLabel || '未打开项目';
     this.renderDatasetNav();
     this.renderRecordList();
     this.renderEditor();
-    this.renderDetailCard();
+    this.renderHistoryPanel();
     this.updateActionState();
   }
 
   renderDatasetNav() {
     this.elements.datasetNav.replaceChildren();
-
-    for (const datasetKey of DATASET_ORDER) {
-      const schema = getDatasetSchema(datasetKey);
-      const count = this.getDatasetCount(datasetKey);
-      const issueCount = this.countIssues(datasetKey);
-      const button = createElement('button', datasetKey === this.activeDataset ? 'dataset-tab active' : 'dataset-tab');
-      button.type = 'button';
-
-      const icon = createElement('span', 'dataset-icon', schema.icon);
-      const textWrap = createElement('span', 'dataset-tab-text');
-      const label = createElement('span', 'dataset-label', schema.label);
-      const meta = createElement('span', 'dataset-meta', `${count} 条`);
-      textWrap.append(label, meta);
-
-      const markers = createElement('span', 'dataset-markers');
-      if (this.dirtyDatasets.has(datasetKey)) {
-        markers.append(createElement('span', 'dirty-dot', '改'));
+    // 按 category 分组
+    const groups = new Map();
+    for (const d of this.datasets) {
+      if (!groups.has(d.category)) groups.set(d.category, []);
+      groups.get(d.category).push(d);
+    }
+    const categoryLabels = {
+      balance: '数值平衡',
+      actions: '行为定义',
+      config: '引擎配置',
+      data: '静态数据',
+      definitions: '老定义',
+      entities: '老实体',
+      world: '世界/地图',
+      quests: '任务',
+      other: '其他',
+    };
+    for (const [cat, ds] of groups) {
+      const header = createElement('div', 'dataset-group-header', categoryLabels[cat] || cat);
+      this.elements.datasetNav.append(header);
+      for (const d of ds) {
+        const button = createElement('button', d.key === this.activeDataset ? 'dataset-tab active' : 'dataset-tab');
+        button.type = 'button';
+        const count = this.getDatasetCount(d.key);
+        const textWrap = createElement('span', 'dataset-tab-text');
+        textWrap.append(
+          createElement('span', 'dataset-label', d.label),
+          createElement('span', 'dataset-meta', `${count} 条${d.isLarge ? ' · 大' : ''}`)
+        );
+        const markers = createElement('span', 'dataset-markers');
+        if (this.dirtyDatasets.has(d.key)) markers.append(createElement('span', 'dirty-dot', '改'));
+        button.append(textWrap, markers);
+        button.addEventListener('click', () => this.selectDataset(d.key));
+        this.elements.datasetNav.append(button);
       }
-      if (issueCount > 0) {
-        markers.append(createElement('span', 'issue-dot', String(issueCount)));
-      }
-
-      button.append(icon, textWrap, markers);
-      button.addEventListener('click', () => this.selectDataset(datasetKey));
-      this.elements.datasetNav.append(button);
     }
   }
 
   renderRecordList() {
-    const schema = this.activeSchema;
     const list = this.elements.recordList;
     list.replaceChildren();
-
+    if (!this.activeDataset) {
+      list.append(createElement('div', 'empty-state', '请选择一个数据集'));
+      return;
+    }
     const records = this.getVisibleRecords();
     if (records.length === 0) {
       list.append(createElement('div', 'empty-state', '没有匹配记录'));
       return;
     }
-
     for (const record of records) {
-      const item = record.item;
       const button = createElement('button', record.index === this.selectedIndex ? 'record-item active' : 'record-item');
       button.type = 'button';
-      const title = createElement('span', 'record-name', this.getRecordName(schema, item, record.index));
-      const meta = createElement('span', 'record-meta', schema.summary ? schema.summary(item) : getSchemaKey(schema, item));
-      const issues = this.countIssues(`${this.activeDataset}[${record.index}]`);
-      button.append(title, meta);
-      if (issues > 0) {
-        button.append(createElement('span', 'record-issue', String(issues)));
-      }
+      button.append(
+        createElement('span', 'record-name', this.getRecordName(record.item, record.index)),
+        createElement('span', 'record-meta', this.getRecordSummary(record.item))
+      );
       button.addEventListener('click', () => {
         this.selectedIndex = record.index;
         this.renderRecordList();
         this.renderEditor();
-        this.renderDetailCard();
         this.updateActionState();
       });
       list.append(button);
@@ -171,43 +217,146 @@ class DataEditorApp {
   }
 
   renderEditor() {
-    const schema = this.activeSchema;
+    if (!this.activeDataset) {
+      this.elements.formFields.replaceChildren();
+      this.elements.recordTitle.textContent = '未选择数据集';
+      this.elements.recordSubtitle.textContent = '';
+      this.elements.datasetKicker.textContent = '';
+      return;
+    }
+    const ds = this.datasets.find(d => d.key === this.activeDataset);
+    const schema = this.schemas[this.activeDataset];
     const item = this.activeItem;
-    const hasRecord = this.hasActiveRecord;
-
-    this.elements.datasetKicker.textContent = `${schema.label} · ${schema.file}`;
-    this.elements.recordTitle.textContent = hasRecord ? this.getRecordName(schema, item, this.selectedIndex) : '暂无记录';
-    this.elements.recordSubtitle.textContent = hasRecord ? schema.description : '点击“新增”创建第一条记录。';
+    this.elements.datasetKicker.textContent = `${ds.label} · ${ds.relativePath}`;
+    this.elements.recordTitle.textContent = this.hasActiveRecord ? this.getRecordName(item, this.selectedIndex) : '暂无记录';
+    this.elements.recordSubtitle.textContent = ds.isLarge ? '⚠ 大文件，仅展示摘要' : (this.hasActiveRecord ? '' : '点击「新增」创建第一条记录');
     this.elements.dirtyIndicator.textContent = this.dirtyDatasets.has(this.activeDataset) ? '有未保存修改' : '未修改';
     this.elements.dirtyIndicator.classList.toggle('dirty', this.dirtyDatasets.has(this.activeDataset));
 
     this.elements.formFields.replaceChildren();
-    if (!hasRecord) {
-      this.elements.formFields.append(createElement('div', 'empty-state', '当前卷宗暂无记录。'));
+    if (!this.hasActiveRecord) {
+      this.elements.formFields.append(createElement('div', 'empty-state', '当前数据集暂无记录。'));
       return;
     }
 
-    for (const field of schema.fields || []) {
-      this.elements.formFields.append(this.fieldRenderer.renderField(field, item, (options = {}) => {
-        this.markDirty(this.activeDataset);
-        this.runValidation();
-        if (options.rerender) {
-          this.renderEditor();
-        }
-        this.renderDatasetNav();
-        this.renderDetailCard();
-        this.updateActionState();
-      }));
+    if (schema?.rootType === 'object' && schema.rootFields.length > 0) {
+      // 顶层 object：把 item 当作 root 渲染
+      for (const field of schema.rootFields) {
+        this.elements.formFields.append(this.fieldRenderer.renderField(field, item, (options = {}) => {
+          this.markDirty(this.activeDataset);
+          if (options.rerender) this.renderEditor();
+          this.renderDatasetNav();
+        }));
+      }
+    } else if (schema?.rootType === 'objectArray' && schema.itemFields.length > 0) {
+      // 顶层 array：把 schema.itemFields 渲染到当前 item
+      for (const field of schema.itemFields) {
+        this.elements.formFields.append(this.fieldRenderer.renderField(field, item, (options = {}) => {
+          this.markDirty(this.activeDataset);
+          if (options.rerender) this.renderEditor();
+          this.renderDatasetNav();
+        }));
+      }
+    } else {
+      // 复杂/超深嵌套：回退 JSON 编辑
+      this.elements.formFields.append(this.fallbackJsonEditor());
     }
   }
 
-  renderDetailCard() {
-    const placeholder = createElement('div', 'detail-card-empty');
-    placeholder.append(
-      createElement('strong', '', '详情卡预留区'),
-      createElement('span', '', '后续用于角色卡、势力卡、地图卡')
-    );
-    this.elements.detailCard.replaceChildren(placeholder);
+  fallbackJsonEditor() {
+    const wrapper = createElement('div', 'json-fallback');
+    const note = createElement('p', 'json-fallback-note', '该数据集结构复杂或无法自动推断，回退到 JSON 文本编辑。');
+    const ta = createElement('textarea', 'textarea code-editor');
+    ta.spellcheck = false;
+    ta.rows = 20;
+    ta.value = stableStringify(this.activeItem || {});
+    ta.addEventListener('input', () => {
+      try {
+        const parsed = JSON.parse(ta.value || 'null');
+        // 写回 this.data[this.activeDataset]（顶层 array 的话写回对应索引）
+        const data = this.data[this.activeDataset];
+        if (Array.isArray(data)) data[this.selectedIndex] = parsed;
+        else this.data[this.activeDataset] = parsed;
+        ta.classList.remove('invalid');
+        this.markDirty(this.activeDataset);
+        this.renderDatasetNav();
+      } catch { ta.classList.add('invalid'); }
+    });
+    wrapper.append(note, ta);
+    return wrapper;
+  }
+
+  renderHistoryPanel() {
+    if (!this.elements.historyList) return;
+    const list = this.elements.historyList;
+    list.replaceChildren();
+    if (!this.activeDataset) {
+      if (this.elements.snapshotCount) this.elements.snapshotCount.textContent = '0';
+      return;
+    }
+    const snaps = this.store.listSnapshots(this.activeDataset) || [];
+    if (this.elements.snapshotCount) this.elements.snapshotCount.textContent = String(snaps.length);
+    if (snaps.length === 0) {
+      list.append(createElement('div', 'empty-state', '暂无快照（首次保存后生成）'));
+      return;
+    }
+    for (const s of snaps) {
+      const row = createElement('div', 'history-row');
+      const meta = createElement('div', 'history-meta');
+      meta.append(
+        createElement('strong', '', this.formatTs(s.ts)),
+        createElement('span', '', ` · ${s.size}B · ${s.byteHash}`)
+      );
+      const restoreBtn = createElement('button', 'secondary-btn compact', '恢复此版本');
+      restoreBtn.type = 'button';
+      restoreBtn.addEventListener('click', () => this.restoreSnapshot(s.name));
+      row.append(meta, restoreBtn);
+      list.append(row);
+    }
+  }
+
+  toggleHistoryPanel() {
+    if (!this.elements.historyPanel) return;
+    const collapsed = this.elements.historyPanel.classList.toggle('collapsed');
+    if (this.elements.historyToggle) this.elements.historyToggle.textContent = collapsed ? '▶' : '▼';
+  }
+
+  async restoreSnapshot(snapshotName) {
+    if (!this.activeDataset) return;
+    if (!window.confirm(`确定把「${this.activeDataset}」恢复到快照 ${snapshotName} 吗？\n\n当前内容会自动备份为新快照。`)) return;
+    try {
+      this.setBusy(true);
+      // 先把当前 in-memory 改动写回 game/data（如果是 dirty），触发最新快照
+      if (this.dirtyDatasets.has(this.activeDataset)) {
+        await this.store.saveDataset(this.activeDataset, this.data[this.activeDataset]);
+        this.dirtyDatasets.delete(this.activeDataset);
+      }
+      const r = await this.store.restoreDataset(this.activeDataset, snapshotName);
+      // 重新加载
+      const info = await this.store.loadDataset(this.activeDataset);
+      this.data[this.activeDataset] = info.data;
+      this.schemas[this.activeDataset] = inferSchema(info.data);
+      this.renderAll();
+      this.toast(`已恢复。新备份：${r.newSnapshot?.name || '无'}`);
+    } catch (e) {
+      this.toast(`恢复失败：${e.message}`, 'error');
+    } finally {
+      this.setBusy(false);
+    }
+  }
+
+  async pruneOldSnapshots() {
+    if (!this.activeDataset) return;
+    if (!window.confirm('清空当前数据集超过 30 天的快照？')) return;
+    const n = this.store.pruneSnapshots(this.activeDataset, 30);
+    this.toast(`已清理 ${n} 个过期快照`);
+    this.renderHistoryPanel();
+  }
+
+  formatTs(ts) {
+    if (!(ts instanceof Date)) ts = new Date(ts);
+    const pad = (n) => String(n).padStart(2, '0');
+    return `${ts.getFullYear()}-${pad(ts.getMonth() + 1)}-${pad(ts.getDate())} ${pad(ts.getHours())}:${pad(ts.getMinutes())}:${pad(ts.getSeconds())}`;
   }
 
   selectDataset(datasetKey) {
@@ -218,44 +367,65 @@ class DataEditorApp {
     this.renderAll();
   }
 
-  addRecord() {
-    const schema = this.activeSchema;
-    if (schema.collection !== 'array') return;
+  get activeItem() {
+    if (!this.activeDataset) return null;
+    const data = this.data[this.activeDataset];
+    if (Array.isArray(data)) return data[this.selectedIndex] || null;
+    return data;
+  }
 
-    const nextItem = cloneEmptyItem(schema);
-    this.assignUniqueKey(nextItem, schema);
-    this.datasets[this.activeDataset].push(nextItem);
-    this.selectedIndex = this.datasets[this.activeDataset].length - 1;
+  get hasActiveRecord() {
+    if (!this.activeDataset) return false;
+    const data = this.data[this.activeDataset];
+    if (Array.isArray(data)) return data.length > 0 && this.selectedIndex >= 0 && this.selectedIndex < data.length;
+    return data != null;
+  }
+
+  get isArrayDataset() {
+    if (!this.activeDataset) return false;
+    return Array.isArray(this.data[this.activeDataset]);
+  }
+
+  addRecord() {
+    if (!this.isArrayDataset) return;
+    const schema = this.schemas[this.activeDataset];
+    let next = {};
+    if (schema?.itemFields?.length) {
+      for (const f of schema.itemFields) {
+        if (f.path === 'id') {
+          next.id = `${this.activeDataset.replace(/[\/]/g, '_')}_new_${Date.now().toString(36)}`;
+        } else if (f.type === 'number' || f.type === 'range') next[f.path] = 0;
+        else if (f.type === 'boolean') next[f.path] = false;
+        else if (f.type === 'text' || f.type === 'textarea') next[f.path] = '';
+        else if (f.type === 'tags') next[f.path] = [];
+        else if (f.type === 'object') next[f.path] = {};
+        else if (f.type === 'objectArray') next[f.path] = [];
+      }
+    }
+    this.data[this.activeDataset].push(next);
+    this.selectedIndex = this.data[this.activeDataset].length - 1;
     this.markDirty(this.activeDataset);
-    this.runValidation();
     this.renderAll();
   }
 
   duplicateRecord() {
-    const schema = this.activeSchema;
-    if (schema.collection !== 'array' || !this.hasActiveRecord) return;
-
+    if (!this.isArrayDataset || !this.hasActiveRecord) return;
     const copy = JSON.parse(JSON.stringify(this.activeItem));
-    this.assignUniqueKey(copy, schema);
-    if (copy.name) copy.name = `${copy.name} 副本`;
-    this.datasets[this.activeDataset].push(copy);
-    this.selectedIndex = this.datasets[this.activeDataset].length - 1;
+    if (copy.id) copy.id = `${copy.id}_copy`;
+    this.data[this.activeDataset].push(copy);
+    this.selectedIndex = this.data[this.activeDataset].length - 1;
     this.markDirty(this.activeDataset);
-    this.runValidation();
     this.renderAll();
   }
 
   deleteRecord() {
-    const schema = this.activeSchema;
-    if (schema.collection !== 'array' || !this.hasActiveRecord) return;
+    if (!this.isArrayDataset || !this.hasActiveRecord) return;
     const item = this.activeItem;
-    const name = this.getRecordName(schema, item, this.selectedIndex);
+    const name = this.getRecordName(item, this.selectedIndex);
     if (!window.confirm(`确定删除「${name}」吗？`)) return;
-
-    this.datasets[this.activeDataset].splice(this.selectedIndex, 1);
+    this.data[this.activeDataset].splice(this.selectedIndex, 1);
     this.selectedIndex = Math.max(0, this.selectedIndex - 1);
     this.markDirty(this.activeDataset);
-    this.runValidation();
     this.renderAll();
   }
 
@@ -264,87 +434,53 @@ class DataEditorApp {
   }
 
   async saveAllDatasets() {
-    const errors = this.issues.filter((issue) => issue.severity === 'error');
-    if (errors.length > 0 && !window.confirm(`当前共有 ${errors.length} 个错误，仍然保存全部数据吗？`)) {
+    if (this.dirtyDatasets.size === 0) {
+      this.toast('没有未保存的修改');
       return;
     }
-
+    if (!window.confirm(`将覆盖写入 ${this.dirtyDatasets.size} 个数据集到 game/data（每次保存前会自动备份）。继续？`)) return;
     try {
       this.setBusy(true);
-      const results = await this.store.saveAll(this.datasets);
-      const wroteFiles = results.every((result) => this.isWriteBackResult(result));
-      if (wroteFiles) {
-        this.dirtyDatasets.clear();
-        const backupResult = results.find((result) => result.mode === 'tauri' && result.backupPath);
-        this.toast(`全部数据已写回文件${this.getBackupHint(backupResult)}。`);
-      } else {
-        this.toast('浏览器未授权目录，已逐个下载 JSON。');
+      let ok = 0, fail = 0;
+      for (const key of this.dirtyDatasets) {
+        try {
+          await this.store.saveDataset(key, this.data[key]);
+          this.dirtyDatasets.delete(key);
+          ok++;
+        } catch (e) {
+          this.toast(`保存 ${key} 失败：${e.message}`, 'error');
+          fail++;
+        }
       }
+      this.toast(`已保存 ${ok} 个${fail ? `, ${fail} 个失败` : ''}`);
       this.renderAll();
-    } catch (error) {
-      this.toast(error.message, 'error');
     } finally {
       this.setBusy(false);
     }
   }
 
   async saveDataset(datasetKey) {
-    const activeErrors = this.issues.filter((issue) =>
-      issue.severity === 'error' && issue.path.startsWith(datasetKey)
-    );
-    if (activeErrors.length > 0 && !window.confirm(`当前卷宗有 ${activeErrors.length} 个错误，仍然保存吗？`)) {
-      return;
-    }
-
+    if (!datasetKey) return;
+    if (!window.confirm(`将覆盖写入「${datasetKey}」到 game/data（写前自动备份）。继续？`)) return;
     try {
       this.setBusy(true);
-      const result = await this.store.saveDataset(datasetKey, this.datasets[datasetKey]);
-      if (this.isWriteBackResult(result)) {
-        this.dirtyDatasets.delete(datasetKey);
-        this.toast(`${result.fileName} 已写回文件${this.getBackupHint(result)}。`);
-      } else {
-        this.toast(`${result.fileName} 已下载，原文件未自动覆盖。`);
-      }
+      const r = await this.store.saveDataset(datasetKey, this.data[datasetKey]);
+      this.dirtyDatasets.delete(datasetKey);
+      this.toast(`已保存（备份：${r.snapshot?.name || '首次'}）`);
       this.renderAll();
-    } catch (error) {
-      this.toast(error.message, 'error');
+    } catch (e) {
+      this.toast(`保存失败：${e.message}`, 'error');
     } finally {
       this.setBusy(false);
     }
   }
 
-  runValidation() {
-    this.issues = validateAllData(this.datasets, DATASET_SCHEMAS);
-  }
-
-  get activeSchema() {
-    return getDatasetSchema(this.activeDataset);
-  }
-
-  get activeItem() {
-    const data = this.datasets[this.activeDataset];
-    if (Array.isArray(data)) {
-      return data[this.selectedIndex] || data[0] || null;
-    }
-    return data || {};
-  }
-
-  get hasActiveRecord() {
-    const data = this.datasets[this.activeDataset];
-    if (Array.isArray(data)) {
-      return data.length > 0 && this.selectedIndex >= 0 && this.selectedIndex < data.length;
-    }
-    return data != null;
-  }
-
   getVisibleRecords() {
-    const schema = this.activeSchema;
-    const data = this.datasets[this.activeDataset];
-
+    const data = this.data[this.activeDataset];
     if (!Array.isArray(data)) {
-      return [{ index: 0, item: data || {} }];
+      if (data == null) return [];
+      return [{ index: 0, item: data }];
     }
-
     return data
       .map((item, index) => ({ item, index }))
       .filter((record) => {
@@ -354,64 +490,40 @@ class DataEditorApp {
           record.item.type,
           record.item.name,
           record.item.description,
-          schema.summary ? schema.summary(record.item) : ''
         ].filter(Boolean).join(' ').toLowerCase();
         return haystack.includes(this.searchText);
       });
   }
 
-  getDatasetCount(datasetKey) {
-    const data = this.datasets[datasetKey];
+  getDatasetCount(key) {
+    const data = this.data[key];
     if (Array.isArray(data)) return data.length;
-    if (data?.tiles) return data.tiles.length;
+    if (data && typeof data === 'object' && Array.isArray(data.tiles)) return data.tiles.length;
     return data ? 1 : 0;
   }
 
-  getRecordName(schema, item, index) {
+  getRecordName(item, index) {
     if (!item) return '空记录';
-    return item.name || item.id || item.type || `${schema.itemName || '记录'} ${index + 1}`;
+    return item.name || item.id || item.type || `记录 ${index + 1}`;
   }
 
-  countIssues(pathPrefix) {
-    return this.issues.filter((issue) => issue.path.startsWith(pathPrefix)).length;
+  getRecordSummary(item) {
+    if (!item) return '';
+    if (item.type) return String(item.type);
+    if (item.id) return String(item.id);
+    return '';
   }
 
-  assignUniqueKey(item, schema) {
-    if (!schema.keyField) return;
-    const existing = new Set((this.datasets[this.activeDataset] || []).map((entry) => entry[schema.keyField]));
-    const rawBase = item[schema.keyField] || `${this.activeDataset}_new`;
-    const base = rawBase.replace(/_\d+$/, '');
-    let candidate = rawBase;
-    let index = 1;
-    while (existing.has(candidate)) {
-      candidate = `${base}_${String(index).padStart(3, '0')}`;
-      index++;
-    }
-    item[schema.keyField] = candidate;
-  }
-
-  markDirty(datasetKey) {
-    this.dirtyDatasets.add(datasetKey);
-  }
-
-  isWriteBackResult(result) {
-    return result.mode === 'file' || result.mode === 'tauri';
-  }
-
-  getBackupHint(result) {
-    if (result?.mode !== 'tauri' || !result.backupPath) return '';
-    const backupFile = String(result.backupPath).split(/[\\/]/).pop();
-    return backupFile ? `（已备份：${backupFile}）` : '（已备份）';
+  markDirty(key) {
+    if (key) this.dirtyDatasets.add(key);
   }
 
   updateActionState() {
-    const schema = this.activeSchema;
-    const isArray = schema.collection === 'array';
-    const canUseRecordAction = isArray && this.hasActiveRecord;
+    const isArray = this.isArrayDataset;
+    const has = this.hasActiveRecord;
     this.elements.addRecordBtn.disabled = !isArray;
-    this.elements.duplicateRecordBtn.disabled = !canUseRecordAction;
-    this.elements.deleteRecordBtn.disabled = !canUseRecordAction;
-    this.elements.pickDirBtn.disabled = !this.store.canUseDirectoryPicker;
+    this.elements.duplicateRecordBtn.disabled = !(isArray && has);
+    this.elements.deleteRecordBtn.disabled = !(isArray && has);
   }
 
   setBusy(isBusy) {
@@ -419,6 +531,10 @@ class DataEditorApp {
   }
 
   toast(message, type = 'info') {
+    if (!this.elements.toastRegion) {
+      console.log(`[toast:${type}] ${message}`);
+      return;
+    }
     const toast = createElement('div', `toast ${type}`, message);
     this.elements.toastRegion.append(toast);
     window.setTimeout(() => toast.remove(), 3200);
@@ -426,4 +542,10 @@ class DataEditorApp {
 }
 
 const app = new DataEditorApp();
-app.init();
+app.init().catch(e => {
+  console.error('init failed', e);
+  if (document.getElementById('toast-region')) {
+    const t = createElement('div', 'toast error', `初始化失败：${e.message}`);
+    document.getElementById('toast-region').append(t);
+  }
+});
