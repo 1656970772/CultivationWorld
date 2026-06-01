@@ -49,17 +49,17 @@
     "min": 0.7,
     "max": 1.3
   },
-  "spiritRoot": {
-    "_comment": "灵根（资质）系统：人人都有，5 档。speedMultiplier 连乘进修炼速度，breakthroughBonus 累加进突破成功率，weight 为初始随机分布权重。参考凡人修仙传：灵根数越少越纯、资质越好。详见 ADR-012 / wiki/rules/spirit-root.md。",
-    "grades": {
-      "heaven":  { "name": "天灵根", "speedMultiplier": 2.0, "breakthroughBonus": 0.15,  "weight": 1 },
-      "dual":    { "name": "双灵根", "speedMultiplier": 1.5, "breakthroughBonus": 0.08,  "weight": 9 },
-      "triple":  { "name": "三灵根", "speedMultiplier": 1.0, "breakthroughBonus": 0.0,   "weight": 30 },
-      "quad":    { "name": "四灵根", "speedMultiplier": 0.7, "breakthroughBonus": -0.05, "weight": 35 },
-      "false":   { "name": "伪灵根", "speedMultiplier": 0.4, "breakthroughBonus": -0.10, "weight": 25 }
+    "spiritRoot": {
+      "_comment": "灵根（资质）系统：人人都有，5 档。speedMultiplier 连乘进修炼速度，breakthroughBonus 累加进突破成功率，weight 为初始随机分布权重。参考凡人修仙传：灵根数越少越纯、资质越好。详见 ADR-012 / wiki/rules/spirit-root.md。tuning-v2 2026-06-01: heaven 1→3, dual 9→15——让 150 NPC 中出 4-5 个天才，3000 天有几率破境。",
+      "grades": {
+        "heaven":  { "name": "天灵根", "speedMultiplier": 2.0, "breakthroughBonus": 0.15,  "weight": 3 },
+        "dual":    { "name": "双灵根", "speedMultiplier": 1.5, "breakthroughBonus": 0.08,  "weight": 15 },
+        "triple":  { "name": "三灵根", "speedMultiplier": 1.0, "breakthroughBonus": 0.0,   "weight": 30 },
+        "quad":    { "name": "四灵根", "speedMultiplier": 0.7, "breakthroughBonus": -0.05, "weight": 30 },
+        "false":   { "name": "伪灵根", "speedMultiplier": 0.4, "breakthroughBonus": -0.10, "weight": 22 }
+      },
+      "default": "triple"
     },
-    "default": "triple"
-  },
   "physique": {
     "_comment": "体质系统：凡体为主(~95%) + 稀有特殊体质。在灵根之上额外叠加：speedMultiplier 连乘、breakthroughBonus 累加、lifespanBonus 在突破刷新寿命时按比例叠加。specialEffects 为预留扩展位（效果逻辑待定）。weight 为初始分布权重。详见 ADR-012 / wiki/rules/physique.md。",
     "types": {
@@ -79,9 +79,10 @@
   "breakthrough": {
     "_comment": "境界突破成功率。寿元超过 agePenaltyThreshold 时乘以 agePenaltyMultiplier 惩罚",
     "successRates": {
+      "_tuningNote": "tuning-v1 2026-06-01: 炼气→筑基 0.60→0.65、筑基→金丹 0.40→0.45；让 3000 天能见到 1-2 次『小人物破境』叙事，仍保留慢节奏设计意图。",
       "mortal_to_qi_refining": 0.80,
-      "qi_refining_to_foundation_building": 0.60,
-      "foundation_building_to_golden_core": 0.40,
+      "qi_refining_to_foundation_building": 0.65,
+      "foundation_building_to_golden_core": 0.45,
       "golden_core_to_nascent_soul": 0.25,
       "nascent_soul_to_spirit_transformation": 0.15
     },

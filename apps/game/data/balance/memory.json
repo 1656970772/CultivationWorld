@@ -20,6 +20,13 @@
       "decay": 0.03,
       "grudgeGain": 60
     },
+    "master_lost": {
+      "name": "恩师陨落",
+      "intensity": 90,
+      "decay": 0.03,
+      "grudgeGain": 55,
+      "_comment": "ADR-029 第三期：师傅被杀，徒弟刻下此痛。经 RelationshipGraph 兼容路径对凶手建 grudge 边（grudgeGain），并触发 obsession.json acquired 的 master_lost→revenge 规则（继承遗志·复仇）。强度/衰减仿 companion_lost，略低（师徒情谊重于一般但通常稍逊道侣生死与共）。"
+    },
     "inheritance": {
       "name": "获得传承",
       "intensity": 70,

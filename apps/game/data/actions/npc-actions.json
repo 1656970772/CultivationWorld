@@ -607,5 +607,115 @@
     "targetResolver": "nearest_opportunity",
     "distanceCostPerTile": 0.02,
     "executorId": "npc_goto_opportunity"
+  },
+  {
+    "id": "act_npc_assist_ally",
+    "name": "驰援同门",
+    "description": "关系驱动行为（ADR-028）：高强度 same_sect/ally 对象陷入争斗时前往支援，抵达后加深同门情谊（关系边强度反馈）。requiresTravel 走 relationship_target resolver（读 state.targetRelationshipId）。effect 置 assistedAlly=true，结算后由决策周期复位。仅当 goalsEnabled 且 collectExtraGoals 产出 assist Goal 时进入规划。",
+    "category": "npc",
+    "weight": 3,
+    "valueScore": 10,
+    "riskKey": "pvp",
+    "preconditions": {
+      "alive": { "op": "true" }
+    },
+    "effects": {
+      "assistedAlly": { "op": "set", "value": true }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 3,
+    "requiresTravel": true,
+    "targetResolver": "relationship_target",
+    "distanceCostPerTile": 0.02,
+    "executorId": "npc_assist_ally"
+  },
+  {
+    "id": "act_npc_visit_benefactor",
+    "name": "探望恩人",
+    "description": "关系驱动行为（ADR-028）：对高强度 benefactor/gratitude 对象低频探望/施援，抵达后加深恩义（关系边强度反馈）。requiresTravel 走 relationship_target resolver。effect 置 visitedBenefactor=true，结算后复位。仅当 goalsEnabled 且 collectExtraGoals 产出 repay Goal 时进入规划。",
+    "category": "npc",
+    "weight": 2,
+    "valueScore": 6,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" }
+    },
+    "effects": {
+      "visitedBenefactor": { "op": "set", "value": true }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 2,
+    "requiresTravel": true,
+    "targetResolver": "relationship_target",
+    "distanceCostPerTile": 0.02,
+    "executorId": "npc_visit_benefactor"
+  },
+  {
+    "id": "act_npc_teach_disciple",
+    "name": "点化徒弟",
+    "description": "师徒互动（ADR-029 第三期）：师傅前往修为偏低的徒弟处『传功点化』，给徒弟一波 insight(感悟)增量助推突破，并加深师徒情谊。requiresTravel 走 relationship_target resolver（读 state.targetRelationshipId）。effect 置 taughtDisciple=true，结算后复位。仅当 goalsEnabled 且 collectExtraGoals 产出 teach Goal 时进入规划（零漂移）。",
+    "category": "npc",
+    "weight": 3,
+    "valueScore": 12,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" }
+    },
+    "effects": {
+      "taughtDisciple": { "op": "set", "value": true }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 3,
+    "requiresTravel": true,
+    "targetResolver": "relationship_target",
+    "distanceCostPerTile": 0.02,
+    "executorId": "npc_teach_disciple"
+  },
+  {
+    "id": "act_npc_protect_disciple",
+    "name": "护卫徒弟",
+    "description": "师徒互动（ADR-029 第三期）：徒弟遭袭时师傅前往护卫并肩御敌，抵达后加深师徒情谊。requiresTravel 走 relationship_target resolver。effect 置 protectedDisciple=true，结算后复位。优先级/范围高于普通同门驰援，体现『一日为师』护徒。仅当 goalsEnabled 且 collectExtraGoals 产出 protect Goal 时进入规划。",
+    "category": "npc",
+    "weight": 3,
+    "valueScore": 12,
+    "riskKey": "pvp",
+    "preconditions": {
+      "alive": { "op": "true" }
+    },
+    "effects": {
+      "protectedDisciple": { "op": "set", "value": true }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 3,
+    "requiresTravel": true,
+    "targetResolver": "relationship_target",
+    "distanceCostPerTile": 0.02,
+    "executorId": "npc_protect_disciple"
+  },
+  {
+    "id": "act_npc_visit_master",
+    "name": "探望恩师",
+    "description": "师徒互动（ADR-029 第三期）：徒弟对师傅低频探望/侍奉尽孝，抵达后加深师徒情谊。requiresTravel 走 relationship_target resolver。effect 置 visitedMaster=true，结算后复位。仅当 goalsEnabled 且 collectExtraGoals 产出 visit_master Goal 时进入规划。",
+    "category": "npc",
+    "weight": 2,
+    "valueScore": 6,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" }
+    },
+    "effects": {
+      "visitedMaster": { "op": "set", "value": true }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 2,
+    "requiresTravel": true,
+    "targetResolver": "relationship_target",
+    "distanceCostPerTile": 0.02,
+    "executorId": "npc_visit_master"
   }
 ]

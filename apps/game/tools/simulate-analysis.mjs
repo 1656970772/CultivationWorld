@@ -41,6 +41,7 @@ const configs = {
   balanceEmotion:     loadJSON('data/balance/emotion.json'),
   balanceUtility:     loadJSON('data/balance/utility.json'),
   balanceReward:      loadJSON('data/balance/reward.json'),
+  balanceRelationship: loadJSON('data/balance/relationship.json'),
   monsters:           loadJSON('data/definitions/monsters.json'),
   monsterSpawn:       loadJSON('data/balance/monster-spawn.json'),
   // 信息传播 / 机会点 / 怀璧其罪系统（ADR-024/025）。默认 enabled=false 零漂移。
@@ -74,6 +75,15 @@ if (INFO_ACTIVE) {
   configs.balanceReward = { ...configs.balanceReward, enabled: true };
   configs.balanceCovet = { ...configs.balanceCovet, enabled: true };
   console.log('[激活态] INFO_ACTIVE=1：news/opportunities/reward/covet enabled=true（仅内存覆盖，不写回数据）');
+}
+
+// 关系驱动 Goal/妖群/领地（ADR-028）：默认随 relationship.json goalsEnabled（默认开）。
+// RELATIONSHIP_GOALS_ACTIVE=1 强制开、=0 强制关，用于对照实验（仅内存覆盖，不写回 JSON）。
+const REL_GOALS_ENV = process.env.RELATIONSHIP_GOALS_ACTIVE;
+if (REL_GOALS_ENV === '1' || REL_GOALS_ENV === '0') {
+  const on = REL_GOALS_ENV === '1';
+  configs.balanceRelationship = { ...configs.balanceRelationship, enabled: true, goalsEnabled: on };
+  console.log(`[对照] RELATIONSHIP_GOALS_ACTIVE=${REL_GOALS_ENV}：relationship.goalsEnabled=${on}（仅内存覆盖，不写回数据）`);
 }
 
 const { WorldEngine } = await import(
@@ -112,6 +122,8 @@ const engine = new WorldEngine();
 const initResult = engine.init(configs);
 console.log(`引擎初始化: ${initResult.totalFactions} 势力, ${initResult.totalNPCs} NPC`);
 
+// tuning-v2 2026-06-01: 调试钩子已清理（所有钩子功能已稳定，进入回归模式）
+
 // ── 统计容器 ───────────────────────
 const snapshots = [];
 const factionActMap = {};
@@ -123,10 +135,18 @@ let npcActTotal = 0, attacks = 0, alliances = 0;
 let worldMod = 0, disasters = 0;
 const obsessionCounts = {};
 let maxAnger = 0, maxInnerDemon = 0, npcsWithObsession = 0;
+// tuning-v2 2026-06-01: 跟踪"历史最大情绪值"——之前只取末 tick 瞬时值，
+// 但 emotion.json 中 anger/fear/inner_demon 都有 dailyRegress（衰减），3000 天后无新触发
+// 会衰减回 0，无法反映 v1/v2 调优效果。改为每 tick 跟踪 max(history)。
+let maxAngerHistory = 0, maxInnerDemonHistory = 0;
 let fGoapOk = 0, fFallback = 0, nGoapOk = 0, nFallback = 0;
 let companionPairs = 0, totalBirths = 0;
 // 复仇/PvP 统计（ADR-020）
 let huntTriggers = 0, killTriggers = 0, pvpSlain = 0, pvpEnemySlain = 0, pvpWounded = 0;
+// 关系驱动行为统计（ADR-028）
+let assistTriggers = 0, visitTriggers = 0;
+// 师徒互动行为统计（ADR-029）
+let teachTriggers = 0, protectDiscipleTriggers = 0, visitMasterTriggers = 0;
 const economyActionCounts = {
   material_donate: 0,
   redeem_qi_pill: 0,
@@ -260,6 +280,13 @@ for (let day = 1; day <= TOTAL_DAYS; day++) {
     if (outcome === 'enemy_slain') pvpEnemySlain++;
     else if (outcome === 'slain_by_enemy') pvpSlain++;
     else if (outcome === 'wounded') pvpWounded++;
+    // 关系驱动行为（ADR-028）
+    if (exAid === 'act_npc_assist_ally') assistTriggers++;
+    if (exAid === 'act_npc_visit_benefactor') visitTriggers++;
+    // 师徒互动行为（ADR-029）
+    if (exAid === 'act_npc_teach_disciple') teachTriggers++;
+    if (exAid === 'act_npc_protect_disciple') protectDiscipleTriggers++;
+    if (exAid === 'act_npc_visit_master') visitMasterTriggers++;
 
     if (ent._deathInfo) {
       const fId = ent._deathInfo.factionId;
@@ -281,8 +308,25 @@ for (let day = 1; day <= TOTAL_DAYS; day++) {
     if (evt.type === 'birth') totalBirths++;
   }
 
+  // tuning-v2 2026-06-01: 从 tick.deaths 收集 faction 路径触发的死亡（_collectDeaths 已写 _deathInfo），
+  // 否则 attackEnemy 杀死的 NPC（cause='slain'）只进 tickLog.deaths 不进 npcUpdates，分析脚本看不到。
+  for (const d of tick.deaths || []) {
+    npcDeathLog.push({ day: tick.day, ...d, factionName: d.factionId ? (initRes[d.factionId]?.name || d.factionId) : '散修' });
+  }
+
   if (day % SNAPSHOT_EVERY === 0 || day === TOTAL_DAYS) {
     snapshots.push(engine.getWorldSnapshot());
+  }
+
+  // tuning-v2 2026-06-01: 跟踪历史最大情绪。每 tick 扫一遍存活 NPC 情绪快照。
+  // 性能护栏：每 10 天扫一次（heartbeat 一天扫描 < 0.1ms，3000 天也无压力，但保留稀疏采样以防 NPC 数爆炸）。
+  if (day % 10 === 0 || day === TOTAL_DAYS) {
+    for (const npc of engine.entityRegistry.getAliveByType('npc')) {
+      if (!npc.emotions) continue;
+      const e = npc.emotions.snapshot().values || {};
+      maxAngerHistory = Math.max(maxAngerHistory, e.anger || 0);
+      maxInnerDemonHistory = Math.max(maxInnerDemonHistory, e.inner_demon || 0);
+    }
   }
 
   if (day % 100 === 0) console.log(`  进度: ${day}/${TOTAL_DAYS}`);
@@ -302,7 +346,8 @@ for (const npc of engine.entityRegistry.getAliveByType('npc')) {
   maxInnerDemon = Math.max(maxInnerDemon, mind.emotions.inner_demon || 0);
 }
 console.log(`[GOBT心智] 持有执念的存活NPC: ${npcsWithObsession}，执念分布: ${JSON.stringify(obsessionCounts)}`);
-console.log(`[GOBT心智] 峰值愤怒: ${maxAnger.toFixed(0)}，峰值心魔: ${maxInnerDemon.toFixed(0)}`);
+console.log(`[GOBT心智] 峰值愤怒(末tick): ${maxAnger.toFixed(0)}，峰值心魔(末tick): ${maxInnerDemon.toFixed(0)}`);
+console.log(`[GOBT心智] 历史最大愤怒: ${maxAngerHistory.toFixed(0)}，历史最大心魔: ${maxInnerDemonHistory.toFixed(0)}`);
 
 // ── 复仇/PvP 统计（ADR-020）：观察恩怨叙事闭环是否涌现 ──
 const slainDeaths = npcDeathLog.filter(d => d.cause === 'slain').length;
@@ -310,6 +355,18 @@ const revengeObsessionsAlive = obsessionCounts['revenge'] || 0;
 console.log(`[复仇PvP] 追踪触发: ${huntTriggers}，击杀触发: ${killTriggers}`);
 console.log(`[复仇PvP] 手刃仇人: ${pvpEnemySlain}，寻仇被反杀: ${pvpSlain}，寻仇负伤: ${pvpWounded}`);
 console.log(`[复仇PvP] PvP 致死总数(cause=slain): ${slainDeaths}，存活NPC持有复仇执念: ${revengeObsessionsAlive}`);
+
+// ── 关系网/关系驱动统计（ADR-028）：观察关系 Goal 与妖群/领地边是否涌现 ──
+const relSys = engine.relationshipSystem;
+const relStats = relSys && typeof relSys.stats === 'function' ? relSys.stats() : { total: 0, byType: {} };
+const relGoalsOn = (configs.balanceRelationship?.enabled !== false) && (configs.balanceRelationship?.goalsEnabled !== false);
+const bt = relStats.byType || {};
+console.log(`[关系网] goalsEnabled=${relGoalsOn}，关系边总数: ${relStats.total}`);
+console.log(`[关系网] 人际边: same_sect=${bt.same_sect || 0}, master=${bt.master || 0}, enemy=${bt.enemy || 0}, grudge=${bt.grudge || 0}, dao_companion=${bt.dao_companion || 0}, kin=${bt.kin || 0}`);
+console.log(`[关系网] 妖群/领地边: pack_member=${bt.pack_member || 0}, pack_leader=${bt.pack_leader || 0}, territory_threat=${bt.territory_threat || 0}, beast_grudge=${bt.beast_grudge || 0}`);
+console.log(`[关系驱动] 驰援同门触发: ${assistTriggers}，探望恩人触发: ${visitTriggers}`);
+console.log(`[师徒互动] 传功点化: ${teachTriggers}，护徒驰援: ${protectDiscipleTriggers}，探望恩师: ${visitMasterTriggers}`);
+
 console.log(`[妖兽资源] 猎妖接取: ${monsterResourceStats.huntQuestAccepted}，完成: ${monsterResourceStats.huntQuestCompleted}，失败: ${monsterResourceStats.huntQuestFailed}`);
 console.log(`[妖兽资源] 妖兽死亡: ${monsterResourceStats.deaths}，任务击杀: ${monsterResourceStats.questHuntDeaths}，掉落: ${JSON.stringify(monsterResourceStats.drops)}`);
 
@@ -453,6 +510,10 @@ const reportData = {
     huntTriggers, killTriggers,
     enemySlain: pvpEnemySlain, slainByEnemy: pvpSlain, wounded: pvpWounded,
     slainDeaths, revengeObsessionsAlive,
+  },
+  mindHistory: {
+    peakAnger: Number(maxAngerHistory.toFixed(2)),
+    peakInnerDemon: Number(maxInnerDemonHistory.toFixed(2)),
   },
   diagnostics,
 };

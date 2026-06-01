@@ -32,7 +32,7 @@ export async function loadGameConfigs() {
     questTemplates, mapData, modifierTemplates,
     balanceCombat, balanceEconomy, balanceCultivation, balanceSocial, balanceMovement,
     balancePersonality, balanceRisk, balanceMemory, balanceObsession, balanceEmotion,
-    balanceUtility, balanceReward,
+    balanceUtility, balanceReward, balanceRelationship,
     gameConfig, aiConfig, names,
     monsters, monsterSpawn,
     worldNews, worldOpportunities, balanceCovet, itemDefs,
@@ -62,6 +62,7 @@ export async function loadGameConfigs() {
     loadJSON('data/balance/emotion.json'),
     loadJSON('data/balance/utility.json'),
     loadJSON('data/balance/reward.json'),
+    loadJSON('data/balance/relationship.json'),
     loadJSON('data/config/game-config.json'),
     loadJSON('data/config/ai-config.json'),
     loadJSON('data/definitions/names.json'),
@@ -80,7 +81,7 @@ export async function loadGameConfigs() {
     questTemplates, mapData, modifierTemplates,
     balanceCombat, balanceEconomy, balanceCultivation, balanceSocial, balanceMovement,
     balancePersonality, balanceRisk, balanceMemory, balanceObsession, balanceEmotion,
-    balanceUtility, balanceReward,
+    balanceUtility, balanceReward, balanceRelationship,
     gameConfig, aiConfig, names,
     monsters, monsterSpawn,
     worldNews, worldOpportunities, balanceCovet, itemDefs,
@@ -114,6 +115,7 @@ export async function loadGameConfigs() {
  * @property {Object} balanceEmotion     情绪系统平衡配置
  * @property {Object} balanceUtility     Utility 考量因素配置（ADR-020）
  * @property {Object} balanceReward      期望收益配置（ADR-022）
+ * @property {Object} balanceRelationship 关系网系统配置（ADR-027）
  * @property {Array}  monsters           妖兽定义
  * @property {Object} monsterSpawn       妖兽分布平衡配置
  * @property {Object} gameConfig         全局游戏配置

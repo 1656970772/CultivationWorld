@@ -27,6 +27,7 @@ export const ObsessionType = Object.freeze({
   RETIRE: 'retire',           // 养老：放弃突破，回宗门/洞府安享余生（项目推演设定，无直接原著原型）
   LEGACY: 'legacy',           // 传承：寿元将尽时收徒传法、延续道统（参考大道争锋 传承道统）
   POWER: 'power',             // 夺权：争夺宗门掌门/势力领袖之位（参考凡人修仙传/大道争锋 掌门继任）
+  SEIZURE: 'seizure',         // 夺舍：邪修师傅图谋夺取高资质徒弟根基（参考凡人修仙传 墨大夫；ADR-029 轻度=复用复仇击杀链）
 });
 
 export class Obsession {

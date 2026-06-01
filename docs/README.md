@@ -2,7 +2,7 @@
 
 > 项目代号：WorldDynamic
 > 创建日期：2026-05-23
-> 最后更新：2026-05-30
+> 最后更新：2026-06-01（核心引擎类重构 ADR-030）
 
 ## 文档结构
 
@@ -22,6 +22,7 @@ docs/
 │   ├── world-modifiers.md             # 全局世界状态
 │   ├── behavior-configs.md            # 行为配置模型
 │   ├── info-propagation.md            # 信息传播模型
+│   ├── relationship.md                # 关系网数据模型（NPC/妖兽/势力关系边，ADR-027；二期关系驱动决策 ADR-028；三期师徒互动 ADR-029）
 │   └── player.md                      # 玩家数据模型
 ├── systems/
 │   ├── time-action.md                 # 时间与行动系统
@@ -57,6 +58,9 @@ docs/
 │       │   ├── wealth-exposed.md      # 怀璧其罪与江湖热点：暴露身家→消息扩散→抢夺/放过
 │       │   ├── spirit-root.md         # 灵根（资质）系统
 │       │   └── physique.md            # 体质系统
+│       ├── characters/
+│       │   ├── relationship-types.md  # 人物关系网：关系类型（人际/人妖/妖妖三层）
+│       │   └── relationship-todo.md   # 人物关系网：待做与待扩展
 │       ├── artifacts/
 │       │   ├── techniques.md          # 功法道具体系
 │       │   └── weapons.md             # 法宝武器体系
@@ -93,7 +97,11 @@ docs/
 │   ├── adr-023-archetype-goal-system.md # ADR-023：流派目标体系（夺宝/养老/传承/夺权四种执念 + 专属 goalState/终点行为 + 条件触发机制）
 │   ├── adr-024-info-propagation-opportunity.md # ADR-024：信息传播与机会点系统（事件→消息→多渠道传播→机会点→Utility 决策→前往）
 │   ├── adr-025-item-covet-system.md   # ADR-025：实物系统与怀璧其罪（可转移物品/assetScore/暴露/觊觎抢夺或放过）
-│   └── adr-026-monster-resource-loop.md # ADR-026：妖兽资源化模拟闭环（猎妖→上交→炼丹/炼器→修炼/战力）
+│   ├── adr-026-monster-resource-loop.md # ADR-026：妖兽资源化模拟闭环（猎妖→上交→炼丹/炼器→修炼/战力）
+│   ├── adr-027-relationship-network.md # ADR-027：关系网系统（NPC/妖兽/势力统一有向带类型关系图，事件驱动+可视化+存档）
+│   ├── adr-028-relationship-driven-decisions.md # ADR-028：关系驱动决策（关系边驱动 NPC Goal 护短/报恩/复仇 + 妖群协防/领地防御，goalsEnabled 默认开可回退）
+│   ├── adr-029-master-disciple-interactions.md # ADR-029：师徒互动（师傅传功/护徒、徒弟尽孝、继承遗志复仇+执念延续、夺舍轻度，复用二期架构）
+│   └── adr-030-core-class-refactor.md # ADR-030：核心引擎类重构（tick-manager/npc-actions/npc-entity 按职责拆分为服务/策略/协作者，对外接口不变，零漂移）
 ├── plans/
 │   └── implementation-plan.md         # 实施计划（6阶段 + 11个子Agent）
 └── superpowers/
@@ -142,6 +150,11 @@ docs/
 - `decisions/adr-022-expected-value-utility.md` —— 期望收益模型：在 Utility 层引入 `ExpectedValue=Σ(prob×value)`，与 ADR-021 风险厌恶对称（吸引项 vs 惩罚项），收益分布数据驱动于 reward.json（如秘境仙器 1%/法宝 10%/材料 60%/空手 29%），赌狗流=高期望收益吸引+低风险厌恶
 - `decisions/adr-023-archetype-goal-system.md` —— 流派目标体系：新增夺宝/养老/传承/夺权四种执念，各有专属 goalState（treasureObtained/atPeace/discipleRaised/isFactionLeader）与终点行为，新增"条件触发"机制（随寿元/境界演化），让同境界 NPC 在相同局面下做出差异化选择；养老流诚实标注为项目推演设定
 - `decisions/adr-026-monster-resource-loop.md` —— 妖兽资源化模拟闭环：斩妖任务锁定具体妖兽，死亡按等阶产出妖丹/妖材，NPC 上交换贡献，宗门兑换丹药/法器消耗库存，高阶尸骸生成机会点
+- `decisions/adr-027-relationship-network.md` —— 关系网系统：NPC/妖兽/势力统一为世界级有向带类型关系图（师徒/道侣/同门/宿敌/灵宠/妖群等），事件驱动维护边，重构 ADR-019 个人恩怨图为兼容视图（复仇链零改动），第一期只做数据层+可视化+存档
+- `decisions/adr-028-relationship-driven-decisions.md` —— 关系驱动决策（二期）：关系边驱动 NPC Goal（护短同门驰援/报恩探望/高强度宿敌纳入复仇）与妖兽行为（同群协防 + tier2+ 领地防御，群居物种成簇生成、闯巢建 territory_threat），受 `goalsEnabled`（默认开）gate 可回退，复仇多走现有链、深关系被杀才升执念
+- `decisions/adr-029-master-disciple-interactions.md` —— 师徒互动（三期）：`master`/`disciple` 边驱动师傅传功点化（给 insight 增量）/护徒驰援/徒弟尽孝探望、继承遗志（师傅被杀→徒弟复仇 + 继承未竟执念）、夺舍轻度（邪修师傅起 seizure 执念复用击杀链）；复用二期 Goal 架构、零漂移；修复一期 discipleRoles 数据缺陷使 master 边首次建立
+- `decisions/adr-030-core-class-refactor.md` —— 核心引擎类重构：把 `tick-manager.js`（2139→734 行）按 tick 步骤拆为 `world/services/` 七个服务（WorldContextBuilder/FactionAIService/PromotionService/PopulationService/DeathCollector/InfoCoordinator/MonsterRespawnService），`npc-actions.js`（1552 行）按业务域拆到 `npc/actions/` 并退化为注册入口+门面，`npc-entity.js`（1010→608 行）抽出 `npc-goals.js`/`npc-lifecycle.js`/`npc-obsession-trigger.js` 纯函数协作者；对外接口零改动，黄金指纹 `5740e12a` + 三态重构基线 + 17 项单测全绿保证零漂移
+- `worldbuilding/wiki/characters/relationship-types.md` —— 关系类型表（人际/人妖/妖妖三层）与世界观来源标注
 - `worldbuilding/wiki/README.md` —— 已敲定设定 Wiki 的导航与维护规则
 - `worldbuilding/wiki/rules/natural-death.md` —— NPC 自然死亡规则设定
 - `worldbuilding/wiki/rules/leader-succession.md` —— 掌门继任与无候选覆灭规则

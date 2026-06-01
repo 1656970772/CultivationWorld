@@ -32,6 +32,10 @@ const DEFAULT_GOAL_RISK_KEYS = {
   obsession_plunder: ['plunder'],  // 夺宝：闯秘境/厮杀夺宝
   obsession_power: ['power'],      // 夺权：夺位冲突
   // 养老(retire)/传承(legacy) 为低风险目标，不映射风险键（goalRisk=0）。
+  // 关系驱动目标（ADR-028）：驰援同门需并肩御敌（pvp 风险）；探望恩人为低风险（不映射）。
+  goal_assist_sect_mate: ['pvp'],
+  // 师徒互动目标（ADR-029）：护徒驰援需御敌（pvp）；传功/探望恩师为低风险（不映射）。
+  goal_protect_disciple: ['pvp'],
 };
 
 /**

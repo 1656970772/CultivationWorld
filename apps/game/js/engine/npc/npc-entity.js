@@ -6,14 +6,27 @@ import { NPCStaticData } from './npc-static-data.js';
 import { NPCState } from './npc-state.js';
 import { NeedPool } from '../pools/need-pool.js';
 import { ActionPool } from '../pools/action-pool.js';
-import { estimateRiskCost, computeActionValue } from './npc-actions.js';
 import { decorateGoalConsiderations as decorateGoalConsiderationsImpl } from './npc-utility.js';
+import {
+  rollInnateObsession as rollInnateObsessionImpl,
+  checkAcquiredObsession as checkAcquiredObsessionImpl,
+  checkConditionalObsession as checkConditionalObsessionImpl,
+} from './npc-obsession-trigger.js';
+import {
+  collectExtraGoals as collectExtraGoalsImpl,
+  buildRelationshipGoals as buildRelationshipGoalsImpl,
+  checkSeizeDiscipleObsession as checkSeizeDiscipleObsessionImpl,
+  buildOpportunityGoal as buildOpportunityGoalImpl,
+} from './npc-goals.js';
+import {
+  tryBreakthrough as tryBreakthroughImpl,
+  handleDeath as handleDeathImpl,
+} from './npc-lifecycle.js';
 import { createBTLoader, NPC_DEFAULT_BT } from '../abstract/bt/index.js';
 import { MemorySystem, MemoryType } from '../abstract/memory-system.js';
 import { RelationshipGraph } from './relationship.js';
 import { ObsessionSystem, Obsession } from '../abstract/obsession-system.js';
 import { EmotionSystem } from '../abstract/emotion-system.js';
-import { Goal, GoalSource } from '../abstract/goal.js';
 import {
   canFactionProvideExchangeMaterials,
   countDonatableMaterials,
@@ -60,8 +73,17 @@ export class NPCEntity extends BaseEntity {
     this._decisionCooldown = this._rollDecisionInterval();
 
     // 长期记忆与个人恩怨图（GOBT 长期心智，ADR-019）。
+    // 个人恩怨图绑定到世界级关系网（ADR-027）：grudge/gratitude 成为统一关系网的边，
+    // 接口不变，复仇链零改动。无 relationshipSystem 时（独立单测）回退内部 Map。
     this.memory = new MemorySystem({ capacity: this._memoryConfig.capacity ?? 32 });
-    this.relationships = new RelationshipGraph();
+    this._relationshipSystem = entityConfig.relationshipSystem || null;
+    // 关系网配置（ADR-028 二期）：含 goalsEnabled 与 npcGoals 阈值，供关系驱动 Goal 读取。
+    this._relationshipConfig = entityConfig.relationshipConfig || {};
+    this.relationships = new RelationshipGraph(
+      this._relationshipSystem
+        ? { system: this._relationshipSystem, ownerId: this.id }
+        : {}
+    );
 
     // 执念系统（ADR-019）：先天按人格/灵根 roll 一个初始执念。
     // goalMult（ADR-020）：执念对自身/同方向需求 Goal 的乘法加成（默认 enabled=false 零漂移）。
@@ -146,144 +168,110 @@ export class NPCEntity extends BaseEntity {
   }
 
   /**
-   * 先天执念抽取（ADR-019）：按 obsession.json innate.rules 顺序匹配人格/灵根条件，
-   * 命中且通过 chance 概率检定则赋予该执念。出生即定型，体现"天生的追求"。
+   * 先天执念抽取（ADR-019）：委托 npc-obsession-trigger（出生即定型）。
    */
   _rollInnateObsession() {
-    const rules = this._obsessionConfig.innate?.rules;
-    if (!Array.isArray(rules)) return;
-    const personality = this.staticData?.personality || {};
-    const spiritRootId = this.state.get('spiritRootId');
-    for (const rule of rules) {
-      if (rule.requireTrait) {
-        const v = personality[rule.requireTrait.trait];
-        if (typeof v !== 'number' || v < (rule.requireTrait.min ?? 0)) continue;
-      }
-      if (rule.requireSpiritRoot && !rule.requireSpiritRoot.includes(spiritRootId)) continue;
-      if (Math.random() >= (rule.chance ?? 1)) continue;
-      this.obsessions.add(new Obsession({
-        type: rule.type,
-        name: rule.name,
-        intensity: rule.intensity ?? 70,
-        goalState: rule.goalState || {},
-      }));
-      break;
-    }
+    rollInnateObsessionImpl(this);
   }
 
   /**
-   * 后天执念触发（ADR-019）：某类记忆刚写入且强度达阈值时，生成对应执念。
-   * 复仇/复活执念锁定记忆中的仇人/势力，作为未来"追踪/击杀"行为的 targetRef。
+   * 后天执念触发（ADR-019）：委托 npc-obsession-trigger（某类记忆达阈值时生成执念）。
    * @param {MemoryType} memoryType 刚写入的记忆类型
    */
   _checkAcquiredObsession(memoryType) {
-    const rules = this._obsessionConfig.acquired?.rules;
-    if (!Array.isArray(rules)) return;
-    for (const rule of rules) {
-      if (rule.memoryType !== memoryType) continue;
-      const strongest = this.memory.getStrongest(memoryType);
-      if (!strongest || strongest.intensity < (rule.minMemoryIntensity ?? 0)) continue;
-      this.obsessions.add(new Obsession({
-        type: rule.type,
-        name: rule.name,
-        intensity: rule.intensity ?? 90,
-        targetId: strongest.actorId,
-        targetFactionId: strongest.factionId,
-        goalState: rule.goalState || {},
-      }));
-    }
+    checkAcquiredObsessionImpl(this, memoryType);
   }
 
   /**
-   * 条件执念检查（ADR-023）：随 NPC 状态演化（寿元/境界/野心）触发的执念，
-   * 区别于先天 roll（_rollInnateObsession）与记忆触发（_checkAcquiredObsession）。
-   * 养老(retire)/传承(legacy) 属此类——人到暮年自然萌生的人生取向。
-   * 在 onPreTick 每日调用：按 requireState 全部满足 + requireTrait + chance 概率检定生成。
-   * 已有同类型执念则 ObsessionSystem.add 自动去重（保留强度更高者）。
+   * 条件执念检查（ADR-023）：委托 npc-obsession-trigger（随寿元/境界/野心演化触发养老/传承）。
    */
   _checkConditionalObsession() {
-    const rules = this._obsessionConfig.conditional?.rules;
-    if (!Array.isArray(rules)) return;
-    const personality = this.staticData?.personality || {};
-    for (const rule of rules) {
-      if (this.obsessions.has(rule.type)) continue;
-      if (Array.isArray(rule.requireState)
-          && !rule.requireState.every(c => this._matchStateCondition(c))) continue;
-      if (rule.requireTrait) {
-        const v = personality[rule.requireTrait.trait];
-        if (typeof v !== 'number') continue;
-        if (rule.requireTrait.min != null && v < rule.requireTrait.min) continue;
-        if (rule.requireTrait.max != null && v > rule.requireTrait.max) continue;
-      }
-      if (Math.random() >= (rule.chance ?? 1)) continue;
-      this.obsessions.add(new Obsession({
-        type: rule.type,
-        name: rule.name,
-        intensity: rule.intensity ?? 70,
-        goalState: rule.goalState || {},
-      }));
-    }
-  }
-
-  /**
-   * 比较一条 { key, op, value } 状态条件（语义同 Need._evaluateCondition）。
-   * @param {{ key: string, op: string, value: * }} cond
-   * @returns {boolean}
-   */
-  _matchStateCondition(cond) {
-    if (!cond) return true;
-    const actual = this.state.get(cond.key);
-    switch (cond.op) {
-      case 'lt': return actual < cond.value;
-      case 'lte': return actual <= cond.value;
-      case 'gt': return actual > cond.value;
-      case 'gte': return actual >= cond.value;
-      case 'eq': return actual === cond.value;
-      case 'neq': return actual !== cond.value;
-      case 'exists': return actual != null;
-      default: return false;
-    }
+    checkConditionalObsessionImpl(this);
   }
 
   /**
    * @override
-   * 收集执念目标（ADR-019），与日常需求目标一起进入 PlannerNode 的 Utility 选择。
-   * 强执念（intensity 高）会压过普通需求，驱动 NPC 长期围绕执念行动（如拼命变强）。
+   * 收集执念目标（ADR-019）：委托 npc-goals（执念 + 机会 + 关系/师徒 Goal）。
    */
   collectExtraGoals(worldContext) {
-    const goals = this.obsessions ? this.obsessions.toGoals() : [];
-    // 机会点目标（ADR-024）：基于已知消息评估出值得前往的机会点时，生成一个前往 Goal。
-    // 仅在机会系统 enabled 且存在可行机会时产出，否则不影响既有规划（零漂移）。
-    const oppGoal = this._buildOpportunityGoal(worldContext);
-    if (oppGoal) goals.push(oppGoal);
-    return goals;
+    return collectExtraGoalsImpl(this, worldContext);
   }
 
   /**
-   * 依世界上下文为本 NPC 构造一个"前往机会点"的 Goal（ADR-024）。
-   * 把选中的机会点 id 写入 state.targetOpportunityId，供 nearest_opportunity 解析坐标。
+   * 关系驱动 Goal（ADR-028）：委托 npc-goals（护短同门 / 报恩 / 师徒互动）。
+   * @param {Object} worldContext
+   * @returns {import('../abstract/goal.js').Goal|null}
+   */
+  _buildRelationshipGoals(worldContext) {
+    return buildRelationshipGoalsImpl(this, worldContext);
+  }
+
+  /**
+   * 夺舍图谋执念检查（ADR-029 第三期）：委托 npc-goals（邪修师傅对高资质徒弟起夺舍执念）。
+   * @param {Object} worldContext
+   */
+  _checkSeizeDiscipleObsession(worldContext) {
+    checkSeizeDiscipleObsessionImpl(this, worldContext);
+  }
+
+  /**
+   * 继承遗志（ADR-029 第三期）：本 NPC 的师傅陨落时调用。两层（参考凡人修仙传『传承不仅是功法，更是意志的延续』）：
+   *   ① 复仇：写 master_lost 记忆 → 触发 revenge 执念（仿 companion_lost，对凶手）。
+   *   ② 执念延续：把师傅未竟的非复仇执念（inheritableObsessionTypes）按折扣 intensity 复制给本 NPC。
+   * 由 TickManager._collectDeaths 在师傅死亡时驱动（仅 goalsEnabled）。
+   * @param {Object} master 陨落的师傅实体
+   * @param {{killerId?:string|null, killerFactionId?:string|null, tick?:number, location?:Object|null}} info 师傅死亡信息
+   */
+  inheritMasterLegacy(master, info = {}) {
+    const cfg = this._relationshipConfig.masterDiscipleGoals?.inheritWill || {};
+    // ① 复仇：恩师陨落记忆（grudgeGain 经记忆配置对凶手建仇 + 触发 master_lost→revenge 执念）。
+    const memType = cfg.revengeMemoryType || 'master_lost';
+    if (typeof this.recordMemory === 'function') {
+      this.recordMemory(memType, {
+        actorId: info.killerId || null,
+        factionId: info.killerFactionId || null,
+        tick: info.tick ?? 0,
+        location: info.location ?? null,
+      });
+    }
+    // ② 执念延续：复制师傅未竟的可继承执念（折扣强度，去重保强者）。
+    if (!master || !master.obsessions || !this.obsessions) return;
+    const mult = cfg.inheritObsessionIntensityMult ?? 0.7;
+    const inheritable = new Set(cfg.inheritableObsessionTypes || ['plunder', 'supremacy', 'longevity', 'power', 'protect_dao']);
+    for (const o of master.obsessions.obsessions) {
+      if (!inheritable.has(o.type)) continue; // revenge/resurrection/seizure 等不继承（各有专属触发）。
+      this.obsessions.add(new Obsession({
+        type: o.type,
+        name: o.name,
+        intensity: Math.round((o.intensity ?? 70) * mult),
+        targetId: o.targetId,
+        targetFactionId: o.targetFactionId,
+        goalState: o.goalState || {},
+      }));
+    }
+  }
+
+  /**
+   * 刷新关系驱动派生状态（ADR-028）：关系对象失效（死亡/失联）即清空 targetRelationshipId，
+   * 使关系行为链前置失效，GOAP 下一轮重规划自然放弃，回归日常（零漂移）。
+   * @param {Object} worldContext
+   */
+  _refreshRelationshipState(worldContext) {
+    const relId = this.state.get('targetRelationshipId');
+    if (!relId) return;
+    const registry = worldContext?.entityRegistry;
+    const target = registry?.getById?.(relId);
+    if (!target || !target.alive || !(target.hasSpatial && target.hasSpatial())) {
+      this.state.set('targetRelationshipId', null);
+    }
+  }
+
+  /**
+   * 依世界上下文为本 NPC 构造"前往机会点" Goal（ADR-024）：委托 npc-goals。
    * @returns {import('../abstract/goal.js').Goal|null}
    */
   _buildOpportunityGoal(worldContext) {
-    if (typeof worldContext?.bestOpportunityFor !== 'function') return null;
-    const pick = worldContext.bestOpportunityFor(this);
-    if (!pick) {
-      this.state.set('targetOpportunityId', null);
-      return null;
-    }
-    this.state.set('targetOpportunityId', pick.opp.id);
-    const decision = worldContext.opportunitySystem?.decision || {};
-    const priority = decision.goalPriority ?? 55;
-    return new Goal({
-      id: 'goal_opportunity',
-      name: `逐${pick.opp.name}`,
-      source: GoalSource.OPPORTUNITY,
-      sourceId: 'opportunity',
-      goalState: { arrivedAtOpportunity: { op: 'eq', value: true } },
-      priority,
-      urgency: 0,
-      tag: 'opportunity',
-    });
+    return buildOpportunityGoalImpl(this, worldContext);
   }
 
   /**
@@ -293,9 +281,10 @@ export class NPCEntity extends BaseEntity {
    * @param {Object} worldContext
    */
   _refreshRevengeState(worldContext) {
-    // 复仇已达成（仇人已被本 NPC 手刃）：清除复仇执念，重置派生状态，回归日常。
+    // 复仇/夺舍已达成（仇人/徒弟已被本 NPC 手刃）：清除该执念，重置派生状态，回归日常。
+    // seizure（ADR-029 夺舍）与 revenge 同走击杀链，达成后一并清除。
     if (this.state.get('enemyKilled') === true && this.obsessions) {
-      this.obsessions.obsessions = this.obsessions.obsessions.filter(o => o.type !== 'revenge');
+      this.obsessions.obsessions = this.obsessions.obsessions.filter(o => o.type !== 'revenge' && o.type !== 'seizure');
       this.state.set('enemyKilled', false);
     }
     const hasTarget = (worldContext && typeof worldContext.resolveRevengeTarget === 'function')
@@ -391,6 +380,15 @@ export class NPCEntity extends BaseEntity {
       // 机会点前往行为（ADR-024）：仅当机会系统 enabled 且 NPC 知晓可行机会时，
       // collectExtraGoals 才产出 opportunity Goal 触发本行为，故零漂移。
       'act_npc_goto_opportunity',
+      // 复仇行为链（ADR-020/028）：追踪→击杀仇人。仅当 hasRevengeTarget（执念/恩怨/高强度 enemy 边）
+      // 为真时其 Goal(enemyKilled) 才进入规划，故加入可用池不改变无仇 NPC 既有规划（零漂移）。
+      'act_npc_hunt_enemy', 'act_npc_kill_enemy',
+      // 关系驱动行为（ADR-028）：驰援同门 / 探望恩人。仅当 goalsEnabled 且存在 qualifying 关系边时，
+      // collectExtraGoals 才产出对应关系 Goal 触发本行为，故零漂移。
+      'act_npc_assist_ally', 'act_npc_visit_benefactor',
+      // 师徒互动行为（ADR-029）：师傅传功(点化)/师傅护徒(驰援)/徒弟尽孝(探望)。仅当 goalsEnabled 且
+      // 存在 qualifying master/disciple 边时，collectExtraGoals 才产出对应 Goal 触发本行为，故零漂移。
+      'act_npc_teach_disciple', 'act_npc_protect_disciple', 'act_npc_visit_master',
     ];
 
     const actions = [];
@@ -510,9 +508,15 @@ export class NPCEntity extends BaseEntity {
     // 条件执念（ADR-023）：随寿元/境界/野心演化触发养老/传承等人生取向执念。
     if (this.obsessions) this._checkConditionalObsession();
 
+    // 夺舍图谋执念（ADR-029 第三期，轻度）：邪修师傅对高资质徒弟起夺舍执念（关系感知，goalsEnabled gate）。
+    if (this.obsessions) this._checkSeizeDiscipleObsession(worldContext);
+
     // 复仇行为链派生状态（ADR-020）：刷新 hasRevengeTarget（仇人仍在世且可定位）。
     // 仇人已死/失联时置 false，使 act_npc_hunt/kill_enemy 前置失效，GOAP 自然放弃复仇目标。
     this._refreshRevengeState(worldContext);
+
+    // 关系驱动派生状态（ADR-028）：关系对象（支援同门/恩人）失效即清空锁定目标。
+    this._refreshRelationshipState(worldContext);
 
     const deathResult = this.state.checkNaturalDeath();
     if (deathResult && deathResult.died) {
@@ -570,200 +574,19 @@ export class NPCEntity extends BaseEntity {
   }
 
   /**
-   * 境界突破判定
-   *
-   * 突破条件：cultivationProgress >= 1.0 且 qi >= 目标境界 qiRequired
-   * 成功率基于目标境界递减，寿元接近上限时额外惩罚。
-   * 成功后：消耗真气、更新 rankId/rankName、按新境界寿元延长寿命。
-   * 失败后：回退修炼进度至 0.3，真气损失 30%。
+   * 境界突破判定（ADR-012/017）：委托 npc-lifecycle。
+   * 成功/失败结果写入 this._breakthroughInfo，并按需刷新闭关 cap 前置与路径偏好。
    */
   _tryBreakthrough() {
-    // 突破以总进度为准：闭关进度(受境界 cultivationCap 上限)+ 游历感悟(insight)。
-    const cultivationProgress = this.state.get('cultivationProgress') || 0;
-    const progress = cultivationProgress + (this.state.get('insight') || 0);
-    if (progress < 1.0) return;
-
-    // 闭关进度至少占最低比例(minCultivationRatio，默认 0.3)才允许突破：
-    // 防止纯靠游历感悟“速成”，确保根基（闭关）达标。见 ADR-017。
-    const minCultivationRatio = this._cultivationConfig.minCultivationRatio ?? 0.3;
-    if (cultivationProgress < minCultivationRatio) return;
-
-    const currentRankId = this.state.get('rankId') || 'mortal';
-    const ranks = this._ranksData;
-    if (!ranks || ranks.length === 0) return;
-
-    const currentRank = ranks.find(r => r.id === currentRankId);
-    if (!currentRank) return;
-
-    const currentOrder = currentRank.order;
-    const cultivationRanks = ranks
-      .filter(r => r.category === 'cultivation')
-      .sort((a, b) => a.order - b.order);
-
-    const nextRank = cultivationRanks.find(r => r.order > currentOrder);
-    if (!nextRank) return;
-
-    const currentQi = this.state.get('qi') || 0;
-    const qiRequired = nextRank.qiRequired || 0;
-    if (currentQi < qiRequired) return;
-
-    const successRate = this._getBreakthroughRate(currentRankId, nextRank.id);
-    const breakthroughCfg = this._cultivationConfig.breakthrough || {};
-
-    // 先天资质突破加成：灵根 + 体质 breakthroughBonus 累加进基础成功率（详见 ADR-012）
-    const rootGrade = this._cultivationConfig.spiritRoot?.grades?.[this.state.get('spiritRootId')];
-    const physiqueType = this._cultivationConfig.physique?.types?.[this.state.get('physiqueId')];
-    const talentBonus = (rootGrade?.breakthroughBonus ?? 0) + (physiqueType?.breakthroughBonus ?? 0);
-    const techniqueBonus = this.state.get('techniqueBreakthroughBonus') || 0;
-    const aidBonus = this.state.get('breakthroughAidBonus') || 0;
-
-    const ageDays = this.state.get('ageDays') || 0;
-    const maxAgeDays = this.state.get('maxAgeDays') || 1;
-    const agePenaltyThreshold = breakthroughCfg.agePenaltyThreshold ?? 0.8;
-    const agePenaltyMultiplier = breakthroughCfg.agePenaltyMultiplier ?? 0.7;
-    const ageModifier = ageDays > maxAgeDays * agePenaltyThreshold ? agePenaltyMultiplier : 1.0;
-
-    const baseRate = Math.max(0, Math.min(1, successRate + talentBonus + techniqueBonus + aidBonus));
-    const finalRate = baseRate * ageModifier;
-    const roll = Math.random();
-    if (aidBonus !== 0) this.state.set('breakthroughAidBonus', 0);
-
-    if (roll < finalRate) {
-      this.state.set('rankId', nextRank.id);
-      this.state.set('rankName', nextRank.name);
-      this.state.set('cultivationProgress', 0);
-      this.state.set('insight', 0);
-      this.state.set('qi', currentQi - qiRequired);
-
-      const lifespan = nextRank.lifespan;
-      if (lifespan) {
-        const variance = (Math.random() - 0.5) * 2 * lifespan.varianceYears;
-        // 体质寿元加成：先天道体等特殊体质额外延长寿元（详见 ADR-012）
-        const physiqueLifeBonus = physiqueType?.lifespanBonus ?? 0;
-        const newMaxAgeYears = (lifespan.baseYears + variance) * (1 + physiqueLifeBonus);
-        const newMaxAgeDays = Math.floor(newMaxAgeYears * 360);
-        if (newMaxAgeDays > maxAgeDays) {
-          this.state.set('maxAgeDays', newMaxAgeDays);
-          this.state.set('maxAgeYears', Math.floor(newMaxAgeYears));
-          this.state.set('lifeRatio', ageDays / newMaxAgeDays);
-        }
-      }
-
-      // 境界提升后，闭关 cap 随之变化（通常更低，更依赖游历），刷新行为前置。
-      this.refreshCultivationCapPreconditions();
-      // 新境界开始：随机本境界的游历/闭关先后偏好（顺序随机，ADR-017）。
-      this._rollBreakthroughPathOrder();
-
-      this._breakthroughInfo = {
-        npcId: this.id,
-        npcName: this.name,
-        fromRank: currentRank.name,
-        toRank: nextRank.name,
-        success: true,
-        qiConsumed: qiRequired,
-        aidBonus,
-      };
-    } else {
-      const failureProgress = breakthroughCfg.failureProgressReset ?? 0.3;
-      const failureQiRetention = breakthroughCfg.failureQiRetention ?? 0.7;
-      // 突破失败：闭关进度回退、游历感悟清零（机缘已逝），真气损失。
-      // failureProgress 不应超过当前境界 cultivationCap，避免回退值反而高于闭关上限。
-      const capMap = this._cultivationConfig.cultivationCap || {};
-      const cap = capMap[currentRankId] ?? 1.0;
-      this.state.set('cultivationProgress', Math.min(failureProgress, cap));
-      this.state.set('insight', 0);
-      this.state.set('qi', Math.floor(currentQi * failureQiRetention));
-      this._breakthroughInfo = {
-        npcId: this.id,
-        npcName: this.name,
-        fromRank: currentRank.name,
-        targetRank: nextRank.name,
-        success: false,
-        qiLost: Math.floor(currentQi * (1 - failureQiRetention)),
-        aidBonus,
-      };
-    }
+    tryBreakthroughImpl(this);
   }
 
   /**
-   * @returns {number} 基础突破成功率
-   * 优先读取 cultivationConfig.breakthrough.successRates，回退到内置默认值
+   * 死亡处理：委托 npc-lifecycle（掌门陨落触发继任）。
+   * @param {Object} worldContext
    */
-  _getBreakthroughRate(fromRankId, toRankId) {
-    const breakthroughCfg = this._cultivationConfig.breakthrough || {};
-    const rateMap = breakthroughCfg.successRates || {
-      'mortal_to_qi_refining': 0.80,
-      'qi_refining_to_foundation_building': 0.60,
-      'foundation_building_to_golden_core': 0.40,
-      'golden_core_to_nascent_soul': 0.25,
-      'nascent_soul_to_spirit_transformation': 0.15,
-    };
-    const key = `${fromRankId}_to_${toRankId}`;
-    return rateMap[key] ?? (breakthroughCfg.defaultRate ?? 0.10);
-  }
-
   _handleDeath(worldContext) {
-    const factionId = this.state.get('factionId');
-    const role = this.state.get('currentRole');
-
-    if (role === 'leader' && factionId && worldContext.entityRegistry) {
-      this._triggerSuccession(factionId, worldContext);
-    }
-  }
-
-  _triggerSuccession(factionId, worldContext) {
-    const registry = worldContext.entityRegistry;
-    const npcs = registry.getAliveByType('npc');
-    const candidates = npcs.filter(n =>
-      n.state.get('factionId') === factionId && n.id !== this.id
-    );
-
-    // 数据驱动的继任优先级（来自 social.json）；缺省与 Wiki 一致。
-    const rolePriority = worldContext.balanceConfig?.social?.succession?.rolePriority
-      || ['heir', 'elder', 'general', 'officer', 'core_disciple'];
-
-    let successor = null;
-    for (const role of rolePriority) {
-      const roleCandidates = candidates.filter(n => n.state.get('currentRole') === role);
-      if (roleCandidates.length > 0) {
-        // 同一职位优先级内：先比 ranks.json 的 successionScore（境界越高/职分越重越优先），
-        // 再比 personality.loyalty（忠诚），最后用 id 字典序兜底保证可复现。与 wiki/rules/leader-succession.md 一致。
-        roleCandidates.sort((a, b) => {
-          const sa = this._successionScoreOf(a);
-          const sb = this._successionScoreOf(b);
-          if (sb !== sa) return sb - sa;
-          const la = a.staticData?.personality?.loyalty ?? 0;
-          const lb = b.staticData?.personality?.loyalty ?? 0;
-          if (lb !== la) return lb - la;
-          return a.id < b.id ? -1 : (a.id > b.id ? 1 : 0);
-        });
-        successor = roleCandidates[0];
-        break;
-      }
-    }
-
-    const faction = registry.getById(factionId);
-    if (!faction) return;
-
-    if (successor) {
-      successor.state.set('currentRole', 'leader');
-      successor.state.set('isLeader', true);
-      successor.state.set('isElder', false);
-      successor.state.set('roleRank', 6);
-      faction.state.set('leaderNpcId', successor.id);
-    } else {
-      faction.state.set('isDestroyed', true);
-      faction.alive = false;
-      faction.state.set('stability', 0);
-    }
-  }
-
-  /** 取候选人的继任分数：优先 ranks.json 的 successionScore（按 rankId），回退到 rank.order */
-  _successionScoreOf(npc) {
-    const rankId = npc.state.get('rankId');
-    const rank = this._ranksData.find(r => r.id === rankId);
-    if (!rank) return 0;
-    return rank.successionScore ?? rank.order ?? 0;
+    handleDeathImpl(this, worldContext);
   }
 
   get name() { return this.staticData.name; }

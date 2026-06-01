@@ -151,6 +151,17 @@ export class NPCState extends RuntimeState {
       targetOpportunityId: null,
       // 已装备法宝 id（ADR-025）：进 assetScore，可被抢夺转移。
       equippedArtifactId: npcConfig.equippedArtifactId || null,
+      // —— 关系驱动行为派生状态（ADR-028）——
+      // 由 _buildRelationshipGoals 选定的关系对象 id（支援同门/探望恩人/师徒互动），relationship_target 解析坐标。
+      targetRelationshipId: null,
+      // 关系 Goal 达成键：到达并结算支援/探望行为后由 effect 置真，结算后复位。
+      assistedAlly: false,
+      visitedBenefactor: false,
+      // —— 师徒互动派生状态（ADR-029 第三期）——
+      // 师傅传功(护徒·点化)/师傅护徒(驰援)/徒弟尽孝(探望) 三类关系 Goal 的达成键，结算后复位。
+      taughtDisciple: false,
+      protectedDisciple: false,
+      visitedMaster: false,
     });
 
     this._daysPerYear = daysPerYear;

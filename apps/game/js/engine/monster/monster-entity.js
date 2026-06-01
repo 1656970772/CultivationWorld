@@ -114,7 +114,38 @@ export class MonsterEntity extends BaseEntity {
       this.state.set('nearTarget', false);
       this._preyRef = null;
     }
+    // 领地感知（ADR-028）：察觉闯入老巢半径的 NPC，建 territory_threat 边。
+    // 仅 goalsEnabled 时执行；不改变 hasTarget/猎食逻辑（零漂移）。
+    this._senseTerritory(worldContext);
     return BTStatus.SUCCESS;
+  }
+
+  /**
+   * 领地威胁感知（ADR-028）：对进入 home±wanderRadius 的 NPC，经 worldContext.recordTerritoryThreat
+   * 建领地威胁边，并把最近的入侵者缓存到 _intruderRef + state.intruderNpcId 供领地防御读取。
+   * 仅在关系驱动启用时生效；否则不写任何状态（零漂移）。
+   */
+  _senseTerritory(worldContext) {
+    if (typeof worldContext?.relationGoalsEnabled !== 'function' || !worldContext.relationGoalsEnabled()) {
+      return;
+    }
+    const registry = worldContext.entityRegistry;
+    if (!registry) return;
+    const home = { x: this.staticData.get('homeX'), y: this.staticData.get('homeY') };
+    const radius = this.staticData.get('wanderRadius') || 12;
+    const npcs = registry.getAliveByType('npc');
+    let nearest = null, nearestDist = radius + 0.01;
+    for (const npc of npcs) {
+      if (!npc.spatial) continue;
+      const d = Math.abs(npc.spatial.tileX - home.x) + Math.abs(npc.spatial.tileY - home.y);
+      if (d > radius) continue;
+      if (typeof worldContext.recordTerritoryThreat === 'function') {
+        worldContext.recordTerritoryThreat(this.id, npc.id);
+      }
+      if (d < nearestDist) { nearestDist = d; nearest = npc; }
+    }
+    this._intruderRef = nearest;
+    this.state.set('intruderNpcId', nearest ? nearest.id : null);
   }
 
   /**
@@ -198,7 +229,9 @@ export class MonsterEntity extends BaseEntity {
   // ---------------------------------------------------------------------------
 
   /**
-   * 呼唤同族：统计附近同阶妖兽数量（供未来集群 AI 扩展），本体不额外动作。
+   * 呼唤同族（ADR-028 升级为协防）：统计附近同阶妖兽数量；
+   * 当关系驱动启用且本兽有目标时，读 pack_member 边，令附近空闲同群妖兽锁定同一目标（群起而攻）。
+   * 关系驱动关闭时仅计数（回退一期 stub 行为，零漂移）。
    */
   monsterCallPack(worldContext) {
     if (!worldContext?.entityRegistry) return BTStatus.SUCCESS;
@@ -213,6 +246,60 @@ export class MonsterEntity extends BaseEntity {
       }
     }
     this.state.set('packNearby', count);
+
+    // 协防（ADR-028）：仅 goalsEnabled 时，把本兽当前目标同步给附近空闲同群妖兽。
+    const gateOn = typeof worldContext.relationGoalsEnabled === 'function' && worldContext.relationGoalsEnabled();
+    const rs = worldContext.relationshipSystem;
+    const targetId = this.state.get('targetNpcId');
+    if (gateOn && rs && targetId && typeof rs.edgesOfType === 'function') {
+      const target = worldContext.entityRegistry.getById(targetId);
+      if (target && target.alive && target.spatial) {
+        for (const edge of rs.edgesOfType(this.id, 'pack_member')) {
+          const mate = worldContext.entityRegistry.getById(edge.toId);
+          if (!mate || !mate.alive || !mate.spatial || mate.id === this.id) continue;
+          // 仅指挥附近且当前空闲（无目标/非休整）的同群妖兽，避免打断其自身猎食/逃跑。
+          if (mate.state.get('hasTarget') === true) continue;
+          if (mate.state.get('behaviorState') === 'rest') continue;
+          const d = sp.distanceTo(mate.spatial.tileX, mate.spatial.tileY);
+          if (d > this._senseRange * 1.5) continue;
+          mate.state.set('targetNpcId', targetId);
+          mate.state.set('hasTarget', true);
+          mate._preyRef = target;
+        }
+      }
+    }
+    return BTStatus.SUCCESS;
+  }
+
+  /**
+   * 领地防御（ADR-028，tier2+）：察觉到闯入老巢半径的 NPC（intruderNpcId 由 _senseTerritory 设置）时，
+   * 即便对方境界高于本兽（强者入侵），也锁定为攻击目标，群起护territory（区别于只猎弱者的 _findPrey）。
+   * 仅 goalsEnabled 且配置 defendEnabled 时生效；本兽 tier 须 ≥ minTierForDefense。返回 SUCCESS 表示已接管目标。
+   */
+  monsterDefendTerritory(worldContext) {
+    if (typeof worldContext?.relationGoalsEnabled !== 'function' || !worldContext.relationGoalsEnabled()) {
+      return BTStatus.FAILURE;
+    }
+    const territoryCfg = worldContext.relationshipConfig?.territory || {};
+    if (territoryCfg.defendEnabled === false) return BTStatus.FAILURE;
+    const minTier = territoryCfg.minTierForDefense ?? 2;
+    if (this._btTier < minTier) return BTStatus.FAILURE;
+
+    const intruderId = this.state.get('intruderNpcId');
+    if (!intruderId) return BTStatus.FAILURE;
+    const intruder = this._intruderRef && this._intruderRef.id === intruderId
+      ? this._intruderRef
+      : worldContext.entityRegistry?.getById(intruderId);
+    if (!intruder || !intruder.alive || !intruder.spatial) {
+      this.state.set('intruderNpcId', null);
+      return BTStatus.FAILURE;
+    }
+    // 锁定入侵者为目标（覆盖弱猎物逻辑），交由 chase/attack 与 call-pack 处理。
+    this._preyRef = intruder;
+    this.state.set('targetNpcId', intruder.id);
+    this.state.set('hasTarget', true);
+    const dist = this.spatial.distanceTo(intruder.spatial.tileX, intruder.spatial.tileY);
+    this.state.set('nearTarget', dist <= 1.5);
     return BTStatus.SUCCESS;
   }
 
@@ -383,6 +470,10 @@ export class MonsterEntity extends BaseEntity {
       // tier3：被修士反击，记住仇人
       if (this._btTier >= 3 && !this.state.get('grudgeTargetId')) {
         this.state.set('grudgeTargetId', npc.id);
+        // 关系网（ADR-027）：在统一关系网建『妖兽仇敌』边（mon→npc）。
+        if (worldContext && typeof worldContext.recordMonsterGrudge === 'function') {
+          worldContext.recordMonsterGrudge(this.id, npc.id);
+        }
       }
       if (hp <= 0) {
         this._die('npc_counter', npc.name);

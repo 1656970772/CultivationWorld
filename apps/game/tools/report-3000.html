@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>修仙世界 3000 天模拟分析报告（v2 调优后）</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#0d1117;--card:#161b22;--border:#21262d;--text:#c9d1d9;--dim:#8b949e;
+  --blue:#58a6ff;--green:#3fb950;--orange:#f0883e;--red:#f85149;--purple:#bc8cff;
+  --pink:#ff79c6;--cyan:#39c5cf;--yellow:#e3b341;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.5}
+
+/* ── 头部 ── */
+.hero{text-align:center;padding:40px 20px 24px;background:linear-gradient(180deg,#161b2288,transparent)}
+.hero h1{font-size:30px;background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px}
+.hero .sub{color:var(--dim);margin-top:8px;font-size:13px}
+.hero .meta{margin-top:10px;font-size:11px;color:var(--dim);letter-spacing:.5px}
+
+/* ── 卡片网格 ── */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;padding:0 24px;max-width:1320px;margin:0 auto 20px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 12px;text-align:center;position:relative;overflow:hidden}
+.card .v{font-size:24px;font-weight:700;background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.card .l{font-size:11px;color:var(--dim);margin-top:4px}
+.card.warn .v{background:linear-gradient(135deg,var(--orange),var(--red));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.card.warn{border-color:var(--orange)44}
+.card.cold .v{color:var(--red)}
+.card.cold{border-color:var(--red)55}
+.card.ok .v{background:linear-gradient(135deg,var(--green),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+/* ── 区块 ── */
+.container{max-width:1320px;margin:0 auto;padding:0 24px}
+section{margin-bottom:36px}
+section h2{font-size:18px;color:var(--blue);margin-bottom:14px;padding-bottom:6px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+section h2 .badge{font-size:11px;background:var(--purple)22;color:var(--purple);padding:2px 8px;border-radius:8px;font-weight:400}
+.row{display:grid;gap:16px}
+.row-2{grid-template-columns:1fr 1fr}
+.row-3{grid-template-columns:1fr 1fr 1fr}
+.row-4{grid-template-columns:1fr 1fr 1fr 1fr}
+
+/* ── 图表 ── */
+.chart-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px}
+.chart-box h3{font-size:13px;color:var(--dim);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.chart-box h3 .hint{font-size:10px;color:var(--dim);opacity:.7;font-weight:400}
+.chart-box canvas{width:100%!important;max-height:280px}
+.chart-box.tall canvas{max-height:340px}
+
+/* ── 表格 ── */
+.tbl-wrap{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;max-height:600px;overflow-y:auto}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:#1c2128;color:var(--blue);text-align:left;padding:8px 10px;position:sticky;top:0;z-index:1;font-weight:600}
+td{padding:6px 10px;border-top:1px solid var(--border)}
+tr:hover td{background:#1c212844}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.dead{opacity:.5}
+.bar-cell{width:120px}
+.mini-bar{height:14px;border-radius:2px;background:var(--border);position:relative;overflow:hidden}
+.mini-bar .fill{height:100%;border-radius:2px;transition:width 1s ease}
+.mini-bar .lbl{position:absolute;right:3px;top:0;line-height:14px;font-size:9px;color:#fff}
+
+/* ── 标签 ── */
+.tag{display:inline-block;padding:1px 7px;border-radius:8px;font-size:10px}
+.tag-ok{background:#23863633;color:var(--green)}
+.tag-dead{background:#f8514933;color:var(--red)}
+.tag-neutral{background:#23863622;color:var(--green)}
+.tag-cult{background:#1f6feb22;color:var(--blue)}
+.tag-wander{background:#f0883e22;color:var(--orange)}
+.tag-female{background:#ff79c633;color:var(--pink)}
+.tag-male{background:#79c0ff33;color:#79c0ff}
+
+/* ── 诊断 ── */
+.diag{border-radius:8px;padding:10px 14px;margin:6px 0;font-size:13px}
+.diag-warn{background:#f0883e18;border-left:3px solid var(--orange);color:var(--orange)}
+.diag-ok{background:#23863618;border-left:3px solid var(--green);color:var(--green)}
+.diag-cold{background:#f8514918;border-left:3px solid var(--red);color:var(--red)}
+.diag b{color:#fff}
+
+/* ── 差距清单 ── */
+.gap-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.gap-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;border-top:3px solid var(--red)}
+.gap-item .label{font-size:11px;color:var(--dim);margin-bottom:6px}
+.gap-item .val{font-size:20px;font-weight:700;color:var(--red);margin-bottom:4px}
+.gap-item .desc{font-size:11px;color:var(--dim);line-height:1.5}
+
+/* ── 折叠 ── */
+details{margin:10px 0}
+summary{cursor:pointer;color:var(--blue);font-weight:600;padding:6px 0;user-select:none;font-size:14px}
+details[open] summary{margin-bottom:6px}
+
+/* ── 页脚 ── */
+.footer{text-align:center;color:var(--dim);padding:30px 20px;border-top:1px solid var(--border);font-size:11px;margin-top:30px}
+
+@media(max-width:900px){.row-2,.row-3,.row-4,.gap-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>玄天大陆 · 3000 天世界模拟分析报告 <span style="font-size:14px;color:var(--green);background:#23863633;padding:2px 8px;border-radius:8px;vertical-align:middle">v2 调优后</span></h1>
+  <div class="sub" id="subtitle">加载中…</div>
+  <div class="meta" id="meta"></div>
+</div>
+
+<div class="cards" id="cards"></div>
+
+<div class="container">
+
+<!-- ===== 1. 时间线 ===== -->
+<section>
+  <h2>📈 时间线趋势 <span class="badge">每 50 天一个采样点</span></h2>
+  <div class="row row-2">
+    <div class="chart-box"><h3>NPC 存活 / 死亡 <span class="hint">左轴</span></h3><canvas id="cNpcLife"></canvas></div>
+    <div class="chart-box"><h3>平均真气 & 最高真气 <span class="hint">左轴</span></h3><canvas id="cQi"></canvas></div>
+  </div>
+  <div class="row row-2" style="margin-top:14px">
+    <div class="chart-box"><h3>势力平均灵石 & 弟子数 <span class="hint">左轴</span></h3><canvas id="cStone"></canvas></div>
+    <div class="chart-box"><h3>平均修炼进度 & 累计突破 <span class="hint">左轴进度 / 右轴突破</span></h3><canvas id="cProgress"></canvas></div>
+  </div>
+  <div class="row row-3" style="margin-top:14px">
+    <div class="chart-box"><h3>累计死亡数</h3><canvas id="cDeaths"></canvas></div>
+    <div class="chart-box"><h3>累计道侣配对 & 出生</h3><canvas id="cCompanion"></canvas></div>
+    <div class="chart-box"><h3>累计天灾 / 世界事件</h3><canvas id="cWorldEvt"></canvas></div>
+  </div>
+</section>
+
+<!-- ===== 2. 行为分布 ===== -->
+<section>
+  <h2>🎯 行为分布 <span class="badge">3000 天累计</span></h2>
+  <div class="row row-2">
+    <div class="chart-box"><h3>势力行为</h3><canvas id="cFacAct"></canvas></div>
+    <div class="chart-box"><h3>NPC 行为</h3><canvas id="cNpcAct"></canvas></div>
+  </div>
+</section>
+
+<!-- ===== 3. 势力资源 ===== -->
+<section>
+  <h2>🏯 势力资源变化 <span class="badge">初始 → 最终</span></h2>
+  <div class="row row-3">
+    <div class="chart-box"><h3>灵石</h3><canvas id="cFStone"></canvas></div>
+    <div class="chart-box"><h3>弟子</h3><canvas id="cFDisc"></canvas></div>
+    <div class="chart-box"><h3>粮食</h3><canvas id="cFFood"></canvas></div>
+  </div>
+  <div class="tbl-wrap" style="margin-top:14px" id="fTbl"></div>
+</section>
+
+<!-- ===== 4. GOAP ===== -->
+<section>
+  <h2>🧠 GOAP 规划统计</h2>
+  <div class="row row-2">
+    <div class="chart-box"><h3>势力 GOAP 成功率 <span class="hint">贪心回退率 = fallback / total</span></h3><canvas id="cGoapF"></canvas></div>
+    <div class="chart-box"><h3>NPC GOAP 成功率 <span class="hint">回退占比高说明 GOAP 找不到完整路径</span></h3><canvas id="cGoapN"></canvas></div>
+  </div>
+</section>
+
+<!-- ===== 5. GOBT 心智（ADR-019） ===== -->
+<section>
+  <h2>🧬 GOBT 心智系统 <span class="badge">ADR-019 · 执念 / 情绪 / 记忆</span></h2>
+  <div class="row row-2">
+    <div class="chart-box"><h3>执念分布 <span class="hint">3000 天末存活 NPC 的执念类型</span></h3><canvas id="cObsession"></canvas></div>
+    <div class="chart-box"><h3>心智状态总览 <span class="hint">持有执念 NPC / 峰值愤怒 / 峰值心魔</span></h3><canvas id="cMind"></canvas></div>
+  </div>
+  <div class="diag diag-warn" style="margin-top:12px">
+    ⚠️ <b>心魔峰值 = 0：</b>ADR-019 的 EmotionSystem 触发源（被背叛/道侣陨落/门派被灭）过于保守，3000 天中无 NPC 心魔值突破基线。需在 <code>emotion.json</code> 加大日常攻击/辱骂的 <code>angerGain</code>，或接入势力攻战致死（killerId）路径。
+  </div>
+</section>
+
+<!-- ===== 6. 复仇 PvP（ADR-020） ===== -->
+<section>
+  <h2>⚔️ 复仇 / PvP 行为链 <span class="badge">ADR-020 · killerId 闭环</span></h2>
+  <div class="row row-2">
+    <div class="chart-box tall"><h3>复仇触发统计 <span class="hint">追踪 / 击杀 / 致死 / 负伤 / 复仇执念</span></h3><canvas id="cRevenge"></canvas></div>
+    <div class="chart-box"><h3>致死原因分布 <span class="hint">PvP 致死 vs 任务致死 vs 寿终</span></h3><canvas id="cCause"></canvas></div>
+  </div>
+  <div class="diag diag-cold" style="margin-top:12px">
+    ❌ <b>复仇全链路冷启动：</b>追踪 0、击杀 0、PvP 致死 0、复仇执念持有 0。体检报告指出的"高层权力流动"与"恩怨叙事"在 3000 天内完全未涌现。根因是 <code>obsession.json.humiliated→revenge</code> 与势力攻战致死 <code>killerFactionId</code> 路径未实质启用。
+  </div>
+</section>
+
+<!-- ===== 7. 妖兽资源闭环（ADR-026） ===== -->
+<section>
+  <h2>🐉 妖兽资源化闭环 <span class="badge">ADR-026 · 猎妖 → 掉落 → 兑换</span></h2>
+  <div class="row row-3">
+    <div class="chart-box"><h3>猎妖任务 <span class="hint">接取 / 完成 / 失败</span></h3><canvas id="cHunt"></canvas></div>
+    <div class="chart-box"><h3>任务失败原因</h3><canvas id="cHuntFail"></canvas></div>
+    <div class="chart-box"><h3>掉落资源</h3><canvas id="cDrops"></canvas></div>
+  </div>
+  <div class="diag diag-warn" style="margin-top:12px">
+    ⚠️ <b>猎妖失败率 65.7%：</b>接取 99 / 完成 42 / 失败 65。失败原因 <code>hunt_failed=64</code>（打不过）+ <code>death=1</code>（致死）。需在 <code>risk.json</code> 降低"高境界妖"的接取门槛、或 NPC 学会自动评估战力后再接取。
+  </div>
+</section>
+
+<!-- ===== 8. 任务奖励与经济（TODO-quest-reward） ===== -->
+<section>
+  <h2>💰 任务奖励 / 兑换经济链 <span class="badge">TODO-quest-reward</span></h2>
+  <div class="row row-2">
+    <div class="chart-box"><h3>经济动作分布 <span class="hint">donate / redeem / use / 任务奖励</span></h3><canvas id="cEcon"></canvas></div>
+    <div class="chart-box"><h3>事件类型分布</h3><canvas id="cEvents"></canvas></div>
+  </div>
+  <div class="diag diag-ok" style="margin-top:12px">
+    ✅ <b>经济链基本打通：</b>材料捐赠 488 → 兑换丹药 30 → 使用 7；兑换突破丹 18 → 使用 4；任务接取 164 → 任务执行 88 → 任务交付 120（含 quest_item_reward 46）。但 兑换/使用 比 ≈ 6:1 → 4:1，<b>消费场景明显偏弱</b>，未形成完整闭环。
+  </div>
+</section>
+
+<!-- ===== 9. NPC 花名册 ===== -->
+<section>
+  <h2>👤 NPC 花名册 <span class="badge">按势力分组 · 按真气降序</span></h2>
+  <div id="npcRoster"></div>
+</section>
+
+<!-- ===== 10. 道侣 & 出生 ===== -->
+<section>
+  <h2>💕 道侣 & 出生 <span class="badge">3000 天累计</span></h2>
+  <div class="row row-2">
+    <div id="cSec"></div>
+    <div id="bSec"></div>
+  </div>
+</section>
+
+<!-- ===== 11. 突破 / 死亡 ===== -->
+<section>
+  <h2>⚡ 突破事件</h2>
+  <div id="brkSec"></div>
+</section>
+<section>
+  <h2>💀 死亡记录</h2>
+  <div id="dthSec"></div>
+</section>
+
+<!-- ===== 12. 诊断与差距清单 ===== -->
+<section>
+  <h2>🔍 诊断与差距清单 <span class="badge">3000 天暴露的硬伤</span></h2>
+  <div class="gap-grid" id="gapGrid"></div>
+  <div id="diagSec" style="margin-top:16px"></div>
+</section>
+
+</div>
+
+<div class="footer" id="footer"></div>
+
+<script src="report-data.js"></script>
+<script>
+const D = window.REPORT_DATA;
+
+// ── GOBT 心智硬编码（来自 run-3000-v2.log，simulate-analysis.mjs 未导出） ──
+// v2 历史最大情绪改由 simulate-analysis.mjs 跟踪，存到 D.mindHistory（peakAnger / peakInnerDemon）。
+// 这里只保留执念分布。
+const MIND_FROM_LOG = {
+  aliveObsessed: 22,
+  obsessionCounts: { supremacy: 9, resurrection: 11, revenge: 2, retire: 3, power: 2, longevity: 1 },
+  peakAnger: 30,    // 末 tick 瞬时（v2 历史最大 100 来自 D.mindHistory.peakAnger）
+  peakInnerDemon: 0, // 末 tick 瞬时（v2 历史最大 45.5 来自 D.mindHistory.peakInnerDemon）
+  peakNote: 'v2 修复：simulate-analysis.mjs 跟踪历史最大情绪（peakAnger=100, peakInnerDemon=45.5），不是末 tick 瞬时值。',
+};
+
+if (!D) {
+  document.getElementById('subtitle').textContent = '❌ 未找到 report-data.js';
+} else {
+  render(D);
+}
+
+function render(D) {
+  document.getElementById('subtitle').textContent =
+    `${D.totalDays} 天 · 模拟用时 ${D.elapsed}s · ${D.totalFactions} 势力 · ${D.totalNPCs} NPC · v2 调优后`;
+  document.getElementById('meta').textContent =
+    `生成于 ${D.generatedAt} · v2 调优：攻战真正杀 NPC（faction_attack 写 _deathInfo.slain + 写 attacked 记忆）、act_defend 加 stability<70 前置、灵根分布微调（heaven 1→3, dual 9→15）、修复 simulate-analysis 历史最大心魔跟踪`;
+
+  const s = D.summary;
+  const cards = [
+    { v: `${s.aliveFactions}/${D.totalFactions}`, l: '存活势力' },
+    { v: `${s.aliveNPCs}/${D.totalNPCs}`, l: '存活 NPC', cls: 'ok' },
+    { v: s.breakthroughSuccess, l: '突破成功', cls: s.breakthroughSuccess === 0 ? 'cold' : 'ok' },
+    { v: s.breakthroughFail, l: '突破失败', cls: s.breakthroughFail === 0 ? 'warn' : '' },
+    { v: s.totalDeaths, l: 'NPC 死亡' },
+    { v: s.avgQi.toFixed(1), l: '平均真气' },
+    { v: s.companionPairs||0, l: '道侣配对' },
+    { v: s.totalBirths||0, l: '诞生后代' },
+    { v: `${s.genderMale||0}♂/${s.genderFemale||0}♀`, l: '性别分布' },
+    { v: s.attacks, l: '攻伐', cls: s.attacks === 0 ? 'cold' : 'ok' },
+    { v: D.revengePvp.slainDeaths, l: '攻战致死', cls: D.revengePvp.slainDeaths === 0 ? 'cold' : 'ok' },
+    { v: s.breakthroughSuccess, l: '突破成功', cls: s.breakthroughSuccess === 0 ? 'cold' : 'ok' },
+    { v: D.mindHistory?.peakAnger?.toFixed(0) || '—', l: '历史最大愤怒', cls: '' },
+    { v: D.mindHistory?.peakInnerDemon?.toFixed(0) || '—', l: '历史最大心魔', cls: '' },
+    { v: s.alliances, l: '结盟' },
+    { v: MIND_FROM_LOG.aliveObsessed, l: '持执念 NPC', cls: 'warn' },
+    { v: MIND_FROM_LOG.peakAnger, l: '峰值愤怒' },
+    { v: MIND_FROM_LOG.peakInnerDemon, l: '峰值心魔', cls: MIND_FROM_LOG.peakInnerDemon === 0 ? 'cold' : '' },
+    { v: D.revengePvp.huntTriggers, l: '复仇追踪', cls: 'cold' },
+    { v: D.revengePvp.killTriggers, l: '复仇击杀', cls: 'cold' },
+    { v: D.monsterResourceStats.huntQuestCompleted, l: '猎妖完成' },
+    { v: D.monsterResourceStats.huntQuestFailed, l: '猎妖失败', cls: 'warn' },
+  ];
+  document.getElementById('cards').innerHTML = cards.map(c =>
+    `<div class="card ${c.cls||''}"><div class="v">${c.v}</div><div class="l">${c.l}</div></div>`
+  ).join('');
+
+  const tl = D.timeline;
+  const days = tl.map(t => t.day);
+  const baseOpts = {
+    responsive: true, animation: { duration: 800 },
+    plugins: { legend: { labels: { color: '#8b949e', font: { size: 10 } } } },
+    scales: {
+      x: { ticks: { color: '#8b949e', font: { size: 9 }, maxTicksLimit: 12 }, grid: { color: '#21262d' } },
+      y: { ticks: { color: '#8b949e', font: { size: 9 } }, grid: { color: '#21262d' } }
+    }
+  };
+  const mk = (id, type, data, extraOpts) => new Chart(document.getElementById(id), {
+    type, data,
+    options: JSON.parse(JSON.stringify(Object.assign({}, baseOpts, extraOpts || {})))
+  });
+
+  // 时间线
+  mk('cNpcLife', 'line', {
+    labels: days,
+    datasets: [
+      { label: '存活 NPC', data: tl.map(t=>t.aliveNPC), borderColor: '#3fb950', backgroundColor: '#3fb95022', fill: true, tension: .3 },
+      { label: '死亡 NPC', data: tl.map(t=>t.deadNPC), borderColor: '#f85149', backgroundColor: '#f8514922', fill: true, tension: .3 },
+    ]
+  });
+  mk('cQi', 'line', {
+    labels: days,
+    datasets: [
+      { label: '平均真气', data: tl.map(t=>t.avgQi), borderColor: '#58a6ff', backgroundColor: '#58a6ff22', fill: true, tension: .3, yAxisID: 'y' },
+      { label: '最高真气', data: tl.map(t=>t.maxQi), borderColor: '#bc8cff', backgroundColor: '#bc8cff22', fill: true, tension: .3, yAxisID: 'y1' },
+    ]
+  }, { scales: { y1: { position: 'right', ticks: { color: '#8b949e' }, grid: { display: false } } } });
+  mk('cStone', 'line', {
+    labels: days,
+    datasets: [
+      { label: '平均灵石', data: tl.map(t=>t.avgStone), borderColor: '#f0883e', backgroundColor: '#f0883e22', fill: true, tension: .3 },
+      { label: '平均弟子', data: tl.map(t=>t.avgDisciples), borderColor: '#39c5cf', backgroundColor: '#39c5cf22', fill: true, tension: .3 },
+    ]
+  });
+  mk('cProgress', 'line', {
+    labels: days,
+    datasets: [
+      { label: '平均修炼进度', data: tl.map(t=>t.avgProgress), borderColor: '#3fb950', backgroundColor: '#3fb95022', fill: true, tension: .3, yAxisID: 'y' },
+      { label: '累计突破', data: tl.map(t=>t.breakthroughs), borderColor: '#e3b341', borderDash: [5,3], tension: .3, yAxisID: 'y1' },
+    ]
+  }, { scales: { y1: { position: 'right', ticks: { color: '#8b949e' }, grid: { display: false } } } });
+  mk('cDeaths', 'line', {
+    labels: days,
+    datasets: [{ label: '累计死亡', data: tl.map(t=>t.deaths), borderColor: '#f85149', backgroundColor: '#f8514922', fill: true, tension: .3 }]
+  });
+  mk('cCompanion', 'line', {
+    labels: days,
+    datasets: [
+      { label: '累计道侣', data: tl.map((t,i)=>s.companionPairs*(i/(tl.length-1))), borderColor: '#ff79c6', backgroundColor: '#ff79c622', fill: true, tension: .3 },
+      { label: '累计出生', data: tl.map((t,i)=>s.totalBirths*(i/(tl.length-1))), borderColor: '#39c5cf', backgroundColor: '#39c5cf22', fill: true, tension: .3 },
+    ]
+  });
+  mk('cWorldEvt', 'bar', {
+    labels: ['攻伐', '结盟', '道侣', '出生', '天灾', '势力覆灭', '世界修正'],
+    datasets: [{ data: [s.attacks, s.alliances, s.companionPairs||0, s.totalBirths||0, D.worldEvents.disasters, D.worldEvents.factionDeaths, D.worldEvents.modifiers],
+      backgroundColor: ['#f85149','#3fb950','#ff79c6','#39c5cf','#f0883e','#bc8cff','#8b949e'] }]
+  }, { plugins: { legend: { display: false } } });
+
+  // 行为
+  const palette = ['#58a6ff','#3fb950','#f0883e','#f85149','#bc8cff','#79c0ff','#d2a8ff','#8b949e','#56d364','#e3b341','#ff79c6','#39c5cf','#ffa657','#7ee787','#ff7b72','#a5d6ff'];
+  mk('cFacAct', 'doughnut', {
+    labels: D.factionActions.map(a=>a.name),
+    datasets: [{ data: D.factionActions.map(a=>a.count), backgroundColor: palette.slice(0, D.factionActions.length) }]
+  }, { plugins: { legend: { position: 'right', labels: { color: '#c9d1d9', font: { size: 10 } } } } });
+  mk('cNpcAct', 'doughnut', {
+    labels: D.npcActions.map(a=>a.name),
+    datasets: [{ data: D.npcActions.map(a=>a.count), backgroundColor: palette.slice(0, D.npcActions.length) }]
+  }, { plugins: { legend: { position: 'right', labels: { color: '#c9d1d9', font: { size: 10 } } } } });
+
+  // 势力资源
+  const fNames = D.factions.map(f=>f.name);
+  mk('cFStone', 'bar', {
+    labels: fNames,
+    datasets: [
+      { label: '初始', data: D.factions.map(f=>f.initStone), backgroundColor: '#21262d', borderRadius: 3 },
+      { label: '最终', data: D.factions.map(f=>f.finalStone), backgroundColor: '#58a6ff88', borderRadius: 3 },
+    ]
+  }, { scales: { x: { ticks: { color: '#8b949e', maxRotation: 60, font: { size: 9 } } } } });
+  mk('cFDisc', 'bar', {
+    labels: fNames,
+    datasets: [
+      { label: '初始', data: D.factions.map(f=>f.initDisc), backgroundColor: '#21262d', borderRadius: 3 },
+      { label: '最终', data: D.factions.map(f=>f.finalDisc), backgroundColor: '#39c5cf88', borderRadius: 3 },
+    ]
+  }, { scales: { x: { ticks: { color: '#8b949e', maxRotation: 60, font: { size: 9 } } } } });
+  mk('cFFood', 'bar', {
+    labels: fNames,
+    datasets: [
+      { label: '初始', data: D.factions.map(f=>f.initFood), backgroundColor: '#21262d', borderRadius: 3 },
+      { label: '最终', data: D.factions.map(f=>f.finalFood), backgroundColor: '#e3b34188', borderRadius: 3 },
+    ]
+  }, { scales: { x: { ticks: { color: '#8b949e', maxRotation: 60, font: { size: 9 } } } } });
+
+  // 势力表格
+  let ft = '<table><tr><th>势力</th><th>类型</th><th class="num">灵石</th><th class="num">弟子</th><th class="num">粮食</th><th class="num">稳定度</th><th class="num">领地</th><th>状态</th></tr>';
+  for (const f of D.factions) {
+    const tag = f.isNeutral ? '<span class="tag tag-neutral">中立</span>' : '<span class="tag tag-cult">宗门</span>';
+    const st = f.destroyed ? '<span class="tag tag-dead">覆灭</span>' : '<span class="tag tag-ok">存活</span>';
+    ft += `<tr${f.destroyed?' class="dead"':''}><td>${f.name}</td><td>${tag}</td>
+    <td class="num">${f.initStone}→${f.finalStone}</td>
+    <td class="num">${f.initDisc}→${f.finalDisc}</td>
+    <td class="num">${f.initFood}→${f.finalFood}</td>
+    <td class="num">${f.stability}</td><td class="num">${f.territory}</td><td>${st}</td></tr>`;
+  }
+  ft += '</table>';
+  document.getElementById('fTbl').innerHTML = ft;
+
+  // GOAP
+  const totalF = D.goap.factionOk + D.goap.factionFb;
+  const totalN = D.goap.npcOk + D.goap.npcFb;
+  mk('cGoapF', 'doughnut', {
+    labels: ['GOAP 成功', '贪心回退'],
+    datasets: [{ data: [D.goap.factionOk, D.goap.factionFb], backgroundColor: ['#3fb950','#f0883e'],
+      borderColor: '#0d1117', borderWidth: 2 }]
+  }, { plugins: { legend: { position: 'bottom' } } });
+  mk('cGoapN', 'doughnut', {
+    labels: ['GOAP 成功', '贪心回退'],
+    datasets: [{ data: [D.goap.npcOk, D.goap.npcFb], backgroundColor: ['#3fb950','#f0883e'],
+      borderColor: '#0d1117', borderWidth: 2 }]
+  }, { plugins: { legend: { position: 'bottom' } } });
+
+  // GOBT 心智
+  const obKeys = Object.keys(MIND_FROM_LOG.obsessionCounts);
+  mk('cObsession', 'bar', {
+    labels: obKeys,
+    datasets: [{ data: obKeys.map(k=>MIND_FROM_LOG.obsessionCounts[k]),
+      backgroundColor: palette.slice(0, obKeys.length), borderRadius: 4 }]
+  }, { indexAxis: 'y', plugins: { legend: { display: false } } });
+  mk('cMind', 'bar', {
+    labels: ['持执念 NPC', '峰值愤怒', '峰值心魔'],
+    datasets: [{ data: [MIND_FROM_LOG.aliveObsessed, MIND_FROM_LOG.peakAnger, MIND_FROM_LOG.peakInnerDemon],
+      backgroundColor: ['#bc8cff','#f0883e','#f85149'], borderRadius: 4 }]
+  }, { plugins: { legend: { display: false } } });
+
+  // 复仇 PvP
+  const r = D.revengePvp;
+  mk('cRevenge', 'bar', {
+    labels: ['追踪触发', '击杀触发', '手刃仇人', '被反杀', '负伤', 'PvP致死', '复仇执念持有'],
+    datasets: [{ data: [r.huntTriggers, r.killTriggers, r.enemySlain, r.slainByEnemy, r.wounded, r.slainDeaths, r.revengeObsessionsAlive],
+      backgroundColor: ['#f0883e','#f85149','#3fb950','#f85149','#e3b341','#bc8cff','#ff79c6'], borderRadius: 4 }]
+  }, { plugins: { legend: { display: false } } });
+
+  // 死亡原因
+  const causeCounts = {};
+  for (const d of D.deaths) {
+    const c = d.cause || 'unknown';
+    causeCounts[c] = (causeCounts[c]||0) + 1;
+  }
+  if (Object.keys(causeCounts).length === 0) causeCounts['no_deaths'] = 1;
+  mk('cCause', 'doughnut', {
+    labels: Object.keys(causeCounts),
+    datasets: [{ data: Object.values(causeCounts), backgroundColor: palette.slice(0, Object.keys(causeCounts).length) }]
+  }, { plugins: { legend: { position: 'right' } } });
+
+  // 妖兽
+  const m = D.monsterResourceStats;
+  mk('cHunt', 'bar', {
+    labels: ['接取', '完成', '失败'],
+    datasets: [{ data: [m.huntQuestAccepted, m.huntQuestCompleted, m.huntQuestFailed],
+      backgroundColor: ['#58a6ff','#3fb950','#f85149'], borderRadius: 4 }]
+  }, { plugins: { legend: { display: false } } });
+  const failKeys = Object.keys(m.huntQuestFailureOutcomes || {});
+  mk('cHuntFail', 'doughnut', {
+    labels: failKeys.length ? failKeys : ['无失败'],
+    datasets: [{ data: failKeys.length ? failKeys.map(k=>m.huntQuestFailureOutcomes[k]) : [1],
+      backgroundColor: failKeys.length ? palette.slice(0, failKeys.length) : ['#8b949e'] }]
+  }, { plugins: { legend: { position: 'right' } } });
+  const dropKeys = Object.keys(m.drops || {});
+  mk('cDrops', 'bar', {
+    labels: dropKeys,
+    datasets: [{ data: dropKeys.map(k=>m.drops[k]),
+      backgroundColor: dropKeys.map(k=>k.includes('g4')?'#bc8cff':k.includes('g3')?'#ff79c6':k.includes('g2')?'#f0883e':'#58a6ff'),
+      borderRadius: 4 }]
+  }, { indexAxis: 'y', plugins: { legend: { display: false } } });
+
+  // 经济
+  const ec = D.economyActionCounts;
+  const ecLabels = ['材料捐赠', '兑换回气丹', '使用回气丹', '兑换突破丹', '使用突破丹', '兑换法器', '任务物品奖励'];
+  const ecData = [ec.material_donate, ec.redeem_qi_pill, ec.use_qi_pill, ec.redeem_breakthrough_pill, ec.use_breakthrough_pill, ec.redeem_artifact, ec.quest_item_reward];
+  mk('cEcon', 'bar', {
+    labels: ecLabels,
+    datasets: [{ data: ecData, backgroundColor: ['#39c5cf','#58a6ff','#3fb950','#bc8cff','#e3b341','#f0883e','#ff79c6'], borderRadius: 4 }]
+  }, { indexAxis: 'y', plugins: { legend: { display: false } } });
+
+  // 事件
+  const ev = D.eventTypeCounts;
+  const evKeys = Object.keys(ev);
+  mk('cEvents', 'doughnut', {
+    labels: evKeys,
+    datasets: [{ data: evKeys.map(k=>ev[k]), backgroundColor: palette.slice(0, evKeys.length) }]
+  }, { plugins: { legend: { position: 'right', labels: { font: { size: 10 } } } } });
+
+  // 花名册
+  let rHtml = '';
+  for (const g of D.npcRoster) {
+    const alive = g.members.filter(m=>m.alive).length;
+    rHtml += `<details${g.members.length<=25?' open':''}><summary>${g.factionName} <span style="color:var(--dim);font-weight:400">(${alive}/${g.members.length} 存活)</span></summary>`;
+    rHtml += '<div class="tbl-wrap"><table><tr><th>姓名</th><th>性别</th><th>境界</th><th>职务</th><th class="num">年龄/寿命</th><th class="num">真气</th><th>修炼进度</th><th class="num">灵石</th><th>道侣</th><th class="num">子女</th><th>状态</th></tr>';
+    for (const m of g.members) {
+      const p = m.progress * 100;
+      const color = p >= 90 ? '#f0883e' : p >= 50 ? '#58a6ff' : '#3fb950';
+      const bar = `<div class="mini-bar"><div class="fill" style="width:${p.toFixed(0)}%;background:${color}"></div><div class="lbl">${p.toFixed(1)}%</div></div>`;
+      const st = m.alive ? '🟢' : '💀';
+      const gIcon = m.gender === 'female' ? '<span class="tag tag-female">♀</span>' : '<span class="tag tag-male">♂</span>';
+      const cp = m.daoCompanionId ? `💕 ${m.daoCompanionId}` : '-';
+      rHtml += `<tr${m.alive?'':' class="dead"'}><td>${m.name}</td><td>${gIcon}</td><td>${m.rankName}</td><td>${m.role}</td>
+      <td class="num">${m.age}/${m.maxAge}</td><td class="num">${m.qi.toFixed(1)}</td><td>${bar}</td>
+      <td class="num">${m.stone}</td><td>${cp}</td><td class="num">${m.childrenCount||0}</td><td>${st}</td></tr>`;
+    }
+    rHtml += '</table></div></details>';
+  }
+  document.getElementById('npcRoster').innerHTML = rHtml;
+
+  // 道侣 / 出生
+  const cL = D.companionLog || [];
+  if (cL.length === 0) document.getElementById('cSec').innerHTML = '<p style="color:var(--dim)">暂无</p>';
+  else {
+    let h = '<div class="tbl-wrap"><table><tr><th>天</th><th>修士</th><th>道侣</th><th>所属</th></tr>';
+    for (const c of cL) h += `<tr><td class="num">${c.day}</td><td>${c.npc1Name}</td><td>${c.npc2Name}</td><td>${c.faction||'-'}</td></tr>`;
+    document.getElementById('cSec').innerHTML = h + '</table></div>';
+  }
+  const bL = D.birthLog || [];
+  if (bL.length === 0) document.getElementById('bSec').innerHTML = '<p style="color:var(--dim)">暂无</p>';
+  else {
+    let h = '<div class="tbl-wrap"><table><tr><th>天</th><th>后代</th><th>性别</th><th>父</th><th>母</th><th>势力</th></tr>';
+    for (const b of bL) h += `<tr><td class="num">${b.day}</td><td>${b.childName}</td><td>${b.childGender==='female'?'♀':'♂'}</td><td>${b.fatherName}</td><td>${b.motherName}</td><td>${b.factionId||'-'}</td></tr>`;
+    document.getElementById('bSec').innerHTML = h + '</table></div>';
+  }
+
+  // 突破
+  if (D.breakthroughs.length === 0) document.getElementById('brkSec').innerHTML = '<p style="color:var(--dim)">3000 天内 0 次突破</p>';
+  else {
+    let h = '<div class="tbl-wrap"><table><tr><th>天</th><th>NPC</th><th>从→到</th><th>结果</th><th class="num">真气</th></tr>';
+    for (const b of D.breakthroughs) {
+      const res = b.success ? '<span class="tag tag-ok">✅ 成功</span>' : '<span class="tag tag-dead">❌ 失败</span>';
+      h += `<tr><td class="num">${b.day}</td><td>${b.npcName}</td><td>${b.fromRank} → ${b.toRank||b.targetRank||'?'}</td><td>${res}</td><td class="num">${b.success?(b.qiConsumed||0):(b.qiLost||0)}</td></tr>`;
+    }
+    document.getElementById('brkSec').innerHTML = h + '</table></div>';
+  }
+
+  // 死亡
+  if (D.deaths.length === 0) document.getElementById('dthSec').innerHTML = '<p style="color:var(--dim)">无</p>';
+  else {
+    let h = `<details><summary>展开 ${D.deaths.length} 条记录</summary><div class="tbl-wrap"><table><tr><th>天</th><th>NPC</th><th>境界</th><th class="num">年龄/寿命</th><th>死因</th><th>所属</th></tr>`;
+    for (const d of D.deaths) {
+      const cause = d.cause === 'natural' ? '寿终' : d.cause === 'quest' ? `任务` : d.cause || '?';
+      h += `<tr><td class="num">${d.day}</td><td>${d.npcName||d.npcId}</td><td>${d.rankName||'?'}</td>
+      <td class="num">${d.ageYears??'?'}/${d.maxAgeYears??'?'}</td><td>${cause}</td><td>${d.factionName||'散修'}</td></tr>`;
+    }
+    document.getElementById('dthSec').innerHTML = h + '</table></div></details>';
+  }
+
+  // ── 差距清单 ──
+  const gaps = [
+    {
+      label: '突破成功', val: s.breakthroughSuccess,
+      desc: '3000 天内 0 次成功突破。修炼进度从 0.16 缓慢爬到 0.24，瓶颈难破。'
+    },
+    {
+      label: '攻伐事件', val: s.attacks,
+      desc: '0 次势力攻战。势力间关系稳定但失去戏剧张力，需在 FactionAI 加大 attack 权重。'
+    },
+    {
+      label: '势力覆灭', val: D.worldEvents.factionDeaths,
+      desc: '0 个势力覆灭，缺乏淘汰机制。所有 18 个势力全部存活 → 缺乏压力测试。'
+    },
+    {
+      label: '复仇击杀', val: r.killTriggers,
+      desc: 'ADR-020 闭环未启用。需在势力攻战致死路径写 killerFactionId，并让 humiliation/betrayed 触发复仇执念。'
+    },
+    {
+      label: '峰值心魔', val: MIND_FROM_LOG.peakInnerDemon,
+      desc: 'ADR-019 EmotionSystem 触发源过保守。需加大 attack/humiliated 的 angerGain、innerDemonGain。'
+    },
+    {
+      label: '猎妖失败率', val: `${m.huntQuestFailed}/${m.huntQuestAccepted}=${(m.huntQuestFailed/(m.huntQuestAccepted||1)*100).toFixed(1)}%`,
+      desc: 'hunt_failed 64 次 + death 1 次。需让 NPC 在接取前评估战力（self check）。'
+    },
+    {
+      label: 'NPC GOAP 回退', val: `${(D.goap.npcFb/totalN*100).toFixed(1)}%`,
+      desc: `NPC GOAP 贪心回退占比 97.6%（${D.goap.npcFb.toLocaleString()}/${totalN.toLocaleString()}）。规划器找不到完整路径，回退到 ad-hoc。`
+    },
+    {
+      label: '势力行为单一', val: '60.3%',
+      desc: '"加强防御"占势力行为的 60.3%。FactionAI 行为选择缺乏多样化，缺乏攻击/扩张/交易/外交流派。'
+    },
+    {
+      label: '法器兑换', val: ec.redeem_artifact,
+      desc: '3000 天仅 2 次兑换法器，1 次使用。法宝稀缺/昂贵，NPC 几乎走不到这一步。'
+    },
+  ];
+  document.getElementById('gapGrid').innerHTML = gaps.map(g =>
+    `<div class="gap-item"><div class="label">${g.label}</div><div class="val">${g.val}</div><div class="desc">${g.desc}</div></div>`
+  ).join('');
+
+  document.getElementById('diagSec').innerHTML = (D.diagnostics||[]).map(d =>
+    `<div class="diag diag-warn">⚠️ ${d}</div>`).join('') +
+    `<div class="diag diag-ok">✅ v2 调优后攻伐 ${s.attacks} 次（v0 0 → v1 775 → v2 ${s.attacks}），攻战真正杀 NPC ${causeSlain} 例，复仇执念 ${r.revengeObsessionsAlive} 个出现。</div>
+     <div class="diag diag-ok">✅ "加强防御" 占比 60% → 0.04%（74/${D.factionActions.reduce((a,b)=>a+b.count,0)}），行为空间彻底打开。</div>
+     <div class="diag diag-ok">✅ 突破成功 ${s.breakthroughSuccess}（v0/v1 都是 0），修真大爆发：灵根微调（heaven 1→3, dual 9→15）+ 突破概率微调（0.60→0.65, 0.40→0.45）。</div>
+     <div class="diag diag-ok">✅ 贸易 ${D.factionActions.find(a=>a.name==='贸易交换')?.count || 0}（v0 0 → v1 481 → v2 ${D.factionActions.find(a=>a.name==='贸易交换')?.count || 0}），经济循环完全打通。</div>
+     <div class="diag diag-ok">✅ 18 势力 100% 存活，${s.aliveNPCs} NPC 存活（出生 ${s.totalBirths||0} < 死亡 ${s.totalDeaths}，${s.aliveNPCs < 151 ? '人口下降但世界进入"江湖"状态' : '人口正增长'}）。</div>
+     <div class="diag diag-ok">✅ 修复统计 bug：simulate-analysis.mjs 跟踪历史最大心魔，v2 历史最大 ${D.mindHistory?.peakInnerDemon?.toFixed(1) || '—'}（v0/v1 取末 tick 显示 0 是衰减导致）。</div>
+     <div class="diag diag-warn">⚠️ 复仇 PvP 击杀仍 0：slain 致死 ${causeSlain} + 复仇执念 ${r.revengeObsessionsAlive} 个已涌现，但执念的"去追仇人"行为（act_npc_hunt_enemy）没被 GOAP 选中。v3 计划：让复仇执念的 goalState 优先级压过其他需求，或调 act_npc_hunt_enemy 的 precondition 让它更易触发。</div>
+     <div class="diag diag-warn">⚠️ NPC 死亡总数 219（v1 64 → v2 219，3.4x），其中 monster 138、slain 17、quest 40、quest_hunt_failed 22、power_struggle 2。出生 29 < 死亡 219，人口净减 190。是"江湖"代价，需在 v3 平衡出生率。</div>
+     <div class="diag diag-cold">❌ 势力覆灭仍 0：攻战杀 NPC 但弟子数仍 > winDefMin=5，势力不散。v3 计划：让 winDefMin 跟随"实际活 NPC 数"动态计算。</div>`;
+
+  document.getElementById('footer').textContent =
+    `报告生成于 ${D.generatedAt} · 模拟 ${D.totalDays} 天 · 耗时 ${D.elapsed}s · 18 势力 · v2 调优后 · 调优方案见 docs/balance/tuning-2026-06-01-v2.md`;
+}
+</script>
+</body>
+</html>

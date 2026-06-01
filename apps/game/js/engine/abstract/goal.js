@@ -20,6 +20,7 @@ export const GoalSource = Object.freeze({
   OBSESSION: 'obsession',
   REACTION: 'reaction',
   OPPORTUNITY: 'opportunity',
+  RELATIONSHIP: 'relationship',
 });
 
 /**

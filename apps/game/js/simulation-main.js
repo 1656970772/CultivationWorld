@@ -324,7 +324,7 @@ class SimulationApp {
         if (goalKey !== prevGoal) {
           (this._lastGoalByNpc ||= new Map()).set(id, goalKey);
           const label = goal.needName || goal.needId;
-          const tag = goal.goalSource === 'obsession' ? '执念' : '目标';
+          const tag = ({ obsession: '执念', opportunity: '机会', relationship: '关系' })[goal.goalSource] || '目标';
           this._pushNpcEvent(id, day, 'goal',
             goal.failed ? `决意：${label}（无可行计划）` : `决意（${tag}）：${label}`);
         }

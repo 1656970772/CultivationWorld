@@ -26,6 +26,15 @@ class ActionPoolClass {
   }
 
   /**
+   * 取已注册的行为执行器（供测试/调试直接调用 executor.run）。
+   * @param {string} id 执行器 id（即 action.executorId）
+   * @returns {ActionExecutor|null}
+   */
+  getExecutor(id) {
+    return this._executors.get(id) || null;
+  }
+
+  /**
    * 注册行为模板
    * @param {Object} template
    */

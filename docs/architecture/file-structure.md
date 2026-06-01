@@ -53,16 +53,36 @@ WorldDymnic-Cursor/
 │   │   │   │   │   ├── faction-needs.js
 │   │   │   │   │   └── faction-actions.js
 │   │   │   │   ├── npc/               # NPC 具体实现
-│   │   │   │   │   ├── npc-entity.js
+│   │   │   │   │   ├── npc-entity.js            # 实体定义 + 组合子系统 + 一行转发（ADR-030）
 │   │   │   │   │   ├── npc-static-data.js
 │   │   │   │   │   ├── npc-state.js
 │   │   │   │   │   ├── npc-needs.js
-│   │   │   │   │   └── npc-actions.js
+│   │   │   │   │   ├── npc-goals.js             # 目标抽取：执念/机会/关系/师徒 Goal（ADR-030）
+│   │   │   │   │   ├── npc-lifecycle.js         # 突破/死亡/继任（ADR-030）
+│   │   │   │   │   ├── npc-obsession-trigger.js # 先天/后天/条件执念触发（ADR-030）
+│   │   │   │   │   ├── npc-utility.js           # 选目标层 Utility 装配（ADR-021）
+│   │   │   │   │   ├── npc-actions.js           # 统一注册入口 + re-export 门面（ADR-030）
+│   │   │   │   │   └── actions/                 # 行为执行器按业务域拆分（ADR-030）
+│   │   │   │   │       ├── npc-action-utils.js      # 共享工具：风险/价值/PvP/奖励
+│   │   │   │   │       ├── cultivation-actions.js   # 修炼/疗伤/寻丹/挑战
+│   │   │   │   │       ├── quest-actions.js         # 接取/执行/交付任务
+│   │   │   │   │       ├── economy-actions.js       # 捐献/兑换/服用
+│   │   │   │   │       ├── combat-actions.js        # 侍奉/辅佐/游历/复仇/夺宝
+│   │   │   │   │       ├── archetype-actions.js     # 养老/传承/夺权
+│   │   │   │   │       └── relationship-actions.js  # 机缘/驰援/报恩/师徒
 │   │   │   │   ├── world/             # 世界实体
 │   │   │   │   │   ├── world-entity.js
 │   │   │   │   │   ├── world-state.js
 │   │   │   │   │   ├── world-rules.js
-│   │   │   │   │   └── tick-manager.js
+│   │   │   │   │   ├── tick-manager.js          # tick 11 步骨架 + 公共方法/转发（ADR-030）
+│   │   │   │   │   └── services/                # tick 各步骤服务化拆分（ADR-030）
+│   │   │   │   │       ├── world-context-builder.js # 每 tick 装配 worldContext 纯数据
+│   │   │   │   │       ├── faction-ai-service.js     # 势力 AI 策略（扩张/攻伐/结盟/贸易）
+│   │   │   │   │       ├── promotion-service.js      # 晋升/月考/宗门活动
+│   │   │   │   │       ├── population-service.js     # 婚配/生育
+│   │   │   │   │       ├── death-collector.js        # 死亡收集/遗志继承
+│   │   │   │   │       ├── info-coordinator.js       # 信息传播/机会/觊觎编排
+│   │   │   │   │       └── monster-respawn-service.js # 妖兽重生/入群
 │   │   │   │   ├── world-engine.js            # 引擎主入口
 │   │   │   │   └── world-engine.worker.js     # Worker 入口
 │   │   │   ├── renderer/              # Canvas 地图渲染

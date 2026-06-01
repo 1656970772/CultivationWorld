@@ -92,6 +92,56 @@
         "curve": "linear",
         "params": { "slope": 1.2, "shift": 0.2, "base": 0.2 }
       }
+    ],
+    "goal_assist_sect_mate": [
+      {
+        "id": "assistReadiness",
+        "_comment": "护短同门（ADR-028）：修为越充足越敢驰援御敌（实力不足时降低驰援冲动，避免送死）。仅 utility.enabled=true 时生效。",
+        "inputKey": "cultivationProgress",
+        "source": "entity",
+        "curve": "linear",
+        "params": { "slope": 1.0, "shift": 0.2, "base": 0.3 }
+      }
+    ],
+    "goal_repay_benefactor": [
+      {
+        "id": "repayDuty",
+        "_comment": "报恩（ADR-028）：恒定中等效用的低风险善举（探望恩人）。仅 utility.enabled=true 时生效。",
+        "inputKey": "alive",
+        "source": "entity",
+        "curve": "threshold",
+        "params": { "threshold": 0.5, "high": 0.6, "low": 0.6 }
+      }
+    ],
+    "goal_teach_disciple": [
+      {
+        "id": "teachReadiness",
+        "_comment": "师傅传功（ADR-029）：自身修为越高越有余力点化徒弟（低修为时不分心传功）。仅 utility.enabled=true 时生效。",
+        "inputKey": "cultivationProgress",
+        "source": "entity",
+        "curve": "linear",
+        "params": { "slope": 0.8, "shift": 0.3, "base": 0.4 }
+      }
+    ],
+    "goal_protect_disciple": [
+      {
+        "id": "protectReadiness",
+        "_comment": "师傅护徒（ADR-029）：修为越充足越敢护徒御敌（实力不足时降低冲动，避免送死）。护徒效用基线高于护短同门（一日为师）。仅 utility.enabled=true 时生效。",
+        "inputKey": "cultivationProgress",
+        "source": "entity",
+        "curve": "linear",
+        "params": { "slope": 1.0, "shift": 0.2, "base": 0.4 }
+      }
+    ],
+    "goal_visit_master": [
+      {
+        "id": "filialDuty",
+        "_comment": "徒弟尽孝（ADR-029）：恒定中等效用的低风险善举（探望恩师）。仅 utility.enabled=true 时生效。",
+        "inputKey": "alive",
+        "source": "entity",
+        "curve": "threshold",
+        "params": { "threshold": 0.5, "high": 0.6, "low": 0.6 }
+      }
     ]
   }
 }

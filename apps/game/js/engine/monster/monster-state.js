@@ -56,6 +56,8 @@ export class MonsterState extends RuntimeState {
       hasTarget: false,
       nearTarget: false,
       packNearby: 0,
+      // 领地防御（ADR-028）：闯入老巢半径的入侵者 NPC id（_senseTerritory 写入，仅 goalsEnabled 时）。
+      intruderNpcId: null,
       // tier3+ 情绪与仇恨（grade < 5 时保持初始值 0/null，不参与决策）
       emotionFear: 0,
       emotionRage: 0,

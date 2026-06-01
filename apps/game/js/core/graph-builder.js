@@ -15,7 +15,17 @@ const EDGE_TYPES = {
   PERSONALITY_INFLUENCE: 'personality_influence',
   EVENT_EFFECT: 'event_effect',
   STABILITY_FACTOR: 'stability_factor',
-  MODIFIER_EFFECT: 'modifier_effect'
+  MODIFIER_EFFECT: 'modifier_effect',
+  RELATIONSHIP: 'relationship'
+};
+
+/** 关系类型 → 中文标签（关系网可视化，ADR-027）。与 relationship.json edgeTypes 对齐。 */
+const RELATION_TYPE_LABELS = {
+  master: '师傅', disciple: '徒弟', dao_companion: '道侣', kin: '血亲',
+  same_sect: '同门', ally: '盟友', rival: '竞争', enemy: '宿敌',
+  benefactor: '恩人', grudge: '仇怨', gratitude: '恩义',
+  spirit_pet: '灵宠', mount: '坐骑', beast_grudge: '妖兽仇敌', territory_threat: '领地入侵',
+  pack_member: '同群', pack_leader: '妖群首领', beast_rival: '妖兽争斗'
 };
 
 const FACTION_COLORS = {
@@ -239,6 +249,61 @@ export class GraphBuilder {
           influence: relation > 0 ? 'positive' : 'negative'
         });
       }
+    }
+  }
+
+  /**
+   * 注入运行时关系网边（ADR-027）。关系来自世界快照（worldState.relationships），
+   * 非静态配置，故独立于 buildFromConfigs，可在每次 updateFromWorldState 后调用刷新。
+   * 边的两端实体若无对应节点（如妖兽），按需创建轻量节点。
+   * @param {Array<{fromId,toId,type,affinity,strength}>} relationships
+   */
+  buildRelationshipEdges(relationships) {
+    // 先清除旧的关系边（避免重复堆积），保留其它类型边。
+    this.edges = this.edges.filter(e => e.edgeType !== EDGE_TYPES.RELATIONSHIP);
+    if (!Array.isArray(relationships)) return;
+
+    const nodeId = (id) => {
+      // 已有 npc 节点优先；否则视实体类型建轻量节点。
+      const existing = this.nodes.find(n => n.dataId === id);
+      if (existing) return existing.id;
+      // 妖兽 / 其它实体：按 id 前缀建占位节点。
+      const isMonster = String(id).startsWith('beast_') || String(id).startsWith('monster_');
+      const pid = `${isMonster ? 'monster' : 'entity'}_${id}`;
+      if (!this.nodes.find(n => n.id === pid)) {
+        this.nodes.push({
+          id: pid,
+          dataId: id,
+          type: isMonster ? 'monster' : 'entity',
+          label: id,
+          color: isMonster ? '#9b59b6' : '#888',
+          runtimeData: {},
+        });
+      }
+      return pid;
+    };
+
+    for (const rel of relationships) {
+      if (!rel || !rel.fromId || !rel.toId || !rel.type) continue;
+      const source = nodeId(rel.fromId);
+      const target = nodeId(rel.toId);
+      const label = RELATION_TYPE_LABELS[rel.type] || rel.type;
+      const affinity = rel.affinity ?? 0;
+      this.edges.push({
+        id: `edge_rel_${rel.fromId}_${rel.toId}_${rel.type}`,
+        source,
+        target,
+        sourceDataId: rel.fromId,
+        targetDataId: rel.toId,
+        edgeType: EDGE_TYPES.RELATIONSHIP,
+        relationType: rel.type,
+        label,
+        value: affinity,
+        strength: rel.strength ?? 0,
+        description: `${rel.fromId} → ${rel.toId}：${label}（好感 ${affinity}，强度 ${rel.strength ?? 0}）`,
+        lineStyle: affinity < 0 ? 'dashed' : 'solid',
+        influence: affinity > 0 ? 'positive' : (affinity < 0 ? 'negative' : 'neutral'),
+      });
     }
   }
 

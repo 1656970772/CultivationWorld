@@ -195,6 +195,10 @@ export class GraphPanel {
   updateWorldState(worldState) {
     if (!this.isRealtime || !this.isVisible) return;
     this.graphBuilder.updateFromWorldState(worldState);
+    // 关系网边（ADR-027）：来自世界快照的运行时关系，刷新注入图。
+    if (worldState && Array.isArray(worldState.relationships)) {
+      this.graphBuilder.buildRelationshipEdges(worldState.relationships);
+    }
     this._refreshRuntimeData();
   }
 

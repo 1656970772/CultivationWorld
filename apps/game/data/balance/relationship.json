@@ -1,0 +1,320 @@
+{
+  "_description": "关系网系统配置（ADR-027）。定义 NPC↔NPC / NPC↔妖兽 / 妖兽↔妖兽 三层关系边的类型、默认好感(affinity:-100~100)与强度(strength:0~100)、自然衰减、双向性，以及世界事件→关系边的映射。与势力外交(faction.state.relations)分层：本表是个人/族群层关系，势力层仍走 combat.json。修改此文件即可调参，无需改代码。",
+  "enabled": true,
+  "_note_enabled": "数据层总开关。enabled=false 可整体停用关系写入做对照实验（一期行为）。",
+  "goalsEnabled": true,
+  "_note_goalsEnabled": "ADR-028 第二期：关系边是否驱动 NPC Goal/妖兽护群护领地行为。默认开（直接全量启用，可回退）。goalsEnabled=false 回退一期纯数据态（不产出关系 Goal、不建妖群/领地边、不护群）。simulate-analysis 可用 RELATIONSHIP_GOALS_ACTIVE 环境变量强制开/关做对照。",
+  "edgeTypes": {
+    "_interpersonal_comment": "=== 人际关系（NPC↔NPC）===",
+    "master": {
+      "name": "师傅",
+      "category": "interpersonal",
+      "affinity": 60,
+      "strength": 70,
+      "decay": 0,
+      "symmetricType": "disciple",
+      "_comment": "from 是 to 的师傅；反向自动建 disciple 边。decay=0 表示师徒不随时间淡化。"
+    },
+    "disciple": {
+      "name": "徒弟",
+      "category": "interpersonal",
+      "affinity": 60,
+      "strength": 70,
+      "decay": 0
+    },
+    "dao_companion": {
+      "name": "道侣",
+      "category": "interpersonal",
+      "affinity": 90,
+      "strength": 90,
+      "decay": 0,
+      "symmetricType": "dao_companion",
+      "_comment": "双向对称：互为道侣。"
+    },
+    "kin": {
+      "name": "血亲",
+      "category": "interpersonal",
+      "affinity": 70,
+      "strength": 80,
+      "decay": 0,
+      "symmetricType": "kin",
+      "_comment": "父母↔子女、同门血脉。双向对称。"
+    },
+    "same_sect": {
+      "name": "同门",
+      "category": "interpersonal",
+      "affinity": 30,
+      "strength": 25,
+      "decay": 1,
+      "decayFloor": 10,
+      "symmetricType": "same_sect",
+      "_comment": "同宗门弟子。affinity 偏低体现『同门多为利益交集』(参考凡人修仙传)。随时间向 decayFloor 回落。"
+    },
+    "ally": {
+      "name": "盟友",
+      "category": "interpersonal",
+      "affinity": 50,
+      "strength": 40,
+      "decay": 1,
+      "decayFloor": 0,
+      "symmetricType": "ally"
+    },
+    "rival": {
+      "name": "竞争对手",
+      "category": "interpersonal",
+      "affinity": -30,
+      "strength": 35,
+      "decay": 1,
+      "decayFloor": 0,
+      "_comment": "同门竞争/夺职失败者。负好感但未到死仇。"
+    },
+    "enemy": {
+      "name": "宿敌",
+      "category": "interpersonal",
+      "affinity": -80,
+      "strength": 60,
+      "decay": 0.5,
+      "decayFloor": 0,
+      "_comment": "结构性敌对（势力攻战、夺宝结仇）。"
+    },
+    "benefactor": {
+      "name": "恩人",
+      "category": "interpersonal",
+      "affinity": 80,
+      "strength": 70,
+      "decay": 0.2,
+      "decayFloor": 0,
+      "_comment": "救命之恩等。对应记忆 saved_by。"
+    },
+    "grudge": {
+      "name": "仇怨",
+      "category": "interpersonal",
+      "affinity": -70,
+      "strength": 50,
+      "decay": 0,
+      "_comment": "个人恩怨（记忆事件累积）。strength 由 memory.json 的 grudgeGain 决定，故 decay=0 交由记忆衰减侧表达。复仇链(_resolveRevengeTarget)依赖此边。"
+    },
+    "gratitude": {
+      "name": "恩义",
+      "category": "interpersonal",
+      "affinity": 70,
+      "strength": 50,
+      "decay": 0,
+      "_comment": "个人恩义（记忆事件累积）。strength 由 memory.json 的 gratitudeGain 决定。"
+    },
+
+    "_human_beast_comment": "=== 人妖关系（NPC↔妖兽）===",
+    "spirit_pet": {
+      "name": "灵宠",
+      "category": "human_beast",
+      "affinity": 85,
+      "strength": 80,
+      "decay": 0,
+      "_comment": "from(NPC) 驯化 to(妖兽) 为灵宠。参考凡人修仙传 神识烙印/情感培养。第一期仅建模，养成/反噬见待做。"
+    },
+    "mount": {
+      "name": "坐骑",
+      "category": "human_beast",
+      "affinity": 60,
+      "strength": 60,
+      "decay": 0,
+      "_comment": "from(NPC) 收服 to(飞行/陆行妖兽) 为坐骑。"
+    },
+    "beast_grudge": {
+      "name": "妖兽仇敌",
+      "category": "human_beast",
+      "affinity": -75,
+      "strength": 55,
+      "decay": 0.5,
+      "decayFloor": 0,
+      "_comment": "from(妖兽) 仇视 to(NPC)，被猎杀反击后锁定的仇人。对应 monster.grudgeTargetId。参考族群报复/千里追杀。"
+    },
+    "territory_threat": {
+      "name": "领地入侵",
+      "category": "human_beast",
+      "affinity": -40,
+      "strength": 30,
+      "decay": 2,
+      "decayFloor": 0,
+      "_comment": "from(妖兽) 视 to(NPC) 为闯入领地者。短期威胁，衰减快。第一期预留，暂不自动建边。"
+    },
+
+    "_beast_beast_comment": "=== 妖妖关系（妖兽↔妖兽）===",
+    "pack_member": {
+      "name": "同群",
+      "category": "beast_beast",
+      "affinity": 50,
+      "strength": 40,
+      "decay": 0,
+      "symmetricType": "pack_member",
+      "_comment": "同 family/同群妖兽。双向对称。第一期预留，暂不自动建边。"
+    },
+    "pack_leader": {
+      "name": "妖群首领",
+      "category": "beast_beast",
+      "affinity": 60,
+      "strength": 60,
+      "decay": 0,
+      "_comment": "from(妖兽) 臣服于 to(高阶/化形妖兽首领)。第一期预留。"
+    },
+    "beast_rival": {
+      "name": "妖兽争斗",
+      "category": "beast_beast",
+      "affinity": -50,
+      "strength": 40,
+      "decay": 1,
+      "decayFloor": 0,
+      "_comment": "异族妖兽争夺地盘（如万妖山↔蛮蛟族）。第一期预留。"
+    }
+  },
+  "eventBindings": {
+    "_comment": "世界事件 → 关系边映射。tick-manager 在对应事件结算点调用 RelationshipSystem.applyEvent(eventType, fromId, toId, ctx)。strengthDelta 为该事件对边强度的增量（叠加在 edgeType.strength 之上，正=加深/负=削弱），未配置则用 edgeType 默认值建边。",
+    "faction_war_attacked": {
+      "edgeType": "enemy",
+      "direction": "victimToAttackerMembers",
+      "strengthDelta": 15,
+      "_comment": "势力攻战：败方成员对攻方成员结『宿敌』边。与 'attacked' 记忆同步触发。"
+    },
+    "companion_lost": {
+      "edgeType": "grudge",
+      "direction": "fromTo",
+      "strengthDelta": 60,
+      "_comment": "道侣陨落：在世道侣对凶手(killerId)结深仇。strengthDelta 对齐 memory.json companion_lost.grudgeGain。"
+    },
+    "humiliated": {
+      "edgeType": "rival",
+      "direction": "fromTo",
+      "strengthDelta": 20,
+      "_comment": "挑战失败/被夺职受辱：对羞辱者结『竞争』边。"
+    },
+    "demoted": {
+      "edgeType": "rival",
+      "direction": "fromFaction",
+      "strengthDelta": 10,
+      "_comment": "被贬谪：对所属势力领袖结『竞争』边（夺权诱因）。"
+    },
+    "dao_companion_matched": {
+      "edgeType": "dao_companion",
+      "direction": "fromTo",
+      "_comment": "结为道侣：双向建道侣边。"
+    },
+    "birth": {
+      "edgeType": "kin",
+      "direction": "parentsToChild",
+      "_comment": "诞生后代：父母↔子女双向建血亲边。"
+    },
+    "same_sect_init": {
+      "edgeType": "same_sect",
+      "direction": "fromTo",
+      "_comment": "开局/入门：同宗门弟子互建同门边（初始化时批量建立）。"
+    },
+    "monster_grudge": {
+      "edgeType": "beast_grudge",
+      "direction": "fromTo",
+      "strengthDelta": 10,
+      "_comment": "妖兽被反击：对仇人(NPC)结妖兽仇敌边。对应 monster.grudgeTargetId 设定时刻。"
+    },
+    "pack_init": {
+      "edgeType": "pack_member",
+      "direction": "fromTo",
+      "_comment": "开局/补刷：同 family + 老巢邻近的妖兽互建同群边（双向，初始化批量建立，ADR-028）。"
+    },
+    "pack_leader_init": {
+      "edgeType": "pack_leader",
+      "direction": "fromTo",
+      "_comment": "妖群内最高阶妖兽为首领，群成员对其建臣服边（ADR-028）。"
+    },
+    "territory_intrusion": {
+      "edgeType": "territory_threat",
+      "direction": "fromTo",
+      "strengthDelta": 10,
+      "_comment": "妖兽察觉 NPC 闯入老巢半径：对入侵者结领地威胁边。decay=2 使 NPC 离开后自然消失（ADR-028）。"
+    }
+  },
+  "init": {
+    "_comment": "初始关系生成规则。开局据 npcs.json 的 factionId + role 推导师徒/同门边。",
+    "sameSect": {
+      "enabled": true,
+      "maxPerFaction": 60,
+      "_comment": "同势力两两建 same_sect 边；maxPerFaction 限制单势力建边规模（N 较大时按弟子两两组合可能爆量，超过则只在抽样集合内建边）。"
+    },
+    "masterDisciple": {
+      "enabled": true,
+      "masterRoles": ["leader", "elder"],
+      "discipleRoles": ["core_disciple", "disciple", "inner_disciple", "outer_disciple"],
+      "maxDisciplesPerMaster": 3,
+      "_comment": "同势力内，掌门/长老作为师傅，按境界就近收弟子为徒（每位师傅最多 maxDisciplesPerMaster 人）。discipleRoles 含 core_disciple（当前 npcs.json 主要弟子角色）及通用 disciple/inner/outer 弟子角色，确保与实体数据对齐建边。"
+    }
+  },
+  "npcGoals": {
+    "_comment": "ADR-028：NPC 关系驱动 Goal 的优先级与触发阈值。仅 goalsEnabled 时生效。priority 越大越优先（与执念/机会 Goal 竞争，参考 npc-entity collectExtraGoals）。",
+    "assistSectMate": {
+      "priority": 6,
+      "minSectAffinityStrength": 30,
+      "maxAssistRange": 18,
+      "_comment": "护短同门：高强度 same_sect/ally 对象本 tick 遭袭时前往支援。minSectAffinityStrength 为触发所需的边强度下限；maxAssistRange 为愿意驰援的最大距离（格）。"
+    },
+    "repayBenefactor": {
+      "priority": 3,
+      "minBenefactorStrength": 40,
+      "visitChancePerTick": 0.02,
+      "_comment": "报恩：对高强度 benefactor/gratitude 对象低频产出探望/施援 Goal。visitChancePerTick 控制低频触发概率。"
+    },
+    "relationRevenge": {
+      "priority": 5,
+      "minEnemyStrength": 40,
+      "_comment": "关系复仇：存在高强度 enemy 边时确保复仇链可跑（不另造系统，复用 _resolveRevengeTarget）。minEnemyStrength 为 enemy 边升格为复仇目标的强度门槛。深关系被杀仍由 companion_lost→执念路径升格。"
+    }
+  },
+  "masterDiscipleGoals": {
+    "_comment": "ADR-029 第三期：师徒互动驱动 Goal 的优先级与触发阈值。仅 goalsEnabled 时生效。复用二期关系 Goal 架构（_buildRelationshipGoals 单点锁定 → relationship_target resolver → executor）。无 qualifying master/disciple 边即不产出（零漂移）。",
+    "teachDisciple": {
+      "priority": 7,
+      "minMasterStrength": 40,
+      "maxTeachRange": 20,
+      "discipleMaxTotalProgress": 0.6,
+      "insightGain": 0.12,
+      "teachChancePerTick": 0.04,
+      "_comment": "师傅传功（护徒·点化）：师傅对高强度 master 边的徒弟，在徒弟修为总进度(cultivationProgress+insight)偏低(< discipleMaxTotalProgress)且距离≤maxTeachRange 时，低频(teachChancePerTick)前往点化，给徒弟 insightGain 的感悟增量并加深师徒情谊。priority 高于护短同门(6)，体现师徒纽带优先。minMasterStrength 为触发所需 master 边强度下限。"
+    },
+    "protectDisciple": {
+      "priority": 8,
+      "minMasterStrength": 40,
+      "maxProtectRange": 24,
+      "_comment": "师傅护徒（驰援）：徒弟遭袭(hasRevengeTarget)且距离≤maxProtectRange 时师傅前往护卫。priority 8（高于传功7、护短同门6），范围(24)大于普通同门驰援(18)，体现『一日为师』的护徒优先级与更远奔赴。"
+    },
+    "visitMaster": {
+      "priority": 4,
+      "minDiscipleStrength": 40,
+      "maxVisitRange": 30,
+      "visitChancePerTick": 0.02,
+      "_comment": "徒弟尽孝（探望）：徒弟对高强度 disciple 边的师傅低频(visitChancePerTick)探望/侍奉，加深师徒情谊。priority 4（略高于报恩3）。"
+    },
+    "inheritWill": {
+      "revengeMemoryType": "master_lost",
+      "inheritObsessionIntensityMult": 0.7,
+      "inheritableObsessionTypes": ["plunder", "supremacy", "longevity", "power", "protect_dao"],
+      "_comment": "继承遗志（师傅陨落时触发，TickManager._collectDeaths）：①复仇——徒弟对凶手写 master_lost 记忆触发 revenge 执念（仿 companion_lost）；②执念延续——把师傅未竟的非复仇执念(inheritableObsessionTypes)按 inheritObsessionIntensityMult 折扣复制给徒弟，体现『意志的延续』。复活/复仇类不复制（各自有专属触发）。"
+    },
+    "seizeDisciple": {
+      "_comment": "夺舍阴谋（轻度，ADR-029）：邪修/低忠诚高境界师傅对高资质徒弟起『夺舍』执念→复用 hunt/kill 链击杀徒弟、master 边转 enemy。当前为轻度实现（复用复仇行为链），未做真正的身体接管/境界继承。后续可深挖为独立『夺舍流派』，见 relationship-todo。触发条件配置在 obsession.json conditional 的 seize_disciple 规则。"
+    }
+  },
+  "monsterPack": {
+    "_comment": "ADR-028：妖群自动建边参数。仅 goalsEnabled 时生效。",
+    "packRadius": 12,
+    "buildPackLeader": true,
+    "swarmClusterRadius": 6,
+    "swarmClusterSize": 4,
+    "maxPackSize": 8,
+    "_comment2": "packRadius：同 family 妖兽老巢距离 ≤ 此值则互建 pack_member 边。buildPackLeader：簇内最高 grade 建 pack_leader 臣服边。swarmClusterRadius/Size：swarmBehavior=true 物种成簇生成的半径与每簇目标数量。maxPackSize：单簇建边规模上限（防爆量）。"
+  },
+  "territory": {
+    "_comment": "ADR-028：妖兽领地防御参数。仅 goalsEnabled 时生效。",
+    "defendEnabled": true,
+    "minTierForDefense": 2,
+    "intrusionUsesWanderRadius": true,
+    "intrusionRadius": 8,
+    "_comment2": "defendEnabled：是否启用领地防御行为。minTierForDefense：触发领地防御的最低 BT tier（默认 2，tier1 维持纯本能只猎弱者，避免低阶妖兽冲高阶修士送死）。intrusionUsesWanderRadius：true 则用妖兽自身 wanderRadius 判定入侵；false 用固定 intrusionRadius。"
+  }
+}

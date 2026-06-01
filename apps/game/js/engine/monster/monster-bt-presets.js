@@ -71,6 +71,16 @@ export const MONSTER_TIER2_BT = {
           ],
         },
         {
+          // 领地防御（ADR-028）：闯入老巢的 NPC（含强者）优先群起而攻。
+          // monsterDefendTerritory 关系驱动关闭/无入侵者时返回 FAILURE，整支跳过（回退一期纯猎食）。
+          type: 'sequence', name: 'repel-intruder',
+          children: [
+            { type: 'hook', name: 'mark-intruder', hook: 'monsterDefendTerritory' },
+            { type: 'hook', name: 'call-pack',  hook: 'monsterCallPack', defaultStatus: 'success' },
+            { type: 'hook', name: 'do-hunt',    hook: 'monsterChaseOrAttack' },
+          ],
+        },
+        {
           type: 'sequence', name: 'defend-territory',
           children: [
             { type: 'condition', name: 'has-target', condition: { key: 'hasTarget', op: 'true' } },
@@ -135,6 +145,15 @@ export const MONSTER_TIER3_BT = {
           children: [
             { type: 'condition', name: 'hurt', condition: { key: 'hpRatio', op: 'lte', value: 0.3 } },
             { type: 'hook', name: 'do-retreat', hook: 'monsterReturnToLair' },
+          ],
+        },
+        {
+          // 领地防御（ADR-028）：闯入老巢的 NPC（含强者）优先群起而攻。关系驱动关闭时整支跳过。
+          type: 'sequence', name: 'repel-intruder',
+          children: [
+            { type: 'hook', name: 'mark-intruder', hook: 'monsterDefendTerritory' },
+            { type: 'hook', name: 'call-pack',  hook: 'monsterCallPack', defaultStatus: 'success' },
+            { type: 'hook', name: 'do-hunt',    hook: 'monsterChaseOrAttack' },
           ],
         },
         {

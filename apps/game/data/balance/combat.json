@@ -19,7 +19,12 @@
     "loseDefenderStabilityGain": 5,
     "winRelationChange": -20,
     "loseRelationChange": -10,
-    "maxTerritoryPerFaction": 20
+    "maxTerritoryPerFaction": 20,
+    "_tuningNote": "tuning-v2 2026-06-01: 加 NpcKill 参数让攻战真正杀 NPC（v1 攻战只扣 disciples 数字不杀 NPC，导致复仇链路死锁）。",
+    "winNpcKillRatio": 0.005,
+    "winNpcKillMax": 2,
+    "winNpcKillMinDefender": 50,
+    "winNpcKillStabilityFloor": 30
   },
   "alliance": {
     "minRelation": 20,

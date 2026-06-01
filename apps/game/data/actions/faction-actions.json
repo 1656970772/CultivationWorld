@@ -60,17 +60,20 @@
     "name": "加强防御",
     "description": "加强边境防御工事，提升稳定度、降低边境威胁",
     "category": "faction",
-    "weight": 2,
-    "preconditions": {},
+    "weight": 1,
+    "preconditions": {
+      "stability": { "op": "lt", "value": 70 }
+    },
     "effects": {
-      "stability": { "op": "add", "value": 5 },
-      "borderThreat": { "op": "add", "value": -1 },
+      "stability": { "op": "add", "value": 2 },
+      "borderThreat": { "op": "add", "value": -2 },
       "food": { "op": "add", "value": -80 },
       "low_spirit_stone": { "op": "add", "value": -50 }
     },
     "costs": [],
     "yields": [],
-    "executorId": "faction_defend"
+    "executorId": "faction_defend",
+    "_tuningNote": "tuning-v1 2026-06-01: weight 2→1, stability +5→+2；tuning-v2 2026-06-01: 加 preconditions stability<70——和平时期（stability>=70）不防御，让攻伐/扩张/招募有更多候选空间。"
   },
   {
     "id": "act_attack",
@@ -79,15 +82,16 @@
     "category": "faction",
     "weight": 5,
     "preconditions": {
-      "stability": { "op": "gte", "value": 40 },
-      "disciples": { "op": "gte", "value": 50 },
-      "hasAdjacentEnemy": { "op": "true" }
+      "stability": { "op": "gte", "value": 30 },
+      "disciples": { "op": "gte", "value": 30 }
     },
     "effects": {
       "enemyCount": { "op": "add", "value": -1 },
-      "food": { "op": "add", "value": -200 }
+      "food": { "op": "add", "value": -150 },
+      "low_spirit_stone": { "op": "add", "value": 200 }
     },
-    "_effectsNote": "攻伐的兵力损耗/灵石掠夺/稳定度变化由 attackEnemy 按战力比动态结算（单一真相源）；此处 effects 仅声明 GOAP 目标推进(enemyCount-1)与出征粮草消耗，避免与 attackEnemy 双计。",
+    "_effectsNote": "攻伐的兵力损耗/灵石掠夺/稳定度变化由 attackEnemy 按战力比动态结算（单一真相源）；此处 effects 仅声明 GOAP 目标推进(enemyCount-1)与出征粮草消耗，避免与 attackEnemy 双计。low_spirit_stone+200 为 GOAP 效用提示——告诉 AI「攻伐有掠夺收益」；真实结算由 executor 完成。",
+    "_tuningNote": "tuning-v1 2026-06-01: 移除 hasAdjacentEnemy（让任何势力都能选 attack，executor 自己选目标）；stability 40→30, disciples 50→30；food 消耗 -200→-150；显式加掠夺灵石 +200 提示。",
     "costs": [],
     "yields": [],
     "executorId": "faction_attack"

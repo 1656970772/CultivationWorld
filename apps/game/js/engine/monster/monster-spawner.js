@@ -24,7 +24,7 @@ export class MonsterSpawner {
    * @param {number} deps.mapHeight
    */
   constructor({ tileIndex, terrainIndex, monsterDefs, factions, spawnConfig,
-                movementConfig, rankOrderMap, mapWidth, mapHeight }) {
+                movementConfig, rankOrderMap, mapWidth, mapHeight, monsterPackConfig }) {
     this.tileIndex = tileIndex;
     this.terrainIndex = terrainIndex;
     this.monsterDefs = monsterDefs || [];
@@ -34,6 +34,8 @@ export class MonsterSpawner {
     this.rankOrderMap = rankOrderMap || {};
     this.mapWidth = mapWidth || 300;
     this.mapHeight = mapHeight || 300;
+    // 妖群成簇生成参数（ADR-028）：仅 goalsEnabled 时由 world-engine 传入；为 null 则不成簇（一期行为）。
+    this._packCfg = monsterPackConfig || null;
 
     this._seed = this.cfg.spawnSeed ?? 1337;
     // 势力总部锚点
@@ -171,9 +173,41 @@ export class MonsterSpawner {
       if (!def) continue;
 
       monsters.push(this._makeMonster(def, x, y));
+
+      // 群居物种成簇生成（ADR-028，force_swarm）：在落点附近补刷同种，使其天然成群，
+      // 供 initMonsterRelationships 建 pack_member 边。受 totalMonsters 上限约束（不超量）。
+      if (this._packCfg && def.swarmBehavior === true) {
+        this._spawnSwarmCluster(def, x, y, monsters, total);
+      }
     }
 
     return monsters;
+  }
+
+  /**
+   * 在 (cx,cy) 附近成簇补刷同种妖兽（ADR-028）。
+   * @param {Object} def 物种定义
+   * @param {number} cx 簇心 x
+   * @param {number} cy 簇心 y
+   * @param {MonsterEntity[]} monsters 已生成列表（原地追加）
+   * @param {number} total 总量上限（不超过）
+   */
+  _spawnSwarmCluster(def, cx, cy, monsters, total) {
+    const radius = this._packCfg.swarmClusterRadius ?? 6;
+    const size = this._packCfg.swarmClusterSize ?? 4;
+    // 已在簇心放了 1 只，再补 size-1 只。
+    for (let k = 0; k < size - 1 && monsters.length < total; k++) {
+      let placed = false;
+      for (let attempt = 0; attempt < 12 && !placed; attempt++) {
+        const ox = cx + Math.round((this._rand() * 2 - 1) * radius);
+        const oy = cy + Math.round((this._rand() * 2 - 1) * radius);
+        if (ox < 0 || oy < 0 || ox >= this.mapWidth || oy >= this.mapHeight) continue;
+        const tile = this.tileIndex.get(`${ox},${oy}`);
+        if (!isPassable(tile, this.terrainIndex)) continue;
+        monsters.push(this._makeMonster(def, ox, oy));
+        placed = true;
+      }
+    }
   }
 
   /** 妖兽 BT 档位（与 monster-bt-presets.js 的 getBTTier 逻辑一致） */

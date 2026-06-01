@@ -67,26 +67,38 @@
         "type": "revenge",
         "name": "复仇",
         "memoryType": "sect_destroyed",
-        "minMemoryIntensity": 60,
+        "minMemoryIntensity": 50,
         "intensity": 95,
         "_goalStateComment": "ADR-020：复仇执念以『击杀仇人』为真目标，GOAP 推导出『(实力不足先修炼变强)→追踪→击杀』。enemyKilled 为派生状态键，由 act_npc_kill_enemy effect 置真。",
+        "_tuningNote": "tuning-v1 2026-06-01: minMemoryIntensity 60→50；门派被灭记忆更容易转化为复仇执念。",
         "goalState": { "enemyKilled": { "op": "eq", "value": true } }
       },
       {
         "type": "revenge",
         "name": "复仇",
         "memoryType": "betrayed",
-        "minMemoryIntensity": 60,
+        "minMemoryIntensity": 40,
         "intensity": 88,
+        "_tuningNote": "tuning-v1 2026-06-01: minMemoryIntensity 60→40；背叛记忆更容易转化为复仇执念。",
         "goalState": { "enemyKilled": { "op": "eq", "value": true } }
       },
       {
         "type": "revenge",
         "name": "复仇",
         "memoryType": "humiliated",
-        "minMemoryIntensity": 50,
+        "minMemoryIntensity": 35,
         "intensity": 80,
         "_comment": "夺职受辱（ADR-020 阶段E）：被挑战者拉下职位的现任，可对挑战者生出复仇执念。",
+        "_tuningNote": "tuning-v1 2026-06-01: minMemoryIntensity 50→35；受辱更容易转化为复仇执念。",
+        "goalState": { "enemyKilled": { "op": "eq", "value": true } }
+      },
+      {
+        "type": "revenge",
+        "name": "复仇",
+        "memoryType": "attacked",
+        "minMemoryIntensity": 30,
+        "intensity": 75,
+        "_tuningNote": "tuning-v2 2026-06-01: 新增规则——攻战致死的被攻方成员会写 'attacked' 记忆（intensity 45, decay 0.4），强度>=30 触发复仇执念，目标锁定为攻方势力。打通『势力攻战→NPC 写记忆→后天执念→复仇追踪』链路。",
         "goalState": { "enemyKilled": { "op": "eq", "value": true } }
       },
       {
@@ -96,6 +108,15 @@
         "minMemoryIntensity": 70,
         "intensity": 92,
         "goalState": { "totalProgress": { "op": "gte", "value": 95 } }
+      },
+      {
+        "type": "revenge",
+        "name": "为师复仇",
+        "memoryType": "master_lost",
+        "minMemoryIntensity": 50,
+        "intensity": 90,
+        "_comment": "ADR-029 第三期：恩师被杀（继承遗志·复仇）。徒弟对凶手生复仇执念，复用复仇行为链(追踪→击杀)。intensity 90 仅次于门派被灭(95)。goalState enemyKilled 由 act_npc_kill_enemy 置真。",
+        "goalState": { "enemyKilled": { "op": "eq", "value": true } }
       }
     ]
   },
@@ -128,5 +149,18 @@
         "goalState": { "discipleRaised": { "op": "eq", "value": true } }
       }
     ]
+  },
+  "seizeDisciple": {
+    "_comment": "夺舍阴谋（轻度，ADR-029 第三期，参考凡人修仙传 墨大夫『以收徒为名行夺舍之实』）：邪修倾向(低 justice + 低 loyalty)的高境界师傅，对高资质(灵根佳/总进度高)徒弟生『夺舍』执念→复用复仇行为链(追踪→击杀)夺其根基。区别于先天/条件执念由 NPCEntity._checkSeizeDiscipleObsession 关系感知触发(需读 master 边锁定徒弟为 targetId)。轻度=复用 hunt/kill，未做真正身体接管/境界继承，留待后续深挖为夺舍流派。仅 goalsEnabled 时生效。",
+    "enabled": true,
+    "type": "seizure",
+    "name": "夺舍图谋",
+    "maxJustice": 35,
+    "maxLoyalty": 35,
+    "minMasterRoleRank": 3,
+    "minDiscipleTotalProgress": 0.5,
+    "chancePerTick": 0.004,
+    "intensity": 85,
+    "goalState": { "enemyKilled": { "op": "eq", "value": true } }
   }
 }

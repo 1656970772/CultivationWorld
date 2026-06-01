@@ -1,6 +1,6 @@
 # 设计模式与原则
 
-> 最后更新：2026-05-28
+> 最后更新：2026-06-01（核心引擎类重构落地，ADR-030）
 
 ## 设计原则
 
@@ -73,6 +73,10 @@ class NeutralFactionStrategy extends FactionStrategy { ... }
 ```
 
 新增势力类型只需新增一个策略类，不修改已有代码。
+
+> 实现落地（ADR-030）：势力 AI 决策已从 `tick-manager.js` 的内联 `_buildWorldContext` 抽离到
+> `engine/world/services/faction-ai-service.js`（扩张/攻伐/结盟/贸易/军事计算），预留按 `factionType`
+> 扩展的策略接口；`world-context-builder.js` 负责每 tick 装配纯数据 `worldContext` 并转发到该服务。
 
 ### 4. 模板方法模式（Template Method） —— 世界 Tick
 
@@ -180,8 +184,10 @@ data/
 | 扩展需求 | 需要做的 | 不需要改的 |
 |---------|---------|-----------|
 | 新增地形类型 | 在 `terrains.json` 加一条 | 渲染器会自动读取 |
-| 新增势力类型 | 在 `faction-templates.json` 加模板 + 需求/行为 JSON 配置 | 抽象层、GOAP、其他势力代码 |
-| 新增 NPC 行为 | 在 `npc-actions.json` 加一条 + 实现 executor | 需求系统、其他行为 |
+| 新增势力类型 | 在 `faction-templates.json` 加模板 + 需求/行为 JSON 配置；势力决策差异在 `world/services/faction-ai-service.js` 加策略分支 | 抽象层、GOAP、`tick-manager.js` 骨架、其他势力代码 |
+| 新增 NPC 行为 | 在 `npc-actions.json` 加一条 + 在 `npc/actions/` 对应业务域文件实现 executor 并在 `npc-actions.js` 注册入口登记 | 需求系统、其他行为域文件、`npc-action-utils.js` |
+| 新增 NPC 目标/执念触发/生命周期规则 | 在 `npc/npc-goals.js` / `npc-obsession-trigger.js` / `npc-lifecycle.js` 加纯函数，`npc-entity.js` 仅加一行转发 | 实体定义、其他协作者模块 |
+| 新增 tick 步骤/子系统 | 在 `world/services/` 加服务类，在 `tick-manager.js` 的 `tick()` 骨架按序调用 | 其他服务、`world-engine.js` 注入 |
 | 新增需求类型 | 在 `*-needs.json` 加一条 + 实现 evaluator | GOAP、行为系统 |
 | 新增物品类型 | 在 `resources.json` / `props.json` 加一条 | 所有代码 |
 | 新增世界规则 | 在 `world-rules.json` 加一条 + 实现 executor | 实体系统 |

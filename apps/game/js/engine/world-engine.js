@@ -18,6 +18,8 @@ import { JpsPlusData } from './world/jps-plus.js';
 import { HierarchicalGraph } from './world/hierarchical-graph.js';
 import { MonsterSpawner } from './monster/monster-spawner.js';
 import { TerritoryLayoutGenerator } from './world/territory-layout-generator.js';
+import { RelationshipSystem } from './world/relationship-system.js';
+import { initRelationships, initMonsterRelationships } from './world/relationship-init.js';
 
 import { registerFactionEvaluators } from './faction/faction-needs.js';
 import { registerFactionExecutors } from './faction/faction-actions.js';
@@ -52,6 +54,7 @@ export class WorldEngine {
       emotion: configs.balanceEmotion || {},
       utility: configs.balanceUtility || {},
       reward: configs.balanceReward || {},
+      relationship: configs.balanceRelationship || {},
     };
     this._gameConfig = configs.gameConfig || {};
     this._aiConfig = configs.aiConfig || {};
@@ -62,6 +65,10 @@ export class WorldEngine {
     this._opportunityConfig = configs.worldOpportunities || {};
     this._covetConfig = configs.balanceCovet || {};
     this._itemDefs = configs.itemDefs || {};
+
+    // 关系网系统（ADR-027，世界级单一真相源）。在创建 NPC 前建立，
+    // 经 _entityConfig 注入各 NPC，使其 RelationshipGraph 成为本系统的兼容查询视图。
+    this.relationshipSystem = new RelationshipSystem(this._balanceConfig.relationship);
 
     // 用于动态创建新NPC时传递的实体配置包
     this._entityConfig = {
@@ -84,6 +91,9 @@ export class WorldEngine {
         this._aiConfig.npc?.utility || {},
         { reward: this._balanceConfig.reward },
       ),
+      relationshipConfig: this._balanceConfig.relationship,
+      // 世界级关系网引用：NPCEntity 据此把 relationships 绑定为本系统的兼容视图（ADR-027）。
+      relationshipSystem: this.relationshipSystem,
     };
 
     this._registerSystems(configs);
@@ -95,6 +105,13 @@ export class WorldEngine {
     this._initTerritories();
     this._createNPCs(configs);
     this._createMonsters(configs);
+    // 初始关系：据 npcs.json 的 factionId + role 推导同门/师徒边（ADR-027）。
+    initRelationships(
+      this.relationshipSystem,
+      this.entityRegistry.getByType('npc'),
+      this._balanceConfig.relationship,
+      this._buildRankOrderMap(),
+    );
     this._createTickManager();
     this._initialized = true;
 
@@ -371,6 +388,10 @@ export class WorldEngine {
       rankOrderMap: this._buildRankOrderMap(),
       mapWidth: this._mapWidth,
       mapHeight: this._mapHeight,
+      // 群居成簇生成（ADR-028）：仅 goalsEnabled 时启用，否则保持一期散点分布（零漂移）。
+      monsterPackConfig: this._relationshipGoalsEnabled()
+        ? (this._balanceConfig.relationship?.monsterPack || {})
+        : null,
     });
 
     this.monsterSpawner = spawner;
@@ -380,6 +401,24 @@ export class WorldEngine {
       this.entityRegistry.register(monster);
     }
     this._monsterInitialCount = monsters.length;
+
+    // 初始妖群关系（ADR-028）：同 family + 老巢邻近建 pack_member/pack_leader 边。
+    if (this._relationshipGoalsEnabled()) {
+      initMonsterRelationships(
+        this.relationshipSystem,
+        monsters,
+        this._balanceConfig.relationship?.monsterPack || {},
+      );
+    }
+  }
+
+  /** 关系驱动决策总开关（ADR-028）：数据层 enabled 且 goalsEnabled 且系统就绪。 */
+  _relationshipGoalsEnabled() {
+    const cfg = this._balanceConfig.relationship || {};
+    return cfg.enabled !== false
+      && cfg.goalsEnabled !== false
+      && !!this.relationshipSystem
+      && this.relationshipSystem.enabled !== false;
   }
 
   _createTickManager() {
@@ -404,6 +443,8 @@ export class WorldEngine {
       worldNewsConfig: this._worldNewsConfig,
       opportunityConfig: this._opportunityConfig,
       covetConfig: this._covetConfig,
+      relationshipConfig: this._balanceConfig.relationship,
+      relationshipSystem: this.relationshipSystem,
     });
   }
 
@@ -446,6 +487,9 @@ export class WorldEngine {
       activeModifiers: this.worldEntity.activeModifiers,
       // 机会点系统（ADR-024）：供前端在地图上标注江湖热点（默认 enabled=false 时为空数组）。
       opportunities: this.tickManager?.opportunitySystem?.snapshot()?.opportunities || [],
+      // 关系网（ADR-027）：扁平边数组 + 类型统计，供前端/调试可视化人物关系。
+      relationships: this.relationshipSystem ? this.relationshipSystem.allEdges() : [],
+      relationshipStats: this.relationshipSystem ? this.relationshipSystem.stats() : null,
       factions: Object.fromEntries(factions.map(f => [f.id, {
         name: f.name,
         type: f.factionType,
