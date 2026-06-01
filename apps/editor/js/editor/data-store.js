@@ -91,26 +91,34 @@ export class DataStore {
   }
 
   /**
-   * 尝试自动检测 game/data 路径（相对当前页面 URL）。
+   * 尝试自动检测 game/data 路径（相对当前页面 URL 的 base path）。
    * 浏览器：fetch 一个 sentinel 文件，命中即可推断。
    * Node：直接根据 cwd + 默认相对路径。
+   *
+   * 关键：base URL 是当前 HTML 所在目录。serve.py（ADR-031）从仓库根启动，
+   * HTML 在 /apps/editor/data-editor.html，所以 base 是 /apps/editor/。
+   * 要 fetch /apps/game/data/... → 相对路径必须是 '../game/data/'。
    */
   async autoDetectGameData() {
     if (this.tauriStore?.isAvailable) {
       // Tauri 模式由 Rust 端给路径
       return null;
     }
-    // 浏览器：先尝试 ./apps/game/data/，再 ../apps/game/data/
+    // 浏览器：候选路径按"从常见 base 出发"排序
     const candidates = [
-      'apps/game/data/',
-      '../apps/game/data/',
-      '../../apps/game/data/',
+      // serve.py 从仓库根启动、HTML 在 /apps/editor/（最常见的本地开发场景）
+      '../game/data/',
+      // HTML 直接放在仓库根（少见但兼容）
+      'game/data/',
+      // Tauri 桌面 / 其它子目录
+      '../../game/data/',
+      // 兜底：旧式 apps/editor/data/（如果还有遗留的 v1 数据）
+      'data/',
     ];
     for (const c of candidates) {
       try {
         const r = await fetch(c + 'entities/factions.json', { cache: 'no-store' });
         if (r.ok) {
-          // 拿到相对路径
           return c.replace(/data\/$/, 'data');
         }
       } catch { /* ignore */ }
@@ -127,7 +135,24 @@ export class DataStore {
       // Tauri 模式由 Rust 端 list_datasets 返回
       return this.tauriStore.listDatasets(this.gameDataDir);
     }
-    // 浏览器/N：使用 dataset-scanner
+    // 浏览器优先走 serve.py 提供的 API（避免在浏览器里跑 fs）
+    if (typeof window !== 'undefined' && !this._isNode) {
+      try {
+        const r = await fetch('/__api/datasets', { cache: 'no-store' });
+        if (r.ok) {
+          const j = await r.json();
+          if (j.ok) {
+            // 同步设置 gameDataDir（相对路径,base 是当前 HTML 所在目录）
+            // 浏览器从 /apps/editor/ 出发，要拿 /apps/game/data/ → '../game/data/'
+            this.gameDataDir = '../game/data/';
+            return j.datasets;
+          }
+        }
+      } catch (e) {
+        console.warn('API listDatasets failed, fallback to Node', e);
+      }
+    }
+    // Node 端：用 dataset-scanner + fs
     if (!this.gameDataDir) {
       this.gameDataDir = await this.autoDetectGameData();
     }
@@ -150,6 +175,18 @@ export class DataStore {
       return this.tauriStore.loadDataset(key);
     }
     if (!this.gameDataDir) throw new Error('未打开 game/data 目录');
+    // 浏览器：走 serve.py 提供的 /__api/file 端点(避免 fetch 越级)
+    if (typeof window !== 'undefined' && !this._isNode) {
+      const url = `/__api/file?path=${encodeURIComponent(key + '.json')}`;
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`读取 ${key} 失败：${res.status}`);
+      const text = await res.text();
+      const data = JSON.parse(text);
+      const info = { data, byteSize: text.length, byteHash: await quickHash(text), mtime: 0 };
+      this._loaded.set(key, info);
+      return info;
+    }
+    // Node 端：直接读 game/data/<key>.json
     const file = this._resolveFilePath(key);
     const res = await fetch(file, { cache: 'no-store' });
     if (!res.ok) throw new Error(`读取 ${file} 失败：${res.status}`);
@@ -189,6 +226,139 @@ export class DataStore {
     if (this.tauriStore?.hasOpenProject) {
       return this.tauriStore.saveDataset(key, data);
     }
+    if (!this.gameDataDir) throw new Error('未打开 game/data 目录');
+
+    const fileName = key.split('/').pop() + '.json';
+    const newContent = stableStringify(data);
+    const newBytes = new TextEncoder().encode(newContent);
+
+    // 写前 snapshot：拉旧字节
+    let snapshot = null;
+    if (!this._disableSnapshots) {
+      try {
+        if (typeof window !== 'undefined' && !this._isNode) {
+          // 浏览器：snapshot 由 serve.py 处理（/__api/snapshot_write 自动写盘）
+          const oldRes = await fetch(`/__api/file?path=${encodeURIComponent(key + '.json')}`, { cache: 'no-store' });
+          if (oldRes.ok) {
+            const oldBytes = new Uint8Array(await oldRes.arrayBuffer());
+            snapshot = await this._writeSnapshotApi(key, oldBytes);
+          }
+        } else if (this._editorRoot) {
+          const oldRes = await fetch(this._resolveFilePath(key), { cache: 'no-store' });
+          if (oldRes.ok) {
+            const oldBuf = BufferFromString(await oldRes.text());
+            snapshot = snapshotBackup(this._editorRoot, key, oldBuf);
+          }
+        }
+      } catch (e) {
+        console.warn('snapshot before save failed', e);
+      }
+    }
+
+    // 写新内容
+    if (typeof window !== 'undefined' && !this._isNode) {
+      // 浏览器：POST 到 serve.py 写文件
+      const res = await fetch(`/__api/file?path=${encodeURIComponent(key + '.json')}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: newBytes,
+      });
+      const j = await res.json();
+      if (!j.ok) throw new Error(`写文件失败：${j.error || res.status}`);
+    } else if (this._useFsa) {
+      const blob = new Blob([newContent], { type: 'application/json;charset=utf-8' });
+      await this._writeFsaFile(key, blob);
+    } else {
+      this._download(fileName, newContent);
+      return { mode: 'download', fileName, snapshot, byteSize: newContent.length };
+    }
+
+    this._loaded.set(key, { data, byteSize: newContent.length, byteHash: await quickHash(newContent), mtime: Date.now() });
+    return { mode: 'file', fileName, snapshot, byteSize: newContent.length };
+  }
+
+  /** Browser: write a snapshot via serve.py API and return its info. */
+  async _writeSnapshotApi(key, oldBytes) {
+    const ts = new Date();
+    const yyyy = ts.getFullYear();
+    const mm = String(ts.getMonth() + 1).padStart(2, '0');
+    const dd = String(ts.getDate()).padStart(2, '0');
+    const hh = String(ts.getHours()).padStart(2, '0');
+    const mi = String(ts.getMinutes()).padStart(2, '0');
+    const ss = String(ts.getSeconds()).padStart(2, '0');
+    const rand = Math.random().toString(36).slice(2, 8).padEnd(6, '0');
+    const name = `${yyyy}${mm}${dd}-${hh}${mi}${ss}-${rand}.json`;
+    const res = await fetch(`/__api/snapshot?key=${encodeURIComponent(key)}&name=${encodeURIComponent(name)}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/octet-stream' },
+      body: oldBytes,
+    });
+    const j = await res.json();
+    if (!j.ok) throw new Error(j.error || 'snapshot write failed');
+    return { name, path: j.path, size: oldBytes.length, ts };
+  }
+
+  /**
+   * 把数据集恢复到一个历史快照。
+   * 恢复前会先把当前 game/data 字节备份为新快照（不丢中间态）。
+   * @param {string} key
+   * @param {string} snapshotName
+   * @returns {Promise<{ mode: string, fileName: string, newSnapshot: SnapshotInfo, restoredFrom: string }>}
+   */
+  async restoreDataset(key, snapshotName) {
+    if (this.tauriStore?.hasOpenProject) {
+      return this.tauriStore.restoreDataset(key, snapshotName);
+    }
+    if (!this.gameDataDir) throw new Error('未打开 game/data 目录');
+
+    const fileName = key.split('/').pop() + '.json';
+
+    if (typeof window !== 'undefined' && !this._isNode) {
+      // 浏览器：serve.py 一次性完成"备份当前+写回快照"
+      const res = await fetch(`/__api/snapshot_restore?key=${encodeURIComponent(key)}&name=${encodeURIComponent(snapshotName)}`, {
+        method: 'POST',
+      });
+      const j = await res.json();
+      if (!j.ok) throw new Error(j.error || 'restore failed');
+      return {
+        mode: 'restored',
+        fileName,
+        newSnapshot: { name: j.newBackup, path: '', size: j.bytes, ts: new Date() },
+        restoredFrom: snapshotName,
+      };
+    }
+
+    // Node 端
+    if (!this._editorRoot) throw new Error('当前模式不支持恢复（无 editorRoot）');
+    const file = this._resolveFilePath(key);
+    const snapBuf = snapshotRead(this._editorRoot, key, snapshotName);
+    if (!snapBuf) throw new Error(`快照不存在：${key} / ${snapshotName}`);
+
+    // 写前 snapshot 当前
+    let newSnap = null;
+    try {
+      const oldRes = await fetch(file, { cache: 'no-store' });
+      if (oldRes.ok) {
+        const oldBuf = BufferFromString(await oldRes.text());
+        newSnap = snapshotBackup(this._editorRoot, key, oldBuf);
+      }
+    } catch { /* ignore */ }
+
+    // 写回快照内容
+    if (this._useFsa) {
+      const blob = new Blob([snapBuf], { type: 'application/json;charset=utf-8' });
+      await this._writeFsaFile(key, blob);
+    } else {
+      this._download(fileName, snapBuf.toString('utf-8'));
+    }
+
+    return {
+      mode: 'restored',
+      fileName,
+      newSnapshot: newSnap,
+      restoredFrom: snapshotName,
+    };
+  }
     if (!this.gameDataDir) throw new Error('未打开 game/data 目录');
 
     const file = this._resolveFilePath(key);
@@ -271,8 +441,30 @@ export class DataStore {
    * @param {string} key
    */
   listSnapshots(key) {
+    if (typeof window !== 'undefined' && !this._isNode) {
+      // 浏览器：同步返回空数组；调用方应在 initSnapshotList 后 await 拿真列表
+      return [];
+    }
     if (!this._editorRoot) return [];
     return snapshotList(this._editorRoot, key);
+  }
+
+  /** 浏览器端异步列快照 */
+  async listSnapshotsAsync(key) {
+    if (typeof window === 'undefined' || this._isNode) {
+      return this._editorRoot ? snapshotList(this._editorRoot, key) : [];
+    }
+    const res = await fetch(`/__api/snapshot?key=${encodeURIComponent(key)}`, { cache: 'no-store' });
+    const j = await res.json();
+    if (!j.ok) return [];
+    return j.snapshots.map(s => ({
+      name: s.name,
+      path: '',
+      size: s.size,
+      mtime: s.mtime,
+      ts: new Date(s.mtime),
+      byteHash: '',
+    }));
   }
 
   /**

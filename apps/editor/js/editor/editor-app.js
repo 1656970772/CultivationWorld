@@ -286,7 +286,7 @@ class DataEditorApp {
     return wrapper;
   }
 
-  renderHistoryPanel() {
+  async renderHistoryPanel() {
     if (!this.elements.historyList) return;
     const list = this.elements.historyList;
     list.replaceChildren();
@@ -294,7 +294,12 @@ class DataEditorApp {
       if (this.elements.snapshotCount) this.elements.snapshotCount.textContent = '0';
       return;
     }
-    const snaps = this.store.listSnapshots(this.activeDataset) || [];
+    let snaps = [];
+    try {
+      snaps = (await this.store.listSnapshotsAsync(this.activeDataset)) || [];
+    } catch (e) {
+      console.warn('list snapshots failed', e);
+    }
     if (this.elements.snapshotCount) this.elements.snapshotCount.textContent = String(snaps.length);
     if (snaps.length === 0) {
       list.append(createElement('div', 'empty-state', '暂无快照（首次保存后生成）'));
@@ -305,7 +310,7 @@ class DataEditorApp {
       const meta = createElement('div', 'history-meta');
       meta.append(
         createElement('strong', '', this.formatTs(s.ts)),
-        createElement('span', '', ` · ${s.size}B · ${s.byteHash}`)
+        createElement('span', '', ` · ${s.size}B`)
       );
       const restoreBtn = createElement('button', 'secondary-btn compact', '恢复此版本');
       restoreBtn.type = 'button';
@@ -348,9 +353,13 @@ class DataEditorApp {
   async pruneOldSnapshots() {
     if (!this.activeDataset) return;
     if (!window.confirm('清空当前数据集超过 30 天的快照？')) return;
-    const n = this.store.pruneSnapshots(this.activeDataset, 30);
-    this.toast(`已清理 ${n} 个过期快照`);
-    this.renderHistoryPanel();
+    try {
+      const n = await this.store.pruneSnapshotsAsync?.(this.activeDataset, 30) ?? 0;
+      this.toast(`已清理 ${n} 个过期快照`);
+      this.renderHistoryPanel();
+    } catch (e) {
+      this.toast(`清理失败：${e.message}`, 'error');
+    }
   }
 
   formatTs(ts) {
