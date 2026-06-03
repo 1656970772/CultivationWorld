@@ -5,7 +5,13 @@
  * 所有平衡配置（战斗、经济、修炼、社交）通过 init(configs) 注入，无硬编码数值。
  */
 import { EntityRegistry } from './abstract/entity-registry.js';
+import { Rng } from './abstract/rng.js';
 import { ItemRegistry } from './items/item-registry.js';
+import { GameplayTagRegistry } from './abstract/gameplay-tag.js';
+import { EffectPool } from './pools/effect-pool.js';
+import { AbilityPool } from './pools/ability-pool.js';
+// 注册 combat-pipeline 的 escape_teleport 能力执行器（导入即注册副作用）。
+import './combat/combat-pipeline.js';
 import { NeedPool } from './pools/need-pool.js';
 import { ActionPool } from './pools/action-pool.js';
 import { WorldEntity } from './world/world-entity.js';
@@ -33,6 +39,9 @@ export class WorldEngine {
     this.worldEntity = null;
     this.tickManager = null;
     this._initialized = false;
+    // 确定性随机源（init 时按 configs.seed 重建）。模拟逻辑统一从此取随机。
+    this.rng = null;
+    this.seed = null;
   }
 
   /**
@@ -40,6 +49,10 @@ export class WorldEngine {
    * @param {Object} configs 所有配置数据（含 balance/config/names/modifiers 等）
    */
   init(configs) {
+    // 确定性种子：优先取 configs.seed；缺省则生成一个并记录，便于重放复现。
+    this.seed = (configs.seed != null) ? (configs.seed >>> 0) : Rng.makeSeed();
+    this.rng = new Rng(this.seed);
+
     // 聚合平衡配置
     this._balanceConfig = {
       combat: configs.balanceCombat || {},
@@ -55,12 +68,14 @@ export class WorldEngine {
       utility: configs.balanceUtility || {},
       reward: configs.balanceReward || {},
       relationship: configs.balanceRelationship || {},
+      // 反应层配置（四层 AI 架构 Reaction 层，ADR-048）。默认 enabled=false，不改变现有行为。
+      reaction: configs.balanceReaction || {},
     };
     this._gameConfig = configs.gameConfig || {};
     this._aiConfig = configs.aiConfig || {};
     this._namesConfig = configs.names || {};
     this._modifierTemplates = configs.modifierTemplates || [];
-    // 信息传播 / 机会 / 怀璧其罪系统配置（ADR-024/025）。默认 enabled=false 零漂移。
+    // 信息传播 / 机会 / 怀璧其罪系统配置（ADR-024/025）。默认 enabled=false，不改变现有行为。
     this._worldNewsConfig = configs.worldNews || {};
     this._opportunityConfig = configs.worldOpportunities || {};
     this._covetConfig = configs.balanceCovet || {};
@@ -72,9 +87,11 @@ export class WorldEngine {
 
     // 用于动态创建新NPC时传递的实体配置包
     this._entityConfig = {
+      rng: this.rng,
       gameConfig: this._gameConfig,
       cultivationConfig: this._balanceConfig.cultivation,
       economyConfig: this._balanceConfig.economy,
+      combatConfig: this._balanceConfig.combat,
       personalityConfig: this._balanceConfig.personality,
       aiConfig: this._aiConfig.npc || {},
       memoryConfig: this._balanceConfig.memory,
@@ -92,6 +109,8 @@ export class WorldEngine {
         { reward: this._balanceConfig.reward },
       ),
       relationshipConfig: this._balanceConfig.relationship,
+      // 反应层配置（ADR-048）：NPCEntity 据此设置刺激队列 ttl/容量等。
+      reactionConfig: this._balanceConfig.reaction,
       // 世界级关系网引用：NPCEntity 据此把 relationships 绑定为本系统的兼容视图（ADR-027）。
       relationshipSystem: this.relationshipSystem,
     };
@@ -127,10 +146,11 @@ export class WorldEngine {
    * 注册所有子系统
    */
   _registerSystems(configs) {
+    // 势力宏观资源（ADR-043）：粮食(supply)/弟子(population)，仅势力持有，来自 macro-resources.json。
     if (configs.items) {
       ItemRegistry.loadFromArray(configs.items);
     }
-    // 可转移物品定义（ADR-025）：法宝/材料/丹药，category 区别于 resources（resource）。
+    // 可持有物品定义（ADR-025/043）：货币(灵石)/材料/丹药/法宝/符/功法，NPC 与势力均可持有，来自 items.json。
     if (configs.itemDefs?.items) {
       ItemRegistry.loadFromArray(configs.itemDefs.items);
     }
@@ -155,8 +175,33 @@ export class WorldEngine {
     if (configs.npcActions) {
       ActionPool.loadFromArray(configs.npcActions);
     }
+    // 反应层行为模板（四层 AI 架构 Reaction 层，ADR-048）：逃命/暂避/回血/反击。
+    if (configs.reactionActions) {
+      ActionPool.loadFromArray(configs.reactionActions);
+    }
     if (configs.worldRules) {
       ActionPool.loadFromArray(configs.worldRules);
+    }
+
+    // 战斗机制层（ADR-042）：GameplayTag / Effect / Ability 数据驱动加载 + 加载期校验。
+    this._registerGAS(configs);
+  }
+
+  /**
+   * 注册战斗机制层（ADR-042）：登记 GameplayTag、加载 Effect/Ability 定义，
+   * 并做加载期 ConfigErrors 校验（Effect/Ability 引用的 Tag 必须已登记，strict 模式下不通过即抛错）。
+   */
+  _registerGAS(configs) {
+    if (configs.tags) GameplayTagRegistry.loadFromConfig(configs.tags);
+    if (configs.effects) EffectPool.loadFromConfig(configs.effects);
+    if (configs.abilities) AbilityPool.loadFromConfig(configs.abilities);
+
+    const referenced = [...EffectPool.referencedTags(), ...AbilityPool.referencedTags()];
+    const errors = GameplayTagRegistry.validateReferences(referenced);
+    if (errors.length > 0) {
+      const msg = `[GAS 加载期校验失败] ${errors.join('; ')}`;
+      if (GameplayTagRegistry.strict) throw new Error(msg);
+      else if (typeof console !== 'undefined') console.warn(msg);
     }
   }
 
@@ -253,6 +298,7 @@ export class WorldEngine {
       mapWidth: this._mapWidth,
       mapHeight: this._mapHeight,
       factions,
+      seed: this.seed,
     });
     const stats = generator.generate();
 
@@ -343,8 +389,8 @@ export class WorldEngine {
   _randomWanderTarget(here, minDist = 8, maxDist = 25) {
     if (!here) return null;
     for (let attempt = 0; attempt < 8; attempt++) {
-      const angle = Math.random() * Math.PI * 2;
-      const dist = minDist + Math.random() * (maxDist - minDist);
+      const angle = this.rng.next() * Math.PI * 2;
+      const dist = minDist + this.rng.next() * (maxDist - minDist);
       const tx = Math.round(here.x + Math.cos(angle) * dist);
       const ty = Math.round(here.y + Math.sin(angle) * dist);
       const cx = Math.max(0, Math.min(this._mapWidth - 1, tx));
@@ -384,11 +430,12 @@ export class WorldEngine {
       monsterDefs,
       factions: this.entityRegistry.getByType('faction'),
       spawnConfig,
+      rng: this.rng,
       movementConfig: this._balanceConfig.movement || {},
       rankOrderMap: this._buildRankOrderMap(),
       mapWidth: this._mapWidth,
       mapHeight: this._mapHeight,
-      // 群居成簇生成（ADR-028）：仅 goalsEnabled 时启用，否则保持一期散点分布（零漂移）。
+      // 群居成簇生成（ADR-028）：仅 goalsEnabled 时启用，否则保持一期散点分布。
       monsterPackConfig: this._relationshipGoalsEnabled()
         ? (this._balanceConfig.relationship?.monsterPack || {})
         : null,
@@ -425,6 +472,7 @@ export class WorldEngine {
     this.tickManager = new TickManager({
       entityRegistry: this.entityRegistry,
       worldEntity: this.worldEntity,
+      rng: this.rng,
       questTemplates: this.questTemplates,
       tileIndex: this.tileIndex,
       terrainIndex: this.terrainIndex,

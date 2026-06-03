@@ -66,6 +66,15 @@ export class BehaviorSystem {
     }
 
     for (const goal of goals) {
+      // 选行策略=greedy（ADR-047）：修炼这类"重复累积、应换着做"的目标跳过 A* 折叠，
+      // 直接在可执行行为间按推进性价比加权随机选一步——避免 A* 因游历单步推进量大而恒偏游历、
+      // 行为一边倒。做完即重评估、下步再随机分化（闭关/游历/做任务交替）。
+      if (goal.selectStrategy === 'greedy') {
+        const greedy = this._tryGreedyFallback(goal, currentGOAPState, worldContext, costFn);
+        if (greedy) return [greedy];
+        continue;
+      }
+
       const result = this.planner.plan(
         currentGOAPState,
         goal.goalState,
@@ -112,14 +121,14 @@ export class BehaviorSystem {
 
   /**
    * 汇总并排序候选目标。需求目标 + 额外目标（执念等）按 score 降序、urgency 次级排序。
-   * 无 extraGoals 时，顺序与 needSystem.getTopGoals/getTopNeeds 一致（行为零漂移）。
+   * 无 extraGoals 时，顺序沿用 needSystem.getTopGoals/getTopNeeds。
    * @returns {import('./goal.js').Goal[]}
    */
   _collectGoals(needSystem, extraGoals = [], goalModulator = null) {
     const needGoals = needSystem.getTopGoals(3);
     const hasExtra = extraGoals && extraGoals.length > 0;
 
-    // 无额外目标且无情绪调制：保持原顺序（与重构前 getTopNeeds 一致，行为零漂移）。
+    // 无额外目标且无情绪调制：保持 getTopNeeds 原顺序。
     if (!hasExtra && !goalModulator) return needGoals;
 
     // 合并顺序 [需求, 执念]：稳定排序下，同分时需求优先于执念。
@@ -143,35 +152,51 @@ export class BehaviorSystem {
 
   /**
    * 贪心回退：为指定目标找一个能推进目标状态的可执行行为。
-   * 排序代价与规划器一致：有 costFn 用 costFn（价值-风险），否则按 weight（向后兼容）。
+   *
+   * 选择口径（2026-06-03 修正，破解「修士只闭关不游历」）：
+   *   过去这里"只挑 cost 最便宜的单个行为"，导致当 GOAP 完整规划失败（修炼这类需 repeat
+   *   上百次微增量行为的目标，在真实多行为状态空间下 A* 搜不到解）退化到兜底时，闭关(weight≈1)
+   *   恒比游历(weight≈3)便宜 → 永远闭关、insight 恒 0、撞 cultivationCap 后卡死不突破。
+   *   实际 NPC 每步行为结束即重规划（做一步→重评估），本不需要一次规划到目标完成，"缺啥补啥、
+   *   换着做"才真实。故改为：在「能推进同一目标的多个可执行行为」间，按各自【对目标的推进性价比】
+   *   （单步推进量 ÷ cost）加权随机选取——闭关/游历/做任务等都有机会被选中，撞 cap 后闭关不可
+   *   执行则自然转游历。随机走 worldContext.rng，确定性可复现（ADR-038）。
+   *   单候选时直接返回（行为与旧逻辑一致）。
    * @param {import('./goal.js').Goal} goal
    */
   _tryGreedyFallback(goal, currentGOAPState, worldContext, costFn = null) {
     const goalState = goal.goalState;
     if (!goalState) return null;
 
+    // 记录每个候选行为能推进的目标条目（用于算推进性价比）。
     const candidates = [];
     for (const action of this.availableActions) {
+      const contribEntries = [];
       for (const [goalKey, goalCondition] of Object.entries(goalState)) {
         if (typeof goalCondition === 'object' && goalCondition !== null
             && action.contributesToGoal(goalKey, goalCondition)) {
-          candidates.push(action);
-          break;
+          contribEntries.push([goalKey, goalCondition]);
         }
       }
+      if (contribEntries.length > 0) candidates.push({ action, contribEntries });
     }
     if (candidates.length === 0) return null;
 
-    const executable = candidates.filter(a =>
-      a.checkPreconditions(currentGOAPState, worldContext)
+    const executable = candidates.filter(c =>
+      c.action.checkPreconditions(currentGOAPState, worldContext)
     );
     if (executable.length === 0) return null;
 
     const costOf = costFn
       ? (a) => costFn(a)
       : (a) => a.weight;
-    executable.sort((a, b) => costOf(a) - costOf(b));
-    const chosen = executable[0];
+
+    let chosen;
+    if (executable.length === 1) {
+      chosen = executable[0].action;
+    } else {
+      chosen = this._pickByProgressValue(executable, costOf, worldContext) || executable[0].action;
+    }
     this.currentPlan = [chosen];
     this.currentActionIndex = 0;
     this.currentNeedId = goal.sourceId;
@@ -187,6 +212,59 @@ export class BehaviorSystem {
       fallback: true,
     };
     return chosen;
+  }
+
+  /**
+   * 在多个「能推进同一目标」的可执行候选间，按【对目标的推进性价比】加权随机选取。
+   *
+   * 权重 = Σ(该行为对各贡献目标键的单步推进量) ÷ max(cost, ε)。推进量越大、代价越低，被选概率越高；
+   * 但低性价比行为仍有非零概率被选，从而「换着做」（闭关/游历/做任务交替），符合修士行为的真实分化。
+   * 随机走 worldContext.rng（确定性，ADR-038）；取不到 rng 时回退选性价比最高者（确定性）。
+   *
+   * @param {{ action: import('./action.js').Action, contribEntries: Array<[string, Object]> }[]} executable
+   * @param {(action: import('./action.js').Action) => number} costOf
+   * @param {Object} worldContext
+   * @returns {import('./action.js').Action|null}
+   */
+  _pickByProgressValue(executable, costOf, worldContext) {
+    const scored = [];
+    let totalWeight = 0;
+    for (const { action, contribEntries } of executable) {
+      const effects = action.getEffects();
+      let progress = 0;
+      for (const [goalKey] of contribEntries) {
+        const eff = effects[goalKey];
+        if (eff && eff.op === 'add' && typeof eff.value === 'number') {
+          progress += Math.abs(eff.value);
+        } else {
+          // set 型/布尔型贡献：给一个基准推进量，使其也能参与（不被数值型完全压制）。
+          progress += 0.001;
+        }
+      }
+      const cost = Math.max(costOf(action) || 0, 1e-6);
+      // 软化权重（ADR-047 修炼选行均衡）：纯性价比(progress/cost)会因游历单步推进量大而恒压制闭关，
+      // 行为一边倒。改为「均等基底 1 + 轻微性价比倾斜」：各可行行为基本等概率被选（真正换着做），
+      // 性价比只做次级微调（开方压缩量纲差距），既不一边倒、又略偏高效行为。
+      const valueRatio = progress / cost;
+      const weight = 1 + Math.sqrt(valueRatio);
+      scored.push({ action, weight });
+      totalWeight += weight;
+    }
+    if (totalWeight <= 0) return null;
+
+    const rng = worldContext?.rng || null;
+    if (!rng || typeof rng.next !== 'function') {
+      // 无确定性随机源：回退取性价比最高者（确定性、可复现）。
+      scored.sort((a, b) => b.weight - a.weight);
+      return scored[0].action;
+    }
+
+    let roll = rng.next() * totalWeight;
+    for (const s of scored) {
+      roll -= s.weight;
+      if (roll <= 0) return s.action;
+    }
+    return scored[scored.length - 1].action;
   }
 
   /**

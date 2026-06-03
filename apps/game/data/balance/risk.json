@@ -48,11 +48,11 @@
       },
       {
         "id": "death",
-        "name": "死亡风险",
+        "name": "游历遇险",
         "baseChance": 0.005,
         "appliesRankMitigation": true,
-        "effect": { "type": "death", "cause": "explore" },
-        "_comment": "陨落于游历途中。初期权重很低，避免大量减员；后续按目的地危险度/战力差放大。",
+        "effect": { "type": "hp_damage", "cause": "explore", "dmgRatioMin": 0.3, "dmgRatioMax": 0.9 },
+        "_comment": "ADR-041：游历途中遇险改为真实扣血（按 maxHp 比例），重创可触发锁血保命，碾压级才致死。不再概率秒杀。",
         "personalityModifiers": [
           {
             "trait": "courage",
@@ -174,10 +174,11 @@
       },
       {
         "id": "pvp_death",
-        "name": "厮杀陨落风险",
+        "name": "厮杀重创风险",
         "baseChance": 0.15,
         "appliesRankMitigation": true,
-        "effect": { "type": "death", "cause": "slain" },
+        "effect": { "type": "hp_damage", "cause": "slain", "dmgRatioMin": 0.4, "dmgRatioMax": 1.1 },
+        "_comment": "ADR-041：厮杀改为真实扣血，重创可锁血保命，碾压级（伤害≥maxHp×crushHpMultiple）才当场陨落。",
         "personalityModifiers": []
       }
     ]

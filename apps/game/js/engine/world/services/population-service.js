@@ -6,7 +6,7 @@
  *   - processBirths：道侣有概率诞下后代 NPC（性格双亲遗传 + 变异，建 kin 血亲边）。
  *
  * 自有 birthLog / companionLog（供报告读取，经 TickManager getter 暴露）。
- * 共享 helper（_applyRelationEvent / _emitLocationEvent / entityConfig 等）经 host 调用，保证零漂移。
+ * 共享 helper（_applyRelationEvent / _emitLocationEvent / entityConfig 等）经 host 调用。
  */
 import { NPCEntity } from '../../npc/npc-entity.js';
 
@@ -24,6 +24,7 @@ export class PopulationService {
   get entityRegistry() { return this.host.entityRegistry; }
   get worldEntity() { return this.host.worldEntity; }
   get balanceConfig() { return this.host.balanceConfig; }
+  get rng() { return this.host.rng; }
 
   /**
    * 道侣匹配 - 同门或友好势力间的修士结为道侣
@@ -88,7 +89,7 @@ export class PopulationService {
         }
       }
 
-      if (bestMatch && Math.random() < successRate) {
+      if (bestMatch && this.rng.next() < successRate) {
         m.state.set('daoCompanionId', bestMatch.id);
         bestMatch.state.set('daoCompanionId', m.id);
         matched.add(m.id);
@@ -129,11 +130,12 @@ export class PopulationService {
     const diplomacyMax = birthCfg.childDiplomacyMax ?? 80;
     const mutationRange = birthCfg.personalityMutationRange ?? 20;
 
+    const rng = this.rng;
     const inheritTrait = (father, mother, trait) => {
       const f = father.staticData?.get('personality')?.[trait] ?? 50;
       const m = mother.staticData?.get('personality')?.[trait] ?? 50;
       const avg = (f + m) / 2;
-      const mutated = avg + (Math.random() * 2 - 1) * mutationRange;
+      const mutated = avg + (rng.next() * 2 - 1) * mutationRange;
       return Math.round(Math.max(0, Math.min(100, mutated)));
     };
 
@@ -160,13 +162,13 @@ export class PopulationService {
       if (mother.state.get('lifeRatio') >= motherMaxLifeRatio) continue;
       if (mother.state.get('childrenCount') >= maxChildren) continue;
 
-      if (Math.random() > successRate) continue;
+      if (rng.next() > successRate) continue;
 
-      const childGender = Math.random() < 0.5 ? 'male' : 'female';
+      const childGender = rng.next() < 0.5 ? 'male' : 'female';
       const namePool = childGender === 'male' ? maleNames : femaleNames;
       const surname = father.name.charAt(0);
-      const useSurname = surnames.includes(surname) ? surname : surnames[Math.floor(Math.random() * surnames.length)];
-      const givenName = namePool[Math.floor(Math.random() * namePool.length)];
+      const useSurname = surnames.includes(surname) ? surname : surnames[Math.floor(rng.next() * surnames.length)];
+      const givenName = namePool[Math.floor(rng.next() * namePool.length)];
       const childName = useSurname + givenName;
 
       const childId = `npc_born_${host._nextBornNpcId()}`;
@@ -178,10 +180,10 @@ export class PopulationService {
         factionId: factionId,
         role: 'disciple',
         personality: {
-          ambition: Math.floor((father.staticData?.get('personality')?.ambition || 50) * fatherWeight + Math.random() * 50),
-          caution: Math.floor((mother.staticData?.get('personality')?.caution || 50) * motherWeight + Math.random() * 50),
-          loyalty: Math.floor(Math.min(100, loyaltyBase + Math.random() * loyaltyVariance)),
-          diplomacy: Math.floor(Math.random() * diplomacyMax),
+          ambition: Math.floor((father.staticData?.get('personality')?.ambition || 50) * fatherWeight + rng.next() * 50),
+          caution: Math.floor((mother.staticData?.get('personality')?.caution || 50) * motherWeight + rng.next() * 50),
+          loyalty: Math.floor(Math.min(100, loyaltyBase + rng.next() * loyaltyVariance)),
+          diplomacy: Math.floor(rng.next() * diplomacyMax),
           courage: inheritTrait(father, mother, 'courage'),
           justice: inheritTrait(father, mother, 'justice'),
         },

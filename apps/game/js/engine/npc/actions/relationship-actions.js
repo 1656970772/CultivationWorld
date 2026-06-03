@@ -48,7 +48,7 @@ export class NPCGotoOpportunityExecutor extends ActionExecutor {
 
     // 收益：按 rewardSource 发放真实物品
     const rewardCfg = worldContext.balanceConfig?.reward;
-    const grant = opp.rewardSource ? rollAndGrantReward(entity, rewardCfg, opp.rewardSource) : { grantedItems: [], qiGain: 0, outcome: null };
+    const grant = opp.rewardSource ? rollAndGrantReward(entity, rewardCfg, opp.rewardSource, worldContext.rng) : { grantedItems: [], qiGain: 0, outcome: null };
     const lootDesc = grant.grantedItems.length > 0
       ? grant.grantedItems.map(g => `${ItemRegistry.get(g.itemId)?.name || g.itemId}×${g.qty}`).join('、')
       : (grant.qiGain > 0 ? `真气+${grant.qiGain}` : '一无所获');

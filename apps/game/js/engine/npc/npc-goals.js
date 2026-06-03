@@ -10,7 +10,7 @@
  *   - buildOpportunityGoal       机会点前往 Goal（ADR-024）。
  *
  * 全部以 entity 为首参，仅读写 entity 的 obsessions/state/relationships 与关系/执念配置，
- * 不改变随机序列或写入顺序，保证行为零漂移。拆分边界见 ADR-030。
+ * 不改变随机序列或写入顺序。拆分边界见 ADR-030。
  */
 import { Goal, GoalSource } from '../abstract/goal.js';
 import { Obsession } from '../abstract/obsession-system.js';
@@ -25,10 +25,10 @@ import { Obsession } from '../abstract/obsession-system.js';
 export function collectExtraGoals(entity, worldContext) {
   const goals = entity.obsessions ? entity.obsessions.toGoals() : [];
   // 机会点目标（ADR-024）：基于已知消息评估出值得前往的机会点时，生成一个前往 Goal。
-  // 仅在机会系统 enabled 且存在可行机会时产出，否则不影响既有规划（零漂移）。
+  // 仅在机会系统 enabled 且存在可行机会时产出，否则不影响既有规划。
   const oppGoal = buildOpportunityGoal(entity, worldContext);
   if (oppGoal) goals.push(oppGoal);
-  // 关系驱动目标（ADR-028）：护短同门 / 报恩。goalsEnabled 关或无 qualifying 边时返回 []（零漂移）。
+  // 关系驱动目标（ADR-028）：护短同门 / 报恩。goalsEnabled 关或无 qualifying 边时返回 []。
   const relGoal = buildRelationshipGoals(entity, worldContext);
   if (relGoal) goals.push(relGoal);
   return goals;
@@ -82,7 +82,7 @@ export function buildRelationshipGoals(entity, worldContext) {
       const ally = registry.getById(edge.toId);
       if (!ally || !ally.alive || ally.id === entity.id) continue;
       if (!(ally.hasSpatial && ally.hasSpatial())) continue;
-      // 盟友正陷入争斗（持有复仇目标）才驰援，避免无差别奔走（零漂移：无人陷战即不产出）。
+      // 盟友正陷入争斗（持有复仇目标）才驰援，避免无差别奔走（无人陷战即不产出）。
       if (ally.state?.get('hasRevengeTarget') !== true) continue;
       if (here) {
         const dist = Math.abs(ally.spatial.tileX - here.x) + Math.abs(ally.spatial.tileY - here.y);
@@ -104,7 +104,7 @@ export function buildRelationshipGoals(entity, worldContext) {
   const minBen = repayCfg.minBenefactorStrength ?? 40;
   const visitChance = repayCfg.visitChancePerTick ?? 0.02;
   const repayPriority = repayCfg.priority ?? 3;
-  if (Math.random() < visitChance) {
+  if (worldContext.rng.next() < visitChance) {
     for (const type of ['benefactor', 'gratitude']) {
       const top = rs.topEdgeOfType(entity.id, type);
       if (!top || top.strength < minBen) continue;
@@ -122,7 +122,7 @@ export function buildRelationshipGoals(entity, worldContext) {
   }
 
   // —— 师徒互动（ADR-029 第三期）：传功/护徒/尽孝。复用同款单点锁定模式。 ——
-  considerMasterDiscipleGoals(entity, consider, registry, here);
+  considerMasterDiscipleGoals(entity, consider, registry, here, worldContext.rng);
 
   if (!best) {
     entity.state.set('targetRelationshipId', null);
@@ -144,13 +144,14 @@ export function buildRelationshipGoals(entity, worldContext) {
 /**
  * 师徒互动候选 Goal（ADR-029 第三期）：把传功/护徒/尽孝三类师徒行为纳入 consider。
  * 复用二期关系 Goal 单点锁定模式（写 targetRelationshipId，relationship_target 解析坐标）。
- * 无 qualifying master/disciple 边即不产出（零漂移）。
+ * 无 qualifying master/disciple 边即不产出。
  * @param {import('./npc-entity.js').NPCEntity} entity
  * @param {(cand:Object)=>void} consider 候选收集器（取最高 priority）。
  * @param {Object} registry 实体注册表（getById）。
  * @param {?{x:number,y:number}} here 本 NPC 当前坐标。
+ * @param {import('../abstract/rng.js').Rng} rng 确定性随机源。
  */
-export function considerMasterDiscipleGoals(entity, consider, registry, here) {
+export function considerMasterDiscipleGoals(entity, consider, registry, here, rng) {
   const rs = entity._relationshipSystem;
   const mdCfg = entity._relationshipConfig.masterDiscipleGoals || {};
   const dist = (other) => here
@@ -160,7 +161,7 @@ export function considerMasterDiscipleGoals(entity, consider, registry, here) {
   // —— 师傅传功（护徒·点化）：对修为偏低的徒弟低频前往点化（给 insight 增量）——
   const teachCfg = mdCfg.teachDisciple || {};
   const teachChance = teachCfg.teachChancePerTick ?? 0.04;
-  if (Math.random() < teachChance) {
+  if (rng.next() < teachChance) {
     const minMasterStr = teachCfg.minMasterStrength ?? 40;
     const maxRange = teachCfg.maxTeachRange ?? 20;
     const maxProg = teachCfg.discipleMaxTotalProgress ?? 0.6;
@@ -207,7 +208,7 @@ export function considerMasterDiscipleGoals(entity, consider, registry, here) {
   // —— 徒弟尽孝（探望）：对师傅低频探望/侍奉 ——
   const visitCfg = mdCfg.visitMaster || {};
   const visitChance = visitCfg.visitChancePerTick ?? 0.02;
-  if (Math.random() < visitChance) {
+  if (rng.next() < visitChance) {
     const minDiscipleStr = visitCfg.minDiscipleStrength ?? 40;
     const maxVisitRange = visitCfg.maxVisitRange ?? 30;
     const top = rs.topEdgeOfType(entity.id, 'disciple');
@@ -232,7 +233,7 @@ export function considerMasterDiscipleGoals(entity, consider, registry, here) {
  * 夺舍图谋执念检查（ADR-029 第三期，轻度）：邪修倾向(低 justice+低 loyalty)的高境界师傅，
  * 对高资质徒弟生『夺舍』执念→复用复仇行为链(追踪→击杀)。在 onPreTick 关系感知触发，
  * 需读 master 边锁定徒弟为 targetId（区别于无目标的条件执念）。仅 goalsEnabled 时生效。
- * 已有 seizure 执念则跳过（ObsessionSystem.add 去重）。零漂移：默认 chance 极低且需邪修+高资质徒弟。
+ * 已有 seizure 执念则跳过（ObsessionSystem.add 去重）。默认 chance 极低且需邪修+高资质徒弟，几乎不触发。
  * @param {import('./npc-entity.js').NPCEntity} entity
  * @param {Object} worldContext
  */
@@ -245,7 +246,7 @@ export function checkSeizeDiscipleObsession(entity, worldContext) {
   if ((personality.justice ?? 100) > (cfg.maxJustice ?? 35)) return;
   if ((personality.loyalty ?? 100) > (cfg.maxLoyalty ?? 35)) return;
   if ((entity.state.get('roleRank') || 0) < (cfg.minMasterRoleRank ?? 3)) return;
-  if (Math.random() >= (cfg.chancePerTick ?? 0.004)) return;
+  if (worldContext.rng.next() >= (cfg.chancePerTick ?? 0.004)) return;
 
   const registry = worldContext?.entityRegistry;
   if (!registry || typeof registry.getById !== 'function') return;

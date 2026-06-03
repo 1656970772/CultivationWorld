@@ -110,9 +110,9 @@ export class NPCExploreExecutor extends ActionExecutor {
     const qiMax = exploreCfg.fortuneQiMax ?? 20;
     const events = exploreCfg.fortuneEvents || [];
 
-    const event = weightedPickFrom(events) || { id: 'normal', name: '游历归来', insightMultiplier: 1.0, qiMultiplier: 1.0 };
+    const event = weightedPickFrom(events, worldContext.rng) || { id: 'normal', name: '游历归来', insightMultiplier: 1.0, qiMultiplier: 1.0 };
 
-    const baseInsight = insightMin + Math.random() * (insightMax - insightMin);
+    const baseInsight = insightMin + worldContext.rng.next() * (insightMax - insightMin);
     const insightGain = baseInsight * (event.insightMultiplier ?? 1.0);
     const currentInsight = entity.state.get('insight') || 0;
     // insight 封顶 (1 - minCultivationRatio)：保证突破总进度中闭关至少占 minCultivationRatio，
@@ -123,7 +123,7 @@ export class NPCExploreExecutor extends ActionExecutor {
     const appliedInsightGain = newInsight - currentInsight;
     entity.state.set('insight', newInsight);
 
-    const baseQi = qiMin + Math.floor(Math.random() * (qiMax - qiMin + 1));
+    const baseQi = qiMin + Math.floor(worldContext.rng.next() * (qiMax - qiMin + 1));
     const qiGain = Math.round(baseQi * (event.qiMultiplier ?? 1.0));
     if (qiGain > 0) {
       entity.state.set('qi', (entity.state.get('qi') || 0) + qiGain);
@@ -204,12 +204,22 @@ export class NPCKillEnemyExecutor extends ActionExecutor {
     const myPower = powerFn ? powerFn(entity) : 1;
     const enemyPower = powerFn ? powerFn(target) : 1;
     const winChance = myPower / Math.max(1e-6, myPower + enemyPower);
-    const win = Math.random() < winChance;
+    const win = worldContext.rng.next() < winChance;
 
     if (win) {
-      killNPCByPvP(target, entity);
-      entity.state.set('enemyKilled', true);
+      const kill = killNPCByPvP(target, entity, worldContext);
       entity.state.set('nearRevengeTarget', false);
+      if (!kill.died) {
+        // 仇人靠锁血/遁地符逃生：执念未达成，等待下次追击。
+        return {
+          success: false,
+          outcome: kill.escaped ? 'enemy_escaped' : 'enemy_survived',
+          targetId: target.id,
+          winChance: Number(winChance.toFixed(3)),
+          description: `${entity.staticData.name} 重创仇人 ${target.staticData?.name || target.id}，但对方${kill.escaped ? '祭出遁地符遁走' : '锁血保命逃脱'}`,
+        };
+      }
+      entity.state.set('enemyKilled', true);
       return {
         success: true,
         outcome: 'enemy_slain',
@@ -221,15 +231,26 @@ export class NPCKillEnemyExecutor extends ActionExecutor {
 
     // 败：按劣势程度受伤；悬殊时陨落（被仇人反杀）。
     const disadvantage = 1 - winChance; // 越大越惨败
-    const lethal = disadvantage > 0.8 && Math.random() < (disadvantage - 0.8) * 2.5;
+    const lethal = disadvantage > 0.8 && worldContext.rng.next() < (disadvantage - 0.8) * 2.5;
     if (lethal) {
-      killNPCByPvP(entity, target);
+      const kill = killNPCByPvP(entity, target, worldContext);
+      if (kill.died) {
+        return {
+          success: false,
+          outcome: 'slain_by_enemy',
+          targetId: target.id,
+          winChance: Number(winChance.toFixed(3)),
+          description: `${entity.staticData.name} 寻仇反被 ${target.staticData?.name || target.id} 所杀`,
+        };
+      }
+      // 自己靠锁血/遁地符逃生：负伤遁走。
+      entity.state.set('nearRevengeTarget', false);
       return {
         success: false,
-        outcome: 'slain_by_enemy',
+        outcome: kill.escaped ? 'escaped' : 'survived',
         targetId: target.id,
         winChance: Number(winChance.toFixed(3)),
-        description: `${entity.staticData.name} 寻仇反被 ${target.staticData?.name || target.id} 所杀`,
+        description: `${entity.staticData.name} 寻仇大败，${kill.escaped ? '危急中遁地符护身遁走' : '锁血保命狼狈逃脱'}`,
       };
     }
     const injury = 1 + Math.floor(disadvantage * 3);
@@ -244,12 +265,6 @@ export class NPCKillEnemyExecutor extends ActionExecutor {
     };
   }
 }
-
-/**
- * PvP 致死统一写入（ADR-020 阶段D/E）：标记死亡并写 _deathInfo，含 killerId/killerFactionId，
- * 打通 _collectDeaths→recordMemory→relationships→后代复仇执念的恩怨闭环。
- * @param {Object} victim 被杀者
- * @param {Object} killer 凶手
 
 /**
  * 夺宝流执行器（ADR-022/ADR-023，参考凡人修仙传 杀人夺宝/闯秘境）。
@@ -272,7 +287,7 @@ export class NPCRaidTreasureExecutor extends ActionExecutor {
     // 期望收益落地：按 reward.json 概率分布 roll 一个结果。
     // 若 outcome 带 itemId，则发放真实物品（法宝/材料/丹药）写入背包（ADR-025），否则回退真气收益。
     const rewardCfg = worldContext.balanceConfig?.reward;
-    const grant = rollAndGrantReward(entity, rewardCfg, 'obsession_plunder');
+    const grant = rollAndGrantReward(entity, rewardCfg, 'obsession_plunder', worldContext.rng);
 
     entity.state.set('treasureObtained', true);
     const riskNote = risk.triggered.length > 0

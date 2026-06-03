@@ -3,7 +3,7 @@
   "enabled": true,
   "_note_enabled": "数据层总开关。enabled=false 可整体停用关系写入做对照实验（一期行为）。",
   "goalsEnabled": true,
-  "_note_goalsEnabled": "ADR-028 第二期：关系边是否驱动 NPC Goal/妖兽护群护领地行为。默认开（直接全量启用，可回退）。goalsEnabled=false 回退一期纯数据态（不产出关系 Goal、不建妖群/领地边、不护群）。simulate-analysis 可用 RELATIONSHIP_GOALS_ACTIVE 环境变量强制开/关做对照。",
+  "_note_goalsEnabled": "ADR-028 第二期：关系边是否驱动 NPC Goal/妖兽护群护领地行为。默认开（全量启用）。goalsEnabled=false 走一期纯数据态（不产出关系 Goal、不建妖群/领地边、不护群）。simulate-analysis 可用 RELATIONSHIP_GOALS_ACTIVE 环境变量强制开/关。",
   "edgeTypes": {
     "_interpersonal_comment": "=== 人际关系（NPC↔NPC）===",
     "master": {
@@ -249,46 +249,46 @@
   "npcGoals": {
     "_comment": "ADR-028：NPC 关系驱动 Goal 的优先级与触发阈值。仅 goalsEnabled 时生效。priority 越大越优先（与执念/机会 Goal 竞争，参考 npc-entity collectExtraGoals）。",
     "assistSectMate": {
-      "priority": 6,
+      "priority": 82,
       "minSectAffinityStrength": 30,
-      "maxAssistRange": 18,
-      "_comment": "护短同门：高强度 same_sect/ally 对象本 tick 遭袭时前往支援。minSectAffinityStrength 为触发所需的边强度下限；maxAssistRange 为愿意驰援的最大距离（格）。"
+      "maxAssistRange": 28,
+      "_comment": "护短同门：高强度 same_sect/ally 对象本 tick 遭袭时前往支援。priority 82 高于日常修炼/任务(60-70)——同门遭袭驰援是插队级行为；但产出受『同门正陷战』强条件门控，频率天然低（行为精准化 2026-06-02：关系 Goal 需高于日常 need 才能被 plan() 第一个选中执行）。minSectAffinityStrength 为触发所需的边强度下限；maxAssistRange 为愿意驰援的最大距离（格）。"
     },
     "repayBenefactor": {
-      "priority": 3,
+      "priority": 74,
       "minBenefactorStrength": 40,
-      "visitChancePerTick": 0.02,
-      "_comment": "报恩：对高强度 benefactor/gratitude 对象低频产出探望/施援 Goal。visitChancePerTick 控制低频触发概率。"
+      "visitChancePerTick": 0.04,
+      "_comment": "报恩：对高强度 benefactor/gratitude 对象低频产出探望/施援 Goal。priority 74 高于日常 need，使其产出时能插队执行；产出受 visitChancePerTick(0.04) 低频门控。"
     },
     "relationRevenge": {
-      "priority": 5,
+      "priority": 80,
       "minEnemyStrength": 40,
       "_comment": "关系复仇：存在高强度 enemy 边时确保复仇链可跑（不另造系统，复用 _resolveRevengeTarget）。minEnemyStrength 为 enemy 边升格为复仇目标的强度门槛。深关系被杀仍由 companion_lost→执念路径升格。"
     }
   },
   "masterDiscipleGoals": {
-    "_comment": "ADR-029 第三期：师徒互动驱动 Goal 的优先级与触发阈值。仅 goalsEnabled 时生效。复用二期关系 Goal 架构（_buildRelationshipGoals 单点锁定 → relationship_target resolver → executor）。无 qualifying master/disciple 边即不产出（零漂移）。",
+    "_comment": "ADR-029 第三期：师徒互动驱动 Goal 的优先级与触发阈值。仅 goalsEnabled 时生效。复用二期关系 Goal 架构（_buildRelationshipGoals 单点锁定 → relationship_target resolver → executor）。无 qualifying master/disciple 边即不产出。",
     "teachDisciple": {
-      "priority": 7,
+      "priority": 78,
       "minMasterStrength": 40,
-      "maxTeachRange": 20,
-      "discipleMaxTotalProgress": 0.6,
+      "maxTeachRange": 30,
+      "discipleMaxTotalProgress": 0.95,
       "insightGain": 0.12,
-      "teachChancePerTick": 0.04,
-      "_comment": "师傅传功（护徒·点化）：师傅对高强度 master 边的徒弟，在徒弟修为总进度(cultivationProgress+insight)偏低(< discipleMaxTotalProgress)且距离≤maxTeachRange 时，低频(teachChancePerTick)前往点化，给徒弟 insightGain 的感悟增量并加深师徒情谊。priority 高于护短同门(6)，体现师徒纽带优先。minMasterStrength 为触发所需 master 边强度下限。"
+      "teachChancePerTick": 0.12,
+      "_comment": "师傅传功（护徒·点化）：师傅对高强度 master 边的徒弟，在徒弟修为总进度(cultivationProgress+insight)偏低(< discipleMaxTotalProgress)且距离≤maxTeachRange 时，低频(teachChancePerTick)前往点化，给徒弟 insightGain 的感悟增量并加深师徒情谊。priority 78 高于日常修炼/任务(60-70)，使传功产出时被 plan() 第一个选中执行（否则永远排在修炼后、轮不到）；产出受 teachChancePerTick(0.06)+徒弟修为偏低 双重低频门控，频率天然低。minMasterStrength 为触发所需 master 边强度下限。"
     },
     "protectDisciple": {
-      "priority": 8,
+      "priority": 88,
       "minMasterStrength": 40,
-      "maxProtectRange": 24,
-      "_comment": "师傅护徒（驰援）：徒弟遭袭(hasRevengeTarget)且距离≤maxProtectRange 时师傅前往护卫。priority 8（高于传功7、护短同门6），范围(24)大于普通同门驰援(18)，体现『一日为师』的护徒优先级与更远奔赴。"
+      "maxProtectRange": 32,
+      "_comment": "师傅护徒（驰援）：徒弟遭袭(hasRevengeTarget)且距离≤maxProtectRange 时师傅前往护卫。priority 88（最高，高于传功78、护短同门82），体现『一日为师』护徒优先；产出受『徒弟正陷战』强条件门控，频率天然低。"
     },
     "visitMaster": {
-      "priority": 4,
+      "priority": 72,
       "minDiscipleStrength": 40,
-      "maxVisitRange": 30,
-      "visitChancePerTick": 0.02,
-      "_comment": "徒弟尽孝（探望）：徒弟对高强度 disciple 边的师傅低频(visitChancePerTick)探望/侍奉，加深师徒情谊。priority 4（略高于报恩3）。"
+      "maxVisitRange": 36,
+      "visitChancePerTick": 0.08,
+      "_comment": "徒弟尽孝（探望）：徒弟对高强度 disciple 边的师傅低频(visitChancePerTick)探望/侍奉，加深师徒情谊。priority 72 高于日常修炼/任务，使探望产出时能插队执行；产出受 visitChancePerTick(0.04) 低频门控。"
     },
     "inheritWill": {
       "revengeMemoryType": "master_lost",

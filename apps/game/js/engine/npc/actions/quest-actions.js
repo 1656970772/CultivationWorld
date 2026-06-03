@@ -50,7 +50,7 @@ export class NPCAcceptQuestExecutor extends ActionExecutor {
       } else {
         for (let d = minD; d <= effectiveMax; d++) {
           const chance = randomQuestSpawnChance[String(d)] || 0.5;
-          if (Math.random() < chance) {
+          if (worldContext.rng.next() < chance) {
             available.push({ quest: qt, difficulty: d });
           }
         }
@@ -120,7 +120,7 @@ export class NPCDoQuestExecutor extends ActionExecutor {
     const dangerInjury = (diffInfo?.dangerInjury || 0.05) / totalDays;
     const dangerDeath = (diffInfo?.dangerDeath || 0) / totalDays;
 
-    const roll = Math.random();
+    const roll = worldContext.rng.next();
     if (roll < dangerDeath) {
       entity.state.set('alive', false);
       entity.alive = false;
@@ -157,7 +157,7 @@ export class NPCDoQuestExecutor extends ActionExecutor {
     if (daysLeft <= 1) {
       if (isMonsterHuntQuest(questTypeId, getEconomyConfig(worldContext))) {
         const monster = resolveQuestTargetMonster(entity, worldContext, difficulty);
-        const hunt = settleMonsterHunt(entity, monster, worldContext);
+        const hunt = settleMonsterHunt(entity, monster, worldContext, worldContext.rng.fn());
         if (!hunt.success) {
           entity.state.set('questDaysRemaining', 0);
           entity.state.set('questComplete', false);
@@ -257,6 +257,7 @@ export class NPCTurnInQuestExecutor extends ActionExecutor {
       questTemplates,
       difficulty,
       questTypeId,
+      worldContext.rng.fn(),
     );
 
     if (!isWanderer) {

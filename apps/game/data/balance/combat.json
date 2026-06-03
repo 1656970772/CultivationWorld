@@ -1,5 +1,42 @@
 {
   "_description": "战斗与外交平衡参数 — 修改此文件可调整宗门战争、结盟、贸易的数值",
+  "gas": {
+    "_comment": "战斗机制层总开关（ADR-042）。enabled=true 时致死伤害走统一伤害管线的锁血/遁地能力；false 时锁血/遁地不生效（致死即死）。",
+    "enabled": true
+  },
+  "npcHp": {
+    "_comment": "NPC 气血（HP）系统，与境界挂钩（ADR-041 阶段1）。maxHp = baseHp[境界] × 体质 hpBonusMultiplier。初始化与突破后回满。dailyRegenRatio 为每日自然回血占 maxHp 比例（休整/平时缓慢回血）。境界越高血越厚，凡人最脆、化神极厚。",
+    "_tuningNote_hp": "2026-06-03 凡人血量调整（ADR-047）：凡人/弟子原 maxHp=30、0 减伤，被任意妖兽一击秒杀（grade1 单击占血 200-325%、grade2 ≥maxHp×4 直接碾压连保命符都失效），导致凡人一出门游历必死、insight 永远结算不了、天才卡在凡人境。世界观上凡人确弱但不该是『一碰即碎的纸』。提到 120 后：grade1 单击约占血 55%（可扛 2 击有反应/逃跑窗口），grade2 仍 1-2 击偏险（应躲，符合 safeMaxGrade 设计），且 grade2 单击 < maxHp×4 不再碾压→保命符可生效。不动妖兽数值。",
+    "baseHp": {
+      "mortal": 120,
+      "disciple": 120,
+      "qi_refining": 120,
+      "foundation_building": 600,
+      "golden_core": 3000,
+      "nascent_soul": 15000,
+      "spirit_transformation": 80000
+    },
+    "dailyRegenRatio": 0.02
+  },
+  "npcCombat": {
+    "_comment": "NPC 战斗属性（ADR-041 阶段1）。baseDef[境界] 为伤害减免比例(0~0.9)，境界越高减免越多。受击伤害 = 来源攻击力 × (1 - baseDef) × random(0.8,1.2)，最低 1。",
+    "_tuningNote_def": "2026-06-03（ADR-047）：凡人/弟子从 0 减伤提到 0.15，配合 maxHp 抬升让凡人能扛 grade1 妖兽 2 击（仍弱于炼气 0.2），保留危险感但不再一击即碎。",
+    "baseDef": {
+      "mortal": 0.15,
+      "disciple": 0.15,
+      "qi_refining": 0.2,
+      "foundation_building": 0.4,
+      "golden_core": 0.55,
+      "nascent_soul": 0.7,
+      "spirit_transformation": 0.82
+    }
+  },
+  "lockHp": {
+    "_comment": "锁血机制（ADR-041 阶段1）：一次伤害会致死(hp-dmg<=0)时，若非碾压则锁血到 lockRatio×maxHp 不死（给保命道具/逃跑机会）；碾压则直接死。碾压判定：来袭者 order 高出受击者 ≥ crushOrderGap，或单击伤害 ≥ maxHp×crushHpMultiple。",
+    "lockRatio": 0.05,
+    "crushOrderGap": 40,
+    "crushHpMultiple": 4.0
+  },
   "attack": {
     "_comment": "攻击战力公式：攻方战力 = disciples × attackerPowerMultiplier × (1 + stability / attackerStabilityFactor)",
     "attackerPowerMultiplier": 1.2,
@@ -24,7 +61,43 @@
     "winNpcKillRatio": 0.005,
     "winNpcKillMax": 2,
     "winNpcKillMinDefender": 50,
-    "winNpcKillStabilityFloor": 30
+    "winNpcKillStabilityFloor": 30,
+    "_annihilationNote": "tuning-v4 2026-06-01: 势力覆灭动态阈值。问题：winDefenderMinDisciples 固定托底 5，攻战胜利后防守方 disciples 永远≥5，isDestroyed(disciples<=0) 永不触发，5000 天 18 势力 100% 存活、无淘汰。机制：当防守方稳定度 ≤ annihilationStabilityThreshold 且实际存活 NPC 数 ≤ annihilationAliveNpcThreshold（真实衰弱），托底值降为 0，允许攻战将其打灭门。enabled=false 时关闭此动态阈值。",
+    "annihilation": {
+      "enabled": true,
+      "stabilityThreshold": 20,
+      "aliveNpcThreshold": 3
+    }
+  },
+  "cohesion": {
+    "_comment": "tuning-v5 2026-06-01: 势力危亡抉择与凝聚力（见 wiki/rules/faction-crisis-defection.md + ADR-035）。攻战重创防守方时，不再机械随机处死，而是让每个幸存成员按『性格×关系×处境』在 7 类反应中做加权抉择。凝聚力是『选择死战/留下』比例的涌现量：忠勇者多则难灭，一盘散沙则树倒猢狲散→真实活NPC骤降→配合 annihilation 阈值自然覆灭。enabled=false 退化为 v4 随机处死。",
+    "enabled": true,
+    "_triggerComment": "危机态触发条件（攻战大败为前提）：稳定度 ≤ crisisStabilityThreshold 或 攻方/守方战力比 ≥ crisisPowerRatio 或 防守方真实活 NPC ≤ crisisAliveNpcThreshold。因稳定度常因自然恢复虚高（ADR-034 病根），实际主要靠后两个相对信号触发。",
+    "crisisStabilityThreshold": 35,
+    "crisisPowerRatio": 1.5,
+    "crisisAliveNpcThreshold": 6,
+    "_weightComment": "每类反应权重 = base × Π(调制)。调制按性格 trait(0-100) 归一到 [lo,hi] 倍率：factor = lo + (trait/100)×(hi-lo)。loyaltyInv/cautionInv 表示用 (100-trait)。coreLoyalMult：领袖/继承人/核心同门的死战权重额外乘数（保护顶梁柱）。",
+    "reactions": {
+      "fight": { "base": 1.0, "loyalty": [0.3, 3.0], "courage": [0.4, 2.5], "coreMult": 4.0 },
+      "evade": { "base": 0.6, "caution": [0.4, 2.2], "courageInv": [0.5, 2.0] },
+      "defect": { "base": 0.25, "loyaltyInv": [0.3, 2.6], "ambition": [0.5, 2.4], "requireStrongerEnemy": true },
+      "leave": { "base": 0.4, "caution": [0.5, 2.0], "loyaltyInv": [0.4, 2.0] },
+      "coerced": { "base": 0.2, "ambitionInv": [0.5, 2.0], "loyaltyInv": [0.5, 1.8] },
+      "flee": { "base": 0.15, "cautionExtreme": [0.2, 3.0], "loyaltyInv": [0.4, 2.5] }
+    },
+    "_surrenderComment": "投降归顺为群体判定：领袖已陨落 或 稳定度 ≤ surrenderStabilityThreshold 或 攻方实力优势比 ≥ surrenderPowerRatio 时，整门归降攻方（成员批量改投，原势力覆灭）。",
+    "surrender": {
+      "enabled": true,
+      "stabilityThreshold": 12,
+      "powerRatio": 3.0,
+      "leaderDeadTriggers": true
+    },
+    "effects": {
+      "_comment": "各抉择对成员状态的后果。fightKillBonus：死战者被本轮处死的相对权重；evadeKillReduction：退避者被杀概率乘数；moraleLossCoerced：被迫效忠的心境损耗。",
+      "fightKillWeight": 1.0,
+      "evadeKillWeight": 0.2,
+      "moraleLossCoerced": 25
+    }
   },
   "alliance": {
     "minRelation": 20,

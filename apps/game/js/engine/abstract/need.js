@@ -26,6 +26,8 @@ export class Need {
     this.evaluator = config.evaluator;
     this.goalStateTemplate = config.goalState || {};
     this.basePriority = config.basePriority || 0;
+    // 选行策略（ADR-047）：'greedy' 表示该需求的目标应跳过 A* 折叠、走加权随机选一步（换着做）。
+    this.selectStrategy = config.selectStrategy || 'astar';
 
     this.priority = 0;
     this.urgency = 0;
@@ -118,6 +120,12 @@ export class ConfigurableEvaluator extends NeedEvaluator {
       }
     }
 
+    // 增量式目标解析（2026-06-03，破解「GOAP 想一次规划到进度完成」）：
+    //   goalState 模板里标了 incrementOf 的条目，表示目标不是终极值而是"在当前值上再推进 step"。
+    //   每次评估按【实体当前值 + step】(夹 max) 算出本轮阈值。如此 A* 每次只规划推进一小步、做完重评估、
+    //   下轮再往前一步——NPC 行为变成"缺啥补啥、换着做"，而非一口气折叠上百次闭关到 1.0 卡死（见 ADR-039/042）。
+    goalState = this._resolveIncrementalGoals(goalState, entityState);
+
     // 性格加成（数据驱动）：根据实体 personality 与 personality.json 的 needBoosts 表，
     // 为本需求叠加优先级/紧迫度。详见 wiki/rules/personality.md。
     const personalityDelta = this._personalityBoost(entityState, worldContext, need);
@@ -128,6 +136,30 @@ export class ConfigurableEvaluator extends NeedEvaluator {
     urgency = Math.max(0, Math.min(100, urgency));
 
     return { priority, urgency, goalState, satisfied };
+  }
+
+  /**
+   * 把 goalState 中标了 incrementOf 的条目解析为「当前值 + step」(夹 max) 的本轮增量阈值。
+   *
+   * 条目形如 { op:'gte', incrementOf:'totalProgress', step:0.05, max:1.0 }：
+   *   value = min((实体[incrementOf] || 0) + step, max)。
+   * 已是终极完成（当前 >= max）时阈值取 max（满足即 satisfied，不再产出无意义子目标）。
+   * 无 incrementOf 的条目原样保留（行为不变）。
+   * @returns {Object} 新的 goalState（不修改入参）
+   */
+  _resolveIncrementalGoals(goalState, entityState) {
+    let resolved = null;
+    for (const [key, cond] of Object.entries(goalState)) {
+      if (cond && typeof cond === 'object' && typeof cond.incrementOf === 'string') {
+        if (!resolved) resolved = { ...goalState };
+        const base = entityState.get(cond.incrementOf) || 0;
+        const step = typeof cond.step === 'number' ? cond.step : 0.05;
+        const max = typeof cond.max === 'number' ? cond.max : Infinity;
+        const value = Math.min(base + step, max);
+        resolved[key] = { op: cond.op || 'gte', value };
+      }
+    }
+    return resolved || goalState;
   }
 
   /**

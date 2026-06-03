@@ -4,6 +4,7 @@ import { loadGameConfigs } from './config-loader.js';
 import { Renderer } from '../renderer/renderer.js';
 import { UIManager } from '../ui/ui-manager.js';
 import { SaveManager } from '../storage/save-manager.js';
+import { ReplayRecorder } from '../storage/replay-recorder.js';
 
 /** 解析格子坐标键，与引擎 tileIndex 一致使用 "x,y"，兼容旧 "_" 格式 */
 function parseTileKey(coordKey) {
@@ -24,10 +25,19 @@ export class GameManager {
     this.isRunning = false;
     this.currentDay = 0;
     this.tileGrid = null;
+    // 确定性重放记录器（日志落盘 + 重放 + 确定性种子）。在 init() 中创建并注入 seed。
+    this.replay = null;
   }
 
-  async init() {
+  async init(opts = {}) {
     this.configs = await loadGameConfigs();
+
+    // 确定性种子：新开局随机生成（或由重放指定），注入 configs 供 WorldEngine.init 读取。
+    // 同一 seed + 同一配置 → 世界演化逐字节一致。
+    this.replay = new ReplayRecorder({ seed: opts.seed });
+    this.configs.seed = this.replay.seed;
+    console.log(`[Replay] 本局种子 seed=${this.replay.seed}，runId=${this.replay.runId}`);
+
     this.buildTileGrid();
     this.initPlayerState();
     this.initWorker();
@@ -297,9 +307,38 @@ export class GameManager {
     this._refreshUI();
   }
 
+  // --- 重放 / 确定性种子 ---
+
+  /** 返回本局种子。 */
+  getSeed() {
+    return this.replay?.seed ?? null;
+  }
+
+  /**
+   * 把当前局的重放（seed + 输入序列）落盘到 runs/<runId>/replay.json，
+   * 并把缓冲日志 flush 到 runs/<runId>/log.jsonl。
+   * @returns {Promise<Object>} 重放对象。
+   */
+  async saveReplay() {
+    if (!this.replay) return null;
+    return this.replay.saveReplay();
+  }
+
+  /**
+   * 以指定 seed 重新开局（复现）。返回后世界以相同 seed 演化；
+   * 调用方可按相同的输入序列重新 tick 得到一致结果。
+   * @param {number} seed
+   */
+  async restartWithSeed(seed) {
+    this.isRunning = false;
+    if (this.worker) { this.worker.terminate(); this.worker = null; }
+    await this.init({ seed });
+  }
+
   // --- Tick 请求 ---
 
   _requestTickAsync() {
+    this.replay?.recordInput('tick');
     return new Promise((resolve) => {
       const handler = (e) => {
         if (e.data.type === 'TICK_RESULT') {
@@ -313,6 +352,7 @@ export class GameManager {
   }
 
   requestTick() {
+    this.replay?.recordInput('tick');
     this.worker?.postMessage({ type: 'TICK', payload: {} });
   }
 
@@ -322,9 +362,12 @@ export class GameManager {
    * 处理来自 Worker 的 TICK_RESULT。
    * Worker 返回格式：{ day, factions, npcs, stats, activeModifiers, tickLog }
    */
-  handleTickResult(result) {
+  handleTickResult(result, { record = true } = {}) {
     this.currentDay = result.day;
     this.playerState.currentDay = result.day;
+
+    // 重放：记录本 tick 的事件日志（单 tick 路径；多 tick 由 handleMultiTickResult 逐条记录）。
+    if (record) this.replay?.recordTick(result.day, result.tickLog);
 
     this._applyTerritoryChanges(result.factions);
     this._processInSenseEvents(result.tickLog);
@@ -352,8 +395,14 @@ export class GameManager {
   }
 
   handleMultiTickResult(payload) {
-    // multiTick 只取最终状态更新一次 UI
-    this.handleTickResult(payload);
+    // 重放：multiTick 返回各 tick 的逐条结果，依序记录其日志，保证输入序列完整。
+    if (this.replay && Array.isArray(payload.results)) {
+      for (const r of payload.results) {
+        this.replay.recordTick(r?.day ?? payload.day, r?.tickLog ?? r);
+      }
+    }
+    // multiTick 只取最终状态更新一次 UI（不再重复记录日志）。
+    this.handleTickResult(payload, { record: false });
   }
 
   /**

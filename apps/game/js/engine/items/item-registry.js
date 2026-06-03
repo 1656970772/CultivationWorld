@@ -58,17 +58,17 @@ class ItemRegistryClass {
   }
 
   /**
-   * 获取所有资源类物品
+   * 获取所有势力宏观资源（粮食/弟子），ADR-043。
    */
-  getResources() {
-    return this.getByCategory('resource');
+  getMacroResources() {
+    return this.getAll().filter(def => def.isMacroResource && def.isMacroResource());
   }
 
   /**
-   * 获取所有道具类物品
+   * 获取所有 NPC 可持有的实物道具（货币/材料/丹药/法宝/符/功法），ADR-043。
    */
-  getProps() {
-    return this.getByCategory('prop');
+  getHoldables() {
+    return this.getAll().filter(def => def.isHoldable && def.isHoldable());
   }
 
   has(id) {

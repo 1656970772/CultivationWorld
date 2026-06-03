@@ -7,6 +7,7 @@
  */
 import { ActionExecutor } from '../../abstract/action.js';
 import { getCultivationConfig } from './npc-action-utils.js';
+import { readTraitSpeedMult } from '../npc-traits.js';
 
 export class NPCCultivateExecutor extends ActionExecutor {
   /**
@@ -26,7 +27,7 @@ export class NPCCultivateExecutor extends ActionExecutor {
 
     const rankId = entity.state.get('rankId') || 'mortal';
     const baseSpeed = speedMap[rankId] ?? 0.002;
-    let speedMultiplier = (variance.min + Math.random() * (variance.max - variance.min)) * extraSpeedMultiplier;
+    let speedMultiplier = (variance.min + worldContext.rng.next() * (variance.max - variance.min)) * extraSpeedMultiplier;
 
     // 功法加成：读取 techniqueId → 查 techniqueRegistry → 应用 cultivationSpeedMultiplier
     const techniqueId = entity.state.get('techniqueId');
@@ -41,11 +42,9 @@ export class NPCCultivateExecutor extends ActionExecutor {
       }
     }
 
-    // 先天资质加成：灵根(资质)与体质 speedMultiplier 连乘进修炼速度（详见 ADR-012）
-    const rootGrade = cult.spiritRoot?.grades?.[entity.state.get('spiritRootId')];
-    if (rootGrade) speedMultiplier *= rootGrade.speedMultiplier ?? 1.0;
-    const physiqueType = cult.physique?.types?.[entity.state.get('physiqueId')];
-    if (physiqueType) speedMultiplier *= physiqueType.speedMultiplier ?? 1.0;
+    // 先天资质加成：灵根+体质 speedMultiplier 连乘进修炼速度（ADR-012/042）。
+    // 经 AttributeSet traitSpeedMult 生效（开关关则回退直接读 config）。
+    speedMultiplier *= readTraitSpeedMult(entity);
 
     // duration 代表本次闭关天数：进度/真气按天累计（speed 为"每天"语义）
     const days = Math.max(1, action?.duration ?? 1);
@@ -61,7 +60,12 @@ export class NPCCultivateExecutor extends ActionExecutor {
     const current = entity.state.get('cultivationProgress') || 0;
     const decayFactor = Math.exp(-decayK * Math.min(1, current / Math.max(cap, 1e-6)));
     const effectiveGain = progressGain * decayFactor;
-    entity.state.set('cultivationProgress', Math.min(current + effectiveGain, cap));
+    const newProgress = Math.min(current + effectiveGain, cap);
+    // 真气随进度同步增长：按【实际进度增量】（已含天赋倍率与边际递减、夹 cap）折算真气。
+    // 这样天赋加速进度的同时也加速真气线，弟子修满进度时真气≈下一境界门槛，得以突破（ADR-039）。
+    const qiPerProgressMap = cult.qiPerProgress || {};
+    let progressQi = (qiPerProgressMap[rankId] ?? 0) * (newProgress - current);
+    entity.state.set('cultivationProgress', newProgress);
 
     // 功法寿元影响（负值为消耗，正值为延长，每次修炼小幅触发）
     if (techniqueLifespanEffect !== 0) {
@@ -86,7 +90,7 @@ export class NPCCultivateExecutor extends ActionExecutor {
 
     const baseQi = (qiMap[rankId] ?? 0.5) * days;
     const stoneQi = consumed;
-    let qiGain = baseQi + stoneQi;
+    let qiGain = baseQi + stoneQi + progressQi;
 
     const companionId = entity.state.get('daoCompanionId');
     let companionBonusApplied = false;
@@ -108,8 +112,10 @@ export class NPCCultivateExecutor extends ActionExecutor {
         // 道侣双修额外进度同样走边际递减：以当前(已含本次基础增量)进度计算衰减。
         const curWithBase = entity.state.get('cultivationProgress') || 0;
         const dualDecay = Math.exp(-decayK * Math.min(1, curWithBase / Math.max(cap, 1e-6)));
-        entity.state.set('cultivationProgress',
-          Math.min(curWithBase + speed * days * dualBonus * dualDecay, cap));
+        const dualProgress = Math.min(curWithBase + speed * days * dualBonus * dualDecay, cap);
+        // 双修额外进度同样按 qiPerProgress 折算真气，保持真气与进度一致（叠加双修 qi 倍率）。
+        qiGain += (qiPerProgressMap[rankId] ?? 0) * (dualProgress - curWithBase) * qiMultiplier;
+        entity.state.set('cultivationProgress', dualProgress);
         companionBonusApplied = true;
       }
     }
@@ -173,7 +179,7 @@ export class NPCSeekElixirExecutor extends ActionExecutor {
     const successRate = elixirCfg.successRate ?? 0.1;
     const extensionRatio = elixirCfg.lifespanExtensionRatio ?? 0.1;
 
-    const success = Math.random() < successRate;
+    const success = worldContext.rng.next() < successRate;
     if (success) {
       const maxAgeDays = entity.state.get('maxAgeDays') || 1;
       const extension = Math.floor(maxAgeDays * extensionRatio);
@@ -192,7 +198,7 @@ export class NPCChallengeExecutor extends ActionExecutor {
     const challengeCfg = cult.actions?.challenge || {};
     const successRate = challengeCfg.successRate ?? 0.2;
 
-    const success = Math.random() < successRate;
+    const success = worldContext.rng.next() < successRate;
     if (success) {
       // 挑战上位 = 弹性晋升通道：沿职位阶梯实际晋升一级。晋入稀缺顶层（elder/heir）时由引擎按
       // "有空缺直接补位 / 满员挑战现任、成功现任降一级"结算（见 TickManager.promoteByLadder）。

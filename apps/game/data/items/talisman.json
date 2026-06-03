@@ -1,0 +1,68 @@
+{
+  "_description": "符箓类物品（category=talisman，ADR-025/042/043/044/045）。item_escape_talisman(_high) 为机制必需能力符（持符即获 grantsAbilities 列出的能力，触发消耗一张）；其余为按 docs/世界观参考 各《物品设定.md》补的具体符箓。subCategory 细分 escape/attack/defense/healing。可用项 effects 复用通用 GE 原语。本文件由加载器合并至 itemDefs.items。",
+  "items": [
+    {
+      "id": "item_escape_talisman",
+      "name": "遁地符",
+      "category": "talisman",
+      "subCategory": "escape",
+      "grade": 2,
+      "value": 600,
+      "transferable": true,
+      "stackable": true,
+      "grantsAbilities": ["ga_lock_hp", "ga_escape_talisman"],
+      "description": "危急关头祭出可锁血保命并遁入地底脱险的符箓（ADR-042）。持符即获锁血+瞬移两项能力，触发消耗 1 张。"
+    },
+    {
+      "id": "item_escape_talisman_high",
+      "name": "上品遁地符",
+      "category": "talisman",
+      "subCategory": "escape",
+      "grade": 3,
+      "value": 3000,
+      "transferable": true,
+      "stackable": true,
+      "grantsAbilities": ["ga_lock_hp", "ga_escape_talisman"],
+      "description": "高阶遁地符，锁血保命+瞬移遁逃，对高境界威胁更可靠（品阶差异化数值待阶段2细化）。"
+    },
+    {
+      "id": "talisman_fireball",
+      "name": "火球符",
+      "category": "talisman",
+      "subCategory": "attack",
+      "grade": 1,
+      "value": 80,
+      "transferable": true,
+      "stackable": true,
+      "description": "封印火球术的初级攻击符箓，炼气期修士常用，使用即毁",
+      "source": "参考自凡人修仙传：火球符为炼气期常用攻击符箓"
+    },
+    {
+      "id": "talisman_shield",
+      "name": "护盾符",
+      "category": "talisman",
+      "subCategory": "defense",
+      "grade": 1,
+      "value": 90,
+      "transferable": true,
+      "stackable": true,
+      "description": "祭出形成光盾防御攻击，可抵挡炼气期全力一击的一次性符箓",
+      "source": "参考自凡人修仙传：护盾符为一级防御符箓"
+    },
+    {
+      "id": "talisman_heal",
+      "name": "疗伤符",
+      "category": "talisman",
+      "subCategory": "healing",
+      "grade": 3,
+      "value": 800,
+      "transferable": true,
+      "stackable": true,
+      "effects": [
+        { "effect": "ge_add_hp", "magnitude": 0.5, "magnitudeType": "ratioOfMaxHp" }
+      ],
+      "description": "结丹期炼制的高级符箓，祭出快速修复伤势、恢复法力，是战斗保命符",
+      "source": "参考自凡人修仙传/完美世界：疗伤符为三级符箓"
+    }
+  ]
+}

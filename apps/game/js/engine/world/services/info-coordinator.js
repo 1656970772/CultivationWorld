@@ -8,7 +8,7 @@
  *   ④ 系统每日推进（新闻扩散/过期、机会点过期）
  *   并提供 bestOpportunityFor（NPC 选目标层取最值得前往的机会点）与 enrichInfoEvents（补坐标/地点名）。
  *
- * 默认配置下三系统 enabled=false，整体静默（零漂移）。共享 helper 与子系统引用经 host 调用。
+ * 默认配置下三系统 enabled=false，整体静默。共享 helper 与子系统引用经 host 调用。
  */
 import { NewsType, OpportunityType } from '../../../core/constants.js';
 import {
@@ -34,6 +34,7 @@ export class InfoCoordinator {
   get balanceConfig() { return this.host.balanceConfig; }
   get covetConfig() { return this.host.covetConfig; }
   get techniqueRegistry() { return this.host.techniqueRegistry; }
+  get rng() { return this.host.rng; }
 
   /**
    * 为 infoEvents（攻击/结盟/妖兽袭击）补坐标与地点名，使其成为位置事件。
@@ -84,7 +85,7 @@ export class InfoCoordinator {
     }
 
     if (covetCfg.enabled === true) {
-      this.tickCovet(npcs, day, log, powerFn);
+      this.tickCovet(npcs, day, log, powerFn, worldContext);
     }
 
     if (info.enabled) {
@@ -283,8 +284,8 @@ export class InfoCoordinator {
     return false;
   }
 
-  /** 怀璧其罪：暴露高身家 → 生成消息 + 机会点；听闻者觊觎抢夺/放过。 */
-  tickCovet(npcs, day, log, powerFn) {
+  /** 怀璧其罪：暴露高身家 → 生成消息 + 机会点；听闻者觊觎抢夺/放过。worldContext 供抢夺致死走统一伤害管线（ADR-042）。 */
+  tickCovet(npcs, day, log, powerFn, worldContext) {
     const host = this.host;
     const covetCfg = this.covetConfig;
     const exposeCfg = covetCfg.expose || {};
@@ -298,7 +299,7 @@ export class InfoCoordinator {
       if (asset < threshold) continue;
       npc._assetScore = asset;
       if (npc._wealthExposed) continue;
-      if (Math.random() >= exposeChance) continue;
+      if (this.rng.next() >= exposeChance) continue;
       let witnessed = false;
       for (const other of npcs) {
         if (other.id === npc.id || !other.spatial) continue;
@@ -345,7 +346,7 @@ export class InfoCoordinator {
           const dist = Math.abs(seeker.spatial.tileX - target.spatial.tileX) + Math.abs(seeker.spatial.tileY - target.spatial.tileY);
           if (dist > 6) continue;
         }
-        const result = settleRobbery(seeker, target, covetCfg, powerFn);
+        const result = settleRobbery(seeker, target, covetCfg, powerFn, this.rng, worldContext);
         robbedThisTick.add(target.id);
         target._wealthExposed = false;
         if (typeof target.recordMemory === 'function') {

@@ -1,0 +1,209 @@
+[
+  {
+    "id": "act_develop",
+    "name": "内部发展",
+    "description": "经营灵脉与产业，增加资源产出（资源层·灵脉/产业收入）",
+    "category": "faction",
+    "weight": 1,
+    "preconditions": {},
+    "effects": {
+      "low_spirit_stone": { "op": "add", "value": 20 },
+      "food": { "op": "add", "value": 10 },
+      "disciples": { "op": "add", "value": 2 }
+    },
+    "costs": [],
+    "yields": [],
+    "executorId": "faction_develop"
+  },
+  {
+    "id": "act_recruit",
+    "name": "招募弟子",
+    "description": "消耗粮草与灵石招募新弟子加入势力（人力层补充）",
+    "category": "faction",
+    "weight": 2,
+    "preconditions": {
+      "food": { "op": "gte", "value": 50 }
+    },
+    "effects": {
+      "disciples": { "op": "add", "value": 30 },
+      "food": { "op": "add", "value": -100 },
+      "low_spirit_stone": { "op": "add", "value": -100 }
+    },
+    "costs": [],
+    "yields": [],
+    "executorId": "faction_recruit"
+  },
+  {
+    "id": "act_expand",
+    "name": "领地扩张",
+    "description": "向无主之地扩展领地，占据更多灵脉（扩张型循环）",
+    "category": "faction",
+    "weight": 3,
+    "preconditions": {
+      "stability": { "op": "gte", "value": 40 },
+      "hasAdjacentUnowned": { "op": "true" },
+      "disciples": { "op": "gte", "value": 30 },
+      "territoryCount": { "op": "lt", "value": 15 }
+    },
+    "effects": {
+      "territoryCount": { "op": "add", "value": 1 },
+      "stability": { "op": "add", "value": -5, "min": 0, "max": 100 },
+      "low_spirit_stone": { "op": "add", "value": -200 },
+      "disciples": { "op": "add", "value": -20 }
+    },
+    "costs": [],
+    "yields": [],
+    "executorId": "faction_expand"
+  },
+  {
+    "id": "act_defend",
+    "name": "加强防御",
+    "description": "加强边境防御工事，提升稳定度、降低边境威胁",
+    "category": "faction",
+    "weight": 1,
+    "preconditions": {
+      "stability": { "op": "lt", "value": 70 }
+    },
+    "effects": {
+      "stability": { "op": "add", "value": 2, "min": 0, "max": 100 },
+      "borderThreat": { "op": "add", "value": -2 },
+      "food": { "op": "add", "value": -80 },
+      "low_spirit_stone": { "op": "add", "value": -50 }
+    },
+    "costs": [],
+    "yields": [],
+    "executorId": "faction_defend",
+    "_tuningNote": "tuning-v1 2026-06-01: weight 2→1, stability +5→+2；tuning-v2 2026-06-01: 加 preconditions stability<70——和平时期（stability>=70）不防御，让攻伐/扩张/招募有更多候选空间。"
+  },
+  {
+    "id": "act_attack",
+    "name": "攻伐",
+    "description": "对敌对势力发动攻击，胜则掠夺资源（以战养战）",
+    "category": "faction",
+    "weight": 5,
+    "preconditions": {
+      "stability": { "op": "gte", "value": 30 },
+      "disciples": { "op": "gte", "value": 30 }
+    },
+    "effects": {
+      "enemyCount": { "op": "add", "value": -1 },
+      "food": { "op": "add", "value": -150 },
+      "low_spirit_stone": { "op": "add", "value": 200 }
+    },
+    "_effectsNote": "攻伐的兵力损耗/灵石掠夺/稳定度变化由 attackEnemy 按战力比动态结算（单一真相源）；此处 effects 仅声明 GOAP 目标推进(enemyCount-1)与出征粮草消耗，避免与 attackEnemy 双计。low_spirit_stone+200 为 GOAP 效用提示——告诉 AI「攻伐有掠夺收益」；真实结算由 executor 完成。",
+    "_tuningNote": "tuning-v1 2026-06-01: 移除 hasAdjacentEnemy（让任何势力都能选 attack，executor 自己选目标）；stability 40→30, disciples 50→30；food 消耗 -200→-150；显式加掠夺灵石 +200 提示。",
+    "costs": [],
+    "yields": [],
+    "executorId": "faction_attack"
+  },
+  {
+    "id": "act_ally",
+    "name": "外交结盟",
+    "description": "与其他势力结成同盟，提升关系",
+    "category": "faction",
+    "weight": 2,
+    "preconditions": {
+      "hasPotentialAlly": { "op": "true" }
+    },
+    "effects": {
+      "allyCount": { "op": "add", "value": 1 },
+      "low_spirit_stone": { "op": "add", "value": -150 }
+    },
+    "costs": [],
+    "yields": [],
+    "executorId": "faction_ally"
+  },
+  {
+    "id": "act_trade",
+    "name": "贸易交换",
+    "description": "与友好势力进行资源交换，灵石换粮草",
+    "category": "faction",
+    "weight": 2,
+    "preconditions": {
+      "allyCount": { "op": "gte", "value": 1 }
+    },
+    "effects": {
+      "food": { "op": "add", "value": 100 }
+    },
+    "costs": [],
+    "yields": [],
+    "executorId": "faction_trade"
+  },
+  {
+    "id": "act_stabilize",
+    "name": "安抚内政",
+    "description": "稳定内部秩序，提升稳定度",
+    "category": "faction",
+    "weight": 1,
+    "preconditions": {
+      "stability": { "op": "lt", "value": 60 }
+    },
+    "effects": {
+      "stability": { "op": "add", "value": 10, "min": 0, "max": 100 },
+      "food": { "op": "add", "value": -100 },
+      "low_spirit_stone": { "op": "add", "value": -100 }
+    },
+    "costs": [],
+    "yields": [],
+    "executorId": "faction_stabilize"
+  },
+  {
+    "id": "act_host_conference",
+    "name": "举办论道大会",
+    "description": "邀请各方修士论道，提升声望、稳定度与友好关系，吸引弟子",
+    "category": "faction",
+    "weight": 4,
+    "preconditions": {
+      "stability": { "op": "gte", "value": 60 },
+      "low_spirit_stone": { "op": "gte", "value": 1000 }
+    },
+    "effects": {
+      "stability": { "op": "add", "value": 5, "min": 0, "max": 100 },
+      "disciples": { "op": "add", "value": 15 },
+      "low_spirit_stone": { "op": "add", "value": -500 },
+      "food": { "op": "add", "value": -300 }
+    },
+    "costs": [],
+    "yields": [],
+    "executorId": "faction_host_conference"
+  },
+  {
+    "id": "act_build_formation",
+    "name": "布置护山大阵",
+    "description": "消耗大量灵石布置阵法，大幅提升防御和稳定度",
+    "category": "faction",
+    "weight": 5,
+    "preconditions": {
+      "stability": { "op": "gte", "value": 50 },
+      "low_spirit_stone": { "op": "gte", "value": 2000 }
+    },
+    "effects": {
+      "stability": { "op": "add", "value": 15, "min": 0, "max": 100 },
+      "borderThreat": { "op": "add", "value": -3 },
+      "low_spirit_stone": { "op": "add", "value": -1500 }
+    },
+    "costs": [],
+    "yields": [],
+    "executorId": "faction_build_formation"
+  },
+  {
+    "id": "act_open_secret_realm",
+    "name": "开放秘境",
+    "description": "开放势力秘境供弟子历练，提升整体修为与稳定度（反哺·实力提升）",
+    "category": "faction",
+    "weight": 3,
+    "preconditions": {
+      "stability": { "op": "gte", "value": 40 },
+      "disciples": { "op": "gte", "value": 80 }
+    },
+    "effects": {
+      "disciples": { "op": "add", "value": 5 },
+      "stability": { "op": "add", "value": 3, "min": 0, "max": 100 },
+      "low_spirit_stone": { "op": "add", "value": -300 },
+      "food": { "op": "add", "value": -200 }
+    },
+    "costs": [],
+    "yields": [],
+    "executorId": "faction_open_secret_realm"
+  }
+]

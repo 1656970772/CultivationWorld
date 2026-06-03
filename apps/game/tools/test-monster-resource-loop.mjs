@@ -29,8 +29,8 @@ const { redeemExchangeItem } = await import(pathToFileURL(resolve(GAME_ROOT, 'js
 const { TickManager } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/world/tick-manager.js')).href);
 
 ItemRegistry.clear();
-ItemRegistry.loadFromArray(load('data/definitions/resources.json'));
-ItemRegistry.loadFromArray(load('data/items/items.json').items);
+ItemRegistry.loadFromArray(load('data/definitions/macro-resources.json'));
+ItemRegistry.loadFromArray(['currency','material','pill','artifact','talisman','technique'].flatMap(c => load(`data/items/${c}.json`).items));
 
 let failures = 0;
 function ok(cond, msg) {

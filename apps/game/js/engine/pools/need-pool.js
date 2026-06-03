@@ -79,6 +79,7 @@ class NeedPoolClass {
       evaluator,
       goalState: merged.goalState,
       basePriority: merged.basePriority,
+      selectStrategy: merged.selectStrategy,
     });
   }
 

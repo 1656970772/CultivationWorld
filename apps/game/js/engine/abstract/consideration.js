@@ -114,7 +114,7 @@ export function buildConsiderations(configs) {
  *
  * @param {?Object} rewardCfg reward.json 内容（含 enabled / rewardsBySource）
  * @param {string} sourceId Goal 的 sourceId（如 obsession_plunder）
- * @returns {number} 期望收益 ∈ [0,1]；rewardCfg 未开启或无匹配时返回 0（零漂移）
+ * @returns {number} 期望收益 ∈ [0,1]；rewardCfg 未开启或无匹配时返回 0（不改变现有行为）
  */
 export function deriveExpectedValue(rewardCfg, sourceId) {
   if (!rewardCfg || rewardCfg.enabled !== true) return 0;

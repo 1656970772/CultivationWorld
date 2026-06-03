@@ -2,8 +2,8 @@
 /**
  * 师徒互动单元测试（ADR-029，关系网三期）。
  *
- * 覆盖六类行为 + 零漂移开关：
- *   1) goalsEnabled=false → collectExtraGoals 不产出师徒 Goal（零漂移回退）。
+ * 覆盖六类行为 + 开关：
+ *   1) goalsEnabled=false → collectExtraGoals 不产出师徒 Goal。
  *   2) 师傅传功（护徒·点化）：高强度 master 边 + 徒弟修为偏低且在范围 → 产出 goal_teach_disciple，锁定徒弟。
  *   3) 师傅护徒（驰援）：徒弟遭袭（hasRevengeTarget）→ 产出 goal_protect_disciple（优先级高于传功）。
  *   4) 徒弟尽孝（探望）：高强度 disciple 边 → 产出 goal_visit_master。
@@ -38,7 +38,8 @@ const memoryConfig = load('data/balance/memory.json');
 const obsessionConfig = load('data/balance/obsession.json');
 
 ItemRegistry.clear();
-ItemRegistry.loadFromArray(load('data/definitions/resources.json'));
+ItemRegistry.loadFromArray(load('data/definitions/macro-resources.json'));
+ItemRegistry.loadFromArray(['currency','material','pill','artifact','talisman','technique'].flatMap(c => load(`data/items/${c}.json`).items));
 registerNPCExecutors();
 
 let failed = 0;
@@ -94,7 +95,7 @@ function withForcedChances(cfg) {
 // 关闭报恩/同门低频干扰：把 repay/assist 概率与传功并存时，仅断言师徒 Goal 出现即可。
 
 // —— 1) goalsEnabled=false → 不产出师徒 Goal ——
-console.log('1) goalsEnabled 开关（零漂移）');
+console.log('1) goalsEnabled 开关');
 {
   const cfg = { ...relationshipConfig, goalsEnabled: false };
   const rs = new RelationshipSystem(cfg);
@@ -105,7 +106,7 @@ console.log('1) goalsEnabled 开关（零漂移）');
   const goals = master.collectExtraGoals({ entityRegistry: reg });
   const rel = goals.filter(g => g.source === GoalSource.RELATIONSHIP
     && ['goal_teach_disciple', 'goal_protect_disciple', 'goal_visit_master'].includes(g.id));
-  assert(rel.length === 0, 'goalsEnabled=false 时不产出师徒 Goal（零漂移）');
+  assert(rel.length === 0, 'goalsEnabled=false 时不产出师徒 Goal');
 }
 
 // —— 2) 师傅传功（点化）——

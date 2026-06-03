@@ -19,6 +19,7 @@ import {
 import {
   isMonsterHuntQuest,
 } from '../../monster/monster-resources.js';
+import { applyDamage } from '../../combat/combat-pipeline.js';
 
 export function getCultivationConfig(worldContext) {
   return worldContext.balanceConfig?.cultivation || {};
@@ -82,12 +83,12 @@ export function resolveQuestTargetMonster(entity, worldContext, difficulty) {
   return best;
 }
 
-/** 按 [{weight}] 列表做加权随机，返回选中项（无有效权重返回首项/null） */
-export function weightedPickFrom(list) {
+/** 按 [{weight}] 列表做加权随机，返回选中项（无有效权重返回首项/null）。rng 为确定性随机源。 */
+export function weightedPickFrom(list, rng) {
   if (!Array.isArray(list) || list.length === 0) return null;
   const total = list.reduce((s, e) => s + (e.weight || 0), 0);
   if (total <= 0) return list[0];
-  let roll = Math.random() * total;
+  let roll = rng.next() * total;
   for (const e of list) {
     roll -= (e.weight || 0);
     if (roll < 0) return e;
@@ -131,6 +132,20 @@ export function pickQuestCandidate(entity, worldContext, available, opts = {}) {
   const economy = getEconomyConfig(worldContext);
   const needsHuntMaterials = factionNeedsMonsterExchangeMaterials(entity, worldContext);
   const preferredGrade = preferredHuntGrade(entity, worldContext);
+
+  // tuning-v4 2026-06-01: NPC 接单战力自检（数据驱动，见 quest-templates.json → safetyPreference）。
+  // 对【非猎妖】任务按『难度接近境界上限的程度』衰减权重，让 NPC 倾向留出安全边际、
+  // 不再反复顶格接高 dangerDeath 任务（quest 死因为 5000 天人口流失主因）。
+  const questTemplates = worldContext.questTemplates || {};
+  const safetyCfg = questTemplates.safetyPreference || {};
+  const safetyEnabled = safetyCfg.enabled !== false;
+  const falloffPerStep = safetyCfg.falloffPerStep ?? 0.55;
+  const rankMaxDifficulty = questTemplates.rankMaxDifficulty || {};
+  const rankId = entity.state?.get?.('rankId') || 'mortal';
+  const maxDiff = rankMaxDifficulty[rankId] ?? 2;
+  // 该境界可接的最低难度（候选集中实际出现的下界），作为安全衰减的基准锚点。
+  const minAvailDiff = available.reduce((m, c) => Math.min(m, c.difficulty), maxDiff);
+
   const weighted = available.map((candidate) => {
     const hunt = isMonsterHuntQuest(candidate.quest.id, economy);
     let weight = 1;
@@ -140,12 +155,19 @@ export function pickQuestCandidate(entity, worldContext, available, opts = {}) {
         : 0.5;
       weight += 2 + expectedHuntMaterialValue(candidate.difficulty) / 500 + gradeFit * 10;
       if (needsHuntMaterials || opts.forceMonsterHunt) weight += 8;
-    } else if (needsHuntMaterials) {
-      weight *= 0.25;
+    } else {
+      if (needsHuntMaterials) weight *= 0.25;
+      if (safetyEnabled) {
+        // stepsAboveSafe：候选难度高出『该境界可接最低难度』的步数（0=最安全）。
+        // 越往上 dangerDeath 越高，故权重按 falloffPerStep^stepsAboveSafe 衰减，
+        // 让 NPC 倾向留出安全边际、优先选低难度任务，而非顶格冒险。
+        const stepsAboveSafe = Math.max(0, candidate.difficulty - minAvailDiff);
+        weight *= Math.pow(falloffPerStep, stepsAboveSafe);
+      }
     }
     return { ...candidate, weight };
   });
-  return weightedPickFrom(weighted);
+  return weightedPickFrom(weighted, worldContext.rng);
 }
 
 /**
@@ -193,8 +215,8 @@ export function settleRisk(entity, worldContext, actionKey) {
     chance = Math.max(0, Math.min(1, chance));
     if (chance <= 0) continue;
 
-    if (Math.random() < chance) {
-      const applied = applyRiskEffect(entity, item.effect, item.name);
+    if (worldContext.rng.next() < chance) {
+      const applied = applyRiskEffect(entity, item.effect, item.name, worldContext.rng, worldContext);
       out.triggered.push(applied);
       if (applied.died) out.died = true;
     }
@@ -202,13 +224,13 @@ export function settleRisk(entity, worldContext, actionKey) {
   return out;
 }
 
-/** 施加单个风险效果。返回结算描述。 */
-function applyRiskEffect(entity, effect, riskName) {
+/** 施加单个风险效果。返回结算描述。rng 为确定性随机源。worldContext 供 hp_damage 走统一伤害管线（ADR-042）。 */
+function applyRiskEffect(entity, effect, riskName, rng, worldContext) {
   if (!effect) return { risk: riskName, type: 'none' };
   switch (effect.type) {
     case 'injury': {
       const amt = (effect.amountMin ?? 1)
-        + Math.floor(Math.random() * ((effect.amountMax ?? 1) - (effect.amountMin ?? 1) + 1));
+        + Math.floor(rng.next() * ((effect.amountMax ?? 1) - (effect.amountMin ?? 1) + 1));
       entity.state.set('injuryLevel', (entity.state.get('injuryLevel') || 0) + amt);
       return { risk: riskName, type: 'injury', amount: amt };
     }
@@ -216,18 +238,45 @@ function applyRiskEffect(entity, effect, riskName) {
       const itemId = effect.itemId || 'low_spirit_stone';
       const have = entity.inventory.getAmount(itemId) || 0;
       const ratio = (effect.lossRatioMin ?? 0)
-        + Math.random() * ((effect.lossRatioMax ?? 0) - (effect.lossRatioMin ?? 0));
+        + rng.next() * ((effect.lossRatioMax ?? 0) - (effect.lossRatioMin ?? 0));
       const lost = Math.floor(have * ratio);
       if (lost > 0) entity.inventory.remove(itemId, lost);
       return { risk: riskName, type: 'resource_loss', itemId, amount: lost };
     }
     case 'morale_loss': {
       const amt = (effect.amountMin ?? 0)
-        + Math.floor(Math.random() * ((effect.amountMax ?? 0) - (effect.amountMin ?? 0) + 1));
+        + Math.floor(rng.next() * ((effect.amountMax ?? 0) - (effect.amountMin ?? 0) + 1));
       entity.state.set('morale', Math.max(0, (entity.state.get('morale') || 0) - amt));
       return { risk: riskName, type: 'morale_loss', amount: amt };
     }
+    case 'hp_damage': {
+      // ADR-042：野外/厮杀类风险扣血走【统一伤害管线】applyDamage（锁血/遁地不区分攻击者）。
+      //   伤害 = maxHp × random(dmgRatioMin, dmgRatioMax)，最低 1；致死时由 applyDamage 统一处理
+      //   锁血（非碾压且持锁血能力）/ 遁地脱险 / 碾压直接死。无 worldContext（旧调用方）时回退原内联逻辑。
+      const maxHp = entity.state.get('maxHp') || 0;
+      const dmgRatio = (effect.dmgRatioMin ?? 0.3)
+        + rng.next() * ((effect.dmgRatioMax ?? 0.6) - (effect.dmgRatioMin ?? 0.3));
+      const damage = Math.max(1, maxHp * dmgRatio);
+      if (worldContext) {
+        const result = applyDamage(entity, {
+          amount: damage,
+          cause: effect.cause || 'explore',
+          killer: null,
+        }, worldContext);
+        return {
+          risk: riskName, type: 'hp_damage', amount: result.damage,
+          died: result.died, locked: result.locked || undefined,
+        };
+      }
+      // 回退（无 worldContext）：仅扣血，不致死（保守）。
+      const curHp = entity.state.get('hp') ?? maxHp;
+      const newHp = curHp - damage;
+      entity.state.set('injuryLevel', (entity.state.get('injuryLevel') || 0) + 1);
+      if (maxHp > 0) entity.state.set('hp', Math.max(maxHp * 0.05, newHp));
+      return { risk: riskName, type: 'hp_damage', amount: Math.round(damage), died: false };
+    }
     case 'death': {
+      // 仅保留给"秘境/天劫/夺权"等尚未做实体战斗的抽象风险（ADR-041）。
       entity.state.set('alive', false);
       entity.alive = false;
       entity._deathInfo = {
@@ -289,7 +338,7 @@ export function estimateRiskCost(entity, worldContext, riskKey) {
 
 /**
  * 计算某行为的【价值】。当前 = 行为基础价值 action.valueScore +（命中上头时）headstrongBonus。
- * 道具期望价值预留（待道具产出系统落地后接入，见 ADR-017 / resources.json 的 value 字段）。
+ * 道具期望价值预留（待道具产出系统落地后接入，见 ADR-017 / items.json 的 value 字段）。
  * @param {import('../abstract/base-entity.js').BaseEntity} entity
  * @param {Object} worldContext
  * @param {import('../abstract/action.js').Action} action
@@ -300,7 +349,7 @@ export function estimateRiskCost(entity, worldContext, riskKey) {
  */
 export function computeActionValue(entity, worldContext, action, opts = {}) {
   const base = action?.valueScore ?? 0;
-  // TODO(道具产出系统): 累加 action 预期产出道具的 resources.json value 期望值。
+  // TODO(道具产出系统): 累加 action 预期产出道具的 items.json value 期望值。
   let value = base;
   if (opts.headstrong) value += (opts.headstrongBonus ?? 0);
   return value;
@@ -334,13 +383,33 @@ export function computeDecisionCost(_entity, _worldContext, action, perDecisionC
 }
 
 /**
- * PvP 致死统一写入（ADR-020 阶段D/E）：标记死亡并写 _deathInfo，含 killerId/killerFactionId，
- * 打通 _collectDeaths→recordMemory→relationships→后代复仇执念的恩怨闭环。
+ * PvP 致死（ADR-020 阶段D/E + ADR-042）：走【统一伤害管线】applyDamage，使仇杀/劫掠/夺权也能
+ * 触发锁血/遁地（不区分攻击者，补齐 ADR-041 阶段2B 前置缺口）。被杀者持遁地符则可锁血+瞬移逃生，
+ * 真正致死时写 _deathInfo（含 killerId/killerFactionId），打通 _collectDeaths→recordMemory→relationships→后代复仇执念闭环。
+ *
  * @param {Object} victim 被杀者
  * @param {Object} killer 凶手
+ * @param {Object} [worldContext] 提供则走 applyDamage（锁血/遁地生效）；缺省回退直接致死（向后兼容）。
+ * @returns {{ died:boolean, locked:boolean, escaped:boolean }}
  */
-export function killNPCByPvP(victim, killer) {
-  if (!victim || !victim.state) return;
+export function killNPCByPvP(victim, killer, worldContext) {
+  if (!victim || !victim.state) return { died: false, locked: false, escaped: false };
+
+  if (worldContext) {
+    // 决定性击杀：以足够致死的伤害走管线（orderGap=0 → 非自动碾压，留出锁血/遁地机会）。
+    const maxHp = victim.state.get('maxHp') || 0;
+    const curHp = victim.state.get('hp') ?? maxHp;
+    const lethalDamage = Math.max(1, curHp + Math.max(1, maxHp * 0.1));
+    const result = applyDamage(victim, {
+      amount: lethalDamage,
+      cause: 'slain',
+      killer: killer || null,
+      orderGap: 0,
+    }, worldContext);
+    return { died: result.died, locked: result.locked, escaped: result.escaped };
+  }
+
+  // 回退（无 worldContext）：直接致死，保持原语义。
   victim.state.set('alive', false);
   victim.alive = false;
   victim._deathInfo = {
@@ -355,6 +424,7 @@ export function killNPCByPvP(victim, killer) {
     killerName: killer ? killer.name : null,
     killerFactionId: killer ? killer.state?.get('factionId') ?? null : null,
   };
+  return { died: true, locked: false, escaped: false };
 }
 
 /**
@@ -362,26 +432,26 @@ export function killNPCByPvP(victim, killer) {
  * 与旧的"仅加 qi"不同：若 outcome 带 itemId，则发放实物（artifact/material/pill），
  * 否则回退为真气收益。返回 { outcome, qiGain, grantedItems }。
  */
-export function rollAndGrantReward(entity, rewardCfg, sourceKey) {
+export function rollAndGrantReward(entity, rewardCfg, sourceKey, rng) {
   const outcomes = rewardCfg?.rewardsBySource?.[sourceKey]?.outcomes;
   const result = { outcome: null, qiGain: 0, grantedItems: [] };
   if (!Array.isArray(outcomes) || outcomes.length === 0) {
     const match = /^opportunity_corpse_g(\d+)$/.exec(sourceKey || '');
     if (!match) return result;
     const grade = Math.max(1, Math.min(9, Number(match[1]) || 1));
-    const materialId = ItemRegistry.has(`beast_material_g${grade}`) ? `beast_material_g${grade}` : 'beast_material';
-    const coreId = ItemRegistry.has(`monster_core_g${grade}`) ? `monster_core_g${grade}` : 'monster_core';
+    const materialId = ItemRegistry.has(`beast_material_g${grade}`) ? `beast_material_g${grade}` : 'beast_material_g1';
+    const coreId = ItemRegistry.has(`monster_core_g${grade}`) ? `monster_core_g${grade}` : 'monster_core_g1';
     const materialQty = Math.max(1, Math.floor(grade / 3));
     grantItemAndMaybeEquip(entity, materialId, materialQty);
     result.grantedItems.push({ itemId: materialId, qty: materialQty });
-    if (Math.random() < Math.min(0.85, 0.25 + grade * 0.06)) {
+    if (rng.next() < Math.min(0.85, 0.25 + grade * 0.06)) {
       grantItemAndMaybeEquip(entity, coreId, 1);
       result.grantedItems.push({ itemId: coreId, qty: 1 });
     }
     result.outcome = { id: `corpse_grade_${grade}`, value: Math.min(1, grade / 9) };
     return result;
   }
-  let roll = Math.random();
+  let roll = rng.next();
   let picked = outcomes[outcomes.length - 1];
   for (const o of outcomes) {
     roll -= (o.prob ?? 0);

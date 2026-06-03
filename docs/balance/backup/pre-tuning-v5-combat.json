@@ -1,0 +1,67 @@
+{
+  "_description": "战斗与外交平衡参数 — 修改此文件可调整宗门战争、结盟、贸易的数值",
+  "attack": {
+    "_comment": "攻击战力公式：攻方战力 = disciples × attackerPowerMultiplier × (1 + stability / attackerStabilityFactor)",
+    "attackerPowerMultiplier": 1.2,
+    "attackerStabilityFactor": 200,
+    "defenderPowerMultiplier": 1.0,
+    "defenderStabilityFactor": 100,
+    "winLootRatio": 0.2,
+    "winDefenderDisciplineLossRatio": 0.08,
+    "winDefenderMinDisciples": 5,
+    "winDefenderStabilityLoss": 15,
+    "winAttackerDisciplineLossRatio": 0.05,
+    "winAttackerMinDisciples": 5,
+    "winAttackerStabilityLoss": 5,
+    "loseAttackerDisciplineLossRatio": 0.10,
+    "loseAttackerMinDisciples": 5,
+    "loseAttackerStabilityLoss": 10,
+    "loseDefenderStabilityGain": 5,
+    "winRelationChange": -20,
+    "loseRelationChange": -10,
+    "maxTerritoryPerFaction": 20,
+    "_tuningNote": "tuning-v2 2026-06-01: 加 NpcKill 参数让攻战真正杀 NPC（v1 攻战只扣 disciples 数字不杀 NPC，导致复仇链路死锁）。",
+    "winNpcKillRatio": 0.005,
+    "winNpcKillMax": 2,
+    "winNpcKillMinDefender": 50,
+    "winNpcKillStabilityFloor": 30,
+    "_annihilationNote": "tuning-v4 2026-06-01: 势力覆灭动态阈值。问题：winDefenderMinDisciples 固定托底 5，攻战胜利后防守方 disciples 永远≥5，isDestroyed(disciples<=0) 永不触发，5000 天 18 势力 100% 存活、无淘汰。机制：当防守方稳定度 ≤ annihilationStabilityThreshold 且实际存活 NPC 数 ≤ annihilationAliveNpcThreshold（真实衰弱），托底值降为 0，允许攻战将其打灭门。enabled=false 可回退零漂移。",
+    "annihilation": {
+      "enabled": true,
+      "stabilityThreshold": 20,
+      "aliveNpcThreshold": 3
+    }
+  },
+  "alliance": {
+    "minRelation": 20,
+    "maxRelation": 60,
+    "relationGain": 20
+  },
+  "trade": {
+    "stoneRatio": 0.1,
+    "maxTradeAmount": 200,
+    "foodExchangeRate": 2,
+    "relationGain": 3,
+    "minRelation": 20
+  },
+  "diplomacy": {
+    "_comment": "敌意门槛：关系值 ≤ hostileThreshold 视为敌对；正邪对立时关系值 ≤ alignmentHostileThreshold 即敌对。attackReachDistance：势力间地理可达阈值（总部曼哈顿距离），超出则攻不到",
+    "hostileThreshold": -50,
+    "alignmentHostileThreshold": 0,
+    "weakEnemyStabilityThreshold": 30,
+    "weakEnemyDisciplesThreshold": 50,
+    "maxTerritory": 50,
+    "attackReachDistance": 60
+  },
+  "military": {
+    "_comment": "军事综合实力公式：disciples × disciplesWeight + territory × territoryWeight + stability × stabilityWeight",
+    "disciplesWeight": 1.0,
+    "territoryWeight": 10,
+    "stabilityWeight": 0.5
+  },
+  "relations": {
+    "_comment": "关系自然衰减：若绝对值 < decayThresholdPos 则每天向0衰减1点",
+    "decayThresholdPos": 60,
+    "decayThresholdNeg": -60
+  }
+}

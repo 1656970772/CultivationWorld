@@ -28,24 +28,27 @@ export async function loadGameConfigs() {
   const [
     factions, npcs, ranks, items, terrains,
     factionNeeds, npcNeeds,
-    factionActions, npcActions, worldRules,
+    factionActions, npcActions, reactionActions, worldRules,
     questTemplates, mapData, modifierTemplates,
     balanceCombat, balanceEconomy, balanceCultivation, balanceSocial, balanceMovement,
     balancePersonality, balanceRisk, balanceMemory, balanceObsession, balanceEmotion,
-    balanceUtility, balanceReward, balanceRelationship,
+    balanceUtility, balanceReward, balanceRelationship, balanceReaction,
     gameConfig, aiConfig, names,
     monsters, monsterSpawn,
-    worldNews, worldOpportunities, balanceCovet, itemDefs,
+    worldNews, worldOpportunities, balanceCovet,
+    itemsCurrency, itemsMaterial, itemsPill, itemsArtifact, itemsTalisman, itemsTechnique,
+    tags, combatEffects, coreEffects, abilities,
   ] = await Promise.all([
     loadJSON('data/entities/factions.json'),
     loadJSON('data/entities/npcs.json'),
     loadJSON('data/definitions/ranks.json'),
-    loadJSON('data/definitions/resources.json'),
+    loadJSON('data/definitions/macro-resources.json'),
     loadJSON('data/definitions/terrains.json'),
     loadJSON('data/needs/faction-needs.json'),
     loadJSON('data/needs/npc-needs.json'),
     loadJSON('data/actions/faction-actions.json'),
     loadJSON('data/actions/npc-actions.json'),
+    loadJSON('data/actions/reaction-actions.json'),
     loadJSON('data/actions/world-rules.json'),
     loadJSON('data/quests/quest-templates.json'),
     loadJSON('data/world/map.json'),
@@ -63,6 +66,7 @@ export async function loadGameConfigs() {
     loadJSON('data/balance/utility.json'),
     loadJSON('data/balance/reward.json'),
     loadJSON('data/balance/relationship.json'),
+    loadJSON('data/balance/reaction.json'),
     loadJSON('data/config/game-config.json'),
     loadJSON('data/config/ai-config.json'),
     loadJSON('data/definitions/names.json'),
@@ -71,20 +75,47 @@ export async function loadGameConfigs() {
     loadJSON('data/world/news.json'),
     loadJSON('data/world/opportunities.json'),
     loadJSON('data/balance/covet.json'),
-    loadJSON('data/items/items.json'),
+    loadJSON('data/items/currency.json'),
+    loadJSON('data/items/material.json'),
+    loadJSON('data/items/pill.json'),
+    loadJSON('data/items/artifact.json'),
+    loadJSON('data/items/talisman.json'),
+    loadJSON('data/items/technique.json'),
+    loadJSON('data/tags/tags.json'),
+    loadJSON('data/effects/combat-effects.json'),
+    loadJSON('data/effects/core-effects.json'),
+    loadJSON('data/abilities/combat-abilities.json'),
   ]);
+
+  // 合并所有 Effect 数据源（combat 专用机制 + core 通用原语），供 EffectPool 一次性加载。
+  const effects = { effects: [
+    ...(combatEffects?.effects || []),
+    ...(coreEffects?.effects || []),
+  ] };
+
+  // 合并按 category 拆分的物品定义（ADR-045）为单一 itemDefs.items 数组，
+  // 下游 WorldEngine/ItemRegistry 消费结构不变（仍是 { items:[...] }）。
+  const itemDefs = { items: [
+    ...(itemsCurrency?.items || []),
+    ...(itemsMaterial?.items || []),
+    ...(itemsPill?.items || []),
+    ...(itemsArtifact?.items || []),
+    ...(itemsTalisman?.items || []),
+    ...(itemsTechnique?.items || []),
+  ] };
 
   return {
     factions, npcs, ranks, items, terrains,
     factionNeeds, npcNeeds,
-    factionActions, npcActions, worldRules,
+    factionActions, npcActions, reactionActions, worldRules,
     questTemplates, mapData, modifierTemplates,
     balanceCombat, balanceEconomy, balanceCultivation, balanceSocial, balanceMovement,
     balancePersonality, balanceRisk, balanceMemory, balanceObsession, balanceEmotion,
-    balanceUtility, balanceReward, balanceRelationship,
+    balanceUtility, balanceReward, balanceRelationship, balanceReaction,
     gameConfig, aiConfig, names,
     monsters, monsterSpawn,
     worldNews, worldOpportunities, balanceCovet, itemDefs,
+    tags, effects, abilities,
   };
 }
 
@@ -93,7 +124,7 @@ export async function loadGameConfigs() {
  * @property {Array}  factions           势力数据
  * @property {Array}  npcs               NPC 数据
  * @property {Array}  ranks              境界定义
- * @property {Array}  items              资源/物品定义
+ * @property {Array}  items              势力宏观资源定义（macro-resources.json：粮食/弟子；可持有物品见 itemDefs）
  * @property {Array}  terrains           地形定义
  * @property {Array}  factionNeeds       势力需求模板
  * @property {Array}  npcNeeds           NPC 需求模板

@@ -1,0 +1,106 @@
+{
+  "difficulties": [
+    { "level": 1,  "name": "一阶", "dangerInjury": 0.02, "dangerDeath": 0.000, "rewardStones": 5,    "rewardContribution": 2,   "factionStones": 10,   "durationDays": 10 },
+    { "level": 2,  "name": "二阶", "dangerInjury": 0.05, "dangerDeath": 0.005, "rewardStones": 10,   "rewardContribution": 5,   "factionStones": 25,   "durationDays": 15 },
+    { "level": 3,  "name": "三阶", "dangerInjury": 0.08, "dangerDeath": 0.010, "rewardStones": 20,   "rewardContribution": 10,  "factionStones": 50,   "durationDays": 20 },
+    { "level": 4,  "name": "四阶", "dangerInjury": 0.12, "dangerDeath": 0.020, "rewardStones": 40,   "rewardContribution": 20,  "factionStones": 100,  "durationDays": 30 },
+    { "level": 5,  "name": "五阶", "dangerInjury": 0.18, "dangerDeath": 0.030, "rewardStones": 80,   "rewardContribution": 40,  "factionStones": 200,  "durationDays": 40 },
+    { "level": 6,  "name": "六阶", "dangerInjury": 0.25, "dangerDeath": 0.050, "rewardStones": 150,  "rewardContribution": 75,  "factionStones": 350,  "durationDays": 55 },
+    { "level": 7,  "name": "七阶", "dangerInjury": 0.35, "dangerDeath": 0.080, "rewardStones": 250,  "rewardContribution": 120, "factionStones": 550,  "durationDays": 70 },
+    { "level": 8,  "name": "八阶", "dangerInjury": 0.45, "dangerDeath": 0.120, "rewardStones": 400,  "rewardContribution": 200, "factionStones": 800,  "durationDays": 90 },
+    { "level": 9,  "name": "九阶", "dangerInjury": 0.55, "dangerDeath": 0.180, "rewardStones": 600,  "rewardContribution": 300, "factionStones": 1200, "durationDays": 120 },
+    { "level": 10, "name": "十阶", "dangerInjury": 0.70, "dangerDeath": 0.300, "rewardStones": 1000, "rewardContribution": 500, "factionStones": 2000, "durationDays": 150 }
+  ],
+  "_locationComment": "locationTarget 决定任务地点：terrain:<类型> 表示去最近的该地形格；monster 表示去最近的妖兽；hq 表示在本门总部完成。弟子接取任务时据此锁定一个固定坐标，再走过去（路程=格数天）。",
+  "questTypes": [
+    { "id": "qt_patrol",       "name": "巡山",     "repeatable": true,  "category": "daily",       "difficultyRange": [1, 3],  "locationTarget": "terrain:mountain",       "description": "巡视山门周围，排查隐患" },
+    { "id": "qt_herb",         "name": "采药",     "repeatable": true,  "category": "daily",       "difficultyRange": [1, 4],  "locationTarget": "terrain:forest",         "description": "采集灵药材料" },
+    { "id": "qt_guard",        "name": "值守",     "repeatable": true,  "category": "daily",       "difficultyRange": [1, 2],  "locationTarget": "hq",                     "description": "值守山门或重要设施" },
+    { "id": "qt_slay_monster", "name": "斩妖",     "repeatable": false, "category": "combat",      "difficultyRange": [2, 8],  "locationTarget": "monster",                "description": "斩杀妖兽，清除威胁" },
+    { "id": "qt_escort",       "name": "护送",     "repeatable": false, "category": "external",    "difficultyRange": [2, 6],  "locationTarget": "terrain:plain",          "description": "护送人员或物资" },
+    { "id": "qt_explore_realm","name": "探索秘境", "repeatable": false, "category": "exploration", "difficultyRange": [4, 10], "locationTarget": "terrain:high_spirit_vein","description": "探索未知秘境" },
+    { "id": "qt_mine_ore",     "name": "采矿",     "repeatable": false, "category": "resource",    "difficultyRange": [2, 5],  "locationTarget": "terrain:low_spirit_vein","description": "开采灵矿资源" },
+    { "id": "qt_exterminate",  "name": "除害",     "repeatable": false, "category": "combat",      "difficultyRange": [3, 7],  "locationTarget": "monster",                "description": "清除危害一方的妖邪" },
+    { "id": "qt_investigate",  "name": "调查",     "repeatable": false, "category": "external",    "difficultyRange": [2, 6],  "locationTarget": "terrain:swamp",          "description": "调查可疑事件" },
+    { "id": "qt_hunt_beast",   "name": "猎灵兽",   "repeatable": false, "category": "combat",      "difficultyRange": [5, 10], "locationTarget": "monster",                "description": "捕猎高阶灵兽" }
+  ],
+  "rewardProfiles": {
+    "_comment": "V1任务额外产出。基础灵石/贡献仍由 difficulties 决定；此处只定义任务类型带来的材料、丹药、法宝线索和宗门稳定度。",
+    "qt_patrol": {
+      "factionStability": 1
+    },
+    "qt_guard": {
+      "factionStability": 2
+    },
+    "qt_herb": {
+      "npcItems": [
+        { "itemId": "spirit_herb", "qtyBase": 1, "qtyPerLevel": 0.5, "minQty": 1, "maxQty": 4 }
+      ],
+      "factionItems": [
+        { "itemId": "spirit_herb", "qtyBase": 1, "qtyPerLevel": 0.25, "minQty": 1, "maxQty": 3 }
+      ]
+    },
+    "qt_mine_ore": {
+      "npcItems": [
+        { "itemId": "ore", "qtyBase": 1, "qtyPerLevel": 0.5, "minQty": 1, "maxQty": 5 }
+      ],
+      "factionItems": [
+        { "itemId": "ore", "qtyBase": 1, "qtyPerLevel": 0.5, "minQty": 1, "maxQty": 4 }
+      ]
+    },
+    "qt_slay_monster": {
+      "npcItems": [
+        { "itemId": "monster_core", "qtyBase": 0, "qtyPerLevel": 0.33, "minQty": 1, "maxQty": 3 },
+        { "itemId": "beast_material", "qtyBase": 1, "qtyPerLevel": 0.25, "minQty": 1, "maxQty": 4 }
+      ],
+      "factionItems": [
+        { "itemId": "beast_material", "qtyBase": 1, "qtyPerLevel": 0.25, "minQty": 1, "maxQty": 3 }
+      ],
+      "factionStability": 1
+    },
+    "qt_exterminate": {
+      "npcItems": [
+        { "itemId": "monster_core", "qtyBase": 1, "qtyPerLevel": 0.25, "minQty": 1, "maxQty": 3 },
+        { "itemId": "beast_material", "qtyBase": 1, "qtyPerLevel": 0.5, "minQty": 1, "maxQty": 5 }
+      ],
+      "factionItems": [
+        { "itemId": "monster_core", "qtyBase": 0, "qtyPerLevel": 0.25, "minQty": 1, "maxQty": 2 }
+      ],
+      "factionStability": 2
+    },
+    "qt_hunt_beast": {
+      "npcItems": [
+        { "itemId": "monster_core", "qtyBase": 1, "qtyPerLevel": 0.33, "minQty": 1, "maxQty": 4 },
+        { "itemId": "beast_material", "qtyBase": 1, "qtyPerLevel": 0.75, "minQty": 2, "maxQty": 6 }
+      ],
+      "factionItems": [
+        { "itemId": "beast_material", "qtyBase": 1, "qtyPerLevel": 0.5, "minQty": 1, "maxQty": 4 }
+      ]
+    },
+    "qt_explore_realm": {
+      "randomItems": [
+        { "itemId": "item_breakthrough_pill", "qty": 1, "chance": 0.25, "minLevel": 4 },
+        { "itemId": "item_artifact_low", "qty": 1, "chance": 0.16, "minLevel": 4 },
+        { "itemId": "item_artifact_mid", "qty": 1, "chance": 0.06, "minLevel": 7 },
+        { "itemId": "technique_book_mid", "qty": 1, "chance": 0.12, "minLevel": 5 }
+      ],
+      "factionStability": 1
+    },
+    "qt_investigate": {
+      "factionStability": 2
+    },
+    "qt_escort": {}
+  },
+  "rankMaxDifficulty": {
+    "mortal": 2,
+    "qi_refining": 4,
+    "foundation_building": 6,
+    "golden_core": 8,
+    "nascent_soul": 9,
+    "spirit_transformation": 10
+  },
+  "randomQuestSpawnChance": {
+    "1": 0.80, "2": 0.70, "3": 0.60, "4": 0.50, "5": 0.40,
+    "6": 0.30, "7": 0.20, "8": 0.15, "9": 0.10, "10": 0.05
+  }
+}

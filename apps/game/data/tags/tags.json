@@ -1,0 +1,19 @@
+{
+  "_description": "GameplayTag 登记表（ADR-042）。层级字符串，'.' 分隔，PascalCase 段名。持有子标签时父标签查询命中（如持 State.Dying 则 hasTag('State') 为 true）。所有 Effect/Ability 引用的 Tag 必须在此登记，加载期校验未登记 Tag。命名规范见 docs/systems/gameplay-ability-system.md §2。",
+  "strict": true,
+  "tags": [
+    { "id": "State.Dying", "description": "濒死：已锁血保命，待逃脱/疗伤" },
+    { "id": "State.Injured", "description": "受伤" },
+    { "id": "Trigger.LethalDamage", "description": "本 tick 受到致死伤害（瞬时触发标记，结算后清除）" },
+    { "id": "Immune.Crush", "description": "本次致死无法被锁血（碾压，瞬时，结算后清除）" },
+    { "id": "Immune.LockHP", "description": "永久免疫锁血（预留）" },
+    { "id": "Ability.LockHP", "description": "实体拥有锁血能力" },
+    { "id": "Ability.Escape", "description": "实体拥有遁地逃脱能力" },
+    { "id": "Effect.LockHP", "description": "锁血 Effect 资产标签" },
+    { "id": "Trait.SpiritRoot", "description": "灵根特质族（阶段2）" },
+    { "id": "Trait.Physique", "description": "体质特质族（阶段2）" },
+    { "id": "Trait.BreakthroughFullHeal", "description": "破境回元特质：突破成功回满血（特殊功法/体质授予，阶段2）" },
+    { "id": "Buff", "description": "增益族（阶段2）" },
+    { "id": "Debuff", "description": "减益族（阶段2）" }
+  ]
+}

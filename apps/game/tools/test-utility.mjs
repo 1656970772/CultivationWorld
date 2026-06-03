@@ -4,7 +4,7 @@
  * 覆盖：
  *   1) Consideration 各响应曲线在 [0,1] 范围且单调性正确
  *   2) Goal.score 乘法语义：score = priority × Π(consideration)
- *   3) 默认零漂移：无 considerations 时 score === priority
+ *   3) 默认态：无 considerations 时 score === priority
  *   4) 派生输入(timeValue)从 derived 表读取
  *   5) 情绪修正风险厌恶：anger 降低风险折扣，fear 提高风险折扣（ADR-021）
  *   6) 随机扰动（上头）：命中时 Goal 分数按 mult 放大（ADR-021）
@@ -58,7 +58,7 @@ console.log('1) 响应曲线');
 console.log('2) Goal.score 乘法语义');
 {
   const g = new Goal({ id: 'g1', priority: 80, urgency: 0 });
-  assert(g.score() === 80, '无考量因素 score===priority（零漂移）');
+  assert(g.score() === 80, '无考量因素 score===priority');
 
   const c1 = new Consideration({ id: 'a', inputKey: 'x', curve: CurveType.LINEAR, params: { slope: 1 } });
   const c2 = new Consideration({ id: 'b', inputKey: 'y', curve: CurveType.LINEAR, params: { slope: 1 } });
@@ -169,7 +169,7 @@ console.log('6) 随机扰动（上头）');
   const g2 = new Goal({ id: 'gH2', sourceId: 'need_npc_ambition', priority: 50 });
   decorateGoalConsiderations(entity, g2, {}, cfgNoHead);
   assert(!g2.modulators.some(m => m.label === 'headstrong'), 'chance=0 时不挂 headstrong modulator');
-  assert(g2.score() === 50, 'chance=0 时 score === priority（零漂移）');
+  assert(g2.score() === 50, 'chance=0 时 score === priority');
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

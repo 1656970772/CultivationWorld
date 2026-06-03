@@ -1,0 +1,16 @@
+{
+  "_description": "GameplayEffect 定义（ADR-042）。id 以 ge_ 开头（命名规范见 AGENTS.md）。durationType: instant(一次性)/duration(限时)/infinite(常驻)。modifiers 对 attribute 做 op(add/multiply/override)，magnitudeType: flat(直接值)/ratioOfMaxHp(乘 maxHp)。grantsTags 施加期间授予目标 Tag。字段说明见 docs/systems/gameplay-ability-system.md §4。",
+  "effects": [
+    {
+      "id": "ge_lock_hp",
+      "name": "锁血保命",
+      "assetTags": ["Effect.LockHP"],
+      "durationType": "instant",
+      "modifiers": [
+        { "attribute": "hp", "op": "override", "magnitudeType": "ratioOfMaxHp", "magnitude": 0.05 }
+      ],
+      "grantsTags": ["State.Dying"],
+      "stacking": "none"
+    }
+  ]
+}

@@ -1,0 +1,415 @@
+{
+  "_description": "材料类物品（category=material，ADR-025/043/044/045/046）。分级妖丹妖材 _gN（妖兽掉落/捐献的具体分级材料）、Effect 复用示例（item_spirit_fruit/item_strong_blood）与按 docs/世界观参考 各《物品设定.md》补的具体天材地宝/灵草/精血/灵果/矿材（mat_*）。可服用项 effects 复用通用 GE 原语、数值各取自本物品。ADR-046 已删除纯泛 ID（spirit_herb/ore/monster_core/beast_material），所有引用改指具体道具。本文件由加载器合并至 itemDefs.items。",
+  "items": [
+    {
+      "id": "monster_core_g1",
+      "name": "一阶妖兽内丹",
+      "category": "material",
+      "subCategory": "monster_core",
+      "grade": 1,
+      "stackable": true,
+      "transferable": true,
+      "description": "一阶妖兽体内凝结的低阶妖丹，可作炼气期丹药辅材",
+      "value": 120,
+      "source": "参考自凡人修仙传：低阶妖丹用于炼丹辅材，品阶随妖兽境界提升"
+    },
+    {
+      "id": "monster_core_g2",
+      "name": "二阶妖兽内丹",
+      "category": "material",
+      "subCategory": "monster_core",
+      "grade": 2,
+      "stackable": true,
+      "transferable": true,
+      "description": "二阶妖兽内丹，适合作筑基前后丹药主辅材",
+      "value": 260,
+      "source": "参考自凡人修仙传：妖丹等阶与修士境界对应"
+    },
+    {
+      "id": "monster_core_g3",
+      "name": "三阶妖兽内丹",
+      "category": "material",
+      "subCategory": "monster_core",
+      "grade": 3,
+      "stackable": true,
+      "transferable": true,
+      "description": "三阶妖兽内丹，可用于中阶丹药与破境辅材",
+      "value": 600,
+      "source": "参考自凡人修仙传：中阶妖丹是炼丹和突破资源"
+    },
+    {
+      "id": "monster_core_g4",
+      "name": "四阶妖兽内丹",
+      "category": "material",
+      "subCategory": "monster_core",
+      "grade": 4,
+      "stackable": true,
+      "transferable": true,
+      "description": "四阶妖兽内丹，高阶丹药与法宝祭炼的珍稀材料",
+      "value": 1500,
+      "source": "参考自凡人修仙传：高阶妖丹具备保值与突破用途"
+    },
+    {
+      "id": "monster_core_g5",
+      "name": "五阶妖兽内丹",
+      "category": "material",
+      "subCategory": "monster_core",
+      "grade": 5,
+      "stackable": true,
+      "transferable": true,
+      "description": "五阶妖兽内丹，元婴前后修士争夺的高阶资源",
+      "value": 4000,
+      "source": "参考自凡人修仙传：高阶妖兽内丹是稀缺硬通货"
+    },
+    {
+      "id": "monster_core_g6",
+      "name": "六阶妖兽内丹",
+      "category": "material",
+      "subCategory": "monster_core",
+      "grade": 6,
+      "stackable": true,
+      "transferable": true,
+      "description": "六阶妖兽内丹，化神级丹药和古宝祭炼核心材料",
+      "value": 10000,
+      "source": "参考自凡人修仙传：元婴级妖兽内丹可作为化婴类丹药核心材料"
+    },
+    {
+      "id": "monster_core_g7",
+      "name": "七阶妖王内丹",
+      "category": "material",
+      "subCategory": "monster_core",
+      "grade": 7,
+      "stackable": true,
+      "transferable": true,
+      "description": "七阶妖王内丹，蕴含完整族群神通的高阶材料",
+      "value": 25000,
+      "source": "参考自凡人修仙传/斗破苍穹：妖王精血与内丹价值连城"
+    },
+    {
+      "id": "monster_core_g8",
+      "name": "八阶妖皇内丹",
+      "category": "material",
+      "subCategory": "monster_core",
+      "grade": 8,
+      "stackable": true,
+      "transferable": true,
+      "description": "八阶妖皇内丹，炼制通天灵宝和顶级破境丹的核心",
+      "value": 65000,
+      "source": "参考自凡人修仙传/完美世界：顶级妖兽材料可作灵宝与宝丹核心"
+    },
+    {
+      "id": "monster_core_g9",
+      "name": "九阶古兽妖丹",
+      "category": "material",
+      "subCategory": "monster_core",
+      "grade": 9,
+      "stackable": true,
+      "transferable": true,
+      "description": "九阶古兽妖丹，近乎世界级至宝的材料",
+      "value": 160000,
+      "source": "参考自斗破苍穹/完美世界：九阶皇族魔兽与十凶级血脉材料"
+    },
+    {
+      "id": "beast_material_g1",
+      "name": "一阶灵兽材料",
+      "category": "material",
+      "subCategory": "beast_material",
+      "grade": 1,
+      "stackable": true,
+      "transferable": true,
+      "description": "一阶妖兽皮毛、骨血和毒腺等材料",
+      "value": 80,
+      "source": "参考自凡人修仙传/一念永恒：妖兽皮毛、骨骼、妖丹用于炼器炼丹"
+    },
+    {
+      "id": "beast_material_g2",
+      "name": "二阶灵兽材料",
+      "category": "material",
+      "subCategory": "beast_material",
+      "grade": 2,
+      "stackable": true,
+      "transferable": true,
+      "description": "二阶妖兽甲壳、筋腱、胆囊等材料",
+      "value": 180,
+      "source": "参考自凡人修仙传：妖兽材料按品阶进入坊市交易"
+    },
+    {
+      "id": "beast_material_g3",
+      "name": "三阶灵兽材料",
+      "category": "material",
+      "subCategory": "beast_material",
+      "grade": 3,
+      "stackable": true,
+      "transferable": true,
+      "description": "三阶妖兽兽骨、鳞甲、翎羽和精血",
+      "value": 420,
+      "source": "参考自完美世界：凶兽兽骨、妖丹、宝骨是宗门任务战利品"
+    },
+    {
+      "id": "beast_material_g4",
+      "name": "四阶灵兽材料",
+      "category": "material",
+      "subCategory": "beast_material",
+      "grade": 4,
+      "stackable": true,
+      "transferable": true,
+      "description": "四阶妖兽鳞甲、翼骨、精血等高阶炼器材料",
+      "value": 1000,
+      "source": "参考自凡人修仙传：骨骼、鳞甲、精血用于炼制法宝法器"
+    },
+    {
+      "id": "beast_material_g5",
+      "name": "五阶灵兽材料",
+      "category": "material",
+      "subCategory": "beast_material",
+      "grade": 5,
+      "stackable": true,
+      "transferable": true,
+      "description": "五阶妖兽主羽、骨髓、血脉材料",
+      "value": 2600,
+      "source": "参考自凡人修仙传：高阶妖兽材料是炼器硬通货"
+    },
+    {
+      "id": "beast_material_g6",
+      "name": "六阶灵兽材料",
+      "category": "material",
+      "subCategory": "beast_material",
+      "grade": 6,
+      "stackable": true,
+      "transferable": true,
+      "description": "六阶妖兽主翎、龙鳞、天狐精血等灵宝材料",
+      "value": 7000,
+      "source": "参考自凡人修仙传：高阶妖兽精血可作为灵宝和丹药材料"
+    },
+    {
+      "id": "beast_material_g7",
+      "name": "七阶妖王材料",
+      "category": "material",
+      "subCategory": "beast_material",
+      "grade": 7,
+      "stackable": true,
+      "transferable": true,
+      "description": "七阶妖王精血、王羽、冥龙鳞甲等珍材",
+      "value": 18000,
+      "source": "参考自斗破苍穹：天妖凰精血是高阶丹药和斗技材料"
+    },
+    {
+      "id": "beast_material_g8",
+      "name": "八阶妖皇材料",
+      "category": "material",
+      "subCategory": "beast_material",
+      "grade": 8,
+      "stackable": true,
+      "transferable": true,
+      "description": "八阶妖皇羽毛、龙血、空间法则材料",
+      "value": 45000,
+      "source": "参考自凡人修仙传/完美世界：妖皇血脉材料可入通天灵宝"
+    },
+    {
+      "id": "beast_material_g9",
+      "name": "九阶古兽材料",
+      "category": "material",
+      "subCategory": "beast_material",
+      "grade": 9,
+      "stackable": true,
+      "transferable": true,
+      "description": "九阶古兽真血、龙晶、真羽、麒麟角等世界级材料",
+      "value": 110000,
+      "source": "参考自斗破苍穹/完美世界：真龙、天凰、麒麟等古兽材料为顶级至宝"
+    },
+    {
+      "id": "item_spirit_fruit",
+      "name": "灵果",
+      "category": "material",
+      "subCategory": "fruit",
+      "grade": 1,
+      "value": 60,
+      "transferable": true,
+      "stackable": true,
+      "effects": [
+        { "effect": "ge_add_qi", "magnitude": 40 },
+        { "effect": "ge_add_hp", "magnitude": 0.3, "magnitudeType": "ratioOfMaxHp" }
+      ],
+      "description": "天材地宝，食之补真气、疗气血（示例来源：与丹药复用同一通用 Effect，数值各取自本物品 effects）"
+    },
+    {
+      "id": "item_strong_blood",
+      "name": "强者精血",
+      "category": "material",
+      "subCategory": "blood",
+      "grade": 3,
+      "value": 2000,
+      "transferable": true,
+      "stackable": true,
+      "effects": [
+        { "effect": "ge_add_qi", "magnitude": 500 },
+        { "effect": "ge_add_progress", "magnitude": 0.05 }
+      ],
+      "description": "炼化高境界强者的精血，真气与修为大进（示例来源：复用 ge_add_qi/ge_add_progress，数值远高于丹药，体现来源参数化）"
+    },
+    {
+      "id": "mat_century_ginseng",
+      "name": "百年人参",
+      "category": "material",
+      "subCategory": "herb",
+      "grade": 1,
+      "value": 80,
+      "transferable": true,
+      "stackable": true,
+      "effects": [
+        { "effect": "ge_add_qi", "magnitude": 30 }
+      ],
+      "description": "百年药龄灵草，低阶丹药基础原料，亦可直接含服补益真气",
+      "source": "参考自凡人修仙传：百年灵药为炼气—筑基低阶丹药原料"
+    },
+    {
+      "id": "mat_blood_red_fruit",
+      "name": "朱果",
+      "category": "material",
+      "subCategory": "fruit",
+      "grade": 1,
+      "value": 90,
+      "transferable": true,
+      "stackable": true,
+      "effects": [
+        { "effect": "ge_add_qi", "magnitude": 50 },
+        { "effect": "ge_add_progress", "magnitude": 0.02 }
+      ],
+      "description": "蕴含纯净灵气的赤红灵果，服之提升修为、助筑基突破；筑基丹主材",
+      "source": "参考自仙逆/一念永恒/牧神记/大道争锋/阳神：朱果（千年朱果）提升修为、助突破"
+    },
+    {
+      "id": "mat_nine_bend_ginseng",
+      "name": "九曲灵参",
+      "category": "material",
+      "subCategory": "herb",
+      "grade": 6,
+      "value": 12000,
+      "transferable": true,
+      "stackable": true,
+      "effects": [
+        { "effect": "ge_add_progress", "magnitude": 0.06 }
+      ],
+      "description": "万年灵药，炼制化婴丹主药，服之提升神识与结丹成功率",
+      "source": "参考自凡人修仙传：九曲灵参产于乱星海荒岛禁地"
+    },
+    {
+      "id": "mat_heaven_origin_fruit",
+      "name": "天元果",
+      "category": "material",
+      "subCategory": "fruit",
+      "grade": 7,
+      "value": 22000,
+      "transferable": true,
+      "stackable": true,
+      "effects": [
+        { "effect": "ge_add_progress", "magnitude": 0.04 }
+      ],
+      "description": "三千年一结果的灵果，对化神瓶颈有松动之效，是元婴后期珍材",
+      "source": "参考自凡人修仙传：天元果产于天星城禁地，增寿元、松动化神瓶颈"
+    },
+    {
+      "id": "mat_ten_thousand_year_spirit_milk",
+      "name": "万年灵乳",
+      "category": "material",
+      "subCategory": "special",
+      "grade": 7,
+      "value": 26000,
+      "transferable": true,
+      "stackable": true,
+      "effects": [
+        { "effect": "ge_add_qi", "magnitude": 8000 },
+        { "effect": "ge_add_progress", "magnitude": 0.05 }
+      ],
+      "description": "灵眼之泉核心凝聚的乳白色液体，服之法力暴涨，可洗筋伐髓",
+      "source": "参考自凡人修仙传：万年灵乳产于灵眼之泉深处"
+    },
+    {
+      "id": "mat_thunder_struck_wood",
+      "name": "万年雷击木",
+      "category": "material",
+      "subCategory": "ore",
+      "grade": 5,
+      "value": 5000,
+      "transferable": true,
+      "stackable": true,
+      "description": "被天雷劈中未死的古木，蕴含雷霆之力，炼制雷属性法宝顶级材料",
+      "source": "参考自凡人修仙传：万年雷击木产于雷暴频繁的山峰"
+    },
+    {
+      "id": "mat_black_iron_ore",
+      "name": "玄铁精矿",
+      "category": "material",
+      "subCategory": "ore",
+      "grade": 2,
+      "value": 300,
+      "transferable": true,
+      "stackable": true,
+      "description": "炼器良材，质地坚韧、价值不菲，是法器法宝炼制的常用矿材",
+      "source": "参考自凡人修仙传：玄铁为炼气—筑基期炼器良材"
+    },
+    {
+      "id": "mat_purple_essence_stone",
+      "name": "紫精石",
+      "category": "material",
+      "subCategory": "ore",
+      "grade": 4,
+      "value": 1800,
+      "transferable": true,
+      "stackable": true,
+      "description": "炼制高阶法宝的稀有矿石，可提升法宝的灵力容量",
+      "source": "参考自凡人修仙传：紫精石产于矿产丰富的灵脉深处"
+    },
+    {
+      "id": "mat_immortal_gold",
+      "name": "仙金",
+      "category": "material",
+      "subCategory": "ore",
+      "grade": 9,
+      "value": 150000,
+      "transferable": true,
+      "stackable": true,
+      "description": "炼制帝兵的核心材料，如龙纹黑金、仙泪绿金、凰血赤金等",
+      "source": "参考自遮天：仙金是大帝炼兵的核心材料"
+    },
+    {
+      "id": "mat_soul_infant_fruit",
+      "name": "魂婴果",
+      "category": "material",
+      "subCategory": "fruit",
+      "grade": 6,
+      "value": 9000,
+      "transferable": true,
+      "stackable": true,
+      "description": "提升灵魂强度的灵果，炼制灵魂类丹药的主药",
+      "source": "参考自斗破苍穹：魂婴果产于远古遗迹，提升灵魂强度"
+    },
+    {
+      "id": "mat_long_life_medicine",
+      "name": "长生药",
+      "category": "material",
+      "subCategory": "special",
+      "grade": 9,
+      "value": 200000,
+      "transferable": true,
+      "stackable": false,
+      "description": "天地奇珍，蕴含磅礴生机，可疗治道伤、续接寿元（机制属性待 GAS 寿元接入，暂作高价至宝材料）",
+      "source": "参考自遮天/完美世界：长生药/不死药使大帝再活一世"
+    },
+    {
+      "id": "mat_phoenix_blood",
+      "name": "凤凰精血",
+      "category": "material",
+      "subCategory": "blood",
+      "grade": 8,
+      "value": 60000,
+      "transferable": true,
+      "stackable": true,
+      "effects": [
+        { "effect": "ge_full_heal" }
+      ],
+      "description": "蕴含涅槃之力的凤凰精血，炼化可生死人肉白骨、回满气血",
+      "source": "参考自武逆乾坤/武破九荒：凤凰血/凤凰涅槃羽蕴含重生之力"
+    }
+  ]
+}

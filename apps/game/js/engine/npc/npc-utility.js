@@ -14,7 +14,7 @@
  * GOAP 只负责"如何实现已选目标"（HOW），step cost 只用 action.getPlanCost()，
  * 不再包含任何风险/价值/情绪/性格计算（见 npc-actions.js computeDecisionCost）。
  *
- * 零漂移保证：所有新增逻辑均受 utilityConfig 各自开关控制，默认 enabled=false 时
+ * 不改变现有行为：所有新增逻辑均受 utilityConfig 各自开关控制，默认 enabled=false 时
  * 等价旧行为（仅 obsessionNeedBoost 受 obsession.json goalMult.enabled 控制）。
  */
 import { buildConsiderations, deriveExpectedValue } from '../abstract/consideration.js';
@@ -84,7 +84,7 @@ export function estimateGoalRisk(entity, goal, worldContext, goalRiskKeys = DEFA
  */
 export function decorateGoalConsiderations(entity, goal, worldContext, utilityConfig) {
   // ── A. 执念→同方向需求 Goal 的乘法加成（ADR-020 阶段C）。
-  // 独立于 utility.json 总开关，受 obsession.json goalMult.enabled 控制；默认关闭 → 乘子 1 → 零漂移。
+  // 独立于 utility.json 总开关，受 obsession.json goalMult.enabled 控制；默认关闭 → 乘子 1 → 不改变现有行为。
   if (goal.source === 'need' && entity.obsessions && typeof entity.obsessions.needGoalMult === 'function') {
     const m = entity.obsessions.needGoalMult(goal.sourceId);
     if (m !== 1) {
@@ -92,7 +92,7 @@ export function decorateGoalConsiderations(entity, goal, worldContext, utilityCo
     }
   }
 
-  if (!utilityConfig || utilityConfig.enabled !== true) return; // 零漂移：默认不挂任何额外乘子
+  if (!utilityConfig || utilityConfig.enabled !== true) return; // 默认不挂任何额外乘子，不改变现有行为
 
   // ── B. 目标风险估算（供后续 riskAversion/emotionRisk 使用）。
   const goalRiskKeys = utilityConfig.goalRiskKeys || DEFAULT_GOAL_RISK_KEYS;
@@ -105,7 +105,7 @@ export function decorateGoalConsiderations(entity, goal, worldContext, utilityCo
   const considerations = buildConsiderations(configs);
 
   // 期望收益（ADR-022）：从 reward.json（经 utilityConfig.reward 注入）按 sourceId 算 Σ(prob×value)。
-  // reward.json enabled=false（默认）时 deriveExpectedValue 返回 0，零漂移。
+  // reward.json enabled=false（默认）时 deriveExpectedValue 返回 0，不改变现有行为。
   const expectedValue = deriveExpectedValue(utilityConfig.reward, goal.sourceId)
     || deriveExpectedValue(utilityConfig.reward, goal.tag);
 
@@ -155,7 +155,7 @@ export function decorateGoalConsiderations(entity, goal, worldContext, utilityCo
   if (headstrongCfg.enabled === true) {
     const chance = headstrongCfg.chance ?? 0.03;
     const mult   = headstrongCfg.mult   ?? 1.8;
-    if (chance > 0 && Math.random() < chance) {
+    if (chance > 0 && worldContext.rng.next() < chance) {
       goal.modulators.push({ label: 'headstrong', deltaPriority: 0, mult });
       // 写入 state 方便调试/可视化
       if (entity.state && typeof entity.state.set === 'function') {

@@ -56,6 +56,39 @@ tr:hover td{background:#1c212844}
 .tag-cult{background:#1f6feb22;color:var(--blue)}
 .tag-wander{background:#f0883e22;color:var(--orange)}
 
+/* ── 人生回放 ── */
+.life-picker{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.life-chip{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 14px;cursor:pointer;transition:all .2s;min-width:150px}
+.life-chip:hover{border-color:var(--blue)}
+.life-chip.active{border-color:var(--blue);background:#1f6feb18}
+.life-chip .role{font-size:11px;color:var(--orange)}
+.life-chip .nm{font-size:15px;font-weight:700;color:var(--text);margin:2px 0}
+.life-chip .meta{font-size:11px;color:var(--dim)}
+.life-chip .fate{font-size:11px;margin-top:4px}
+.life-head{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-bottom:16px}
+.life-head .big{font-size:22px;font-weight:700;color:var(--blue)}
+.life-head .sub2{color:var(--dim);font-size:13px;margin-top:4px}
+.life-stats{display:flex;gap:24px;flex-wrap:wrap;margin-top:10px;font-size:13px}
+.life-stats b{color:var(--text)}
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:14px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 14px}
+.tl-item::before{content:"";position:absolute;left:-23px;top:14px;width:12px;height:12px;border-radius:50%;background:var(--blue);border:2px solid var(--bg)}
+.tl-item.has-event::before{background:var(--orange);box-shadow:0 0 8px var(--orange)}
+.tl-item.is-death::before{background:var(--red);box-shadow:0 0 10px var(--red)}
+.tl-day{font-size:12px;color:var(--dim);font-weight:700}
+.tl-action{font-size:15px;color:var(--text);font-weight:600;margin:2px 0}
+.tl-driver{font-size:12px;color:var(--purple)}
+.tl-state{font-size:11px;color:var(--dim);margin-top:4px}
+.tl-event{display:inline-block;margin:4px 6px 0 0;padding:3px 10px;border-radius:8px;font-size:12px;font-weight:600}
+.ev-breakthrough{background:#1f6feb33;color:var(--blue)}
+.ev-kill{background:#f8514933;color:var(--red)}
+.ev-death{background:#f85149;color:#fff}
+.ev-hurt{background:#f0883e33;color:var(--orange)}
+.ev-social{background:#3fb95033;color:var(--green)}
+.tl-obs{font-size:11px;color:var(--orange);margin-top:3px}
+.life-empty{color:var(--dim);padding:20px;text-align:center}
+
 /* ── 诊断 ── */
 .diag{border-radius:8px;padding:14px 18px;margin:8px 0;font-size:14px}
 .diag-warn{background:#f0883e18;border:1px solid var(--orange);color:var(--orange)}
@@ -123,6 +156,13 @@ details[open] summary{margin-bottom:8px}
     <div class="chart-box"><h3>势力 GOAP</h3><canvas id="chartGoapFaction"></canvas></div>
     <div class="chart-box"><h3>NPC GOAP</h3><canvas id="chartGoapNpc"></canvas></div>
   </div>
+</section>
+
+<!-- 人生回放 -->
+<section>
+  <h2>🎬 人生回放（单个 NPC 的一生决策日记）</h2>
+  <div class="life-picker" id="lifePicker"></div>
+  <div id="lifeDetail"></div>
 </section>
 
 <!-- NPC 花名册 -->
@@ -361,7 +401,89 @@ function render(D) {
     document.getElementById('diagSection').innerHTML = D.diagnostics.map(d => `<div class="diag diag-warn">⚠️ ${d}</div>`).join('');
   }
 
+  // ── 人生回放 ──
+  renderLife(D);
+
   document.getElementById('footer').textContent = `报告模板 v1 · 数据生成于 ${D.generatedAt} · 模拟 ${D.totalDays} 天 · 耗时 ${D.elapsed}s`;
+}
+
+// ── 人生回放：单个 NPC 的一生决策日记 ──
+function renderLife(D) {
+  const picker = document.getElementById('lifePicker');
+  const detail = document.getElementById('lifeDetail');
+  const lives = D.npcLife || [];
+  if (lives.length === 0) {
+    picker.innerHTML = '';
+    detail.innerHTML = '<div class="life-empty">本次模拟未采集人生日记（npcLife 为空）。重新运行 simulate-analysis 即可生成。</div>';
+    return;
+  }
+
+  const esc = (s) => String(s == null ? '' : s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+
+  // 选择器卡片
+  picker.innerHTML = lives.map((p, i) => {
+    const fate = p.deathDay != null
+      ? `<span style="color:var(--red)">第${p.deathDay}天身故</span>`
+      : `<span style="color:var(--green)">仍在世</span>`;
+    return `<div class="life-chip${i === 0 ? ' active' : ''}" data-idx="${i}">
+      <div class="role">${esc(p.label || '-')}</div>
+      <div class="nm">${esc(p.name)}</div>
+      <div class="meta">${esc(p.factionName)} · ${esc(p.role)}</div>
+      <div class="fate">${fate} · ${p.dayCount} 个变化点</div>
+    </div>`;
+  }).join('');
+
+  function selectLife(idx) {
+    [...picker.children].forEach((c, i) => c.classList.toggle('active', i === idx));
+    detail.innerHTML = renderOneLife(lives[idx], esc);
+  }
+
+  [...picker.children].forEach(chip => {
+    chip.addEventListener('click', () => selectLife(+chip.dataset.idx));
+  });
+  selectLife(0);
+}
+
+function renderOneLife(p, esc) {
+  const head = `<div class="life-head">
+    <div class="big">${esc(p.name)} <span style="font-size:14px;color:var(--orange)">[${esc(p.label)}]</span></div>
+    <div class="sub2">${esc(p.factionName)} · ${esc(p.role)} · ${p.gender === 'female' ? '♀' : '♂'} · 出生境界 ${esc(p.bornRank)}${p.spiritRoot ? ' · 灵根 ' + esc(p.spiritRoot) : ''}</div>
+    <div class="life-stats">
+      <span>记录 <b>${p.dayCount}</b> 个决策变化点</span>
+      <span>结局 <b>${p.deathDay != null ? '第 ' + p.deathDay + ' 天身故' : '仍在世'}</b></span>
+    </div>
+  </div>`;
+
+  if (!p.days || p.days.length === 0) {
+    return head + '<div class="life-empty">该 NPC 无变化点记录（可能一开局就静默或被压缩）。</div>';
+  }
+
+  const evClass = { breakthrough: 'ev-breakthrough', kill: 'ev-kill', death: 'ev-death', hurt: 'ev-hurt', social: 'ev-social' };
+  const items = p.days.map(d => {
+    const hasEvent = d.events && d.events.length > 0;
+    const isDeath = hasEvent && d.events.some(e => e.kind === 'death');
+    const cls = isDeath ? 'tl-item is-death' : hasEvent ? 'tl-item has-event' : 'tl-item';
+    const driver = d.needName
+      ? `驱动：${esc(d.needName)}${d.needPriority != null ? `（优先级 ${d.needPriority}）` : ''}${d.fallback ? ' · 贪心回退' : ''}`
+      : '';
+    const obs = (d.obsessions && d.obsessions.length)
+      ? `<div class="tl-obs">执念：${d.obsessions.map(o => `${esc(o.type)}(${o.intensity})`).join('、')}${d.anger ? ` · 怒${d.anger}` : ''}${d.innerDemon ? ` · 魔${d.innerDemon}` : ''}</div>`
+      : (d.anger || d.innerDemon ? `<div class="tl-obs">怒${d.anger} · 魔${d.innerDemon}</div>` : '');
+    const events = hasEvent
+      ? '<div>' + d.events.map(e => `<span class="tl-event ${evClass[e.kind] || ''}">${esc(e.text)}</span>`).join('') + '</div>'
+      : '';
+    const posStr = d.pos && d.pos.x != null ? ` · 坐标(${d.pos.x},${d.pos.y})` : '';
+    return `<div class="${cls}">
+      <div class="tl-day">第 ${d.day} 天 · ${esc(d.rank)} · 年龄 ${d.age ?? '?'} 岁</div>
+      <div class="tl-action">${esc(d.action)}</div>
+      ${driver ? `<div class="tl-driver">${driver}</div>` : ''}
+      <div class="tl-state">真气 ${d.qi} · 修炼进度 ${(d.progress * 100).toFixed(1)}%${posStr}</div>
+      ${obs}
+      ${events}
+    </div>`;
+  }).join('');
+
+  return head + '<div class="timeline">' + items + '</div>';
 }
 </script>
 </body>

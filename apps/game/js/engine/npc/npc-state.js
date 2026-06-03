@@ -29,8 +29,9 @@ export class NPCState extends RuntimeState {
    * @param {Object} npcConfig
    * @param {Array|null} ranksData ranks.json 数据
    * @param {Object} [gameConfig] data/config/game-config.json 内容（可选，有默认值）
+   * @param {import('../abstract/rng.js').Rng} rng 确定性随机源。
    */
-  constructor(npcConfig, ranksData = null, gameConfig = {}) {
+  constructor(npcConfig, ranksData = null, gameConfig = {}, rng) {
     const timeCfg = gameConfig.time || {};
     const npcCfg = gameConfig.npc || {};
     const deathCfg = gameConfig.naturalDeath || {};
@@ -46,11 +47,11 @@ export class NPCState extends RuntimeState {
       : null;
 
     const maxAgeYears = rankInfo
-      ? rankInfo.lifespan.baseYears + (Math.random() - 0.5) * 2 * rankInfo.lifespan.varianceYears
-      : fallbackBase + Math.random() * fallbackVariance;
+      ? rankInfo.lifespan.baseYears + (rng.next() - 0.5) * 2 * rankInfo.lifespan.varianceYears
+      : fallbackBase + rng.next() * fallbackVariance;
 
     const maxAgeDays = Math.floor(maxAgeYears * daysPerYear);
-    const ageRatio = initRatioMin + Math.random() * (initRatioMax - initRatioMin);
+    const ageRatio = initRatioMin + rng.next() * (initRatioMax - initRatioMin);
     const ageDays = Math.floor(maxAgeDays * ageRatio);
 
     super({
@@ -64,7 +65,7 @@ export class NPCState extends RuntimeState {
       roleRank: ROLE_RANKS[npcConfig.role] || 1,
       rankId: npcConfig.rankId,
       rankName: rankInfo ? rankInfo.name : npcConfig.rankId,
-      cultivationProgress: Math.random() * 0.3,
+      cultivationProgress: rng.next() * 0.3,
       // 游历感悟：通过外出游历积累，与闭关进度(cultivationProgress)互补。
       // 突破总进度 = cultivationProgress + insight（见 toGOAPState 的 totalProgress 与 ADR-016）。
       // 闭关有 cultivationCap 上限（按境界），撞墙后剩余进度必须靠游历补足。
@@ -74,7 +75,7 @@ export class NPCState extends RuntimeState {
       // 初始值在构造末尾按实际 cultivationProgress 同步。
       totalProgress: 0,
       qi: 0,
-      morale: 50 + Math.random() * 50,
+      morale: 50 + rng.next() * 50,
       lifeRatio: 0,
       isLeader: npcConfig.role === 'leader',
       isElder: npcConfig.role === 'elder',
@@ -116,12 +117,16 @@ export class NPCState extends RuntimeState {
       monthlyQuotaMet: true,
       // 受伤程度：0=健康，受伤累加；回血行为逐步降低。区别于 lifeRatio（寿元）
       injuryLevel: 0,
+      // 气血（HP）系统（ADR-041 阶段1）：maxHp = combat.npcHp.baseHp[境界] × 体质 hpBonus。
+      // 占位 0，真正数值由 NPCEntity 构造末尾 _initHp() 按 combat 配置与体质计算并回满。
+      hp: 0,
+      maxHp: 0,
       // 先天资质：灵根(5档)与体质(凡体+稀有特殊体)。出生即定、终身不变。
       // 由 NPCEntity._initTalent 按 cultivation.json 权重随机赋值（或 npcConfig 显式指定）。
       spiritRootId: npcConfig.spiritRootId || 'triple',
       physiqueId: npcConfig.physiqueId || 'mortal_body',
       totalQuestsCompleted: 0,
-      gender: npcConfig.gender || (Math.random() < 0.5 ? 'male' : 'female'),
+      gender: npcConfig.gender || (rng.next() < 0.5 ? 'male' : 'female'),
       daoCompanionId: npcConfig.daoCompanionId || null,
       childrenCount: 0,
       techniqueId: npcConfig.techniqueId || null,
@@ -164,6 +169,7 @@ export class NPCState extends RuntimeState {
       visitedMaster: false,
     });
 
+    this._rng = rng;
     this._daysPerYear = daysPerYear;
     this._naturalDeath = {
       startRatio: deathCfg.startRatio ?? 0.95,
@@ -247,7 +253,7 @@ export class NPCState extends RuntimeState {
     const t = (ageDays - threshold) / (maxAgeDays - threshold);
     const deathChance = minChance + (maxChance - minChance) * t * t;
 
-    const roll = Math.random();
+    const roll = this._rng.next();
     return {
       died: roll < deathChance,
       deathChance,

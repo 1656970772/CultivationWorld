@@ -24,7 +24,7 @@ export class MonsterSpawner {
    * @param {number} deps.mapHeight
    */
   constructor({ tileIndex, terrainIndex, monsterDefs, factions, spawnConfig,
-                movementConfig, rankOrderMap, mapWidth, mapHeight, monsterPackConfig }) {
+                movementConfig, rankOrderMap, mapWidth, mapHeight, monsterPackConfig, rng }) {
     this.tileIndex = tileIndex;
     this.terrainIndex = terrainIndex;
     this.monsterDefs = monsterDefs || [];
@@ -37,7 +37,12 @@ export class MonsterSpawner {
     // 妖群成簇生成参数（ADR-028）：仅 goalsEnabled 时由 world-engine 传入；为 null 则不成簇（一期行为）。
     this._packCfg = monsterPackConfig || null;
 
-    this._seed = this.cfg.spawnSeed ?? 1337;
+    // 确定性随机源（由 WorldEngine 注入），传给各 MonsterEntity 供构造/运行时取随机。
+    this._rng = rng || null;
+    // 分布生成仍用自带 LCG（_rand），但其种子与引擎主种子耦合：
+    // 优先取显式 spawnSeed，否则从引擎 rng 派生，保证整局模拟由单一 seed 复现。
+    this._seed = this.cfg.spawnSeed
+      ?? (this._rng ? (this._rng.derive('monster-spawn').getState()) : 1337);
     // 势力总部锚点
     this._hqs = this.factions
       .map(f => f.staticData?.headquarters)
@@ -235,6 +240,7 @@ export class MonsterSpawner {
       rankOrderMap: this.rankOrderMap,
       combatConfig,
       lifespanConfig: this._lifespanConfig,
+      rng: this._rng,
     });
   }
 

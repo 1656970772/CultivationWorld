@@ -8,7 +8,7 @@
  *   - 多个 NPC 知晓同一消息 → 关联同一机会点 → 涌向同一坐标（江湖热点涌现）。
  *   - 机会点有 maxClaims 与 expireTick，满员/过期后不再吸引新 NPC，避免无限聚集。
  *
- * 参数见 data/world/opportunities.json。默认 enabled=false 时不生成任何机会点（零漂移）。
+ * 参数见 data/world/opportunities.json。默认 enabled=false 时不生成任何机会点。
  */
 
 let _oppSeq = 1;

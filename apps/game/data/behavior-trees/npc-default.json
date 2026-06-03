@@ -17,8 +17,9 @@
           {
             "type": "selector",
             "name": "reactions",
-            "comment": "即时反应分支：情绪/恩怨驱动的本能抢占。心魔过高→强制静心。threshold 默认 101(不可达)以不破坏既有平衡，调参时下调即可启用。",
+            "comment": "即时反应分支：被攻击反应(ADR-048，可打断闭关/游历，默认 reaction.enabled=false 不触发) → 情绪/恩怨驱动的本能抢占(心魔过高→强制静心，threshold 默认 101 不可达)。",
             "children": [
+              { "type": "reactive", "name": "react-attacked" },
               { "type": "emotion_reaction", "name": "suppress-inner-demon", "emotion": "inner_demon", "threshold": 101, "actionId": "act_npc_cultivate" }
             ]
           },

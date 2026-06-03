@@ -69,8 +69,7 @@ export class NeedSystem {
 
   /**
    * 将最高优先级的需求转为统一的 Goal 列表（GOBT 选目标层，ADR-018）。
-   * 顺序与 getTopNeeds 完全一致，priority/urgency/goalState 直接沿用 Need 评估结果，
-   * 因此在无其他目标来源时与重构前行为零漂移。
+   * 顺序与 getTopNeeds 一致，priority/urgency/goalState 直接沿用 Need 评估结果。
    * @param {number} count
    * @returns {import('./goal.js').Goal[]}
    */

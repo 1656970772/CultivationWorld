@@ -10,7 +10,7 @@
  *   - decideCovet      听闻怀璧消息后的『抢夺 vs 放他一马』决策。
  *   - settleRobbery    抢夺结算（PvP + 物品转移）。
  *
- * 所有逻辑均在对应系统 enabled=true 时才被 TickManager 调用，默认零漂移。
+ * 所有逻辑均在对应系统 enabled=true 时才被 TickManager 调用。
  */
 import { receiveNews } from '../world/info-propagation.js';
 import { ItemRegistry } from '../items/item-registry.js';
@@ -216,12 +216,12 @@ export function decideCovet(seeker, target, assetScore, covetCfg, powerFn) {
  * 胜率 = myPower/(myPower+targetPower)。胜则转移可转移物品 + 部分灵石，按概率击杀。
  * @returns {{ success:boolean, killed:boolean, loot:Object, description:string }}
  */
-export function settleRobbery(robber, victim, covetCfg, powerFn) {
+export function settleRobbery(robber, victim, covetCfg, powerFn, rng, worldContext) {
   const robCfg = covetCfg?.rob || {};
   const myPower = powerFn ? powerFn(robber) : 1;
   const targetPower = powerFn ? powerFn(victim) : 1;
   const winChance = myPower / Math.max(1e-6, myPower + targetPower);
-  const win = Math.random() < winChance;
+  const win = rng.next() < winChance;
 
   if (!win) {
     const injury = robCfg.loserInjuryOnLoss ?? 2;
@@ -236,9 +236,10 @@ export function settleRobbery(robber, victim, covetCfg, powerFn) {
   const loot = transferLoot(victim, robber, robCfg.lootStoneRatio ?? 0.6);
   // 杀人夺宝
   let killed = false;
-  if (Math.random() < (robCfg.killChanceOnWin ?? 0.3)) {
-    killNPCByPvP(victim, robber);
-    killed = true;
+  if (rng.next() < (robCfg.killChanceOnWin ?? 0.3)) {
+    // ADR-042：劫掠致死走统一伤害管线，受害者持遁地符可锁血/遁地逃生。
+    const kill = killNPCByPvP(victim, robber, worldContext);
+    killed = kill.died;
   }
   const lootDesc = describeLoot(loot);
   return {

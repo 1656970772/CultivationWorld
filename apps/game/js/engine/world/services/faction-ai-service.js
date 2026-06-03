@@ -13,12 +13,14 @@
  * 设计：从 TickManager._buildWorldContext 中抽离（原内联在返回对象字面量里）。
  *   - 战斗/外交/贸易参数在构造时一次性从 balanceConfig.combat 读出并缓存为字段（与原逻辑等价）。
  *   - 共享 helper（地理邻接、战力、记仇、晋升底层、位置/关系写边）通过 host(TickManager) 调用，
- *     避免逻辑重复，保证行为零漂移。
+ *     避免逻辑重复。
  *   - 攻击/结盟产生的 infoEvents 写入每 tick 传入的数组（与原 worldContext.infoEvents 同一引用）。
  *
  * 扩展（OCP）：新增势力类型的差异化决策，可继承本类覆写对应方法，或在此基于 faction.factionType 分派，
  *   无需改动 TickManager 或其他实体代码。
  */
+import { applyDamage } from '../../combat/combat-pipeline.js';
+
 export class FactionAIService {
   /**
    * @param {Object} deps
@@ -28,6 +30,8 @@ export class FactionAIService {
   constructor({ host, combatConfig }) {
     this.host = host;
     const combatCfg = combatConfig || {};
+    // 缓存完整战斗配置，供攻战致死走统一伤害管线 applyDamage（ADR-042：锁血/遁地不区分攻击者）。
+    this._combatConfig = combatCfg;
 
     // 外交阈值
     this.hostileThreshold = combatCfg.diplomacy?.hostileThreshold ?? -50;
@@ -76,6 +80,193 @@ export class FactionAIService {
     this.winNpcKillMax = combatCfg.attack?.winNpcKillMax ?? 2;
     this.winNpcKillMinDefender = combatCfg.attack?.winNpcKillMinDefender ?? 50;
     this.winNpcKillStabilityFloor = combatCfg.attack?.winNpcKillStabilityFloor ?? 30;
+    // tuning-v4 2026-06-01: 势力覆灭动态阈值（见 combat.json → attack.annihilation）。
+    const annih = combatCfg.attack?.annihilation || {};
+    this.annihilationEnabled = annih.enabled === true;
+    this.annihilationStabThreshold = annih.stabilityThreshold ?? 20;
+    this.annihilationAliveNpcThreshold = annih.aliveNpcThreshold ?? 3;
+
+    // tuning-v5 2026-06-01: 势力危亡抉择与凝聚力（见 combat.json → cohesion + wiki/rules/faction-crisis-defection.md）。
+    this.cohesionCfg = combatCfg.cohesion || {};
+    this.cohesionEnabled = this.cohesionCfg.enabled === true;
+  }
+
+  /**
+   * tuning-v5: 取性格 trait（0-100），缺省 50。inv=true 时取 100-trait。
+   */
+  _trait(npc, name, inv = false) {
+    const p = npc.staticData?.personality || npc.staticData?.get?.('personality') || {};
+    const v = typeof p[name] === 'number' ? p[name] : 50;
+    return inv ? (100 - v) : v;
+  }
+
+  /**
+   * tuning-v5: 把 trait 按 [lo,hi] 线性映射为权重倍率：lo + (trait/100)*(hi-lo)。
+   */
+  _traitFactor(npc, name, range, inv = false) {
+    if (!Array.isArray(range)) return 1;
+    const t = this._trait(npc, name, inv);
+    const [lo, hi] = range;
+    return lo + (t / 100) * (hi - lo);
+  }
+
+  /**
+   * tuning-v5: 单个成员在危亡时的加权抉择。
+   * @returns {'fight'|'evade'|'defect'|'leave'|'coerced'|'flee'}
+   */
+  _chooseCrisisReaction(npc, ctx) {
+    const reactions = this.cohesionCfg.reactions || {};
+    const isCore = ctx.isCore;
+    const hasStrongerEnemy = ctx.hasStrongerEnemy;
+    const weights = {};
+
+    for (const [key, cfg] of Object.entries(reactions)) {
+      if (cfg.requireStrongerEnemy && !hasStrongerEnemy) { weights[key] = 0; continue; }
+      let w = cfg.base ?? 1;
+      if (cfg.loyalty) w *= this._traitFactor(npc, 'loyalty', cfg.loyalty);
+      if (cfg.loyaltyInv) w *= this._traitFactor(npc, 'loyalty', cfg.loyaltyInv, true);
+      if (cfg.courage) w *= this._traitFactor(npc, 'courage', cfg.courage);
+      if (cfg.courageInv) w *= this._traitFactor(npc, 'courage', cfg.courageInv, true);
+      if (cfg.caution) w *= this._traitFactor(npc, 'caution', cfg.caution);
+      if (cfg.ambition) w *= this._traitFactor(npc, 'ambition', cfg.ambition);
+      if (cfg.ambitionInv) w *= this._traitFactor(npc, 'ambition', cfg.ambitionInv, true);
+      // cautionExtreme：极高谨慎才显著（用 caution^2 放大尾部）
+      if (cfg.cautionExtreme) {
+        const c = this._trait(npc, 'caution') / 100;
+        const [lo, hi] = cfg.cautionExtreme;
+        w *= lo + (c * c) * (hi - lo);
+      }
+      // 核心成员（领袖/继承人/核心同门）死战权重放大，保护顶梁柱
+      if (key === 'fight' && isCore && cfg.coreMult) w *= cfg.coreMult;
+      weights[key] = Math.max(0, w);
+    }
+
+    const total = Object.values(weights).reduce((a, b) => a + b, 0);
+    if (total <= 0) return 'fight';
+    let r = this.host.rng.next() * total;
+    for (const [key, w] of Object.entries(weights)) {
+      r -= w;
+      if (r <= 0) return key;
+    }
+    return 'fight';
+  }
+
+  /**
+   * tuning-v5: 把成员转为散修（脱离门派）。复用 npc-state 的散修语义。
+   */
+  _makeWanderer(npc) {
+    npc.state.set('factionId', null);
+    npc.state.set('hasFaction', false);
+    npc.state.set('isWanderer', true);
+    npc.state.set('role', 'wanderer');
+  }
+
+  /**
+   * tuning-v5: 把成员改投到攻方势力（叛投/投降归顺）。
+   */
+  _switchFaction(npc, newFactionId) {
+    npc.state.set('factionId', newFactionId);
+    npc.state.set('hasFaction', true);
+    npc.state.set('isWanderer', false);
+    npc.state.set('role', 'disciple');
+  }
+
+  /**
+   * tuning-v5: 防守方危机态下，对幸存成员逐个做去留抉择，并处理群体投降。
+   */
+  _resolveCrisisChoices({ faction, target, factionId, targetId, defenderStability, attackerPower, defenderPower, infoEvents }) {
+    const host = this.host;
+    const cfg = this.cohesionCfg;
+    const day = this.worldEntity.currentDay;
+
+    const members = this.entityRegistry.getAliveByType('npc')
+      .filter(n => n.state.get('factionId') === targetId && n.alive !== false);
+    if (members.length === 0) return;
+
+    const leaderAlive = members.some(n => n.state.get('role') === 'leader');
+    const powerRatio = defenderPower > 0 ? attackerPower / defenderPower : 99;
+
+    // 危机态触发（tuning-v5 修订）：稳定度普遍因自然恢复维持虚高，绝对阈值进不去（同 ADR-034 病根）。
+    // 改用攻战当下可靠的相对信号：战力悬殊（powerRatio≥crisisPowerRatio）或防守方真实活 NPC 已很少。
+    const crisisStab = cfg.crisisStabilityThreshold ?? 35;
+    const crisisPowerRatio = cfg.crisisPowerRatio ?? 1.5;
+    const crisisAliveNpc = cfg.crisisAliveNpcThreshold ?? 6;
+    const inCrisis = defenderStability <= crisisStab
+      || powerRatio >= crisisPowerRatio
+      || members.length <= crisisAliveNpc;
+    if (!inCrisis) return;
+
+    // —— 群体投降归顺判定（整门并入攻方）——
+    const sur = cfg.surrender || {};
+    if (sur.enabled) {
+      const leaderDead = sur.leaderDeadTriggers && !leaderAlive;
+      const stabCollapse = defenderStability <= (sur.stabilityThreshold ?? 12);
+      const overwhelmed = powerRatio >= (sur.powerRatio ?? 3.0);
+      if (leaderDead || stabCollapse || overwhelmed) {
+        for (const npc of members) {
+          this._switchFaction(npc, factionId);
+          if (typeof npc.recordMemory === 'function') {
+            npc.recordMemory('sect_destroyed', { factionId: targetId, tick: day });
+          }
+        }
+        target.state.set('disciples', 0);
+        target.state.set('stability', 0);
+        infoEvents.push({
+          type: 'faction_surrender', day,
+          attackerId: factionId, attackerName: faction.name,
+          targetId, targetName: target.name,
+          count: members.length,
+          description: `${target.name} 举宗归降 ${faction.name}（${members.length} 名修士改投）`,
+        });
+        return;
+      }
+    }
+
+    // —— 个体抉择 —— 
+    const hasStrongerEnemy = powerRatio >= 1.2;
+    const counts = { fight: 0, evade: 0, defect: 0, leave: 0, coerced: 0, flee: 0 };
+    const moraleLossCoerced = cfg.effects?.moraleLossCoerced ?? 25;
+
+    for (const npc of members) {
+      const role = npc.state.get('role');
+      const isCore = role === 'leader' || role === 'heir' || role === 'elder' || role === 'core_disciple';
+      const choice = this._chooseCrisisReaction(npc, { isCore, hasStrongerEnemy });
+      counts[choice] = (counts[choice] || 0) + 1;
+
+      switch (choice) {
+        case 'defect':
+          this._switchFaction(npc, factionId);
+          if (typeof npc.recordMemory === 'function') npc.recordMemory('sect_destroyed', { factionId: targetId, tick: day });
+          break;
+        case 'leave':
+        case 'flee':
+          this._makeWanderer(npc);
+          if (typeof npc.recordMemory === 'function') npc.recordMemory('sect_destroyed', { factionId: targetId, tick: day });
+          break;
+        case 'coerced': {
+          const morale = npc.state.get('morale') || 50;
+          npc.state.set('morale', Math.max(0, morale - moraleLossCoerced));
+          break;
+        }
+        // fight / evade：留在门派（evade 本轮已避战，被杀概率由处死逻辑的前置 v4 决定，此处不额外处死）
+        default: break;
+      }
+    }
+
+    // 真实人口流失数 = 叛投 + 出走 + 逃命（投降已在上面 return）
+    const fled = counts.defect + counts.leave + counts.flee;
+    if (fled > 0) {
+      // 抽象 disciples 同步扣减，使凝聚力低的门派真实削弱（配合 annihilation 阈值自然覆灭）
+      const curDisc = target.state.get('disciples') || 0;
+      target.state.set('disciples', Math.max(0, curDisc - fled));
+      infoEvents.push({
+        type: 'faction_defection', day,
+        targetId, targetName: target.name,
+        fight: counts.fight, evade: counts.evade,
+        defect: counts.defect, leave: counts.leave, flee: counts.flee, coerced: counts.coerced,
+        description: `${target.name} 遭重创：${counts.fight} 人死守，${counts.defect} 人叛投，${counts.leave + counts.flee} 人出走，${counts.coerced} 人被迫效忠`,
+      });
+    }
   }
 
   get entityRegistry() { return this.host.entityRegistry; }
@@ -253,7 +444,7 @@ export class FactionAIService {
    * @param {string} factionId 攻方
    * @param {Array} infoEvents 本 tick 的信息事件数组（攻击事件写入此处）
    */
-  attackEnemy(factionId, infoEvents) {
+  attackEnemy(factionId, infoEvents, worldContext) {
     const host = this.host;
     const faction = this.entityRegistry.getById(factionId);
     if (!faction) return { success: false };
@@ -292,7 +483,14 @@ export class FactionAIService {
       faction.state.set('low_spirit_stone', (faction.state.get('low_spirit_stone') || 0) + loot);
 
       const defenderLoss = Math.floor(defenderDisciples * this.winDefLoss);
-      const defenderAfter = Math.max(this.winDefMin, defenderDisciples - defenderLoss);
+      // tuning-v4: 防守方真实衰弱（稳定度低 + 实际活 NPC 寥寥）时，托底降为 0，允许灭门。
+      let effDefMin = this.winDefMin;
+      if (this.annihilationEnabled && defenderStability <= this.annihilationStabThreshold) {
+        const defenderAliveNpcs = this.entityRegistry.getAliveByType('npc')
+          .filter(n => n.state.get('factionId') === targetId).length;
+        if (defenderAliveNpcs <= this.annihilationAliveNpcThreshold) effDefMin = 0;
+      }
+      const defenderAfter = Math.max(effDefMin, defenderDisciples - defenderLoss);
       target.state.set('disciples', defenderAfter);
       target.state.set('stability', Math.max(0, (target.state.get('stability') || 50) - this.winDefStabLoss));
 
@@ -330,33 +528,55 @@ export class FactionAIService {
       }
       if (npcKillCount > 0 && defenderMembers.length > 0) {
         for (let i = defenderMembers.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
+          const j = Math.floor(host.rng.next() * (i + 1));
           const tmp = defenderMembers[i]; defenderMembers[i] = defenderMembers[j]; defenderMembers[j] = tmp;
         }
         const toKill = defenderMembers.slice(0, npcKillCount);
         for (const npc of toKill) {
-          npc.state.set('alive', false);
-          npc.alive = false;
           const pos = host._entityPos(npc);
-          npc._deathInfo = {
-            cause: 'slain',
-            npcId: npc.id,
-            npcName: npc.name || (npc.staticData && npc.staticData.name) || npc.id,
-            factionId: targetId,
-            ageYears: npc.state.get('ageYears'),
-            maxAgeYears: npc.state.get('maxAgeYears'),
-            rankName: npc.state.get('rankName'),
-            killerId: null,
+          const extraDeathInfo = {
             killerName: '势力战争',
             killerFactionId: factionId,
             day: this.worldEntity.currentDay,
           };
           if (pos) {
-            npc._deathInfo.x = pos.x;
-            npc._deathInfo.y = pos.y;
-            npc._deathInfo.locationName = host._resolveLocationName(pos.x, pos.y);
+            extraDeathInfo.x = pos.x;
+            extraDeathInfo.y = pos.y;
+            extraDeathInfo.locationName = host._resolveLocationName(pos.x, pos.y);
+          }
+          // ADR-042：攻战致死走统一伤害管线，战败方持遁地符可锁血/遁地逃生（不区分攻击者）。
+          // 无 worldContext（旧路径）时回退直接致死。
+          if (worldContext) {
+            const maxHp = npc.state.get('maxHp') || 0;
+            const curHp = npc.state.get('hp') ?? maxHp;
+            const lethalDamage = Math.max(1, curHp + Math.max(1, maxHp * 0.1));
+            applyDamage(npc, {
+              amount: lethalDamage, cause: 'slain', killer: null,
+              killerFactionId: factionId, orderGap: 0, extraDeathInfo,
+            }, worldContext);
+          } else {
+            npc.state.set('alive', false);
+            npc.alive = false;
+            npc._deathInfo = {
+              cause: 'slain', npcId: npc.id,
+              npcName: npc.name || (npc.staticData && npc.staticData.name) || npc.id,
+              factionId: targetId,
+              ageYears: npc.state.get('ageYears'),
+              maxAgeYears: npc.state.get('maxAgeYears'),
+              rankName: npc.state.get('rankName'),
+              killerId: null, ...extraDeathInfo,
+            };
           }
         }
+      }
+
+      // tuning-v5: 危亡抉择与凝聚力——防守方处于危机态时，幸存成员按性格/利益做去留抉择
+      // （死战/退避/叛投/出走散修/被迫效忠/抢先逃命 + 群体投降）。见 wiki/rules/faction-crisis-defection.md。
+      if (this.cohesionEnabled) {
+        this._resolveCrisisChoices({
+          faction, target, factionId, targetId,
+          defenderStability, attackerPower, defenderPower, infoEvents,
+        });
       }
 
       // 给战败方所有活 NPC 写 'attacked' 记忆 + 对攻方成员结『宿敌』边。

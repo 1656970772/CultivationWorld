@@ -52,17 +52,22 @@ export class CooldownNode extends DecoratorNode {
     this.minTicks = config.minTicks ?? 0;
     this.maxTicks = config.maxTicks ?? 0;
     this.cooldownStatus = config.cooldownStatus === 'success' ? BTStatus.SUCCESS : BTStatus.FAILURE;
-    this._rng = config.rng || Math.random;
-    this._remaining = this._roll();
+    // 注入随机源（测试/独立用例）。运行时优先用 tick 传入的 worldContext.rng（确定性种子）。
+    this._rng = config.rng || null;
+    // 初始冷却：构造期通常无确定性 rng，首次 tick 起即改由 worldContext.rng 续算。
+    this._remaining = this._roll(this._rng);
   }
 
-  _roll() {
+  _roll(rng) {
     const min = this.minTicks, max = this.maxTicks;
     if (max <= min) return min;
-    return min + Math.floor(this._rng() * (max - min + 1));
+    const next = rng ? rng() : Math.random();
+    return min + Math.floor(next * (max - min + 1));
   }
 
   tick(entity, blackboard, worldContext) {
+    // 运行时确定性：用 worldContext.rng 的绑定函数续算冷却。
+    const rngFn = worldContext?.rng ? () => worldContext.rng.next() : this._rng;
     if (this._remaining > 0) {
       this._remaining--;
       return this.cooldownStatus;
@@ -70,7 +75,7 @@ export class CooldownNode extends DecoratorNode {
     if (!this.child) return BTStatus.FAILURE;
     const status = this.child.tick(entity, blackboard, worldContext);
     if (status !== BTStatus.RUNNING) {
-      this._remaining = this._roll();
+      this._remaining = this._roll(rngFn);
     }
     return status;
   }

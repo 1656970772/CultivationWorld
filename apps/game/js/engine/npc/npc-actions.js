@@ -51,6 +51,12 @@ import {
   NPCTakeDiscipleExecutor,
   NPCSeizePowerExecutor,
 } from './actions/archetype-actions.js';
+import {
+  NPCReactFleeExecutor,
+  NPCReactRetreatExecutor,
+  NPCReactHealExecutor,
+  NPCReactCounterExecutor,
+} from './actions/reaction-actions.js';
 
 // 共享工具与执行器一并 re-export，保持历史导入路径（'./npc-actions.js'）可用。
 export {
@@ -102,6 +108,12 @@ export {
   NPCTakeDiscipleExecutor,
   NPCSeizePowerExecutor,
 } from './actions/archetype-actions.js';
+export {
+  NPCReactFleeExecutor,
+  NPCReactRetreatExecutor,
+  NPCReactHealExecutor,
+  NPCReactCounterExecutor,
+} from './actions/reaction-actions.js';
 
 /**
  * 注册全部 NPC 行为执行器到 ActionPool（统一入口，顺序与拆分前保持一致）。
@@ -140,4 +152,9 @@ export function registerNPCExecutors() {
   ActionPool.registerExecutor('npc_teach_disciple', new NPCTeachDiscipleExecutor());
   ActionPool.registerExecutor('npc_protect_disciple', new NPCProtectDiscipleExecutor());
   ActionPool.registerExecutor('npc_visit_master', new NPCVisitMasterExecutor());
+  // 反应层行为（四层 AI 架构 Reaction 层，ADR-048）：逃命 / 暂避锋芒 / 应急回血 / 奋起反击。
+  ActionPool.registerExecutor('npc_react_flee', new NPCReactFleeExecutor());
+  ActionPool.registerExecutor('npc_react_retreat', new NPCReactRetreatExecutor());
+  ActionPool.registerExecutor('npc_react_heal', new NPCReactHealExecutor());
+  ActionPool.registerExecutor('npc_react_counter', new NPCReactCounterExecutor());
 }

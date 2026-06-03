@@ -1,0 +1,65 @@
+{
+  "_description": "货币类物品（category=currency，ADR-025/043/044/045）。四档灵石为机制必需的泛类货币，亦可直接服用吸纳灵气（effects 复用 ge_add_qi）。本文件由 config-loader 与各工具脚本合并加载至 itemDefs.items。同目录其余分类文件：material/pill/artifact/talisman/technique。",
+  "items": [
+    {
+      "id": "low_spirit_stone",
+      "name": "低级灵石",
+      "category": "currency",
+      "stackable": true,
+      "transferable": true,
+      "description": "最基础的修仙货币，炼气期日常修炼、小额交易、低阶阵法维持；亦可直接服用吸纳其中灵气",
+      "exchangeRate": 1,
+      "qiValue": 1,
+      "value": 1,
+      "effects": [
+        { "effect": "ge_add_qi", "magnitude": 1 }
+      ],
+      "source": "参考自凡人修仙传：基准货币单位，灵石含微量灵气可供修炼吸收"
+    },
+    {
+      "id": "mid_spirit_stone",
+      "name": "中级灵石",
+      "category": "currency",
+      "stackable": true,
+      "transferable": true,
+      "description": "筑基至结丹期修炼所需，坊市交易、中型阵法驱动；服用可吸纳少量灵气",
+      "exchangeRate": 100,
+      "qiValue": 120,
+      "value": 100,
+      "effects": [
+        { "effect": "ge_add_qi", "magnitude": 120 }
+      ],
+      "source": "参考自凡人修仙传：1中级=100低级，含少量灵气"
+    },
+    {
+      "id": "high_spirit_stone",
+      "name": "高级灵石",
+      "category": "currency",
+      "stackable": true,
+      "transferable": true,
+      "description": "元婴期以上修炼所需，大型拍卖会、传送阵启动、顶级法宝炼制；服用可吸纳中量灵气",
+      "exchangeRate": 10000,
+      "qiValue": 15000,
+      "value": 10000,
+      "effects": [
+        { "effect": "ge_add_qi", "magnitude": 15000 }
+      ],
+      "source": "参考自凡人修仙传：1高级=100中级=10000低级，含中量灵气"
+    },
+    {
+      "id": "top_spirit_stone",
+      "name": "极品灵石",
+      "category": "currency",
+      "stackable": true,
+      "transferable": true,
+      "description": "极为罕见的顶级灵石，蕴含浓郁灵气，化神期以上突破、天阶法宝炼制、跨域传送阵核心；服用可吸纳大量灵气",
+      "exchangeRate": 1000000,
+      "qiValue": 1800000,
+      "value": 1000000,
+      "effects": [
+        { "effect": "ge_add_qi", "magnitude": 1800000 }
+      ],
+      "source": "参考自凡人修仙传：1极品=100高级=1000000低级，含大量灵气"
+    }
+  ]
+}

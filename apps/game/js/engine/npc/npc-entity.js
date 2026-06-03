@@ -23,10 +23,21 @@ import {
   handleDeath as handleDeathImpl,
 } from './npc-lifecycle.js';
 import { createBTLoader, NPC_DEFAULT_BT } from '../abstract/bt/index.js';
+import { StimulusQueue, StimulusType } from '../abstract/stimulus.js';
+import { IntentService } from './intent-service.js';
 import { MemorySystem, MemoryType } from '../abstract/memory-system.js';
 import { RelationshipGraph } from './relationship.js';
 import { ObsessionSystem, Obsession } from '../abstract/obsession-system.js';
 import { EmotionSystem } from '../abstract/emotion-system.js';
+import { AbilityComponent } from '../abstract/ability-component.js';
+import { ItemRegistry } from '../items/item-registry.js';
+import { EffectEngine } from '../abstract/gameplay-effect.js';
+import { EffectPool } from '../pools/effect-pool.js';
+import {
+  applyTraitEffects,
+  readTraitSpeedMult,
+  readTraitHpMult,
+} from './npc-traits.js';
 import {
   canFactionProvideExchangeMaterials,
   countDonatableMaterials,
@@ -49,7 +60,10 @@ export class NPCEntity extends BaseEntity {
     super(npcConfig.id, 'npc');
 
     this._ranksData = ranksData || [];
+    // 确定性随机源（由 WorldEngine 经 entityConfig 注入）。实体内部所有随机统一走 this._rng。
+    this._rng = entityConfig.rng || null;
     this._cultivationConfig = entityConfig.cultivationConfig || {};
+    this._combatConfig = entityConfig.combatConfig || {};
     this._personalityConfig = entityConfig.personalityConfig || {};
     this._aiConfig = entityConfig.aiConfig || {};
     this._memoryConfig = entityConfig.memoryConfig || {};
@@ -58,19 +72,24 @@ export class NPCEntity extends BaseEntity {
     this._utilityConfig = entityConfig.utilityConfig || {};
     this._economyConfig = entityConfig.economyConfig || {};
     this.initStaticData(npcConfig);
-    this.state = new NPCState(npcConfig, ranksData, entityConfig.gameConfig || {});
+    this.state = new NPCState(npcConfig, ranksData, entityConfig.gameConfig || {}, this._rng);
     // 把性格暴露到 state 上（仅作只读引用，存于专用字段，不进 _values，故不污染 GOAP 状态键）
     this.state.personality = this.staticData.personality || {};
     this._initTalent(npcConfig);
+    // 能力组件 + 先天特质修正层须在 _initHp 之前建好：_computeMaxHp 经 AttributeSet 读 traitHpMult。
+    this._initAbilityComponent();
+    this._initHp();
     this._initInventory(npcConfig);
+    this._initAbilities(npcConfig);
     this._initNeeds(npcConfig);
     this._initActions(npcConfig);
     this._rollBreakthroughPathOrder();
 
-    // 决策周期：每个 NPC 随机错开决策时机，周期内静候，到期才通过 GOAP 重新规划大行为。
-    this._decisionMin = this._aiConfig.decisionIntervalMin ?? 3;
-    this._decisionMax = this._aiConfig.decisionIntervalMax ?? 12;
-    this._decisionCooldown = this._rollDecisionInterval();
+    // 决策相位：无决策冷却——空闲时每天都可重新规划。仅用 decisionPhaseMax 做【开局错相】，
+    // 让各 NPC 首次决策错开 0~phaseMax 天，避免开局全员同 tick 齐步规划造成性能峰值。
+    // 错相用完后 canStartNewDecision 恒返回 true（每天可决策）。
+    this._decisionPhaseMax = this._aiConfig.decisionPhaseMax ?? 12;
+    this._decisionPhase = Math.floor(this._rng.next() * (this._decisionPhaseMax + 1));
 
     // 长期记忆与个人恩怨图（GOBT 长期心智，ADR-019）。
     // 个人恩怨图绑定到世界级关系网（ADR-027）：grudge/gratitude 成为统一关系网的边，
@@ -86,12 +105,25 @@ export class NPCEntity extends BaseEntity {
     );
 
     // 执念系统（ADR-019）：先天按人格/灵根 roll 一个初始执念。
-    // goalMult（ADR-020）：执念对自身/同方向需求 Goal 的乘法加成（默认 enabled=false 零漂移）。
+    // goalMult（ADR-020）：执念对自身/同方向需求 Goal 的乘法加成（默认 enabled=false，不改变现有行为）。
     this.obsessions = new ObsessionSystem(this._obsessionConfig.goalMult || null);
     this._rollInnateObsession();
 
     // 情绪系统（ADR-019）：由记忆事件激发、每日回归基线，作为 Utility 乘子调制目标。
     this.emotions = new EmotionSystem(this._emotionConfig);
+
+    // 反应层刺激队列（四层 AI 架构 Reaction 层，ADR-048）：外部系统（攻击方/世界事件）
+    // 在事件发生瞬间 pushStimulus，本 NPC 在自身 tick 的反应层（ReactiveNode）最先消费，
+    // 获得「即时反应」语义而无需子 tick，全程同步、确定性可复现。
+    const reactionCfg = entityConfig.reactionConfig || {};
+    this._reactionConfig = reactionCfg;
+    this.stimulusQueue = new StimulusQueue({
+      ttl: reactionCfg.stimulusTtl ?? 2,
+      capacity: reactionCfg.stimulusCapacity ?? 16,
+    });
+    // 立即重决策请求标记（ADR-048）：大事件（秘境/拍卖/大比/遇仇人）置真，
+    // PlannerNode 门控见到后即便当前正执行计划也立即重选目标+重规划（打断长链）。
+    this._replanRequested = false;
 
     // 安装 GOBT 行为树（ADR-018）：tick() 由 BTRunner 编排"反应→评估→规划→执行"。
     // 默认用内置 NPC 树；entityConfig.npcBehaviorTree 提供时覆盖（数据驱动）。
@@ -133,6 +165,102 @@ export class NPCEntity extends BaseEntity {
   }
 
   /**
+   * 反应层入口：外部系统向本 NPC 压入一条刺激（ADR-048）。
+   * 攻击方在 applyDamage 命中后、世界系统在大事件发生时调用。纯同步，确定性。
+   * @param {string} type StimulusType 之一
+   * @param {Object} [opts] { priority, sourceId, payload, day }
+   */
+  pushStimulus(type, opts = {}) {
+    if (!this.stimulusQueue) return;
+    this.stimulusQueue.push(type, opts);
+  }
+
+  /**
+   * 请求立即重决策（ADR-048）：大事件触发后置标记，使 PlannerNode 即便在执行计划中途
+   * 也立即重选目标+重规划（打断长链）。仅置标记，不直接改计划（单一职责）。
+   * @param {string} [_reason] 调试用原因
+   */
+  requestReplan(_reason = null) {
+    this._replanRequested = true;
+  }
+
+  /**
+   * 消费立即重决策标记（ADR-048）：供 PlannerNode 门控查询并清除（一次性）。
+   * @returns {boolean} 是否有待处理的重决策请求
+   */
+  consumeReplanRequest() {
+    if (!this._replanRequested) return false;
+    this._replanRequested = false;
+    return true;
+  }
+
+  /**
+   * 意图层入口（四层 AI 架构 Utility 层，ADR-048）：委托 IntentService 选目标 + GOAP 规划。
+   * 供 PlannerNode._doPlan 调用，使「选目标」逻辑集中于意图层服务（单一真相源）。
+   * @param {Object} worldContext
+   */
+  selectIntent(worldContext) {
+    return IntentService.selectGoal(this, worldContext);
+  }
+
+  /**
+   * 大事件 → 动态决策（四层 AI 架构 Utility 层，ADR-048）：
+   * 检测本 tick 新出现的高优先事件（遇仇人 / 知晓可达机缘：秘境/拍卖/天材地宝），
+   * 向自身压入对应刺激并请求立即重决策（requestReplan），使 PlannerNode 即便正执行长链
+   * 也立即打断、重选目标。仅在 reaction.eventReplan.enabled=true 时生效（默认 false，不改变现有行为）。
+   *
+   * 注意：本方法只「检测变化 + 置请求」，具体目标（复仇执念 / 机会 Goal）仍由既有
+   * collectExtraGoals/buildOpportunityGoal 经 Utility 选出（单一真相源，不在此处造目标）。
+   * @param {Object} worldContext
+   */
+  _checkEventReplan(worldContext) {
+    const reactionCfg = this._reactionConfig || {};
+    const evCfg = reactionCfg.eventReplan || {};
+    if (evCfg.enabled !== true) return;
+    const day = worldContext.currentDay ?? worldContext.day ?? 0;
+
+    // 遇仇人：hasRevengeTarget 由 false 跃迁为 true（本 tick 新锁定可定位的在世仇人）。
+    const hasRevenge = this.state.get('hasRevengeTarget') === true;
+    if (hasRevenge && this._prevHasRevengeTarget !== true) {
+      const target = (typeof worldContext.resolveRevengeTarget === 'function')
+        ? worldContext.resolveRevengeTarget(this)
+        : null;
+      this.pushStimulus(StimulusType.ENEMY_SPOTTED, {
+        sourceId: target?.id ?? null,
+        day,
+        payload: { enemyId: target?.id ?? null },
+      });
+      this.requestReplan('enemy_spotted');
+    }
+    this._prevHasRevengeTarget = hasRevenge;
+
+    // 知晓可达机缘：本 tick 新获得一个最值得前往的机会点（秘境/拍卖/天材地宝/妖兽尸骸）。
+    if (evCfg.opportunityReplan !== false && typeof worldContext.bestOpportunityFor === 'function') {
+      const pick = worldContext.bestOpportunityFor(this);
+      const oppId = pick?.opp?.id ?? null;
+      if (oppId && oppId !== this._prevOpportunityId) {
+        this.pushStimulus(this._opportunityStimulusType(pick.opp), {
+          sourceId: oppId,
+          day,
+          payload: { opportunityId: oppId, opportunityType: pick.opp?.type ?? null },
+        });
+        this.requestReplan('opportunity');
+      }
+      this._prevOpportunityId = oppId;
+    }
+  }
+
+  /** 机会点类型 → 刺激类型（秘境/拍卖映射到对应枚举，其余归为发现宝物，ADR-048）。 */
+  _opportunityStimulusType(opp) {
+    const t = opp?.type || '';
+    if (typeof t === 'string') {
+      if (t.includes('secret') || t.includes('realm')) return StimulusType.SECRET_REALM;
+      if (t.includes('auction')) return StimulusType.AUCTION;
+    }
+    return StimulusType.TREASURE_SPOTTED;
+  }
+
+  /**
    * @override
    * 情绪对目标的 Utility 调制（ADR-019）：愤怒放大复仇执念、恐惧放大生存紧迫度等。
    * @param {import('../abstract/goal.js').Goal} goal
@@ -145,7 +273,7 @@ export class NPCEntity extends BaseEntity {
    * @override
    * 装配目标考量因素（ADR-020）：把 TimeValue（时间价值=f(lifeRatio)）、目标风险、
    * utility.json 自定义考量因素挂到 Goal 上，使「选目标」阶段就乘法式权衡。
-   * utility.json `enabled=false`(默认) 时为空操作 → 行为零漂移。
+   * utility.json `enabled=false`(默认) 时为空操作 → 不改变现有行为。
    * @param {import('../abstract/goal.js').Goal} goal
    * @param {Object} worldContext
    */
@@ -171,7 +299,7 @@ export class NPCEntity extends BaseEntity {
    * 先天执念抽取（ADR-019）：委托 npc-obsession-trigger（出生即定型）。
    */
   _rollInnateObsession() {
-    rollInnateObsessionImpl(this);
+    rollInnateObsessionImpl(this, this._rng);
   }
 
   /**
@@ -186,7 +314,7 @@ export class NPCEntity extends BaseEntity {
    * 条件执念检查（ADR-023）：委托 npc-obsession-trigger（随寿元/境界/野心演化触发养老/传承）。
    */
   _checkConditionalObsession() {
-    checkConditionalObsessionImpl(this);
+    checkConditionalObsessionImpl(this, this._rng);
   }
 
   /**
@@ -253,7 +381,7 @@ export class NPCEntity extends BaseEntity {
 
   /**
    * 刷新关系驱动派生状态（ADR-028）：关系对象失效（死亡/失联）即清空 targetRelationshipId，
-   * 使关系行为链前置失效，GOAP 下一轮重规划自然放弃，回归日常（零漂移）。
+   * 使关系行为链前置失效，GOAP 下一轮重规划自然放弃，回归日常。
    * @param {Object} worldContext
    */
   _refreshRelationshipState(worldContext) {
@@ -292,13 +420,18 @@ export class NPCEntity extends BaseEntity {
       : false;
     this.state.set('hasRevengeTarget', hasTarget);
     if (!hasTarget) this.state.set('nearRevengeTarget', false);
+
+    // 复仇追击提速（行为精准化 2026-06-02）：破解『同速追逐困局』。NPC 与仇人皆 1 格/天，
+    // 追击者去追仇人旧坐标、仇人又移走，几乎永远差一步（实测 330 次追踪仅 1 次同格）。
+    // 复仇/夺舍执念在身时给追击者速度加成，体现『穷追不舍、千里追杀』，使其能真正逼近仇人。
+    if (this.hasSpatial && this.hasSpatial()) {
+      const sp = this.spatial;
+      if (this._baseSpeed == null) this._baseSpeed = sp.speed;
+      const boost = this._aiConfig.revengePursuitSpeed ?? 2;
+      sp.speed = hasTarget ? Math.max(this._baseSpeed, boost) : this._baseSpeed;
+    }
   }
 
-  /** 抽取一个随机决策周期（天） */
-  _rollDecisionInterval() {
-    const min = this._decisionMin, max = this._decisionMax;
-    return min + Math.floor(Math.random() * (max - min + 1));
-  }
 
   /**
    * 初始化先天资质：灵根(spiritRootId) 与 体质(physiqueId)。
@@ -324,7 +457,7 @@ export class NPCEntity extends BaseEntity {
     const entries = Object.entries(map);
     const total = entries.reduce((s, [, v]) => s + (v.weight || 0), 0);
     if (total <= 0) return null;
-    let roll = Math.random() * total;
+    let roll = this._rng.next() * total;
     for (const [key, v] of entries) {
       roll -= (v.weight || 0);
       if (roll < 0) return key;
@@ -333,9 +466,62 @@ export class NPCEntity extends BaseEntity {
   }
 
   _initInventory(config) {
-    this.inventory.loadFrom({
-      low_spirit_stone: config.spiritStone || 0,
-    });
+    // 起始物品：低阶灵石 + 可选 items 映射（如天才自带遁地符 { item_escape_talisman: 2 }）。
+    const initial = { low_spirit_stone: config.spiritStone || 0 };
+    if (config.items && typeof config.items === 'object') {
+      for (const [itemId, amount] of Object.entries(config.items)) {
+        if (amount > 0) initial[itemId] = (initial[itemId] || 0) + amount;
+      }
+    }
+    this.inventory.loadFrom(initial);
+  }
+
+  /**
+   * 初始化能力系统组件（ADR-042）：创建 AbilityComponent，授予能力。
+   * 能力来源：① 背包中带 grantsAbilities 的物品（如遁地符）；② npcConfig.abilities 显式授予。
+   * 持遁地符即获 ga_lock_hp（锁血）+ ga_escape_talisman（遁地），二者可组合。
+   */
+  /**
+   * 创建能力系统组件 + 注入先天特质（ADR-042 阶段2）。须在 _initHp 之前调用。
+   * - 先天特质 Tag（可组合查询层）：灵根/体质表达为层级 Tag（Trait.SpiritRoot.{id} / Trait.Physique.{id}）。
+   * - 先天特质修正层（Infinite Effect）：灵根/体质的 speed/breakthrough/lifespan/hp 加成经 AttributeSet 生效
+   *   （cultivation.json traitEffects.enabled 开关，默认 true；数值仍以 cultivation.json 为单一真相源）。
+   */
+  _initAbilityComponent() {
+    this.abilityComponent = new AbilityComponent(this);
+    this.attributes = this.abilityComponent.attributes;
+
+    const spiritRootId = this.state.get('spiritRootId');
+    if (spiritRootId) this.abilityComponent.tags.add(`Trait.SpiritRoot.${spiritRootId}`);
+    const physiqueId = this.state.get('physiqueId');
+    if (physiqueId) this.abilityComponent.tags.add(`Trait.Physique.${physiqueId}`);
+
+    applyTraitEffects(this);
+  }
+
+  _initAbilities(config) {
+    // 显式授予（npcs.json 可写 abilities:["ga_xxx"]）。
+    if (Array.isArray(config.abilities)) {
+      for (const id of config.abilities) this.abilityComponent.grantAbility(id);
+    }
+    // 由背包物品授予（遁地符等）。
+    this.refreshItemGrantedAbilities();
+  }
+
+  /**
+   * 根据当前背包中带 grantsAbilities 的物品，授予对应能力（幂等）。
+   * 持有遁地符 → 授予锁血 + 遁地能力。后续兑换得到符时也应调用本方法刷新。
+   */
+  refreshItemGrantedAbilities() {
+    if (!this.abilityComponent) return;
+    for (const [itemId, amount] of Object.entries(this.inventory.getAll())) {
+      if (amount <= 0) continue;
+      const def = ItemRegistry.get(itemId);
+      const grants = def?.properties?.grantsAbilities;
+      if (Array.isArray(grants)) {
+        for (const abilityId of grants) this.abilityComponent.grantAbility(abilityId);
+      }
+    }
   }
 
   /** @override */
@@ -350,6 +536,8 @@ export class NPCEntity extends BaseEntity {
       'need_npc_cultivation', 'need_npc_breakthrough_aid',
       'need_npc_combat_gear', 'need_npc_hunt_resources', 'need_npc_loyalty_duty',
       'need_npc_ambition',
+      // 散修生计（2026-06-02 行为精准化）：散修无门派俸禄，须接坊市悬赏自食其力，仅 isWanderer 触发。
+      'need_npc_wanderer_subsistence',
     ];
 
     for (const needId of needIds) {
@@ -374,21 +562,26 @@ export class NPCEntity extends BaseEntity {
       // 流派分化行为（ADR-022/ADR-023）：夺宝/养老/传承/夺权。
       // 这些行为的执念目标（treasureObtained/atPeace/discipleRaised/isFactionLeader）默认无人持有，
       // 仅当 NPC 经 obsession.json 规则 roll/触发到对应执念时，其 Goal 才进入 Utility 选择，
-      // 故加入可用行为池不改变未持执念 NPC 的既有规划（零漂移）。
+      // 故加入可用行为池不改变未持执念 NPC 的既有规划。
       'act_npc_raid_treasure', 'act_npc_seclude',
       'act_npc_take_disciple', 'act_npc_seize_power',
       // 机会点前往行为（ADR-024）：仅当机会系统 enabled 且 NPC 知晓可行机会时，
-      // collectExtraGoals 才产出 opportunity Goal 触发本行为，故零漂移。
+      // collectExtraGoals 才产出 opportunity Goal 触发本行为。
       'act_npc_goto_opportunity',
       // 复仇行为链（ADR-020/028）：追踪→击杀仇人。仅当 hasRevengeTarget（执念/恩怨/高强度 enemy 边）
-      // 为真时其 Goal(enemyKilled) 才进入规划，故加入可用池不改变无仇 NPC 既有规划（零漂移）。
+      // 为真时其 Goal(enemyKilled) 才进入规划，故加入可用池不改变无仇 NPC 既有规划。
       'act_npc_hunt_enemy', 'act_npc_kill_enemy',
       // 关系驱动行为（ADR-028）：驰援同门 / 探望恩人。仅当 goalsEnabled 且存在 qualifying 关系边时，
-      // collectExtraGoals 才产出对应关系 Goal 触发本行为，故零漂移。
+      // collectExtraGoals 才产出对应关系 Goal 触发本行为。
       'act_npc_assist_ally', 'act_npc_visit_benefactor',
       // 师徒互动行为（ADR-029）：师傅传功(点化)/师傅护徒(驰援)/徒弟尽孝(探望)。仅当 goalsEnabled 且
-      // 存在 qualifying master/disciple 边时，collectExtraGoals 才产出对应 Goal 触发本行为，故零漂移。
+      // 存在 qualifying master/disciple 边时，collectExtraGoals 才产出对应 Goal 触发本行为。
       'act_npc_teach_disciple', 'act_npc_protect_disciple', 'act_npc_visit_master',
+      // 反应层行为（四层 AI 架构 Reaction 层，ADR-048）：逃命/暂避/回血/反击。
+      // 仅由 ReactiveNode 在被攻击刺激命中时 setSingleActionPlan 强制选取（不进 GOAP/Utility 规划），
+      // 且仅当 reaction.enabled=true 时反应层才会消费刺激，故加入可用池不改变既有规划。
+      'act_npc_react_flee', 'act_npc_react_retreat',
+      'act_npc_react_heal', 'act_npc_react_counter',
     ];
 
     const actions = [];
@@ -441,25 +634,23 @@ export class NPCEntity extends BaseEntity {
    * explore_first 会通过 Utility 给探索类目标加分，让 NPC 优先选择探索目标（ADR-021）。
    */
   _rollBreakthroughPathOrder() {
-    const order = Math.random() < 0.5 ? 'explore_first' : 'cultivate_first';
+    const order = this._rng.next() < 0.5 ? 'explore_first' : 'cultivate_first';
     this.state.set('breakthroughPathOrder', order);
   }
 
   /**
    * @override
    * 决策门控（GOBT：供 PlannerNode 在"空闲且无计划"时询问是否可重新规划，ADR-018）。
-   * 等价迁移旧 _decisionCooldown 时序：
-   * - 决策周期未到：递减冷却并返回 false（PlannerNode 静候，不规划）。
-   * - 决策周期已到：返回 true 并重置一个新的随机周期（随后 PlannerNode 执行 GOAP 规划）。
-   * 注意：仅在 PlannerNode 判定空闲且无计划时调用，因此 busy/hasPlan 时不会递减，与旧逻辑一致。
+   * 无决策冷却：空闲时每天都可重新评估需求并规划，避免修炼被战斗打断后长期空闲卡进度。
+   * 仅保留【开局错相】：首次决策前递减初始相位，错开各 NPC 的首次规划 tick；相位用完后恒放行。
+   * 注意：仅在 PlannerNode 判定空闲且无计划时调用，故执行多 tick 行为（闭关等）期间不会被打断。
    * @returns {boolean}
    */
   canStartNewDecision(worldContext) {
-    if (this._decisionCooldown > 0) {
-      this._decisionCooldown--;
+    if (this._decisionPhase > 0) {
+      this._decisionPhase--;
       return false;
     }
-    this._decisionCooldown = this._rollDecisionInterval();
     return true;
   }
 
@@ -470,6 +661,111 @@ export class NPCEntity extends BaseEntity {
    */
   buildDecisionCostFn(_worldContext) {
     return null;
+  }
+
+  /**
+   * 每日被动真气吸纳（ADR-039）：参考凡人修仙传"修士时刻吸纳天地灵气炼化为真气"。
+   * 即便不主动闭关、在做任务/游历/管理，真气仍缓慢增长（远慢于专心修炼），
+   * 乘灵根/体质/功法速度倍率（与修炼同源）。破解"闭关进度撞顶停修后真气停滞"死锁。
+   * @param {Object} worldContext
+   */
+  _passiveQiAbsorb(worldContext) {
+    const cult = this._cultivationConfig;
+    if (!cult) return;
+    const baseMap = cult.passiveQiGain?.base;
+    if (!baseMap) return;
+    const rankId = this.state.get('rankId') || 'mortal';
+    const base = baseMap[rankId];
+    if (!base) return;
+
+    // 灵根+体质修炼速度连乘（ADR-042 阶段2）：经 AttributeSet traitSpeedMult 生效（开关关则回退直接读 config）。
+    let mult = readTraitSpeedMult(this);
+    const techniqueId = this.state.get('techniqueId');
+    if (techniqueId && worldContext.techniqueRegistry) {
+      const technique = worldContext.techniqueRegistry.get(techniqueId);
+      if (technique?.effects) mult *= technique.effects.cultivationSpeedMultiplier ?? 1.0;
+    }
+
+    const gain = base * mult;
+    if (gain > 0) this.state.set('qi', (this.state.get('qi') || 0) + gain);
+  }
+
+  /**
+   * 真气是否尚未达到下一境界突破门槛（qi < nextRank.qiRequired）。
+   * 用于 gate 聚气丹兑换/服用：只要真气不够突破，就应允许补真气——
+   * 替代旧的错误前置 totalProgress<1.0（进度满≠真气够，会锁死天才，见 ADR-039）。
+   * 已是最高境界（无下一境界）时返回 false（无需再补真气突破）。
+   * @returns {boolean}
+   */
+  /**
+   * 计算当前境界与体质下的 maxHp（ADR-041 阶段1）。
+   * maxHp = combat.npcHp.baseHp[境界] × 体质 hpBonusMultiplier。
+   * @returns {number}
+   */
+  _computeMaxHp() {
+    const baseHpMap = this._combatConfig.npcHp?.baseHp || {};
+    const rankId = this.state.get('rankId') || 'mortal';
+    const baseHp = baseHpMap[rankId] ?? 30;
+    // 体质血量上限倍率（ADR-042 阶段2）：经 AttributeSet traitHpMult 生效（开关关则回退直接读 config）。
+    const hpBonus = readTraitHpMult(this);
+    return Math.max(1, Math.round(baseHp * hpBonus));
+  }
+
+  /** 初始化 hp/maxHp 并回满（构造时调用，ADR-041 阶段1）。 */
+  _initHp() {
+    const maxHp = this._computeMaxHp();
+    this.state.set('maxHp', maxHp);
+    this.state.set('hp', maxHp);
+  }
+
+  /**
+   * 突破成功后重算 maxHp（境界提升血量上限大增），但【不回满当前 hp】。
+   * 突破就是突破：只抬高上限，当前 hp 保持不变（夹新上限）。突破回满血是某些
+   * 功法/秘法/体质才有的特殊效果，后续按 docs/TODO-combat-survival.md 实现。
+   * 上限提升后的空缺血量靠自然回血/回血丹/天材地宝慢慢补。
+   */
+  refreshMaxHpOnBreakthrough() {
+    const maxHp = this._computeMaxHp();
+    this.state.set('maxHp', maxHp);
+    const hp = this.state.get('hp') || 0;
+    this.state.set('hp', Math.min(hp, maxHp));
+  }
+
+  /**
+   * 破境回元（ADR-042 阶段2）：仅当实体持 Trait.BreakthroughFullHeal Tag（特殊功法/体质授予）时，
+   * 突破成功后经通用 ge_full_heal（Instant，hp override 至 maxHp）回满血。
+   * 默认无 NPC 持该 Tag，故默认不触发。
+   */
+  tryBreakthroughFullHeal() {
+    const comp = this.abilityComponent;
+    if (!comp?.tags?.hasTag('Trait.BreakthroughFullHeal')) return;
+    const effDef = EffectPool.get('ge_full_heal');
+    if (effDef) EffectEngine.applyEffect(this, effDef);
+  }
+
+  /** 每日自然回血（ADR-041 阶段1）：按 dailyRegenRatio × maxHp 缓慢恢复，夹 maxHp。 */
+  _dailyHpRegen() {
+    const maxHp = this.state.get('maxHp') || 0;
+    if (maxHp <= 0) return;
+    const hp = this.state.get('hp') || 0;
+    if (hp >= maxHp) return;
+    const ratio = this._combatConfig.npcHp?.dailyRegenRatio ?? 0.02;
+    this.state.set('hp', Math.min(maxHp, hp + maxHp * ratio));
+  }
+
+  _isQiBelowNextRankRequirement() {
+    const ranks = this._ranksData;
+    if (!ranks || ranks.length === 0) return false;
+    const currentRankId = this.state.get('rankId') || 'mortal';
+    const currentRank = ranks.find(r => r.id === currentRankId);
+    if (!currentRank) return false;
+    const cultivationRanks = ranks
+      .filter(r => r.category === 'cultivation')
+      .sort((a, b) => a.order - b.order);
+    const nextRank = cultivationRanks.find(r => r.order > currentRank.order);
+    if (!nextRank) return false;
+    const qi = this.state.get('qi') || 0;
+    return qi < (nextRank.qiRequired || 0);
   }
 
   /** @override */
@@ -484,6 +780,7 @@ export class NPCEntity extends BaseEntity {
     flat.factionHasBreakthroughPillMaterial = canFactionProvideExchangeMaterials(this, worldContext, 'breakthrough_pill');
     flat.factionHasArtifactMaterial = canFactionProvideExchangeMaterials(this, worldContext, 'artifact_low');
     flat.factionNeedsHuntMaterials = factionNeedsMonsterExchangeMaterials(this, worldContext);
+    flat.qiBelowNextRank = this._isQiBelowNextRankRequirement();
     return flat;
   }
 
@@ -499,6 +796,11 @@ export class NPCEntity extends BaseEntity {
   /** @override */
   onPreTick(worldContext) {
     this.state.advanceAge();
+
+    // 反应层刺激队列每日清理过期刺激（ADR-048）：避免未消费刺激堆积。
+    if (this.stimulusQueue) {
+      this.stimulusQueue.pruneExpired(worldContext.currentDay ?? worldContext.day ?? 0);
+    }
 
     // 记忆每日衰减（ADR-019）：强度随时间淡去，强度归零的记忆被清理。
     if (this.memory) this.memory.decayTick(1);
@@ -517,6 +819,10 @@ export class NPCEntity extends BaseEntity {
 
     // 关系驱动派生状态（ADR-028）：关系对象（支援同门/恩人）失效即清空锁定目标。
     this._refreshRelationshipState(worldContext);
+
+    // 大事件 → 动态决策（ADR-048）：遇仇人/知晓机缘等新事件即时压刺激 + 请求立即重决策。
+    // 在复仇/关系派生状态刷新之后调用，使其能读到本 tick 最新的 hasRevengeTarget 等。
+    this._checkEventReplan(worldContext);
 
     const deathResult = this.state.checkNaturalDeath();
     if (deathResult && deathResult.died) {
@@ -539,6 +845,11 @@ export class NPCEntity extends BaseEntity {
     }
 
     this._refreshEconomyMaterialState(worldContext);
+    this._passiveQiAbsorb(worldContext);
+    this._dailyHpRegen();
+    // 能力系统（ADR-042）：推进活跃 Effect 倒计时（duration buff/debuff 到期对称撤销）。
+    // 阶段1 锁血为 instant 无活跃实例，此调用为后续阶段2 buff 类 Effect 预备，零开销。
+    if (this.abilityComponent) this.abilityComponent.tick();
     this._tryBreakthrough();
 
     this.state.set('dutyFulfilled', false);

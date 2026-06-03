@@ -36,6 +36,7 @@
     "npcCounterOrderWeight": 2.5
   },
   "_comment_behaviorByTier": "行为树分档（BT tier）的感知/移动/战斗差异参数，由 MonsterSpawner 按 grade 选取后覆盖全局 combat 默认值。grade 1-2=tier1，3-4=tier2，5+=tier3。",
+  "_comment_idleBehavior": "无猎物时的本能分化（2026-06-02 行为精准化）：让妖兽不再 96% 纯游荡，而是按本能在 觅食游猎(forage)/归巢栖息(lair)/游荡(wander) 间切换，体现领地与巢穴意识。lairChance=每次重选目标时归巢栖息的概率（高阶更恋巢）；lairRestDays=归巢后栖息天数；forageChance=漫游时进入远程觅食的概率（低阶更勤觅食）；packCohesion=群居物种(swarmBehavior)向附近同族聚拢的概率。",
   "behaviorByTier": {
     "tier1": {
       "senseRange": 5,
@@ -45,7 +46,11 @@
       "minOrderGapToHunt": 0,
       "killChanceFactor": 0.18,
       "npcCounterDamageBase": 28,
-      "npcCounterOrderWeight": 2.0
+      "npcCounterOrderWeight": 2.0,
+      "lairChance": 0.18,
+      "lairRestDays": 2,
+      "forageChance": 0.5,
+      "packCohesion": 0.4
     },
     "tier2": {
       "senseRange": 9,
@@ -55,7 +60,11 @@
       "minOrderGapToHunt": 5,
       "killChanceFactor": 0.22,
       "npcCounterDamageBase": 35,
-      "npcCounterOrderWeight": 2.5
+      "npcCounterOrderWeight": 2.5,
+      "lairChance": 0.28,
+      "lairRestDays": 3,
+      "forageChance": 0.4,
+      "packCohesion": 0.45
     },
     "tier3": {
       "senseRange": 14,
@@ -65,7 +74,11 @@
       "minOrderGapToHunt": 10,
       "killChanceFactor": 0.26,
       "npcCounterDamageBase": 42,
-      "npcCounterOrderWeight": 3.0
+      "npcCounterOrderWeight": 3.0,
+      "lairChance": 0.42,
+      "lairRestDays": 5,
+      "forageChance": 0.3,
+      "packCohesion": 0.5
     }
   },
   "_comment_lifespan": "妖兽寿元（与 NPC 同一套到寿曲线，按阶位决定，整体比同等修为人类更长——妖兽天生寿元长）。baseYears/varianceYears 单位为年；death 段为寿元曲线参数，与 game-config.json naturalDeath 同义（age<startRatio*maxAge 不死，到 100% 必死）。",

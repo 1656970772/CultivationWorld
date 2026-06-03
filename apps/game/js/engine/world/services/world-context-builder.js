@@ -7,8 +7,8 @@
  *     2. 工具委托（寻路 / 找地形格 / 找建筑 / 解析任务地点 / 解析行为目标坐标）→ 委托 host(TickManager)；
  *     3. 势力 AI（扩张/攻伐/结盟/贸易/态势/晋升）→ 委托注入的 FactionAIService。
  *
- * worldContext 的对外形状（被 NPC executor / faction-actions 鸭子调用的方法签名）与重构前完全一致，
- * 因此调用方零改动。infoEvents 数组随 worldContext 暴露，攻击/结盟事件写入其中。
+ * worldContext 的对外形状（被 NPC executor / faction-actions 鸭子调用的方法签名）保持稳定，
+ * 调用方无需改动。infoEvents 数组随 worldContext 暴露，攻击/结盟事件写入其中。
  */
 import { BuildingType } from '../layout-constants.js';
 import { computePath } from '../pathfinding.js';
@@ -34,6 +34,8 @@ export class WorldContextBuilder {
     const infoEvents = [];
 
     return {
+      // 确定性随机源：模拟逻辑统一从 worldContext.rng 取随机，保证同 seed 可复现。
+      rng: host.rng,
       worldState: host.worldEntity.state,
       entityRegistry: host.entityRegistry,
       currentDay: host.worldEntity.currentDay,
@@ -41,6 +43,8 @@ export class WorldContextBuilder {
       questTemplates: host.questTemplates || null,
       tileIndex: host.tileIndex,
       terrainIndex: host.terrainIndex,
+      // 妖兽生成器：供遁地符 executor 读 safeRadius / 地图尺寸，遁向安全带（ADR-042 修正）。
+      monsterSpawner: host.monsterSpawner || null,
       factionVeinOutput: host._calcFactionVeinOutput(),
       balanceConfig: host.balanceConfig,
       modifierTemplates: host.modifierTemplates,
@@ -230,6 +234,19 @@ export class WorldContextBuilder {
             }
             return here;
           }
+          case 'safe_retreat': {
+            // 反应层逃命/撤退落点（ADR-048）：奔向本势力总部（最安全锚点）；
+            // 散修无总部时退向最近的势力总部，再兜底当前位置。
+            const factionId = entity.state?.get('factionId');
+            if (factionId) {
+              const faction = host.entityRegistry.getById(factionId);
+              const hq = faction?.staticData?.headquarters;
+              if (hq && typeof hq.x === 'number') return { x: hq.x, y: hq.y };
+            }
+            const orgs = host.entityRegistry.getByType('faction')
+              .filter(f => f.alive && f.staticData?.headquarters);
+            return host._nearestHq(here, orgs) || here;
+          }
           default:
             return here;
         }
@@ -269,7 +286,8 @@ export class WorldContextBuilder {
         return factionAI.expandTerritory(factionId);
       },
       attackEnemy(factionId) {
-        return factionAI.attackEnemy(factionId, this.infoEvents);
+        // 透传 worldContext（this）使攻战致死走统一伤害管线 applyDamage（ADR-042：锁血/遁地）。
+        return factionAI.attackEnemy(factionId, this.infoEvents, this);
       },
       formAlliance(factionId) {
         return factionAI.formAlliance(factionId, this.infoEvents);

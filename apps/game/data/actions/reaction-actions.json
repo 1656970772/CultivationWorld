@@ -1,0 +1,80 @@
+[
+  {
+    "id": "act_npc_react_flee",
+    "name": "逃命",
+    "description": "反应层行为（ADR-048）：遭袭重伤/濒死时仓皇逃离战场，奔向本势力总部附近安全处并脱离追踪。由 ReactiveNode 在被攻击刺激命中且血量危急时抢占执行，可打断闭关/游历等长链行为。requiresTravel 走 safe_retreat resolver。",
+    "category": "reaction",
+    "weight": 1,
+    "valueScore": 0,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" }
+    },
+    "effects": {},
+    "costs": [],
+    "yields": [],
+    "duration": 3,
+    "requiresTravel": true,
+    "targetResolver": "safe_retreat",
+    "distanceCostPerTile": 0.02,
+    "executorId": "npc_react_flee"
+  },
+  {
+    "id": "act_npc_react_retreat",
+    "name": "暂避锋芒",
+    "description": "反应层行为（ADR-048）：遭袭后血量尚可但自忖不敌，主动撤往安全处暂避锋芒（比逃命从容）。由 ReactiveNode 在被攻击刺激命中、血量安全但打不过时抢占执行。requiresTravel 走 safe_retreat resolver。",
+    "category": "reaction",
+    "weight": 1,
+    "valueScore": 0,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" }
+    },
+    "effects": {},
+    "costs": [],
+    "yields": [],
+    "duration": 2,
+    "requiresTravel": true,
+    "targetResolver": "safe_retreat",
+    "distanceCostPerTile": 0.02,
+    "executorId": "npc_react_retreat"
+  },
+  {
+    "id": "act_npc_react_heal",
+    "name": "应急回血",
+    "description": "反应层行为（ADR-048）：遭袭后血量偏低，优先服用回血丹（reaction.json healPillId）回血，无丹则就地静养调息小幅回血并减伤。由 ReactiveNode 在被攻击刺激命中、血量偏低时抢占执行。原地行为（不移动）。",
+    "category": "reaction",
+    "weight": 1,
+    "valueScore": 0,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" }
+    },
+    "effects": {},
+    "costs": [],
+    "yields": [],
+    "duration": 1,
+    "requiresTravel": false,
+    "targetResolver": "self",
+    "executorId": "npc_react_heal"
+  },
+  {
+    "id": "act_npc_react_counter",
+    "name": "奋起反击",
+    "description": "反应层行为（ADR-048）：遭袭后血量安全且自忖能胜（来犯者修为明显偏低），就地反击来犯者一击，走统一伤害管线 applyDamage（锁血/遁地通用）。由 ReactiveNode 在被攻击刺激命中、血量安全且敌弱时抢占执行。来犯者由刺激 payload.killerId 定位（存入 state._reactCounterTargetId）。原地行为。",
+    "category": "reaction",
+    "weight": 1,
+    "valueScore": 0,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" }
+    },
+    "effects": {},
+    "costs": [],
+    "yields": [],
+    "duration": 1,
+    "requiresTravel": false,
+    "targetResolver": "self",
+    "executorId": "npc_react_counter"
+  }
+]

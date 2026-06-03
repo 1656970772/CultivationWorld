@@ -7,12 +7,11 @@
     "topNeedsCount": 3
   },
   "npc": {
-    "_comment": "NPC AI：个体决策相对简单。decisionInterval 决策周期（天）：每次大决策后随机休整 min~max 天，期间原地修炼，到期才重新评估需求并规划，使各 NPC 决策时机错开、避免同 tick 齐步行动。",
+    "_comment": "NPC AI：个体决策相对简单。无决策冷却——空闲时每天都可重新评估需求并规划（不再有 3~12 天静候期，避免修炼被战斗打断后长期空闲卡进度）。仅用 decisionPhaseMax 做【开局错相】：每个 NPC 初始随机错开 0~decisionPhaseMax 天首次决策，避免所有 NPC 同 tick 齐步规划造成峰值；错相用完后每天都能决策。",
     "maxDepth": 10,
     "maxIterations": 300,
     "topNeedsCount": 3,
-    "decisionIntervalMin": 3,
-    "decisionIntervalMax": 12,
+    "decisionPhaseMax": 12,
     "decision": {
       "_comment": "GOAP 规划器参数（ADR-021 重构后）：step cost 只用纯路径代价，风险/价值/上头等均已迁移至 utility 段。costFloor 防止 A* cost 归零或为负。",
       "costFloor": 0.1

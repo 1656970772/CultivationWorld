@@ -6,7 +6,11 @@
     "stonePerTerritory": 1,
     "disciplesPerDay": 1,
     "maxDisciplesBase": 100,
-    "maxDisciplesPerTerritory": 30
+    "maxDisciplesPerTerritory": 30,
+    "_disciplesAnchorComment": "tuning-v6 2026-06-01: 纸面弟子锚定真实活 NPC（修 ADR-034/035 抽象资源脱钩病根）。弟子上限=min(领地容量, 真实活NPC×discipleNpcRatio)；超出按 discipleRegressRate 每天流失。真实 NPC 凋零→纸面弟子回落→势力可被攻灭。",
+    "discipleNpcRatio": 25,
+    "discipleRegressRate": 3,
+    "discipleFloor": 0
   },
   "veinOutput": {
     "_comment": "灵脉地块的每日灵石产出（低级灵石单位）",
@@ -74,10 +78,10 @@
     "enabled": true,
     "maxStacksPerAction": 1,
     "items": [
-      { "itemId": "spirit_herb", "contribution": 10, "monthlyContribution": 10, "factionQty": 1 },
-      { "itemId": "ore", "contribution": 10, "monthlyContribution": 10, "factionQty": 1 },
-      { "itemId": "monster_core", "contribution": 18, "monthlyContribution": 18, "factionQty": 1 },
-      { "itemId": "beast_material", "contribution": 14, "monthlyContribution": 14, "factionQty": 1 }
+      { "itemId": "mat_century_ginseng", "contribution": 10, "monthlyContribution": 10, "factionQty": 1 },
+      { "itemId": "mat_black_iron_ore", "contribution": 10, "monthlyContribution": 10, "factionQty": 1 },
+      { "itemId": "monster_core_g1", "contribution": 18, "monthlyContribution": 18, "factionQty": 1 },
+      { "itemId": "beast_material_g1", "contribution": 14, "monthlyContribution": 14, "factionQty": 1 }
     ]
   },
   "npcExchange": {
@@ -90,7 +94,7 @@
         "contributionCost": 8,
         "stoneCost": 20,
         "requiredFactionItems": [
-          { "itemId": "spirit_herb", "qty": 1 }
+          { "itemId": "mat_century_ginseng", "qty": 1 }
         ]
       },
       "breakthrough_pill": {
@@ -103,21 +107,29 @@
         ]
       },
       "artifact_low": {
-        "itemId": "item_artifact_low",
+        "itemId": "artifact_green_sword",
         "qty": 1,
         "contributionCost": 120,
         "stoneCost": 500,
         "requiredFactionItems": [
           { "itemId": "beast_material_g2", "qty": 2 },
-          { "itemId": "ore", "qty": 2 }
+          { "itemId": "mat_black_iron_ore", "qty": 2 }
         ]
       }
     },
     "useItems": {
+      "pillEffects": {
+        "_comment": "丹药机制化开关（ADR-042 阶段2）。enabled=true 时聚气丹/破境丹效果经通用 Effect 原语（data/effects/core-effects.json 的 ge_add_qi/ge_add_progress/ge_add_breakthrough_bonus）由 EffectEngine 结算，数值取自 items.json 各丹药的 effects 字段；false 时走旧的直接 state.set。数值取自同一份 items.json 配置。",
+        "enabled": true
+      },
       "qiPill": {
+        "_comment": "聚气丹（低阶丹）：真气可无限累积、服用无境界/进度限制。但低阶丹对高境界效果递减——按当前大境界与丹药基准境界(baseRankId)的阶差，每差一阶乘 rankDecay。effectiveQiGain = qiGain × rankDecay^max(0, 当前order - baseOrder)。凡人/炼气吃满 120，筑基≈42，金丹≈15，元婴≈5……越高越鸡肋，符合'低阶弹药对高境界越来越差'（ADR-040）。",
         "itemId": "item_qi_pill",
         "qiGain": 120,
-        "progressGain": 0.01
+        "progressGain": 0.01,
+        "baseRankId": "qi_refining",
+        "rankDecay": 0.35,
+        "minQiGain": 1
       },
       "breakthroughPill": {
         "itemId": "item_breakthrough_pill",

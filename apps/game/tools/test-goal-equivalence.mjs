@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * 阶段 0 零漂移验证：Goal 抽取后，BehaviorSystem 走 Goal 路径的规划结果
+ * Goal 等价性验证：Goal 抽取后，BehaviorSystem 走 Goal 路径的规划结果
  * 必须与"直接对 getTopNeeds 的 goalState 逐个 GOAP 规划"完全一致。
  *
  * 用法：node tools/test-goal-equivalence.mjs
@@ -115,7 +115,7 @@ for (let i = 0; i < 400; i++) {
 }
 
 if (mismatches === 0) {
-  console.log(`Goal 等价性测试通过：${total} 用例，GOAP 主路径行为链零漂移`);
+  console.log(`Goal 等价性测试通过：${total} 用例`);
   process.exit(0);
 } else {
   console.error(`Goal 等价性测试失败：${mismatches}/${total} 用例不一致`);

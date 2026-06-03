@@ -15,8 +15,10 @@ export class MonsterState extends RuntimeState {
    * @param {Object} def      monsters.json 妖兽定义
    * @param {Object} [opts]
    * @param {Object} [opts.lifespanConfig] 寿元配置（来自 monster-spawn.json lifespan 段）
+   * @param {import('../abstract/rng.js').Rng} [opts.rng] 确定性随机源。
    */
   constructor(def, opts = {}) {
+    const rng = opts.rng;
     const attrs = def.attributes || {};
     const maxHp = (attrs.vitality || 30) * 10;
 
@@ -27,12 +29,12 @@ export class MonsterState extends RuntimeState {
     const baseYears = gradeLife ? gradeLife.baseYears : (def.grade * 120 + 80);
     const varianceYears = gradeLife ? gradeLife.varianceYears : baseYears * 0.2;
 
-    const maxAgeYears = baseYears + (Math.random() - 0.5) * 2 * varianceYears;
+    const maxAgeYears = baseYears + (rng.next() - 0.5) * 2 * varianceYears;
     const maxAgeDays = Math.max(1, Math.floor(maxAgeYears * daysPerYear));
 
     const initMin = life.initialAgeRatioMin ?? 0.2;
     const initMax = life.initialAgeRatioMax ?? 0.7;
-    const ageRatio = initMin + Math.random() * (initMax - initMin);
+    const ageRatio = initMin + rng.next() * (initMax - initMin);
     const ageDays = Math.floor(maxAgeDays * ageRatio);
 
     super({
@@ -64,6 +66,7 @@ export class MonsterState extends RuntimeState {
       grudgeTargetId: null,
     });
 
+    this._rng = rng;
     this._daysPerYear = daysPerYear;
     const death = life.death || {};
     this._naturalDeath = {
@@ -99,7 +102,7 @@ export class MonsterState extends RuntimeState {
 
     const t = (ageDays - threshold) / (maxAgeDays - threshold);
     const deathChance = minChance + (maxChance - minChance) * t * t;
-    const roll = Math.random();
+    const roll = this._rng.next();
     return { died: roll < deathChance, deathChance, roll };
   }
 }

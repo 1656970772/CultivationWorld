@@ -4,7 +4,7 @@
  *
  * 覆盖：
  *   1) NPC 关系驱动 Goal：
- *      - goalsEnabled=false → collectExtraGoals 不产出关系 Goal（零漂移回退）。
+ *      - goalsEnabled=false → collectExtraGoals 不产出关系 Goal。
  *      - 高强度 same_sect 同门陷入争斗（hasRevengeTarget）且在驰援范围 → 产出 assist_sect_mate Goal，
  *        锁定 targetRelationshipId。
  *      - 高强度 enemy 边 + goalsEnabled → RelationshipSystem.topEdgeOfType('enemy') 达门槛
@@ -40,7 +40,8 @@ const gameConfig = load('data/config/game-config.json');
 const monsterDefs = load('data/definitions/monsters.json');
 
 ItemRegistry.clear();
-ItemRegistry.loadFromArray(load('data/definitions/resources.json'));
+ItemRegistry.loadFromArray(load('data/definitions/macro-resources.json'));
+ItemRegistry.loadFromArray(['currency','material','pill','artifact','talisman','technique'].flatMap(c => load(`data/items/${c}.json`).items));
 
 let failed = 0;
 const assert = (c, m) => { if (!c) { console.error('  FAIL:', m); failed++; } else { console.log('  OK:', m); } };
@@ -84,7 +85,7 @@ console.log('1) NPC 关系驱动 Goal');
     const reg = mkRegistry([me, ally]);
     const goals = me.collectExtraGoals({ entityRegistry: reg });
     const relGoals = goals.filter(g => g.source === GoalSource.RELATIONSHIP);
-    assert(relGoals.length === 0, 'goalsEnabled=false 时不产出关系 Goal（零漂移）');
+    assert(relGoals.length === 0, 'goalsEnabled=false 时不产出关系 Goal');
   }
 
   // (b) 高强度同门遭袭 → 产出 assist_sect_mate Goal
@@ -223,7 +224,7 @@ console.log('3) MonsterSpawner 群居成簇生成');
     monsterPackConfig: null,
   });
   const offMonsters = spawnerOff.spawn();
-  assert(offMonsters.length > 0, `关闭成簇时仍正常生成（${offMonsters.length} 只，零漂移）`);
+  assert(offMonsters.length > 0, `关闭成簇时仍正常生成（${offMonsters.length} 只）`);
 }
 
 // —— 4) territory_threat 建边 + 衰减 ——

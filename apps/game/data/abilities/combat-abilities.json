@@ -1,0 +1,27 @@
+{
+  "_description": "GameplayAbility 定义（ADR-042）。id 以 ga_ 开头（命名规范见 AGENTS.md）。abilityTag: 拥有能力时授予的查询标签。triggerTags: 持有任一即被动激活。blockedByTags: 持有任一则禁用。requiredItems: 激活消耗道具。grantsEffects: 激活时授予的 Effect（引用 ge_*）。executor: 自定义执行器名。字段说明见 docs/systems/gameplay-ability-system.md §5。",
+  "abilities": [
+    {
+      "id": "ga_lock_hp",
+      "name": "锁血保命",
+      "abilityTag": "Ability.LockHP",
+      "triggerTags": ["Trigger.LethalDamage"],
+      "blockedByTags": ["Immune.Crush", "Immune.LockHP"],
+      "requiredItems": [],
+      "grantsEffects": ["ge_lock_hp"],
+      "executor": null,
+      "cooldownDays": 0
+    },
+    {
+      "id": "ga_escape_talisman",
+      "name": "遁地符",
+      "abilityTag": "Ability.Escape",
+      "triggerTags": ["State.Dying"],
+      "blockedByTags": [],
+      "requiredItems": [{ "itemId": "item_escape_talisman", "amount": 1 }],
+      "grantsEffects": [],
+      "executor": "escape_teleport",
+      "cooldownDays": 0
+    }
+  ]
+}

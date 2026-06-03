@@ -7,7 +7,7 @@
  *
  * 设计要点：
  * - Goal 是"想达成的世界状态"+ 一个可比较的优先级评分(score)。
- * - score 默认等于 priority（与重构前 Need 排序口径一致，保证行为零漂移）；
+ * - score 默认等于 priority（沿用 Need 排序口径）；
  *   情绪/执念等调制层后续通过 modulators 叠加，不改动既有口径。
  */
 
@@ -50,6 +50,16 @@ export class Goal {
     this.tag = config.tag || null;
 
     /**
+     * 选行策略（2026-06-03，ADR-047）：
+     * - 'astar'(缺省)：走 A* 最优规划（折叠多步到目标），适合有明确步骤链的目标。
+     * - 'greedy'：跳过 A* 折叠，直接在「能推进目标的可执行行为」间按推进性价比【加权随机】选一步。
+     *   适合修炼这类"重复累积、无唯一最优、应换着做"的目标——避免 A* 因游历单步推进量大而恒偏游历、
+     *   导致行为一边倒（见 ADR-047 修炼选行均衡）。
+     * @type {'astar'|'greedy'}
+     */
+    this.selectStrategy = config.selectStrategy || 'astar';
+
+    /**
      * 调制项列表，供情绪/执念等层叠加。元素形如 { label, deltaPriority, deltaUrgency, mult }。
      * 仅用于可解释性与调试，最终评分由 score() 汇总。
      */
@@ -57,7 +67,7 @@ export class Goal {
 
     /**
      * 考量因素列表（ADR-020）。每个 consideration 经响应曲线映射到 [0,1]，相乘得到
-     * 「乘法式效用」(Utility AI 标准做法)。为空时 score() 退化为纯加法（行为零漂移）。
+     * 「乘法式效用」(Utility AI 标准做法)。为空时 score() 退化为纯加法。
      * @type {import('./consideration.js').Consideration[]}
      */
     this.considerations = [];
@@ -71,7 +81,7 @@ export class Goal {
 
   /**
    * 设置考量因素并立即求值缓存其乘积（供 score() 使用）。
-   * 由 PlannerNode/实体在排序前调用；不调用则 considerations 不参与评分（零漂移）。
+   * 由 PlannerNode/实体在排序前调用；不调用则 considerations 不参与评分。
    * @param {import('./consideration.js').Consideration[]} considerations
    * @param {Object} entityState
    * @param {Object} worldContext
@@ -89,7 +99,7 @@ export class Goal {
     }));
   }
 
-  /** 考量因素乘积（无考量因素时为 1，保证零漂移）。 */
+  /** 考量因素乘积（无考量因素时为 1）。 */
   _considerationProduct() {
     if (!this._considerationTrace || this._considerationTrace.length === 0) return 1;
     let prod = 1;
@@ -116,7 +126,7 @@ export class Goal {
    *
    * 公式：score = (priority + Σdelta) × Π(modulator.mult) × Π(consideration)
    *
-   * - 无 considerations 且无 modulators 时严格等于 priority（与重构前口径一致，行为零漂移）。
+   * - 无 considerations 且无 modulators 时严格等于 priority。
    * - considerations 提供「乘法式」考量因素(修炼需求×瓶颈程度×资源充足度)，∈[0,1]，
    *   缺省时乘积为 1，不影响评分。
    * @returns {number}
@@ -144,7 +154,7 @@ export class Goal {
 
   /**
    * 从一个已评估的 Need 构造 Goal。
-   * priority/urgency/goalState 全部沿用 Need 的评估结果，确保零漂移。
+   * priority/urgency/goalState 全部沿用 Need 的评估结果。
    * @param {import('./need.js').Need} need
    * @returns {Goal}
    */
@@ -158,6 +168,7 @@ export class Goal {
       priority: need.priority,
       urgency: need.urgency,
       tag: 'need',
+      selectStrategy: need.selectStrategy || 'astar',
     });
   }
 

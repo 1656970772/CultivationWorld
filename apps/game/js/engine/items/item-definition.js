@@ -8,7 +8,7 @@ export class ItemDefinition {
    * @param {Object} config
    * @param {string} config.id        唯一 ID
    * @param {string} config.name      显示名
-   * @param {string} config.category  分类: 'resource' | 'prop'
+   * @param {string} config.category  分类（ADR-043）：可持有物品 currency/material/pill/artifact/talisman/technique；势力宏观资源 supply/population
    * @param {boolean} [config.stackable=true] 是否可堆叠
    * @param {string} [config.description]
    * @param {Object} [config.properties]  附加属性
@@ -26,12 +26,24 @@ export class ItemDefinition {
     Object.freeze(this);
   }
 
-  isResource() {
-    return this.category === 'resource';
+  /** 势力宏观资源（粮食/弟子），ADR-043。 */
+  isMacroResource() {
+    return this.category === 'supply' || this.category === 'population';
   }
 
-  isProp() {
-    return this.category === 'prop';
+  /** 货币（灵石），可计价亦可服用吸纳真气，ADR-006/043。 */
+  isCurrency() {
+    return this.category === 'currency';
+  }
+
+  /** 炼丹炼器材料/天材地宝，ADR-043。 */
+  isMaterial() {
+    return this.category === 'material';
+  }
+
+  /** NPC 可持有的实物道具（货币/材料/丹药/法宝/符/功法），区别于势力宏观资源。 */
+  isHoldable() {
+    return !this.isMacroResource();
   }
 
   toJSON() {

@@ -1,4 +1,46 @@
 import { ItemRegistry } from '../items/item-registry.js';
+import { EffectEngine } from '../abstract/gameplay-effect.js';
+import { EffectPool } from '../pools/effect-pool.js';
+
+/**
+ * 丹药机制化开关（ADR-042 阶段2）：economy.npcExchange.useItems.pillEffects.enabled（默认 true）。
+ * 开则丹药效果经 data/effects 的 Instant Effect 由 EffectEngine 结算；关则回退旧的直接 state.set。
+ */
+function pillEffectsEnabled(worldContext) {
+  const economy = economyConfigFrom(worldContext);
+  return economy?.npcExchange?.useItems?.pillEffects?.enabled !== false;
+}
+
+/**
+ * 通用"消耗物品→施加其挂载 Effect"入口（ADR-042 阶段2 增强）。
+ *
+ * 从物品定义（items.json）的 effects 字段读取该物品挂载的通用 Effect 列表，逐条经
+ * EffectEngine.applyEffect(entity, def, { spec }) 结算——【数值来自物品自身 effects 项】，
+ * 而非写死在 Effect 里。丹药/灵草/灵果/强者精血等任何"服用即生效"的来源都走此入口，
+ * 复用同一批通用 Effect 原语（ge_add_qi/ge_add_hp/ge_add_progress/...）。
+ *
+ * @param {Object} entity 目标实体（须有 abilityComponent/attributes/state）
+ * @param {string} itemId 物品 id（从 ItemRegistry 读其 effects）
+ * @returns {{ applied: boolean, deltas: Object }} deltas: {attribute: 累计增量}，供叙事事件取实际增量
+ */
+export function applyItemEffects(entity, itemId) {
+  const def = ItemRegistry.get(itemId);
+  const specs = def?.properties?.effects || def?.effects;
+  if (!Array.isArray(specs) || specs.length === 0) return { applied: false, deltas: {} };
+
+  const deltas = {};
+  let applied = false;
+  for (const spec of specs) {
+    const effDef = EffectPool.get(spec.effect);
+    if (!effDef) continue;
+    const res = EffectEngine.applyEffect(entity, effDef, { spec });
+    applied = applied || res.applied;
+    for (const m of res.mods || []) {
+      deltas[m.attribute] = (deltas[m.attribute] || 0) + m.delta;
+    }
+  }
+  return { applied, deltas };
+}
 
 function economyConfigFrom(worldContext) {
   return worldContext?.balanceConfig?.economy || worldContext?.economyConfig || worldContext || {};
@@ -19,7 +61,7 @@ function artifactBonus(itemId) {
 
 function isArtifact(itemId) {
   const def = ItemRegistry.get(itemId);
-  return def?.category === 'artifact' || itemId?.startsWith?.('item_artifact_');
+  return def?.category === 'artifact';
 }
 
 function resolveFaction(entity, worldContext) {
@@ -72,9 +114,7 @@ function missingFactionItems(faction, required) {
 }
 
 function isMonsterExchangeItem(itemId) {
-  return itemId === 'monster_core'
-    || itemId === 'beast_material'
-    || /^monster_core_g\d+$/.test(itemId || '')
+  return /^monster_core_g\d+$/.test(itemId || '')
     || /^beast_material_g\d+$/.test(itemId || '');
 }
 
@@ -260,14 +300,22 @@ export function useQiPill(entity, worldContext, options = {}) {
   }
 
   if (options.consumeItem !== false) entity.inventory.remove(itemId, 1);
-  const qiGain = cfg.qiGain ?? 120;
+  const baseQiGain = cfg.qiGain ?? 120;
   const progressGain = cfg.progressGain ?? 0.01;
 
+  // ADR-040: 低阶丹对高境界效果递减（数值与参数现来自 items.json 该丹药的 effects 项）。
+  let qiGain = computeQiPillGain(entity, cfg, baseQiGain);
+
   if (options.applyState !== false) {
-    addStateNumber(entity, 'qi', qiGain);
-    const nextProgress = Math.min(1, stateNumber(entity, 'cultivationProgress') + progressGain);
-    entity.state.set('cultivationProgress', nextProgress);
-    entity.state.set('totalProgress', nextProgress + stateNumber(entity, 'insight'));
+    if (pillEffectsEnabled(worldContext)) {
+      // ADR-042 阶段2 增强：经通用 Effect 原语结算，数值取自物品 effects（rankDecay/clamp 由 spec 表达）。
+      const { deltas } = applyItemEffects(entity, itemId);
+      qiGain = deltas.qi ?? qiGain;
+    } else {
+      addStateNumber(entity, 'qi', qiGain);
+      const nextProgress = Math.min(1, stateNumber(entity, 'cultivationProgress') + progressGain);
+      entity.state.set('cultivationProgress', nextProgress);
+    }
   }
 
   return {
@@ -276,9 +324,36 @@ export function useQiPill(entity, worldContext, options = {}) {
     eventType: 'use_qi_pill',
     itemId,
     qiGain,
+    baseQiGain,
     progressGain,
-    description: `${entity.name || entity.staticData?.name || entity.id} 服用聚气丹，真气与修炼进度增长`,
+    description: `${entity.name || entity.staticData?.name || entity.id} 服用聚气丹，真气+${Math.round(qiGain)}`,
   };
+}
+
+/**
+ * 计算一颗聚气丹对当前实体的【实际真气增量】，含按境界衰减（ADR-040）。
+ * @param {Object} entity NPCEntity（需可读 rankId 与 _ranksData）
+ * @param {Object} cfg economy.npcExchange.useItems.qiPill 配置
+ * @param {number} baseQiGain 丹药基础真气量
+ * @returns {number} 实际真气增量
+ */
+export function computeQiPillGain(entity, cfg, baseQiGain) {
+  const decay = cfg.rankDecay;
+  const baseRankId = cfg.baseRankId;
+  const minQiGain = cfg.minQiGain ?? 1;
+  // 未配置衰减 → 退回固定量（向后兼容）
+  if (!decay || decay >= 1 || !baseRankId) return baseQiGain;
+
+  const ranks = entity._ranksData || [];
+  if (ranks.length === 0) return baseQiGain;
+  const curRankId = entity.state.get('rankId') || 'mortal';
+  const curRank = ranks.find(r => r.id === curRankId);
+  const baseRank = ranks.find(r => r.id === baseRankId);
+  if (!curRank || !baseRank) return baseQiGain;
+
+  const step = Math.max(0, (curRank.order ?? 0) - (baseRank.order ?? 0));
+  const effective = baseQiGain * Math.pow(decay, step);
+  return Math.max(minQiGain, effective);
 }
 
 export function useBreakthroughPill(entity, worldContext, options = {}) {
@@ -290,14 +365,21 @@ export function useBreakthroughPill(entity, worldContext, options = {}) {
   }
 
   if (options.consumeItem !== false) entity.inventory.remove(itemId, 1);
-  const qiGain = cfg.qiGain ?? 300;
-  const bonus = cfg.breakthroughBonus ?? 0.08;
+  let qiGain = cfg.qiGain ?? 300;
+  let bonus = cfg.breakthroughBonus ?? 0.08;
   const maxBonus = cfg.maxBreakthroughBonus ?? 0.25;
 
   if (options.applyState !== false) {
-    addStateNumber(entity, 'qi', qiGain);
-    const nextBonus = Math.min(maxBonus, stateNumber(entity, 'breakthroughAidBonus') + bonus);
-    entity.state.set('breakthroughAidBonus', nextBonus);
+    if (pillEffectsEnabled(worldContext)) {
+      // ADR-042 阶段2 增强：经通用 Effect 原语结算，数值取自物品 effects（qi 直加、突破助益累加并 clamp 至 maxBonus）。
+      const { deltas } = applyItemEffects(entity, itemId);
+      qiGain = deltas.qi ?? qiGain;
+      if (deltas.breakthroughAidBonus !== undefined) bonus = deltas.breakthroughAidBonus;
+    } else {
+      addStateNumber(entity, 'qi', qiGain);
+      const nextBonus = Math.min(maxBonus, stateNumber(entity, 'breakthroughAidBonus') + bonus);
+      entity.state.set('breakthroughAidBonus', nextBonus);
+    }
   }
 
   return {

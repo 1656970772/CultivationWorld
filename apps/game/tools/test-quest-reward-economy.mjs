@@ -26,8 +26,8 @@ const {
 } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/npc/npc-economy.js')).href);
 
 ItemRegistry.clear();
-ItemRegistry.loadFromArray(load('data/definitions/resources.json'));
-ItemRegistry.loadFromArray(load('data/items/items.json').items);
+ItemRegistry.loadFromArray(load('data/definitions/macro-resources.json'));
+ItemRegistry.loadFromArray(['currency','material','pill','artifact','talisman','technique'].flatMap(c => load(`data/items/${c}.json`).items));
 
 const questTemplates = load('data/quests/quest-templates.json');
 const economyConfig = load('data/balance/economy.json');
@@ -91,8 +91,8 @@ console.log('1) 任务类型额外奖励');
   const npc = mkEntity();
   const faction = mkFaction();
   const result = applyQuestRewardProfile(npc, faction, questTemplates, 3, 'qt_herb', () => 0);
-  ok(npc.inventory.getAmount('spirit_herb') > 0, 'qt_herb 交付后 NPC 获得 spirit_herb');
-  ok(faction.inventory.getAmount('spirit_herb') > 0, 'qt_herb 交付后宗门库存获得 spirit_herb');
+  ok(npc.inventory.getAmount('mat_century_ginseng') > 0, 'qt_herb 交付后 NPC 获得百年人参');
+  ok(faction.inventory.getAmount('mat_century_ginseng') > 0, 'qt_herb 交付后宗门库存获得百年人参');
   ok(result.questItemReward > 0, '任务物品奖励计数大于 0');
 }
 
@@ -100,21 +100,24 @@ console.log('1) 任务类型额外奖励');
   const npc = mkEntity();
   const faction = mkFaction();
   applyQuestRewardProfile(npc, faction, questTemplates, 4, 'qt_slay_monster', () => 0);
-  const monsterLoot = npc.inventory.getAmount('monster_core') + npc.inventory.getAmount('beast_material');
-  ok(monsterLoot > 0, 'qt_slay_monster 交付后 NPC 获得妖兽相关材料');
+  let monsterLoot = 0;
+  for (let g = 1; g <= 9; g++) {
+    monsterLoot += npc.inventory.getAmount(`monster_core_g${g}`) + npc.inventory.getAmount(`beast_material_g${g}`);
+  }
+  ok(monsterLoot > 0, 'qt_slay_monster 交付后 NPC 获得妖兽相关材料（分级 _gN）');
 }
 
 console.log('2) 材料捐献');
 {
-  const npc = mkEntity({ inventory: { spirit_herb: 2 } });
+  const npc = mkEntity({ inventory: { mat_century_ginseng: 2 } });
   const faction = mkFaction();
   const beforeContribution = npc.state.get('contribution');
   const result = donateMaterials(npc, mkWorld(faction));
   ok(result.success, '有可捐材料的宗门 NPC 可以捐献');
-  ok(npc.inventory.getAmount('spirit_herb') === 1, '捐献后 NPC 材料减少');
+  ok(npc.inventory.getAmount('mat_century_ginseng') === 1, '捐献后 NPC 材料减少');
   ok(npc.state.get('contribution') > beforeContribution, '捐献后贡献增加');
   ok(npc.state.get('monthlyContribution') > 0, '捐献后月贡献增加');
-  ok(faction.inventory.getAmount('spirit_herb') === 1, '捐献材料进入宗门库存');
+  ok(faction.inventory.getAmount('mat_century_ginseng') === 1, '捐献材料进入宗门库存');
 }
 
 console.log('3) 贡献兑换与聚气丹消耗');
@@ -124,7 +127,7 @@ console.log('3) 贡献兑换与聚气丹消耗');
     inventory: { low_spirit_stone: 100 },
   });
   const faction = mkFaction();
-  faction.inventory.add('spirit_herb', 1);
+  faction.inventory.add('mat_century_ginseng', 1);
   const redeem = redeemExchangeItem(npc, mkWorld(faction), 'qi_pill');
   ok(redeem.success, '贡献和灵石足够时可兑换聚气丹');
   ok(npc.inventory.getAmount('item_qi_pill') === 1, '兑换后获得 item_qi_pill');
@@ -169,11 +172,11 @@ console.log('4) 破境丹加成与突破判定清空');
 console.log('5) 法宝自动装备');
 {
   const npc = mkEntity();
-  grantItemAndMaybeEquip(npc, 'item_artifact_low', 1);
-  ok(npc.state.get('equippedArtifactId') === 'item_artifact_low', '获得低阶法器后自动装备');
-  grantItemAndMaybeEquip(npc, 'item_artifact_mid', 1);
-  ok(npc.state.get('equippedArtifactId') === 'item_artifact_mid', '获得更高 combatBonus 法宝后自动替换');
-  ok(npc.inventory.getAmount('item_artifact_low') === 1, '被替换的旧法宝回到背包');
+  grantItemAndMaybeEquip(npc, 'artifact_green_sword', 1);
+  ok(npc.state.get('equippedArtifactId') === 'artifact_green_sword', '获得低阶法器后自动装备');
+  grantItemAndMaybeEquip(npc, 'artifact_wulong_halberd', 1);
+  ok(npc.state.get('equippedArtifactId') === 'artifact_wulong_halberd', '获得更高 combatBonus 法宝后自动替换');
+  ok(npc.inventory.getAmount('artifact_green_sword') === 1, '被替换的旧法宝回到背包');
 }
 
 if (failures > 0) {

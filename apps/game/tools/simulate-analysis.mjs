@@ -20,11 +20,12 @@ const configs = {
   factions:       loadJSON('data/entities/factions.json'),
   npcs:           loadJSON('data/entities/npcs.json'),
   ranks:          loadJSON('data/definitions/ranks.json'),
-  items:          loadJSON('data/definitions/resources.json'),
+  items:          loadJSON('data/definitions/macro-resources.json'),
   factionNeeds:   loadJSON('data/needs/faction-needs.json'),
   npcNeeds:       loadJSON('data/needs/npc-needs.json'),
   factionActions: loadJSON('data/actions/faction-actions.json'),
   npcActions:     loadJSON('data/actions/npc-actions.json'),
+  reactionActions: loadJSON('data/actions/reaction-actions.json'),
   worldRules:     loadJSON('data/actions/world-rules.json'),
   questTemplates: loadJSON('data/quests/quest-templates.json'),
   mapData:        loadJSON('data/world/map.json'),
@@ -42,16 +43,22 @@ const configs = {
   balanceUtility:     loadJSON('data/balance/utility.json'),
   balanceReward:      loadJSON('data/balance/reward.json'),
   balanceRelationship: loadJSON('data/balance/relationship.json'),
+  // 反应层（四层 AI 架构 Reaction 层，ADR-048）。默认 enabled=false，不改变现有行为。
+  balanceReaction:    loadJSON('data/balance/reaction.json'),
   monsters:           loadJSON('data/definitions/monsters.json'),
   monsterSpawn:       loadJSON('data/balance/monster-spawn.json'),
-  // 信息传播 / 机会点 / 怀璧其罪系统（ADR-024/025）。默认 enabled=false 零漂移。
+  // 信息传播 / 机会点 / 怀璧其罪系统（ADR-024/025）。默认 enabled=false，不改变现有行为。
   worldNews:          loadJSON('data/world/news.json'),
   worldOpportunities: loadJSON('data/world/opportunities.json'),
   balanceCovet:       loadJSON('data/balance/covet.json'),
-  itemDefs:           loadJSON('data/items/items.json'),
+  itemDefs:           { items: ['currency','material','pill','artifact','talisman','technique'].flatMap(c => loadJSON(`data/items/${c}.json`).items) },
+  // 战斗机制层（ADR-042）：GameplayTag / Effect / Ability 数据驱动。
+  tags:               loadJSON('data/tags/tags.json'),
+  effects:            { effects: [...(loadJSON('data/effects/combat-effects.json')?.effects || []), ...(loadJSON('data/effects/core-effects.json')?.effects || [])] },
+  abilities:          loadJSON('data/abilities/combat-abilities.json'),
 };
 
-// 平衡验证激活态（ADR-021/022/023）：默认配置 enabled=false 保护零漂移；
+// 平衡验证激活态（ADR-021/022/023）：默认配置 enabled=false（不改变现有行为）；
 // 设 UTILITY_ACTIVE=1 时在内存中覆盖开关（不写回 JSON），让 Utility 选目标层 +
 // 期望收益 + 执念 goalMult 生效，用于观测流派分布与人口曲线。
 const UTILITY_ACTIVE = process.env.UTILITY_ACTIVE === '1';
@@ -65,7 +72,7 @@ if (UTILITY_ACTIVE) {
   console.log('[激活态] UTILITY_ACTIVE=1：utility/reward/obsession.goalMult enabled=true（仅内存覆盖，不写回数据）');
 }
 
-// 信息传播 / 机会点 / 怀璧其罪激活态（ADR-024/025）：默认 enabled=false 保护零漂移；
+// 信息传播 / 机会点 / 怀璧其罪激活态（ADR-024/025）：默认 enabled=false（不改变现有行为）；
 // 设 INFO_ACTIVE=1 时在内存中把 news/opportunities/reward/covet 开关覆盖为 true，
 // 用于观测"群体涌向热点"与"怀璧其罪"涌现现象。
 const INFO_ACTIVE = process.env.INFO_ACTIVE === '1';
@@ -75,6 +82,19 @@ if (INFO_ACTIVE) {
   configs.balanceReward = { ...configs.balanceReward, enabled: true };
   configs.balanceCovet = { ...configs.balanceCovet, enabled: true };
   console.log('[激活态] INFO_ACTIVE=1：news/opportunities/reward/covet enabled=true（仅内存覆盖，不写回数据）');
+}
+
+// 反应层激活态（四层 AI 架构 Reaction 层，ADR-048）：默认 reaction.enabled=false（不改变现有行为）；
+// 设 REACTION_ACTIVE=1 时在内存中把 reaction.enabled 与 eventReplan.enabled 覆盖为 true，
+// 用于观测被攻击反应（逃命/回血/反击/暂避）与大事件立即重决策涌现现象。
+const REACTION_ACTIVE = process.env.REACTION_ACTIVE === '1';
+if (REACTION_ACTIVE) {
+  configs.balanceReaction = {
+    ...configs.balanceReaction,
+    enabled: true,
+    eventReplan: { ...(configs.balanceReaction.eventReplan || {}), enabled: true },
+  };
+  console.log('[激活态] REACTION_ACTIVE=1：reaction.enabled + eventReplan.enabled=true（仅内存覆盖，不写回数据）');
 }
 
 // 关系驱动 Goal/妖群/领地（ADR-028）：默认随 relationship.json goalsEnabled（默认开）。
@@ -116,6 +136,54 @@ for (const f of configs.factions) {
     food: f.resources?.food ?? 0,
     stability: f.stability ?? 50,
   };
+}
+
+// ── 行为画像分类映射（2026-06-02：按类别拆分 NPC/妖兽行为，定位"哪类人没做该做的事"）──
+// 势力 id → 势力类型（righteous/evil/demon/neutral/mortal_kingdom）。
+const FACTION_TYPE = {};
+for (const f of configs.factions) FACTION_TYPE[f.id] = f.type || 'unknown';
+
+// 行为画像容器：每个维度（dim）下，每个类别（cat）维护一张「行为名→次数」表 + 该类活跃 tick 总数。
+// dims: role(职位) / rank(境界) / factionType(势力类型) / archetype(流派执念)
+const PROFILE_DIMS = ['role', 'rank', 'factionType', 'archetype'];
+const archetypeProfile = {};
+for (const dim of PROFILE_DIMS) archetypeProfile[dim] = {};
+
+function profileBucket(dim, cat) {
+  if (!cat) cat = '__unknown__';
+  const dimMap = archetypeProfile[dim];
+  if (!dimMap[cat]) dimMap[cat] = { ticks: 0, idle: 0, actions: {}, members: new Set() };
+  return dimMap[cat];
+}
+
+// 取 NPC 当前主执念类型（流派维度），无执念归 none。
+function npcArchetype(ent) {
+  const obs = ent.obsessions?.obsessions;
+  if (!Array.isArray(obs) || obs.length === 0) return 'none';
+  // 取强度最高的执念作为该 NPC 的"流派标签"
+  let top = obs[0];
+  for (const o of obs) if ((o.intensity || 0) > (top.intensity || 0)) top = o;
+  return top.type || 'none';
+}
+
+function classifyNPC(ent) {
+  const fId = ent.state.get('factionId');
+  return {
+    role: ent.state.get('currentRole') || 'none',
+    rank: ent.state.get('rankId') || 'unknown',
+    factionType: fId ? (FACTION_TYPE[fId] || 'wanderer') : 'wanderer',
+    archetype: npcArchetype(ent),
+  };
+}
+
+// 妖兽画像容器：按 grade(阶) / family(族) / type(妖兽/灵兽/上古) 分桶统计 behaviorState 分布。
+const monsterProfile = { grade: {}, family: {}, type: {} };
+function monsterBucket(dim, cat) {
+  if (!cat && cat !== 0) cat = '__unknown__';
+  const dimMap = monsterProfile[dim];
+  const key = String(cat);
+  if (!dimMap[key]) dimMap[key] = { ticks: 0, states: {}, members: new Set() };
+  return dimMap[key];
 }
 
 const engine = new WorldEngine();
@@ -174,6 +242,115 @@ const monsterResourceStats = {
 };
 const eventTypeCounts = {};
 
+// ── NPC 一生回放（2026-06-02）─────────────────────────────────────────
+// 采样若干"有代表性"的 NPC，逐决策点记录它们的一生日记：
+//   每天选了什么行为、什么需求/目标驱动、当时境界/灵气/年龄/位置、发生了什么生平事件。
+// 目的：从"上帝视角全局统计"降落到"单个 NPC 的人生叙事"，肉眼判断 NPC 是否生动（重复/无故事/对大事无反应）。
+// 轻量护栏：只跟踪 LIFELOG_MAX 个 NPC；每个 NPC 只在"行为发生变化 / 有生平事件"时追加一行（变化点压缩），
+// 避免 700 天 × N 人逐天爆量。
+// 当前先跟踪 5 个有代表性的 NPC（验证工具好用后，去掉上限即可扩展到"调试所有人"）。
+const LIFELOG_MAX = 5;
+const lifeTracked = new Map(); // npcId -> { meta, days: [...] }
+
+function rankShort(ent) {
+  return ent.state.get('rankName') || ent.state.get('rankId') || '?';
+}
+
+function npcPosition(ent) {
+  const sp = ent.spatial;
+  if (sp && sp.position) return { x: sp.position.x ?? null, y: sp.position.y ?? null };
+  return null;
+}
+
+// 选定一组要跟踪的 NPC：覆盖不同画像（掌门/长老/外门弟子/散修/复仇者/妖族），保证看点多样。
+function pickLifeTrackTargets() {
+  const npcs = engine.entityRegistry.getByType('npc');
+  const picked = new Map();
+  const tryPick = (label, pred) => {
+    if (picked.size >= LIFELOG_MAX) return;
+    const found = npcs.find(n => !picked.has(n.id) && n.alive !== false && pred(n));
+    if (found) picked.set(found.id, label);
+  };
+  const role = (n) => n.state.get('currentRole') || '';
+  const ftype = (n) => FACTION_TYPE[n.state.get('factionId')] || 'wanderer';
+  const hasObs = (n, t) => (n.obsessions?.obsessions || []).some(o => o.type === t);
+
+  tryPick('掌门', n => /leader|master|head/.test(role(n)));
+  tryPick('长老', n => /elder/.test(role(n)));
+  tryPick('散修', n => !n.state.get('factionId'));
+  tryPick('复仇者', n => hasObs(n, 'revenge'));
+  tryPick('妖族修士', n => ftype(n) === 'demon');
+  tryPick('夺权野心家', n => hasObs(n, 'power') || hasObs(n, 'supremacy'));
+  tryPick('外门弟子', n => /outer|inner|disciple/.test(role(n)));
+  // 兜底：补足到 LIFELOG_MAX，随便挑还没选的存活 NPC。
+  for (const n of npcs) {
+    if (picked.size >= LIFELOG_MAX) break;
+    if (!picked.has(n.id) && n.alive !== false) picked.set(n.id, '其他');
+  }
+  for (const [id, label] of picked) {
+    const ent = engine.entityRegistry.getById(id);
+    lifeTracked.set(id, {
+      meta: {
+        id, label,
+        name: ent.name || id,
+        factionId: ent.state.get('factionId') || null,
+        factionName: ent.state.get('factionId') ? (initRes[ent.state.get('factionId')]?.name || ent.state.get('factionId')) : '散修',
+        role: role(ent) || '-',
+        gender: ent.state.get('gender') || 'male',
+        bornRank: rankShort(ent),
+        spiritRoot: ent.state.get('spiritRootGrade') || ent.staticData?.get?.('spiritRoot') || null,
+      },
+      days: [],
+      _lastAction: null,
+      _lastObs: '',
+    });
+  }
+}
+
+function obsSignature(ent) {
+  const obs = ent.obsessions?.obsessions || [];
+  return obs.map(o => `${o.type}:${Math.round(o.intensity || 0)}`).sort().join(',');
+}
+
+// 每天对被跟踪 NPC 记一笔（仅在行为变化或有生平事件时落一行，做"变化点压缩"）。
+function recordLifeDay(day, ent, nl, lifeEvents) {
+  const rec = lifeTracked.get(ent.id);
+  if (!rec) return;
+  const exec = nl.execution || {};
+  const isIdle = exec.status === 'idle';
+  const actionName = isIdle ? '空闲' : actName(exec.action?.name || exec.result?.actionName || '空闲');
+  const plan = nl.plan || {};
+  const obsSig = obsSignature(ent);
+
+  // 执念变化也算"变化点"。
+  const obsChanged = obsSig !== rec._lastObs;
+  const actionChanged = actionName !== rec._lastAction;
+  const hasEvent = lifeEvents && lifeEvents.length > 0;
+  if (!actionChanged && !obsChanged && !hasEvent) return; // 无变化，压缩掉
+
+  const mind = typeof ent.getMindSummary === 'function' ? ent.getMindSummary() : { obsessions: [], emotions: {} };
+  rec.days.push({
+    day,
+    action: actionName,
+    needId: plan.needId || nl.execution?.result?.needId || null,
+    needName: plan.needName || null,
+    needPriority: plan.needPriority != null ? Math.round(plan.needPriority) : null,
+    goalSource: plan.goalSource || null,
+    fallback: !!plan.fallback,
+    rank: rankShort(ent),
+    qi: Math.round(ent.state.get('qi') || 0),
+    progress: Number((ent.state.get('cultivationProgress') || 0).toFixed(3)),
+    age: ent.state.get('ageYears') ?? null,
+    pos: npcPosition(ent),
+    obsessions: mind.obsessions.map(o => ({ type: o.type, intensity: Math.round(o.intensity || 0) })),
+    anger: Math.round(mind.emotions?.anger || 0),
+    innerDemon: Math.round(mind.emotions?.inner_demon || 0),
+    events: lifeEvents || [],
+  });
+  rec._lastAction = actionName;
+  rec._lastObs = obsSig;
+}
+
 function addCount(map, key, amount = 1) {
   if (!key) return;
   map[key] = (map[key] || 0) + amount;
@@ -202,6 +379,10 @@ function actName(raw) {
   if (!raw || raw === 'idle') return '空闲';
   return raw.startsWith('act_') ? (ACTION_MAP[raw] || raw) : raw;
 }
+
+// 选定一生回放跟踪对象（初始化后、主循环前）。
+pickLifeTrackTargets();
+console.log(`[一生回放] 跟踪 ${lifeTracked.size} 个 NPC: ${[...lifeTracked.values()].map(r => `${r.meta.label}·${r.meta.name}`).join('、')}`);
 
 // ── 主循环 ─────────────────────────
 const t0 = performance.now();
@@ -246,6 +427,19 @@ for (let day = 1; day <= TOTAL_DAYS; day++) {
     npcActMap[n] = (npcActMap[n] || 0) + 1;
     npcActTotal++;
 
+    // 行为画像（2026-06-02）：把本 tick 的行为按 NPC 的 职位/境界/势力类型/流派执念 分桶累计。
+    {
+      const isIdle = nl.execution?.status === 'idle';
+      const cls = classifyNPC(ent);
+      for (const dim of PROFILE_DIMS) {
+        const b = profileBucket(dim, cls[dim]);
+        b.ticks++;
+        b.members.add(nl.entityId);
+        if (isIdle) b.idle++;
+        else b.actions[n] = (b.actions[n] || 0) + 1;
+      }
+    }
+
     if (nl.plan?.fallback) nFallback++; else if (nl.execution?.status !== 'idle') nGoapOk++;
 
     // 复仇行为链统计（ADR-020）：按本 tick 执行结算的行为/结果累计。
@@ -288,6 +482,30 @@ for (let day = 1; day <= TOTAL_DAYS; day++) {
     if (exAid === 'act_npc_protect_disciple') protectDiscipleTriggers++;
     if (exAid === 'act_npc_visit_master') visitMasterTriggers++;
 
+    // 一生回放（2026-06-02）：先捕获本 tick 的生平事件，再记录这一天（在 _deathInfo/_breakthroughInfo 被清空前）。
+    const lifeEvents = [];
+    if (lifeTracked.has(ent.id)) {
+      if (outcome === 'enemy_slain') lifeEvents.push({ kind: 'kill', text: '手刃仇人' });
+      else if (outcome === 'slain_by_enemy') lifeEvents.push({ kind: 'death', text: '寻仇反被杀' });
+      else if (outcome === 'wounded') lifeEvents.push({ kind: 'hurt', text: '负伤' });
+      if (exAid === 'act_npc_teach_disciple') lifeEvents.push({ kind: 'social', text: '点化徒弟' });
+      if (exAid === 'act_npc_visit_master') lifeEvents.push({ kind: 'social', text: '探望恩师' });
+      if (exAid === 'act_npc_visit_benefactor') lifeEvents.push({ kind: 'social', text: '探望恩人' });
+      if (exAid === 'act_npc_assist_ally') lifeEvents.push({ kind: 'social', text: '驰援同门' });
+      if (ent._breakthroughInfo) {
+        const bi = ent._breakthroughInfo;
+        lifeEvents.push({
+          kind: 'breakthrough',
+          text: bi.success === false ? `突破 ${bi.targetRank || ''} 失败` : `突破至 ${bi.toRank || rankShort(ent)}`,
+        });
+      }
+      if (ent._deathInfo) {
+        const c = ent._deathInfo.cause;
+        const causeText = c === 'natural' ? '寿尽而终' : c === 'slain' ? '死于仇杀' : c === 'monster' ? '殒于妖兽' : `身故(${c})`;
+        lifeEvents.push({ kind: 'death', text: causeText });
+      }
+    }
+
     if (ent._deathInfo) {
       const fId = ent._deathInfo.factionId;
       npcDeathLog.push({
@@ -299,6 +517,11 @@ for (let day = 1; day <= TOTAL_DAYS; day++) {
     if (ent._breakthroughInfo) {
       breakthroughLog.push({ day, ...ent._breakthroughInfo });
       ent._breakthroughInfo = null;
+    }
+
+    // 记录被跟踪 NPC 这一天（变化点压缩）。在死亡事件捕获之后调用，保证最后一行带死亡。
+    if (lifeTracked.has(ent.id)) {
+      recordLifeDay(day, ent, nl, lifeEvents);
     }
   }
 
@@ -326,6 +549,19 @@ for (let day = 1; day <= TOTAL_DAYS; day++) {
       const e = npc.emotions.snapshot().values || {};
       maxAngerHistory = Math.max(maxAngerHistory, e.anger || 0);
       maxInnerDemonHistory = Math.max(maxInnerDemonHistory, e.inner_demon || 0);
+    }
+    // 妖兽行为画像（2026-06-02）：稀疏采样存活妖兽的 behaviorState，按 阶/族/类型 分桶统计分布。
+    for (const m of engine.entityRegistry.getAliveByType('monster')) {
+      const bs = m.state.get('behaviorState') || 'unknown';
+      const grade = m.grade;
+      const family = m.staticData.get('family');
+      const mtype = m.staticData.get('type') || m.type;
+      for (const [dim, cat] of [['grade', grade], ['family', family], ['type', mtype]]) {
+        const b = monsterBucket(dim, cat);
+        b.ticks++;
+        b.members.add(m.id);
+        b.states[bs] = (b.states[bs] || 0) + 1;
+      }
     }
   }
 
@@ -454,6 +690,48 @@ const npcRoster = rosterKeys.map(fKey => {
   };
 });
 
+// ── 行为画像整理（2026-06-02）──────────────────────
+// 把每个 (dim, cat) 的行为表整理成「top 行为 + 占比 + 行为种类数 + 空闲率」，
+// 这是判断"某类人行为是否单一/是否缺失关键行为"的核心证据。
+function buildProfile(dimMaps) {
+  const out = {};
+  for (const [dim, cats] of Object.entries(dimMaps)) {
+    out[dim] = {};
+    for (const [cat, data] of Object.entries(cats)) {
+      const entries = Object.entries(data.actions || data.states || {}).sort(([, a], [, b]) => b - a);
+      const totalActs = entries.reduce((s, [, c]) => s + c, 0);
+      out[dim][cat] = {
+        members: data.members ? data.members.size : 0,
+        ticks: data.ticks,
+        idleRate: data.ticks > 0 ? +((data.idle || 0) / data.ticks).toFixed(3) : 0,
+        actionKinds: entries.length,
+        top: entries.slice(0, 8).map(([name, count]) => ({
+          name, count, pct: totalActs > 0 ? +(count / totalActs * 100).toFixed(1) : 0,
+        })),
+      };
+    }
+  }
+  return out;
+}
+
+const npcProfileOut = buildProfile(archetypeProfile);
+const monsterProfileOut = buildProfile(monsterProfile);
+
+// 终端打印：逐类行为画像（醒来/每轮分析直接看终端即可）。
+function printProfile(title, profileOut, dimLabels) {
+  console.log(`\n========== ${title} ==========`);
+  for (const [dim, cats] of Object.entries(profileOut)) {
+    console.log(`\n--- 维度：${dimLabels[dim] || dim} ---`);
+    const sorted = Object.entries(cats).sort(([, a], [, b]) => b.members - a.members);
+    for (const [cat, info] of sorted) {
+      const topStr = info.top.map(t => `${t.name}(${t.pct}%)`).join('、') || '无';
+      console.log(`  [${cat}] 个体${info.members} 行为种类${info.actionKinds} 空闲率${(info.idleRate * 100).toFixed(0)}% | ${topStr}`);
+    }
+  }
+}
+printProfile('NPC 行为画像', npcProfileOut, { role: '职位', rank: '境界', factionType: '势力类型', archetype: '流派执念' });
+printProfile('妖兽行为画像', monsterProfileOut, { grade: '阶', family: '族', type: '类型' });
+
 // 诊断
 const totalFA = Object.values(factionActMap).reduce((a, b) => a + b, 0);
 const diagnostics = [];
@@ -515,8 +793,27 @@ const reportData = {
     peakAnger: Number(maxAngerHistory.toFixed(2)),
     peakInnerDemon: Number(maxInnerDemonHistory.toFixed(2)),
   },
+  // 行为画像（2026-06-02）：按类别拆分的 NPC/妖兽行为分布，供逐类对标世界观分析。
+  npcProfile: npcProfileOut,
+  monsterProfile: monsterProfileOut,
+  // NPC 一生回放（2026-06-02）：采样 NPC 的逐决策点人生日记（变化点压缩），供"人生回放"tab 渲染。
+  npcLife: [...lifeTracked.values()].map(rec => ({
+    ...rec.meta,
+    deathDay: rec.days.find(d => d.events?.some(e => e.kind === 'death'))?.day ?? null,
+    dayCount: rec.days.length,
+    days: rec.days,
+  })),
   diagnostics,
 };
+
+// 一生回放采集情况打印（醒来/每轮可直接在终端核对数据是否采到）。
+console.log(`\n========== NPC 一生回放（采样 ${lifeTracked.size} 人）==========`);
+for (const rec of lifeTracked.values()) {
+  const last = rec.days[rec.days.length - 1];
+  const deathLine = rec.days.find(d => d.events?.some(e => e.kind === 'death'));
+  const fate = deathLine ? `第${deathLine.day}天${deathLine.events.find(e => e.kind === 'death').text}` : '仍在世';
+  console.log(`  [${rec.meta.label}] ${rec.meta.name}（${rec.meta.factionName}/${rec.meta.role}）变化点 ${rec.days.length} 条，结局：${fate}，末态境界 ${last?.rank || '?'}`);
+}
 
 const outPath = resolve(__dirname, 'report-data.js');
 writeFileSync(outPath, `window.REPORT_DATA = ${JSON.stringify(reportData, null, 2)};`, 'utf-8');

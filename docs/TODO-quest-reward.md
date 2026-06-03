@@ -31,7 +31,7 @@ NPC 完成宗门任务后获得：
 
 ### 1. 前置系统状态
 
-- [x] **道具/物品系统**：已有 `data/items/items.json` 与 `data/definitions/resources.json`。
+- [x] **道具/物品系统**：已有 `data/items/items.json`（统一可持有物品，ADR-043）与 `data/definitions/macro-resources.json`（势力宏观资源）。
 - [x] **妖兽系统**：已有 `data/definitions/monsters.json`，V1 先用任务类型产出妖兽材料。
 - [x] **宗门商店/兑换系统 V1**：已有数据驱动兑换项，后续可扩为完整商店/UI。
 - [ ] **炼丹/炼器系统**：NPC 消费灵石和材料制作物品。

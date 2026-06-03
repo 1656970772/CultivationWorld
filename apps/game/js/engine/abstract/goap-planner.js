@@ -25,7 +25,7 @@ export class GOAPPlanner {
    * @param {?(action: import('./action.js').Action) => number} [costFn]
    *   可选的 step cost 函数：给定 action 返回【本次规划固定】的代价（价值-风险决策用，见 ADR-017）。
    *   A* 要求 step cost 单次规划内稳定，故 costFn 必须对同一 action 返回恒定值（调用方在进规划前算好）。
-   *   不传时回退 action.getPlanCost()，保证既有调用方/golden test 行为不变。
+   *   不传时回退 action.getPlanCost()，保证既有调用方行为不变。
    * @returns {{ success: boolean, plan: import('./action.js').Action[], cost: number, iterations: number }}
    */
   plan(currentState, goalState, availableActions, costFn = null) {

@@ -25,24 +25,40 @@ export class NPCSurvivalEvaluator extends NeedEvaluator {
   }
 }
 
+/**
+ * 修炼需求评估器（硬编码版）。
+ * 注意：当前 need_npc_cultivation 使用 evaluatorType="configurable"（走 data/needs/npc-needs.json
+ * 配置），本类未被启用，仅作为编程式 fallback 保留。突破有两条硬门槛（进度满 + 真气达标），
+ * 故 goalState 与 satisfied 同时考量 totalProgress 与 qiBelowNextRank，避免切回本评估器时丢失真气约束。
+ */
 export class NPCCultivationEvaluator extends NeedEvaluator {
   calculate(entityState, worldContext, need) {
-    // 总进度 = 闭关进度 + 游历感悟。闭关受境界 cultivationCap 上限约束，撞顶后须游历补足。
+    // 突破判断当前境界还差什么：①进度(闭关+游历)；②真气(qiBelowNextRank)。缺哪条补哪条。
     const cultivationProgress = entityState.get('cultivationProgress') || 0;
     const insight = entityState.get('insight') || 0;
     const totalProgress = cultivationProgress + insight;
+    const qiBelowNextRank = !!entityState.get('qiBelowNextRank');
     const factionAtPeace = entityState.get('factionAtPeace');
     let priority = 15;
     let urgency = 0;
 
-    if (totalProgress < 0.3) { priority += 40; urgency += 20; }
+    if (totalProgress < 0.85) { priority += 20; urgency += 10; }
+    if (totalProgress < 0.3) { priority += 10; urgency += 8; }
+    if (qiBelowNextRank) { priority += 15; urgency += 10; }
     if (factionAtPeace) { priority += 15; urgency += 5; }
 
+    // 增量式目标（ADR-047）：每次只规划推进一小步(step=0.05，夹 1.0)，做完重评估，
+    // 与 data/needs/npc-needs.json 的 configurable 版语义一致（破解一次性折叠到 1.0 卡死）。
+    const step = 0.05;
+    const nextTarget = Math.min(totalProgress + step, 1.0);
     return {
       priority: Math.min(100, priority),
       urgency: Math.min(100, urgency),
-      goalState: { totalProgress: { op: 'gte', value: 1.0 } },
-      satisfied: totalProgress >= 1.0,
+      goalState: {
+        totalProgress: { op: 'gte', value: nextTarget },
+        qiBelowNextRank: { op: 'eq', value: false },
+      },
+      satisfied: totalProgress >= 1.0 && !qiBelowNextRank,
     };
   }
 }

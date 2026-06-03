@@ -204,15 +204,24 @@ export class FactionOpenSecretRealmExecutor extends ActionExecutor {
         )
       : [];
 
+    // ADR-040: 秘境历练给【游历感悟 insight】而非直接 cultivationProgress。
+    //   insight 受 insightCap(=1-minCultivationRatio) 封顶，且突破仍要求闭关进度 >= minCultivationRatio，
+    //   故秘境是"游历补充"而非"修炼替代"，不破坏个人闭关节奏。
+    //   加成很小（基础 0.03），且不随境界放大——高境界弟子靠它推进的相对收益自然递减。
+    const cult = worldContext.balanceConfig?.cultivation || {};
+    const minCultivationRatio = cult.minCultivationRatio ?? 0.3;
+    const insightCap = 1 - minCultivationRatio;
+    const baseInsightGain = 0.03;
+
     for (const npc of allNpcs) {
-      const progress = npc.state.get('cultivationProgress') || 0;
-      npc.state.set('cultivationProgress', Math.min(1, progress + 0.05));
+      const insight = npc.state.get('insight') || 0;
+      npc.state.set('insight', Math.min(insightCap, insight + baseInsightGain));
     }
 
     return {
       success: true,
       benefitCount: allNpcs.length,
-      description: `开放秘境，${allNpcs.length} 名弟子修炼进度提升`,
+      description: `开放秘境，${allNpcs.length} 名弟子游历感悟(insight)提升`,
     };
   }
 }

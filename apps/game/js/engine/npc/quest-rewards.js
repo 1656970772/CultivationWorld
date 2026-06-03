@@ -81,7 +81,7 @@ export function applyQuestRewardProfile(entity, faction, questTemplates, difficu
 
   if (faction?.state && profile.factionStability) {
     const current = faction.state.get('stability') || 0;
-    const max = profile.maxStability ?? 105;
+    const max = profile.maxStability ?? 100;
     const gain = Number(profile.factionStability) || 0;
     faction.state.set('stability', clampNumber(current + gain, 0, max));
     result.factionStability = gain;

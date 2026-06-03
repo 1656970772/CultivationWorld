@@ -1,6 +1,6 @@
 {
   "description": "执念系统配置（GOBT 长期心智，ADR-019/020）。先天执念按人格/灵根在出生时 roll；后天执念由记忆触发。goalState 为阶段性手段（修仙逻辑下变强是共同前置），intensity 映射为 Goal 优先级（0-100，与 Need.priority 同口径）。goalMult（ADR-020）为执念对自身 Goal 及同方向需求 Goal 的乘法加成。",
-  "_goalMultComment": "goalMult: 执念类型 → { self: 自身执念Goal乘子, needs: { 需求sourceId: 乘子 } }。enabled=false(默认) 时不施加任何乘子，行为零漂移。",
+  "_goalMultComment": "goalMult: 执念类型 → { self: 自身执念Goal乘子, needs: { 需求sourceId: 乘子 } }。enabled=false(默认) 时不施加任何乘子。",
   "goalMult": {
     "enabled": false,
     "byType": {

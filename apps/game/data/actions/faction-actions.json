@@ -9,7 +9,7 @@
     "effects": {
       "low_spirit_stone": { "op": "add", "value": 20 },
       "food": { "op": "add", "value": 10 },
-      "disciples": { "op": "add", "value": 2 }
+      "disciples": { "op": "add", "value": 2, "min": 0, "max": 500 }
     },
     "costs": [],
     "yields": [],
@@ -25,7 +25,7 @@
       "food": { "op": "gte", "value": 50 }
     },
     "effects": {
-      "disciples": { "op": "add", "value": 30 },
+      "disciples": { "op": "add", "value": 30, "min": 0, "max": 500 },
       "food": { "op": "add", "value": -100 },
       "low_spirit_stone": { "op": "add", "value": -100 }
     },
@@ -47,7 +47,7 @@
     },
     "effects": {
       "territoryCount": { "op": "add", "value": 1 },
-      "stability": { "op": "add", "value": -5 },
+      "stability": { "op": "add", "value": -5, "min": 0, "max": 100 },
       "low_spirit_stone": { "op": "add", "value": -200 },
       "disciples": { "op": "add", "value": -20 }
     },
@@ -65,7 +65,7 @@
       "stability": { "op": "lt", "value": 70 }
     },
     "effects": {
-      "stability": { "op": "add", "value": 2 },
+      "stability": { "op": "add", "value": 2, "min": 0, "max": 100 },
       "borderThreat": { "op": "add", "value": -2 },
       "food": { "op": "add", "value": -80 },
       "low_spirit_stone": { "op": "add", "value": -50 }
@@ -139,7 +139,7 @@
       "stability": { "op": "lt", "value": 60 }
     },
     "effects": {
-      "stability": { "op": "add", "value": 10 },
+      "stability": { "op": "add", "value": 10, "min": 0, "max": 100 },
       "food": { "op": "add", "value": -100 },
       "low_spirit_stone": { "op": "add", "value": -100 }
     },
@@ -158,8 +158,8 @@
       "low_spirit_stone": { "op": "gte", "value": 1000 }
     },
     "effects": {
-      "stability": { "op": "add", "value": 5 },
-      "disciples": { "op": "add", "value": 15 },
+      "stability": { "op": "add", "value": 5, "min": 0, "max": 100 },
+      "disciples": { "op": "add", "value": 15, "min": 0, "max": 500 },
       "low_spirit_stone": { "op": "add", "value": -500 },
       "food": { "op": "add", "value": -300 }
     },
@@ -178,7 +178,7 @@
       "low_spirit_stone": { "op": "gte", "value": 2000 }
     },
     "effects": {
-      "stability": { "op": "add", "value": 15 },
+      "stability": { "op": "add", "value": 15, "min": 0, "max": 100 },
       "borderThreat": { "op": "add", "value": -3 },
       "low_spirit_stone": { "op": "add", "value": -1500 }
     },
@@ -189,18 +189,20 @@
   {
     "id": "act_open_secret_realm",
     "name": "开放秘境",
-    "description": "开放势力秘境供弟子历练，提升整体修为与稳定度（反哺·实力提升）",
+    "description": "开放势力秘境供弟子历练，弟子在其中游历感悟、增长游历进度(insight)（反哺·实力提升）。秘境是门派盛事而非日常：duration 占据约一年，且消耗大量资源，故频率很低；进度加成走 insight（游历感悟），数值小，仅作为闭关之外的补充，不破坏个人修炼节奏（ADR-040）。",
     "category": "faction",
-    "weight": 3,
+    "weight": 1,
     "preconditions": {
-      "stability": { "op": "gte", "value": 40 },
-      "disciples": { "op": "gte", "value": 80 }
+      "stability": { "op": "gte", "value": 60 },
+      "disciples": { "op": "gte", "value": 120 },
+      "low_spirit_stone": { "op": "gte", "value": 2000 }
     },
+    "duration": 365,
     "effects": {
-      "disciples": { "op": "add", "value": 5 },
-      "stability": { "op": "add", "value": 3 },
-      "low_spirit_stone": { "op": "add", "value": -300 },
-      "food": { "op": "add", "value": -200 }
+      "disciples": { "op": "add", "value": 5, "min": 0, "max": 500 },
+      "stability": { "op": "add", "value": 3, "min": 0, "max": 100 },
+      "low_spirit_stone": { "op": "add", "value": -2000 },
+      "food": { "op": "add", "value": -500 }
     },
     "costs": [],
     "yields": [],

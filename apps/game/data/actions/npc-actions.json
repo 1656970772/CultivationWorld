@@ -282,7 +282,7 @@
   {
     "id": "act_npc_kill_enemy",
     "name": "击杀仇人",
-    "description": "复仇行为链终点（ADR-020）：与仇人同格/邻格时发动 PvP，用 npcCombatPower 比拼战力定胜负。胜则给仇人写 _deathInfo{cause:'slain', killerId, killerFactionId}，effect 置 enemyKilled=true（执念达成）；负则自身受伤/陨落（risk.json pvp 分项）。前置含实力门槛 totalProgress，使 GOAP 在实力不足时先 cultivate 变强。",
+    "description": "复仇行为链终点（ADR-020）：穷追到仇人当前所在格发动 PvP，用 npcCombatPower 比拼战力定胜负。胜则给仇人写 _deathInfo{cause:'slain', killerId, killerFactionId}，effect 置 enemyKilled=true（执念达成）；负则自身受伤/陨落（risk.json pvp 分项）。前置含实力门槛 totalProgress，使 GOAP 在实力不足时先 cultivate 变强。行为精准化(2026-06-02)：requiresTravel 改 true + revenge_target resolver——破解『同速追逐困局』（NPC/仇人皆 1 格/天，原地 self 击杀会扑向 hunt 锁定的旧坐标而仇人已移走）。改为击杀阶段持续移动到仇人当前坐标，配合 npc-state isAvengingPursuit 提速实现『穷追不舍、不死不休』。",
     "category": "npc",
     "weight": 4,
     "valueScore": 20,
@@ -299,8 +299,9 @@
     "costs": [],
     "yields": [],
     "duration": 1,
-    "requiresTravel": false,
-    "targetResolver": "self",
+    "requiresTravel": true,
+    "targetResolver": "revenge_target",
+    "distanceCostPerTile": 0.02,
     "executorId": "npc_kill_enemy"
   },
   {
@@ -373,7 +374,7 @@
       "contribution": { "op": "gte", "value": 8 },
       "lowSpiritStone": { "op": "gte", "value": 20 },
       "factionHasQiPillMaterial": { "op": "true" },
-      "qiPillCount": { "op": "lt", "value": 1 }
+      "qiPillCount": { "op": "lt", "value": 3 }
     },
     "effects": {},
     "plannerEffects": {
@@ -398,15 +399,15 @@
     "riskKey": null,
     "preconditions": {
       "alive": { "op": "true" },
-      "qiPillCount": { "op": "gte", "value": 1 },
-      "totalProgress": { "op": "lt", "value": 1.0 }
+      "qiPillCount": { "op": "gte", "value": 1 }
     },
     "effects": {},
     "plannerEffects": {
       "qiPillCount": { "op": "add", "value": -1 },
       "qi": { "op": "add", "value": 120 },
       "cultivationProgress": { "op": "add", "value": 0.01 },
-      "totalProgress": { "op": "add", "value": 0.01 }
+      "totalProgress": { "op": "add", "value": 0.01 },
+      "qiBelowNextRank": { "op": "set", "value": false }
     },
     "costs": [],
     "yields": [],
@@ -655,7 +656,7 @@
   {
     "id": "act_npc_teach_disciple",
     "name": "点化徒弟",
-    "description": "师徒互动（ADR-029 第三期）：师傅前往修为偏低的徒弟处『传功点化』，给徒弟一波 insight(感悟)增量助推突破，并加深师徒情谊。requiresTravel 走 relationship_target resolver（读 state.targetRelationshipId）。effect 置 taughtDisciple=true，结算后复位。仅当 goalsEnabled 且 collectExtraGoals 产出 teach Goal 时进入规划（零漂移）。",
+    "description": "师徒互动（ADR-029 第三期）：师傅前往修为偏低的徒弟处『传功点化』，给徒弟一波 insight(感悟)增量助推突破，并加深师徒情谊。requiresTravel 走 relationship_target resolver（读 state.targetRelationshipId）。effect 置 taughtDisciple=true，结算后复位。仅当 goalsEnabled 且 collectExtraGoals 产出 teach Goal 时进入规划。",
     "category": "npc",
     "weight": 3,
     "valueScore": 12,

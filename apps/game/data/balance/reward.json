@@ -2,7 +2,7 @@
   "_description": "期望收益（Expected Value）配置（ADR-022）。把目标的『大概能拿到多少好处』建模为概率分布，NPC 看到的价值是期望收益 Σ(prob×value)，而非固定值。与 risk.json（风险=惩罚）对称：reward=吸引。用于让赌狗流/稳健流在『高期望收益险地』上数值分化。",
   "_howItWorks": "按 Goal 的 sourceId(obsession_xxx / need_xxx) 匹配一组 outcomes。每个 outcome: { id, prob(0-1), value(0-1 归一化相对收益) }。ExpectedValue = Σ(prob×value)，因 value∈[0,1] 故期望值亦∈[0,1]，可直接作为 derived.expectedValue 喂给 utility.json 的 consideration 曲线。各 source 的 prob 之和应≈1（含空手而归 value=0 的分项）。",
   "enabled": false,
-  "_enabledComment": "总开关。false 时 deriveExpectedValue 返回 0，期望收益不参与评分，行为零漂移。设 true 启用期望收益建模。",
+  "_enabledComment": "总开关。false（默认）时 deriveExpectedValue 返回 0，期望收益不参与评分。设 true 启用期望收益建模。",
   "rewardsBySource": {
     "obsession_plunder": {
       "_comment": "夺宝流（凡人修仙传 杀人夺宝/闯秘境）：高方差收益。仙器极罕见但价值连城，多数时候只得材料或空手。",
@@ -24,26 +24,26 @@
     "opportunity_corpse": {
       "_comment": "妖兽尸骸（ADR-024）：夺取妖丹/妖材，掉落真实物品（itemId 写入背包）。",
       "outcomes": [
-        { "id": "item_artifact_mid", "_name": "妖王法宝", "prob": 0.08, "value": 0.7, "itemId": "item_artifact_mid", "qty": 1 },
-        { "id": "item_rare_ore", "_name": "妖兽精材", "prob": 0.42, "value": 0.4, "itemId": "item_rare_ore", "qty": 2 },
-        { "id": "item_spirit_herb", "_name": "尸畔灵草", "prob": 0.40, "value": 0.2, "itemId": "item_spirit_herb", "qty": 3 },
+        { "id": "artifact_wulong_halberd", "_name": "妖王法宝（乌龙夺）", "prob": 0.08, "value": 0.7, "itemId": "artifact_wulong_halberd", "qty": 1 },
+        { "id": "mat_black_iron_ore", "_name": "妖兽精材（玄铁精矿）", "prob": 0.42, "value": 0.4, "itemId": "mat_black_iron_ore", "qty": 2 },
+        { "id": "mat_century_ginseng", "_name": "尸畔灵草（百年人参）", "prob": 0.40, "value": 0.2, "itemId": "mat_century_ginseng", "qty": 3 },
         { "id": "empty_handed", "_name": "来迟一步空手而归", "prob": 0.10, "value": 0.0 }
       ]
     },
     "opportunity_secret_realm": {
       "_comment": "秘境入口（ADR-024）：高方差，珍稀法宝/破境丹概率出现。",
       "outcomes": [
-        { "id": "item_artifact_immortal", "_name": "秘境灵宝", "prob": 0.02, "value": 1.0, "itemId": "item_artifact_immortal", "qty": 1 },
-        { "id": "item_artifact_high", "_name": "古宝", "prob": 0.10, "value": 0.7, "itemId": "item_artifact_high", "qty": 1 },
+        { "id": "artifact_green_bamboo_sword", "_name": "秘境灵宝（青竹蜂云剑）", "prob": 0.02, "value": 1.0, "itemId": "artifact_green_bamboo_sword", "qty": 1 },
+        { "id": "artifact_void_cauldron", "_name": "古宝（虚天鼎）", "prob": 0.10, "value": 0.7, "itemId": "artifact_void_cauldron", "qty": 1 },
         { "id": "item_breakthrough_pill", "_name": "破境丹", "prob": 0.28, "value": 0.5, "itemId": "item_breakthrough_pill", "qty": 1 },
-        { "id": "item_rare_ore", "_name": "灵材", "prob": 0.40, "value": 0.3, "itemId": "item_rare_ore", "qty": 3 },
+        { "id": "mat_black_iron_ore", "_name": "灵材（玄铁精矿）", "prob": 0.40, "value": 0.3, "itemId": "mat_black_iron_ore", "qty": 3 },
         { "id": "empty_handed", "_name": "无功而返", "prob": 0.20, "value": 0.0 }
       ]
     },
     "opportunity_auction": {
       "_comment": "拍卖会（ADR-024）：以灵石换珍品，低风险，主要消耗灵石获得法宝/丹药。",
       "outcomes": [
-        { "id": "item_artifact_mid", "_name": "拍得法宝", "prob": 0.20, "value": 0.6, "itemId": "item_artifact_mid", "qty": 1 },
+        { "id": "artifact_wulong_halberd", "_name": "拍得法宝（乌龙夺）", "prob": 0.20, "value": 0.6, "itemId": "artifact_wulong_halberd", "qty": 1 },
         { "id": "item_breakthrough_pill", "_name": "拍得破境丹", "prob": 0.30, "value": 0.5, "itemId": "item_breakthrough_pill", "qty": 1 },
         { "id": "item_qi_pill", "_name": "拍得聚气丹", "prob": 0.40, "value": 0.2, "itemId": "item_qi_pill", "qty": 2 },
         { "id": "empty_handed", "_name": "无所斩获", "prob": 0.10, "value": 0.0 }
@@ -52,9 +52,9 @@
     "opportunity_treasure": {
       "_comment": "天材地宝（ADR-024）：争夺成熟灵物，中高方差。",
       "outcomes": [
-        { "id": "item_artifact_high", "_name": "夺得古宝", "prob": 0.05, "value": 0.8, "itemId": "item_artifact_high", "qty": 1 },
+        { "id": "artifact_void_cauldron", "_name": "夺得古宝（虚天鼎）", "prob": 0.05, "value": 0.8, "itemId": "artifact_void_cauldron", "qty": 1 },
         { "id": "item_breakthrough_pill", "_name": "天材化丹", "prob": 0.25, "value": 0.5, "itemId": "item_breakthrough_pill", "qty": 1 },
-        { "id": "item_spirit_herb", "_name": "成熟灵草", "prob": 0.50, "value": 0.3, "itemId": "item_spirit_herb", "qty": 4 },
+        { "id": "mat_century_ginseng", "_name": "成熟灵草（百年人参）", "prob": 0.50, "value": 0.3, "itemId": "mat_century_ginseng", "qty": 4 },
         { "id": "empty_handed", "_name": "被人捷足先登", "prob": 0.20, "value": 0.0 }
       ]
     }

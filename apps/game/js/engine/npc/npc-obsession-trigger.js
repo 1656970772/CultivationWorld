@@ -8,7 +8,7 @@
  *   - matchStateCondition      { key, op, value } 状态条件比较（条件执念依赖）。
  *
  * 全部以 entity 为首参，仅读写 entity 的 obsessions/state/memory/staticData/_obsessionConfig，
- * 不改变任何随机序列或写入顺序，保证行为零漂移。拆分边界见 ADR-030。
+ * 不改变任何随机序列或写入顺序。拆分边界见 ADR-030。
  */
 import { Obsession } from '../abstract/obsession-system.js';
 
@@ -16,8 +16,9 @@ import { Obsession } from '../abstract/obsession-system.js';
  * 先天执念抽取（ADR-019）：按 obsession.json innate.rules 顺序匹配人格/灵根条件，
  * 命中且通过 chance 概率检定则赋予该执念。出生即定型，体现"天生的追求"。
  * @param {import('./npc-entity.js').NPCEntity} entity
+ * @param {import('../abstract/rng.js').Rng} rng 确定性随机源。
  */
-export function rollInnateObsession(entity) {
+export function rollInnateObsession(entity, rng) {
   const rules = entity._obsessionConfig.innate?.rules;
   if (!Array.isArray(rules)) return;
   const personality = entity.staticData?.personality || {};
@@ -28,7 +29,7 @@ export function rollInnateObsession(entity) {
       if (typeof v !== 'number' || v < (rule.requireTrait.min ?? 0)) continue;
     }
     if (rule.requireSpiritRoot && !rule.requireSpiritRoot.includes(spiritRootId)) continue;
-    if (Math.random() >= (rule.chance ?? 1)) continue;
+    if (rng.next() >= (rule.chance ?? 1)) continue;
     entity.obsessions.add(new Obsession({
       type: rule.type,
       name: rule.name,
@@ -70,8 +71,9 @@ export function checkAcquiredObsession(entity, memoryType) {
  * 在 onPreTick 每日调用：按 requireState 全部满足 + requireTrait + chance 概率检定生成。
  * 已有同类型执念则 ObsessionSystem.add 自动去重（保留强度更高者）。
  * @param {import('./npc-entity.js').NPCEntity} entity
+ * @param {import('../abstract/rng.js').Rng} rng 确定性随机源。
  */
-export function checkConditionalObsession(entity) {
+export function checkConditionalObsession(entity, rng) {
   const rules = entity._obsessionConfig.conditional?.rules;
   if (!Array.isArray(rules)) return;
   const personality = entity.staticData?.personality || {};
@@ -85,7 +87,7 @@ export function checkConditionalObsession(entity) {
       if (rule.requireTrait.min != null && v < rule.requireTrait.min) continue;
       if (rule.requireTrait.max != null && v > rule.requireTrait.max) continue;
     }
-    if (Math.random() >= (rule.chance ?? 1)) continue;
+    if (rng.next() >= (rule.chance ?? 1)) continue;
     entity.obsessions.add(new Obsession({
       type: rule.type,
       name: rule.name,

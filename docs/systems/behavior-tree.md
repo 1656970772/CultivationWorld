@@ -5,7 +5,7 @@
 ## 概述
 
 GOBT（Goal-Oriented Behavior Tree）将 AI 决策分为三层：**BT 即时反应 → Utility 选目标 → GOAP 规划**。
-本文档说明节点类型、数据驱动配置与执行流程。架构决策见 ADR-018，长期心智（记忆/执念/情绪/恩怨）见 ADR-019，Consideration 乘法式 Utility 与复仇 PvP 行为链见 ADR-020，Utility-GOAP 职责分离见 **ADR-021**，期望收益模型见 **ADR-022**，流派目标体系（夺宝/养老/传承/夺权）见 **ADR-023**。
+本文档说明节点类型、数据驱动配置与执行流程。架构决策见 ADR-018，长期心智（记忆/执念/情绪/恩怨）见 ADR-019，Consideration 乘法式 Utility 与复仇 PvP 行为链见 ADR-020，Utility-GOAP 职责分离见 **ADR-021**，期望收益模型见 **ADR-022**，流派目标体系（夺宝/养老/传承/夺权）见 **ADR-023**，四层反应式 AI（即时反应抢占 + 大事件立即重决策 + 意图层服务化）见 **ADR-048**。
 
 ## NPC / 势力三层结构
 
@@ -113,7 +113,7 @@ ExpectedValue(goal) = Σ_i (outcome_i.prob × outcome_i.value)
 
 > 世界观诚实标注：养老流在 `docs/世界观参考/` 中无直接原著原型，为项目推演设定（参考太上长老闭关等间接元素），已在数据注释与 ADR-023 明示。
 
-**零漂移**：`data/balance/utility.json enabled=false`（默认）时，所有 consideration 与新 ADR-021 乘子均不生效，`score` 退化为纯 priority，与重构前一致。
+**默认关闭**：`data/balance/utility.json enabled=false`（默认）时，所有 consideration 与 ADR-021 乘子均不生效，`score` 退化为纯 priority。
 
 ## 复仇 PvP 行为链（ADR-020）
 
@@ -142,8 +142,9 @@ ExpectedValue(goal) = Σ_i (outcome_i.prob × outcome_i.value)
 | `condition` | ConditionNode | 读 entity/world 状态做布尔判断 |
 | `hook` | HookNode | 调用实体方法（onPreTick / btEvaluateNeeds 等） |
 | `always` | AlwaysNode | 恒定返回某状态（占位/兜底） |
+| `reactive` | ReactiveNode | 消费 `attacked` 刺激，按血量/敌我战力决策逃命/回血/反击/暂避并抢占（**可打断 isBusy**，四层 AI Reaction 层，ADR-048；默认 `reaction.enabled=false` 不触发） |
 | `emotion_reaction` | EmotionReactionNode | 情绪超阈值时抢占执行指定行为（NPC 专用） |
-| `planner` | PlannerNode | 选目标 + GOAP 规划 + 执行（NPC/势力 GOBT 核心） |
+| `planner` | PlannerNode | 选目标(委托 IntentService) + GOAP 规划 + 执行（NPC/势力 GOBT 核心）；门控支持 `consumeReplanRequest()` 大事件立即重决策（ADR-048） |
 
 ## 数据驱动配置
 
@@ -168,8 +169,9 @@ BT 树以 JSON 定义于 `apps/game/data/behavior-trees/`：
 
 1. `BaseEntity.tick()` 检测到 `btRunner` → 由 `BTRunner.run()` 驱动整棵树。
 2. `hook(onPreTick)`：年龄推进、记忆/情绪衰减、突破判定、派生状态刷新。
-3. 反应 Selector：`emotion_reaction` 若命中（如心魔过高）→ 抢占执行并 RUNNING。
+3. 反应 Selector（四层 AI Reaction 层，ADR-048）：`reactive` 若有 `attacked` 刺激且 `reaction.enabled` → 按血量/敌我战力抢占逃命/回血/反击/暂避（**可打断闭关/游历**）并 RUNNING；否则 `emotion_reaction` 若命中（如心魔过高）→ 抢占执行并 RUNNING。
 4. 否则深思熟虑：`hook(btEvaluateNeeds)` 评估需求 → `planner`：
+   - 大事件（遇仇人/知晓机缘）经 `requestReplan()` 置标记时，即便正执行计划也立即打断、重选目标（ADR-048，`reaction.eventReplan.enabled` gate）；
    - 空闲且无计划时问 `canStartNewDecision()`（NPC 决策周期门控）；
    - 门控放行则收集 Goal（需求 + 执念），经情绪调制 + decorateGoalConsiderations（风险厌恶/情绪修正/上头/路径偏好/考量因素）后选最高分目标；
    - GOAP 以纯路径代价规划行为链；执行一步，preconditions 失效则 replan。
@@ -203,7 +205,7 @@ BT 树以 JSON 定义于 `apps/game/data/behavior-trees/`：
 ## 相关测试
 
 - `tools/test-bt.mjs`：节点语义 + PlannerNode 门控时序。
-- `tools/test-goal-equivalence.mjs`：Goal 路径零漂移。
+- `tools/test-goal-equivalence.mjs`：Goal 路径等价性。
 - `tools/test-utility.mjs`：Consideration 曲线 + 情绪风险修正 + 上头扰动 + 路径偏好。
 - `tools/test-memory.mjs` / `tools/test-obsession.mjs`：长期心智子系统。
-- `tools/test-goap-golden.mjs`：GOAP 规划指纹（纯路径代价，与 ADR-021 后一致）。
+- `tools/verify-reaction.mjs`：反应层在真实长程模拟中的行为观察（被攻击逃命/回血/反击/暂避、打断后能否落回修炼）。

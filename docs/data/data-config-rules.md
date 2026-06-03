@@ -1,11 +1,24 @@
 # 游戏数据配置规则
 
-> 最后更新：2026-06-01（关系网三期：师徒互动，ADR-029）：`relationship.json` 新增 `masterDiscipleGoals`（师傅传功 `teachDisciple`(priority/范围/`discipleMaxTotalProgress`/`insightGain`/`teachChancePerTick`) / 师傅护徒 `protectDisciple`(priority/范围) / 徒弟尽孝 `visitMaster`(priority/范围/概率) / 继承遗志 `inheritWill`(`revengeMemoryType=master_lost`/`inheritObsessionIntensityMult`/`inheritableObsessionTypes`) / 夺舍 `seizeDisciple` 占位）+ 修正 `init.masterDisciple.discipleRoles` 含 `core_disciple`（修复一期遗留：原仅 `disciple`/`outer_disciple` 与实体数据不匹配，导致 master 边从未建立）。`memory.json` 新增 `master_lost`（恩师陨落）；`obsession.json` 新增 `master_lost→revenge` 后天规则 + `seizeDisciple` 块（夺舍触发参数）；`obsession-system.js` 增 `ObsessionType.SEIZURE`；`npc-actions.json` 新增 `act_npc_teach_disciple`/`act_npc_protect_disciple`/`act_npc_visit_master`（`targetResolver: relationship_target`）；`utility.json` 增 `goal_teach_disciple`/`goal_protect_disciple`/`goal_visit_master` 考量因素。代码侧：`npc-entity.js` `_considerMasterDiscipleGoals`/`_checkSeizeDiscipleObsession`/`inheritMasterLegacy` + 默认 actionIds 补师徒行为；`npc-actions.js` 3 个师徒 Executor；`tick-manager.js` `_collectDeaths` 增 master→disciples 遗志继承块、`_resolveRevengeTarget` 认 `seizure` 执念；`action-pool.js` 增 `getExecutor`。验证 `tools/test-master-disciple.mjs`（26 项），黄金指纹 `16c7c409→5740e12a`（新增 3 行为+3 状态键的预期重基线，`test-goal-equivalence` 400 用例确认主路径零漂移）。详见 ADR-029、wiki/characters/relationship-types.md、relationship-todo.md。
-> 历史更新：2026-06-01（关系网二期：关系驱动决策，ADR-028）：`relationship.json` 新增 `goalsEnabled`（默认 true，关系驱动 Goal/妖兽护群护领地总开关，关闭即回退一期纯数据态）+ `npcGoals`（护短同门 `assistSectMate` / 报恩 `repayBenefactor` / 关系复仇 `relationRevenge` 的 priority/阈值/范围/概率）+ `monsterPack`（`packRadius`/`swarmClusterRadius`/`swarmClusterSize`/`buildPackLeader`/`maxPackSize`）+ `territory`（`defendEnabled`/`minTierForDefense`/`intrusionRadius`）+ 新 `eventBindings`（`pack_init`/`pack_leader_init`/`territory_intrusion`）。`npc-actions.json` 新增 `act_npc_assist_ally`/`act_npc_visit_benefactor`（`targetResolver: relationship_target`）。代码侧：`goal.js` 增 `GoalSource.RELATIONSHIP`；`npc-entity.js` `_buildRelationshipGoals`/`_refreshRelationshipState` + 默认 actionIds 补 hunt/kill/assist/visit；`npc-actions.js` 新增 `NPCAssistAllyExecutor`/`NPCVisitBenefactorExecutor`；`tick-manager.js` `resolveTarget` 增 `relationship_target` case、`_resolveRevengeTarget` 兼认 `enemy` 边、`worldContext.recordTerritoryThreat`、`_linkRespawnedToPacks`；`relationship-init.js` 新增 `initMonsterRelationships`（同 family+邻近建 `pack_member`/`pack_leader`）；`monster-spawner.js` 对 `swarmBehavior` 物种成簇生成；`monster-entity.js` `_senseTerritory`（建 `territory_threat` 边）+ `monsterCallPack` 升级协防 + `monsterDefendTerritory`（tier2+ 领地防御）；`monster-bt-presets.js` tier2/3 增 `repel-intruder`。`npc-state`/`monster-state` 增 `targetRelationshipId`/`assistedAlly`/`visitedBenefactor`/`intruderNpcId`；`utility.json` `considerationsBySource` 增 `goal_assist_sect_mate`/`goal_repay_benefactor`。验证：新增 `tools/test-relationship-goals.mjs`；`test-goal-equivalence`(400)/`test-goap-golden`(指纹 16c7c409) 零漂移。详见 ADR-028。
+> 最后更新：2026-06-03（删除泛称材料 ID、全改具体道具，ADR-046）：删除 `items/material.json` 中 4 个泛称材料 ID（`spirit_herb`/`ore`/`monster_core`/`beast_material`，ADR-044 曾保留为"机制必需泛 ID"，复审认定仍是空泛类别名）。引用改指具体道具：`spirit_herb→mat_century_ginseng`、`ore→mat_black_iron_ore`、斩妖任务奖励 `monster_core/beast_material→_g1`、捐献/兑换改对应具体 ID；`definitions/monsters.json` 的 72 条 drops 由泛 ID 静态展开为具体 `_gN`（`monster_core` 用 `coreGrade`、`beast_material` 用妖兽 `grade`，删除已展开的 `coreGrade` 字段）。代码侧：`npc-economy.isMonsterExchangeItem` 删裸 ID 分支、`npc-action-utils.rollAndGrantReward` fallback 改 `_g1`；保留 `monster-resources` 的 `_gN` 映射机制（服务健壮性与单元测试）。合并后物品 74 项。详见 ADR-046。
+>
+> 最后更新：2026-06-03（物品按 category 拆分多文件 + 合并加载，ADR-045）：将单一 `items/items.json` **按 `category` 拆分为 6 个文件**（`currency.json`/`material.json`/`pill.json`/`artifact.json`/`talisman.json`/`technique.json`），各文件 `{ _description, items:[...] }`、内容/字段/ID 与拆分前逐一等价（合并后 78 项无重复 ID）。加载器**显式列举这 6 个文件并合并**为单一 `itemDefs.items`（仿 `effects/` 合并约定，非目录遍历）：`config-loader.js` 在 `Promise.all` 中加载 6 文件再 `flatMap` 合并；14 个工具脚本（`verify-determinism`/`verify-gas-combat`/`verify-effect-reuse`/`verify-promotion`/`verify-revenge-pursuit`/`perf-profile`/`trace-genius`/`simulate-analysis`/`refactor-baseline`/`test-info-propagation`/`test-quest-reward-economy`/`test-relationship-goals`/`test-monster-resource-loop`/`test-master-disciple`）的加载点同步改为 `['currency',...,'technique'].flatMap(c => load('data/items/'+c+'.json').items)`。下游 `WorldEngine`/`ItemRegistry` 消费结构不变。新增 category 时需在加载器文件清单登记。详见 ADR-045。
+>
+> 最后更新：2026-06-03（具体道具替换泛道具 + 引入 subCategory，ADR-044）：`items.json` 删除纯泛称占位道具（旧 `item_artifact_low/mid/high/immortal`、`technique_book_low/mid/high/legend`、与 `spirit_herb`/`ore` 重复的 `item_spirit_herb`/`item_rare_ore`），改为按 `docs/世界观参考/<作品>/物品设定.md` 补的具体命名道具（青锋飞剑/乌龙夺/虚天鼎/青竹蜂云剑/风雷翅/玄重尺/荒塔/虚空镜/龟纹锅/开皇剑/乾坤镜/九劫剑/太乙分光剑/赤霄神剑；长春功/青元剑诀/大衍诀/血魔功/玉清纯阳功/灵兽诀/敛息术/焚诀/霸体三丹功/金刚不坏体/古神诀；筑基丹/结丹丹/化婴丹/培元丹/回春丹/九转金丹；百年人参/朱果/九曲灵参/天元果/万年灵乳/万年雷击木/紫精石/玄铁精矿/仙金/魂婴果/长生药/凤凰精血；火球符/护盾符/疗伤符）。新增 **`subCategory`** 子类字段（artifact: magic_artifact/magic_treasure/ancient_treasure/spirit_treasure/heavenly_treasure；technique: righteous/evil/buddhist/beast/auxiliary；material: herb/ore/blood/fruit/special/monster_core/beast_material；pill: cultivation/breakthrough/healing/recovery；talisman: escape/attack/defense/healing），复用现有 `grade`/`gradeName` 标品阶。可服用具体道具补 `effects`（复用 `ge_add_qi`/`ge_add_hp`/`ge_add_progress`/`ge_add_breakthrough_bonus`/`ge_full_heal` 通用原语，**不新增专用 GE，未引入未消费属性**）。保留机制必需泛类：四档灵石货币、分级妖丹妖材 `_gN`、任务兼容泛 ID（`spirit_herb`/`ore`/`monster_core`/`beast_material`）、`item_qi_pill`/`item_breakthrough_pill`、`item_spirit_fruit`/`item_strong_blood`、`item_escape_talisman(_high)`。被旧泛称占位 ID 引用处（`reward.json` opportunity_* 掉落、`economy.json` artifact_low 兑换、`quest-templates.json` 秘境随机奖励、`test-quest-reward-economy.mjs`/`test-info-propagation.mjs` 断言）同步改指新具体 ID，保持 prob/value/qty 与 combatBonus 档位（法器0.05/法宝0.12/古宝0.25/灵宝0.5）不变以零漂移。详见 ADR-044。
+>
+> 最后更新：2026-06-03（战斗系统 GAS 化重构，ADR-042）：新增 `data/tags/tags.json`（GameplayTag 层级字符串登记表：`State.*`/`Trigger.*`/`Immune.*`/`Ability.*`/`Effect.*`/`Trait.*`/`Buff.*`，加载期校验未登记 Tag）、`data/effects/combat-effects.json`（GameplayEffect：`durationType` instant/duration/infinite + `modifiers`(attribute/op/magnitudeType) + `grantsTags`，含 `effect_lock_hp` 把 hp 锁到 `lockRatio×maxHp` 并授予 `State.Dying`）、`data/abilities/combat-abilities.json`（GameplayAbility：`triggerTags`/`blockedByTags`/`requiredItems`/`grantsEffects`/`executor`，含 `ability_lock_hp` 锁血(被 `Immune.Crush` 阻挡) 与 `ability_escape_talisman` 遁地瞬移)；`items.json` 新增 `item_escape_talisman`(遁地符，分品阶，`grantsAbilities`)；`combat.json` 新增 `gas` 段(`enabled` 总开关默认 true)；`npcs.json` 天才 npc_999 初始携带 2 个遁地符。代码侧：新增 `engine/abstract/gameplay-tag.js`/`attribute-set.js`/`gameplay-effect.js`/`gameplay-ability.js`/`ability-component.js`、`engine/combat/combat-pipeline.js`(`applyDamage` 统一伤害入口)；`monster-entity._attack`/`applyRiskEffect.hp_damage`/`killNPCByPvP` 三处改调 `applyDamage`，锁血/遁地不区分攻击者(补齐 ADR-041 阶段2B PvP 前置缺口)。详见 ADR-042、systems/gameplay-ability-system.md。
+>
+> 追加（2026-06-03，ADR-042 阶段2 机制化迁移）：新增 `data/effects/pill-effects.json`（聚气丹/破境丹效果迁为 Instant Effect，`magnitudeType: rankDecay` 复用 ADR-040 境界递减、`clamp` 表达上限夹取，数值同 `economy.json useItems`）与 `data/effects/cultivation-effects.json`（`effect_breakthrough_full_heal` 破境回元，持 `Trait.BreakthroughFullHeal` 触发）；`tags.json` 新增 `Trait.BreakthroughFullHeal`；`cultivation.json` 新增 `traitEffects.enabled`(默认 true，灵根/体质加成经 AttributeSet 修正层生效)；`economy.json npcExchange.useItems` 新增 `pillEffects.enabled`(默认 true，丹药经 EffectEngine 结算)。代码侧：新增 `engine/npc/npc-traits.js`(灵根/体质加成注入 AttributeSet + readTrait* 读取)；`AttributeSet` 增 `setDefaultBase`；`EffectEngine` 增 `rankDecay` magnitudeType 与 `clamp`；`world-rules._aggregateModifierEffects` 收编为世界级 AttributeSet add 叠加模型。EffectPool 现合并加载 `data/effects/` 下全部 Effect 文件。
+>
+> 追加（2026-06-03，ADR-042 阶段2 增强：Effect 通用原语化 + 数值来源参数化）：废弃"一物一专用 Effect"（删 `pill-effects.json`/`cultivation-effects.json` 的 `ge_qi_pill`/`ge_breakthrough_pill`/`ge_breakthrough_full_heal`），改为通用原语 `data/effects/core-effects.json`（`ge_add_qi`/`ge_add_qi_over_time`/`ge_add_hp`/`ge_add_progress`/`ge_add_breakthrough_bonus`/`ge_full_heal`）；具体数值迁入 `items.json` 各物品的 **`effects` 字段**（`[{ effect, magnitude, magnitudeType?, decay?, baseRankId?, minMagnitude?, clamp? }]`），新增示例来源 `item_spirit_fruit`(灵果)、`item_strong_blood`(强者精血) 复用同一批 Effect。代码侧：`EffectEngine.applyEffect(target,def,{spec})` 用 spec 覆盖 modifier 数值、返回各 modifier `{attribute,delta,newValue}`、`clamp` 端点支持动态键 `"maxHp"`；`npc-economy.applyItemEffects(entity,itemId)` 为"服用物品即生效"统一入口。多来源复用经 `tools/verify-effect-reuse.mjs` 真实校验。
+>
+> 追加（2026-06-03，ADR-043 资源/物品统一分类）：消除「资源 vs 物品」两套标准。**删除 `data/definitions/resources.json`**（曾混入货币/材料/重复丹药/符/阵旗/储物袋/功法），其中：货币（灵石 `low/mid/high/top_spirit_stone`）、材料（`spirit_herb`/`ore`/`monster_core(_gN)`/`beast_material(_gN)`）、功法秘籍（`technique_book_*`，category 由 `technique_book` 规范为 `technique`）**沿用原 ID 迁入 `data/items/items.json`**；重复/死数据丹药与符/阵旗/储物袋删除（统一用 `item_` 系）。**新建 `data/definitions/macro-resources.json`** 仅放势力宏观资源（`food` supply / `disciples` population）。物品 category 体系：可持有物品 `currency`/`material`/`pill`/`artifact`/`talisman`/`technique`，势力宏观资源 `supply`/`population`。**灵石接入通用 Effect**：四档灵石各加 `effects:[{effect:"ge_add_qi", magnitude:<qiValue>}]`（low=1/mid=120/high=15000/top=1800000），复用 ADR-042 原语，走 `applyItemEffects` 服用，**默认不自动触发**。代码侧：`config-loader`/`world-engine._registerSystems` 改指 `macro-resources.json`（变量名/字段 `items` 不变）；`item-definition.js` 用真实 category 的 `isMacroResource()`/`isCurrency()`/`isMaterial()`/`isHoldable()` 替换死代码 `isResource()/isProp()`，`item-registry.js` 同步 `getMacroResources()`/`getHoldables()`；14 处硬编码 `definitions/resources.json` 的工具/加载器全部改为 `macro-resources.json`（缺 `itemDefs` 的工具补加载 `items.json`）。验证：`verify-determinism`(指纹不变)、`verify-effect-reuse`(新增灵石服用断言 low+1/mid+120)、`verify-gas-combat`(3 种子×800 天无回归)。详见 ADR-043。
+> 历史更新：2026-06-01（关系网三期：师徒互动，ADR-029）：`relationship.json` 新增 `masterDiscipleGoals`（师傅传功 `teachDisciple`(priority/范围/`discipleMaxTotalProgress`/`insightGain`/`teachChancePerTick`) / 师傅护徒 `protectDisciple`(priority/范围) / 徒弟尽孝 `visitMaster`(priority/范围/概率) / 继承遗志 `inheritWill`(`revengeMemoryType=master_lost`/`inheritObsessionIntensityMult`/`inheritableObsessionTypes`) / 夺舍 `seizeDisciple` 占位）+ 修正 `init.masterDisciple.discipleRoles` 含 `core_disciple`（修复一期遗留：原仅 `disciple`/`outer_disciple` 与实体数据不匹配，导致 master 边从未建立）。`memory.json` 新增 `master_lost`（恩师陨落）；`obsession.json` 新增 `master_lost→revenge` 后天规则 + `seizeDisciple` 块（夺舍触发参数）；`obsession-system.js` 增 `ObsessionType.SEIZURE`；`npc-actions.json` 新增 `act_npc_teach_disciple`/`act_npc_protect_disciple`/`act_npc_visit_master`（`targetResolver: relationship_target`）；`utility.json` 增 `goal_teach_disciple`/`goal_protect_disciple`/`goal_visit_master` 考量因素。代码侧：`npc-entity.js` `_considerMasterDiscipleGoals`/`_checkSeizeDiscipleObsession`/`inheritMasterLegacy` + 默认 actionIds 补师徒行为；`npc-actions.js` 3 个师徒 Executor；`tick-manager.js` `_collectDeaths` 增 master→disciples 遗志继承块、`_resolveRevengeTarget` 认 `seizure` 执念；`action-pool.js` 增 `getExecutor`。验证 `tools/test-master-disciple.mjs`（26 项），黄金指纹 `16c7c409→5740e12a`（新增 3 行为+3 状态键的预期重基线，`test-goal-equivalence` 400 用例确认主路径零漂移）。详见 ADR-029、wiki/characters/relationship-types.md、relationship-todo.md。
+> 历史更新：2026-06-01（关系网二期：关系驱动决策，ADR-028）：`relationship.json` 新增 `goalsEnabled`（默认 true，关系驱动 Goal/妖兽护群护领地总开关，关闭即走一期纯数据态）+ `npcGoals`（护短同门 `assistSectMate` / 报恩 `repayBenefactor` / 关系复仇 `relationRevenge` 的 priority/阈值/范围/概率）+ `monsterPack`（`packRadius`/`swarmClusterRadius`/`swarmClusterSize`/`buildPackLeader`/`maxPackSize`）+ `territory`（`defendEnabled`/`minTierForDefense`/`intrusionRadius`）+ 新 `eventBindings`（`pack_init`/`pack_leader_init`/`territory_intrusion`）。`npc-actions.json` 新增 `act_npc_assist_ally`/`act_npc_visit_benefactor`（`targetResolver: relationship_target`）。代码侧：`goal.js` 增 `GoalSource.RELATIONSHIP`；`npc-entity.js` `_buildRelationshipGoals`/`_refreshRelationshipState` + 默认 actionIds 补 hunt/kill/assist/visit；`npc-actions.js` 新增 `NPCAssistAllyExecutor`/`NPCVisitBenefactorExecutor`；`tick-manager.js` `resolveTarget` 增 `relationship_target` case、`_resolveRevengeTarget` 兼认 `enemy` 边、`worldContext.recordTerritoryThreat`、`_linkRespawnedToPacks`；`relationship-init.js` 新增 `initMonsterRelationships`（同 family+邻近建 `pack_member`/`pack_leader`）；`monster-spawner.js` 对 `swarmBehavior` 物种成簇生成；`monster-entity.js` `_senseTerritory`（建 `territory_threat` 边）+ `monsterCallPack` 升级协防 + `monsterDefendTerritory`（tier2+ 领地防御）；`monster-bt-presets.js` tier2/3 增 `repel-intruder`。`npc-state`/`monster-state` 增 `targetRelationshipId`/`assistedAlly`/`visitedBenefactor`/`intruderNpcId`；`utility.json` `considerationsBySource` 增 `goal_assist_sect_mate`/`goal_repay_benefactor`。验证：新增 `tools/test-relationship-goals.mjs`；`test-goal-equivalence`(400)/`test-goap-golden`(指纹 16c7c409) 零漂移。详见 ADR-028。
 > 历史更新：2026-06-01（关系网系统，ADR-027）：新增 `data/balance/relationship.json`（`edgeTypes` 人际/人妖/妖妖三层关系类型 + 默认 affinity/strength/decay/对称性；`eventBindings` 世界事件→关系边映射；`init` 据 factionId+role 推导初始同门/师徒）。代码侧：新增 `engine/world/relationship-system.js`（世界级 `RelationshipSystem` + `RelationType` 枚举，有向带类型边单一真相源）、`engine/world/relationship-init.js`（初始关系推导）；重构 `engine/npc/relationship.js`（`RelationshipGraph` 改为 `RelationshipSystem` 的兼容查询视图，复仇链零改动）；`tick-manager.js` 在攻战/道侣/受辱/贬谪/生育/妖兽仇恨结算点建边 + `relationshipSystem.tick()` 衰减 + 妖兽死亡清理 + `worldContext.recordMonsterGrudge`；`world-engine.js` 创建系统/注入/初始化/快照输出 `relationships`；`graph-builder.js`/`graph-panel.js` 新增 `RELATIONSHIP` 边可视化。`enabled` 默认 true（直接全量启用）。验证 `tools/test-relationship.mjs`（30 项），核心 GOAP 黄金指纹/目标等价回归通过。详见 ADR-027、wiki/characters/relationship-types.md、wiki/characters/relationship-todo.md。）
 > 历史更新：2026-05-30（妖兽资源化模拟闭环，ADR-026）：`resources.json` 新增 `monster_core_g1..g9` 与 `beast_material_g1..g9` 品阶化妖丹/妖材；`economy.json` 新增 `monsterResources`，定义斩妖任务类型、尸骸机会最低等阶、品阶捐献贡献和狩猎失败风险；`npc-actions.json` 新增 `act_npc_accept_hunt_quest` 并修正多日任务完成结算；`npc-needs.json` 新增猎妖资源、活跃任务收尾、材料上交、破境辅助和法器装备需求；`npcExchange.options.*` 支持 `requiredFactionItems`，兑换丹药/法器会检查并消耗宗门库存；`locationTarget:"monster"` 接取时额外写入 `NPCState.questTargetMonsterId`，斩妖执行时真实击杀目标妖兽并按 `monsters.json.drops` 结算材料。）
 > 历史更新：2026-05-30（V1 任务奖励与 NPC 消费闭环）：`quest-templates.json` 新增 `rewardProfiles`，按 `qt_*` 任务类型配置额外材料、丹药、法宝线索、功法书与宗门稳定度；`economy.json` 新增 `npcMaterialDonation` 与 `npcExchange`，定义材料上交、贡献/灵石兑换和丹药使用参数；`npc-actions.json` 新增 `act_npc_donate_materials`、`act_npc_redeem_qi_pill`、`act_npc_use_qi_pill`、`act_npc_redeem_breakthrough_pill`、`act_npc_use_breakthrough_pill`、`act_npc_redeem_artifact`。`action.js` 支持可选 `plannerEffects`，用于让 GOAP 看到背包派生状态变化，而运行时仍由执行器写真实库存与状态。新增 NPC GOAP 派生键：`lowSpiritStone`、`qiPillCount`、`breakthroughPillCount`、`donatableMaterialCount`、`hasEquippedArtifact`。）
-> 历史更新：2026-05-30（信息传播与机会点 + 实物与怀璧其罪，ADR-024/025）：新增 `data/world/news.json`（新闻类型传播参数 + 五渠道开关：半径/口耳/城镇/宗门/商会）、`data/world/opportunities.json`（机会点类型 value/存活/上限/掉落源/风险键 + 决策阈值）、`data/balance/covet.json`（怀璧暴露阈值 + 觊觎起念 + 放他一马权重 + 抢夺结算）、`data/items/items.json`（可转移法宝/材料/丹药，含 value/grade/transferable/combatBonus）；`reward.json` 新增 `opportunity_*` 掉落表（outcome 带 itemId/qty 发放真实物品）；`npc-actions.json` 新增 `act_npc_goto_opportunity`（targetResolver `nearest_opportunity`）；`npc-state` 新增 `arrivedAtOpportunity`/`targetOpportunityId`/`equippedArtifactId`；`constants.js` 新增 `NewsType`/`OpportunityType` 枚举；`goal.js` 新增 `GoalSource.OPPORTUNITY`。代码侧：新增 `engine/world/info-propagation.js`、`engine/world/opportunity.js`、`engine/npc/info-actions.js`；`ItemDefinition` 领域字段并入 properties；`_npcCombatPower` 接通法宝 `combatBonus`。所有系统默认 `enabled=false` 零漂移（`test-goal-equivalence` 主路径通过，新增 `tools/test-info-propagation.mjs` 验证）。详见 ADR-024、ADR-025、systems/opportunity-system.md、systems/item-covet.md、wiki/rules/wealth-exposed.md。）
+> 历史更新：2026-05-30（信息传播与机会点 + 实物与怀璧其罪，ADR-024/025）：新增 `data/world/news.json`（新闻类型传播参数 + 五渠道开关：半径/口耳/城镇/宗门/商会）、`data/world/opportunities.json`（机会点类型 value/存活/上限/掉落源/风险键 + 决策阈值）、`data/balance/covet.json`（怀璧暴露阈值 + 觊觎起念 + 放他一马权重 + 抢夺结算）、`data/items/items.json`（可转移法宝/材料/丹药，含 value/grade/transferable/combatBonus）；`reward.json` 新增 `opportunity_*` 掉落表（outcome 带 itemId/qty 发放真实物品）；`npc-actions.json` 新增 `act_npc_goto_opportunity`（targetResolver `nearest_opportunity`）；`npc-state` 新增 `arrivedAtOpportunity`/`targetOpportunityId`/`equippedArtifactId`；`constants.js` 新增 `NewsType`/`OpportunityType` 枚举；`goal.js` 新增 `GoalSource.OPPORTUNITY`。代码侧：新增 `engine/world/info-propagation.js`、`engine/world/opportunity.js`、`engine/npc/info-actions.js`；`ItemDefinition` 领域字段并入 properties；`_npcCombatPower` 接通法宝 `combatBonus`。所有系统默认 `enabled=false`（关闭时不产生新闻/机会点/觊觎，行为不变）。详见 ADR-024、ADR-025、systems/opportunity-system.md、systems/item-covet.md、wiki/rules/wealth-exposed.md。）
 > 历史更新：2026-05-30（价值-风险决策系统 + 修炼曲线改造：`ai-config.json → npc.decision` 新增决策系数块（`lambdaRisk`/`lambdaValue`/`headstrongChance`/`headstrongValueBonus`/`costFloor`/`exploreFirstCostFactor`）；`npc-actions.json` 每个行为新增 `valueScore`（基础价值）与 `riskKey`（映射 `risk.json`，游历=`explore`，其余 `null`）；`resources.json` 每个道具新增 `value` 字段（预留，本期不参与决策）；`cultivation.json` 新增 `cultivationDecayK`（闭关边际递减系数，默认 2.5）与 `minCultivationRatio`（突破最低闭关占比，默认 0.3，亦为 insight 封顶 `1-该值`）；`personality.json` 新增 `justice`(正义感) 维度 + `needBoosts.justice` 占位（仅字段+赋值+遗传，不接逻辑）；`social.json → birth` 新增 `personalityMutationRange`（courage/justice 走双亲均值+变异遗传）；`npc-state` 新增 `lastDecisionHeadstrong`/`headstrongActionId`/`breakthroughPathOrder` 状态字段。代码侧：`action.js` 加 `valueScore`/`riskKey`/`getBaseCost`，`goap-planner.plan()` 支持可选 `costFn`（慢/快路径均当次固定），`behavior-system.plan()` 透传 costFn，`npc-actions.js` 新增 `estimateRiskCost`/`computeActionValue`/`computeDecisionCost` 与修炼指数衰减/insight 封顶，`npc-entity` 进规划前 roll 上头并构建固定 cost 表、规划后标记上头、突破后 roll 顺序随机。详见 ADR-017、wiki/rules/travel-and-risk.md、wiki/rules/personality.md。）
 > 历史更新：2026-05-30（游历感悟与风险系统：突破进度双源化 `totalProgress = cultivationProgress(闭关) + insight(游历)`，闭关有境界上限 `cultivation.json → cultivationCap`，撞顶后由 GOAP 自然推导出"外出游历攒 insight"（闭关行为前置 `cultivationProgress<cap` 由 `npc-entity._applyCultivationCapPreconditions` 按境界动态注入）；`act_npc_explore` 改为产出 insight，归来按 `cultivation.json → actions.explore.fortuneEvents` 机缘事件表 roll、按新增 `data/balance/risk.json` 结算风险分项（受伤/资源掉落/职位挑战失败/陨落，权重 + 境界减免 + 性格加成）；`personality.json` 新增 `courage`(勇敢) 维度（勇敢↑→游历受伤/陨落↑，经 risk.json `personalityModifiers`）；`npc-needs` 修炼/突破需求 goalState 改用 totalProgress；`npc-state` 新增 `insight`、`totalProgress`（set 时自动同步）；补全 `tick-manager._randomWanderTarget` 实现 wander_far。详见 ADR-016、wiki/rules/travel-and-risk.md。）
 > 历史更新：2026-05-30（性格系统：新增 `data/balance/personality.json`（性格维度定义 + needBoosts 性格→需求加成表，数据驱动可扩展）；新增需求 `need_npc_ambition`（晋升，野心驱动、修为饱和后压过修炼，触发 `act_npc_challenge`）；`ConfigurableEvaluator` 支持读 `entityState.personality` 施加加成；性格不进 GOAP 状态键。详见 wiki/rules/personality.md。）
@@ -16,7 +29,7 @@
 > 历史更新：2026-05-29（散修悬赏与位置事件日志：散修复用任务模板与"接→做→交"三连，接/交地点改为最近悬赏阁/坊市（`quest_hall` resolver 与 `_nearestBountyOrg` 分流）、放宽悬赏动作前置为 `canTakeQuest`、`need_npc_quest` 给散修加 boost、`NPCTurnInQuestExecutor` 区分散修奖励（无宗门分成/无贡献点、灵石按 `cultivation.json → bounty.wandererRewardMultiplier` 加成）、`FactionStaticData` 新增 `subtype`；位置事件日志统一 schema：`TickManager._emitLocationEvent/_resolveLocationName/_enrichInfoEvents/_emitNpcActionEvent` 给悬赏/任务/道侣/生育/攻击/结盟/妖兽袭击/死亡等事件补 `x/y/locationName`，模拟器日志后缀 `@(x,y) 地点`。详见 ADR-009。）  
 > 历史更新：2026-05-29（建筑功能化：势力建筑由 `TerritoryLayoutGenerator` 记录坐标（`stats.buildingsByFaction`），引擎/TickManager 提供 `getFactionBuilding` 查询；新增 `main_hall/quest_hall/library/alchemy/training` 建筑级目标解析器，行为按功能分散到对应建筑（接/交任务→任务殿、履职/挑战→主殿、求续命丹→炼丹房、辅助势力→原地就近）减少无谓往返；主殿升级为行政中枢，掌门在主殿坐镇履职触发 `serveFaction.mainHall*` 加成（资源+稳定度）。时间尺度修正：修炼进度改为按 duration 天数累计、重调 cultivationSpeed 使修满境界耗时与寿命匹配（炼气~8年起）、拉长各行为 duration 与任务 durationDays、任务风险按整段摊到每天；NPC 行为优化 A 档：调整 npc-needs 权重提升任务吸引力、`act_npc_explore` 改用 `wander_far` 目标解析避免送人头、新增 ai-config `npc.decisionIntervalMin/Max` 决策周期错开机制；妖兽寿元/自然死亡改为与 NPC 一致的"到寿曲线"，按阶位决定寿元上限且整体长于同等修为人类，新增 monster-spawn.json `lifespan` 段、移除 `population.naturalDeathChancePerTick`；新增 balance/movement.json 实体移动速度配置；NPC 实体新增空间坐标 spatial 字段；新增 techniques.json 功法体系；monsters.json 妖族异兽定义；weapons.json 法宝武器定义；balance/ 和 config/ 目录；统一 modifiers.json 为世界修正器唯一来源）
 
-> 历史更新：2026-05-30（Consideration 乘法 Utility + 复仇 PvP 行为链，ADR-020）：新增 `data/balance/utility.json`（按目标 sourceId 挂 Consideration 响应曲线，`enabled` 总开关默认 false 零漂移）；`obsession.json` 新增 `goalMult`（执念对自身/同方向需求 Goal 的乘法加成，`enabled` 默认 false）、`humiliated→revenge` 后天规则，复仇执念 `goalState` 改为 `{ enemyKilled: true }`；`npc-actions.json` 新增 `act_npc_hunt_enemy`/`act_npc_kill_enemy`（追踪→击杀对人行为链）；`risk.json` 新增 `pvp` 分项（仅供 Utility/GOAP 折算期望损失，胜负由执行器结算）。代码侧：新增 `abstract/consideration.js`、`npc/npc-utility.js`（timeValue/estimateGoalRisk/decorateGoalConsiderations）、`NPCHuntEnemyExecutor`/`NPCKillEnemyExecutor`/`killNPCByPvP`/`npcCombatPower`/`revenge_target` resolver；`Goal.score` 改乘法式；`npc-state` 新增 `hasRevengeTarget`/`nearRevengeTarget`/`enemyKilled` 派生键。详见 ADR-020、systems/behavior-tree.md。）
+> 历史更新：2026-05-30（Consideration 乘法 Utility + 复仇 PvP 行为链，ADR-020）：新增 `data/balance/utility.json`（按目标 sourceId 挂 Consideration 响应曲线，`enabled` 总开关默认 false）；`obsession.json` 新增 `goalMult`（执念对自身/同方向需求 Goal 的乘法加成，`enabled` 默认 false）、`humiliated→revenge` 后天规则，复仇执念 `goalState` 改为 `{ enemyKilled: true }`；`npc-actions.json` 新增 `act_npc_hunt_enemy`/`act_npc_kill_enemy`（追踪→击杀对人行为链）；`risk.json` 新增 `pvp` 分项（仅供 Utility/GOAP 折算期望损失，胜负由执行器结算）。代码侧：新增 `abstract/consideration.js`、`npc/npc-utility.js`（timeValue/estimateGoalRisk/decorateGoalConsiderations）、`NPCHuntEnemyExecutor`/`NPCKillEnemyExecutor`/`killNPCByPvP`/`npcCombatPower`/`revenge_target` resolver；`Goal.score` 改乘法式；`npc-state` 新增 `hasRevengeTarget`/`nearRevengeTarget`/`enemyKilled` 派生键。详见 ADR-020、systems/behavior-tree.md。）
 > 历史更新：2026-05-30（GOBT 三层 AI + 长期心智：新增 `data/balance/memory.json`（记忆事件→强度/衰减/恩怨增量）、`obsession.json`（执念先天 roll + 后天记忆触发 + goalState）、`emotion.json`（情绪维度/事件激发/目标调制）；新增 `data/behavior-trees/` 目录（npc-default.json / faction-default.json，BT 树数据驱动）。代码侧：新增 `abstract/goal.js`、`abstract/bt/*`（BT 骨架 + PlannerNode）、`abstract/memory-system.js`、`abstract/obsession-system.js`、`abstract/emotion-system.js`、`npc/relationship.js`；`BaseEntity.tick` 改 BT 驱动；`NeedSystem.getTopGoals`、`BehaviorSystem.plan` 吃 Goal + 情绪调制 + 执行期实时重选。详见 ADR-018、ADR-019、systems/behavior-tree.md。）
 
 本文档定义 `apps/game/data/` 目录下所有 JSON 配置文件的结构规范、命名约定和扩展规则。新增数据文件时必须同步更新本文档。
@@ -27,7 +40,7 @@
 apps/game/data/
 ├── definitions/              # 静态定义层 — 全局类型、枚举与属性模板
 │   ├── ranks.json            # 境界/职位/寿元定义
-│   ├── resources.json        # 资源（物品）类型定义
+│   ├── macro-resources.json  # 势力宏观资源（ADR-043）：粮食(supply)/弟子(population)，仅势力以抽象数量持有。可持有实物（货币/材料/丹药/法宝/符/功法）见 items/ 目录（按 category 拆分，ADR-045）
 │   ├── terrains.json         # 地形类型定义
 │   ├── techniques.json       # 功法定义（下乘/中乘/上乘/仙家，按流派分类，25条）
 │   ├── weapons.json          # 法宝武器定义（法器/法宝/古宝/灵宝/通天灵宝，按流派分类）
@@ -49,6 +62,7 @@ apps/game/data/
 ├── actions/                  # 行为层 — AI 行为池与世界规则
 │   ├── faction-actions.json  # 势力 GOAP 行为
 │   ├── npc-actions.json      # NPC GOAP 行为
+│   ├── reaction-actions.json # 反应层行为（四层 AI Reaction 层，ADR-048）：逃命/暂避/应急回血/奋起反击。仅由 ReactiveNode 在被攻击刺激命中时强制选取，不进 GOAP/Utility
 │   └── world-rules.json      # 世界规则（Tick 级自动执行）
 ├── balance/                  # 平衡层 — 游戏数值平衡参数（可调节，不影响逻辑结构）
 │   ├── combat.json           # 战斗、外交、贸易数值参数
@@ -65,9 +79,23 @@ apps/game/data/
 │   ├── utility.json          # Utility 考量因素（ADR-020/022）：按目标 sourceId 挂 Consideration（响应曲线乘法式效用，含 expectedValue），enabled 总开关默认 false
 │   ├── reward.json           # 期望收益（ADR-022/024）：按目标 sourceId 配置 outcomes(prob×value)，outcome 带 itemId/qty 时发放真实物品（机会点掉落表 opportunity_*），enabled 默认 false
 │   ├── covet.json            # 怀璧其罪（ADR-025）：身家暴露阈值 + 觊觎起念条件 + 放他一马权重(同门/职位/恩义/道侣/性格) + 抢夺结算，enabled 默认 false
-│   └── relationship.json     # 关系网系统（ADR-027/028/029）：edgeTypes(人际/人妖/妖妖三层关系类型 + affinity/strength/decay/对称性) + eventBindings(事件→边) + init(初始同门/师徒推导)，enabled 默认 true；二期增 goalsEnabled(默认 true)/npcGoals/monsterPack/territory(关系驱动 Goal+妖群/领地，可回退)；三期增 masterDiscipleGoals(师徒传功/护徒/尽孝/继承遗志/夺舍)+修正 discipleRoles 含 core_disciple
-├── items/                    # 物品层（ADR-025）— 可转移实物定义
-│   └── items.json            # 法宝/材料/丹药：value(身家估值)/grade/transferable/combatBonus
+│   ├── relationship.json     # 关系网系统（ADR-027/028/029）：edgeTypes(人际/人妖/妖妖三层关系类型 + affinity/strength/decay/对称性) + eventBindings(事件→边) + init(初始同门/师徒推导)，enabled 默认 true；二期增 goalsEnabled(默认 true)/npcGoals/monsterPack/territory(关系驱动 Goal+妖群/领地)；三期增 masterDiscipleGoals(师徒传功/护徒/尽孝/继承遗志/夺舍)+修正 discipleRoles 含 core_disciple
+│   └── reaction.json         # 反应层（四层 AI Reaction 层，ADR-048）：被攻击反应阈值(fleeHpRatio/healHpRatio/powerAdvantage)+回血丹(healPillId)+反击伤害(counterDamageRatio)+动作映射(flee/retreat/heal/counter)+刺激队列(ttl/容量)+eventReplan(大事件立即重决策)。enabled 与 eventReplan.enabled 默认 false
+├── items/                    # 物品层（ADR-025/043/044/045）— 统一可持有物品定义（NPC 与势力均可持有）。按 category 拆分为多文件（ADR-045），加载器合并为单一 itemDefs.items（仿 effects/ 合并加载）。每文件 { _description, items:[...] }。各项含 value/grade/transferable/combatBonus；遁地符带 grantsAbilities；可服用物品(灵石/丹药/灵果/精血)带 effects 数组(挂载通用 GE 原语 + 各自数值，ADR-042 阶段2/ADR-043)
+│   ├── currency.json         # 货币：四档灵石（low/mid/high/top_spirit_stone，机制必需泛类，带 ge_add_qi）
+│   ├── material.json         # 材料：分级妖丹妖材 _gN(monster_core_gN/beast_material_gN) + 具体天材地宝/灵草/精血/灵果/矿材(mat_*) + Effect 复用示例(item_spirit_fruit/item_strong_blood)。泛 ID 已删(ADR-046)
+│   ├── pill.json             # 丹药：机制丹(item_qi_pill/item_breakthrough_pill) + 具体丹药(pill_*)，subCategory cultivation/breakthrough/recovery/healing
+│   ├── artifact.json         # 法宝：具体法宝(artifact_*)，含 gradeName(法器/法宝/古宝/灵宝/通天灵宝) + combatBonus，subCategory magic_artifact/magic_treasure/ancient_treasure/spirit_treasure/heavenly_treasure
+│   ├── talisman.json         # 符箓：能力符(item_escape_talisman(_high)，grantsAbilities) + 具体符箓(talisman_*)，subCategory escape/attack/defense/healing
+│   └── technique.json        # 功法秘籍：具体功法(tech_*)，含 gradeName(下乘/中乘/上乘/仙家)，subCategory righteous/evil/buddhist/beast/auxiliary
+├── tags/                     # 战斗机制层（ADR-042）— GameplayTag 登记表
+│   └── tags.json             # 层级字符串 Tag 规范表（State.*/Trigger.*/Immune.*/Ability.*/Effect.*/Trait.*/Buff.*），加载期校验未登记 Tag
+├── effects/                  # 机制层（ADR-042）— GameplayEffect(GE) 数据（EffectPool 合并加载全部文件）。id 强制 ge_ 开头
+│   ├── combat-effects.json   # 战斗 GE（含 ge_lock_hp 保命）：durationType(instant/duration/infinite) + modifiers + grantsTags
+│   └── core-effects.json      # 通用 GE 原语（阶段2 增强）：ge_add_qi/ge_add_qi_over_time/ge_add_hp(夹 maxHp)/ge_add_progress/ge_add_breakthrough_bonus/ge_full_heal。只声明机制，数值由挂载来源(items.json effects)的 spec 提供
+├── abilities/                # 机制层（ADR-042）— GameplayAbility(GA) 数据（AbilityPool 加载）。id 强制 ga_ 开头
+│   └── combat-abilities.json # GA 定义（含 ga_lock_hp 锁血 / ga_escape_talisman 遁地）：triggerTags + blockedByTags + requiredItems + grantsEffects(引用 ge_*) + executor
+├── cues/                     # 机制层（ADR-042，预留未实现）— GameplayCue(GC) 表现层数据。id 强制 gc_ 开头
 ├── behavior-trees/           # GOBT 行为树（ADR-018）— BT 树 JSON 数据驱动定义
 │   ├── npc-default.json      # NPC 默认行为树（反应 Selector + 深思熟虑 Planner）
 │   └── faction-default.json  # 势力默认行为树
@@ -82,6 +110,7 @@ apps/game/data/
 |------|------|
 | **文件名** | 使用 `kebab-case`（如 `faction-needs.json`）|
 | **ID 字段** | 使用 `snake_case`（如 `low_spirit_stone`、`qi_refining`）|
+| **GAS 资产 ID 前缀（ADR-042）** | GameplayEffect 强制 `ge_` 开头（`ge_lock_hp`），GameplayAbility 强制 `ga_` 开头（`ga_escape_talisman`），GameplayCue 强制 `gc_` 开头（预留）。GameplayTag 例外：用层级字符串、`.` 分隔、PascalCase 段（`State.Dying`），不加前缀。详见 AGENTS.md「GAS 机制资产规则」|
 | **中文名称** | `name` 字段使用简体中文 |
 | **JSON 格式** | 2 空格缩进，UTF-8 无 BOM |
 | **顶层结构** | 列表类数据使用 JSON Array `[]`，单对象数据使用 JSON Object `{}` |
@@ -116,29 +145,59 @@ apps/game/data/
 
 **扩展规则**：新增境界只需追加数组元素，`order` 值需大于前一境界。寿元数据需参考 `docs/世界观参考/` 中对应小说设定，若无参考需告知用户。
 
-### resources.json — 资源/物品定义
+### macro-resources.json — 势力宏观资源定义（ADR-043）
 
-定义所有可被势力和 NPC 持有、消耗、产出的资源类型。
+仅定义势力以**抽象数量**持有的宏观资源（不属于实物道具）。可被 NPC/势力持有的实物（货币/材料/丹药/法宝/符/功法）统一见 `items/` 目录（按 category 拆分为多文件、加载时合并，ADR-045）。宏观资源文件与合并后的物品定义都加载进同一个 `ItemRegistry`，分类依据为「势力宏观资源 vs 可持有实物」。
 
-**世界观参考来源**：`docs/世界观参考/凡人修仙传_世界观设定.md`（灵石、丹药、灵材、符箓等）
+| 字段 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `id` | string | 是 | 唯一标识（`food` / `disciples`）|
+| `name` | string | 是 | 中文名称 |
+| `category` | string | 是 | `supply`（后勤物资）/ `population`（人口规模）|
+| `stackable` | boolean | 是 | 是否可堆叠 |
+| `value` | number | 否 | 统一相对价值（以低级灵石=1 为基准）|
+| `description` | string | 是 | 描述文本 |
+
+### items/ — 统一可持有物品定义（ADR-025/043/044/045）
+
+定义所有可被 NPC 与势力持有、消耗、产出、转移的**实物**，按 `category` 区分语义。
+
+**按 category 拆分为多文件（ADR-045）**：`items/` 目录下每个 `category` 一个文件（`currency.json`/`material.json`/`pill.json`/`artifact.json`/`talisman.json`/`technique.json`），各文件结构为 `{ "_description": "...", "items": [...] }`。加载器（`config-loader.js` 与各工具脚本）**显式列举这 6 个文件并合并**为单一 `itemDefs.items` 数组后交给 `WorldEngine`/`ItemRegistry`，下游消费结构与拆分前完全一致（仿 `effects/` 的合并加载约定，非目录遍历，跨浏览器/Node 环境一致）。**新增 category 时需同步在加载器的文件清单中登记。**
+
+**世界观参考来源**：[凡人修仙传/物品设定.md](../世界观参考/凡人修仙传/物品设定.md)（灵石、丹药、灵材、符箓、功法等）
+
+| category | 含义 | subCategory 子类（ADR-044）| 示例 ID |
+|----------|------|------|---------|
+| `currency` | 货币灵石（可计价 + 可服用吸纳真气）| —（暂无）| `low_spirit_stone`..`top_spirit_stone` |
+| `material` | 炼丹炼器材料/天材地宝 | `herb`/`ore`/`blood`/`fruit`/`special`/`monster_core`/`beast_material` | `monster_core_gN`/`beast_material_gN`/`item_spirit_fruit`/`mat_century_ginseng`/`mat_black_iron_ore`/`mat_blood_red_fruit`（裸泛 ID 已删，ADR-046）|
+| `pill` | 丹药 | `cultivation`/`breakthrough`/`healing`/`recovery` | `item_qi_pill`/`item_breakthrough_pill`/`pill_foundation`/`pill_golden_core` |
+| `artifact` | 法宝法器古宝灵宝 | `magic_artifact`/`magic_treasure`/`ancient_treasure`/`spirit_treasure`/`heavenly_treasure` | `artifact_green_sword`/`artifact_wulong_halberd`/`artifact_void_cauldron`/`artifact_green_bamboo_sword`/`artifact_desolate_pagoda` |
+| `talisman` | 符箓 | `escape`/`attack`/`defense`/`healing` | `item_escape_talisman`/`item_escape_talisman_high`/`talisman_fireball`/`talisman_heal` |
+| `technique` | 功法秘籍 | `righteous`/`evil`/`buddhist`/`beast`/`auxiliary` | `tech_long_chun`/`tech_blood_demon`/`tech_diamond_body`/`tech_da_yan` |
 
 | 字段 | 类型 | 必填 | 说明 |
 |------|------|------|------|
 | `id` | string | 是 | 唯一标识（如 `low_spirit_stone`）|
-| `name` | string | 是 | 中文名称（如"低级灵石"）|
-| `category` | string | 是 | 分类：`currency` / `supply` / `population` / `material` / `consumable` / `equipment` |
+| `name` | string | 是 | 中文名称 |
+| `category` | string | 是 | 见上表 |
+| `subCategory` | string | 否 | 子类（ADR-044），见上表各 category 的子类枚举；用于在顶层 category 下细分（法器/法宝/古宝/灵宝/通天灵宝、正道/魔道/佛门/御兽/辅助 等）|
 | `stackable` | boolean | 是 | 是否可堆叠 |
-| `exchangeRate` | number | 否 | 兑换比率（currency 类型专用，低级=1，中级=100，高级=10000，极品=1000000）|
-| `qiValue` | number | 否 | 折算真气价值（部分丹药/灵石）|
-| `value` | number | 否 | 统一相对价值（ADR-017 预留）。供后续「行为预期产出道具」的价值期望计算（`computeActionValue`）使用；**本期仅加字段、不参与决策**。以低级灵石=1 为基准，参考 `exchangeRate`/`qiValue` 标定 |
-| `grade` | number | 否 | 品阶化材料使用，妖丹/妖材为 1~9，对应妖兽 `grade` |
-| `transferable` | boolean | 否 | 是否可转移；妖兽材料默认 `true`，可进入身家估值与后续抢夺系统 |
+| `exchangeRate` | number | 否 | 兑换比率（currency 专用，低=1/中=100/高=10000/极品=1000000）|
+| `qiValue` | number | 否 | 折算真气含量（灵石；与 `effects` 的 ge_add_qi magnitude 对应）|
+| `value` | number | 否 | 统一相对价值（ADR-017）。供「行为预期产出道具」价值期望（`computeActionValue`）使用 |
+| `grade` | number | 否 | 品阶（妖丹/妖材 1~9 对应妖兽 `grade`；影响 ADR-025 暴露概率）|
+| `transferable` | boolean | 否 | 是否可被抢夺/转移 |
+| `combatBonus` | number | 否 | 装备后战力加成系数（artifact）|
+| `grantsAbilities` | string[] | 否 | 持有即授予的 GameplayAbility（ADR-042，如遁地符 `ga_lock_hp`/`ga_escape_talisman`）|
+| `effects` | object[] | 否 | 服用即生效的通用 GE 原语挂载 + 各自数值（ADR-042 阶段2/ADR-043），`[{ effect, magnitude, magnitudeType?, decay?, baseRankId?, minMagnitude?, clamp? }]`，经 `applyItemEffects` 结算 |
 | `description` | string | 是 | 描述文本 |
 | `source` | string | 否 | 世界观参考来源标注 |
 
-**扩展规则**：新增资源类型后，需检查 `actions/` 目录下的行为配置是否需要引用新资源。新增资源需标注 `source` 来源。
+**灵石可服用（ADR-043）**：四档灵石既是货币又复用 `ge_add_qi` 通用 Effect，`effects` 的 magnitude 取各自 `qiValue`（low=1/mid=120/high=15000/top=1800000）。**默认不自动触发**，需行为驱动服用。
 
-**妖兽资源规则（ADR-026）**：`monster_core` / `beast_material` 为旧任务兼容 ID；真实妖兽死亡结算按妖兽等阶映射到 `monster_core_gN` / `beast_material_gN`（N=1~9）。这些品阶资源可由 NPC 持有、上交宗门换贡献，并作为宗门炼丹/炼器兑换的库存消耗。宗门缺妖兽材料时由 `need_npc_hunt_resources` + `act_npc_accept_hunt_quest` 驱动 NPC 主动接斩妖类任务；身上有可捐材料时由 `need_npc_donate_materials` 推动上交。
+**扩展规则**：新增物品需标注 `source` 来源；新增类型后检查 `actions/` 行为配置是否需引用。
+
+**妖兽资源规则（ADR-026）**：`monster_core` / `beast_material` 为旧任务兼容 ID；真实妖兽死亡结算按妖兽等阶映射到 `monster_core_gN` / `beast_material_gN`（N=1~9）。这些品阶材料可由 NPC 持有、上交宗门换贡献，并作为宗门炼丹/炼器兑换的库存消耗。宗门缺妖兽材料时由 `need_npc_hunt_resources` + `act_npc_accept_hunt_quest` 驱动 NPC 接斩妖任务；身上有可捐材料时由 `need_npc_donate_materials` 推动上交。
 
 ### terrains.json — 地形类型定义
 
@@ -353,7 +412,7 @@ apps/game/data/
 | `type` | string | 是 | 阵营类型：`righteous` / `evil` / `neutral` / `demon` / `mortal` |
 | `headquarters` | object | 是 | 总部坐标 `{ x, y }` |
 | `stability` | number | 是 | 初始稳定度（0-100）|
-| `resources` | object | 是 | 初始资源（键引用 `definitions/resources.json` 的 `id`）|
+| `resources` | object | 是 | 初始资源（键引用 `definitions/macro-resources.json` 或 `items/*.json` 的 `id`，如 `food`/`disciples`/`low_spirit_stone`）|
 | `leader` | string | 是 | 掌门 NPC ID（引用 `entities/npcs.json`）|
 | `traits` | string[] | 是 | 势力特性标签：`diplomatic` / `aggressive` / `defensive` / `secretive` |
 | `relations` | object | 是 | 势力关系，键为其他势力 `id`，值为 -100 到 100 |
@@ -468,7 +527,7 @@ apps/game/data/
 
 | 字段 | 类型 | 说明 |
 |------|------|------|
-| `npcItems[]` | array | 固定给 NPC 的物品规则，常用于 `spirit_herb`、`ore`、`monster_core`、`beast_material` |
+| `npcItems[]` | array | 固定给 NPC 的物品规则，常用于具体材料 `mat_century_ginseng`、`mat_black_iron_ore`、`monster_core_gN`、`beast_material_gN`（ADR-046 起用具体道具，不再用裸泛 ID）|
 | `factionItems[]` | array | 仅宗门成员交付时进入宗门库存的物品规则，散修不反哺宗门 |
 | `randomItems[]` | array | 按 `chance` 掷骰的稀有奖励，V1 用于秘境任务产出 `item_breakthrough_pill`、`item_artifact_low/mid`、`technique_book_mid` |
 | `factionStability` | number | 宗门成员交付后提升本宗稳定度；散修交付悬赏不触发 |
@@ -540,7 +599,7 @@ apps/game/data/
 
 ### npc-actions.json — NPC 行为
 
-当前已定义：修炼（原地闭关）、赴修炼场修炼（消耗贡献换 +25% 速度）、履行职责、寻找续命丹药、挑战上位、辅助势力、游历、接取/执行/交付任务；V1 经济闭环新增材料上交、兑换/服用聚气丹、兑换/服用破境丹、兑换并自动装备低阶法器；复仇链 `act_npc_hunt_enemy`/`act_npc_kill_enemy`（ADR-020）；关系驱动 `act_npc_assist_ally`/`act_npc_visit_benefactor`（ADR-028）；师徒互动 `act_npc_teach_disciple`/`act_npc_protect_disciple`/`act_npc_visit_master`（ADR-029，均由关系 Goal gate，`targetResolver: relationship_target`，零漂移）。
+当前已定义：修炼（原地闭关）、赴修炼场修炼（消耗贡献换 +25% 速度）、履行职责、寻找续命丹药、挑战上位、辅助势力、游历、接取/执行/交付任务；V1 经济闭环新增材料上交、兑换/服用聚气丹、兑换/服用破境丹、兑换并自动装备低阶法器；复仇链 `act_npc_hunt_enemy`/`act_npc_kill_enemy`（ADR-020）；关系驱动 `act_npc_assist_ally`/`act_npc_visit_benefactor`（ADR-028）；师徒互动 `act_npc_teach_disciple`/`act_npc_protect_disciple`/`act_npc_visit_master`（ADR-029，均由关系 Goal gate，`targetResolver: relationship_target`）。
 
 **价值-风险字段（ADR-017，每个行为）**：
 
@@ -587,7 +646,7 @@ apps/game/data/
 | `npcMaterialDonation.*` | V1 NPC 材料捐献参数：可捐 `itemId`、单次数量、贡献/月贡献收益、宗门库存入库数量 |
 | `monsterResources.*` | 妖兽资源化闭环参数（ADR-026）：斩妖任务类型、重选目标范围、狩猎战力偏置、失败风险、品阶捐献贡献、尸骸机会最低等阶与价值 |
 | `npcExchange.options.*` | V1 贡献兑换项：`itemId`、`qty`、`contributionCost`、`stoneCost`，用于聚气丹、破境丹和低阶法器 |
-| `npcExchange.options.*.requiredFactionItems[]` | 兑换前要求宗门库存具备并在成功后消耗的材料，如 `monster_core_g3`、`beast_material_g2`、`spirit_herb`、`ore` |
+| `npcExchange.options.*.requiredFactionItems[]` | 兑换前要求宗门库存具备并在成功后消耗的材料，如 `monster_core_g3`、`beast_material_g2`、`mat_century_ginseng`、`mat_black_iron_ore`（ADR-046 起用具体道具）|
 | `npcExchange.useItems.*` | V1 消耗品使用效果：丹药对应 `qiGain`、`progressGain`、`breakthroughBonus` 等 |
 
 ### cultivation.json — 修炼与突破参数
@@ -634,7 +693,7 @@ apps/game/data/
 > - 修炼进度按天累计（executor 内 `progress += speed × duration`），修满一境界 ≈ `1/cultivationSpeed` 天（与 duration 无关）。
 > - 行为 `duration`（`npc-actions.json`）：修炼 30 天、履职/辅助 20 天、挑战 15 天、求药 60 天、游历 90 天、接取/交付任务 2 天。
 > - 任务时长由 `quest-templates.json` 的 `durationDays`（10~150 天）决定，每天推进一次；`dangerInjury/dangerDeath` 为**整段任务**总风险，executor 内按 `÷durationDays` 摊到每天，避免长任务逐日掷骰累计成必死。
-> - 配合 NPC 决策周期（`ai-config.json` `decisionIntervalMin/Max`），出关决策间隔自然达数月至一年级，符合修士闭关节奏。
+> - NPC 决策节奏：2026-06-02 起取消决策冷却（空闲时每天可决策），仅 `ai-config.json` `decisionPhaseMax` 做开局错相；出关后的闭关节奏由行为 `duration`（闭关 30 天等）与战斗打断共同决定。
 
 ### social.json — 社会关系参数
 
@@ -764,7 +823,7 @@ apps/game/data/
 | `faction.maxIterations` | 势力 GOAP 最大迭代次数 |
 | `npc.maxDepth` | NPC GOAP 搜索深度 |
 | `npc.maxIterations` | NPC GOAP 最大迭代次数 |
-| `npc.decisionIntervalMin` / `decisionIntervalMax` | NPC 决策周期（天）随机区间。每次完成一轮大决策后随机休整 min~max，期间**原地修炼**，到期才重新评估需求并规划。使各 NPC 决策时机错开，避免所有 NPC 同一 tick 齐步行动。由 `NPCEntity._planBehavior` 门控（见该文件）|
+| `npc.decisionPhaseMax` | NPC 决策【开局错相】上限（天）。**无决策冷却**：空闲时每天都可重新评估需求并规划（避免修炼被战斗打断后长期空闲卡进度）。仅在开局给每个 NPC 随机错开 0~decisionPhaseMax 天首次决策，避免全员同一 tick 齐步规划造成峰值；错相用完后每天可决策。由 `NPCEntity.canStartNewDecision` 门控（2026-06-02 由 decisionIntervalMin/Max 的"冷却静候"改为"开局错相+每天可决策"）|
 | `npc.decision.lambdaRisk` | 价值-风险决策（ADR-017）：期望风险损失在决策代价中的放大系数（默认 40，把 0~1 量级风险放大到与基础消耗可比）|
 | `npc.decision.lambdaValue` | 行为价值在决策代价中的折算系数（默认 1.0，作减项）|
 | `npc.decision.headstrongChance` | 「上头」命中概率（很小，默认 0.03）：每次决策对每个行为独立 roll |
@@ -774,7 +833,7 @@ apps/game/data/
 
 > **价值-风险决策（ADR-017）**：决策代价 = 基础消耗 + `lambdaRisk`×期望风险损失 − `lambdaValue`×行为价值，夹 `costFloor` 下限。期望风险/价值与「上头」命中在 `NPCEntity._planBehavior` 进规划前一次性算好并固定（A* step cost 单次规划内稳定），通过 `costFn` 透传给规划器（慢/快路径均用）。命中上头且为首行为时 state 打 `lastDecisionHeadstrong`/`headstrongActionId` 标记。
 
-> **NPC 决策节奏（2026-05-29）**：NPC 不再每 tick 都重新规划。行为系统空闲时，若决策周期未到则注入"原地修炼"并递减冷却；到期才做 GOAP 规划并重置一个新的随机周期。配合需求权重调整（降低修炼和平加成、提高任务吸引力）与 `act_npc_explore` 改用 `wander_far`（不再走向妖兽），NPC 会在地图上更活跃地外出接任务/做任务/游历，且行为时机分散。
+> **NPC 决策节奏（2026-06-02 调整）**：**取消决策冷却**。行为系统空闲时每天都可重新评估需求并规划（不再"周期未到注入原地修炼并递减冷却"），避免修炼被战斗打断后陷入多天空闲、进度长期停滞。仅保留**开局错相**（`decisionPhaseMax`）：每个 NPC 首次决策错开 0~phaseMax 天，避免全员同 tick 齐步规划造成峰值。执行多 tick 行为（如闭关）期间仍不被打断（门控只在"空闲且无计划"时询问）。
 
 ---
 
@@ -784,8 +843,10 @@ apps/game/data/
 definitions/weapons.json ◄──── (NPC装备系统，待扩展)
 definitions/ranks.json ◄─── entities/npcs.json (rankId)
                        ◄─── balance/cultivation.json (rankMaxDifficulty keys)
-definitions/resources.json ◄─── actions/*.json (costs/yields itemId)
-                           ◄─── entities/factions.json (resources keys)
+definitions/macro-resources.json ◄─── entities/factions.json (food/disciples keys)
+items/*.json     ◄─── actions/*.json (costs/yields itemId)      # 按 category 拆分多文件，加载合并(ADR-045)
+                 ◄─── entities/factions.json/npcs.json (灵石/材料 inventory keys)
+                 ──────► 引擎 ItemRegistry 注册（6 分类文件合并 + macro-resources 合并）
 definitions/terrains.json ◄─── world/map.json (tiles[].terrain)
 definitions/names.json ──────► engine/world/tick-manager.js (_processBirths)
 entities/factions.json ◄──── entities/npcs.json (factionId)
@@ -804,14 +865,14 @@ balance/risk.json ──────────► 引擎 worldContext.balanceC
 balance/memory.json ────────► NPCEntity.memory（记忆强度/衰减/恩怨增量，ADR-019）
 balance/obsession.json ─────► NPCEntity.obsessions（先天 roll + 后天触发 + goalMult 执念乘子，ADR-019/020）
 balance/emotion.json ───────► NPCEntity.emotions（事件激发 + 目标调制，ADR-019）
-balance/utility.json ───────► NPCEntity.decorateGoalConsiderations（Consideration 乘法式 Utility + TimeValue/风险，ADR-020；enabled 默认 false 零漂移）
+balance/utility.json ───────► NPCEntity.decorateGoalConsiderations（Consideration 乘法式 Utility + TimeValue/风险，ADR-020；enabled 默认 false）
 world/news.json ────────────► TickManager.infoSystem（InfoPropagationSystem：消息传播/多渠道，ADR-024；enabled 默认 false）
 world/opportunities.json ───► TickManager.opportunitySystem（OpportunitySystem：机会点 spawn/expire，ADR-024；enabled 默认 false）
 balance/covet.json ─────────► TickManager._tickCovet（怀璧其罪暴露/觊觎/抢夺，ADR-025；enabled 默认 false）
 balance/relationship.json ──► WorldEngine.relationshipSystem（RelationshipSystem：NPC/妖兽/势力统一关系网，事件驱动建边+衰减+快照，ADR-027；NPCEntity.relationships 为兼容视图）
-                              └► 二期 goalsEnabled：NPCEntity._buildRelationshipGoals(护短/报恩/关系复仇)+monster _senseTerritory/monsterDefendTerritory(妖群/领地)，ADR-028（默认开可回退）
+                              └► 二期 goalsEnabled：NPCEntity._buildRelationshipGoals(护短/报恩/关系复仇)+monster _senseTerritory/monsterDefendTerritory(妖群/领地)，ADR-028（默认开）
                               └► 三期 masterDiscipleGoals：NPCEntity._considerMasterDiscipleGoals(传功/护徒/尽孝)+_checkSeizeDiscipleObsession(夺舍)+inheritMasterLegacy(继承遗志，死亡钩子)，ADR-029
-items/items.json ───────────► ItemRegistry（可转移物品定义，进 assetScore/战力/掉落，ADR-025）
+items/*.json ───────────► ItemRegistry（可转移物品定义，6 分类文件合并加载，进 assetScore/战力/掉落，ADR-025/045）
 behavior-trees/*.json ──────► NPCEntity/FactionEntity 行为树（GOBT，ADR-018；当前默认用代码内置同构常量）
 balance/monster-spawn.json ─► 引擎 MonsterSpawner（妖兽分布生成）
 definitions/monsters.json ──► 引擎 MonsterSpawner / MonsterEntity（妖兽实例）

@@ -1,0 +1,130 @@
+{
+  "_description": "丹药类物品（category=pill，ADR-025/043/044/045）。item_qi_pill/item_breakthrough_pill 为机制必需丹药；其余为按 docs/世界观参考 各《物品设定.md》补的具体丹药。subCategory 细分 cultivation/breakthrough/recovery/healing。服用即生效，effects 复用通用 GE 原语、数值各取自本物品。本文件由加载器合并至 itemDefs.items。",
+  "items": [
+    {
+      "id": "item_qi_pill",
+      "name": "聚气丹",
+      "category": "pill",
+      "subCategory": "cultivation",
+      "grade": 1,
+      "value": 120,
+      "transferable": true,
+      "stackable": true,
+      "effects": [
+        { "effect": "ge_add_qi", "magnitude": 120, "magnitudeType": "rankDecay", "baseRankId": "qi_refining", "decay": 0.35, "minMagnitude": 1 },
+        { "effect": "ge_add_progress", "magnitude": 0.01 }
+      ],
+      "description": "服用可恢复真气的丹药（数值来源：本物品 effects；低阶丹对高境界 rankDecay 递减，见 ADR-040/042）"
+    },
+    {
+      "id": "item_breakthrough_pill",
+      "name": "破境丹",
+      "category": "pill",
+      "subCategory": "breakthrough",
+      "grade": 3,
+      "value": 1500,
+      "transferable": true,
+      "stackable": true,
+      "effects": [
+        { "effect": "ge_add_qi", "magnitude": 300 },
+        { "effect": "ge_add_breakthrough_bonus", "magnitude": 0.08, "clamp": [null, 0.25] }
+      ],
+      "description": "助益突破瓶颈的珍稀丹药（数值来源：本物品 effects）"
+    },
+    {
+      "id": "pill_foundation",
+      "name": "筑基丹",
+      "category": "pill",
+      "subCategory": "breakthrough",
+      "grade": 2,
+      "value": 800,
+      "transferable": true,
+      "stackable": true,
+      "effects": [
+        { "effect": "ge_add_qi", "magnitude": 200 },
+        { "effect": "ge_add_breakthrough_bonus", "magnitude": 0.1, "clamp": [null, 0.25] }
+      ],
+      "description": "炼气巅峰突破筑基的关键丹药，可将法力液化、提升突破成功率",
+      "source": "参考自凡人修仙传/仙逆/一念永恒/牧神记：筑基丹是炼气→筑基关键破境丹"
+    },
+    {
+      "id": "pill_golden_core",
+      "name": "结丹丹",
+      "category": "pill",
+      "subCategory": "breakthrough",
+      "grade": 4,
+      "value": 6000,
+      "transferable": true,
+      "stackable": true,
+      "effects": [
+        { "effect": "ge_add_qi", "magnitude": 800 },
+        { "effect": "ge_add_breakthrough_bonus", "magnitude": 0.12, "clamp": [null, 0.25] }
+      ],
+      "description": "筑基巅峰结丹专用丹药，大幅提升结丹成功率、减少心魔干扰",
+      "source": "参考自凡人修仙传：结丹丹以数千年灵药、天外陨铁炼制"
+    },
+    {
+      "id": "pill_nascent_soul",
+      "name": "化婴丹",
+      "category": "pill",
+      "subCategory": "breakthrough",
+      "grade": 6,
+      "value": 40000,
+      "transferable": true,
+      "stackable": true,
+      "effects": [
+        { "effect": "ge_add_qi", "magnitude": 4000 },
+        { "effect": "ge_add_breakthrough_bonus", "magnitude": 0.15, "clamp": [null, 0.25] }
+      ],
+      "description": "结丹巅峰突破元婴的辅助丹药，凝练元婴灵力、增强元婴强度",
+      "source": "参考自凡人修仙传：化婴丹以万年灵药、元婴级妖兽内丹炼制"
+    },
+    {
+      "id": "pill_replenish_origin",
+      "name": "培元丹",
+      "category": "pill",
+      "subCategory": "recovery",
+      "grade": 2,
+      "value": 300,
+      "transferable": true,
+      "stackable": true,
+      "effects": [
+        { "effect": "ge_add_qi", "magnitude": 150 },
+        { "effect": "ge_add_hp", "magnitude": 0.4, "magnitudeType": "ratioOfMaxHp" }
+      ],
+      "description": "恢复伤势和法力、巩固筑基期修为的常用丹药，对暗伤有修复效果",
+      "source": "参考自凡人修仙传：培元丹恢复伤势法力，巩固筑基修为"
+    },
+    {
+      "id": "pill_rejuvenation",
+      "name": "回春丹",
+      "category": "pill",
+      "subCategory": "healing",
+      "grade": 3,
+      "value": 900,
+      "transferable": true,
+      "stackable": true,
+      "effects": [
+        { "effect": "ge_add_hp", "magnitude": 0.6, "magnitudeType": "ratioOfMaxHp" }
+      ],
+      "description": "快速恢复法力和伤势，战斗中可保命的疗伤丹药",
+      "source": "参考自凡人修仙传：回春丹快速恢复法力伤势"
+    },
+    {
+      "id": "pill_nine_turn_golden",
+      "name": "九转金丹",
+      "category": "pill",
+      "subCategory": "healing",
+      "grade": 7,
+      "value": 30000,
+      "transferable": true,
+      "stackable": true,
+      "effects": [
+        { "effect": "ge_full_heal" },
+        { "effect": "ge_add_progress", "magnitude": 0.03 }
+      ],
+      "description": "重塑肉身、起死回生的高阶丹药，回满气血并增进修为",
+      "source": "参考自武破九荒/阳神：九转金丹/九转灵丹起死回生、愈重伤"
+    }
+  ]
+}

@@ -14,7 +14,7 @@
 import { SelectorNode, SequenceNode, ParallelNode } from './composites.js';
 import { InverterNode, SucceederNode, CooldownNode } from './decorators.js';
 import { ConditionNode, HookNode, AlwaysNode } from './leaves.js';
-import { EmotionReactionNode } from './reactions.js';
+import { EmotionReactionNode, ReactiveNode } from './reactions.js';
 
 /** 内置节点类型注册表：type 字符串 → (config) => BTNode。 */
 const DEFAULT_REGISTRY = {
@@ -28,6 +28,7 @@ const DEFAULT_REGISTRY = {
   hook: (cfg) => new HookNode(cfg),
   always: (cfg) => new AlwaysNode(cfg),
   emotion_reaction: (cfg) => new EmotionReactionNode(cfg),
+  reactive: (cfg) => new ReactiveNode(cfg),
 };
 
 export class BTLoader {

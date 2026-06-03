@@ -48,10 +48,10 @@ const assert = (c, m) => { if (!c) { console.error('  FAIL:', m); failed++; } };
   assert(Math.abs(os.needGoalMult('need_npc_cultivation') - 2.0) < 1e-6, '同方向需求乘子=2.0');
   assert(os.needGoalMult('need_npc_heal') === 1, '非同方向需求乘子=1');
 
-  // enabled=false 零漂移
+  // enabled=false 时不施加乘子
   const osOff = new ObsessionSystem({ enabled: false, byType: { supremacy: { self: 9 } } });
   osOff.add(new Obsession({ type: ObsessionType.SUPREMACY, intensity: 70, goalState: {} }));
-  assert(osOff.toGoals()[0].score() === 70, 'goalMult.enabled=false 时零漂移');
+  assert(osOff.toGoals()[0].score() === 70, 'goalMult.enabled=false 时不施加乘子');
   assert(osOff.needGoalMult('need_npc_cultivation') === 1, 'enabled=false 时 needGoalMult=1');
 }
 

@@ -9,13 +9,14 @@
  */
 import { ActionExecutor } from '../abstract/action.js';
 import { ActionPool } from '../pools/action-pool.js';
+import { AttributeSet } from '../abstract/attribute-set.js';
 
-function randRange(min, max) {
-  return min + Math.random() * (max - min);
+function randRange(min, max, rng) {
+  return min + rng.next() * (max - min);
 }
 
-function randInt(min, max) {
-  return Math.floor(randRange(min, max + 1));
+function randInt(min, max, rng) {
+  return Math.floor(randRange(min, max + 1, rng));
 }
 
 export class ModifierSpawnExecutor extends ActionExecutor {
@@ -28,7 +29,7 @@ export class ModifierSpawnExecutor extends ActionExecutor {
     if (activeModifiers.length >= maxActive) return { spawned: false };
 
     const spawnChance = action.params?.spawnChance ?? 0.05;
-    if (Math.random() > spawnChance) return { spawned: false };
+    if (worldContext.rng.next() > spawnChance) return { spawned: false };
 
     // 优先使用 worldContext 传入的修正器模板（来自 modifiers.json）
     const modifierTemplates = worldContext.modifierTemplates || [];
@@ -38,12 +39,12 @@ export class ModifierSpawnExecutor extends ActionExecutor {
     const candidates = modifierTemplates.filter(t => !activeIds.has(t.id));
     if (candidates.length === 0) return { spawned: false };
 
-    const template = candidates[Math.floor(Math.random() * candidates.length)];
+    const template = candidates[Math.floor(worldContext.rng.next() * candidates.length)];
     const modifier = {
       id: template.id,
       name: template.name,
-      intensity: randRange(template.intensityMin ?? 0.5, template.intensityMax ?? 1.0),
-      remainingDays: randInt(template.minDuration, template.maxDuration),
+      intensity: randRange(template.intensityMin ?? 0.5, template.intensityMax ?? 1.0, worldContext.rng),
+      remainingDays: randInt(template.minDuration, template.maxDuration, worldContext.rng),
       effects: { ...template.effects },
       spawnDay: worldState.get('currentDay'),
     };
@@ -71,7 +72,7 @@ export class ModifierDecayExecutor extends ActionExecutor {
 export class NaturalDisasterExecutor extends ActionExecutor {
   run(entity, worldContext, action) {
     const chance = action.params?.disasterChance ?? 0.02;
-    if (Math.random() > chance) return { disaster: false };
+    if (worldContext.rng.next() > chance) return { disaster: false };
 
     const registry = worldContext.entityRegistry;
     if (!registry) return { disaster: false };
@@ -79,9 +80,9 @@ export class NaturalDisasterExecutor extends ActionExecutor {
     const factions = registry.getAliveByType('faction');
     if (factions.length === 0) return { disaster: false };
 
-    const target = factions[Math.floor(Math.random() * factions.length)];
-    const stabilityLoss = randInt(5, 15);
-    const foodLoss = randInt(50, 200);
+    const target = factions[Math.floor(worldContext.rng.next() * factions.length)];
+    const stabilityLoss = randInt(5, 15, worldContext.rng);
+    const foodLoss = randInt(50, 200, worldContext.rng);
 
     const stability = target.state.get('stability') || 50;
     target.state.set('stability', Math.max(0, stability - stabilityLoss));
@@ -120,6 +121,21 @@ export class ResourceRegenExecutor extends ActionExecutor {
     const disciplesPerDay = regen.disciplesPerDay ?? 1;
     const maxDisciplesBase = regen.maxDisciplesBase ?? 100;
     const maxDisciplesPerTerritory = regen.maxDisciplesPerTerritory ?? 30;
+    // tuning-v6 2026-06-01: 纸面弟子向真实活 NPC 回归。
+    // 此前 disciples 是脱离真实 NPC 的抽象数字，靠自增/招募堆到上万→势力永不可覆灭（ADR-034/035 病根）。
+    // 现让 disciples 上限 = 真实活 NPC × discipleNpcRatio（每个核心 NPC 折算若干名抽象弟子），
+    // 超出部分按 discipleRegressRate 缓慢流失。真实 NPC 凋零的势力，纸面弟子随之回落→可被攻灭。
+    const discipleNpcRatio = regen.discipleNpcRatio ?? 25;
+    const discipleRegressRate = regen.discipleRegressRate ?? 3;
+    const discipleFloor = regen.discipleFloor ?? 0;
+
+    // 预计算每势力真实活 NPC 数（一次遍历，避免每势力重复扫描）
+    const aliveNpcByFaction = {};
+    for (const npc of registry.getAliveByType('npc')) {
+      if (npc.alive === false) continue;
+      const fid = npc.state.get('factionId');
+      if (fid) aliveNpcByFaction[fid] = (aliveNpcByFaction[fid] || 0) + 1;
+    }
 
     const stabilityRecoveryMax = stabCfg.naturalRecoveryMax ?? 80;
     const stabilityRecoveryRate = stabCfg.naturalRecoveryRate ?? 1;
@@ -186,10 +202,17 @@ export class ResourceRegenExecutor extends ActionExecutor {
       const stoneRegen = Math.floor(territoryCount * stonePerTerritory) + stoneFromVeins;
       faction.inventory.add('low_spirit_stone', stoneRegen);
 
-      // === 弟子自然增长 ===
-      const maxDisciples = Math.max(maxDisciplesBase, territoryCount * maxDisciplesPerTerritory);
+      // === 弟子自然增长（受真实活 NPC 锚定，tuning-v6）===
+      // 弟子上限 = min(领地容量, 真实活 NPC × 折算比)；真实 NPC 越少，纸面弟子上限越低。
+      const aliveNpcCount = aliveNpcByFaction[faction.id] || 0;
+      const territoryCap = Math.max(maxDisciplesBase, territoryCount * maxDisciplesPerTerritory);
+      const npcCap = aliveNpcCount * discipleNpcRatio;
+      const maxDisciples = Math.max(discipleFloor, Math.min(territoryCap, npcCap));
       if (disciples < maxDisciples) {
         faction.inventory.add('disciples', disciplesPerDay);
+      } else if (disciples > maxDisciples) {
+        // 纸面弟子虚高（真实 NPC 撑不起）→ 缓慢流失，使势力实力回归真实人口。
+        faction.inventory.remove('disciples', Math.min(discipleRegressRate, disciples - maxDisciples));
       }
 
       // === 稳定度自然恢复 ===
@@ -272,17 +295,30 @@ export class ResourceRegenExecutor extends ActionExecutor {
   }
 
   /**
-   * 汇总所有活跃 modifier 的效果值（按 intensity 加权）
+   * 汇总所有活跃 modifier 的效果值（按 intensity 加权）。
+   *
+   * ADR-042 阶段2：收编为统一 Effect/AttributeSet 模型——把每条世界级 modifier 视为
+   * 一个 Infinite Effect，其每个 effect 键作为一条 add 修正（value × intensity）叠加到
+   * 一个世界级 AttributeSet（无 state、默认基值 0）。聚合值 = getEffective(key)。
+   * 按 Σ(value×intensity) 在插入顺序下累加。
+   * 收益：世界级与 NPC 级加成共用同一 add 叠加语义，未来可统一来源化/可视化。
    */
   _aggregateModifierEffects(modifiers) {
-    const agg = {};
+    const attrs = new AttributeSet(null);
+    const keys = [];
     for (const mod of modifiers) {
       if (!mod.effects) continue;
       const intensity = mod.intensity || 1;
       for (const [key, value] of Object.entries(mod.effects)) {
-        agg[key] = (agg[key] || 0) + value * intensity;
+        if (!attrs.hasModifiers(key)) {
+          keys.push(key);
+          attrs.setDefaultBase(key, 0);
+        }
+        attrs.addModifier(key, mod.id || mod.templateId || 'world_modifier', 'add', value * intensity);
       }
     }
+    const agg = {};
+    for (const key of keys) agg[key] = attrs.getEffective(key);
     return agg;
   }
 }

@@ -1,0 +1,35 @@
+{
+  "_description": "反应层（Reaction）平衡配置（四层 AI 架构，ADR-048）。被攻击时受害者的即时反应决策阈值与动作映射，数据驱动、代码不写死。enabled 默认 false（关闭时被攻击不触发反应）——开启后被攻击会向受害者压入 attacked 刺激，触发反应层决策（躲避/疗伤/逃跑/反击）。",
+  "enabled": false,
+
+  "stimulusTtl": 2,
+  "stimulusCapacity": 16,
+
+  "_thresholds_note": "血量比例阈值（hp/maxHp）：低于 fleeHpRatio 视为重伤濒死优先逃命；低于 healHpRatio 视为偏低优先回血；其余视为安全。powerAdvantage：我方战力 ÷ 来犯者战力，>= 该值才视为敌弱可反击。",
+  "fleeHpRatio": 0.2,
+  "healHpRatio": 0.5,
+  "powerAdvantage": 1.5,
+
+  "_heal_note": "回血丹 id（优先服用，走 npc-economy.applyItemEffects 统一物品效果入口）；无丹时按 restHealRatio×maxHp 静养回血。healAmount/healRatio 为物品效果未改 hp 时的兜底回血量。",
+  "healPillId": "pill_rejuvenation",
+  "healAmount": null,
+  "healRatio": 0.3,
+  "restHealRatio": 0.1,
+
+  "_counter_note": "反击伤害 = 我方战力 × counterDamageRatio，走统一伤害管线 applyDamage（锁血/遁地通用）。仅当血量安全且 powerAdvantage 达标时由反应决策树选反击。",
+  "counterDamageRatio": 0.5,
+
+  "_eventReplan_note": "大事件 → 动态决策（ADR-048 意图层）：遇仇人/知晓可达机缘（秘境/拍卖/天材地宝）等新事件即时请求立即重决策（打断当前长链）。默认 enabled=false（关闭时不触发立即重决策）；opportunityReplan 控制机缘类是否触发立即重决策。",
+  "eventReplan": {
+    "enabled": false,
+    "opportunityReplan": true
+  },
+
+  "_actions_note": "反应决策→行为 id 映射。ReactiveNode 按反应决策树选其一并抢占执行（可打断 isBusy 中的闭关/游历长链）。",
+  "actions": {
+    "flee": "act_npc_react_flee",
+    "retreat": "act_npc_react_retreat",
+    "heal": "act_npc_react_heal",
+    "counter": "act_npc_react_counter"
+  }
+}

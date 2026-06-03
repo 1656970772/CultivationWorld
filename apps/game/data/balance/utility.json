@@ -1,8 +1,8 @@
 {
   "_description": "Utility 选目标层考量因素配置（ADR-020）。把目标的『想做程度』拆成多个 consideration，每个经响应曲线映射到 [0,1] 后相乘，得到乘法式效用：score = priority × Π(consideration)。对齐《模拟人生》《环世界》的 Utility AI 做法。",
-  "_howItWorks": "按 Goal 的 sourceId(need_xxx / obsession_xxx) 匹配 considerations 组。每个 consideration: { id, inputKey, source(entity|world|derived), curve(linear|quadratic|inverse|threshold|logistic), params }。curve 把输入映射到 [0,1]。缺省/未匹配的目标不挂考量因素，score 退化为纯 priority（零漂移）。",
+  "_howItWorks": "按 Goal 的 sourceId(need_xxx / obsession_xxx) 匹配 considerations 组。每个 consideration: { id, inputKey, source(entity|world|derived), curve(linear|quadratic|inverse|threshold|logistic), params }。curve 把输入映射到 [0,1]。缺省/未匹配的目标不挂考量因素，score 退化为纯 priority。",
   "enabled": false,
-  "_enabledComment": "总开关。false 时所有目标不挂考量因素，行为与重构前完全一致（保证黄金指纹回归零漂移）。设 true 启用乘法式 Utility 选目标。",
+  "_enabledComment": "总开关。false（默认）时所有目标不挂考量因素，只按纯 priority 选目标。设 true 启用乘法式 Utility 选目标。",
   "considerationsBySource": {
     "need_npc_cultivation": [
       {
@@ -96,51 +96,51 @@
     "goal_assist_sect_mate": [
       {
         "id": "assistReadiness",
-        "_comment": "护短同门（ADR-028）：修为越充足越敢驰援御敌（实力不足时降低驰援冲动，避免送死）。仅 utility.enabled=true 时生效。",
+        "_comment": "护短同门（ADR-028）：修为越充足越敢驰援御敌，但基线高(0.85)——同门遭袭驰援是高优先义举，不应被 consideration 压垮 priority。仅 utility.enabled=true 时生效。行为精准化(2026-06-02)：base 由 0.3→0.85，避免高 priority 关系 Goal 经乘法效用后 score 被压到选不中。",
         "inputKey": "cultivationProgress",
         "source": "entity",
         "curve": "linear",
-        "params": { "slope": 1.0, "shift": 0.2, "base": 0.3 }
+        "params": { "slope": 0.15, "shift": 0, "base": 0.85 }
       }
     ],
     "goal_repay_benefactor": [
       {
         "id": "repayDuty",
-        "_comment": "报恩（ADR-028）：恒定中等效用的低风险善举（探望恩人）。仅 utility.enabled=true 时生效。",
+        "_comment": "报恩（ADR-028）：恒定高效用的低风险善举（探望恩人）。仅 utility.enabled=true 时生效。行为精准化(2026-06-02)：high/low 由 0.6→0.92。",
         "inputKey": "alive",
         "source": "entity",
         "curve": "threshold",
-        "params": { "threshold": 0.5, "high": 0.6, "low": 0.6 }
+        "params": { "threshold": 0.5, "high": 0.92, "low": 0.92 }
       }
     ],
     "goal_teach_disciple": [
       {
         "id": "teachReadiness",
-        "_comment": "师傅传功（ADR-029）：自身修为越高越有余力点化徒弟（低修为时不分心传功）。仅 utility.enabled=true 时生效。",
+        "_comment": "师傅传功（ADR-029）：自身修为越高越有余力点化徒弟，但基线高(0.85)——传功是师徒纽带核心行为，已受 teachChancePerTick 低频门控，不应再被 consideration 压垮 priority。仅 utility.enabled=true 时生效。行为精准化(2026-06-02)：base 由 0.4→0.85、slope 0.8→0.15，避免 priority78 经乘法后 score 仅25选不中。",
         "inputKey": "cultivationProgress",
         "source": "entity",
         "curve": "linear",
-        "params": { "slope": 0.8, "shift": 0.3, "base": 0.4 }
+        "params": { "slope": 0.15, "shift": 0, "base": 0.85 }
       }
     ],
     "goal_protect_disciple": [
       {
         "id": "protectReadiness",
-        "_comment": "师傅护徒（ADR-029）：修为越充足越敢护徒御敌（实力不足时降低冲动，避免送死）。护徒效用基线高于护短同门（一日为师）。仅 utility.enabled=true 时生效。",
+        "_comment": "师傅护徒（ADR-029）：修为越充足越敢护徒御敌，基线高(0.9)体现『一日为师』护徒最高优先。仅 utility.enabled=true 时生效。行为精准化(2026-06-02)：base 由 0.4→0.9。",
         "inputKey": "cultivationProgress",
         "source": "entity",
         "curve": "linear",
-        "params": { "slope": 1.0, "shift": 0.2, "base": 0.4 }
+        "params": { "slope": 0.1, "shift": 0, "base": 0.9 }
       }
     ],
     "goal_visit_master": [
       {
         "id": "filialDuty",
-        "_comment": "徒弟尽孝（ADR-029）：恒定中等效用的低风险善举（探望恩师）。仅 utility.enabled=true 时生效。",
+        "_comment": "徒弟尽孝（ADR-029）：恒定高效用的低风险善举（探望恩师）。仅 utility.enabled=true 时生效。行为精准化(2026-06-02)：high/low 由 0.6→0.92，使 priority72 经乘法后仍能选中。",
         "inputKey": "alive",
         "source": "entity",
         "curve": "threshold",
-        "params": { "threshold": 0.5, "high": 0.6, "low": 0.6 }
+        "params": { "threshold": 0.5, "high": 0.92, "low": 0.92 }
       }
     ]
   }

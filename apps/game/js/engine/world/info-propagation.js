@@ -7,7 +7,7 @@
  *   NPC 只能基于"自己已知的消息"做决策，产生信息不对称与江湖热点的涌现现象。
  *
  * 数据模型见 docs/data-models/info-propagation.md，参数见 data/world/news.json。
- * 默认 enabled=false 时整套系统不产生任何新闻，行为与现状完全一致（零漂移）。
+ * 默认 enabled=false 时整套系统不产生任何新闻。
  *
  * 渠道职责分离（单一职责）：
  *   - radius : 每天扩散 spreadRadius，覆盖到 NPC 即写入其 knownNews（本系统 tick 内完成）。

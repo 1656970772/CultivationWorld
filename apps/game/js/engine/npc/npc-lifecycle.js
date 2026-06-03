@@ -9,9 +9,10 @@
  *   - successionScoreOf   候选人继任分数（ranks.json successionScore，回退 order）。
  *
  * 全部以 entity 为首参，仅读写 entity 的 state/_cultivationConfig/_ranksData 与回调其自身方法
- * （refreshCultivationCapPreconditions/_rollBreakthroughPathOrder），不改变随机序列，保证零漂移。
+ * （refreshCultivationCapPreconditions/_rollBreakthroughPathOrder），不改变随机序列。
  * 拆分边界见 ADR-030。
  */
+import { readTraitBreakthroughBonus, readTraitLifespanBonus } from './npc-traits.js';
 
 /**
  * 境界突破判定。
@@ -55,10 +56,9 @@ export function tryBreakthrough(entity) {
   const successRate = getBreakthroughRate(entity, currentRankId, nextRank.id);
   const breakthroughCfg = entity._cultivationConfig.breakthrough || {};
 
-  // 先天资质突破加成：灵根 + 体质 breakthroughBonus 累加进基础成功率（详见 ADR-012）
-  const rootGrade = entity._cultivationConfig.spiritRoot?.grades?.[entity.state.get('spiritRootId')];
-  const physiqueType = entity._cultivationConfig.physique?.types?.[entity.state.get('physiqueId')];
-  const talentBonus = (rootGrade?.breakthroughBonus ?? 0) + (physiqueType?.breakthroughBonus ?? 0);
+  // 先天资质突破加成：灵根 + 体质 breakthroughBonus 累加进基础成功率（ADR-012/042）。
+  // 经 AttributeSet traitBreakthroughBonus 生效（开关关则回退直接读 config）。
+  const talentBonus = readTraitBreakthroughBonus(entity);
   const techniqueBonus = entity.state.get('techniqueBreakthroughBonus') || 0;
   const aidBonus = entity.state.get('breakthroughAidBonus') || 0;
 
@@ -70,7 +70,7 @@ export function tryBreakthrough(entity) {
 
   const baseRate = Math.max(0, Math.min(1, successRate + talentBonus + techniqueBonus + aidBonus));
   const finalRate = baseRate * ageModifier;
-  const roll = Math.random();
+  const roll = entity._rng.next();
   if (aidBonus !== 0) entity.state.set('breakthroughAidBonus', 0);
 
   if (roll < finalRate) {
@@ -82,9 +82,9 @@ export function tryBreakthrough(entity) {
 
     const lifespan = nextRank.lifespan;
     if (lifespan) {
-      const variance = (Math.random() - 0.5) * 2 * lifespan.varianceYears;
-      // 体质寿元加成：先天道体等特殊体质额外延长寿元（详见 ADR-012）
-      const physiqueLifeBonus = physiqueType?.lifespanBonus ?? 0;
+      const variance = (entity._rng.next() - 0.5) * 2 * lifespan.varianceYears;
+      // 体质寿元加成：先天道体等特殊体质额外延长寿元（ADR-012/042，经 AttributeSet traitLifespanBonus）。
+      const physiqueLifeBonus = readTraitLifespanBonus(entity);
       const newMaxAgeYears = (lifespan.baseYears + variance) * (1 + physiqueLifeBonus);
       const newMaxAgeDays = Math.floor(newMaxAgeYears * 360);
       if (newMaxAgeDays > maxAgeDays) {
@@ -94,6 +94,15 @@ export function tryBreakthrough(entity) {
       }
     }
 
+    // 境界提升后血量大增：重算 maxHp（抬上限，默认不回满）。
+    if (typeof entity.refreshMaxHpOnBreakthrough === 'function') {
+      entity.refreshMaxHpOnBreakthrough();
+    }
+    // 破境回元（ADR-042 阶段2）：持 Trait.BreakthroughFullHeal Tag 的实体（特殊功法/体质授予）
+    // 突破成功时回满血。默认无 NPC 持该 Tag → 不触发。
+    if (typeof entity.tryBreakthroughFullHeal === 'function') {
+      entity.tryBreakthroughFullHeal();
+    }
     // 境界提升后，闭关 cap 随之变化（通常更低，更依赖游历），刷新行为前置。
     entity.refreshCultivationCapPreconditions();
     // 新境界开始：随机本境界的游历/闭关先后偏好（顺序随机，ADR-017）。

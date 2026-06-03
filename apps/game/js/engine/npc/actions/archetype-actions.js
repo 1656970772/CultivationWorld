@@ -73,7 +73,7 @@ export class NPCSeizePowerExecutor extends ActionExecutor {
     const ambition = entity.staticData?.personality?.ambition ?? 50;
     const roleRank = entity.state.get('roleRank') || 1;
     const successRate = Math.min(0.85, 0.2 + ambition / 200 + roleRank * 0.08);
-    if (Math.random() < successRate && typeof worldContext.promoteByLadder === 'function') {
+    if (worldContext.rng.next() < successRate && typeof worldContext.promoteByLadder === 'function') {
       const r = worldContext.promoteByLadder(entity.id);
       if (r && r.promoted === 'leader') {
         entity.state.set('isFactionLeader', true);

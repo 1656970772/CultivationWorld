@@ -41,13 +41,15 @@ export class TickManager {
    * @param {Object} [deps.gameConfig] 游戏全局配置（来自 data/config/game-config.json）
    * @param {Object} [deps.entityConfig] 实体配置（用于动态创建NPC时传递）
    */
-  constructor({ entityRegistry, worldEntity, questTemplates, tileIndex, terrainIndex, ranksData,
+  constructor({ entityRegistry, worldEntity, rng, questTemplates, tileIndex, terrainIndex, ranksData,
                 balanceConfig, namesConfig, modifierTemplates, gameConfig, entityConfig,
                 techniqueRegistry, monsterSpawner, monsterInitialCount, factionBuildings,
                 gridGraph, hierGraph, worldNewsConfig, opportunityConfig, covetConfig,
                 relationshipConfig, relationshipSystem }) {
     this.entityRegistry = entityRegistry;
     this.worldEntity = worldEntity;
+    // 确定性随机源（由 WorldEngine 注入）。挂到 worldContext，供所有模拟逻辑取随机。
+    this.rng = rng || null;
     this.questTemplates = questTemplates || null;
     this.tileIndex = tileIndex || new Map();
     this.terrainIndex = terrainIndex || new Map();
@@ -75,7 +77,7 @@ export class TickManager {
     this._nextNpcId = 1000;
     this.sectEventLog = [];
 
-    // 信息传播 / 机会点 / 怀璧其罪系统（ADR-024/025）。默认 enabled=false 零漂移。
+    // 信息传播 / 机会点 / 怀璧其罪系统（ADR-024/025）。默认 enabled=false。
     this.covetConfig = covetConfig || {};
     this.infoSystem = new InfoPropagationSystem(worldNewsConfig || {});
     this.opportunitySystem = new OpportunitySystem(opportunityConfig || {});
@@ -85,7 +87,7 @@ export class TickManager {
     this.relationshipConfig = relationshipConfig || {};
     this.relationshipSystem = relationshipSystem || null;
 
-    // ── 子服务装配（各持 host 引用，通过共享 helper 协作，保证零漂移）──
+    // ── 子服务装配（各持 host 引用，通过共享 helper 协作）──
     this.factionAIService = new FactionAIService({ host: this, combatConfig: this.balanceConfig.combat || {} });
     this.promotionService = new PromotionService({ host: this });
     this.populationService = new PopulationService({ host: this });
@@ -530,8 +532,8 @@ export class TickManager {
     const W = g.width || 0;
     const H = g.height || 0;
     for (let attempt = 0; attempt < 12; attempt++) {
-      const dist = minDist + Math.floor(Math.random() * (maxDist - minDist + 1));
-      const angle = Math.random() * Math.PI * 2;
+      const dist = minDist + Math.floor(this.rng.next() * (maxDist - minDist + 1));
+      const angle = this.rng.next() * Math.PI * 2;
       let x = Math.round(here.x + Math.cos(angle) * dist);
       let y = Math.round(here.y + Math.sin(angle) * dist);
       if (W > 0) x = Math.max(0, Math.min(W - 1, x));
@@ -646,7 +648,7 @@ export class TickManager {
       if (top) targetId = top.actorId;
     }
     // 关系复仇（ADR-028）：goalsEnabled 时，高强度 enemy 边（势力攻战结仇等）也可成为复仇目标。
-    // 仅当强度达 npcGoals.relationRevenge.minEnemyStrength 门槛，避免轻微敌对即追杀（零漂移）。
+    // 仅当强度达 npcGoals.relationRevenge.minEnemyStrength 门槛，避免轻微敌对即追杀。
     if (!targetId && this._relationGoalsEnabled() && this.relationshipSystem) {
       const minStrength = this.relationshipConfig?.npcGoals?.relationRevenge?.minEnemyStrength ?? 40;
       const topEnemy = this.relationshipSystem.topEdgeOfType(entity.id, 'enemy');
@@ -702,7 +704,7 @@ export class TickManager {
     const injury = npc.state.get('injuryLevel') || 0;
     const qiFactor = 1 + Math.min(2, qi / 1000);
     const injuryFactor = Math.max(0.2, 1 - injury * 0.08);
-    // 法宝加成（ADR-025）：已装备法宝的 combatBonus 提升战力。默认 NPC 无装备 → 系数 1（零漂移）。
+    // 法宝加成（ADR-025）：已装备法宝的 combatBonus 提升战力。默认 NPC 无装备 → 系数 1。
     const artifactFactor = this._artifactCombatFactor(npc);
     return Math.max(0.01, (rankBase + 1) * qiFactor * injuryFactor * artifactFactor);
   }

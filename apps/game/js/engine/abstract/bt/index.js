@@ -40,6 +40,9 @@ export const NPC_DEFAULT_BT = {
           type: 'selector',
           name: 'reactions',
           children: [
+            // 被攻击即时反应（四层 AI Reaction 层，ADR-048）：消费 attacked 刺激，按血量/敌我战力
+            // 决策逃命/回血/反击/暂避，可打断闭关/游历长链。默认 reaction.enabled=false 不触发（不改变现有行为）。
+            { type: 'reactive', name: 'react-attacked' },
             // 心魔反噬：心魔过高时强制静心闭关压制。阈值由 emotion.json 经 BT 配置覆盖；
             // 默认 101（不可达），保证未调参时不改变既有世界平衡。
             { type: 'emotion_reaction', name: 'suppress-inner-demon', emotion: 'inner_demon', threshold: 101, actionId: 'act_npc_cultivate' },

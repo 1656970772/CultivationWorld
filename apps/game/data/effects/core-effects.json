@@ -1,0 +1,72 @@
+{
+  "_description": "通用 GameplayEffect 原语（ADR-042 阶段2 增强）。这些 Effect 只声明机制（改哪个 attribute、用什么 op、默认量纲/夹取），【具体数值由挂载来源提供】——丹药/灵草/灵果/强者精血等在 items.json 的 effects 字段里声明 magnitude 及参数，经 EffectEngine.applyEffect(target, def, {spec}) 覆盖生效。一个来源可挂多个 Effect，多来源复用同一 Effect。禁止再写一物一专用 Effect（命名与规范见 AGENTS.md「GAS 机制资产规则」）。id 以 ge_ 开头。",
+  "effects": [
+    {
+      "id": "ge_add_qi",
+      "name": "增益·真气",
+      "assetTags": ["Buff"],
+      "durationType": "instant",
+      "modifiers": [
+        { "attribute": "qi", "op": "add" }
+      ],
+      "grantsTags": [],
+      "stacking": "none"
+    },
+    {
+      "id": "ge_add_qi_over_time",
+      "name": "增益·真气（持续）",
+      "assetTags": ["Buff"],
+      "durationType": "duration",
+      "durationDays": 1,
+      "modifiers": [
+        { "attribute": "qi", "op": "add" }
+      ],
+      "grantsTags": [],
+      "stacking": "none"
+    },
+    {
+      "id": "ge_add_hp",
+      "name": "增益·气血",
+      "assetTags": ["Buff"],
+      "durationType": "instant",
+      "modifiers": [
+        { "attribute": "hp", "op": "add", "clamp": [null, "maxHp"] }
+      ],
+      "grantsTags": [],
+      "stacking": "none"
+    },
+    {
+      "id": "ge_add_progress",
+      "name": "增益·修炼进度",
+      "assetTags": ["Buff"],
+      "durationType": "instant",
+      "modifiers": [
+        { "attribute": "cultivationProgress", "op": "add", "clamp": [null, 1] }
+      ],
+      "grantsTags": [],
+      "stacking": "none"
+    },
+    {
+      "id": "ge_add_breakthrough_bonus",
+      "name": "增益·突破助益",
+      "assetTags": ["Buff"],
+      "durationType": "instant",
+      "modifiers": [
+        { "attribute": "breakthroughAidBonus", "op": "add" }
+      ],
+      "grantsTags": [],
+      "stacking": "none"
+    },
+    {
+      "id": "ge_full_heal",
+      "name": "回满气血",
+      "assetTags": ["Buff"],
+      "durationType": "instant",
+      "modifiers": [
+        { "attribute": "hp", "op": "override", "magnitudeType": "ratioOfMaxHp", "magnitude": 1.0 }
+      ],
+      "grantsTags": [],
+      "stacking": "none"
+    }
+  ]
+}

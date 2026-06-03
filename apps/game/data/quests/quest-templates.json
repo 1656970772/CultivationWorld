@@ -34,55 +34,55 @@
     },
     "qt_herb": {
       "npcItems": [
-        { "itemId": "spirit_herb", "qtyBase": 1, "qtyPerLevel": 0.5, "minQty": 1, "maxQty": 4 }
+        { "itemId": "mat_century_ginseng", "qtyBase": 1, "qtyPerLevel": 0.5, "minQty": 1, "maxQty": 4 }
       ],
       "factionItems": [
-        { "itemId": "spirit_herb", "qtyBase": 1, "qtyPerLevel": 0.25, "minQty": 1, "maxQty": 3 }
+        { "itemId": "mat_century_ginseng", "qtyBase": 1, "qtyPerLevel": 0.25, "minQty": 1, "maxQty": 3 }
       ]
     },
     "qt_mine_ore": {
       "npcItems": [
-        { "itemId": "ore", "qtyBase": 1, "qtyPerLevel": 0.5, "minQty": 1, "maxQty": 5 }
+        { "itemId": "mat_black_iron_ore", "qtyBase": 1, "qtyPerLevel": 0.5, "minQty": 1, "maxQty": 5 }
       ],
       "factionItems": [
-        { "itemId": "ore", "qtyBase": 1, "qtyPerLevel": 0.5, "minQty": 1, "maxQty": 4 }
+        { "itemId": "mat_black_iron_ore", "qtyBase": 1, "qtyPerLevel": 0.5, "minQty": 1, "maxQty": 4 }
       ]
     },
     "qt_slay_monster": {
       "npcItems": [
-        { "itemId": "monster_core", "qtyBase": 0, "qtyPerLevel": 0.33, "minQty": 1, "maxQty": 3 },
-        { "itemId": "beast_material", "qtyBase": 1, "qtyPerLevel": 0.25, "minQty": 1, "maxQty": 4 }
+        { "itemId": "monster_core_g1", "qtyBase": 0, "qtyPerLevel": 0.33, "minQty": 1, "maxQty": 3 },
+        { "itemId": "beast_material_g1", "qtyBase": 1, "qtyPerLevel": 0.25, "minQty": 1, "maxQty": 4 }
       ],
       "factionItems": [
-        { "itemId": "beast_material", "qtyBase": 1, "qtyPerLevel": 0.25, "minQty": 1, "maxQty": 3 }
+        { "itemId": "beast_material_g1", "qtyBase": 1, "qtyPerLevel": 0.25, "minQty": 1, "maxQty": 3 }
       ],
       "factionStability": 1
     },
     "qt_exterminate": {
       "npcItems": [
-        { "itemId": "monster_core", "qtyBase": 1, "qtyPerLevel": 0.25, "minQty": 1, "maxQty": 3 },
-        { "itemId": "beast_material", "qtyBase": 1, "qtyPerLevel": 0.5, "minQty": 1, "maxQty": 5 }
+        { "itemId": "monster_core_g1", "qtyBase": 1, "qtyPerLevel": 0.25, "minQty": 1, "maxQty": 3 },
+        { "itemId": "beast_material_g1", "qtyBase": 1, "qtyPerLevel": 0.5, "minQty": 1, "maxQty": 5 }
       ],
       "factionItems": [
-        { "itemId": "monster_core", "qtyBase": 0, "qtyPerLevel": 0.25, "minQty": 1, "maxQty": 2 }
+        { "itemId": "monster_core_g1", "qtyBase": 0, "qtyPerLevel": 0.25, "minQty": 1, "maxQty": 2 }
       ],
       "factionStability": 2
     },
     "qt_hunt_beast": {
       "npcItems": [
-        { "itemId": "monster_core", "qtyBase": 1, "qtyPerLevel": 0.33, "minQty": 1, "maxQty": 4 },
-        { "itemId": "beast_material", "qtyBase": 1, "qtyPerLevel": 0.75, "minQty": 2, "maxQty": 6 }
+        { "itemId": "monster_core_g1", "qtyBase": 1, "qtyPerLevel": 0.33, "minQty": 1, "maxQty": 4 },
+        { "itemId": "beast_material_g1", "qtyBase": 1, "qtyPerLevel": 0.75, "minQty": 2, "maxQty": 6 }
       ],
       "factionItems": [
-        { "itemId": "beast_material", "qtyBase": 1, "qtyPerLevel": 0.5, "minQty": 1, "maxQty": 4 }
+        { "itemId": "beast_material_g1", "qtyBase": 1, "qtyPerLevel": 0.5, "minQty": 1, "maxQty": 4 }
       ]
     },
     "qt_explore_realm": {
       "randomItems": [
         { "itemId": "item_breakthrough_pill", "qty": 1, "chance": 0.25, "minLevel": 4 },
-        { "itemId": "item_artifact_low", "qty": 1, "chance": 0.16, "minLevel": 4 },
-        { "itemId": "item_artifact_mid", "qty": 1, "chance": 0.06, "minLevel": 7 },
-        { "itemId": "technique_book_mid", "qty": 1, "chance": 0.12, "minLevel": 5 }
+        { "itemId": "artifact_green_sword", "qty": 1, "chance": 0.16, "minLevel": 4 },
+        { "itemId": "artifact_wulong_halberd", "qty": 1, "chance": 0.06, "minLevel": 7 },
+        { "itemId": "tech_yu_qing_pure_yang", "qty": 1, "chance": 0.12, "minLevel": 5 }
       ],
       "factionStability": 1
     },
@@ -102,5 +102,10 @@
   "randomQuestSpawnChance": {
     "1": 0.80, "2": 0.70, "3": 0.60, "4": 0.50, "5": 0.40,
     "6": 0.30, "7": 0.20, "8": 0.15, "9": 0.10, "10": 0.05
+  },
+  "safetyPreference": {
+    "_comment": "tuning-v4 2026-06-01: NPC 接单战力自检（数据驱动）。问题：5000 天模拟 NPC 反复接『境界上限』的高难度普通任务，dangerDeath 陡增（6阶5% / 8阶12%），quest 死因 130 为人口流失主因。机制：对【非猎妖】任务按『难度接近境界上限的程度』衰减选取权重——difficultyFromCap 越大（任务越接近上限）权重越高风险越大，故对其乘 falloffPerStep^difficultyFromCap 衰减，让 NPC 倾向留出安全边际、选低于上限的任务。enabled=false 时关闭此衰减。",
+    "enabled": true,
+    "falloffPerStep": 0.55
   }
 }
