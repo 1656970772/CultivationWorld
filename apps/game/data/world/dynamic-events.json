@@ -1,0 +1,35 @@
+{
+  "_description": "动态世界事件配置：事件有预告、开启、结算窗口，可产生 NPC 动态目标。默认 enabled=false，关闭时不改变现有行为。",
+  "enabled": false,
+  "events": [
+    {
+      "id": "evt_secret_realm_qingming_001",
+      "type": "secret_realm",
+      "name": "青冥秘境",
+      "announceDay": 720,
+      "startDay": 810,
+      "endDay": 840,
+      "expireDay": 870,
+      "value": 1000,
+      "riskKey": "plunder",
+      "scope": "public",
+      "opportunityType": "secret_realm",
+      "rewardSource": "opportunity_secret_realm",
+      "pos": { "resolver": "secret_realm" }
+    },
+    {
+      "id": "evt_sect_tournament_001",
+      "type": "sect_tournament",
+      "name": "宗门大比",
+      "announceDay": 330,
+      "startDay": 360,
+      "endDay": 365,
+      "expireDay": 390,
+      "value": 450,
+      "riskKey": "pvp",
+      "scope": "faction",
+      "subjectId": "faction_cloud_sword",
+      "pos": { "resolver": "faction_hq", "factionId": "faction_cloud_sword" }
+    }
+  ]
+}

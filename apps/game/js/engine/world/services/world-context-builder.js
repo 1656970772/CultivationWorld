@@ -52,8 +52,21 @@ export class WorldContextBuilder {
       movementSystem: host.movementSystem,
       infoSystem: host.infoSystem,
       opportunitySystem: host.opportunitySystem,
+      dynamicEventSystem: host.worldEventSystem || null,
       relationshipSystem: host.relationshipSystem,
       relationshipConfig: host.relationshipConfig,
+
+      knownDynamicEventsFor(entity) {
+        const day = host.worldEntity.currentDay;
+        return host.worldEventSystem
+          ? host.worldEventSystem.visibleEventsFor(entity, day).map(event => ({
+              event,
+              confidence: host.worldEventSystem.awarenessConfidence(event, entity),
+              source: event.scope,
+              day,
+            }))
+          : [];
+      },
 
       recordMonsterGrudge(monsterId, npcId) {
         host._applyRelationEvent('monster_grudge', monsterId, npcId);

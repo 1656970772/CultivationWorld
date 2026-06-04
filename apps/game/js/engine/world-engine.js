@@ -15,6 +15,7 @@ import './combat/combat-pipeline.js';
 import { NeedPool } from './pools/need-pool.js';
 import { ActionPool } from './pools/action-pool.js';
 import { WorldEntity } from './world/world-entity.js';
+import { WorldEventSystem } from './world/world-event.js';
 import { TickManager } from './world/tick-manager.js';
 import { FactionEntity } from './faction/faction-entity.js';
 import { NPCEntity } from './npc/npc-entity.js';
@@ -39,6 +40,7 @@ export class WorldEngine {
     this.worldEntity = null;
     this.tickManager = null;
     this._initialized = false;
+    this.worldEventSystem = null;
     // 确定性随机源（init 时按 configs.seed 重建）。模拟逻辑统一从此取随机。
     this.rng = null;
     this.seed = null;
@@ -78,6 +80,9 @@ export class WorldEngine {
     // 信息传播 / 机会 / 怀璧其罪系统配置（ADR-024/025）。默认 enabled=false，不改变现有行为。
     this._worldNewsConfig = configs.worldNews || {};
     this._opportunityConfig = configs.worldOpportunities || {};
+    this._dynamicEventsConfig = configs.dynamicEvents || {};
+    this.worldEventSystem = new WorldEventSystem(this._dynamicEventsConfig);
+    this.worldEventSystem.seedScheduledEvents(0);
     this._covetConfig = configs.balanceCovet || {};
     this._itemDefs = configs.itemDefs || {};
 
@@ -490,6 +495,8 @@ export class WorldEngine {
       hierGraph: this.hierGraph || null,
       worldNewsConfig: this._worldNewsConfig,
       opportunityConfig: this._opportunityConfig,
+      dynamicEventsConfig: this._dynamicEventsConfig,
+      worldEventSystem: this.worldEventSystem,
       covetConfig: this._covetConfig,
       relationshipConfig: this._balanceConfig.relationship,
       relationshipSystem: this.relationshipSystem,

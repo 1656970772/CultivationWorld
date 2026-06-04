@@ -44,7 +44,7 @@ export class TickManager {
   constructor({ entityRegistry, worldEntity, rng, questTemplates, tileIndex, terrainIndex, ranksData,
                 balanceConfig, namesConfig, modifierTemplates, gameConfig, entityConfig,
                 techniqueRegistry, monsterSpawner, monsterInitialCount, factionBuildings,
-                gridGraph, hierGraph, worldNewsConfig, opportunityConfig, covetConfig,
+                gridGraph, hierGraph, worldNewsConfig, opportunityConfig, dynamicEventsConfig, worldEventSystem, covetConfig,
                 relationshipConfig, relationshipSystem }) {
     this.entityRegistry = entityRegistry;
     this.worldEntity = worldEntity;
@@ -81,6 +81,8 @@ export class TickManager {
     this.covetConfig = covetConfig || {};
     this.infoSystem = new InfoPropagationSystem(worldNewsConfig || {});
     this.opportunitySystem = new OpportunitySystem(opportunityConfig || {});
+    this.dynamicEventsConfig = dynamicEventsConfig || {};
+    this.worldEventSystem = worldEventSystem || null;
 
     // 关系网系统（ADR-027，世界级单一真相源）。由 WorldEngine 创建并传入，
     // 在各事件结算点维护人际/人妖/妖妖关系边，每日衰减挂在 _updateRelations 旁。
@@ -145,6 +147,7 @@ export class TickManager {
       npcUpdates: [],
       conflicts: [],
       events: [],
+      dynamicEvents: [],
       infoEvents: [],
       deaths: [],
       monsterDeaths: [],
@@ -155,6 +158,9 @@ export class TickManager {
 
     // 1. 世界规则
     tickLog.worldRules = this.worldEntity.tick(worldContext);
+    if (this.worldEventSystem) {
+      tickLog.dynamicEvents = this.worldEventSystem.tick(this.worldEntity.currentDay);
+    }
 
     // 2. 势力需求评估 + 行为规划
     const factions = this.entityRegistry.getAliveByType('faction');

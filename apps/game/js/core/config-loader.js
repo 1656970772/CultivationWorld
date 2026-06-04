@@ -35,7 +35,7 @@ export async function loadGameConfigs() {
     balanceUtility, balanceReward, balanceRelationship, balanceReaction,
     gameConfig, aiConfig, names,
     monsters, monsterSpawn,
-    worldNews, worldOpportunities, balanceCovet,
+    worldNews, worldOpportunities, dynamicEvents, balanceCovet,
     itemsCurrency, itemsMaterial, itemsPill, itemsArtifact, itemsTalisman, itemsTechnique,
     tags, combatEffects, coreEffects, abilities,
   ] = await Promise.all([
@@ -74,6 +74,7 @@ export async function loadGameConfigs() {
     loadJSON('data/balance/monster-spawn.json'),
     loadJSON('data/world/news.json'),
     loadJSON('data/world/opportunities.json'),
+    loadJSON('data/world/dynamic-events.json'),
     loadJSON('data/balance/covet.json'),
     loadJSON('data/items/currency.json'),
     loadJSON('data/items/material.json'),
@@ -114,7 +115,7 @@ export async function loadGameConfigs() {
     balanceUtility, balanceReward, balanceRelationship, balanceReaction,
     gameConfig, aiConfig, names,
     monsters, monsterSpawn,
-    worldNews, worldOpportunities, balanceCovet, itemDefs,
+    worldNews, worldOpportunities, dynamicEvents, balanceCovet, itemDefs,
     tags, effects, abilities,
   };
 }
@@ -147,6 +148,7 @@ export async function loadGameConfigs() {
  * @property {Object} balanceUtility     Utility 考量因素配置（ADR-020）
  * @property {Object} balanceReward      期望收益配置（ADR-022）
  * @property {Object} balanceRelationship 关系网系统配置（ADR-027）
+ * @property {Object} dynamicEvents      动态世界事件配置
  * @property {Array}  monsters           妖兽定义
  * @property {Object} monsterSpawn       妖兽分布平衡配置
  * @property {Object} gameConfig         全局游戏配置
