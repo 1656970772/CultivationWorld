@@ -76,6 +76,7 @@ const cfg = {
       announceDay: 10,
       startDay: 20,
       endDay: 25,
+      expireDay: 30,
       value: 1000,
       riskKey: 'plunder',
       scope: 'public',
@@ -105,6 +106,15 @@ assert(snap.participants.includes('npc_1'), '参与记录进入 snapshot');
 
 system.tick(26);
 assert(system.getById('evt_secret_realm_test').phase === WorldEventPhase.RESOLVED, 'endDay 后进入 resolved');
+const expiredChanges = system.tick(31);
+assert(expiredChanges.some(change =>
+  change.eventId === 'evt_secret_realm_test' && change.phase === WorldEventPhase.EXPIRED
+), 'expireDay 后 tick 记录 expired phase change');
+assert(system.phaseChanges().some(change =>
+  change.eventId === 'evt_secret_realm_test' && change.phase === WorldEventPhase.EXPIRED
+), 'phaseChanges() 可读取 expired phase change');
+assert(!system.snapshot().events.some(e => e.id === 'evt_secret_realm_test'), 'expired 事件从 snapshot 移除');
+assert(system.getById('evt_secret_realm_test') === null, 'expired 后 _byId 重建，getById 返回 null');
 
 console.log('2) 默认关闭时不播种、不推进、不暴露事件');
 {
