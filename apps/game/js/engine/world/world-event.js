@@ -21,6 +21,12 @@ export const WorldEventType = Object.freeze({
   RELATIONSHIP_DEATH: 'relationship_death',
 });
 
+const DEFAULT_CONFIDENCE_BY_SCOPE = Object.freeze({
+  public: 0.55,
+  faction: 0.9,
+  relationship: 1,
+});
+
 export class WorldEvent {
   /**
    * @param {Object} cfg
@@ -189,10 +195,9 @@ export class WorldEventSystem {
 
   awarenessConfidence(event, entity) {
     if (!event || !this._scopeVisible(event, entity)) return 0;
-    if (event.scope === 'relationship') return 1;
-    if (event.scope === 'faction') return 0.9;
-    if (event.scope === 'public') return 0.55;
-    return 0;
+    const scope = event.scope || 'public';
+    const configured = this.config?.awareness?.defaultConfidenceByScope || {};
+    return configured[scope] ?? DEFAULT_CONFIDENCE_BY_SCOPE[scope] ?? 0;
   }
 
   markPrepared(eventId, npcId) {
