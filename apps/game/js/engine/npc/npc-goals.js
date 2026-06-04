@@ -31,6 +31,10 @@ export function collectExtraGoals(entity, worldContext) {
   // 关系驱动目标（ADR-028）：护短同门 / 报恩。goalsEnabled 关或无 qualifying 边时返回 []。
   const relGoal = buildRelationshipGoals(entity, worldContext);
   if (relGoal) goals.push(relGoal);
+  if (typeof entity.collectDynamicGoals === 'function') {
+    const dynamicGoals = entity.collectDynamicGoals(worldContext);
+    if (Array.isArray(dynamicGoals) && dynamicGoals.length > 0) goals.push(...dynamicGoals);
+  }
   return goals;
 }
 

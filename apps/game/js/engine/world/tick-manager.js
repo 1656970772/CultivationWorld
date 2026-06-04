@@ -44,7 +44,8 @@ export class TickManager {
   constructor({ entityRegistry, worldEntity, rng, questTemplates, tileIndex, terrainIndex, ranksData,
                 balanceConfig, namesConfig, modifierTemplates, gameConfig, entityConfig,
                 techniqueRegistry, monsterSpawner, monsterInitialCount, factionBuildings,
-                gridGraph, hierGraph, worldNewsConfig, opportunityConfig, dynamicEventsConfig, worldEventSystem, covetConfig,
+                gridGraph, hierGraph, worldNewsConfig, opportunityConfig, dynamicEventsConfig, dynamicGoalsConfig,
+                worldEventSystem, covetConfig,
                 relationshipConfig, relationshipSystem }) {
     this.entityRegistry = entityRegistry;
     this.worldEntity = worldEntity;
@@ -82,6 +83,7 @@ export class TickManager {
     this.infoSystem = new InfoPropagationSystem(worldNewsConfig || {});
     this.opportunitySystem = new OpportunitySystem(opportunityConfig || {});
     this.dynamicEventsConfig = dynamicEventsConfig || {};
+    this.dynamicGoalsConfig = dynamicGoalsConfig || {};
     this.worldEventSystem = worldEventSystem || null;
 
     // 关系网系统（ADR-027，世界级单一真相源）。由 WorldEngine 创建并传入，

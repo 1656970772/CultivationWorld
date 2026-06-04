@@ -21,6 +21,7 @@ export const GoalSource = Object.freeze({
   REACTION: 'reaction',
   OPPORTUNITY: 'opportunity',
   RELATIONSHIP: 'relationship',
+  DYNAMIC: 'dynamic',
 });
 
 /**

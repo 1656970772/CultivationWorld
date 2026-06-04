@@ -41,6 +41,7 @@ export class WorldEngine {
     this.tickManager = null;
     this._initialized = false;
     this.worldEventSystem = null;
+    this._dynamicGoalsConfig = {};
     // 确定性随机源（init 时按 configs.seed 重建）。模拟逻辑统一从此取随机。
     this.rng = null;
     this.seed = null;
@@ -81,6 +82,7 @@ export class WorldEngine {
     this._worldNewsConfig = configs.worldNews || {};
     this._opportunityConfig = configs.worldOpportunities || {};
     this._dynamicEventsConfig = configs.dynamicEvents || {};
+    this._dynamicGoalsConfig = configs.dynamicGoals || {};
     this.worldEventSystem = new WorldEventSystem(this._dynamicEventsConfig);
     this.worldEventSystem.seedScheduledEvents(0);
     this._covetConfig = configs.balanceCovet || {};
@@ -116,6 +118,7 @@ export class WorldEngine {
       relationshipConfig: this._balanceConfig.relationship,
       // 反应层配置（ADR-048）：NPCEntity 据此设置刺激队列 ttl/容量等。
       reactionConfig: this._balanceConfig.reaction,
+      dynamicGoalConfig: this._dynamicGoalsConfig,
       // 世界级关系网引用：NPCEntity 据此把 relationships 绑定为本系统的兼容视图（ADR-027）。
       relationshipSystem: this.relationshipSystem,
     };
@@ -496,6 +499,7 @@ export class WorldEngine {
       worldNewsConfig: this._worldNewsConfig,
       opportunityConfig: this._opportunityConfig,
       dynamicEventsConfig: this._dynamicEventsConfig,
+      dynamicGoalsConfig: this._dynamicGoalsConfig,
       worldEventSystem: this.worldEventSystem,
       covetConfig: this._covetConfig,
       relationshipConfig: this._balanceConfig.relationship,

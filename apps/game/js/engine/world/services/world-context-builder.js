@@ -54,6 +54,7 @@ export class WorldContextBuilder {
       opportunitySystem: host.opportunitySystem,
       relationshipSystem: host.relationshipSystem,
       relationshipConfig: host.relationshipConfig,
+      dynamicGoalConfig: host.dynamicGoalsConfig || {},
 
       dynamicEventById(id) {
         const event = host.worldEventSystem?.getById(id);

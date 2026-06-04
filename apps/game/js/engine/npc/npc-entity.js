@@ -18,6 +18,8 @@ import {
   checkSeizeDiscipleObsession as checkSeizeDiscipleObsessionImpl,
   buildOpportunityGoal as buildOpportunityGoalImpl,
 } from './npc-goals.js';
+import { EventAwareness } from './event-awareness.js';
+import { DynamicGoalProvider } from './dynamic-goals.js';
 import {
   tryBreakthrough as tryBreakthroughImpl,
   handleDeath as handleDeathImpl,
@@ -98,6 +100,8 @@ export class NPCEntity extends BaseEntity {
     this._relationshipSystem = entityConfig.relationshipSystem || null;
     // 关系网配置（ADR-028 二期）：含 goalsEnabled 与 npcGoals 阈值，供关系驱动 Goal 读取。
     this._relationshipConfig = entityConfig.relationshipConfig || {};
+    this._dynamicGoalConfig = entityConfig.dynamicGoalConfig || {};
+    this.eventAwareness = new EventAwareness();
     this.relationships = new RelationshipGraph(
       this._relationshipSystem
         ? { system: this._relationshipSystem, ownerId: this.id }
@@ -292,6 +296,7 @@ export class NPCEntity extends BaseEntity {
       emotions: this.emotions ? this.emotions.snapshot().values : {},
       memoryCount: this.memory ? this.memory.size() : 0,
       topGrudge: topGrudge || null,
+      knownDynamicEvents: this.eventAwareness ? this.eventAwareness.snapshot().known.slice(0, 5) : [],
     };
   }
 
@@ -323,6 +328,26 @@ export class NPCEntity extends BaseEntity {
    */
   collectExtraGoals(worldContext) {
     return collectExtraGoalsImpl(this, worldContext);
+  }
+
+  _syncDynamicEventAwareness(worldContext) {
+    if (!this.eventAwareness || typeof worldContext?.knownDynamicEventsFor !== 'function') return;
+    const day = worldContext.currentDay ?? worldContext.day ?? 0;
+    const known = worldContext.knownDynamicEventsFor(this) || [];
+    for (const entry of known) {
+      if (!entry?.event) continue;
+      this.eventAwareness.learn(entry.event, {
+        confidence: entry.confidence ?? 0,
+        source: entry.source ?? 'unknown',
+        scope: entry.scope ?? null,
+        visibilityScope: entry.visibilityScope ?? null,
+        day: entry.day ?? day,
+      });
+    }
+  }
+
+  collectDynamicGoals(worldContext) {
+    return DynamicGoalProvider.collect(this, worldContext);
   }
 
   /**
@@ -823,6 +848,7 @@ export class NPCEntity extends BaseEntity {
     // 大事件 → 动态决策（ADR-048）：遇仇人/知晓机缘等新事件即时压刺激 + 请求立即重决策。
     // 在复仇/关系派生状态刷新之后调用，使其能读到本 tick 最新的 hasRevengeTarget 等。
     this._checkEventReplan(worldContext);
+    this._syncDynamicEventAwareness(worldContext);
 
     const deathResult = this.state.checkNaturalDeath();
     if (deathResult && deathResult.died) {
