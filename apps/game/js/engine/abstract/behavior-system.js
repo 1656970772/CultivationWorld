@@ -62,6 +62,17 @@ export class BehaviorSystem {
       this.currentPlan = [];
       this.currentActionIndex = 0;
       this.currentNeedId = null;
+      this._lastPlanResult = {
+        needId: null,
+        needName: null,
+        goalSource: null,
+        planLength: 0,
+        planCost: 0,
+        iterations: 0,
+        actions: [],
+        failed: true,
+        reason: 'no_goals',
+      };
       return [];
     }
 

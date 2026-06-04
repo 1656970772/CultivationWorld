@@ -433,6 +433,83 @@ console.log('9) 实际选中的动态 Goal 会覆盖候选阶段 targetDynamicEv
   assert(npc.state.get('targetDynamicEventId') === eventB.id, 'onPlanChosen 将 targetDynamicEventId 绑定到实际选中的动态事件');
 }
 
+console.log('10) 无目标规划会清理上一轮 dynamic planResult');
+{
+  const event = eventSnapshot({ id: 'evt_dynamic_previous_result', type: 'fallen_master', startDay: 30, phase: 'announced' });
+  const cfg = {
+    enabled: true,
+    maxGoalsPerNpc: 1,
+    rules: [{
+      id: 'reachable_dynamic_previous',
+      eventType: 'fallen_master',
+      phases: ['announced'],
+      kind: 'loot',
+      minConfidence: 0.5,
+      timeWindowDays: { min: 0, max: 60 },
+      goalState: { previousDynamicDone: { op: 'eq', value: true } },
+      basePriority: 90,
+      urgency: 80,
+    }],
+  };
+  const npc = new NPCEntity(
+    {
+      id: 'npc_clear_stale_dynamic_plan',
+      name: '旧结果清理测试者',
+      factionId: 'sect_001',
+      role: 'disciple',
+      rankId: 'foundation',
+      alive: true,
+      personality: { ambition: 80, caution: 20, loyalty: 50, diplomacy: 50 },
+      needIds: [],
+      actionIds: [],
+    },
+    load('data/definitions/ranks.json'),
+    {
+      rng: new Rng(41),
+      gameConfig: load('data/config/game-config.json'),
+      cultivationConfig: { traitEffects: { enabled: false } },
+      aiConfig: { decisionPhaseMax: 0 },
+      relationshipConfig: { enabled: false, goalsEnabled: false },
+      dynamicGoalConfig: cfg,
+    },
+  );
+  if (npc.obsessions) npc.obsessions.obsessions = [];
+  npc.state.set('previousDynamicDone', false);
+  npc.eventAwareness.learn(event, { confidence: 0.9, source: 'announcement', day: 10 });
+  npc.behaviorSystem.addAction(new Action({
+    id: 'act_previous_dynamic',
+    name: '完成旧动态目标',
+    preconditions: { alive: { op: 'true' } },
+    effects: { previousDynamicDone: { op: 'set', value: true } },
+    weight: 1,
+  }));
+
+  const firstContext = {
+    currentDay: 20,
+    dynamicGoalConfig: cfg,
+    dynamicEventById: (id) => id === event.id ? event : null,
+    balanceConfig: {},
+    rng: new Rng(42),
+  };
+  npc.needSystem.evaluate(npc.state, firstContext);
+  const first = IntentService.selectGoal(npc, firstContext);
+  assert(first.planResult?.goalSource === GoalSource.DYNAMIC, '第一轮制造 dynamic planResult');
+  assert(npc.state.get('targetDynamicEventId') === event.id, '第一轮绑定 dynamic target');
+
+  npc.behaviorSystem.clearPlan();
+  const secondContext = {
+    currentDay: 21,
+    dynamicGoalConfig: { enabled: false },
+    balanceConfig: {},
+    rng: new Rng(43),
+  };
+  npc.needSystem.evaluate(npc.state, secondContext);
+  const second = IntentService.selectGoal(npc, secondContext);
+  assert(second.plan.length === 0, '第二轮没有 need/extra goal 时 plan 为空');
+  assert(second.planResult?.failed === true && second.planResult?.reason === 'no_goals', '第二轮记录 no_goals planResult');
+  assert(npc.state.get('targetDynamicEventId') === null, '无目标规划后不会复用上一轮 dynamic target');
+}
+
 if (failed === 0) {
   console.log('\n动态 Goal 单测全部通过');
   process.exit(0);
