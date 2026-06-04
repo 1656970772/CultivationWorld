@@ -2,6 +2,7 @@
  * NPCEntity - NPC 实体
  */
 import { BaseEntity } from '../abstract/base-entity.js';
+import { GoalSource } from '../abstract/goal.js';
 import { NPCStaticData } from './npc-static-data.js';
 import { NPCState } from './npc-state.js';
 import { NeedPool } from '../pools/need-pool.js';
@@ -348,6 +349,13 @@ export class NPCEntity extends BaseEntity {
 
   collectDynamicGoals(worldContext) {
     return DynamicGoalProvider.collect(this, worldContext);
+  }
+
+  onPlanChosen() {
+    const result = this.behaviorSystem?.getLastPlanResult?.();
+    if (result?.goalSource !== GoalSource.DYNAMIC) {
+      this.state.set('targetDynamicEventId', null);
+    }
   }
 
   /**

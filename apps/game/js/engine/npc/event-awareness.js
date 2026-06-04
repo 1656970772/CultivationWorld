@@ -33,13 +33,16 @@ export class EventAwareness {
     const incomingConfidence = Number(confidence) || 0;
     const replaceSnapshot = !prev || incomingConfidence >= (prev.confidence ?? 0);
     const eventSnap = replaceSnapshot ? cloneJSONCompatible(event) : cloneJSONCompatible(prev.event);
+    const nextSource = source ?? event.source ?? prev?.source ?? 'unknown';
+    const nextScope = scope ?? event.scope ?? prev?.scope ?? null;
+    const nextVisibilityScope = visibilityScope ?? scope ?? event.scope ?? prev?.visibilityScope ?? null;
     const known = {
       eventId: event.id,
       eventType: eventSnap?.type || prev?.eventType || null,
       confidence: Math.max(prev?.confidence ?? 0, incomingConfidence),
-      source: source ?? event.source ?? prev?.source ?? 'unknown',
-      scope: scope ?? event.scope ?? prev?.scope ?? null,
-      visibilityScope: visibilityScope ?? scope ?? event.scope ?? prev?.visibilityScope ?? null,
+      source: replaceSnapshot ? nextSource : (prev?.source ?? 'unknown'),
+      scope: replaceSnapshot ? nextScope : (prev?.scope ?? null),
+      visibilityScope: replaceSnapshot ? nextVisibilityScope : (prev?.visibilityScope ?? null),
       firstKnownDay: prev?.firstKnownDay ?? day,
       lastUpdatedDay: day,
       event: eventSnap,
@@ -68,13 +71,16 @@ export class EventAwareness {
    */
   knownEvents({ currentDay = 0, eventById = null } = {}) {
     const out = [];
+    const hasLiveQuery = typeof eventById === 'function';
     for (const known of this._known.values()) {
       if (this.isIgnored(known.eventId, currentDay)) continue;
       let event = null;
-      if (typeof eventById === 'function') {
+      if (hasLiveQuery) {
         event = eventById(known.eventId) || null;
+        if (!event) continue;
+      } else {
+        event = known.event;
       }
-      event = event || known.event;
       if (!event) continue;
       out.push({
         event: cloneJSONCompatible(event),

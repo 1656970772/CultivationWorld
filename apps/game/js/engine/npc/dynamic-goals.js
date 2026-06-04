@@ -60,8 +60,14 @@ export class DynamicGoalProvider {
    */
   static collect(entity, worldContext = {}) {
     const config = worldContext?.dynamicGoalConfig ?? entity?._dynamicGoalConfig ?? {};
-    if (config?.enabled !== true) return [];
-    if (!entity?.eventAwareness || typeof entity.eventAwareness.knownEvents !== 'function') return [];
+    if (config?.enabled !== true) {
+      this._clearTarget(entity);
+      return [];
+    }
+    if (!entity?.eventAwareness || typeof entity.eventAwareness.knownEvents !== 'function') {
+      this._clearTarget(entity);
+      return [];
+    }
 
     const currentDay = worldContext.currentDay ?? worldContext.day ?? 0;
     const eventById = typeof worldContext.dynamicEventById === 'function'
@@ -90,8 +96,8 @@ export class DynamicGoalProvider {
     const capped = goals.slice(0, maxGoals);
     if (capped.length > 0 && typeof entity.state?.set === 'function') {
       entity.state.set('targetDynamicEventId', capped[0].dynamic?.eventId || null);
-    } else if (typeof entity.state?.set === 'function') {
-      entity.state.set('targetDynamicEventId', null);
+    } else {
+      this._clearTarget(entity);
     }
     return capped;
   }
@@ -191,5 +197,11 @@ export class DynamicGoalProvider {
       survival: Math.max(caution, lifeRatio, injury > 0 ? 0.8 : 0),
       revenge: hasRevengeTarget ? 1 : Math.max(0, 1 - loyalty),
     };
+  }
+
+  static _clearTarget(entity) {
+    if (typeof entity?.state?.set === 'function') {
+      entity.state.set('targetDynamicEventId', null);
+    }
   }
 }

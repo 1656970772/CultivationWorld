@@ -11,9 +11,12 @@ const load = (p) => JSON.parse(readFileSync(resolve(GAME_ROOT, p), 'utf-8'));
 const { EventAwareness } = await imp('js/engine/npc/event-awareness.js');
 const { DynamicGoalProvider } = await imp('js/engine/npc/dynamic-goals.js');
 const { GoalSource } = await imp('js/engine/abstract/goal.js');
+const { Action } = await imp('js/engine/abstract/action.js');
+const { Need } = await imp('js/engine/abstract/need.js');
 const { WorldEventSystem } = await imp('js/engine/world/world-event.js');
 const { WorldContextBuilder } = await imp('js/engine/world/services/world-context-builder.js');
 const { NPCEntity } = await imp('js/engine/npc/npc-entity.js');
+const { IntentService } = await imp('js/engine/npc/intent-service.js');
 const { Rng } = await imp('js/engine/abstract/rng.js');
 
 let failed = 0;
@@ -109,12 +112,13 @@ function mkEntity(id = 'npc_dynamic_test', config = baseConfig) {
   };
 }
 
-function ctx(config = baseConfig, currentDay = 20, byId = new Map()) {
-  return {
+function ctx(config = baseConfig, currentDay = 20, byId = null) {
+  const context = {
     currentDay,
     dynamicGoalConfig: config,
-    dynamicEventById: (id) => byId.get(id) || null,
   };
+  if (byId) context.dynamicEventById = (id) => byId.get(id) || null;
+  return context;
 }
 
 console.log('1) 已知预告事件产出准备 Goal');
@@ -148,7 +152,8 @@ console.log('2) 高置信事件快照不被低置信输入覆盖');
     phase: 'scheduled',
     startDay: 999,
     name: '误传秘境',
-  }), { confidence: 0.2, source: 'rumor', day: 11 });
+    scope: 'relationship',
+  }), { confidence: 0.2, source: 'rumor', scope: 'relationship', visibilityScope: 'relationship', day: 11 });
 
   const known = awareness.knownEvents({ currentDay: 12 })[0];
   const snap = awareness.snapshot().known[0];
@@ -156,10 +161,30 @@ console.log('2) 高置信事件快照不被低置信输入覆盖');
   assert(known?.event?.phase === 'announced', 'knownEvents 保留高置信事件 phase');
   assert(known?.event?.startDay === 30, 'knownEvents 保留高置信事件 startDay');
   assert(snap?.event?.name === '可信秘境', 'snapshot 保留高置信事件内容');
+  assert(snap?.source === 'announcement', '低置信输入不覆盖高置信 source');
+  assert(snap?.scope === 'public', '低置信输入不覆盖高置信 scope');
+  assert(snap?.visibilityScope === 'public', '低置信输入不覆盖高置信 visibilityScope');
   assert(snap?.lastUpdatedDay === 11, '低置信输入仍可更新 lastUpdatedDay 元数据');
 }
 
-console.log('3) 置信度门槛与忽略冷却');
+console.log('3) live 查询缺失时不从旧缓存产出 stale 事件');
+{
+  const entity = mkEntity('npc_stale_event');
+  const event = eventSnapshot({ id: 'evt_stale_realm', phase: 'announced', startDay: 30 });
+  entity.eventAwareness.learn(event, { confidence: 0.9, source: 'announcement', day: 10 });
+  entity.state.set('targetDynamicEventId', event.id);
+
+  const known = entity.eventAwareness.knownEvents({
+    currentDay: 20,
+    eventById: () => null,
+  });
+  const goals = DynamicGoalProvider.collect(entity, ctx(baseConfig, 20, new Map()));
+  assert(known.length === 0, '提供 eventById 且返回 null 时 knownEvents 跳过旧缓存事件');
+  assert(goals.length === 0, 'live 查询缺失的 stale 事件不产出动态 Goal');
+  assert(entity.state.get('targetDynamicEventId') === null, 'stale 事件无动态 Goal 时清理 targetDynamicEventId');
+}
+
+console.log('4) 置信度门槛与忽略冷却');
 {
   const low = mkEntity('npc_low_conf');
   low.eventAwareness.learn(eventSnapshot({ id: 'evt_low_conf' }), { confidence: 0.2, day: 10 });
@@ -173,7 +198,7 @@ console.log('3) 置信度门槛与忽略冷却');
   assert(DynamicGoalProvider.collect(ignored, ctx(baseConfig, 25)).length === 1, 'ignore 冷却到期后可再次产出 Goal');
 }
 
-console.log('4) active 窗口事件产出 join/window Goal');
+console.log('5) active 窗口事件产出 join/window Goal');
 {
   const entity = mkEntity('npc_active');
   const event = eventSnapshot({ id: 'evt_active_realm', phase: 'active', startDay: 20, endDay: 30 });
@@ -184,14 +209,16 @@ console.log('4) active 窗口事件产出 join/window Goal');
   assert(goals[0]?.dynamic?.kind === 'window', 'active Goal metadata.kind=window');
 }
 
-console.log('5) 默认关闭态不改变旧行为');
+console.log('6) 默认关闭态不改变旧行为');
 {
   const entity = mkEntity('npc_disabled', {});
+  entity.state.set('targetDynamicEventId', 'evt_previous_target');
   entity.eventAwareness.learn(eventSnapshot({ id: 'evt_disabled' }), { confidence: 1, day: 10 });
   assert(DynamicGoalProvider.collect(entity, ctx({}, 20)).length === 0, '缺省/关闭配置不产出动态 Goal');
+  assert(entity.state.get('targetDynamicEventId') === null, '缺省/关闭配置会清理旧 targetDynamicEventId');
 }
 
-console.log('6) NPC 通过 worldContext 安全接口同步事件感知');
+console.log('7) NPC 通过 worldContext 安全接口同步事件感知');
 {
   const event = eventSnapshot({ id: 'evt_context_realm', announceDay: 1, startDay: 12, endDay: 20 });
   const system = new WorldEventSystem({ enabled: true, events: [event] });
@@ -243,6 +270,84 @@ console.log('6) NPC 通过 worldContext 安全接口同步事件感知');
   const goals = npc.collectDynamicGoals(worldContext);
   assert(goals.some(g => g.source === GoalSource.DYNAMIC && g.dynamic?.eventId === event.id), '同步后的 NPC 可基于已知事件产出动态 Goal');
   assert(npc.getMindSummary().knownDynamicEvents.some(k => k.eventId === event.id), '心智摘要包含已知动态事件');
+}
+
+console.log('8) 不可达动态 Goal 未被实际选中时清理临时 targetDynamicEventId');
+{
+  const event = eventSnapshot({ id: 'evt_unreachable_dynamic', startDay: 30, phase: 'announced' });
+  const cfg = {
+    enabled: true,
+    maxGoalsPerNpc: 1,
+    rules: [{
+      id: 'prepare_secret_realm',
+      eventType: 'secret_realm',
+      phases: ['announced'],
+      kind: 'preparation',
+      minConfidence: 0.5,
+      timeWindowDays: { min: 0, max: 60 },
+      goalState: { preparedDynamicEvent: { op: 'eq', value: true } },
+      basePriority: 100,
+      urgency: 100,
+      motiveWeights: { dao: 1.5 },
+    }],
+  };
+  const npc = new NPCEntity(
+    {
+      id: 'npc_unreachable_dynamic',
+      name: '规划测试者',
+      factionId: 'sect_001',
+      role: 'disciple',
+      rankId: 'foundation',
+      alive: true,
+      personality: { ambition: 90, caution: 20, loyalty: 50, diplomacy: 50 },
+      needIds: [],
+      actionIds: [],
+    },
+    load('data/definitions/ranks.json'),
+    {
+      rng: new Rng(21),
+      gameConfig: load('data/config/game-config.json'),
+      cultivationConfig: { traitEffects: { enabled: false } },
+      aiConfig: { decisionPhaseMax: 0 },
+      relationshipConfig: { enabled: false, goalsEnabled: false },
+      dynamicGoalConfig: cfg,
+    },
+  );
+  npc.state.set('reachableDone', false);
+  npc.eventAwareness.learn(event, { confidence: 0.9, source: 'announcement', day: 10 });
+  npc.needSystem.addNeed(new Need({
+    id: 'need_reachable_test',
+    name: '可达测试需求',
+    goalState: { reachableDone: { op: 'eq', value: true } },
+    evaluator: {
+      calculate: (_state, _world, need) => ({
+        priority: 20,
+        urgency: 0,
+        goalState: need.goalStateTemplate,
+        satisfied: false,
+      }),
+    },
+  }));
+  npc.behaviorSystem.addAction(new Action({
+    id: 'act_reachable_test',
+    name: '完成可达测试',
+    preconditions: { alive: { op: 'true' } },
+    effects: { reachableDone: { op: 'set', value: true } },
+    weight: 1,
+  }));
+
+  const worldContext = {
+    currentDay: 20,
+    dynamicGoalConfig: cfg,
+    dynamicEventById: (id) => id === event.id ? event : null,
+    balanceConfig: {},
+    rng: new Rng(22),
+  };
+  npc.needSystem.evaluate(npc.state, worldContext);
+  const selected = IntentService.selectGoal(npc, worldContext);
+  assert(selected.planResult?.goalSource === GoalSource.NEED, '规划跳过不可达动态 Goal，实际选中普通可达 Need');
+  assert(selected.plan?.[0]?.id === 'act_reachable_test', '实际计划使用普通可达 action');
+  assert(npc.state.get('targetDynamicEventId') === null, 'onPlanChosen 后清理未被实际选中的动态事件 target');
 }
 
 if (failed === 0) {
