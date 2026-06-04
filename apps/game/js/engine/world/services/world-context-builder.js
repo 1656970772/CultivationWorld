@@ -38,7 +38,7 @@ export class WorldContextBuilder {
       rng: host.rng,
       worldState: host.worldEntity.state,
       entityRegistry: host.entityRegistry,
-      currentDay: host.worldEntity.currentDay,
+      get currentDay() { return host.worldEntity.currentDay; },
       activeModifiers: host.worldEntity.activeModifiers,
       questTemplates: host.questTemplates || null,
       tileIndex: host.tileIndex,
@@ -52,20 +52,37 @@ export class WorldContextBuilder {
       movementSystem: host.movementSystem,
       infoSystem: host.infoSystem,
       opportunitySystem: host.opportunitySystem,
-      dynamicEventSystem: host.worldEventSystem || null,
       relationshipSystem: host.relationshipSystem,
       relationshipConfig: host.relationshipConfig,
 
-      knownDynamicEventsFor(entity) {
+      dynamicEventById(id) {
+        const event = host.worldEventSystem?.getById(id);
+        return event ? event.toJSON() : null;
+      },
+
+      knownDynamicEventsFor(entityOrId) {
         const day = host.worldEntity.currentDay;
+        const entity = typeof entityOrId === 'string'
+          ? (host.entityRegistry?.getById?.(entityOrId) || { id: entityOrId })
+          : entityOrId;
         return host.worldEventSystem
           ? host.worldEventSystem.visibleEventsFor(entity, day).map(event => ({
               event: event.toJSON(),
               confidence: host.worldEventSystem.awarenessConfidence(event, entity),
-              source: event.scope,
+              source: event.source,
+              scope: event.scope,
+              visibilityScope: event.scope,
               day,
             }))
           : [];
+      },
+
+      markDynamicEventPrepared(eventId, npcId) {
+        return host.worldEventSystem ? host.worldEventSystem.markPrepared(eventId, npcId) : false;
+      },
+
+      markDynamicEventParticipant(eventId, npcId) {
+        return host.worldEventSystem ? host.worldEventSystem.markParticipant(eventId, npcId) : false;
       },
 
       recordMonsterGrudge(monsterId, npcId) {

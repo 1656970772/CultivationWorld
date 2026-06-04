@@ -180,7 +180,7 @@ console.log('5) worldContext 暴露动态事件快照，避免外部改写系统
   const contextSystem = new WorldEventSystem({
     enabled: true,
     events: [
-      { id: 'evt_context_snapshot', type: 'auction', name: '坊市拍卖', announceDay: 1, startDay: 2, endDay: 3, scope: 'public' },
+      { id: 'evt_context_snapshot', type: 'auction', name: '坊市拍卖', announceDay: 1, startDay: 2, endDay: 3, scope: 'public', source: 'rumor_board' },
     ],
   });
   contextSystem.seedScheduledEvents(1);
@@ -202,11 +202,78 @@ console.log('5) worldContext 暴露动态事件快照，避免外部改写系统
     relationshipConfig: {},
   };
   const ctx = new WorldContextBuilder({ host, factionAI: {} }).build();
+  assert(!('dynamicEventSystem' in ctx), 'worldContext 不暴露裸 dynamicEventSystem');
+  assert(typeof ctx.dynamicEventById === 'function', 'worldContext 暴露 dynamicEventById 窄查询接口');
+  const eventSnap = typeof ctx.dynamicEventById === 'function' ? ctx.dynamicEventById('evt_context_snapshot') : null;
+  assert(eventSnap && eventSnap !== contextSystem.getById('evt_context_snapshot'), 'dynamicEventById 返回事件快照而非内部对象');
+  if (eventSnap) eventSnap.phase = WorldEventPhase.EXPIRED;
+  assert(contextSystem.getById('evt_context_snapshot').phase !== WorldEventPhase.EXPIRED, '修改 dynamicEventById 快照不影响系统内部事件');
+  assert(typeof ctx.markDynamicEventPrepared === 'function', 'worldContext 暴露准备记录窄命令接口');
+  assert(typeof ctx.markDynamicEventParticipant === 'function', 'worldContext 暴露参与记录窄命令接口');
+  if (typeof ctx.markDynamicEventPrepared === 'function') ctx.markDynamicEventPrepared('evt_context_snapshot', 'npc_1');
+  if (typeof ctx.markDynamicEventParticipant === 'function') ctx.markDynamicEventParticipant('evt_context_snapshot', 'npc_1');
+  const markedSnap = typeof ctx.dynamicEventById === 'function' ? ctx.dynamicEventById('evt_context_snapshot') : null;
+  assert(markedSnap?.preparedBy?.includes('npc_1'), 'markDynamicEventPrepared 写入系统并通过快照读取');
+  assert(markedSnap?.participants?.includes('npc_1'), 'markDynamicEventParticipant 写入系统并通过快照读取');
   const known = ctx.knownDynamicEventsFor({ id: 'npc_1' });
   assert(known.length === 1, 'worldContext 可读取可见动态事件');
   assert(known[0].event !== contextSystem.getById('evt_context_snapshot'), 'worldContext 返回事件快照而非系统内部对象');
+  assert(known[0].source === 'rumor_board', 'knownDynamicEventsFor wrapper.source 表示事件来源');
+  assert(known[0].scope === 'public' && known[0].visibilityScope === 'public', 'knownDynamicEventsFor wrapper 暴露可见范围字段');
   known[0].event.name = '外部改名';
   assert(contextSystem.getById('evt_context_snapshot').name === '坊市拍卖', '修改 worldContext 快照不影响系统内部事件');
+}
+
+console.log('6) worldContext currentDay 与动态事件 wrapper day 保持一致');
+{
+  const daySystem = new WorldEventSystem({
+    enabled: true,
+    events: [
+      { id: 'evt_day_sync', type: 'auction', name: '次日拍卖', announceDay: 10, startDay: 11, endDay: 12, scope: 'public' },
+    ],
+  });
+  daySystem.seedScheduledEvents(9);
+  const host = {
+    rng: null,
+    worldEntity: { currentDay: 9, state: {} },
+    entityRegistry: null,
+    tileIndex: new Map(),
+    terrainIndex: new Map(),
+    _calcFactionVeinOutput: () => new Map(),
+    balanceConfig: {},
+    modifierTemplates: [],
+    techniqueRegistry: new Map(),
+    movementSystem: null,
+    infoSystem: null,
+    opportunitySystem: null,
+    worldEventSystem: daySystem,
+    relationshipSystem: null,
+    relationshipConfig: {},
+  };
+  const ctx = new WorldContextBuilder({ host, factionAI: {} }).build();
+  host.worldEntity.currentDay = 10;
+  daySystem.tick(10);
+  const known = ctx.knownDynamicEventsFor({ id: 'npc_1' });
+  assert(ctx.currentDay === 10, '同一 worldContext 在世界日推进后读取新 currentDay');
+  assert(known.length === 1 && known[0].day === ctx.currentDay, '动态事件 wrapper day 与 worldContext.currentDay 一致');
+}
+
+console.log('7) ConfigLoader 加载 dynamic-events.json');
+{
+  const originalFetch = globalThis.fetch;
+  const requested = [];
+  globalThis.fetch = async (path) => {
+    requested.push(path);
+    return { ok: true, status: 200, json: async () => load(path) };
+  };
+  try {
+    const { loadGameConfigs } = await imp('js/core/config-loader.js');
+    const loaded = await loadGameConfigs();
+    assert(requested.includes('data/world/dynamic-events.json'), 'loadGameConfigs 请求 dynamic-events.json');
+    assert(loaded.dynamicEvents?.events?.length === load('data/world/dynamic-events.json').events.length, 'loadGameConfigs 返回 configs.dynamicEvents');
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
 }
 
 if (failed === 0) {
