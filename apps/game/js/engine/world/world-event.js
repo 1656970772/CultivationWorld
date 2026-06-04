@@ -178,6 +178,7 @@ export class WorldEventSystem {
           to: event.phase,
           phase: event.phase,
           day: currentDay,
+          event: event.toJSON(),
         });
       }
     }
@@ -188,7 +189,7 @@ export class WorldEventSystem {
   }
 
   phaseChanges() {
-    return this._phaseChanges.map(change => ({ ...change }));
+    return cloneJSONCompatible(this._phaseChanges);
   }
 
   visibleEventsFor(entity, currentDay) {

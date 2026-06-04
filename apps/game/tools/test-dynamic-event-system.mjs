@@ -80,7 +80,8 @@ const cfg = {
       value: 1000,
       riskKey: 'plunder',
       scope: 'public',
-      pos: { x: 50, y: 60 }
+      rewardSource: { table: 'secret_realm', detail: { grade: 1 } },
+      pos: { x: 50, y: 60, detail: { terrain: 'mountain' } }
     }
   ]
 };
@@ -92,8 +93,31 @@ system.seedScheduledEvents(0);
 system.tick(9);
 assert(system.getById('evt_secret_realm_test').phase === WorldEventPhase.SCHEDULED, '预告日前仍为 scheduled');
 
-system.tick(10);
+const announcedChanges = system.tick(10);
 assert(system.getById('evt_secret_realm_test').phase === WorldEventPhase.ANNOUNCED, 'announceDay 进入 announced');
+const announcedChange = announcedChanges.find(change => change.eventId === 'evt_secret_realm_test');
+assert(announcedChange?.event?.id === 'evt_secret_realm_test', 'announce phase change 携带 event 快照');
+assert(announcedChange?.event?.pos?.x === 50, 'announce phase change event 快照包含 pos');
+assert(announcedChange?.event?.value === 1000, 'announce phase change event 快照包含 value');
+assert(announcedChange?.event?.riskKey === 'plunder', 'announce phase change event 快照包含 riskKey');
+assert(announcedChange?.event?.scope === 'public', 'announce phase change event 快照包含 scope');
+assert(announcedChange?.event?.rewardSource?.detail?.grade === 1, 'announce phase change event 快照包含 rewardSource');
+if (announcedChange?.event) {
+  announcedChange.event.pos.x = 999;
+  announcedChange.event.rewardSource.detail.grade = 99;
+}
+assert(system.getById('evt_secret_realm_test').toJSON().pos.x === 50, '修改 tick 返回 event.pos 不污染内部事件');
+assert(system.getById('evt_secret_realm_test').toJSON().rewardSource.detail.grade === 1, '修改 tick 返回 event.rewardSource 不污染内部事件');
+const announcedAgain = system.phaseChanges().find(change => change.eventId === 'evt_secret_realm_test');
+assert(announcedAgain?.event?.pos?.x === 50, 'phaseChanges() 返回未被 tick 返回值污染的 event 快照');
+assert(announcedAgain?.event?.rewardSource?.detail?.grade === 1, 'phaseChanges() 返回未被 tick 返回值污染的 rewardSource 快照');
+if (announcedAgain?.event) {
+  announcedAgain.event.pos.x = 777;
+  announcedAgain.event.rewardSource.detail.grade = 77;
+}
+const announcedThird = system.phaseChanges().find(change => change.eventId === 'evt_secret_realm_test');
+assert(announcedThird?.event?.pos?.x === 50, '修改 phaseChanges() 返回 event.pos 不污染后续 phaseChanges()');
+assert(announcedThird?.event?.rewardSource?.detail?.grade === 1, '修改 phaseChanges() 返回 event.rewardSource 不污染后续 phaseChanges()');
 
 system.tick(20);
 assert(system.getById('evt_secret_realm_test').phase === WorldEventPhase.ACTIVE, 'startDay 进入 active');
@@ -110,9 +134,21 @@ const expiredChanges = system.tick(31);
 assert(expiredChanges.some(change =>
   change.eventId === 'evt_secret_realm_test' && change.phase === WorldEventPhase.EXPIRED
 ), 'expireDay 后 tick 记录 expired phase change');
+const expiredChange = expiredChanges.find(change => change.eventId === 'evt_secret_realm_test');
+assert(expiredChange?.event?.id === 'evt_secret_realm_test', 'expired phase change 在事件移除前携带 event 快照');
+assert(expiredChange?.event?.phase === WorldEventPhase.EXPIRED, 'expired phase change event 快照阶段为 expired');
+assert(expiredChange?.event?.pos?.x === 50, 'expired phase change event 快照保留 pos');
+assert(expiredChange?.event?.rewardSource?.detail?.grade === 1, 'expired phase change event 快照保留 rewardSource');
+if (expiredChange?.event) {
+  expiredChange.event.pos.x = 333;
+  expiredChange.event.rewardSource.detail.grade = 33;
+}
 assert(system.phaseChanges().some(change =>
   change.eventId === 'evt_secret_realm_test' && change.phase === WorldEventPhase.EXPIRED
 ), 'phaseChanges() 可读取 expired phase change');
+const expiredAgain = system.phaseChanges().find(change => change.eventId === 'evt_secret_realm_test');
+assert(expiredAgain?.event?.pos?.x === 50, 'phaseChanges() 在事件移除后仍返回完整 expired event 快照');
+assert(expiredAgain?.event?.rewardSource?.detail?.grade === 1, 'phaseChanges() 在事件移除后仍返回 rewardSource 快照');
 assert(!system.snapshot().events.some(e => e.id === 'evt_secret_realm_test'), 'expired 事件从 snapshot 移除');
 assert(system.getById('evt_secret_realm_test') === null, 'expired 后 _byId 重建，getById 返回 null');
 
@@ -228,6 +264,10 @@ console.log('6) WorldEngine 启用态推进动态事件 phase change');
         endDay: 3,
         expireDay: 4,
         scope: 'public',
+        value: 720,
+        riskKey: 'pvp',
+        rewardSource: { table: 'auction', detail: { grade: 2 } },
+        pos: { x: 10, y: 20, detail: { district: 'market' } },
       },
     ],
   };
@@ -237,6 +277,12 @@ console.log('6) WorldEngine 启用态推进动态事件 phase change');
   assert(tickLog.dynamicEvents.some(change =>
     change.eventId === 'evt_engine_enabled' && change.phase === WorldEventPhase.ANNOUNCED
   ), 'enabled=true 时首 tick 产生动态事件 announced phase change');
+  const engineChange = tickLog.dynamicEvents.find(change => change.eventId === 'evt_engine_enabled');
+  assert(engineChange?.event?.pos?.x === 10, 'WorldEngine tickLog.dynamicEvents 携带 event.pos 快照');
+  assert(engineChange?.event?.value === 720, 'WorldEngine tickLog.dynamicEvents 携带 event.value 快照');
+  assert(engineChange?.event?.riskKey === 'pvp', 'WorldEngine tickLog.dynamicEvents 携带 event.riskKey 快照');
+  assert(engineChange?.event?.scope === 'public', 'WorldEngine tickLog.dynamicEvents 携带 event.scope 快照');
+  assert(engineChange?.event?.rewardSource?.detail?.grade === 2, 'WorldEngine tickLog.dynamicEvents 携带 event.rewardSource 快照');
   assert(engine.worldEventSystem.snapshot().events.find(e => e.id === 'evt_engine_enabled')?.phase === WorldEventPhase.ANNOUNCED,
     'WorldEngine 内 worldEventSystem snapshot 阶段同步为 announced');
 }
