@@ -94,9 +94,7 @@ export class DynamicGoalProvider {
 
     const maxGoals = Math.max(0, Number(config.maxGoalsPerNpc ?? goals.length) || 0);
     const capped = goals.slice(0, maxGoals);
-    if (capped.length > 0 && typeof entity.state?.set === 'function') {
-      entity.state.set('targetDynamicEventId', capped[0].dynamic?.eventId || null);
-    } else {
+    if (capped.length === 0) {
       this._clearTarget(entity);
     }
     return capped;

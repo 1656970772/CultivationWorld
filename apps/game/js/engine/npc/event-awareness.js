@@ -21,13 +21,13 @@ export class EventAwareness {
    * @param {Object} event 动态事件快照
    * @param {Object} [opts]
    * @param {number} [opts.confidence=0]
-   * @param {string} [opts.source='unknown']
+   * @param {string} [opts.source]
    * @param {number} [opts.day=0]
    * @param {string} [opts.scope]
    * @param {string} [opts.visibilityScope]
    * @returns {Object|null}
    */
-  learn(event, { confidence = 0, source = 'unknown', day = 0, scope = null, visibilityScope = null } = {}) {
+  learn(event, { confidence = 0, source = null, day = 0, scope = null, visibilityScope = null } = {}) {
     if (!event?.id) return null;
     const prev = this._known.get(event.id);
     const incomingConfidence = Number(confidence) || 0;

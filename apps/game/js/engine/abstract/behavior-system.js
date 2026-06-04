@@ -78,17 +78,18 @@ export class BehaviorSystem {
     }
 
     for (const goal of goals) {
+      const goalGOAPState = this._stateForGoal(currentGOAPState, goal);
       // 选行策略=greedy（ADR-047）：修炼这类"重复累积、应换着做"的目标跳过 A* 折叠，
       // 直接在可执行行为间按推进性价比加权随机选一步——避免 A* 因游历单步推进量大而恒偏游历、
       // 行为一边倒。做完即重评估、下步再随机分化（闭关/游历/做任务交替）。
       if (goal.selectStrategy === 'greedy') {
-        const greedy = this._tryGreedyFallback(goal, currentGOAPState, worldContext, costFn);
+        const greedy = this._tryGreedyFallback(goal, goalGOAPState, worldContext, costFn);
         if (greedy) return [greedy];
         continue;
       }
 
       const result = this.planner.plan(
-        currentGOAPState,
+        goalGOAPState,
         goal.goalState,
         this.availableActions,
         costFn
@@ -113,7 +114,7 @@ export class BehaviorSystem {
       }
 
       // GOAP 失败，立即尝试该目标的贪心回退（保证高优先级目标优先获得行为）
-      const fallback = this._tryGreedyFallback(goal, currentGOAPState, worldContext, costFn);
+      const fallback = this._tryGreedyFallback(goal, goalGOAPState, worldContext, costFn);
       if (fallback) return [fallback];
     }
 
@@ -171,6 +172,16 @@ export class BehaviorSystem {
       top.sort(byScore);
     }
     return top;
+  }
+
+  _stateForGoal(currentGOAPState, goal) {
+    if (goal?.source !== GoalSource.DYNAMIC || !goal.dynamic?.eventId) {
+      return currentGOAPState;
+    }
+    return {
+      ...(currentGOAPState || {}),
+      targetDynamicEventId: goal.dynamic.eventId,
+    };
   }
 
   /**

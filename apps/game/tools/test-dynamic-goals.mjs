@@ -133,7 +133,7 @@ console.log('1) 已知预告事件产出准备 Goal');
   assert(goals.length === 1, 'dynamicGoals.enabled=true 且知晓预告秘境时产出一个动态 Goal');
   assert(goal?.source === GoalSource.DYNAMIC, 'Goal source=dynamic');
   assert(goal?.sourceId === 'prepare_secret_realm', 'Goal sourceId 使用配置中的动态目标 id');
-  assert(entity.state.get('targetDynamicEventId') === event.id, '产出 Goal 时锁定 targetDynamicEventId');
+  assert(entity.state.get('targetDynamicEventId') == null, '候选收集阶段不锁定 targetDynamicEventId');
   assert(goal?.priority > baseConfig.rules[0].basePriority, '道途/收益动机匹配会把优先级抬高到 basePriority 以上');
   assert(goal?.dynamic?.eventId === event.id, 'Goal.dynamic 记录 eventId');
   assert(goal?.dynamic?.daysUntilStart === 10, 'Goal.dynamic 使用 startDay-currentDay 记录剩余天数');
@@ -167,6 +167,10 @@ console.log('2) 高置信事件快照不被低置信输入覆盖');
   assert(snap?.scope === 'public', '低置信输入不覆盖高置信 scope');
   assert(snap?.visibilityScope === 'public', '低置信输入不覆盖高置信 visibilityScope');
   assert(snap?.lastUpdatedDay === 11, '低置信输入仍可更新 lastUpdatedDay 元数据');
+
+  const fromEventSource = new EventAwareness();
+  fromEventSource.learn(eventSnapshot({ id: 'evt_event_source_default', source: 'omen_board' }), { confidence: 0.7, day: 12 });
+  assert(fromEventSource.snapshot().known[0]?.source === 'omen_board', '未传 source 时保留 event.source');
 }
 
 console.log('3) live 查询缺失时不从旧缓存产出 stale 事件');
@@ -352,7 +356,7 @@ console.log('8) 不可达动态 Goal 未被实际选中时清理临时 targetDyn
   assert(npc.state.get('targetDynamicEventId') === null, 'onPlanChosen 后清理未被实际选中的动态事件 target');
 }
 
-console.log('9) 实际选中的动态 Goal 会覆盖候选阶段 targetDynamicEventId');
+console.log('9) 实际选中的动态 Goal 会绑定 targetDynamicEventId');
 {
   const eventA = eventSnapshot({ id: 'evt_dynamic_high_unreachable', type: 'secret_realm', startDay: 30, phase: 'announced' });
   const eventB = eventSnapshot({ id: 'evt_dynamic_reachable', type: 'fallen_master', startDay: 30, phase: 'announced' });
@@ -413,7 +417,10 @@ console.log('9) 实际选中的动态 Goal 会覆盖候选阶段 targetDynamicEv
   npc.behaviorSystem.addAction(new Action({
     id: 'act_reachable_dynamic',
     name: '完成可达动态目标',
-    preconditions: { alive: { op: 'true' } },
+    preconditions: {
+      alive: { op: 'true' },
+      targetDynamicEventId: { op: 'eq', value: eventB.id },
+    },
     effects: { reachableDynamicDone: { op: 'set', value: true } },
     weight: 1,
   }));
@@ -431,7 +438,7 @@ console.log('9) 实际选中的动态 Goal 会覆盖候选阶段 targetDynamicEv
   assert(selected.planResult?.goalSource === GoalSource.DYNAMIC, '规划跳过高优先不可达动态 Goal 后选中次高可达动态 Goal');
   assert(selected.planResult?.needId === 'reachable_dynamic', '实际选中的动态 Goal sourceId=reachable_dynamic');
   assert(selected.planResult?.dynamicEventId === eventB.id, 'planResult 记录实际选中动态事件 id');
-  assert(selected.plan?.[0]?.id === 'act_reachable_dynamic', '实际计划使用可达动态 action');
+  assert(selected.plan?.[0]?.id === 'act_reachable_dynamic', '实际计划使用读取当前动态事件 id 的可达 action');
   assert(npc.state.get('targetDynamicEventId') === eventB.id, 'onPlanChosen 将 targetDynamicEventId 绑定到实际选中的动态事件');
 }
 
