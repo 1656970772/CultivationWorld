@@ -47,7 +47,7 @@ const baseConfig = {
       basePriority: 40,
       urgency: 8,
       eventValueWeight: 0,
-      motiveMultipliers: { dao: 1.3, profit: 1.1, survival: 0.9, revenge: 1.0 },
+      motiveWeights: { dao: 1.3, profit: 1.1, survival: 0.9, revenge: 1.0 },
       priorityBounds: [0, 100],
       urgencyBounds: [0, 100],
       selectStrategy: 'astar'
@@ -64,7 +64,7 @@ const baseConfig = {
       basePriority: 70,
       urgency: 35,
       eventValueWeight: 0,
-      motiveMultipliers: { dao: 1.2, profit: 1.25, survival: 0.8, revenge: 1.0 },
+      motiveWeights: { dao: 1.2, profit: 1.25, survival: 0.8, revenge: 1.0 },
       priorityBounds: [0, 100],
       urgencyBounds: [0, 100]
     }
@@ -133,7 +133,33 @@ console.log('1) 已知预告事件产出准备 Goal');
   assert(goal?.dynamic?.daysUntilStart === 10, 'Goal.dynamic 使用 startDay-currentDay 记录剩余天数');
 }
 
-console.log('2) 置信度门槛与忽略冷却');
+console.log('2) 高置信事件快照不被低置信输入覆盖');
+{
+  const awareness = new EventAwareness();
+  const high = eventSnapshot({
+    id: 'evt_preserve_high_conf',
+    phase: 'announced',
+    startDay: 30,
+    name: '可信秘境',
+  });
+  awareness.learn(high, { confidence: 0.9, source: 'announcement', day: 10 });
+  awareness.learn(eventSnapshot({
+    id: high.id,
+    phase: 'scheduled',
+    startDay: 999,
+    name: '误传秘境',
+  }), { confidence: 0.2, source: 'rumor', day: 11 });
+
+  const known = awareness.knownEvents({ currentDay: 12 })[0];
+  const snap = awareness.snapshot().known[0];
+  assert(known?.confidence === 0.9, '重复学习后保留最高 confidence');
+  assert(known?.event?.phase === 'announced', 'knownEvents 保留高置信事件 phase');
+  assert(known?.event?.startDay === 30, 'knownEvents 保留高置信事件 startDay');
+  assert(snap?.event?.name === '可信秘境', 'snapshot 保留高置信事件内容');
+  assert(snap?.lastUpdatedDay === 11, '低置信输入仍可更新 lastUpdatedDay 元数据');
+}
+
+console.log('3) 置信度门槛与忽略冷却');
 {
   const low = mkEntity('npc_low_conf');
   low.eventAwareness.learn(eventSnapshot({ id: 'evt_low_conf' }), { confidence: 0.2, day: 10 });
@@ -147,7 +173,7 @@ console.log('2) 置信度门槛与忽略冷却');
   assert(DynamicGoalProvider.collect(ignored, ctx(baseConfig, 25)).length === 1, 'ignore 冷却到期后可再次产出 Goal');
 }
 
-console.log('3) active 窗口事件产出 join/window Goal');
+console.log('4) active 窗口事件产出 join/window Goal');
 {
   const entity = mkEntity('npc_active');
   const event = eventSnapshot({ id: 'evt_active_realm', phase: 'active', startDay: 20, endDay: 30 });
@@ -158,14 +184,14 @@ console.log('3) active 窗口事件产出 join/window Goal');
   assert(goals[0]?.dynamic?.kind === 'window', 'active Goal metadata.kind=window');
 }
 
-console.log('4) 默认关闭态不改变旧行为');
+console.log('5) 默认关闭态不改变旧行为');
 {
   const entity = mkEntity('npc_disabled', {});
   entity.eventAwareness.learn(eventSnapshot({ id: 'evt_disabled' }), { confidence: 1, day: 10 });
   assert(DynamicGoalProvider.collect(entity, ctx({}, 20)).length === 0, '缺省/关闭配置不产出动态 Goal');
 }
 
-console.log('5) NPC 通过 worldContext 安全接口同步事件感知');
+console.log('6) NPC 通过 worldContext 安全接口同步事件感知');
 {
   const event = eventSnapshot({ id: 'evt_context_realm', announceDay: 1, startDay: 12, endDay: 20 });
   const system = new WorldEventSystem({ enabled: true, events: [event] });

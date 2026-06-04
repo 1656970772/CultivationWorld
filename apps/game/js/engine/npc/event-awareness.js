@@ -30,11 +30,13 @@ export class EventAwareness {
   learn(event, { confidence = 0, source = 'unknown', day = 0, scope = null, visibilityScope = null } = {}) {
     if (!event?.id) return null;
     const prev = this._known.get(event.id);
-    const eventSnap = cloneJSONCompatible(event);
+    const incomingConfidence = Number(confidence) || 0;
+    const replaceSnapshot = !prev || incomingConfidence >= (prev.confidence ?? 0);
+    const eventSnap = replaceSnapshot ? cloneJSONCompatible(event) : cloneJSONCompatible(prev.event);
     const known = {
       eventId: event.id,
-      eventType: event.type || prev?.eventType || null,
-      confidence: Math.max(prev?.confidence ?? 0, Number(confidence) || 0),
+      eventType: eventSnap?.type || prev?.eventType || null,
+      confidence: Math.max(prev?.confidence ?? 0, incomingConfidence),
       source: source ?? event.source ?? prev?.source ?? 'unknown',
       scope: scope ?? event.scope ?? prev?.scope ?? null,
       visibilityScope: visibilityScope ?? scope ?? event.scope ?? prev?.visibilityScope ?? null,

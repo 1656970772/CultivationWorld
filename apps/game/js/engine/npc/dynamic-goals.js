@@ -154,8 +154,13 @@ export class DynamicGoalProvider {
   }
 
   static _motiveMultiplier(entity, rule, config) {
-    const multipliers = rule.motiveMultipliers || rule.motives || config.motiveMultipliers || {};
-    const entries = Object.entries(multipliers);
+    const weights = rule.motiveWeights
+      || rule.motiveMultipliers
+      || rule.motives
+      || config.motiveWeights
+      || config.motiveMultipliers
+      || {};
+    const entries = Object.entries(weights);
     if (entries.length === 0) return 1;
     const affinities = this._motiveAffinities(entity);
     let mult = 1;
