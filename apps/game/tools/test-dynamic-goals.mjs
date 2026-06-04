@@ -350,6 +350,89 @@ console.log('8) 不可达动态 Goal 未被实际选中时清理临时 targetDyn
   assert(npc.state.get('targetDynamicEventId') === null, 'onPlanChosen 后清理未被实际选中的动态事件 target');
 }
 
+console.log('9) 实际选中的动态 Goal 会覆盖候选阶段 targetDynamicEventId');
+{
+  const eventA = eventSnapshot({ id: 'evt_dynamic_high_unreachable', type: 'secret_realm', startDay: 30, phase: 'announced' });
+  const eventB = eventSnapshot({ id: 'evt_dynamic_reachable', type: 'fallen_master', startDay: 30, phase: 'announced' });
+  const cfg = {
+    enabled: true,
+    maxGoalsPerNpc: 2,
+    rules: [
+      {
+        id: 'high_unreachable_dynamic',
+        eventType: 'secret_realm',
+        phases: ['announced'],
+        kind: 'preparation',
+        minConfidence: 0.5,
+        timeWindowDays: { min: 0, max: 60 },
+        goalState: { highDynamicDone: { op: 'eq', value: true } },
+        basePriority: 100,
+        urgency: 100,
+      },
+      {
+        id: 'reachable_dynamic',
+        eventType: 'fallen_master',
+        phases: ['announced'],
+        kind: 'loot',
+        minConfidence: 0.5,
+        timeWindowDays: { min: 0, max: 60 },
+        goalState: { reachableDynamicDone: { op: 'eq', value: true } },
+        basePriority: 90,
+        urgency: 80,
+      },
+    ],
+  };
+  const npc = new NPCEntity(
+    {
+      id: 'npc_dynamic_selected_event',
+      name: '动态绑定测试者',
+      factionId: 'sect_001',
+      role: 'disciple',
+      rankId: 'foundation',
+      alive: true,
+      personality: { ambition: 80, caution: 20, loyalty: 50, diplomacy: 50 },
+      needIds: [],
+      actionIds: [],
+    },
+    load('data/definitions/ranks.json'),
+    {
+      rng: new Rng(31),
+      gameConfig: load('data/config/game-config.json'),
+      cultivationConfig: { traitEffects: { enabled: false } },
+      aiConfig: { decisionPhaseMax: 0 },
+      relationshipConfig: { enabled: false, goalsEnabled: false },
+      dynamicGoalConfig: cfg,
+    },
+  );
+  npc.state.set('highDynamicDone', false);
+  npc.state.set('reachableDynamicDone', false);
+  npc.eventAwareness.learn(eventA, { confidence: 0.9, source: 'announcement', day: 10 });
+  npc.eventAwareness.learn(eventB, { confidence: 0.9, source: 'announcement', day: 10 });
+  npc.behaviorSystem.addAction(new Action({
+    id: 'act_reachable_dynamic',
+    name: '完成可达动态目标',
+    preconditions: { alive: { op: 'true' } },
+    effects: { reachableDynamicDone: { op: 'set', value: true } },
+    weight: 1,
+  }));
+
+  const byId = new Map([[eventA.id, eventA], [eventB.id, eventB]]);
+  const worldContext = {
+    currentDay: 20,
+    dynamicGoalConfig: cfg,
+    dynamicEventById: (id) => byId.get(id) || null,
+    balanceConfig: {},
+    rng: new Rng(32),
+  };
+  npc.needSystem.evaluate(npc.state, worldContext);
+  const selected = IntentService.selectGoal(npc, worldContext);
+  assert(selected.planResult?.goalSource === GoalSource.DYNAMIC, '规划跳过高优先不可达动态 Goal 后选中次高可达动态 Goal');
+  assert(selected.planResult?.needId === 'reachable_dynamic', '实际选中的动态 Goal sourceId=reachable_dynamic');
+  assert(selected.planResult?.dynamicEventId === eventB.id, 'planResult 记录实际选中动态事件 id');
+  assert(selected.plan?.[0]?.id === 'act_reachable_dynamic', '实际计划使用可达动态 action');
+  assert(npc.state.get('targetDynamicEventId') === eventB.id, 'onPlanChosen 将 targetDynamicEventId 绑定到实际选中的动态事件');
+}
+
 if (failed === 0) {
   console.log('\n动态 Goal 单测全部通过');
   process.exit(0);

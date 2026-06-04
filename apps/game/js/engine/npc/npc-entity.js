@@ -353,7 +353,9 @@ export class NPCEntity extends BaseEntity {
 
   onPlanChosen() {
     const result = this.behaviorSystem?.getLastPlanResult?.();
-    if (result?.goalSource !== GoalSource.DYNAMIC) {
+    if (result?.goalSource === GoalSource.DYNAMIC && result.dynamicEventId) {
+      this.state.set('targetDynamicEventId', result.dynamicEventId);
+    } else {
       this.state.set('targetDynamicEventId', null);
     }
   }
