@@ -363,6 +363,25 @@ console.log('9) ConfigLoader 加载 dynamic-events.json');
   }
 }
 
+console.log('10) bundled 宗门大比使用真实 faction id 可见');
+{
+  const dynamicEvents = load('data/world/dynamic-events.json');
+  const tournament = dynamicEvents.events.find(e => e.id === 'evt_sect_tournament_001');
+  const bundled = new WorldEventSystem({ ...dynamicEvents, enabled: true });
+  bundled.seedScheduledEvents(0);
+  bundled.tick(tournament.announceDay);
+
+  const sectNpc = { id: 'npc_sect_001_member', state: { get: (key) => key === 'factionId' ? 'sect_001' : null } };
+  const outsiderNpc = { id: 'npc_other_sect_member', state: { get: (key) => key === 'factionId' ? 'sect_002' : null } };
+  const sectVisible = bundled.visibleEventsFor(sectNpc, tournament.announceDay);
+  const outsiderVisible = bundled.visibleEventsFor(outsiderNpc, tournament.announceDay);
+
+  assert(tournament.subjectId === 'sect_001', 'bundled 宗门大比 subjectId 指向真实青云宗 sect_001');
+  assert(tournament.pos?.factionId === 'sect_001', 'bundled 宗门大比 pos.factionId 指向真实青云宗 sect_001');
+  assert(sectVisible.some(e => e.id === 'evt_sect_tournament_001'), 'sect_001 NPC 可见 bundled faction-scoped 宗门大比');
+  assert(!outsiderVisible.some(e => e.id === 'evt_sect_tournament_001'), '非 sect_001 NPC 不可见 bundled faction-scoped 宗门大比');
+}
+
 if (failed === 0) {
   console.log('动态事件系统单测全部通过');
   process.exit(0);
