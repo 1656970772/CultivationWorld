@@ -2,7 +2,7 @@
 
 > 项目代号：WorldDynamic
 > 创建日期：2026-05-23
-> 最后更新：2026-06-02（新增 ACS/RimWorld 世界架构参考借鉴文档 `architecture/reference-acs-rimworld.md`）
+> 最后更新：2026-06-04（新增 NPC 需求-动态目标-打断策略重构设计 `superpowers/specs/2026-06-04-NPC需求动态目标打断策略重构设计.md`）
 
 ## 文档结构
 
@@ -138,7 +138,8 @@ docs/
     ├── specs/
     │   ├── 2026-05-25-data-editor-design.md # 数据编辑器设计
     │   ├── 2026-05-27-自动世界模拟与核心NPC池设计.md # 自动世界模拟与核心 NPC 池设计
-    │   └── 2026-05-29-空间移动行为耗时与实时渲染设计.md # 空间移动/行为耗时/妖兽分布/实时渲染设计
+    │   ├── 2026-05-29-空间移动行为耗时与实时渲染设计.md # 空间移动/行为耗时/妖兽分布/实时渲染设计
+    │   └── 2026-06-04-NPC需求动态目标打断策略重构设计.md # NPC 长期需求、动态事件目标、提前准备与出关打断策略设计
     └── plans/
         ├── 2026-05-25-data-editor.md        # 数据编辑器实施计划
         ├── 2026-05-27-world-simulation-stability.md # 自动世界模拟稳定性第一批实施计划
@@ -202,6 +203,7 @@ docs/
 - `data/data-config-rules.md` —— 游戏 data/ 目录结构规范与所有 JSON 配置字段说明
 - `data-models/behavior-configs.md` —— 开局数据与行为配置的分层说明
 - `superpowers/specs/2026-05-27-自动世界模拟与核心NPC池设计.md` —— 自动世界模拟、核心 NPC 池、日志与报告设计
+- `superpowers/specs/2026-06-04-NPC需求动态目标打断策略重构设计.md` —— NPC 需求-动态目标-打断策略重构：长期需求只表达动机，秘境/大比/天材地宝/高手陨落/关系伤亡等事件通过 DynamicGoalProvider + InterruptPolicy 接入，支持未来事件提前准备与闭关出关打断
 - `superpowers/plans/2026-05-25-data-editor.md` —— 纯前端数据编辑器实施计划
 - `superpowers/plans/2026-05-27-world-simulation-stability.md` —— 自动世界模拟稳定性第一批实施计划
 - `superpowers/plans/2026-05-25-tauri-desktop-editor.md` —— Tauri 桌面编辑器实施计划
