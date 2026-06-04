@@ -166,7 +166,8 @@ export class BehaviorSystem {
     const hasDynamicExtra = extraGoals.some(g => g?.source === GoalSource.DYNAMIC);
     const hasNeedCandidate = top.some(g => g?.source === GoalSource.NEED);
     if (hasDynamicExtra && needGoals.length > 0 && !hasNeedCandidate && top.length > 0) {
-      top[top.length - 1] = needGoals[0];
+      const bestNeedGoal = [...needGoals].sort(byScore)[0];
+      top[top.length - 1] = bestNeedGoal;
       top.sort(byScore);
     }
     return top;

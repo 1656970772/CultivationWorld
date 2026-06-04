@@ -684,6 +684,114 @@ console.log('12) 不可达 dynamic extra 不会挤掉所有可达 Need');
   assert(selected.plan?.[0]?.id === 'act_low_need', '最终计划使用可达 Need action');
 }
 
+console.log('13) dynamic extra 的 Need 保底使用调制后的最高 Need');
+{
+  const npc = new NPCEntity(
+    {
+      id: 'npc_dynamic_extra_modulated_need',
+      name: '调制保底测试者',
+      factionId: 'sect_001',
+      role: 'disciple',
+      rankId: 'foundation',
+      alive: true,
+      personality: { ambition: 50, caution: 50, loyalty: 50, diplomacy: 50 },
+      needIds: [],
+      actionIds: [],
+    },
+    load('data/definitions/ranks.json'),
+    {
+      rng: new Rng(71),
+      gameConfig: load('data/config/game-config.json'),
+      cultivationConfig: { traitEffects: { enabled: false } },
+      aiConfig: { decisionPhaseMax: 0 },
+      relationshipConfig: { enabled: false, goalsEnabled: false },
+      dynamicGoalConfig: { enabled: false },
+    },
+  );
+  npc.state.set('needBDone', false);
+  npc.needSystem.addNeed(new Need({
+    id: 'need_a_unreachable',
+    name: '调制前第一不可达需求',
+    goalState: { needADone: { op: 'eq', value: true } },
+    evaluator: {
+      calculate: (_state, _world, need) => ({
+        priority: 60,
+        urgency: 0,
+        goalState: need.goalStateTemplate,
+        satisfied: false,
+      }),
+    },
+  }));
+  npc.needSystem.addNeed(new Need({
+    id: 'need_b_reachable',
+    name: '调制后第一可达需求',
+    goalState: { needBDone: { op: 'eq', value: true } },
+    evaluator: {
+      calculate: (_state, _world, need) => ({
+        priority: 50,
+        urgency: 0,
+        goalState: need.goalStateTemplate,
+        satisfied: false,
+      }),
+    },
+  }));
+  npc.modulateGoal = (goal) => {
+    if (goal.sourceId === 'need_b_reachable') {
+      goal.addModulator({ label: 'test_modulated_need', deltaPriority: 25 });
+    }
+  };
+  npc.behaviorSystem.addAction(new Action({
+    id: 'act_need_b',
+    name: '完成调制后可达需求',
+    preconditions: { alive: { op: 'true' } },
+    effects: { needBDone: { op: 'set', value: true } },
+    weight: 1,
+  }));
+  npc.collectExtraGoals = () => [
+    new Goal({
+      id: 'goal_dynamic_modulated_unreachable_a',
+      name: '不可达动态调制目标 A',
+      source: GoalSource.DYNAMIC,
+      sourceId: 'dynamic_modulated_unreachable_a',
+      goalState: { unreachableDynamicModA: { op: 'eq', value: true } },
+      priority: 300,
+      urgency: 100,
+      dynamic: { eventId: 'evt_modulated_unreachable_a' },
+    }),
+    new Goal({
+      id: 'goal_dynamic_modulated_unreachable_b',
+      name: '不可达动态调制目标 B',
+      source: GoalSource.DYNAMIC,
+      sourceId: 'dynamic_modulated_unreachable_b',
+      goalState: { unreachableDynamicModB: { op: 'eq', value: true } },
+      priority: 290,
+      urgency: 95,
+      dynamic: { eventId: 'evt_modulated_unreachable_b' },
+    }),
+    new Goal({
+      id: 'goal_other_modulated_unreachable',
+      name: '不可达非动态调制目标',
+      source: GoalSource.OBSESSION,
+      sourceId: 'other_modulated_unreachable',
+      goalState: { unreachableOtherMod: { op: 'eq', value: true } },
+      priority: 280,
+      urgency: 90,
+    }),
+  ];
+
+  const worldContext = {
+    currentDay: 20,
+    dynamicGoalConfig: { enabled: false },
+    balanceConfig: {},
+    rng: new Rng(72),
+  };
+  npc.needSystem.evaluate(npc.state, worldContext);
+  const selected = IntentService.selectGoal(npc, worldContext);
+  assert(selected.planResult?.goalSource === GoalSource.NEED, 'dynamic extra 保底可选中调制后的 Need');
+  assert(selected.planResult?.needId === 'need_b_reachable', '保底 Need 使用调制后分数最高的可达 Need');
+  assert(selected.plan?.[0]?.id === 'act_need_b', '最终计划使用调制后可达 Need action');
+}
+
 if (failed === 0) {
   console.log('\n动态 Goal 单测全部通过');
   process.exit(0);
