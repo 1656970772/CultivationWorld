@@ -67,7 +67,7 @@ export class WorldContextBuilder {
           : entityOrId;
         return host.worldEventSystem
           ? host.worldEventSystem.visibleEventsFor(entity, day).map(event => ({
-              event: event.toJSON(),
+              event,
               confidence: host.worldEventSystem.awarenessConfidence(event, entity),
               source: event.source,
               scope: event.scope,

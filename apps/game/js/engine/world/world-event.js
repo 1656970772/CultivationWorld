@@ -27,6 +27,11 @@ const DEFAULT_CONFIDENCE_BY_SCOPE = Object.freeze({
   relationship: 1,
 });
 
+function cloneJSONCompatible(value) {
+  if (value == null || typeof value !== 'object') return value;
+  return JSON.parse(JSON.stringify(value));
+}
+
 export class WorldEvent {
   /**
    * @param {Object} cfg
@@ -40,14 +45,14 @@ export class WorldEvent {
     this.endDay = cfg.endDay ?? this.startDay ?? 0;
     this.expireDay = cfg.expireDay ?? null;
     this.value = cfg.value ?? 0;
-    this.riskKey = cfg.riskKey ?? null;
+    this.riskKey = cloneJSONCompatible(cfg.riskKey ?? null);
     this.scope = cfg.scope || 'public';
-    this.source = cfg.source ?? 'config';
-    this.pos = cfg.pos ? { ...cfg.pos } : null;
-    this.subjectId = cfg.subjectId ?? null;
-    this.relatedNpcIds = Array.isArray(cfg.relatedNpcIds) ? [...cfg.relatedNpcIds] : [];
-    this.opportunityType = cfg.opportunityType ?? null;
-    this.rewardSource = cfg.rewardSource ?? null;
+    this.source = cloneJSONCompatible(cfg.source ?? 'config');
+    this.pos = cfg.pos ? cloneJSONCompatible(cfg.pos) : null;
+    this.subjectId = cloneJSONCompatible(cfg.subjectId ?? null);
+    this.relatedNpcIds = Array.isArray(cfg.relatedNpcIds) ? cloneJSONCompatible(cfg.relatedNpcIds) : [];
+    this.opportunityType = cloneJSONCompatible(cfg.opportunityType ?? null);
+    this.rewardSource = cloneJSONCompatible(cfg.rewardSource ?? null);
     this.phase = cfg.phase || WorldEventPhase.SCHEDULED;
     this.preparedBy = new Set(cfg.preparedBy || []);
     this.participants = new Set(cfg.participants || []);
@@ -101,14 +106,14 @@ export class WorldEvent {
       endDay: this.endDay,
       expireDay: this.expireDay,
       value: this.value,
-      riskKey: this.riskKey,
+      riskKey: cloneJSONCompatible(this.riskKey),
       scope: this.scope,
-      source: this.source,
-      pos: this.pos ? { ...this.pos } : null,
-      subjectId: this.subjectId,
-      relatedNpcIds: [...this.relatedNpcIds],
-      opportunityType: this.opportunityType,
-      rewardSource: this.rewardSource,
+      source: cloneJSONCompatible(this.source),
+      pos: this.pos ? cloneJSONCompatible(this.pos) : null,
+      subjectId: cloneJSONCompatible(this.subjectId),
+      relatedNpcIds: cloneJSONCompatible(this.relatedNpcIds),
+      opportunityType: cloneJSONCompatible(this.opportunityType),
+      rewardSource: cloneJSONCompatible(this.rewardSource),
       phase: this.phase,
       preparedBy: [...this.preparedBy],
       participants: [...this.participants],
@@ -188,6 +193,10 @@ export class WorldEventSystem {
 
   visibleEventsFor(entity, currentDay) {
     if (!this.enabled) return [];
+    return this._visibleEventInstancesFor(entity, currentDay).map(event => event.toJSON());
+  }
+
+  _visibleEventInstancesFor(entity, currentDay) {
     return this.events.filter(event =>
       event.isVisibleWindow(currentDay) && this._scopeVisible(event, entity)
     );
