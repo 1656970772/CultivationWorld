@@ -43,6 +43,7 @@ export class EmotionReactionNode extends BTNode {
     entity.behaviorSystem.clearPlan();
     const ok = entity.behaviorSystem.setSingleActionPlan(this.actionId, `reaction_${this.emotion}`);
     if (!ok) return BTStatus.FAILURE;
+    entity.onPlanChosen?.();
 
     if (blackboard) {
       blackboard.reactedPath = { emotion: this.emotion, value: val, actionId: this.actionId };
@@ -101,6 +102,7 @@ export class ReactiveNode extends BTNode {
     entity.behaviorSystem.clearPlan();
     const ok = entity.behaviorSystem.setSingleActionPlan(decision.actionId, `reaction_attacked_${decision.kind}`);
     if (!ok) return BTStatus.FAILURE;
+    entity.onPlanChosen?.();
 
     if (blackboard) {
       blackboard.reactedPath = {

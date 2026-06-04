@@ -5,6 +5,7 @@
  * 每个 Tick 执行行为链的下一步。
  */
 import { GOAPPlanner } from './goap-planner.js';
+import { GoalSource } from './goal.js';
 
 export class BehaviorSystem {
   /**
@@ -153,13 +154,22 @@ export class BehaviorSystem {
       for (const g of merged) goalModulator(g);
     }
 
-    merged.sort((a, b) => {
+    const byScore = (a, b) => {
       const sa = a.score();
       const sb = b.score();
       if (sb !== sa) return sb - sa;
       return b.urgencyScore() - a.urgencyScore();
-    });
-    return merged.slice(0, 3);
+    };
+
+    merged.sort(byScore);
+    const top = merged.slice(0, 3);
+    const hasDynamicExtra = extraGoals.some(g => g?.source === GoalSource.DYNAMIC);
+    const hasNeedCandidate = top.some(g => g?.source === GoalSource.NEED);
+    if (hasDynamicExtra && needGoals.length > 0 && !hasNeedCandidate && top.length > 0) {
+      top[top.length - 1] = needGoals[0];
+      top.sort(byScore);
+    }
+    return top;
   }
 
   /**

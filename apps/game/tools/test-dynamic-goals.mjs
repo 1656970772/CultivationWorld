@@ -10,13 +10,15 @@ const load = (p) => JSON.parse(readFileSync(resolve(GAME_ROOT, p), 'utf-8'));
 
 const { EventAwareness } = await imp('js/engine/npc/event-awareness.js');
 const { DynamicGoalProvider } = await imp('js/engine/npc/dynamic-goals.js');
-const { GoalSource } = await imp('js/engine/abstract/goal.js');
+const { Goal, GoalSource } = await imp('js/engine/abstract/goal.js');
 const { Action } = await imp('js/engine/abstract/action.js');
 const { Need } = await imp('js/engine/abstract/need.js');
 const { WorldEventSystem } = await imp('js/engine/world/world-event.js');
 const { WorldContextBuilder } = await imp('js/engine/world/services/world-context-builder.js');
 const { NPCEntity } = await imp('js/engine/npc/npc-entity.js');
 const { IntentService } = await imp('js/engine/npc/intent-service.js');
+const { EmotionReactionNode } = await imp('js/engine/abstract/bt/reactions.js');
+const { BTStatus } = await imp('js/engine/abstract/bt/bt-node.js');
 const { Rng } = await imp('js/engine/abstract/rng.js');
 
 let failed = 0;
@@ -508,6 +510,178 @@ console.log('10) 无目标规划会清理上一轮 dynamic planResult');
   assert(second.plan.length === 0, '第二轮没有 need/extra goal 时 plan 为空');
   assert(second.planResult?.failed === true && second.planResult?.reason === 'no_goals', '第二轮记录 no_goals planResult');
   assert(npc.state.get('targetDynamicEventId') === null, '无目标规划后不会复用上一轮 dynamic target');
+}
+
+console.log('11) Reaction 强制非动态计划会清理上一轮 dynamic target');
+{
+  const event = eventSnapshot({ id: 'evt_dynamic_before_reaction', type: 'fallen_master', startDay: 30, phase: 'announced' });
+  const cfg = {
+    enabled: true,
+    maxGoalsPerNpc: 1,
+    rules: [{
+      id: 'reachable_dynamic_before_reaction',
+      eventType: 'fallen_master',
+      phases: ['announced'],
+      kind: 'loot',
+      minConfidence: 0.5,
+      timeWindowDays: { min: 0, max: 60 },
+      goalState: { beforeReactionDynamicDone: { op: 'eq', value: true } },
+      basePriority: 90,
+      urgency: 80,
+    }],
+  };
+  const npc = new NPCEntity(
+    {
+      id: 'npc_reaction_clears_dynamic_target',
+      name: '反应清理测试者',
+      factionId: 'sect_001',
+      role: 'disciple',
+      rankId: 'foundation',
+      alive: true,
+      personality: { ambition: 80, caution: 20, loyalty: 50, diplomacy: 50 },
+      needIds: [],
+      actionIds: [],
+    },
+    load('data/definitions/ranks.json'),
+    {
+      rng: new Rng(51),
+      gameConfig: load('data/config/game-config.json'),
+      cultivationConfig: { traitEffects: { enabled: false } },
+      aiConfig: { decisionPhaseMax: 0 },
+      relationshipConfig: { enabled: false, goalsEnabled: false },
+      dynamicGoalConfig: cfg,
+    },
+  );
+  npc.state.set('beforeReactionDynamicDone', false);
+  npc.state.set('reactionDone', false);
+  npc.eventAwareness.learn(event, { confidence: 0.9, source: 'announcement', day: 10 });
+  npc.behaviorSystem.addAction(new Action({
+    id: 'act_before_reaction_dynamic',
+    name: '完成反应前动态目标',
+    preconditions: { alive: { op: 'true' } },
+    effects: { beforeReactionDynamicDone: { op: 'set', value: true } },
+    weight: 1,
+  }));
+  npc.behaviorSystem.addAction(new Action({
+    id: 'act_reaction_clear_dynamic',
+    name: '反应清理动态目标',
+    preconditions: { alive: { op: 'true' } },
+    effects: { reactionDone: { op: 'set', value: true } },
+    weight: 1,
+  }));
+
+  const worldContext = {
+    currentDay: 20,
+    dynamicGoalConfig: cfg,
+    dynamicEventById: (id) => id === event.id ? event : null,
+    balanceConfig: {},
+    rng: new Rng(52),
+  };
+  npc.needSystem.evaluate(npc.state, worldContext);
+  const planned = IntentService.selectGoal(npc, worldContext);
+  assert(planned.planResult?.goalSource === GoalSource.DYNAMIC, '先制造上一轮 dynamic planResult');
+  assert(npc.state.get('targetDynamicEventId') === event.id, '反应前已有 dynamic target');
+
+  npc.emotions.add('fear', 100);
+  const node = new EmotionReactionNode({
+    emotion: 'fear',
+    threshold: 10,
+    actionId: 'act_reaction_clear_dynamic',
+  });
+  const status = node.tick(npc, {}, worldContext);
+  assert(status === BTStatus.RUNNING, 'EmotionReactionNode 强制设置并执行非动态单行为');
+  assert(npc.behaviorSystem.getLastPlanResult()?.forced === true, 'Reaction 写入 forced 非动态 planResult');
+  assert(npc.state.get('targetDynamicEventId') === null, 'Reaction 强制非动态计划后清理旧 dynamic target');
+}
+
+console.log('12) 不可达 dynamic extra 不会挤掉所有可达 Need');
+{
+  const npc = new NPCEntity(
+    {
+      id: 'npc_dynamic_extra_keeps_need',
+      name: '候选保底测试者',
+      factionId: 'sect_001',
+      role: 'disciple',
+      rankId: 'foundation',
+      alive: true,
+      personality: { ambition: 50, caution: 50, loyalty: 50, diplomacy: 50 },
+      needIds: [],
+      actionIds: [],
+    },
+    load('data/definitions/ranks.json'),
+    {
+      rng: new Rng(61),
+      gameConfig: load('data/config/game-config.json'),
+      cultivationConfig: { traitEffects: { enabled: false } },
+      aiConfig: { decisionPhaseMax: 0 },
+      relationshipConfig: { enabled: false, goalsEnabled: false },
+      dynamicGoalConfig: { enabled: false },
+    },
+  );
+  npc.state.set('lowNeedDone', false);
+  npc.needSystem.addNeed(new Need({
+    id: 'need_low_reachable',
+    name: '低分可达需求',
+    goalState: { lowNeedDone: { op: 'eq', value: true } },
+    evaluator: {
+      calculate: (_state, _world, need) => ({
+        priority: 10,
+        urgency: 0,
+        goalState: need.goalStateTemplate,
+        satisfied: false,
+      }),
+    },
+  }));
+  npc.behaviorSystem.addAction(new Action({
+    id: 'act_low_need',
+    name: '完成低分可达需求',
+    preconditions: { alive: { op: 'true' } },
+    effects: { lowNeedDone: { op: 'set', value: true } },
+    weight: 1,
+  }));
+  npc.collectExtraGoals = () => [
+    new Goal({
+      id: 'goal_dynamic_unreachable_a',
+      name: '不可达动态目标 A',
+      source: GoalSource.DYNAMIC,
+      sourceId: 'dynamic_unreachable_a',
+      goalState: { unreachableDynamicA: { op: 'eq', value: true } },
+      priority: 100,
+      urgency: 100,
+      dynamic: { eventId: 'evt_unreachable_a' },
+    }),
+    new Goal({
+      id: 'goal_dynamic_unreachable_b',
+      name: '不可达动态目标 B',
+      source: GoalSource.DYNAMIC,
+      sourceId: 'dynamic_unreachable_b',
+      goalState: { unreachableDynamicB: { op: 'eq', value: true } },
+      priority: 95,
+      urgency: 95,
+      dynamic: { eventId: 'evt_unreachable_b' },
+    }),
+    new Goal({
+      id: 'goal_other_unreachable',
+      name: '不可达非动态额外目标',
+      source: GoalSource.OBSESSION,
+      sourceId: 'other_unreachable',
+      goalState: { unreachableOther: { op: 'eq', value: true } },
+      priority: 90,
+      urgency: 90,
+    }),
+  ];
+
+  const worldContext = {
+    currentDay: 20,
+    dynamicGoalConfig: { enabled: false },
+    balanceConfig: {},
+    rng: new Rng(62),
+  };
+  npc.needSystem.evaluate(npc.state, worldContext);
+  const selected = IntentService.selectGoal(npc, worldContext);
+  assert(selected.planResult?.goalSource === GoalSource.NEED, '不可达 dynamic extra 存在时仍能选中可达 Need');
+  assert(selected.planResult?.needId === 'need_low_reachable', '保留的 Need 是最高可达需求');
+  assert(selected.plan?.[0]?.id === 'act_low_need', '最终计划使用可达 Need action');
 }
 
 if (failed === 0) {
