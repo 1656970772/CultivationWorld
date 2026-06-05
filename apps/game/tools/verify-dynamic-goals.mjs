@@ -13,16 +13,17 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import {
+  applyVerificationConfigOverrides,
   evaluateDefaultEnableGate,
   parseGateArgs,
   renderGateReport,
+  resolveReportPath,
   recoveryRatioOf,
 } from './verify-dynamic-goals-gates.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const GAME_ROOT = resolve(__dirname, '..');
 const load = (p) => JSON.parse(readFileSync(resolve(GAME_ROOT, p), 'utf-8'));
-const clone = (v) => JSON.parse(JSON.stringify(v));
 
 function baseConfigs() {
   return {
@@ -106,28 +107,7 @@ function parseArgs() {
 
 function enabledConfigs(seed, gateOptions = {}) {
   const configs = { ...baseConfigs(), seed };
-  if (gateOptions.useConfigDefaults === true) {
-    return configs;
-  }
-
-  configs.dynamicEvents = {
-    ...clone(configs.dynamicEvents),
-    enabled: process.env.DYNAMIC_EVENTS_ACTIVE === '0' ? false : true,
-  };
-  configs.dynamicGoals = {
-    ...clone(configs.dynamicGoals),
-    enabled: process.env.DYNAMIC_GOALS_ACTIVE === '0' ? false : true,
-  };
-  configs.aiConfig = clone(configs.aiConfig);
-  configs.aiConfig.npc = { ...(configs.aiConfig.npc || {}) };
-  configs.aiConfig.npc.jobs = { ...(configs.aiConfig.npc.jobs || {}) };
-  if (process.env.JOBS_ACTIVE === '1') {
-    configs.aiConfig.npc.jobs.enabled = true;
-  }
-  configs.worldNews = { ...clone(configs.worldNews), enabled: true };
-  configs.worldOpportunities = { ...clone(configs.worldOpportunities), enabled: true };
-  configs.balanceReward = { ...clone(configs.balanceReward), enabled: true };
-  return configs;
+  return applyVerificationConfigOverrides(configs, gateOptions, process.env);
 }
 
 function inc(map, key, n = 1) {
@@ -669,7 +649,7 @@ for (const check of gate.checks) {
 }
 
 if (gateOptions.reportPath) {
-  const reportPath = resolve(GAME_ROOT, gateOptions.reportPath);
+  const reportPath = resolveReportPath(gateOptions.reportPath, { gameRoot: GAME_ROOT });
   mkdirSync(dirname(reportPath), { recursive: true });
   writeFileSync(reportPath, renderGateReport({
     stats: agg,

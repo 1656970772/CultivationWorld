@@ -1,8 +1,11 @@
 #!/usr/bin/env node
+import { isAbsolute, resolve } from 'node:path';
 import {
+  applyVerificationConfigOverrides,
   evaluateDefaultEnableGate,
   parseGateArgs,
   renderGateReport,
+  resolveReportPath,
   recoveryRatioOf,
 } from './verify-dynamic-goals-gates.mjs';
 
@@ -123,6 +126,33 @@ const report = renderGateReport({
 assert(report.includes('# Job/Toil 默认启用验证报告'), 'report has Chinese title');
 assert(report.includes('恢复率：100.0%'), 'report prints recovery ratio');
 assert(report.includes('真实多种子长程模拟输出'), 'report names direct simulation observation source');
+
+console.log('7) report path resolves from repository root');
+const relativeReportPath = resolveReportPath('docs/superpowers/reports/out.md');
+assert(relativeReportPath === resolve(process.cwd(), '..', '..', 'docs/superpowers/reports/out.md'), 'docs report path resolves to repository root');
+const absoluteReportPath = resolve(process.cwd(), 'tmp', 'out.md');
+assert(isAbsolute(absoluteReportPath), 'absolute report test path is absolute');
+assert(resolveReportPath(absoluteReportPath) === absoluteReportPath, 'absolute report path stays unchanged');
+
+console.log('8) config defaults ignore active env overrides');
+const defaultConfigs = {
+  dynamicEvents: { enabled: true },
+  dynamicGoals: { enabled: true },
+  aiConfig: { npc: { jobs: { enabled: true } } },
+  worldNews: { enabled: false },
+  worldOpportunities: { enabled: false },
+  balanceReward: { enabled: false },
+};
+const closedEnv = {
+  DYNAMIC_EVENTS_ACTIVE: '0',
+  DYNAMIC_GOALS_ACTIVE: '0',
+  JOBS_ACTIVE: '0',
+};
+const configDefaults = applyVerificationConfigOverrides(defaultConfigs, { useConfigDefaults: true }, closedEnv);
+assert(configDefaults === defaultConfigs, 'use-config-defaults returns original config object');
+assert(configDefaults.dynamicEvents.enabled === true, 'use-config-defaults ignores DYNAMIC_EVENTS_ACTIVE=0');
+assert(configDefaults.dynamicGoals.enabled === true, 'use-config-defaults ignores DYNAMIC_GOALS_ACTIVE=0');
+assert(configDefaults.aiConfig.npc.jobs.enabled === true, 'use-config-defaults ignores JOBS_ACTIVE=0');
 
 if (failed > 0) {
   console.error(`\nDynamic goal gate tests failed: ${failed}`);

@@ -1,3 +1,8 @@
+import { dirname, isAbsolute, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const DEFAULT_GAME_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+
 export function parseGateArgs(args = []) {
   const options = {
     minRecoveryRatio: 0.5,
@@ -27,6 +32,46 @@ export function parseGateArgs(args = []) {
     }
   }
   return options;
+}
+
+export function resolveReportPath(reportPath, { gameRoot = DEFAULT_GAME_ROOT } = {}) {
+  if (!reportPath) {
+    throw new Error('reportPath is required');
+  }
+  if (isAbsolute(reportPath)) {
+    return reportPath;
+  }
+  return resolve(gameRoot, '..', '..', reportPath);
+}
+
+function cloneValue(value) {
+  return value == null ? {} : JSON.parse(JSON.stringify(value));
+}
+
+export function applyVerificationConfigOverrides(configs, gateOptions = {}, env = process.env) {
+  if (gateOptions.useConfigDefaults === true) {
+    return configs;
+  }
+
+  const out = { ...configs };
+  out.dynamicEvents = {
+    ...cloneValue(configs.dynamicEvents),
+    enabled: env.DYNAMIC_EVENTS_ACTIVE === '0' ? false : true,
+  };
+  out.dynamicGoals = {
+    ...cloneValue(configs.dynamicGoals),
+    enabled: env.DYNAMIC_GOALS_ACTIVE === '0' ? false : true,
+  };
+  out.aiConfig = cloneValue(configs.aiConfig);
+  out.aiConfig.npc = { ...(out.aiConfig.npc || {}) };
+  out.aiConfig.npc.jobs = { ...(out.aiConfig.npc.jobs || {}) };
+  if (env.JOBS_ACTIVE === '1') {
+    out.aiConfig.npc.jobs.enabled = true;
+  }
+  out.worldNews = { ...cloneValue(configs.worldNews), enabled: true };
+  out.worldOpportunities = { ...cloneValue(configs.worldOpportunities), enabled: true };
+  out.balanceReward = { ...cloneValue(configs.balanceReward), enabled: true };
+  return out;
 }
 
 export function recoveryRatioOf(stats) {
