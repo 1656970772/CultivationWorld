@@ -25,6 +25,8 @@ const dynamicToils = load('data/toils/npc-dynamic-event-toils.json');
 const economyToils = load('data/toils/npc-economy-toils.json');
 const socialToils = load('data/toils/npc-social-toils.json');
 const aiConfig = load('data/config/ai-config.json');
+const dynamicEventsConfig = load('data/world/dynamic-events.json');
+const dynamicGoalsConfig = load('data/goals/dynamic-goals.json');
 const itemDefs = ['currency', 'material', 'pill', 'artifact', 'talisman', 'technique']
   .flatMap(category => load(`data/items/${category}.json`).items || []);
 
@@ -103,8 +105,10 @@ for (const job of jobs) {
   }
 }
 
-console.log('4) jobs config defaults to disabled in ai-config');
-assert(aiConfig.npc.jobs.enabled === false, 'npc.jobs.enabled defaults false');
+console.log('4) Job/Toil dynamic chain defaults enabled after formal launch');
+assert(aiConfig.npc.jobs.enabled === true, 'npc.jobs.enabled defaults true after formal launch');
+assert(dynamicEventsConfig.enabled === true, 'dynamic-events.enabled defaults true after formal launch');
+assert(dynamicGoalsConfig.enabled === true, 'dynamic-goals.enabled defaults true after formal launch');
 assert(aiConfig.npc.jobs.maxActiveJobsPerNpc === 1, 'maxActiveJobsPerNpc is 1');
 assert(aiConfig.npc.jobs.logToilEvents === true, 'logToilEvents defaults true');
 
@@ -145,6 +149,11 @@ firstEngine.init(configs);
 assert(JobPool.has('job_npc_prepare_dynamic_event'), 'first WorldEngine init registers dynamic event job');
 assert(ToilPool.getDefinition('toil_resolve_target'), 'first WorldEngine init registers resolve-target toil');
 assert(ToilPool.getExecutor('toil_resolve_target'), 'first WorldEngine init registers resolve-target executor');
+const firstNpc = firstEngine.entityRegistry.getAliveByType('npc')[0];
+const enabledActionIds = new Set(firstNpc.behaviorSystem.availableActions.map(action => action.id));
+assert(firstNpc.state.get('jobsEnabled') === true, 'default NPC state records jobsEnabled=true');
+assert(enabledActionIds.has('act_npc_prepare_secret_realm'), 'default NPC action set includes dynamic JobAction when jobs enabled');
+assert(enabledActionIds.has('act_npc_acquire_artifact'), 'default NPC action set includes economy JobAction when jobs enabled');
 
 let repeatedInitError = null;
 try {
@@ -158,6 +167,18 @@ assert(!repeatedInitError, `second WorldEngine init does not fail: ${repeatedIni
 assert(JobPool.has('job_npc_prepare_dynamic_event'), 'second WorldEngine init keeps dynamic event job registered');
 assert(ToilPool.getDefinition('toil_resolve_target'), 'second WorldEngine init keeps resolve-target toil registered');
 assert(ToilPool.getExecutor('toil_resolve_target'), 'second WorldEngine init keeps resolve-target executor registered');
+
+console.log('7) jobs.enabled=false remains a runtime rollback switch');
+const disabledConfigs = JSON.parse(JSON.stringify(configs));
+disabledConfigs.aiConfig.npc.jobs.enabled = false;
+const disabledEngine = new WorldEngine();
+disabledEngine.init(disabledConfigs);
+const disabledNpc = disabledEngine.entityRegistry.getAliveByType('npc')[0];
+const disabledActionIds = new Set(disabledNpc.behaviorSystem.availableActions.map(action => action.id));
+assert(disabledNpc.state.get('jobsEnabled') === false, 'disabled NPC state records jobsEnabled=false');
+assert(!disabledActionIds.has('act_npc_prepare_secret_realm'), 'disabled NPC action set excludes dynamic JobAction');
+assert(!disabledActionIds.has('act_npc_acquire_artifact'), 'disabled NPC action set excludes economy JobAction');
+assert(disabledActionIds.has('act_npc_cultivate'), 'disabled NPC action set keeps SimpleAction behavior');
 
 if (failed > 0) {
   console.error(`\nJob config load tests failed: ${failed}`);
