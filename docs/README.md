@@ -2,7 +2,7 @@
 
 > 项目代号：WorldDynamic  
 > 创建日期：2026-05-23  
-> 最后更新：2026-06-05（新增 Job/Toil 正式启用前收尾规格与 ADR-050 收尾规划；补充 StoryGraph 小说图谱设计规格、单作品本地索引库规格与单作品 MVP 实施计划）
+> 最后更新：2026-06-05（Job/Toil 动态目标链路默认启用验证；新增默认启用验证报告；补充 StoryGraph 小说图谱设计规格、单作品本地索引库规格、单作品 MVP 实施计划与单作品本地索引库实施计划）
 
 ## 当前事实
 
@@ -73,10 +73,14 @@ docs/
 │   │   ├── 2026-06-05-Job-Toil正式启用前收尾规格.md
 │   │   ├── 2026-06-05-StoryGraph小说图谱设计.md
 │   │   └── 2026-06-05-StoryGraph单作品本地索引库规格.md
-│   └── plans/
-│       ├── 2026-06-05-ADR-050-收尾实施计划.md
-│       ├── 2026-06-05-Job-Toil-AI重构实施计划.md
-│       └── 2026-06-05-StoryGraph小说图谱MVP实施计划.md
+│   ├── plans/
+│   │   ├── 2026-06-05-ADR-050-收尾实施计划.md
+│   │   ├── 2026-06-05-Job-Toil-AI重构实施计划.md
+│   │   ├── 2026-06-05-StoryGraph单作品本地索引库实施计划.md
+│   │   └── 2026-06-05-StoryGraph小说图谱MVP实施计划.md
+│   └── reports/
+│       ├── 2026-06-05-Job-Toil启用前验证.md
+│       └── 2026-06-05-Job-Toil默认启用验证.md
 ├── worldbuilding/
 │   ├── README.md
 │   ├── continent.md
@@ -97,7 +101,7 @@ docs/
 | 文件结构 | `architecture/file-structure.md` |
 | 数据配置 | `data/data-config-rules.md` |
 | AI 架构 | `systems/behavior-tree.md`、`systems/job-toil-ai-spec.md`、`decisions/adr-048-four-layer-reactive-ai.md`、`decisions/adr-050-goap-job-toil-layered-ai.md` |
-| Job/Toil 正式启用前收尾 | `superpowers/specs/2026-06-05-Job-Toil正式启用前收尾规格.md`、`superpowers/plans/2026-06-05-ADR-050-收尾实施计划.md` |
+| Job/Toil 正式启用 | `superpowers/specs/2026-06-05-Job-Toil正式启用前收尾规格.md`、`superpowers/plans/2026-06-05-ADR-050-收尾实施计划.md`、`superpowers/reports/2026-06-05-Job-Toil默认启用验证.md` |
 | Job/Toil 实施计划 | `superpowers/plans/2026-06-05-Job-Toil-AI重构实施计划.md` |
 | 动态事件/动态目标 | `systems/event-system.md`、`decisions/adr-049-dynamic-goal-interrupt-policy.md` |
 | GAS 机制资产 | `systems/gameplay-ability-system.md`、`decisions/adr-042-gameplay-ability-system.md` |
@@ -108,6 +112,7 @@ docs/
 | StoryGraph 小说图谱设计 | `superpowers/specs/2026-06-05-StoryGraph小说图谱设计.md` |
 | StoryGraph 单作品本地索引库规格 | `superpowers/specs/2026-06-05-StoryGraph单作品本地索引库规格.md` |
 | StoryGraph 小说图谱 MVP 实施计划 | `superpowers/plans/2026-06-05-StoryGraph小说图谱MVP实施计划.md` |
+| StoryGraph 单作品本地索引库实施计划 | `superpowers/plans/2026-06-05-StoryGraph单作品本地索引库实施计划.md` |
 
 ## 清理原则
 
