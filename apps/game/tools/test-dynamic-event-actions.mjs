@@ -131,6 +131,7 @@ console.log('3) worldContext 可解析 dynamic_event_target 坐标');
     ['evt_pos', { id: 'evt_pos', name: '固定坐标事件', pos: { x: 21, y: 34 } }],
     ['evt_secret', { id: 'evt_secret', name: '秘境入口', pos: { resolver: 'secret_realm' } }],
     ['evt_hq', { id: 'evt_hq', name: '宗门大比', pos: { resolver: 'faction_hq', factionId: 'sect_001' } }],
+    ['evt_hq_without_faction', { id: 'evt_hq_without_faction', name: '缺失势力大比', pos: { resolver: 'faction_hq' }, subjectId: 'sect_001' }],
     ['evt_live', {
       toJSON: () => ({ id: 'evt_live', name: '实例快照事件', pos: { x: 55, y: 66 } }),
     }],
@@ -180,6 +181,10 @@ console.log('3) worldContext 可解析 dynamic_event_target 坐标');
   entity.state.set('targetDynamicEventId', 'evt_hq');
   pos = worldContext.resolveTarget(entity, 'dynamic_event_target');
   assert(pos?.x === 88 && pos?.y === 99, 'faction_hq resolver 使用事件 factionId 的总部');
+
+  entity.state.set('targetDynamicEventId', 'evt_hq_without_faction');
+  pos = worldContext.resolveTarget(entity, 'dynamic_event_target');
+  assert(pos?.x === here.x && pos?.y === here.y, 'faction_hq resolver 缺少事件 factionId 时回退当前位置');
 
   entity.state.set('targetDynamicEventId', 'evt_live');
   pos = worldContext.resolveTarget(entity, 'dynamic_event_target');

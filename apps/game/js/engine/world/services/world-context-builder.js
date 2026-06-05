@@ -270,7 +270,7 @@ export class WorldContextBuilder {
               return host.infoCoordinator?.secretRealmPos?.() || here;
             }
             if (pos?.resolver === 'faction_hq') {
-              const factionId = pos.factionId || event?.subjectId || entity.state?.get('factionId');
+              const factionId = pos.factionId;
               if (factionId) {
                 const faction = host.entityRegistry.getById(factionId);
                 const hq = faction?.staticData?.headquarters;
