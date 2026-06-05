@@ -208,23 +208,7 @@ class SimulationApp {
 
     const source = this.entityTab === 'monster' ? snap.monsters : snap.npcs;
 
-    // 跟随状态行
-    const statusEl = document.getElementById('follow-status');
-    if (followId) {
-      const e = snap.npcs[followId] || snap.monsters[followId] || snap.factions[followId];
-      if (e) {
-        const sp = e.spatial;
-        const kind = this._kindForFollowId(snap, followId);
-        const action = getActionStatus(e, kind);
-        const life = getLifeStatus(e, kind);
-        const position = sp ? `位置 (${sp.tileX},${sp.tileY})` : '';
-        statusEl.innerHTML = `正在跟随：<b>${this._escapeHtml(e.name)}</b>（${this._escapeHtml(life.label)} · ${this._escapeHtml(action.label)}）${this._escapeHtml(position)}`;
-      } else {
-        statusEl.textContent = '正在跟随的实体已死亡或已离开当前快照。';
-      }
-    } else {
-      statusEl.textContent = '从下方列表选择 NPC 或妖兽进行跟随，或直接点击地图上的实体。';
-    }
+    this.refreshFollowStatusLine(snap);
 
     // 列表（限制数量；NPC 保留死亡对象用于状态观察，妖兽快照当前只含存活对象）
     const entries = Object.entries(source).filter(([, e]) => e.spatial || e.alive === false).slice(0, 200);
@@ -308,6 +292,33 @@ class SimulationApp {
     return snap.npcs?.[followId] || snap.monsters?.[followId] || snap.factions?.[followId] || null;
   }
 
+  refreshFollowStatusLine(snapshot = null) {
+    const statusEl = document.getElementById('follow-status');
+    if (!statusEl || !this.renderer) return;
+    const snap = snapshot || this.engine.getWorldSnapshot();
+    const followId = this.renderer.getFollowId();
+
+    if (!followId) {
+      statusEl.textContent = this.entityTab === 'faction'
+        ? '点击势力可把视角定位到其总部（不会持续跟随）。'
+        : '从下方列表选择 NPC 或妖兽进行跟随，或直接点击地图上的实体。';
+      return;
+    }
+
+    const e = this._followedEntityFromSnapshot(snap, followId);
+    if (!e) {
+      statusEl.textContent = '正在跟随的实体已死亡或已离开当前快照。';
+      return;
+    }
+
+    const sp = e.spatial;
+    const kind = this._kindForFollowId(snap, followId);
+    const action = getActionStatus(e, kind);
+    const life = getLifeStatus(e, kind);
+    const position = sp ? `位置 (${sp.tileX},${sp.tileY})` : '';
+    statusEl.innerHTML = `正在跟随：<b>${this._escapeHtml(e.name)}</b>（${this._escapeHtml(life.label)} · ${this._escapeHtml(action.label)}）${this._escapeHtml(position)}`;
+  }
+
   doTick(count) {
     for (let i = 0; i < count; i++) {
       const result = this.engine.tick();
@@ -316,8 +327,11 @@ class SimulationApp {
     }
     this.render();
     if (this.renderEnabled && this.renderer) {
-      this.renderer.updateSnapshot(this.engine.getWorldSnapshot());
-      this.refreshEntityList();
+      const snap = this.engine.getWorldSnapshot();
+      this.renderer.updateSnapshot(snap);
+      this.refreshNpcEventLog();
+      this.refreshFollowStatusLine(snap);
+      this.refreshFollowStatusCard(snap);
     }
   }
 

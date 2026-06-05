@@ -79,4 +79,21 @@ console.log('5) entity list status uses life and action together');
   assert.deepEqual(getActionStatus(deadNpc, 'npc'), { label: '无行动', tone: 'idle' });
 }
 
+console.log('6) status html escapes model strings by default');
+{
+  const npc = {
+    name: '<img src=x onerror=1>',
+    alive: true,
+    rankName: '<script>alert(1)</script>',
+    actionStatus: '<run>',
+    spatial: { tileX: 1, tileY: 2 },
+  };
+  const html = statusModelToHtml(buildTrackedStatusModel(npc, 'npc', {}));
+  assert.ok(html.includes('&lt;img src=x onerror=1&gt;'), 'name is escaped');
+  assert.ok(!html.includes('<img src=x onerror=1>'), 'raw image tag is not emitted');
+  assert.ok(html.includes('&lt;script&gt;alert(1)&lt;/script&gt;'), 'rank is escaped');
+  assert.ok(!html.includes('<script>alert(1)</script>'), 'raw script tag is not emitted');
+  assert.ok(html.includes('&lt;run&gt;'), 'action status is escaped');
+}
+
 console.log('Follow entity status UI tests passed');

@@ -12,6 +12,10 @@ function factionName(snapshot, factionId) {
   return factionId ? (snapshot?.factions?.[factionId]?.name || factionId) : '散修';
 }
 
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+}
+
 export function getLifeStatus(entity, kind) {
   if (!entity) return { label: '未跟随', tone: 'idle' };
   if (kind === 'faction' && (entity.isDestroyed || entity.alive === false)) return { label: '覆灭', tone: 'dead' };
@@ -87,14 +91,14 @@ export function buildTrackedStatusModel(entity, kind, snapshot = {}) {
   };
 }
 
-export function statusModelToHtml(model, escapeHtml = (s) => String(s)) {
-  const badge = `<span class="follow-life ${model.life.tone}">${escapeHtml(model.life.label)}</span>`;
-  const action = `<span class="follow-action ${model.action.tone}">${escapeHtml(model.action.label)}</span>`;
+export function statusModelToHtml(model, escape = escapeHtml) {
+  const badge = `<span class="follow-life ${model.life.tone}">${escape(model.life.label)}</span>`;
+  const action = `<span class="follow-action ${model.action.tone}">${escape(model.action.label)}</span>`;
   const sections = (model.sections || []).map(section => {
     const rows = section.rows.map(([k, v]) =>
-      `<div class="follow-status-row"><span>${escapeHtml(k)}</span><b>${escapeHtml(v)}</b></div>`
+      `<div class="follow-status-row"><span>${escape(k)}</span><b>${escape(v)}</b></div>`
     ).join('');
-    return `<section class="follow-status-section"><h4>${escapeHtml(section.title)}</h4>${rows}</section>`;
+    return `<section class="follow-status-section"><h4>${escape(section.title)}</h4>${rows}</section>`;
   }).join('');
-  return `<div class="follow-status-summary"><div><strong>${escapeHtml(model.title)}</strong><small>${escapeHtml(model.subtitle)}</small></div><div class="follow-status-badges">${badge}${action}</div></div>${sections}`;
+  return `<div class="follow-status-summary"><div><strong>${escape(model.title)}</strong><small>${escape(model.subtitle)}</small></div><div class="follow-status-badges">${badge}${action}</div></div>${sections}`;
 }

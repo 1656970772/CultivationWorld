@@ -586,6 +586,7 @@ body {
   align-items: flex-end;
   gap: 3px;
   min-width: 76px;
+  max-width: 96px;
 }
 .entity-life {
   font-size: 11px;
@@ -599,6 +600,12 @@ body {
 .entity-life.idle { color: var(--text-secondary); background: rgba(136,153,170,0.12); }
 .entity-item .e-state.busy { color: var(--accent); }
 .entity-item .e-state.idle { color: var(--text-secondary); }
+.entity-item .e-state {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 .follow-status-card {
   position: absolute;
