@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import { isAbsolute, resolve } from 'node:path';
+import { dirname, isAbsolute, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import {
   applyVerificationConfigOverrides,
   evaluateDefaultEnableGate,
@@ -8,6 +9,9 @@ import {
   resolveReportPath,
   recoveryRatioOf,
 } from './verify-dynamic-goals-gates.mjs';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const REPO_ROOT = resolve(__dirname, '..', '..', '..');
 
 let failed = 0;
 function assert(cond, msg) {
@@ -129,8 +133,8 @@ assert(report.includes('真实多种子长程模拟输出'), 'report names direc
 
 console.log('7) report path resolves from repository root');
 const relativeReportPath = resolveReportPath('docs/superpowers/reports/out.md');
-assert(relativeReportPath === resolve(process.cwd(), '..', '..', 'docs/superpowers/reports/out.md'), 'docs report path resolves to repository root');
-const absoluteReportPath = resolve(process.cwd(), 'tmp', 'out.md');
+assert(relativeReportPath === resolve(REPO_ROOT, 'docs/superpowers/reports/out.md'), 'docs report path resolves to repository root');
+const absoluteReportPath = resolve(REPO_ROOT, 'tmp', 'out.md');
 assert(isAbsolute(absoluteReportPath), 'absolute report test path is absolute');
 assert(resolveReportPath(absoluteReportPath) === absoluteReportPath, 'absolute report path stays unchanged');
 
