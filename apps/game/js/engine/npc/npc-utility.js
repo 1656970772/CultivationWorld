@@ -36,6 +36,11 @@ const DEFAULT_GOAL_RISK_KEYS = {
   goal_assist_sect_mate: ['pvp'],
   // 师徒互动目标（ADR-029）：护徒驰援需御敌（pvp）；传功/探望恩师为低风险（不映射）。
   goal_protect_disciple: ['pvp'],
+  prepare_secret_realm: ['plunder'],
+  join_secret_realm: ['plunder'],
+  prepare_tournament: ['pvp'],
+  loot_fallen_master: ['plunder'],
+  avenge_relationship_death: ['pvp'],
 };
 
 /**

@@ -21,6 +21,7 @@ import {
 } from './npc-goals.js';
 import { EventAwareness } from './event-awareness.js';
 import { DynamicGoalProvider } from './dynamic-goals.js';
+import { InterruptPolicy, InterruptDecision } from './interrupt-policy.js';
 import {
   tryBreakthrough as tryBreakthroughImpl,
   handleDeath as handleDeathImpl,
@@ -129,6 +130,8 @@ export class NPCEntity extends BaseEntity {
     // 立即重决策请求标记（ADR-048）：大事件（秘境/拍卖/大比/遇仇人）置真，
     // PlannerNode 门控见到后即便当前正执行计划也立即重选目标+重规划（打断长链）。
     this._replanRequested = false;
+    this._deferredReplanRequested = false;
+    this._lastDynamicInterrupt = null;
 
     // 安装 GOBT 行为树（ADR-018）：tick() 由 BTRunner 编排"反应→评估→规划→执行"。
     // 默认用内置 NPC 树；entityConfig.npcBehaviorTree 提供时覆盖（数据驱动）。
@@ -298,6 +301,7 @@ export class NPCEntity extends BaseEntity {
       memoryCount: this.memory ? this.memory.size() : 0,
       topGrudge: topGrudge || null,
       knownDynamicEvents: this.eventAwareness ? this.eventAwareness.snapshot().known.slice(0, 5) : [],
+      dynamicInterrupt: this._lastDynamicInterrupt || null,
     };
   }
 
@@ -349,6 +353,38 @@ export class NPCEntity extends BaseEntity {
 
   collectDynamicGoals(worldContext) {
     return DynamicGoalProvider.collect(this, worldContext);
+  }
+
+  _checkDynamicGoalInterrupts(worldContext) {
+    const config = worldContext?.dynamicGoalConfig ?? this._dynamicGoalConfig ?? {};
+    if (config.enabled !== true) return;
+
+    const goals = this.collectDynamicGoals(worldContext)
+      .filter(goal => goal?.source === GoalSource.DYNAMIC);
+    if (goals.length === 0) return;
+
+    goals.sort((a, b) => {
+      const byScore = b.score() - a.score();
+      if (byScore !== 0) return byScore;
+      return b.urgencyScore() - a.urgencyScore();
+    });
+    const best = goals[0];
+    const interrupt = InterruptPolicy.decide(this, best, worldContext);
+    this._lastDynamicInterrupt = interrupt;
+
+    if (interrupt.decision === InterruptDecision.INTERRUPT_NOW) {
+      this.requestReplan(`dynamic:${best.id}`);
+      return;
+    }
+    if (interrupt.decision === InterruptDecision.AFTER_STEP) {
+      this._deferredReplanRequested = true;
+      return;
+    }
+    if (interrupt.decision === InterruptDecision.IGNORE && interrupt.eventId && this.eventAwareness) {
+      const day = worldContext.currentDay ?? worldContext.day ?? 0;
+      const ignoreDays = best.dynamic?.interrupt?.ignoreDays ?? config.interrupt?.ignoreDays ?? 10;
+      this.eventAwareness.ignore(interrupt.eventId, day + ignoreDays);
+    }
   }
 
   onPlanChosen() {
@@ -859,6 +895,7 @@ export class NPCEntity extends BaseEntity {
     // 在复仇/关系派生状态刷新之后调用，使其能读到本 tick 最新的 hasRevengeTarget 等。
     this._checkEventReplan(worldContext);
     this._syncDynamicEventAwareness(worldContext);
+    this._checkDynamicGoalInterrupts(worldContext);
 
     const deathResult = this.state.checkNaturalDeath();
     if (deathResult && deathResult.died) {
@@ -918,6 +955,14 @@ export class NPCEntity extends BaseEntity {
         }
       }
     }
+  }
+
+  /** @override */
+  onPostTick(worldContext) {
+    if (!this._deferredReplanRequested) return;
+    if (this.behaviorSystem?.isBusy?.() === true) return;
+    this._deferredReplanRequested = false;
+    this.requestReplan('dynamic_after_step');
   }
 
   /**
