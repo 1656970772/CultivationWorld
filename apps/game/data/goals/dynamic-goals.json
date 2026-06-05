@@ -15,7 +15,7 @@
       "timeWindowDays": [15, 120],
       "motiveWeights": { "dao": 1.3, "profit": 1.2, "survival": 0.8 },
       "interrupt": { "minDecision": "after_step", "urgencyBias": 10 },
-      "goalState": { "preparedForDynamicEvent": { "op": "eq", "value": true } }
+      "goalState": { "preparedForSecretRealm": { "op": "eq", "value": true } }
     },
     {
       "id": "join_secret_realm",
@@ -42,7 +42,7 @@
       "timeWindowDays": [5, 45],
       "motiveWeights": { "dao": 1.1, "profit": 1.0 },
       "interrupt": { "minDecision": "after_step", "urgencyBias": 8 },
-      "goalState": { "preparedForDynamicEvent": { "op": "eq", "value": true } }
+      "goalState": { "preparedForSectTournament": { "op": "eq", "value": true } }
     },
     {
       "id": "loot_fallen_master",
@@ -68,7 +68,7 @@
       "requiredAwarenessConfidence": 0.8,
       "motiveWeights": { "revenge": 1.3 },
       "interrupt": { "minDecision": "interrupt_now", "urgencyBias": 35 },
-      "goalState": { "preparedForDynamicEvent": { "op": "eq", "value": true } }
+      "goalState": { "preparedForGenericDynamicEvent": { "op": "eq", "value": true } }
     }
   ]
 }

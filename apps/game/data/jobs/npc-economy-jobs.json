@@ -1,0 +1,23 @@
+{
+  "jobs": [
+    {
+      "id": "job_npc_acquire_heal_item",
+      "name": "获取回血丹",
+      "category": "economy",
+      "successEffects": { "hasHealItem": { "op": "set", "value": true } },
+      "toils": [
+        { "id": "ensure_heal", "type": "toil_ensure_item", "params": { "itemId": "pill_rejuvenation", "minAmount": 1, "priceItemId": "low_spirit_stone", "priceAmount": 10 } }
+      ]
+    },
+    {
+      "id": "job_npc_acquire_artifact",
+      "name": "获取法器",
+      "category": "economy",
+      "successEffects": { "hasEquippedArtifact": { "op": "set", "value": true } },
+      "toils": [
+        { "id": "ensure_artifact", "type": "toil_ensure_artifact", "params": { "itemId": "artifact_green_sword", "minGrade": 1, "priceItemId": "low_spirit_stone", "priceAmount": 30 } },
+        { "id": "equip_artifact", "type": "toil_equip_artifact", "params": { "itemId": "artifact_green_sword" } }
+      ]
+    }
+  ]
+}

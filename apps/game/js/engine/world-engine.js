@@ -10,6 +10,8 @@ import { ItemRegistry } from './items/item-registry.js';
 import { GameplayTagRegistry } from './abstract/gameplay-tag.js';
 import { EffectPool } from './pools/effect-pool.js';
 import { AbilityPool } from './pools/ability-pool.js';
+import { JobPool } from './pools/job-pool.js';
+import { ToilPool } from './pools/toil-pool.js';
 // 注册 combat-pipeline 的 escape_teleport 能力执行器（导入即注册副作用）。
 import './combat/combat-pipeline.js';
 import { NeedPool } from './pools/need-pool.js';
@@ -32,6 +34,7 @@ import { registerFactionEvaluators } from './faction/faction-needs.js';
 import { registerFactionExecutors } from './faction/faction-actions.js';
 import { registerNPCEvaluators } from './npc/npc-needs.js';
 import { registerNPCExecutors } from './npc/npc-actions.js';
+import { registerNPCToilExecutors } from './npc/toils/npc-toils.js';
 import { registerWorldRuleExecutors } from './world/world-rules.js';
 
 export class WorldEngine {
@@ -119,6 +122,7 @@ export class WorldEngine {
       // 反应层配置（ADR-048）：NPCEntity 据此设置刺激队列 ttl/容量等。
       reactionConfig: this._balanceConfig.reaction,
       dynamicGoalConfig: this._dynamicGoalsConfig,
+      actionSets: configs.npcActionSets || {},
       // 世界级关系网引用：NPCEntity 据此把 relationships 绑定为本系统的兼容视图（ADR-027）。
       relationshipSystem: this.relationshipSystem,
     };
@@ -175,13 +179,27 @@ export class WorldEngine {
 
     registerFactionExecutors();
     registerNPCExecutors();
+    // Job/Toil 池是模块级单例；同一进程可多次初始化 WorldEngine，加载定义前先重置。
+    JobPool.clear();
+    ToilPool.clear();
+    registerNPCToilExecutors();
     registerWorldRuleExecutors();
+
+    if (configs.toils) {
+      ToilPool.loadFromConfig(configs.toils);
+    }
+    if (configs.jobs) {
+      JobPool.loadFromConfig(configs.jobs);
+    }
 
     if (configs.factionActions) {
       ActionPool.loadFromArray(configs.factionActions);
     }
     if (configs.npcActions) {
       ActionPool.loadFromArray(configs.npcActions);
+    }
+    if (configs.npcJobActions) {
+      ActionPool.loadFromArray(configs.npcJobActions);
     }
     // 反应层行为模板（四层 AI 架构 Reaction 层，ADR-048）：逃命/暂避/回血/反击。
     if (configs.reactionActions) {

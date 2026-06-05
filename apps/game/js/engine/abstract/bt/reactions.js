@@ -98,10 +98,18 @@ export class ReactiveNode extends BTNode {
     const wasBusy = entity.behaviorSystem.isBusy();
     const interruptedGoal = entity.behaviorSystem.currentNeedId || null;
 
-    // 抢占（可打断 isBusy 中的闭关/游历长链）：清计划 → 强制单反应行为 → 本 tick 推进一步。
-    entity.behaviorSystem.clearPlan();
+    // 抢占（可打断 isBusy 中的闭关/游历长链）：JobAction 走专用暂停，普通行为仍清计划。
+    const suspendedForReaction = entity.behaviorSystem.suspendPlanForReaction?.('reaction_attacked', entity) === true;
+    if (!suspendedForReaction) {
+      entity.behaviorSystem.clearPlan(entity);
+    }
     const ok = entity.behaviorSystem.setSingleActionPlan(decision.actionId, `reaction_attacked_${decision.kind}`);
-    if (!ok) return BTStatus.FAILURE;
+    if (!ok) {
+      if (suspendedForReaction) {
+        entity.behaviorSystem.restoreSuspendedPlan?.('reaction_plan_failed', entity);
+      }
+      return BTStatus.FAILURE;
+    }
     entity.onPlanChosen?.();
 
     if (blackboard) {
@@ -112,12 +120,20 @@ export class ReactiveNode extends BTNode {
         killerId: stim.payload?.killerId || stim.sourceId || null,
         wasBusy,
         interruptedGoal,
+        interruptedMode: suspendedForReaction ? 'pause' : 'clear',
       };
       if (entity._tickLog) entity._tickLog.plan = entity.behaviorSystem.getLastPlanResult();
     }
 
     const result = entity.behaviorSystem.executeStep(entity, worldContext);
     if (blackboard) blackboard.execution = result;
+    if (suspendedForReaction) {
+      if (result?.status === 'plan_complete') {
+        entity.behaviorSystem.restoreSuspendedPlan?.('reaction_done', entity);
+      } else if (result?.status === 'replan' || result?.status === 'failed' || result?.status === 'abort') {
+        entity.behaviorSystem.restoreSuspendedPlan?.('reaction_failed', entity);
+      }
+    }
     return BTStatus.RUNNING;
   }
 

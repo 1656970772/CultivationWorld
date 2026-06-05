@@ -61,6 +61,7 @@ import {
   NPCPrepareDynamicEventExecutor,
   NPCJoinDynamicEventExecutor,
 } from './actions/dynamic-event-actions.js';
+export { registerNPCToilExecutors } from './toils/npc-toils.js';
 
 // 共享工具与执行器一并 re-export，保持历史导入路径（'./npc-actions.js'）可用。
 export {

@@ -6,19 +6,25 @@
  */
 import { GOAPPlanner } from './goap-planner.js';
 import { GoalSource } from './goal.js';
+import { JobSystem } from './job-system.js';
 
 export class BehaviorSystem {
   /**
    * @param {GOAPPlanner} planner
    * @param {import('./action.js').Action[]} availableActions
+   * @param {Object} [options]
    */
-  constructor(planner, availableActions = []) {
+  constructor(planner, availableActions = [], options = {}) {
     this.planner = planner;
     this.availableActions = availableActions;
+    this.jobsEnabled = options.jobsEnabled === true;
+    this.jobSystem = options.jobSystem || null;
     this.currentPlan = [];
     this.currentActionIndex = 0;
     this.currentNeedId = null;
     this._lastPlanResult = null;
+    this._suspendedPlanForReaction = null;
+    this._activeJobEntity = null;
 
     /**
      * 当前行为的执行生命周期（行为耗时层）。
@@ -105,6 +111,7 @@ export class BehaviorSystem {
           needPriority: goal.priority,
           goalSource: goal.source,
           dynamicEventId: goal.dynamic?.eventId,
+          dynamicEventType: goal.dynamic?.eventType,
           planLength: result.plan.length,
           planCost: result.cost,
           iterations: result.iterations,
@@ -180,9 +187,16 @@ export class BehaviorSystem {
     if (goal?.source !== GoalSource.DYNAMIC || !goal.dynamic?.eventId) {
       return currentGOAPState;
     }
+    const eventType = goal.dynamic.eventType || null;
     return {
       ...(currentGOAPState || {}),
       targetDynamicEventId: goal.dynamic.eventId,
+      targetDynamicEventType: eventType,
+      dynamicEventIsSecretRealm: eventType === 'secret_realm',
+      dynamicEventIsSectTournament: eventType === 'sect_tournament',
+      dynamicEventIsRelationshipDeath: eventType === 'relationship_death',
+      dynamicEventIsFallenMaster: eventType === 'fallen_master',
+      dynamicEventUsesGenericPreparation: eventType !== 'secret_realm' && eventType !== 'sect_tournament',
     };
   }
 
@@ -242,6 +256,7 @@ export class BehaviorSystem {
       needPriority: goal.priority,
       goalSource: goal.source,
       dynamicEventId: goal.dynamic?.eventId,
+      dynamicEventType: goal.dynamic?.eventType,
       planLength: 1,
       planCost: costOf(chosen),
       iterations: 0,
@@ -323,9 +338,10 @@ export class BehaviorSystem {
     }
 
     const action = this.currentPlan[this.currentActionIndex];
-    const stateSnapshot = typeof entity.buildGOAPState === 'function'
+    const stateSnapshotRaw = typeof entity.buildGOAPState === 'function'
       ? entity.buildGOAPState(worldContext)
       : entity.state.toGOAPState();
+    const stateSnapshot = this._stateForCurrentPlan(stateSnapshotRaw);
 
     // 仅在行为尚未启动时检查前置条件（启动后跨 tick 不再因临时状态变化中断移动）
     const lifecycleActive = this._lifecycle.phase !== 'idle' && this._lifecycle.actionId === action.id;
@@ -337,6 +353,9 @@ export class BehaviorSystem {
           reason: `Action ${action.id} preconditions no longer met`,
           actionId: action.id,
         };
+      }
+      if (action.isJobAction?.()) {
+        return this._executeJobAction(entity, worldContext, action);
       }
       this._startAction(entity, action, worldContext);
     }
@@ -381,6 +400,186 @@ export class BehaviorSystem {
       result,
       action: { id: action.id, name: action.name },
     };
+  }
+
+  _executeJobAction(entity, worldContext, action) {
+    if (entity) this._activeJobEntity = entity;
+    if (!this.jobsEnabled) {
+      this._clearActiveJob('jobs_disabled', entity);
+      return { status: 'replan', reason: 'jobs_disabled', actionId: action.id };
+    }
+    if (!this.jobSystem) this.jobSystem = new JobSystem();
+    if (this.jobSystem.hasJob() && !this._activeJobMatchesAction(action)) {
+      this.jobSystem.abort('job_action_mismatch');
+      this._syncJobState(entity);
+    }
+    if (!this.jobSystem.hasJob()) {
+      this.jobSystem.start(action.jobId, {
+        actionId: action.id,
+        ...(action.jobInput || {}),
+        dynamicEventId: entity?.state?.get?.('targetDynamicEventId') || null,
+      });
+    }
+
+    const snapshotBeforeStep = this.jobSystem.snapshot();
+    if (snapshotBeforeStep.jobStatus === 'paused') {
+      this._syncJobState(entity);
+      return {
+        status: 'in_progress',
+        phase: 'job_paused',
+        job: snapshotBeforeStep,
+        action: { id: action.id, name: action.name },
+      };
+    }
+
+    const result = this.jobSystem.executeStep(entity, worldContext);
+    const jobInstanceId = snapshotBeforeStep.currentJobInstanceId || null;
+    this._syncJobState(entity);
+
+    if (result.status === 'success') {
+      this.currentActionIndex++;
+      this._resetLifecycle(entity);
+      return {
+        status: this.currentActionIndex >= this.currentPlan.length ? 'plan_complete' : 'step_done',
+        result: { actionId: action.id, jobId: action.jobId, jobInstanceId, ...result },
+        action: { id: action.id, name: action.name },
+      };
+    }
+
+    if (result.status === 'replan' || result.status === 'failed' || result.status === 'abort') {
+      this._resetLifecycle(entity);
+      return {
+        status: 'replan',
+        reason: result.reason || result.status,
+        actionId: action.id,
+        jobId: action.jobId,
+        result: {
+          actionId: action.id,
+          jobId: action.jobId,
+          jobInstanceId,
+          status: result.status,
+          reason: result.reason || result.status,
+        },
+      };
+    }
+
+    return {
+      status: 'in_progress',
+      phase: 'job',
+      job: this.jobSystem.snapshot(),
+      action: { id: action.id, name: action.name },
+    };
+  }
+
+  _stateForCurrentPlan(currentGOAPState) {
+    const result = this._lastPlanResult;
+    if (result?.goalSource !== GoalSource.DYNAMIC || !result.dynamicEventId) {
+      return currentGOAPState;
+    }
+    return this._stateForGoal(currentGOAPState, {
+      source: GoalSource.DYNAMIC,
+      dynamic: {
+        eventId: result.dynamicEventId,
+        eventType: result.dynamicEventType || null,
+      },
+    });
+  }
+
+  _syncJobState(entity) {
+    const target = entity || this._activeJobEntity;
+    if (!target?.state?.set) return;
+    const snapshot = this.jobSystem?.snapshot?.() || {
+      currentJobId: null,
+      currentToilId: null,
+      jobStatus: 'idle',
+      jobRemaining: 0,
+    };
+    target.state.set('currentJobId', snapshot.currentJobId);
+    target.state.set('currentToilId', snapshot.currentToilId);
+    target.state.set('jobStatus', snapshot.jobStatus);
+    target.state.set('jobRemaining', snapshot.jobRemaining);
+  }
+
+  _activeJobMatchesAction(action) {
+    if (!this.jobSystem?.hasJob?.()) return false;
+    const snapshot = this.jobSystem.snapshot();
+    return snapshot.currentJobId === action.jobId
+      && snapshot.jobContext?.actionId === action.id;
+  }
+
+  _clearActiveJob(reason = 'clear', entity = null) {
+    if (this.jobSystem?.hasJob?.()) {
+      this.jobSystem.abort(reason);
+    }
+    this._syncJobState(entity);
+    this._activeJobEntity = null;
+  }
+
+  pauseCurrentJob(reason = 'pause', entity = null) {
+    if (!this.jobSystem?.hasJob?.()) return false;
+    if (entity) this._activeJobEntity = entity;
+    this.jobSystem.pause(reason);
+    this._syncJobState(entity);
+    return true;
+  }
+
+  resumeCurrentJob(reason = 'resume', entity = null) {
+    if (!this.jobSystem?.hasJob?.()) return false;
+    if (entity) this._activeJobEntity = entity;
+    this.jobSystem.resume(reason);
+    this._syncJobState(entity);
+    return true;
+  }
+
+  abortCurrentJob(reason = 'abort', entity = null) {
+    if (!this.jobSystem?.hasJob?.()) return false;
+    if (entity) this._activeJobEntity = entity;
+    this.jobSystem.abort(reason);
+    this._syncJobState(entity);
+    this._activeJobEntity = null;
+    return true;
+  }
+
+  suspendPlanForReaction(reason = 'reaction', entity = null) {
+    if (this._suspendedPlanForReaction) return false;
+    if (!this.jobSystem?.hasJob?.()) return false;
+    const hasPlan = this.currentPlan.length > 0 && this.currentActionIndex < this.currentPlan.length;
+    if (!hasPlan) return false;
+    const paused = this.pauseCurrentJob(reason, entity);
+    if (!paused) return false;
+
+    this._suspendedPlanForReaction = {
+      currentPlan: [...this.currentPlan],
+      currentActionIndex: this.currentActionIndex,
+      currentNeedId: this.currentNeedId,
+      lastPlanResult: this._lastPlanResult ? { ...this._lastPlanResult } : this._lastPlanResult,
+      entity,
+    };
+    this.currentPlan = [];
+    this.currentActionIndex = 0;
+    this.currentNeedId = null;
+    this._lastPlanResult = null;
+    this._resetLifecycle(entity);
+    return true;
+  }
+
+  restoreSuspendedPlan(reason = 'reaction_done', entity = null) {
+    if (!this._suspendedPlanForReaction) return false;
+    const suspended = this._suspendedPlanForReaction;
+    this.currentPlan = [...suspended.currentPlan];
+    this.currentActionIndex = suspended.currentActionIndex;
+    this.currentNeedId = suspended.currentNeedId;
+    this._lastPlanResult = suspended.lastPlanResult;
+    this._suspendedPlanForReaction = null;
+    this.resumeCurrentJob(reason, entity || suspended.entity || null);
+    return true;
+  }
+
+  _restoreSuspendedPlanIfReactionComplete() {
+    if (!this._suspendedPlanForReaction) return false;
+    if (this.currentPlan.length === 0) return false;
+    if (this.currentActionIndex < this.currentPlan.length) return false;
+    return this.restoreSuspendedPlan('reaction_auto_restore');
   }
 
   /**
@@ -456,7 +655,7 @@ export class BehaviorSystem {
 
   /** 是否正处于某个 action 的多 tick 执行中（busy） */
   isBusy() {
-    return this._lifecycle.phase !== 'idle';
+    return this._lifecycle.phase !== 'idle' || this.jobSystem?.hasJob?.() === true;
   }
 
   _resetLifecycle(entity) {
@@ -499,17 +698,20 @@ export class BehaviorSystem {
    * 是否有正在执行的计划
    */
   hasPlan() {
+    this._restoreSuspendedPlanIfReactionComplete();
     return this.currentPlan.length > 0 && this.currentActionIndex < this.currentPlan.length;
   }
 
   /**
    * 清除当前计划
    */
-  clearPlan() {
+  clearPlan(entity = null) {
     this.currentPlan = [];
     this.currentActionIndex = 0;
     this.currentNeedId = null;
+    this._suspendedPlanForReaction = null;
     this._lifecycle = { phase: 'idle', actionId: null, remaining: 0, traveled: false };
+    this._clearActiveJob('clear_plan', entity);
   }
 
   /**

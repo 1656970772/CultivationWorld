@@ -1,4 +1,4 @@
-# ADR-038：确定性种子 + 日志落盘 + 重放
+﻿# ADR-038：确定性种子 + 日志落盘 + 重放
 
 最后更新：2026-06-02
 
@@ -14,7 +14,7 @@
 - 仅有的确定性手段是测试工具里 monkeypatch 全局 `Math.random`（见旧 `refactor-baseline.mjs`），
   脆弱且不能用于线上运行。
 
-目标（用户明确要求）：**做日志落盘 + 重放 + 确定性种子**；并明确**不使用配置指纹做重放校验**。
+目标（用户明确要求）：**做日志落盘 + 重放 + 确定性种子**；并明确**不使用配置摘要做重放校验**。
 
 ## 决策
 
@@ -53,26 +53,27 @@
 客户端新增 `apps/game/js/storage/replay-recorder.js`（`ReplayRecorder`）：持有 seed、按 tick 缓冲事件、
 分批 POST 落盘；服务器不可用（如 `file://` 打开）时自动降级为内存记录，不影响游戏。
 
-### 四、重放（seed + 输入序列，不用配置指纹）
+### 四、重放（seed + 输入序列，不用配置摘要）
 
 `ReplayRecorder` 记录 `{ version, runId, seed, inputs:[{tick,type,payload}], totalTicks }`。
 因为模拟已确定性，**重放 = 用相同 seed 重建引擎、按相同输入序列重新 tick**，结果必然一致，
-**无需配置指纹比对**（按用户要求去除）。`GameManager` 暴露 `getSeed()` / `saveReplay()` / `restartWithSeed(seed)`，
+**无需配置摘要比对**（按用户要求去除）。`GameManager` 暴露 `getSeed()` / `saveReplay()` / `restartWithSeed(seed)`，
 并在 `init({ seed })` 注入种子；TICK/MULTI_TICK 在请求时登记输入，结果回来时登记事件日志。
 
 ## 验证
 
 新增 `apps/game/tools/verify-determinism.mjs`（不再 monkeypatch `Math.random`）：
 
-- 同 seed 跑两次：指纹一致 → **可复现**。
-- 不同 seed：指纹不同 → **种子确实驱动随机**。
+- 同 seed 跑两次：摘要一致 → **可复现**。
+- 不同 seed：摘要不同 → **种子确实驱动随机**。
 
 实测（120 天）：`seed=12345` 两次均为 `8cbf5559`；`seed=67890` 为 `e70d64bf`，两项均通过。
 落盘逻辑（JSONL 追加、replay.json、路径穿越防护）经离线单测验证正确。
 
 ## 影响 / 后续
 
-- 旧 `refactor-baseline.mjs` 的固化指纹基于 monkeypatch `Math.random`，本次改源后其旧指纹自然失效；
+- 旧 `refactor-baseline.mjs` 的固化摘要基于 monkeypatch `Math.random`，本次改源后其旧摘要自然失效；
   应改用 `configs.seed` 重新固化基线（后续按需处理）。
 - 为将来迁移 Unity 打基础：确定性模拟 + 输入序列重放是跨引擎对拍/迁移验证的前提。
 - HTTP 落盘接口在受限沙箱环境可能无法回环连通，客户端已做内存降级，不阻塞游戏。
+

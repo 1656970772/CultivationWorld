@@ -1,4 +1,4 @@
-# ADR-035：势力凝聚力与危亡抉择（多元危机反应 → 势力覆灭涌现）
+﻿# ADR-035：势力凝聚力与危亡抉择（多元危机反应 → 势力覆灭涌现）
 
 最后更新：2026-06-01
 
@@ -46,7 +46,7 @@ ADR-034（人口可持续）的 v4 P1 实现了"势力覆灭动态阈值"，但*
 - 改 `data/balance/combat.json`：新增 `cohesion`（含 `reactions` / `surrender` / `effects` / 危机阈值）。
 - 改 `js/engine/world/services/faction-ai-service.js`：构造读取 cohesion；新增 `_trait` / `_traitFactor` / `_chooseCrisisReaction` / `_makeWanderer` / `_switchFaction` / `_resolveCrisisChoices`；攻战胜利结算处插入抉择。
 - 新增设定 `docs/worldbuilding/wiki/rules/faction-crisis-defection.md`。
-- 备份 `docs/balance/backup/pre-tuning-v5-combat.json` / `pre-tuning-v5-faction-ai-service.js`。
+- 备份 `历史备份（已清理）：pre-tuning-v5-combat.json` / `pre-tuning-v5-faction-ai-service.js`。
 - 不改任何对外 API 签名；`cohesion.enabled=false` 时攻战完全退化为 v4 行为。
 
 ## 后果
@@ -54,14 +54,14 @@ ADR-034（人口可持续）的 v4 P1 实现了"势力覆灭动态阈值"，但*
 - **势力覆灭首次打通**：5000 天定稿 0 → 1（万妖山因凝聚力不足覆灭），且仅 1 个、其余 17 个稳定——机制有差异性、不雪崩。
 - 攻战从"被动随机处死"升级为"个体有选择的危亡叙事"（叛投/出走/投降/死守），更贴近修仙小说。
 - power_struggle 死因 2 → 6，权力斗争升温；女/男比 0.70 为四轮最佳。
-- 全程数据驱动可一键回退，GOAP 黄金指纹 `5740e12a` 零漂移。
+- 全程数据驱动可一键回退，GOAP 旧摘要回归 `5740e12a` 默认关闭不改变既有行为。
 
 ## 验证
 
 - 2000 天冒烟：修订危机判据后势力覆灭 0 → 1。
 - 5000 天定稿（全激活态）：势力覆灭 1，末态存活 NPC 51，女/男 0.70，突破 94，power_struggle 死因 6。
-- GOAP 黄金指纹 `5740e12a` 零漂移；回归测试通过（`test-goap-golden` / `test-revenge` / `test-relationship-goals` / `test-monster-resource-loop`）。
-- 详见 `docs/balance/tuning-2026-06-01-v5-result.md`。
+- GOAP 旧摘要回归 `5740e12a` 默认关闭不改变既有行为；回归测试通过（`test-goal-equivalence` / `test-revenge` / `test-relationship-goals` / `test-monster-resource-loop`）。
+- 详见 `ADR-035`。
 
 ## 未解问题（v6）
 
@@ -76,3 +76,4 @@ ADR-034（人口可持续）的 v4 P1 实现了"势力覆灭动态阈值"，但*
 - ADR-033（自迭代优化流程）+ `docs/balance/simulation-iteration-process.md`。
 - 设定 `docs/worldbuilding/wiki/rules/faction-crisis-defection.md`、`personality.md`。
 - 世界观参考：凡人修仙传 / 仙逆 / 大道争锋《冲突事件分析》。
+

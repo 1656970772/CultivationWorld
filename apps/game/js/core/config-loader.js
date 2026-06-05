@@ -28,7 +28,9 @@ export async function loadGameConfigs() {
   const [
     factions, npcs, ranks, items, terrains,
     factionNeeds, npcNeeds,
-    factionActions, npcActions, reactionActions, worldRules,
+    factionActions, npcActions, npcJobActions, npcActionSets, reactionActions, worldRules,
+    dynamicEventJobs, economyJobs, socialJobs,
+    coreToils, dynamicEventToils, economyToils, socialToils,
     questTemplates, mapData, modifierTemplates,
     balanceCombat, balanceEconomy, balanceCultivation, balanceSocial, balanceMovement,
     balancePersonality, balanceRisk, balanceMemory, balanceObsession, balanceEmotion,
@@ -48,8 +50,17 @@ export async function loadGameConfigs() {
     loadJSON('data/needs/npc-needs.json'),
     loadJSON('data/actions/faction-actions.json'),
     loadJSON('data/actions/npc-actions.json'),
+    loadJSON('data/actions/npc-job-actions.json'),
+    loadJSON('data/actions/npc-action-sets.json'),
     loadJSON('data/actions/reaction-actions.json'),
     loadJSON('data/actions/world-rules.json'),
+    loadJSON('data/jobs/npc-dynamic-event-jobs.json'),
+    loadJSON('data/jobs/npc-economy-jobs.json'),
+    loadJSON('data/jobs/npc-social-jobs.json'),
+    loadJSON('data/toils/core-toils.json'),
+    loadJSON('data/toils/npc-dynamic-event-toils.json'),
+    loadJSON('data/toils/npc-economy-toils.json'),
+    loadJSON('data/toils/npc-social-toils.json'),
     loadJSON('data/quests/quest-templates.json'),
     loadJSON('data/world/map.json'),
     loadJSON('data/world/modifiers.json'),
@@ -106,10 +117,23 @@ export async function loadGameConfigs() {
     ...(itemsTechnique?.items || []),
   ] };
 
+  const jobs = { jobs: [
+    ...(dynamicEventJobs?.jobs || []),
+    ...(economyJobs?.jobs || []),
+    ...(socialJobs?.jobs || []),
+  ] };
+
+  const toils = { toils: [
+    ...(coreToils?.toils || []),
+    ...(dynamicEventToils?.toils || []),
+    ...(economyToils?.toils || []),
+    ...(socialToils?.toils || []),
+  ] };
+
   return {
     factions, npcs, ranks, items, terrains,
     factionNeeds, npcNeeds,
-    factionActions, npcActions, reactionActions, worldRules,
+    factionActions, npcActions, npcJobActions, npcActionSets, reactionActions, worldRules,
     questTemplates, mapData, modifierTemplates,
     balanceCombat, balanceEconomy, balanceCultivation, balanceSocial, balanceMovement,
     balancePersonality, balanceRisk, balanceMemory, balanceObsession, balanceEmotion,
@@ -117,7 +141,7 @@ export async function loadGameConfigs() {
     gameConfig, aiConfig, names,
     monsters, monsterSpawn,
     worldNews, worldOpportunities, dynamicEvents, dynamicGoals, balanceCovet, itemDefs,
-    tags, effects, abilities,
+    tags, effects, abilities, jobs, toils,
   };
 }
 
@@ -132,6 +156,8 @@ export async function loadGameConfigs() {
  * @property {Array}  npcNeeds           NPC 需求模板
  * @property {Array}  factionActions     势力行为模板
  * @property {Array}  npcActions         NPC 行为模板
+ * @property {Array}  npcJobActions      NPC JobAction 行为模板
+ * @property {Object} npcActionSets      NPC 默认行为集
  * @property {Array}  worldRules         世界规则模板
  * @property {Object} questTemplates     任务模板
  * @property {Object} mapData            地图数据
@@ -151,6 +177,8 @@ export async function loadGameConfigs() {
  * @property {Object} balanceRelationship 关系网系统配置（ADR-027）
  * @property {Object} dynamicEvents      动态世界事件配置
  * @property {Object} dynamicGoals       动态 Goal 配置
+ * @property {Object} jobs               合并后的 Job 定义
+ * @property {Object} toils              合并后的 Toil 定义
  * @property {Array}  monsters           妖兽定义
  * @property {Object} monsterSpawn       妖兽分布平衡配置
  * @property {Object} gameConfig         全局游戏配置

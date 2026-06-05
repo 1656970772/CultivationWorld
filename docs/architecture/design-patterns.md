@@ -189,7 +189,7 @@ data/
 | 新增 NPC 目标/执念触发/生命周期规则 | 在 `npc/npc-goals.js` / `npc-obsession-trigger.js` / `npc-lifecycle.js` 加纯函数，`npc-entity.js` 仅加一行转发 | 实体定义、其他协作者模块 |
 | 新增 tick 步骤/子系统 | 在 `world/services/` 加服务类，在 `tick-manager.js` 的 `tick()` 骨架按序调用 | 其他服务、`world-engine.js` 注入 |
 | 新增需求类型 | 在 `*-needs.json` 加一条 + 实现 evaluator | GOAP、行为系统 |
-| 新增物品类型 | 在 `resources.json` / `props.json` 加一条 | 所有代码 |
+| 新增物品类型 | 在 `apps/game/data/items/` 对应 category 文件加一条，必要时同步 `config-loader.js` | 所有代码 |
 | 新增世界规则 | 在 `world-rules.json` 加一条 + 实现 executor | 实体系统 |
 | 增加玩家 | 创建 `player/` 目录，PlayerEntity 继承 BaseEntity | 所有已有实体和系统 |
 | 新增 UI 面板 | 新增面板类 + 在 GameManager 注册事件 | 其他面板不受影响 |

@@ -1,4 +1,4 @@
-# ADR-026：妖兽资源化模拟闭环
+﻿# ADR-026：妖兽资源化模拟闭环
 
 最后更新：2026-05-30
 
@@ -65,7 +65,7 @@ NPC 可以把妖丹/妖材上交宗门换贡献，宗门库存获得对应材料
 
 ## 数据与接口
 
-- `apps/game/data/definitions/resources.json`：新增 `monster_core_g1..g9`、`beast_material_g1..g9`，字段含 `grade`、`value`、`transferable: true`、中文名和来源说明。
+- `apps/game/data/definitions/macro-resources.json 或 data/items/`：新增 `monster_core_g1..g9`、`beast_material_g1..g9`，字段含 `grade`、`value`、`transferable: true`、中文名和来源说明。
 - `apps/game/data/balance/economy.json`：新增 `monsterResources`，配置斩妖任务类型、失败风险、尸骸最低等阶、尸骸价值、捐献贡献倍率；`npcExchange.options.*` 支持 `requiredFactionItems`。
 - `apps/game/data/actions/npc-actions.json`：新增 `act_npc_accept_hunt_quest`，并让 `act_npc_do_quest` 的规划效果与真实完成结算分离。
 - `apps/game/data/needs/npc-needs.json`：新增猎妖资源、活跃任务收尾、材料上交、破境辅助和法器装备需求。
@@ -88,3 +88,4 @@ NPC 可以把妖丹/妖材上交宗门换贡献，宗门库存获得对应材料
 - `node apps/game/tools/test-quest-reward-economy.mjs`
 - `node apps/game/tools/test-info-propagation.mjs`
 - `node apps/game/tools/test-goal-equivalence.mjs`
+

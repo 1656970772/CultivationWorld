@@ -1,4 +1,4 @@
-# ADR-006: 灵石多品阶统一计价方案
+﻿# ADR-006: 灵石多品阶统一计价方案
 
 > 日期：2026-05-28
 > 状态：已采纳
@@ -31,7 +31,7 @@
 ## 实现位置
 
 - 工具函数：`apps/game/js/core/constants.js` → `formatSpiritStones()`
-- 品阶定义：`apps/game/data/definitions/resources.json`（currency 类型的 `exchangeRate` 字段）
+- 品阶定义：`apps/game/data/definitions/macro-resources.json 或 data/items/`（currency 类型的 `exchangeRate` 字段）
 - UI 接入：`apps/game/js/simulation-main.js`（势力列表 + 势力详情面板）
 
 ## 后果
@@ -39,3 +39,4 @@
 - **正面**：现有经济逻辑零改动；GOAP 规划保持简单；大数字自动变可读
 - **负面**：无法模拟"特定品阶灵石稀缺"的场景（如高级灵石紧缺但低级灵石充裕）
 - **未来扩展**：如需品阶稀缺性，可在 inventory 中增加独立的高阶灵石槽位，仅用于特殊活动
+

@@ -1,41 +1,50 @@
 # 数据模型：世界地图（WorldMap）
 
-> 最后更新：2026-05-23
+> 最后更新：2026-06-05  
+> 数据来源：`apps/game/data/world/map.json`
 
 ## 结构
 
+当前地图为 300×300，共 90,000 个 tile。
+
 ```javascript
 WorldMap {
-  width: number,              // 地图宽度（格数），固定 100
-  height: number,             // 地图高度（格数），固定 100
-  tiles: Tile[][]             // 二维格子数组
+  width: number,       // 当前为 300
+  height: number,      // 当前为 300
+  tiles: Tile[]        // 一维数组，每项带 x/y 坐标
 }
 
 Tile {
-  x: number,                  // 横坐标
-  y: number,                  // 纵坐标
-  terrain: TerrainType,       // 地形类型
-  ownerId: string | null,     // 所属势力 ID，null 为无主之地
-  resourceType: string | null,// 资源类型，null 为无资源
-  resourceAmount: number,     // 资源数量
-  buildings: Building[]       // 建筑列表
+  x: number,
+  y: number,
+  terrain: string,          // 引用 definitions/terrains.json
+  ownerId: string | null,   // 引用 entities/factions.json 的 id
+  resourceType: string | null,
+  resourceAmount: number,
+  buildings: Building[]
 }
 ```
 
-## 地形类型（TerrainType）
+## 地形
 
-| 枚举值 | 名称 | 移动消耗 | 特性 |
-|--------|------|----------|------|
-| `plain` | 平原 | 1 行动点 | 宜居，适合建宗门 |
-| `mountain` | 山脉 | 1 行动点 | 天然屏障，易守难攻 |
-| `forest` | 森林 | 1 行动点 | 灵药资源丰富 |
-| `river` | 河流 | 不可通行 | 需绕行 |
-| `swamp` | 沼泽 | 2 行动点 | 移动消耗双倍 |
-| `desert` | 沙漠 | 1 行动点 | 荒芜，低资源 |
-| `spirit_vein` | 灵脉 | 1 行动点 | 稀有修炼圣地，兵家必争 |
+地形定义在 `apps/game/data/definitions/terrains.json` 中，常见类型：
 
-地形属性定义在 `data/definitions/terrains.json` 中，代码通过配置读取，便于扩展新地形。
+| ID | 名称 | 说明 |
+|----|------|------|
+| `plain` | 平原 | 常规通行地形 |
+| `mountain` | 山脉 | 天险与灵脉分布区域 |
+| `forest` | 森林 | 灵草、妖兽、游历常见区域 |
+| `river` | 河流 | 通行受限 |
+| `swamp` | 沼泽 | 高风险/高消耗地形 |
+| `desert` | 沙漠 | 西域荒原 |
+| `spirit_vein` | 灵脉 | 修炼资源关键点 |
 
-## 地图尺寸
+具体移动代价以 `terrains.json` 和 `data/balance/movement.json` 为准。
 
-第一版固定 100 × 100 = 10,000 格。后续可扩展为随机生成。
+## 使用方
+
+- `WorldEngine._buildTileIndex()`：建立坐标索引、地形索引和任务选点索引。
+- `GridGraph` / `JpsPlusData` / `HierarchicalGraph`：寻路图与加速结构。
+- `TerritoryLayoutGenerator`：势力建筑与领地布局。
+- `Renderer` / `SimulationRenderer`：地图渲染。
+- 编辑器地图面板：摘要渲染与地图编辑。

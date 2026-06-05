@@ -1,4 +1,4 @@
-# ADR-025：实物系统与怀璧其罪
+﻿# ADR-025：实物系统与怀璧其罪
 
 最后更新：2026-05-30
 
@@ -15,10 +15,10 @@ ADR-024 建立了信息传播与机会点闭环，但要支撑用户提出的标
 
 ### 一、实物系统（可转移物品）
 
-- 新增 `data/items/items.json`：法宝（artifact）/材料（material）/丹药（pill），每项含 `value`（身家估值）、`grade`（品阶，影响暴露概率）、`transferable`（可否被抢夺）、`combatBonus`（装备战力加成，可选）。
+- 新增 `data/items/`：法宝（artifact）/材料（material）/丹药（pill），每项含 `value`（身家估值）、`grade`（品阶，影响暴露概率）、`transferable`（可否被抢夺）、`combatBonus`（装备战力加成，可选）。
 - `ItemDefinition` 扩展：把配置上的领域字段（value/transferable/grade/combatBonus）并入 `properties`，供资产估值/转移/战力统一读取。
 - NPC 掉落落地：游历/夺宝/机会点结算改用 `rollAndGrantReward`——若 outcome 带 `itemId` 则发放**真实物品写入背包**（替换原来只加 qi 的占位）；`reward.json` 新增 `opportunity_*` 与扩展 `obsession_plunder` 掉落表。
-- NPC state 新增 `equippedArtifactId`：已装备法宝，进 `assetScore`，可被抢夺转移；`_npcCombatPower` 接通其 `combatBonus`（无装备系数=1，零漂移）。
+- NPC state 新增 `equippedArtifactId`：已装备法宝，进 `assetScore`，可被抢夺转移；`_npcCombatPower` 接通其 `combatBonus`（无装备系数=1，默认关闭不改变既有行为）。
 
 ### 二、身家估值 assetScore
 
@@ -38,7 +38,7 @@ assetScore = 灵石 + Σ(可转移物品 value × 数量) + 已装备法宝 valu
    - 否则发动抢夺。
 4. **抢夺结算**（`settleRobbery`）：胜率 = `myPower/(myPower+targetPower)`。胜则转移可转移物品 + 部分灵石 + 夺取法宝（`transferLoot`），并按 `killChanceOnWin` 概率"杀人夺宝"；被抢者记仇（humiliated 记忆），打通既有恩怨→复仇闭环。
 
-## 零漂移保证
+## 默认关闭不改变既有行为保证
 
 - `covet.json` 默认 `enabled: false`，禁用态下不计算 assetScore、不暴露、不抢夺。
 - `equippedArtifactId` 默认 `null`，`_artifactCombatFactor` 返回 1，战力计算与现状一致。
@@ -50,3 +50,4 @@ assetScore = 灵石 + Σ(可转移物品 value × 数量) + 已装备法宝 valu
 - 信息传播与机会点：ADR-024。
 - 系统文档：`docs/systems/item-covet.md`。
 - 世界观：`docs/worldbuilding/wiki/rules/怀璧其罪.md`。
+

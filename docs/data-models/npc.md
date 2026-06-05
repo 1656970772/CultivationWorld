@@ -1,87 +1,79 @@
-# 数据模型：核心 NPC
+# 数据模型：NPC
 
-> 最后更新：2026-05-27
+> 最后更新：2026-06-05  
+> 数据来源：`apps/game/data/entities/npcs.json`
 
-## 结构
+## 当前规模
+
+当前初始 NPC 为 152 个。运行时可通过婚配生育生成新 NPC。
+
+## 初始结构
 
 ```javascript
 NPC {
-  id: string,                 // 唯一标识
-  name: string,               // 名称
-  factionId: string,          // 所属势力 ID
-  role: string,               // leader / heir / elder / general / officer / core_disciple
-  rankId: string,             // 引用 apps/game/data/definitions/ranks.json 的境界或职位 ID
+  id: string,
+  name: string,
+  factionId?: string,
+  role: string,
+  rankId: string,
+  gender: "male" | "female",
   personality: {
-    ambition: number,         // 野心 0-100，高→倾向扩张
-    caution: number,          // 谨慎 0-100，高→倾向防守
-    loyalty: number,          // 忠诚 0-100，低→可能叛变
-    diplomacy: number         // 外交 0-100，高→倾向结盟
+    ambition: number,
+    caution: number,
+    loyalty: number,
+    diplomacy: number,
+    courage?: number,
+    justice?: number
   },
-  alive: boolean,             // 是否存活
-  ageDays: number,            // 当前年龄（天，1 年 = 360 天）
-  ageYears: number,           // 当前年龄（年，展示与报告用）
-  maxAgeDays: number,         // 寿元上限（天）
-  maxAgeYears: number,        // 寿元上限（年）
-  rankName: string,           // 运行时由 ranks.json 补齐的显示名
-  lifespanBucket: string,     // 寿元桶 ID
-  lifespanBucketName: string, // 寿元桶显示名
+  alive: boolean,
+  techniqueId?: string
 }
 ```
 
-## 双层人口模型
+## 运行时状态
 
-`resources.disciples` 继续表示势力总体弟子、军队或妖众规模。`npcs.json` 只保存具名核心人物，用于掌门继任、事件对象、伤亡统计、日志叙事和未来玩家交互。
+`NPCEntity` 初始化时会补齐：
 
-每个势力的具名 NPC 数量包含掌门本人，并且不得超过 20 人。
+- 年龄、寿元、自然死亡参数。
+- 修炼进度、真气、突破进度、灵根、体质。
+- HP、maxHp、攻击、防御、伤势。
+- 空间坐标、移动目标、行为生命周期。
+- 背包、装备、物品效果和能力组件。
+- 记忆、情绪、执念、关系图兼容视图。
+- 事件感知、动态目标和打断状态。
 
-| 势力规模 | 判定依据 | 具名 NPC 数量 |
-|----------|----------|---------------|
-| 大势力 | `resources.disciples >= 500` | 16 人 |
-| 中势力 | `resources.disciples >= 150` 且 `< 500` | 10 人 |
-| 小势力 | `resources.disciples < 150` | 7 人 |
+## 角色
 
-## 角色枚举
+| role | 说明 |
+|------|------|
+| `leader` | 掌门、皇帝、族长、组织首领 |
+| `heir` | 继承人 |
+| `elder` | 长老、高层 |
+| `general` | 战斗将领 |
+| `officer` | 执事、官员、功能负责人 |
+| `core_disciple` | 核心弟子 |
+| `disciple` / `outer_disciple` | 普通/外门弟子 |
+| `wanderer` | 散修 |
 
-| role | 含义 | 第一阶段用途 |
-|------|------|--------------|
-| `leader` | 掌门、皇帝、族长等最高决策者 | 每日势力 AI 决策 |
-| `heir` | 明确继承人 | 掌门继任最高优先级 |
-| `elder` | 长老、太师、国师等核心高层 | 继任候选与事件对象 |
-| `general` | 战斗将领或军事负责人 | 继任候选与战争事件对象 |
-| `officer` | 执事、官员、情报/后勤负责人 | 继任候选与事件对象 |
-| `core_disciple` | 亲传、核心弟子、重要成员 | 低优先级继任候选与事件对象 |
+## 性格
 
-## 性格维度说明
+| 维度 | 影响 |
+|------|------|
+| `ambition` | 晋升、夺权、夺宝、探索收益偏好 |
+| `caution` | 风险厌恶、生存倾向、打断策略 |
+| `loyalty` | 宗门忠诚、叛投/死战倾向 |
+| `diplomacy` | 结盟、人情、放过他人倾向 |
+| `courage` | 游历、战斗、冒险和上头倾向 |
+| `justice` | 放过、报恩、正义倾向；部分逻辑仍在扩展 |
 
-| 维度 | 低值表现 | 高值表现 |
-|------|---------|---------|
-| ambition | 安于现状，倾向发展 | 野心勃勃，倾向扩张和攻伐 |
-| caution | 冒进，容易发动战争 | 谨慎，只在有把握时行动 |
-| loyalty | 可能叛变或投敌 | 忠心耿耿，绝不背叛 |
-| diplomacy | 独来独往，不善交际 | 善于外交，倾向结盟 |
+## AI 接入
 
-## NPC 对势力的影响
+NPC 每 tick 通过行为树推进：
 
-第一阶段只有 `role: "leader"` 的 NPC 直接驱动所属势力每天的行为决策。其他核心 NPC 不独立日常行动，先用于继任、伤亡、事件对象和模拟报告。
+1. `onPreTick` 更新生命周期、状态、记忆、情绪、执念。
+2. Reaction 层消费被攻击等刺激。
+3. Intent/Utility 收集需求、执念、关系、机会点、动态事件目标。
+4. GOAP 规划行为链。
+5. Execution 处理移动、耗时、结算、重规划。
 
-## 寿元与自然死亡
-
-NPC 原始数据可以不手填年龄字段。`WorldEngine.initNPCs()` 会在初始化时读取 `apps/game/data/definitions/ranks.json` 与 `apps/game/data/behaviors/npc-lifecycle.json`，根据 `rankId` 和可复现 RNG 自动补齐 `rankName`、`ageDays`、`ageYears`、`maxAgeDays`、`maxAgeYears` 与 `lifespanBucket`。
-
-| rankId / 桶 | 寿元上限 |
-|----------|----------|
-| 凡人、弟子、谋士、将军、统领、宗师、武圣 | 80 年 ± 20 年 |
-| 炼气 | 140 年 ± 40 年 |
-| 筑基 | 230 年 ± 30 年 |
-| 金丹 / 结丹 | 550 年 ± 50 年 |
-| 元婴 | 1250 年 ± 250 年 |
-| 化神 | 2000 年 ± 300 年 |
-
-上表来自 `apps/game/data/definitions/ranks.json`。自然死亡只在 `ageDays >= maxAgeDays * 0.95` 后开始判定。达到寿元上限时，当天死亡概率为 `1`。详细规则见 `docs/worldbuilding/wiki/rules/natural-death.md`。
-
-## 掌门更替
-
-- 掌门死亡 → 优先从本势力存活核心 NPC 中继任
-- 继任优先级：`heir` → `elder` → `general/officer` → `core_disciple`
-- 同级候选按 `ranks.json` 的 `successionScore` 与 `loyalty` 排序
-- 无存活候选时不生成新掌门，势力标记为 `destroyed`，领地转为无主地
+相关文档：`docs/systems/behavior-tree.md`、`docs/decisions/adr-048-four-layer-reactive-ai.md`、`docs/decisions/adr-049-dynamic-goal-interrupt-policy.md`。

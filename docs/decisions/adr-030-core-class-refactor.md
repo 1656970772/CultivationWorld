@@ -1,22 +1,22 @@
-# ADR-030：核心引擎类重构（tick-manager / npc-actions / npc-entity 按职责拆分）
+﻿# ADR-030：核心引擎类重构（tick-manager / npc-actions / npc-entity 按职责拆分）
 
 最后更新：2026-06-01
 
-状态：已实现（三个上帝类按单一职责拆分为服务/策略/协作者模块，对外接口不变，行为零漂移）
+状态：已实现（三个上帝类按单一职责拆分为服务/策略/协作者模块，对外接口不变，行为默认关闭不改变既有行为）
 
 ## 背景
 
-体检报告 `docs/reports/2026-05-30-项目分析与下一步建议.md`（P2 节）识别出三个严重违反单一职责（SRP）的"上帝类"，按行数统计：
+体检报告 `历史体检结论（已并入当前文档）`（P2 节）识别出三个严重违反单一职责（SRP）的"上帝类"，按行数统计：
 
 - `tick-manager.js`（2139 行）：tick 主循环 + 全套势力 AI（扩张/攻伐/结盟/贸易/军事计算，内联在约 400 行的 `_buildWorldContext`）+ 晋升/月考/宗门活动 + 死亡收集 + 婚育 + 信息传播/觊觎 + 妖兽重生 + 寻路工具，至少 8 大职责挤在一个类。
 - `npc-actions.js`（1552 行）：约 30 个 `ActionExecutor` 类 + 共享 helper，混合修炼/任务/经济/PvP/机会/流派/师徒所有业务域。
 - `npc-entity.js`（1010 行）：实体构造 + 目标抽取 + 突破/死亡/继任 + 执念触发，业务逻辑与实体定义混杂。
 
-项目对"行为零漂移"极度敏感（满是黄金指纹回归保证）。`npc-utility.js`（ADR-021）已是一个成功范例：把决策逻辑抽成纯函数模块 `decorateGoalConsiderations(entity, goal, worldContext, config)`，`NPCEntity` 只保留一行转发。本次重构全程复用此范例。
+项目对"行为默认关闭不改变既有行为"极度敏感（满是旧摘要回归回归保证）。`npc-utility.js`（ADR-021）已是一个成功范例：把决策逻辑抽成纯函数模块 `decorateGoalConsiderations(entity, goal, worldContext, config)`，`NPCEntity` 只保留一行转发。本次重构全程复用此范例。
 
 ## 决策
 
-按单一职责把三个类拆分为边界清晰、可独立扩展和测试的模块；**对外接口保持不变**（调用方零改动），以黄金指纹 + 重构基线指纹双重回归保证零漂移。
+按单一职责把三个类拆分为边界清晰、可独立扩展和测试的模块；**对外接口保持不变**（调用方零改动），以旧摘要回归 + 重构基线摘要双重回归保证默认关闭不改变既有行为。
 
 ### 保持不变的接口契约（红线）
 
@@ -40,7 +40,7 @@
 | `info-coordinator.js` | 信息传播/机会/觊觎编排（编排既有 `InfoPropagationSystem`/`OpportunitySystem`） | `_tickInfoSystems`/`_spawnNewsFromEvents`/`_propagateChannels`/`_tickCovet`/`_enrichInfoEvents` |
 | `monster-respawn-service.js` | 妖兽重生 + 入群 | `_respawnMonsters`/`_linkRespawnedToPacks` |
 
-- `TickManager` 在构造时实例化这些服务并注入依赖（传 `this` 作为 `host`），服务通过 `this.host` 调用 TickManager 保留的共享底层工具（`_entityPos`/`nearestTerrainTile`/`_npcCombatPower`/`_resolveRevengeTarget` 等），保持 `this` 绑定语义与零漂移。
+- `TickManager` 在构造时实例化这些服务并注入依赖（传 `this` 作为 `host`），服务通过 `this.host` 调用 TickManager 保留的共享底层工具（`_entityPos`/`nearestTerrainTile`/`_npcCombatPower`/`_resolveRevengeTarget` 等），保持 `this` 绑定语义与默认关闭不改变既有行为。
 - `tick()` 只负责按序调用服务（`this.deathCollector.collect(tickLog)` 等）；`setFactionAI`/`getTickHistory`/`getLatestTick` 等公共方法保留。
 - `birthLog`/`companionLog` 改为委托 `populationService` 的 getter；`_bestOpportunityFor`/`_spawnNewsFromEvents` 保留薄转发以兼容 `WorldContextBuilder` 与现有测试。
 - 结果：`tick-manager.js` 由 2139 行降至约 734 行。
@@ -98,17 +98,18 @@
 
 - 三个上帝类按单一职责落地：每个文件聚焦一个业务域，便于独立扩展（新增势力类型/新行为/新 tick 步骤只加文件，不改骨架）与独立测试。
 - 调用方零改动：`world-engine.js`/`planner-node.js`/单测的导入路径与调用签名全部不变。
-- 严格零漂移：拆分为纯代码搬移 + 委托/转发，未改任何逻辑、随机序列与写入顺序。
-- 引入临时回归工具 `tools/refactor-baseline.mjs`（确定性 PRNG + 紧凑指纹），与 GOAP 黄金测试互补，覆盖整个 tick 编排；其头部固化了本次基线指纹，供后续重构比对。
+- 严格默认关闭不改变既有行为：拆分为纯代码搬移 + 委托/转发，未改任何逻辑、随机序列与写入顺序。
+- 引入临时回归工具 `tools/refactor-baseline.mjs`（确定性 PRNG + 紧凑摘要），与 GOAP 固定场景回归互补，覆盖整个 tick 编排；其头部固化了本次基线摘要，供后续重构比对。
 
 ## 验证
 
-- `node apps/game/tools/test-goap-golden.mjs` 指纹 **`5740e12a`**，三个类拆分后均保持不变（与 ADR-029 基线一致）。
-- `node apps/game/tools/refactor-baseline.mjs 200`（默认态 `4f9cf473`）、`MODE=utility`（`caf46512`）、`MODE=info`（`56720249`）三态指纹，在 npc-actions 与 npc-entity 拆分后均断言通过（`refactor-baseline.mjs 200 <指纹>` 退出码 0）。
-- 全量单测全绿（17 项）：`test-bt`/`test-goal-equivalence`/`test-goap-golden`/`test-info-propagation`/`test-jps`/`test-master-disciple`/`test-memory`/`test-monster-resource-loop`/`test-npc-consumption-chain`/`test-obsession`/`test-quest-reward-economy`/`test-relationship-goals`/`test-relationship`/`test-revenge`/`test-utility-divergence`/`test-utility`/`verify-promotion`。
+- `node apps/game/tools/test-goal-equivalence.mjs` 摘要 **`5740e12a`**，三个类拆分后均保持不变（与 ADR-029 基线一致）。
+- `node apps/game/tools/refactor-baseline.mjs 200`（默认态 `4f9cf473`）、`MODE=utility`（`caf46512`）、`MODE=info`（`56720249`）三态摘要，在 npc-actions 与 npc-entity 拆分后均断言通过（`refactor-baseline.mjs 200 <摘要>` 退出码 0）。
+- 全量单测全绿（17 项）：`test-bt`/`test-goal-equivalence`/`test-goal-equivalence`/`test-info-propagation`/`test-jps`/`test-master-disciple`/`test-memory`/`test-monster-resource-loop`/`test-npc-consumption-chain`/`test-obsession`/`test-quest-reward-economy`/`test-relationship-goals`/`test-relationship`/`test-revenge`/`test-utility-divergence`/`test-utility`/`verify-promotion`。
 
 ## 相关
 
-- 体检报告 `docs/reports/2026-05-30-项目分析与下一步建议.md`（P2：上帝类问题）。
+- 体检报告 `历史体检结论（已并入当前文档）`（P2：上帝类问题）。
 - ADR-021（Utility-GOAP 职责分离）——`npc-utility.js` 是本次"纯函数模块 + Entity 一行转发"范例的来源。
 - `docs/architecture/design-patterns.md`（策略/模板方法/组合）与 `docs/architecture/file-structure.md`（新目录职责）已同步。
+

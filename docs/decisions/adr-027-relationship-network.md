@@ -1,4 +1,4 @@
-# ADR-027：关系网系统（NPC / 妖兽 / 势力统一关系图）
+﻿# ADR-027：关系网系统（NPC / 妖兽 / 势力统一关系图）
 
 最后更新：2026-06-01
 
@@ -73,7 +73,7 @@
 
 ### 六、明确不做范围（第一期）
 
-不新增关系驱动的 Goal/行为（护短同门、探望恩人、追杀仇人、妖兽护巢护群等）；不实现信任度/背叛、隐秘关系暴露追杀、灵宠养成/反噬、化形妖兽建势力、妖群/领地自动建边。详见 `docs/worldbuilding/wiki/characters/relationship-todo.md`。
+不新增关系驱动的 Goal/行为（护短同门、探望恩人、追杀仇人、妖兽护巢护群等）；不实现信任度/背叛、隐秘关系暴露追杀、灵宠养成/反噬、化形妖兽建势力、妖群/领地自动建边。详见 `关系系统后续扩展项`。
 
 ## 数据与接口
 
@@ -92,13 +92,13 @@
 
 - 关系从四处零散字段统一为单一真相源的有向带类型图，妖兽/势力/个人三层贯通。
 - 全部数据驱动，调参不改代码；复仇链等既有逻辑零改动（兼容视图）。
-- 200 天端到端模拟：关系自然涌现（同门 1386、道侣、血亲、宿敌、竞争、妖兽仇敌等），核心 AI 黄金指纹与目标等价性回归全部通过（无行为漂移）。
+- 200 天端到端模拟：关系自然涌现（同门 1386、道侣、血亲、宿敌、竞争、妖兽仇敌等），核心 AI 旧摘要回归与目标等价性回归全部通过（无行为漂移）。
 
 ## 验证
 
 - `node apps/game/tools/test-relationship.mjs`（边一致性/对称/累加/衰减/清理/快照/兼容层/初始化，30 项）
 - `node apps/game/tools/test-revenge.mjs`、`test-memory.mjs`、`test-obsession.mjs`（兼容层不破坏既有恩怨链）
-- `node apps/game/tools/test-goal-equivalence.mjs`、`test-goap-golden.mjs`（核心决策零漂移）
+- `node apps/game/tools/test-goal-equivalence.mjs`、`test-goal-equivalence.mjs`（核心决策默认关闭不改变既有行为）
 - `node apps/game/tools/simulate-analysis.mjs --days=200`（端到端无报错）
 
 ## 相关
@@ -107,3 +107,4 @@
 - ADR-020（Consideration Utility + 复仇 PvP）——复仇链依赖 `topGrudge`，零改动延续。
 - ADR-015（宗门资源与晋升）、ADR-024（信息传播与机会点）——后续关系驱动 Goal 的接入基础。
 - 世界观参考：凡人修仙传（7 类关系 / 妖兽资源与共生）、遮天（半驯化/混血/禁区守卫）。
+

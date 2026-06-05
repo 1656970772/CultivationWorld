@@ -1,74 +1,60 @@
 # 世界观 Wiki
 
-> 最后更新：2026-06-03（新增 `artifacts/spirit-stone.md` 灵石货币+可服用，见 ADR-043）
-> 定位：收纳已敲定设定的可扩展 Wiki。世界观总览仍保留在 `docs/worldbuilding/` 根目录，细化条目统一沉淀到本目录。
+> 最后更新：2026-06-05  
+> 定位：收纳已敲定设定的可扩展 Wiki。当前数据事实以 `apps/game/data/` 为准。
 
-## 目录约定
+## 目录
 
-```
+```text
 wiki/
-├── README.md              # 本文件：Wiki 导航与维护规则
-├── wiki-template.md       # 通用 Wiki 条目模板
+├── README.md
+├── wiki-template.md
 ├── rules/
-│   ├── natural-death.md   # 自然死亡规则
-│   ├── faction-crisis-defection.md # 势力危亡抉择与凝聚力规则
-│   ├── leader-succession.md # 掌门继任规则
-│   ├── sect-operation.md  # 宗门运行与成员晋升制度（三层六要素）
-│   ├── personality.md     # 性格系统：野心/谨慎/忠诚/外交/勇敢/正义感 → 需求/风险加成
-│   ├── travel-and-risk.md # 游历感悟与风险：突破进度双源 + 数据驱动风险表 + 价值-风险决策/上头
-│   ├── archetype-obsession.md # 流派执念：夺宝/养老/传承/夺权四种人生取向执念
-│   ├── wealth-exposed.md  # 怀璧其罪与江湖热点：暴露身家→消息扩散→抢夺/放过
-│   ├── escape-talisman-and-lock-hp.md # 遁地符与锁血保命：致死打击下锁血求不死、遁地求脱身（不区分攻击者）
-│   ├── spirit-root.md     # 灵根（资质）系统：5 档资质
-│   └── physique.md        # 体质系统：凡体为主 + 稀有特殊体质
+│   ├── archetype-obsession.md
+│   ├── escape-talisman-and-lock-hp.md
+│   ├── faction-crisis-defection.md
+│   ├── leader-succession.md
+│   ├── natural-death.md
+│   ├── personality.md
+│   ├── physique.md
+│   ├── sect-operation.md
+│   ├── spirit-root.md
+│   ├── travel-and-risk.md
+│   └── wealth-exposed.md
 ├── characters/
-│   ├── relationship-types.md # 人物关系网：关系类型（人际/人妖/妖妖三层）
-│   └── relationship-todo.md  # 人物关系网：待做与待扩展
+│   └── relationship-types.md
 ├── artifacts/
-│   ├── techniques.md      # 功法道具体系（四品阶×13流派，25条）
-│   ├── weapons.md         # 法宝武器体系（五品阶×12流派，42件）
-│   └── spirit-stone.md    # 灵石：货币 + 可服用修炼资源（四档兑换比 + 复用 ge_add_qi 服用，ADR-006/043）
+│   ├── rare-treasures.md
+│   ├── techniques.md
+│   └── spirit-stone.md
 └── creatures/
-    └── monsters.md        # 妖族异兽体系（一~九阶，12族群，36条）
+    └── monsters.md
 ```
-
-## 条目分类
-
-- `rules/`：世界运行规则、事件规则、继任规则、死亡规则等。
-- `characters/`：人物关系、单个角色、人物传记（已含关系网关系类型与待做）。
-- `factions/`：后续扩展到单个宗门、王朝、族群细节时使用。
-- `locations/`：后续扩展到地点、秘境、城市、山脉、禁地时使用。
-- `artifacts/`：功法、法宝、丹药、天材地宝。
-- `creatures/`：妖族、异兽、灵兽、特殊生物。
-
-新增分类目录时，需要同步更新本文和 `docs/README.md`。
-
-## 维护规则
-
-- 每个已敲定设定应拆成独立条目，避免把后续补充堆进一个大文件。
-- 条目文件头部必须包含“最后更新”“状态”“类型”“关联文档”。
-- 条目中的规则描述应区分“已敲定内容”“待扩展内容”和“实现提示”。
-- 如果条目影响系统、数据模型或架构决策，需要在“关联文档”中链接对应文档。
-- 如果后续讨论改变了条目结论，直接更新原条目，不另建重复条目。
 
 ## 当前条目
 
-| 条目 | 类型 | 状态 | 说明 |
-|------|------|------|------|
-| `rules/natural-death.md` | 规则 | 已敲定 | NPC 因年龄、寿元或非事件性衰亡而死亡的世界观规则 |
-| `rules/faction-crisis-defection.md` | 规则 | 已敲定 | 势力危亡时成员按性格×利益做 7 类抉择（死战/退避/叛投/出走散修/被迫效忠/逃命/投降归顺）；凝聚力是"选择死战比例"的涌现量，凝聚力低则真实人口骤降而易覆灭；参考凡人/仙逆/大道争锋 |
-| `rules/leader-succession.md` | 规则 | 已敲定 | 掌门死亡或失效后的继任与无候选覆灭规则 |
-| `rules/sect-operation.md` | 规则 | 已敲定 | 宗门三层六要素运行模型：资源梯度、职位阶梯、多通道晋升与安全网 |
-| `rules/personality.md` | 规则 | 已敲定 | 性格系统：野心/谨慎/忠诚/外交/勇敢/正义感，数据驱动换算为需求加成（野心→挑战上位）与风险加成（勇敢→游历受伤/陨落）；正义感仅字段+遗传待扩展 |
-| `rules/travel-and-risk.md` | 规则 | 已敲定 | 游历感悟与风险：突破进度=闭关(边际递减/有境界上限)+游历感悟；机缘事件表+数据驱动风险分项；价值-风险决策与「上头」机制 |
-| `rules/archetype-obsession.md` | 规则 | 已敲定 | 流派执念：夺宝(先天高勇敢)/养老(条件高龄低野心)/传承(条件高龄高职位)/夺权(先天高野心)，各有专属 goalState 终点行为；养老流为项目推演设定 |
-| `rules/wealth-exposed.md` | 规则 | 已敲定 | 怀璧其罪：高身家修士被目击→消息经五渠道扩散→听闻者按实力/身份/恩义/性格决定抢夺(杀人夺宝)或放他一马；参考凡人修仙传 |
-| `rules/escape-talisman-and-lock-hp.md` | 规则/物品 | 已敲定 | 遁地符与锁血保命：致死打击下锁血求不死（碾压除外）、遁地符再施遁术脱身；不区分攻击者（妖兽/PvP/风险/攻战通用），符尽则危；ADR-042 |
-| `rules/spirit-root.md` | 规则 | 草案 | 灵根（资质）系统，5 档量化资质，乘修炼速度+加突破率，待实现 |
-| `rules/physique.md` | 规则 | 草案 | 体质系统，凡体为主+稀有特殊体质，灵根之上额外叠加，特殊效果待定 |
-| `artifacts/techniques.md` | 道具 | 已敲定 | 功法道具体系，四品阶×13流派，25条，含修炼速度/寿元/战力加成说明 |
-| `artifacts/weapons.md` | 道具 | 已敲定 | 法宝武器体系，五品阶×12流派，42件，含属性与被动效果说明 |
-| `artifacts/spirit-stone.md` | 物品 | 已敲定 | 灵石：货币（四档兑换比 ADR-006）兼可服用修炼资源（复用 ge_add_qi，数值取 qiValue，默认不自动触发），ADR-043 |
-| `creatures/monsters.md` | 生物 | 已敲定 | 妖族异兽体系，一~九阶×12族群，36条，含天赋神通、化形路径与猎妖资源闭环 |
-| `characters/relationship-types.md` | 人物 | 已敲定 | 人物关系网关系类型：人际(师徒/道侣/同门/宿敌等)/人妖(灵宠/坐骑/妖兽仇敌)/妖妖(妖群/首领)三层，含好感/强度/衰减与世界观来源；见 ADR-027 |
-| `characters/relationship-todo.md` | 人物 | 待做清单 | 关系网第一期未做但世界观已支持的设定：关系驱动 Goal、信任度/背叛、隐秘关系暴露、灵宠养成/反噬、化形妖兽建势力等 |
+| 条目 | 类型 | 状态 |
+|------|------|------|
+| `rules/natural-death.md` | 规则 | 已敲定 |
+| `rules/leader-succession.md` | 规则 | 已敲定 |
+| `rules/sect-operation.md` | 规则 | 已敲定 |
+| `rules/personality.md` | 规则 | 已敲定 |
+| `rules/travel-and-risk.md` | 规则 | 已敲定 |
+| `rules/archetype-obsession.md` | 规则 | 已敲定 |
+| `rules/wealth-exposed.md` | 规则 | 已敲定 |
+| `rules/faction-crisis-defection.md` | 规则 | 已敲定 |
+| `rules/escape-talisman-and-lock-hp.md` | 规则/物品 | 已敲定 |
+| `rules/spirit-root.md` | 规则 | 草案/已接入数据 |
+| `rules/physique.md` | 规则 | 草案/已接入数据 |
+| `characters/relationship-types.md` | 人物关系 | 已敲定 |
+| `artifacts/techniques.md` | 道具 | 已敲定 |
+| `artifacts/rare-treasures.md` | 道具 | 已敲定 |
+| `artifacts/spirit-stone.md` | 物品 | 已敲定 |
+| `creatures/monsters.md` | 生物 | 已敲定 |
+
+## 维护规则
+
+- 每个已敲定设定拆成独立条目。
+- 条目头部保留“最后更新”“状态”“类型”“关联文档”。
+- 影响系统或数据模型的世界观变更，要同步更新系统文档、数据规则或 ADR。
+- 若只是灵感参考，不写入 Wiki；参考资料留在 `docs/世界观参考/`。

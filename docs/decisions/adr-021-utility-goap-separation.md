@@ -1,4 +1,4 @@
-# ADR-021：Utility-GOAP 职责分离
+﻿# ADR-021：Utility-GOAP 职责分离
 
 最后更新：2026-05-30
 
@@ -109,11 +109,11 @@ stepCost = max(costFloor, action.getPlanCost())
 - `apps/game/js/engine/world-engine.js`
   - `utilityConfig` 构建：合并 `balance/utility.json` 与 `ai-config.npc.utility`（后者覆盖前者同名键）。
 
-### 零漂移保证
+### 默认关闭不改变既有行为保证
 
 - `balance/utility.json enabled=false`（默认）时，`decorateGoalConsiderations` 在执念乘子后立即返回，所有新逻辑均不执行，行为与重构前完全一致。
 - 各子功能有独立 `enabled` 开关：`riskAversion.enabled`、`emotionRisk.enabled`、`headstrong.enabled`、`pathPreference.enabled`。
-- GOAP 黄金测试指纹 `c4ac92da` 不变（GOAP 规划器本身逻辑未改变）。
+- GOAP 固定场景回归摘要 `c4ac92da` 不变（GOAP 规划器本身逻辑未改变）。
 
 ## 权衡
 
@@ -124,3 +124,4 @@ stepCost = max(costFloor, action.getPlanCost())
 | 上头/冲动 | 行为级（某个具体行为更便宜） | 目标级（某个目标整体更吸引） |
 | GOAP 可预测性 | 受情绪/风险/上头干扰 | 纯路径成本，更稳定 |
 | 故事生成质量 | 同境界 NPC 行为趋同 | NPC 差异主要来自 Utility 分歧 |
+

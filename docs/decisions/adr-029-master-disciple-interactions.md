@@ -1,4 +1,4 @@
-# ADR-029：师徒互动（关系网三期：传功/护徒/尽孝/继承遗志/夺舍）
+﻿# ADR-029：师徒互动（关系网三期：传功/护徒/尽孝/继承遗志/夺舍）
 
 最后更新：2026-06-01
 
@@ -8,7 +8,7 @@
 
 ADR-027（一期）建立世界级 `RelationshipSystem` 单一真相源，ADR-028（二期）让关系边**驱动决策**（同门驰援、报恩、关系复仇、妖群协防、领地驱逐）。`master`/`disciple` 边在一期已由 `relationship-init.js` 按势力角色自动建立（掌门/长老→弟子），但二期**未让师徒边驱动任何专属行为**——师徒关系仅记录、不影响行为。
 
-`relationship-todo.md` 将"师徒互动"列为后续主题。三期落地师徒关系的双重性（参考凡人修仙传"传承不仅是功法，更是意志的延续"，以及墨大夫"以收徒为名行夺舍之实"的阴暗面），范围与机制经用户确认。
+`关系系统后续扩展项` 将"师徒互动"列为后续主题。三期落地师徒关系的双重性（参考凡人修仙传"传承不仅是功法，更是意志的延续"，以及墨大夫"以收徒为名行夺舍之实"的阴暗面），范围与机制经用户确认。
 
 ## 决策
 
@@ -23,7 +23,7 @@ ADR-027（一期）建立世界级 `RelationshipSystem` 单一真相源，ADR-02
 5. **继承遗志·执念延续**：徒弟继承师傅未竟的非复仇执念（如夺宝/证道/长生），体现意志延续。（用户确认 4+5 **两者都要**。）
 6. **夺舍（轻度）**：邪修师傅对高资质徒弟起"夺舍"执念→复用复仇击杀链夺其根基。（用户确认**先轻度实现、留待后续深挖成"夺舍流派"**。）
 
-**核心原则**：复用二期成熟模式，**不引入新系统**，只在既有扩展点挂钩；全程受 `relationship.json -> goalsEnabled` gate，无 qualifying `master`/`disciple` 边即不产出（**零漂移**）。
+**核心原则**：复用二期成熟模式，**不引入新系统**，只在既有扩展点挂钩；全程受 `relationship.json -> goalsEnabled` gate，无 qualifying `master`/`disciple` 边即不产出（**默认关闭不改变既有行为**）。
 
 ### 行为→机制映射
 
@@ -46,7 +46,7 @@ RelationshipSystem(master/disciple 边)
 师傅死亡 → TickManager._collectDeaths（遍历 edgesOfType(master,'master') 找徒弟）
   → 徒弟.inheritMasterLegacy(凶手信息)：① master_lost 记忆→revenge 执念；② 继承未竟执念
 夺舍 → NPCEntity.onPreTick._checkSeizeDiscipleObsession（活着时起执念）→ 复用复仇击杀链
-全程 goalsEnabled gate；无 qualifying 边 → 不产出（零漂移）
+全程 goalsEnabled gate；无 qualifying 边 → 不产出（默认关闭不改变既有行为）
 ```
 
 ### 一、配置与开关（数据驱动）
@@ -66,7 +66,7 @@ RelationshipSystem(master/disciple 边)
 - `_checkSeizeDiscipleObsession(worldContext)`（`onPreTick` 调用，紧邻 `_checkConditionalObsession`）：邪修+高境界+高资质徒弟+概率检定 → 起 `seizure` 执念锁定资质最高的徒弟。区别于无目标的条件执念（需关系感知锁定 `targetId`）。
 - `inheritMasterLegacy(master, info)`：① `recordMemory('master_lost', {actorId:凶手})` 触发复仇执念；② 复制师傅可继承执念（折扣强度、去重）。封装在 NPCEntity 内（已 import `Obsession`），使 `TickManager` 死亡钩子保持精简（仿 `recordMemory` 调用风格）。
 - `_refreshRevengeState`：`enemyKilled` 达成时一并清除 `seizure` 执念（夺舍与复仇同走击杀链）。
-- `_initActions` 默认池补入 `act_npc_teach_disciple`/`act_npc_protect_disciple`/`act_npc_visit_master`（均由师徒 Goal gate，零漂移）。
+- `_initActions` 默认池补入 `act_npc_teach_disciple`/`act_npc_protect_disciple`/`act_npc_visit_master`（均由师徒 Goal gate，默认关闭不改变既有行为）。
 
 ### 三、新增 Action + Executor
 
@@ -106,17 +106,17 @@ RelationshipSystem(master/disciple 边)
 ## 后果
 
 - 师徒边从"只记录"升级为"驱动行为与遗志继承"：传功点化、护徒驰援、尽孝探望、为师复仇、执念延续、夺舍阴谋成为可涌现行为。
-- 默认开但严格零漂移：无 qualifying `master`/`disciple` 边时不产出（等价主路径）；`goalsEnabled=false` 完整回退。
+- 默认开但严格默认关闭不改变既有行为：无 qualifying `master`/`disciple` 边时不产出（等价主路径）；`goalsEnabled=false` 完整回退。
 - 修复一期 `discipleRoles` 数据对齐缺陷，使 `master` 边首次实际建立（实测 55 条）——同时也意味着二期"关系复仇认 enemy 边"等不受影响（独立于师徒边）。
-- **夺舍为轻度实现**：复用复仇击杀链，未做真正的身体接管/境界继承/换壳重生。留作后续深挖为独立"夺舍流派"（见 `relationship-todo.md`）。
+- **夺舍为轻度实现**：复用复仇击杀链，未做真正的身体接管/境界继承/换壳重生。留作后续深挖为独立"夺舍流派"（见 `关系系统后续扩展项`）。
 - 师徒驱动 Goal（传功/护徒/尽孝）与二期同门驰援/报恩一致，优先级低于生存/修炼等核心驱动，故在默认平衡下属**低频涌现**行为（单元测试证明机制正确，触发频率为后续优先级/阈值调参的杠杆）。
 
 ## 验证
 
-- `node apps/game/tools/test-master-disciple.mjs`（goalsEnabled 开关零漂移、传功 Goal 产出/范围/修为门槛、护徒优先级、尽孝、继承遗志复仇+执念延续+死亡钩子遍历路径、夺舍执念正反例、传功 executor 结算，26 项）全绿。
-- 回归：`test-goal-equivalence.mjs`（400 用例，现有目标规划路径零漂移）、`test-relationship-goals.mjs`、`test-revenge.mjs`、`test-relationship.mjs`、`test-obsession.mjs`、`test-utility.mjs`、`test-memory.mjs`、`test-bt.mjs`、`test-utility-divergence.mjs`、`test-monster-resource-loop.mjs`、`test-info-propagation.mjs` 全绿。
-- `test-goap-golden.mjs` 指纹由 `16c7c409`（二期前基线）变为 **`5740e12a`**（新增 3 个师徒行为 + 3 个状态键后的新基线，已 `node test-goap-golden.mjs 5740e12a` 验证确定性稳定）。`test-goal-equivalence` 400 用例确认现有目标规划路径零漂移——指纹变化仅因行为数+状态键集合扩大导致黄金测试 PRNG 采样错位，属"新增行为数据后应重新基线"的预期变更（参考 ADR-023/ADR-028）。
-- `node apps/game/tools/simulate-analysis.mjs --days=200` 默认跑无报错、`master=55` 边涌现；`RELATIONSHIP_GOALS_ACTIVE=0` 无报错、师徒/关系驱动行为全部 dormant（零漂移回退）。
+- `node apps/game/tools/test-master-disciple.mjs`（goalsEnabled 开关默认关闭不改变既有行为、传功 Goal 产出/范围/修为门槛、护徒优先级、尽孝、继承遗志复仇+执念延续+死亡钩子遍历路径、夺舍执念正反例、传功 executor 结算，26 项）全绿。
+- 回归：`test-goal-equivalence.mjs`（400 用例，现有目标规划路径默认关闭不改变既有行为）、`test-relationship-goals.mjs`、`test-revenge.mjs`、`test-relationship.mjs`、`test-obsession.mjs`、`test-utility.mjs`、`test-memory.mjs`、`test-bt.mjs`、`test-utility-divergence.mjs`、`test-monster-resource-loop.mjs`、`test-info-propagation.mjs` 全绿。
+- `test-goal-equivalence.mjs` 摘要由 `16c7c409`（二期前基线）变为 **`5740e12a`**（新增 3 个师徒行为 + 3 个状态键后的新基线，已 `node test-goal-equivalence.mjs 5740e12a` 验证确定性稳定）。`test-goal-equivalence` 400 用例确认现有目标规划路径默认关闭不改变既有行为——摘要变化仅因行为数+状态键集合扩大导致固定场景回归 PRNG 采样错位，属"新增行为数据后应重新基线"的预期变更（参考 ADR-023/ADR-028）。
+- `node apps/game/tools/simulate-analysis.mjs --days=200` 默认跑无报错、`master=55` 边涌现；`RELATIONSHIP_GOALS_ACTIVE=0` 无报错、师徒/关系驱动行为全部 dormant（默认关闭不改变既有行为回退）。
 
 ## 相关
 
@@ -125,3 +125,4 @@ RelationshipSystem(master/disciple 边)
 - ADR-020（Consideration Utility + 复仇 PvP）——继承遗志·复仇与夺舍复用其 `_resolveRevengeTarget` 与 hunt/kill 行为链。
 - ADR-019（GOBT 长期心智）——执念/记忆系统是继承遗志与夺舍的载体。
 - 世界观参考：凡人修仙传（师徒情谊、传承、墨大夫夺舍）、大道争锋/遮天（传承道统、晚年收徒）。
+

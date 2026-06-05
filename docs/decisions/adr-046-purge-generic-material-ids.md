@@ -1,8 +1,8 @@
-# ADR-046：删除泛称材料 ID（spirit_herb/ore/monster_core/beast_material），全部改指具体道具
+﻿# ADR-046：删除泛称材料 ID（spirit_herb/ore/monster_core/beast_material），全部改指具体道具
 
 最后更新：2026-06-03
 
-状态：已采纳并实施（2026-06-03）。确定性指纹 `1169158b` 零漂移，3 种子 × 800 天长程模拟与删除前逐字一致。
+状态：已采纳并实施（2026-06-03）。确定性摘要 `1169158b` 默认关闭不改变既有行为，3 种子 × 800 天长程模拟与删除前逐字一致。
 
 > 关联：[ADR-044](adr-044-concrete-items-and-subcategory.md)（具体道具替换泛称占位项；当时保留这 4 个"机制必需泛 ID"）、[ADR-045](adr-045-item-files-split-by-category.md)（物品按 category 拆分多文件）、[ADR-043](adr-043-item-resource-unified-taxonomy.md)（资源与物品统一分类）。
 
@@ -46,13 +46,14 @@ ADR-044 删除了纯泛称占位道具，但**保留**了 4 个"机制必需泛 
 ## 影响
 
 - 物品体系不再有"空泛类别名"被当作可持有物品；所有发放/持有/掉落都是具体命名道具。
-- 任务奖励/捐献/妖兽掉落的物品价值改用具体道具价值（如 spirit_herb value 30 → 百年人参 80），属预期变化；但默认配置长程模拟终态指纹未变。
+- 任务奖励/捐献/妖兽掉落的物品价值改用具体道具价值（如 spirit_herb value 30 → 百年人参 80），属预期变化；但默认配置长程模拟终态摘要未变。
 
-## 验证（零漂移 + 真实模拟）
+## 验证（默认关闭不改变既有行为 + 真实模拟）
 
 - 6 分类文件合并后 74 项（78−4）无重复 ID；`spirit_herb`/`ore`/`monster_core`/`beast_material` 均不在物品表。
 - 全仓库代码/数据无残留 `"itemId": "<泛ID>"` 引用（monsters/quest/economy 已全部展开为具体）。
 - `tools/test-monster-resource-loop.mjs`：品阶化资源定义与掉落映射断言全 OK（`monster_core_g3`/`beast_material_g3` 经映射正确发放）。崩溃点 `npc-state rng` 为 ADR-038 引入的 pre-existing 测试夹具缺陷，与本次无关。
 - `tools/verify-effect-reuse.mjs`：通过。
-- `tools/verify-determinism.mjs`：seed=12345 指纹 `1169158b`（零漂移）。
+- `tools/verify-determinism.mjs`：seed=12345 摘要 `1169158b`（默认关闭不改变既有行为）。
 - `tools/verify-gas-combat.mjs`（3 种子 × 800 天）：通过，存活/死因/锁血/遁地输出与删除前逐字一致，妖兽掉落/经济/战斗链长程无退化。
+

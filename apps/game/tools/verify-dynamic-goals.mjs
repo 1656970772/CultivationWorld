@@ -33,8 +33,21 @@ function baseConfigs() {
     npcNeeds: load('data/needs/npc-needs.json'),
     factionActions: load('data/actions/faction-actions.json'),
     npcActions: load('data/actions/npc-actions.json'),
+    npcJobActions: load('data/actions/npc-job-actions.json'),
+    npcActionSets: load('data/actions/npc-action-sets.json'),
     reactionActions: load('data/actions/reaction-actions.json'),
     worldRules: load('data/actions/world-rules.json'),
+    jobs: { jobs: [
+      ...(load('data/jobs/npc-dynamic-event-jobs.json')?.jobs || []),
+      ...(load('data/jobs/npc-economy-jobs.json')?.jobs || []),
+      ...(load('data/jobs/npc-social-jobs.json')?.jobs || []),
+    ] },
+    toils: { toils: [
+      ...(load('data/toils/core-toils.json')?.toils || []),
+      ...(load('data/toils/npc-dynamic-event-toils.json')?.toils || []),
+      ...(load('data/toils/npc-economy-toils.json')?.toils || []),
+      ...(load('data/toils/npc-social-toils.json')?.toils || []),
+    ] },
     questTemplates: load('data/quests/quest-templates.json'),
     mapData: load('data/world/map.json'),
     dynamicEvents: load('data/world/dynamic-events.json'),
@@ -87,8 +100,20 @@ function parseArgs() {
 
 function enabledConfigs(seed) {
   const configs = { ...baseConfigs(), seed };
-  configs.dynamicEvents = { ...clone(configs.dynamicEvents), enabled: true };
-  configs.dynamicGoals = { ...clone(configs.dynamicGoals), enabled: true };
+  configs.dynamicEvents = {
+    ...clone(configs.dynamicEvents),
+    enabled: process.env.DYNAMIC_EVENTS_ACTIVE === '0' ? false : true,
+  };
+  configs.dynamicGoals = {
+    ...clone(configs.dynamicGoals),
+    enabled: process.env.DYNAMIC_GOALS_ACTIVE === '0' ? false : true,
+  };
+  configs.aiConfig = clone(configs.aiConfig);
+  configs.aiConfig.npc = { ...(configs.aiConfig.npc || {}) };
+  configs.aiConfig.npc.jobs = { ...(configs.aiConfig.npc.jobs || {}) };
+  if (process.env.JOBS_ACTIVE === '1') {
+    configs.aiConfig.npc.jobs.enabled = true;
+  }
   configs.worldNews = { ...clone(configs.worldNews), enabled: true };
   configs.worldOpportunities = { ...clone(configs.worldOpportunities), enabled: true };
   configs.balanceReward = { ...clone(configs.balanceReward), enabled: true };
@@ -216,6 +241,48 @@ function actionIdOf(update) {
     || null;
 }
 
+function jobIdOf(update) {
+  return update?.execution?.job?.currentJobId
+    || update?.execution?.result?.jobId
+    || update?.execution?.jobId
+    || null;
+}
+
+function jobInstanceIdOf(update) {
+  return update?.execution?.job?.currentJobInstanceId
+    || update?.execution?.result?.jobInstanceId
+    || update?.execution?.jobInstanceId
+    || null;
+}
+
+function toilIdOf(update) {
+  return update?.execution?.job?.currentToilId
+    || update?.execution?.result?.currentToilId
+    || null;
+}
+
+const DYNAMIC_JOB_ACTION_IDS = new Set([
+  'act_npc_prepare_dynamic_event',
+  'act_npc_join_dynamic_event',
+  'act_npc_prepare_secret_realm',
+  'act_npc_prepare_sect_tournament',
+]);
+
+const DYNAMIC_JOB_IDS = new Set([
+  'job_npc_prepare_dynamic_event',
+  'job_npc_join_dynamic_event',
+  'job_npc_prepare_secret_realm',
+  'job_npc_prepare_sect_tournament',
+]);
+
+function dynamicJobActionIdsInPlan(plan) {
+  return (plan?.actions || []).filter(id => DYNAMIC_JOB_ACTION_IDS.has(id));
+}
+
+function isDynamicJobAction(actionId, jobId = null) {
+  return DYNAMIC_JOB_ACTION_IDS.has(actionId) || DYNAMIC_JOB_IDS.has(jobId);
+}
+
 function isSettledExecution(update) {
   const status = update?.execution?.status;
   return status === 'step_done' || status === 'plan_complete';
@@ -253,6 +320,20 @@ function createStats() {
       prepareSucceeded: 0,
       joinSucceeded: 0,
     },
+    jobActions: {
+      planObservations: 0,
+      planned: 0,
+      started: 0,
+      completed: 0,
+      failed: 0,
+      aborted: 0,
+      byJobId: {},
+      byToilId: {},
+      failureReasons: {},
+    },
+    jobActionPlanKeys: new Set(),
+    jobInstanceKeys: new Set(),
+    jobToilKeys: new Set(),
     dynamicActionNpcs: new Set(),
     recoveredNpcs: new Set(),
     normalPlanCount: 0,
@@ -305,13 +386,45 @@ function mergeStats(agg, stats, seed) {
   for (const [k, v] of Object.entries(stats.dynamicActions)) {
     agg.dynamicActions[k] = (agg.dynamicActions[k] || 0) + v;
   }
+  agg.jobActions.planned += stats.jobActions.planned;
+  agg.jobActions.planObservations += stats.jobActions.planObservations;
+  agg.jobActions.started += stats.jobActions.started;
+  agg.jobActions.completed += stats.jobActions.completed;
+  agg.jobActions.failed += stats.jobActions.failed;
+  agg.jobActions.aborted += stats.jobActions.aborted;
+  mergeCounts(agg.jobActions.byJobId, stats.jobActions.byJobId);
+  mergeCounts(agg.jobActions.byToilId, stats.jobActions.byToilId);
+  mergeCounts(agg.jobActions.failureReasons, stats.jobActions.failureReasons);
+  for (const key of stats.jobActionPlanKeys) agg.jobActionPlanKeys.add(`${seed}:${key}`);
+  for (const key of stats.jobInstanceKeys) agg.jobInstanceKeys.add(`${seed}:${key}`);
+  for (const key of stats.jobToilKeys) agg.jobToilKeys.add(`${seed}:${key}`);
 }
 
 const { WorldEngine } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/world-engine.js')).href);
+const { ActionPool } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/pools/action-pool.js')).href);
+const { NeedPool } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/pools/need-pool.js')).href);
+const { JobPool } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/pools/job-pool.js')).href);
+const { ToilPool } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/pools/toil-pool.js')).href);
+const { EffectPool } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/pools/effect-pool.js')).href);
+const { AbilityPool } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/pools/ability-pool.js')).href);
+const { ItemRegistry } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/items/item-registry.js')).href);
+const { GameplayTagRegistry } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/abstract/gameplay-tag.js')).href);
+
+function resetGlobalPoolsForSeed() {
+  ActionPool.clear();
+  NeedPool.clear();
+  JobPool.clear();
+  ToilPool.clear();
+  EffectPool.clear();
+  AbilityPool.clear();
+  ItemRegistry.clear();
+  GameplayTagRegistry.clear();
+}
 
 const { days, seeds } = parseArgs();
 console.log(`[verify-dynamic-goals] seeds=${seeds.join(',')} days=${days}`);
-console.log('  内存覆盖开关：dynamicEvents/dynamicGoals/worldNews/worldOpportunities/balanceReward.enabled=true');
+console.log(`  环境开关：DYNAMIC_EVENTS_ACTIVE=${process.env.DYNAMIC_EVENTS_ACTIVE || '(default-on)'} DYNAMIC_GOALS_ACTIVE=${process.env.DYNAMIC_GOALS_ACTIVE || '(default-on)'} JOBS_ACTIVE=${process.env.JOBS_ACTIVE || '(config-default)'}`);
+console.log('  内存覆盖开关：dynamicEvents/dynamicGoals/worldNews/worldOpportunities/balanceReward.enabled=true；jobs 仅在 JOBS_ACTIVE=1 时启用');
 console.log('  方式：真实多种子长程模拟，直接观察行为统计');
 
 let failed = 0;
@@ -323,6 +436,7 @@ const assert = (cond, msg) => {
 const agg = createStats();
 
 for (const seed of seeds) {
+  resetGlobalPoolsForSeed();
   const configs = enabledConfigs(seed);
   const rules = ruleById(configs.dynamicGoals);
   const engine = new WorldEngine();
@@ -367,6 +481,21 @@ for (const seed of seeds) {
         inc(stats.dynamicPlanByKind, kind);
         inc(stats.dynamicPlanByEventType, eventType);
         inc(stats.dynamicPlanBySourceKindType, `${sourceId}:${kind}:${eventType}`);
+        const dynamicJobActionIds = dynamicJobActionIdsInPlan(plan);
+        if (dynamicJobActionIds.length > 0) {
+          stats.jobActions.planObservations++;
+          const planKey = [
+            npcId,
+            tick.day,
+            plan.needId || 'no_need',
+            plan.dynamicEventId || 'no_event',
+            dynamicJobActionIds.join(','),
+          ].join('|');
+          if (!stats.jobActionPlanKeys.has(planKey)) {
+            stats.jobActionPlanKeys.add(planKey);
+            stats.jobActions.planned++;
+          }
+        }
       } else if (plan && plan.failed !== true && (plan.needId || plan.goalSource)) {
         const sourceId = plan.needId || plan.goalSource || 'unknown';
         stats.normalPlanCount++;
@@ -396,18 +525,61 @@ for (const seed of seeds) {
       }
 
       const actionId = actionIdOf(update);
-      const dynamicAction = actionId === 'act_npc_prepare_dynamic_event' || actionId === 'act_npc_join_dynamic_event';
+      const jobId = jobIdOf(update);
+      const jobInstanceId = jobInstanceIdOf(update);
+      const toilId = toilIdOf(update);
+      const dynamicAction = isDynamicJobAction(actionId, jobId);
+      if (update.execution?.phase === 'job' || update.execution?.phase === 'job_paused') {
+        const instanceKey = jobInstanceId || `${npcId}:${jobId}:missing_instance:${tick.day}`;
+        if (!stats.jobInstanceKeys.has(instanceKey)) {
+          stats.jobInstanceKeys.add(instanceKey);
+          stats.jobActions.started++;
+          inc(stats.jobActions.byJobId, jobId);
+        }
+        if (toilId) {
+          const toilKey = `${instanceKey}:${toilId}`;
+          if (!stats.jobToilKeys.has(toilKey)) {
+            stats.jobToilKeys.add(toilKey);
+            inc(stats.jobActions.byToilId, toilId);
+          }
+        }
+      }
+      if (update.execution?.result?.jobId) {
+        const result = update.execution.result;
+        const resultInstanceKey = result.jobInstanceId || `${npcId}:${result.jobId}:terminal_missing_instance:${tick.day}`;
+        if (!stats.jobInstanceKeys.has(resultInstanceKey)) {
+          stats.jobInstanceKeys.add(resultInstanceKey);
+          stats.jobActions.started++;
+          inc(stats.jobActions.byJobId, result.jobId);
+        }
+        const status = result.status;
+        if (status === 'success') {
+          stats.jobActions.completed++;
+        } else if (status === 'failed') {
+          stats.jobActions.failed++;
+          inc(stats.jobActions.failureReasons, result.reason || update.execution.reason || 'unknown');
+        } else if (status === 'abort' || status === 'replan') {
+          stats.jobActions.aborted++;
+          inc(stats.jobActions.failureReasons, result.reason || update.execution.reason || status);
+        }
+      } else if (update.execution?.jobId && update.execution?.status === 'replan') {
+        stats.jobActions.failed++;
+        inc(stats.jobActions.failureReasons, update.execution.reason || 'replan');
+      }
       if (dynamicAction && isSettledExecution(update)) {
         stats.dynamicActionNpcs.add(npcId);
         lastDynamicActionDay.set(npcId, tick.day);
         if (firstDynamicActionDay == null) firstDynamicActionDay = tick.day;
         const result = update.execution?.result || {};
-        if (actionId === 'act_npc_prepare_dynamic_event') {
+        const jobSucceeded = result.status === 'success';
+        if (actionId === 'act_npc_prepare_dynamic_event'
+          || actionId === 'act_npc_prepare_secret_realm'
+          || actionId === 'act_npc_prepare_sect_tournament') {
           stats.dynamicActions.prepare++;
-          if (result.prepared === true) stats.dynamicActions.prepareSucceeded++;
-        } else {
+          if (result.prepared === true || jobSucceeded) stats.dynamicActions.prepareSucceeded++;
+        } else if (actionId === 'act_npc_join_dynamic_event') {
           stats.dynamicActions.join++;
-          if (result.joined === true) stats.dynamicActions.joinSucceeded++;
+          if (result.joined === true || jobSucceeded) stats.dynamicActions.joinSucceeded++;
         }
       } else if (lastDynamicActionDay.has(npcId) && tick.day > lastDynamicActionDay.get(npcId)) {
         const normalPlan = plan && plan.goalSource !== 'dynamic' && plan.failed !== true;
@@ -438,6 +610,10 @@ for (const seed of seeds) {
   console.log(`      kind=${JSON.stringify(stats.dynamicPlanByKind)} type=${JSON.stringify(stats.dynamicPlanByEventType)}`);
   console.log(`    InterruptPolicy 决策=${stats.interruptCount}，分布=${JSON.stringify(stats.interruptByDecision)}`);
   console.log(`    动态行动：准备=${stats.dynamicActions.prepare}（成功${stats.dynamicActions.prepareSucceeded}），参与=${stats.dynamicActions.join}（成功${stats.dynamicActions.joinSucceeded}）`);
+  console.log(`    JobAction：planned=${stats.jobActions.planned}，planObservations=${stats.jobActions.planObservations}，started=${stats.jobActions.started}，completed=${stats.jobActions.completed}，failed=${stats.jobActions.failed}，aborted=${stats.jobActions.aborted}`);
+  console.log(`      byJobId=${JSON.stringify(stats.jobActions.byJobId)}`);
+  console.log(`      byToilId=${JSON.stringify(stats.jobActions.byToilId)}`);
+  console.log(`      failureReasons=${JSON.stringify(stats.jobActions.failureReasons)}`);
   console.log(`    发生过动态行动NPC=${stats.dynamicActionNpcs.size}，后续恢复普通行为NPC=${stats.recoveredNpcs.size}`);
   console.log(`    普通 plan=${stats.normalPlanCount}，普通行为结算=${stats.normalActionCount}`);
   console.log(`    首次动态行动后：普通 plan=${stats.normalPlanAfterDynamic}，普通行为结算=${stats.normalActionAfterDynamic}`);
@@ -467,6 +643,10 @@ console.log(`  eventType=${JSON.stringify(agg.dynamicPlanByEventType)}`);
 console.log(`  source×kind×type=${JSON.stringify(agg.dynamicPlanBySourceKindType)}`);
 console.log(`InterruptPolicy 决策总数=${agg.interruptCount}，decision=${JSON.stringify(agg.interruptByDecision)}，reason=${JSON.stringify(agg.interruptByReason)}`);
 console.log(`动态行动：准备=${agg.dynamicActions.prepare}（成功${agg.dynamicActions.prepareSucceeded}），参与=${agg.dynamicActions.join}（成功${agg.dynamicActions.joinSucceeded}），合计=${totalDynamicActions}`);
+console.log(`JobAction：planned=${agg.jobActions.planned}，planObservations=${agg.jobActions.planObservations}，started=${agg.jobActions.started}，completed=${agg.jobActions.completed}，failed=${agg.jobActions.failed}，aborted=${agg.jobActions.aborted}`);
+console.log(`  byJobId=${JSON.stringify(agg.jobActions.byJobId)}`);
+console.log(`  byToilId=${JSON.stringify(agg.jobActions.byToilId)}`);
+console.log(`  failureReasons=${JSON.stringify(agg.jobActions.failureReasons)}`);
 console.log(`发生过动态行动NPC=${agg.dynamicActionNpcs.size}，后续恢复普通行为NPC=${agg.recoveredNpcs.size}，恢复率=${(recoveryRatio * 100).toFixed(1)}%`);
 console.log(`普通行为保持：普通 plan=${agg.normalPlanCount}（NPC ${agg.normalPlanNpcs.size}），普通行为结算=${agg.normalActionCount}（NPC ${agg.normalActionNpcs.size}）`);
 console.log(`首次动态行动后普通行为：普通 plan=${agg.normalPlanAfterDynamic}（NPC ${agg.normalPlanAfterDynamicNpcs.size}），普通行为结算=${agg.normalActionAfterDynamic}（NPC ${agg.normalActionAfterDynamicNpcs.size}）`);
@@ -493,6 +673,15 @@ assert(agg.dynamicActions.prepare > 0, `准备动态事件行为真实执行（$
 assert(agg.dynamicActions.join > 0, `参与动态事件行为真实执行（${agg.dynamicActions.join} 次）`);
 assert(agg.dynamicActions.prepareSucceeded > 0, `准备动态事件副作用真实落地（成功 ${agg.dynamicActions.prepareSucceeded} 次）`);
 assert(agg.dynamicActions.joinSucceeded > 0, `参与动态事件副作用真实落地（成功 ${agg.dynamicActions.joinSucceeded} 次）`);
+assert(agg.jobActions.planned > 0, `JobAction 真实进入规划（${agg.jobActions.planned} 次）`);
+assert(agg.jobActions.started > 0, `Job 真实启动（${agg.jobActions.started} 次）`);
+assert(
+  (agg.jobActions.byJobId.job_npc_prepare_dynamic_event || 0) > 0
+    || (agg.jobActions.byJobId.job_npc_prepare_secret_realm || 0) > 0
+    || (agg.jobActions.byJobId.job_npc_join_dynamic_event || 0) > 0,
+  '动态事件准备或参与 Job 真实执行',
+);
+assert(agg.jobActions.completed > 0, `至少有 Job 完成（${agg.jobActions.completed} 次）`);
 assert(
   agg.normalPlanCount > 0 && agg.normalActionCount > 0,
   `动态目标开启后普通 plan/普通行为仍持续发生（plan=${agg.normalPlanCount}, action=${agg.normalActionCount}）`,

@@ -70,10 +70,11 @@ export class BaseEntity {
    * 初始化行为系统
    * @param {import('./action.js').Action[]} actions 可用行为列表
    * @param {Object} [plannerOptions]
+   * @param {Object} [behaviorOptions]
    */
-  initBehaviorSystem(actions = [], plannerOptions = {}) {
+  initBehaviorSystem(actions = [], plannerOptions = {}, behaviorOptions = {}) {
     const planner = new GOAPPlanner(plannerOptions);
-    this.behaviorSystem = new BehaviorSystem(planner, actions);
+    this.behaviorSystem = new BehaviorSystem(planner, actions, behaviorOptions);
   }
 
   /**

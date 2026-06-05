@@ -229,6 +229,7 @@ export class DynamicGoalProvider {
     if (typeof entity?.state?.set === 'function'
         && entity.state.get?.('targetDynamicEventId') != null) {
       entity.state.set('targetDynamicEventId', null);
+      entity.state.set('targetDynamicEventType', null);
     }
   }
 }

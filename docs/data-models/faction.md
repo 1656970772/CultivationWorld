@@ -1,56 +1,52 @@
 # 数据模型：势力（Faction）
 
-> 最后更新：2026-05-23
+> 最后更新：2026-06-05  
+> 数据来源：`apps/game/data/entities/factions.json`
+
+## 当前规模
+
+当前有 18 个势力/组织：
+
+- 12 个核心势力：正派、邪派、中立宗门、妖族、凡人王朝。
+- 6 个功能组织：拍卖、镖行、杀手、悬赏、坊市、情报。
 
 ## 结构
 
 ```javascript
 Faction {
-  id: string,                     // 唯一标识
-  name: string,                   // 名称（如"青云宗"）
-  type: FactionType,              // 阵营类型
-  territory: string[],            // 占据的格子坐标列表（"x_y" 格式）
-  stability: number,              // 稳定度 0-100
-  resources: {
-    spirit_stone: number,         // 灵石
-    disciples: number,            // 弟子数
-    food: number                  // 粮食
-  },
-  relations: {                    // 与其他势力的好感度
-    [factionId]: number           // -100（死敌）到 100（至交）
-  },
-  leader: string,                 // 掌门 NPC ID
-  traits: FactionTrait[]          // 势力特性列表
+  id: string,
+  name: string,
+  type: string,
+  subtype?: string,
+  headquarters: { x: number, y: number },
+  stability: number,
+  resources: Record<string, number>,
+  leader: string,
+  traits: string[],
+  territory: string[],
+  territoryCount: number,
+  roleQuota?: Record<string, number>,
+  relations: Record<string, number>
 }
 ```
 
-## 阵营类型（FactionType）
+## 字段说明
 
-| 枚举值 | 名称 | 行为倾向 |
-|--------|------|---------|
-| `righteous` | 正派 | 倾向防御、结盟、除魔 |
-| `evil` | 邪派 | 倾向扩张、掠夺、独行 |
-| `neutral` | 中立 | 倾向发展、贸易、观望 |
-| `demon` | 妖族 | 倾向占据灵脉、排斥人族 |
-| `mortal_kingdom` | 凡人王朝 | 倾向稳定、资源积累 |
+| 字段 | 说明 |
+|------|------|
+| `id` | 唯一 ID。宗门/王朝使用 `sect_*`，功能组织使用 `org_*` |
+| `type` | `righteous` / `evil` / `neutral` / `demon` / `mortal_kingdom` |
+| `subtype` | 功能组织子类，如 `auction_house`、`market` |
+| `headquarters` | 总部坐标，供建筑布局、任务地点、动态事件定位使用 |
+| `resources` | 初始资源，可包含 `food`、`disciples`、`low_spirit_stone` 等 |
+| `leader` | 首领 NPC ID |
+| `traits` | 势力倾向，如 `diplomatic`、`aggressive` |
+| `territoryCount` | 初始领地规模参数 |
+| `roleQuota` | 高阶职位名额，当前常见为 elder/heir |
+| `relations` | 初始势力关系，范围约为 -100 到 100 |
 
-## 势力特性（FactionTrait）
+## 运行时扩展
 
-| 枚举值 | 效果 |
-|--------|------|
-| `expansionist` | 扩张行为权重 + |
-| `defensive` | 防御行为权重 + |
-| `scholarly` | 发展行为权重 +，攻击权重 - |
-| `aggressive` | 攻伐行为权重 + |
-| `diplomatic` | 结盟行为权重 + |
+初始化后，`FactionEntity` 会把静态数据转成运行时状态和背包。Tick 中由 `FactionAIService`、`PromotionService`、`PopulationService`、`DeathCollector` 等服务持续更新资源、稳定度、晋升、继任、攻伐和覆灭状态。
 
-## 势力实力
-
-第一版不设综合实力值。实力由以下维度综合体现：
-- 领地数量（格子数）
-- 弟子数量
-- 灵石储量
-- 掌门 NPC 能力
-- 地形优势（山脉防守加成等）
-
-攻伐结果由这些维度综合对比计算。
+势力宏观资源只保留 `food`、`disciples` 等抽象数量；可持有实物统一走 `apps/game/data/items/` 和 `Inventory`。

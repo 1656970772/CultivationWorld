@@ -172,18 +172,37 @@ console.log('3) 缺失事件或标记失败不会伪完成动态事件状态');
   assert(markFailEntity.state.get('joinedDynamicEvent') === false, '标记失败时不写 joinedDynamicEvent');
 }
 
-console.log('4) 真实 action JSON 使用 plannerEffects 而非运行期 effects');
+console.log('4) 真实 action JSON 已迁移为 JobAction，SimpleAction 配置不再包含动态事件动作');
 {
+  const simpleActions = load('data/actions/npc-actions.json');
+  assert(!simpleActions.some(a => a.id === 'act_npc_prepare_dynamic_event'), 'npc-actions.json 不包含动态事件准备 SimpleAction');
+  assert(!simpleActions.some(a => a.id === 'act_npc_join_dynamic_event'), 'npc-actions.json 不包含动态事件参与 SimpleAction');
+
+  const jobActions = load('data/actions/npc-job-actions.json');
+  const prepareConfig = jobActions.find(a => a.id === 'act_npc_prepare_dynamic_event');
+  const joinConfig = jobActions.find(a => a.id === 'act_npc_join_dynamic_event');
+  assert(prepareConfig?.executionKind === 'job', '真实准备 action 配置为 executionKind=job');
+  assert(prepareConfig?.jobId === 'job_npc_prepare_dynamic_event', '真实准备 action 指向准备 Job');
+  assert(joinConfig?.executionKind === 'job', '真实参与 action 配置为 executionKind=job');
+  assert(joinConfig?.jobId === 'job_npc_join_dynamic_event', '真实参与 action 指向参与 Job');
+  assert(Object.keys(prepareConfig?.effects || {}).length === 0, '真实准备 action 配置运行期 effects 为空');
+  assert(prepareConfig?.plannerEffects?.preparedForDynamicEvent?.value === true, '真实准备 action 配置 plannerEffects 推进 preparedForDynamicEvent');
+  assert(Object.keys(joinConfig?.effects || {}).length === 0, '真实参与 action 配置运行期 effects 为空');
+  assert(joinConfig?.plannerEffects?.joinedDynamicEvent?.value === true, '真实参与 action 配置 plannerEffects 推进 joinedDynamicEvent');
+
   ActionPool.clear();
   registerNPCExecutors();
-  ActionPool.loadFromArray(load('data/actions/npc-actions.json'));
+  ActionPool.loadFromArray(jobActions);
   const prepare = ActionPool.create('act_npc_prepare_dynamic_event');
   const join = ActionPool.create('act_npc_join_dynamic_event');
+  assert(prepare.executionKind === 'job', '真实 ActionPool 准备 action 保留 executionKind=job');
+  assert(prepare.jobId === 'job_npc_prepare_dynamic_event', '真实 ActionPool 准备 action 保留 jobId');
+  assert(join.executionKind === 'job', '真实 ActionPool 参与 action 保留 executionKind=job');
+  assert(join.jobId === 'job_npc_join_dynamic_event', '真实 ActionPool 参与 action 保留 jobId');
   assert(Object.keys(prepare.effects || {}).length === 0, '真实准备 action 运行期 effects 为空');
   assert(prepare.getEffects().preparedForDynamicEvent?.value === true, '真实准备 action plannerEffects 可推进 preparedForDynamicEvent');
   assert(Object.keys(join.effects || {}).length === 0, '真实参与 action 运行期 effects 为空');
   assert(join.getEffects().joinedDynamicEvent?.value === true, '真实参与 action plannerEffects 可推进 joinedDynamicEvent');
-  assert(join.targetResolver === 'dynamic_event_target', '真实参与 action 使用 dynamic_event_target resolver');
 }
 
 console.log('5) worldContext 可解析 dynamic_event_target 坐标');

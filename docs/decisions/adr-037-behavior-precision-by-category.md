@@ -1,4 +1,4 @@
-# ADR-037：逐类行为精准化（按类别画像驱动的四项行为修复）
+﻿# ADR-037：逐类行为精准化（按类别画像驱动的四项行为修复）
 
 最后更新：2026-06-02
 
@@ -84,10 +84,10 @@ demon 势力 NPC 修炼 89-95%，根因是**妖族经济死循环**：`breakthro
 
 ## 验证
 
-- GOAP 黄金指纹 `5740e12a` **全程零漂移**（指纹用 utility.enabled=false 基线，priority/consideration 改动不影响）。
-- 单元/端到端测试全绿：goap-golden / master-disciple / relationship-goals / relationship / revenge / monster-resource-loop / **verify-revenge-pursuit** / obsession。
+- GOAP 旧摘要回归 `5740e12a` **全程默认关闭不改变既有行为**（摘要用 utility.enabled=false 基线，priority/consideration 改动不影响）。
+- 单元/端到端测试全绿：goal-equivalence / master-disciple / relationship-goals / relationship / revenge / monster-resource-loop / **verify-revenge-pursuit** / obsession。
 - 500 天全激活态 KPI 健康：存活 NPC 123、出生 51、攻伐 1455、道侣对 40。
-- 详见 `docs/balance/tuning-2026-06-02-archetype-behavior.md`（含每批完整诊断过程与数据）。
+- 详见 `ADR-037`（含每批完整诊断过程与数据）。
 
 ## 未解问题
 
@@ -106,3 +106,4 @@ demon 势力 NPC 修炼 89-95%，根因是**妖族经济死循环**：`breakthro
 - ADR-023（流派执念体系）—— 批五复核的对象。
 - ADR-028（关系驱动决策）/ ADR-029（师徒互动）—— 批三激活的整套行为的定义来源。
 - ADR-026（妖兽资源化）—— 批一妖兽行为、批六妖族经济死循环的相关闭环。
+

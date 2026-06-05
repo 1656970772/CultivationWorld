@@ -1,4 +1,4 @@
-# ADR-017: 价值-风险决策系统 + 修炼曲线改造
+﻿# ADR-017: 价值-风险决策系统 + 修炼曲线改造
 
 > 日期：2026-05-30
 > 状态：已采纳
@@ -83,7 +83,7 @@ A* 要求 step cost 在**单次规划内稳定**。因此：
 
 - 配置：`data/config/ai-config.json`(npc.decision)、`data/balance/cultivation.json`(cultivationDecayK/minCultivationRatio)、
   `data/balance/personality.json`(justice)、`data/balance/social.json`(personalityMutationRange)、
-  `data/actions/npc-actions.json`(valueScore/riskKey)、`data/definitions/resources.json`(value 预留)。
+  `data/actions/npc-actions.json`(valueScore/riskKey)、`data/definitions/macro-resources.json 或 data/items/`(value 预留)。
 - 决策计算：`js/engine/npc/npc-actions.js`（`estimateRiskCost`/`computeActionValue`/`computeDecisionCost`、修炼衰减、insight 封顶）。
 - 行为基类：`js/engine/abstract/action.js`（`valueScore`/`riskKey`/`getBaseCost`）。
 - 规划器：`js/engine/abstract/goap-planner.js`（`plan(costFn)`，慢/快路径用 costFn）。
@@ -102,8 +102,8 @@ A* 要求 step cost 在**单次规划内稳定**。因此：
 
 ## 验证（2026-05-30）
 
-- `node tools/test-goap-golden.mjs` 指纹 **`989688d2`**：因 `costFn` 为可选、默认仍走 `getPlanCost()`，
-  该测试不传 costFn，故规划逻辑零漂移、指纹与改造前一致（确认 GOAP 默认路径无回归）。价值-风险仅在 NPC 实际决策时经 `_planBehavior` 传入 costFn 生效。
+- `node tools/test-goal-equivalence.mjs` 摘要 **`989688d2`**：因 `costFn` 为可选、默认仍走 `getPlanCost()`，
+  该测试不传 costFn，故规划逻辑默认关闭不改变既有行为、摘要与改造前一致（确认 GOAP 默认路径无回归）。价值-风险仅在 NPC 实际决策时经 `_planBehavior` 传入 costFn 生效。
 - `node tools/simulate-analysis.mjs 500`：500 天长程模拟无崩溃（~32s）。
 - 一次性校验脚本 16 项全过：风险期望值（境界减免↓、勇敢↑）、上头价值注入、`computeDecisionCost`（上头/explore_first 降 cost）、
   闭关指数衰减可累加到顶、insight 封顶 `1-minCultivationRatio`。
@@ -114,3 +114,4 @@ A* 要求 step cost 在**单次规划内稳定**。因此：
 - 道具期望价值接入 `computeActionValue`（待道具产出系统）。
 - 正义感接入决策（行侠/除魔/护道），以及更多性格维度对风险/价值的加成。
 - λ/k/severity/headstrong 参数按长程模拟结果调参；可加上头计数器/日志。
+

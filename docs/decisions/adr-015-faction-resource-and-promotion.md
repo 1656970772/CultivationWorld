@@ -1,4 +1,4 @@
-# ADR-015：宗门资源真相源统一与成员晋升体系
+﻿# ADR-015：宗门资源真相源统一与成员晋升体系
 
 > 日期：2026-05-30
 > 状态：已接受 · 已实现并验证（720 天无头模拟：晋升/继任/考核事件正常触发、无报错、性能无回退）
@@ -43,7 +43,7 @@
 
 为给"挑战上位"提供内在动机，引入**数据驱动的性格系统**（`data/balance/personality.json`，详见 wiki/rules/personality.md）：
 
-- 性格维度 `ambition/caution/loyalty/diplomacy`（0-100，存于 `staticData.personality`）通过 `needBoosts` 表换算为对需求优先级的加成；`ConfigurableEvaluator._personalityBoost` 在评估时施加。性格存于 state 专用字段、**不进 GOAP 状态键**（golden 指纹不变）。
+- 性格维度 `ambition/caution/loyalty/diplomacy`（0-100，存于 `staticData.personality`）通过 `needBoosts` 表换算为对需求优先级的加成；`ConfigurableEvaluator._personalityBoost` 在评估时施加。性格存于 state 专用字段、**不进 GOAP 状态键**（golden 摘要不变）。
 - 新增需求 `need_npc_ambition`（晋升）：野心越高优先级越高，并在**本境修为饱和（cultivationProgress ≥ 0.85）**时进一步抬升，从而压过修炼需求，触发 `act_npc_challenge` → `promoteByLadder`。体现"先修为、后争位"。
 - 探针验证：野心 92、修为 0.9 的弟子规划结果即为"挑战上位"，机制打通。
 
@@ -71,3 +71,4 @@
 - 抽象弟子数与具名成员池统一（招募生成具名外门弟子）。
 - 派系博弈、外部威胁节奏对凝聚力的显式建模。
 - 学院制/国家体制等非传统宗门模板。
+

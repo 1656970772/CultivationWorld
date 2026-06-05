@@ -1,0 +1,64 @@
+{
+  "jobs": [
+    {
+      "id": "job_npc_prepare_dynamic_event",
+      "name": "通用动态事件准备",
+      "category": "dynamic_event",
+      "successEffects": {
+        "preparedForDynamicEvent": { "op": "set", "value": true },
+        "preparedForGenericDynamicEvent": { "op": "set", "value": true }
+      },
+      "interrupt": { "reaction": "pause", "higherDynamicGoal": "abort", "sameDynamicGoal": "keep" },
+      "toils": [
+        { "id": "bind_event", "type": "toil_bind_dynamic_event" },
+        { "id": "validate_announced", "type": "toil_validate_dynamic_event_phase", "params": { "phases": ["announced"] } },
+        { "id": "mark_prepared", "type": "toil_mark_dynamic_event_prepared" }
+      ]
+    },
+    {
+      "id": "job_npc_prepare_secret_realm",
+      "name": "秘境准备",
+      "category": "dynamic_event",
+      "successEffects": {
+        "preparedForDynamicEvent": { "op": "set", "value": true },
+        "preparedForSecretRealm": { "op": "set", "value": true }
+      },
+      "interrupt": { "reaction": "pause", "higherDynamicGoal": "abort", "sameDynamicGoal": "keep" },
+      "toils": [
+        { "id": "bind_event", "type": "toil_bind_dynamic_event" },
+        { "id": "validate_announced", "type": "toil_validate_dynamic_event_phase", "params": { "phases": ["announced"] } },
+        { "id": "ensure_heal_item", "type": "toil_ensure_item", "params": { "itemId": "pill_rejuvenation", "minAmount": 1, "priceItemId": "low_spirit_stone", "priceAmount": 10 } },
+        { "id": "ensure_artifact", "type": "toil_ensure_artifact", "params": { "itemId": "artifact_green_sword", "minGrade": 1, "priceItemId": "low_spirit_stone", "priceAmount": 30 } },
+        { "id": "mark_prepared", "type": "toil_mark_dynamic_event_prepared" }
+      ]
+    },
+    {
+      "id": "job_npc_join_dynamic_event",
+      "name": "参与动态事件",
+      "category": "dynamic_event",
+      "successEffects": { "joinedDynamicEvent": { "op": "set", "value": true } },
+      "interrupt": { "reaction": "pause", "higherDynamicGoal": "abort", "sameDynamicGoal": "keep" },
+      "toils": [
+        { "id": "bind_event", "type": "toil_bind_dynamic_event" },
+        { "id": "move_to_event", "type": "toil_move_to_target", "params": { "targetResolver": "dynamic_event_target" } },
+        { "id": "wait_active", "type": "toil_wait_until_event_phase", "params": { "phases": ["active"] } },
+        { "id": "mark_participant", "type": "toil_mark_dynamic_event_participant" }
+      ]
+    },
+    {
+      "id": "job_npc_prepare_sect_tournament",
+      "name": "宗门大比准备",
+      "category": "dynamic_event",
+      "successEffects": {
+        "preparedForDynamicEvent": { "op": "set", "value": true },
+        "preparedForSectTournament": { "op": "set", "value": true }
+      },
+      "interrupt": { "reaction": "pause", "higherDynamicGoal": "abort", "sameDynamicGoal": "keep" },
+      "toils": [
+        { "id": "bind_event", "type": "toil_bind_dynamic_event" },
+        { "id": "ensure_artifact", "type": "toil_ensure_artifact", "params": { "itemId": "artifact_green_sword", "minGrade": 1, "priceItemId": "low_spirit_stone", "priceAmount": 30 } },
+        { "id": "mark_prepared", "type": "toil_mark_dynamic_event_prepared" }
+      ]
+    }
+  ]
+}

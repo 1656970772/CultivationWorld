@@ -1,4 +1,4 @@
-# ADR-024：信息传播与机会点系统
+﻿# ADR-024：信息传播与机会点系统
 
 最后更新：2026-05-30
 
@@ -46,11 +46,11 @@ NPC 选目标阶段（`collectExtraGoals`）遍历 `knownNews` → 查关联 `Wo
 
 可信度门槛：`reliability < personality.beliefThreshold`（默认 `news.json defaultBeliefThreshold`）的消息被忽略。
 
-## 零漂移保证
+## 默认关闭不改变既有行为保证
 
 - `news.json` / `opportunities.json` 默认 `enabled: false`，禁用态下不产生任何新闻/机会/事件，`tickLog.infoEvents` 仅含既有战报。
 - 新增行为 `act_npc_goto_opportunity` 仅在机会系统启用且 NPC 知晓可行机会时，`collectExtraGoals` 才产出对应 Goal，故不改变既有规划。
-- 验证：`test-goal-equivalence`（400 用例主路径零漂移）通过；`test-info-propagation` 第 6 项确认禁用态零信息事件；激活态（`INFO_ACTIVE=1`）下 `simulate-analysis` 观测到 news_spread / wealth_exposed / opportunity_expired 等涌现事件。
+- 验证：`test-goal-equivalence`（400 用例主路径默认关闭不改变既有行为）通过；`test-info-propagation` 第 6 项确认禁用态零信息事件；激活态（`INFO_ACTIVE=1`）下 `simulate-analysis` 观测到 news_spread / wealth_exposed / opportunity_expired 等涌现事件。
 
 ## 关联
 
@@ -58,3 +58,4 @@ NPC 选目标阶段（`collectExtraGoals`）遍历 `knownNews` → 查关联 `Wo
 - 感知设计：`docs/systems/info-sense.md`。
 - 系统文档：`docs/systems/opportunity-system.md`。
 - 实物与怀璧其罪：ADR-025。
+

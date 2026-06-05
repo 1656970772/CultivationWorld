@@ -1,4 +1,4 @@
-# 数据模型：关系网（Relationship）
+﻿# 数据模型：关系网（Relationship）
 
 > 最后更新：2026-06-01（三期：师徒互动，ADR-029）
 >
@@ -81,7 +81,7 @@ RelationEdge {
 
 ## 关系驱动决策（二期，ADR-028）
 
-受 `relationship.json -> goalsEnabled`（默认 true，`!== false` 为开）总 gate；关闭即回退一期纯数据态（零漂移）。
+受 `relationship.json -> goalsEnabled`（默认 true，`!== false` 为开）总 gate；关闭即回退一期纯数据态（默认关闭不改变既有行为）。
 
 - **NPC Goal**（`GoalSource.RELATIONSHIP`，`npc-entity.js._buildRelationshipGoals`，按优先级单点锁定，写 `state.targetRelationshipId`，经 `relationship_target` resolver 解析坐标）：
   - 护短同门 `assist_sect_mate`：高强度 `same_sect`/`ally` 对象持有复仇目标（遭袭）时前往支援（`act_npc_assist_ally`，结算强化 `same_sect`）。
@@ -101,7 +101,7 @@ RelationEdge {
   - 师傅护徒 `protect_disciple`：徒弟遭袭（`hasRevengeTarget`）时前往护卫（`act_npc_protect_disciple`，优先级 8 > 护短同门 6/传功 7，范围更大）。
   - 徒弟尽孝 `visit_master`：对高强度 `disciple` 边师傅低频探望（`act_npc_visit_master`，强化 `disciple` 边）。
 - **继承遗志**（`tick-manager._collectDeaths` 师傅死亡钩子 → 徒弟 `inheritMasterLegacy`）：① 写 `master_lost` 记忆触发 `revenge` 执念（对凶手，复用复仇链）；② 复制师傅未竟非复仇执念（`inheritableObsessionTypes`）按 `inheritObsessionIntensityMult`(0.7) 折扣给徒弟。
-- **夺舍（轻度）**（`npc-entity._checkSeizeDiscipleObsession`，`onPreTick`）：邪修（低 `justice`+低 `loyalty`）高境界师傅对高资质徒弟起 `seizure` 执念锁定徒弟 → `_resolveRevengeTarget` 认 `seizure` → 复用 hunt/kill 击杀链。未做真正身体接管，留待深挖为流派（见 `relationship-todo.md` 第 8 项）。
+- **夺舍（轻度）**（`npc-entity._checkSeizeDiscipleObsession`，`onPreTick`）：邪修（低 `justice`+低 `loyalty`）高境界师傅对高资质徒弟起 `seizure` 执念锁定徒弟 → `_resolveRevengeTarget` 认 `seizure` → 复用 hunt/kill 击杀链。未做真正身体接管，留待深挖为流派（见 `关系系统后续扩展项` 第 8 项）。
 
 ## 与势力外交的分层
 
@@ -114,5 +114,6 @@ RelationEdge {
 ## 相关
 
 - `docs/decisions/adr-027-relationship-network.md`、`docs/decisions/adr-028-relationship-driven-decisions.md`、`docs/decisions/adr-029-master-disciple-interactions.md`
-- `docs/worldbuilding/wiki/characters/relationship-types.md`、`docs/worldbuilding/wiki/characters/relationship-todo.md`
+- `docs/worldbuilding/wiki/characters/relationship-types.md`、`关系系统后续扩展项`
 - `docs/data-models/npc.md`（NPC 实体）、`docs/data-models/faction.md`（势力外交）
+

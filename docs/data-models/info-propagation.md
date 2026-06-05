@@ -1,4 +1,4 @@
-# 数据模型：信息传播（InfoPropagation）
+﻿# 数据模型：信息传播（InfoPropagation）
 
 > 最后更新：2026-05-30
 >
@@ -57,4 +57,5 @@ InfoEvent {
 - 传播由 `InfoPropagationSystem.tick`（半径）+ `TickManager._propagateChannels`（口耳/城镇/宗门/商会）驱动。
 - NPC 知晓写入 `npc._knownNews: Map<newsId, {reliability, value, opportunityId, subjectId, tickKnown}>`。
 - 知晓后经 `_bestOpportunityFor` 关联机会点并参与 Utility 决策（ADR-024 决策层）。
-- 默认 `enabled=false` 时整套系统静默，保护既有 golden 指纹。
+- 默认 `enabled=false` 时整套系统静默，保护既有 golden 摘要。
+

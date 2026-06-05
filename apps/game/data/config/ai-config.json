@@ -16,6 +16,12 @@
       "_comment": "GOAP 规划器参数（ADR-021 重构后）：step cost 只用纯路径代价，风险/价值/上头等均已迁移至 utility 段。costFloor 防止 A* cost 归零或为负。",
       "costFloor": 0.1
     },
+    "jobs": {
+      "_comment": "Job/Toil 复杂行动编排层。默认关闭；开启后 NPC 默认行为集加入 npc-job-actions.json 中的 JobAction。",
+      "enabled": false,
+      "maxActiveJobsPerNpc": 1,
+      "logToilEvents": true
+    },
     "utility": {
       "_comment": "Utility 选目标层参数（ADR-021）。所有『选什么目标』的价值评估在此配置，GOAP 只负责『如何实现目标』。需配合 data/balance/utility.json 的 enabled 开关一起使用——utility.json enabled=false 时本段的大多数功能亦不生效。",
       "lambdaRisk": 40,

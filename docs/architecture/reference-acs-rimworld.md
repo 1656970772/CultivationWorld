@@ -1,4 +1,4 @@
-# 参考借鉴：了不起的修仙模拟器 & RimWorld 世界架构
+﻿# 参考借鉴：了不起的修仙模拟器 & RimWorld 世界架构
 
 > 最后更新：2026-06-02
 > 类型：架构参考资料（非 ADR，不是已落地决策；用于指导后续重构与设计取舍）
@@ -189,7 +189,7 @@ class Modifier {
 ```
 关键：属性读取改为 `基值 + Σ修正层`（RuntimeState 加 `getEffective(key)`），杜绝直接覆写基值。
 
-**收益**：高（治本，统一特质/丹毒/中毒/增益/灵根加成/境界压制）。**成本**：中（要改属性读取路径，需回归黄金指纹）。**时机**：下一个涉及"状态效果"的功能（如丹药 buff、心魔 debuff）落地前先建这层。
+**收益**：高（治本，统一特质/丹毒/中毒/增益/灵根加成/境界压制）。**成本**：中（要改属性读取路径，需回归旧摘要回归）。**时机**：下一个涉及"状态效果"的功能（如丹药 buff、心魔 debuff）落地前先建这层。
 
 ### 5.2 【高收益】境界/破境改为 Gong-Stage-Neck 数据模型
 
@@ -261,7 +261,7 @@ class Incident { canFire(worldCtx):bool;  execute(worldCtx):result;  weight; coo
 4. **【下批世界事件时】** §5.4 world-rules → Incident 插件。
 5. **【出现 3+ 长流程行为时】** §5.3 Action 多步编排。
 
-> 每项落地都应：先备份 → 跑黄金指纹基线 → 改 → 回归（参考 `docs/balance/simulation-iteration-process.md`）→ 写 ADR。
+> 每项落地都应：先备份 → 跑旧摘要回归基线 → 改 → 回归（参考 `docs/balance/simulation-iteration-process.md`）→ 写 ADR。
 
 ---
 
@@ -279,3 +279,4 @@ class Incident { canFire(worldCtx):bool;  execute(worldCtx):result;  weight; coo
   - Job/Toil：`Verse\AI\JobDrivers\`
   - Incident：`RimWorld\Game\Storyteller\Incidents\Workers\`
   - 知识图谱：`F:\MyTools\ProjectAny\RimWorld\.understand-anything\knowledge-graph.json`
+

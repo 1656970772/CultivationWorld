@@ -1,4 +1,4 @@
-# ADR-023：流派目标体系（夺宝/养老/传承/夺权）
+﻿# ADR-023：流派目标体系（夺宝/养老/传承/夺权）
 
 最后更新：2026-05-30
 
@@ -65,11 +65,11 @@ flowchart TD
 - `apps/game/data/balance/risk.json`：新增 plunder/power 风险键。
 - `apps/game/data/actions/npc-actions.json`：新增 4 个行为定义。
 
-### 黄金指纹变更
+### 旧摘要回归变更
 
-GOAP 黄金测试指纹由 `c4ac92da` 变为 `3c1d45df`。**原因**：`test-goap-golden.mjs` 的指纹包含 `NPC[行为数量]` 及行为键集合，新增 4 个行为使键集合变化、确定性 PRNG 的状态采样序列错位，导致指纹变化。**这不代表现有目标的规划逻辑改变**——`test-goal-equivalence.mjs`（验证 GOAP 主路径行为链）仍通过，且新行为的 effects 均为新键（treasureObtained 等），不贡献于现有目标（cultivation/heal/contribution），不会被现有目标的规划选中。属于"新增行为数据后应重新基线"的预期变更，新基线 `3c1d45df` 已记录。
+GOAP 固定场景回归摘要由 `c4ac92da` 变为 `3c1d45df`。**原因**：`test-goal-equivalence.mjs` 的摘要包含 `NPC[行为数量]` 及行为键集合，新增 4 个行为使键集合变化、确定性 PRNG 的状态采样序列错位，导致摘要变化。**这不代表现有目标的规划逻辑改变**——`test-goal-equivalence.mjs`（验证 GOAP 主路径行为链）仍通过，且新行为的 effects 均为新键（treasureObtained 等），不贡献于现有目标（cultivation/heal/contribution），不会被现有目标的规划选中。属于"新增行为数据后应重新基线"的预期变更，新基线 `3c1d45df` 已记录。
 
-### 零漂移边界
+### 默认关闭不改变既有行为边界
 
 - 关闭态（utility.json/reward.json/obsession.json 各 enabled=false）下，执念 goalMult 与所有 consideration 不生效，未持新执念的 NPC 行为与改造前一致。
 - 新执念默认无人持有；仅当 NPC roll/触发到对应执念，其 Goal 才进入 Utility 选择。
@@ -85,9 +85,10 @@ GOAP 黄金测试指纹由 `c4ac92da` 变为 `3c1d45df`。**原因**：`test-goa
 
 ## 平衡验证（2026-05-30）
 
-为确认高风险流派（夺宝/夺权）激活后不会引发人口崩溃，用 `tools/simulate-analysis.mjs` 在**激活态**（环境变量 `UTILITY_ACTIVE=1` 在内存中把 utility/reward/obsession.goalMult 的 `enabled` 覆盖为 true，不写回 JSON，保护默认零漂移）下跑世界模拟。
+为确认高风险流派（夺宝/夺权）激活后不会引发人口崩溃，用 `tools/simulate-analysis.mjs` 在**激活态**（环境变量 `UTILITY_ACTIVE=1` 在内存中把 utility/reward/obsession.goalMult 的 `enabled` 覆盖为 true，不写回 JSON，保护默认默认关闭不改变既有行为）下跑世界模拟。
 
 - **分化测试**：`tools/test-utility-divergence.mjs` 全部通过——同境界 6 个人格/执念各异的 NPC 选出 6 种不同 top 目标（养老/复仇/夺权/修炼/传承/证道），证明流派分化机制生效；期望收益（ADR-022）对夺宝目标提供吸引力，关闭后分数明显下降。
-- **零漂移**：`test-goap-golden.mjs` 指纹 `3c1d45df`、`test-goal-equivalence.mjs` 400 用例均通过，新增行为数据未改变现有目标规划路径。
+- **默认关闭不改变既有行为**：`test-goal-equivalence.mjs` 摘要 `3c1d45df`、`test-goal-equivalence.mjs` 400 用例均通过，新增行为数据未改变现有目标规划路径。
 - **人口曲线（激活态 1500 天）**：存活 NPC 151 → 261，全程单调增长，仅 2 例死亡，112 个新生；执念分布出现 supremacy/power/retire/resurrection/longevity，养老流（retire）随 NPC 老化经条件触发自然萌生。
 - **结论**：现有 risk.json 风险参数 + 决策冷却 + 实力/职位门槛足以约束高风险流派，激活态下**未观测到人口崩溃**，无需额外下调收益或上调风险。夺宝流（先天高 courage）与传承流（高龄高职位）在固定核心 NPC 池 + 短期模拟下样本偏少，属随机性格分布与时长所致，非机制缺陷；后续可在更大世界/更长周期复测占比。
+

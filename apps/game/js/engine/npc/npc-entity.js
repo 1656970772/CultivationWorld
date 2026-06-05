@@ -81,6 +81,7 @@ export class NPCEntity extends BaseEntity {
     this._emotionConfig = entityConfig.emotionConfig || {};
     this._utilityConfig = entityConfig.utilityConfig || {};
     this._economyConfig = entityConfig.economyConfig || {};
+    this._actionSets = entityConfig.actionSets || {};
     this.initStaticData(npcConfig);
     this.state = new NPCState(npcConfig, ranksData, entityConfig.gameConfig || {}, this._rng);
     // 把性格暴露到 state 上（仅作只读引用，存于专用字段，不进 _values，故不污染 GOAP 状态键）
@@ -431,8 +432,10 @@ export class NPCEntity extends BaseEntity {
     const result = this.behaviorSystem?.getLastPlanResult?.();
     if (result?.goalSource === GoalSource.DYNAMIC && result.dynamicEventId) {
       this.state.set('targetDynamicEventId', result.dynamicEventId);
+      this.state.set('targetDynamicEventType', result.dynamicEventType || null);
     } else {
       this.state.set('targetDynamicEventId', null);
+      this.state.set('targetDynamicEventType', null);
     }
   }
 
@@ -659,7 +662,7 @@ export class NPCEntity extends BaseEntity {
   }
 
   _initActions(config) {
-    const actionIds = config.actionIds || [
+    const defaultActionIds = this._actionSets.defaultNpcActionIds || [
       'act_npc_cultivate', 'act_npc_train_chamber',
       'act_npc_serve_faction', 'act_npc_heal',
       'act_npc_seek_elixir', 'act_npc_challenge',
@@ -693,10 +696,14 @@ export class NPCEntity extends BaseEntity {
       // 且仅当 reaction.enabled=true 时反应层才会消费刺激，故加入可用池不改变既有规划。
       'act_npc_react_flee', 'act_npc_react_retreat',
       'act_npc_react_heal', 'act_npc_react_counter',
-      // 动态世界事件行为（ADR-048）：准备/参与已被动态 Goal 实际选中的事件。
-      // 仅当 dynamic-goals 产出对应目标并绑定 targetDynamicEventId 时进入规划。
-      'act_npc_prepare_dynamic_event', 'act_npc_join_dynamic_event',
     ];
+    const actionIds = config.actionIds
+      ? config.actionIds
+      : [
+          ...defaultActionIds,
+          ...(this._aiConfig.jobs?.enabled === true ? (this._actionSets.defaultNpcJobActionIds || []) : []),
+        ];
+    this.state.set('jobsEnabled', this._aiConfig.jobs?.enabled === true);
 
     const actions = [];
     for (const actionId of actionIds) {
@@ -707,7 +714,7 @@ export class NPCEntity extends BaseEntity {
     this._applyCultivationCapPreconditions(actions);
     const maxDepth = this._aiConfig.maxDepth ?? 10;
     const maxIterations = this._aiConfig.maxIterations ?? 300;
-    this.initBehaviorSystem(actions, { maxDepth, maxIterations });
+    this.initBehaviorSystem(actions, { maxDepth, maxIterations }, { jobsEnabled: this._aiConfig.jobs?.enabled === true });
   }
 
   /**

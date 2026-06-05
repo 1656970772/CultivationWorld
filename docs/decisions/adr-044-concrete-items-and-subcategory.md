@@ -1,14 +1,14 @@
-# ADR-044：具体命名道具替换泛称占位项 + 引入 subCategory 子类
+﻿# ADR-044：具体命名道具替换泛称占位项 + 引入 subCategory 子类
 
 最后更新：2026-06-03
 
-状态：已采纳并实施（2026-06-03）。仅换具体 ID/补 subCategory，数值（value/combatBonus/effects 数值）严格等价，零漂移。
+状态：已采纳并实施（2026-06-03）。仅换具体 ID/补 subCategory，数值（value/combatBonus/effects 数值）严格等价，默认关闭不改变既有行为。
 
 > 关联：[ADR-043](adr-043-item-resource-unified-taxonomy.md)（资源与物品统一分类）、[ADR-042](adr-042-gameplay-ability-system.md)（GAS 通用 Effect 原语化）、[ADR-025](adr-025-item-covet-system.md)（可转移实物与怀璧其罪）。
 
 ## 背景
 
-`data/items/items.json` 中存在两类「泛」物品：
+`data/items/` 中存在两类「泛」物品：
 
 1. **机制必需的泛类**（货币、分级基底、任务兼容 ID）——是系统运行依赖的抽象单位，不该删。
 2. **纯泛称占位道具**——只是「下品法器/中品法宝/上品古宝/仙家灵宝」「功法秘籍（下乘/中乘/上乘/仙家）」这类没有专有名词、缺乏世界观质感的占位项，与 `docs/世界观参考/<作品>/物品设定.md` 中大量具体道具（青竹蜂云剑、虚天鼎、大衍诀、九曲灵参……）脱节。
@@ -62,10 +62,11 @@
 - 被旧泛称占位 ID 引用处全部改指新 ID（`reward.json` opportunity_* 掉落、`economy.json` artifact_low 兑换、`quest-templates.json` 秘境随机奖励、`test-quest-reward-economy.mjs`/`test-info-propagation.mjs` 断言），保持 prob/value/qty/combatBonus 不变。
 - `monsters.json`/`monster-resources.js`/`donationRules`/`factions.json`/`terrains.json`/`constants.js` 因只用保留的泛类，**无需改动**。
 
-## 验证（禁止黄金指纹自证）
+## 验证（禁止旧摘要回归自证）
 
 1. items.json JSON 合法、无重复 ID、无残留旧泛称占位 ID。
 2. 运行时/脚本无残留旧 ID 引用（全量搜索确认）。
 3. 现有验证脚本通过：`verify-effect-reuse`、`test-quest-reward-economy`、`test-monster-resource-loop`、`test-info-propagation`、`verify-gas-combat`。
-4. `verify-determinism` 指纹前后一致（仅换 ID、数值等价）。
+4. `verify-determinism` 摘要前后一致（仅换 ID、数值等价）。
 5. `simulate-analysis` 多种子、足量天数、全量 NPC 真实长程模拟，经济/掉落/装备分布无退化。
+

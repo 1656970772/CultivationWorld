@@ -1,0 +1,14 @@
+{
+  "jobs": [
+    {
+      "id": "job_npc_find_companion",
+      "name": "寻找同行者",
+      "category": "social",
+      "successEffects": { "hasCompanionForDynamicEvent": { "op": "set", "value": true } },
+      "toils": [
+        { "id": "select_companion", "type": "toil_select_companion" },
+        { "id": "request_companion", "type": "toil_request_companion" }
+      ]
+    }
+  ]
+}

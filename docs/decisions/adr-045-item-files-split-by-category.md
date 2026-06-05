@@ -1,14 +1,14 @@
-# ADR-045：物品定义按 category 拆分为多文件 + 加载时合并
+﻿# ADR-045：物品定义按 category 拆分为多文件 + 加载时合并
 
 最后更新：2026-06-03
 
-状态：已采纳并实施（2026-06-03）。纯文件组织调整，内容/字段/ID/数值与拆分前逐一等价，确定性指纹 `1169158b` 零漂移。
+状态：已采纳并实施（2026-06-03）。纯文件组织调整，内容/字段/ID/数值与拆分前逐一等价，确定性摘要 `1169158b` 默认关闭不改变既有行为。
 
 > 关联：[ADR-044](adr-044-concrete-items-and-subcategory.md)（具体道具 + subCategory）、[ADR-043](adr-043-item-resource-unified-taxonomy.md)（资源与物品统一分类）、[ADR-042](adr-042-gameplay-ability-system.md)（GAS 通用 Effect 原语化，EffectPool 合并加载 `effects/` 全部文件的先例）。
 
 ## 背景
 
-`data/items/items.json` 单文件已累积 78 项、约 900+ 行，涵盖 6 个 category（currency/material/pill/artifact/talisman/technique）。单文件带来：
+`data/items/` 单文件已累积 78 项、约 900+ 行，涵盖 6 个 category（currency/material/pill/artifact/talisman/technique）。单文件带来：
 
 - 编辑时跨类别滚动、定位困难，合并冲突面大。
 - 与 `effects/` 目录「按机制类型一目录多文件、加载合并」的既有约定不一致（ADR-042 已确立 EffectPool 合并加载 `effects/combat-effects.json` + `effects/core-effects.json`）。
@@ -18,7 +18,7 @@
 
 ### 1. 按 category 拆分为 6 个文件
 
-`items/items.json` → 拆为 `items/` 目录下每 category 一文件：
+`items/` → 拆为 `items/` 目录下每 category 一文件：
 
 | 文件 | category | 项数 | 含 |
 |------|----------|------|----|
@@ -51,9 +51,10 @@
 - 加载逻辑新增「物品文件清单」单点（加载器），与 effects 清单对称。
 - 不改变任何运行时语义。
 
-## 验证（零漂移 + 真实模拟）
+## 验证（默认关闭不改变既有行为 + 真实模拟）
 
 - 6 文件 JSON 合法、合并后 78 项无重复 ID（与原 `items.json` 一致）。
 - `tools/verify-effect-reuse.mjs`：通过（聚气丹/灵果/强者精血/灵石多来源复用 `ge_add_qi` 等，数值各取自各自 effects）。
-- `tools/verify-determinism.mjs`：seed=12345 指纹 `1169158b`（与拆分前一致，**零漂移**）；同种子复现、不同种子区分均通过。
+- `tools/verify-determinism.mjs`：seed=12345 摘要 `1169158b`（与拆分前一致，**默认关闭不改变既有行为**）；同种子复现、不同种子区分均通过。
 - `tools/verify-gas-combat.mjs`（3 种子 × 800 天）：通过；锁血/遁地经统一管线生效，法宝/符箓战斗系统无退化。
+

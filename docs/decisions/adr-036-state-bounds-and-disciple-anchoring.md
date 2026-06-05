@@ -1,4 +1,4 @@
-# ADR-036：状态边界钳制与弟子锚定真实 NPC（修地基）
+﻿# ADR-036：状态边界钳制与弟子锚定真实 NPC（修地基）
 
 最后更新：2026-06-01
 
@@ -41,21 +41,21 @@ v5（ADR-035）打通了"势力覆灭 0→1"，但迭代中暴露：那次覆灭
 - 改 `js/engine/npc/quest-rewards.js`：maxStability 默认 105 → 100。
 - 改 `js/engine/world/world-rules.js`：弟子上限锚定真实活 NPC + 超额回归；预计算每势力活 NPC 数。
 - 改 `data/balance/economy.json`：新增 `discipleNpcRatio:25` / `discipleRegressRate:3` / `discipleFloor:0`。
-- 备份 `docs/balance/backup/pre-tuning-v6-*`。不改任何对外 API 签名。
+- 备份 `历史备份（已清理）：pre-tuning-v6-*`。不改任何对外 API 签名。
 
 ## 后果
 
 - 稳定度回到 `[0,100]`（3145 → 100）；disciples 锚定真实 NPC（上万 → 0~500 健康差异化）。
 - 势力覆灭在**真实健康状态下**重现（万妖山，0→1），不再依赖 bug 绕过。
 - 势力实力梯度真实反映人口分布——世界"实力反映真实"的关键。
-- 全程数据驱动可回退；GOAP 黄金指纹 `5740e12a` 零漂移；回归测试通过。
+- 全程数据驱动可回退；GOAP 旧摘要回归 `5740e12a` 默认关闭不改变既有行为；回归测试通过。
 
 ## 验证
 
 - 2000 天冒烟 ×2：修 A 后稳定度 3145 → ≤101（再修 quest-rewards 后 ≤100）；修 B 后 disciples 上万 → 0~500 差异化、覆灭重现。
 - 5000 天定稿：稳定度 70~100，disciples 0~500，势力覆灭 1，末态存活 NPC 48，出生 75，突破 89。
-- GOAP 黄金指纹 `5740e12a` 零漂移；回归通过（goap-golden / revenge / relationship-goals / monster-resource-loop）。
-- 详见 `docs/balance/tuning-2026-06-01-v6-result.md`。
+- GOAP 旧摘要回归 `5740e12a` 默认关闭不改变既有行为；回归通过（goal-equivalence / revenge / relationship-goals / monster-resource-loop）。
+- 详见 `ADR-036`。
 
 ## 未解问题（v7）
 
@@ -68,3 +68,4 @@ v5（ADR-035）打通了"势力覆灭 0→1"，但迭代中暴露：那次覆灭
 - ADR-035（势力凝聚力与危亡抉择 —— v5 覆灭建立在本 ADR 修复的地基之上才扎实）。
 - ADR-034（人口可持续 —— 本 ADR 修掉了它点出的"抽象资源脱钩"未解问题）。
 - ADR-033（自迭代优化流程）+ `docs/balance/simulation-iteration-process.md`。
+

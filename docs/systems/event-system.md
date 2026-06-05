@@ -1,103 +1,80 @@
 # 系统设计：事件系统
 
-> 最后更新：2026-05-23
+> 最后更新：2026-06-05
 
 ## 概述
 
-混合事件系统：规则生成常规事件 + 预设特殊事件。
+当前事件体系由三类机制组成：
 
-## 1. 规则引擎（常规事件）
+1. **世界规则**：`actions/world-rules.json` + `world-rules.js`，每 tick 执行资源恢复、修正器生成/衰减、天灾等规则。
+2. **信息与机会点**：`world/news.json`、`world/opportunities.json`，把事件转成消息、传播和可争夺机会。
+3. **动态世界事件**：`world/dynamic-events.json` + `goals/dynamic-goals.json`，表达有时间窗口的事件，并临时产出 NPC 动态目标。
 
-每条规则定义在 `data/rules.json` 中，结构：
+早期的独立规则 JSON / 预设事件 JSON 方案已不再是游戏运行时入口。
 
-```javascript
-Rule {
-  id: string,
-  name: string,
-  conditions: Condition[],     // 触发条件列表（AND 关系）
-  eventType: string,           // 产生的事件类型
-  probability: number,         // 触发概率 0-1
-  cooldown: number             // 冷却天数
-}
+## 世界规则
 
-Condition {
-  type: string,                // 条件类型
-  params: object               // 条件参数
-}
+| 数据 | 代码 | 职责 |
+|------|------|------|
+| `apps/game/data/actions/world-rules.json` | `apps/game/js/engine/world/world-rules.js` | 注册世界级 ActionExecutor |
+| `apps/game/data/world/modifiers.json` | `WorldEntity` / `ModifierSpawnExecutor` | 世界修正器模板 |
+| `apps/game/data/balance/economy.json` | `ResourceRegenExecutor` | 资源恢复、消耗、薪俸、大阵维护 |
+
+当前世界规则执行器：
+
+- `world_modifier_spawn`
+- `world_modifier_decay`
+- `world_natural_disaster`
+- `world_resource_regen`
+
+## 信息与机会点
+
+```mermaid
+flowchart LR
+  Event["世界事件/死亡/暴露/机会"] --> News["WorldNews"]
+  News --> Spread["InfoPropagationSystem"]
+  Spread --> Known["NPC 已知消息"]
+  Known --> Opp["WorldOpportunity"]
+  Opp --> Goal["GoalSource.OPPORTUNITY"]
+  Goal --> GOAP["GOAP 行动"]
 ```
 
-### 规则示例
+相关文档：`systems/opportunity-system.md`、`systems/item-covet.md`。
 
-**宗门攻伐：**
-- 条件：两势力敌对（好感度 < -50）且领地相邻 且 攻方稳定度 > 50% 且 攻方掌门 ambition > 60
-- 概率：0.3（每天 30% 概率）
-- 冷却：10 天
+## 动态世界事件
 
-**结盟：**
-- 条件：两势力好感度 > 60 且有共同敌人 且 掌门 diplomacy > 50
-- 概率：0.2
-- 冷却：20 天
+动态事件用于表达“未来会发生或正在发生、NPC 可提前准备/窗口参与”的事件。
 
-**叛乱：**
-- 条件：势力稳定度 < 30% 且弟子数 > 100
-- 概率：0.1
-- 冷却：30 天
-
-## 2. 预设特殊事件
-
-定义在 `data/events.json` 中，有固定触发条件和冷却时间：
-
-```javascript
-PresetEvent {
-  id: string,
-  name: string,
-  description: string,
-  triggerCondition: object,    // 触发条件
-  cooldown: number,            // 冷却天数
-  duration: number,            // 持续天数
-  effects: object,             // 世界效果
-  playerChoices: Choice[]      // 玩家可介入时的选项
-}
+```mermaid
+stateDiagram-v2
+  [*] --> scheduled
+  scheduled --> announced
+  announced --> active
+  active --> resolved
+  resolved --> expired
 ```
 
-### 预设事件示例
+### 数据
 
-- **秘境开启** —— 每隔 50 天 + 灵气复苏期间概率翻倍
-- **天劫降临** —— 某区域遭受天雷，建筑损毁
-- **妖潮** —— 妖兽活跃期间，边境大规模妖兽攻击
-- **上古遗迹发现** —— 随机位置出现遗迹，势力争夺
+- `apps/game/data/world/dynamic-events.json`：事件日程、可见范围、坐标、价值、风险。
+- `apps/game/data/goals/dynamic-goals.json`：事件类型/阶段 → 动态 Goal。
+- `apps/game/data/actions/npc-actions.json`：动态事件准备/参与行为。
 
-## 3. 玩家可介入事件
+### 代码
 
-当事件发生在玩家所在格子或神识范围内时，弹出选项：
+| 组件 | 文件 | 职责 |
+|------|------|------|
+| `WorldEventSystem` | `engine/world/world-event.js` | 事件生命周期、可见窗口、参与/准备标记 |
+| `EventAwareness` | `engine/npc/event-awareness.js` | NPC 已知事件 |
+| `DynamicGoalProvider` | `engine/npc/dynamic-goals.js` | 已知事件转成临时 Goal |
+| `InterruptPolicy` | `engine/npc/interrupt-policy.js` | 是否打断当前行为 |
+| 动态事件行为 | `engine/npc/actions/dynamic-event-actions.js` | 准备事件、参与事件 |
 
-```javascript
-Choice {
-  text: string,               // 选项文本
-  actionPointCost: number,     // 行动点消耗（天数 × 5）
-  effects: object              // 选择产生的效果
-}
-```
+## 与四层 AI 的关系
 
-### 示例
+- Reaction：处理被攻击、濒死等即时刺激。
+- Dynamic Goal：处理秘境、大比、高手陨落、关系伤亡等事件窗口。
+- GOAP：只规划如何达成目标，不判断事件生命周期。
+- Execution：执行行为，并按 `InterruptPolicy` 处理打断。
 
-```
-事件：青云宗正在被血煞门围攻
-
-  A. 出手相助青云宗（消耗 3 天）→ 青云宗胜率 +40%，好感 +30
-  B. 暗中帮助血煞门（消耗 2 天）→ 血煞门胜率 +30%，好感 +20
-  C. 趁乱探索战场（消耗 1 天）→ 可能获得情报
-  D. 静观其变 → 不消耗行动点，无影响
-  E. 离开此地 → 不消耗行动点，移出事件范围
-```
-
-## 4. 事件工厂（EventFactory）
-
-使用工厂模式创建事件实例，新增事件类型只需在工厂中注册：
-
-```javascript
-EventFactory.register("siege", SiegeEvent)
-EventFactory.register("alliance", AllianceEvent)
-EventFactory.register("rebellion", RebellionEvent)
-EventFactory.register("secret_realm", SecretRealmEvent)
-```
+架构决策见 `docs/decisions/adr-049-dynamic-goal-interrupt-policy.md`。

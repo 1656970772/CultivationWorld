@@ -1,0 +1,100 @@
+[
+  {
+    "id": "act_npc_prepare_dynamic_event",
+    "name": "筹备动态事件",
+    "description": "JobAction：由 GOAP 规划，Execution 启动 job_npc_prepare_dynamic_event。",
+    "category": "npc_job",
+    "executionKind": "job",
+    "jobId": "job_npc_prepare_dynamic_event",
+    "weight": 1,
+    "valueScore": 8,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" },
+      "dynamicEventUsesGenericPreparation": { "op": "true" }
+    },
+    "effects": {},
+    "plannerEffects": {
+      "preparedForDynamicEvent": { "op": "set", "value": true },
+      "preparedForGenericDynamicEvent": { "op": "set", "value": true }
+    }
+  },
+  {
+    "id": "act_npc_join_dynamic_event",
+    "name": "参与动态事件",
+    "description": "JobAction：由 GOAP 规划，Execution 启动 job_npc_join_dynamic_event。",
+    "category": "npc_job",
+    "executionKind": "job",
+    "jobId": "job_npc_join_dynamic_event",
+    "weight": 3,
+    "valueScore": 14,
+    "riskKey": "plunder",
+    "preconditions": { "alive": { "op": "true" } },
+    "effects": {},
+    "plannerEffects": { "joinedDynamicEvent": { "op": "set", "value": true } }
+  },
+  {
+    "id": "act_npc_prepare_secret_realm",
+    "name": "准备秘境",
+    "category": "npc_job",
+    "executionKind": "job",
+    "jobId": "job_npc_prepare_secret_realm",
+    "weight": 4,
+    "valueScore": 14,
+    "riskKey": "plunder",
+    "preconditions": {
+      "alive": { "op": "true" },
+      "dynamicEventIsSecretRealm": { "op": "true" }
+    },
+    "effects": {},
+    "plannerEffects": {
+      "preparedForDynamicEvent": { "op": "set", "value": true },
+      "preparedForSecretRealm": { "op": "set", "value": true }
+    }
+  },
+  {
+    "id": "act_npc_prepare_sect_tournament",
+    "name": "筹备宗门大比",
+    "category": "npc_job",
+    "executionKind": "job",
+    "jobId": "job_npc_prepare_sect_tournament",
+    "weight": 3,
+    "valueScore": 10,
+    "riskKey": "pvp",
+    "preconditions": {
+      "alive": { "op": "true" },
+      "dynamicEventIsSectTournament": { "op": "true" }
+    },
+    "effects": {},
+    "plannerEffects": {
+      "preparedForDynamicEvent": { "op": "set", "value": true },
+      "preparedForSectTournament": { "op": "set", "value": true }
+    }
+  },
+  {
+    "id": "act_npc_acquire_heal_item",
+    "name": "获取疗伤物资",
+    "category": "npc_job",
+    "executionKind": "job",
+    "jobId": "job_npc_acquire_heal_item",
+    "weight": 2,
+    "valueScore": 8,
+    "riskKey": null,
+    "preconditions": { "alive": { "op": "true" } },
+    "effects": {},
+    "plannerEffects": { "hasHealItem": { "op": "set", "value": true } }
+  },
+  {
+    "id": "act_npc_acquire_artifact",
+    "name": "获取法器",
+    "category": "npc_job",
+    "executionKind": "job",
+    "jobId": "job_npc_acquire_artifact",
+    "weight": 3,
+    "valueScore": 10,
+    "riskKey": null,
+    "preconditions": { "alive": { "op": "true" } },
+    "effects": {},
+    "plannerEffects": { "hasEquippedArtifact": { "op": "set", "value": true } }
+  }
+]

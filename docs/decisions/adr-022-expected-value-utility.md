@@ -1,4 +1,4 @@
-# ADR-022：期望收益（Expected Value）Utility 模型
+﻿# ADR-022：期望收益（Expected Value）Utility 模型
 
 最后更新：2026-05-30
 
@@ -75,7 +75,7 @@ GoalScore
 ```
 
 - `value` 归一化到 `[0,1]`（相对收益），`ExpectedValue` 因 `Σprob×value` 自然落在 `[0,1]`。
-- `enabled=false`（默认）时不计算期望收益，零漂移。
+- `enabled=false`（默认）时不计算期望收益，默认关闭不改变既有行为。
 
 ### 代码：consideration.js
 
@@ -89,11 +89,11 @@ GoalScore
 
 新增 `expectedValue` 段（如 `{ "enabled": true }`）作为总开关说明；实际数据在 reward.json。
 
-## 零漂移保证
+## 默认关闭不改变既有行为保证
 
 - `reward.json enabled=false`（默认）时，`deriveExpectedValue` 返回 0，无 reward 目标的 expectedValue consideration 不参与（或值为常量），且 `utility.json enabled=false` 时整个 decorate 提前返回。
-- 本 ADR 仅改 Utility 层（reward 仅在激活态、且仅对配置了 reward 的目标生效），不改 GOAP 行为数据，黄金指纹 `c4ac92da` 在本 ADR 阶段保持不变。
-  > 注：随后的 ADR-023 因新增流派行为数据使黄金指纹变为 `3c1d45df`（见 ADR-023 说明）；`test-goal-equivalence.mjs` 始终通过，证明现有目标规划路径零漂移。
+- 本 ADR 仅改 Utility 层（reward 仅在激活态、且仅对配置了 reward 的目标生效），不改 GOAP 行为数据，旧摘要回归 `c4ac92da` 在本 ADR 阶段保持不变。
+  > 注：随后的 ADR-023 因新增流派行为数据使旧摘要回归变为 `3c1d45df`（见 ADR-023 说明）；`test-goal-equivalence.mjs` 始终通过，证明现有目标规划路径默认关闭不改变既有行为。
 - 新增 `tools/test-utility-divergence.mjs` 在激活态验证赌狗流/稳健流对高期望收益目标的分化。
 
 ## 权衡
@@ -104,3 +104,4 @@ GoalScore
 | 赌狗流/稳健流分化 | 仅靠风险厌恶强弱 | 收益吸引 × 风险惩罚双向分化 |
 | 秘境/夺宝表达 | 价值固定 | 概率性收益（仙器/法宝/材料/空手） |
 | 数据复杂度 | 仅 risk.json | risk.json + reward.json（职责分离） |
+

@@ -1,4 +1,4 @@
-# ADR-031：编辑器 v2 重写（适配 game/data 全部数据集 + 写回 + 快照回滚）
+﻿# ADR-031：编辑器 v2 重写（适配 game/data 全部数据集 + 写回 + 快照回滚）
 
 最后更新：2026-06-01
 
@@ -169,7 +169,7 @@
 - **调参闭环**：编辑器改 → 终端跑仿真 → 看报告（虽然没集成，但路径清晰）。
 - **不破坏游戏**：写坏有快照兜底，回滚一秒恢复。
 - **可扩展**：未来 game 加新数据集，编辑器自动认。
-- **零漂移**：game/data 文件格式不动，仿真器读老 JSON 行为不变。
+- **默认关闭不改变既有行为**：game/data 文件格式不动，仿真器读老 JSON 行为不变。
 
 ## 验证
 
@@ -183,3 +183,4 @@
 - `docs/architecture/file-structure.md` —— 编辑器目录约定。
 - `docs/architecture/design-patterns.md` —— 数据驱动 + 策略模式。
 - `docs/data/data-config-rules.md` —— game/data 命名/分类规范。
+

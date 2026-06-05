@@ -1,41 +1,39 @@
 # 系统设计：Canvas 渲染方案
 
-> 最后更新：2026-05-23
+> 最后更新：2026-06-05
 
 ## 概述
 
-使用原生 Canvas 2D API 渲染 100×100 格子地图。
+游戏使用原生 Canvas 2D 渲染 300×300 地图。主角玩法使用 `Renderer`，自动模拟视图使用 `SimulationRenderer`。
 
-## 渲染结构
+## 组件
 
-```
-Renderer（主渲染器）
-├── Camera（相机：平移、缩放）
-├── TileRenderer（格子渲染：地形、势力颜色）
-└── FogRenderer（迷雾渲染：神识范围外遮挡）
-```
+| 组件 | 文件 | 职责 |
+|------|------|------|
+| `Camera` | `apps/game/js/renderer/camera.js` | 平移、缩放、视口换算 |
+| `TileRenderer` | `apps/game/js/renderer/tile-renderer.js` | 地形、领地格子绘制 |
+| `FogRenderer` | `apps/game/js/renderer/fog-renderer.js` | 玩家视野/迷雾 |
+| `Renderer` | `apps/game/js/renderer/renderer.js` | 玩家玩法主渲染器 |
+| `SimulationRenderer` | `apps/game/js/renderer/simulation-renderer.js` | 自动模拟实体和事件渲染 |
 
-## 相机（Camera）
+## 渲染内容
 
-- 鼠标拖拽 → 平移视口
-- 滚轮 → 缩放（最小到能看全图，最大到能看清单格）
-- 每格尺寸根据缩放级别动态计算（16px - 64px）
+- 地形底图。
+- 势力领地颜色。
+- 玩家位置和视野。
+- NPC / 妖兽 / 机会点 / 事件标记。
+- 缩放、拖拽和平移。
 
-## 格子渲染（TileRenderer）
+## 性能原则
 
-- 每种地形有对应的颜色/简单纹理
-- 势力领地在格子上叠加势力颜色（半透明覆盖）
-- 玩家位置有明显标记（如高亮边框 + 图标）
-- 事件发生处有闪烁/图标提示
+- 只绘制视口可见范围。
+- 地图静态层可缓存，实体层按快照更新。
+- 自动模拟时优先保证观察信息密度，不把渲染和世界 Tick 强绑定。
 
-## 迷雾渲染（FogRenderer）
+## 数据来源
 
-- 神识范围内：正常显示
-- 已到达但不在神识范围内：半透明显示（记忆状态，可能已过期）
-- 从未到达且不在神识范围内：完全黑色迷雾
-
-## 性能考虑
-
-- 只渲染视口内可见的格子（视口裁剪）
-- 缩放到较小级别时，可以合并格子渲染（LOD）
-- 地形基础层可以缓存到离屏 Canvas，只在地图变化时重绘
+- 地图：`apps/game/data/world/map.json`
+- 地形：`apps/game/data/definitions/terrains.json`
+- 快照：`WorldEngine.getWorldSnapshot()`
+- 机会点：`snapshot.opportunities`
+- 关系图：`graph-builder.js` + `graph-panel.js`

@@ -26,6 +26,9 @@
  * @property {boolean} [requiresTravel=false] 是否需先移动到目标地点再执行
  * @property {string} [targetResolver='self'] 目标地点解析方式（self/faction_hq/market/nearest_monster ...）
  * @property {number} [distanceCostPerTile=0] 每格移动折算的 GOAP weight 系数（仅影响规划代价）
+ * @property {'simple'|'job'} [executionKind='simple']
+ * @property {string|null} [jobId]
+ * @property {Object} [jobInput]
  * @property {ActionExecutor} [executor]
  */
 
@@ -45,6 +48,9 @@ export class Action {
     this.weight = config.weight ?? 1;
     this.category = config.category || 'general';
     this.executor = config.executor || null;
+    this.executionKind = config.executionKind || 'simple';
+    this.jobId = config.jobId || null;
+    this.jobInput = config.jobInput || {};
 
     // 价值-风险决策（ADR-017）：基础价值与风险键，供 NPC 决策成本计算读取。
     // valueScore 越高的行为在 decisionCost 中减项越大（更想做）；riskKey 映射 risk.json。
@@ -95,6 +101,10 @@ export class Action {
    */
   getBaseCost() {
     return this._planCost;
+  }
+
+  isJobAction() {
+    return this.executionKind === 'job' && !!this.jobId;
   }
 
   /**
@@ -293,6 +303,9 @@ export class Action {
       name: this.name,
       category: this.category,
       weight: this.weight,
+      executionKind: this.executionKind,
+      jobId: this.jobId,
+      jobInput: this.jobInput,
       preconditions: this.preconditions,
       effects: this.effects,
       costs: this.costs,

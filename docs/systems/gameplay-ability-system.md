@@ -1,4 +1,4 @@
-# 战斗机制层（GAS 化）功能文档
+﻿# 战斗机制层（GAS 化）功能文档
 
 最后更新：2026-06-03
 
@@ -88,7 +88,7 @@
 { "id": "ge_add_qi", "name": "增益·真气", "durationType": "instant",
   "modifiers": [ { "attribute": "qi", "op": "add" } ] }
 
-// data/items/items.json —— 来源自描述数值（spec）
+// data/items/ —— 来源自描述数值（spec）
 { "id": "item_qi_pill", "name": "聚气丹", "category": "pill",
   "effects": [
     { "effect": "ge_add_qi", "magnitude": 120, "magnitudeType": "rankDecay", "baseRankId": "qi_refining", "decay": 0.35, "minMagnitude": 1 },
@@ -180,4 +180,5 @@ grade2 妖兽击杀凡人，orderGap ≥ crushOrderGap → 授予 `Immune.Crush`
 
 - 一切随机走 `worldContext.rng` / 实体 `_rng`（ADR-038），不引入新 `Math.random`。
 - 机制数值全部在 `data/`（effects/abilities/tags/combat.json），代码只读取执行。
-- `combat.json` 新增 `gas.enabled` 开关（默认 true）；关闭时锁血/遁地退回不可用，便于零漂移对照。
+- `combat.json` 新增 `gas.enabled` 开关（默认 true）；关闭时锁血/遁地退回不可用，便于默认关闭不改变既有行为对照。
+
