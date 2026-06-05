@@ -52,6 +52,36 @@ function rulePhases(rule) {
   return new Set(rule.phases);
 }
 
+function configuredRules(config) {
+  if (Array.isArray(config.goals)) return config.goals;
+  if (Array.isArray(config.rules)) return config.rules;
+  return [];
+}
+
+function minConfidenceFor(rule, config) {
+  return Number(
+    rule.requiredAwarenessConfidence
+      ?? rule.minConfidence
+      ?? config.requiredAwarenessConfidence
+      ?? config.minConfidence
+      ?? 0,
+  );
+}
+
+function timeWindowMatches(rule, daysUntilStart) {
+  if (!rule.timeWindowDays) return true;
+  if (Array.isArray(rule.timeWindowDays)) {
+    const [min, max] = rule.timeWindowDays;
+    if (min != null && daysUntilStart < Number(min)) return false;
+    if (max != null && daysUntilStart > Number(max)) return false;
+    return true;
+  }
+  const window = rule.timeWindowDays || {};
+  if (window.min != null && daysUntilStart < Number(window.min)) return false;
+  if (window.max != null && daysUntilStart > Number(window.max)) return false;
+  return true;
+}
+
 export class DynamicGoalProvider {
   /**
    * @param {Object} entity
@@ -74,7 +104,7 @@ export class DynamicGoalProvider {
       ? (id) => worldContext.dynamicEventById(id)
       : null;
     const entries = entity.eventAwareness.knownEvents({ currentDay, eventById });
-    const rules = Array.isArray(config.rules) ? config.rules : [];
+    const rules = configuredRules(config);
     const goals = [];
 
     for (const entry of entries) {
@@ -108,13 +138,11 @@ export class DynamicGoalProvider {
     if (phases && !phases.has(event.phase)) return null;
 
     const confidence = Number(entry.confidence ?? 0);
-    const minConfidence = Number(rule.minConfidence ?? config.minConfidence ?? 0);
+    const minConfidence = minConfidenceFor(rule, config);
     if (confidence < minConfidence) return null;
 
     const daysUntilStart = Number(event.startDay ?? currentDay) - currentDay;
-    const window = rule.timeWindowDays || {};
-    if (window.min != null && daysUntilStart < Number(window.min)) return null;
-    if (window.max != null && daysUntilStart > Number(window.max)) return null;
+    if (!timeWindowMatches(rule, daysUntilStart)) return null;
 
     const priorityBounds = rule.priorityBounds || config.priorityBounds || [0, 100];
     const urgencyBounds = rule.urgencyBounds || config.urgencyBounds || [0, 100];
