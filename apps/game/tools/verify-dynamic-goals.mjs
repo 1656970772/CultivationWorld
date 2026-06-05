@@ -419,7 +419,7 @@ console.log(`  默认配置路径：${gateOptions.useConfigDefaults === true ? '
 console.log(`  启用门：minRecovery=${gateOptions.minRecoveryRatio} requireZeroJobFailures=${gateOptions.requireZeroJobFailures}`);
 console.log(gateOptions.useConfigDefaults === true
   ? '  内存覆盖开关：关闭；完全使用配置文件默认 enabled 状态'
-  : '  内存覆盖开关：dynamicEvents/dynamicGoals/worldNews/worldOpportunities/balanceReward.enabled=true；jobs 仅在 JOBS_ACTIVE=1 时启用');
+  : '  内存覆盖开关：dynamicEvents/dynamicGoals/worldNews/worldOpportunities/balanceReward.enabled=true；jobs 使用配置默认，JOBS_ACTIVE=1 时强制开启');
 console.log('  方式：真实多种子长程模拟，直接观察行为统计');
 
 let failed = 0;
