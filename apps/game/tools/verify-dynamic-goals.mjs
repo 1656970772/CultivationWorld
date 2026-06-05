@@ -71,7 +71,16 @@ function parseArgs() {
   for (const a of process.argv.slice(2)) {
     let m;
     if ((m = /^--days=(\d+)$/.exec(a))) days = parseInt(m[1], 10);
-    else if ((m = /^--seeds=([\d,]+)$/.exec(a))) seeds = m[1].split(',').map(Number).filter(Number.isFinite);
+    else if ((m = /^--seeds=([\d,]+)$/.exec(a))) {
+      seeds = [...new Set(
+        m[1]
+          .split(',')
+          .map(s => s.trim())
+          .filter(Boolean)
+          .map(Number)
+          .filter(Number.isFinite)
+      )];
+    }
   }
   return { days, seeds };
 }
@@ -176,7 +185,9 @@ function recordCandidateGoals(stats, known, rules, config, day, npcId, eventType
 
       const sourceId = rule.id || 'unknown';
       const kind = rule.kind || 'unknown';
+      const key = `${npcId}:${event.id}:${sourceId}:${event.phase}`;
       stats.candidateGoalCount++;
+      stats.uniqueCandidateKeys.add(key);
       stats.candidateGoalNpcs.add(npcId);
       inc(stats.candidateBySource, sourceId);
       inc(stats.candidateByKind, kind);
@@ -220,6 +231,7 @@ function createStats() {
     awareNpcs: new Set(),
     knownEventIds: new Set(),
     candidateGoalCount: 0,
+    uniqueCandidateKeys: new Set(),
     candidateGoalNpcs: new Set(),
     candidateBySource: {},
     candidateByKind: {},
@@ -248,6 +260,10 @@ function createStats() {
     normalPlanBySource: {},
     normalActionCount: 0,
     normalActionNpcs: new Set(),
+    normalPlanAfterDynamic: 0,
+    normalActionAfterDynamic: 0,
+    normalPlanAfterDynamicNpcs: new Set(),
+    normalActionAfterDynamicNpcs: new Set(),
   };
 }
 
@@ -258,6 +274,7 @@ function mergeStats(agg, stats, seed) {
   mergeCounts(agg.phaseByPhaseType, stats.phaseByPhaseType);
   agg.awarenessObservations += stats.awarenessObservations;
   agg.candidateGoalCount += stats.candidateGoalCount;
+  for (const key of stats.uniqueCandidateKeys) agg.uniqueCandidateKeys.add(`${seed}:${key}`);
   mergeCounts(agg.candidateBySource, stats.candidateBySource);
   mergeCounts(agg.candidateByKind, stats.candidateByKind);
   mergeCounts(agg.candidateByEventType, stats.candidateByEventType);
@@ -279,8 +296,12 @@ function mergeStats(agg, stats, seed) {
   agg.normalPlanCount += stats.normalPlanCount;
   mergeCounts(agg.normalPlanBySource, stats.normalPlanBySource);
   agg.normalActionCount += stats.normalActionCount;
+  agg.normalPlanAfterDynamic += stats.normalPlanAfterDynamic;
+  agg.normalActionAfterDynamic += stats.normalActionAfterDynamic;
   for (const id of stats.normalPlanNpcs) agg.normalPlanNpcs.add(`${seed}:${id}`);
   for (const id of stats.normalActionNpcs) agg.normalActionNpcs.add(`${seed}:${id}`);
+  for (const id of stats.normalPlanAfterDynamicNpcs) agg.normalPlanAfterDynamicNpcs.add(`${seed}:${id}`);
+  for (const id of stats.normalActionAfterDynamicNpcs) agg.normalActionAfterDynamicNpcs.add(`${seed}:${id}`);
   for (const [k, v] of Object.entries(stats.dynamicActions)) {
     agg.dynamicActions[k] = (agg.dynamicActions[k] || 0) + v;
   }
@@ -309,6 +330,7 @@ for (const seed of seeds) {
 
   const stats = createStats();
   const lastDynamicActionDay = new Map();
+  let firstDynamicActionDay = null;
   const eventTypesById = new Map();
 
   for (let i = 0; i < days; i++) {
@@ -350,6 +372,10 @@ for (const seed of seeds) {
         stats.normalPlanCount++;
         stats.normalPlanNpcs.add(npcId);
         inc(stats.normalPlanBySource, sourceId);
+        if (firstDynamicActionDay != null && tick.day > firstDynamicActionDay) {
+          stats.normalPlanAfterDynamic++;
+          stats.normalPlanAfterDynamicNpcs.add(npcId);
+        }
       }
 
       const interrupt = update.mind?.dynamicInterrupt || null;
@@ -374,6 +400,7 @@ for (const seed of seeds) {
       if (dynamicAction && isSettledExecution(update)) {
         stats.dynamicActionNpcs.add(npcId);
         lastDynamicActionDay.set(npcId, tick.day);
+        if (firstDynamicActionDay == null) firstDynamicActionDay = tick.day;
         const result = update.execution?.result || {};
         if (actionId === 'act_npc_prepare_dynamic_event') {
           stats.dynamicActions.prepare++;
@@ -390,6 +417,10 @@ for (const seed of seeds) {
       if (isSettledExecution(update) && actionId && !dynamicAction) {
         stats.normalActionCount++;
         stats.normalActionNpcs.add(npcId);
+        if (firstDynamicActionDay != null && tick.day > firstDynamicActionDay) {
+          stats.normalActionAfterDynamic++;
+          stats.normalActionAfterDynamicNpcs.add(npcId);
+        }
       }
     }
   }
@@ -399,7 +430,7 @@ for (const seed of seeds) {
   console.log(`\n  [seed=${seed}] 存活NPC=${engine.entityRegistry.getAliveByType('npc').length}`);
   console.log(`    动态事件阶段变化=${stats.phaseChanges}，按 phase=${JSON.stringify(stats.phaseByPhase)}，按 type=${JSON.stringify(stats.phaseByType)}`);
   console.log(`    知晓动态事件：观察次数=${stats.awarenessObservations}，NPC人数=${stats.awareNpcs.size}，事件数=${stats.knownEventIds.size}`);
-  console.log(`    动态 Goal 候选产出=${stats.candidateGoalCount}，NPC人数=${stats.candidateGoalNpcs.size}`);
+  console.log(`    动态 Goal 候选观察=${stats.candidateGoalCount}，唯一候选=${stats.uniqueCandidateKeys.size}，NPC人数=${stats.candidateGoalNpcs.size}`);
   console.log(`      candidate source=${JSON.stringify(stats.candidateBySource)}`);
   console.log(`      candidate kind=${JSON.stringify(stats.candidateByKind)} type=${JSON.stringify(stats.candidateByEventType)}`);
   console.log(`    动态 Goal plan 次数=${stats.dynamicPlanCount}，NPC人数=${stats.dynamicPlanNpcs.size}`);
@@ -409,6 +440,7 @@ for (const seed of seeds) {
   console.log(`    动态行动：准备=${stats.dynamicActions.prepare}（成功${stats.dynamicActions.prepareSucceeded}），参与=${stats.dynamicActions.join}（成功${stats.dynamicActions.joinSucceeded}）`);
   console.log(`    发生过动态行动NPC=${stats.dynamicActionNpcs.size}，后续恢复普通行为NPC=${stats.recoveredNpcs.size}`);
   console.log(`    普通 plan=${stats.normalPlanCount}，普通行为结算=${stats.normalActionCount}`);
+  console.log(`    首次动态行动后：普通 plan=${stats.normalPlanAfterDynamic}，普通行为结算=${stats.normalActionAfterDynamic}`);
 }
 
 const totalDynamicActions = agg.dynamicActions.prepare + agg.dynamicActions.join;
@@ -423,7 +455,7 @@ console.log(`  按 phase: ${JSON.stringify(agg.phaseByPhase)}`);
 console.log(`  按 type: ${JSON.stringify(agg.phaseByType)}`);
 console.log(`  phase×type: ${JSON.stringify(agg.phaseByPhaseType)}`);
 console.log(`知晓动态事件：观察次数=${agg.awarenessObservations}，NPC人数=${agg.awareNpcs.size}，事件数=${agg.knownEventIds.size}`);
-console.log(`动态 Goal 候选产出=${agg.candidateGoalCount}，NPC人数=${agg.candidateGoalNpcs.size}`);
+console.log(`动态 Goal 候选观察=${agg.candidateGoalCount}，唯一候选=${agg.uniqueCandidateKeys.size}，NPC人数=${agg.candidateGoalNpcs.size}`);
 console.log(`  candidate source=${JSON.stringify(agg.candidateBySource)}`);
 console.log(`  candidate kind=${JSON.stringify(agg.candidateByKind)}`);
 console.log(`  candidate eventType=${JSON.stringify(agg.candidateByEventType)}`);
@@ -437,12 +469,13 @@ console.log(`InterruptPolicy 决策总数=${agg.interruptCount}，decision=${JSO
 console.log(`动态行动：准备=${agg.dynamicActions.prepare}（成功${agg.dynamicActions.prepareSucceeded}），参与=${agg.dynamicActions.join}（成功${agg.dynamicActions.joinSucceeded}），合计=${totalDynamicActions}`);
 console.log(`发生过动态行动NPC=${agg.dynamicActionNpcs.size}，后续恢复普通行为NPC=${agg.recoveredNpcs.size}，恢复率=${(recoveryRatio * 100).toFixed(1)}%`);
 console.log(`普通行为保持：普通 plan=${agg.normalPlanCount}（NPC ${agg.normalPlanNpcs.size}），普通行为结算=${agg.normalActionCount}（NPC ${agg.normalActionNpcs.size}）`);
+console.log(`首次动态行动后普通行为：普通 plan=${agg.normalPlanAfterDynamic}（NPC ${agg.normalPlanAfterDynamicNpcs.size}），普通行为结算=${agg.normalActionAfterDynamic}（NPC ${agg.normalActionAfterDynamicNpcs.size}）`);
 
 assert(agg.phaseChanges > 0, `动态事件阶段真实推进（阶段变化 ${agg.phaseChanges} 次）`);
 assert((agg.phaseByType.secret_realm || 0) > 0, `默认天数覆盖秘境事件窗口（阶段变化 ${agg.phaseByType.secret_realm || 0} 次）`);
 assert((agg.phaseByType.sect_tournament || 0) > 0, `默认天数覆盖宗门大比事件窗口（阶段变化 ${agg.phaseByType.sect_tournament || 0} 次）`);
 assert(agg.awareNpcs.size > 0, `NPC 真实知晓动态事件（${agg.awareNpcs.size} 人，观察 ${agg.awarenessObservations} 次）`);
-assert(agg.candidateGoalCount > 0, `DynamicGoalProvider 规则真实产出候选目标（${agg.candidateGoalCount} 次）`);
+assert(agg.candidateGoalCount > 0 && agg.uniqueCandidateKeys.size > 0, `DynamicGoalProvider 规则真实产出候选目标（观察 ${agg.candidateGoalCount} 次，唯一 ${agg.uniqueCandidateKeys.size} 个）`);
 assert((agg.candidateBySource.prepare_tournament || 0) > 0, `宗门大比预告真实产出 prepare_tournament 候选目标（${agg.candidateBySource.prepare_tournament || 0} 次）`);
 assert((agg.candidateByKind.preparation || 0) > 0, `PreparationGoal 候选真实产出（${agg.candidateByKind.preparation || 0} 次）`);
 assert((agg.candidateByKind.window || 0) > 0, `WindowGoal 候选真实产出（${agg.candidateByKind.window || 0} 次）`);
@@ -458,9 +491,15 @@ assert(nonImmediateInterrupts > 0, `动态目标不是无脑立即打断（after
 assert(totalDynamicActions > 0, `准备/参与动态事件行为真实执行（${totalDynamicActions} 次）`);
 assert(agg.dynamicActions.prepare > 0, `准备动态事件行为真实执行（${agg.dynamicActions.prepare} 次）`);
 assert(agg.dynamicActions.join > 0, `参与动态事件行为真实执行（${agg.dynamicActions.join} 次）`);
+assert(agg.dynamicActions.prepareSucceeded > 0, `准备动态事件副作用真实落地（成功 ${agg.dynamicActions.prepareSucceeded} 次）`);
+assert(agg.dynamicActions.joinSucceeded > 0, `参与动态事件副作用真实落地（成功 ${agg.dynamicActions.joinSucceeded} 次）`);
 assert(
   agg.normalPlanCount > 0 && agg.normalActionCount > 0,
   `动态目标开启后普通 plan/普通行为仍持续发生（plan=${agg.normalPlanCount}, action=${agg.normalActionCount}）`,
+);
+assert(
+  agg.normalPlanAfterDynamic > 0 && agg.normalActionAfterDynamic > 0,
+  `首次动态行动后普通 plan/普通行为仍持续发生（plan=${agg.normalPlanAfterDynamic}, action=${agg.normalActionAfterDynamic}）`,
 );
 assert(
   agg.dynamicActionNpcs.size === 0 || recoveryRatio >= 0.5,
