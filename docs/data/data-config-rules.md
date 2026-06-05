@@ -176,7 +176,7 @@ apps/game/data/
 | `modifiers.json` | 世界修正器模板，由 `world-rules.json` 的世界规则生成和衰减 |
 | `news.json` | 信息传播配置 |
 | `opportunities.json` | 机会点配置 |
-| `dynamic-events.json` | 动态世界事件配置，默认 `enabled=false` |
+| `dynamic-events.json` | 动态世界事件配置，正式启用后默认 `enabled=true` |
 
 ### dynamic-events.json
 
@@ -184,7 +184,7 @@ apps/game/data/
 
 | 字段 | 类型 | 说明 |
 |------|------|------|
-| `enabled` | boolean | 总开关，默认 false |
+| `enabled` | boolean | 总开关，正式启用后默认 true |
 | `awareness.defaultConfidenceByScope` | object | public/faction/relationship 的默认可信度 |
 | `events[]` | array | 预设事件列表 |
 | `events[].id` | string | 事件 ID |
@@ -204,7 +204,7 @@ apps/game/data/
 
 | 字段 | 类型 | 说明 |
 |------|------|------|
-| `enabled` | boolean | 总开关，默认 false |
+| `enabled` | boolean | 总开关，正式启用后默认 true |
 | `maxGoalsPerNpc` | number | 每个 NPC 同时考虑的动态目标上限 |
 | `goals[]` | array | 规则列表 |
 | `goals[].id` | string | 动态目标规则 ID |
@@ -261,11 +261,12 @@ Job/Toil 层用于 NPC 复杂行动编排。GOAP 只规划 `actions/npc-job-acti
 1. Job ID 使用 `job_` 前缀，Toil ID 使用 `toil_` 前缀。
 2. Job 内 `toils[].type` 必须引用已登记的 Toil ID。
 3. Toil 执行器在 `apps/game/js/engine/npc/toils/npc-toils.js` 注册。
-4. `ai-config.npc.jobs.enabled` 默认保持 `false`；开启后 NPC 默认行为集才追加 `defaultNpcJobActionIds`。
+4. 正式启用后 `ai-config.npc.jobs.enabled` 默认保持 `true`；如需回退可改为 `false`，关闭后 NPC 默认行为集不追加 `defaultNpcJobActionIds`。
 5. Job/Toil 参数中的 `itemId`、`priceItemId`、`currencyItemId` 必须引用 `items/*.json` 合并后的真实物品 ID；禁止使用旧占位 ID。
 6. 动态事件准备类 JobAction 必须按事件类型增加前置，例如秘境使用 `dynamicEventIsSecretRealm=true`，宗门大比使用 `dynamicEventIsSectTournament=true`，通用准备使用 `dynamicEventUsesGenericPreparation=true`。
 7. 动态事件准备类 Job 成功后必须写入类型化准备状态，例如 `preparedForSecretRealm`、`preparedForSectTournament` 或 `preparedForGenericDynamicEvent`；`preparedForDynamicEvent` 只作为兼容汇总状态。
 8. 需要绑定具体动态事件的 Job 应在输入或 Toil 参数中声明期望事件类型，并在绑定事件阶段校验，避免专用 Job 绑定到错误事件。
+9. `dynamic-events.enabled`、`dynamic-goals.enabled` 与 `ai-config.npc.jobs.enabled` 共同决定 Job/Toil 动态目标链路是否进入默认体验；正式启用后三者默认均为 `true`，回退时应在验证报告或 ADR 中说明关闭范围。
 
 ## items/
 

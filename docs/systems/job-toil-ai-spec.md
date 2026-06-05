@@ -1,7 +1,7 @@
 # Job/Toil AI 双重重构规格
 
 > 最后更新：2026-06-05  
-> 状态：首批 Job/Toil 运行时已实现；`ai-config.npc.jobs.enabled=true` 时启用  
+> 状态：首批 Job/Toil 动态目标链路已正式默认启用；`ai-config.npc.jobs.enabled=false` 可作为回退开关
 > 架构决策：ADR-048、ADR-049、ADR-050  
 > 来源：用户明确要求“保留 GOAP 作为中层规划器，把复杂 Action 的执行升级为 Job/Toil，逻辑和配置都拆清楚，并补齐缺少的 Job 与 Toil”；当前代码 `action.js`、`behavior-system.js`、`job-system.js`、`job-pool.js`、`toil-pool.js`、`npc-toils.js`、`dynamic-goals.json`、`npc-job-actions.json`、`npc-action-sets.json`、`npc-entity.js`。
 
@@ -16,7 +16,7 @@
 5. 把 Action、Job、Toil、默认行为集拆成清晰配置。
 6. 补齐动态目标、秘境准备、宗门大比准备、获取回血丹、获取法器所需的初始 Job 和 Toil。
 
-当前四层 AI 已落地；首批 Job/Toil 已作为可开关的复杂行动执行层接入。关闭 `ai-config.npc.jobs.enabled` 时，运行时仍保持 `Reaction → Utility / Intent → GOAP → Execution`；开启后，复杂 JobAction 走 `Reaction → Utility / Intent → GOAP → Job / Toil → Execution`。
+当前四层 AI 已落地；首批 Job/Toil 已作为默认启用的复杂行动执行层接入。`ai-config.npc.jobs.enabled=false` 回退时，运行时仍保持 `Reaction → Utility / Intent → GOAP → Execution`；默认启用后，复杂 JobAction 走 `Reaction → Utility / Intent → GOAP → Job / Toil → Execution`。
 
 ## 非目标
 
@@ -343,20 +343,20 @@ Reaction 仍拥有最高优先级。
 ```json
 {
   "jobs": {
-    "enabled": false,
+    "enabled": true,
     "maxActiveJobsPerNpc": 1,
     "logToilEvents": true
   }
 }
 ```
 
-默认 `enabled=false`。关闭时：
+正式启用后默认 `enabled=true`。回退为 `false` 时：
 
 - JobPool 和 ToilPool 可加载，但 JobAction 不参与默认行为集。
 - 动态事件配置仍按 `dynamic-events.json` 与 `dynamic-goals.json` 的开关独立控制。
 - SimpleAction 行为不变。
 
-开启时：
+保持 `enabled=true` 时：
 
 - 默认 NPC 行为集加入 `npc-action-sets.json` 的 `defaultNpcJobActionIds`。
 - GOAP 可以规划 JobAction。
@@ -427,9 +427,16 @@ node tools/verify-dynamic-goals.mjs
 - 发生过动态行动 NPC 324 人，后续恢复普通行为 313 人，恢复率 96.6%。
 - 验证不使用固定基线一致性证明，只观察真实行为指标。
 
+2026-06-05 默认配置路径验证：
+
+- 验证报告：`docs/superpowers/reports/2026-06-05-Job-Toil默认启用验证.md`。
+- 命令不依赖 `JOBS_ACTIVE`、`DYNAMIC_EVENTS_ACTIVE`、`DYNAMIC_GOALS_ACTIVE` 环境变量。
+- 验收门槛：900 天、3 种子、Job 失败/abort 为 0、动态行动后普通行为恢复率不低于 90%。
+- 验证方式仍是完整模拟行为观察，不使用固定摘要一致性证明。
+
 ## 迁移顺序
 
-1. 新增 Job/Toil 基础设施和配置加载，默认关闭。（已完成）
+1. 新增 Job/Toil 基础设施和配置加载，初期以回退开关保护，正式启用后默认开启。（已完成）
 2. 把 NPC 默认 action id 硬编码迁到 `npc-action-sets.json`。（已完成）
 3. 添加首批 ToilPool 与通用 ToilExecutor。（已完成）
 4. 添加首批 Job 配置。（已完成）
