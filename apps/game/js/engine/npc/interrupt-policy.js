@@ -19,12 +19,6 @@ const DECISION_RANK = Object.freeze({
   [InterruptDecision.INTERRUPT_NOW]: 3,
 });
 
-function clamp(value, min, max) {
-  const n = Number(value);
-  if (!Number.isFinite(n)) return min;
-  return Math.max(min, Math.min(max, n));
-}
-
 function readState(entity, key, fallback = null) {
   if (!entity?.state) return fallback;
   if (typeof entity.state.get === 'function') {
@@ -122,6 +116,9 @@ function isProtectedPreparation(entity, goal, plan) {
 }
 
 function sameDynamicTarget(entity, goal) {
+  const hasCurrentPlan = entity?.behaviorSystem?.hasPlan?.() === true
+    || entity?.behaviorSystem?.isBusy?.() === true;
+  if (!hasCurrentPlan) return false;
   const plan = currentPlanResult(entity);
   if (plan?.goalSource !== GoalSource.DYNAMIC) return false;
   if (plan.dynamicEventId && plan.dynamicEventId === goal?.dynamic?.eventId) return true;

@@ -8,6 +8,7 @@ const imp = (p) => import(pathToFileURL(resolve(GAME_ROOT, p)).href);
 
 const { Goal, GoalSource } = await imp('js/engine/abstract/goal.js');
 const { InterruptPolicy, InterruptDecision } = await imp('js/engine/npc/interrupt-policy.js');
+const { NPCEntity } = await imp('js/engine/npc/npc-entity.js');
 
 let failed = 0;
 function assert(cond, msg) {
@@ -99,6 +100,89 @@ const riskyWindow = InterruptPolicy.decide(
   { currentDay: 1 }
 );
 assert(riskyWindow.score < safeWindow.score, '谨慎性格只在 riskKey 存在时降低风险目标分数');
+
+const staleLastPlan = {
+  behaviorSystem: {
+    hasPlan: () => false,
+    isBusy: () => false,
+    getLastPlanResult: () => ({
+      goalSource: GoalSource.DYNAMIC,
+      dynamicEventId: 'evt_immediate',
+      needId: 'immediate'
+    })
+  },
+  state: { get: () => null },
+  staticData: { personality: { caution: 50, courage: 70, loyalty: 50 } }
+};
+const staleDecision = InterruptPolicy.decide(
+  staleLastPlan,
+  makeGoal('immediate', 90),
+  { currentDay: 2 }
+);
+assert(staleDecision.decision === InterruptDecision.INTERRUPT_NOW, '旧 lastPlanResult 不会在无当前计划时压掉新打断');
+
+{
+  const calls = [];
+  const highRawKeep = makeGoal('preparation', 50, { eventValue: 0 });
+  const lowRawUrgent = makeGoal('urgent_window', 10, {
+    eventValue: 0,
+    interrupt: { minDecision: 'interrupt_now' }
+  });
+  const fakeNpc = {
+    _dynamicGoalConfig: { enabled: true },
+    behaviorSystem: {
+      hasPlan: () => false,
+      isBusy: () => false,
+      getLastPlanResult: () => null
+    },
+    state: { get: () => null },
+    staticData: { personality: { caution: 50, courage: 50, loyalty: 50 } },
+    collectDynamicGoals: () => [highRawKeep, lowRawUrgent],
+    _selectDynamicInterrupt: NPCEntity.prototype._selectDynamicInterrupt,
+    requestReplan: (reason) => calls.push(reason),
+    eventAwareness: { ignore: () => {} }
+  };
+  NPCEntity.prototype._checkDynamicGoalInterrupts.call(fakeNpc, {
+    currentDay: 3,
+    dynamicGoalConfig: { enabled: true }
+  });
+  assert(fakeNpc._lastDynamicInterrupt?.goalId === 'urgent_window', '动态打断选择按策略决策而非裸 goal score');
+  assert(calls[0] === 'dynamic:urgent_window', '低裸分但 minDecision=interrupt_now 的目标可触发重规划');
+}
+
+{
+  const deferred = makeGoal('preparation', 70, {
+    eventValue: 0,
+    interrupt: { minDecision: 'after_step' }
+  });
+  let goals = [deferred];
+  const fakeNpc = {
+    _dynamicGoalConfig: { enabled: true },
+    _deferredReplanRequested: false,
+    behaviorSystem: {
+      hasPlan: () => false,
+      isBusy: () => false,
+      getLastPlanResult: () => null
+    },
+    state: { get: () => null },
+    staticData: { personality: { caution: 50, courage: 50, loyalty: 50 } },
+    collectDynamicGoals: () => goals,
+    _selectDynamicInterrupt: NPCEntity.prototype._selectDynamicInterrupt,
+    requestReplan: () => {},
+    eventAwareness: { ignore: () => {} }
+  };
+  NPCEntity.prototype._checkDynamicGoalInterrupts.call(fakeNpc, {
+    currentDay: 4,
+    dynamicGoalConfig: { enabled: true }
+  });
+  assert(fakeNpc._deferredReplanRequested?.eventId === 'evt_preparation', 'after_step 延期请求记录目标身份');
+  goals = [];
+  NPCEntity.prototype._checkDynamicGoalInterrupts.call(fakeNpc, {
+    currentDay: 5,
+    dynamicGoalConfig: { enabled: true }
+  });
+  assert(!fakeNpc._deferredReplanRequested, '动态目标消失时清理 stale after_step 延期请求');
+}
 
 if (failed === 0) {
   console.log('打断策略单测全部通过');

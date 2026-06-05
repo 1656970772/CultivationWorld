@@ -50,6 +50,12 @@ import {
 
 /** NPC 共享 BTLoader（已注册 planner 节点）。PlannerNode 无内部状态，可被各 NPC 安全复用。 */
 const NPC_BT_LOADER = createBTLoader();
+const DYNAMIC_INTERRUPT_DECISION_RANK = Object.freeze({
+  [InterruptDecision.IGNORE]: 0,
+  [InterruptDecision.KEEP_CURRENT_QUEUE]: 1,
+  [InterruptDecision.AFTER_STEP]: 2,
+  [InterruptDecision.INTERRUPT_NOW]: 3,
+});
 
 export class NPCEntity extends BaseEntity {
   /**
@@ -130,7 +136,7 @@ export class NPCEntity extends BaseEntity {
     // 立即重决策请求标记（ADR-048）：大事件（秘境/拍卖/大比/遇仇人）置真，
     // PlannerNode 门控见到后即便当前正执行计划也立即重选目标+重规划（打断长链）。
     this._replanRequested = false;
-    this._deferredReplanRequested = false;
+    this._deferredReplanRequested = null;
     this._lastDynamicInterrupt = null;
 
     // 安装 GOBT 行为树（ADR-018）：tick() 由 BTRunner 编排"反应→评估→规划→执行"。
@@ -357,34 +363,68 @@ export class NPCEntity extends BaseEntity {
 
   _checkDynamicGoalInterrupts(worldContext) {
     const config = worldContext?.dynamicGoalConfig ?? this._dynamicGoalConfig ?? {};
-    if (config.enabled !== true) return;
+    if (config.enabled !== true) {
+      this._deferredReplanRequested = null;
+      return;
+    }
 
     const goals = this.collectDynamicGoals(worldContext)
       .filter(goal => goal?.source === GoalSource.DYNAMIC);
-    if (goals.length === 0) return;
+    if (goals.length === 0) {
+      this._deferredReplanRequested = null;
+      return;
+    }
 
-    goals.sort((a, b) => {
-      const byScore = b.score() - a.score();
-      if (byScore !== 0) return byScore;
-      return b.urgencyScore() - a.urgencyScore();
-    });
-    const best = goals[0];
-    const interrupt = InterruptPolicy.decide(this, best, worldContext);
+    const chosen = this._selectDynamicInterrupt(goals, worldContext);
+    if (!chosen) {
+      this._deferredReplanRequested = null;
+      return;
+    }
+    const { goal: best, interrupt } = chosen;
     this._lastDynamicInterrupt = interrupt;
 
     if (interrupt.decision === InterruptDecision.INTERRUPT_NOW) {
+      this._deferredReplanRequested = null;
       this.requestReplan(`dynamic:${interrupt.goalId}`);
       return;
     }
     if (interrupt.decision === InterruptDecision.AFTER_STEP) {
-      this._deferredReplanRequested = true;
+      this._deferredReplanRequested = {
+        eventId: interrupt.eventId,
+        goalId: interrupt.goalId,
+        day: interrupt.day,
+      };
       return;
     }
+    this._deferredReplanRequested = null;
     if (interrupt.decision === InterruptDecision.IGNORE && interrupt.eventId && this.eventAwareness) {
       const day = worldContext.currentDay ?? worldContext.day ?? 0;
       const ignoreDays = best.dynamic?.interrupt?.ignoreDays ?? config.interrupt?.ignoreDays ?? 10;
       this.eventAwareness.ignore(interrupt.eventId, day + ignoreDays);
     }
+  }
+
+  _selectDynamicInterrupt(goals, worldContext) {
+    let best = null;
+    for (const goal of goals) {
+      const interrupt = InterruptPolicy.decide(this, goal, worldContext);
+      const rank = DYNAMIC_INTERRUPT_DECISION_RANK[interrupt.decision] ?? 0;
+      const candidate = { goal, interrupt, rank };
+      if (!best) {
+        best = candidate;
+        continue;
+      }
+      if (candidate.rank !== best.rank) {
+        if (candidate.rank > best.rank) best = candidate;
+        continue;
+      }
+      if (interrupt.score !== best.interrupt.score) {
+        if (interrupt.score > best.interrupt.score) best = candidate;
+        continue;
+      }
+      if (goal.urgencyScore() > best.goal.urgencyScore()) best = candidate;
+    }
+    return best;
   }
 
   onPlanChosen() {
@@ -959,9 +999,16 @@ export class NPCEntity extends BaseEntity {
 
   /** @override */
   onPostTick(worldContext) {
-    if (!this._deferredReplanRequested) return;
+    const pending = this._deferredReplanRequested;
+    if (!pending) return;
     if (this.behaviorSystem?.isBusy?.() === true) return;
-    this._deferredReplanRequested = false;
+    const stillValid = this.collectDynamicGoals(worldContext).some(goal =>
+      goal?.source === GoalSource.DYNAMIC
+      && goal.dynamic?.eventId === pending.eventId
+      && goal.sourceId === pending.goalId
+    );
+    this._deferredReplanRequested = null;
+    if (!stillValid) return;
     this.requestReplan('dynamic_after_step');
   }
 
