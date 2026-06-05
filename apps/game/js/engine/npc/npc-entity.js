@@ -373,7 +373,7 @@ export class NPCEntity extends BaseEntity {
     this._lastDynamicInterrupt = interrupt;
 
     if (interrupt.decision === InterruptDecision.INTERRUPT_NOW) {
-      this.requestReplan(`dynamic:${best.id}`);
+      this.requestReplan(`dynamic:${interrupt.goalId}`);
       return;
     }
     if (interrupt.decision === InterruptDecision.AFTER_STEP) {

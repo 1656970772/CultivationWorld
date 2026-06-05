@@ -47,6 +47,14 @@ const busyNearBreakthrough = {
 
 const immediate = InterruptPolicy.decide(busyNearBreakthrough, makeGoal('immediate', 90), { currentDay: 1 });
 assert(immediate.decision === InterruptDecision.INTERRUPT_NOW, 'immediate 高分目标立即打断');
+assert(immediate.goalId === 'immediate', '返回 goalId 使用 sourceId');
+
+const lowImmediate = InterruptPolicy.decide(
+  busyNearBreakthrough,
+  makeGoal('immediate', 10, { eventValue: 0 }),
+  { currentDay: 1 }
+);
+assert(lowImmediate.decision !== InterruptDecision.INTERRUPT_NOW, '低分 immediate 不会无条件立即打断');
 
 const prep = InterruptPolicy.decide(
   busyNearBreakthrough,
@@ -55,12 +63,42 @@ const prep = InterruptPolicy.decide(
 );
 assert(prep.decision === InterruptDecision.AFTER_STEP, '临近突破时准备目标降为 after_step');
 
+const lowPrep = InterruptPolicy.decide(
+  busyNearBreakthrough,
+  makeGoal('preparation', 5, { eventValue: 0 }),
+  { currentDay: 1 }
+);
+assert(lowPrep.decision === InterruptDecision.IGNORE, '低分准备目标不会因临近突破被抬高到 after_step');
+
 const low = InterruptPolicy.decide(
   busyNearBreakthrough,
   makeGoal('window', 35, { eventValue: 200, daysUntilStart: 20 }),
   { currentDay: 1 }
 );
 assert(low.decision === InterruptDecision.IGNORE, '低分低价值目标忽略');
+
+const raised = InterruptPolicy.decide(
+  busyNearBreakthrough,
+  makeGoal('window', 1, { eventValue: 0, interrupt: { minDecision: 'after_step' } }),
+  { currentDay: 1 }
+);
+assert(raised.decision === InterruptDecision.AFTER_STEP, 'minDecision 即使从 ignore 也会抬升决策');
+
+const cautiousEntity = {
+  behaviorSystem: {
+    isBusy: () => false,
+    getLastPlanResult: () => null
+  },
+  state: { get: () => null },
+  staticData: { personality: { caution: 90, courage: 50, loyalty: 50 } }
+};
+const safeWindow = InterruptPolicy.decide(cautiousEntity, makeGoal('window', 50, { eventValue: 0 }), { currentDay: 1 });
+const riskyWindow = InterruptPolicy.decide(
+  cautiousEntity,
+  makeGoal('window', 50, { eventValue: 0, riskKey: 'plunder' }),
+  { currentDay: 1 }
+);
+assert(riskyWindow.score < safeWindow.score, '谨慎性格只在 riskKey 存在时降低风险目标分数');
 
 if (failed === 0) {
   console.log('打断策略单测全部通过');

@@ -60,43 +60,44 @@ function isCultivationPlan(plan) {
   );
 }
 
-function behaviorLoss(entity, plan) {
+function currentLoss(entity, plan) {
   if (!behaviorBusy(entity)) return 0;
-  let loss = -10;
-  if (isCultivationPlan(plan)) loss -= 8;
+  let loss = 12;
   const progress = Number(readState(entity, 'totalProgress', 0)) || 0;
-  if (progress >= 0.95 && isCultivationPlan(plan)) loss -= 20;
-  const injury = Number(readState(entity, 'injuryLevel', 0)) || 0;
-  if (injury > 0) loss -= clamp(injury, 0, 100) * 0.08;
+  if (isCultivationPlan(plan)) {
+    loss += progress >= 0.95 ? 35 : 15;
+  }
+  if (/quest|任务/i.test(String(plan?.needId || plan?.needName || ''))) {
+    loss += 20;
+  }
+  if ((Number(readState(entity, 'injuryLevel', 0)) || 0) > 0) {
+    loss += 10;
+  }
   return loss;
 }
 
-function personalityDelta(entity, kind) {
+function personalityDelta(entity, goal) {
   const p = personality(entity);
-  const caution = clamp(p.caution ?? 50, 0, 100);
-  const courage = clamp(p.courage ?? 50, 0, 100);
-  const loyalty = clamp(p.loyalty ?? 50, 0, 100);
-  if (kind === 'preparation') return (caution - 50) * 0.2;
-  if (kind === 'immediate') return (courage - 50) * 0.3 + (loyalty - 50) * 0.1;
-  if (kind === 'window') return (courage - 50) * 0.2 - (caution - 50) * 0.1;
-  return 0;
+  let delta = 0;
+  if (goal.dynamic?.riskKey && (p.caution ?? 50) > 60) delta -= 8;
+  if (goal.dynamic?.riskKey && (p.courage ?? 50) > 65) delta += 8;
+  if (goal.dynamic?.kind === 'immediate' && (p.loyalty ?? 50) > 70) delta += 10;
+  return delta;
 }
 
 function scoreGoal(goal, entity) {
   const dynamic = goal?.dynamic || {};
   const kind = dynamic.kind || goal?.tag || null;
   const baseScore = typeof goal?.score === 'function' ? goal.score() : Number(goal?.priority ?? 0) || 0;
-  const urgency = typeof goal?.urgencyScore === 'function' ? goal.urgencyScore() : Number(goal?.urgency ?? 0) || 0;
   const eventValue = Number(dynamic.eventValue ?? 0) || 0;
   const interrupt = dynamic.interrupt || {};
   const plan = currentPlanResult(entity);
   return {
     score: baseScore
-      + urgency * 0.25
-      + Math.min(25, Math.max(0, eventValue) / 40)
+      + eventValue / 40
       + (Number(interrupt.urgencyBias ?? 0) || 0)
-      + personalityDelta(entity, kind)
-      + behaviorLoss(entity, plan),
+      + personalityDelta(entity, goal)
+      - currentLoss(entity, plan),
     kind,
     plan,
   };
@@ -136,7 +137,7 @@ export class InterruptPolicy {
   static decide(entity, goal, worldContext = {}) {
     const day = worldContext.currentDay ?? worldContext.day ?? 0;
     const eventId = goal?.dynamic?.eventId ?? null;
-    const goalId = goal?.id ?? null;
+    const goalId = goal?.sourceId ?? goal?.id ?? null;
 
     if (!goal || goal.source !== GoalSource.DYNAMIC) {
       return {
@@ -167,10 +168,10 @@ export class InterruptPolicy {
 
     let decision;
     let reason;
-    if (isProtectedPreparation(entity, goal, plan)) {
-      decision = InterruptDecision.AFTER_STEP;
-      reason = 'near_breakthrough_prepare_after_step';
-    } else if (kind === 'immediate' || score >= 85) {
+    if (kind === 'immediate' && score >= 55) {
+      decision = InterruptDecision.INTERRUPT_NOW;
+      reason = 'high_value_dynamic_goal';
+    } else if (score >= 80) {
       decision = InterruptDecision.INTERRUPT_NOW;
       reason = 'high_value_dynamic_goal';
     } else if (score >= 55) {
@@ -184,12 +185,15 @@ export class InterruptPolicy {
       reason = 'low_interrupt_score';
     }
 
-    if (decision !== InterruptDecision.IGNORE) {
-      const raised = minDecisionAtLeast(decision, minimum);
-      if (raised !== decision) {
-        decision = raised;
-        reason = `min_decision_${minimum}`;
-      }
+    const raised = minDecisionAtLeast(decision, minimum);
+    if (raised !== decision) {
+      decision = raised;
+      reason = `min_decision_${minimum}`;
+    }
+
+    if (decision === InterruptDecision.INTERRUPT_NOW && isProtectedPreparation(entity, goal, plan)) {
+      decision = InterruptDecision.AFTER_STEP;
+      reason = 'near_breakthrough_prepare_after_step';
     }
 
     return {
