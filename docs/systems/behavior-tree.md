@@ -1,17 +1,17 @@
-# 系统设计：行为树与四层 AI
+# 系统设计：行为树与五层 AI
 
 > 最后更新：2026-06-05  
 > 架构决策：ADR-018、ADR-021、ADR-022、ADR-023、ADR-048、ADR-049、ADR-050
 
 ## 概述
 
-当前 AI 的默认关闭路径由四层组成：
+当前 NPC AI 默认主路径由五层组成：
 
 ```text
-Reaction → Utility / Intent → GOAP → Execution
+Reaction → Utility / Intent → GOAP → Job / Toil → Execution
 ```
 
-ADR-050 的首批 Job/Toil 运行时已接入。`ai-config.npc.jobs.enabled=false` 时，本页四层说明仍是运行事实；`ai-config.npc.jobs.enabled=true` 时，复杂 JobAction 会在 GOAP 与 Execution 之间进入 Job/Toil 执行层，形成 `Reaction → Utility / Intent → GOAP → Job / Toil → Execution`。详细规格见 `job-toil-ai-spec.md`。
+ADR-050 的首批 Job/Toil 运行时已接入并默认启用。复杂 JobAction 会在 GOAP 与 Execution 之间进入 Job/Toil 执行层；`ai-config.npc.jobs.enabled=false` 时，系统回退到 `Reaction → Utility / Intent → GOAP → Execution` 四层 SimpleAction 路径。详细规格见 `job-toil-ai-spec.md`。
 
 | 层 | 职责 | 代表代码 |
 |----|------|----------|
