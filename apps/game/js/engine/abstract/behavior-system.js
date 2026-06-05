@@ -165,11 +165,13 @@ export class BehaviorSystem {
     merged.sort(byScore);
     const top = merged.slice(0, 3);
     const hasDynamicExtra = extraGoals.some(g => g?.source === GoalSource.DYNAMIC);
-    const hasNeedCandidate = top.some(g => g?.source === GoalSource.NEED);
-    if (hasDynamicExtra && needGoals.length > 0 && !hasNeedCandidate && top.length > 0) {
-      const bestNeedGoal = [...needGoals].sort(byScore)[0];
-      top[top.length - 1] = bestNeedGoal;
-      top.sort(byScore);
+    if (hasDynamicExtra && needGoals.length > 0 && top.length > 0) {
+      const included = new Set(top);
+      for (const needGoal of needGoals) {
+        if (!included.has(needGoal)) {
+          top.push(needGoal);
+        }
+      }
     }
     return top;
   }

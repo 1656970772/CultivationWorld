@@ -34,6 +34,7 @@ class TestState {
   }
   get(key) { return this._values[key]; }
   set(key, value) { this._values[key] = value; }
+  has(key) { return Object.prototype.hasOwnProperty.call(this._values, key); }
 }
 
 const baseConfig = {
@@ -277,6 +278,10 @@ console.log('8) 默认关闭态不改变旧行为');
   entity.eventAwareness.learn(eventSnapshot({ id: 'evt_disabled' }), { confidence: 1, day: 10 });
   assert(DynamicGoalProvider.collect(entity, ctx({}, 20)).length === 0, '缺省/关闭配置不产出动态 Goal');
   assert(entity.state.get('targetDynamicEventId') === null, '缺省/关闭配置会清理旧 targetDynamicEventId');
+
+  const untouched = mkEntity('npc_disabled_no_key', {});
+  DynamicGoalProvider.collect(untouched, ctx({}, 20));
+  assert(!untouched.state.has('targetDynamicEventId'), '缺省/关闭配置不会新增 targetDynamicEventId 状态键');
 }
 
 console.log('9) NPC 通过 worldContext 安全接口同步事件感知');
@@ -746,7 +751,101 @@ console.log('14) 不可达 dynamic extra 不会挤掉所有可达 Need');
   assert(selected.plan?.[0]?.id === 'act_low_need', '最终计划使用可达 Need action');
 }
 
-console.log('15) dynamic extra 的 Need 保底使用调制后的最高 Need');
+console.log('15) dynamic extra 不减少原 top Need 尝试集合');
+{
+  const npc = new NPCEntity(
+    {
+      id: 'npc_dynamic_extra_preserves_lower_need',
+      name: '低分需求保留测试者',
+      factionId: 'sect_001',
+      role: 'disciple',
+      rankId: 'foundation',
+      alive: true,
+      personality: { ambition: 50, caution: 50, loyalty: 50, diplomacy: 50 },
+      needIds: [],
+      actionIds: [],
+    },
+    load('data/definitions/ranks.json'),
+    {
+      rng: new Rng(81),
+      gameConfig: load('data/config/game-config.json'),
+      cultivationConfig: { traitEffects: { enabled: false } },
+      aiConfig: { decisionPhaseMax: 0 },
+      relationshipConfig: { enabled: false, goalsEnabled: false },
+      dynamicGoalConfig: { enabled: false },
+    },
+  );
+  npc.state.set('needBDone', false);
+  npc.needSystem.addNeed(new Need({
+    id: 'need_a_high_unreachable',
+    name: '高分不可达需求',
+    goalState: { needADone: { op: 'eq', value: true } },
+    evaluator: {
+      calculate: (_state, _world, need) => ({
+        priority: 80,
+        urgency: 0,
+        goalState: need.goalStateTemplate,
+        satisfied: false,
+      }),
+    },
+  }));
+  npc.needSystem.addNeed(new Need({
+    id: 'need_b_lower_reachable',
+    name: '低分可达需求',
+    goalState: { needBDone: { op: 'eq', value: true } },
+    evaluator: {
+      calculate: (_state, _world, need) => ({
+        priority: 40,
+        urgency: 0,
+        goalState: need.goalStateTemplate,
+        satisfied: false,
+      }),
+    },
+  }));
+  npc.behaviorSystem.addAction(new Action({
+    id: 'act_lower_need_b',
+    name: '完成低分可达需求',
+    preconditions: { alive: { op: 'true' } },
+    effects: { needBDone: { op: 'set', value: true } },
+    weight: 1,
+  }));
+  npc.collectExtraGoals = () => [
+    new Goal({
+      id: 'goal_dynamic_high_unreachable_a',
+      name: '高分不可达动态目标 A',
+      source: GoalSource.DYNAMIC,
+      sourceId: 'dynamic_high_unreachable_a',
+      goalState: { dynamicADone: { op: 'eq', value: true } },
+      priority: 100,
+      urgency: 100,
+      dynamic: { eventId: 'evt_dynamic_a' },
+    }),
+    new Goal({
+      id: 'goal_dynamic_high_unreachable_b',
+      name: '高分不可达动态目标 B',
+      source: GoalSource.DYNAMIC,
+      sourceId: 'dynamic_high_unreachable_b',
+      goalState: { dynamicBDone: { op: 'eq', value: true } },
+      priority: 95,
+      urgency: 95,
+      dynamic: { eventId: 'evt_dynamic_b' },
+    }),
+  ];
+
+  const worldContext = {
+    currentDay: 20,
+    dynamicGoalConfig: { enabled: false },
+    balanceConfig: {},
+    rng: new Rng(82),
+  };
+  npc.needSystem.evaluate(npc.state, worldContext);
+  const selected = IntentService.selectGoal(npc, worldContext);
+  assert(selected.planResult?.goalSource === GoalSource.NEED, 'dynamic extra 不减少原 top Need 的尝试集合');
+  assert(selected.planResult?.needId === 'need_b_lower_reachable', '高分 Need 不可达时仍可尝试低分可达 Need');
+  assert(selected.plan?.[0]?.id === 'act_lower_need_b', '最终计划使用低分可达 Need action');
+}
+
+console.log('16) dynamic extra 的 Need 保底使用调制后的最高 Need');
 {
   const npc = new NPCEntity(
     {
