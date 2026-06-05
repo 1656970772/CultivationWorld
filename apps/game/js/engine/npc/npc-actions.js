@@ -57,6 +57,10 @@ import {
   NPCReactHealExecutor,
   NPCReactCounterExecutor,
 } from './actions/reaction-actions.js';
+import {
+  NPCPrepareDynamicEventExecutor,
+  NPCJoinDynamicEventExecutor,
+} from './actions/dynamic-event-actions.js';
 
 // 共享工具与执行器一并 re-export，保持历史导入路径（'./npc-actions.js'）可用。
 export {
@@ -114,6 +118,10 @@ export {
   NPCReactHealExecutor,
   NPCReactCounterExecutor,
 } from './actions/reaction-actions.js';
+export {
+  NPCPrepareDynamicEventExecutor,
+  NPCJoinDynamicEventExecutor,
+} from './actions/dynamic-event-actions.js';
 
 /**
  * 注册全部 NPC 行为执行器到 ActionPool（统一入口，顺序与拆分前保持一致）。
@@ -157,4 +165,7 @@ export function registerNPCExecutors() {
   ActionPool.registerExecutor('npc_react_retreat', new NPCReactRetreatExecutor());
   ActionPool.registerExecutor('npc_react_heal', new NPCReactHealExecutor());
   ActionPool.registerExecutor('npc_react_counter', new NPCReactCounterExecutor());
+  // 动态世界事件行为：筹备 / 参与。
+  ActionPool.registerExecutor('npc_prepare_dynamic_event', new NPCPrepareDynamicEventExecutor());
+  ActionPool.registerExecutor('npc_join_dynamic_event', new NPCJoinDynamicEventExecutor());
 }

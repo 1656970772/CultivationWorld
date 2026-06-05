@@ -718,5 +718,48 @@
     "targetResolver": "relationship_target",
     "distanceCostPerTile": 0.02,
     "executorId": "npc_visit_master"
+  },
+  {
+    "id": "act_npc_prepare_dynamic_event",
+    "name": "筹备动态事件",
+    "description": "动态世界事件准备行为（ADR-048）：NPC 已实际选中某个动态事件目标后，原地筹备情报、物资与路线，并通过 worldContext 安全接口标记事件 preparedBy。仅当 targetDynamicEventId 已绑定时有事件副作用。",
+    "category": "npc",
+    "weight": 1,
+    "valueScore": 8,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" }
+    },
+    "effects": {
+      "preparedForDynamicEvent": { "op": "set", "value": true }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 3,
+    "requiresTravel": false,
+    "targetResolver": "self",
+    "executorId": "npc_prepare_dynamic_event"
+  },
+  {
+    "id": "act_npc_join_dynamic_event",
+    "name": "参与动态事件",
+    "description": "动态世界事件参与行为（ADR-048）：NPC 前往已选中动态事件的实际地点，抵达后通过 worldContext 安全接口标记 participants。requiresTravel 走 dynamic_event_target resolver。",
+    "category": "npc",
+    "weight": 2,
+    "valueScore": 14,
+    "riskKey": "plunder",
+    "preconditions": {
+      "alive": { "op": "true" }
+    },
+    "effects": {
+      "joinedDynamicEvent": { "op": "set", "value": true }
+    },
+    "costs": [],
+    "yields": [],
+    "duration": 5,
+    "requiresTravel": true,
+    "targetResolver": "dynamic_event_target",
+    "distanceCostPerTile": 0.02,
+    "executorId": "npc_join_dynamic_event"
   }
 ]

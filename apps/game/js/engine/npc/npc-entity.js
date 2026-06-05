@@ -693,6 +693,9 @@ export class NPCEntity extends BaseEntity {
       // 且仅当 reaction.enabled=true 时反应层才会消费刺激，故加入可用池不改变既有规划。
       'act_npc_react_flee', 'act_npc_react_retreat',
       'act_npc_react_heal', 'act_npc_react_counter',
+      // 动态世界事件行为（ADR-048）：准备/参与已被动态 Goal 实际选中的事件。
+      // 仅当 dynamic-goals 产出对应目标并绑定 targetDynamicEventId 时进入规划。
+      'act_npc_prepare_dynamic_event', 'act_npc_join_dynamic_event',
     ];
 
     const actions = [];

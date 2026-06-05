@@ -255,6 +255,32 @@ export class WorldContextBuilder {
             if (pick) return { x: pick.opp.pos.x, y: pick.opp.pos.y };
             return here;
           }
+          case 'dynamic_event_target': {
+            const eventId = entity.state?.get('targetDynamicEventId');
+            if (!eventId) return here;
+            const liveEvent = host.worldEventSystem?.getById?.(eventId);
+            const event = liveEvent
+              ? (typeof liveEvent.toJSON === 'function' ? liveEvent.toJSON() : liveEvent)
+              : (typeof this?.dynamicEventById === 'function' ? this.dynamicEventById(eventId) : null);
+            const pos = event?.pos || null;
+            if (pos && typeof pos.x === 'number' && typeof pos.y === 'number') {
+              return { x: pos.x, y: pos.y };
+            }
+            if (pos?.resolver === 'secret_realm') {
+              return host.infoCoordinator?.secretRealmPos?.() || here;
+            }
+            if (pos?.resolver === 'faction_hq') {
+              const factionId = pos.factionId || event?.subjectId || entity.state?.get('factionId');
+              if (factionId) {
+                const faction = host.entityRegistry.getById(factionId);
+                const hq = faction?.staticData?.headquarters;
+                if (hq && typeof hq.x === 'number' && typeof hq.y === 'number') {
+                  return { x: hq.x, y: hq.y };
+                }
+              }
+            }
+            return here;
+          }
           case 'relationship_target': {
             const relId = entity.state?.get('targetRelationshipId');
             if (relId) {
