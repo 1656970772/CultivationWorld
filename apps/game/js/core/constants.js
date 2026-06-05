@@ -128,6 +128,8 @@ export const NewsType = Object.freeze({
   FACTION_WAR: 'faction_war',         // 宗门大战
   TREASURE_BORN: 'treasure_born',     // 天材地宝成熟
   WEALTH_EXPOSED: 'wealth_exposed',   // 怀璧其罪（ADR-025）：某修士暴露高价值身家
+  DYNAMIC_EVENT_ANNOUNCED: 'dynamic_event_announced', // 动态世界事件预告
+  DYNAMIC_EVENT_ACTIVE: 'dynamic_event_active',       // 动态世界事件进入活跃窗口
 });
 
 /**

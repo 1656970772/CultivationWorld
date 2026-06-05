@@ -154,6 +154,61 @@ export class InfoCoordinator {
       }
     }
 
+    const dynamicEventItems = [
+      ...(tickLog.dynamicEvents || []),
+      ...(tickLog.dynamicEventBirths || []).map(event => ({ event, phase: event.phase })),
+    ];
+    for (const item of dynamicEventItems) {
+      const event = item?.event || item;
+      const phase = item?.phase || item?.to || event?.phase;
+      if (!event || (phase !== 'announced' && phase !== 'active')) continue;
+      const pos = this.dynamicEventPos(event);
+      if (!pos) continue;
+
+      let oppId = null;
+      if (phase === 'active' && event.opportunityType && opp.enabled) {
+        const spawned = opp.spawn({
+          type: event.opportunityType,
+          pos,
+          currentDay: day,
+          value: event.value,
+          rewardSource: event.rewardSource,
+          riskKey: event.riskKey,
+          name: event.name,
+          subjectId: event.subjectId,
+        });
+        oppId = spawned?.id ?? null;
+      }
+
+      const newsType = phase === 'active'
+        ? NewsType.DYNAMIC_EVENT_ACTIVE
+        : NewsType.DYNAMIC_EVENT_ANNOUNCED;
+      const text = phase === 'active'
+        ? `${event.name || '动态事件'}已进入可参与窗口`
+        : `${event.name || '动态事件'}的消息传开了`;
+      const news = info.publishNews({
+        type: newsType,
+        origin: pos,
+        day,
+        value: event.value ?? 0,
+        subjectId: event.subjectId ?? event.id ?? null,
+        opportunityId: oppId,
+        text,
+      });
+      if (news) {
+        log.push({
+          type: 'news_born',
+          newsType: news.type,
+          newsId: news.id,
+          eventId: event.id ?? item?.eventId ?? null,
+          x: pos.x,
+          y: pos.y,
+          day,
+          description: news.text,
+        });
+      }
+    }
+
     for (const evt of (tickLog.infoEvents || [])) {
       if (evt.type !== 'attack' || typeof evt.x !== 'number' || evt._newsPublished) continue;
       evt._newsPublished = true;
@@ -205,6 +260,30 @@ export class InfoCoordinator {
     return host.nearestTerrainTile(cx, cy, 'top_spirit_vein')
       || host.nearestTerrainTile(cx, cy, 'high_spirit_vein')
       || { x: cx, y: cy };
+  }
+
+  /**
+   * 解析动态事件的世界坐标；无明确坐标时返回 null，让缺位行为保持静默。
+   */
+  dynamicEventPos(event) {
+    const pos = event?.pos || null;
+    if (pos && typeof pos.x === 'number' && typeof pos.y === 'number') {
+      return { x: pos.x, y: pos.y };
+    }
+    if (pos?.resolver === 'secret_realm') {
+      return this.secretRealmPos();
+    }
+    if (pos?.resolver === 'faction_hq') {
+      const factionId = pos.factionId || event?.subjectId;
+      if (factionId) {
+        const faction = this.entityRegistry.getById(factionId);
+        const hq = faction?.staticData?.headquarters;
+        if (hq && typeof hq.x === 'number' && typeof hq.y === 'number') {
+          return { x: hq.x, y: hq.y };
+        }
+      }
+    }
+    return null;
   }
 
   /** 多渠道传播：口耳相传 / 宗门情报网 / 商会情报网 / 城镇广播。 */

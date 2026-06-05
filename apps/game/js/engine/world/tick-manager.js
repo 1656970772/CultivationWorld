@@ -150,6 +150,7 @@ export class TickManager {
       conflicts: [],
       events: [],
       dynamicEvents: [],
+      dynamicEventBirths: [],
       infoEvents: [],
       deaths: [],
       monsterDeaths: [],

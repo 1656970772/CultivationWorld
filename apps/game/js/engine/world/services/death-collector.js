@@ -47,6 +47,19 @@ export class DeathCollector {
         y: pos?.y ?? null,
         locationName: pos ? host._resolveLocationName(pos.x, pos.y) : null,
       });
+      const dynamicEvents = host.worldEventSystem?.publishDeathEvents?.(
+        npc,
+        info,
+        pos,
+        host.worldEntity.currentDay,
+        host.relationshipSystem,
+      ) || [];
+      if (dynamicEvents.length > 0) {
+        if (!tickLog.dynamicEventBirths) tickLog.dynamicEventBirths = [];
+        for (const event of dynamicEvents) {
+          tickLog.dynamicEventBirths.push(typeof event.toJSON === 'function' ? event.toJSON() : event);
+        }
+      }
 
       // 记忆：道侣陨落（ADR-019）。
       const companionId = npc.state?.get('daoCompanionId');

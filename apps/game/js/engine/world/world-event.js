@@ -158,6 +158,67 @@ export class WorldEventSystem {
     return event;
   }
 
+  publishRuntimeEvent(config, currentDay) {
+    if (!this.enabled || !config?.type) return null;
+    const id = config.id || `evt_${config.type}_${currentDay}_${this.events.length + 1}`;
+    return this.addEvent({
+      announceDay: currentDay,
+      startDay: currentDay,
+      endDay: currentDay + (config.durationDays ?? 20),
+      expireDay: currentDay + (config.expireDays ?? 60),
+      scope: 'public',
+      ...config,
+      id,
+      source: config.source || 'runtime',
+    }, currentDay);
+  }
+
+  publishDeathEvents(npc, info, pos, currentDay, relationshipSystem = null) {
+    if (!this.enabled || !npc) return [];
+    const events = [];
+    const roleRank = npc.state?.get?.('roleRank') ?? 0;
+    if (roleRank >= 3 && pos) {
+      const fallen = this.publishRuntimeEvent({
+        type: WorldEventType.FALLEN_MASTER,
+        name: `${npc.name || npc.id}陨落遗泽`,
+        value: 700 + roleRank * 120,
+        riskKey: 'plunder',
+        pos,
+        subjectId: npc.id,
+        durationDays: 20,
+        expireDays: 45,
+      }, currentDay);
+      if (fallen) events.push(fallen);
+    }
+
+    const relatedNpcIds = new Set();
+    const companionId = npc.state?.get?.('daoCompanionId');
+    if (companionId) relatedNpcIds.add(companionId);
+    if (relationshipSystem && typeof relationshipSystem.edgesOfType === 'function') {
+      for (const type of ['master', 'disciple', 'same_sect', 'ally']) {
+        for (const edge of relationshipSystem.edgesOfType(npc.id, type)) {
+          if (edge.strength >= 40) relatedNpcIds.add(edge.toId);
+        }
+      }
+    }
+    if (relatedNpcIds.size > 0) {
+      const rel = this.publishRuntimeEvent({
+        type: WorldEventType.RELATIONSHIP_DEATH,
+        name: `${npc.name || npc.id}身死`,
+        value: 900,
+        riskKey: 'pvp',
+        scope: 'relationship',
+        pos,
+        subjectId: npc.id,
+        relatedNpcIds: [...relatedNpcIds],
+        durationDays: 30,
+        expireDays: 120,
+      }, currentDay);
+      if (rel) events.push(rel);
+    }
+    return events;
+  }
+
   getById(id) {
     return this._byId.get(id) || null;
   }
