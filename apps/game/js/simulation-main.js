@@ -301,7 +301,7 @@ class SimulationApp {
     if (!followId) {
       statusEl.textContent = this.entityTab === 'faction'
         ? '点击势力可把视角定位到其总部（不会持续跟随）。'
-        : '从下方列表选择 NPC 或妖兽进行跟随，或直接点击地图上的实体。';
+        : '从下方列表选择人物或妖兽进行跟随，或直接点击地图上的实体。';
       return;
     }
 
@@ -418,7 +418,7 @@ class SimulationApp {
 
     if (!followId) {
       if (titleEl) titleEl.textContent = '行为事件日志';
-      listEl.innerHTML = '<div class="npc-event-empty">选择并跟随一个 NPC，这里会显示它的行为事件。</div>';
+      listEl.innerHTML = '<div class="npc-event-empty">选择并跟随一个人物，这里会显示它的行为事件。</div>';
       this._lastFollowIdForEvents = null;
       return;
     }
@@ -428,7 +428,7 @@ class SimulationApp {
     // 跟随的是妖兽/势力时不显示 NPC 行为日志
     if (!e) {
       if (titleEl) titleEl.textContent = '行为事件日志';
-      listEl.innerHTML = '<div class="npc-event-empty">当前跟随的不是 NPC（妖兽暂不记录行为日志）。</div>';
+      listEl.innerHTML = '<div class="npc-event-empty">当前跟随的不是人物（妖兽暂不记录行为日志）。</div>';
       this._lastFollowIdForEvents = followId;
       return;
     }
@@ -475,7 +475,16 @@ class SimulationApp {
 
     titleEl.textContent = model.title === '未跟随' ? '跟随状态' : model.title;
     subtitleEl.textContent = `${model.life.label} · ${model.action.label}`;
+    const previousSectionState = new Map(
+      Array.from(bodyEl.querySelectorAll('details.follow-status-section[data-section-id]'))
+        .map(detail => [detail.dataset.sectionId, detail.open])
+    );
     bodyEl.innerHTML = statusModelToHtml(model, (s) => this._escapeHtml(s));
+    for (const detail of bodyEl.querySelectorAll('details.follow-status-section[data-section-id]')) {
+      if (previousSectionState.has(detail.dataset.sectionId)) {
+        detail.open = previousSectionState.get(detail.dataset.sectionId);
+      }
+    }
   }
 
   /** 把坐标/地点格式化为日志后缀，如「 @(123,45) 平原」；无坐标返回空串 */
@@ -690,7 +699,7 @@ class SimulationApp {
   renderWorldStats(snapshot) {
     document.getElementById('stat-day').textContent = `第 ${snapshot.day} 天（${Math.floor(snapshot.day / 360)} 年 ${snapshot.day % 360} 天）`;
     document.getElementById('stat-factions').textContent = `势力: ${snapshot.stats.aliveFactions}/${snapshot.stats.totalFactions}`;
-    document.getElementById('stat-npcs').textContent = `NPC: ${snapshot.stats.aliveNPCs}/${snapshot.stats.totalNPCs}`;
+    document.getElementById('stat-npcs').textContent = `人物: ${snapshot.stats.aliveNPCs}/${snapshot.stats.totalNPCs}`;
     const monsterStat = document.getElementById('stat-monsters');
     if (monsterStat) {
       monsterStat.textContent = `妖兽: ${snapshot.stats.aliveMonsters ?? 0}/${snapshot.stats.totalMonsters ?? 0}`;

@@ -612,8 +612,8 @@ body {
   left: 12px;
   bottom: 12px;
   z-index: 6;
-  width: min(360px, calc(100% - 24px));
-  max-height: min(52vh, calc(100% - 132px), 460px);
+  width: min(430px, calc(100% - 24px));
+  max-height: min(64vh, calc(100% - 132px), 560px);
   background: rgba(15, 25, 35, 0.88);
   border: 1px solid var(--border);
   border-radius: 6px;
@@ -700,21 +700,46 @@ body {
 .follow-action.busy { color: var(--accent); background: rgba(79,195,247,0.14); }
 .follow-action.idle { color: var(--text-secondary); background: rgba(136,153,170,0.12); }
 .follow-status-section {
-  padding: 8px 0;
   border-top: 1px solid rgba(255,255,255,0.06);
 }
-.follow-status-section h4 {
-  margin: 0 0 6px;
+.follow-status-section summary {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 0 7px;
   color: var(--text-secondary);
   font-size: 11px;
   letter-spacing: 1px;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+}
+.follow-status-section summary::-webkit-details-marker { display: none; }
+.follow-status-section summary:hover { color: var(--accent); }
+.follow-section-caret {
+  width: 0;
+  height: 0;
+  flex-shrink: 0;
+  border-left: 5px solid var(--text-secondary);
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  transition: transform 0.15s ease;
+}
+.follow-status-section[open] .follow-section-caret { transform: rotate(90deg); }
+.follow-status-section-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-bottom: 8px;
 }
 .follow-status-row {
   display: grid;
-  grid-template-columns: 72px minmax(0, 1fr);
-  gap: 8px;
+  grid-template-columns: 78px minmax(0, 1fr);
+  column-gap: 8px;
+  row-gap: 3px;
   font-size: 12px;
-  line-height: 1.6;
+  line-height: 1.45;
+  min-width: 0;
 }
 .follow-status-row span { color: var(--text-muted); }
 .follow-status-row b {
@@ -722,6 +747,25 @@ body {
   font-weight: 500;
   overflow-wrap: anywhere;
 }
+.follow-status-row.good b { color: var(--success); }
+.follow-status-row.warn b { color: var(--warning); }
+.follow-status-row.danger b { color: var(--danger); }
+.follow-status-meter {
+  grid-column: 2;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+.follow-status-meter i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+}
+.follow-status-meter.good i { background: var(--success); }
+.follow-status-meter.warn i { background: var(--warning); }
+.follow-status-meter.danger i { background: var(--danger); }
 
 /* 可折叠区块通用样式：点击标题栏展开/收起 */
 .collapse-header {

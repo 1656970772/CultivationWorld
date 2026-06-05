@@ -551,6 +551,46 @@ export class WorldEngine {
     return this.tickManager.multiTick(count);
   }
 
+  _nextCultivationRank(currentRankId) {
+    const ranks = this._ranksData || [];
+    if (ranks.length === 0) return null;
+    const current = ranks.find(r => r.id === currentRankId);
+    const currentOrder = current?.order ?? -1;
+    return ranks
+      .filter(r => r.category === 'cultivation' && r.order > currentOrder)
+      .sort((a, b) => a.order - b.order)[0] || null;
+  }
+
+  _npcStatusFields(n) {
+    const rankId = n.state.get('rankId');
+    const cultivationCfg = this._balanceConfig?.cultivation || {};
+    const cultivationCap = cultivationCfg.cultivationCap?.[rankId] ?? null;
+    const minCultivationRatio = cultivationCfg.minCultivationRatio ?? 0.3;
+    const insight = n.state.get('insight') || 0;
+    const cultivationProgress = n.state.get('cultivationProgress') || 0;
+    const nextRank = this._nextCultivationRank(rankId);
+
+    return {
+      hp: n.state.get('hp') || 0,
+      maxHp: n.state.get('maxHp') || 0,
+      injuryLevel: n.state.get('injuryLevel') || 0,
+      lifeRatio: n.state.get('lifeRatio') || 0,
+      insight,
+      totalProgress: n.state.get('totalProgress') ?? (cultivationProgress + insight),
+      actionRemaining: n.state.get('actionRemaining') || 0,
+      cultivationCap,
+      minCultivationRatio,
+      maxInsight: Math.max(0, 1 - minCultivationRatio),
+      nextRankName: nextRank?.name || null,
+      nextQiRequired: nextRank?.qiRequired || null,
+      spiritRootId: n.state.get('spiritRootId') || null,
+      physiqueId: n.state.get('physiqueId') || null,
+      hasActiveQuest: !!n.state.get('hasActiveQuest'),
+      activeQuestTypeName: n.state.get('activeQuestTypeName') || null,
+      questDaysRemaining: n.state.get('questDaysRemaining') || 0,
+    };
+  }
+
   /**
    * 获取当前世界快照
    */
@@ -590,6 +630,7 @@ export class WorldEngine {
         rankId: n.state.get('rankId'),
         qi: n.state.get('qi') || 0,
         cultivationProgress: n.state.get('cultivationProgress') || 0,
+        ...this._npcStatusFields(n),
         contribution: n.state.get('contribution') || 0,
         totalQuestsCompleted: n.state.get('totalQuestsCompleted') || 0,
         gender: n.state.get('gender') || 'male',
