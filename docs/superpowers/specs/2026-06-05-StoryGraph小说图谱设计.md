@@ -1,7 +1,7 @@
 # StoryGraph 小说图谱设计
 
 > 最后更新：2026-06-05
-> 状态：设计草案，待用户审阅
+> 状态：设计草案，待用户审阅；索引库位置已由 `2026-06-05-StoryGraph单作品本地索引库规格.md` 修订
 > 类型：工具与资料索引设计规格
 
 ## 资料来源
@@ -9,6 +9,7 @@
 - 用户需求：希望参考 `E:\AI_Projects\codegraph`，为小说阅读、时间线、角色卡、世界观抽取建立 StoryGraph，让 agent 读小说查资料更快、更准。
 - 用户确认：功能范围选择“全都要，但先做最小可用版”，并先写 specs。
 - 用户最新确认：MVP 只做单作品索引与查询；多作品同库索引、跨作品比较和跨作品强一致性属于后续扩展。
+- 用户最新确认：每本小说的初始化 DB 应放在小说相同目录下的 `.storygraph/` 中，agent 查询某本小说时优先在当前小说目录找 `.storygraph`。
 - CodeGraph 原项目：`E:\AI_Projects\codegraph` 是 TypeScript + SQLite + CLI/MCP/API 工程，数据库核心表为 `nodes`、`edges`、`files`、`nodes_fts`。来源：`E:\AI_Projects\codegraph\src\db\schema.sql`。
 - CodeGraph 文档：其公共 API 使用 `CodeGraph.init/open/indexAll/searchNodes/buildContext`，MCP 工具包括 search、context、explore、files、status 等。来源：`E:\AI_Projects\codegraph\site\src\content\docs\reference\api.md`、`E:\AI_Projects\codegraph\site\src\content\docs\reference\mcp-server.md`。
 - 当前项目事实：`E:\AI_Projects\CultivationWorld\.codegraph\codegraph.db` 已存在，状态显示已索引 159 个文件、3155 个节点、8968 条边。
@@ -37,7 +38,7 @@ StoryGraph 要把小说原文和现有世界观参考文档转成可查询的本
 
 ## 存放位置决策
 
-我的判断：StoryGraph 应作为独立 sibling 工具项目创建在 `E:\AI_Projects\storygraph`，索引产物写入被服务项目的 `.storygraph/` 目录。
+我的判断：StoryGraph 应作为独立 sibling 工具项目创建在 `E:\AI_Projects\storygraph`，索引产物写入每本小说目录内的 `.storygraph/` 目录。本节由 `2026-06-05-StoryGraph单作品本地索引库规格.md` 进一步细化。
 
 推荐布局：
 
@@ -46,16 +47,18 @@ E:\AI_Projects\
 ├── codegraph\              # 代码图谱原项目，作为架构参考
 ├── storygraph\             # 新建小说图谱工具库、CLI、MCP、API
 └── CultivationWorld\
-    ├── docs\世界观参考\    # 小说原文与参考文档，保持为资料库
-    └── .storygraph\        # StoryGraph 生成索引，默认不纳入文档目录
+    └── docs\世界观参考\    # 小说原文与参考文档，保持为资料库
+        └── 一念永恒\
+            ├── 一念永恒.txt
+            └── .storygraph\ # 该作品自己的 StoryGraph 生成索引
 ```
 
 理由：
 
-- `docs/世界观参考/` 是资料来源库，不应混入工具源码、数据库和运行时缓存。
+- `docs/世界观参考/` 是资料来源库，不应混入工具源码；每本小说目录内的 `.storygraph/` 是该小说的生成索引，不是人工设定文档。
 - `E:\AI_Projects\codegraph` 是代码图谱工具项目，不应混入小说领域节点和抽取逻辑。
 - 独立 `storygraph` 可以复用 CodeGraph 的工程模式，也能服务其他小说资料目录。
-- `.storygraph/storygraph.db` 与 `.codegraph/codegraph.db` 形态一致，agent 易于理解：工具项目负责构建，目标项目保存索引。
+- 作品目录内 `.storygraph/storygraph.db` 让 agent 在读取某本小说时可以先就近发现索引。
 
 ## 总体架构
 
@@ -225,13 +228,13 @@ Markdown 按标题层级和表格切分，保留标题路径，例如 `人物关
 建议 CLI 形态：
 
 ```powershell
-storygraph init E:\AI_Projects\CultivationWorld
-storygraph index E:\AI_Projects\CultivationWorld --source docs\世界观参考
-storygraph status E:\AI_Projects\CultivationWorld --json
-storygraph search E:\AI_Projects\CultivationWorld "韩立 筑基丹"
-storygraph entity E:\AI_Projects\CultivationWorld "韩立" --work 凡人修仙传
-storygraph timeline E:\AI_Projects\CultivationWorld --character 韩立
-storygraph evidence E:\AI_Projects\CultivationWorld "夺舍"
+storygraph init E:\AI_Projects\CultivationWorld --source docs\世界观参考 --work 凡人修仙传
+storygraph index E:\AI_Projects\CultivationWorld --source docs\世界观参考 --work 凡人修仙传
+storygraph status E:\AI_Projects\CultivationWorld --source docs\世界观参考 --work 凡人修仙传 --json
+storygraph search E:\AI_Projects\CultivationWorld "韩立 筑基丹" --source docs\世界观参考 --work 凡人修仙传
+storygraph entity E:\AI_Projects\CultivationWorld "韩立" --source docs\世界观参考 --work 凡人修仙传
+storygraph timeline E:\AI_Projects\CultivationWorld --character 韩立 --source docs\世界观参考 --work 凡人修仙传
+storygraph evidence E:\AI_Projects\CultivationWorld "夺舍" --source docs\世界观参考 --work 凡人修仙传
 ```
 
 ### MCP 工具
@@ -318,7 +321,7 @@ agent 处理世界观问题时的推荐流程：
 StoryGraph 是资料索引工具，不直接替代当前文档体系：
 
 - `docs/世界观参考/` 保持原文与人工分析资料库。
-- `.storygraph/` 保存生成索引，默认不作为文档导航的一部分。
+- 每本小说目录内的 `.storygraph/` 保存该作品生成索引，默认不作为文档导航的一部分。
 - `docs/worldbuilding/wiki/` 继续只保存用户确认后的项目设定。
 - `docs/superpowers/specs/` 保存本设计规格。
 - 后续如 StoryGraph 成为长期工具，可新增 ADR 记录工具架构决策。
@@ -339,7 +342,7 @@ StoryGraph 是资料索引工具，不直接替代当前文档体系：
 ## 自检
 
 - 无未完成条目。
-- 存放位置明确：工具在 `E:\AI_Projects\storygraph`，索引在当前项目 `.storygraph/`。
+- 存放位置明确：工具在 `E:\AI_Projects\storygraph`，索引在每本小说目录内的 `.storygraph/`。
 - 范围明确：全能力目标，MVP 只跑通一部作品；跨作品能力为后续扩展。
 - 证据规则明确：原作事实、分析文档、我的判断分层存储。
 - 与项目规则一致：不污染 `docs/世界观参考/`，世界观决策仍需进入 Wiki 并标明来源。

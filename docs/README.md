@@ -2,7 +2,7 @@
 
 > 项目代号：WorldDynamic  
 > 创建日期：2026-05-23  
-> 最后更新：2026-06-05（新增 Job/Toil 正式启用前收尾规格与 ADR-050 收尾规划；补充 StoryGraph 小说图谱设计规格与单作品 MVP 实施计划）
+> 最后更新：2026-06-05（新增 Job/Toil 正式启用前收尾规格与 ADR-050 收尾规划；补充 StoryGraph 小说图谱设计规格、单作品本地索引库规格与单作品 MVP 实施计划）
 
 ## 当前事实
 
@@ -71,7 +71,8 @@ docs/
 ├── superpowers/
 │   ├── specs/
 │   │   ├── 2026-06-05-Job-Toil正式启用前收尾规格.md
-│   │   └── 2026-06-05-StoryGraph小说图谱设计.md
+│   │   ├── 2026-06-05-StoryGraph小说图谱设计.md
+│   │   └── 2026-06-05-StoryGraph单作品本地索引库规格.md
 │   └── plans/
 │       ├── 2026-06-05-ADR-050-收尾实施计划.md
 │       ├── 2026-06-05-Job-Toil-AI重构实施计划.md
@@ -105,6 +106,7 @@ docs/
 | 世界观 Wiki | `worldbuilding/wiki/README.md` |
 | 世界观参考原文补充修正计划 | `superpowers/plans/2026-06-05-世界观参考原文补充修正计划.md` |
 | StoryGraph 小说图谱设计 | `superpowers/specs/2026-06-05-StoryGraph小说图谱设计.md` |
+| StoryGraph 单作品本地索引库规格 | `superpowers/specs/2026-06-05-StoryGraph单作品本地索引库规格.md` |
 | StoryGraph 小说图谱 MVP 实施计划 | `superpowers/plans/2026-06-05-StoryGraph小说图谱MVP实施计划.md` |
 
 ## 清理原则
