@@ -185,7 +185,18 @@ console.log('3) 默认 dynamic-goals.json 使用计划 schema');
   assert(config.goals?.some(rule => rule.kind === 'window'), '默认配置包含 window 规则');
   assert(config.goals?.some(rule => rule.kind === 'immediate'), '默认配置包含 immediate 规则');
   assert(config.goals?.every(rule => typeof rule.interrupt === 'object' && rule.interrupt !== null), '默认配置使用对象型 interrupt');
-  assert(config.goals?.some(rule => rule.goalState?.preparedForDynamicEvent), '默认配置使用 preparedForDynamicEvent 状态键');
+  assert(
+    config.goals?.some(rule => rule.id === 'prepare_secret_realm' && rule.goalState?.preparedForSecretRealm),
+    '默认配置使用 preparedForSecretRealm 闭环秘境准备'
+  );
+  assert(
+    config.goals?.some(rule => rule.id === 'prepare_tournament' && rule.goalState?.preparedForSectTournament),
+    '默认配置使用 preparedForSectTournament 闭环宗门大比准备'
+  );
+  assert(
+    config.goals?.some(rule => rule.id === 'avenge_relationship_death' && rule.goalState?.preparedForGenericDynamicEvent),
+    '默认配置使用 preparedForGenericDynamicEvent 闭环通用动态事件准备'
+  );
   assert(config.goals?.some(rule => rule.goalState?.joinedDynamicEvent), '默认配置使用 joinedDynamicEvent 状态键');
 
   const entity = mkEntity('npc_default_dynamic_config', { ...config, enabled: true });
