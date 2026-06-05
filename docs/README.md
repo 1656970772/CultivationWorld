@@ -2,7 +2,7 @@
 
 > 项目代号：WorldDynamic  
 > 创建日期：2026-05-23  
-> 最后更新：2026-06-05（Job/Toil 动态目标链路默认启用验证；新增默认启用验证报告；补充 StoryGraph 小说图谱设计规格、单作品本地索引库规格、单作品 MVP 实施计划与单作品本地索引库实施计划）
+> 最后更新：2026-06-05（Job/Toil 动态目标链路默认启用验证；新增默认启用验证报告；补充 StoryGraph 小说图谱设计规格、单作品本地索引库规格、单作品 MVP 实施计划、单作品本地索引库实施计划与跟随角色状态面板实施计划）
 
 ## 当前事实
 
@@ -77,7 +77,8 @@ docs/
 │   │   ├── 2026-06-05-ADR-050-收尾实施计划.md
 │   │   ├── 2026-06-05-Job-Toil-AI重构实施计划.md
 │   │   ├── 2026-06-05-StoryGraph单作品本地索引库实施计划.md
-│   │   └── 2026-06-05-StoryGraph小说图谱MVP实施计划.md
+│   │   ├── 2026-06-05-StoryGraph小说图谱MVP实施计划.md
+│   │   └── 2026-06-05-跟随角色状态面板实施计划.md
 │   └── reports/
 │       ├── 2026-06-05-Job-Toil启用前验证.md
 │       └── 2026-06-05-Job-Toil默认启用验证.md
@@ -113,6 +114,7 @@ docs/
 | StoryGraph 单作品本地索引库规格 | `superpowers/specs/2026-06-05-StoryGraph单作品本地索引库规格.md` |
 | StoryGraph 小说图谱 MVP 实施计划 | `superpowers/plans/2026-06-05-StoryGraph小说图谱MVP实施计划.md` |
 | StoryGraph 单作品本地索引库实施计划 | `superpowers/plans/2026-06-05-StoryGraph单作品本地索引库实施计划.md` |
+| 跟随角色状态面板 | `superpowers/plans/2026-06-05-跟随角色状态面板实施计划.md` |
 
 ## 清理原则
 
