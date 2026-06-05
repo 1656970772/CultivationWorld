@@ -1,8 +1,8 @@
 /**
  * 动态世界事件相关 NPC 行为执行器。
  *
- * Executor 只处理 worldContext 侧事件标记与执行结果；GOAP 状态效果仍由 Action.effects
- * 统一应用，避免执行器复制 planner/action 的职责。
+ * Executor 只通过 worldContext 窄接口标记事件，并在标记成功后写入运行期状态。
+ * GOAP 可规划效果由 Action.plannerEffects 提供，避免事件缺失时 Action.effects 伪完成目标。
  */
 import { ActionExecutor } from '../../abstract/action.js';
 
@@ -21,32 +21,21 @@ function resolveDynamicEvent(worldContext, eventId) {
   if (typeof worldContext?.dynamicEventById === 'function') {
     return normalizeEvent(worldContext.dynamicEventById(eventId));
   }
-  const legacySystem = worldContext?.dynamicEventSystem || worldContext?.worldEventSystem;
-  return normalizeEvent(legacySystem?.getById?.(eventId));
+  return null;
 }
 
 function markPrepared(worldContext, eventId, npcId) {
   if (typeof worldContext?.markDynamicEventPrepared === 'function') {
     return worldContext.markDynamicEventPrepared(eventId, npcId);
   }
-  const legacySystem = worldContext?.dynamicEventSystem || worldContext?.worldEventSystem;
-  const event = legacySystem?.getById?.(eventId);
-  if (typeof legacySystem?.markPrepared === 'function') {
-    return legacySystem.markPrepared(eventId, npcId);
-  }
-  return event?.markPrepared?.(npcId) === true;
+  return false;
 }
 
 function markParticipant(worldContext, eventId, npcId) {
   if (typeof worldContext?.markDynamicEventParticipant === 'function') {
     return worldContext.markDynamicEventParticipant(eventId, npcId);
   }
-  const legacySystem = worldContext?.dynamicEventSystem || worldContext?.worldEventSystem;
-  const event = legacySystem?.getById?.(eventId);
-  if (typeof legacySystem?.markParticipant === 'function') {
-    return legacySystem.markParticipant(eventId, npcId);
-  }
-  return event?.markParticipant?.(npcId) === true;
+  return false;
 }
 
 export class NPCPrepareDynamicEventExecutor extends ActionExecutor {
@@ -57,7 +46,11 @@ export class NPCPrepareDynamicEventExecutor extends ActionExecutor {
       return { dynamicEventId: null, prepared: false };
     }
 
-    markPrepared(worldContext, eventId, entity?.id);
+    const prepared = markPrepared(worldContext, eventId, entity?.id) === true;
+    if (!prepared) {
+      return { dynamicEventId: eventId, dynamicEventName: event.name || event.type || eventId, prepared: false };
+    }
+    entity?.state?.set?.('preparedForDynamicEvent', true);
     entity?.state?.set?.('lastPreparedDynamicEventId', eventId);
 
     return {
@@ -77,7 +70,11 @@ export class NPCJoinDynamicEventExecutor extends ActionExecutor {
       return { dynamicEventId: null, joined: false };
     }
 
-    markParticipant(worldContext, eventId, entity?.id);
+    const joined = markParticipant(worldContext, eventId, entity?.id) === true;
+    if (!joined) {
+      return { dynamicEventId: eventId, dynamicEventName: event.name || event.type || eventId, joined: false };
+    }
+    entity?.state?.set?.('joinedDynamicEvent', true);
     entity?.state?.set?.('lastJoinedDynamicEventId', eventId);
 
     return {

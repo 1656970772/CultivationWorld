@@ -13,6 +13,11 @@
 import { BuildingType } from '../layout-constants.js';
 import { computePath } from '../pathfinding.js';
 
+function cloneJSONCompatible(value) {
+  if (value == null || typeof value !== 'object') return value;
+  return JSON.parse(JSON.stringify(value));
+}
+
 export class WorldContextBuilder {
   /**
    * @param {Object} deps
@@ -58,7 +63,10 @@ export class WorldContextBuilder {
 
       dynamicEventById(id) {
         const event = host.worldEventSystem?.getById(id);
-        return event ? event.toJSON() : null;
+        if (!event) return null;
+        return typeof event.toJSON === 'function'
+          ? event.toJSON()
+          : cloneJSONCompatible(event);
       },
 
       knownDynamicEventsFor(entityOrId) {
@@ -258,10 +266,9 @@ export class WorldContextBuilder {
           case 'dynamic_event_target': {
             const eventId = entity.state?.get('targetDynamicEventId');
             if (!eventId) return here;
-            const liveEvent = host.worldEventSystem?.getById?.(eventId);
-            const event = liveEvent
-              ? (typeof liveEvent.toJSON === 'function' ? liveEvent.toJSON() : liveEvent)
-              : (typeof this?.dynamicEventById === 'function' ? this.dynamicEventById(eventId) : null);
+            const event = typeof this?.dynamicEventById === 'function'
+              ? this.dynamicEventById(eventId)
+              : null;
             const pos = event?.pos || null;
             if (pos && typeof pos.x === 'number' && typeof pos.y === 'number') {
               return { x: pos.x, y: pos.y };
