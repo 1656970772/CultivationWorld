@@ -40,8 +40,11 @@ function ok(condition, message) {
 const ranks = load('data/definitions/ranks.json');
 const npcs = load('data/entities/npcs.json');
 const factions = load('data/entities/factions.json');
+const techniques = load('data/definitions/techniques.json');
+const weapons = load('data/definitions/weapons.json');
 const combat = load('data/balance/combat.json');
 const movement = load('data/balance/movement.json');
+const modifiers = load('data/world/modifiers.json');
 
 console.log('1) ranks.json only contains cultivation rank ids');
 ok(ranks.length === allowedRanks.size, 'rank count is exactly 6');
@@ -72,6 +75,9 @@ const npcSpeed = movement.npcSpeedByRank || {};
 ok(!Object.keys(baseHp).some((id) => removedRanks.has(id)), 'combat.npcHp.baseHp has no title rank keys');
 ok(!Object.keys(baseDef).some((id) => removedRanks.has(id)), 'combat.npcCombat.baseDef has no title rank keys');
 ok(!Object.keys(npcSpeed).some((id) => removedRanks.has(id)), 'movement.npcSpeedByRank has no title rank keys');
+ok(!modifiers.some((modifier) => Object.hasOwn(modifier.effects || {}, 'mortal_stability')), 'world modifiers have no mortal_stability effect');
+ok(!techniques.some((technique) => (technique.factionAffinities || []).includes('mortal_kingdom')), 'techniques have no mortal_kingdom affinity');
+ok(!weapons.some((weapon) => removedFactionIds.has(weapon.school)), 'weapons do not reference removed kingdom schools');
 
 if (failures > 0) {
   console.error(`\nRank cleanup tests failed: ${failures}`);

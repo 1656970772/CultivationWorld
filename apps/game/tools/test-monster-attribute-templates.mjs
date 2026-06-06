@@ -25,6 +25,17 @@ function ok(condition, message) {
   console.log(`  ${condition ? 'OK' : 'FAIL'}: ${message}`);
   if (!condition) failures++;
 }
+function throws(fn, pattern, message) {
+  try {
+    fn();
+    console.log(`  FAIL: ${message} (did not throw)`);
+    failures++;
+  } catch (err) {
+    const pass = pattern.test(String(err?.message || err));
+    console.log(`  ${pass ? 'OK' : 'FAIL'}: ${message} (${err.message})`);
+    if (!pass) failures++;
+  }
+}
 
 console.log('1) medium land melee grade 1');
 const wolf = {
@@ -89,7 +100,50 @@ ok(invalid.errors.some((msg) => msg.includes('size')), 'size must be one string'
 ok(invalid.errors.some((msg) => msg.includes('normal')), 'normal special type is mutually exclusive');
 ok(invalid.errors.some((msg) => msg.includes('cost')), 'movement skill needs resource cost');
 
-console.log('4) legacy fallback still reads old attributes');
+console.log('4) configured monsters fail fast on missing or unknown templates');
+throws(
+  () => resolveMonsterAttributes({ ...wolf, id: 'missing_config' }, {}),
+  /attribute templates config/,
+  'templates require loaded monster attribute config',
+);
+throws(
+  () => calculateMonsterAttributes({
+    ...wolf,
+    id: 'unknown_size',
+    templates: { ...wolf.templates, size: 'missing_size' },
+  }, templates),
+  /unknown size template missing_size/,
+  'unknown size template fails fast',
+);
+throws(
+  () => calculateMonsterAttributes({
+    ...wolf,
+    id: 'unknown_movement',
+    templates: { ...wolf.templates, movement: ['land', 'mist_step'] },
+  }, templates),
+  /unknown movement template mist_step/,
+  'unknown movement template fails fast',
+);
+throws(
+  () => calculateMonsterAttributes({
+    ...wolf,
+    id: 'unknown_combat',
+    templates: { ...wolf.templates, combatStyles: ['melee', 'soul_bite'] },
+  }, templates),
+  /unknown combatStyle template soul_bite/,
+  'unknown combat style template fails fast',
+);
+throws(
+  () => calculateMonsterAttributes({
+    ...wolf,
+    id: 'unknown_special',
+    templates: { ...wolf.templates, specialTypes: ['normal', 'mythic_shadow'] },
+  }, templates),
+  /unknown specialType template mythic_shadow/,
+  'unknown special type template fails fast',
+);
+
+console.log('5) legacy fallback still reads old attributes');
 const legacy = resolveMonsterAttributes({
   id: 'legacy_monster',
   grade: 1,

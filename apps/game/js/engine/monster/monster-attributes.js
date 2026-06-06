@@ -40,6 +40,14 @@ function applyMultipliers(attrs, multipliers, keys) {
   }
 }
 
+function requireTemplate(configGroup, id, label, monsterId) {
+  const template = configGroup?.[id];
+  if (!template) {
+    throw new Error(`${monsterId}: unknown ${label} template ${id}`);
+  }
+  return template;
+}
+
 function applyAdjustments(attrs, adjustments = {}) {
   for (const key of PANEL_KEYS) {
     const adjustment = adjustments[key];
@@ -55,25 +63,29 @@ function applyAdjustments(attrs, adjustments = {}) {
 }
 
 export function calculateMonsterAttributes(def, config) {
+  const monsterId = def?.id || '(unknown)';
   const gradeKey = String(def?.grade ?? '');
   const base = config?.gradeBaselines?.[gradeKey];
   if (!base) {
-    throw new Error(`monster ${def?.id || '(unknown)'} has no grade baseline for ${gradeKey}`);
+    throw new Error(`monster ${monsterId} has no grade baseline for ${gradeKey}`);
   }
 
   const t = normalizeTemplates(def);
   const attrs = { ...base };
-  const size = config?.size?.[t.size];
+  const size = requireTemplate(config?.size, t.size, 'size', monsterId);
   applyMultipliers(attrs, size?.multipliers, ['hp', 'attack', 'defense', 'speed']);
 
   for (const id of t.movement) {
-    applyMultipliers(attrs, config?.movement?.[id]?.multipliers, ['attack', 'speed']);
+    const movement = requireTemplate(config?.movement, id, 'movement', monsterId);
+    applyMultipliers(attrs, movement?.multipliers, ['attack', 'speed']);
   }
   for (const id of t.combatStyles) {
-    applyMultipliers(attrs, config?.combatStyle?.[id]?.multipliers, ['attack', 'defense', 'qi', 'spirit']);
+    const combatStyle = requireTemplate(config?.combatStyle, id, 'combatStyle', monsterId);
+    applyMultipliers(attrs, combatStyle?.multipliers, ['attack', 'defense', 'qi', 'spirit']);
   }
   for (const id of t.specialTypes) {
-    const multiplier = config?.specialType?.[id]?.statMultiplier;
+    const specialType = requireTemplate(config?.specialType, id, 'specialType', monsterId);
+    const multiplier = specialType?.statMultiplier;
     if (typeof multiplier === 'number') {
       for (const key of PANEL_KEYS) applyMultiplier(attrs, key, multiplier);
     }
@@ -84,7 +96,10 @@ export function calculateMonsterAttributes(def, config) {
 }
 
 export function resolveMonsterAttributes(def, config) {
-  if (def?.templates && config?.gradeBaselines) {
+  if (def?.templates) {
+    if (!config?.gradeBaselines) {
+      throw new Error(`monster ${def?.id || '(unknown)'} has templates but no monster attribute templates config`);
+    }
     return calculateMonsterAttributes(def, config);
   }
 
