@@ -5,10 +5,17 @@
   "stimulusTtl": 2,
   "stimulusCapacity": 16,
 
-  "_thresholds_note": "血量比例阈值（hp/maxHp）：低于 fleeHpRatio 视为重伤濒死优先逃命；低于 healHpRatio 视为偏低优先回血；其余视为安全。powerAdvantage：我方战力 ÷ 来犯者战力，>= 该值才视为敌弱可反击。",
+  "_thresholds_note": "血量比例阈值：优先读取 combat.* 新字段；保留 fleeHpRatio/healHpRatio/powerAdvantage 作为旧字段兼容。counterAdvantageRatio：我方战力 ÷ 来犯者战力，>= 该值才视为敌弱可反击；retreatDisadvantageRatio/heavyDamageHpRatio 控制敌强或重击撤退。",
   "fleeHpRatio": 0.2,
   "healHpRatio": 0.5,
   "powerAdvantage": 1.5,
+  "combat": {
+    "criticalHpRatio": 0.25,
+    "lowHpRatio": 0.45,
+    "counterAdvantageRatio": 1.3,
+    "retreatDisadvantageRatio": 1.2,
+    "heavyDamageHpRatio": 0.4
+  },
 
   "_heal_note": "回血丹 id（优先服用，走 npc-economy.applyItemEffects 统一物品效果入口）；无丹时按 restHealRatio×maxHp 静养回血。healAmount/healRatio 为物品效果未改 hp 时的兜底回血量。",
   "healPillId": "pill_rejuvenation",

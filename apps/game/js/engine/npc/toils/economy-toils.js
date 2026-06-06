@@ -1,4 +1,5 @@
 import { ToilExecutor, ToilResultStatus } from '../../abstract/toil.js';
+import { redeemExchangeItem, useQiPill } from '../npc-economy.js';
 
 function paramsOf(toil) {
   return toil?.params || {};
@@ -200,6 +201,24 @@ export class NPCExchangeFactionItemToilExecutor extends ToilExecutor {
       state.set('contribution', Number(state.get('contribution') || 0) - contributionCost);
     }
     return result;
+  }
+}
+
+export class NPCRedeemQiPillToilExecutor extends ToilExecutor {
+  run(entity, worldContext) {
+    const result = redeemExchangeItem(entity, worldContext, 'qi_pill');
+    return result.success
+      ? { status: ToilResultStatus.SUCCESS, reason: 'qi_pill_redeemed', contextPatch: result }
+      : { status: ToilResultStatus.FAILED, reason: result.outcome || 'qi_pill_redeem_failed', contextPatch: result };
+  }
+}
+
+export class NPCUseQiPillToilExecutor extends ToilExecutor {
+  run(entity, worldContext) {
+    const result = useQiPill(entity, worldContext);
+    return result.success
+      ? { status: ToilResultStatus.SUCCESS, reason: 'qi_pill_used', contextPatch: result }
+      : { status: ToilResultStatus.FAILED, reason: result.outcome || 'qi_pill_use_failed', contextPatch: result };
   }
 }
 

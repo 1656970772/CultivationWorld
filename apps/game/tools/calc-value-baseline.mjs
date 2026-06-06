@@ -16,7 +16,10 @@ const GAME_ROOT = resolve(__dirname, '..');
 const load = (p) => JSON.parse(readFileSync(resolve(GAME_ROOT, p), 'utf-8'));
 
 const cult = load('data/balance/cultivation.json');
-const actions = load('data/actions/npc-actions.json');
+const actions = [
+  ...load('data/actions/npc-actions.json'),
+  ...load('data/actions/npc-job-actions.json'),
+];
 const quest = load('data/quests/quest-templates.json');
 
 const RANK = 'mortal';
@@ -43,17 +46,17 @@ const exploreInsightMid = (ev.insightMin + ev.insightMax) / 2; // 期望 insight
 const diff1 = quest.difficulties.find(d => d.level === 1) || {};
 
 const estimates = {
-  act_npc_cultivate: qiBase * QI_PER_STONE,                 // 闭关1天≈基础真气价值
-  act_npc_train_chamber: qiBase * 2 * QI_PER_STONE,          // 修炼场翻倍≈2倍真气价值
-  act_npc_heal: 5,                                           // 解1级伤，避免后续寿元/战力损失，估5灵石
+  act_npc_job_cultivate: qiBase * QI_PER_STONE,              // 闭关1天≈基础真气价值
+  act_npc_job_train_chamber: qiBase * 2 * QI_PER_STONE,       // 修炼场翻倍≈2倍真气价值
+  act_npc_job_heal: 5,                                       // 解1级伤，避免后续寿元/战力损失，估5灵石
   act_npc_serve_faction: 2 * STONE_PER_CONTRIBUTION,         // 履职≈数贡献等价
   act_npc_seek_elixir: 30,                                   // 续命（低成功率但价值高），估30灵石
   act_npc_challenge: 5 * STONE_PER_CONTRIBUTION,             // 晋升带来月俸/地位，估25灵石
   act_npc_assist_faction: 1 * STONE_PER_CONTRIBUTION,        // 辅助≈数灵石
-  act_npc_explore: exploreQi * QI_PER_STONE + exploreInsightMid * 1000, // 真气+感悟(进度极值钱)
-  act_npc_accept_quest: 2,                                   // 仅接取，价值低
-  act_npc_do_quest: (diff1.rewardStones || 5) * 0.5,         // 执行推进，部分奖励
-  act_npc_turn_in_quest: (diff1.rewardStones || 5) + (diff1.rewardContribution || 2) * STONE_PER_CONTRIBUTION,
+  act_npc_job_explore: exploreQi * QI_PER_STONE + exploreInsightMid * 1000, // 真气+感悟(进度极值钱)
+  act_npc_accept_quest_job: 2,                                // 仅接取，价值低
+  act_npc_execute_quest_job: (diff1.rewardStones || 5) * 0.5, // 执行推进，部分奖励
+  act_npc_turn_in_quest_job: (diff1.rewardStones || 5) + (diff1.rewardContribution || 2) * STONE_PER_CONTRIBUTION,
 };
 
 console.log('行为 → 灵石等价净收益（估算） vs 当前 valueScore：');

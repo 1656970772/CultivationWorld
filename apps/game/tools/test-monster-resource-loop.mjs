@@ -17,14 +17,13 @@ const GAME_ROOT = resolve(__dirname, '..');
 const load = (p) => JSON.parse(readFileSync(resolve(GAME_ROOT, p), 'utf-8'));
 
 const { Inventory } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/abstract/inventory.js')).href);
-const { Action } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/abstract/action.js')).href);
 const { RuntimeState } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/abstract/runtime-state.js')).href);
 const { ItemRegistry } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/items/item-registry.js')).href);
 const { NPCState } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/npc/npc-state.js')).href);
 const {
-  NPCAcceptQuestExecutor,
-  NPCDoQuestExecutor,
-} = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/npc/npc-actions.js')).href);
+  acceptQuest,
+  executeQuestDay,
+} = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/npc/services/quest-service.js')).href);
 const { redeemExchangeItem } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/npc/npc-economy.js')).href);
 const { TickManager } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/world/tick-manager.js')).href);
 
@@ -47,6 +46,11 @@ function withRandom(value, fn) {
     Math.random = old;
   }
 }
+
+const deterministicRng = {
+  next: () => 0,
+  fn: () => 0,
+};
 
 function mkNpc(overrides = {}) {
   const npc = {
@@ -140,8 +144,8 @@ console.log('1) 品阶化妖兽资源定义');
 
 console.log('2) NPCState 与接任务锁定具体妖兽');
 {
-  const npcActions = load('data/actions/npc-actions.json');
-  const huntAcceptAction = npcActions.find(a => a.id === 'act_npc_accept_hunt_quest');
+  const npcJobActions = load('data/actions/npc-job-actions.json');
+  const huntAcceptAction = npcJobActions.find(a => a.id === 'act_npc_accept_monster_hunt_job');
   ok(!!huntAcceptAction, '存在专门的接取猎妖任务行为');
   ok(huntAcceptAction?.preconditions?.factionNeedsHuntMaterials?.op === 'true', '猎妖接取行为只在宗门缺妖兽材料时规划');
 
@@ -158,12 +162,11 @@ console.log('2) NPCState 与接任务锁定具体妖兽');
     role: 'disciple',
     factionId: 'sect_test',
     rankId: 'foundation_building',
-  }, load('data/definitions/ranks.json'), load('data/config/game-config.json'));
+  }, load('data/definitions/ranks.json'), load('data/config/game-config.json'), deterministicRng);
   ok(state.get('questTargetMonsterId') === null, 'NPCState 初始化 questTargetMonsterId=null');
 
   const npc = mkNpc();
-  const accept = new NPCAcceptQuestExecutor();
-  const result = withRandom(0, () => accept.run(npc, {
+  const result = withRandom(0, () => acceptQuest(npc, {
     balanceConfig: { cultivation: { rankMaxDifficulty: { foundation_building: 3 } } },
     questTemplates: {
       difficulties: [{ level: 3, name: '三阶', durationDays: 1 }],
@@ -176,19 +179,21 @@ console.log('2) NPCState 与接任务锁定具体妖兽');
       }],
       randomQuestSpawnChance: { '3': 1 },
     },
+    rng: deterministicRng,
     resolveQuestLocation() {
       return { x: 16, y: 18, monsterId: 'monster_test_3' };
     },
-  }, null));
+  }));
   ok(result.success, '可接取斩妖任务');
   ok(npc.state.get('questTargetMonsterId') === 'monster_test_3', '斩妖任务锁定具体妖兽 id');
 
   const forcedNpc = mkNpc();
-  const forced = withRandom(0, () => accept.run(forcedNpc, {
+  const forced = withRandom(0, () => acceptQuest(forcedNpc, {
     balanceConfig: {
       cultivation: { rankMaxDifficulty: { foundation_building: 3 } },
       economy: { monsterResources: { huntQuestTypeIds: ['qt_slay_monster'] } },
     },
+    rng: deterministicRng,
     questTemplates: {
       difficulties: [{ level: 3, name: '三阶', durationDays: 1 }],
       questTypes: [
@@ -213,7 +218,7 @@ console.log('2) NPCState 与接任务锁定具体妖兽');
       if (quest.id === 'qt_slay_monster') return { x: 16, y: 18, monsterId: 'monster_test_3' };
       return { x: 1, y: 1 };
     },
-  }, { id: 'act_npc_accept_hunt_quest' }));
+  }, { forceMonsterHunt: true }));
   ok(forced.success && forcedNpc.state.get('activeQuestTypeId') === 'qt_slay_monster', '专门猎妖行为会过滤并接取斩妖任务');
   ok(forcedNpc.state.get('questTargetMonsterId') === 'monster_test_3', '专门猎妖行为仍锁定具体妖兽 id');
 }
@@ -232,8 +237,7 @@ console.log('3) 执行斩妖任务真实击杀并掉落材料');
     },
   });
   const monster = mkMonster();
-  const doQuest = new NPCDoQuestExecutor();
-  const result = withRandom(0, () => doQuest.run(npc, {
+  const result = withRandom(0, () => executeQuestDay(npc, {
     questTemplates: {
       difficulties: [{ level: 3, name: '三阶', durationDays: 1, dangerInjury: 0, dangerDeath: 0 }],
     },
@@ -252,7 +256,7 @@ console.log('3) 执行斩妖任务真实击杀并掉落材料');
     },
     npcCombatPower() { return 999; },
     currentDay: 1,
-  }, null));
+  }));
   ok(result.success && result.outcome === 'complete', '斩妖任务执行成功');
   ok(monster.alive === false && monster._deathInfo?.cause === 'quest_hunt', '目标妖兽被任务击杀并记录死因');
   ok(npc.inventory.getAmount('monster_core_g3') === 1, 'NPC 获得三阶妖兽内丹');
@@ -270,8 +274,6 @@ console.log('3) 执行斩妖任务真实击杀并掉落材料');
     },
   });
   const multiDayMonster = mkMonster();
-  const doQuestConfig = load('data/actions/npc-actions.json').find(a => a.id === 'act_npc_do_quest');
-  const doQuestAction = new Action({ ...doQuestConfig, executor: new NPCDoQuestExecutor() });
   const worldContext = {
     questTemplates: {
       difficulties: [{ level: 3, name: '三阶', durationDays: 2, dangerInjury: 0, dangerDeath: 0 }],
@@ -292,11 +294,11 @@ console.log('3) 执行斩妖任务真实击杀并掉落材料');
     npcCombatPower() { return 999; },
     currentDay: 1,
   };
-  const firstDay = withRandom(0, () => doQuestAction.execute(multiDayNpc, worldContext));
+  const firstDay = withRandom(0, () => executeQuestDay(multiDayNpc, worldContext));
   ok(firstDay.outcome === 'in_progress', '多日斩妖任务第一天仍处于进行中');
-  ok(multiDayNpc.state.get('questComplete') === false, '多日斩妖任务未到最后一天不能被真实 effects 标记完成');
+  ok(multiDayNpc.state.get('questComplete') === false, '多日斩妖任务未到最后一天不能被标记完成');
   ok(multiDayMonster.alive === true, '多日斩妖任务未到最后一天不会提前击杀妖兽');
-  const secondDay = withRandom(0, () => doQuestAction.execute(multiDayNpc, worldContext));
+  const secondDay = withRandom(0, () => executeQuestDay(multiDayNpc, worldContext));
   ok(secondDay.success && secondDay.outcome === 'complete', '多日斩妖任务最后一天才完成结算');
   ok(multiDayMonster.alive === false && multiDayNpc.inventory.getAmount('monster_core_g3') === 1, '多日斩妖任务最后一天击杀并掉落妖丹');
 }

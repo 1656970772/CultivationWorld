@@ -13,6 +13,11 @@
  * 拆分边界见 ADR-030。
  */
 import { readTraitBreakthroughBonus, readTraitLifespanBonus } from './npc-traits.js';
+import {
+  canAttemptBreakthrough,
+  nextCultivationRank,
+  syncTotalCultivation,
+} from './numeric-cultivation.js';
 
 /**
  * 境界突破判定。
@@ -24,16 +29,6 @@ import { readTraitBreakthroughBonus, readTraitLifespanBonus } from './npc-traits
  * @param {import('./npc-entity.js').NPCEntity} entity
  */
 export function tryBreakthrough(entity) {
-  // 突破以总进度为准：闭关进度(受境界 cultivationCap 上限)+ 游历感悟(insight)。
-  const cultivationProgress = entity.state.get('cultivationProgress') || 0;
-  const progress = cultivationProgress + (entity.state.get('insight') || 0);
-  if (progress < 1.0) return;
-
-  // 闭关进度至少占最低比例(minCultivationRatio，默认 0.3)才允许突破：
-  // 防止纯靠游历感悟“速成”，确保根基（闭关）达标。见 ADR-017。
-  const minCultivationRatio = entity._cultivationConfig.minCultivationRatio ?? 0.3;
-  if (cultivationProgress < minCultivationRatio) return;
-
   const currentRankId = entity.state.get('rankId') || 'mortal';
   const ranks = entity._ranksData;
   if (!ranks || ranks.length === 0) return;
@@ -41,17 +36,13 @@ export function tryBreakthrough(entity) {
   const currentRank = ranks.find(r => r.id === currentRankId);
   if (!currentRank) return;
 
-  const currentOrder = currentRank.order;
-  const cultivationRanks = ranks
-    .filter(r => r.category === 'cultivation')
-    .sort((a, b) => a.order - b.order);
-
-  const nextRank = cultivationRanks.find(r => r.order > currentOrder);
+  const nextRank = nextCultivationRank(entity, ranks);
   if (!nextRank) return;
+
+  if (!canAttemptBreakthrough(entity, ranks, entity._cultivationConfig)) return;
 
   const currentQi = entity.state.get('qi') || 0;
   const qiRequired = nextRank.qiRequired || 0;
-  if (currentQi < qiRequired) return;
 
   const successRate = getBreakthroughRate(entity, currentRankId, nextRank.id);
   const breakthroughCfg = entity._cultivationConfig.breakthrough || {};
@@ -76,8 +67,13 @@ export function tryBreakthrough(entity) {
   if (roll < finalRate) {
     entity.state.set('rankId', nextRank.id);
     entity.state.set('rankName', nextRank.name);
+    entity.state.set('cultivation', 0);
+    entity.state.set('experienceCultivation', 0);
+    entity.state.set('totalCultivation', 0);
+    entity.state.set('cultivationProgressRatio', 0);
     entity.state.set('cultivationProgress', 0);
     entity.state.set('insight', 0);
+    entity.state.set('totalProgress', 0);
     entity.state.set('qi', currentQi - qiRequired);
 
     const lifespan = nextRank.lifespan;
@@ -124,7 +120,11 @@ export function tryBreakthrough(entity) {
     // failureProgress 不应超过当前境界 cultivationCap，避免回退值反而高于闭关上限。
     const capMap = entity._cultivationConfig.cultivationCap || {};
     const cap = capMap[currentRankId] ?? 1.0;
-    entity.state.set('cultivationProgress', Math.min(failureProgress, cap));
+    const resetRatio = Math.min(failureProgress, cap);
+    entity.state.set('cultivation', (nextRank.cultivationRequired || 0) * resetRatio);
+    entity.state.set('experienceCultivation', 0);
+    syncTotalCultivation(entity, ranks);
+    entity.state.set('cultivationProgress', resetRatio);
     entity.state.set('insight', 0);
     entity.state.set('qi', Math.floor(currentQi * failureQiRetention));
     entity._breakthroughInfo = {

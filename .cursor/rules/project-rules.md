@@ -20,14 +20,23 @@
 ## 世界观设定规则
 
 1. **涉及游戏世界观设定（境界、寿命、势力类型、修炼体系、物品、天劫、秘境等）时，必须优先查找 `docs/世界观参考/` 目录下的参考资料。** 该目录汇总了凡人修仙传、遮天、完美世界、仙逆、一念永恒、斗破苍穹、牧神记、大道争锋、阳神、武破九荒、武逆乾坤、黎明之剑等小说的世界观设定。
-2. **如果 `docs/世界观参考/` 中没有找到所需设定，必须主动告知用户，** 而非自行编造或使用训练数据中的模糊印象。
-3. **设定决策确认后，需同步记录到 `docs/worldbuilding/wiki/` 对应的 Wiki 条目中，** 标明数据来源（如"参考自凡人修仙传"）。
+2. **涉及 `docs/世界观参考/<作品>/` 下某部小说内容时，必须优先查询该作品目录内的 `.storygraph/storygraph.db` 本地图谱索引；** StoryGraph 无命中或证据不足时，再回退读取该作品目录内的原文 `.txt` 与分析 Markdown。
+3. **StoryGraph 单作品查询参数必须稳定约束到目标作品目录。** 查询某部作品时，优先使用 `projectRoot=E:\AI_Projects\CultivationWorld`、`sourceDir=docs/世界观参考`、`work=<作品目录名>`；如 `work=武炼巅峰` 出现无命中、路径不匹配或证据不足，先用 `storygraph_status` 校验当前 DB 是否为单作品索引，再检查返回证据的 `sourcePath` 是否位于 `docs/世界观参考/<作品>/` 内；必要时补充 `cwd=docs/世界观参考/<作品>` 或回退读取该作品原文与分析 Markdown。不得把跨作品查询结果当作目标作品证据。
+4. **小说原文 `.txt` 检索默认按 GB18030/GBK 兼容文本处理。** 对 `docs/世界观参考/<作品>/<作品>.txt` 执行原文检索时必须显式使用 `rg --encoding gb18030 -n "<关键词>" "<原文路径>"`；不要依赖 `rg` 默认 UTF-8 解码。Markdown 分析文档仍按 UTF-8 读取。
+5. **如果 `docs/世界观参考/` 中没有找到所需设定，必须主动告知用户，** 而非自行编造或使用训练数据中的模糊印象。
+6. **设定决策确认后，需同步记录到 `docs/worldbuilding/wiki/` 对应的 Wiki 条目中，** 标明数据来源（如"参考自凡人修仙传"）。
 
 ## 数据配置规则
 
 1. **所有游戏运行时数据放在 `apps/game/data/`，遵循 `docs/data/data-config-rules.md` 中的分类与命名规范。**
 2. **新增数据文件时需同步更新 `docs/data/data-config-rules.md` 中的目录说明。**
 3. **JSON 数据文件中的 ID 使用 snake_case，名称使用中文。**
+
+## Windows / PowerShell / 中文路径规则
+
+1. **Git 输出中文路径时必须临时关闭路径转义。** 使用 `git -c core.quotePath=false status --short -- <路径>`、`git -c core.quotePath=false diff --name-only -- <路径>` 等形式；不要因为 Git 默认八进制转义误判中文文件名。除非用户明确要求，不修改全局 Git 配置。
+2. **涉及中文路径、空格路径或特殊字符路径时，PowerShell 命令必须使用 `-LiteralPath`。** 读取文本文件时显式指定 `-Encoding UTF8`；写入中文文件时显式指定 `-Encoding UTF8`。
+3. **原文小说 `.txt` 的关键字检索必须按作品编码处理。** `docs/世界观参考/<作品>/<作品>.txt` 默认用 `rg --encoding gb18030` 检索，避免把 GB18030/GBK 原文误当 UTF-8。
 
 ## 语言规则
 

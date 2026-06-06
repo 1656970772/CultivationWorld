@@ -426,17 +426,17 @@ export class TickManager {
 
     // 仅对悬赏/任务链发位置事件（散修悬赏为主，宗门任务同样记录）
     const bountyActionMap = {
-      act_npc_accept_hunt_quest: isWanderer ? 'wanderer_bounty_accept' : 'quest_accept',
-      act_npc_accept_quest: isWanderer ? 'wanderer_bounty_accept' : 'quest_accept',
-      act_npc_do_quest: isWanderer ? 'wanderer_bounty_do' : 'quest_do',
-      act_npc_turn_in_quest: isWanderer ? 'wanderer_bounty_turn_in' : 'quest_turn_in',
+      act_npc_accept_monster_hunt_job: isWanderer ? 'wanderer_bounty_accept' : 'quest_accept',
+      act_npc_accept_quest_job: isWanderer ? 'wanderer_bounty_accept' : 'quest_accept',
+      act_npc_execute_quest_job: isWanderer ? 'wanderer_bounty_do' : 'quest_do',
+      act_npc_turn_in_quest_job: isWanderer ? 'wanderer_bounty_turn_in' : 'quest_turn_in',
     };
     const type = bountyActionMap[actionId];
     if (!type) return;
 
     // do_quest 仅在"完成"节点记录位置事件；过程逐日推进不刷屏，
     // 身陨已由 _collectDeaths 统一记录（含坐标），此处跳过避免重复。
-    if (actionId === 'act_npc_do_quest' && result.outcome !== 'complete') {
+    if (actionId === 'act_npc_execute_quest_job' && result.status !== 'success' && result.outcome !== 'complete') {
       return;
     }
 

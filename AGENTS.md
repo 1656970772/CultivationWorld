@@ -24,8 +24,10 @@
 
 1. **涉及游戏世界观设定（境界、寿命、势力类型、修炼体系、物品、天劫、秘境等）时，必须优先查找 `docs/世界观参考/` 目录下的参考资料。** 该目录汇总了凡人修仙传、遮天、完美世界、仙逆、一念永恒、斗破苍穹、牧神记、大道争锋、阳神、武破九荒、武逆乾坤、黎明之剑等小说的世界观设定。
 2. **涉及 `docs/世界观参考/<作品>/` 下某部小说内容时，必须优先查询该作品目录内的 `.storygraph/storygraph.db` 本地图谱索引；** StoryGraph 无命中或证据不足时，再回退读取该作品目录内的原文 `.txt` 与分析 Markdown。
-3. **如果 `docs/世界观参考/` 中没有找到所需设定，必须主动告知用户，** 而非自行编造或使用训练数据中的模糊印象。
-4. **设定决策确认后，需同步记录到 `docs/worldbuilding/wiki/` 对应的 Wiki 条目中，** 标明数据来源（如"参考自凡人修仙传"）。
+3. **StoryGraph 单作品查询参数必须稳定约束到目标作品目录。** 查询某部作品时，优先使用 `projectRoot=E:\AI_Projects\CultivationWorld`、`sourceDir=docs/世界观参考`、`work=<作品目录名>`；如 `work=武炼巅峰` 出现无命中、路径不匹配或证据不足，先用 `storygraph_status` 校验当前 DB 是否为单作品索引，再检查返回证据的 `sourcePath` 是否位于 `docs/世界观参考/<作品>/` 内；必要时补充 `cwd=docs/世界观参考/<作品>` 或回退读取该作品原文与分析 Markdown。不得把跨作品查询结果当作目标作品证据。
+4. **小说原文 `.txt` 检索默认按 GB18030/GBK 兼容文本处理。** 对 `docs/世界观参考/<作品>/<作品>.txt` 执行原文检索时必须显式使用 `rg --encoding gb18030 -n "<关键词>" "<原文路径>"`；不要依赖 `rg` 默认 UTF-8 解码。Markdown 分析文档仍按 UTF-8 读取。
+5. **如果 `docs/世界观参考/` 中没有找到所需设定，必须主动告知用户，** 而非自行编造或使用训练数据中的模糊印象。
+6. **设定决策确认后，需同步记录到 `docs/worldbuilding/wiki/` 对应的 Wiki 条目中，** 标明数据来源（如"参考自凡人修仙传"）。
 
 ## 数据配置规则
 
@@ -54,6 +56,12 @@
    - "服用物品即生效"的来源统一走 `npc-economy.applyItemEffects(entity, itemId)` 入口（读物品 `effects` 逐条施加，返回各属性实际增量 delta 供叙事事件）。
 4. **机制化迁移须可回退、不改变现有行为：** 把现有功能迁为 GE/GA 时，用数据开关（如 `traitEffects.enabled`/`pillEffects.enabled`）控制新旧路径，且新路径数值与旧逻辑严格等价；以**真实多种子长程模拟**直接观察行为是否一致来校验，**严禁用任何指纹/golden 一致性自证**（见"验证规则"）。
 5. **数值单一真相源：** 迁移时数值仍以原平衡配置（如 `cultivation.json`/`economy.json`）为单一真相源，GE 只承载机制；字段说明见 `docs/systems/gameplay-ability-system.md`，决策见 `docs/decisions/adr-042-gameplay-ability-system.md`。
+
+## Windows / PowerShell / 中文路径规则
+
+1. **Git 输出中文路径时必须临时关闭路径转义。** 使用 `git -c core.quotePath=false status --short -- <路径>`、`git -c core.quotePath=false diff --name-only -- <路径>` 等形式；不要因为 Git 默认八进制转义误判中文文件名。除非用户明确要求，不修改全局 Git 配置。
+2. **涉及中文路径、空格路径或特殊字符路径时，PowerShell 命令必须使用 `-LiteralPath`。** 读取文本文件时显式指定 `-Encoding UTF8`；写入中文文件时显式指定 `-Encoding UTF8`。
+3. **原文小说 `.txt` 的关键字检索必须按作品编码处理。** `docs/世界观参考/<作品>/<作品>.txt` 默认用 `rg --encoding gb18030` 检索，避免把 GB18030/GBK 原文误当 UTF-8。
 
 ## 验证规则
 

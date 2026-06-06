@@ -36,7 +36,7 @@ export class NPCCultivationEvaluator extends NeedEvaluator {
     // 突破判断当前境界还差什么：①进度(闭关+游历)；②真气(qiBelowNextRank)。缺哪条补哪条。
     const cultivationProgress = entityState.get('cultivationProgress') || 0;
     const insight = entityState.get('insight') || 0;
-    const totalProgress = cultivationProgress + insight;
+    const totalProgress = entityState.get('totalProgress') ?? (cultivationProgress + insight);
     const qiBelowNextRank = !!entityState.get('qiBelowNextRank');
     const factionAtPeace = entityState.get('factionAtPeace');
     let priority = 15;
@@ -111,7 +111,7 @@ export class NPCBreakthroughEvaluator extends NeedEvaluator {
   calculate(entityState, worldContext, need) {
     const cultivationProgress = entityState.get('cultivationProgress') || 0;
     const insight = entityState.get('insight') || 0;
-    const totalProgress = cultivationProgress + insight;
+    const totalProgress = entityState.get('totalProgress') ?? (cultivationProgress + insight);
     let priority = 8;
     let urgency = 0;
 

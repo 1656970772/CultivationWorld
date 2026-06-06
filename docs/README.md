@@ -2,7 +2,7 @@
 
 > 项目代号：WorldDynamic  
 > 创建日期：2026-05-23  
-> 最后更新：2026-06-06（新增妖兽属性模板与境界清理规格）
+> 最后更新：2026-06-06（新增妖兽属性模板与境界清理规格；补充 NPC 战斗智能闭环阶段 6 验证报告与提交前收尾修复计划；即时战斗走 Reaction 层，斩妖准备/补给/组队/路线/恢复走 Job/Toil，任务实例为斩妖单一真相源）
 
 ## 当前事实
 
@@ -67,22 +67,33 @@ docs/
 ├── balance/
 │   └── simulation-iteration-process.md
 ├── decisions/
-│   └── adr-001..adr-050-*.md
+│   └── adr-001..adr-051-*.md
 ├── superpowers/
 │   ├── specs/
 │   │   ├── 2026-06-05-Job-Toil正式启用前收尾规格.md
 │   │   ├── 2026-06-05-StoryGraph小说图谱设计.md
 │   │   ├── 2026-06-05-StoryGraph单作品本地索引库规格.md
+│   │   ├── 2026-06-05-妖兽伤害与斩妖历练修为规格.md
 │   │   └── 2026-06-06-妖兽属性模板与境界清理-design.md
 │   ├── plans/
 │   │   ├── 2026-06-05-ADR-050-收尾实施计划.md
 │   │   ├── 2026-06-05-Job-Toil-AI重构实施计划.md
+│   │   ├── 2026-06-05-妖兽伤害斩妖Job修为实施计划.md
+│   │   ├── 2026-06-06-NPC战斗智能闭环补完实施计划.md
+│   │   ├── 2026-06-06-NPC战斗智能闭环-阶段1-Reaction即时战斗.md
+│   │   ├── 2026-06-06-NPC战斗智能闭环-阶段2-GOAP风险分支.md
+│   │   ├── 2026-06-06-NPC战斗智能闭环-阶段3-路线与目标重定向.md
+│   │   ├── 2026-06-06-NPC战斗智能闭环-阶段4-组队斩妖.md
+│   │   ├── 2026-06-06-NPC战斗智能闭环-阶段5-统一战斗与历练修为.md
+│   │   ├── 2026-06-06-NPC战斗智能闭环-阶段6-任务实例与总验证.md
 │   │   ├── 2026-06-05-StoryGraph单作品本地索引库实施计划.md
 │   │   ├── 2026-06-05-StoryGraph小说图谱MVP实施计划.md
-│   │   └── 2026-06-05-跟随角色状态面板实施计划.md
+│   │   ├── 2026-06-05-跟随角色状态面板实施计划.md
+│   │   └── 2026-06-06-提交前收尾修复计划.md
 │   └── reports/
 │       ├── 2026-06-05-Job-Toil启用前验证.md
-│       └── 2026-06-05-Job-Toil默认启用验证.md
+│       ├── 2026-06-05-Job-Toil默认启用验证.md
+│       └── 2026-06-06-NPC战斗智能闭环验证.md
 ├── worldbuilding/
 │   ├── README.md
 │   ├── continent.md
@@ -92,6 +103,7 @@ docs/
 │   ├── relations.md
 │   └── wiki/
 └── 世界观参考/
+    └── 模板/
 ```
 
 ## 关键文档
@@ -110,13 +122,20 @@ docs/
 | 物品与怀璧其罪 | `systems/item-covet.md`、`decisions/adr-025-item-covet-system.md` |
 | 信息传播与机会点 | `systems/opportunity-system.md`、`decisions/adr-024-info-propagation-opportunity.md` |
 | 世界观 Wiki | `worldbuilding/wiki/README.md` |
+| 世界观参考调研模板 | `世界观参考/模板/README.md` |
 | 世界观参考原文补充修正计划 | `superpowers/plans/2026-06-05-世界观参考原文补充修正计划.md` |
 | StoryGraph 小说图谱设计 | `superpowers/specs/2026-06-05-StoryGraph小说图谱设计.md` |
 | StoryGraph 单作品本地索引库规格 | `superpowers/specs/2026-06-05-StoryGraph单作品本地索引库规格.md` |
 | StoryGraph 小说图谱 MVP 实施计划 | `superpowers/plans/2026-06-05-StoryGraph小说图谱MVP实施计划.md` |
 | StoryGraph 单作品本地索引库实施计划 | `superpowers/plans/2026-06-05-StoryGraph单作品本地索引库实施计划.md` |
 | 跟随角色状态面板 | `superpowers/plans/2026-06-05-跟随角色状态面板实施计划.md` |
+| 妖兽伤害、斩妖任务与历练修为规格 | `superpowers/specs/2026-06-05-妖兽伤害与斩妖历练修为规格.md` |
+| 妖兽伤害斩妖 Job 修为实施计划 | `superpowers/plans/2026-06-05-妖兽伤害斩妖Job修为实施计划.md` |
 | 妖兽属性模板与境界清理 | `superpowers/specs/2026-06-06-妖兽属性模板与境界清理-design.md` |
+| NPC 战斗智能闭环补完实施计划 | `superpowers/plans/2026-06-06-NPC战斗智能闭环补完实施计划.md`（总入口；阶段 1-6 文档位于同目录） |
+| NPC 战斗智能闭环验证报告 | `superpowers/reports/2026-06-06-NPC战斗智能闭环验证.md` |
+| 数值修为与 NPC Action Job 化迁移 | `decisions/adr-051-numeric-cultivation-and-job-action-migration.md` |
+| 提交前收尾修复计划 | `superpowers/plans/2026-06-06-提交前收尾修复计划.md` |
 
 ## 清理原则
 
@@ -130,4 +149,5 @@ docs/
 - 新增数据文件时，同步更新 `data/data-config-rules.md`。
 - 新增架构或机制决策时，使用 ADR 格式写入 `decisions/`。
 - 世界观决策落地到 `worldbuilding/wiki/`，并标明来源。
+- 世界观参考调研文档新增或重写时，优先使用 `世界观参考/模板/` 下的对应模板。
 

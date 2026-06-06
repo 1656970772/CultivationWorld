@@ -5,6 +5,8 @@
  * “具体妖兽 -> 击杀 -> 掉落”的结算工具。
  */
 import { ItemRegistry } from '../items/item-registry.js';
+import { resolveCombatEncounter } from '../combat/combat-encounter.js';
+import { applyCultivationExperience } from '../npc/cultivation-experience.js';
 
 const GRADED_BASE_IDS = new Set(['monster_core', 'beast_material']);
 
@@ -79,7 +81,69 @@ export function monsterCombatPower(monster) {
   return (attrs.strength || 0) + (attrs.speed || 0) * 0.5 + (attrs.defense || 0) + grade * 30;
 }
 
-function markMonsterKilled(monster, entity, drops) {
+function alivePartyMember(entity) {
+  return entity && entity.alive !== false && entity.state?.get?.('alive') !== false;
+}
+
+function uniqueParty(entity, party = []) {
+  const members = [entity, ...(Array.isArray(party) ? party : [])].filter(alivePartyMember);
+  const seen = new Set();
+  const unique = [];
+  for (const member of members) {
+    const id = member?.id;
+    if (!id || seen.has(id)) continue;
+    seen.add(id);
+    unique.push(member);
+  }
+  return unique;
+}
+
+function resolvePartyFromState(entity, worldContext) {
+  const ids = entity?.state?.get?.('huntPartyIds');
+  if (!Array.isArray(ids) || typeof worldContext?.entityRegistry?.getById !== 'function') return [];
+  return ids.map(id => worldContext.entityRegistry.getById(id)).filter(Boolean);
+}
+
+function partyCombatPower(entity, worldContext, party = []) {
+  const powerFn = typeof worldContext?.npcCombatPower === 'function' ? worldContext.npcCombatPower : null;
+  const members = uniqueParty(entity, party);
+  const mainPower = Math.max(1, Number(powerFn ? powerFn(entity) : 50) || 50);
+  let total = mainPower;
+  for (const member of members) {
+    if (member.id === entity?.id) continue;
+    const companionPower = Math.max(0, Number(powerFn ? powerFn(member) : 0) || 0);
+    total += companionPower * 0.7;
+  }
+  return { members, total };
+}
+
+function grantHuntExperience(entity, party, worldContext, monsterPower, huntPartyPower) {
+  const riskScore = monsterPower / Math.max(1, huntPartyPower);
+  const main = applyCultivationExperience(entity, worldContext, {
+    sourceKind: 'monster_hunt_success',
+    value: monsterPower,
+    riskScore,
+    durationDays: 1,
+    outcome: 'success',
+  });
+  const companions = [];
+  for (const member of party) {
+    if (member.id === entity?.id) continue;
+    companions.push({
+      npcId: member.id,
+      cultivationExperience: applyCultivationExperience(member, worldContext, {
+        sourceKind: 'monster_hunt_success',
+        value: monsterPower,
+        riskScore,
+        durationDays: 1,
+        outcome: 'partial',
+      }),
+    });
+  }
+  return { main, companions };
+}
+
+function markMonsterKilled(monster, entity, drops, assistNpcIds = []) {
   const killerName = entity?.name || entity?.staticData?.name || entity?.id || null;
   if (typeof monster?._die === 'function') {
     monster._die('quest_hunt', killerName);
@@ -101,28 +165,51 @@ function markMonsterKilled(monster, entity, drops) {
       cause: 'quest_hunt',
       killerNpcId: entity?.id || null,
       killerName,
+      assistNpcIds,
       dropItems: drops.map(d => ({ itemId: d.itemId, qty: d.qty, grade: d.grade })),
     };
   }
 }
 
-export function settleMonsterHunt(entity, monster, worldContext = {}, randomFn = Math.random) {
+export function settleMonsterHunt(entity, monster, worldContext = {}, randomFn = Math.random, opts = {}) {
   if (!monster || monster.alive === false || monster.state?.get?.('alive') === false) {
     return { success: false, outcome: 'target_lost', drops: [] };
   }
 
   const cfg = worldContext?.balanceConfig?.economy?.monsterResources || {};
-  const npcPower = typeof worldContext.npcCombatPower === 'function'
-    ? worldContext.npcCombatPower(entity)
-    : 50;
+  const party = uniqueParty(entity, opts.party?.length ? opts.party : resolvePartyFromState(entity, worldContext));
+  const { total: huntPartyPower, members: partyMembers } = partyCombatPower(entity, worldContext, party);
+  const assistNpcIds = partyMembers.filter(member => member.id !== entity?.id).map(member => member.id);
   const monsterPower = monsterCombatPower(monster);
   const bias = cfg.huntPowerBias ?? 0;
-  const winChance = Math.max(0.02, Math.min(0.98, (npcPower + bias) / (npcPower + bias + monsterPower)));
+  const effectivePower = huntPartyPower + bias;
+  const encounter = resolveCombatEncounter({
+    attacker: entity,
+    defender: monster,
+    scene: 'monster_hunt_quest',
+    power: effectivePower,
+    defenderPower: monsterPower,
+    value: monsterPower,
+    riskScore: monsterPower / Math.max(1, effectivePower),
+    random: randomFn,
+    worldContext,
+  });
+  const winChance = encounter.winChance;
 
   if (randomFn() <= winChance) {
     const drops = grantMonsterDrops(entity, monster, randomFn);
-    markMonsterKilled(monster, entity, drops);
-    return { success: true, outcome: 'monster_slain', winChance, drops };
+    markMonsterKilled(monster, entity, drops, assistNpcIds);
+    const cultivationExperience = grantHuntExperience(entity, partyMembers, worldContext, monsterPower, Math.max(1, effectivePower));
+    return {
+      success: true,
+      outcome: 'monster_slain',
+      winChance,
+      drops,
+      huntPartyPower,
+      assistNpcIds,
+      cultivationExperience: cultivationExperience.main,
+      companionExperience: cultivationExperience.companions,
+    };
   }
 
   const deathChance = Math.max(0, Math.min(1, cfg.huntFailureDeathChance ?? 0.01));

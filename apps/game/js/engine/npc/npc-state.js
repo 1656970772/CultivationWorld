@@ -11,6 +11,7 @@
  * 时间参数、死亡参数来自 data/config/game-config.json（通过构造函数 gameConfig 参数传入）。
  */
 import { RuntimeState } from '../abstract/runtime-state.js';
+import { nextCultivationRequired } from './numeric-cultivation.js';
 
 const ROLE_RANKS = {
   'leader': 6,
@@ -32,6 +33,7 @@ export class NPCState extends RuntimeState {
    * @param {import('../abstract/rng.js').Rng} rng 确定性随机源。
    */
   constructor(npcConfig, ranksData = null, gameConfig = {}, rng) {
+    const random = rng && typeof rng.next === 'function' ? rng : { next: () => 0 };
     const timeCfg = gameConfig.time || {};
     const npcCfg = gameConfig.npc || {};
     const deathCfg = gameConfig.naturalDeath || {};
@@ -47,12 +49,15 @@ export class NPCState extends RuntimeState {
       : null;
 
     const maxAgeYears = rankInfo
-      ? rankInfo.lifespan.baseYears + (rng.next() - 0.5) * 2 * rankInfo.lifespan.varianceYears
-      : fallbackBase + rng.next() * fallbackVariance;
+      ? rankInfo.lifespan.baseYears + (random.next() - 0.5) * 2 * rankInfo.lifespan.varianceYears
+      : fallbackBase + random.next() * fallbackVariance;
 
     const maxAgeDays = Math.floor(maxAgeYears * daysPerYear);
-    const ageRatio = initRatioMin + rng.next() * (initRatioMax - initRatioMin);
+    const ageRatio = initRatioMin + random.next() * (initRatioMax - initRatioMin);
     const ageDays = Math.floor(maxAgeDays * ageRatio);
+    const initialCultivationProgress = random.next() * 0.3;
+    const initialCultivationRequired = nextCultivationRequired(npcConfig.rankId, ranksData || []);
+    const initialCultivation = initialCultivationProgress * initialCultivationRequired;
 
     super({
       alive: npcConfig.alive !== false,
@@ -65,17 +70,25 @@ export class NPCState extends RuntimeState {
       roleRank: ROLE_RANKS[npcConfig.role] || 1,
       rankId: npcConfig.rankId,
       rankName: rankInfo ? rankInfo.name : npcConfig.rankId,
-      cultivationProgress: rng.next() * 0.3,
+      cultivationProgress: initialCultivationProgress,
+      cultivation: initialCultivation,
       // 游历感悟：通过外出游历积累，与闭关进度(cultivationProgress)互补。
       // 突破总进度 = cultivationProgress + insight（见 toGOAPState 的 totalProgress 与 ADR-016）。
       // 闭关有 cultivationCap 上限（按境界），撞墙后剩余进度必须靠游历补足。
       insight: 0,
+      experienceCultivation: 0,
+      totalCultivation: initialCultivation,
+      cultivationProgressRatio: initialCultivationRequired > 0
+        ? initialCultivation / initialCultivationRequired
+        : 0,
       // 派生缓存：突破总进度 = cultivationProgress + insight。由 set('cultivationProgress'/'insight')
       // 自动重算，供数据驱动需求评估器(ConfigurableEvaluator 读 entityState.get('totalProgress'))使用。
       // 初始值在构造末尾按实际 cultivationProgress 同步。
-      totalProgress: 0,
+      totalProgress: initialCultivationRequired > 0
+        ? initialCultivation / initialCultivationRequired
+        : 0,
       qi: 0,
-      morale: 50 + rng.next() * 50,
+      morale: 50 + random.next() * 50,
       lifeRatio: 0,
       isLeader: npcConfig.role === 'leader',
       isElder: npcConfig.role === 'elder',
@@ -90,13 +103,19 @@ export class NPCState extends RuntimeState {
       hasActiveQuest: false,
       activeQuestTypeId: null,
       activeQuestTypeName: null,
+      activeQuestCategory: null,
       activeQuestDifficulty: 0,
       activeQuestDiffName: null,
+      activeQuestValue: 0,
+      activeQuestRiskScore: 0,
       questDaysRemaining: 0,
       questTargetX: null,
       questTargetY: null,
       // 斩妖/除害/猎灵兽任务锁定的具体妖兽实例 id，用于把任务目标与地图活体妖兽绑定。
       questTargetMonsterId: null,
+      questTargetMonsterName: null,
+      questTargetMonsterGrade: null,
+      questTargetMonsterCount: 0,
       questComplete: false,
       questTurnedIn: false,
       factionHasQiPillMaterial: false,
@@ -126,7 +145,7 @@ export class NPCState extends RuntimeState {
       spiritRootId: npcConfig.spiritRootId || 'triple',
       physiqueId: npcConfig.physiqueId || 'mortal_body',
       totalQuestsCompleted: 0,
-      gender: npcConfig.gender || (rng.next() < 0.5 ? 'male' : 'female'),
+      gender: npcConfig.gender || (random.next() < 0.5 ? 'male' : 'female'),
       daoCompanionId: npcConfig.daoCompanionId || null,
       childrenCount: 0,
       techniqueId: npcConfig.techniqueId || null,
@@ -169,7 +188,8 @@ export class NPCState extends RuntimeState {
       visitedMaster: false,
     });
 
-    this._rng = rng;
+    this._rng = random;
+    this._ranksData = ranksData || [];
     this._daysPerYear = daysPerYear;
     this._naturalDeath = {
       startRatio: deathCfg.startRatio ?? 0.95,
@@ -181,21 +201,59 @@ export class NPCState extends RuntimeState {
     this._syncTotalProgress();
   }
 
-  /**
-   * @override
-   * 维护派生字段 totalProgress：当 cultivationProgress 或 insight 变更时自动重算并落库，
-   * 使数据驱动需求评估器(读 get('totalProgress'))与 GOAP(toGOAPState 注入)取值一致。
-   */
   set(key, value) {
     super.set(key, value);
-    if (key === 'cultivationProgress' || key === 'insight') {
-      this._syncTotalProgress();
+    if (this._isCultivationSyncKey(key)) {
+      this._syncCultivationFields(key);
+    }
+  }
+
+  setMany(updates) {
+    super.setMany(updates);
+    const changedKey = Object.keys(updates || {}).find(k => this._isCultivationSyncKey(k));
+    if (changedKey) {
+      this._syncCultivationFields(changedKey);
     }
   }
 
   _syncTotalProgress() {
-    const total = (this.get('cultivationProgress') || 0) + (this.get('insight') || 0);
-    super.set('totalProgress', total);
+    this._syncCultivationFields('ratio');
+  }
+
+  _isCultivationSyncKey(key) {
+    return key === 'cultivationProgress'
+      || key === 'insight'
+      || key === 'cultivation'
+      || key === 'experienceCultivation'
+      || key === 'rankId';
+  }
+
+  _syncCultivationFields(changedKey) {
+    const required = nextCultivationRequired(this, this._ranksData || []);
+
+    if (changedKey === 'cultivationProgress'
+      || changedKey === 'insight'
+      || changedKey === 'rankId'
+      || changedKey === 'ratio') {
+      const progress = this.get('cultivationProgress') || 0;
+      const insight = this.get('insight') || 0;
+      super.set('cultivation', progress * required);
+      super.set('experienceCultivation', insight * required);
+    } else if (changedKey === 'cultivation') {
+      const cultivation = this.get('cultivation') || 0;
+      super.set('cultivationProgress', required > 0 ? cultivation / required : 0);
+    } else if (changedKey === 'experienceCultivation') {
+      const experience = this.get('experienceCultivation') || 0;
+      super.set('insight', required > 0 ? experience / required : 0);
+    }
+
+    const cultivation = this.get('cultivation') || 0;
+    const experience = this.get('experienceCultivation') || 0;
+    const total = cultivation + experience;
+    super.set('totalCultivation', total);
+    const ratio = required > 0 ? total / required : 0;
+    super.set('cultivationProgressRatio', ratio);
+    super.set('totalProgress', ratio);
   }
 
   /**
@@ -206,9 +264,8 @@ export class NPCState extends RuntimeState {
    */
   toGOAPState() {
     const flat = super.toGOAPState();
-    const progress = this.get('cultivationProgress') || 0;
-    const insight = this.get('insight') || 0;
-    flat.totalProgress = progress + insight;
+    flat.totalProgress = this.get('totalProgress')
+      ?? ((this.get('cultivationProgress') || 0) + (this.get('insight') || 0));
     return flat;
   }
 

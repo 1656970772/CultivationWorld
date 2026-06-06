@@ -205,8 +205,17 @@ function inventorySummary(inventory) {
 
 function buildNpcSections(entity, snapshot, life, action) {
   const moving = entity.spatial?.moving ? '移动中' : '停留';
-  const maxInsight = entity.maxInsight ?? (entity.minCultivationRatio != null ? 1 - entity.minCultivationRatio : null);
-  const totalProgress = entity.totalProgress ?? ((num(entity.cultivationProgress) || 0) + (num(entity.insight) || 0));
+  const nextCultivationRequired = num(entity.nextCultivationRequired);
+  const retreatCultivationCap = num(entity.retreatCultivationCap)
+    ?? (nextCultivationRequired != null && num(entity.cultivationCap) != null
+      ? nextCultivationRequired * num(entity.cultivationCap)
+      : null);
+  const cultivation = num(entity.cultivation)
+    ?? (nextCultivationRequired != null ? (num(entity.cultivationProgress) || 0) * nextCultivationRequired : null);
+  const experienceCultivation = num(entity.experienceCultivation)
+    ?? (nextCultivationRequired != null ? (num(entity.insight) || 0) * nextCultivationRequired : null);
+  const totalCultivation = num(entity.totalCultivation)
+    ?? (cultivation != null || experienceCultivation != null ? (cultivation || 0) + (experienceCultivation || 0) : null);
   const hasQuest = entity.hasActiveQuest ? '有任务' : '无任务';
   const companion = entity.daoCompanionId ? '已有道侣' : '无';
   const artifact = entity.equippedArtifactId ? '已装备' : '未装备';
@@ -222,9 +231,9 @@ function buildNpcSections(entity, snapshot, life, action) {
       row('境界', text(entity.rankName, '未知')),
       row('下一境界', text(entity.nextRankName, '未知')),
       boundedRow('真气', entity.qi, entity.nextQiRequired, { status: qiStatus }),
-      boundedRow('闭关进度', entity.cultivationProgress, entity.cultivationCap, { percentValue: true, status: capStatus }),
-      boundedRow('游历感悟', entity.insight, maxInsight, { percentValue: true, status: boundedStatus }),
-      boundedRow('突破总进度', totalProgress, 1, { percentValue: true, status: totalProgressStatus }),
+      boundedRow('总修为', totalCultivation, nextCultivationRequired, { status: totalProgressStatus }),
+      boundedRow('闭关修为', cultivation, retreatCultivationCap, { status: capStatus }),
+      boundedRow('历练修为', experienceCultivation, nextCultivationRequired, { status: boundedStatus }),
     ]),
     section('action', '当前行动', [
       row('行为', action.label, { tone: action.tone === 'busy' ? 'warn' : '' }),

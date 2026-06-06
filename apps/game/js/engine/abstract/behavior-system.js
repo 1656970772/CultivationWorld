@@ -454,6 +454,7 @@ export class BehaviorSystem {
         actionId: action.id,
         jobId: action.jobId,
         result: {
+          ...result,
           actionId: action.id,
           jobId: action.jobId,
           jobInstanceId,

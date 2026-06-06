@@ -569,6 +569,16 @@ export class WorldEngine {
     const insight = n.state.get('insight') || 0;
     const cultivationProgress = n.state.get('cultivationProgress') || 0;
     const nextRank = this._nextCultivationRank(rankId);
+    const nextCultivationRequired = nextRank?.cultivationRequired || null;
+    const cultivation = n.state.get('cultivation')
+      ?? (nextCultivationRequired != null ? cultivationProgress * nextCultivationRequired : null);
+    const experienceCultivation = n.state.get('experienceCultivation')
+      ?? (nextCultivationRequired != null ? insight * nextCultivationRequired : null);
+    const totalCultivation = n.state.get('totalCultivation')
+      ?? ((cultivation || 0) + (experienceCultivation || 0));
+    const retreatCultivationCap = cultivationCap != null && nextCultivationRequired != null
+      ? cultivationCap * nextCultivationRequired
+      : null;
 
     return {
       hp: n.state.get('hp') || 0,
@@ -576,6 +586,11 @@ export class WorldEngine {
       injuryLevel: n.state.get('injuryLevel') || 0,
       lifeRatio: n.state.get('lifeRatio') || 0,
       insight,
+      cultivation,
+      experienceCultivation,
+      totalCultivation,
+      nextCultivationRequired,
+      retreatCultivationCap,
       totalProgress: n.state.get('totalProgress') ?? (cultivationProgress + insight),
       actionRemaining: n.state.get('actionRemaining') || 0,
       cultivationCap,
@@ -587,7 +602,16 @@ export class WorldEngine {
       physiqueId: n.state.get('physiqueId') || null,
       hasActiveQuest: !!n.state.get('hasActiveQuest'),
       activeQuestTypeName: n.state.get('activeQuestTypeName') || null,
+      activeQuestCategory: n.state.get('activeQuestCategory') || null,
+      activeQuestValue: n.state.get('activeQuestValue') || 0,
+      activeQuestRiskScore: n.state.get('activeQuestRiskScore') || 0,
       questDaysRemaining: n.state.get('questDaysRemaining') || 0,
+      questTargetX: n.state.get('questTargetX') ?? null,
+      questTargetY: n.state.get('questTargetY') ?? null,
+      questTargetMonsterId: n.state.get('questTargetMonsterId') || null,
+      questTargetMonsterName: n.state.get('questTargetMonsterName') || null,
+      questTargetMonsterGrade: n.state.get('questTargetMonsterGrade') || null,
+      questTargetMonsterCount: n.state.get('questTargetMonsterCount') || 0,
     };
   }
 

@@ -160,7 +160,8 @@ export function decorateGoalConsiderations(entity, goal, worldContext, utilityCo
   if (headstrongCfg.enabled === true) {
     const chance = headstrongCfg.chance ?? 0.03;
     const mult   = headstrongCfg.mult   ?? 1.8;
-    if (chance > 0 && worldContext.rng.next() < chance) {
+    const roll = typeof worldContext?.rng?.next === 'function' ? worldContext.rng.next() : 0;
+    if (chance > 0 && roll < chance) {
       goal.modulators.push({ label: 'headstrong', deltaPriority: 0, mult });
       // 写入 state 方便调试/可视化
       if (entity.state && typeof entity.state.set === 'function') {

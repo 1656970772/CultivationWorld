@@ -30,8 +30,11 @@ console.log('1) NPC detailed grouped status is Chinese and bounded');
     cultivationProgress: 0.35,
     cultivationCap: 0.4,
     insight: 0.22,
-    maxInsight: 0.7,
-    totalProgress: 0.57,
+    cultivation: 35000,
+    experienceCultivation: 22000,
+    totalCultivation: 57000,
+    nextCultivationRequired: 100000,
+    retreatCultivationCap: 40000,
     role: 'elder',
     gender: 'male',
     contribution: 39,
@@ -55,8 +58,12 @@ console.log('1) NPC detailed grouped status is Chinese and bounded');
   hasText(html, '60/120（50% · 受伤）');
   hasText(html, '真气与修炼');
   hasText(html, '25000/50000（50% · 积累中）');
-  hasText(html, '35%/40%（88% · 接近上限）');
-  hasText(html, '57%/100%（57% · 积累中）');
+  hasText(html, '总修为');
+  hasText(html, '57000/100000（57% · 积累中）');
+  hasText(html, '闭关修为');
+  hasText(html, '35000/40000（88% · 接近上限）');
+  hasText(html, '历练修为');
+  hasText(html, '22000/100000（22% · 不足）');
   hasText(html, '执行中');
   hasText(html, '长老');
   assert.ok(!html.includes('NPC ·'), 'subtitle avoids visible English NPC');

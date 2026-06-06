@@ -4,7 +4,7 @@
  * 覆盖：
  *   1) GOAP 能从 { enemyKilled:true } 目标推导出『追踪→击杀』链（实力足够时）；
  *      实力不足时链首插入修炼（变强为中间步）。
- *   2) NPCKillEnemyExecutor PvP 胜负：胜→给仇人写 _deathInfo{cause:'slain',killerId}；
+ *   2) NPCKillEnemyToilExecutor PvP 胜负：胜→给仇人写 _deathInfo{cause:'slain',killerId}；
  *      负→自身受伤/陨落。
  *   3) revenge_target resolver + npcCombatPower 经 worldContext 暴露。
  *   4) killerId 闭环：被杀者 _deathInfo 携带 killerId/killerFactionId。
@@ -22,12 +22,16 @@ const imp = (p) => import(pathToFileURL(resolve(GAME_ROOT, p)).href);
 
 const { Action } = await imp('js/engine/abstract/action.js');
 const { GOAPPlanner } = await imp('js/engine/abstract/goap-planner.js');
-const { NPCHuntEnemyExecutor, NPCKillEnemyExecutor, killNPCByPvP } = await imp('js/engine/npc/npc-actions.js');
+const { NPCKillEnemyToilExecutor } = await imp('js/engine/npc/toils/combat-toils.js');
+const { killNPCByPvP } = await imp('js/engine/npc/actions/npc-action-utils.js');
 const { MemorySystem } = await imp('js/engine/abstract/memory-system.js');
 const { RelationshipGraph } = await imp('js/engine/npc/relationship.js');
 const { ObsessionSystem, Obsession } = await imp('js/engine/abstract/obsession-system.js');
 
-const npcActions = load('data/actions/npc-actions.json').map(c => new Action(c));
+const npcActions = [
+  ...load('data/actions/npc-actions.json'),
+  ...load('data/actions/npc-job-actions.json'),
+].map(c => new Action(c));
 const obsessionCfg = load('data/balance/obsession.json');
 const memoryCfg = load('data/balance/memory.json');
 
@@ -48,8 +52,8 @@ console.log('1) GOAP 复仇链');
   const r1 = planner.plan(strongState, goal, npcActions);
   assert(r1.success, '实力足够时能规划出复仇链');
   const ids1 = r1.plan.map(a => a.id);
-  assert(ids1.includes('act_npc_kill_enemy'), '链含击杀仇人');
-  assert(ids1.indexOf('act_npc_hunt_enemy') < ids1.indexOf('act_npc_kill_enemy'), '先追踪后击杀');
+  assert(ids1.includes('act_npc_job_kill_enemy'), '链含击杀仇人');
+  assert(ids1.indexOf('act_npc_job_hunt_enemy') < ids1.indexOf('act_npc_job_kill_enemy'), '先追踪后击杀');
 
   // 实力不足（totalProgress < 击杀门槛 0.3）：击杀前置不满足。
   // 修仙逻辑下『变强』每步增量极小（cultivate +0.001/步），无法在单次 GOAP 深度内补足到门槛，
@@ -68,7 +72,7 @@ console.log('1) GOAP 复仇链');
     enemyKilled: false, totalProgress: 0.3, cultivationProgress: 0.3, insight: 0,
   };
   const r3 = planner.plan(okState, goal, npcActions);
-  assert(r3.success && r3.plan.map(a => a.id).includes('act_npc_kill_enemy'),
+  assert(r3.success && r3.plan.map(a => a.id).includes('act_npc_job_kill_enemy'),
     '实力达门槛(0.3)时能规划出击杀');
 }
 
@@ -82,7 +86,7 @@ console.log('2) PvP 胜负与 killerId');
       staticData: { name: id },
       _power: rankBase * (1 + qi / 1000),
       state: {
-        _d: { alive: true, factionId, injuryLevel: 0, enemyKilled: false, nearRevengeTarget: true },
+        _d: { alive: true, factionId, hp: 100, maxHp: 100, injuryLevel: 0, enemyKilled: false, nearRevengeTarget: true },
         get(k) { return this._d[k]; }, set(k, v) { this._d[k] = v; },
       },
       hasSpatial() { return true; },
@@ -95,12 +99,13 @@ console.log('2) PvP 胜负与 killerId');
   const worldContext = {
     resolveRevengeTarget: () => enemy,
     npcCombatPower: (npc) => npc._power,
+    rng: { next: () => 0 },
   };
 
   // 强者复仇弱者：winChance≈1，必胜
-  const killExec = new NPCKillEnemyExecutor();
+  const killExec = new NPCKillEnemyToilExecutor();
   const res = killExec.run(avenger, worldContext, null);
-  assert(res.success && res.outcome === 'enemy_slain', '强者复仇必胜');
+  assert(res.status === 'success' && res.reason === 'enemy_slain', '强者复仇必胜');
   assert(enemy.alive === false, '仇人被击杀');
   assert(enemy._deathInfo?.cause === 'slain', '仇人死因为 slain');
   assert(enemy._deathInfo?.killerId === 'avenger', 'killerId 写入复仇者');
@@ -114,22 +119,22 @@ console.log('3) 弱者复仇强者');
   function mkNpc(id, power, factionId) {
     return {
       id, name: id, alive: true, staticData: { name: id }, _power: power,
-      state: { _d: { alive: true, factionId, injuryLevel: 0 }, get(k){return this._d[k];}, set(k,v){this._d[k]=v;} },
+      state: { _d: { alive: true, factionId, hp: 100, maxHp: 100, injuryLevel: 0 }, get(k){return this._d[k];}, set(k,v){this._d[k]=v;} },
       hasSpatial() { return true; }, spatial: { tileX: 0, tileY: 0 },
     };
   }
   const weak = mkNpc('weak', 1, 'sectA');
   const strong = mkNpc('strong', 1000, 'sectB');
-  const wc = { resolveRevengeTarget: () => strong, npcCombatPower: (n) => n._power };
-  const killExec = new NPCKillEnemyExecutor();
+  const wc = { resolveRevengeTarget: () => strong, npcCombatPower: (n) => n._power, rng: { next: () => 1 } };
+  const killExec = new NPCKillEnemyToilExecutor();
   // 多次运行：winChance≈0.001，应几乎总是失败（受伤或被反杀）
   let wins = 0, lethal = 0, wounded = 0;
   for (let i = 0; i < 200; i++) {
     weak.alive = true; weak.state.set('injuryLevel', 0); strong.alive = true;
     const r = killExec.run(weak, wc, null);
-    if (r.outcome === 'enemy_slain') wins++;
-    else if (r.outcome === 'slain_by_enemy') lethal++;
-    else if (r.outcome === 'wounded') wounded++;
+    if (r.reason === 'enemy_slain') wins++;
+    else if (r.reason === 'slain_by_enemy') lethal++;
+    else if (r.reason === 'revenge_wounded') wounded++;
   }
   assert(wins <= 5, `弱者复仇强者极少获胜(${wins}/200)`);
   assert(lethal + wounded > 150, `弱者复仇多以受伤/被反杀告终(${lethal + wounded}/200)`);

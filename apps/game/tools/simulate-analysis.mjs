@@ -15,20 +15,44 @@ const __dirname  = dirname(__filename);
 const GAME_ROOT  = resolve(__dirname, '..');
 
 function loadJSON(p) { return JSON.parse(readFileSync(resolve(GAME_ROOT, p), 'utf-8')); }
+function mergeConfigArray(key, files) {
+  return { [key]: files.flatMap(file => loadJSON(file)?.[key] || []) };
+}
 
 const configs = {
   factions:       loadJSON('data/entities/factions.json'),
   npcs:           loadJSON('data/entities/npcs.json'),
   ranks:          loadJSON('data/definitions/ranks.json'),
   items:          loadJSON('data/definitions/macro-resources.json'),
+  terrains:       loadJSON('data/definitions/terrains.json'),
   factionNeeds:   loadJSON('data/needs/faction-needs.json'),
   npcNeeds:       loadJSON('data/needs/npc-needs.json'),
   factionActions: loadJSON('data/actions/faction-actions.json'),
   npcActions:     loadJSON('data/actions/npc-actions.json'),
+  npcJobActions:  loadJSON('data/actions/npc-job-actions.json'),
+  npcActionSets:  loadJSON('data/actions/npc-action-sets.json'),
   reactionActions: loadJSON('data/actions/reaction-actions.json'),
   worldRules:     loadJSON('data/actions/world-rules.json'),
+  jobs:            mergeConfigArray('jobs', [
+    'data/jobs/npc-dynamic-event-jobs.json',
+    'data/jobs/npc-economy-jobs.json',
+    'data/jobs/npc-social-jobs.json',
+    'data/jobs/npc-quest-jobs.json',
+    'data/jobs/npc-combat-jobs.json',
+    'data/jobs/npc-cultivation-jobs.json',
+  ]),
+  toils:           mergeConfigArray('toils', [
+    'data/toils/core-toils.json',
+    'data/toils/npc-dynamic-event-toils.json',
+    'data/toils/npc-economy-toils.json',
+    'data/toils/npc-social-toils.json',
+    'data/toils/npc-quest-toils.json',
+    'data/toils/npc-combat-toils.json',
+    'data/toils/npc-cultivation-toils.json',
+  ]),
   questTemplates: loadJSON('data/quests/quest-templates.json'),
   mapData:        loadJSON('data/world/map.json'),
+  modifierTemplates: loadJSON('data/world/modifiers.json'),
   // 平衡配置：保证分析工具与真实游戏一致（含闭关上限 cultivationCap、游历机缘、风险结算）
   balanceCombat:      loadJSON('data/balance/combat.json'),
   balanceEconomy:     loadJSON('data/balance/economy.json'),
@@ -45,11 +69,16 @@ const configs = {
   balanceRelationship: loadJSON('data/balance/relationship.json'),
   // 反应层（四层 AI 架构 Reaction 层，ADR-048）。默认 enabled=false，不改变现有行为。
   balanceReaction:    loadJSON('data/balance/reaction.json'),
+  gameConfig:         loadJSON('data/config/game-config.json'),
+  aiConfig:           loadJSON('data/config/ai-config.json'),
+  names:              loadJSON('data/definitions/names.json'),
   monsters:           loadJSON('data/definitions/monsters.json'),
   monsterSpawn:       loadJSON('data/balance/monster-spawn.json'),
   // 信息传播 / 机会点 / 怀璧其罪系统（ADR-024/025）。默认 enabled=false，不改变现有行为。
   worldNews:          loadJSON('data/world/news.json'),
   worldOpportunities: loadJSON('data/world/opportunities.json'),
+  dynamicEvents:      loadJSON('data/world/dynamic-events.json'),
+  dynamicGoals:       loadJSON('data/goals/dynamic-goals.json'),
   balanceCovet:       loadJSON('data/balance/covet.json'),
   itemDefs:           { items: ['currency','material','pill','artifact','talisman','technique'].flatMap(c => loadJSON(`data/items/${c}.json`).items) },
   // 战斗机制层（ADR-042）：GameplayTag / Effect / Ability 数据驱动。
@@ -119,12 +148,27 @@ function parseDaysArg() {
   return Number.isFinite(positional) && positional > 0 ? positional : 500;
 }
 
+function parseSeedArg() {
+  for (const arg of process.argv.slice(2)) {
+    const match = /^--seed=(\d+)$/.exec(arg);
+    if (match) return parseInt(match[1], 10) >>> 0;
+  }
+  const envSeed = parseInt(process.env.SIM_SEED || '', 10);
+  return Number.isFinite(envSeed) ? (envSeed >>> 0) : null;
+}
+
 const TOTAL_DAYS = parseDaysArg();
+const SEED_ARG = parseSeedArg();
+if (SEED_ARG != null) configs.seed = SEED_ARG;
 const SNAPSHOT_EVERY = 50;
 
 const ACTION_MAP = {};
 for (const a of [...configs.factionActions, ...configs.npcActions, ...configs.worldRules]) {
   if (a.id && a.name) ACTION_MAP[a.id] = a.name;
+}
+const ACTION_JOB_MAP = {};
+for (const a of configs.npcJobActions || []) {
+  if (a.id && a.jobId) ACTION_JOB_MAP[a.id] = a.jobId;
 }
 
 const initRes = {};
@@ -189,6 +233,7 @@ function monsterBucket(dim, cat) {
 const engine = new WorldEngine();
 const initResult = engine.init(configs);
 console.log(`引擎初始化: ${initResult.totalFactions} 势力, ${initResult.totalNPCs} NPC`);
+console.log(`模拟种子: ${engine.seed}`);
 
 // tuning-v2 2026-06-01: 调试钩子已清理（所有钩子功能已稳定，进入回归模式）
 
@@ -239,6 +284,19 @@ const monsterResourceStats = {
   huntQuestFailed: 0,
   huntQuestFailureOutcomes: {},
   drops: {},
+};
+const jobActionDiagnostics = {
+  byActionId: {},
+  byJobId: {},
+  byToilId: {},
+  byReason: {},
+  samples: [],
+};
+const questObservationStats = {
+  activeQuestSamples: [],
+  reactionSamples: [],
+  assistSamples: [],
+  questProgressSamples: [],
 };
 const eventTypeCounts = {};
 
@@ -356,6 +414,11 @@ function addCount(map, key, amount = 1) {
   map[key] = (map[key] || 0) + amount;
 }
 
+function pushSample(list, sample, limit = 20) {
+  if (!Array.isArray(list) || list.length >= limit) return;
+  list.push(sample);
+}
+
 function addDrops(drops) {
   for (const drop of drops || []) {
     addCount(monsterResourceStats.drops, drop.itemId, drop.qty || 1);
@@ -380,6 +443,14 @@ function actName(raw) {
   return raw.startsWith('act_') ? (ACTION_MAP[raw] || raw) : raw;
 }
 
+function topEntries(map, limit = 8) {
+  return Object.entries(map || {})
+    .sort(([, a], [, b]) => b - a)
+    .slice(0, limit)
+    .map(([key, value]) => `${key}:${value}`)
+    .join(', ');
+}
+
 // 选定一生回放跟踪对象（初始化后、主循环前）。
 pickLifeTrackTargets();
 console.log(`[一生回放] 跟踪 ${lifeTracked.size} 个 NPC: ${[...lifeTracked.values()].map(r => `${r.meta.label}·${r.meta.name}`).join('、')}`);
@@ -393,6 +464,15 @@ for (let day = 1; day <= TOTAL_DAYS; day++) {
     monsterResourceStats.deaths++;
     addCount(monsterResourceStats.deathsByCause, md.cause || 'unknown');
     if (md.cause === 'quest_hunt') monsterResourceStats.questHuntDeaths++;
+    if (Array.isArray(md.assistNpcIds) && md.assistNpcIds.length > 0) {
+      pushSample(questObservationStats.assistSamples, {
+        day,
+        monsterId: md.monsterId || md.id || null,
+        cause: md.cause || 'unknown',
+        killerNpcId: md.killerNpcId || null,
+        assistNpcIds: md.assistNpcIds,
+      });
+    }
     addDrops(md.dropItems);
   }
 
@@ -446,31 +526,100 @@ for (let day = 1; day <= TOTAL_DAYS; day++) {
     const exAid = nl.execution?.action?.id || nl.execution?.result?.actionId || '';
     const outcome = nl.execution?.result?.outcome;
     const result = nl.execution?.result || {};
+    const jobSnapshot = nl.execution?.job || null;
+    const jobId = result.jobId || jobSnapshot?.currentJobId || ACTION_JOB_MAP[exAid] || null;
+    const toilId = result.failedToilId || result.currentToilId || jobSnapshot?.currentToilId || ent.state.get('currentToilId') || null;
+    const reasonKey = result.reason || nl.execution?.reason || result.outcome || nl.execution?.status || 'unknown';
+    if (jobId || ACTION_JOB_MAP[exAid]) {
+      addCount(jobActionDiagnostics.byActionId, exAid || result.actionId || '__unknown__');
+      addCount(jobActionDiagnostics.byJobId, jobId || '__unknown__');
+      addCount(jobActionDiagnostics.byToilId, toilId || '__none__');
+      addCount(jobActionDiagnostics.byReason, `${nl.execution?.status || 'unknown'}:${reasonKey}`);
+      if (nl.execution?.status !== 'in_progress' || jobId === 'job_npc_monster_hunt') {
+        pushSample(jobActionDiagnostics.samples, {
+          day,
+          npcId: nl.entityId,
+          actionId: exAid || result.actionId || null,
+          jobId,
+          toilId,
+          executionStatus: nl.execution?.status || null,
+          resultStatus: result.status || null,
+          reason: reasonKey,
+          questTypeId: result.questTypeId || ent.state.get('activeQuestTypeId') || null,
+          activeQuestInstance: ent.state.get('activeQuestInstance') || null,
+        }, 40);
+      }
+    }
+    if (exAid.startsWith('act_npc_react')) {
+      pushSample(questObservationStats.reactionSamples, {
+        day,
+        npcId: nl.entityId,
+        actionId: exAid,
+        outcome: result.outcome || null,
+        reason: result.reason || null,
+        description: result.description || '',
+      });
+    }
+    if (result.activeQuestInstance || result.killedCount != null || result.monsterId) {
+      pushSample(questObservationStats.questProgressSamples, {
+        day,
+        npcId: nl.entityId,
+        actionId: exAid || result.actionId || null,
+        outcome: result.outcome || null,
+        questTypeId: result.questTypeId || ent.state.get('activeQuestTypeId') || null,
+        monsterId: result.monsterId || null,
+        killedCount: result.killedCount ?? null,
+        requiredKills: result.requiredKills ?? null,
+        activeQuestInstance: result.activeQuestInstance || ent.state.get('activeQuestInstance') || null,
+      });
+    }
+    const activeQuestInstance = ent.state.get('activeQuestInstance');
+    if (activeQuestInstance && huntQuestIds.has(ent.state.get('activeQuestTypeId'))) {
+      pushSample(questObservationStats.activeQuestSamples, {
+        day,
+        npcId: nl.entityId,
+        actionId: exAid || result.actionId || null,
+        jobId,
+        toilId,
+        hasActiveQuest: ent.state.get('hasActiveQuest') === true,
+        questComplete: ent.state.get('questComplete') === true,
+        questDaysRemaining: ent.state.get('questDaysRemaining') ?? null,
+        questTargetMonsterId: ent.state.get('questTargetMonsterId') || null,
+        needsCombatSupply: ent.state.get('needsCombatSupply') === true,
+        needsCompanion: ent.state.get('needsCompanion') === true,
+        needsEasierHuntTarget: ent.state.get('needsEasierHuntTarget') === true,
+        activeQuestInstance,
+      }, 40);
+    }
     if (result.eventType) eventTypeCounts[result.eventType] = (eventTypeCounts[result.eventType] || 0) + 1;
     if (exAid === 'act_npc_donate_materials' || result.eventType === 'material_donate') economyActionCounts.material_donate++;
-    if (exAid === 'act_npc_redeem_qi_pill' || result.eventType === 'redeem_qi_pill') economyActionCounts.redeem_qi_pill++;
-    if (exAid === 'act_npc_use_qi_pill' || result.eventType === 'use_qi_pill') economyActionCounts.use_qi_pill++;
+    if (exAid === 'act_npc_job_redeem_qi_pill' || result.eventType === 'redeem_qi_pill') economyActionCounts.redeem_qi_pill++;
+    if (exAid === 'act_npc_job_use_qi_pill' || result.eventType === 'use_qi_pill') economyActionCounts.use_qi_pill++;
     if (exAid === 'act_npc_redeem_breakthrough_pill' || result.eventType === 'redeem_breakthrough_pill') economyActionCounts.redeem_breakthrough_pill++;
     if (exAid === 'act_npc_use_breakthrough_pill' || result.eventType === 'use_breakthrough_pill') economyActionCounts.use_breakthrough_pill++;
     if (exAid === 'act_npc_redeem_artifact' || result.eventType === 'redeem_artifact_low') economyActionCounts.redeem_artifact++;
     if (result.eventType === 'quest_item_reward' || (result.extraRewards?.questItemReward || 0) > 0) economyActionCounts.quest_item_reward++;
-    if (exAid === 'act_npc_accept_hunt_quest') {
+    const resultSucceeded = result.success === true || result.status === 'success';
+    const resultFailed = result.success === false || result.status === 'failed' || result.status === 'abort';
+    if (exAid === 'act_npc_accept_monster_hunt_job') {
       monsterResourceStats.huntQuestActionTicks++;
     }
-    if ((result.actionId === 'act_npc_accept_hunt_quest' || result.actionId === 'act_npc_accept_quest')
-        && result.success
+    if ((exAid === 'act_npc_accept_monster_hunt_job' || exAid === 'act_npc_accept_quest_job'
+        || result.actionId === 'act_npc_accept_monster_hunt_job' || result.actionId === 'act_npc_accept_quest_job')
+        && resultSucceeded
         && huntQuestIds.has(result.questTypeId)) {
       monsterResourceStats.huntQuestAccepted++;
     }
-    if (exAid === 'act_npc_do_quest' && huntQuestIds.has(result.questTypeId)) {
-      if (result.outcome === 'complete') monsterResourceStats.huntQuestCompleted++;
-      else if (result.success === false) {
+    if ((exAid === 'act_npc_execute_quest_job' || result.actionId === 'act_npc_execute_quest_job')
+        && huntQuestIds.has(result.questTypeId)) {
+      if (result.outcome === 'complete' && resultSucceeded) monsterResourceStats.huntQuestCompleted++;
+      else if (resultFailed) {
         monsterResourceStats.huntQuestFailed++;
         addCount(monsterResourceStats.huntQuestFailureOutcomes, result.outcome || 'unknown');
       }
     }
-    if (exAid === 'act_npc_hunt_enemy') huntTriggers++;
-    if (exAid === 'act_npc_kill_enemy') killTriggers++;
+    if (exAid === 'act_npc_job_hunt_enemy') huntTriggers++;
+    if (exAid === 'act_npc_job_kill_enemy') killTriggers++;
     if (outcome === 'enemy_slain') pvpEnemySlain++;
     else if (outcome === 'slain_by_enemy') pvpSlain++;
     else if (outcome === 'wounded') pvpWounded++;
@@ -478,9 +627,9 @@ for (let day = 1; day <= TOTAL_DAYS; day++) {
     if (exAid === 'act_npc_assist_ally') assistTriggers++;
     if (exAid === 'act_npc_visit_benefactor') visitTriggers++;
     // 师徒互动行为（ADR-029）
-    if (exAid === 'act_npc_teach_disciple') teachTriggers++;
+    if (exAid === 'act_npc_job_teach_disciple') teachTriggers++;
     if (exAid === 'act_npc_protect_disciple') protectDiscipleTriggers++;
-    if (exAid === 'act_npc_visit_master') visitMasterTriggers++;
+    if (exAid === 'act_npc_job_visit_master') visitMasterTriggers++;
 
     // 一生回放（2026-06-02）：先捕获本 tick 的生平事件，再记录这一天（在 _deathInfo/_breakthroughInfo 被清空前）。
     const lifeEvents = [];
@@ -488,8 +637,8 @@ for (let day = 1; day <= TOTAL_DAYS; day++) {
       if (outcome === 'enemy_slain') lifeEvents.push({ kind: 'kill', text: '手刃仇人' });
       else if (outcome === 'slain_by_enemy') lifeEvents.push({ kind: 'death', text: '寻仇反被杀' });
       else if (outcome === 'wounded') lifeEvents.push({ kind: 'hurt', text: '负伤' });
-      if (exAid === 'act_npc_teach_disciple') lifeEvents.push({ kind: 'social', text: '点化徒弟' });
-      if (exAid === 'act_npc_visit_master') lifeEvents.push({ kind: 'social', text: '探望恩师' });
+      if (exAid === 'act_npc_job_teach_disciple') lifeEvents.push({ kind: 'social', text: '点化徒弟' });
+      if (exAid === 'act_npc_job_visit_master') lifeEvents.push({ kind: 'social', text: '探望恩师' });
       if (exAid === 'act_npc_visit_benefactor') lifeEvents.push({ kind: 'social', text: '探望恩人' });
       if (exAid === 'act_npc_assist_ally') lifeEvents.push({ kind: 'social', text: '驰援同门' });
       if (ent._breakthroughInfo) {
@@ -605,6 +754,8 @@ console.log(`[师徒互动] 传功点化: ${teachTriggers}，护徒驰援: ${pro
 
 console.log(`[妖兽资源] 猎妖接取: ${monsterResourceStats.huntQuestAccepted}，完成: ${monsterResourceStats.huntQuestCompleted}，失败: ${monsterResourceStats.huntQuestFailed}`);
 console.log(`[妖兽资源] 妖兽死亡: ${monsterResourceStats.deaths}，任务击杀: ${monsterResourceStats.questHuntDeaths}，掉落: ${JSON.stringify(monsterResourceStats.drops)}`);
+console.log(`[Job诊断] reason Top: ${topEntries(jobActionDiagnostics.byReason) || '-'}`);
+console.log(`[Job诊断] toil Top: ${topEntries(jobActionDiagnostics.byToilId) || '-'}`);
 
 // ── 构建数据 ───────────────────────
 const finalSnap = snapshots[snapshots.length - 1];
@@ -748,6 +899,7 @@ const allGrow = aliveFs.length > 0 && aliveFs.every(([fId, f]) => {
 if (allGrow) diagnostics.push('所有存活势力灵石持续增长，经济缺乏消耗平衡');
 
 const reportData = {
+  seed: engine.seed,
   totalDays: TOTAL_DAYS,
   elapsed,
   totalFactions: allFactions.length,
@@ -783,6 +935,8 @@ const reportData = {
     ...monsterResourceStats,
     inventory: monsterResourceInventory,
   },
+  jobActionDiagnostics,
+  questObservationStats,
   eventTypeCounts,
   revengePvp: {
     huntTriggers, killTriggers,

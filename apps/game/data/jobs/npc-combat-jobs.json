@@ -1,0 +1,70 @@
+{
+  "jobs": [
+    {
+      "id": "job_npc_prepare_combat",
+      "name": "准备战斗",
+      "category": "combat_preparation",
+      "successEffects": {
+        "combatReady": { "op": "set", "value": true },
+        "needsCombatSupply": { "op": "set", "value": false }
+      },
+      "interrupt": { "reaction": "pause", "higherDynamicGoal": "abort", "sameDynamicGoal": "keep" },
+      "toils": [
+        { "id": "ensure_heal", "type": "toil_ensure_item", "params": { "itemId": "pill_rejuvenation", "minAmount": 1, "priceItemId": "low_spirit_stone", "priceAmount": 10 } },
+        { "id": "ensure_artifact", "type": "toil_ensure_artifact", "params": { "itemId": "artifact_green_sword", "minGrade": 1, "priceItemId": "low_spirit_stone", "priceAmount": 30 } },
+        { "id": "equip_artifact", "type": "toil_equip_artifact", "params": { "itemId": "artifact_green_sword" } },
+        { "id": "supply", "type": "toil_prepare_combat_supply" }
+      ]
+    },
+    {
+      "id": "job_npc_retreat_and_heal",
+      "name": "撤退疗伤",
+      "category": "combat_recovery",
+      "successEffects": {
+        "needsCombatRecovery": { "op": "set", "value": false },
+        "shouldRetreat": { "op": "set", "value": false }
+      },
+      "interrupt": { "reaction": "keep", "higherDynamicGoal": "keep", "sameDynamicGoal": "keep" },
+      "toils": [
+        { "id": "retreat", "type": "toil_retreat_to_safe_place" },
+        { "id": "heal", "type": "toil_use_heal_item" }
+      ]
+    },
+    {
+      "id": "job_npc_request_hunt_companion",
+      "name": "邀请同伴斩妖",
+      "category": "combat_preparation",
+      "successEffects": {
+        "hasHuntCompanion": { "op": "set", "value": true },
+        "huntCompanionRequested": { "op": "set", "value": true },
+        "needsCompanion": { "op": "set", "value": false }
+      },
+      "interrupt": { "reaction": "pause", "higherDynamicGoal": "abort", "sameDynamicGoal": "keep" },
+      "toils": [
+        { "id": "select", "type": "toil_select_companion", "params": { "sameFactionPreferred": true, "maxDistance": 60, "minPowerRatio": 0.4 } },
+        { "id": "request", "type": "toil_request_companion" },
+        { "id": "wait", "type": "toil_wait_for_hunt_companion", "params": { "maxDays": 3, "targetResolver": "quest_target" } }
+      ]
+    },
+    {
+      "id": "job_npc_hunt_enemy",
+      "name": "追踪仇人",
+      "category": "revenge",
+      "successEffects": { "nearRevengeTarget": { "op": "set", "value": true } },
+      "interrupt": { "reaction": "pause", "higherDynamicGoal": "abort", "sameDynamicGoal": "keep" },
+      "toils": [
+        { "id": "hunt_enemy", "type": "toil_hunt_enemy" }
+      ]
+    },
+    {
+      "id": "job_npc_kill_enemy",
+      "name": "击杀仇人",
+      "category": "revenge",
+      "successEffects": { "enemyKilled": { "op": "set", "value": true } },
+      "interrupt": { "reaction": "keep", "higherDynamicGoal": "keep", "sameDynamicGoal": "keep" },
+      "toils": [
+        { "id": "kill_enemy", "type": "toil_kill_enemy" }
+      ]
+    }
+  ]
+}

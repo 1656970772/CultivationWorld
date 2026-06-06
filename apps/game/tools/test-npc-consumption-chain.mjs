@@ -22,11 +22,14 @@ function ok(cond, msg) {
   if (!cond) failures++;
 }
 
-const actionConfigs = load('data/actions/npc-actions.json');
+const actionConfigs = [
+  ...load('data/actions/npc-actions.json'),
+  ...load('data/actions/npc-job-actions.json'),
+];
 const wanted = [
   'act_npc_donate_materials',
-  'act_npc_redeem_qi_pill',
-  'act_npc_use_qi_pill',
+  'act_npc_job_redeem_qi_pill',
+  'act_npc_job_use_qi_pill',
 ];
 const actions = actionConfigs
   .filter(a => wanted.includes(a.id))
@@ -57,10 +60,10 @@ console.log('2) GOAP 串联捐献、兑换、使用');
   const ids = result.plan.map(a => a.id);
   ok(result.success, `GOAP 可以规划到修炼进度目标，实际计划：${ids.join(' -> ') || '(空)'}`);
   ok(ids.includes('act_npc_donate_materials'), '计划包含材料捐献');
-  ok(ids.includes('act_npc_redeem_qi_pill'), '计划包含兑换聚气丹');
-  ok(ids.includes('act_npc_use_qi_pill'), '计划包含使用聚气丹');
-  ok(ids.indexOf('act_npc_donate_materials') < ids.indexOf('act_npc_redeem_qi_pill'), '捐献发生在兑换之前');
-  ok(ids.indexOf('act_npc_redeem_qi_pill') < ids.indexOf('act_npc_use_qi_pill'), '兑换发生在使用之前');
+  ok(ids.includes('act_npc_job_redeem_qi_pill'), '计划包含兑换聚气丹');
+  ok(ids.includes('act_npc_job_use_qi_pill'), '计划包含使用聚气丹');
+  ok(ids.indexOf('act_npc_donate_materials') < ids.indexOf('act_npc_job_redeem_qi_pill'), '捐献发生在兑换之前');
+  ok(ids.indexOf('act_npc_job_redeem_qi_pill') < ids.indexOf('act_npc_job_use_qi_pill'), '兑换发生在使用之前');
 }
 
 console.log('3) 有贡献时可直接兑换并使用');
@@ -82,7 +85,7 @@ console.log('3) 有贡献时可直接兑换并使用');
   const ids = result.plan.map(a => a.id);
   ok(result.success, `已有贡献时 GOAP 可以规划兑换和使用，实际计划：${ids.join(' -> ') || '(空)'}`);
   ok(!ids.includes('act_npc_donate_materials'), '没有可捐材料时不会选择捐献');
-  ok(ids.includes('act_npc_redeem_qi_pill') && ids.includes('act_npc_use_qi_pill'), '计划包含兑换与使用聚气丹');
+  ok(ids.includes('act_npc_job_redeem_qi_pill') && ids.includes('act_npc_job_use_qi_pill'), '计划包含兑换与使用聚气丹');
 }
 
 if (failures > 0) {
