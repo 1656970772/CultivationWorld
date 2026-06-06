@@ -32,8 +32,6 @@ const FACTION_COLOR_MAP = {
   sect_008: 0x3498db,
   sect_009: 0xe67e22,
   sect_010: 0x795548,
-  sect_011: 0xffd700,
-  sect_012: 0x1abc9c,
 };
 
 // 未知势力的备用颜色池

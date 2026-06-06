@@ -9,8 +9,6 @@ const FACTION_COLORS = {
   'sect_008': '#3498DB',  // 天机阁 - 靛蓝
   'sect_009': '#E67E22',  // 万妖山 - 橙红
   'sect_010': '#795548',  // 蛮蛟族 - 深棕
-  'sect_011': '#FFD700',  // 大晋王朝 - 明黄
-  'sect_012': '#1ABC9C',  // 南越国 - 青色
 };
 
 export class Minimap {

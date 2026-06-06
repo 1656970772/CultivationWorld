@@ -22,8 +22,6 @@ const FACTION_ITEMS = [
   { id: 'sect_008', name: '天机阁', color: '#3498DB', badge: '⚙' },
   { id: 'sect_009', name: '万妖山', color: '#E67E22', badge: '🐾' },
   { id: 'sect_010', name: '蛮蛟族', color: '#795548', badge: '🐉' },
-  { id: 'sect_011', name: '大晋王朝', color: '#FFD700', badge: '👑' },
-  { id: 'sect_012', name: '南越国', color: '#1ABC9C', badge: '⛩' },
 ];
 
 function _drawVeinIcon(ctx, cx, cy, color) {
