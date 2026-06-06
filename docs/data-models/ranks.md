@@ -1,20 +1,24 @@
-# 数据模型：境界与职位表
+# 数据模型：境界表
 
-> 最后更新：2026-05-27
+> 最后更新：2026-06-06
 
 ## 定位
 
-`apps/game/data/definitions/ranks.json` 是 NPC 境界、凡俗职位与寿元上限的静态配置表。它不放在 `behaviors/` 下，因为境界名称、唯一 ID、寿元基准和继任评分属于世界数据本身；行为配置只描述如何使用这些数据。
+`apps/game/data/definitions/ranks.json` 是 NPC 修仙境界与寿元上限的静态配置表。`rankId` 只表示修仙境界，不承载宗门职位、凡人王朝头衔或武道头衔。
+
+职位由 `npcs.json` 的 `role` 字段表示；掌门、长老、核心弟子、将领、执事等都是角色语义，不进入 `ranks.json`。
 
 ## 结构
 
 ```javascript
 Rank {
   id: string,                 // 本表内唯一 ID，NPC 通过 rankId 引用
-  name: string,               // 显示名，如 元婴 / 金丹 / 宗师
-  category: string,           // cultivation / martial / mortal_title / mortal
+  name: string,               // 显示名，如 元婴 / 金丹 / 凡人
+  category: string,           // cultivation / mortal
   order: number,              // 世界观层级排序
-  successionScore: number,    // 掌门继任同角色候选的境界分数
+  successionScore: number,    // 掌门继任同角色候选的境界分数；职位排序仍看 role
+  cultivationRequired?: number,
+  qiRequired?: number,
   lifespan: {
     bucketId: string,         // 寿元桶 ID
     bucketName: string,       // 寿元桶显示名
@@ -28,9 +32,11 @@ Rank {
 ## 当前规则
 
 - `npcs.json` 不再保存中文 `rank`，只保存 `rankId`。
+- 当前 `rankId` 只允许：`mortal`、`qi_refining`、`foundation_building`、`golden_core`、`nascent_soul`、`spirit_transformation`。
+- `disciple`、`outer_disciple`、`core_disciple`、`elder`、`leader`、`general`、`officer` 等是 `role`，不得作为 `rankId`。
 - `npc-lifecycle.json` 不再保存 `lifespanByRank` 或 `defaultLifespan`。
 - `WorldEngine.initNPCs()` 会用 `rankId` 查询 `ranks.json`，补齐 `rankName`、`lifespanBucket`、`maxAgeYears/maxAgeDays` 等运行时字段。
-- 掌门继任同角色候选排序使用 `ranks.json` 中的 `successionScore`，不再在代码里维护中文境界分数表。
+- 掌门继任先按 `role` 候选范围筛选，再在同角色候选中使用 `ranks.json` 的 `successionScore` 排序。
 
 ## 表内唯一 ID
 

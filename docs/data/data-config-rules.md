@@ -45,6 +45,7 @@ apps/game/data/
 │   └── game-config.json
 ├── definitions/
 │   ├── macro-resources.json
+│   ├── monster-attribute-templates.json
 │   ├── monsters.json
 │   ├── names.json
 │   ├── ranks.json
@@ -112,18 +113,19 @@ apps/game/data/
 
 `ConfigLoader.loadGameConfigs()` 显式列举所有运行时 JSON。新增文件后不能只放入目录，必须同时接入加载器和相关池/系统。
 
-当前有两类合并加载：
+当前有以下合并或显式加载约定：
 
 - `items/*.json`：按 category 拆分，加载后合并为 `itemDefs.items`。
 - `effects/*.json`：战斗 GE 与通用 GE 合并为 `effects.effects`。
 - `jobs/*.json`：按业务域拆分，加载后合并为 `jobs.jobs` 并交给 `JobPool`。
 - `toils/*.json`：按执行器域拆分，加载后合并为 `toils.toils` 并交给 `ToilPool`。
+- `definitions/monster-attribute-templates.json`：由加载器显式读取为 `monsterAttributeTemplates`，供妖兽属性计算器和运行时生成入口使用。
 
 ## entities/
 
 ### factions.json
 
-当前包含 18 个势力/组织：12 个核心势力和 6 个功能组织。
+当前包含 16 个势力/组织：10 个核心势力和 6 个功能组织。
 
 常用字段：
 
@@ -131,7 +133,7 @@ apps/game/data/
 |------|------|------|
 | `id` | string | 唯一 ID，如 `sect_001`、`org_market` |
 | `name` | string | 中文名 |
-| `type` | string | `righteous` / `evil` / `neutral` / `demon` / `mortal_kingdom` |
+| `type` | string | `righteous` / `evil` / `neutral` / `demon` |
 | `subtype` | string? | 功能组织子类，如 `market`、`bounty_hall` |
 | `headquarters` | object | 总部坐标 `{ x, y }` |
 | `stability` | number | 初始稳定度 |
@@ -144,7 +146,7 @@ apps/game/data/
 
 ### npcs.json
 
-当前包含 152 个初始 NPC。
+当前包含 126 个初始 NPC。
 
 常用字段：
 
@@ -188,15 +190,18 @@ apps/game/data/
 
 | 文件 | 说明 |
 |------|------|
-| `ranks.json` | 境界、职位、寿元、继任评分 |
+| `ranks.json` | 修仙境界、寿元、继任评分 |
 | `macro-resources.json` | 势力宏观资源，目前用于 `food`、`disciples` |
 | `terrains.json` | 地形定义 |
 | `techniques.json` | 功法定义 |
 | `weapons.json` | 武器/法宝参考定义 |
-| `monsters.json` | 妖兽定义，当前 36 条 |
+| `monster-attribute-templates.json` | 妖兽阶位基准、体型、移动、战斗风格、属性、特殊类型和习性模板 |
+| `monsters.json` | 妖兽定义，当前 36 条；通过五层模板生成直接面板属性 |
 | `names.json` | 出生 NPC 姓名池 |
 
-`ranks.json` 中修仙境界需要同时维护 `qiRequired` 与 `cultivationRequired`。前者是真气突破门槛，后者是数值修为突破门槛；旧 `cultivationProgress` 比例只作为兼容派生，不再作为主显示语义。
+`ranks.json` 中 `rankId` 只表示修仙境界，不承载职位、头衔或凡人王朝身份。修仙境界需要同时维护 `qiRequired` 与 `cultivationRequired`。前者是真气突破门槛，后者是数值修为突破门槛；旧 `cultivationProgress` 比例只作为兼容派生，不再作为主显示语义。
+
+`monsters.json` 中新妖兽必须声明 `templates` 与 typed `skills[]`。运行时通过 `monsterAttributeTemplates` 和 `resolveMonsterAttributes()` 得到 `hp`、`qi`、`attack`、`defense`、`speed`、`spirit` 直接面板，并保留 `vitality`、`strength`、`sense` 兼容镜像。
 
 ## world/
 

@@ -1,13 +1,13 @@
 # 数据模型：势力（Faction）
 
-> 最后更新：2026-06-05  
+> 最后更新：2026-06-06
 > 数据来源：`apps/game/data/entities/factions.json`
 
 ## 当前规模
 
-当前有 18 个势力/组织：
+当前有 16 个势力/组织：
 
-- 12 个核心势力：正派、邪派、中立宗门、妖族、凡人王朝。
+- 10 个核心势力：正派、邪派、中立宗门、妖族。
 - 6 个功能组织：拍卖、镖行、杀手、悬赏、坊市、情报。
 
 ## 结构
@@ -34,8 +34,8 @@ Faction {
 
 | 字段 | 说明 |
 |------|------|
-| `id` | 唯一 ID。宗门/王朝使用 `sect_*`，功能组织使用 `org_*` |
-| `type` | `righteous` / `evil` / `neutral` / `demon` / `mortal_kingdom` |
+| `id` | 唯一 ID。宗门/妖族使用 `sect_*`，功能组织使用 `org_*` |
+| `type` | `righteous` / `evil` / `neutral` / `demon` |
 | `subtype` | 功能组织子类，如 `auction_house`、`market` |
 | `headquarters` | 总部坐标，供建筑布局、任务地点、动态事件定位使用 |
 | `resources` | 初始资源，可包含 `food`、`disciples`、`low_spirit_stone` 等 |

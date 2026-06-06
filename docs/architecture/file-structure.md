@@ -1,6 +1,6 @@
 ﻿# 项目文件结构
 
-> 最后更新：2026-06-05
+> 最后更新：2026-06-06
 
 ## 总体原则
 
@@ -74,7 +74,7 @@ CultivationWorld/
 | `apps/game/js/engine/combat/` | 统一伤害管线与能力执行器 |
 | `apps/game/js/engine/faction/` | 势力实体、状态、需求和行为执行器 |
 | `apps/game/js/engine/items/` | 物品定义、注册表和交易 |
-| `apps/game/js/engine/monster/` | 妖兽实体、生成器、资源掉落、行为树预设 |
+| `apps/game/js/engine/monster/` | 妖兽实体、生成器、属性模板计算、资源掉落、行为树预设 |
 | `apps/game/js/engine/npc/` | NPC 实体、状态、需求、生命周期、目标、Utility、动态目标、打断策略 |
 | `apps/game/js/engine/npc/actions/` | NPC 行为执行器，按修炼/经济/战斗/关系/事件等业务拆分 |
 | `apps/game/js/engine/npc/toils/` | NPC Job/Toil 执行器，按核心/动态事件/经济/社交拆分 |
@@ -90,7 +90,7 @@ CultivationWorld/
 | 路径 | 职责 |
 |------|------|
 | `data/entities/` | 初始势力与 NPC |
-| `data/definitions/` | 境界、地形、妖兽、功法、武器、姓名、宏观资源 |
+| `data/definitions/` | 境界、地形、妖兽、妖兽属性模板、功法、武器、姓名、宏观资源 |
 | `data/items/` | 可持有物品，按 `currency/material/pill/artifact/talisman/technique` 拆分 |
 | `data/actions/` | 势力/NPC SimpleAction/NPC JobAction/Reaction/世界规则行为，以及 NPC 默认行为集 |
 | `data/jobs/` | NPC Job 定义，按动态事件/经济/社交拆分 |

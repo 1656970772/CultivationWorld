@@ -1,6 +1,6 @@
 # 数据模型：行为配置
 
-> 最后更新：2026-05-27
+> 最后更新：2026-06-06
 
 ## 定位
 
@@ -21,7 +21,7 @@
 apps/game/data/
 ├── npcs.json                 # NPC 开局数据
 ├── factions.json             # 势力开局数据
-├── ranks.json                # 境界、职位、寿元与继任分数静态表
+├── ranks.json                # 修仙境界、寿元与继任分数静态表
 ├── terrains.json             # 地形开局数据
 ├── events.json               # 事件模板数据
 ├── rules.json                # 事件触发数据
@@ -42,7 +42,7 @@ apps/game/data/
 负责核心 NPC 生命周期行为：
 
 - `time.daysPerYear`：年与天的换算。
-- `ranks.json`：境界或职位对应寿元上限、显示名和继任分数的静态来源。
+- `ranks.json`：修仙境界对应寿元上限、显示名和继任分数的静态来源。
 - `initialAgeRatioByRole`：不同 role 的初始年龄比例。
 - `naturalDeath`：自然死亡起算比例、概率上下限、曲线类型和公式说明。
 - `behaviorDescriptions`：年龄初始化、年龄推进、自然死亡的文字规则。

@@ -2,7 +2,7 @@
 
 > 项目代号：WorldDynamic  
 > 创建日期：2026-05-23  
-> 最后更新：2026-06-06（新增修士战斗属性体系规格与世界观 Wiki 条目；确认主境界链、战斗基表、修士/妖兽分表原则，以及修士主要依靠功法和装备提升属性）
+> 最后更新：2026-06-06（新增修士战斗属性体系规格与世界观 Wiki 条目；记录妖兽属性模板与境界清理 ADR、系统文档和数据模型）
 
 ## 当前事实
 
@@ -11,7 +11,7 @@
 - 游戏运行时入口：`apps/game/index.html`；自动模拟入口：`apps/game/simulation.html`。
 - 编辑器入口：`apps/editor/data-editor.html`；桌面壳为 Tauri 2 + Rust。
 - 地图：`apps/game/data/world/map.json`，300×300，共 90,000 格。
-- 初始实体：`apps/game/data/entities/factions.json` 有 18 个势力/组织；`apps/game/data/entities/npcs.json` 有 152 个初始 NPC。
+- 初始实体：`apps/game/data/entities/factions.json` 有 16 个势力/组织；`apps/game/data/entities/npcs.json` 有 126 个初始 NPC。
 - 妖兽定义：`apps/game/data/definitions/monsters.json` 有 36 条。
 - 可持有物品：`apps/game/data/items/` 按 category 拆分，加载后合并为 74 项。
 
@@ -43,6 +43,7 @@ docs/
 │   ├── world-map.md
 │   ├── faction.md
 │   ├── npc.md
+│   ├── monster.md
 │   ├── ranks.md
 │   ├── player.md
 │   ├── relationship.md
@@ -57,6 +58,7 @@ docs/
 │   ├── gameplay-ability-system.md
 │   ├── info-sense.md
 │   ├── item-covet.md
+│   ├── monster-attribute-templates.md
 │   ├── opportunity-system.md
 │   ├── renderer.md
 │   ├── save-system.md
@@ -67,7 +69,7 @@ docs/
 ├── balance/
 │   └── simulation-iteration-process.md
 ├── decisions/
-│   └── adr-001..adr-051-*.md
+│   └── adr-001..adr-052-*.md
 ├── superpowers/
 │   ├── specs/
 │   │   ├── 2026-06-05-Job-Toil正式启用前收尾规格.md
@@ -121,6 +123,7 @@ docs/
 | Job/Toil 实施计划 | `superpowers/plans/2026-06-05-Job-Toil-AI重构实施计划.md` |
 | 动态事件/动态目标 | `systems/event-system.md`、`decisions/adr-049-dynamic-goal-interrupt-policy.md` |
 | GAS 机制资产 | `systems/gameplay-ability-system.md`、`decisions/adr-042-gameplay-ability-system.md` |
+| 妖兽属性模板与境界清理 | `superpowers/specs/2026-06-06-妖兽属性模板与境界清理-design.md`、`superpowers/plans/2026-06-06-妖兽属性模板与境界清理实施计划.md`、`decisions/adr-052-monster-templates-and-rank-cleanup.md`、`systems/monster-attribute-templates.md`、`data-models/monster.md` |
 | 物品与怀璧其罪 | `systems/item-covet.md`、`decisions/adr-025-item-covet-system.md` |
 | 信息传播与机会点 | `systems/opportunity-system.md`、`decisions/adr-024-info-propagation-opportunity.md` |
 | 世界观 Wiki | `worldbuilding/wiki/README.md` |
@@ -133,7 +136,6 @@ docs/
 | 跟随角色状态面板 | `superpowers/plans/2026-06-05-跟随角色状态面板实施计划.md` |
 | 妖兽伤害、斩妖任务与历练修为规格 | `superpowers/specs/2026-06-05-妖兽伤害与斩妖历练修为规格.md` |
 | 妖兽伤害斩妖 Job 修为实施计划 | `superpowers/plans/2026-06-05-妖兽伤害斩妖Job修为实施计划.md` |
-| 妖兽属性模板与境界清理 | `superpowers/specs/2026-06-06-妖兽属性模板与境界清理-design.md`、`superpowers/plans/2026-06-06-妖兽属性模板与境界清理实施计划.md` |
 | 修士战斗属性体系 | `superpowers/specs/2026-06-06-修士战斗属性体系-design.md`、`worldbuilding/wiki/rules/combat-attributes-and-realms.md` |
 | NPC 战斗智能闭环补完实施计划 | `superpowers/plans/2026-06-06-NPC战斗智能闭环补完实施计划.md`（总入口；阶段 1-6 文档位于同目录） |
 | NPC 战斗智能闭环验证报告 | `superpowers/reports/2026-06-06-NPC战斗智能闭环验证.md` |
