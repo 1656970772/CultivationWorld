@@ -1,5 +1,55 @@
 # 《斗破苍穹》角色AI行为参考
 
+> 最后更新：2026-06-05
+> 资料状态：已补充原文证据；BT/Utility/GOAP 均为游戏化抽象，原作事实只采信 StoryGraph `original_text` 锚点。
+> 资料来源：`docs/世界观参考/斗破苍穹/.storygraph/storygraph.db`；`docs/世界观参考/斗破苍穹/斗破苍穹.txt`（GB18030，StoryGraph `original_text`）。
+
+## 原文证据锚点
+
+| 锚点ID | 来源类型 | 来源路径 | 章节/行号/StoryGraph锚点 | 事实摘要 | 支持的设定点 | 采信状态 |
+|---|---|---|---|---|---|---|
+| evidence_e0820680bb0f71839715c553 | original_text | docs/世界观参考/斗破苍穹/斗破苍穹.txt | 第006章 L529-L559 | 萧炎拒绝退婚补偿，维护婚约与家族尊严。 | 萧炎受辱反击决策 | 已采信 |
+| evidence_f46bca750e66bf231bd18cc7 | original_text | docs/世界观参考/斗破苍穹/斗破苍穹.txt | 第067章 L5105-L5163 | 萧炎权衡焚诀高风险和实力尊严后选择焚诀。 | 高风险成长/底牌选择 | 已采信 |
+| evidence_db864606543c7f15c490d77c | original_text | docs/世界观参考/斗破苍穹/斗破苍穹.txt | 第443章 L43081-L43170 | 萧炎组织新生反击老生，围绕火能形成团队决策。 | 领导/资源争夺 AI | 已采信 |
+| evidence_929086110bf6ec6fed314287 | original_text | docs/世界观参考/斗破苍穹/斗破苍穹.txt | 第010章 L893-L990 | 萧薰儿主动支持萧炎。 | 支援型 AI | 已采信 |
+| evidence_07d07a329e8ba3850a6b268a | original_text | docs/世界观参考/斗破苍穹/斗破苍穹.txt | 第1313章 L130309-L130329 | 古族、魂族等远古八族及斗帝血脉影响后期格局。 | 远古族 NPC 战略目标 | 已采信 |
+
+## 设定摘要
+
+角色 AI 参考应从原作事件抽象行为驱动力：萧炎优先维护尊严、保护亲友、争夺关键修炼资源；药老在导师行为中隐藏复活目标；萧薰儿支援萧炎但受古族背景约束；魂殿/魂族的 AI 应体现灵魂/血脉资源掠夺和长期布局。
+
+## 原作事实
+
+- 萧炎面对羞辱时不会用资源交换尊严，会把冲突转化为长期修炼目标。
+- 焚诀选择是萧炎在“高死亡风险”和“必须获得真正实力”之间做出的决策。
+- 迦南学院火能猎捕赛中，萧炎能组织弱势新生反击老生，说明其并非单纯莽撞型。
+- 古族、魂族等后期势力目标与斗帝血脉、异火、古玉等高层资源相关。
+
+## 游戏化抽象（我的判断）
+
+- 萧炎 Utility 权重建议：`dignity_recovery`、`mentor_goal`、`fire_acquisition`、`protect_allies`、`resource_payback`。
+- 药老 BT 应有“是否暴露身份/是否消耗灵魂/是否传授高危功法”的条件分支。
+- 魂殿/魂族 AI 应采用长期隐藏威胁：代理人探查、捕捉灵魂、夺取古玉、打击血脉敌对势力。
+
+## 可转化为数据或事件的条目
+
+| 条目ID | 类型 | 建议字段 | 说明 |
+|---|---|---|---|
+| ai_xiao_yan_humiliation_response | AI 规则 | `trigger=public_humiliation`、`goal=challenge_and_train` | 退婚后立约修炼。 |
+| ai_xiao_yan_fire_risk_choice | AI 规则 | `trigger=fen_jue_available`、`riskTolerance=high` | 选择焚诀。 |
+| ai_canaan_fire_energy_team | AI 规则 | `trigger=resource_plunder`、`strategy=coalition_counterattack` | 火能猎捕反击。 |
+| ai_soul_clan_long_plan | AI 规则 | `trigger=ancient_jade/bloodline`、`visibility=covert` | 魂族长期布局。 |
+
+## 待确认问题
+
+- 现有 AI 参数表中的数值权重没有原文数值依据，应继续标注为我的判断。
+- 魂天帝、魂灭生、韩枫等 AI 需补后期章节锚点。
+- 美杜莎/彩鳞和云韵的行为模型需按具体事件重写，避免只按标签定型。
+
+## 变更记录
+
+- 2026-06-05：补证并明确 AI 架构是游戏化抽象；将关键行为锚定到退婚、焚诀选择、火能反击和远古八族。
+
 ## AI架构映射说明
 
 本游戏的NPC AI采用四层混合架构：
@@ -391,7 +441,7 @@ GOAP 链（资源争夺）：
   4. 若已有占据者 → 评估对方实力
      ├── 弱于己方 → 直接武力驱逐
      └── 强于己方 → 上报宗门，请求增援
-  5. 占领后设置阵法/留下看守
+  5. 占领后设置防守/留下看守
   6. 定期收取资源
 
 AI 参数：
