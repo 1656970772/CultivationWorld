@@ -12,6 +12,7 @@
  */
 import { RuntimeState } from '../abstract/runtime-state.js';
 import { nextCultivationRequired } from './numeric-cultivation.js';
+import { normalizeRankStage } from './cultivator-combat-attributes.js';
 
 const ROLE_RANKS = {
   'leader': 6,
@@ -44,8 +45,9 @@ export class NPCState extends RuntimeState {
     const fallbackBase = npcCfg.fallbackMaxAgeYearsBase ?? 80;
     const fallbackVariance = npcCfg.fallbackMaxAgeYearsVariance ?? 40;
 
+    const initialRankId = npcConfig.rankId || 'mortal';
     const rankInfo = ranksData
-      ? ranksData.find(r => r.id === npcConfig.rankId)
+      ? ranksData.find(r => r.id === initialRankId)
       : null;
 
     const maxAgeYears = rankInfo
@@ -56,7 +58,7 @@ export class NPCState extends RuntimeState {
     const ageRatio = initRatioMin + random.next() * (initRatioMax - initRatioMin);
     const ageDays = Math.floor(maxAgeDays * ageRatio);
     const initialCultivationProgress = random.next() * 0.3;
-    const initialCultivationRequired = nextCultivationRequired(npcConfig.rankId, ranksData || []);
+    const initialCultivationRequired = nextCultivationRequired(initialRankId, ranksData || []);
     const initialCultivation = initialCultivationProgress * initialCultivationRequired;
 
     super({
@@ -68,8 +70,8 @@ export class NPCState extends RuntimeState {
       factionId: npcConfig.factionId,
       currentRole: npcConfig.role,
       roleRank: ROLE_RANKS[npcConfig.role] || 1,
-      rankId: npcConfig.rankId,
-      rankName: rankInfo ? rankInfo.name : npcConfig.rankId,
+      rankId: initialRankId,
+      rankName: rankInfo ? rankInfo.name : initialRankId,
       cultivationProgress: initialCultivationProgress,
       cultivation: initialCultivation,
       // 游历感悟：通过外出游历积累，与闭关进度(cultivationProgress)互补。
@@ -136,9 +138,10 @@ export class NPCState extends RuntimeState {
       monthlyQuotaMet: true,
       // 受伤程度：0=健康，受伤累加；回血行为逐步降低。区别于 lifeRatio（寿元）
       injuryLevel: 0,
-      // 战斗属性基值：默认仍由旧 HP 路径初始化；cultivatorAttributes.enabled=true 时由
-      // NPCEntity._initCombatAttributes 写入修士六项面板。qi 仍表示修炼/突破真气，不改语义。
-      rankStage: npcConfig.rankStage || (npcConfig.rankId === 'mortal' ? null : 'early'),
+      // 战斗属性：cultivatorAttributes.enabled=true 时写入修士六项面板。第一阶段为兼容既有
+      // state.maxHp 消费点，maxHp/hp 由 NPCEntity 写成体质倍率后的运行时有效值。
+      // qi 仍表示修炼/突破真气，不改语义。
+      rankStage: normalizeRankStage(npcConfig.rankStage, initialRankId),
       hp: 0,
       maxHp: 0,
       yuan: 0,

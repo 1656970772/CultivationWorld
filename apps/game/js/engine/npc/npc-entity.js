@@ -849,6 +849,11 @@ export class NPCEntity extends BaseEntity {
     return this._combatConfig.cultivatorAttributes?.enabled === true;
   }
 
+  _runtimeMaxHpFromCombatAttributes(attrs) {
+    const hpBonus = readTraitHpMult(this);
+    return Math.max(1, Math.round((attrs?.maxHp || 1) * hpBonus));
+  }
+
   /** 初始化战斗属性；默认开关关闭时等价旧 _initHp。 */
   _initCombatAttributes() {
     if (!this._cultivatorAttributesEnabled()) {
@@ -861,10 +866,11 @@ export class NPCEntity extends BaseEntity {
       rankStage: this.state.get('rankStage'),
       tables: this._combatTables,
     });
+    const maxHp = this._runtimeMaxHpFromCombatAttributes(attrs);
     this.state.setMany({
       rankStage: attrs.rankStage,
-      maxHp: attrs.maxHp,
-      hp: attrs.maxHp,
+      maxHp,
+      hp: maxHp,
       maxYuan: attrs.maxYuan,
       yuan: attrs.maxYuan,
       attack: attrs.attack,
@@ -890,10 +896,11 @@ export class NPCEntity extends BaseEntity {
       rankStage: this.state.get('rankStage'),
       tables: this._combatTables,
     });
+    const maxHp = this._runtimeMaxHpFromCombatAttributes(attrs);
     this.state.setMany({
       rankStage: attrs.rankStage,
-      maxHp: attrs.maxHp,
-      hp: Math.min(currentHp, attrs.maxHp),
+      maxHp,
+      hp: Math.min(currentHp, maxHp),
       maxYuan: attrs.maxYuan,
       yuan: Math.min(currentYuan, attrs.maxYuan),
       attack: attrs.attack,
@@ -904,8 +911,8 @@ export class NPCEntity extends BaseEntity {
   }
 
   /**
-   * 计算当前境界与体质下的 maxHp（ADR-041 阶段1）。
-   * maxHp = combat.npcHp.baseHp[境界] × 体质 hpBonusMultiplier。
+   * 计算当前境界与体质下的运行时 maxHp（ADR-041 阶段1）。
+   * 新属性路径第一阶段也把体质倍率写入 state.maxHp，兼容仍直接读 state 的旧消费点。
    * @returns {number}
    */
   _computeMaxHp() {

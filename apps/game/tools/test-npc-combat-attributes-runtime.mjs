@@ -10,6 +10,9 @@ const read = (path) => readFileSync(resolve(GAME_ROOT, path), 'utf-8');
 const load = (path) => JSON.parse(read(path));
 
 const combatConfig = load('data/balance/combat.json');
+const combatBaseTable = load('data/definitions/combat-base-table.json');
+const cultivatorCombat = load('data/definitions/cultivator-combat.json');
+const monsterCombat = load('data/definitions/monster-combat.json');
 const npcStateSource = read('js/engine/npc/npc-state.js');
 const npcEntitySource = read('js/engine/npc/npc-entity.js');
 const npcLifecycleSource = read('js/engine/npc/npc-lifecycle.js');
@@ -83,6 +86,7 @@ console.log('6) default switch keeps old hp initialization');
 const { NPCEntity } = await import(new URL('../js/engine/npc/npc-entity.js', import.meta.url).href);
 const ranks = load('data/definitions/ranks.json');
 const gameConfig = load('data/config/game-config.json');
+const cultivationConfig = load('data/balance/cultivation.json');
 const npc = new NPCEntity(
   {
     id: 'npc_runtime_attribute_test',
@@ -103,6 +107,53 @@ const npc = new NPCEntity(
 );
 assertEqual(npc.state.get('maxHp'), combatConfig.npcHp.baseHp.qi_refining, 'default switch uses legacy npcHp baseHp');
 assertEqual(npc.state.get('hp'), npc.state.get('maxHp'), 'legacy initialization fills hp to maxHp');
+
+console.log('7) enabled switch writes physique-scaled runtime hp and refreshes without healing');
+const enabledCombatConfig = JSON.parse(JSON.stringify(combatConfig));
+enabledCombatConfig.cultivatorAttributes.enabled = true;
+const combatTables = { combatBaseTable, cultivatorCombat, monsterCombat };
+const combatNpc = new NPCEntity(
+  {
+    id: 'npc_runtime_attribute_enabled_test',
+    name: 'Runtime Attribute Enabled Test',
+    role: 'disciple',
+    rankId: 'qi_refining',
+    rankStage: 'late',
+    factionId: null,
+    spiritRootId: 'triple',
+    physiqueId: 'war_body',
+  },
+  ranks,
+  {
+    gameConfig,
+    combatConfig: enabledCombatConfig,
+    cultivationConfig,
+    combatTables,
+    aiConfig: { maxDepth: 1, maxIterations: 1 },
+  },
+);
+const qiLateMaxHp = Math.round(220 * 1.45 * 2.5);
+assertEqual(combatNpc.state.get('rankStage'), 'late', 'enabled initialization preserves valid rankStage');
+assertEqual(combatNpc.state.get('maxHp'), qiLateMaxHp, 'enabled initialization writes physique-scaled maxHp');
+assertEqual(combatNpc.state.get('hp'), qiLateMaxHp, 'enabled initialization fills hp to scaled maxHp');
+assertEqual(combatNpc.state.get('maxYuan'), Math.round(150 * 1.45), 'enabled initialization writes scaled maxYuan');
+assertEqual(combatNpc.state.get('yuan'), Math.round(150 * 1.45), 'enabled initialization fills yuan to maxYuan');
+assertEqual(combatNpc.state.get('attack'), Math.round(48 * 1.45), 'enabled initialization writes scaled attack');
+assertEqual(combatNpc.state.get('defense'), Math.round(18 * 1.45), 'enabled initialization writes scaled defense');
+assertEqual(combatNpc.state.get('speed'), Math.round(25 * 1.45), 'enabled initialization writes scaled speed');
+assertEqual(combatNpc.state.get('soul'), Math.round(32 * 1.45), 'enabled initialization writes scaled soul');
+
+combatNpc.state.set('hp', 123);
+combatNpc.state.set('yuan', 45);
+combatNpc.state.set('rankId', 'foundation_building');
+combatNpc.state.set('rankStage', 'early');
+combatNpc.refreshCombatAttributesOnBreakthrough();
+assertEqual(combatNpc.state.get('rankStage'), 'early', 'refresh keeps normalized early rankStage');
+assertEqual(combatNpc.state.get('maxHp'), Math.round(650 * 2.5), 'refresh writes physique-scaled foundation maxHp');
+assertEqual(combatNpc.state.get('hp'), 123, 'refresh clamps hp without healing when below new maxHp');
+assertEqual(combatNpc.state.get('maxYuan'), 560, 'refresh writes foundation maxYuan');
+assertEqual(combatNpc.state.get('yuan'), 45, 'refresh clamps yuan without refilling when below new maxYuan');
+assertEqual(combatNpc.state.get('attack'), 145, 'refresh writes foundation attack');
 
 if (failures > 0) {
   console.error(`\nNPC combat attribute runtime tests failed: ${failures}`);
