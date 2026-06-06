@@ -67,6 +67,7 @@ export function tryBreakthrough(entity) {
   if (roll < finalRate) {
     entity.state.set('rankId', nextRank.id);
     entity.state.set('rankName', nextRank.name);
+    entity.state.set('rankStage', nextRank.id === 'mortal' ? null : 'early');
     entity.state.set('cultivation', 0);
     entity.state.set('experienceCultivation', 0);
     entity.state.set('totalCultivation', 0);
@@ -90,8 +91,10 @@ export function tryBreakthrough(entity) {
       }
     }
 
-    // 境界提升后血量大增：重算 maxHp（抬上限，默认不回满）。
-    if (typeof entity.refreshMaxHpOnBreakthrough === 'function') {
+    // 境界提升后刷新战斗属性（抬上限，默认不回满）。
+    if (typeof entity.refreshCombatAttributesOnBreakthrough === 'function') {
+      entity.refreshCombatAttributesOnBreakthrough();
+    } else if (typeof entity.refreshMaxHpOnBreakthrough === 'function') {
       entity.refreshMaxHpOnBreakthrough();
     }
     // 破境回元（ADR-042 阶段2）：持 Trait.BreakthroughFullHeal Tag 的实体（特殊功法/体质授予）

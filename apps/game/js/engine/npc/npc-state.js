@@ -136,10 +136,17 @@ export class NPCState extends RuntimeState {
       monthlyQuotaMet: true,
       // 受伤程度：0=健康，受伤累加；回血行为逐步降低。区别于 lifeRatio（寿元）
       injuryLevel: 0,
-      // 气血（HP）系统（ADR-041 阶段1）：maxHp = combat.npcHp.baseHp[境界] × 体质 hpBonus。
-      // 占位 0，真正数值由 NPCEntity 构造末尾 _initHp() 按 combat 配置与体质计算并回满。
+      // 战斗属性基值：默认仍由旧 HP 路径初始化；cultivatorAttributes.enabled=true 时由
+      // NPCEntity._initCombatAttributes 写入修士六项面板。qi 仍表示修炼/突破真气，不改语义。
+      rankStage: npcConfig.rankStage || (npcConfig.rankId === 'mortal' ? null : 'early'),
       hp: 0,
       maxHp: 0,
+      yuan: 0,
+      maxYuan: 0,
+      attack: 0,
+      defense: 0,
+      speed: 0,
+      soul: 0,
       // 先天资质：灵根(5档)与体质(凡体+稀有特殊体)。出生即定、终身不变。
       // 由 NPCEntity._initTalent 按 cultivation.json 权重随机赋值（或 npcConfig 显式指定）。
       spiritRootId: npcConfig.spiritRootId || 'triple',

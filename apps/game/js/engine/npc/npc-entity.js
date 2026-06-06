@@ -44,6 +44,10 @@ import {
   readTraitHpMult,
 } from './npc-traits.js';
 import {
+  calculateCultivatorCombatAttributes,
+  readEffectiveCombatAttribute,
+} from './cultivator-combat-attributes.js';
+import {
   canFactionProvideExchangeMaterials,
   countDonatableMaterials,
   factionNeedsMonsterExchangeMaterials,
@@ -84,6 +88,7 @@ export class NPCEntity extends BaseEntity {
     this._rng = entityConfig.rng || new Rng(seedFromId(npcConfig.id));
     this._cultivationConfig = entityConfig.cultivationConfig || {};
     this._combatConfig = entityConfig.combatConfig || {};
+    this._combatTables = entityConfig.combatTables || {};
     this._personalityConfig = entityConfig.personalityConfig || {};
     this._aiConfig = entityConfig.aiConfig || {};
     this._memoryConfig = entityConfig.memoryConfig || {};
@@ -97,9 +102,9 @@ export class NPCEntity extends BaseEntity {
     // 把性格暴露到 state 上（仅作只读引用，存于专用字段，不进 _values，故不污染 GOAP 状态键）
     this.state.personality = this.staticData.personality || {};
     this._initTalent(npcConfig);
-    // 能力组件 + 先天特质修正层须在 _initHp 之前建好：_computeMaxHp 经 AttributeSet 读 traitHpMult。
+    // 能力组件 + 先天特质修正层须在战斗属性初始化前建好：_computeMaxHp 经 AttributeSet 读 traitHpMult。
     this._initAbilityComponent();
-    this._initHp();
+    this._initCombatAttributes();
     this._initInventory(npcConfig);
     this._initAbilities(npcConfig);
     this._initNeeds(npcConfig);
@@ -838,18 +843,76 @@ export class NPCEntity extends BaseEntity {
   }
 
   /**
-   * 真气是否尚未达到下一境界突破门槛（qi < nextRank.qiRequired）。
-   * 用于 gate 聚气丹兑换/服用：只要真气不够突破，就应允许补真气——
-   * 替代旧的错误前置 totalProgress<1.0（进度满≠真气够，会锁死天才，见 ADR-039）。
-   * 已是最高境界（无下一境界）时返回 false（无需再补真气突破）。
-   * @returns {boolean}
+   * 修士六项战斗属性迁移开关。关闭时保留 ADR-041 旧 HP 路径。
    */
+  _cultivatorAttributesEnabled() {
+    return this._combatConfig.cultivatorAttributes?.enabled === true;
+  }
+
+  /** 初始化战斗属性；默认开关关闭时等价旧 _initHp。 */
+  _initCombatAttributes() {
+    if (!this._cultivatorAttributesEnabled()) {
+      this._initHp();
+      return;
+    }
+
+    const attrs = calculateCultivatorCombatAttributes({
+      rankId: this.state.get('rankId') || 'mortal',
+      rankStage: this.state.get('rankStage'),
+      tables: this._combatTables,
+    });
+    this.state.setMany({
+      rankStage: attrs.rankStage,
+      maxHp: attrs.maxHp,
+      hp: attrs.maxHp,
+      maxYuan: attrs.maxYuan,
+      yuan: attrs.maxYuan,
+      attack: attrs.attack,
+      defense: attrs.defense,
+      speed: attrs.speed,
+      soul: attrs.soul,
+    });
+  }
+
+  /**
+   * 突破后刷新修士战斗属性。开关关闭时回退旧 maxHp 刷新；开启后只抬/夹上限，不回满。
+   */
+  refreshCombatAttributesOnBreakthrough() {
+    if (!this._cultivatorAttributesEnabled()) {
+      this.refreshMaxHpOnBreakthrough();
+      return;
+    }
+
+    const currentHp = this.state.get('hp') || 0;
+    const currentYuan = this.state.get('yuan') || 0;
+    const attrs = calculateCultivatorCombatAttributes({
+      rankId: this.state.get('rankId') || 'mortal',
+      rankStage: this.state.get('rankStage'),
+      tables: this._combatTables,
+    });
+    this.state.setMany({
+      rankStage: attrs.rankStage,
+      maxHp: attrs.maxHp,
+      hp: Math.min(currentHp, attrs.maxHp),
+      maxYuan: attrs.maxYuan,
+      yuan: Math.min(currentYuan, attrs.maxYuan),
+      attack: attrs.attack,
+      defense: attrs.defense,
+      speed: attrs.speed,
+      soul: attrs.soul,
+    });
+  }
+
   /**
    * 计算当前境界与体质下的 maxHp（ADR-041 阶段1）。
    * maxHp = combat.npcHp.baseHp[境界] × 体质 hpBonusMultiplier。
    * @returns {number}
    */
   _computeMaxHp() {
+    if (this._cultivatorAttributesEnabled()) {
+      return Math.max(1, Math.round(readEffectiveCombatAttribute(this, 'maxHp', this.state.get('maxHp') || 1)));
+    }
+
     const baseHpMap = this._combatConfig.npcHp?.baseHp || {};
     const rankId = this.state.get('rankId') || 'mortal';
     const baseHp = baseHpMap[rankId] ?? 30;
@@ -900,6 +963,13 @@ export class NPCEntity extends BaseEntity {
     this.state.set('hp', Math.min(maxHp, hp + maxHp * ratio));
   }
 
+  /**
+   * 真气是否尚未达到下一境界突破门槛（qi < nextRank.qiRequired）。
+   * 用于 gate 聚气丹兑换/服用：只要真气不够突破，就应允许补真气——
+   * 替代旧的错误前置 totalProgress<1.0（进度满≠真气够，会锁死天才，见 ADR-039）。
+   * 已是最高境界（无下一境界）时返回 false（无需再补真气突破）。
+   * @returns {boolean}
+   */
   _isQiBelowNextRankRequirement() {
     const ranks = this._ranksData;
     if (!ranks || ranks.length === 0) return false;

@@ -81,6 +81,11 @@ export class WorldEngine {
     this._aiConfig = configs.aiConfig || {};
     this._namesConfig = configs.names || {};
     this._monsterAttributeTemplates = configs.monsterAttributeTemplates || {};
+    this._combatTables = {
+      combatBaseTable: configs.combatBaseTable || null,
+      cultivatorCombat: configs.cultivatorCombat || null,
+      monsterCombat: configs.monsterCombat || null,
+    };
     this._modifierTemplates = configs.modifierTemplates || [];
     // 信息传播 / 机会 / 怀璧其罪系统配置（ADR-024/025）。默认 enabled=false，不改变现有行为。
     this._worldNewsConfig = configs.worldNews || {};
@@ -103,6 +108,7 @@ export class WorldEngine {
       cultivationConfig: this._balanceConfig.cultivation,
       economyConfig: this._balanceConfig.economy,
       combatConfig: this._balanceConfig.combat,
+      combatTables: this._combatTables,
       personalityConfig: this._balanceConfig.personality,
       aiConfig: this._aiConfig.npc || {},
       memoryConfig: this._balanceConfig.memory,
