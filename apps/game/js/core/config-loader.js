@@ -37,6 +37,7 @@ export async function loadGameConfigs() {
     balanceUtility, balanceReward, balanceRelationship, balanceReaction,
     gameConfig, aiConfig, names,
     monsters, monsterAttributeTemplates, monsterSpawn,
+    combatBaseTable, cultivatorCombat, monsterCombat,
     worldNews, worldOpportunities, dynamicEvents, dynamicGoals, balanceCovet,
     itemsCurrency, itemsMaterial, itemsPill, itemsArtifact, itemsTalisman, itemsTechnique,
     tags, combatEffects, coreEffects, abilities,
@@ -90,6 +91,9 @@ export async function loadGameConfigs() {
     loadJSON('data/definitions/monsters.json'),
     loadJSON('data/definitions/monster-attribute-templates.json'),
     loadJSON('data/balance/monster-spawn.json'),
+    loadJSON('data/definitions/combat-base-table.json'),
+    loadJSON('data/definitions/cultivator-combat.json'),
+    loadJSON('data/definitions/monster-combat.json'),
     loadJSON('data/world/news.json'),
     loadJSON('data/world/opportunities.json'),
     loadJSON('data/world/dynamic-events.json'),
@@ -153,6 +157,7 @@ export async function loadGameConfigs() {
     balanceUtility, balanceReward, balanceRelationship, balanceReaction,
     gameConfig, aiConfig, names,
     monsters, monsterAttributeTemplates, monsterSpawn,
+    combatBaseTable, cultivatorCombat, monsterCombat,
     worldNews, worldOpportunities, dynamicEvents, dynamicGoals, balanceCovet, itemDefs,
     tags, effects, abilities, jobs, toils,
   };
@@ -195,6 +200,9 @@ export async function loadGameConfigs() {
  * @property {Array}  monsters           妖兽定义
  * @property {Object} monsterAttributeTemplates 妖兽五层模板与阶位基准
  * @property {Object} monsterSpawn       妖兽分布平衡配置
+ * @property {Object} combatBaseTable    境界战斗参考基表
+ * @property {Object} cultivatorCombat   普通修士裸面板
+ * @property {Object} monsterCombat      普通妖兽/猛兽裸面板参考表
  * @property {Object} gameConfig         全局游戏配置
  * @property {Object} aiConfig           AI 配置
  * @property {Object} names              姓名池
