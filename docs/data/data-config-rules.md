@@ -1,6 +1,6 @@
 # 游戏数据配置规则
 
-> 最后更新：2026-06-06
+> 最后更新：2026-06-07
 
 本文档定义 `apps/game/data/` 的现行目录结构、命名规范和扩展规则。来源以当前 `apps/game/js/core/config-loader.js` 与 `apps/game/data/` 为准。
 
@@ -44,7 +44,10 @@ apps/game/data/
 │   ├── ai-config.json
 │   └── game-config.json
 ├── definitions/
+│   ├── combat-base-table.json
+│   ├── cultivator-combat.json
 │   ├── macro-resources.json
+│   ├── monster-combat.json
 │   ├── monster-attribute-templates.json
 │   ├── monsters.json
 │   ├── names.json
@@ -119,6 +122,9 @@ apps/game/data/
 - `effects/*.json`：战斗 GE 与通用 GE 合并为 `effects.effects`。
 - `jobs/*.json`：按业务域拆分，加载后合并为 `jobs.jobs` 并交给 `JobPool`。
 - `toils/*.json`：按执行器域拆分，加载后合并为 `toils.toils` 并交给 `ToilPool`。
+- `definitions/combat-base-table.json`：由加载器显式读取为 `combatBaseTable`，提供境界参考基表和小层倍率。
+- `definitions/cultivator-combat.json`：由加载器显式读取为 `cultivatorCombat`，提供普通修士裸面板。
+- `definitions/monster-combat.json`：由加载器显式读取为 `monsterCombat`，提供普通妖兽危险层级参考表。
 - `definitions/monster-attribute-templates.json`：由加载器显式读取为 `monsterAttributeTemplates`，供妖兽属性计算器和运行时生成入口使用。
 
 ## entities/
@@ -193,13 +199,20 @@ apps/game/data/
 | `ranks.json` | 修仙境界、寿元、继任评分 |
 | `macro-resources.json` | 势力宏观资源，目前用于 `food`、`disciples` |
 | `terrains.json` | 地形定义 |
-| `techniques.json` | 功法定义 |
+| `techniques.json` | NPC 当前修炼功法定义，供 `techniqueRegistry`、修炼加成和战斗属性修正读取；不同于 `items/technique.json` 的秘籍物品 |
+| `combat-base-table.json` | 境界战斗参考基表，含 `stageMultipliers` 和六项属性参考值 |
+| `cultivator-combat.json` | 普通修士裸面板，供修士战斗属性新路径初始化 |
+| `monster-combat.json` | 普通妖兽危险层级参考表，不替代妖兽模板运行时 |
 | `weapons.json` | 武器/法宝参考定义 |
 | `monster-attribute-templates.json` | 妖兽阶位基准、体型、移动、战斗风格、属性、特殊类型和习性模板 |
 | `monsters.json` | 妖兽定义，当前 36 条；通过五层模板生成直接面板属性 |
 | `names.json` | 出生 NPC 姓名池 |
 
 `ranks.json` 中 `rankId` 只表示修仙境界，不承载职位、头衔或凡人王朝身份。修仙境界需要同时维护 `qiRequired` 与 `cultivationRequired`。前者是真气突破门槛，后者是数值修为突破门槛；旧 `cultivationProgress` 比例只作为兼容派生，不再作为主显示语义。
+
+`combat-base-table.json`、`cultivator-combat.json`、`monster-combat.json` 统一使用六项战斗属性：`hp`、`yuan`、`attack`、`defense`、`speed`、`soul`。三张表可包含未来高阶层级作为参考，但不得借此扩展 `ranks.json` 的运行时境界语义。
+
+`definitions/techniques.json` 中代表性功法可在 `effects.combatModifiers` 声明 AttributeSet 修正。字段格式为 `{ "attribute": "attack", "op": "multiply", "magnitude": 1.12 }`，由运行时按 `technique_combat` 来源分组刷新。`items/technique.json` 是可交易、可抢夺的功法秘籍物品清单，加载后合并到 `itemDefs.items`，不承载 NPC 当前修炼功法的战斗面板修正。
 
 `monsters.json` 中新妖兽必须声明 `templates` 与 typed `skills[]`。运行时通过 `monsterAttributeTemplates` 和 `resolveMonsterAttributes()` 得到 `hp`、`qi`、`attack`、`defense`、`speed`、`spirit` 直接面板，并保留 `vitality`、`strength`、`sense` 兼容镜像。
 

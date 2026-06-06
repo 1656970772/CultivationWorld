@@ -2,7 +2,7 @@
 
 > 项目代号：WorldDynamic  
 > 创建日期：2026-05-23  
-> 最后更新：2026-06-06（新增妖兽属性模板与境界清理实施计划、ADR、系统文档、数据模型和验证报告；补充 NPC 战斗智能闭环阶段 6 验证报告与提交前收尾修复计划；新增任务系统角色生涯任务网设计与修士战斗属性体系规格）
+> 最后更新：2026-06-07（新增修士战斗属性体系 ADR、系统文档、数据模型与实施计划；此前新增妖兽属性模板与境界清理实施计划、ADR、系统文档、数据模型和验证报告；补充 NPC 战斗智能闭环阶段 6 验证报告与提交前收尾修复计划；新增任务系统角色生涯任务网设计与修士战斗属性体系规格）
 
 ## 当前事实
 
@@ -44,6 +44,7 @@ docs/
 │   ├── faction.md
 │   ├── npc.md
 │   ├── monster.md
+│   ├── combat-attributes.md
 │   ├── ranks.md
 │   ├── player.md
 │   ├── relationship.md
@@ -56,6 +57,7 @@ docs/
 │   ├── event-system.md
 │   ├── faction-ai.md
 │   ├── gameplay-ability-system.md
+│   ├── cultivator-combat-attributes.md
 │   ├── info-sense.md
 │   ├── item-covet.md
 │   ├── monster-attribute-templates.md
@@ -69,7 +71,7 @@ docs/
 ├── balance/
 │   └── simulation-iteration-process.md
 ├── decisions/
-│   └── adr-001..adr-052-*.md
+│   └── adr-001..adr-053-*.md
 ├── superpowers/
 │   ├── specs/
 │   │   ├── 2026-06-05-Job-Toil正式启用前收尾规格.md
@@ -94,6 +96,7 @@ docs/
 │   │   ├── 2026-06-05-StoryGraph小说图谱MVP实施计划.md
 │   │   ├── 2026-06-05-跟随角色状态面板实施计划.md
 │   │   ├── 2026-06-06-妖兽属性模板与境界清理实施计划.md
+│   │   ├── 2026-06-07-修士战斗属性体系实施计划.md
 │   │   └── 2026-06-06-提交前收尾修复计划.md
 │   └── reports/
 │       ├── 2026-06-05-Job-Toil启用前验证.md
@@ -138,7 +141,7 @@ docs/
 | 跟随角色状态面板 | `superpowers/plans/2026-06-05-跟随角色状态面板实施计划.md` |
 | 妖兽伤害、斩妖任务与历练修为规格 | `superpowers/specs/2026-06-05-妖兽伤害与斩妖历练修为规格.md` |
 | 妖兽伤害斩妖 Job 修为实施计划 | `superpowers/plans/2026-06-05-妖兽伤害斩妖Job修为实施计划.md` |
-| 修士战斗属性体系 | `superpowers/specs/2026-06-06-修士战斗属性体系-design.md`、`worldbuilding/wiki/rules/combat-attributes-and-realms.md` |
+| 修士战斗属性体系 | `superpowers/specs/2026-06-06-修士战斗属性体系-design.md`、`superpowers/plans/2026-06-07-修士战斗属性体系实施计划.md`、`decisions/adr-053-cultivator-combat-attributes.md`、`systems/cultivator-combat-attributes.md`、`data-models/combat-attributes.md`、`worldbuilding/wiki/rules/combat-attributes-and-realms.md` |
 | 任务系统角色生涯任务网 | `superpowers/specs/2026-06-06-任务系统角色生涯任务网设计.md` |
 | NPC 战斗智能闭环补完实施计划 | `superpowers/plans/2026-06-06-NPC战斗智能闭环补完实施计划.md`（总入口；阶段 1-6 文档位于同目录） |
 | NPC 战斗智能闭环验证报告 | `superpowers/reports/2026-06-06-NPC战斗智能闭环验证.md` |

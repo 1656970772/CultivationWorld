@@ -1,6 +1,6 @@
 ﻿# 项目文件结构
 
-> 最后更新：2026-06-06
+> 最后更新：2026-06-07
 
 ## 总体原则
 
@@ -90,8 +90,8 @@ CultivationWorld/
 | 路径 | 职责 |
 |------|------|
 | `data/entities/` | 初始势力与 NPC |
-| `data/definitions/` | 境界、地形、妖兽、妖兽属性模板、功法、武器、姓名、宏观资源 |
-| `data/items/` | 可持有物品，按 `currency/material/pill/artifact/talisman/technique` 拆分 |
+| `data/definitions/` | 境界、地形、妖兽、妖兽属性模板、修士/妖兽战斗属性表、NPC 修炼功法定义、武器、姓名、宏观资源 |
+| `data/items/` | 可持有物品，按 `currency/material/pill/artifact/talisman/technique` 拆分；其中 `technique` 是秘籍物品，不是 NPC 当前修炼功法定义 |
 | `data/actions/` | 势力/NPC SimpleAction/NPC JobAction/Reaction/世界规则行为，以及 NPC 默认行为集 |
 | `data/jobs/` | NPC Job 定义，按动态事件/经济/社交拆分 |
 | `data/toils/` | Toil 定义，按核心/动态事件/经济/社交拆分 |

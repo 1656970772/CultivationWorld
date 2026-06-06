@@ -1,6 +1,6 @@
 ﻿# 战斗机制层（GAS 化）功能文档
 
-最后更新：2026-06-03
+最后更新：2026-06-07
 
 > 设计决策见 [ADR-042](../decisions/adr-042-gameplay-ability-system.md)。
 > 本文是面向实现/配表的功能文档：定义各机制的字段 schema、GameplayTag 命名规范、Effect/Ability 数据格式与组合示例。
@@ -46,7 +46,7 @@
 - `addModifier(key, source, op, value)` / `removeModifiersFrom(source)`：以来源为单位增删修正（对称撤销）。
 - `getEffective(key)`：基值叠加全部修正后的有效值。op 支持 `add` / `multiply` / `override`。
 
-向后兼容：机制层未接管的属性，调用方仍直接 `state.get/set`。阶段1 仅 hp 相关走管线，maxHp/atk/def 的修正层在阶段2 接入灵根/体质时启用。
+向后兼容：机制层未接管的属性，调用方仍直接 `state.get/set`。当前已接入修士战斗属性的 `maxHp`、`attack`、`defense`、`speed`、`soul` 等有效值读取；功法、法宝、体质和后续 buff 通过来源分组叠加修正层。
 
 ## 4. GameplayEffect 数据格式
 
@@ -101,10 +101,24 @@
   ] }
 ```
 
-- 施加：`EffectEngine.applyEffect(target, def, { spec })`，`spec` 的同名字段（magnitude/magnitudeType/decay/baseRankId/minMagnitude/clamp/op）覆盖 GE modifier 的默认值。
+- 施加：`EffectEngine.applyEffect(target, def, { spec })`，`spec` 的同名字段（attribute/op/magnitude/magnitudeType/decay/baseRankId/minMagnitude/clamp）覆盖 GE modifier 的默认值。
 - 返回：`{ applied, instant, results, mods: [{ attribute, op, delta, newValue }] }`，`delta` 供叙事事件取本次实际增量。
 - 统一入口：`npc-economy.applyItemEffects(entity, itemId)` 读物品 `effects` 逐条施加，汇总各属性 delta 返回。丹药/灵草/灵果/强者精血等"服用即生效"来源都走此入口，**复用同一批通用 GE**。
 - 同一 `ge_add_qi` 被聚气丹(120)/灵果(40)/强者精血(500) 复用，各自数值取自各自物品——多来源复用经 `tools/verify-effect-reuse.mjs` 真实校验。
+
+### 4.2 战斗属性通用原语
+
+修士战斗属性体系（ADR-053）新增两个通用 GE：
+
+```json
+{ "id": "ge_add_combat_attribute", "durationType": "instant",
+  "modifiers": [ { "attribute": "attack", "op": "add", "magnitude": 0 } ] }
+
+{ "id": "ge_combat_attribute_modifier", "durationType": "infinite",
+  "modifiers": [ { "attribute": "attack", "op": "add", "magnitude": 0 } ] }
+```
+
+调用方必须通过 `spec.attribute`、`spec.op`、`spec.magnitude` 指定本次实际属性、操作和数值。功法与法宝的常驻加成当前直接写入 AttributeSet 来源分组（`technique_combat`、`artifact_combat`）；丹药、符箓、阵法和临时状态后续可复用上述 GE 原语。
 
 ## 5. GameplayAbility 数据格式
 

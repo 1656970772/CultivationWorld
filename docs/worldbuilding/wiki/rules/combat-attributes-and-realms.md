@@ -1,10 +1,10 @@
 # 战斗属性与境界阶位
 
-> 最后更新：2026-06-06
-> 状态：已敲定，待数据实现
+> 最后更新：2026-06-07
+> 状态：已实现第一阶段，默认开关关闭
 > 类型：规则
-> 关联文档：`docs/superpowers/specs/2026-06-06-修士战斗属性体系-design.md`、`docs/superpowers/specs/2026-06-06-妖兽属性模板与境界清理-design.md`
-> 数据来源：本项目 2026-06-06 讨论确认；妖兽属性模板参考既有妖兽规划与 `docs/worldbuilding/wiki/creatures/monsters.md`
+> 关联文档：`docs/superpowers/specs/2026-06-06-修士战斗属性体系-design.md`、`docs/superpowers/plans/2026-06-07-修士战斗属性体系实施计划.md`、`docs/decisions/adr-053-cultivator-combat-attributes.md`、`docs/systems/cultivator-combat-attributes.md`
+> 数据来源：本项目 2026-06-06 至 2026-06-07 讨论确认；妖兽属性模板参考既有妖兽规划与 `docs/worldbuilding/wiki/creatures/monsters.md`
 
 ## 主境界链
 
@@ -76,3 +76,17 @@
 ```
 
 普通无装备修士不应轻松正面压制同阶妖兽；有好功法和好法宝的修士可以越阶或反杀强妖。
+
+## 运行时落地
+
+第一阶段已新增以下数据表：
+
+| 表 | 用途 |
+|----|------|
+| `apps/game/data/definitions/combat-base-table.json` | 境界参考基表与小层倍率 |
+| `apps/game/data/definitions/cultivator-combat.json` | 普通修士裸面板 |
+| `apps/game/data/definitions/monster-combat.json` | 普通妖兽危险层级参考表 |
+
+`combat.cultivatorAttributes.enabled=false` 时仍使用旧 `npcHp/baseDef` 路径；开启后 NPC 初始化和突破刷新会写入 `rankStage`、`maxHp/hp`、`maxYuan/yuan`、`attack`、`defense`、`speed`、`soul`。为兼容旧血量消费点，新开关开启时 `state.maxHp/hp` 暂写入体质倍率后的运行时值。
+
+功法和法宝通过 `combatModifiers` 影响有效属性。旧 `combatBonus` 只保留给旧战力路径，不作为新 AttributeSet 修正自动生效。
