@@ -716,13 +716,12 @@ export class TickManager {
       const soul = readEffectiveCombatAttribute(npc, 'soul', 0);
       const injury = npc.state.get('injuryLevel') || 0;
       const injuryFactor = Math.max(0.2, 1 - injury * 0.08);
-      const artifactFactor = this._artifactCombatFactor(npc);
       return Math.max(0.01, (
         attack
         + defense * 0.7
         + speed * 0.35
         + soul * 0.25
-      ) * injuryFactor * artifactFactor);
+      ) * injuryFactor);
     }
     const rank = this.ranksData.find(r => r.id === npc.state.get('rankId'));
     const rankBase = rank ? (rank.successionScore ?? rank.order ?? 1) : 1;
