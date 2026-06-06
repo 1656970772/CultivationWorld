@@ -37,6 +37,7 @@ import { AbilityComponent } from '../abstract/ability-component.js';
 import { ItemRegistry } from '../items/item-registry.js';
 import { EffectEngine } from '../abstract/gameplay-effect.js';
 import { EffectPool } from '../pools/effect-pool.js';
+import { Rng } from '../abstract/rng.js';
 import {
   applyTraitEffects,
   readTraitSpeedMult,
@@ -47,6 +48,15 @@ import {
   countDonatableMaterials,
   factionNeedsMonsterExchangeMaterials,
 } from './npc-economy.js';
+
+function seedFromId(id) {
+  let h = 2166136261;
+  for (const ch of String(id || 'npc')) {
+    h ^= ch.charCodeAt(0);
+    h = Math.imul(h, 16777619) >>> 0;
+  }
+  return h || 1;
+}
 
 /** NPC 共享 BTLoader（已注册 planner 节点）。PlannerNode 无内部状态，可被各 NPC 安全复用。 */
 const NPC_BT_LOADER = createBTLoader();
@@ -71,7 +81,7 @@ export class NPCEntity extends BaseEntity {
 
     this._ranksData = ranksData || [];
     // 确定性随机源（由 WorldEngine 经 entityConfig 注入）。实体内部所有随机统一走 this._rng。
-    this._rng = entityConfig.rng || null;
+    this._rng = entityConfig.rng || new Rng(seedFromId(npcConfig.id));
     this._cultivationConfig = entityConfig.cultivationConfig || {};
     this._combatConfig = entityConfig.combatConfig || {};
     this._personalityConfig = entityConfig.personalityConfig || {};
@@ -647,6 +657,7 @@ export class NPCEntity extends BaseEntity {
     const needIds = config.needIds || [
       'need_npc_survival', 'need_npc_heal',
       'need_npc_active_quest', 'need_npc_donate_materials',
+      'need_npc_combat_recovery', 'need_npc_combat_supply', 'need_npc_hunt_companion',
       'need_npc_cultivation', 'need_npc_breakthrough_aid',
       'need_npc_combat_gear', 'need_npc_hunt_resources', 'need_npc_loyalty_duty',
       'need_npc_ambition',
@@ -663,14 +674,10 @@ export class NPCEntity extends BaseEntity {
 
   _initActions(config) {
     const defaultActionIds = this._actionSets.defaultNpcActionIds || [
-      'act_npc_cultivate', 'act_npc_train_chamber',
-      'act_npc_serve_faction', 'act_npc_heal',
+      'act_npc_serve_faction',
       'act_npc_seek_elixir', 'act_npc_challenge',
-      'act_npc_assist_faction', 'act_npc_explore',
-      'act_npc_accept_hunt_quest',
-      'act_npc_accept_quest', 'act_npc_do_quest', 'act_npc_turn_in_quest',
+      'act_npc_assist_faction',
       'act_npc_donate_materials',
-      'act_npc_redeem_qi_pill', 'act_npc_use_qi_pill',
       'act_npc_redeem_breakthrough_pill', 'act_npc_use_breakthrough_pill',
       'act_npc_redeem_artifact',
       // 流派分化行为（ADR-022/ADR-023）：夺宝/养老/传承/夺权。
@@ -682,26 +689,45 @@ export class NPCEntity extends BaseEntity {
       // 机会点前往行为（ADR-024）：仅当机会系统 enabled 且 NPC 知晓可行机会时，
       // collectExtraGoals 才产出 opportunity Goal 触发本行为。
       'act_npc_goto_opportunity',
-      // 复仇行为链（ADR-020/028）：追踪→击杀仇人。仅当 hasRevengeTarget（执念/恩怨/高强度 enemy 边）
-      // 为真时其 Goal(enemyKilled) 才进入规划，故加入可用池不改变无仇 NPC 既有规划。
-      'act_npc_hunt_enemy', 'act_npc_kill_enemy',
       // 关系驱动行为（ADR-028）：驰援同门 / 探望恩人。仅当 goalsEnabled 且存在 qualifying 关系边时，
       // collectExtraGoals 才产出对应关系 Goal 触发本行为。
       'act_npc_assist_ally', 'act_npc_visit_benefactor',
-      // 师徒互动行为（ADR-029）：师傅传功(点化)/师傅护徒(驰援)/徒弟尽孝(探望)。仅当 goalsEnabled 且
+      // 师徒互动行为（ADR-029）：师傅护徒(驰援)。传功/探望已迁移到 JobAction。
       // 存在 qualifying master/disciple 边时，collectExtraGoals 才产出对应 Goal 触发本行为。
-      'act_npc_teach_disciple', 'act_npc_protect_disciple', 'act_npc_visit_master',
+      'act_npc_protect_disciple',
       // 反应层行为（四层 AI 架构 Reaction 层，ADR-048）：逃命/暂避/回血/反击。
       // 仅由 ReactiveNode 在被攻击刺激命中时 setSingleActionPlan 强制选取（不进 GOAP/Utility 规划），
       // 且仅当 reaction.enabled=true 时反应层才会消费刺激，故加入可用池不改变既有规划。
       'act_npc_react_flee', 'act_npc_react_retreat',
       'act_npc_react_heal', 'act_npc_react_counter',
     ];
+    const defaultJobActionIds = this._actionSets.defaultNpcJobActionIds || [
+      'act_npc_prepare_dynamic_event',
+      'act_npc_join_dynamic_event',
+      'act_npc_prepare_secret_realm',
+      'act_npc_prepare_sect_tournament',
+      'act_npc_acquire_heal_item',
+      'act_npc_acquire_artifact',
+      'act_npc_job_cultivate',
+      'act_npc_job_train_chamber',
+      'act_npc_job_heal',
+      'act_npc_job_explore',
+      'act_npc_accept_monster_hunt_job',
+      'act_npc_accept_quest_job',
+      'act_npc_execute_quest_job',
+      'act_npc_turn_in_quest_job',
+      'act_npc_job_redeem_qi_pill',
+      'act_npc_job_use_qi_pill',
+      'act_npc_job_hunt_enemy',
+      'act_npc_job_kill_enemy',
+      'act_npc_job_teach_disciple',
+      'act_npc_job_visit_master',
+    ];
     const actionIds = config.actionIds
       ? config.actionIds
       : [
           ...defaultActionIds,
-          ...(this._aiConfig.jobs?.enabled === true ? (this._actionSets.defaultNpcJobActionIds || []) : []),
+          ...(this._aiConfig.jobs?.enabled === true ? defaultJobActionIds : []),
         ];
     this.state.set('jobsEnabled', this._aiConfig.jobs?.enabled === true);
 
@@ -727,7 +753,7 @@ export class NPCEntity extends BaseEntity {
     const capMap = this._cultivationConfig.cultivationCap || {};
     const rankId = this.state.get('rankId') || 'mortal';
     const cap = capMap[rankId] ?? 1.0;
-    const cappedActionIds = ['act_npc_cultivate', 'act_npc_train_chamber'];
+    const cappedActionIds = ['act_npc_job_cultivate', 'act_npc_job_train_chamber'];
     // 闭关进度边际递减后实际很难精确到 cap（指数衰减永远逼近不等于），
     // 故前置阈值取 cap×0.999 即视为“到顶”，避免规划层永久允许闭关却几乎不前进。
     const capThreshold = cap * 0.999;

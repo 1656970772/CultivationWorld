@@ -63,6 +63,71 @@
     }
   },
   {
+    "id": "need_npc_combat_recovery",
+    "name": "战斗恢复",
+    "description": "战斗风险评估标记需要撤退或疗伤时，优先撤至安全处并处理伤势，避免 active quest 反复抢占。",
+    "basePriority": 0,
+    "evaluatorType": "configurable",
+    "evaluatorConfig": {
+      "basePriority": 0,
+      "rules": [
+        {
+          "condition": { "key": "needsCombatRecovery", "op": "eq", "value": true },
+          "priorityBoost": 100,
+          "urgencyBoost": 95
+        }
+      ],
+      "satisfiedCondition": { "key": "needsCombatRecovery", "op": "eq", "value": false }
+    },
+    "goalState": {
+      "needsCombatRecovery": { "op": "eq", "value": false },
+      "shouldRetreat": { "op": "eq", "value": false }
+    }
+  },
+  {
+    "id": "need_npc_combat_supply",
+    "name": "战斗补给",
+    "description": "斩妖或遭袭后缺少回血丹、法器或战斗真气时，优先补齐战斗准备，再恢复任务链。",
+    "basePriority": 0,
+    "evaluatorType": "configurable",
+    "evaluatorConfig": {
+      "basePriority": 0,
+      "rules": [
+        {
+          "condition": { "key": "needsCombatSupply", "op": "eq", "value": true },
+          "priorityBoost": 99,
+          "urgencyBoost": 90
+        }
+      ],
+      "satisfiedCondition": { "key": "needsCombatSupply", "op": "eq", "value": false }
+    },
+    "goalState": {
+      "needsCombatSupply": { "op": "eq", "value": false },
+      "combatReady": { "op": "eq", "value": true }
+    }
+  },
+  {
+    "id": "need_npc_hunt_companion",
+    "name": "邀请斩妖同伴",
+    "description": "高价值高风险斩妖目标需要同伴时，优先请求同阵营强者同行，再回到任务执行链。",
+    "basePriority": 0,
+    "evaluatorType": "configurable",
+    "evaluatorConfig": {
+      "basePriority": 0,
+      "rules": [
+        {
+          "condition": { "key": "needsCompanion", "op": "eq", "value": true },
+          "priorityBoost": 98,
+          "urgencyBoost": 88
+        }
+      ],
+      "satisfiedCondition": { "key": "needsCompanion", "op": "eq", "value": false }
+    },
+    "goalState": {
+      "hasHuntCompanion": { "op": "eq", "value": true }
+    }
+  },
+  {
     "id": "need_npc_donate_materials",
     "name": "上交材料",
     "description": "身上带有灵药、矿石、妖丹、妖材等可上交材料时，优先送回宗门换贡献并补宗门库存，避免关键修炼材料长期滞留个人背包。",

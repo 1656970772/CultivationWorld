@@ -20,6 +20,7 @@ import {
   isMonsterHuntQuest,
 } from '../../monster/monster-resources.js';
 import { applyDamage } from '../../combat/combat-pipeline.js';
+import { resolveCombatEncounter } from '../../combat/combat-encounter.js';
 
 export function getCultivationConfig(worldContext) {
   return worldContext.balanceConfig?.cultivation || {};
@@ -251,12 +252,21 @@ function applyRiskEffect(entity, effect, riskName, rng, worldContext) {
     }
     case 'hp_damage': {
       // ADR-042：野外/厮杀类风险扣血走【统一伤害管线】applyDamage（锁血/遁地不区分攻击者）。
-      //   伤害 = maxHp × random(dmgRatioMin, dmgRatioMax)，最低 1；致死时由 applyDamage 统一处理
+      //   伤害由 resolveCombatEncounter(scene=quest_risk) 统一计算，再交给 applyDamage 统一处理
       //   锁血（非碾压且持锁血能力）/ 遁地脱险 / 碾压直接死。无 worldContext（旧调用方）时回退原内联逻辑。
       const maxHp = entity.state.get('maxHp') || 0;
-      const dmgRatio = (effect.dmgRatioMin ?? 0.3)
-        + rng.next() * ((effect.dmgRatioMax ?? 0.6) - (effect.dmgRatioMin ?? 0.3));
-      const damage = Math.max(1, maxHp * dmgRatio);
+      const encounter = resolveCombatEncounter({
+        attacker: null,
+        defender: entity,
+        scene: 'quest_risk',
+        maxHp,
+        dmgRatioMin: effect.dmgRatioMin ?? 0.3,
+        dmgRatioMax: effect.dmgRatioMax ?? 0.6,
+        random: () => rng.next(),
+        worldContext,
+        value: maxHp,
+      });
+      const damage = encounter.damage;
       if (worldContext) {
         const result = applyDamage(entity, {
           amount: damage,

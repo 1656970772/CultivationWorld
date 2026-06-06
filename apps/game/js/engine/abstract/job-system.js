@@ -36,9 +36,15 @@ export class JobSystem {
       return this.complete(entity);
     }
 
+    const toilContext = {
+      currentToilId: toil.id,
+      currentToilType: toil.type,
+      failedToilId: toil.id,
+      failedToilType: toil.type,
+    };
     const executor = ToilPool.getExecutor(toil.type);
     if (!executor) {
-      return this.fail('missing_toil_executor');
+      return this.fail('missing_toil_executor', toilContext);
     }
 
     const result = executor.run(entity, worldContext, job, toil) || {};
@@ -68,19 +74,20 @@ export class JobSystem {
           currentToilId: job.currentToil.id,
         };
       case ToilResultStatus.FAILED:
-        return this.fail(result.reason || 'toil_failed');
+        return this.fail(result.reason || 'toil_failed', toilContext);
       case ToilResultStatus.REPLAN:
         {
           const reason = result.reason || 'toil_replan';
+          const context = { ...job.context };
           job.status = JobStatus.ABORTED;
-          job.lastResult = { status: JobResultStatus.REPLAN, reason };
+          job.lastResult = { ...context, ...toilContext, status: JobResultStatus.REPLAN, reason };
           this.jobRemaining = 0;
           this.lastReason = reason;
           this.currentJob = null;
-          return { status: JobResultStatus.REPLAN, reason };
+          return { ...context, ...toilContext, status: JobResultStatus.REPLAN, reason };
         }
       case ToilResultStatus.ABORT:
-        return this.abort(result.reason || 'toil_abort');
+        return this.abort(result.reason || 'toil_abort', toilContext);
       case ToilResultStatus.BLOCKED:
         return {
           status: JobResultStatus.RUNNING,
@@ -111,14 +118,15 @@ export class JobSystem {
     return { status: JobResultStatus.RUNNING, reason };
   }
 
-  abort(reason) {
+  abort(reason, extraContext = {}) {
+    const context = { ...(this.currentJob?.context || {}) };
     if (this.currentJob) {
       this.currentJob.status = JobStatus.ABORTED;
     }
     this.currentJob = null;
     this.jobRemaining = 0;
     this.lastReason = reason || null;
-    return { status: JobResultStatus.ABORT, reason };
+    return { ...context, ...extraContext, status: JobResultStatus.ABORT, reason };
   }
 
   complete(entity) {
@@ -126,21 +134,23 @@ export class JobSystem {
       return { status: JobResultStatus.FAILED, reason: 'no_current_job' };
     }
     const job = this.currentJob;
+    const context = { ...job.context };
     applyEffects(entity, job.definition.successEffects || {});
     job.status = JobStatus.COMPLETED;
     this.currentJob = null;
     this.jobRemaining = 0;
-    return { status: JobResultStatus.SUCCESS, reason: 'job_completed' };
+    return { ...context, status: JobResultStatus.SUCCESS, reason: 'job_completed' };
   }
 
-  fail(reason) {
+  fail(reason, extraContext = {}) {
+    const context = { ...(this.currentJob?.context || {}) };
     if (this.currentJob) {
       this.currentJob.status = JobStatus.FAILED;
     }
     this.currentJob = null;
     this.jobRemaining = 0;
     this.lastReason = reason || null;
-    return { status: JobResultStatus.FAILED, reason };
+    return { ...context, ...extraContext, status: JobResultStatus.FAILED, reason };
   }
 
   hasJob() {

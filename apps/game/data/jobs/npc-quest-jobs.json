@@ -1,0 +1,40 @@
+{
+  "jobs": [
+    {
+      "id": "job_npc_accept_quest",
+      "name": "接取任务",
+      "category": "quest",
+      "successEffects": { "hasActiveQuest": { "op": "set", "value": true } },
+      "interrupt": { "reaction": "pause", "higherDynamicGoal": "abort", "sameDynamicGoal": "keep" },
+      "toils": [
+        { "id": "accept_quest", "type": "toil_accept_quest" }
+      ]
+    },
+    {
+      "id": "job_npc_monster_hunt",
+      "name": "执行斩妖任务",
+      "category": "quest",
+      "successEffects": { "questComplete": { "op": "set", "value": true } },
+      "interrupt": { "reaction": "pause", "higherDynamicGoal": "abort", "sameDynamicGoal": "keep" },
+      "toils": [
+        { "id": "bind_target", "type": "toil_bind_monster_hunt_quest" },
+        { "id": "assess_risk", "type": "toil_assess_monster_hunt_risk" },
+        { "id": "prepare", "type": "toil_prepare_monster_hunt" },
+        { "id": "plan_route", "type": "toil_plan_safe_hunt_route" },
+        { "id": "move", "type": "toil_move_to_quest_target" },
+        { "id": "hunt", "type": "toil_hunt_monster_target" },
+        { "id": "progress", "type": "toil_update_quest_progress" }
+      ]
+    },
+    {
+      "id": "job_npc_turn_in_quest",
+      "name": "交付任务",
+      "category": "quest",
+      "successEffects": { "questTurnedIn": { "op": "set", "value": true } },
+      "interrupt": { "reaction": "pause", "higherDynamicGoal": "abort", "sameDynamicGoal": "keep" },
+      "toils": [
+        { "id": "turn_in", "type": "toil_turn_in_quest" }
+      ]
+    }
+  ]
+}

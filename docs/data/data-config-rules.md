@@ -1,6 +1,6 @@
 # 游戏数据配置规则
 
-> 最后更新：2026-06-05
+> 最后更新：2026-06-06
 
 本文档定义 `apps/game/data/` 的现行目录结构、命名规范和扩展规则。来源以当前 `apps/game/js/core/config-loader.js` 与 `apps/game/data/` 为准。
 
@@ -62,7 +62,10 @@ apps/game/data/
 ├── jobs/
 │   ├── npc-dynamic-event-jobs.json
 │   ├── npc-economy-jobs.json
-│   └── npc-social-jobs.json
+│   ├── npc-social-jobs.json
+│   ├── npc-quest-jobs.json
+│   ├── npc-combat-jobs.json
+│   └── npc-cultivation-jobs.json
 ├── items/
 │   ├── artifact.json
 │   ├── currency.json
@@ -81,7 +84,10 @@ apps/game/data/
 │   ├── core-toils.json
 │   ├── npc-dynamic-event-toils.json
 │   ├── npc-economy-toils.json
-│   └── npc-social-toils.json
+│   ├── npc-social-toils.json
+│   ├── npc-quest-toils.json
+│   ├── npc-combat-toils.json
+│   └── npc-cultivation-toils.json
 └── world/
     ├── dynamic-events.json
     ├── map.json
@@ -156,6 +162,28 @@ apps/game/data/
 
 运行时会补齐年龄、寿元、血量、空间坐标、灵根/体质、背包、关系、记忆、执念等状态。
 
+数值修为迁移后，NPC 运行时状态还应维护：
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| `cultivation` | number | 闭关、修炼场、丹药等直接修炼获得的闭关修为 |
+| `experienceCultivation` | number | 任务、游历、动态事件、机会点、PvP、外出社交获得的历练修为 |
+| `totalCultivation` | number | `cultivation + experienceCultivation`，突破修为门槛使用 |
+| `cultivationProgressRatio` | number | `totalCultivation / nextCultivationRequired`，仅用于兼容旧 GOAP 或百分比 UI |
+
+旧 `cultivationProgress`、`insight`、`totalProgress` 在兼容期可继续派生，但 UI 和文档主语义使用“修为”数值。真气 `qi` 独立保留，突破同时检查修为与真气。
+
+战斗智能与斩妖任务运行时还会维护以下状态：
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| `activeQuestInstance` | object/null | 当前运行时任务实例；斩妖任务的单一真相源，包含目标、价值、风险、奖励和击杀进度 |
+| `excludedHuntMonsterIds` | string[] | 当前 NPC 短期内排除的过强、失效或不可达斩妖目标 |
+| `huntCompanionId` | string/null | 当前邀请或绑定的斩妖同伴 NPC ID |
+| `huntPartyIds` | string[] | 当前斩妖小队成员 ID，战斗结算时可派生为 `assistNpcIds` |
+| `needsCombatRecovery` | boolean | 战斗风险或受伤后需要撤退疗伤/补给的摘要状态 |
+| `questTargetX` / `questTargetY` / `questTargetMonsterId` | number/string/null | 兼容派生字段；不得覆盖 `activeQuestInstance.target` |
+
 ## definitions/
 
 | 文件 | 说明 |
@@ -168,6 +196,8 @@ apps/game/data/
 | `monsters.json` | 妖兽定义，当前 36 条 |
 | `names.json` | 出生 NPC 姓名池 |
 
+`ranks.json` 中修仙境界需要同时维护 `qiRequired` 与 `cultivationRequired`。前者是真气突破门槛，后者是数值修为突破门槛；旧 `cultivationProgress` 比例只作为兼容派生，不再作为主显示语义。
+
 ## world/
 
 | 文件 | 说明 |
@@ -176,7 +206,7 @@ apps/game/data/
 | `modifiers.json` | 世界修正器模板，由 `world-rules.json` 的世界规则生成和衰减 |
 | `news.json` | 信息传播配置 |
 | `opportunities.json` | 机会点配置 |
-| `dynamic-events.json` | 动态世界事件配置，默认 `enabled=false` |
+| `dynamic-events.json` | 动态世界事件配置，正式启用后默认 `enabled=true` |
 
 ### dynamic-events.json
 
@@ -184,7 +214,7 @@ apps/game/data/
 
 | 字段 | 类型 | 说明 |
 |------|------|------|
-| `enabled` | boolean | 总开关，默认 false |
+| `enabled` | boolean | 总开关，正式启用后默认 true |
 | `awareness.defaultConfidenceByScope` | object | public/faction/relationship 的默认可信度 |
 | `events[]` | array | 预设事件列表 |
 | `events[].id` | string | 事件 ID |
@@ -204,7 +234,7 @@ apps/game/data/
 
 | 字段 | 类型 | 说明 |
 |------|------|------|
-| `enabled` | boolean | 总开关，默认 false |
+| `enabled` | boolean | 总开关，正式启用后默认 true |
 | `maxGoalsPerNpc` | number | 每个 NPC 同时考虑的动态目标上限 |
 | `goals[]` | array | 规则列表 |
 | `goals[].id` | string | 动态目标规则 ID |
@@ -217,6 +247,38 @@ apps/game/data/
 | `goals[].motiveWeights` | object | 与 NPC 动机/性格联动的乘子 |
 | `goals[].interrupt` | object | 交给 `InterruptPolicy` 的打断口径 |
 | `goals[].goalState` | object | GOAP 目标状态 |
+
+## quests/
+
+### quest-templates.json
+
+任务模板只描述可生成任务的类型、难度范围、目标类型和基础描述；NPC 接取后在 `entity.state.activeQuestInstance` 形成运行时任务实例。斩妖、除害、猎灵兽等杀怪任务实例统一为 `type:"monster_hunt"`，并记录真实地图妖兽目标。
+
+杀怪任务实例字段：
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| `id` | string | 运行时任务实例 ID |
+| `templateId` | string | 来源模板，如 `qt_slay_monster` |
+| `type` | string | 杀怪任务固定为 `monster_hunt` |
+| `name` | string | 任务名称 |
+| `category` | string | `combat` 等任务分类 |
+| `difficulty` | number | 任务难度 |
+| `value` | number | 价值评分，用于 GOAP 与历练修为倍率 |
+| `riskKey` | string | 风险类型键，如 `monster_hunt` |
+| `riskScore` | number | 风险评分，用于决策与历练修为倍率 |
+| `source` | string | 任务来源，如 `quest_hall` |
+| `state` | string | `accepted` / `in_progress` / `completed` / `failed` / `turned_in` |
+| `target.kind` | string | `monster` |
+| `target.x` / `target.y` | number | 接取任务时锁定的目标坐标 |
+| `target.monsterIds` | string[] | 目标妖兽实例 ID 列表 |
+| `target.monsterName` | string | 目标妖兽名 |
+| `target.monsterGrade` | number | 目标妖兽阶位 |
+| `target.requiredKills` | number | 任务要求击杀数量 |
+| `target.killedCount` | number | 已真实击杀数量 |
+| `rewards` | object | 灵石、贡献、势力资源等奖励 |
+
+`questTargetX`、`questTargetY`、`questTargetMonsterId` 只能作为兼容派生字段。单一真相源是 `activeQuestInstance`；完成杀怪任务必须对应地图活体妖兽真实死亡。多目标任务只有在 `target.killedCount >= target.requiredKills` 后才能写 `questComplete=true`。
 
 ## needs/ 与 actions/
 
@@ -237,10 +299,13 @@ apps/game/data/
 
 新增行为时需要：
 
-1. 在对应 JSON 中新增行为模板。
-2. 在 JS 中注册对应 executor。
-3. 必要时补充目标状态、targetResolver、风险键、收益键。
-4. 运行相关 `apps/game/tools/test-*.mjs` 或长程模拟观察。
+1. NPC 新行为默认在 `npc-job-actions.json` 中新增 JobAction，`executionKind` 必须为 `job`，`jobId` 必须引用 `job_` 前缀 Job。
+2. 在 `apps/game/data/jobs/*.json` 中新增或复用 Job，并在 `apps/game/data/toils/*.json` 中新增或复用 Toil。
+3. 在 `apps/game/js/engine/npc/toils/npc-toils.js` 注册 Toil executor。
+4. 必要时补充目标状态、targetResolver、风险键、收益键。
+5. 已迁移旧 NPC Action 不得继续出现在 `defaultNpcActionIds` 中；默认主路径由 `defaultNpcJobActionIds` 承载。
+6. 新增或修改 JobAction 时必须运行配置加载/规划/迁移守卫测试，至少覆盖 `test-job-config-load.mjs`；涉及默认 NPC 行为迁移时同时运行 `test-npc-action-job-migration.mjs`；涉及 GOAP 规划时运行 `test-job-action-planning.mjs`。
+7. 运行相关 `apps/game/tools/test-*.mjs` 或长程模拟观察。
 
 ## jobs/ 与 toils/
 
@@ -251,21 +316,31 @@ Job/Toil 层用于 NPC 复杂行动编排。GOAP 只规划 `actions/npc-job-acti
 | `jobs/npc-dynamic-event-jobs.json` | 动态事件准备、参与等 Job |
 | `jobs/npc-economy-jobs.json` | 获取疗伤物资、法器等经济 Job |
 | `jobs/npc-social-jobs.json` | 寻找同行者等社交 Job |
+| `jobs/npc-quest-jobs.json` | 接取、执行、交付任务；斩妖任务走真实目标绑定与击杀进度 |
+| `jobs/npc-combat-jobs.json` | 战斗准备、撤退疗伤、请求同伴等战斗智能 Job |
+| `jobs/npc-cultivation-jobs.json` | 闭关修炼、修炼场修炼、疗伤等修为相关 Job |
 | `toils/core-toils.json` | 解析目标、移动、等待、写状态等核心 Toil |
 | `toils/npc-dynamic-event-toils.json` | 绑定事件、校验阶段、标记准备/参与等动态事件 Toil |
 | `toils/npc-economy-toils.json` | 检查背包、购买、兑换、装备法器等经济 Toil |
 | `toils/npc-social-toils.json` | 选择同行者、请求同行等社交 Toil |
+| `toils/npc-quest-toils.json` | 接任务、绑定斩妖目标、评估任务风险、移动、击杀、更新进度、交付 |
+| `toils/npc-combat-toils.json` | 评估战斗风险、准备补给、撤退、安全疗伤、放弃过强目标 |
+| `toils/npc-cultivation-toils.json` | 闭关修炼、修炼场修炼、疗伤 |
 
 新增 Job/Toil 时需要：
 
 1. Job ID 使用 `job_` 前缀，Toil ID 使用 `toil_` 前缀。
 2. Job 内 `toils[].type` 必须引用已登记的 Toil ID。
 3. Toil 执行器在 `apps/game/js/engine/npc/toils/npc-toils.js` 注册。
-4. `ai-config.npc.jobs.enabled` 默认保持 `false`；开启后 NPC 默认行为集才追加 `defaultNpcJobActionIds`。
+4. 正式启用后 `ai-config.npc.jobs.enabled` 默认保持 `true`；如需回退可改为 `false`，关闭后 NPC 默认行为集不追加 `defaultNpcJobActionIds`。
 5. Job/Toil 参数中的 `itemId`、`priceItemId`、`currencyItemId` 必须引用 `items/*.json` 合并后的真实物品 ID；禁止使用旧占位 ID。
 6. 动态事件准备类 JobAction 必须按事件类型增加前置，例如秘境使用 `dynamicEventIsSecretRealm=true`，宗门大比使用 `dynamicEventIsSectTournament=true`，通用准备使用 `dynamicEventUsesGenericPreparation=true`。
 7. 动态事件准备类 Job 成功后必须写入类型化准备状态，例如 `preparedForSecretRealm`、`preparedForSectTournament` 或 `preparedForGenericDynamicEvent`；`preparedForDynamicEvent` 只作为兼容汇总状态。
 8. 需要绑定具体动态事件的 Job 应在输入或 Toil 参数中声明期望事件类型，并在绑定事件阶段校验，避免专用 Job 绑定到错误事件。
+9. `dynamic-events.enabled`、`dynamic-goals.enabled` 与 `ai-config.npc.jobs.enabled` 共同决定 Job/Toil 动态目标链路是否进入默认体验；正式启用后三者默认均为 `true`，回退时应在验证报告或 ADR 中说明关闭范围。
+10. 斩妖任务 Job 必须使用结构化任务实例，记录坐标、价值、风险、妖兽名、妖兽 id、阶位、要求数量和击杀进度；完成条件必须来自真实妖兽死亡。
+11. 非闭关、非原地待命的任务、游历、动态事件、机会点、PvP、外出社交等 Job 应通过统一入口追加 `experienceCultivation`。
+12. 新增 Toil 类型必须在 `npc-toils.js` 注册 executor，并通过 `test-job-config-load.mjs` 覆盖 Job 引用和 executor 加载；不得只新增 JSON 而不接入执行器。
 
 ## items/
 
@@ -318,6 +393,29 @@ GE 必须是通用机制原语；具体数值由物品、能力或调用方 spec
 | `relationship.json` | 关系边、关系目标、妖群、师徒 |
 | `reaction.json` | Reaction 层阈值和动作映射 |
 | 其他 | 社交、移动、记忆、执念、情绪、人格、怀璧其罪等 |
+
+### cultivation.json
+
+`cultivation.json` 继续维护修炼速度、闭关修为上限比例、突破最低闭关修为占比和真气产出。数值修为迁移后新增或维护 `experience` 段，用于非闭关、非原地待命事件的历练修为收益。
+
+`experience` 常用字段：
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| `enabled` | boolean | 历练修为开关 |
+| `valueScale` | number | 价值倍率的缩放基准 |
+| `riskWeight` | number | 风险分对历练修为的权重 |
+| `maxValueMultiplier` | number | 价值倍率上限 |
+| `maxRiskMultiplier` | number | 风险倍率上限 |
+| `maxDurationMultiplier` | number | 持续时间倍率上限 |
+| `baseBySource` | object | 不同来源的基础历练修为，如 `monster_hunt_success`、`dynamic_event`、`explore` |
+| `outcomeMultiplier` | object | `success` / `partial` / `failure` 等结果倍率 |
+
+追加历练修为的来源包括任务推进、任务完成、真实斩妖成功或失败、游历、动态事件、机会点、PvP、外出社交。闭关修炼、原地等待、纯状态刷新和已死亡 NPC 的失败结果不追加。
+
+### monster-spawn.json
+
+`combat.damageMultiplier` 是统一战斗服务中 `scene="monster_ambush"` 的地图妖兽主动袭击单击倍率。该倍率只影响妖兽主动攻击 NPC，不影响 NPC 反击妖兽、斩妖任务、PvP 或普通任务风险场景。
 
 ## 验证要求
 

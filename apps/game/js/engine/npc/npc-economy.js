@@ -309,8 +309,14 @@ export function useQiPill(entity, worldContext, options = {}) {
   if (options.applyState !== false) {
     if (pillEffectsEnabled(worldContext)) {
       // ADR-042 阶段2 增强：经通用 Effect 原语结算，数值取自物品 effects（rankDecay/clamp 由 spec 表达）。
-      const { deltas } = applyItemEffects(entity, itemId);
-      qiGain = deltas.qi ?? qiGain;
+      const { applied, deltas } = applyItemEffects(entity, itemId);
+      if (applied) {
+        qiGain = deltas.qi ?? qiGain;
+      } else {
+        addStateNumber(entity, 'qi', qiGain);
+        const nextProgress = Math.min(1, stateNumber(entity, 'cultivationProgress') + progressGain);
+        entity.state.set('cultivationProgress', nextProgress);
+      }
     } else {
       addStateNumber(entity, 'qi', qiGain);
       const nextProgress = Math.min(1, stateNumber(entity, 'cultivationProgress') + progressGain);
@@ -372,9 +378,15 @@ export function useBreakthroughPill(entity, worldContext, options = {}) {
   if (options.applyState !== false) {
     if (pillEffectsEnabled(worldContext)) {
       // ADR-042 阶段2 增强：经通用 Effect 原语结算，数值取自物品 effects（qi 直加、突破助益累加并 clamp 至 maxBonus）。
-      const { deltas } = applyItemEffects(entity, itemId);
-      qiGain = deltas.qi ?? qiGain;
-      if (deltas.breakthroughAidBonus !== undefined) bonus = deltas.breakthroughAidBonus;
+      const { applied, deltas } = applyItemEffects(entity, itemId);
+      if (applied) {
+        qiGain = deltas.qi ?? qiGain;
+        if (deltas.breakthroughAidBonus !== undefined) bonus = deltas.breakthroughAidBonus;
+      } else {
+        addStateNumber(entity, 'qi', qiGain);
+        const nextBonus = Math.min(maxBonus, stateNumber(entity, 'breakthroughAidBonus') + bonus);
+        entity.state.set('breakthroughAidBonus', nextBonus);
+      }
     } else {
       addStateNumber(entity, 'qi', qiGain);
       const nextBonus = Math.min(maxBonus, stateNumber(entity, 'breakthroughAidBonus') + bonus);

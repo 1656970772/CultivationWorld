@@ -45,7 +45,7 @@ export const NPC_DEFAULT_BT = {
             { type: 'reactive', name: 'react-attacked' },
             // 心魔反噬：心魔过高时强制静心闭关压制。阈值由 emotion.json 经 BT 配置覆盖；
             // 默认 101（不可达），保证未调参时不改变既有世界平衡。
-            { type: 'emotion_reaction', name: 'suppress-inner-demon', emotion: 'inner_demon', threshold: 101, actionId: 'act_npc_cultivate' },
+            { type: 'emotion_reaction', name: 'suppress-inner-demon', emotion: 'inner_demon', threshold: 101, actionId: 'act_npc_job_cultivate' },
           ],
         },
         {

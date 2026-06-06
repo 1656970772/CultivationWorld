@@ -1,0 +1,45 @@
+{
+  "jobs": [
+    {
+      "id": "job_npc_cultivate",
+      "name": "闭关修炼",
+      "category": "cultivation",
+      "successEffects": {},
+      "interrupt": { "reaction": "pause", "higherDynamicGoal": "abort", "sameDynamicGoal": "keep" },
+      "toils": [
+        { "id": "cultivate", "type": "toil_cultivate" }
+      ]
+    },
+    {
+      "id": "job_npc_explore",
+      "name": "游历历练",
+      "category": "cultivation",
+      "successEffects": {},
+      "interrupt": { "reaction": "pause", "higherDynamicGoal": "abort", "sameDynamicGoal": "keep" },
+      "toils": [
+        { "id": "explore", "type": "toil_explore" }
+      ]
+    },
+    {
+      "id": "job_npc_train_chamber",
+      "name": "赴修炼场修炼",
+      "category": "cultivation",
+      "successEffects": {},
+      "interrupt": { "reaction": "pause", "higherDynamicGoal": "abort", "sameDynamicGoal": "keep" },
+      "toils": [
+        { "id": "move", "type": "toil_move_to_target", "params": { "targetResolver": "training" } },
+        { "id": "train", "type": "toil_train_chamber" }
+      ]
+    },
+    {
+      "id": "job_npc_heal",
+      "name": "疗伤",
+      "category": "recovery",
+      "successEffects": { "injuryLevel": { "op": "min", "value": 0 } },
+      "interrupt": { "reaction": "keep", "higherDynamicGoal": "keep", "sameDynamicGoal": "keep" },
+      "toils": [
+        { "id": "heal", "type": "toil_heal" }
+      ]
+    }
+  ]
+}

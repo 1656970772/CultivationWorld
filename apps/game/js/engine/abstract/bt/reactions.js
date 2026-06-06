@@ -8,10 +8,77 @@
 import { BTNode, BTStatus } from './bt-node.js';
 import { StimulusType } from '../stimulus.js';
 
+function readState(entity, key, fallback = null) {
+  const value = typeof entity?.state?.get === 'function' ? entity.state.get(key) : entity?.state?.[key];
+  return value ?? fallback;
+}
+
+function attackedSourceId(stim) {
+  return stim?.payload?.killerId || stim?.payload?.attackerId || stim?.sourceId || null;
+}
+
+function resolveEnemyPower(stim, worldContext, myPower) {
+  const payload = stim?.payload || {};
+  const directPower = payload.enemyPower ?? payload.attackerPower ?? payload.monsterPower ?? payload.killerPower;
+  if (Number.isFinite(Number(directPower)) && Number(directPower) > 0) {
+    return Number(directPower);
+  }
+
+  const sourceId = attackedSourceId(stim);
+  const source = sourceId && worldContext?.entityRegistry?.getById
+    ? worldContext.entityRegistry.getById(sourceId)
+    : null;
+  if (!source || source.alive === false) return myPower;
+
+  const powerFn = typeof worldContext?.npcCombatPower === 'function' ? worldContext.npcCombatPower : null;
+  if (powerFn) {
+    const sourcePower = Number(powerFn(source));
+    if (Number.isFinite(sourcePower) && sourcePower > 0) return sourcePower;
+  }
+  const statePower = Number(source.state?.get?.('power') ?? source.power ?? source.staticData?.power);
+  return Number.isFinite(statePower) && statePower > 0 ? statePower : myPower;
+}
+
+export function decideAttackedReaction(entity, stim, worldContext, cfg = {}) {
+  const actions = cfg.actions || {};
+  const combat = cfg.combat || {};
+  const hp = Number(readState(entity, 'hp', readState(entity, 'maxHp', 0)));
+  const maxHp = Math.max(1, Number(readState(entity, 'maxHp', hp || 1)));
+  const hpRatio = hp / maxHp;
+  const injury = Number(readState(entity, 'injuryLevel', 0));
+  const damage = Number(stim?.payload?.damage || 0);
+
+  const criticalHpRatio = combat.criticalHpRatio ?? cfg.fleeHpRatio ?? 0.25;
+  const lowHpRatio = combat.lowHpRatio ?? cfg.healHpRatio ?? 0.45;
+  const counterAdvantageRatio = combat.counterAdvantageRatio ?? cfg.powerAdvantage ?? 1.3;
+  const retreatDisadvantageRatio = combat.retreatDisadvantageRatio ?? 1.2;
+  const heavyDamageHpRatio = combat.heavyDamageHpRatio ?? 0.4;
+
+  const powerFn = typeof worldContext?.npcCombatPower === 'function' ? worldContext.npcCombatPower : null;
+  const rawMyPower = powerFn ? Number(powerFn(entity)) : 1;
+  const myPower = Math.max(1, Number.isFinite(rawMyPower) ? rawMyPower : 1);
+  const enemyPower = Math.max(1, resolveEnemyPower(stim, worldContext, myPower));
+
+  if ((hpRatio <= criticalHpRatio || injury >= 4) && actions.flee) {
+    return { kind: 'flee', actionId: actions.flee };
+  }
+  if (hpRatio <= lowHpRatio && actions.heal) {
+    return { kind: 'heal', actionId: actions.heal };
+  }
+  if (myPower / enemyPower >= counterAdvantageRatio && actions.counter) {
+    return { kind: 'counter', actionId: actions.counter };
+  }
+  if ((enemyPower / myPower >= retreatDisadvantageRatio || damage >= maxHp * heavyDamageHpRatio) && actions.retreat) {
+    return { kind: 'retreat', actionId: actions.retreat };
+  }
+  if (actions.retreat) return { kind: 'retreat', actionId: actions.retreat };
+  return null;
+}
+
 /**
  * EmotionReactionNode：当某情绪超过阈值时，强制 NPC 执行一个指定的单行为（抢占当前计划）。
  *
- * 典型用法：心魔(inner_demon)过高 → 强制静心闭关(act_npc_cultivate) 压制心魔；
+ * 典型用法：心魔(inner_demon)过高 → 强制静心闭关(act_npc_job_cultivate) 压制心魔；
  * 愤怒过高且有可达仇人 → 未来可接"追击"行为。
  *
  * 命中条件：emotions.get(emotion) >= threshold 且实体存在该可用行为。
@@ -67,10 +134,10 @@ export class EmotionReactionNode extends BTNode {
  * （正在闭关/游历也立即出关应敌），这正是「大事件打断当前计划」的核心。
  *
  * 反应决策树（阈值/动作映射均来自 balance/reaction.json，数据驱动）：
- *   1. 重伤濒死（hp/maxHp < fleeHpRatio）             → 逃命（flee）
- *   2. 血量偏低（hp/maxHp < healHpRatio）             → 应急回血（heal）
- *   3. 血量安全 且 敌弱（我方战力/来犯战力 >= powerAdvantage） → 奋起反击（counter）
- *   4. 血量安全 但 打不过                              → 暂避锋芒（retreat）
+ *   1. 重伤濒死（hp/maxHp <= combat.criticalHpRatio）       → 逃命（flee）
+ *   2. 血量偏低（hp/maxHp <= combat.lowHpRatio）            → 应急回血（heal）
+ *   3. 血量安全 且 敌弱（我方战力/来犯战力 >= counterAdvantage） → 奋起反击（counter）
+ *   4. 血量安全 但 打不过/遭重击                             → 暂避锋芒（retreat）
  *
  * 命中时：clearPlan + setSingleActionPlan(反应行为) + 本 tick executeStep，返回 RUNNING（占据本 tick）。
  * 未命中（无刺激/未启用/无可用反应行为）：返回 FAILURE，交回 Selector 落到情绪反应/深思熟虑分支。
@@ -91,7 +158,7 @@ export class ReactiveNode extends BTNode {
 
     // 反击需先把来犯者 id 写入 state，供 NPCReactCounterExecutor 读取。
     if (decision.kind === 'counter') {
-      entity.state.set('_reactCounterTargetId', stim.payload?.killerId || stim.sourceId || null);
+      entity.state.set('_reactCounterTargetId', attackedSourceId(stim));
     }
 
     // 抢占前记录"被打断的意图"（供观测：反应确实打断了哪种长链行为，如闭关/游历）。
@@ -117,7 +184,7 @@ export class ReactiveNode extends BTNode {
         stimulus: StimulusType.ATTACKED,
         decision: decision.kind,
         actionId: decision.actionId,
-        killerId: stim.payload?.killerId || stim.sourceId || null,
+        killerId: attackedSourceId(stim),
         wasBusy,
         interruptedGoal,
         interruptedMode: suspendedForReaction ? 'pause' : 'clear',
@@ -142,38 +209,7 @@ export class ReactiveNode extends BTNode {
    * @returns {{ kind:string, actionId:string }|null}
    */
   _decide(entity, stim, cfg, worldContext) {
-    const actions = cfg.actions || {};
-    const maxHp = entity.state.get('maxHp') || 0;
-    const hp = entity.state.get('hp') ?? maxHp;
-    const hpRatio = maxHp > 0 ? hp / maxHp : 1;
-
-    const fleeHpRatio = cfg.fleeHpRatio ?? 0.2;
-    const healHpRatio = cfg.healHpRatio ?? 0.5;
-    const powerAdvantage = cfg.powerAdvantage ?? 1.5;
-
-    // 1. 重伤濒死 → 逃命。
-    if (hpRatio < fleeHpRatio && actions.flee) {
-      return { kind: 'flee', actionId: actions.flee };
-    }
-    // 2. 血量偏低 → 应急回血。
-    if (hpRatio < healHpRatio && actions.heal) {
-      return { kind: 'heal', actionId: actions.heal };
-    }
-    // 3/4. 血量安全 → 比拼战力：敌弱反击，否则暂避锋芒。
-    const killerId = stim.payload?.killerId || stim.sourceId || null;
-    const killer = killerId && worldContext?.entityRegistry?.getById
-      ? worldContext.entityRegistry.getById(killerId)
-      : null;
-    const powerFn = typeof worldContext?.npcCombatPower === 'function' ? worldContext.npcCombatPower : null;
-    if (killer && killer.alive && powerFn) {
-      const myPower = powerFn(entity);
-      const enemyPower = Math.max(1e-6, powerFn(killer));
-      if (myPower / enemyPower >= powerAdvantage && actions.counter) {
-        return { kind: 'counter', actionId: actions.counter };
-      }
-    }
-    if (actions.retreat) return { kind: 'retreat', actionId: actions.retreat };
-    return null;
+    return decideAttackedReaction(entity, stim, worldContext, cfg);
   }
 
   toJSON() {

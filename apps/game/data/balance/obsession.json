@@ -69,7 +69,7 @@
         "memoryType": "sect_destroyed",
         "minMemoryIntensity": 50,
         "intensity": 95,
-        "_goalStateComment": "ADR-020：复仇执念以『击杀仇人』为真目标，GOAP 推导出『(实力不足先修炼变强)→追踪→击杀』。enemyKilled 为派生状态键，由 act_npc_kill_enemy effect 置真。",
+        "_goalStateComment": "ADR-020：复仇执念以『击杀仇人』为真目标，GOAP 推导出『(实力不足先修炼变强)→追踪→击杀』。enemyKilled 为派生状态键，由 act_npc_job_kill_enemy plannerEffects 置真。",
         "_tuningNote": "tuning-v1 2026-06-01: minMemoryIntensity 60→50；门派被灭记忆更容易转化为复仇执念。",
         "goalState": { "enemyKilled": { "op": "eq", "value": true } }
       },
@@ -115,7 +115,7 @@
         "memoryType": "master_lost",
         "minMemoryIntensity": 50,
         "intensity": 90,
-        "_comment": "ADR-029 第三期：恩师被杀（继承遗志·复仇）。徒弟对凶手生复仇执念，复用复仇行为链(追踪→击杀)。intensity 90 仅次于门派被灭(95)。goalState enemyKilled 由 act_npc_kill_enemy 置真。",
+        "_comment": "ADR-029 第三期：恩师被杀（继承遗志·复仇）。徒弟对凶手生复仇执念，复用复仇行为链(追踪→击杀)。intensity 90 仅次于门派被灭(95)。goalState enemyKilled 由 act_npc_job_kill_enemy 置真。",
         "goalState": { "enemyKilled": { "op": "eq", "value": true } }
       }
     ]

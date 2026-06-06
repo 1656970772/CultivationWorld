@@ -9,6 +9,26 @@
         { "id": "select_companion", "type": "toil_select_companion" },
         { "id": "request_companion", "type": "toil_request_companion" }
       ]
+    },
+    {
+      "id": "job_npc_teach_disciple",
+      "name": "点化徒弟",
+      "category": "social",
+      "successEffects": { "taughtDisciple": { "op": "set", "value": true } },
+      "interrupt": { "reaction": "pause", "higherDynamicGoal": "abort", "sameDynamicGoal": "keep" },
+      "toils": [
+        { "id": "teach_disciple", "type": "toil_teach_disciple" }
+      ]
+    },
+    {
+      "id": "job_npc_visit_master",
+      "name": "探望恩师",
+      "category": "social",
+      "successEffects": { "visitedMaster": { "op": "set", "value": true } },
+      "interrupt": { "reaction": "pause", "higherDynamicGoal": "abort", "sameDynamicGoal": "keep" },
+      "toils": [
+        { "id": "visit_master", "type": "toil_visit_master" }
+      ]
     }
   ]
 }

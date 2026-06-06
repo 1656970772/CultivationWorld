@@ -16,6 +16,7 @@ import { MonsterStaticData } from './monster-static-data.js';
 import { MonsterState } from './monster-state.js';
 import { MONSTER_TIER1_BT, MONSTER_TIER2_BT, MONSTER_TIER3_BT } from './monster-bt-presets.js';
 import { applyDamage } from '../combat/combat-pipeline.js';
+import { resolveCombatEncounter } from '../combat/combat-encounter.js';
 
 /** 妖兽阶位 → 近似修炼境界 order（用于与 NPC 境界比较强弱） */
 const GRADE_TO_ORDER = {
@@ -550,7 +551,7 @@ export class MonsterEntity extends BaseEntity {
     const protectedRole = role === 'leader' || role === 'elder';
 
     // ADR-042：真实攻防扣血走【统一伤害管线】applyDamage（取代妖兽自有的锁血/碾压实现）。
-    //   伤害 = 妖兽攻击力(power) × (1 - NPC防御减免) × random(0.8,1.2)，最低 1。
+    //   伤害由 resolveCombatEncounter(scene=monster_ambush) 统一计算，再交给 applyDamage。
     //   致死时由 applyDamage 统一判定：非碾压且持锁血能力则锁血到 lockRatio×maxHp（+可能遁地脱险）；
     //   碾压（orderGap≥crushOrderGap 或单击≥maxHp×crushHpMultiple）或无锁血能力则直接死。
     //   leader/elder 仍受保护：不允许致死，hp<=0 托底锁血到 lockRatio×maxHp（沿用旧语义）。
@@ -558,8 +559,22 @@ export class MonsterEntity extends BaseEntity {
     const defMap = combatCfg.npcCombat?.baseDef || {};
     const lockCfg = combatCfg.lockHp || {};
     const def = defMap[npc.state.get('rankId')] ?? 0;
-    const dmgRoll = 0.8 + this._rng.next() * 0.4;
-    const damage = Math.max(1, monsterPower * (1 - def) * dmgRoll);
+    const encounter = resolveCombatEncounter({
+      attacker: this,
+      defender: npc,
+      scene: 'monster_ambush',
+      power: monsterPower,
+      defense: def,
+      random: () => this._rng.next(),
+      worldContext: {
+        ...worldContext,
+        balanceConfig: {
+          ...(worldContext?.balanceConfig || {}),
+          monsterSpawn: { combat: this._combat || {} },
+        },
+      },
+    });
+    const damage = encounter.damage;
 
     const maxHp = npc.state.get('maxHp') || 0;
     const orderGap = (this._orderEquivalent ?? 0) - npcOrder;
@@ -592,7 +607,18 @@ export class MonsterEntity extends BaseEntity {
     if (npc.alive) {
       const counterBase = this._combat.npcCounterDamageBase ?? 18;
       const counterWeight = this._combat.npcCounterOrderWeight ?? 1.2;
-      const counterDmg = counterBase + npcOrder * counterWeight + this._rng.next() * 10;
+      const counterEncounter = resolveCombatEncounter({
+        attacker: npc,
+        defender: this,
+        scene: 'monster_counter',
+        power: counterBase + npcOrder * counterWeight,
+        randomBonus: 10,
+        random: () => this._rng.next(),
+        worldContext,
+        value: monsterPower,
+        riskScore: monsterPower / Math.max(1, npcPower),
+      });
+      const counterDmg = counterEncounter.damage;
       const monHp = (this.state.get('hp') || 0) - counterDmg;
       this.state.set('hp', monHp);
       // tier3：被修士反击，记住仇人

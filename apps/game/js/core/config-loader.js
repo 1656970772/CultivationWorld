@@ -29,8 +29,8 @@ export async function loadGameConfigs() {
     factions, npcs, ranks, items, terrains,
     factionNeeds, npcNeeds,
     factionActions, npcActions, npcJobActions, npcActionSets, reactionActions, worldRules,
-    dynamicEventJobs, economyJobs, socialJobs,
-    coreToils, dynamicEventToils, economyToils, socialToils,
+    dynamicEventJobs, economyJobs, socialJobs, questJobs, combatJobs, cultivationJobs,
+    coreToils, dynamicEventToils, economyToils, socialToils, questToils, combatToils, cultivationToils,
     questTemplates, mapData, modifierTemplates,
     balanceCombat, balanceEconomy, balanceCultivation, balanceSocial, balanceMovement,
     balancePersonality, balanceRisk, balanceMemory, balanceObsession, balanceEmotion,
@@ -57,10 +57,16 @@ export async function loadGameConfigs() {
     loadJSON('data/jobs/npc-dynamic-event-jobs.json'),
     loadJSON('data/jobs/npc-economy-jobs.json'),
     loadJSON('data/jobs/npc-social-jobs.json'),
+    loadJSON('data/jobs/npc-quest-jobs.json'),
+    loadJSON('data/jobs/npc-combat-jobs.json'),
+    loadJSON('data/jobs/npc-cultivation-jobs.json'),
     loadJSON('data/toils/core-toils.json'),
     loadJSON('data/toils/npc-dynamic-event-toils.json'),
     loadJSON('data/toils/npc-economy-toils.json'),
     loadJSON('data/toils/npc-social-toils.json'),
+    loadJSON('data/toils/npc-quest-toils.json'),
+    loadJSON('data/toils/npc-combat-toils.json'),
+    loadJSON('data/toils/npc-cultivation-toils.json'),
     loadJSON('data/quests/quest-templates.json'),
     loadJSON('data/world/map.json'),
     loadJSON('data/world/modifiers.json'),
@@ -121,6 +127,9 @@ export async function loadGameConfigs() {
     ...(dynamicEventJobs?.jobs || []),
     ...(economyJobs?.jobs || []),
     ...(socialJobs?.jobs || []),
+    ...(questJobs?.jobs || []),
+    ...(combatJobs?.jobs || []),
+    ...(cultivationJobs?.jobs || []),
   ] };
 
   const toils = { toils: [
@@ -128,6 +137,9 @@ export async function loadGameConfigs() {
     ...(dynamicEventToils?.toils || []),
     ...(economyToils?.toils || []),
     ...(socialToils?.toils || []),
+    ...(questToils?.toils || []),
+    ...(combatToils?.toils || []),
+    ...(cultivationToils?.toils || []),
   ] };
 
   return {

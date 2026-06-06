@@ -11,29 +11,16 @@
 import { ActionPool } from '../pools/action-pool.js';
 
 import {
-  NPCCultivateExecutor,
-  NPCTrainChamberExecutor,
   NPCSeekElixirExecutor,
   NPCChallengeExecutor,
-  NPCHealExecutor,
 } from './actions/cultivation-actions.js';
 import {
   NPCServeFactionExecutor,
   NPCAssistFactionExecutor,
-  NPCExploreExecutor,
-  NPCHuntEnemyExecutor,
-  NPCKillEnemyExecutor,
   NPCRaidTreasureExecutor,
 } from './actions/combat-actions.js';
 import {
-  NPCAcceptQuestExecutor,
-  NPCDoQuestExecutor,
-  NPCTurnInQuestExecutor,
-} from './actions/quest-actions.js';
-import {
   NPCDonateMaterialsExecutor,
-  NPCRedeemQiPillExecutor,
-  NPCUseQiPillExecutor,
   NPCRedeemBreakthroughPillExecutor,
   NPCUseBreakthroughPillExecutor,
   NPCRedeemArtifactExecutor,
@@ -42,9 +29,7 @@ import {
   NPCGotoOpportunityExecutor,
   NPCAssistAllyExecutor,
   NPCVisitBenefactorExecutor,
-  NPCTeachDiscipleExecutor,
   NPCProtectDiscipleExecutor,
-  NPCVisitMasterExecutor,
 } from './actions/relationship-actions.js';
 import {
   NPCSecludeExecutor,
@@ -73,25 +58,14 @@ export {
 } from './actions/npc-action-utils.js';
 
 export {
-  NPCCultivateExecutor,
-  NPCTrainChamberExecutor,
   NPCSeekElixirExecutor,
   NPCChallengeExecutor,
-  NPCHealExecutor,
 } from './actions/cultivation-actions.js';
 export {
   NPCServeFactionExecutor,
   NPCAssistFactionExecutor,
-  NPCExploreExecutor,
-  NPCHuntEnemyExecutor,
-  NPCKillEnemyExecutor,
   NPCRaidTreasureExecutor,
 } from './actions/combat-actions.js';
-export {
-  NPCAcceptQuestExecutor,
-  NPCDoQuestExecutor,
-  NPCTurnInQuestExecutor,
-} from './actions/quest-actions.js';
 export {
   NPCDonateMaterialsExecutor,
   NPCRedeemQiPillExecutor,
@@ -104,9 +78,7 @@ export {
   NPCGotoOpportunityExecutor,
   NPCAssistAllyExecutor,
   NPCVisitBenefactorExecutor,
-  NPCTeachDiscipleExecutor,
   NPCProtectDiscipleExecutor,
-  NPCVisitMasterExecutor,
 } from './actions/relationship-actions.js';
 export {
   NPCSecludeExecutor,
@@ -129,25 +101,14 @@ export {
  * world-engine.js 在初始化时调用一次。
  */
 export function registerNPCExecutors() {
-  ActionPool.registerExecutor('npc_cultivate', new NPCCultivateExecutor());
-  ActionPool.registerExecutor('npc_train_chamber', new NPCTrainChamberExecutor());
-  ActionPool.registerExecutor('npc_heal', new NPCHealExecutor());
   ActionPool.registerExecutor('npc_serve_faction', new NPCServeFactionExecutor());
   ActionPool.registerExecutor('npc_seek_elixir', new NPCSeekElixirExecutor());
   ActionPool.registerExecutor('npc_challenge', new NPCChallengeExecutor());
   ActionPool.registerExecutor('npc_assist_faction', new NPCAssistFactionExecutor());
-  ActionPool.registerExecutor('npc_explore', new NPCExploreExecutor());
-  ActionPool.registerExecutor('npc_accept_quest', new NPCAcceptQuestExecutor());
-  ActionPool.registerExecutor('npc_do_quest', new NPCDoQuestExecutor());
-  ActionPool.registerExecutor('npc_turn_in_quest', new NPCTurnInQuestExecutor());
   ActionPool.registerExecutor('npc_donate_materials', new NPCDonateMaterialsExecutor());
-  ActionPool.registerExecutor('npc_redeem_qi_pill', new NPCRedeemQiPillExecutor());
-  ActionPool.registerExecutor('npc_use_qi_pill', new NPCUseQiPillExecutor());
   ActionPool.registerExecutor('npc_redeem_breakthrough_pill', new NPCRedeemBreakthroughPillExecutor());
   ActionPool.registerExecutor('npc_use_breakthrough_pill', new NPCUseBreakthroughPillExecutor());
   ActionPool.registerExecutor('npc_redeem_artifact', new NPCRedeemArtifactExecutor());
-  ActionPool.registerExecutor('npc_hunt_enemy', new NPCHuntEnemyExecutor());
-  ActionPool.registerExecutor('npc_kill_enemy', new NPCKillEnemyExecutor());
   // 流派分化行为（ADR-022/ADR-023）：夺宝/养老/传承/夺权。
   ActionPool.registerExecutor('npc_raid_treasure', new NPCRaidTreasureExecutor());
   ActionPool.registerExecutor('npc_seclude', new NPCSecludeExecutor());
@@ -158,9 +119,7 @@ export function registerNPCExecutors() {
   ActionPool.registerExecutor('npc_assist_ally', new NPCAssistAllyExecutor());
   ActionPool.registerExecutor('npc_visit_benefactor', new NPCVisitBenefactorExecutor());
   // 师徒互动行为（ADR-029 第三期）：传功点化 / 护徒驰援 / 探望恩师。
-  ActionPool.registerExecutor('npc_teach_disciple', new NPCTeachDiscipleExecutor());
   ActionPool.registerExecutor('npc_protect_disciple', new NPCProtectDiscipleExecutor());
-  ActionPool.registerExecutor('npc_visit_master', new NPCVisitMasterExecutor());
   // 反应层行为（四层 AI 架构 Reaction 层，ADR-048）：逃命 / 暂避锋芒 / 应急回血 / 奋起反击。
   ActionPool.registerExecutor('npc_react_flee', new NPCReactFleeExecutor());
   ActionPool.registerExecutor('npc_react_retreat', new NPCReactRetreatExecutor());

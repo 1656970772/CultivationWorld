@@ -5,6 +5,7 @@ import { WorldEngine } from './engine/world-engine.js';
 import { formatSpiritStones } from './core/constants.js';
 import { loadGameConfigs } from './core/config-loader.js';
 import { SimulationRenderer } from './renderer/simulation-renderer.js';
+import { buildTrackedStatusModel, getActionStatus, getLifeStatus, statusModelToHtml } from './ui/follow-entity-status.js';
 
 const FACTION_TYPE_NAMES = {
   righteous: '正派',
@@ -29,6 +30,7 @@ class SimulationApp {
     this.renderEnabled = false;
     this.entityTab = 'npc';
     this._entityListTimer = null;
+    this._followStatusCollapsed = true;
 
     // 单个 NPC 行为事件日志（按 entityId 分组的环形队列）。
     // 实时模拟时为每个 NPC 累积其行为/目标事件，右侧"行为事件日志"面板按当前
@@ -96,6 +98,14 @@ class SimulationApp {
     document.getElementById('btn-zoom-in').onclick = () => this.renderer?.zoomIn();
     document.getElementById('btn-zoom-out').onclick = () => this.renderer?.zoomOut();
     document.getElementById('btn-zoom-reset').onclick = () => this.renderer?.resetView();
+
+    const followStatusHeader = document.getElementById('follow-status-card-header');
+    if (followStatusHeader) {
+      followStatusHeader.onclick = () => {
+        this._followStatusCollapsed = !this._followStatusCollapsed;
+        this.refreshFollowStatusCard();
+      };
+    }
 
     // 实体跟随面板
     document.getElementById('btn-stop-follow').onclick = () => {
@@ -192,44 +202,35 @@ class SimulationApp {
     // 势力 tab：列出每个具体势力，点击定位到其总部（不跟随）
     if (this.entityTab === 'faction') {
       this.refreshFactionList(snap, listEl);
+      this.refreshFollowStatusCard(snap);
       return;
     }
 
     const source = this.entityTab === 'monster' ? snap.monsters : snap.npcs;
 
-    // 跟随状态行
-    const statusEl = document.getElementById('follow-status');
-    if (followId) {
-      const e = snap.npcs[followId] || snap.monsters[followId];
-      if (e) {
-        const sp = e.spatial;
-        const meta = this.entityTab === 'monster' || snap.monsters[followId]
-          ? `${e.gradeName || e.grade + '阶'} · ${e.behaviorState || ''}`
-          : `${e.rankName || ''} · ${e.actionStatus || 'idle'}`;
-        statusEl.innerHTML = `正在跟随：<b>${e.name}</b>（${meta}）位置 (${sp?.tileX},${sp?.tileY})`;
-      }
-    } else {
-      statusEl.textContent = '从下方列表选择 NPC 或妖兽进行跟随，或直接点击地图上的实体。';
-    }
+    this.refreshFollowStatusLine(snap);
 
-    // 列表（限制数量，按存活）
-    const entries = Object.entries(source).filter(([, e]) => e.alive && e.spatial).slice(0, 200);
+    // 列表（限制数量；NPC 保留死亡对象用于状态观察，妖兽快照当前只含存活对象）
+    const entries = Object.entries(source).filter(([, e]) => e.spatial || e.alive === false).slice(0, 200);
     listEl.innerHTML = '';
     for (const [id, e] of entries) {
       const div = document.createElement('div');
-      div.className = `entity-item${id === followId ? ' following' : ''}`;
       const meta = this.entityTab === 'monster'
         ? `${e.gradeName || e.grade + '阶'} · ${e.family || ''}`
         : `${e.rankName || ''}`;
-      const stateText = this.entityTab === 'monster'
-        ? (e.behaviorState || '')
-        : (e.actionStatus || 'idle');
+      const kind = this.entityTab === 'monster' ? 'monster' : 'npc';
+      const life = getLifeStatus(e, kind);
+      const action = getActionStatus(e, kind);
+      div.className = `entity-item${id === followId ? ' following' : ''}${life.tone === 'dead' ? ' dead' : ''}`;
       div.innerHTML = `
-        <div>
-          <div class="e-name">${e.name}</div>
-          <div class="e-meta">${meta}</div>
+        <div class="entity-main">
+          <div class="e-name">${this._escapeHtml(e.name)}</div>
+          <div class="e-meta">${this._escapeHtml(meta)}</div>
         </div>
-        <span class="e-state">${stateText}</span>
+        <div class="entity-status-stack">
+          <span class="entity-life ${life.tone}">${this._escapeHtml(life.label)}</span>
+          <span class="e-state ${action.tone}">${this._escapeHtml(action.label)}</span>
+        </div>
       `;
       div.onclick = () => {
         this.renderer.followEntity(id, () => this.refreshEntityList());
@@ -237,6 +238,7 @@ class SimulationApp {
       };
       listEl.appendChild(div);
     }
+    this.refreshFollowStatusCard(snap);
   }
 
   /** 势力 tab：列出每个势力，点击把视角定位到其总部 */
@@ -255,20 +257,66 @@ class SimulationApp {
       const faction = this.engine.entityRegistry.getById(id);
       const hq = faction?.staticData?.headquarters;
       const div = document.createElement('div');
-      div.className = `entity-item${f.isDestroyed ? ' destroyed' : ''}`;
       const typeName = FACTION_TYPE_NAMES[f.type] || f.type;
+      const life = getLifeStatus(f, 'faction');
+      const action = getActionStatus(f, 'faction');
+      div.className = `entity-item${f.isDestroyed ? ' destroyed dead' : ''}`;
       div.innerHTML = `
-        <div>
-          <div class="e-name">${f.name}${f.isDestroyed ? ' [覆灭]' : ''}</div>
-          <div class="e-meta">${typeName} · 弟子 ${f.resources?.disciples || 0}</div>
+        <div class="entity-main">
+          <div class="e-name">${this._escapeHtml(f.name)}${f.isDestroyed ? ' [覆灭]' : ''}</div>
+          <div class="e-meta">${this._escapeHtml(typeName)} · 弟子 ${f.resources?.disciples || 0}</div>
         </div>
-        <span class="e-state">${hq ? `(${hq.x},${hq.y})` : '—'}</span>
+        <div class="entity-status-stack">
+          <span class="entity-life ${life.tone}">${this._escapeHtml(life.label)}</span>
+          <span class="e-state ${action.tone}">${hq ? `(${hq.x},${hq.y})` : this._escapeHtml(action.label)}</span>
+        </div>
       `;
       if (hq && typeof hq.x === 'number') {
         div.onclick = () => this.renderer.focusOnTile(hq.x, hq.y);
       }
       listEl.appendChild(div);
     }
+    this.refreshFollowStatusCard(snap);
+  }
+
+  _kindForFollowId(snap, followId) {
+    if (!followId) return 'npc';
+    if (snap.npcs?.[followId]) return 'npc';
+    if (snap.monsters?.[followId]) return 'monster';
+    if (snap.factions?.[followId]) return 'faction';
+    return 'npc';
+  }
+
+  _followedEntityFromSnapshot(snap, followId) {
+    if (!followId) return null;
+    return snap.npcs?.[followId] || snap.monsters?.[followId] || snap.factions?.[followId] || null;
+  }
+
+  refreshFollowStatusLine(snapshot = null) {
+    const statusEl = document.getElementById('follow-status');
+    if (!statusEl || !this.renderer) return;
+    const snap = snapshot || this.engine.getWorldSnapshot();
+    const followId = this.renderer.getFollowId();
+
+    if (!followId) {
+      statusEl.textContent = this.entityTab === 'faction'
+        ? '点击势力可把视角定位到其总部（不会持续跟随）。'
+        : '从下方列表选择人物或妖兽进行跟随，或直接点击地图上的实体。';
+      return;
+    }
+
+    const e = this._followedEntityFromSnapshot(snap, followId);
+    if (!e) {
+      statusEl.textContent = '正在跟随的实体已死亡或已离开当前快照。';
+      return;
+    }
+
+    const sp = e.spatial;
+    const kind = this._kindForFollowId(snap, followId);
+    const action = getActionStatus(e, kind);
+    const life = getLifeStatus(e, kind);
+    const position = sp ? `位置 (${sp.tileX},${sp.tileY})` : '';
+    statusEl.innerHTML = `正在跟随：<b>${this._escapeHtml(e.name)}</b>（${this._escapeHtml(life.label)} · ${this._escapeHtml(action.label)}）${this._escapeHtml(position)}`;
   }
 
   doTick(count) {
@@ -279,8 +327,11 @@ class SimulationApp {
     }
     this.render();
     if (this.renderEnabled && this.renderer) {
-      this.renderer.updateSnapshot(this.engine.getWorldSnapshot());
+      const snap = this.engine.getWorldSnapshot();
+      this.renderer.updateSnapshot(snap);
       this.refreshNpcEventLog();
+      this.refreshFollowStatusLine(snap);
+      this.refreshFollowStatusCard(snap);
     }
   }
 
@@ -367,7 +418,7 @@ class SimulationApp {
 
     if (!followId) {
       if (titleEl) titleEl.textContent = '行为事件日志';
-      listEl.innerHTML = '<div class="npc-event-empty">选择并跟随一个 NPC，这里会显示它的行为事件。</div>';
+      listEl.innerHTML = '<div class="npc-event-empty">选择并跟随一个人物，这里会显示它的行为事件。</div>';
       this._lastFollowIdForEvents = null;
       return;
     }
@@ -377,7 +428,7 @@ class SimulationApp {
     // 跟随的是妖兽/势力时不显示 NPC 行为日志
     if (!e) {
       if (titleEl) titleEl.textContent = '行为事件日志';
-      listEl.innerHTML = '<div class="npc-event-empty">当前跟随的不是 NPC（妖兽暂不记录行为日志）。</div>';
+      listEl.innerHTML = '<div class="npc-event-empty">当前跟随的不是人物（妖兽暂不记录行为日志）。</div>';
       this._lastFollowIdForEvents = followId;
       return;
     }
@@ -406,6 +457,34 @@ class SimulationApp {
 
   _escapeHtml(s) {
     return String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  }
+
+  refreshFollowStatusCard(snapshot = null) {
+    const card = document.getElementById('follow-status-card');
+    const titleEl = document.getElementById('follow-status-card-title');
+    const subtitleEl = document.getElementById('follow-status-card-subtitle');
+    const bodyEl = document.getElementById('follow-status-card-body');
+    if (!card || !titleEl || !subtitleEl || !bodyEl) return;
+
+    card.classList.toggle('collapsed', this._followStatusCollapsed);
+    const snap = snapshot || this.engine.getWorldSnapshot();
+    const followId = this.renderer ? this.renderer.getFollowId() : null;
+    const kind = this._kindForFollowId(snap, followId);
+    const entity = this._followedEntityFromSnapshot(snap, followId);
+    const model = buildTrackedStatusModel(entity, kind, snap);
+
+    titleEl.textContent = model.title === '未跟随' ? '跟随状态' : model.title;
+    subtitleEl.textContent = `${model.life.label} · ${model.action.label}`;
+    const previousSectionState = new Map(
+      Array.from(bodyEl.querySelectorAll('details.follow-status-section[data-section-id]'))
+        .map(detail => [detail.dataset.sectionId, detail.open])
+    );
+    bodyEl.innerHTML = statusModelToHtml(model, (s) => this._escapeHtml(s));
+    for (const detail of bodyEl.querySelectorAll('details.follow-status-section[data-section-id]')) {
+      if (previousSectionState.has(detail.dataset.sectionId)) {
+        detail.open = previousSectionState.get(detail.dataset.sectionId);
+      }
+    }
   }
 
   /** 把坐标/地点格式化为日志后缀，如「 @(123,45) 平原」；无坐标返回空串 */
@@ -620,7 +699,7 @@ class SimulationApp {
   renderWorldStats(snapshot) {
     document.getElementById('stat-day').textContent = `第 ${snapshot.day} 天（${Math.floor(snapshot.day / 360)} 年 ${snapshot.day % 360} 天）`;
     document.getElementById('stat-factions').textContent = `势力: ${snapshot.stats.aliveFactions}/${snapshot.stats.totalFactions}`;
-    document.getElementById('stat-npcs').textContent = `NPC: ${snapshot.stats.aliveNPCs}/${snapshot.stats.totalNPCs}`;
+    document.getElementById('stat-npcs').textContent = `人物: ${snapshot.stats.aliveNPCs}/${snapshot.stats.totalNPCs}`;
     const monsterStat = document.getElementById('stat-monsters');
     if (monsterStat) {
       monsterStat.textContent = `妖兽: ${snapshot.stats.aliveMonsters ?? 0}/${snapshot.stats.totalMonsters ?? 0}`;

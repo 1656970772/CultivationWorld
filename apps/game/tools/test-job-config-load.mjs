@@ -20,11 +20,19 @@ const actionSets = load('data/actions/npc-action-sets.json');
 const dynamicJobs = load('data/jobs/npc-dynamic-event-jobs.json');
 const economyJobs = load('data/jobs/npc-economy-jobs.json');
 const socialJobs = load('data/jobs/npc-social-jobs.json');
+const questJobs = load('data/jobs/npc-quest-jobs.json');
+const combatJobs = load('data/jobs/npc-combat-jobs.json');
+const cultivationJobs = load('data/jobs/npc-cultivation-jobs.json');
 const coreToils = load('data/toils/core-toils.json');
 const dynamicToils = load('data/toils/npc-dynamic-event-toils.json');
 const economyToils = load('data/toils/npc-economy-toils.json');
 const socialToils = load('data/toils/npc-social-toils.json');
+const questToils = load('data/toils/npc-quest-toils.json');
+const combatToils = load('data/toils/npc-combat-toils.json');
+const cultivationToils = load('data/toils/npc-cultivation-toils.json');
 const aiConfig = load('data/config/ai-config.json');
+const dynamicEventsConfig = load('data/world/dynamic-events.json');
+const dynamicGoalsConfig = load('data/goals/dynamic-goals.json');
 const itemDefs = ['currency', 'material', 'pill', 'artifact', 'talisman', 'technique']
   .flatMap(category => load(`data/items/${category}.json`).items || []);
 
@@ -74,8 +82,19 @@ const toilIds = new Set([
   ...dynamicToils.toils.map(t => t.id),
   ...economyToils.toils.map(t => t.id),
   ...socialToils.toils.map(t => t.id),
+  ...questToils.toils.map(t => t.id),
+  ...combatToils.toils.map(t => t.id),
+  ...cultivationToils.toils.map(t => t.id),
 ]);
-const jobs = [...dynamicJobs.jobs, ...economyJobs.jobs, ...socialJobs.jobs];
+const jobs = [
+  ...dynamicJobs.jobs,
+  ...economyJobs.jobs,
+  ...socialJobs.jobs,
+  ...questJobs.jobs,
+  ...combatJobs.jobs,
+  ...cultivationJobs.jobs,
+];
+const jobIds = new Set(jobs.map(job => job.id));
 const itemIds = new Set(itemDefs.map(item => item.id));
 const itemRefKeys = new Set(['itemId', 'priceItemId', 'currencyItemId']);
 
@@ -102,9 +121,14 @@ for (const job of jobs) {
     assert(itemIds.has(itemId), `${job.id} references existing item ${itemId}`);
   }
 }
+for (const action of npcJobActions) {
+  assert(jobIds.has(action.jobId), `${action.id} references defined job ${action.jobId}`);
+}
 
-console.log('4) jobs config defaults to disabled in ai-config');
-assert(aiConfig.npc.jobs.enabled === false, 'npc.jobs.enabled defaults false');
+console.log('4) Job/Toil dynamic chain defaults enabled after formal launch');
+assert(aiConfig.npc.jobs.enabled === true, 'npc.jobs.enabled defaults true after formal launch');
+assert(dynamicEventsConfig.enabled === true, 'dynamic-events.enabled defaults true after formal launch');
+assert(dynamicGoalsConfig.enabled === true, 'dynamic-goals.enabled defaults true after formal launch');
 assert(aiConfig.npc.jobs.maxActiveJobsPerNpc === 1, 'maxActiveJobsPerNpc is 1');
 assert(aiConfig.npc.jobs.logToilEvents === true, 'logToilEvents defaults true');
 
@@ -132,8 +156,14 @@ assert(configs.npcActionSets.defaultNpcJobActionIds.includes('act_npc_acquire_ar
 assert(configs.jobs.jobs.some(job => job.id === 'job_npc_prepare_dynamic_event'), 'loadGameConfigs merges dynamic event jobs');
 assert(configs.jobs.jobs.some(job => job.id === 'job_npc_acquire_artifact'), 'loadGameConfigs merges economy jobs');
 assert(configs.jobs.jobs.some(job => job.id === 'job_npc_find_companion'), 'loadGameConfigs merges social jobs');
+assert(configs.jobs.jobs.some(job => job.id === 'job_npc_accept_quest'), 'loadGameConfigs merges quest jobs');
+assert(configs.jobs.jobs.some(job => job.id === 'job_npc_prepare_combat'), 'loadGameConfigs merges combat jobs');
+assert(configs.jobs.jobs.some(job => job.id === 'job_npc_cultivate'), 'loadGameConfigs merges cultivation jobs');
 assert(configs.toils.toils.some(toil => toil.id === 'toil_ensure_item'), 'loadGameConfigs merges economy toils');
 assert(configs.toils.toils.some(toil => toil.id === 'toil_mark_dynamic_event_prepared'), 'loadGameConfigs merges dynamic event toils');
+assert(configs.toils.toils.some(toil => toil.id === 'toil_accept_quest'), 'loadGameConfigs merges quest toils');
+assert(configs.toils.toils.some(toil => toil.id === 'toil_assess_combat_risk'), 'loadGameConfigs merges combat toils');
+assert(configs.toils.toils.some(toil => toil.id === 'toil_cultivate'), 'loadGameConfigs merges cultivation toils');
 
 console.log('6) WorldEngine can initialize Job/Toil configs twice in one process');
 const { WorldEngine } = await imp('js/engine/world-engine.js');
@@ -145,6 +175,17 @@ firstEngine.init(configs);
 assert(JobPool.has('job_npc_prepare_dynamic_event'), 'first WorldEngine init registers dynamic event job');
 assert(ToilPool.getDefinition('toil_resolve_target'), 'first WorldEngine init registers resolve-target toil');
 assert(ToilPool.getExecutor('toil_resolve_target'), 'first WorldEngine init registers resolve-target executor');
+const firstNpc = firstEngine.entityRegistry.getAliveByType('npc')[0];
+const enabledActionIds = new Set(firstNpc.behaviorSystem.availableActions.map(action => action.id));
+assert(firstNpc.state.get('jobsEnabled') === true, 'default NPC state records jobsEnabled=true');
+assert(enabledActionIds.has('act_npc_prepare_secret_realm'), 'default NPC action set includes dynamic JobAction when jobs enabled');
+assert(enabledActionIds.has('act_npc_acquire_artifact'), 'default NPC action set includes economy JobAction when jobs enabled');
+assert(enabledActionIds.has('act_npc_prepare_combat'), 'default NPC action set includes combat preparation JobAction when jobs enabled');
+assert(enabledActionIds.has('act_npc_retreat_and_heal'), 'default NPC action set includes combat recovery JobAction when jobs enabled');
+assert(enabledActionIds.has('act_npc_request_hunt_companion'), 'default NPC action set includes hunt companion JobAction when jobs enabled');
+assert(firstNpc.needSystem.getNeed('need_npc_combat_recovery'), 'default NPC installs combat recovery need');
+assert(firstNpc.needSystem.getNeed('need_npc_combat_supply'), 'default NPC installs combat supply need');
+assert(firstNpc.needSystem.getNeed('need_npc_hunt_companion'), 'default NPC installs hunt companion need');
 
 let repeatedInitError = null;
 try {
@@ -158,6 +199,19 @@ assert(!repeatedInitError, `second WorldEngine init does not fail: ${repeatedIni
 assert(JobPool.has('job_npc_prepare_dynamic_event'), 'second WorldEngine init keeps dynamic event job registered');
 assert(ToilPool.getDefinition('toil_resolve_target'), 'second WorldEngine init keeps resolve-target toil registered');
 assert(ToilPool.getExecutor('toil_resolve_target'), 'second WorldEngine init keeps resolve-target executor registered');
+
+console.log('7) jobs.enabled=false remains a runtime rollback switch');
+const disabledConfigs = JSON.parse(JSON.stringify(configs));
+disabledConfigs.aiConfig.npc.jobs.enabled = false;
+const disabledEngine = new WorldEngine();
+disabledEngine.init(disabledConfigs);
+const disabledNpc = disabledEngine.entityRegistry.getAliveByType('npc')[0];
+const disabledActionIds = new Set(disabledNpc.behaviorSystem.availableActions.map(action => action.id));
+assert(disabledNpc.state.get('jobsEnabled') === false, 'disabled NPC state records jobsEnabled=false');
+assert(!disabledActionIds.has('act_npc_prepare_secret_realm'), 'disabled NPC action set excludes dynamic JobAction');
+assert(!disabledActionIds.has('act_npc_acquire_artifact'), 'disabled NPC action set excludes economy JobAction');
+assert(!disabledActionIds.has('act_npc_job_cultivate'), 'disabled NPC action set excludes migrated cultivation JobAction');
+assert(disabledActionIds.has('act_npc_serve_faction'), 'disabled NPC action set keeps non-migrated SimpleAction behavior');
 
 if (failed > 0) {
   console.error(`\nJob config load tests failed: ${failed}`);

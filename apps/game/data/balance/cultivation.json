@@ -119,6 +119,31 @@
     "failureProgressReset": 0.3,
     "failureQiRetention": 0.7
   },
+  "experience": {
+    "_comment": "历练修为：闭关/原地待命之外的外出任务、事件、战斗按价值、风险、时长追加 experienceCultivation，并同步 totalCultivation。",
+    "enabled": true,
+    "valueScale": 500,
+    "riskWeight": 0.75,
+    "maxValueMultiplier": 3,
+    "maxRiskMultiplier": 3,
+    "maxDurationMultiplier": 2.5,
+    "baseBySource": {
+      "quest_progress": 0.35,
+      "quest_complete": 2,
+      "monster_hunt_success": 8,
+      "monster_hunt_failure": 2,
+      "explore": 5,
+      "dynamic_event": 6,
+      "opportunity": 5,
+      "pvp": 8,
+      "social_travel": 1
+    },
+    "outcomeMultiplier": {
+      "success": 1,
+      "partial": 0.5,
+      "failure": 0.35
+    }
+  },
   "actions": {
     "seekElixir": {
       "_comment": "寻找续命丹药：成功率与寿元延长比例",

@@ -11,6 +11,17 @@ import {
   settleRisk,
   rollAndGrantReward,
 } from './npc-action-utils.js';
+import { applyCultivationExperience } from '../cultivation-experience.js';
+
+function grantRelationshipExperience(entity, worldContext, sourceKind, input = {}) {
+  return applyCultivationExperience(entity, worldContext, {
+    sourceKind,
+    value: input.value ?? 100,
+    riskScore: input.riskScore ?? 0.2,
+    durationDays: input.durationDays ?? 1,
+    outcome: input.outcome || 'success',
+  });
+}
 
 /**
  * 机会点前往执行器（ADR-024）：NPC 抵达 WorldOpportunity 后结算。
@@ -53,6 +64,10 @@ export class NPCGotoOpportunityExecutor extends ActionExecutor {
       ? grant.grantedItems.map(g => `${ItemRegistry.get(g.itemId)?.name || g.itemId}×${g.qty}`).join('、')
       : (grant.qiGain > 0 ? `真气+${grant.qiGain}` : '一无所获');
     const riskNote = risk.triggered.length > 0 ? `，途中${risk.triggered.map(r => r.risk).join('、')}` : '';
+    const cultivationExperience = grantRelationshipExperience(entity, worldContext, 'opportunity', {
+      value: opp.value ?? grant.outcome?.value ?? 500,
+      riskScore: risk.triggered.length,
+    });
 
     return {
       success: true, outcome: 'opportunity_claimed', oppType: opp.type,
@@ -60,6 +75,7 @@ export class NPCGotoOpportunityExecutor extends ActionExecutor {
       grantedItems: grant.grantedItems,
       qiGain: grant.qiGain,
       riskTriggered: risk.triggered,
+      cultivationExperience,
       description: `${entity.staticData.name} 赴${opp.name}，斩获${lootDesc}${riskNote}`,
     };
   }
@@ -88,10 +104,12 @@ export class NPCAssistAllyExecutor extends ActionExecutor {
     if (rs && typeof rs.addEdge === 'function') {
       rs.addEdge(entity.id, ally.id, 'same_sect', { strengthDelta: 8, tick: worldContext.currentDay ?? 0 });
     }
+    const cultivationExperience = grantRelationshipExperience(entity, worldContext, 'social_travel');
     return {
       success: true,
       outcome: 'assisted',
       targetId: ally.id,
+      cultivationExperience,
       description: `${entity.staticData.name} 赶来驰援同门 ${ally.staticData?.name || ally.id}，并肩御敌`,
     };
   }
@@ -117,10 +135,12 @@ export class NPCVisitBenefactorExecutor extends ActionExecutor {
     if (entity.relationships && typeof entity.relationships.addGratitude === 'function') {
       entity.relationships.addGratitude(ben.id, 5);
     }
+    const cultivationExperience = grantRelationshipExperience(entity, worldContext, 'social_travel');
     return {
       success: true,
       outcome: 'visited',
       targetId: ben.id,
+      cultivationExperience,
       description: `${entity.staticData.name} 携礼探望恩人 ${ben.staticData?.name || ben.id}，以报当年之德`,
     };
   }
@@ -153,10 +173,12 @@ export class NPCTeachDiscipleExecutor extends ActionExecutor {
     if (rs && typeof rs.addEdge === 'function') {
       rs.addEdge(entity.id, disciple.id, 'master', { strengthDelta: 6, tick: worldContext.currentDay ?? 0 });
     }
+    const cultivationExperience = grantRelationshipExperience(entity, worldContext, 'social_travel');
     return {
       success: true,
       outcome: 'taught',
       targetId: disciple.id,
+      cultivationExperience,
       description: `${entity.staticData.name} 为徒弟 ${disciple.staticData?.name || disciple.id} 传功点化，助其感悟精进`,
     };
   }
@@ -182,10 +204,12 @@ export class NPCProtectDiscipleExecutor extends ActionExecutor {
     if (rs && typeof rs.addEdge === 'function') {
       rs.addEdge(entity.id, disciple.id, 'master', { strengthDelta: 8, tick: worldContext.currentDay ?? 0 });
     }
+    const cultivationExperience = grantRelationshipExperience(entity, worldContext, 'social_travel');
     return {
       success: true,
       outcome: 'protected',
       targetId: disciple.id,
+      cultivationExperience,
       description: `${entity.staticData.name} 赶来护卫徒弟 ${disciple.staticData?.name || disciple.id}，并肩御敌`,
     };
   }
@@ -210,10 +234,12 @@ export class NPCVisitMasterExecutor extends ActionExecutor {
     if (rs && typeof rs.addEdge === 'function') {
       rs.addEdge(entity.id, master.id, 'disciple', { strengthDelta: 5, tick: worldContext.currentDay ?? 0 });
     }
+    const cultivationExperience = grantRelationshipExperience(entity, worldContext, 'social_travel');
     return {
       success: true,
       outcome: 'visited_master',
       targetId: master.id,
+      cultivationExperience,
       description: `${entity.staticData.name} 探望恩师 ${master.staticData?.name || master.id}，执弟子礼侍奉`,
     };
   }

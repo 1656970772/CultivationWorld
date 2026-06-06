@@ -40,7 +40,7 @@ function makeGoal(kind, score, extra = {}) {
 const busyNearBreakthrough = {
   behaviorSystem: {
     isBusy: () => true,
-    getLastPlanResult: () => ({ needId: 'need_npc_cultivation', actions: ['act_npc_cultivate'] })
+    getLastPlanResult: () => ({ needId: 'need_npc_cultivation', actions: ['act_npc_job_cultivate'] })
   },
   state: { get: (key) => ({ totalProgress: 0.96, injuryLevel: 0 }[key] ?? null) },
   staticData: { personality: { caution: 70, courage: 40, loyalty: 50 } }

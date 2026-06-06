@@ -1,4 +1,5 @@
 import { ToilExecutor, ToilResultStatus } from '../../abstract/toil.js';
+import { applyCultivationExperience } from '../cultivation-experience.js';
 
 function readState(entity, key) {
   if (typeof entity?.state?.get === 'function') return entity.state.get(key);
@@ -118,6 +119,7 @@ export class NPCMarkDynamicEventPreparedToilExecutor extends ToilExecutor {
 export class NPCMarkDynamicEventParticipantToilExecutor extends ToilExecutor {
   run(entity, worldContext, job) {
     const eventId = job?.context?.dynamicEventId;
+    const event = resolveDynamicEvent(worldContext, eventId);
     const marked = typeof worldContext?.markDynamicEventParticipant === 'function'
       ? worldContext.markDynamicEventParticipant(eventId, entity?.id) === true
       : false;
@@ -126,6 +128,17 @@ export class NPCMarkDynamicEventParticipantToilExecutor extends ToilExecutor {
     }
 
     writeState(entity, 'lastJoinedDynamicEventId', eventId);
-    return { status: ToilResultStatus.SUCCESS, reason: 'dynamic_event_participant_marked' };
+    const cultivationExperience = applyCultivationExperience(entity, worldContext, {
+      sourceKind: 'dynamic_event',
+      value: event?.value || 0,
+      riskScore: event?.riskScore ?? (event?.riskKey ? 1 : 0),
+      durationDays: 1,
+      outcome: 'success',
+    });
+    return {
+      status: ToilResultStatus.SUCCESS,
+      reason: 'dynamic_event_participant_marked',
+      contextPatch: { cultivationExperience },
+    };
   }
 }

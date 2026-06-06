@@ -19,6 +19,31 @@ function getReactionConfig(worldContext) {
   return worldContext?.balanceConfig?.reaction || {};
 }
 
+function readReactionState(entity, key, fallback = null) {
+  const value = typeof entity?.state?.get === 'function' ? entity.state.get(key) : entity?.state?.[key];
+  return value ?? fallback;
+}
+
+function writeReactionState(entity, key, value) {
+  if (typeof entity?.state?.set === 'function') {
+    entity.state.set(key, value);
+    return;
+  }
+  if (entity?.state) entity.state[key] = value;
+}
+
+function markUnsafeAfterEscape(entity, kind) {
+  writeReactionState(entity, 'lastCombatReaction', kind);
+  writeReactionState(entity, 'shouldRetreat', false);
+  writeReactionState(entity, 'combatReady', false);
+  writeReactionState(entity, 'needsCombatSupply', true);
+  writeReactionState(entity, 'needsCombatRecovery', true);
+}
+
+function lowHpRatioFromConfig(cfg) {
+  return cfg?.combat?.lowHpRatio ?? cfg?.healHpRatio ?? 0.45;
+}
+
 /** 解析本势力总部附近的安全锚点坐标；无则回退当前位置。供逃命/撤退落点用（复用遁地符锚点思路）。 */
 function resolveSafeAnchor(entity, worldContext) {
   const sp = entity.spatial;
@@ -38,7 +63,8 @@ function resolveSafeAnchor(entity, worldContext) {
 export class NPCReactFleeExecutor extends ActionExecutor {
   run(entity, worldContext, _action) {
     // 清除追踪态：仇人/妖兽在各自 tick 重新感知时自然失去锁定（与遁地符脱离逻辑一致）。
-    entity.state.set('nearRevengeTarget', false);
+    writeReactionState(entity, 'nearRevengeTarget', false);
+    markUnsafeAfterEscape(entity, 'flee');
     if (worldContext?.infoEvents) {
       worldContext.infoEvents.push({
         type: 'react_flee',
@@ -59,7 +85,8 @@ export class NPCReactFleeExecutor extends ActionExecutor {
  */
 export class NPCReactRetreatExecutor extends ActionExecutor {
   run(entity, worldContext, _action) {
-    entity.state.set('nearRevengeTarget', false);
+    writeReactionState(entity, 'nearRevengeTarget', false);
+    markUnsafeAfterEscape(entity, 'retreat');
     if (worldContext?.infoEvents) {
       worldContext.infoEvents.push({
         type: 'react_retreat',
@@ -80,38 +107,48 @@ export class NPCReactRetreatExecutor extends ActionExecutor {
 export class NPCReactHealExecutor extends ActionExecutor {
   run(entity, worldContext, _action) {
     const cfg = getReactionConfig(worldContext);
-    const healPillId = cfg.healPillId || null;
-    const maxHp = entity.state.get('maxHp') || 0;
-    const curHp = entity.state.get('hp') ?? maxHp;
+    const healPillId = cfg.healPillId || 'pill_rejuvenation';
+    const maxHp = readReactionState(entity, 'maxHp', 0);
+    const curHp = readReactionState(entity, 'hp', maxHp);
 
     let pillUsed = false;
     let healed = 0;
-    if (healPillId && entity.inventory && entity.inventory.getAmount(healPillId) > 0) {
+    if (healPillId && entity.inventory?.getAmount?.(healPillId) > 0) {
       // 优先经统一物品效果入口结算回血丹（ADR-043：服用物品即生效，npc-economy.applyItemEffects）。
-      const before = entity.state.get('hp') ?? maxHp;
+      const before = readReactionState(entity, 'hp', maxHp);
       applyItemEffects(entity, healPillId);
-      entity.inventory.remove(healPillId, 1);
+      entity.inventory.remove?.(healPillId, 1);
       pillUsed = true;
-      const after = entity.state.get('hp') ?? maxHp;
+      const after = readReactionState(entity, 'hp', maxHp);
       healed = Math.max(0, after - before);
       // 若物品效果未改 hp（配置未含回血效果）则按配置 healAmount 兜底回血（夹 maxHp）。
       if (healed <= 0 && maxHp > 0) {
         const amount = cfg.healAmount ?? Math.round(maxHp * (cfg.healRatio ?? 0.3));
         const newHp = Math.min(maxHp, before + amount);
-        entity.state.set('hp', newHp);
+        writeReactionState(entity, 'hp', newHp);
         healed = newHp - before;
       }
     } else if (maxHp > 0) {
       // 无丹：静养小幅回血（按 reaction.json restRatio，默认 0.1×maxHp）。
       const restRatio = cfg.restHealRatio ?? 0.1;
       const newHp = Math.min(maxHp, curHp + Math.round(maxHp * restRatio));
-      entity.state.set('hp', newHp);
+      writeReactionState(entity, 'hp', newHp);
       healed = newHp - curHp;
     }
 
     // 同时减一级伤势（疗养语义）。
-    const injury = entity.state.get('injuryLevel') || 0;
-    if (injury > 0) entity.state.set('injuryLevel', Math.max(0, injury - 1));
+    const injury = readReactionState(entity, 'injuryLevel', 0);
+    if (injury > 0) writeReactionState(entity, 'injuryLevel', Math.max(0, injury - 1));
+
+    writeReactionState(entity, 'lastCombatReaction', 'heal');
+    const afterHp = readReactionState(entity, 'hp', maxHp);
+    const hpRatio = maxHp > 0 ? afterHp / maxHp : 1;
+    if (hpRatio >= lowHpRatioFromConfig(cfg)) {
+      writeReactionState(entity, 'shouldRetreat', false);
+    }
+    if (healPillId && (entity.inventory?.getAmount?.(healPillId) || 0) <= 0) {
+      writeReactionState(entity, 'needsCombatSupply', true);
+    }
 
     return {
       success: true,
@@ -131,12 +168,25 @@ export class NPCReactHealExecutor extends ActionExecutor {
  */
 export class NPCReactCounterExecutor extends ActionExecutor {
   run(entity, worldContext, _action) {
-    const targetId = entity.state.get('_reactCounterTargetId') || null;
-    entity.state.set('_reactCounterTargetId', null);
+    writeReactionState(entity, 'lastCombatReaction', 'counter');
+    const targetId = readReactionState(entity, '_reactCounterTargetId', null);
+    writeReactionState(entity, '_reactCounterTargetId', null);
     const target = targetId && worldContext?.entityRegistry?.getById
       ? worldContext.entityRegistry.getById(targetId)
       : null;
     if (!target || !target.alive) {
+      if (worldContext?.infoEvents) {
+        worldContext.infoEvents.push({
+          type: 'react_counter',
+          day: worldContext.currentDay ?? worldContext.day ?? 0,
+          npcId: entity.id,
+          npcName: entity.name,
+          targetId,
+          outcome: 'no_target',
+          success: false,
+          description: `${entity.staticData?.name || entity.id} 欲反击，来犯者已遁去`,
+        });
+      }
       return { success: false, outcome: 'no_target', description: `${entity.staticData?.name || entity.id} 欲反击，来犯者已遁去` };
     }
 
@@ -160,6 +210,21 @@ export class NPCReactCounterExecutor extends ActionExecutor {
     else if (result.escaped) desc = `${entity.staticData?.name || entity.id} 奋起反击，来犯者祭符遁走`;
     else if (result.locked) desc = `${entity.staticData?.name || entity.id} 奋起反击，来犯者锁血逃脱`;
     else desc = `${entity.staticData?.name || entity.id} 奋起反击，重创来犯者（伤害${result.damage}，敌余血${result.newHp}/${targetMaxHp}）`;
+
+    if (worldContext?.infoEvents) {
+      worldContext.infoEvents.push({
+        type: 'react_counter',
+        day: worldContext.currentDay ?? worldContext.day ?? 0,
+        npcId: entity.id,
+        npcName: entity.name,
+        targetId: target.id,
+        targetName: target.name,
+        damage: result.damage,
+        outcome: result.died ? 'killed' : (result.escaped ? 'enemy_escaped' : (result.locked ? 'enemy_locked' : 'enemy_wounded')),
+        success: result.died === true,
+        description: desc,
+      });
+    }
 
     return {
       success: result.died,

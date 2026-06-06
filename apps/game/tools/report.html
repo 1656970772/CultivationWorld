@@ -129,7 +129,7 @@ details[open] summary{margin-bottom:8px}
   </div>
   <div class="row row-2" style="margin-top:20px">
     <div class="chart-box"><h3>势力平均灵石</h3><canvas id="chartStone"></canvas></div>
-    <div class="chart-box"><h3>平均修炼进度 & 累计突破</h3><canvas id="chartProgress"></canvas></div>
+    <div class="chart-box"><h3>平均修为 & 累计突破</h3><canvas id="chartProgress"></canvas></div>
   </div>
 </section>
 
@@ -261,13 +261,13 @@ function render(D) {
     ]
   }, options: chartOpts });
 
-  // ── 修炼进度 & 突破 ──
+  // ── 修为 & 突破 ──
   const progOpts = JSON.parse(JSON.stringify(chartOpts));
   progOpts.scales.y1 = { position: 'right', ticks: { color: '#8b949e' }, grid: { display: false } };
   new Chart(document.getElementById('chartProgress'), { type: 'line', data: {
     labels: days,
     datasets: [
-      { label: '平均修炼进度', data: tl.map(t => t.avgProgress), borderColor: '#3fb950', tension: .3, yAxisID: 'y' },
+      { label: '平均修为', data: tl.map(t => t.avgProgress), borderColor: '#3fb950', tension: .3, yAxisID: 'y' },
       { label: '累计突破', data: tl.map(t => t.breakthroughs), borderColor: '#f0883e', borderDash: [5,3], tension: .3, yAxisID: 'y1' },
     ]
   }, options: progOpts });
@@ -323,7 +323,7 @@ function render(D) {
   for (const group of D.npcRoster) {
     const alive = group.members.filter(m => m.alive).length;
     rosterHtml += `<details${group.members.length <= 20 ? ' open' : ''}><summary>${group.factionName} (${alive}/${group.members.length} 存活)</summary>`;
-    rosterHtml += '<div class="tbl-wrap"><table><tr><th>姓名</th><th>性别</th><th>境界</th><th>职务</th><th class="num">年龄/寿命</th><th class="num">真气</th><th class="bar-cell">修炼进度</th><th class="num">灵石</th><th>道侣</th><th class="num">子女</th><th>状态</th></tr>';
+    rosterHtml += '<div class="tbl-wrap"><table><tr><th>姓名</th><th>性别</th><th>境界</th><th>职务</th><th class="num">年龄/寿命</th><th class="num">真气</th><th class="bar-cell">修为</th><th class="num">灵石</th><th>道侣</th><th class="num">子女</th><th>状态</th></tr>';
     for (const m of group.members) {
       const p = m.progress * 100;
       const color = p >= 90 ? '#f0883e' : p >= 50 ? '#58a6ff' : '#3fb950';
@@ -477,7 +477,7 @@ function renderOneLife(p, esc) {
       <div class="tl-day">第 ${d.day} 天 · ${esc(d.rank)} · 年龄 ${d.age ?? '?'} 岁</div>
       <div class="tl-action">${esc(d.action)}</div>
       ${driver ? `<div class="tl-driver">${driver}</div>` : ''}
-      <div class="tl-state">真气 ${d.qi} · 修炼进度 ${(d.progress * 100).toFixed(1)}%${posStr}</div>
+      <div class="tl-state">真气 ${d.qi} · 修为 ${(d.progress * 100).toFixed(1)}%${posStr}</div>
       ${obs}
       ${events}
     </div>`;

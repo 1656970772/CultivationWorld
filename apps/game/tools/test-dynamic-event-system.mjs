@@ -238,14 +238,29 @@ console.log('4) awareness confidence 支持配置值并保留默认 fallback');
   assert(fallback.awarenessConfidence(fallback.getById('evt_secret_realm_test'), entity) === 0.55, '未配置时 public confidence 使用默认 0.55');
 }
 
-console.log('5) WorldEngine 默认配置集成安全：动态事件关闭态保持静默');
+console.log('5) WorldEngine 默认配置集成：正式启用后播种配置事件，关闭态仍可回退');
 {
   const engine = new WorldEngine();
-  engine.init(buildGameConfigs());
-  assert(engine.worldEventSystem.snapshot().events.length === 0, '当前数据默认 enabled=false，WorldEngine 初始化不播种动态事件');
+  const configs = buildGameConfigs();
+  engine.init(configs);
+  const configuredEvents = configs.dynamicEvents.events || [];
+  const seededEvents = engine.worldEventSystem.snapshot().events;
+  assert(configs.dynamicEvents.enabled === true, '当前数据默认 enabled=true，动态事件进入默认体验');
+  assert(seededEvents.length === configuredEvents.length, 'enabled=true 时 WorldEngine 初始化播种配置事件');
+  assert(seededEvents.every(event => event.phase === WorldEventPhase.SCHEDULED), '默认配置事件初始化后处于 scheduled 阶段');
   for (let i = 0; i < 3; i++) {
     const tickLog = engine.tick();
-    assert(Array.isArray(tickLog.dynamicEvents) && tickLog.dynamicEvents.length === 0, `第 ${i + 1} 个 tick dynamicEvents 为空`);
+    assert(Array.isArray(tickLog.dynamicEvents) && tickLog.dynamicEvents.length === 0, `预告日前第 ${i + 1} 个 tick dynamicEvents 为空`);
+  }
+
+  const disabledConfigs = buildGameConfigs();
+  disabledConfigs.dynamicEvents = { ...disabledConfigs.dynamicEvents, enabled: false };
+  const disabledEngine = new WorldEngine();
+  disabledEngine.init(disabledConfigs);
+  assert(disabledEngine.worldEventSystem.snapshot().events.length === 0, 'enabled=false 回退时 WorldEngine 初始化不播种动态事件');
+  for (let i = 0; i < 3; i++) {
+    const tickLog = disabledEngine.tick();
+    assert(Array.isArray(tickLog.dynamicEvents) && tickLog.dynamicEvents.length === 0, `enabled=false 回退时第 ${i + 1} 个 tick dynamicEvents 为空`);
   }
 }
 
