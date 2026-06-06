@@ -257,6 +257,7 @@ export class NPCEquipArtifactToilExecutor extends ToilExecutor {
     }
 
     state.set('equippedArtifactId', itemId);
+    entity.refreshArtifactCombatModifiers?.();
     return { status: ToilResultStatus.SUCCESS, reason: 'artifact_equipped' };
   }
 }

@@ -300,6 +300,7 @@ export class WorldEngine {
     for (const tech of techniques) {
       this._techniqueRegistry.set(tech.id, tech);
     }
+    if (this._entityConfig) this._entityConfig.techniqueRegistry = this._techniqueRegistry;
   }
 
   _createWorldEntity() {

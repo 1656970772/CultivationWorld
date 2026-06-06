@@ -81,6 +81,10 @@
       "breakthroughBonus": 0.0,
       "lifespanBonus": 0,
       "combatBonus": 0.10,
+      "combatModifiers": [
+        { "attribute": "attack", "op": "multiply", "magnitude": 1.12 },
+        { "attribute": "speed", "op": "multiply", "magnitude": 1.08 }
+      ],
       "specialEffects": [
         { "type": "sword_resonance", "value": 1.15, "description": "持剑战斗伤害额外+15%" }
       ]
@@ -169,6 +173,10 @@
       "breakthroughBonus": 0.0,
       "lifespanBonus": 0,
       "combatBonus": 0.15,
+      "combatModifiers": [
+        { "attribute": "maxHp", "op": "multiply", "magnitude": 1.18 },
+        { "attribute": "defense", "op": "multiply", "magnitude": 1.22 }
+      ],
       "specialEffects": [
         { "type": "physical_defense", "value": 1.3, "description": "物理防御+30%" }
       ]
@@ -301,6 +309,10 @@
       "breakthroughBonus": 0.0,
       "lifespanBonus": 0,
       "combatBonus": 0.20,
+      "combatModifiers": [
+        { "attribute": "attack", "op": "multiply", "magnitude": 1.12 },
+        { "attribute": "speed", "op": "multiply", "magnitude": 1.08 }
+      ],
       "specialEffects": [
         { "type": "fire_sword_resonance", "value": 1.3, "description": "剑道攻击附带烈焰，伤害+30%" }
       ]
@@ -345,6 +357,10 @@
       "breakthroughBonus": 0.0,
       "lifespanBonus": 0,
       "combatBonus": 0.25,
+      "combatModifiers": [
+        { "attribute": "maxHp", "op": "multiply", "magnitude": 1.18 },
+        { "attribute": "defense", "op": "multiply", "magnitude": 1.22 }
+      ],
       "specialEffects": [
         { "type": "dragon_body", "value": 1.4, "description": "肉身防御+40%，战斗中有概率无视低阶法术" }
       ]
@@ -433,6 +449,9 @@
       "breakthroughBonus": 0.10,
       "lifespanBonus": 0,
       "combatBonus": 0.0,
+      "combatModifiers": [
+        { "attribute": "soul", "op": "multiply", "magnitude": 1.35 }
+      ],
       "specialEffects": [
         { "type": "sense_range_bonus", "value": 3, "description": "神识感知范围+3格" },
         { "type": "danger_premonition", "value": 1, "description": "有一定概率预知危险" }
@@ -464,7 +483,7 @@
 
   {
     "_comment": "=== 仙家（grade:4）=== 化神顶阶，传说级，极难获取 ===",
-    "id": "tech_great_dao",
+    "id": "tech_da_yan",
     "name": "大衍诀",
     "grade": 4,
     "gradeName": "仙家",
@@ -480,6 +499,9 @@
       "breakthroughBonus": 0.20,
       "lifespanBonus": 200,
       "combatBonus": 0.0,
+      "combatModifiers": [
+        { "attribute": "soul", "op": "multiply", "magnitude": 1.35 }
+      ],
       "specialEffects": [
         { "type": "dao_resonance", "value": 1.5, "description": "所有道法秘术威力+50%" },
         { "type": "heaven_dao_blessing", "value": 1, "description": "突破关卡时天道震动，大幅降低天劫威力" }
@@ -526,6 +548,10 @@
       "breakthroughBonus": 0.0,
       "lifespanBonus": 0,
       "combatBonus": 0.35,
+      "combatModifiers": [
+        { "attribute": "maxHp", "op": "multiply", "magnitude": 1.18 },
+        { "attribute": "defense", "op": "multiply", "magnitude": 1.22 }
+      ],
       "specialEffects": [
         { "type": "immortal_body", "value": 1.6, "description": "肉身伤害减免60%，并可自动恢复轻伤" }
       ]

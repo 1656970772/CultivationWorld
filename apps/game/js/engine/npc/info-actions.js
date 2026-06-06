@@ -277,9 +277,11 @@ export function transferLoot(victim, robber, stoneRatio) {
   const artifactId = victim.state?.get('equippedArtifactId');
   if (artifactId) {
     victim.state.set('equippedArtifactId', null);
+    victim.refreshArtifactCombatModifiers?.();
     const cur = robber.state?.get('equippedArtifactId');
     if (!cur) {
       robber.state.set('equippedArtifactId', artifactId);
+      robber.refreshArtifactCombatModifiers?.();
     } else {
       robber.inventory.add(artifactId, 1);
     }

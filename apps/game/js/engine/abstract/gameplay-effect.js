@@ -55,13 +55,13 @@ export class ActiveEffect {
  * decay/baseRankId/minMagnitude/clamp）由"挂载来源"（丹药/灵草/精血在 items.json 的 effects 项）
  * 提供。spec 同名字段优先覆盖 modifier 默认值。通用原语通常单 modifier，spec 覆盖其全部 modifier。
  * @param {Object} mod Effect 定义里的 modifier
- * @param {Object} spec 来源声明（可含 magnitude/magnitudeType/decay/baseRankId/minMagnitude/clamp）
+ * @param {Object} spec 来源声明（可含 attribute/op/magnitude/magnitudeType/decay/baseRankId/minMagnitude/clamp）
  * @returns {Object} 合并后的 modifier
  */
 function mergeModifierWithSpec(mod, spec) {
   if (!spec) return mod;
   const merged = { ...mod };
-  const keys = ['magnitude', 'magnitudeType', 'decay', 'baseRankId', 'minMagnitude', 'clamp', 'op'];
+  const keys = ['attribute', 'op', 'magnitude', 'magnitudeType', 'decay', 'baseRankId', 'minMagnitude', 'clamp'];
   for (const k of keys) {
     if (spec[k] !== undefined) merged[k] = spec[k];
   }

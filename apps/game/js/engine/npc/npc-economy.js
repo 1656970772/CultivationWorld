@@ -180,6 +180,7 @@ export function equipBestArtifact(entity) {
   if (currentId) entity.inventory.add(currentId, 1);
   entity.inventory.remove(bestId, 1);
   entity.state.set('equippedArtifactId', bestId);
+  entity.refreshArtifactCombatModifiers?.();
   return { changed: true, equippedArtifactId: bestId, replacedArtifactId: currentId };
 }
 

@@ -70,6 +70,8 @@ const DYNAMIC_INTERRUPT_DECISION_RANK = Object.freeze({
   [InterruptDecision.AFTER_STEP]: 2,
   [InterruptDecision.INTERRUPT_NOW]: 3,
 });
+const TECHNIQUE_COMBAT_SOURCE = 'technique_combat';
+const ARTIFACT_COMBAT_SOURCE = 'artifact_combat';
 
 export class NPCEntity extends BaseEntity {
   /**
@@ -89,6 +91,7 @@ export class NPCEntity extends BaseEntity {
     this._cultivationConfig = entityConfig.cultivationConfig || {};
     this._combatConfig = entityConfig.combatConfig || {};
     this._combatTables = entityConfig.combatTables || {};
+    this._techniqueRegistry = entityConfig.techniqueRegistry || null;
     this._personalityConfig = entityConfig.personalityConfig || {};
     this._aiConfig = entityConfig.aiConfig || {};
     this._memoryConfig = entityConfig.memoryConfig || {};
@@ -107,6 +110,7 @@ export class NPCEntity extends BaseEntity {
     this._initCombatAttributes();
     this._initInventory(npcConfig);
     this._initAbilities(npcConfig);
+    this.refreshCombatAttributeModifiers();
     this._initNeeds(npcConfig);
     this._initActions(npcConfig);
     this._rollBreakthroughPathOrder();
@@ -651,6 +655,44 @@ export class NPCEntity extends BaseEntity {
         for (const abilityId of grants) this.abilityComponent.grantAbility(abilityId);
       }
     }
+  }
+
+  _applyCombatAttributeModifiers(modifiers, source) {
+    if (!this.attributes || !Array.isArray(modifiers)) return;
+    for (const mod of modifiers) {
+      if (!mod || typeof mod.attribute !== 'string') continue;
+      const magnitude = Number(mod.magnitude ?? 0);
+      if (!Number.isFinite(magnitude)) continue;
+      this.attributes.addModifier(mod.attribute, source, mod.op || 'add', magnitude);
+    }
+  }
+
+  refreshTechniqueCombatModifiers(techniqueRegistry = null) {
+    if (!this.attributes) return;
+    const registry = techniqueRegistry || this._techniqueRegistry;
+    if (!registry) return;
+    this._techniqueRegistry = registry;
+    this.attributes.removeModifiersFrom(TECHNIQUE_COMBAT_SOURCE);
+
+    const techniqueId = this.state.get('techniqueId');
+    const technique = techniqueId ? registry.get?.(techniqueId) : null;
+    this._applyCombatAttributeModifiers(technique?.effects?.combatModifiers, TECHNIQUE_COMBAT_SOURCE);
+  }
+
+  refreshArtifactCombatModifiers() {
+    if (!this.attributes) return;
+    this.attributes.removeModifiersFrom(ARTIFACT_COMBAT_SOURCE);
+
+    const artifactId = this.state.get('equippedArtifactId');
+    const artifact = artifactId ? ItemRegistry.get(artifactId) : null;
+    const modifiers = artifact?.properties?.combatModifiers || artifact?.combatModifiers;
+    this._applyCombatAttributeModifiers(modifiers, ARTIFACT_COMBAT_SOURCE);
+  }
+
+  refreshCombatAttributeModifiers(worldContext = null) {
+    const registry = worldContext?.techniqueRegistry || this._techniqueRegistry;
+    this.refreshTechniqueCombatModifiers(registry);
+    this.refreshArtifactCombatModifiers();
   }
 
   /** @override */
