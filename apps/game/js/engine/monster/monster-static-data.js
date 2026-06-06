@@ -4,6 +4,7 @@
  * 出生时设定的不可变属性，来源于 data/definitions/monsters.json 的某条妖兽定义。
  */
 import { StaticData } from '../abstract/static-data.js';
+import { resolveMonsterAttributes } from './monster-attributes.js';
 
 export class MonsterStaticData extends StaticData {
   /**
@@ -11,6 +12,7 @@ export class MonsterStaticData extends StaticData {
    * @param {Object} instance 实例化时附加的信息（如出生坐标、唯一名称）
    */
   constructor(def, instance = {}) {
+    const attributes = resolveMonsterAttributes(def, instance.monsterAttributeTemplates);
     super({
       defId: def.id,
       name: instance.name || def.name,
@@ -20,7 +22,10 @@ export class MonsterStaticData extends StaticData {
       gradeName: def.gradeName,
       equivalentRealm: def.equivalentRealm,
       habitat: Object.freeze([...(def.habitat || [])]),
-      attributes: Object.freeze({ ...(def.attributes || {}) }),
+      attributes: Object.freeze({ ...attributes }),
+      templates: Object.freeze({ ...(def.templates || {}) }),
+      skills: Object.freeze([...(def.skills || [])]),
+      monsterAttributeTemplates: instance.monsterAttributeTemplates || null,
       innateAbility: def.innateAbility ? Object.freeze({ ...def.innateAbility }) : null,
       drops: Object.freeze([...(def.drops || [])]),
       rarity: def.rarity,

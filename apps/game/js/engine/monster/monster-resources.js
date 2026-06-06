@@ -7,6 +7,7 @@
 import { ItemRegistry } from '../items/item-registry.js';
 import { resolveCombatEncounter } from '../combat/combat-encounter.js';
 import { applyCultivationExperience } from '../npc/cultivation-experience.js';
+import { resolveMonsterAttributes } from './monster-attributes.js';
 
 const GRADED_BASE_IDS = new Set(['monster_core', 'beast_material']);
 
@@ -76,9 +77,10 @@ export function describeMonsterDrops(drops) {
 export function monsterCombatPower(monster) {
   const statePower = monster?.state?.get?.('power');
   if (Number.isFinite(statePower)) return statePower;
-  const attrs = monster?.staticData?.get?.('attributes') || monster?.attributes || {};
+  const attrs = monster?.staticData?.get?.('attributes')
+    || resolveMonsterAttributes(monster?._def || monster, monster?.staticData?.get?.('monsterAttributeTemplates'));
   const grade = monsterGrade(monster);
-  return (attrs.strength || 0) + (attrs.speed || 0) * 0.5 + (attrs.defense || 0) + grade * 30;
+  return Math.round((attrs.attack || attrs.strength || 0) + (attrs.speed || 0) * 0.5 + (attrs.defense || 0) + grade * 30);
 }
 
 function alivePartyMember(entity) {

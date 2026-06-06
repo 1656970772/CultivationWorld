@@ -9,6 +9,7 @@
  * - age ≥ 100% maxAge → 必死
  */
 import { RuntimeState } from '../abstract/runtime-state.js';
+import { resolveMonsterAttributes } from './monster-attributes.js';
 
 export class MonsterState extends RuntimeState {
   /**
@@ -19,8 +20,8 @@ export class MonsterState extends RuntimeState {
    */
   constructor(def, opts = {}) {
     const rng = opts.rng;
-    const attrs = def.attributes || {};
-    const maxHp = (attrs.vitality || 30) * 10;
+    const attrs = resolveMonsterAttributes(def, opts.monsterAttributeTemplates);
+    const maxHp = attrs.hp || 1;
 
     const life = opts.lifespanConfig || {};
     const daysPerYear = life.daysPerYear ?? 360;
@@ -43,7 +44,7 @@ export class MonsterState extends RuntimeState {
       hp: maxHp,
       maxHp,
       // 战斗力粗略估算：力量 + 速度*0.5 + 防御 + 阶位加成
-      power: (attrs.strength || 0) + (attrs.speed || 0) * 0.5 + (attrs.defense || 0) + def.grade * 30,
+      power: Math.round((attrs.attack || 0) + (attrs.speed || 0) * 0.5 + (attrs.defense || 0) + def.grade * 30),
       behaviorState: 'wander', // wander | hunt | rest
       targetNpcId: null,
       restDays: 0,

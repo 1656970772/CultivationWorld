@@ -52,8 +52,13 @@ export class MonsterEntity extends BaseEntity {
       homeX: opts.x,
       homeY: opts.y,
       wanderRadius: opts.wanderRadius ?? 12,
+      monsterAttributeTemplates: opts.monsterAttributeTemplates,
     });
-    this.state = new MonsterState(def, { lifespanConfig: opts.lifespanConfig, rng: this._rng });
+    this.state = new MonsterState(def, {
+      lifespanConfig: opts.lifespanConfig,
+      rng: this._rng,
+      monsterAttributeTemplates: opts.monsterAttributeTemplates,
+    });
     this.initSpatial({ x: opts.x, y: opts.y, speed: opts.speed ?? 3 });
 
     this._senseRange = opts.senseRange ?? 8;

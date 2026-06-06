@@ -8,6 +8,7 @@
  * 确定性随机（seed），保证同 seed 下分布一致（与纯数据/渲染模式结果一致）。
  */
 import { MonsterEntity } from './monster-entity.js';
+import { resolveMonsterAttributes } from './monster-attributes.js';
 import { isPassable } from '../world/pathfinding.js';
 
 export class MonsterSpawner {
@@ -24,13 +25,15 @@ export class MonsterSpawner {
    * @param {number} deps.mapHeight
    */
   constructor({ tileIndex, terrainIndex, monsterDefs, factions, spawnConfig,
-                movementConfig, rankOrderMap, mapWidth, mapHeight, monsterPackConfig, rng }) {
+                movementConfig, rankOrderMap, mapWidth, mapHeight,
+                monsterPackConfig, monsterAttributeTemplates, rng }) {
     this.tileIndex = tileIndex;
     this.terrainIndex = terrainIndex;
     this.monsterDefs = monsterDefs || [];
     this.factions = factions || [];
     this.cfg = spawnConfig || {};
     this.movementConfig = movementConfig || {};
+    this.monsterAttributeTemplates = monsterAttributeTemplates || {};
     this.rankOrderMap = rankOrderMap || {};
     this.mapWidth = mapWidth || 300;
     this.mapHeight = mapHeight || 300;
@@ -153,7 +156,8 @@ export class MonsterSpawner {
     const byGrade = this.movementConfig.monsterSpeedByGrade || {};
     const base = byGrade[String(def.grade)] ?? byGrade.default ?? 3;
     const attrWeight = this.movementConfig.monsterSpeedAttributeWeight ?? 0;
-    return Math.max(1, Math.round(base + (def.attributes?.speed || 0) * attrWeight));
+    const attrs = resolveMonsterAttributes(def, this.monsterAttributeTemplates);
+    return Math.max(1, Math.round(base + (attrs.speed || 0) * attrWeight));
   }
 
   /**
@@ -241,6 +245,7 @@ export class MonsterSpawner {
       combatConfig,
       lifespanConfig: this._lifespanConfig,
       rng: this._rng,
+      monsterAttributeTemplates: this.monsterAttributeTemplates,
     });
   }
 
