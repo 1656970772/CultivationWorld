@@ -36,6 +36,7 @@ const configs = {
   aiConfig: loadJSON('data/config/ai-config.json'),
   names: loadJSON('data/definitions/names.json'),
   monsters: loadJSON('data/definitions/monsters.json'),
+  monsterAttributeTemplates: loadJSON('data/definitions/monster-attribute-templates.json'),
   monsterSpawn: loadJSON('data/balance/monster-spawn.json'),
 };
 

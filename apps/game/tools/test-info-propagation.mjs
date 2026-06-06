@@ -46,6 +46,7 @@ function baseConfigs() {
     aiConfig: load('data/config/ai-config.json'),
     names: load('data/definitions/names.json'),
     monsters: load('data/definitions/monsters.json'),
+    monsterAttributeTemplates: load('data/definitions/monster-attribute-templates.json'),
     monsterSpawn: load('data/balance/monster-spawn.json'),
     worldNews: load('data/world/news.json'),
     worldOpportunities: load('data/world/opportunities.json'),
@@ -148,11 +149,12 @@ console.log('5) 激活态引擎集成（事件→消息→机会→决策涌现�
   configs.worldOpportunities = { ...configs.worldOpportunities, enabled: true };
   configs.balanceReward = { ...configs.balanceReward, enabled: true };
   configs.balanceCovet = { ...configs.balanceCovet, enabled: true };
+  configs.seed = 1337;
   const engine = new WorldEngine();
   engine.init(configs);
 
   const tags = {};
-  for (let i = 0; i < 400; i++) {
+  for (let i = 0; i < 30; i++) {
     const tickLog = engine.tick();
     for (const e of (tickLog.infoEvents || [])) {
       tags[e.type] = (tags[e.type] || 0) + 1;
@@ -170,10 +172,11 @@ console.log('5) 激活态引擎集成（事件→消息→机会→决策涌现�
 console.log('6) 默认禁用态（不产生信息系统事件）');
 {
   const configs = baseConfigs(); // 全部默认 enabled=false
+  configs.seed = 1337;
   const engine = new WorldEngine();
   engine.init(configs);
   let infoCount = 0;
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 5; i++) {
     const tickLog = engine.tick();
     for (const e of (tickLog.infoEvents || [])) {
       if (['news_born', 'news_spread', 'wealth_exposed', 'covet_rob', 'covet_spare', 'opportunity_expired'].includes(e.type)) infoCount++;

@@ -58,6 +58,7 @@ const configs = {
   balanceReward: loadJSON('data/balance/reward.json'),
   balanceRelationship: loadJSON('data/balance/relationship.json'),
   monsters: loadJSON('data/definitions/monsters.json'),
+  monsterAttributeTemplates: loadJSON('data/definitions/monster-attribute-templates.json'),
   monsterSpawn: loadJSON('data/balance/monster-spawn.json'),
   worldNews: loadJSON('data/world/news.json'),
   worldOpportunities: loadJSON('data/world/opportunities.json'),

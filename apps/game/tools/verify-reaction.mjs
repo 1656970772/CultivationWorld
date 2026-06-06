@@ -49,6 +49,7 @@ function baseConfigs() {
     balanceRelationship: load('data/balance/relationship.json'),
     balanceReaction: load('data/balance/reaction.json'),
     monsters: load('data/definitions/monsters.json'),
+    monsterAttributeTemplates: load('data/definitions/monster-attribute-templates.json'),
     monsterSpawn: load('data/balance/monster-spawn.json'),
     worldNews: load('data/world/news.json'),
     worldOpportunities: load('data/world/opportunities.json'),
