@@ -2,7 +2,7 @@
 
 > 项目代号：WorldDynamic  
 > 创建日期：2026-05-23  
-> 最后更新：2026-06-06（新增任务系统角色生涯任务网设计与修士战斗属性体系规格；记录妖兽属性模板与境界清理 ADR、系统文档和数据模型）
+> 最后更新：2026-06-06（新增任务系统角色生涯任务网设计与修士战斗属性体系规格；记录妖兽属性模板与境界清理 ADR、系统文档、数据模型和验证报告）
 
 ## 当前事实
 
@@ -98,7 +98,8 @@ docs/
 │   └── reports/
 │       ├── 2026-06-05-Job-Toil启用前验证.md
 │       ├── 2026-06-05-Job-Toil默认启用验证.md
-│       └── 2026-06-06-NPC战斗智能闭环验证.md
+│       ├── 2026-06-06-NPC战斗智能闭环验证.md
+│       └── 2026-06-06-妖兽属性模板与境界清理验证.md
 ├── worldbuilding/
 │   ├── README.md
 │   ├── continent.md
@@ -124,7 +125,7 @@ docs/
 | Job/Toil 实施计划 | `superpowers/plans/2026-06-05-Job-Toil-AI重构实施计划.md` |
 | 动态事件/动态目标 | `systems/event-system.md`、`decisions/adr-049-dynamic-goal-interrupt-policy.md` |
 | GAS 机制资产 | `systems/gameplay-ability-system.md`、`decisions/adr-042-gameplay-ability-system.md` |
-| 妖兽属性模板与境界清理 | `superpowers/specs/2026-06-06-妖兽属性模板与境界清理-design.md`、`superpowers/plans/2026-06-06-妖兽属性模板与境界清理实施计划.md`、`decisions/adr-052-monster-templates-and-rank-cleanup.md`、`systems/monster-attribute-templates.md`、`data-models/monster.md` |
+| 妖兽属性模板与境界清理 | `superpowers/specs/2026-06-06-妖兽属性模板与境界清理-design.md`、`superpowers/plans/2026-06-06-妖兽属性模板与境界清理实施计划.md`、`decisions/adr-052-monster-templates-and-rank-cleanup.md`、`systems/monster-attribute-templates.md`、`data-models/monster.md`、`superpowers/reports/2026-06-06-妖兽属性模板与境界清理验证.md` |
 | 物品与怀璧其罪 | `systems/item-covet.md`、`decisions/adr-025-item-covet-system.md` |
 | 信息传播与机会点 | `systems/opportunity-system.md`、`decisions/adr-024-info-propagation-opportunity.md` |
 | 世界观 Wiki | `worldbuilding/wiki/README.md` |
