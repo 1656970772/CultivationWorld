@@ -1,7 +1,12 @@
+import { calculateNumericArmorDamage } from '../npc/cultivator-combat-attributes.js';
+
 export function resolveCombatEncounter(input = {}) {
   const scene = input.scene || 'generic';
   const power = Math.max(0, Number(input.power) || 0);
-  const defense = Math.max(0, Math.min(0.95, Number(input.defense) || 0));
+  const numericArmor = numericArmorDamageEnabled(input.worldContext);
+  const defense = numericArmor
+    ? Math.max(0, Number(input.defense) || 0)
+    : Math.max(0, Math.min(0.95, Number(input.defense) || 0));
   const damage = resolveDamage(scene, power, defense, input);
   const winChance = computeWinChance(scene, input);
 
@@ -28,16 +33,34 @@ function resolveDamage(scene, power, defense, input) {
   if (scene === 'monster_ambush') {
     const roll = 0.8 + random() * 0.4;
     const multiplier = sceneDamageMultiplier(scene, input.worldContext);
-    return Math.max(1, power * (1 - defense) * roll * multiplier);
+    return resolveAttackDamage({
+      attack: power,
+      defense,
+      randomMultiplier: roll,
+      sceneMultiplier: multiplier,
+      worldContext: input.worldContext,
+    });
   }
   if (scene === 'monster_counter') {
     const randomBonus = Math.max(0, Number(input.randomBonus ?? 10) || 0);
     const multiplier = sceneDamageMultiplier(scene, input.worldContext);
-    return Math.max(1, (power + random() * randomBonus) * (1 - defense) * multiplier);
+    return resolveAttackDamage({
+      attack: power + random() * randomBonus,
+      defense,
+      randomMultiplier: 1,
+      sceneMultiplier: multiplier,
+      worldContext: input.worldContext,
+    });
   }
   if (scene === 'pvp') {
     const multiplier = sceneDamageMultiplier(scene, input.worldContext);
-    return Math.max(1, power * (1 - defense) * multiplier);
+    return resolveAttackDamage({
+      attack: power,
+      defense,
+      randomMultiplier: 1,
+      sceneMultiplier: multiplier,
+      worldContext: input.worldContext,
+    });
   }
   if (scene === 'quest_risk') {
     const maxHp = Number(input.maxHp ?? input.defender?.state?.get?.('maxHp') ?? 0) || 0;
@@ -47,6 +70,28 @@ function resolveDamage(scene, power, defense, input) {
     return Math.max(1, maxHp * ratio);
   }
   return null;
+}
+
+function resolveAttackDamage({
+  attack,
+  defense,
+  randomMultiplier = 1,
+  sceneMultiplier = 1,
+  worldContext,
+}) {
+  if (numericArmorDamageEnabled(worldContext)) {
+    return calculateNumericArmorDamage({
+      attack,
+      defense,
+      randomMultiplier,
+      sceneMultiplier,
+    });
+  }
+  return Math.max(1, attack * (1 - defense) * randomMultiplier * sceneMultiplier);
+}
+
+function numericArmorDamageEnabled(worldContext) {
+  return worldContext?.balanceConfig?.combat?.cultivatorAttributes?.numericArmorDamage === true;
 }
 
 function sceneDamageMultiplier(scene, worldContext) {

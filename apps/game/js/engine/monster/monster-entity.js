@@ -17,6 +17,7 @@ import { MonsterState } from './monster-state.js';
 import { MONSTER_TIER1_BT, MONSTER_TIER2_BT, MONSTER_TIER3_BT } from './monster-bt-presets.js';
 import { applyDamage } from '../combat/combat-pipeline.js';
 import { resolveCombatEncounter } from '../combat/combat-encounter.js';
+import { readEffectiveCombatAttribute } from '../npc/cultivator-combat-attributes.js';
 
 /** 妖兽阶位 → 近似修炼境界 order（用于与 NPC 境界比较强弱） */
 const GRADE_TO_ORDER = {
@@ -563,7 +564,10 @@ export class MonsterEntity extends BaseEntity {
     const combatCfg = worldContext?.balanceConfig?.combat || {};
     const defMap = combatCfg.npcCombat?.baseDef || {};
     const lockCfg = combatCfg.lockHp || {};
-    const def = defMap[npc.state.get('rankId')] ?? 0;
+    const numericArmorDamage = combatCfg.cultivatorAttributes?.numericArmorDamage === true;
+    const def = numericArmorDamage
+      ? readEffectiveCombatAttribute(npc, 'defense', npc.state?.get?.('defense') ?? 0)
+      : defMap[npc.state.get('rankId')] ?? 0;
     const encounter = resolveCombatEncounter({
       attacker: this,
       defender: npc,

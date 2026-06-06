@@ -29,6 +29,7 @@ import { PopulationService } from './services/population-service.js';
 import { DeathCollector } from './services/death-collector.js';
 import { InfoCoordinator } from './services/info-coordinator.js';
 import { MonsterRespawnService } from './services/monster-respawn-service.js';
+import { readEffectiveCombatAttribute } from '../npc/cultivator-combat-attributes.js';
 
 export class TickManager {
   /**
@@ -707,6 +708,22 @@ export class TickManager {
    */
   _npcCombatPower(npc) {
     if (!npc || !npc.state) return 0;
+    const combat = this.balanceConfig?.combat || {};
+    if (combat.cultivatorAttributes?.enabled === true) {
+      const attack = readEffectiveCombatAttribute(npc, 'attack', 0);
+      const defense = readEffectiveCombatAttribute(npc, 'defense', 0);
+      const speed = readEffectiveCombatAttribute(npc, 'speed', 0);
+      const soul = readEffectiveCombatAttribute(npc, 'soul', 0);
+      const injury = npc.state.get('injuryLevel') || 0;
+      const injuryFactor = Math.max(0.2, 1 - injury * 0.08);
+      const artifactFactor = this._artifactCombatFactor(npc);
+      return Math.max(0.01, (
+        attack
+        + defense * 0.7
+        + speed * 0.35
+        + soul * 0.25
+      ) * injuryFactor * artifactFactor);
+    }
     const rank = this.ranksData.find(r => r.id === npc.state.get('rankId'));
     const rankBase = rank ? (rank.successionScore ?? rank.order ?? 1) : 1;
     const qi = npc.state.get('qi') || 0;
