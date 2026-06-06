@@ -323,7 +323,7 @@ export class InfoCoordinator {
     if (doGuild) this._lastGuildSyncDay = day;
     for (const [fid, members] of byFaction) {
       const faction = this.entityRegistry.getById(fid);
-      const isGuild = faction?.staticData?.type === 'mortal_kingdom' || /org_|商会|坊市/.test(fid);
+      const isGuild = /org_|商会|坊市/.test(fid);
       if (isGuild) {
         if (doGuild) syncGuildNews(members, guildCfg, day);
       } else if (doSect) {

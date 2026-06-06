@@ -38,7 +38,6 @@ export const FactionThemeColor = Object.freeze({
   righteous: '#3fa7d6',      // 正派：青蓝
   evil: '#b23a6b',           // 邪修：紫红
   demon: '#7a2e2e',          // 魔道：暗红
-  mortal_kingdom: '#d4a437', // 王朝：金黄
   neutral: '#8a93a6',        // 中立：灰蓝
   default: '#8a93a6',
 });
@@ -48,7 +47,6 @@ export const FactionTypeName = Object.freeze({
   righteous: '正派宗门',
   evil: '邪修宗门',
   demon: '魔道',
-  mortal_kingdom: '凡俗王朝',
   neutral: '中立势力',
 });
 

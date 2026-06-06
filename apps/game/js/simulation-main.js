@@ -12,7 +12,6 @@ const FACTION_TYPE_NAMES = {
   evil: '邪派',
   neutral: '中立',
   demon: '妖族',
-  mortal_kingdom: '凡人王朝',
 };
 
 class SimulationApp {

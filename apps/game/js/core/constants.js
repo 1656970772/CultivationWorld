@@ -15,8 +15,7 @@ export const FACTION_TYPES = {
   RIGHTEOUS: 'righteous',
   EVIL: 'evil',
   NEUTRAL: 'neutral',
-  DEMON: 'demon',
-  MORTAL_KINGDOM: 'mortal_kingdom'
+  DEMON: 'demon'
 };
 
 export const FACTION_TRAITS = {

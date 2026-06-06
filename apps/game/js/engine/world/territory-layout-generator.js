@@ -70,7 +70,7 @@ export class TerritoryLayoutGenerator {
   _sizeForFaction(faction) {
     const type = faction.staticData?.factionType;
     const territoryCount = faction.state.get('territoryCount') || 1;
-    const isSect = ['righteous', 'evil', 'demon', 'mortal_kingdom'].includes(type);
+    const isSect = ['righteous', 'evil', 'demon'].includes(type);
     const isOrg = String(faction.id).startsWith('org_');
 
     if (isOrg) {

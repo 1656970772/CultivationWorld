@@ -32,8 +32,7 @@ const FACTION_COLORS = {
   righteous: '#2ecc71',
   evil: '#e74c3c',
   neutral: '#3498db',
-  demon: '#9b59b6',
-  mortal_kingdom: '#f1c40f'
+  demon: '#9b59b6'
 };
 
 export class GraphBuilder {
@@ -535,7 +534,6 @@ export class GraphBuilder {
       evil_aggression: { desc: '邪派攻击权重+', targetType: 'evil', influence: 'negative' },
       righteous_defense: { desc: '正派防御权重+', targetType: 'righteous', influence: 'positive' },
       demon_aggression: { desc: '妖族攻击权重+', targetType: 'demon', influence: 'negative' },
-      mortal_stability: { desc: '凡人稳定度', targetType: 'mortal_kingdom', influence: 'negative' },
       all_aggression: { desc: '全体攻击欲望+', targetType: null, influence: 'negative' },
       all_stability: { desc: '全体稳定度', targetType: null, influence: 'negative' },
       expansion_desire: { desc: '扩张欲望+', targetType: null, influence: 'neutral' }
