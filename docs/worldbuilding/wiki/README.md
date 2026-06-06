@@ -1,6 +1,6 @@
 # 世界观 Wiki
 
-> 最后更新：2026-06-05  
+> 最后更新：2026-06-06
 > 定位：收纳已敲定设定的可扩展 Wiki。当前数据事实以 `apps/game/data/` 为准。
 
 ## 目录
@@ -11,6 +11,7 @@ wiki/
 ├── wiki-template.md
 ├── rules/
 │   ├── archetype-obsession.md
+│   ├── combat-attributes-and-realms.md
 │   ├── escape-talisman-and-lock-hp.md
 │   ├── faction-crisis-defection.md
 │   ├── leader-succession.md
@@ -41,6 +42,7 @@ wiki/
 | `rules/personality.md` | 规则 | 已敲定 |
 | `rules/travel-and-risk.md` | 规则 | 已敲定 |
 | `rules/archetype-obsession.md` | 规则 | 已敲定 |
+| `rules/combat-attributes-and-realms.md` | 规则 | 已敲定，待数据实现 |
 | `rules/wealth-exposed.md` | 规则 | 已敲定 |
 | `rules/faction-crisis-defection.md` | 规则 | 已敲定 |
 | `rules/escape-talisman-and-lock-hp.md` | 规则/物品 | 已敲定 |
