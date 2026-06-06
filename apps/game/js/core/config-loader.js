@@ -36,7 +36,7 @@ export async function loadGameConfigs() {
     balancePersonality, balanceRisk, balanceMemory, balanceObsession, balanceEmotion,
     balanceUtility, balanceReward, balanceRelationship, balanceReaction,
     gameConfig, aiConfig, names,
-    monsters, monsterSpawn,
+    monsters, monsterAttributeTemplates, monsterSpawn,
     worldNews, worldOpportunities, dynamicEvents, dynamicGoals, balanceCovet,
     itemsCurrency, itemsMaterial, itemsPill, itemsArtifact, itemsTalisman, itemsTechnique,
     tags, combatEffects, coreEffects, abilities,
@@ -88,6 +88,7 @@ export async function loadGameConfigs() {
     loadJSON('data/config/ai-config.json'),
     loadJSON('data/definitions/names.json'),
     loadJSON('data/definitions/monsters.json'),
+    loadJSON('data/definitions/monster-attribute-templates.json'),
     loadJSON('data/balance/monster-spawn.json'),
     loadJSON('data/world/news.json'),
     loadJSON('data/world/opportunities.json'),
@@ -151,7 +152,7 @@ export async function loadGameConfigs() {
     balancePersonality, balanceRisk, balanceMemory, balanceObsession, balanceEmotion,
     balanceUtility, balanceReward, balanceRelationship, balanceReaction,
     gameConfig, aiConfig, names,
-    monsters, monsterSpawn,
+    monsters, monsterAttributeTemplates, monsterSpawn,
     worldNews, worldOpportunities, dynamicEvents, dynamicGoals, balanceCovet, itemDefs,
     tags, effects, abilities, jobs, toils,
   };
@@ -192,6 +193,7 @@ export async function loadGameConfigs() {
  * @property {Object} jobs               合并后的 Job 定义
  * @property {Object} toils              合并后的 Toil 定义
  * @property {Array}  monsters           妖兽定义
+ * @property {Object} monsterAttributeTemplates 妖兽五层模板与阶位基准
  * @property {Object} monsterSpawn       妖兽分布平衡配置
  * @property {Object} gameConfig         全局游戏配置
  * @property {Object} aiConfig           AI 配置

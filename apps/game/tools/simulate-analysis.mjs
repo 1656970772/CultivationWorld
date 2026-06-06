@@ -73,6 +73,7 @@ const configs = {
   aiConfig:           loadJSON('data/config/ai-config.json'),
   names:              loadJSON('data/definitions/names.json'),
   monsters:           loadJSON('data/definitions/monsters.json'),
+  monsterAttributeTemplates: loadJSON('data/definitions/monster-attribute-templates.json'),
   monsterSpawn:       loadJSON('data/balance/monster-spawn.json'),
   // 信息传播 / 机会点 / 怀璧其罪系统（ADR-024/025）。默认 enabled=false，不改变现有行为。
   worldNews:          loadJSON('data/world/news.json'),

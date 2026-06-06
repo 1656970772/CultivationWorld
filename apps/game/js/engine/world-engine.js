@@ -80,6 +80,7 @@ export class WorldEngine {
     this._gameConfig = configs.gameConfig || {};
     this._aiConfig = configs.aiConfig || {};
     this._namesConfig = configs.names || {};
+    this._monsterAttributeTemplates = configs.monsterAttributeTemplates || {};
     this._modifierTemplates = configs.modifierTemplates || [];
     // 信息传播 / 机会 / 怀璧其罪系统配置（ADR-024/025）。默认 enabled=false，不改变现有行为。
     this._worldNewsConfig = configs.worldNews || {};
@@ -461,6 +462,7 @@ export class WorldEngine {
       rankOrderMap: this._buildRankOrderMap(),
       mapWidth: this._mapWidth,
       mapHeight: this._mapHeight,
+      monsterAttributeTemplates: this._monsterAttributeTemplates,
       // 群居成簇生成（ADR-028）：仅 goalsEnabled 时启用，否则保持一期散点分布。
       monsterPackConfig: this._relationshipGoalsEnabled()
         ? (this._balanceConfig.relationship?.monsterPack || {})
