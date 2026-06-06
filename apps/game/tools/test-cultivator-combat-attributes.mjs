@@ -75,12 +75,29 @@ const effectiveEntity = {
 };
 assertEqual(readEffectiveCombatAttribute(effectiveEntity, 'attack', 1), 42, 'attributes.getEffective finite number has priority');
 
+const stringEffectiveEntity = {
+  attributes: {
+    getEffective: (key) => (key === 'attack' ? '42' : undefined),
+  },
+  state: {
+    get: () => 7,
+  },
+};
+assertEqual(readEffectiveCombatAttribute(stringEffectiveEntity, 'attack', 1), 42, 'attributes.getEffective numeric string has priority');
+
 const stateEntity = {
   state: {
     get: (key) => (key === 'defense' ? 11 : undefined),
   },
 };
 assertEqual(readEffectiveCombatAttribute(stateEntity, 'defense', 1), 11, 'state.get is used when attributes are absent');
+
+const stringStateEntity = {
+  state: {
+    get: (key) => (key === 'defense' ? '11' : undefined),
+  },
+};
+assertEqual(readEffectiveCombatAttribute(stringStateEntity, 'defense', 1), 11, 'state.get numeric string is converted');
 assertEqual(readEffectiveCombatAttribute(null, 'speed', 9), 9, 'fallback is used when entity is absent');
 
 console.log('6) calculates numeric armor damage');
@@ -91,8 +108,21 @@ assertEqual(calculateNumericArmorDamage({
   sceneMultiplier: 1,
   randomMultiplier: 1,
 }), 50, 'equal attack and defense halves damage');
+assertEqual(calculateNumericArmorDamage({ attack: 100, defense: 0 }), 100, 'omitted multipliers default to 1');
 assertEqual(calculateNumericArmorDamage({ attack: 100, defense: 0, skillMultiplier: 2 }), 200, 'zero defense takes full skill damage');
 assertEqual(calculateNumericArmorDamage({ attack: 0, defense: 100, randomMultiplier: 1 }), 1, 'minimum damage is 1');
+assertEqual(calculateNumericArmorDamage({
+  attack: 100,
+  defense: 0,
+  skillMultiplier: Number.NaN,
+}), 1, 'invalid explicit multipliers do not fall back to normal damage');
+assertEqual(calculateNumericArmorDamage({
+  attack: 100,
+  defense: 0,
+  skillMultiplier: -2,
+  sceneMultiplier: -2,
+  randomMultiplier: 1,
+}), 1, 'negative multipliers do not multiply into positive damage');
 
 if (failures > 0) {
   console.error(`\nCultivator combat attribute tests failed: ${failures}`);

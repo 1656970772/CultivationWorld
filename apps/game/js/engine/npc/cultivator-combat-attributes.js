@@ -18,7 +18,7 @@ function nonNegative(value, fallback = 0) {
 
 export function normalizeRankStage(stage, rankId = 'mortal') {
   if (rankId === 'mortal') return null;
-  return Object.hasOwn(RANK_STAGE_MULTIPLIERS, stage) ? stage : 'early';
+  return Object.prototype.hasOwnProperty.call(RANK_STAGE_MULTIPLIERS, stage) ? stage : 'early';
 }
 
 export function rankStageMultiplier(stage, rankId = 'mortal', tables = {}) {
@@ -65,12 +65,14 @@ export function calculateCultivatorCombatAttributes({
 
 export function readEffectiveCombatAttribute(entity, key, fallback = 0) {
   const effectiveValue = entity?.attributes?.getEffective?.(key);
-  if (Number.isFinite(effectiveValue)) return effectiveValue;
+  const effectiveNumber = Number(effectiveValue);
+  if (Number.isFinite(effectiveNumber)) return effectiveNumber;
 
   const stateValue = typeof entity?.state?.get === 'function'
     ? entity.state.get(key)
     : entity?.state?.[key];
-  if (Number.isFinite(stateValue)) return stateValue;
+  const stateNumber = Number(stateValue);
+  if (Number.isFinite(stateNumber)) return stateNumber;
 
   return fallback;
 }
@@ -85,13 +87,17 @@ export function calculateNumericArmorDamage({
 } = {}) {
   const atk = nonNegative(attack);
   const def = nonNegative(defense);
+  const skill = nonNegative(skillMultiplier);
+  const scene = nonNegative(sceneMultiplier);
+  const random = nonNegative(randomMultiplier);
+  const extraReduction = nonNegative(extraReductionMultiplier);
   const baseDamage = atk
-    * finiteNumber(skillMultiplier, 1)
-    * finiteNumber(sceneMultiplier, 1);
+    * skill
+    * scene;
   const armorCoefficient = atk > 0 ? atk / (atk + def) : 0;
   const damage = baseDamage
     * armorCoefficient
-    * finiteNumber(randomMultiplier, 1)
-    * finiteNumber(extraReductionMultiplier, 1);
+    * random
+    * extraReduction;
   return Math.max(1, damage);
 }
