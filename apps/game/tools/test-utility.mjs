@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 /**
- * Utility 考量层单元测试（ADR-020 / ADR-021）。
+ * Utility 考量层单元测试（ADR-020 / ADR-021 / NPC效用评分公式升级）。
  * 覆盖：
  *   1) Consideration 各响应曲线在 [0,1] 范围且单调性正确
- *   2) Goal.score 乘法语义：score = priority × Π(consideration)
- *   3) 默认态：无 considerations 时 score === priority
+ *   2) Goal.score 新公式：加权几何平均、floor、偏置夹取、收益放大、风险压制
+ *   3) 默认态：无 considerations / modulators / scoreContext 时 score === priority
  *   4) 派生输入(timeValue)从 derived 表读取
- *   5) 情绪修正风险厌恶：anger 降低风险折扣，fear 提高风险折扣（ADR-021）
- *   6) 随机扰动（上头）：命中时 Goal 分数按 mult 放大（ADR-021）
- *   7) 路径偏好：explore_first 时探索类目标获得 deltaPriority 加成（ADR-021）
+ *   5) npc-utility 把 goalRisk / expectedValue 写入 Goal 评分上下文
+ *   6) 随机扰动（上头）：命中时 Goal 分数按 mult 放大且受偏置上限保护
+ *   7) 路径偏好：explore_first 时探索类目标获得 deltaPriority 加成
  *
  * 用法：node tools/test-utility.mjs
  */
@@ -55,21 +55,44 @@ console.log('1) 响应曲线');
   assert(log.evaluate(stateOf({ x: 0.95 })) > log.evaluate(stateOf({ x: 0.5 })), 'logistic 单调递增');
 }
 
-console.log('2) Goal.score 乘法语义');
+console.log('2) Goal.score 新公式语义');
 {
   const g = new Goal({ id: 'g1', priority: 80, urgency: 0 });
-  assert(g.score() === 80, '无考量因素 score===priority');
+  assert(g.score() === 80, '无考量因素、无调制项、无评分上下文时 score===priority');
 
   const c1 = new Consideration({ id: 'a', inputKey: 'x', curve: CurveType.LINEAR, params: { slope: 1 } });
   const c2 = new Consideration({ id: 'b', inputKey: 'y', curve: CurveType.LINEAR, params: { slope: 1 } });
   g.evaluateConsiderations([c1, c2], stateOf({ x: 0.5, y: 0.5 }), {});
-  assert(approx(g.score(), 80 * 0.5 * 0.5), 'score = priority × Π(consideration) = 80×0.5×0.5=20');
+  assert(approx(g.score(), 80 * 0.5), '两个 0.5 consideration 使用几何平均，score=80×0.5=40');
 
-  // 考量因素与 modulator 叠加
-  const g2 = new Goal({ id: 'g2', priority: 100, urgency: 0 });
-  g2.modulators.push({ label: 'obsession', deltaPriority: 0, mult: 2 });
-  g2.evaluateConsiderations([c1], stateOf({ x: 1 }), {});
-  assert(approx(g2.score(), 100 * 2 * 1), 'modulator.mult 与 consideration 同时生效');
+  const weighted = new Goal({ id: 'gWeighted', priority: 100, urgency: 0 });
+  const cw1 = new Consideration({ id: 'w1', inputKey: 'x', weight: 3, curve: CurveType.LINEAR, params: { slope: 1 } });
+  const cw2 = new Consideration({ id: 'w2', inputKey: 'y', weight: 1, curve: CurveType.LINEAR, params: { slope: 1 } });
+  weighted.evaluateConsiderations([cw1, cw2], stateOf({ x: 0.25, y: 1 }), {});
+  const expectedWeightedMean = Math.exp((3 * Math.log(0.25) + Math.log(1)) / 4);
+  assert(approx(weighted.score(), 100 * expectedWeightedMean), 'consideration.weight 参与加权几何平均');
+
+  const floored = new Goal({ id: 'gFloor', priority: 100, urgency: 0 });
+  const cf = new Consideration({ id: 'floor', inputKey: 'x', floor: 0.2, curve: CurveType.LINEAR, params: { slope: 1 } });
+  floored.evaluateConsiderations([cf], stateOf({ x: 0 }), {});
+  assert(approx(floored.score(), 20), 'consideration.floor=0.2 防止软因素把目标压成 0');
+
+  const modded = new Goal({ id: 'gMod', priority: 70, urgency: 0 });
+  modded.modulators.push({ label: 'obsession', deltaPriority: 0, mult: 1.5 });
+  assert(approx(modded.score(), 105), '普通 modulator.mult 保持乘法放大：70×1.5=105');
+
+  const capped = new Goal({ id: 'gCap', priority: 50, urgency: 0 });
+  capped.modulators.push({ label: 'tooLarge', deltaPriority: 0, mult: 10 });
+  capped.setScoreContext({ scoreConfig: { minBiasMult: 0.25, maxBiasMult: 3 } });
+  assert(approx(capped.score(), 150), 'biasMult 按 maxBiasMult=3 夹取：50×3=150');
+
+  const rewarded = new Goal({ id: 'gReward', priority: 60, urgency: 0 });
+  rewarded.setScoreContext({ expectedValue: 0.5, scoreConfig: { rewardWeight: 0.5 } });
+  assert(approx(rewarded.score(), 75), 'rewardMult=1+0.5×0.5，score=60×1.25=75');
+
+  const risky = new Goal({ id: 'gRisk', priority: 60, urgency: 0 });
+  risky.setScoreContext({ goalRisk: 0.5, riskWeight: 1 });
+  assert(approx(risky.score(), 40), 'riskMult=1/(1+1×0.5)，score=60/1.5=40');
 }
 
 console.log('3) 派生输入 timeValue');
