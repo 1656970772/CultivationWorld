@@ -2,7 +2,7 @@
 
 > 项目代号：WorldDynamic  
 > 创建日期：2026-05-23  
-> 最后更新：2026-06-07（新增修为数值化与突破重构规格；此前新增修士战斗属性体系 ADR、系统文档、数据模型与实施计划；新增妖兽属性模板与境界清理实施计划、ADR、系统文档、数据模型和验证报告；补充 NPC 战斗智能闭环阶段 6 验证报告与提交前收尾修复计划；新增任务系统角色生涯任务网设计与修士战斗属性体系规格）
+> 最后更新：2026-06-07（新增 NPC 效用评分公式升级设计；此前新增修为数值化与突破重构规格、修士战斗属性体系 ADR、系统文档、数据模型与实施计划；新增妖兽属性模板与境界清理实施计划、ADR、系统文档、数据模型和验证报告）
 
 ## 当前事实
 
@@ -81,6 +81,7 @@ docs/
 │   │   ├── 2026-06-06-妖兽属性模板与境界清理-design.md
 │   │   ├── 2026-06-06-修士战斗属性体系-design.md
 │   │   ├── 2026-06-06-任务系统角色生涯任务网设计.md
+│   │   ├── 2026-06-07-NPC效用评分公式升级设计.md
 │   │   └── 2026-06-07-修为数值化与突破重构-design.md
 │   ├── plans/
 │   │   ├── 2026-06-05-ADR-050-收尾实施计划.md
@@ -126,6 +127,7 @@ docs/
 | 文件结构 | `architecture/file-structure.md` |
 | 数据配置 | `data/data-config-rules.md` |
 | AI 架构 | `systems/behavior-tree.md`、`systems/job-toil-ai-spec.md`、`decisions/adr-048-four-layer-reactive-ai.md`、`decisions/adr-050-goap-job-toil-layered-ai.md` |
+| NPC 效用评分公式升级 | `superpowers/specs/2026-06-07-NPC效用评分公式升级设计.md` |
 | Job/Toil 正式启用 | `superpowers/specs/2026-06-05-Job-Toil正式启用前收尾规格.md`、`superpowers/plans/2026-06-05-ADR-050-收尾实施计划.md`、`superpowers/reports/2026-06-05-Job-Toil默认启用验证.md` |
 | Job/Toil 实施计划 | `superpowers/plans/2026-06-05-Job-Toil-AI重构实施计划.md` |
 | 动态事件/动态目标 | `systems/event-system.md`、`decisions/adr-049-dynamic-goal-interrupt-policy.md` |
