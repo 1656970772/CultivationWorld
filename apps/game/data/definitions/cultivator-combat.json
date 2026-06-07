@@ -1,20 +1,116 @@
 {
   "_description": "普通修士裸面板。最终战力还要叠加功法、法宝、体质、灵根、丹药、符箓、阵法与临时状态。",
-  "_scope": "包含当前运行时境界和未来/参考高阶层级；不扩展 data/definitions/ranks.json 的 canonical runtime 境界。",
+  "_scope": "三张战斗表的 ranks key 必须与 data/definitions/ranks.json 的 12 个运行时境界完全一致；旧高阶只保留在历史资料，不作为运行时表项。",
   "version": 1,
   "source": "参考 docs/superpowers/specs/2026-06-06-修士战斗属性体系-design.md 的普通修士方向：气血/防御/攻击低于基表，真元/神魂高于基表，速度接近基表。",
   "ranks": {
-    "mortal": { "name": "凡人", "hp": 120, "yuan": 0, "attack": 16, "defense": 6, "speed": 10, "soul": 5 },
-    "qi_refining": { "name": "炼气", "hp": 220, "yuan": 150, "attack": 48, "defense": 18, "speed": 25, "soul": 32 },
-    "foundation_building": { "name": "筑基", "hp": 650, "yuan": 560, "attack": 145, "defense": 65, "speed": 70, "soul": 105 },
-    "golden_core": { "name": "金丹", "hp": 1900, "yuan": 2000, "attack": 440, "defense": 210, "speed": 190, "soul": 340 },
-    "nascent_soul": { "name": "元婴", "hp": 5600, "yuan": 6900, "attack": 1280, "defense": 640, "speed": 500, "soul": 1100 },
-    "mahayana": { "name": "大乘", "hp": 16000, "yuan": 22500, "attack": 3600, "defense": 1900, "speed": 1300, "soul": 3400 },
-    "tribulation": { "name": "渡劫", "hp": 48000, "yuan": 81250, "attack": 10600, "defense": 5700, "speed": 3500, "soul": 10400 },
-    "spirit_transformation": { "name": "化神", "hp": 144000, "yuan": 275000, "attack": 32300, "defense": 17200, "speed": 9000, "soul": 32500 },
-    "earth_immortal": { "name": "地仙", "hp": 440000, "yuan": 937500, "attack": 98000, "defense": 52500, "speed": 24000, "soul": 104000 },
-    "heaven_immortal": { "name": "天仙", "hp": 1360000, "yuan": 3125000, "attack": 298000, "defense": 165000, "speed": 65000, "soul": 338000 },
-    "great_luo_heaven_immortal": { "name": "大罗天仙", "hp": 4400000, "yuan": 10625000, "attack": 935000, "defense": 525000, "speed": 180000, "soul": 1170000 },
-    "dao_ancestor": { "name": "道祖", "hp": 16000000, "yuan": 43750000, "attack": 3400000, "defense": 2100000, "speed": 600000, "soul": 5200000 }
+    "mortal": {
+      "name": "凡人",
+      "hp": 120,
+      "yuan": 0,
+      "attack": 16,
+      "defense": 6,
+      "speed": 10,
+      "soul": 5
+    },
+    "qi_refining": {
+      "name": "炼气",
+      "hp": 220,
+      "yuan": 150,
+      "attack": 48,
+      "defense": 18,
+      "speed": 25,
+      "soul": 32
+    },
+    "foundation_building": {
+      "name": "筑基",
+      "hp": 650,
+      "yuan": 560,
+      "attack": 145,
+      "defense": 65,
+      "speed": 70,
+      "soul": 105
+    },
+    "golden_core": {
+      "name": "金丹",
+      "hp": 1900,
+      "yuan": 2000,
+      "attack": 440,
+      "defense": 210,
+      "speed": 190,
+      "soul": 340
+    },
+    "nascent_soul": {
+      "name": "元婴",
+      "hp": 5600,
+      "yuan": 6900,
+      "attack": 1280,
+      "defense": 640,
+      "speed": 500,
+      "soul": 1100
+    },
+    "spirit_transformation": {
+      "name": "化神",
+      "hp": 16000,
+      "yuan": 22500,
+      "attack": 3600,
+      "defense": 1900,
+      "speed": 1300,
+      "soul": 3400
+    },
+    "void_refining": {
+      "name": "炼虚",
+      "hp": 48000,
+      "yuan": 81250,
+      "attack": 10600,
+      "defense": 5700,
+      "speed": 3500,
+      "soul": 10400
+    },
+    "body_integration": {
+      "name": "合体",
+      "hp": 144000,
+      "yuan": 275000,
+      "attack": 32300,
+      "defense": 17200,
+      "speed": 9000,
+      "soul": 32500
+    },
+    "mahayana": {
+      "name": "大乘",
+      "hp": 440000,
+      "yuan": 937500,
+      "attack": 98000,
+      "defense": 52500,
+      "speed": 24000,
+      "soul": 104000
+    },
+    "tribulation": {
+      "name": "渡劫",
+      "hp": 1360000,
+      "yuan": 3125000,
+      "attack": 298000,
+      "defense": 165000,
+      "speed": 65000,
+      "soul": 338000
+    },
+    "earth_immortal": {
+      "name": "地仙",
+      "hp": 4400000,
+      "yuan": 10625000,
+      "attack": 935000,
+      "defense": 525000,
+      "speed": 180000,
+      "soul": 1170000
+    },
+    "heaven_immortal": {
+      "name": "天仙",
+      "hp": 16000000,
+      "yuan": 43750000,
+      "attack": 3400000,
+      "defense": 2100000,
+      "speed": 600000,
+      "soul": 5200000
+    }
   }
 }

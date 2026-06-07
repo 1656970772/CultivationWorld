@@ -5,13 +5,18 @@
     "_comment": "游历风险。境界越高越能扛(rankMitigation 降低受伤/死亡)，但所到之处也越凶险——此处先用 rankMitigation 体现『修为越高越安全』，后续可叠加『目的地危险度』。",
     "rankMitigation": {
       "_comment": "境界对受伤/死亡风险的减免系数(乘算)：境界越高越能保命。资源掉落/挑战失败不受此影响。",
-      "mortal": 1.0,
-      "disciple": 1.0,
+      "mortal": 1,
       "qi_refining": 0.9,
       "foundation_building": 0.75,
       "golden_core": 0.6,
       "nascent_soul": 0.45,
-      "spirit_transformation": 0.3
+      "spirit_transformation": 0.3,
+      "void_refining": 0.24,
+      "body_integration": 0.2,
+      "mahayana": 0.16,
+      "tribulation": 0.12,
+      "earth_immortal": 0.09,
+      "heaven_immortal": 0.06
     },
     "items": [
       {
@@ -19,7 +24,11 @@
         "name": "受伤风险",
         "baseChance": 0.12,
         "appliesRankMitigation": true,
-        "effect": { "type": "injury", "amountMin": 1, "amountMax": 2 },
+        "effect": {
+          "type": "injury",
+          "amountMin": 1,
+          "amountMax": 2
+        },
         "personalityModifiers": [
           {
             "trait": "courage",
@@ -34,15 +43,24 @@
         "name": "资源掉落风险",
         "baseChance": 0.08,
         "appliesRankMitigation": false,
-        "effect": { "type": "resource_loss", "itemId": "low_spirit_stone", "lossRatioMin": 0.05, "lossRatioMax": 0.2 },
+        "effect": {
+          "type": "resource_loss",
+          "itemId": "low_spirit_stone",
+          "lossRatioMin": 0.05,
+          "lossRatioMax": 0.2
+        },
         "personalityModifiers": []
       },
       {
         "id": "challenge_fail",
         "name": "职位挑战失败风险",
-        "baseChance": 0.0,
+        "baseChance": 0,
         "appliesRankMitigation": false,
-        "effect": { "type": "morale_loss", "amountMin": 5, "amountMax": 15 },
+        "effect": {
+          "type": "morale_loss",
+          "amountMin": 5,
+          "amountMax": 15
+        },
         "_comment": "预留：游历途中遭遇厮杀/挑战失利，先置 0 不启用。后续可接入职位/战力对比。",
         "personalityModifiers": []
       },
@@ -51,7 +69,12 @@
         "name": "游历遇险",
         "baseChance": 0.005,
         "appliesRankMitigation": true,
-        "effect": { "type": "hp_damage", "cause": "explore", "dmgRatioMin": 0.3, "dmgRatioMax": 0.9 },
+        "effect": {
+          "type": "hp_damage",
+          "cause": "explore",
+          "dmgRatioMin": 0.3,
+          "dmgRatioMax": 0.9
+        },
         "_comment": "ADR-041：游历途中遇险改为真实扣血（按 maxHp 比例），重创可触发锁血保命，碾压级才致死。不再概率秒杀。",
         "personalityModifiers": [
           {
@@ -67,13 +90,18 @@
   "plunder": {
     "_comment": "夺宝风险（ADR-022/ADR-023，参考凡人修仙传 杀人夺宝）：闯秘境/争天材地宝比寻常游历凶险得多——既有环境之险，也有同道厮杀。境界越高越能保命（rankMitigation），勇敢者更易冒进受伤/陨落。",
     "rankMitigation": {
-      "mortal": 1.0,
-      "disciple": 1.0,
+      "mortal": 1,
       "qi_refining": 0.9,
       "foundation_building": 0.75,
       "golden_core": 0.6,
       "nascent_soul": 0.45,
-      "spirit_transformation": 0.3
+      "spirit_transformation": 0.3,
+      "void_refining": 0.24,
+      "body_integration": 0.2,
+      "mahayana": 0.16,
+      "tribulation": 0.12,
+      "earth_immortal": 0.09,
+      "heaven_immortal": 0.06
     },
     "items": [
       {
@@ -81,7 +109,11 @@
         "name": "夺宝厮杀受伤风险",
         "baseChance": 0.25,
         "appliesRankMitigation": true,
-        "effect": { "type": "injury", "amountMin": 1, "amountMax": 3 },
+        "effect": {
+          "type": "injury",
+          "amountMin": 1,
+          "amountMax": 3
+        },
         "personalityModifiers": [
           {
             "trait": "courage",
@@ -96,7 +128,10 @@
         "name": "夺宝陨落风险",
         "baseChance": 0.06,
         "appliesRankMitigation": true,
-        "effect": { "type": "death", "cause": "plunder" },
+        "effect": {
+          "type": "death",
+          "cause": "plunder"
+        },
         "personalityModifiers": [
           {
             "trait": "courage",
@@ -111,13 +146,18 @@
   "power": {
     "_comment": "夺权风险（ADR-023，参考凡人修仙传/大道争锋 掌门之争）：夺位涉及与现任/竞争者的厮杀与政治倾轧。谨慎者评估到夺权凶险更愿规避（Utility 风险厌恶放大）。",
     "rankMitigation": {
-      "mortal": 1.0,
-      "disciple": 1.0,
+      "mortal": 1,
       "qi_refining": 0.95,
       "foundation_building": 0.85,
       "golden_core": 0.7,
       "nascent_soul": 0.55,
-      "spirit_transformation": 0.4
+      "spirit_transformation": 0.4,
+      "void_refining": 0.34,
+      "body_integration": 0.28,
+      "mahayana": 0.22,
+      "tribulation": 0.16,
+      "earth_immortal": 0.12,
+      "heaven_immortal": 0.08
     },
     "items": [
       {
@@ -125,7 +165,11 @@
         "name": "夺权冲突受伤风险",
         "baseChance": 0.2,
         "appliesRankMitigation": true,
-        "effect": { "type": "injury", "amountMin": 1, "amountMax": 2 },
+        "effect": {
+          "type": "injury",
+          "amountMin": 1,
+          "amountMax": 2
+        },
         "personalityModifiers": [
           {
             "trait": "caution",
@@ -140,7 +184,10 @@
         "name": "夺权失败陨落风险",
         "baseChance": 0.05,
         "appliesRankMitigation": true,
-        "effect": { "type": "death", "cause": "power_struggle" },
+        "effect": {
+          "type": "death",
+          "cause": "power_struggle"
+        },
         "personalityModifiers": []
       }
     ]
@@ -148,13 +195,18 @@
   "pvp": {
     "_comment": "复仇 PvP 风险（ADR-020）：仅作为『追求复仇这条路有多危险』的期望损失供 Utility/GOAP 折算（estimateGoalRisk/computeDecisionCost）。真正的胜负与致死由 NPCKillEnemyExecutor 按 npcCombatPower 比拼结算，不在此处掷骰，避免双重结算。",
     "rankMitigation": {
-      "mortal": 1.0,
-      "disciple": 1.0,
+      "mortal": 1,
       "qi_refining": 0.9,
       "foundation_building": 0.75,
       "golden_core": 0.6,
       "nascent_soul": 0.45,
-      "spirit_transformation": 0.3
+      "spirit_transformation": 0.3,
+      "void_refining": 0.24,
+      "body_integration": 0.2,
+      "mahayana": 0.16,
+      "tribulation": 0.12,
+      "earth_immortal": 0.09,
+      "heaven_immortal": 0.06
     },
     "items": [
       {
@@ -162,7 +214,11 @@
         "name": "厮杀受伤风险",
         "baseChance": 0.3,
         "appliesRankMitigation": true,
-        "effect": { "type": "injury", "amountMin": 1, "amountMax": 3 },
+        "effect": {
+          "type": "injury",
+          "amountMin": 1,
+          "amountMax": 3
+        },
         "personalityModifiers": [
           {
             "trait": "caution",
@@ -177,7 +233,12 @@
         "name": "厮杀重创风险",
         "baseChance": 0.15,
         "appliesRankMitigation": true,
-        "effect": { "type": "hp_damage", "cause": "slain", "dmgRatioMin": 0.4, "dmgRatioMax": 1.1 },
+        "effect": {
+          "type": "hp_damage",
+          "cause": "slain",
+          "dmgRatioMin": 0.4,
+          "dmgRatioMax": 1.1
+        },
         "_comment": "ADR-041：厮杀改为真实扣血，重创可锁血保命，碾压级（伤害≥maxHp×crushHpMultiple）才当场陨落。",
         "personalityModifiers": []
       }

@@ -8,7 +8,7 @@
 |------|------|------|
 | `rankStage` | string/null | `early`、`middle`、`late`、`perfection`；凡人为 `null` |
 | `hp` | number | 当前气血 |
-| `maxHp` | number | 气血上限；新开关第一阶段写入体质倍率后的运行时值 |
+| `maxHp` | number | 气血上限 |
 | `yuan` | number | 当前战斗真元 |
 | `maxYuan` | number | 战斗真元上限 |
 | `attack` | number | 普攻、术法、法宝基础攻击面板 |
@@ -28,7 +28,15 @@
 | `cultivator-combat.json` | `version`、`source`、`ranks` |
 | `monster-combat.json` | `version`、`source`、`ranks` |
 
-`ranks` 以 `rankId` 为键，每个境界包含：
+三张表的 `ranks` key 必须与 `definitions/ranks.json` 的 12 个运行时境界完全一致：
+
+```text
+mortal, qi_refining, foundation_building, golden_core, nascent_soul,
+spirit_transformation, void_refining, body_integration, mahayana,
+tribulation, earth_immortal, heaven_immortal
+```
+
+旧高阶名称不再作为战斗表 key。表内每个境界包含：
 
 ```json
 {
@@ -42,9 +50,26 @@
 }
 ```
 
-三张表可包含未来高阶层级作为参考，但不扩展 `ranks.json` 的 canonical runtime 境界。
+## 槽位迁移
 
-## 功法修正
+三张战斗表保留当前旧 12 槽位的数值，只改 key 和显示名：
+
+| 新境界 | 使用旧槽位 |
+|---|---|
+| 凡人 | `mortal` |
+| 炼气 | `qi_refining` |
+| 筑基 | `foundation_building` |
+| 金丹 | `golden_core` |
+| 元婴 | `nascent_soul` |
+| 化神 | `mahayana` |
+| 炼虚 | `tribulation` |
+| 合体 | `spirit_transformation` |
+| 大乘 | `earth_immortal` |
+| 渡劫 | `heaven_immortal` |
+| 地仙 | 旧第 11 槽位 |
+| 天仙 | 旧第 12 槽位 |
+
+## 功法与法宝修正
 
 功法在 `effects.combatModifiers` 内声明战斗属性修正：
 
@@ -55,23 +80,7 @@
 ]
 ```
 
-运行时以 `technique_combat` 作为 AttributeSet 来源分组，刷新时先移除旧分组再添加当前功法修正。
-
-## 法宝修正
-
-法宝保留旧 `combatBonus`，并新增 `combatModifiers`：
-
-```json
-{
-  "id": "artifact_green_sword",
-  "combatBonus": 0.05,
-  "combatModifiers": [
-    { "attribute": "attack", "op": "multiply", "magnitude": 1.15 }
-  ]
-}
-```
-
-`combatBonus` 只服务旧路径；`combatModifiers` 服务新 AttributeSet 路径。两者不得互相自动推导，避免双计。
+法宝保留旧 `combatBonus`，并新增 `combatModifiers`。`combatBonus` 只服务旧路径；`combatModifiers` 服务新 AttributeSet 路径。两者不得互相自动推导，避免双计。
 
 ## 通用 GE
 

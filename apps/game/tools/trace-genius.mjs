@@ -238,8 +238,34 @@ if (breakthroughs.length === 0) {
 }
 
 console.log(`\n========== 各境界首次达到 ==========`);
-const rankOrder = ['mortal', 'qi_refining', 'foundation_building', 'golden_core', 'nascent_soul', 'spirit_transformation'];
-const rankCN = { mortal: '凡人', qi_refining: '炼气', foundation_building: '筑基', golden_core: '金丹', nascent_soul: '元婴', spirit_transformation: '化神' };
+const rankOrder = [
+  'mortal',
+  'qi_refining',
+  'foundation_building',
+  'golden_core',
+  'nascent_soul',
+  'spirit_transformation',
+  'void_refining',
+  'body_integration',
+  'mahayana',
+  'tribulation',
+  'earth_immortal',
+  'heaven_immortal',
+];
+const rankCN = {
+  mortal: '凡人',
+  qi_refining: '炼气',
+  foundation_building: '筑基',
+  golden_core: '金丹',
+  nascent_soul: '元婴',
+  spirit_transformation: '化神',
+  void_refining: '炼虚',
+  body_integration: '合体',
+  mahayana: '大乘',
+  tribulation: '渡劫',
+  earth_immortal: '地仙',
+  heaven_immortal: '天仙',
+};
 for (const r of rankOrder) {
   if (rankFirstReach[r]) {
     const f = rankFirstReach[r];

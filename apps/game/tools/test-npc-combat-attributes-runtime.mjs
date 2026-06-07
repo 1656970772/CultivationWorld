@@ -58,8 +58,8 @@ function hasModifier(modifiers, attribute, op, magnitude) {
 }
 
 console.log('1) combat switch exists');
-assertEqual(combatConfig.cultivatorAttributes?.enabled, false, 'cultivatorAttributes.enabled defaults false');
-assertEqual(combatConfig.cultivatorAttributes?.numericArmorDamage, false, 'numericArmorDamage defaults false');
+assertEqual(combatConfig.cultivatorAttributes?.enabled, true, 'cultivatorAttributes.enabled defaults true');
+assertEqual(combatConfig.cultivatorAttributes?.numericArmorDamage, true, 'numericArmorDamage defaults true');
 
 console.log('2) NPCState contains new base fields');
 for (const field of ['rankStage', 'yuan', 'maxYuan', 'attack', 'defense', 'speed', 'soul']) {
@@ -98,11 +98,14 @@ for (const fragment of [
   assertIncludes(worldEngineSource, fragment, `WorldEngine contains ${fragment}`);
 }
 
-console.log('6) default switch keeps old hp initialization');
+console.log('6) explicit disabled switch keeps old hp initialization');
 const { NPCEntity } = await import(new URL('../js/engine/npc/npc-entity.js', import.meta.url).href);
 const ranks = load('data/definitions/ranks.json');
 const gameConfig = load('data/config/game-config.json');
 const cultivationConfig = load('data/balance/cultivation.json');
+const disabledCombatConfig = JSON.parse(JSON.stringify(combatConfig));
+disabledCombatConfig.cultivatorAttributes.enabled = false;
+disabledCombatConfig.cultivatorAttributes.numericArmorDamage = false;
 const npc = new NPCEntity(
   {
     id: 'npc_runtime_attribute_test',
@@ -116,15 +119,15 @@ const npc = new NPCEntity(
   ranks,
   {
     gameConfig,
-    combatConfig,
+    combatConfig: disabledCombatConfig,
     cultivationConfig: { traitEffects: { enabled: false } },
     aiConfig: { maxDepth: 1, maxIterations: 1 },
   },
 );
-assertEqual(npc.state.get('maxHp'), combatConfig.npcHp.baseHp.qi_refining, 'default switch uses legacy npcHp baseHp');
+assertEqual(npc.state.get('maxHp'), disabledCombatConfig.npcHp.baseHp.qi_refining, 'explicit disabled switch uses legacy npcHp baseHp');
 assertEqual(npc.state.get('hp'), npc.state.get('maxHp'), 'legacy initialization fills hp to maxHp');
 
-console.log('7) enabled switch writes physique-scaled runtime hp and refreshes without healing');
+console.log('7) default enabled switch writes physique-scaled runtime hp and refreshes without healing');
 const enabledCombatConfig = JSON.parse(JSON.stringify(combatConfig));
 enabledCombatConfig.cultivatorAttributes.enabled = true;
 const combatTables = { combatBaseTable, cultivatorCombat, monsterCombat };

@@ -213,7 +213,7 @@ apps/game/data/
 
 `ranks.json` 中 `rankId` 只表示修仙境界，不承载职位、头衔或凡人王朝身份。修仙境界需要同时维护 `qiRequired` 与 `cultivationRequired`。前者是真气突破门槛，后者是数值修为突破门槛；运行时不再使用旧比例进度字段作为突破依据。
 
-`combat-base-table.json`、`cultivator-combat.json`、`monster-combat.json` 统一使用六项战斗属性：`hp`、`yuan`、`attack`、`defense`、`speed`、`soul`。三张表可包含未来高阶层级作为参考，但不得借此扩展 `ranks.json` 的运行时境界语义。
+`combat-base-table.json`、`cultivator-combat.json`、`monster-combat.json` 统一使用六项战斗属性：`hp`、`yuan`、`attack`、`defense`、`speed`、`soul`。三张表的 `ranks` key 必须与 `ranks.json` 的 12 个运行时境界完全一致，不得包含额外未来高阶层级。
 
 `definitions/techniques.json` 中代表性功法可在 `effects.combatModifiers` 声明 AttributeSet 修正。字段格式为 `{ "attribute": "attack", "op": "multiply", "magnitude": 1.12 }`，由运行时按 `technique_combat` 来源分组刷新。`items/technique.json` 是可交易、可抢夺的功法秘籍物品清单，加载后合并到 `itemDefs.items`，不承载 NPC 当前修炼功法的战斗面板修正。
 

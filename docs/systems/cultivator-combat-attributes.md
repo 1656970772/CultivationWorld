@@ -18,6 +18,8 @@
 | `apps/game/data/definitions/techniques.json` | NPC 修炼功法定义表，承载功法 `effects.combatModifiers`；秘籍物品在 `apps/game/data/items/technique.json` |
 | `apps/game/data/items/artifact.json` | 法宝 `combatModifiers` 与旧 `combatBonus` |
 
+三张战斗表的 `ranks` key 必须与 `definitions/ranks.json` 的十二境界运行时主链一致。旧高阶名称只保留在历史资料中，不作为运行时表项。
+
 ## 属性
 
 | 属性 | 含义 |
@@ -62,7 +64,7 @@
 
 ## 伤害
 
-`combat.cultivatorAttributes.numericArmorDamage=false` 时，战斗入口保留旧比例减伤。开启后使用数值护甲公式：
+`combat.cultivatorAttributes.numericArmorDamage=true` 为当前默认值。开启后使用数值护甲公式：
 
 ```text
 damage = max(1, attack * skillMultiplier * sceneMultiplier
@@ -76,6 +78,6 @@ damage = max(1, attack * skillMultiplier * sceneMultiplier
 
 - `enabled=false`：保留旧 `npcHp/baseDef` 路径。
 - `enabled=true, numericArmorDamage=false`：初始化六项属性，但伤害仍走旧比例减伤。
-- `enabled=true, numericArmorDamage=true`：六项属性与数值护甲同时生效。
+- `enabled=true, numericArmorDamage=true`：当前默认主路径，六项属性与数值护甲同时生效。
 
-验证必须看真实行为数据：focused tests 确认加载、计算、刷新和开关分支；多种子模拟观察低阶危险、同阶妖兽压制、功法/法宝加成、小层倍率、境界压制和突破节奏。
+验证必须看真实行为数据：focused tests 确认加载、计算、刷新和开关分支；多种子模拟观察低阶危险、同阶妖兽压制、功法/法宝加成、小层倍率、境界压制和突破节奏。默认数值护甲开启后，斩妖任务击杀率与失败原因必须进入验证报告，避免只证明脚本可运行。
