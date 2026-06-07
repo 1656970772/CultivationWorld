@@ -170,11 +170,42 @@ console.log('5) npc-utility 评分上下文：风险、情绪、收益');
   const calmCtx = calmGoal.getScoreContext();
   assert(calmCtx?.goalRisk > 0, '高风险复仇目标写入 goalRisk');
   assert(calmCtx?.riskWeight > 0, '高风险复仇目标写入 riskWeight');
+  assert(approx(calmCtx?.riskWeight, 1), 'score.riskWeight 优先于旧 riskAversion.weight');
   assert(!calmGoal.modulators.some(m => m.label === 'riskAversion'), 'riskAversion 不再作为 modulator 重复扣分');
+
+  const fallbackCfg = { ...cfg, score: { ...cfg.score } };
+  delete fallbackCfg.score.riskWeight;
+  const fallbackGoal = new Goal({ id: 'gFallbackRisk', sourceId: 'obsession_revenge', priority: 80 });
+  decorateGoalConsiderations(makeEntity({ caution: 50, anger: 0, fear: 0 }), fallbackGoal, worldContext, fallbackCfg);
+  assert(approx(fallbackGoal.getScoreContext().riskWeight, 0.3), '缺少 score.riskWeight 时回退 riskAversion.weight');
+
+  const riskDisabledCfg = { ...cfg, riskAversion: { ...cfg.riskAversion, enabled: false } };
+  const riskDisabledGoal = new Goal({ id: 'gRiskDisabled', sourceId: 'obsession_revenge', priority: 80 });
+  decorateGoalConsiderations(makeEntity({ caution: 50, anger: 0, fear: 0 }), riskDisabledGoal, worldContext, riskDisabledCfg);
+  assert(riskDisabledGoal.getScoreContext().riskWeight === 0, 'riskAversion.enabled=false 时高风险目标 riskWeight=0');
+  assert(!riskDisabledGoal.modulators.some(m => m.label === 'riskAversion'), 'riskAversion.enabled=false 时不挂 riskAversion modulator');
+
+  const emotionDisabledCfg = { ...cfg, emotionRisk: { ...cfg.emotionRisk, enabled: false } };
+  const calmNoEmotionGoal = new Goal({ id: 'gCalmNoEmotion', sourceId: 'obsession_revenge', priority: 80 });
+  decorateGoalConsiderations(makeEntity({ caution: 50, anger: 0, fear: 0 }), calmNoEmotionGoal, worldContext, emotionDisabledCfg);
+  const intenseNoEmotionGoal = new Goal({ id: 'gIntenseNoEmotion', sourceId: 'obsession_revenge', priority: 80 });
+  decorateGoalConsiderations(makeEntity({ caution: 50, anger: 100, fear: 100 }), intenseNoEmotionGoal, worldContext, emotionDisabledCfg);
+  assert(approx(intenseNoEmotionGoal.getScoreContext().riskWeight, calmNoEmotionGoal.getScoreContext().riskWeight), 'emotionRisk.enabled=false 时 anger/fear 不改变风险权重');
+
+  const noRiskGoal = new Goal({ id: 'gNoRisk', sourceId: 'need_npc_loyalty', priority: 60 });
+  decorateGoalConsiderations(makeEntity({ caution: 50 }), noRiskGoal, worldContext, cfg);
+  const noRiskCtx = noRiskGoal.getScoreContext();
+  assert(noRiskCtx?.goalRisk === 0, '无风险目标写入 goalRisk=0');
+  assert(noRiskCtx?.riskWeight === 0, '无风险目标写入 riskWeight=0');
 
   const angryGoal = new Goal({ id: 'gAngry', sourceId: 'obsession_revenge', priority: 80 });
   decorateGoalConsiderations(makeEntity({ caution: 50, anger: 100, fear: 0 }), angryGoal, worldContext, cfg);
   assert(angryGoal.getScoreContext().riskWeight < calmCtx.riskWeight, '愤怒降低风险权重');
+  assert(approx(angryGoal.getScoreContext().riskWeight, 0), 'anger=100 时风险权重降为 0');
+
+  const overAngryGoal = new Goal({ id: 'gOverAngry', sourceId: 'obsession_revenge', priority: 80 });
+  decorateGoalConsiderations(makeEntity({ caution: 50, anger: 200, fear: 0 }), overAngryGoal, worldContext, cfg);
+  assert(approx(overAngryGoal.getScoreContext().riskWeight, 0), 'anger=200 超界时风险权重仍钳制为 0');
 
   const scaredGoal = new Goal({ id: 'gScared', sourceId: 'obsession_revenge', priority: 80 });
   decorateGoalConsiderations(makeEntity({ caution: 50, anger: 0, fear: 100 }), scaredGoal, worldContext, cfg);

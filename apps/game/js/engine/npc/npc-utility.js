@@ -107,7 +107,7 @@ export function estimateGoalRisk(entity, goal, worldContext, goalRiskKeys = DEFA
 
 /**
  * 为某目标装配考量因素（TimeValue/风险/情绪修正/随机扰动/路径偏好/utility.json 自定义因素），
- * 并挂到 Goal 的 modulators 上。
+ * 写入 Goal 评分上下文，并挂载少量非风险调制项。
  * 由 NPCEntity.decorateGoalConsiderations 调用，PlannerNode 在排序前统一触发。
  *
  * @param {import('../abstract/base-entity.js').BaseEntity} entity
@@ -127,12 +127,11 @@ export function decorateGoalConsiderations(entity, goal, worldContext, utilityCo
 
   if (!utilityConfig || utilityConfig.enabled !== true) return; // 默认不挂任何额外乘子，不改变现有行为
 
-  // ── B. 目标风险估算（供后续 riskAversion/emotionRisk 使用）。
+  // ── B. 目标风险估算（供评分上下文与 derived 输入使用）。
   const goalRiskKeys = utilityConfig.goalRiskKeys || DEFAULT_GOAL_RISK_KEYS;
   const goalRisk = estimateGoalRisk(entity, goal, worldContext, goalRiskKeys);
 
-  // ── C. 时间价值（TimeValue）：来自 utility.json 的 consideration 曲线驱动，
-  //        或 riskAversion 内建乘子（两者均为 optional）。
+  // ── C. 自定义考量曲线与评分上下文输入（TimeValue/Risk/Reward）。
   const bySource = utilityConfig.considerationsBySource || {};
   const configs = bySource[goal.sourceId] || bySource[goal.tag] || [];
   const considerations = buildConsiderations(configs);
