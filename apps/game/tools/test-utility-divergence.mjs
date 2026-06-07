@@ -114,6 +114,11 @@ console.log('3.5) 期望收益分化（ADR-022 夺宝流）');
   const reckless = makeEntity({ caution: 10 });
   const cautious = makeEntity({ caution: 100 });
   const sReckless = scoreGoal(reckless, 'obsession_plunder', 60);
+  const gTrace = new Goal({ id: 'gPlunderTrace', sourceId: 'obsession_plunder', priority: 60 });
+  decorateGoalConsiderations(reckless, gTrace, worldCtx, activeCfg);
+  const traceCtx = gTrace.getScoreContext();
+  assert(traceCtx?.expectedValue > 0, `夺宝目标 expectedValue 写入评分上下文(${traceCtx?.expectedValue?.toFixed(3)})`);
+  assert(traceCtx?.goalRisk > 0, `夺宝目标 goalRisk 写入评分上下文(${traceCtx?.goalRisk?.toFixed(3)})`);
   const sCautious = scoreGoal(cautious, 'obsession_plunder', 60);
   // 期望收益 consideration 必生效（>0），且赌狗流分数高于稳健流。
   assert(sReckless > 0, `夺宝目标期望收益 consideration 生效(score=${sReckless.toFixed(1)} > 0)`);
@@ -125,7 +130,7 @@ console.log('3.5) 期望收益分化（ADR-022 夺宝流）');
   const gNoReward = new Goal({ id: 'gPlunderOff', sourceId: 'obsession_plunder', priority: 60 });
   decorateGoalConsiderations(reckless, gNoReward, worldCtx, cfgNoReward);
   assert(gNoReward.score() < sReckless,
-    `关闭期望收益后夺宝目标分数下降(${gNoReward.score().toFixed(1)} < ${sReckless.toFixed(1)})，证明 EV 提供了吸引力`);
+    `关闭期望收益后夺宝目标分数下降(${gNoReward.score().toFixed(1)} < ${sReckless.toFixed(1)})，证明 rewardMult 提供了收益吸引力`);
 }
 
 // —— 4) 群体多样性：一批人格各异、执念各异的 NPC 不再选同一目标 ——

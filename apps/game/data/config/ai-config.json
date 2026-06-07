@@ -24,6 +24,14 @@
     },
     "utility": {
       "_comment": "Utility 选目标层参数（ADR-021）。所有『选什么目标』的价值评估在此配置，GOAP 只负责『如何实现目标』。需配合 data/balance/utility.json 的 enabled 开关一起使用——utility.json enabled=false 时本段的大多数功能亦不生效。",
+      "score": {
+        "_comment": "NPC 效用评分公式升级：控制 Goal.score 的偏置夹取、consideration floor、收益放大和风险压制。utility.json enabled=false 时不会被 npc-utility 注入评分上下文，默认关闭态仍按原 priority 路径运行。",
+        "minBiasMult": 0.25,
+        "maxBiasMult": 3.0,
+        "defaultConsiderationFloor": 0.05,
+        "rewardWeight": 0.5,
+        "riskWeight": 1.0
+      },
       "lambdaRisk": 40,
       "_lambdaComment": "lambdaRisk 把『期望风险损失(0~1 量级)』放大到与目标优先级(几十量级)可比，作为目标分数的惩罚项。",
       "riskAversion": {
