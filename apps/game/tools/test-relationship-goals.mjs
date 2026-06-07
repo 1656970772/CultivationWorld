@@ -32,12 +32,14 @@ const { GoalSource } = await imp('js/engine/abstract/goal.js');
 const { MonsterEntity } = await imp('js/engine/monster/monster-entity.js');
 const { MonsterSpawner } = await imp('js/engine/monster/monster-spawner.js');
 const { ItemRegistry } = await imp('js/engine/items/item-registry.js');
+const { Rng } = await imp('js/engine/abstract/rng.js');
 
 const relationshipConfig = load('data/balance/relationship.json');
 const ranks = load('data/definitions/ranks.json');
 const cultivationConfig = load('data/balance/cultivation.json');
 const gameConfig = load('data/config/game-config.json');
 const monsterDefs = load('data/definitions/monsters.json');
+const monsterAttributeTemplates = load('data/definitions/monster-attribute-templates.json');
 
 ItemRegistry.clear();
 ItemRegistry.loadFromArray(load('data/definitions/macro-resources.json'));
@@ -159,9 +161,10 @@ console.log('2) initMonsterRelationships 妖群建边');
   // 取一个真实 family 的两个 grade 不同的物种？简化：用同一 def 造 3 只邻近 + 1 只远处。
   const wolfDef = monsterDefs.find(d => d.family) || monsterDefs[0];
   const fam = wolfDef.family;
+  const rng = new Rng(1201);
   const mk = (id, x, y, grade) => new MonsterEntity(
     { ...wolfDef, grade: grade ?? wolfDef.grade },
-    { id, name: id, x, y, wanderRadius: 12, rankOrderMap: {} },
+    { id, name: id, x, y, wanderRadius: 12, rankOrderMap: {}, monsterAttributeTemplates, rng },
   );
   const m1 = mk('mon_a', 10, 10, 3);
   const m2 = mk('mon_b', 12, 11, 2); // 距 m1 老巢 3 ≤ packRadius(12)
@@ -198,8 +201,10 @@ console.log('3) MonsterSpawner 群居成簇生成');
   const packCfg = { ...relationshipConfig.monsterPack, swarmClusterRadius: 5, swarmClusterSize: 4 };
   const spawnerOn = new MonsterSpawner({
     tileIndex, terrainIndex, monsterDefs: [swarmDef], factions: [],
+    rng: new Rng(42),
     spawnConfig: { totalMonsters: 12, spawnSeed: 42, dangerByDistance: [{ maxDist: 9999, minGrade: 1, maxGrade: 9 }] },
     movementConfig: {}, rankOrderMap: {}, mapWidth: W, mapHeight: H,
+    monsterAttributeTemplates,
     monsterPackConfig: packCfg,
   });
   const swarmMonsters = spawnerOn.spawn();
@@ -219,8 +224,10 @@ console.log('3) MonsterSpawner 群居成簇生成');
   // 对照：monsterPackConfig=null（一期）不强制成簇
   const spawnerOff = new MonsterSpawner({
     tileIndex, terrainIndex, monsterDefs: [swarmDef], factions: [],
+    rng: new Rng(42),
     spawnConfig: { totalMonsters: 12, spawnSeed: 42, dangerByDistance: [{ maxDist: 9999, minGrade: 1, maxGrade: 9 }] },
     movementConfig: {}, rankOrderMap: {}, mapWidth: W, mapHeight: H,
+    monsterAttributeTemplates,
     monsterPackConfig: null,
   });
   const offMonsters = spawnerOff.spawn();

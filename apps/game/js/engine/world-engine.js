@@ -99,7 +99,10 @@ export class WorldEngine {
 
     // 关系网系统（ADR-027，世界级单一真相源）。在创建 NPC 前建立，
     // 经 _entityConfig 注入各 NPC，使其 RelationshipGraph 成为本系统的兼容查询视图。
-    this.relationshipSystem = new RelationshipSystem(this._balanceConfig.relationship);
+    this.relationshipSystem = new RelationshipSystem({
+      ...this._balanceConfig.relationship,
+      platform: configs.relationshipPlatform || null,
+    });
 
     // 用于动态创建新NPC时传递的实体配置包
     this._entityConfig = {

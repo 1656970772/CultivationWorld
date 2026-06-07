@@ -1,0 +1,137 @@
+{
+  "_description": "RelationMark 字典。ID 使用 camelCase，与设计规格中的 mark key 对齐。",
+  "marks": [
+    {
+      "id": "wantedOrder",
+      "name": "通缉令",
+      "layers": ["faction"],
+      "stacking": "max",
+      "defaultWeight": 50,
+      "maxWeight": 100,
+      "decay": { "type": "linear", "value": 0.05 },
+      "consumable": false,
+      "signalHints": ["huntWeight", "tradeAccessWeight"]
+    },
+    {
+      "id": "lifeDebt",
+      "name": "救命恩",
+      "layers": ["individual"],
+      "stacking": "max",
+      "defaultWeight": 50,
+      "maxWeight": 100,
+      "decay": { "type": "linear", "value": 0 },
+      "consumable": true,
+      "signalHints": ["rescueWeight", "intercedeWeight", "huntWeight"]
+    },
+    {
+      "id": "favorDebt",
+      "name": "人情债",
+      "layers": ["individual"],
+      "stacking": "instance",
+      "defaultWeight": 20,
+      "maxWeight": 100,
+      "decay": { "type": "linear", "value": 0.02 },
+      "consumable": true,
+      "signalHints": ["intercedeWeight", "giftWeight"]
+    },
+    {
+      "id": "bloodFeud",
+      "name": "血仇",
+      "layers": ["individual"],
+      "stacking": "max",
+      "defaultWeight": 60,
+      "maxWeight": 100,
+      "decay": { "type": "linear", "value": 0 },
+      "consumable": false,
+      "signalHints": ["huntWeight", "revengeTargetBonus"]
+    },
+    {
+      "id": "betrayal",
+      "name": "背叛",
+      "layers": ["individual", "group", "faction"],
+      "stacking": "max",
+      "defaultWeight": 50,
+      "maxWeight": 100,
+      "decay": { "type": "linear", "value": 0.03 },
+      "consumable": false,
+      "signalHints": ["slanderWeight", "tradeAccessWeight"]
+    },
+    {
+      "id": "resourceGrudge",
+      "name": "资源私怨",
+      "layers": ["individual", "group"],
+      "stacking": "add",
+      "defaultWeight": 15,
+      "maxWeight": 100,
+      "decay": { "type": "linear", "value": 0.05 },
+      "consumable": false,
+      "signalHints": ["huntWeight", "slanderWeight"]
+    },
+    {
+      "id": "contributionMark",
+      "name": "贡献记录",
+      "layers": ["group"],
+      "stacking": "add",
+      "defaultWeight": 10,
+      "maxWeight": 100,
+      "decay": { "type": "linear", "value": 0.02 },
+      "consumable": false,
+      "signalHints": ["investWeight"]
+    },
+    {
+      "id": "disciplineViolation",
+      "name": "违纪记录",
+      "layers": ["group"],
+      "stacking": "add",
+      "defaultWeight": 20,
+      "maxWeight": 100,
+      "decay": { "type": "linear", "value": 0.03 },
+      "consumable": false,
+      "signalHints": ["slanderWeight"]
+    },
+    {
+      "id": "blacklist",
+      "name": "黑名单",
+      "layers": ["faction"],
+      "stacking": "max",
+      "defaultWeight": 50,
+      "maxWeight": 100,
+      "decay": { "type": "linear", "value": 0.02 },
+      "consumable": false,
+      "signalHints": ["tradeAccessWeight"]
+    },
+    {
+      "id": "protectedAsset",
+      "name": "保护名单",
+      "layers": ["faction"],
+      "stacking": "max",
+      "defaultWeight": 50,
+      "maxWeight": 100,
+      "decay": { "type": "linear", "value": 0.01 },
+      "consumable": false,
+      "signalHints": ["rescueWeight", "investWeight"]
+    },
+    {
+      "id": "recruitmentInterest",
+      "name": "招揽兴趣",
+      "layers": ["faction"],
+      "stacking": "max",
+      "defaultWeight": 40,
+      "maxWeight": 100,
+      "decay": { "type": "linear", "value": 0.02 },
+      "consumable": false,
+      "signalHints": ["recruitTargetBonus"]
+    },
+    {
+      "id": "strategicThreat",
+      "name": "战略威胁",
+      "layers": ["faction"],
+      "stacking": "max",
+      "defaultWeight": 50,
+      "maxWeight": 100,
+      "decay": { "type": "linear", "value": 0.01 },
+      "consumable": false,
+      "signalHints": ["huntWeight", "suppressTargetBonus"]
+    }
+  ]
+}

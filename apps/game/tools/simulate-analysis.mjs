@@ -86,6 +86,26 @@ const configs = {
   tags:               loadJSON('data/tags/tags.json'),
   effects:            { effects: [...(loadJSON('data/effects/combat-effects.json')?.effects || []), ...(loadJSON('data/effects/core-effects.json')?.effects || [])] },
   abilities:          loadJSON('data/abilities/combat-abilities.json'),
+  relationshipPlatform: {
+    schemas: {
+      ledgers: loadJSON('data/relationships/schemas/ledgers.json'),
+    },
+    dictionaries: {
+      marks: loadJSON('data/relationships/dictionaries/marks.json'),
+      tags: loadJSON('data/relationships/dictionaries/tags.json'),
+      signals: loadJSON('data/relationships/dictionaries/signal-keys.json'),
+      eventTypes: loadJSON('data/relationships/dictionaries/relation-event-types.json'),
+      groupTypes: loadJSON('data/relationships/dictionaries/group-types.json'),
+    },
+    eventHooks: [loadJSON('data/relationships/event-hooks/legacy-events.json')],
+    impactRules: [
+      loadJSON('data/relationships/impact-rules/combat.json'),
+      loadJSON('data/relationships/impact-rules/social.json'),
+      loadJSON('data/relationships/impact-rules/faction.json'),
+    ],
+    signalRules: [loadJSON('data/relationships/signal-rules/wanted-chain.json')],
+    groups: loadJSON('data/relationships/groups/groups.json'),
+  },
 };
 
 // 平衡验证激活态（ADR-021/022/023）：默认配置 enabled=false（不改变现有行为）；
@@ -754,9 +774,13 @@ const relSys = engine.relationshipSystem;
 const relStats = relSys && typeof relSys.stats === 'function' ? relSys.stats() : { total: 0, byType: {} };
 const relGoalsOn = (configs.balanceRelationship?.enabled !== false) && (configs.balanceRelationship?.goalsEnabled !== false);
 const bt = relStats.byType || {};
+const relLayers = relStats.byLayer || {};
+const relMarks = relStats.marksByType || {};
 console.log(`[关系网] goalsEnabled=${relGoalsOn}，关系边总数: ${relStats.total}`);
 console.log(`[关系网] 人际边: same_sect=${bt.same_sect || 0}, master=${bt.master || 0}, enemy=${bt.enemy || 0}, grudge=${bt.grudge || 0}, dao_companion=${bt.dao_companion || 0}, kin=${bt.kin || 0}`);
 console.log(`[关系网] 妖群/领地边: pack_member=${bt.pack_member || 0}, pack_leader=${bt.pack_leader || 0}, territory_threat=${bt.territory_threat || 0}, beast_grudge=${bt.beast_grudge || 0}`);
+console.log(`[关系账本] individual=${relLayers.individual || 0}, group=${relLayers.group || 0}, faction=${relLayers.faction || 0}, legacyEdges=${relStats.legacyEdges || 0}`);
+console.log(`[关系标记] wantedOrder=${relMarks.wantedOrder || 0}, bloodFeud=${relMarks.bloodFeud || 0}, lifeDebt=${relMarks.lifeDebt || 0}, resourceGrudge=${relMarks.resourceGrudge || 0}`);
 console.log(`[关系驱动] 驰援同门触发: ${assistTriggers}，探望恩人触发: ${visitTriggers}`);
 console.log(`[师徒互动] 传功点化: ${teachTriggers}，护徒驰援: ${protectDiscipleTriggers}，探望恩师: ${visitMasterTriggers}`);
 
@@ -953,6 +977,7 @@ const reportData = {
     ...monsterResourceStats,
     inventory: monsterResourceInventory,
   },
+  relationshipStats: relStats,
   jobActionDiagnostics,
   questObservationStats,
   eventTypeCounts,

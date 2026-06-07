@@ -41,6 +41,10 @@ export async function loadGameConfigs() {
     worldNews, worldOpportunities, dynamicEvents, dynamicGoals, balanceCovet,
     itemsCurrency, itemsMaterial, itemsPill, itemsArtifact, itemsTalisman, itemsTechnique,
     tags, combatEffects, coreEffects, abilities,
+    relationshipLedgerSchema, relationshipMarks, relationshipTags, relationshipSignals,
+    relationshipEventTypes, relationshipGroupTypes, relationshipLegacyEvents,
+    relationshipCombatRules, relationshipSocialRules, relationshipFactionRules,
+    relationshipWantedSignals, relationshipGroups,
   ] = await Promise.all([
     loadJSON('data/entities/factions.json'),
     loadJSON('data/entities/npcs.json'),
@@ -109,6 +113,18 @@ export async function loadGameConfigs() {
     loadJSON('data/effects/combat-effects.json'),
     loadJSON('data/effects/core-effects.json'),
     loadJSON('data/abilities/combat-abilities.json'),
+    loadJSON('data/relationships/schemas/ledgers.json'),
+    loadJSON('data/relationships/dictionaries/marks.json'),
+    loadJSON('data/relationships/dictionaries/tags.json'),
+    loadJSON('data/relationships/dictionaries/signal-keys.json'),
+    loadJSON('data/relationships/dictionaries/relation-event-types.json'),
+    loadJSON('data/relationships/dictionaries/group-types.json'),
+    loadJSON('data/relationships/event-hooks/legacy-events.json'),
+    loadJSON('data/relationships/impact-rules/combat.json'),
+    loadJSON('data/relationships/impact-rules/social.json'),
+    loadJSON('data/relationships/impact-rules/faction.json'),
+    loadJSON('data/relationships/signal-rules/wanted-chain.json'),
+    loadJSON('data/relationships/groups/groups.json'),
   ]);
 
   // 合并所有 Effect 数据源（combat 专用机制 + core 通用原语），供 EffectPool 一次性加载。
@@ -147,6 +163,21 @@ export async function loadGameConfigs() {
     ...(cultivationToils?.toils || []),
   ] };
 
+  const relationshipPlatform = {
+    schemas: { ledgers: relationshipLedgerSchema },
+    dictionaries: {
+      marks: relationshipMarks,
+      tags: relationshipTags,
+      signals: relationshipSignals,
+      eventTypes: relationshipEventTypes,
+      groupTypes: relationshipGroupTypes,
+    },
+    eventHooks: [relationshipLegacyEvents],
+    impactRules: [relationshipCombatRules, relationshipSocialRules, relationshipFactionRules],
+    signalRules: [relationshipWantedSignals],
+    groups: relationshipGroups,
+  };
+
   return {
     factions, npcs, ranks, items, terrains,
     factionNeeds, npcNeeds,
@@ -159,7 +190,7 @@ export async function loadGameConfigs() {
     monsters, monsterAttributeTemplates, monsterSpawn,
     combatBaseTable, cultivatorCombat, monsterCombat,
     worldNews, worldOpportunities, dynamicEvents, dynamicGoals, balanceCovet, itemDefs,
-    tags, effects, abilities, jobs, toils,
+    tags, effects, abilities, jobs, toils, relationshipPlatform,
   };
 }
 
@@ -195,6 +226,7 @@ export async function loadGameConfigs() {
  * @property {Object} balanceRelationship 关系网系统配置（ADR-027）
  * @property {Object} dynamicEvents      动态世界事件配置
  * @property {Object} dynamicGoals       动态 Goal 配置
+ * @property {Object} relationshipPlatform 三层关系全数据平台配置
  * @property {Object} jobs               合并后的 Job 定义
  * @property {Object} toils              合并后的 Toil 定义
  * @property {Array}  monsters           妖兽定义

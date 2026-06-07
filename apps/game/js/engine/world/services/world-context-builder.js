@@ -59,7 +59,22 @@ export class WorldContextBuilder {
       opportunitySystem: host.opportunitySystem,
       relationshipSystem: host.relationshipSystem,
       relationshipConfig: host.relationshipConfig,
+      relationshipSignals: host.relationshipSystem?.signals || null,
       dynamicGoalConfig: host.dynamicGoalsConfig || {},
+
+      emitRelationEvent(event) {
+        return host.relationshipSystem?.handleEvent?.(event) || [];
+      },
+
+      getRelationshipSignals(input) {
+        return host.relationshipSystem?.getSignals?.(input) || {
+          facts: {},
+          gates: {},
+          modifiers: {},
+          targetPreferences: {},
+          traces: [],
+        };
+      },
 
       dynamicEventById(id) {
         const event = host.worldEventSystem?.getById(id);

@@ -82,6 +82,25 @@ apps/game/data/
 │   └── npc-needs.json
 ├── quests/
 │   └── quest-templates.json
+├── relationships/
+│   ├── dictionaries/
+│   │   ├── group-types.json
+│   │   ├── marks.json
+│   │   ├── relation-event-types.json
+│   │   ├── signal-keys.json
+│   │   └── tags.json
+│   ├── event-hooks/
+│   │   └── legacy-events.json
+│   ├── groups/
+│   │   └── groups.json
+│   ├── impact-rules/
+│   │   ├── combat.json
+│   │   ├── faction.json
+│   │   └── social.json
+│   ├── schemas/
+│   │   └── ledgers.json
+│   └── signal-rules/
+│       └── wanted-chain.json
 ├── tags/
 │   └── tags.json
 ├── toils/
@@ -126,6 +145,7 @@ apps/game/data/
 - `definitions/cultivator-combat.json`：由加载器显式读取为 `cultivatorCombat`，提供普通修士裸面板。
 - `definitions/monster-combat.json`：由加载器显式读取为 `monsterCombat`，提供普通妖兽危险层级参考表。
 - `definitions/monster-attribute-templates.json`：由加载器显式读取为 `monsterAttributeTemplates`，供妖兽属性计算器和运行时生成入口使用。
+- `relationships/**/*.json`：三层关系全数据平台配置，由加载器显式读取并组装为 `relationshipPlatform`，交给 `RelationshipSystem` 门面。
 
 ## entities/
 
@@ -400,6 +420,31 @@ Job/Toil 层用于 NPC 复杂行动编排。GOAP 只规划 `actions/npc-job-acti
 
 GE 必须是通用机制原语；具体数值由物品、能力或调用方 spec 提供。
 
+## relationships/
+
+`relationships/` 是三层关系底座的运行时规则目录。代码只提供账本仓储、selector、表达式解释器、impact pipeline 和 signal provider；关系业务优先通过本目录 JSON 扩展。
+
+| 目录 | 说明 |
+|------|------|
+| `schemas/ledgers.json` | 三层账本 core/potential 字段、默认值和 clamp 范围 |
+| `dictionaries/marks.json` | RelationMark 字典，定义层级、叠加方式、默认权重、衰减和信号提示 |
+| `dictionaries/tags.json` | RelationTag 字典，定义身份标签、层级、叠加方式和默认 modifier |
+| `dictionaries/signal-keys.json` | `facts/gates/modifiers/targetPreferences` 白名单 |
+| `dictionaries/relation-event-types.json` | 标准 `RelationEvent.type` 白名单 |
+| `dictionaries/group-types.json` | 第一版持久 group 类型 |
+| `event-hooks/legacy-events.json` | 旧 `RelationshipSystem.applyEvent` 事件名到标准 `RelationEvent` 的兼容映射 |
+| `impact-rules/*.json` | 标准事件如何写入三层账本 |
+| `signal-rules/*.json` | 三层账本如何输出现有 AI 可消费信号 |
+| `groups/groups.json` | 稳定组织/子群体定义，第一版主要由 `factionId` 派生 |
+
+新增关系规则时：
+
+1. 新 mark/tag/event/signal key 先登记到对应 dictionary。
+2. 事件来源只声明 hook 或发布标准 `RelationEvent`，不得在战斗、NPC、势力领域代码直接改账本。
+3. 新业务影响写入 `impact-rules/`；AI 决策影响写入 `signal-rules/`。
+4. 如果需要新增 selector、condition 或 effect 能力，先确认现有解释器不能表达，再新增 operator，并补 `test-relationship-platform.mjs`。
+5. 修改本目录后至少运行 `test-relationship-platform.mjs`、`test-relationship-wanted-chain.mjs` 和相关 AI 回归。
+
 ## balance/
 
 平衡文件只放数值和开关，不放执行逻辑。
@@ -411,7 +456,7 @@ GE 必须是通用机制原语；具体数值由物品、能力或调用方 spec
 | `cultivation.json` | 修炼速度、突破、灵根/体质、月度贡献 |
 | `risk.json` | 游历、PvP、机会点等风险 |
 | `reward.json` | 期望收益与掉落 |
-| `relationship.json` | 关系边、关系目标、妖群、师徒 |
+| `relationship.json` | 旧关系边兼容开关、旧关系目标、妖群、师徒过渡参数；新三层关系业务使用 `relationships/` |
 | `reaction.json` | Reaction 层阈值和动作映射 |
 | 其他 | 社交、移动、记忆、执念、情绪、人格、怀璧其罪等 |
 

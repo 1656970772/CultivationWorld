@@ -1,0 +1,45 @@
+{
+  "_description": "旧 RelationshipSystem.applyEvent 事件名到标准 RelationEvent 的兼容映射。",
+  "hooks": [
+    {
+      "hook": "faction_war_attacked",
+      "event": {
+        "type": "combat.damage",
+        "visibility": "group",
+        "actor": "$from",
+        "target": "$to",
+        "source": { "type": "legacy_event", "id": "faction_war_attacked" }
+      }
+    },
+    {
+      "hook": "humiliated",
+      "event": {
+        "type": "social.humiliation",
+        "visibility": "group",
+        "actor": "$from",
+        "target": "$to",
+        "source": { "type": "legacy_event", "id": "humiliated" }
+      }
+    },
+    {
+      "hook": "monster_grudge",
+      "event": {
+        "type": "combat.damage",
+        "visibility": "private",
+        "actor": "$from",
+        "target": "$to",
+        "source": { "type": "legacy_event", "id": "monster_grudge" }
+      }
+    },
+    {
+      "hook": "territory_intrusion",
+      "event": {
+        "type": "combat.damage",
+        "visibility": "private",
+        "actor": "$from",
+        "target": "$to",
+        "source": { "type": "legacy_event", "id": "territory_intrusion" }
+      }
+    }
+  ]
+}

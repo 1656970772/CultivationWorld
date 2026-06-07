@@ -40,6 +40,7 @@ CultivationWorld/
 │   │   │   ├── jobs/
 │   │   │   ├── needs/
 │   │   │   ├── quests/
+│   │   │   ├── relationships/
 │   │   │   ├── tags/
 │   │   │   ├── toils/
 │   │   │   └── world/
@@ -79,6 +80,7 @@ CultivationWorld/
 | `apps/game/js/engine/npc/actions/` | NPC 行为执行器，按修炼/经济/战斗/关系/事件等业务拆分 |
 | `apps/game/js/engine/npc/toils/` | NPC Job/Toil 执行器，按核心/动态事件/经济/社交拆分 |
 | `apps/game/js/engine/pools/` | Need / Action / Job / Toil / Effect / Ability 模板池 |
+| `apps/game/js/engine/relationship/` | 三层关系底座：账本仓储、事件解释、selector、表达式、effect operator、信号输出 |
 | `apps/game/js/engine/world/` | 世界实体、TickManager、地图、移动、寻路、关系、信息、机会点、动态事件 |
 | `apps/game/js/engine/world/services/` | Tick 子服务：上下文、势力 AI、晋升、人口、死亡、信息、妖兽重生 |
 | `apps/game/js/renderer/` | Canvas 地图渲染、相机、地形、迷雾、自动模拟渲染 |
@@ -105,6 +107,7 @@ CultivationWorld/
 | `data/abilities/` | GameplayAbility 定义 |
 | `data/config/` | 游戏和 AI 系统级配置 |
 | `data/quests/` | 任务模板 |
+| `data/relationships/` | 三层关系全数据平台配置：schema、mark/tag/signal/event 字典、event hook、impact rule、signal rule、group 定义 |
 
 详细字段规范见 `docs/data/data-config-rules.md`。
 

@@ -1,0 +1,91 @@
+{
+  "_description": "combat 领域关系影响规则。",
+  "rules": [
+    {
+      "id": "combat_kill_public_wanted_order",
+      "priority": 80,
+      "exclusiveGroup": "combat_kill_public_severity",
+      "match": {
+        "eventType": "combat.kill",
+        "visibility": ["public", "group"],
+        "conditions": [
+          { "expr": "actor.id != target.id" },
+          { "expr": "target.factionId != null" }
+        ]
+      },
+      "effects": [
+        {
+          "layer": "faction",
+          "faction": "$target.factionId",
+          "subject": "$actor.id",
+          "changes": {
+            "core.reputation": {
+              "delta": { "expr": "-clamp(target.roleRank * 8 + witness.count * 2, 20, 80)" }
+            },
+            "marks": [
+              {
+                "type": "wantedOrder",
+                "weight": { "expr": "clamp(target.roleRank * 12 + witness.count * 2, 20, 100)" }
+              }
+            ],
+            "tags": [
+              { "type": "wantedCriminal" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "combat_kill_private_blood_feud",
+      "priority": 60,
+      "match": {
+        "eventType": "combat.kill",
+        "visibility": ["private", "group", "public"],
+        "conditions": [
+          { "expr": "actor.id != target.id" }
+        ]
+      },
+      "effects": [
+        {
+          "layer": "individual",
+          "subject": "$target.id",
+          "object": "$actor.id",
+          "changes": {
+            "core.affinity": { "delta": { "expr": "-40" } },
+            "core.trust": { "delta": { "expr": "-30" } },
+            "marks": [
+              {
+                "type": "bloodFeud",
+                "weight": { "expr": "clamp(target.roleRank * 10 + 30, 40, 100)" }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "combat_damage_resource_grudge",
+      "priority": 30,
+      "match": {
+        "eventType": "combat.damage",
+        "visibility": ["private", "group", "public"],
+        "conditions": [
+          { "expr": "actor.id != target.id" }
+        ]
+      },
+      "effects": [
+        {
+          "layer": "individual",
+          "subject": "$target.id",
+          "object": "$actor.id",
+          "changes": {
+            "core.affinity": { "delta": { "expr": "-10" } },
+            "marks": [
+              { "type": "resourceGrudge", "weight": { "expr": "20" } }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

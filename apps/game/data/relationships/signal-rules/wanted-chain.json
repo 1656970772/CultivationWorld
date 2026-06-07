@@ -1,0 +1,105 @@
+{
+  "_description": "追杀令链第一版信号规则。",
+  "rules": [
+    {
+      "id": "wanted_hunt_signal",
+      "scope": "contextual",
+      "appliesTo": {
+        "contextType": "action",
+        "actionId": "act_npc_job_hunt_enemy"
+      },
+      "match": {
+        "ledgers": [
+          {
+            "layer": "faction",
+            "faction": "$actor.factionId",
+            "subject": "$target.id"
+          }
+        ],
+        "conditions": [
+          { "expr": "hasMark(ledger, 'wantedOrder')" }
+        ]
+      },
+      "outputs": {
+        "facts": {
+          "isWantedByFaction": true
+        },
+        "gates": {
+          "canTriggerWantedHunt": true
+        },
+        "modifiers": {
+          "huntWeight": { "expr": "1 + markWeight(ledger, 'wantedOrder') / 40" }
+        },
+        "targetPreferences": {
+          "revengeTargetBonus": { "expr": "markWeight(ledger, 'wantedOrder')" }
+        }
+      }
+    },
+    {
+      "id": "life_debt_soften_hunt",
+      "scope": "contextual",
+      "appliesTo": {
+        "contextType": "action",
+        "actionId": "act_npc_job_hunt_enemy"
+      },
+      "match": {
+        "ledgers": [
+          {
+            "layer": "individual",
+            "subject": "$actor.id",
+            "object": "$target.id"
+          }
+        ],
+        "conditions": [
+          { "expr": "hasMark(ledger, 'lifeDebt')" }
+        ]
+      },
+      "outputs": {
+        "facts": {
+          "hasLifeDebt": true
+        },
+        "gates": {
+          "canIntercede": true
+        },
+        "modifiers": {
+          "huntWeight": { "expr": "max(0.35, 1 - markWeight(ledger, 'lifeDebt') / 120)" },
+          "intercedeWeight": { "expr": "1 + markWeight(ledger, 'lifeDebt') / 50" }
+        },
+        "targetPreferences": {
+          "rescueTargetBonus": { "expr": "markWeight(ledger, 'lifeDebt')" }
+        }
+      }
+    },
+    {
+      "id": "blood_feud_hunt_signal",
+      "scope": "contextual",
+      "appliesTo": {
+        "contextType": "action",
+        "actionId": "act_npc_job_hunt_enemy"
+      },
+      "match": {
+        "ledgers": [
+          {
+            "layer": "individual",
+            "subject": "$actor.id",
+            "object": "$target.id"
+          }
+        ],
+        "conditions": [
+          { "expr": "hasMark(ledger, 'bloodFeud')" }
+        ]
+      },
+      "outputs": {
+        "facts": {
+          "hasBloodFeud": true
+        },
+        "modifiers": {
+          "huntWeight": { "expr": "1 + markWeight(ledger, 'bloodFeud') / 45" }
+        },
+        "targetPreferences": {
+          "revengeTargetBonus": { "expr": "markWeight(ledger, 'bloodFeud')" }
+        }
+      }
+    }
+  ]
+}

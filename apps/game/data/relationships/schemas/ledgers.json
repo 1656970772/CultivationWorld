@@ -1,0 +1,31 @@
+{
+  "_description": "三层关系账本 schema。代码按本表创建默认 core/potential 并执行数值 clamp。",
+  "layers": {
+    "individual": {
+      "core": {
+        "affinity": { "min": -100, "max": 100, "default": 0 },
+        "trust": { "min": -100, "max": 100, "default": 0 }
+      }
+    },
+    "group": {
+      "core": {
+        "identity": { "min": -100, "max": 100, "default": 0 },
+        "trust": { "min": -100, "max": 100, "default": 0 }
+      }
+    },
+    "faction": {
+      "core": {
+        "reputation": { "min": -100, "max": 100, "default": 0 },
+        "credit": { "min": -100, "max": 100, "default": 0 }
+      }
+    }
+  },
+  "potential": {
+    "expectedPotential": { "min": 0, "max": 100, "default": 0 },
+    "confidence": { "min": 0, "max": 100, "default": 0 },
+    "strategicValue": { "min": 0, "max": 100, "default": 0 },
+    "threatValue": { "min": 0, "max": 100, "default": 0 },
+    "investmentIntent": { "min": 0, "max": 100, "default": 0 },
+    "suppressionIntent": { "min": 0, "max": 100, "default": 0 }
+  }
+}

@@ -80,6 +80,9 @@ export function buildRelationshipGoals(entity, worldContext) {
   const rs = entity._relationshipSystem;
   const cfg = entity._relationshipConfig.npcGoals || {};
   const here = entity.hasSpatial && entity.hasSpatial() ? entity.spatial : null;
+  const rng = worldContext?.rng && typeof worldContext.rng.next === 'function'
+    ? worldContext.rng
+    : { next: () => 1 };
 
   /** @type {{ id:string, name:string, targetId:string, effectKey:string, priority:number }|null} */
   let best = null;
@@ -121,7 +124,7 @@ export function buildRelationshipGoals(entity, worldContext) {
   const minBen = repayCfg.minBenefactorStrength ?? 40;
   const visitChance = repayCfg.visitChancePerTick ?? 0.02;
   const repayPriority = repayCfg.priority ?? 3;
-  if (worldContext.rng.next() < visitChance) {
+  if (rng.next() < visitChance) {
     for (const type of ['benefactor', 'gratitude']) {
       const top = rs.topEdgeOfType(entity.id, type);
       if (!top || top.strength < minBen) continue;
@@ -139,7 +142,7 @@ export function buildRelationshipGoals(entity, worldContext) {
   }
 
   // —— 师徒互动（ADR-029 第三期）：传功/护徒/尽孝。复用同款单点锁定模式。 ——
-  considerMasterDiscipleGoals(entity, consider, registry, here, worldContext.rng);
+  considerMasterDiscipleGoals(entity, consider, registry, here, rng);
 
   if (!best) {
     entity.state.set('targetRelationshipId', null);
