@@ -83,6 +83,10 @@ console.log('2) Goal.score 新公式语义');
   modded.modulators.push({ label: 'obsession', deltaPriority: 0, mult: 1.5 });
   assert(approx(modded.score(), 105), '普通 modulator.mult 保持乘法放大：70×1.5=105');
 
+  const legacyBoost = new Goal({ id: 'gLegacyBoost', priority: 95, urgency: 0 });
+  legacyBoost.modulators.push({ label: 'anger', deltaPriority: 25, mult: 1 });
+  assert(approx(legacyBoost.score(), 120), '无 scoreContext 的旧调制路径不被新版 base clamp 截断，score=120');
+
   const capped = new Goal({ id: 'gCap', priority: 50, urgency: 0 });
   capped.modulators.push({ label: 'tooLarge', deltaPriority: 0, mult: 10 });
   capped.setScoreContext({ scoreConfig: { minBiasMult: 0.25, maxBiasMult: 3 } });
@@ -117,6 +121,10 @@ console.log('2) Goal.score 新公式语义');
     nullCtxThrew = true;
   }
   assert(!nullCtxThrew && approx(nullCtx.score(), 60), 'setScoreContext(null) 按空上下文处理，score=60');
+
+  const missingUrgency = new Goal({ id: 'gMissingUrgency', priority: 0, urgency: 5 });
+  missingUrgency.modulators.push({ label: 'missingUrgency' });
+  assert(missingUrgency.urgencyScore() === 5, '直接 push 缺 deltaUrgency 的 modulator 时按 0 处理，urgencyScore=5');
 }
 
 console.log('3) 派生输入 timeValue');

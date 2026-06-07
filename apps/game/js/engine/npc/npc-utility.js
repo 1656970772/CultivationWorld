@@ -72,6 +72,7 @@ function computeRiskWeight(entity, goalRisk, utilityConfig) {
   if (riskCfg.enabled === false) return 0;
 
   const scoreCfg = utilityConfig.score || {};
+  // 新评分公式优先使用 score.riskWeight；riskAversion.weight 仅作为旧配置兜底。
   const baseWeight = positiveNumber(scoreCfg.riskWeight, positiveNumber(riskCfg.weight, 1));
   const caution = entity.staticData?.personality?.caution ?? 50;
   let riskWeight = baseWeight * (caution / 50);

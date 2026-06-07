@@ -33,9 +33,9 @@
         "riskWeight": 1.0
       },
       "lambdaRisk": 40,
-      "_lambdaComment": "lambdaRisk 把『期望风险损失(0~1 量级)』放大到与目标优先级(几十量级)可比，作为目标分数的惩罚项。",
+      "_lambdaComment": "lambdaRisk 为旧兼容/保留参数；新版 Goal.score 风险压制使用 score.riskWeight 与 goalRisk 形成 riskMult，不再直接读取 lambdaRisk。",
       "riskAversion": {
-        "_comment": "风险厌恶：目标有风险时按 weight×caution 比例降低目标分数。caution=50 时 mult=weight；caution=100 时 mult=2×weight。",
+        "_comment": "风险厌恶开关：控制目标风险权重是否启用；weight 仅在 score.riskWeight 缺省时作为兼容兜底。caution=50 时使用基础权重；caution=100 时基础权重翻倍。",
         "enabled": true,
         "weight": 0.3
       },

@@ -241,7 +241,11 @@ export class Goal {
   /**
    * 目标综合评分（Utility 选目标的最终依据，ADR-020）。
    *
-   * 公式：score = hardGate × 100 × base × considerationMean × biasMult × rewardMult × riskMult
+   * 有评分上下文时：
+   * score = hardGate × 100 × base × considerationMean × biasMult × rewardMult × riskMult
+   *
+   * 无评分上下文时走旧兼容路径：
+   * score = (priority + ΣdeltaPriority) × Πmult × considerationMean
    *
    * - 无 considerations 且无 modulators 时严格等于 priority。
    * - considerations 提供加权几何平均考量因素(修炼需求×瓶颈程度×资源充足度)，∈[0,1]，
@@ -253,15 +257,6 @@ export class Goal {
       return this.priority;
     }
 
-    const ctx = this._scoreContext || {
-      hardGate: 1,
-      expectedValue: 0,
-      goalRisk: 0,
-      rewardWeight: DEFAULT_SCORE_CONFIG.rewardWeight,
-      riskWeight: DEFAULT_SCORE_CONFIG.riskWeight,
-      scoreConfig: DEFAULT_SCORE_CONFIG,
-    };
-
     let p = this.priority;
     let biasMult = 1;
     for (const m of this.modulators) {
@@ -269,6 +264,12 @@ export class Goal {
       biasMult *= m?.mult == null ? 1 : finiteNumber(m.mult, 1);
     }
 
+    if (!this._scoreContext) {
+      const considerationMean = this._considerationMean(DEFAULT_SCORE_CONFIG.defaultConsiderationFloor);
+      return p * biasMult * considerationMean;
+    }
+
+    const ctx = this._scoreContext;
     const base = clamp01(p / 100);
     const minBias = ctx.scoreConfig.minBiasMult;
     const maxBias = ctx.scoreConfig.maxBiasMult;
@@ -286,7 +287,7 @@ export class Goal {
   urgencyScore() {
     let u = this.urgency;
     for (const m of this.modulators) {
-      u += m.deltaUrgency;
+      u += finiteNumber(m?.deltaUrgency, 0);
     }
     return u;
   }
