@@ -106,6 +106,7 @@ docs/
 │       ├── 2026-06-05-Job-Toil启用前验证.md
 │       ├── 2026-06-05-Job-Toil默认启用验证.md
 │       ├── 2026-06-06-NPC战斗智能闭环验证.md
+│       ├── 2026-06-07-NPC效用评分公式升级验证.md
 │       └── 2026-06-06-妖兽属性模板与境界清理验证.md
 ├── worldbuilding/
 │   ├── README.md
@@ -128,7 +129,7 @@ docs/
 | 文件结构 | `architecture/file-structure.md` |
 | 数据配置 | `data/data-config-rules.md` |
 | AI 架构 | `systems/behavior-tree.md`、`systems/job-toil-ai-spec.md`、`decisions/adr-048-four-layer-reactive-ai.md`、`decisions/adr-050-goap-job-toil-layered-ai.md` |
-| NPC 效用评分公式升级 | `superpowers/specs/2026-06-07-NPC效用评分公式升级设计.md`、`superpowers/plans/2026-06-07-NPC效用评分公式升级实施计划.md` |
+| NPC 效用评分公式升级 | `superpowers/specs/2026-06-07-NPC效用评分公式升级设计.md`、`superpowers/plans/2026-06-07-NPC效用评分公式升级实施计划.md`、`superpowers/reports/2026-06-07-NPC效用评分公式升级验证.md` |
 | Job/Toil 正式启用 | `superpowers/specs/2026-06-05-Job-Toil正式启用前收尾规格.md`、`superpowers/plans/2026-06-05-ADR-050-收尾实施计划.md`、`superpowers/reports/2026-06-05-Job-Toil默认启用验证.md` |
 | Job/Toil 实施计划 | `superpowers/plans/2026-06-05-Job-Toil-AI重构实施计划.md` |
 | 动态事件/动态目标 | `systems/event-system.md`、`decisions/adr-049-dynamic-goal-interrupt-policy.md` |
