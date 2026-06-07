@@ -42,6 +42,17 @@ function clamp01(value) {
   return clamp(value, 0, 1);
 }
 
+function clamp01Or(value, fallback) {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return fallback;
+  return clamp(n, 0, 1);
+}
+
+function finiteNumber(value, fallback) {
+  const n = Number(value);
+  return Number.isFinite(n) ? n : fallback;
+}
+
 function positiveNumber(value, fallback) {
   const n = Number(value);
   return Number.isFinite(n) && n >= 0 ? n : fallback;
@@ -163,9 +174,9 @@ export class Goal {
     if (!mod) return;
     this.modulators.push({
       label: mod.label || 'modulator',
-      deltaPriority: mod.deltaPriority || 0,
-      deltaUrgency: mod.deltaUrgency || 0,
-      mult: mod.mult == null ? 1 : mod.mult,
+      deltaPriority: finiteNumber(mod.deltaPriority, 0),
+      deltaUrgency: finiteNumber(mod.deltaUrgency, 0),
+      mult: mod.mult == null ? 1 : finiteNumber(mod.mult, 1),
     });
   }
 
@@ -175,12 +186,13 @@ export class Goal {
    * @returns {Goal}
    */
   setScoreContext(context = {}) {
+    context = context || {};
     const config = {
       ...DEFAULT_SCORE_CONFIG,
       ...(context.scoreConfig || {}),
     };
 
-    const hardGate = context.hardGate == null ? 1 : clamp01(context.hardGate);
+    const hardGate = context.hardGate == null ? 1 : clamp01Or(context.hardGate, 1);
     const expectedValue = clamp01(context.expectedValue ?? 0);
     const goalRisk = positiveNumber(context.goalRisk, 0);
     const rewardWeight = positiveNumber(context.rewardWeight ?? config.rewardWeight, DEFAULT_SCORE_CONFIG.rewardWeight);
@@ -195,7 +207,7 @@ export class Goal {
       scoreConfig: {
         minBiasMult: positiveNumber(config.minBiasMult, DEFAULT_SCORE_CONFIG.minBiasMult),
         maxBiasMult: positiveNumber(config.maxBiasMult, DEFAULT_SCORE_CONFIG.maxBiasMult),
-        defaultConsiderationFloor: clamp01(config.defaultConsiderationFloor),
+        defaultConsiderationFloor: clamp01Or(config.defaultConsiderationFloor, DEFAULT_SCORE_CONFIG.defaultConsiderationFloor),
         rewardWeight,
         riskWeight,
       },
@@ -253,8 +265,8 @@ export class Goal {
     let p = this.priority;
     let biasMult = 1;
     for (const m of this.modulators) {
-      p += m.deltaPriority;
-      biasMult *= m.mult;
+      p += finiteNumber(m?.deltaPriority, 0);
+      biasMult *= m?.mult == null ? 1 : finiteNumber(m.mult, 1);
     }
 
     const base = clamp01(p / 100);

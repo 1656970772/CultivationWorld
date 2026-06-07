@@ -93,6 +93,28 @@ console.log('2) Goal.score 新公式语义');
   const risky = new Goal({ id: 'gRisk', priority: 60, urgency: 0 });
   risky.setScoreContext({ goalRisk: 0.5, riskWeight: 1 });
   assert(approx(risky.score(), 40), 'riskMult=1/(1+1×0.5)，score=60/1.5=40');
+
+  const missingDelta = new Goal({ id: 'gMissingDelta', priority: 50, urgency: 0 });
+  missingDelta.modulators.push({ label: 'missingDelta', mult: 2 });
+  assert(approx(missingDelta.score(), 100), '直接 push 缺 deltaPriority 的 modulator 时按 0 处理，score=100');
+
+  const badMod = new Goal({ id: 'gBadMod', priority: 50, urgency: 0 });
+  badMod.addModulator({ label: 'bad', deltaPriority: 'bad', mult: NaN });
+  assert(approx(badMod.score(), 50), 'addModulator 非法 deltaPriority/mult 不污染分数，score=50');
+
+  const invalidCtx = new Goal({ id: 'gInvalidCtx', priority: 100, urgency: 0 });
+  invalidCtx.evaluateConsiderations([new Consideration({ id: 'zero', inputKey: 'x', curve: CurveType.LINEAR })], stateOf({ x: 0 }), {});
+  invalidCtx.setScoreContext({ hardGate: NaN, scoreConfig: { defaultConsiderationFloor: NaN } });
+  assert(approx(invalidCtx.score(), 5), '非法 hardGate/defaultConsiderationFloor 回退默认值，score=100×0.05=5');
+
+  const nullCtx = new Goal({ id: 'gNullCtx', priority: 60, urgency: 0 });
+  let nullCtxThrew = false;
+  try {
+    nullCtx.setScoreContext(null);
+  } catch {
+    nullCtxThrew = true;
+  }
+  assert(!nullCtxThrew && approx(nullCtx.score(), 60), 'setScoreContext(null) 按空上下文处理，score=60');
 }
 
 console.log('3) 派生输入 timeValue');
