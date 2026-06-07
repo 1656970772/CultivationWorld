@@ -71,17 +71,17 @@ if (!npc) { console.error('找不到凡人 NPC，无法验证'); process.exit(1)
 
 console.log(`[verify-effect-reuse] 试验对象=${npc.id} 境界=${npc.state.get('rankId')}`);
 
-// 1) 聚气丹：ge_add_qi(120, rankDecay base=qi_refining) + ge_add_progress(0.01)
+// 1) 聚气丹：ge_add_qi(120, rankDecay base=qi_refining) + ge_add_progress(0.01×nextCultivationRequired)
 {
   const qi0 = npc.state.get('qi') || 0;
-  const prog0 = npc.state.get('cultivationProgress') || 0;
+  const cultivation0 = npc.state.get('cultivation') || 0;
   const { applied, deltas } = applyItemEffects(npc, 'item_qi_pill');
   assert(applied, '聚气丹 effects 成功施加');
   // 凡人 order < qi_refining order，rankDecay step 夹 0（max(0,负)=0）→ 120
   assert(approx(deltas.qi, 120), `聚气丹 ge_add_qi 增量=120（实得 ${deltas.qi}，凡人 step=0）`);
-  assert(approx(deltas.cultivationProgress ?? 0, 0.01), `聚气丹 ge_add_progress 增量=0.01（实得 ${deltas.cultivationProgress}）`);
+  assert(approx(deltas.cultivation ?? 0, 0.5), `聚气丹 ge_add_progress 修为增量=0.5（实得 ${deltas.cultivation}）`);
   assert(approx((npc.state.get('qi') || 0) - qi0, deltas.qi), '聚气丹真气真实落地到 state');
-  void prog0;
+  assert(approx((npc.state.get('cultivation') || 0) - cultivation0, deltas.cultivation), '聚气丹修为真实落地到 state');
 }
 
 // 2) 灵果：ge_add_qi(40) + ge_add_hp(0.3 ratioOfMaxHp，夹 maxHp)
@@ -104,7 +104,7 @@ console.log(`[verify-effect-reuse] 试验对象=${npc.id} 境界=${npc.state.get
   assert((npc.state.get('hp') || 0) === maxHp, '满血吃灵果 hp 仍=maxHp（未溢出）');
 }
 
-// 4) 强者精血：ge_add_qi(500) + ge_add_progress(0.05) —— 同一 ge_add_qi，数值=500（远高于丹药）
+// 4) 强者精血：ge_add_qi(500) + ge_add_progress(0.05×nextCultivationRequired) —— 同一 ge_add_qi，数值=500（远高于丹药）
 {
   const { deltas } = applyItemEffects(npc, 'item_strong_blood');
   assert(approx(deltas.qi, 500), `强者精血 ge_add_qi 增量=500（同一 Effect 复用，来源参数化；实得 ${deltas.qi}）`);

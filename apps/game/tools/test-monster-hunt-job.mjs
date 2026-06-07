@@ -21,6 +21,7 @@ const { Inventory } = await imp('js/engine/abstract/inventory.js');
 const { JobResultStatus } = await imp('js/engine/abstract/job.js');
 const { JobSystem } = await imp('js/engine/abstract/job-system.js');
 const { RuntimeState } = await imp('js/engine/abstract/runtime-state.js');
+const { ToilResultStatus } = await imp('js/engine/abstract/toil.js');
 const { ItemRegistry } = await imp('js/engine/items/item-registry.js');
 const { JobPool } = await imp('js/engine/pools/job-pool.js');
 const { ToilPool } = await imp('js/engine/pools/toil-pool.js');
@@ -56,6 +57,7 @@ function setupPools() {
   ToilPool.loadFromConfig(load('data/toils/npc-quest-toils.json'));
   ToilPool.loadFromConfig(load('data/toils/npc-cultivation-toils.json'));
   JobPool.loadFromConfig(load('data/jobs/npc-quest-jobs.json'));
+  JobPool.loadFromConfig(load('data/jobs/npc-combat-jobs.json'));
   JobPool.loadFromConfig(load('data/jobs/npc-cultivation-jobs.json'));
   registerNPCToilExecutors();
 }
@@ -72,9 +74,14 @@ function mkNpc(overrides = {}) {
       factionId: 'sect_test',
       rankId: 'foundation_building',
       rankName: '筑基',
-      cultivationProgress: 0,
+      cultivation: 0,
+      experienceCultivation: 0,
+      totalCultivation: 0,
+      rankStage: 'early',
       contribution: 20,
       qi: 0,
+      hp: 100,
+      maxHp: 100,
       activeQuestTypeId: null,
       activeQuestTypeName: null,
       activeQuestDifficulty: 0,
@@ -92,9 +99,12 @@ function mkNpc(overrides = {}) {
     spatial: overrides.spatial || {
       tileX: 16,
       tileY: 18,
+      destination: null,
       setDestination(x, y) {
-        this.tileX = x;
-        this.tileY = y;
+        this.destination = { x, y };
+      },
+      clearDestination() {
+        this.destination = null;
       },
     },
   };
@@ -165,7 +175,6 @@ function mkWorld(monsterOrMonsters) {
         spiritStoneCost: { foundation_building: 1 },
         qiBaseGain: { foundation_building: 1 },
         qiPerProgress: { foundation_building: 10 },
-        cultivationCap: { foundation_building: 1 },
         rankMaxDifficulty: { foundation_building: 3 },
         speedVariance: { min: 1, max: 1 },
         actions: {
@@ -179,6 +188,7 @@ function mkWorld(monsterOrMonsters) {
         },
       },
     },
+    ranksData: load('data/definitions/ranks.json'),
     entityRegistry: {
       getById(id) {
         return monsters.find(monster => monster?.id === id) || null;
@@ -220,12 +230,83 @@ const requiredToils = [
   'toil_cultivate',
   'toil_train_chamber',
   'toil_heal',
+  'toil_move_to_target',
 ];
 for (const id of requiredToils) {
   assert(ToilPool.getExecutor(id), `${id} executor registered`);
 }
 
-console.log('2) 多日斩妖 Job 不提前结算');
+console.log('2) 复仇 Job 先移动到当前仇人坐标');
+{
+  const enemy = mkNpc({
+    id: 'npc_enemy',
+    name: '仇人',
+    spatial: { tileX: 21, tileY: 18, destination: null, clearDestination() {} },
+    state: { factionId: 'sect_enemy', cultivation: 1, totalCultivation: 1 },
+  });
+  enemy.hasSpatial = () => true;
+  const avenger = mkNpc({
+    state: {
+      hasRevengeTarget: true,
+      nearRevengeTarget: false,
+      enemyKilled: false,
+      totalCultivation: 80,
+    },
+  });
+  const worldContext = {
+    rng: { next: () => 0 },
+    resolveRevengeTarget() { return enemy; },
+    resolveTarget(_entity, resolver) {
+      return resolver === 'revenge_target'
+        ? { x: enemy.spatial.tileX, y: enemy.spatial.tileY }
+        : { x: avenger.spatial.tileX, y: avenger.spatial.tileY };
+    },
+    npcCombatPower(entity) {
+      return entity.id === enemy.id ? 1 : 999;
+    },
+  };
+  const huntJob = new JobSystem();
+  huntJob.start('job_npc_hunt_enemy', {});
+  const huntMove = huntJob.executeStep(avenger, worldContext);
+  assert(huntMove.status === JobResultStatus.RUNNING, '追踪仇人第一步进入移动中');
+  assert(avenger.spatial.destination?.x === enemy.spatial.tileX && avenger.spatial.destination?.y === enemy.spatial.tileY, '追踪仇人设置 revenge_target 为移动目的地');
+  assert(avenger.state.get('nearRevengeTarget') !== true, '未抵达仇人坐标前不标记 nearRevengeTarget');
+
+  avenger.spatial.tileX = enemy.spatial.tileX;
+  avenger.spatial.tileY = enemy.spatial.tileY;
+  avenger.spatial.clearDestination();
+  const huntArrived = huntJob.executeStep(avenger, worldContext);
+  assert(huntArrived.status === JobResultStatus.RUNNING, '抵达后推进到追踪确认 Toil');
+  const huntDone = huntJob.executeStep(avenger, worldContext);
+  assert(huntDone.status === JobResultStatus.SUCCESS, '抵达后追踪 Job 完成');
+  assert(avenger.state.get('nearRevengeTarget') === true, '抵达仇人坐标后才标记 nearRevengeTarget');
+
+  avenger.state.set('nearRevengeTarget', true);
+  avenger.spatial.tileX = 16;
+  avenger.spatial.tileY = 18;
+  const killJob = new JobSystem();
+  killJob.start('job_npc_kill_enemy', {});
+  const killMove = killJob.executeStep(avenger, worldContext);
+  assert(killMove.status === JobResultStatus.RUNNING, '击杀仇人第一步仍先移动到当前仇人坐标');
+  assert(avenger.spatial.destination?.x === enemy.spatial.tileX && avenger.spatial.destination?.y === enemy.spatial.tileY, '击杀 Job 不远程结算，先设置 revenge_target 目的地');
+  assert(enemy.alive !== false && enemy.state.get('alive') === true, '未抵达仇人坐标前不远程击杀');
+
+  avenger.spatial.clearDestination();
+  avenger.state.set('nearRevengeTarget', false);
+  const directHunt = ToilPool.getExecutor('toil_hunt_enemy')?.run(avenger, worldContext, { context: {} }, { params: {} });
+  assert(directHunt?.status === ToilResultStatus.RUNNING, '直接调用追踪 Toil 时远距离先移动');
+  assert(avenger.spatial.destination?.x === enemy.spatial.tileX && avenger.spatial.destination?.y === enemy.spatial.tileY, '直接追踪 Toil 设置当前仇人目的地');
+  assert(avenger.state.get('nearRevengeTarget') !== true, '直接追踪 Toil 未抵达前不标记 nearRevengeTarget');
+
+  avenger.spatial.clearDestination();
+  avenger.state.set('nearRevengeTarget', true);
+  const directKill = ToilPool.getExecutor('toil_kill_enemy')?.run(avenger, worldContext, { context: {} }, { params: {} });
+  assert(directKill?.status === ToilResultStatus.RUNNING, '直接调用击杀 Toil 时远距离先移动');
+  assert(avenger.spatial.destination?.x === enemy.spatial.tileX && avenger.spatial.destination?.y === enemy.spatial.tileY, '直接击杀 Toil 设置当前仇人目的地');
+  assert(enemy.alive !== false && enemy.state.get('alive') === true, '直接击杀 Toil 未抵达前不远程击杀');
+}
+
+console.log('3) 多日斩妖 Job 不提前结算');
 {
   const npc = mkNpc({
     inventory: { pill_rejuvenation: 1, artifact_green_sword: 1 },
@@ -470,12 +551,12 @@ console.log('9) 组队斩妖使用共同战力并记录助攻收益');
   const hunter = mkNpc({
     id: 'npc_party_hunter',
     name: '主猎人',
-    state: { cultivation: 0, experienceCultivation: 0, insight: 0, totalCultivation: 0 },
+    state: { cultivation: 0, experienceCultivation: 0, totalCultivation: 0 },
   });
   const companion = mkNpc({
     id: 'npc_party_assist',
     name: '助战同门',
-    state: { cultivation: 0, experienceCultivation: 0, insight: 0, totalCultivation: 0 },
+    state: { cultivation: 0, experienceCultivation: 0, totalCultivation: 0 },
   });
   const monster = mkMonster({ id: 'monster_party', name: '铁背妖虎', power: 170 });
   const worldContext = mkWorld(monster);
@@ -511,7 +592,7 @@ console.log('10) 修炼与疗伤 Toil 可运行');
   cultivateJob.start('job_npc_cultivate', {});
   const cultivated = withRandom(0, () => cultivateJob.executeStep(cultivateNpc, worldContext));
   assert(cultivated.status === JobResultStatus.SUCCESS, 'toil_cultivate 可完成 Job');
-  assert(cultivateNpc.state.get('cultivationProgress') > 0, 'toil_cultivate 增加修炼进度');
+  assert(cultivateNpc.state.get('cultivation') > 0, 'toil_cultivate 增加修为');
   assert(cultivateNpc.state.get('qi') > 0, 'toil_cultivate 增加真气');
 
   const trainNpc = mkNpc({ inventory: { low_spirit_stone: 10 }, state: { contribution: 20 } });

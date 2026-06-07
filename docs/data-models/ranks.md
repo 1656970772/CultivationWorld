@@ -1,6 +1,6 @@
 # 数据模型：境界表
 
-> 最后更新：2026-06-06
+> 最后更新：2026-06-07
 
 ## 定位
 
@@ -17,8 +17,8 @@ Rank {
   category: string,           // cultivation / mortal
   order: number,              // 世界观层级排序
   successionScore: number,    // 掌门继任同角色候选的境界分数；职位排序仍看 role
-  cultivationRequired?: number,
-  qiRequired?: number,
+  cultivationRequired?: number, // 突破到本境界所需数值修为
+  qiRequired?: number,          // 突破到本境界所需真气
   lifespan: {
     bucketId: string,         // 寿元桶 ID
     bucketName: string,       // 寿元桶显示名
@@ -37,6 +37,9 @@ Rank {
 - `npc-lifecycle.json` 不再保存 `lifespanByRank` 或 `defaultLifespan`。
 - `WorldEngine.initNPCs()` 会用 `rankId` 查询 `ranks.json`，补齐 `rankName`、`lifespanBucket`、`maxAgeYears/maxAgeDays` 等运行时字段。
 - 掌门继任先按 `role` 候选范围筛选，再在同角色候选中使用 `ranks.json` 的 `successionScore` 排序。
+- 修仙境界必须维护 `cultivationRequired` 与 `qiRequired`。`cultivationRequired` 是突破修为门槛，运行时由 `totalCultivation` 对比；`qiRequired` 是独立真气门槛，运行时由 `qi` 对比。
+- 运行时小层 `rankStage` 由 `totalCultivation / nextCultivationRequired` 派生，阈值来自 `apps/game/data/balance/cultivation.json` 的 `stageThresholds`。
+- 当前顶级境界没有下一境界时，GOAP 派生的 `nextCultivationRequired` 为 0；成功突破到顶级境界后仍显式进入 `rankStage="early"`。
 
 ## 表内唯一 ID
 

@@ -14,6 +14,7 @@ import {
   killNPCByPvP,
   rollAndGrantReward,
 } from './npc-action-utils.js';
+import { addExperienceCultivation } from '../numeric-cultivation.js';
 
 export class NPCServeFactionExecutor extends ActionExecutor {
   run(entity, worldContext, action) {
@@ -95,33 +96,31 @@ export class NPCAssistFactionExecutor extends ActionExecutor {
 
 /**
  * 游历历练：外出大世界寻机缘。归来时
- *   ① 按机缘事件表(cultivation.actions.explore.fortuneEvents)加权 roll 一次，产出 insight + 真气；
+ *   ① 按机缘事件表(cultivation.actions.explore.fortuneEvents)加权 roll 一次，产出历练修为 + 真气；
  *   ② 按 risk.json 的 explore 分项逐项结算风险（受伤/资源掉落/陨落，含性格加成）。
- * insight 并入突破总进度(totalProgress)，是闭关撞 cultivationCap 上限后唯一能继续推进突破的途径。
- * 机缘/夺宝/洞天福地等事件目前仅产出 insight/qi，预留后续扩展（法宝、材料、修炼加速 buff）。详见 ADR-016。
+ * 历练修为并入 totalCultivation，作为闭关修为之外的外出成长来源。
+ * 机缘/夺宝/洞天福地等事件目前仅产出历练修为/qi，预留后续扩展（法宝、材料、修炼加速 buff）。详见 ADR-016。
  */
 export class NPCExploreExecutor extends ActionExecutor {
   run(entity, worldContext, action) {
     const cult = getCultivationConfig(worldContext);
     const exploreCfg = cult.actions?.explore || {};
-    const insightMin = exploreCfg.insightMin ?? 0.01;
-    const insightMax = exploreCfg.insightMax ?? 0.03;
+    const experienceMin = exploreCfg.experienceCultivationMin ?? 1;
+    const experienceMax = exploreCfg.experienceCultivationMax ?? 3;
     const qiMin = exploreCfg.fortuneQiMin ?? 5;
     const qiMax = exploreCfg.fortuneQiMax ?? 20;
     const events = exploreCfg.fortuneEvents || [];
 
-    const event = weightedPickFrom(events, worldContext.rng) || { id: 'normal', name: '游历归来', insightMultiplier: 1.0, qiMultiplier: 1.0 };
+    const event = weightedPickFrom(events, worldContext.rng) || { id: 'normal', name: '游历归来', experienceCultivationMultiplier: 1.0, qiMultiplier: 1.0 };
 
-    const baseInsight = insightMin + worldContext.rng.next() * (insightMax - insightMin);
-    const insightGain = baseInsight * (event.insightMultiplier ?? 1.0);
-    const currentInsight = entity.state.get('insight') || 0;
-    // insight 封顶 (1 - minCultivationRatio)：保证突破总进度中闭关至少占 minCultivationRatio，
-    // 游历感悟最多补足其余部分（默认最多 70%）。见 ADR-017。
-    const minCultivationRatio = cult.minCultivationRatio ?? 0.3;
-    const insightCap = 1 - minCultivationRatio;
-    const newInsight = Math.min(currentInsight + insightGain, insightCap);
-    const appliedInsightGain = newInsight - currentInsight;
-    entity.state.set('insight', newInsight);
+    const baseExperience = experienceMin + worldContext.rng.next() * (experienceMax - experienceMin);
+    const experienceCultivationGain = Number((baseExperience * (event.experienceCultivationMultiplier ?? 1.0)).toFixed(4));
+    const totalCultivation = addExperienceCultivation(
+      entity,
+      worldContext?.ranksData || entity?._ranksData || [],
+      experienceCultivationGain,
+      cult,
+    );
 
     const baseQi = qiMin + Math.floor(worldContext.rng.next() * (qiMax - qiMin + 1));
     const qiGain = Math.round(baseQi * (event.qiMultiplier ?? 1.0));
@@ -149,11 +148,12 @@ export class NPCExploreExecutor extends ActionExecutor {
       outcome: 'fortune',
       fortuneEvent: event.id,
       fortuneEventName: event.name,
-      insightGain: Number(appliedInsightGain.toFixed(4)),
+      experienceCultivationGain,
+      totalCultivation,
       qiGain,
       totalRiskPct: Number(risk.totalRiskPct.toFixed(3)),
       riskTriggered: risk.triggered,
-      description: `${entity.staticData.name} 游历归来：${event.name}，感悟+${appliedInsightGain.toFixed(3)}、真气+${qiGain}${riskNote}`,
+      description: `${entity.staticData.name} 游历归来：${event.name}，历练修为+${experienceCultivationGain.toFixed(3)}、真气+${qiGain}${riskNote}`,
     };
   }
 }

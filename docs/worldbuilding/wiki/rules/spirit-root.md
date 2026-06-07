@@ -1,6 +1,6 @@
 # 灵根（资质）系统
 
-> 最后更新：2026-05-29
+> 最后更新：2026-06-07
 > 状态：草案（设计已敲定，待实现）
 > 类型：规则
 > 关联文档：`docs/decisions/adr-012-spirit-root-and-physique.md`、`apps/game/data/balance/cultivation.json`、`apps/game/data/definitions/ranks.json`
@@ -49,9 +49,9 @@
 - 修炼速度接入点：`NPCCultivateExecutor` 的 `speedMultiplier` 连乘。
 - 突破接入点：`_getBreakthroughRate` / `_tryBreakthrough` 的最终成功率累加。
 
-## 修炼耗时参考（修满进度部分）
+## 修炼耗时参考（修满本境闭关修为）
 
-> 下表为"修满当前境界进度（`cultivationProgress` 0→1.0）"所需年数，**不含**真气门槛与突破概率，故实际晋升更慢。数据按 `cultivation.json` 当前数值（`cultivationSpeed` + `spiritRoot.speedMultiplier` + 修炼室 `speedBonusMultiplier=2.0`）推算，1 年 = 360 天，速度波动取均值。调参后需重算。
+> 下表为把本境闭关修为 `cultivation` 修到下一境界 `cultivationRequired` 所需年数，**不含**真气门槛、历练修为补足与突破概率，故实际晋升更慢。数据按 `cultivation.json` 当前数值（`cultivationSpeed` + `spiritRoot.speedMultiplier` + 修炼室 `speedBonusMultiplier=2.0`）推算，1 年 = 360 天，速度波动取均值。调参后需重算。
 
 ### 天灵根（×2.0）各境界耗时
 

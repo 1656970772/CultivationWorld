@@ -1,6 +1,7 @@
 import { ItemRegistry } from '../items/item-registry.js';
 import { EffectEngine } from '../abstract/gameplay-effect.js';
 import { EffectPool } from '../pools/effect-pool.js';
+import { addCultivation, getCultivationRequired, refreshRankStage, syncTotalCultivation } from './numeric-cultivation.js';
 
 /**
  * 丹药机制化开关（ADR-042 阶段2）：economy.npcExchange.useItems.pillEffects.enabled（默认 true）。
@@ -39,6 +40,10 @@ export function applyItemEffects(entity, itemId) {
       deltas[m.attribute] = (deltas[m.attribute] || 0) + m.delta;
     }
   }
+  if (deltas.cultivation !== undefined || deltas.experienceCultivation !== undefined) {
+    syncTotalCultivation(entity);
+    refreshRankStage(entity, entity?._ranksData || [], entity?._cultivationConfig || {});
+  }
   return { applied, deltas };
 }
 
@@ -52,6 +57,14 @@ function stateNumber(entity, key) {
 
 function addStateNumber(entity, key, amount) {
   entity.state.set(key, stateNumber(entity, key) + amount);
+}
+
+function addCultivationFromProgressGain(entity, progressGain, worldContext) {
+  const cultivationConfig = worldContext?.balanceConfig?.cultivation || entity?._cultivationConfig || {};
+  const ranks = worldContext?.ranksData || entity?._ranksData || [];
+  const required = getCultivationRequired(entity, ranks);
+  const gain = required > 0 ? progressGain * required : progressGain;
+  return addCultivation(entity, ranks, gain, cultivationConfig);
 }
 
 function artifactBonus(itemId) {
@@ -315,13 +328,11 @@ export function useQiPill(entity, worldContext, options = {}) {
         qiGain = deltas.qi ?? qiGain;
       } else {
         addStateNumber(entity, 'qi', qiGain);
-        const nextProgress = Math.min(1, stateNumber(entity, 'cultivationProgress') + progressGain);
-        entity.state.set('cultivationProgress', nextProgress);
+        addCultivationFromProgressGain(entity, progressGain, worldContext);
       }
     } else {
       addStateNumber(entity, 'qi', qiGain);
-      const nextProgress = Math.min(1, stateNumber(entity, 'cultivationProgress') + progressGain);
-      entity.state.set('cultivationProgress', nextProgress);
+      addCultivationFromProgressGain(entity, progressGain, worldContext);
     }
   }
 

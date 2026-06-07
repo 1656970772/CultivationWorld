@@ -177,9 +177,12 @@ apps/game/data/
 | `cultivation` | number | 闭关、修炼场、丹药等直接修炼获得的闭关修为 |
 | `experienceCultivation` | number | 任务、游历、动态事件、机会点、PvP、外出社交获得的历练修为 |
 | `totalCultivation` | number | `cultivation + experienceCultivation`，突破修为门槛使用 |
-| `cultivationProgressRatio` | number | `totalCultivation / nextCultivationRequired`，仅用于兼容旧 GOAP 或百分比 UI |
+| `rankStage` | string | `early` / `middle` / `late` / `perfection`，按总修为完成度派生 |
+| `nextCultivationRequired` | number | 下一境界所需数值修为；顶级境界为 0 |
+| `cultivationShortfall` | number | 距下一境界修为门槛的差额 |
+| `cultivationRootShortfall` | number | 距最低闭关修为占比的差额 |
 
-旧 `cultivationProgress`、`insight`、`totalProgress` 在兼容期可继续派生，但 UI 和文档主语义使用“修为”数值。真气 `qi` 独立保留，突破同时检查修为与真气。
+旧比例字段已从运行时、快照、UI 和应用工具中移除。真气 `qi` 独立保留，突破同时检查数值修为、最低闭关修为占比与真气。
 
 战斗智能与斩妖任务运行时还会维护以下状态：
 
@@ -208,7 +211,7 @@ apps/game/data/
 | `monsters.json` | 妖兽定义，当前 36 条；通过五层模板生成直接面板属性 |
 | `names.json` | 出生 NPC 姓名池 |
 
-`ranks.json` 中 `rankId` 只表示修仙境界，不承载职位、头衔或凡人王朝身份。修仙境界需要同时维护 `qiRequired` 与 `cultivationRequired`。前者是真气突破门槛，后者是数值修为突破门槛；旧 `cultivationProgress` 比例只作为兼容派生，不再作为主显示语义。
+`ranks.json` 中 `rankId` 只表示修仙境界，不承载职位、头衔或凡人王朝身份。修仙境界需要同时维护 `qiRequired` 与 `cultivationRequired`。前者是真气突破门槛，后者是数值修为突破门槛；运行时不再使用旧比例进度字段作为突破依据。
 
 `combat-base-table.json`、`cultivator-combat.json`、`monster-combat.json` 统一使用六项战斗属性：`hp`、`yuan`、`attack`、`defense`、`speed`、`soul`。三张表可包含未来高阶层级作为参考，但不得借此扩展 `ranks.json` 的运行时境界语义。
 
@@ -414,7 +417,7 @@ GE 必须是通用机制原语；具体数值由物品、能力或调用方 spec
 
 ### cultivation.json
 
-`cultivation.json` 继续维护修炼速度、闭关修为上限比例、突破最低闭关修为占比和真气产出。数值修为迁移后新增或维护 `experience` 段，用于非闭关、非原地待命事件的历练修为收益。
+`cultivation.json` 继续维护修炼速度、闭关收益递减、突破最低闭关修为占比、突破失败保留比例和真气产出。数值修为迁移后新增或维护 `experience` 段，用于非闭关、非原地待命事件的历练修为收益。
 
 `experience` 常用字段：
 

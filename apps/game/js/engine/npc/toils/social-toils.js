@@ -1,5 +1,6 @@
 import { ToilExecutor, ToilResultStatus } from '../../abstract/toil.js';
 import { applyCultivationExperience } from '../cultivation-experience.js';
+import { addExperienceCultivation } from '../numeric-cultivation.js';
 
 function stateOf(entity) {
   const state = entity?.state;
@@ -75,6 +76,18 @@ function grantSocialTravelExperience(entity, worldContext) {
     durationDays: 1,
     outcome: 'success',
   });
+}
+
+function grantDiscipleTeachingExperience(disciple, worldContext) {
+  const teachCfg = worldContext.relationshipConfig?.masterDiscipleGoals?.teachDisciple || {};
+  const experienceCultivationGain = teachCfg.experienceCultivationGain ?? 12;
+  const totalCultivation = addExperienceCultivation(
+    disciple,
+    worldContext?.ranksData || disciple?._ranksData || [],
+    experienceCultivationGain,
+    worldContext?.balanceConfig?.cultivation || disciple?._cultivationConfig || {},
+  );
+  return { experienceCultivationGain, totalCultivation };
 }
 
 export class NPCSelectCompanionToilExecutor extends ToilExecutor {
@@ -225,10 +238,7 @@ export class NPCTeachDiscipleToilExecutor extends ToilExecutor {
       return { status: ToilResultStatus.FAILED, reason: 'disciple_missing' };
     }
 
-    const teachCfg = worldContext.relationshipConfig?.masterDiscipleGoals?.teachDisciple || {};
-    const insightGain = teachCfg.insightGain ?? 0.12;
-    const cur = disciple.state.get('insight') || 0;
-    disciple.state.set('insight', cur + insightGain);
+    const teachingExperience = grantDiscipleTeachingExperience(disciple, worldContext);
 
     const rs = worldContext.relationshipSystem;
     if (rs && typeof rs.addEdge === 'function') {
@@ -239,7 +249,12 @@ export class NPCTeachDiscipleToilExecutor extends ToilExecutor {
     return {
       status: ToilResultStatus.SUCCESS,
       reason: 'disciple_taught',
-      contextPatch: { discipleId: disciple.id, insightGain, cultivationExperience },
+      contextPatch: {
+        discipleId: disciple.id,
+        experienceCultivationGain: teachingExperience.experienceCultivationGain,
+        totalCultivation: teachingExperience.totalCultivation,
+        cultivationExperience,
+      },
     };
   }
 }

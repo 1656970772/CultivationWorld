@@ -53,13 +53,17 @@ function mkEntity(overrides = {}) {
       factionId: 'sect_test',
       contribution: 0,
       monthlyContribution: 0,
+      rankId: 'mortal',
       qi: 0,
-      cultivationProgress: 0,
-      totalProgress: 0,
+      cultivation: 0,
+      experienceCultivation: 0,
+      totalCultivation: 0,
       breakthroughAidBonus: 0,
       equippedArtifactId: null,
       ...overrides.state,
     }),
+    _ranksData: ranks,
+    _cultivationConfig: cultivationConfig,
   };
   entity.inventory.loadFrom(overrides.inventory || {});
   return entity;
@@ -77,7 +81,8 @@ function mkFaction() {
 
 function mkWorld(faction) {
   return {
-    balanceConfig: { economy: economyConfig },
+    ranksData: ranks,
+    balanceConfig: { economy: economyConfig, cultivation: cultivationConfig },
     entityRegistry: {
       getById(id) {
         return id === faction.id ? faction : null;
@@ -133,12 +138,14 @@ console.log('3) 贡献兑换与聚气丹消耗');
   ok(npc.inventory.getAmount('item_qi_pill') === 1, '兑换后获得 item_qi_pill');
   ok(npc.state.get('contribution') < 20, '兑换后贡献扣减');
   const beforeQi = npc.state.get('qi');
-  const beforeProgress = npc.state.get('cultivationProgress');
+  const beforeCultivation = npc.state.get('cultivation');
   const use = useQiPill(npc, mkWorld(faction));
   ok(use.success, '可使用已兑换的聚气丹');
   ok(npc.inventory.getAmount('item_qi_pill') === 0, '使用后聚气丹被消耗');
   ok(npc.state.get('qi') > beforeQi, '使用聚气丹后 qi 增加');
-  ok(npc.state.get('cultivationProgress') > beforeProgress, '使用聚气丹后修炼进度增加');
+  ok(npc.state.get('cultivation') > beforeCultivation, '使用聚气丹后数值修为增加');
+  ok(npc.state.get('totalCultivation') === npc.state.get('cultivation') + npc.state.get('experienceCultivation'), '使用聚气丹后同步 totalCultivation');
+  ok(npc.state.get(['cultivation', 'Progress'].join('')) == null, '使用聚气丹不写旧闭关比例字段');
 }
 
 console.log('4) 破境丹加成与突破判定清空');
@@ -155,17 +162,13 @@ console.log('4) 破境丹加成与突破判定清空');
     factionId: 'sect_test',
     rankId: 'mortal',
   }, ranks, { cultivationConfig, gameConfig, aiConfig: { maxDepth: 4, maxIterations: 100 } });
-  realNpc.state.set('cultivationProgress', 1.0);
-  realNpc.state.set('insight', 0);
+  realNpc.state.set('cultivation', 50);
+  realNpc.state.set('experienceCultivation', 0);
+  realNpc.state.set('totalCultivation', 50);
   realNpc.state.set('qi', 999999);
   realNpc.state.set('breakthroughAidBonus', 0.08);
-  const oldRandom = Math.random;
-  Math.random = () => 0.999;
-  try {
-    realNpc._tryBreakthrough();
-  } finally {
-    Math.random = oldRandom;
-  }
+  realNpc._rng = { next: () => 0.999 };
+  realNpc._tryBreakthrough();
   ok(realNpc.state.get('breakthroughAidBonus') === 0, '一次突破判定后破境丹加成清零');
 }
 

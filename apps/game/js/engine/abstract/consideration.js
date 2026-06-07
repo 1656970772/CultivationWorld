@@ -88,7 +88,10 @@ export class Consideration {
     } else {
       x = entityState && entityState.get ? entityState.get(this.inputKey) : undefined;
     }
-    if (typeof x !== 'number') x = 0;
+    if (typeof x !== 'number') {
+      const stageValue = { early: 0.1, middle: 0.4, late: 0.7, perfection: 1 };
+      x = Object.prototype.hasOwnProperty.call(stageValue, x) ? stageValue[x] : 0;
+    }
     const fn = CURVES[this.curve] || CURVES[CurveType.LINEAR];
     return clamp01(fn(x, this.params));
   }

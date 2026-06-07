@@ -8,7 +8,7 @@
  * 输出：终端打印
  *   1) 该 NPC 的逐境界突破时间线（哪天从什么境界突破到什么境界、当时年龄）
  *   2) 行为分布（这一生主要在做什么）
- *   3) 关键变化点日记（境界/进度/真气/年龄/行为变化）
+ *   3) 关键变化点日记（境界/修为/真气/年龄/行为变化）
  *   4) 结局（仍在世 / 何时何因身故）
  */
 import { readFileSync, createWriteStream } from 'node:fs';
@@ -99,6 +99,11 @@ if (!target) {
 }
 
 function snap(ent) {
+  const totalCultivation = Number(ent.state.get('totalCultivation') || 0);
+  const nextCultivationRequired = Number(ent.state.get('nextCultivationRequired') || 0);
+  const cultivationCompletion = nextCultivationRequired > 0
+    ? totalCultivation / nextCultivationRequired
+    : 0;
   return {
     rankName: ent.state.get('rankName'),
     rankId: ent.state.get('rankId'),
@@ -106,9 +111,11 @@ function snap(ent) {
     age: ent.state.get('ageYears'),
     maxAge: ent.state.get('maxAgeYears'),
     qi: Math.round((ent.state.get('qi') || 0) * 100) / 100,
-    progress: Number((ent.state.get('cultivationProgress') || 0).toFixed(3)),
-    insight: Number((ent.state.get('insight') || 0).toFixed(3)),
-    total: Number((ent.state.get('totalProgress') || 0).toFixed(3)),
+    cultivation: Number((ent.state.get('cultivation') || 0).toFixed(2)),
+    experienceCultivation: Number((ent.state.get('experienceCultivation') || 0).toFixed(2)),
+    totalCultivation: Number(totalCultivation.toFixed(2)),
+    nextCultivationRequired: Number(nextCultivationRequired.toFixed(2)),
+    cultivationCompletion: Number(cultivationCompletion.toFixed(4)),
     contribution: Math.round(ent.state.get('contribution') || 0),
     stone: ent.inventory?.getAmount('low_spirit_stone') || 0,
     spiritRoot: ent.state.get('spiritRootId'),
@@ -122,13 +129,13 @@ const s0 = snap(target);
 console.log(`\n========== 追踪对象 ==========`);
 console.log(`${target.name}（${TARGET_ID}）`);
 console.log(`天赋: 灵根=${s0.spiritRoot} 体质=${s0.physique}`);
-console.log(`初始: 境界=${s0.rankName} 职位=${s0.role} 年龄=${s0.age}/${s0.maxAge}岁 真气=${s0.qi} 进度=${s0.total}`);
+console.log(`初始: 境界=${s0.rankName} 职位=${s0.role} 年龄=${s0.age}/${s0.maxAge}岁 真气=${s0.qi} 修为=${s0.totalCultivation}/${s0.nextCultivationRequired}`);
 if (VERBOSE) console.log(`\n========== 全量事件日志（每一次行为/突破/跳过）==========`);
 
 /** 提取并格式化一条 npcLog 的全部可读信息 */
 function fmtLog(day, ent, nl) {
   const s = snap(ent);
-  const head = `第${day}天 [${s.rankName}|${s.age}岁|真气${s.qi}|总进度${s.total}(闭${s.progress}+悟${s.insight})|贡${s.contribution}|石${s.stone}]`;
+  const head = `第${day}天 [${s.rankName}|${s.age}岁|真气${s.qi}|修为${s.totalCultivation}/${s.nextCultivationRequired}(${Math.round(s.cultivationCompletion * 100)}%，闭${s.cultivation}+历${s.experienceCultivation})|贡${s.contribution}|石${s.stone}]`;
   if (!nl) return `${head} （本tick无NPC日志）`;
   if (nl.skipped) return `${head} 跳过: ${nl.skipReason || nl.reason || JSON.stringify(nl).slice(0, 120)}`;
   const exec = nl.execution || {};
@@ -140,8 +147,8 @@ function fmtLog(day, ent, nl) {
   const desc = res.description || exec.description || '';
   // 收集 result 里的数值字段
   const nums = [];
-  for (const k of ['qiGain', 'qi', 'progress', 'speed', 'stoneConsumed', 'contributionSpent',
-                   'insightGain', 'insight', 'appliedInsightGain', 'lifespanGain', 'reward',
+  for (const k of ['qiGain', 'qi', 'speed', 'stoneConsumed', 'contributionSpent',
+                   'cultivationGain', 'experienceCultivationGain', 'totalCultivation', 'lifespanGain', 'reward',
                    'contributionGain', 'stoneGain', 'success']) {
     if (res[k] !== undefined) nums.push(`${k}=${typeof res[k] === 'number' ? Math.round(res[k] * 1000) / 1000 : res[k]}`);
   }

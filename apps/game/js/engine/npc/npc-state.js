@@ -11,7 +11,11 @@
  * 时间参数、死亡参数来自 data/config/game-config.json（通过构造函数 gameConfig 参数传入）。
  */
 import { RuntimeState } from '../abstract/runtime-state.js';
-import { nextCultivationRequired } from './numeric-cultivation.js';
+import {
+  getCultivationRequired,
+  syncTotalCultivation,
+  refreshRankStage,
+} from './numeric-cultivation.js';
 import { normalizeRankStage } from './cultivator-combat-attributes.js';
 
 const ROLE_RANKS = {
@@ -57,9 +61,14 @@ export class NPCState extends RuntimeState {
     const maxAgeDays = Math.floor(maxAgeYears * daysPerYear);
     const ageRatio = initRatioMin + random.next() * (initRatioMax - initRatioMin);
     const ageDays = Math.floor(maxAgeDays * ageRatio);
-    const initialCultivationProgress = random.next() * 0.3;
-    const initialCultivationRequired = nextCultivationRequired(initialRankId, ranksData || []);
-    const initialCultivation = initialCultivationProgress * initialCultivationRequired;
+    const initialCultivationRequired = getCultivationRequired(initialRankId, ranksData || []);
+    const randomCultivation = random.next() * initialCultivationRequired * 0.3;
+    const initialCultivation = Number.isFinite(Number(npcConfig.cultivation))
+      ? Number(npcConfig.cultivation)
+      : randomCultivation;
+    const initialExperienceCultivation = Number.isFinite(Number(npcConfig.experienceCultivation))
+      ? Number(npcConfig.experienceCultivation)
+      : 0;
 
     super({
       alive: npcConfig.alive !== false,
@@ -72,23 +81,9 @@ export class NPCState extends RuntimeState {
       roleRank: ROLE_RANKS[npcConfig.role] || 1,
       rankId: initialRankId,
       rankName: rankInfo ? rankInfo.name : initialRankId,
-      cultivationProgress: initialCultivationProgress,
       cultivation: initialCultivation,
-      // 游历感悟：通过外出游历积累，与闭关进度(cultivationProgress)互补。
-      // 突破总进度 = cultivationProgress + insight（见 toGOAPState 的 totalProgress 与 ADR-016）。
-      // 闭关有 cultivationCap 上限（按境界），撞墙后剩余进度必须靠游历补足。
-      insight: 0,
-      experienceCultivation: 0,
-      totalCultivation: initialCultivation,
-      cultivationProgressRatio: initialCultivationRequired > 0
-        ? initialCultivation / initialCultivationRequired
-        : 0,
-      // 派生缓存：突破总进度 = cultivationProgress + insight。由 set('cultivationProgress'/'insight')
-      // 自动重算，供数据驱动需求评估器(ConfigurableEvaluator 读 entityState.get('totalProgress'))使用。
-      // 初始值在构造末尾按实际 cultivationProgress 同步。
-      totalProgress: initialCultivationRequired > 0
-        ? initialCultivation / initialCultivationRequired
-        : 0,
+      experienceCultivation: initialExperienceCultivation,
+      totalCultivation: initialCultivation + initialExperienceCultivation,
       qi: 0,
       morale: 50 + random.next() * 50,
       lifeRatio: 0,
@@ -208,74 +203,54 @@ export class NPCState extends RuntimeState {
     };
 
     this.set('lifeRatio', ageDays / maxAgeDays);
-    this._syncTotalProgress();
+    this._syncNumericCultivation();
   }
 
   set(key, value) {
     super.set(key, value);
-    if (this._isCultivationSyncKey(key)) {
-      this._syncCultivationFields(key);
+    if (this._isNumericCultivationKey(key)) {
+      this._syncNumericCultivation();
     }
   }
 
   setMany(updates) {
     super.setMany(updates);
-    const changedKey = Object.keys(updates || {}).find(k => this._isCultivationSyncKey(k));
+    const changedKey = Object.keys(updates || {}).find(k => this._isNumericCultivationKey(k));
     if (changedKey) {
-      this._syncCultivationFields(changedKey);
+      this._syncNumericCultivation();
     }
   }
 
-  _syncTotalProgress() {
-    this._syncCultivationFields('ratio');
-  }
-
-  _isCultivationSyncKey(key) {
-    return key === 'cultivationProgress'
-      || key === 'insight'
-      || key === 'cultivation'
+  _isNumericCultivationKey(key) {
+    return key === 'cultivation'
       || key === 'experienceCultivation'
       || key === 'rankId';
   }
 
-  _syncCultivationFields(changedKey) {
-    const required = nextCultivationRequired(this, this._ranksData || []);
-
-    if (changedKey === 'cultivationProgress'
-      || changedKey === 'insight'
-      || changedKey === 'rankId'
-      || changedKey === 'ratio') {
-      const progress = this.get('cultivationProgress') || 0;
-      const insight = this.get('insight') || 0;
-      super.set('cultivation', progress * required);
-      super.set('experienceCultivation', insight * required);
-    } else if (changedKey === 'cultivation') {
-      const cultivation = this.get('cultivation') || 0;
-      super.set('cultivationProgress', required > 0 ? cultivation / required : 0);
-    } else if (changedKey === 'experienceCultivation') {
-      const experience = this.get('experienceCultivation') || 0;
-      super.set('insight', required > 0 ? experience / required : 0);
-    }
-
-    const cultivation = this.get('cultivation') || 0;
-    const experience = this.get('experienceCultivation') || 0;
-    const total = cultivation + experience;
-    super.set('totalCultivation', total);
-    const ratio = required > 0 ? total / required : 0;
-    super.set('cultivationProgressRatio', ratio);
-    super.set('totalProgress', ratio);
+  _syncNumericCultivation() {
+    syncTotalCultivation(this);
+    refreshRankStage(this, this._ranksData || []);
   }
 
   /**
    * @override
-   * 注入派生字段 totalProgress = cultivationProgress + insight，供 GOAP 目标判定与突破使用。
-   * 这样修炼需求的 goalState 直接对 totalProgress 设阈值，闭关撞 cap 后只剩游历能推进，
-   * GOAP 便自然推导出"去游历"，无需独立的游历需求。
+   * 注入数值修为派生字段，供 GOAP 目标判定与突破使用。
    */
   toGOAPState() {
     const flat = super.toGOAPState();
-    flat.totalProgress = this.get('totalProgress')
-      ?? ((this.get('cultivationProgress') || 0) + (this.get('insight') || 0));
+    const nextCultivationRequired = getCultivationRequired(this, this._ranksData || []);
+    const cultivation = this.get('cultivation') || 0;
+    const totalCultivation = this.get('totalCultivation') ?? syncTotalCultivation(this);
+    const minCultivationRatio = 0.3;
+    flat.nextCultivationRequired = nextCultivationRequired;
+    flat.cultivationShortfall = Math.max(0, nextCultivationRequired - totalCultivation);
+    flat.cultivationRootShortfall = Math.max(
+      0,
+      nextCultivationRequired * minCultivationRatio - cultivation,
+    );
+    flat.canBreakthroughByCultivation = nextCultivationRequired > 0
+      && flat.cultivationShortfall <= 0
+      && flat.cultivationRootShortfall <= 0;
     return flat;
   }
 

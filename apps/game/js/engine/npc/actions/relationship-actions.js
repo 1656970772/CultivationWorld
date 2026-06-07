@@ -12,6 +12,7 @@ import {
   rollAndGrantReward,
 } from './npc-action-utils.js';
 import { applyCultivationExperience } from '../cultivation-experience.js';
+import { addExperienceCultivation } from '../numeric-cultivation.js';
 
 function grantRelationshipExperience(entity, worldContext, sourceKind, input = {}) {
   return applyCultivationExperience(entity, worldContext, {
@@ -21,6 +22,18 @@ function grantRelationshipExperience(entity, worldContext, sourceKind, input = {
     durationDays: input.durationDays ?? 1,
     outcome: input.outcome || 'success',
   });
+}
+
+function grantDiscipleTeachingExperience(disciple, worldContext) {
+  const teachCfg = worldContext.relationshipConfig?.masterDiscipleGoals?.teachDisciple || {};
+  const experienceCultivationGain = teachCfg.experienceCultivationGain ?? 12;
+  const totalCultivation = addExperienceCultivation(
+    disciple,
+    worldContext?.ranksData || disciple?._ranksData || [],
+    experienceCultivationGain,
+    worldContext?.balanceConfig?.cultivation || disciple?._cultivationConfig || {},
+  );
+  return { experienceCultivationGain, totalCultivation };
 }
 
 /**
@@ -148,8 +161,8 @@ export class NPCVisitBenefactorExecutor extends ActionExecutor {
 
 /**
  * 师徒互动——师傅传功点化（ADR-029 第三期）。
- * requiresTravel 已把师傅移动到 relationship_target 解析的徒弟坐标。抵达后给徒弟一波 insight
- * (感悟)增量助推突破（总进度=cultivationProgress+insight），并加深师徒情谊（master 边强度反馈）。
+ * requiresTravel 已把师傅移动到 relationship_target 解析的徒弟坐标。抵达后给徒弟一波历练修为
+ * 助推数值修为成长，并加深师徒情谊（master 边强度反馈）。
  * effect 置 taughtDisciple=true（结算后复位）。体现『无私传承』（参考凡人修仙传 大衍神君传承）。
  */
 export class NPCTeachDiscipleExecutor extends ActionExecutor {
@@ -163,11 +176,7 @@ export class NPCTeachDiscipleExecutor extends ActionExecutor {
     if (!disciple || !disciple.alive) {
       return { success: false, outcome: 'gone', description: `${entity.staticData.name} 欲传功，徒弟却已不在` };
     }
-    const teachCfg = worldContext.relationshipConfig?.masterDiscipleGoals?.teachDisciple || {};
-    const insightGain = teachCfg.insightGain ?? 0.12;
-    // 给徒弟 insight 增量（感悟，与闭关进度互补共促突破）。
-    const cur = disciple.state.get('insight') || 0;
-    disciple.state.set('insight', cur + insightGain);
+    const teachingExperience = grantDiscipleTeachingExperience(disciple, worldContext);
     // 加深师徒情谊（master 边；symmetricType=disciple 自动建反向）。
     const rs = worldContext.relationshipSystem;
     if (rs && typeof rs.addEdge === 'function') {
@@ -178,8 +187,10 @@ export class NPCTeachDiscipleExecutor extends ActionExecutor {
       success: true,
       outcome: 'taught',
       targetId: disciple.id,
+      experienceCultivationGain: teachingExperience.experienceCultivationGain,
+      totalCultivation: teachingExperience.totalCultivation,
       cultivationExperience,
-      description: `${entity.staticData.name} 为徒弟 ${disciple.staticData?.name || disciple.id} 传功点化，助其感悟精进`,
+      description: `${entity.staticData.name} 为徒弟 ${disciple.staticData?.name || disciple.id} 传功点化，助其历练修为精进`,
     };
   }
 }

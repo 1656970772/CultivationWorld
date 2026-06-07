@@ -17,9 +17,15 @@ function assert(cond, msg) {
 }
 
 const { applyCultivationExperience } = await imp('js/engine/npc/cultivation-experience.js');
+const { NPCState } = await imp('js/engine/npc/npc-state.js');
 const { NPCGotoOpportunityExecutor, NPCTeachDiscipleExecutor, NPCVisitMasterExecutor } = await imp('js/engine/npc/actions/relationship-actions.js');
+const { NPCExploreExecutor } = await imp('js/engine/npc/actions/combat-actions.js');
+const { NPCExploreToilExecutor } = await imp('js/engine/npc/toils/cultivation-toils.js');
 const { NPCKillEnemyToilExecutor } = await imp('js/engine/npc/toils/combat-toils.js');
 const { NPCTeachDiscipleToilExecutor, NPCVisitMasterToilExecutor } = await imp('js/engine/npc/toils/social-toils.js');
+
+const oldExpField = ['in', 'sight'].join('');
+const oldTotalRatioField = ['total', 'Progress'].join('');
 
 function state(initial = {}) {
   const data = new Map(Object.entries({
@@ -59,6 +65,7 @@ function baseWorld() {
     ],
     balanceConfig: {
       cultivation: {
+        stageThresholds: { early: 0, middle: 0.8, late: 0.9, perfection: 0.99 },
         experience: {
           enabled: true,
           valueScale: 500,
@@ -78,7 +85,7 @@ function baseWorld() {
     },
     relationshipConfig: {
       masterDiscipleGoals: {
-        teachDisciple: { insightGain: 0.12 },
+        teachDisciple: { experienceCultivationGain: 12 },
       },
     },
     relationshipSystem: {
@@ -90,6 +97,8 @@ function baseWorld() {
 function assertExperienceIncreased(entity, before, msg) {
   assert(entity.state.get('experienceCultivation') > before, `${msg}: experienceCultivation increases`);
   assert(entity.state.get('totalCultivation') > 10, `${msg}: totalCultivation syncs`);
+  assert(!entity.state.data.has(oldExpField), `${msg}: does not write old travel-ratio field`);
+  assert(!entity.state.data.has(oldTotalRatioField), `${msg}: does not write old total-ratio field`);
 }
 
 console.log('1) applyCultivationExperience 支持高价值斩妖来源');
@@ -107,8 +116,61 @@ console.log('1) applyCultivationExperience 支持高价值斩妖来源');
   assert(result.gain > 8, 'high value and risk increase cultivation experience');
   assert(entity.state.get('experienceCultivation') === result.gain, 'experienceCultivation increases by gain');
   assert(entity.state.get('totalCultivation') === 10 + result.gain, 'totalCultivation syncs after experience gain');
-  assert(entity.state.get('insight') > 0, 'legacy insight ratio is synced from experience cultivation');
-  assert(entity.state.get('totalProgress') > 0.1, 'legacy totalProgress ratio is synced from numeric cultivation');
+  assert(entity.state.get('rankStage') === 'early', 'passes cultivation config into rank stage refresh');
+  assert(!entity.state.data.has(oldExpField), 'does not sync old travel ratio');
+  assert(!entity.state.data.has(oldTotalRatioField), 'does not sync old total ratio');
+}
+
+console.log('1a) applyCultivationExperience 缺省 world ranks 时保留真实 NPCState 小层');
+{
+  const ranksData = [
+    { id: 'mortal', name: '凡人', order: 0, category: 'mortal', lifespan: { baseYears: 80, varianceYears: 0 } },
+    { id: 'qi_refining', name: '炼气', order: 20, category: 'cultivation', cultivationRequired: 50, qiRequired: 50, lifespan: { baseYears: 120, varianceYears: 0 } },
+  ];
+  const state = new NPCState(
+    { id: 'npc_real_state_exp', rankId: 'mortal', role: 'disciple', cultivation: 15, experienceCultivation: 0 },
+    ranksData,
+    {},
+    { next: () => 0 },
+  );
+  const entity = { id: 'npc_real_state_exp', name: '真实状态弟子', state, _ranksData: ranksData };
+  state.set('rankStage', 'middle');
+  const worldWithEmptyRanks = baseWorld();
+  worldWithEmptyRanks.ranksData = [];
+
+  const result = applyCultivationExperience(entity, worldWithEmptyRanks, {
+    sourceKind: 'monster_hunt_success',
+    value: 1000,
+    riskScore: 1,
+    durationDays: 20,
+    outcome: 'success',
+  });
+
+  assert(result.gain > 0, 'worldContext ranksData 为空数组时仍获得历练修为');
+  assert(state.get('totalCultivation') > 15, '真实 NPCState 同步 totalCultivation');
+  assert(state.get('rankStage') !== null, '真实 NPCState 的 rankStage 不被空 ranks 覆盖为 null');
+  assert(['middle', 'late', 'perfection'].includes(state.get('rankStage')), 'rankStage 使用 entity._ranksData 刷新');
+}
+
+console.log('1b) 游历 Action/Toil 只写历练修为数值');
+{
+  const entity = npc('npc_explore_action', '游历弟子');
+  const before = entity.state.get('experienceCultivation');
+  const result = new NPCExploreExecutor().run(entity, baseWorld(), {});
+  assert(result.success === true, 'explore action succeeds');
+  assert(result.experienceCultivationGain > 0, 'explore action reports experienceCultivationGain');
+  assert(result.totalCultivation === entity.state.get('totalCultivation'), 'explore action reports totalCultivation');
+  assertExperienceIncreased(entity, before, 'explore action');
+}
+
+{
+  const entity = npc('npc_explore_toil', '游历 Toil 弟子');
+  const before = entity.state.get('experienceCultivation');
+  const result = new NPCExploreToilExecutor().run(entity, baseWorld(), {}, { params: {} });
+  assert(result.status === 'success', 'explore toil succeeds');
+  assert(result.contextPatch.experienceCultivationGain > 0, 'explore toil reports experienceCultivationGain');
+  assert(result.contextPatch.totalCultivation === entity.state.get('totalCultivation'), 'explore toil reports totalCultivation');
+  assertExperienceIncreased(entity, before, 'explore toil');
 }
 
 console.log('2) 机会点成功领取获得 opportunity 历练');
@@ -154,7 +216,7 @@ console.log('3) PvP 存活路径获得 pvp 历练');
 console.log('4) 社交 Toil 成功获得 social_travel 历练');
 {
   const teacher = npc('npc_teacher', '师傅', { targetRelationshipId: 'npc_disciple' });
-  const disciple = npc('npc_disciple', '徒弟', { insight: 0 });
+  const disciple = npc('npc_disciple', '徒弟');
   const worldContext = {
     ...baseWorld(),
     entityRegistry: { getById: (id) => (id === disciple.id ? disciple : null) },
@@ -181,7 +243,7 @@ console.log('4) 社交 Toil 成功获得 social_travel 历练');
 console.log('5) 关系 SimpleAction 成功获得 social_travel 历练');
 {
   const teacher = npc('npc_action_teacher', '行动师傅', { targetRelationshipId: 'npc_action_disciple' });
-  const disciple = npc('npc_action_disciple', '行动徒弟', { insight: 0 });
+  const disciple = npc('npc_action_disciple', '行动徒弟');
   const worldContext = {
     ...baseWorld(),
     entityRegistry: { getById: (id) => (id === disciple.id ? disciple : null) },

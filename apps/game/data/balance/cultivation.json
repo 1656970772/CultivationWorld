@@ -5,7 +5,7 @@
     "enabled": true
   },
   "cultivationSpeed": {
-    "_comment": "各境界【每天】修炼进度（progress 0~1，1.0=修满一境界）。普通闭关修满一境界耗时≈1/speed 天，约为该境界寿元的120%（几乎耗尽一生，逼迫弟子去修炼场）；赴修炼场 speedBonusMultiplier=2.0 加速后约60%寿元。详见 ADR-011。",
+    "_comment": "各境界【每天】基础闭关修为增量系数。实际修为收益以目标境界 cultivationRequired 为基准换算，并受 cultivation / cultivationRequired 递减影响；赴修炼场 speedBonusMultiplier=2.0 时闭关修为增量翻倍。详见 ADR-011。",
     "mortal": 0.0000772,
     "disciple": 0.0000772,
     "qi_refining": 0.0000289,
@@ -14,20 +14,17 @@
     "nascent_soul": 0.00000154,
     "spirit_transformation": 0.000000772
   },
-  "cultivationCap": {
-    "_comment": "闭关/修炼场积累的 cultivationProgress 上限（按当前境界）。闭关进度可一直增长但边际递减（越接近 cap 越慢，理论上能缓慢到顶），不再是撞墙即停。剩余突破进度靠游历感悟(insight)补足，突破条件 cultivationProgress + insight >= 1.0。境界越高 cap 越低、越依赖游历。各境界 cap 下限 0.3（保证闭关进度至少能占 30%）。详见 ADR-016 / ADR-017。2026-06-03 修正：凡人/弟子原误设为 1.0，使闭关前置 cultivationProgress<cap×0.999 几乎永远满足，GOAP 永不被迫游历、insight 恒为 0，低阶一生闭关却因凡人闭关速度极慢修不满 1.0 而永不突破（见 trace-genius 天才复盘）。改回 0.3 下限：闭关撞 0.3 cap 后前置失效，A* 被迫规划游历攒 insight 补足突破。",
-    "mortal": 0.3,
-    "disciple": 0.3,
-    "qi_refining": 0.7,
-    "foundation_building": 0.6,
-    "golden_core": 0.5,
-    "nascent_soul": 0.4,
-    "spirit_transformation": 0.3
-  },
   "cultivationDecayK": 2.5,
-  "_cultivationDecayKComment": "闭关进度边际递减系数（ADR-017）。每次闭关有效增量 = 基础增量 × e^(-k × current/cap)：current=0 时全量，越接近 cap 衰减越强但不为 0，故能缓慢到顶。k 越大越快变慢。",
+  "_cultivationDecayKComment": "闭关修为递减系数。公式：基础修为收益 × e^(-k × cultivation / cultivationRequired)。k 越大，闭关修为越高时收益衰减越明显。",
   "minCultivationRatio": 0.3,
-  "_minCultivationRatioComment": "突破总进度中闭关进度的最低占比（ADR-017）。即 insight 最多补足 1 - minCultivationRatio = 70%；突破还要求 cultivationProgress >= minCultivationRatio。游历的 insight 累加封顶到 (1 - minCultivationRatio)。",
+  "_minCultivationRatioComment": "突破所需修为中，闭关修为必须达到的最低占比；其余可由历练修为补足。",
+  "stageThresholds": {
+    "_comment": "境界阶段按 totalCultivation / cultivationRequired 判定。",
+    "early": 0,
+    "middle": 0.25,
+    "late": 0.6,
+    "perfection": 0.9
+  },
   "spiritStoneCost": {
     "_comment": "各境界每次修炼消耗的低级灵石数量",
     "mortal": 2,
@@ -39,7 +36,7 @@
     "spirit_transformation": 1500
   },
   "qiBaseGain": {
-    "_comment": "各境界每次修炼【每天】获得的基础真气值（× days）。tuning 2026-06-02: 大幅下调——旧值(1/天×30天=30)使真气按天线性飙升、与进度增量(一次≈0.7%)严重脱节，凡人修两次真气就满50但进度才1.5%，真气过早满足→AI摆烂不再闭关。现降到涓流量级，让真气主要由 qiPerProgress(随进度增量) 提供，真气线与进度线同步成为双约束（ADR-040）。",
+    "_comment": "各境界每次修炼【每天】获得的基础真气值（× days）。该值保持涓流量级，真气主要由 qiPerProgress 随闭关修为增量同步提供，使 qi 与 cultivation 共同约束突破准备（ADR-040）。",
     "mortal": 0.02,
     "disciple": 0.02,
     "qi_refining": 0.2,
@@ -49,7 +46,7 @@
     "spirit_transformation": 500
   },
   "qiPerProgress": {
-    "_comment": "修炼时按【本次闭关进度增量】产出的真气 = qiPerProgress[境界] × effectiveGain。这是真气的主来源，使真气线与进度线同步：天赋加速进度的同时同速加速真气，闭关把进度修到 cultivationCap 时真气≈下一境界 qiRequired，恰好够突破。取值 = 下一境界 qiRequired / cultivationCap × 1.15 富余（补边际递减与 cap<1 的折损）。凡人 50/1.0、炼气 500/0.7、筑基 5000/0.6… 详见 ADR-040。",
+    "_comment": "修炼时按【本次闭关修为增量】产出的真气 = qiPerProgress[境界] × effectiveGain。真气线与闭关修为线同步增长，避免真气过早满或长期不足。",
     "mortal": 58,
     "disciple": 58,
     "qi_refining": 822,
@@ -59,9 +56,9 @@
     "spirit_transformation": 1916000
   },
   "passiveQiGain": {
-    "_comment": "【每日被动真气吸纳】参考凡人修仙传'吸纳天地灵气'设定：修士时刻在吸纳灵气炼化为真气，即便不专门闭关、做其他事（任务/游历/管理）也缓慢增长，只是远慢于专心修炼。base[境界] 为每天基础吸纳量，再乘灵根/体质/功法速度倍率（与修炼同源）。设计目标：天才即便撞闭关进度顶、停止主动修炼，真气仍会缓慢攒够下一境界门槛而得以突破，破解'进度满但真气不足'死锁（ADR-039）。base 取值约为'专心修炼一次产气'的 1/10 量级，确保'修炼给得多、平时给得少但不为零'。",
+    "_comment": "【每日被动真气吸纳】参考凡人修仙传'吸纳天地灵气'设定：修士时刻在吸纳灵气炼化为真气，即便不专门闭关、做其他事（任务/游历/管理）也缓慢增长，只是远慢于专心修炼。base[境界] 为每天基础吸纳量，再乘灵根/体质/功法速度倍率（与修炼同源）。设计目标：即便暂时不闭关，角色仍能缓慢补足下一境界 qiRequired；base 取值约为'专心修炼一次产气'的 1/10 量级，确保'修炼给得多、平时给得少但不为零'。",
     "base": {
-      "_comment": "tuning 2026-06-02: 被动真气大幅下调（原 0.15/1.5/15... 太快，导致真气34天即满、不再是约束，天才修一次就摆烂不闭关也不游历）。降到约为'专心修炼一次产气'的 1/50 量级：被动真正成为'涓流不为零'，真气仍主要靠闭关/灵石/丹药积累，使真气线与进度线同步成为双约束。",
+      "_comment": "tuning 2026-06-02: 被动真气大幅下调（原 0.15/1.5/15... 太快，导致真气过早满足、不再是约束）。降到约为'专心修炼一次产气'的 1/50 量级：被动真正成为'涓流不为零'，真气仍主要靠闭关/灵石/丹药积累，并与闭关修为同步成为双约束。",
       "mortal": 0.03,
       "disciple": 0.03,
       "qi_refining": 0.3,
@@ -116,8 +113,9 @@
     "defaultRate": 0.10,
     "agePenaltyThreshold": 0.8,
     "agePenaltyMultiplier": 0.7,
-    "failureProgressReset": 0.3,
-    "failureQiRetention": 0.7
+    "failureQiRetention": 0.5,
+    "failureCultivationRetention": 0.2,
+    "failureInjuryLevel": 3
   },
   "experience": {
     "_comment": "历练修为：闭关/原地待命之外的外出任务、事件、战斗按价值、风险、时长追加 experienceCultivation，并同步 totalCultivation。",
@@ -155,17 +153,17 @@
       "successRate": 0.2
     },
     "explore": {
-      "_comment": "游历归来后 roll 一次机缘事件表(fortuneEvents)，产出 insight（游历感悟，并入突破总进度）。风险结算见 risk.json。境界越高越依赖游历补足突破进度（见 cultivationCap）。详见 ADR-016。",
-      "insightMin": 0.01,
-      "insightMax": 0.03,
+      "_comment": "游历归来后 roll 一次机缘事件表(fortuneEvents)，产出历练修为并计入 totalCultivation。风险结算见 risk.json。",
+      "experienceCultivationMin": 1,
+      "experienceCultivationMax": 3,
       "fortuneQiMin": 5,
       "fortuneQiMax": 20,
       "fortuneEvents": [
-        { "id": "uneventful", "name": "平安归来", "weight": 50, "insightMultiplier": 0.5, "qiMultiplier": 0.0 },
-        { "id": "minor_insight", "name": "略有感悟", "weight": 30, "insightMultiplier": 1.0, "qiMultiplier": 1.0 },
-        { "id": "epiphany", "name": "顿悟机缘", "weight": 12, "insightMultiplier": 2.5, "qiMultiplier": 2.0 },
-        { "id": "grotto_heaven", "name": "洞天福地", "weight": 5, "insightMultiplier": 4.0, "qiMultiplier": 3.0, "_note": "预留：后续可附带一段时间修炼加速 buff" },
-        { "id": "treasure", "name": "拾得遗宝", "weight": 3, "insightMultiplier": 1.5, "qiMultiplier": 1.0, "_note": "预留：后续掉落法宝/材料进 inventory" }
+        { "id": "uneventful", "name": "平安归来", "weight": 50, "experienceCultivationMultiplier": 0.5, "qiMultiplier": 0.0 },
+        { "id": "minor_realization", "name": "略有感悟", "weight": 30, "experienceCultivationMultiplier": 1.0, "qiMultiplier": 1.0 },
+        { "id": "epiphany", "name": "顿悟机缘", "weight": 12, "experienceCultivationMultiplier": 2.5, "qiMultiplier": 2.0 },
+        { "id": "grotto_heaven", "name": "洞天福地", "weight": 5, "experienceCultivationMultiplier": 4.0, "qiMultiplier": 3.0, "_note": "预留：后续可附带一段时间修炼加速 buff" },
+        { "id": "treasure", "name": "拾得遗宝", "weight": 3, "experienceCultivationMultiplier": 1.5, "qiMultiplier": 1.0, "_note": "预留：后续掉落法宝/材料进 inventory" }
       ]
     },
     "serveFaction": {
@@ -216,7 +214,7 @@
     "topRewardMultipliers": [5, 3, 2]
   },
   "sectEvents": {
-    "_comment": "势力定时活动。门派考核（sect_exam）查境界门槛，未达贬外门；门派大比（grand_competition）按实力排名，仅奖前五（梯度拉开），冠军晋升。门槛 requiredOrderByYears：弟子入门后预期境界 order 随『修炼年限阶段』递增（用 cultivationProgress 与 rankId.order 综合近似实力）。详见 ADR-011。",
+    "_comment": "势力定时活动。门派考核（sect_exam）查境界门槛，未达贬外门；门派大比（grand_competition）按实力排名，仅奖前五（梯度拉开），冠军晋升。门槛 requiredOrderByYears：弟子入门后预期境界 order 随『修炼年限阶段』递增（用数值修为与 rankId.order 综合近似实力）。详见 ADR-011。",
     "sect_exam": {
       "intervalDays": 180,
       "minRankOrder": 20,

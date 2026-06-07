@@ -9,23 +9,26 @@
  *   - successionScoreOf   候选人继任分数（ranks.json successionScore，回退 order）。
  *
  * 全部以 entity 为首参，仅读写 entity 的 state/_cultivationConfig/_ranksData 与回调其自身方法
- * （refreshCultivationCapPreconditions/_rollBreakthroughPathOrder），不改变随机序列。
+ * （_rollBreakthroughPathOrder），不改变随机序列。
  * 拆分边界见 ADR-030。
  */
 import { readTraitBreakthroughBonus, readTraitLifespanBonus } from './npc-traits.js';
 import {
+  applyBreakthroughFailure,
+  applyBreakthroughSuccess,
   canAttemptBreakthrough,
   nextCultivationRank,
+  refreshRankStage,
   syncTotalCultivation,
 } from './numeric-cultivation.js';
 
 /**
  * 境界突破判定。
  *
- * 突破条件：cultivationProgress >= 1.0 且 qi >= 目标境界 qiRequired。
+ * 突破条件：总修为、闭关修为与 qi 均达到目标境界要求。
  * 成功率基于目标境界递减，寿元接近上限时额外惩罚。
  * 成功后：消耗真气、更新 rankId/rankName、按新境界寿元延长寿命。
- * 失败后：回退修炼进度至 0.3，真气损失 30%。
+ * 失败后：按数值修为保留率折损 cultivation/experienceCultivation，真气折损并追加伤势。
  * @param {import('./npc-entity.js').NPCEntity} entity
  */
 export function tryBreakthrough(entity) {
@@ -41,7 +44,6 @@ export function tryBreakthrough(entity) {
 
   if (!canAttemptBreakthrough(entity, ranks, entity._cultivationConfig)) return;
 
-  const currentQi = entity.state.get('qi') || 0;
   const qiRequired = nextRank.qiRequired || 0;
 
   const successRate = getBreakthroughRate(entity, currentRankId, nextRank.id);
@@ -65,17 +67,7 @@ export function tryBreakthrough(entity) {
   if (aidBonus !== 0) entity.state.set('breakthroughAidBonus', 0);
 
   if (roll < finalRate) {
-    entity.state.set('rankId', nextRank.id);
-    entity.state.set('rankName', nextRank.name);
-    entity.state.set('rankStage', nextRank.id === 'mortal' ? null : 'early');
-    entity.state.set('cultivation', 0);
-    entity.state.set('experienceCultivation', 0);
-    entity.state.set('totalCultivation', 0);
-    entity.state.set('cultivationProgressRatio', 0);
-    entity.state.set('cultivationProgress', 0);
-    entity.state.set('insight', 0);
-    entity.state.set('totalProgress', 0);
-    entity.state.set('qi', currentQi - qiRequired);
+    applyBreakthroughSuccess(entity, nextRank, { qiRequired });
 
     const lifespan = nextRank.lifespan;
     if (lifespan) {
@@ -102,8 +94,6 @@ export function tryBreakthrough(entity) {
     if (typeof entity.tryBreakthroughFullHeal === 'function') {
       entity.tryBreakthroughFullHeal();
     }
-    // 境界提升后，闭关 cap 随之变化（通常更低，更依赖游历），刷新行为前置。
-    entity.refreshCultivationCapPreconditions();
     // 新境界开始：随机本境界的游历/闭关先后偏好（顺序随机，ADR-017）。
     entity._rollBreakthroughPathOrder();
 
@@ -117,26 +107,28 @@ export function tryBreakthrough(entity) {
       aidBonus,
     };
   } else {
-    const failureProgress = breakthroughCfg.failureProgressReset ?? 0.3;
-    const failureQiRetention = breakthroughCfg.failureQiRetention ?? 0.7;
-    // 突破失败：闭关进度回退、游历感悟清零（机缘已逝），真气损失。
-    // failureProgress 不应超过当前境界 cultivationCap，避免回退值反而高于闭关上限。
-    const capMap = entity._cultivationConfig.cultivationCap || {};
-    const cap = capMap[currentRankId] ?? 1.0;
-    const resetRatio = Math.min(failureProgress, cap);
-    entity.state.set('cultivation', (nextRank.cultivationRequired || 0) * resetRatio);
-    entity.state.set('experienceCultivation', 0);
-    syncTotalCultivation(entity, ranks);
-    entity.state.set('cultivationProgress', resetRatio);
-    entity.state.set('insight', 0);
-    entity.state.set('qi', Math.floor(currentQi * failureQiRetention));
+    const beforeQi = entity.state.get('qi') || 0;
+    const beforeCultivation = entity.state.get('cultivation') || 0;
+    const beforeExperienceCultivation = entity.state.get('experienceCultivation') || 0;
+    const beforeTotalCultivation = syncTotalCultivation(entity);
+
+    // 突破失败：两类数值修为按统一接口折损，totalCultivation 随后重算并刷新小层。
+    applyBreakthroughFailure(entity, entity._cultivationConfig);
+    refreshRankStage(entity, ranks, entity._cultivationConfig);
+    const afterQi = entity.state.get('qi') || 0;
+    const afterCultivation = entity.state.get('cultivation') || 0;
+    const afterExperienceCultivation = entity.state.get('experienceCultivation') || 0;
+    const afterTotalCultivation = entity.state.get('totalCultivation') || 0;
     entity._breakthroughInfo = {
       npcId: entity.id,
       npcName: entity.name,
       fromRank: currentRank.name,
       targetRank: nextRank.name,
       success: false,
-      qiLost: Math.floor(currentQi * (1 - failureQiRetention)),
+      qiLost: beforeQi - afterQi,
+      cultivationLost: beforeCultivation - afterCultivation,
+      experienceCultivationLost: beforeExperienceCultivation - afterExperienceCultivation,
+      totalCultivationLost: beforeTotalCultivation - afterTotalCultivation,
       aidBonus,
     };
   }

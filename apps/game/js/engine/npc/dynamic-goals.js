@@ -5,6 +5,7 @@
  * 不直接接触 WorldEventSystem 或 WorldEvent live 实例。
  */
 import { Goal, GoalSource } from '../abstract/goal.js';
+import { getCultivationRequired } from './numeric-cultivation.js';
 
 function clamp(value, min = 0, max = 100) {
   const n = Number(value);
@@ -39,6 +40,12 @@ function getPersonality(entity) {
 function norm(value, fallback = 50) {
   const n = Number(value ?? fallback);
   return clamp(n, 0, 100) / 100;
+}
+
+function cultivationCompletion(entity) {
+  const total = Number(getStateValue(entity, 'totalCultivation', 0)) || 0;
+  const required = Number(getStateValue(entity, 'nextCultivationRequired', null) ?? getCultivationRequired(entity, entity?._ranksData || [])) || 0;
+  return required > 0 ? clamp(total / required, 0, 1) : 0;
 }
 
 function ruleEventTypes(rule) {
@@ -214,11 +221,11 @@ export class DynamicGoalProvider {
     const diplomacy = norm(personality.diplomacy);
     const injury = Number(getStateValue(entity, 'injuryLevel', 0)) || 0;
     const lifeRatio = clamp(Number(getStateValue(entity, 'lifeRatio', 0)) || 0, 0, 1);
-    const totalProgress = clamp(Number(getStateValue(entity, 'totalProgress', 0)) || 0, 0, 1);
+    const cultivationCompletionRatio = cultivationCompletion(entity);
     const hasRevengeTarget = getStateValue(entity, 'hasRevengeTarget', false) === true;
 
     return {
-      dao: Math.max(ambition, totalProgress),
+      dao: Math.max(ambition, cultivationCompletionRatio),
       profit: Math.max(0, ambition * (1 - diplomacy * 0.25)),
       survival: Math.max(caution, lifeRatio, injury > 0 ? 0.8 : 0),
       revenge: hasRevengeTarget ? 1 : Math.max(0, 1 - loyalty),

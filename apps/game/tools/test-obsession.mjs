@@ -32,7 +32,7 @@ const assert = (c, m) => { if (!c) { console.error('  FAIL:', m); failed++; } };
 // toGoals 产出 GoalSource.OBSESSION、priority=intensity
 {
   const os = new ObsessionSystem();
-  os.add(new Obsession({ type: ObsessionType.SUPREMACY, intensity: 70, goalState: { totalProgress: { op: 'gte', value: 90 } } }));
+  os.add(new Obsession({ type: ObsessionType.SUPREMACY, intensity: 70, goalState: { rankStage: { op: 'eq', value: 'perfection' } } }));
   const goals = os.toGoals();
   assert(goals.length === 1 && goals[0].source === GoalSource.OBSESSION, 'toGoals 来源为 obsession');
   assert(goals[0].priority === 70 && goals[0].score() === 70, '执念 Goal 优先级=强度');

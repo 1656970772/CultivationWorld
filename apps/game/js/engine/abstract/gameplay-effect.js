@@ -102,6 +102,19 @@ function resolveMagnitude(mod, target, ctx = {}) {
       const step = Math.max(0, (curRank.order ?? 0) - (baseRank.order ?? 0));
       return Math.max(minMag, m * Math.pow(decay, step));
     }
+    case 'ratioOfCultivationRequired': {
+      const ranks = target?._ranksData || ctx.ranks || [];
+      if (!ranks.length) return m;
+      const rankId = target?.state?.get('rankId') || 'mortal';
+      const current = ranks.find(r => r.id === rankId);
+      const currentOrder = Number(current?.order ?? 0);
+      const next = [...ranks]
+        .filter(r => r?.category === 'cultivation' || Number(r?.cultivationRequired ?? r?.qiRequired ?? 0) > 0)
+        .sort((a, b) => Number(a?.order ?? 0) - Number(b?.order ?? 0))
+        .find(r => Number(r?.order ?? 0) > currentOrder);
+      const required = Number(next?.cultivationRequired ?? next?.qiRequired ?? 0);
+      return required > 0 ? required * m : m;
+    }
     default:
       return m;
   }

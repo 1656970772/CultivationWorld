@@ -573,40 +573,28 @@ export class WorldEngine {
   _npcStatusFields(n) {
     const rankId = n.state.get('rankId');
     const cultivationCfg = this._balanceConfig?.cultivation || {};
-    const cultivationCap = cultivationCfg.cultivationCap?.[rankId] ?? null;
     const minCultivationRatio = cultivationCfg.minCultivationRatio ?? 0.3;
-    const insight = n.state.get('insight') || 0;
-    const cultivationProgress = n.state.get('cultivationProgress') || 0;
     const nextRank = this._nextCultivationRank(rankId);
-    const nextCultivationRequired = nextRank?.cultivationRequired || null;
-    const cultivation = n.state.get('cultivation')
-      ?? (nextCultivationRequired != null ? cultivationProgress * nextCultivationRequired : null);
-    const experienceCultivation = n.state.get('experienceCultivation')
-      ?? (nextCultivationRequired != null ? insight * nextCultivationRequired : null);
+    const nextCultivationRequired = nextRank?.cultivationRequired ?? nextRank?.qiRequired ?? null;
+    const cultivation = n.state.get('cultivation') ?? 0;
+    const experienceCultivation = n.state.get('experienceCultivation') ?? 0;
     const totalCultivation = n.state.get('totalCultivation')
-      ?? ((cultivation || 0) + (experienceCultivation || 0));
-    const retreatCultivationCap = cultivationCap != null && nextCultivationRequired != null
-      ? cultivationCap * nextCultivationRequired
-      : null;
+      ?? (cultivation + experienceCultivation);
 
     return {
       hp: n.state.get('hp') || 0,
       maxHp: n.state.get('maxHp') || 0,
       injuryLevel: n.state.get('injuryLevel') || 0,
       lifeRatio: n.state.get('lifeRatio') || 0,
-      insight,
       cultivation,
       experienceCultivation,
       totalCultivation,
       nextCultivationRequired,
-      retreatCultivationCap,
-      totalProgress: n.state.get('totalProgress') ?? (cultivationProgress + insight),
+      rankStage: n.state.get('rankStage') ?? null,
       actionRemaining: n.state.get('actionRemaining') || 0,
-      cultivationCap,
       minCultivationRatio,
-      maxInsight: Math.max(0, 1 - minCultivationRatio),
       nextRankName: nextRank?.name || null,
-      nextQiRequired: nextRank?.qiRequired || null,
+      nextQiRequired: nextRank?.qiRequired ?? null,
       spiritRootId: n.state.get('spiritRootId') || null,
       physiqueId: n.state.get('physiqueId') || null,
       hasActiveQuest: !!n.state.get('hasActiveQuest'),
@@ -662,7 +650,6 @@ export class WorldEngine {
         rankName: n.state.get('rankName'),
         rankId: n.state.get('rankId'),
         qi: n.state.get('qi') || 0,
-        cultivationProgress: n.state.get('cultivationProgress') || 0,
         ...this._npcStatusFields(n),
         contribution: n.state.get('contribution') || 0,
         totalQuestsCompleted: n.state.get('totalQuestsCompleted') || 0,

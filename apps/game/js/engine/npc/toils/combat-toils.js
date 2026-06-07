@@ -16,6 +16,32 @@ export function writeCombatState(entity, key, value) {
   if (entity?.state) entity.state[key] = value;
 }
 
+function spatialPosition(entity) {
+  const sp = entity?.spatial;
+  if (!sp) return null;
+  const x = typeof sp.tileX === 'number' ? sp.tileX : (typeof sp.x === 'number' ? Math.round(sp.x) : null);
+  const y = typeof sp.tileY === 'number' ? sp.tileY : (typeof sp.y === 'number' ? Math.round(sp.y) : null);
+  return typeof x === 'number' && typeof y === 'number' ? { x, y } : null;
+}
+
+function moveToDistantRevengeTarget(entity, target) {
+  const here = spatialPosition(entity);
+  const there = spatialPosition(target);
+  if (!here || !there) return null;
+  const distance = Math.abs(here.x - there.x) + Math.abs(here.y - there.y);
+  if (distance <= 2) return null;
+  writeCombatState(entity, 'nearRevengeTarget', false);
+  if (typeof entity?.spatial?.setDestination !== 'function') {
+    return { status: ToilResultStatus.BLOCKED, reason: 'spatial_destination_unavailable' };
+  }
+  entity.spatial.setDestination(there.x, there.y);
+  return {
+    status: ToilResultStatus.RUNNING,
+    reason: 'moving_to_revenge_target',
+    contextPatch: { revengeTargetId: target.id },
+  };
+}
+
 function num(value, fallback = 0) {
   const n = Number(value);
   return Number.isFinite(n) ? n : fallback;
@@ -251,6 +277,8 @@ export class NPCHuntEnemyToilExecutor extends ToilExecutor {
       writeCombatState(entity, 'nearRevengeTarget', false);
       return { status: ToilResultStatus.REPLAN, reason: 'revenge_target_missing' };
     }
+    const move = moveToDistantRevengeTarget(entity, target);
+    if (move) return move;
     writeCombatState(entity, 'nearRevengeTarget', true);
     return {
       status: ToilResultStatus.SUCCESS,
@@ -269,6 +297,8 @@ export class NPCKillEnemyToilExecutor extends ToilExecutor {
       writeCombatState(entity, 'nearRevengeTarget', false);
       return { status: ToilResultStatus.REPLAN, reason: 'revenge_target_missing' };
     }
+    const move = moveToDistantRevengeTarget(entity, target);
+    if (move) return move;
 
     const powerFn = typeof worldContext?.npcCombatPower === 'function'
       ? worldContext.npcCombatPower
