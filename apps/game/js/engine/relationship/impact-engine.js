@@ -80,14 +80,17 @@ export class RelationImpactEngine {
       const baseContext = { ...this._context(event), ruleId: rule.id };
       const ledgers = [];
       for (const effect of rule.effects || []) {
-        const ledger = this.operators.apply(effect, baseContext);
-        if (ledger) ledgers.push({
-          layer: ledger.layer,
-          subjectId: ledger.subjectId,
-          objectId: ledger.objectId || null,
-          groupId: ledger.groupId || null,
-          factionId: ledger.factionId || null,
-        });
+        const applied = this.operators.apply(effect, baseContext);
+        const appliedLedgers = Array.isArray(applied) ? applied : [applied].filter(Boolean);
+        for (const ledger of appliedLedgers) {
+          ledgers.push({
+            layer: ledger.layer,
+            subjectId: ledger.subjectId,
+            objectId: ledger.objectId || null,
+            groupId: ledger.groupId || null,
+            factionId: ledger.factionId || null,
+          });
+        }
       }
       traces.push({ ruleId: rule.id, ledgers });
     }
