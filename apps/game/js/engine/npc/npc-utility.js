@@ -60,6 +60,34 @@ export function deriveTimeValue(entity) {
   return Math.max(0, Math.min(1, lifeRatio));
 }
 
+function positiveNumber(value, fallback) {
+  const n = Number(value);
+  return Number.isFinite(n) && n >= 0 ? n : fallback;
+}
+
+function computeRiskWeight(entity, goalRisk, utilityConfig) {
+  if (goalRisk <= 0) return 0;
+
+  const riskCfg = utilityConfig.riskAversion || {};
+  if (riskCfg.enabled === false) return 0;
+
+  const scoreCfg = utilityConfig.score || {};
+  const baseWeight = positiveNumber(scoreCfg.riskWeight, positiveNumber(riskCfg.weight, 1));
+  const caution = entity.staticData?.personality?.caution ?? 50;
+  let riskWeight = baseWeight * (caution / 50);
+
+  const emotionCfg = utilityConfig.emotionRisk || {};
+  if (emotionCfg.enabled !== false && entity.emotions) {
+    const anger = entity.emotions.get('anger') ?? 0;
+    const fear = entity.emotions.get('fear') ?? 0;
+    const angerFactor = emotionCfg.angerFactor ?? 1.0;
+    const fearFactor = emotionCfg.fearFactor ?? 1.0;
+    riskWeight *= (1 - (anger / 100) * angerFactor) * (1 + (fear / 100) * fearFactor);
+  }
+
+  return Math.max(0, riskWeight);
+}
+
 /**
  * 估算「追求某目标」的期望风险 ∈ 通常 [0,1+] 量级：聚合该目标典型行为的 estimateRiskCost。
  * 复用 npc-actions.estimateRiskCost（与 risk.json 性格加成同一套）。
@@ -114,6 +142,20 @@ export function decorateGoalConsiderations(entity, goal, worldContext, utilityCo
   const expectedValue = deriveExpectedValue(utilityConfig.reward, goal.sourceId)
     || deriveExpectedValue(utilityConfig.reward, goal.tag);
 
+  const scoreCfg = utilityConfig.score || {};
+  const riskWeight = computeRiskWeight(entity, goalRisk, utilityConfig);
+  const rewardWeight = positiveNumber(scoreCfg.rewardWeight, 0.5);
+  if (typeof goal.setScoreContext === 'function') {
+    goal.setScoreContext({
+      hardGate: 1,
+      expectedValue,
+      goalRisk,
+      rewardWeight,
+      riskWeight,
+      scoreConfig: scoreCfg,
+    });
+  }
+
   const derived = {
     timeValue: deriveTimeValue(entity),
     goalRisk,
@@ -124,37 +166,7 @@ export function decorateGoalConsiderations(entity, goal, worldContext, utilityCo
     goal.evaluateConsiderations(considerations, entity.state, worldContext, derived);
   }
 
-  // ── D. 风险厌恶（情绪修正版，ADR-021 迁入）。
-  // 基础风险厌恶：caution 性格驱动；情绪层：anger 降低、fear 提高风险权重。
-  // 仅当目标有风险且 riskAversion 开启时触发。
-  if (goalRisk > 0) {
-    const riskCfg = utilityConfig.riskAversion || {};
-    const emotionCfg = utilityConfig.emotionRisk || {};
-
-    const baseWeight = riskCfg.weight ?? 0.3;
-    const caution = entity.staticData?.personality?.caution ?? 50;
-    // 谨慎性格放大风险厌恶
-    const cautionMult = caution / 50;
-
-    let riskWeight = baseWeight * cautionMult;
-
-    // 情绪修正（ADR-021）：愤怒降低风险厌恶（更激进），恐惧提高风险厌恶（更保守）。
-    if (emotionCfg.enabled !== false && entity.emotions) {
-      const anger = entity.emotions.get('anger') ?? 0;   // 0-100
-      const fear  = entity.emotions.get('fear')  ?? 0;   // 0-100
-      const angerFactor = emotionCfg.angerFactor ?? 1.0;
-      const fearFactor  = emotionCfg.fearFactor  ?? 1.0;
-      // anger 100 时风险权重降至 0；fear 100 时翻倍
-      riskWeight *= (1 - (anger / 100) * angerFactor) * (1 + (fear / 100) * fearFactor);
-    }
-
-    if (riskWeight > 0) {
-      const factor = Math.max(0.05, 1 - riskWeight * goalRisk);
-      goal.modulators.push({ label: 'riskAversion', deltaPriority: 0, mult: factor });
-    }
-  }
-
-  // ── E. 随机扰动（上头，ADR-021 迁入）：
+  // ── D. 随机扰动（上头，ADR-021 迁入）：
   // 小概率让某目标分数暴增，使 NPC 做出冲动选择。在目标评估阶段 roll，而非 GOAP 行为级。
   const headstrongCfg = utilityConfig.headstrong || {};
   if (headstrongCfg.enabled === true) {
@@ -174,7 +186,7 @@ export function decorateGoalConsiderations(entity, goal, worldContext, utilityCo
     }
   }
 
-  // ── F. 路径偏好（ADR-021 迁入）：
+  // ── E. 路径偏好（ADR-021 迁入）：
   // breakthroughPathOrder 决定 NPC 在游历/修炼间的倾向，通过给对应目标加分体现，
   // 而非原来降低 GOAP action 的 cost。
   const pathCfg = utilityConfig.pathPreference || {};

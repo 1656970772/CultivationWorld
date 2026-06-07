@@ -14,10 +14,12 @@
  */
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, resolve } from 'node:path';
+import { readFileSync } from 'node:fs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const GAME_ROOT = resolve(__dirname, '..');
 const imp = (p) => import(pathToFileURL(resolve(GAME_ROOT, p)).href);
+const load = (p) => JSON.parse(readFileSync(resolve(GAME_ROOT, p), 'utf-8'));
 
 const { Consideration, CurveType, InputSource, buildConsiderations } =
   await imp('js/engine/abstract/consideration.js');
@@ -132,58 +134,57 @@ console.log('4) buildConsiderations');
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 5) 情绪修正风险厌恶（ADR-021）
+// 5) npc-utility 评分上下文：风险、情绪、收益
 // ─────────────────────────────────────────────────────────────────────────────
-console.log('5) 情绪修正风险厌恶');
+console.log('5) npc-utility 评分上下文：风险、情绪、收益');
 {
-  // 构造一个有 goalRisk 的目标（obsession_revenge 映射到 pvp 风险键）
-  // 使用最简化 mock：直接调用 decorateGoalConsiderations 并检查 modulators
+  const riskJson = load('data/balance/risk.json');
+  const rewardJson = load('data/balance/reward.json');
+
   function makeEntity({ caution = 50, anger = 0, fear = 0, obsessions = null } = {}) {
     return {
-      state: { get: (k) => null, set: () => {} },
+      state: { get: () => null, set: () => {} },
       staticData: { personality: { caution } },
       emotions: { get: (t) => t === 'anger' ? anger : t === 'fear' ? fear : 0 },
       obsessions,
     };
   }
 
-  // utilityConfig 开启全部功能，但不带 considerationsBySource（避免依赖 risk.json）
   const cfg = {
     enabled: true,
+    score: {
+      minBiasMult: 0.25,
+      maxBiasMult: 3,
+      defaultConsiderationFloor: 0.05,
+      rewardWeight: 0.5,
+      riskWeight: 1,
+    },
     riskAversion: { enabled: true, weight: 0.3 },
     emotionRisk: { enabled: true, angerFactor: 1.0, fearFactor: 1.0 },
+    reward: { ...rewardJson, enabled: true },
   };
+  const worldContext = { balanceConfig: { risk: riskJson } };
 
-  // 无风险目标（goalRisk=0）：不应添加 riskAversion modulator
-  const g0 = new Goal({ id: 'gNoRisk', sourceId: 'need_npc_loyalty', priority: 60 });
-  decorateGoalConsiderations(makeEntity(), g0, {}, cfg);
-  assert(!g0.modulators.some(m => m.label === 'riskAversion'), '无风险目标不挂 riskAversion');
+  const calmGoal = new Goal({ id: 'gCalm', sourceId: 'obsession_revenge', priority: 80 });
+  decorateGoalConsiderations(makeEntity({ caution: 50, anger: 0, fear: 0 }), calmGoal, worldContext, cfg);
+  const calmCtx = calmGoal.getScoreContext();
+  assert(calmCtx?.goalRisk > 0, '高风险复仇目标写入 goalRisk');
+  assert(calmCtx?.riskWeight > 0, '高风险复仇目标写入 riskWeight');
+  assert(!calmGoal.modulators.some(m => m.label === 'riskAversion'), 'riskAversion 不再作为 modulator 重复扣分');
 
-  // 有风险目标：需要一个 estimateGoalRisk > 0 的情况
-  // 通过覆盖 goalRiskKeys 并 mock estimateRiskCost 方式间接测试，
-  // 这里直接在 derived 路径上验证：goalRisk 注入 consideration 的 derived 输入
-  // 所以改为验证 riskAversion 乘子在愤怒时变小、恐惧时变大的数学性质。
+  const angryGoal = new Goal({ id: 'gAngry', sourceId: 'obsession_revenge', priority: 80 });
+  decorateGoalConsiderations(makeEntity({ caution: 50, anger: 100, fear: 0 }), angryGoal, worldContext, cfg);
+  assert(angryGoal.getScoreContext().riskWeight < calmCtx.riskWeight, '愤怒降低风险权重');
 
-  // 手动模拟 goalRisk=0.5 的情形：通过两个 entity 比较 modulator mult 的大小
-  // （实际代码路径：goalRisk 从 estimateGoalRisk 来，这里无法绕过 risk.json，
-  //  改为验证零风险时不出现 modulator，以及个别情绪调制参数对已有 modulator 的影响。）
-  // 下面通过 mock 一个带 goalRisk 的版本直接验证情绪修正数学：
-  function applyRiskAversionDirect({ goalRisk, caution = 50, anger = 0, fear = 0, cfg: c }) {
-    const baseWeight = (c.riskAversion?.weight ?? 0.3) * (caution / 50);
-    const angerFactor = c.emotionRisk?.angerFactor ?? 1.0;
-    const fearFactor  = c.emotionRisk?.fearFactor  ?? 1.0;
-    let riskWeight = baseWeight * (1 - (anger / 100) * angerFactor) * (1 + (fear / 100) * fearFactor);
-    return Math.max(0.05, 1 - riskWeight * goalRisk);
-  }
+  const scaredGoal = new Goal({ id: 'gScared', sourceId: 'obsession_revenge', priority: 80 });
+  decorateGoalConsiderations(makeEntity({ caution: 50, anger: 0, fear: 100 }), scaredGoal, worldContext, cfg);
+  assert(scaredGoal.getScoreContext().riskWeight > calmCtx.riskWeight, '恐惧提高风险权重');
 
-  const base   = applyRiskAversionDirect({ goalRisk: 0.5, anger: 0,   fear: 0,   cfg });
-  const angry  = applyRiskAversionDirect({ goalRisk: 0.5, anger: 100, fear: 0,   cfg });
-  const scared = applyRiskAversionDirect({ goalRisk: 0.5, anger: 0,   fear: 100, cfg });
-
-  assert(angry > base,  '愤怒时风险乘子 > 正常（风险厌恶降低，目标分数损失更少）');
-  assert(scared < base, '恐惧时风险乘子 < 正常（风险厌恶提高，目标分数损失更多）');
-  assert(approx(angry, 1.0), '愤怒 100 时风险厌恶归零，乘子=1（无折扣）');
-  assert(scared < 1.0, '恐惧时目标分数有折扣（< 1）');
+  const plunderGoal = new Goal({ id: 'gPlunder', sourceId: 'obsession_plunder', priority: 60 });
+  decorateGoalConsiderations(makeEntity({ caution: 10 }), plunderGoal, worldContext, cfg);
+  const plunderCtx = plunderGoal.getScoreContext();
+  assert(plunderCtx?.expectedValue > 0, '夺宝目标写入 expectedValue');
+  assert(plunderGoal.score() > 0, '收益风险上下文参与评分后仍得到正分');
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
