@@ -67,7 +67,7 @@ const configs = {
   balanceUtility:     loadJSON('data/balance/utility.json'),
   balanceReward:      loadJSON('data/balance/reward.json'),
   balanceRelationship: loadJSON('data/balance/relationship.json'),
-  // 反应层（四层 AI 架构 Reaction 层，ADR-048）。默认 enabled=false，不改变现有行为。
+  // 反应层（四层 AI 架构 Reaction 层，ADR-048）。当前默认 enabled=true；可在配置中改 false 回退对照。
   balanceReaction:    loadJSON('data/balance/reaction.json'),
   gameConfig:         loadJSON('data/config/game-config.json'),
   aiConfig:           loadJSON('data/config/ai-config.json'),
@@ -75,7 +75,7 @@ const configs = {
   monsters:           loadJSON('data/definitions/monsters.json'),
   monsterAttributeTemplates: loadJSON('data/definitions/monster-attribute-templates.json'),
   monsterSpawn:       loadJSON('data/balance/monster-spawn.json'),
-  // 信息传播 / 机会点 / 怀璧其罪系统（ADR-024/025）。默认 enabled=false，不改变现有行为。
+  // 信息传播 / 机会点 / 怀璧其罪系统（ADR-024/025）。当前默认 enabled=true；可在配置中改 false 回退对照。
   worldNews:          loadJSON('data/world/news.json'),
   worldOpportunities: loadJSON('data/world/opportunities.json'),
   dynamicEvents:      loadJSON('data/world/dynamic-events.json'),
@@ -108,9 +108,9 @@ const configs = {
   },
 };
 
-// 平衡验证激活态（ADR-021/022/023）：默认配置 enabled=false（不改变现有行为）；
-// 设 UTILITY_ACTIVE=1 时在内存中覆盖开关（不写回 JSON），让 Utility 选目标层 +
-// 期望收益 + 执念 goalMult 生效，用于观测流派分布与人口曲线。
+// 平衡验证显式激活态（ADR-021/022/023）：当前 Utility/Reward 默认启用；
+// 设 UTILITY_ACTIVE=1 时仍会在内存中强制打开相关开关（不写回 JSON），
+// 便于兼容旧配置或临时回退后的对照观测。
 const UTILITY_ACTIVE = process.env.UTILITY_ACTIVE === '1';
 if (UTILITY_ACTIVE) {
   configs.balanceUtility = { ...configs.balanceUtility, enabled: true };
@@ -122,9 +122,9 @@ if (UTILITY_ACTIVE) {
   console.log('[激活态] UTILITY_ACTIVE=1：utility/reward/obsession.goalMult enabled=true（仅内存覆盖，不写回数据）');
 }
 
-// 信息传播 / 机会点 / 怀璧其罪激活态（ADR-024/025）：默认 enabled=false（不改变现有行为）；
-// 设 INFO_ACTIVE=1 时在内存中把 news/opportunities/reward/covet 开关覆盖为 true，
-// 用于观测"群体涌向热点"与"怀璧其罪"涌现现象。
+// 信息传播 / 机会点 / 怀璧其罪显式激活态（ADR-024/025）：当前默认启用；
+// 设 INFO_ACTIVE=1 时仍会在内存中把 news/opportunities/reward/covet 开关覆盖为 true，
+// 便于兼容旧配置或临时回退后的对照观测。
 const INFO_ACTIVE = process.env.INFO_ACTIVE === '1';
 if (INFO_ACTIVE) {
   configs.worldNews = { ...configs.worldNews, enabled: true };
@@ -134,9 +134,9 @@ if (INFO_ACTIVE) {
   console.log('[激活态] INFO_ACTIVE=1：news/opportunities/reward/covet enabled=true（仅内存覆盖，不写回数据）');
 }
 
-// 反应层激活态（四层 AI 架构 Reaction 层，ADR-048）：默认 reaction.enabled=false（不改变现有行为）；
-// 设 REACTION_ACTIVE=1 时在内存中把 reaction.enabled 与 eventReplan.enabled 覆盖为 true，
-// 用于观测被攻击反应（逃命/回血/反击/暂避）与大事件立即重决策涌现现象。
+// 反应层显式激活态（四层 AI 架构 Reaction 层，ADR-048）：当前默认启用；
+// 设 REACTION_ACTIVE=1 时仍会在内存中把 reaction.enabled 与 eventReplan.enabled 覆盖为 true，
+// 便于兼容旧配置或临时回退后的对照观测。
 const REACTION_ACTIVE = process.env.REACTION_ACTIVE === '1';
 if (REACTION_ACTIVE) {
   configs.balanceReaction = {

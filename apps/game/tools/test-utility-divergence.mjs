@@ -2,10 +2,9 @@
 /**
  * Utility 流派分化测试（ADR-020/021/022，双轨测试策略）。
  *
- * 与 test-goal-equivalence 的等价性测试互补：那个测试守护 utility.json
- * `enabled=false`（默认关闭态）的行为不被意外改变；本测试则在
- * **强制 enabled=true** 下，验证"同境界、相同局面下不同人格/执念的 NPC 选出不同目标"，
- * 即激活 Utility 选目标层后流派分化确实发生。
+ * 与 test-goal-equivalence 的等价性测试互补：当前默认启用 Utility/Reward；
+ * 本测试在 **强制 enabled=true** 下，验证"同境界、相同局面下不同人格/执念的 NPC 选出不同目标"，
+ * 即 Utility 选目标层启用后流派分化确实发生。
  *
  * 覆盖：
  *   1) 风险厌恶分化：高 caution 与低 caution 对同一高风险目标打分不同（稳健流 vs 赌狗流）。

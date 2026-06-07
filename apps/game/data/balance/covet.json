@@ -1,6 +1,6 @@
 {
-  "_description": "怀璧其罪 / 觊觎抢夺系统配置（ADR-025）。NPC 暴露高 assetScore 被目击 → 生成 wealth_exposed 消息 → 听闻者评估『抢夺 vs 放他一马』。默认 enabled=false（关闭时无觊觎抢夺）。",
-  "enabled": false,
+  "_description": "怀璧其罪 / 觊觎抢夺系统配置（ADR-025）。NPC 暴露高 assetScore 被目击 → 生成 wealth_exposed 消息 → 听闻者评估『抢夺 vs 放他一马』。默认 enabled=true；设 false 时无觊觎抢夺，用于回退对照。",
+  "enabled": true,
   "_exposeComment": "暴露触发：NPC 持有 assetScore >= exposeThreshold 且周围 witnessDistance 内有其他 NPC 目击时，生成 wealth_exposed 消息。exposeChancePerDay 控制每日暴露概率（不必每天都暴露）。",
   "expose": {
     "exposeThreshold": 500,

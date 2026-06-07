@@ -1,6 +1,6 @@
 {
-  "_description": "信息传播系统配置（ADR-024）。事件发生 → 生成 WorldNews → 按传播渠道扩散 → NPC 知晓。默认 enabled=false（关闭时不产生任何新闻）。",
-  "enabled": false,
+  "_description": "信息传播系统配置（ADR-024）。事件发生 → 生成 WorldNews → 按传播渠道扩散 → NPC 知晓。默认 enabled=true；设 false 时不产生任何新闻，用于回退对照。",
+  "enabled": true,
   "_newsTypesComment": "各新闻类型的传播参数。importance(0-100) 越高传播越快越远；spreadSpeed 为每天扩散格数；maxRadius 为最大传播半径；baseReliability 为源头可信度；decayRate 为新闻每天可信度/价值衰减；ttlDays 为新闻存活天数（超时移除）。",
   "newsTypes": {
     "tribulation": {

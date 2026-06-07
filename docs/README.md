@@ -2,7 +2,7 @@
 
 > 项目代号：WorldDynamic  
 > 创建日期：2026-05-23  
-> 最后更新：2026-06-07（新增首个功能基本齐全版范围设计；新增统一经济交易底座设计与实施计划；新增三层关系底座全数据重构验证报告、实施计划并补强规格；新增十二境界运行时主链 ADR、实施计划更新、数据模型、Wiki 与验证报告导航；新增三层关系底座重构规格；新增修为数值化与突破重构验证报告、NPC 效用评分公式升级设计/实施计划/验证报告与导航；此前新增修为数值化与突破重构规格、修士战斗属性体系 ADR、系统文档、数据模型与实施计划；新增妖兽属性模板与境界清理实施计划、ADR、系统文档、数据模型和验证报告）
+> 最后更新：2026-06-07（新增门派架构与运行模拟设计；新增动态模拟底座默认启用 ADR；新增当前代码功能实现盘点目录与文档；新增首个功能基本齐全版范围设计；新增统一经济交易底座设计与实施计划；新增三层关系底座全数据重构验证报告、实施计划并补强规格；新增十二境界运行时主链 ADR、实施计划更新、数据模型、Wiki 与验证报告导航；新增三层关系底座重构规格；新增修为数值化与突破重构验证报告、NPC 效用评分公式升级设计/实施计划/验证报告与导航；此前新增修为数值化与突破重构规格、修士战斗属性体系 ADR、系统文档、数据模型与实施计划；新增妖兽属性模板与境界清理实施计划、ADR、系统文档、数据模型和验证报告）
 
 ## 当前事实
 
@@ -18,13 +18,14 @@
 ## 阅读顺序
 
 1. `overview.md`：项目定位、当前实现范围和运行方式。
-2. `architecture/system-overview.md`：主线程、Worker、引擎、编辑器的边界。
-3. `architecture/file-structure.md`：当前源码和数据目录结构。
-4. `data/data-config-rules.md`：`apps/game/data/` 的现行配置规范。
-5. `systems/`：各运行时子系统设计。
-6. `data-models/`：核心 JSON 数据模型。
-7. `worldbuilding/` 与 `worldbuilding/wiki/`：世界观、规则和已敲定设定。
-8. `decisions/`：ADR 架构与机制决策历史。
+2. `功能盘点/2026-06-07-当前代码功能实现盘点.md`：当前代码已做功能、部分落地功能、未落地功能和首版非目标。
+3. `architecture/system-overview.md`：主线程、Worker、引擎、编辑器的边界。
+4. `architecture/file-structure.md`：当前源码和数据目录结构。
+5. `data/data-config-rules.md`：`apps/game/data/` 的现行配置规范。
+6. `systems/`：各运行时子系统设计。
+7. `data-models/`：核心 JSON 数据模型。
+8. `worldbuilding/` 与 `worldbuilding/wiki/`：世界观、规则和已敲定设定。
+9. `decisions/`：ADR 架构与机制决策历史。
 
 ## 文档结构
 
@@ -72,8 +73,11 @@ docs/
 │   └── world-tick.md
 ├── balance/
 │   └── simulation-iteration-process.md
+├── 功能盘点/
+│   ├── README.md
+│   └── 2026-06-07-当前代码功能实现盘点.md
 ├── decisions/
-│   └── adr-001..adr-054-*.md
+│   └── adr-001..adr-055-*.md
 ├── superpowers/
 │   ├── specs/
 │   │   ├── 2026-06-05-Job-Toil正式启用前收尾规格.md
@@ -85,6 +89,7 @@ docs/
 │   │   ├── 2026-06-06-任务系统角色生涯任务网设计.md
 │   │   ├── 2026-06-07-NPC效用评分公式升级设计.md
 │   │   ├── 2026-06-07-首个功能基本齐全版范围设计.md
+│   │   ├── 2026-06-07-门派架构与运行模拟设计.md
 │   │   ├── 2026-06-07-三层关系底座全数据重构-design.md
 │   │   ├── 2026-06-07-三层关系底座重构-design.md
 │   │   ├── 2026-06-07-十二境界运行时主链重构-design.md
@@ -140,11 +145,13 @@ docs/
 | 主题 | 文档 |
 |------|------|
 | 当前项目状态 | `overview.md` |
+| 当前代码功能实现盘点 | `功能盘点/2026-06-07-当前代码功能实现盘点.md` |
 | 首个功能基本齐全版范围 | `superpowers/specs/2026-06-07-首个功能基本齐全版范围设计.md` |
 | 运行时架构 | `architecture/system-overview.md` |
 | 文件结构 | `architecture/file-structure.md` |
 | 数据配置 | `data/data-config-rules.md` |
 | AI 架构 | `systems/behavior-tree.md`、`systems/job-toil-ai-spec.md`、`decisions/adr-048-four-layer-reactive-ai.md`、`decisions/adr-050-goap-job-toil-layered-ai.md` |
+| 门派架构与运行模拟 | `superpowers/specs/2026-06-07-门派架构与运行模拟设计.md` |
 | NPC 效用评分公式升级 | `superpowers/specs/2026-06-07-NPC效用评分公式升级设计.md`、`superpowers/plans/2026-06-07-NPC效用评分公式升级实施计划.md`、`superpowers/reports/2026-06-07-NPC效用评分公式升级验证.md` |
 | 三层关系底座重构 | `superpowers/specs/2026-06-07-三层关系底座全数据重构-design.md`、`superpowers/plans/2026-06-07-三层关系底座全数据重构实施计划.md`、`superpowers/reports/2026-06-07-三层关系底座全数据重构验证.md`、`superpowers/specs/2026-06-07-三层关系底座重构-design.md` |
 | 统一经济交易底座 | `superpowers/specs/2026-06-07-统一经济交易底座设计.md`、`superpowers/plans/2026-06-07-统一经济交易底座实施计划.md`、`systems/economic-transaction-system.md`、`data-models/economic-transaction.md`、`superpowers/reports/2026-06-07-统一经济交易底座验证.md` |
@@ -152,6 +159,7 @@ docs/
 | Job/Toil 正式启用 | `superpowers/specs/2026-06-05-Job-Toil正式启用前收尾规格.md`、`superpowers/plans/2026-06-05-ADR-050-收尾实施计划.md`、`superpowers/reports/2026-06-05-Job-Toil默认启用验证.md` |
 | Job/Toil 实施计划 | `superpowers/plans/2026-06-05-Job-Toil-AI重构实施计划.md` |
 | 动态事件/动态目标 | `systems/event-system.md`、`decisions/adr-049-dynamic-goal-interrupt-policy.md` |
+| 动态模拟底座默认启用 | `decisions/adr-055-dynamic-simulation-default-enabled.md` |
 | GAS 机制资产 | `systems/gameplay-ability-system.md`、`decisions/adr-042-gameplay-ability-system.md` |
 | 妖兽属性模板与境界清理 | `superpowers/specs/2026-06-06-妖兽属性模板与境界清理-design.md`、`superpowers/plans/2026-06-06-妖兽属性模板与境界清理实施计划.md`、`decisions/adr-052-monster-templates-and-rank-cleanup.md`、`systems/monster-attribute-templates.md`、`data-models/monster.md`、`superpowers/reports/2026-06-06-妖兽属性模板与境界清理验证.md` |
 | 物品与怀璧其罪 | `systems/item-covet.md`、`decisions/adr-025-item-covet-system.md` |

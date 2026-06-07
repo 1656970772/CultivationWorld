@@ -1,8 +1,8 @@
 {
   "_description": "期望收益（Expected Value）配置（ADR-022）。把目标的『大概能拿到多少好处』建模为概率分布，NPC 看到的价值是期望收益 Σ(prob×value)，而非固定值。与 risk.json（风险=惩罚）对称：reward=吸引。用于让赌狗流/稳健流在『高期望收益险地』上数值分化。",
   "_howItWorks": "按 Goal 的 sourceId(obsession_xxx / need_xxx) 匹配一组 outcomes。每个 outcome: { id, prob(0-1), value(0-1 归一化相对收益) }。ExpectedValue = Σ(prob×value)，因 value∈[0,1] 故期望值亦∈[0,1]，可直接作为 derived.expectedValue 喂给 utility.json 的 consideration 曲线。各 source 的 prob 之和应≈1（含空手而归 value=0 的分项）。",
-  "enabled": false,
-  "_enabledComment": "总开关。false（默认）时 deriveExpectedValue 返回 0，期望收益不参与评分。设 true 启用期望收益建模。",
+  "enabled": true,
+  "_enabledComment": "总开关。true（默认）时启用期望收益建模；设 false 时 deriveExpectedValue 返回 0，期望收益不参与评分，用于回退对照。",
   "rewardsBySource": {
     "obsession_plunder": {
       "_comment": "夺宝流（凡人修仙传 杀人夺宝/闯秘境）：高方差收益。仙器极罕见但价值连城，多数时候只得材料或空手。",

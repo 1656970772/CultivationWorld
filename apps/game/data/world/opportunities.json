@@ -1,6 +1,6 @@
 {
-  "_description": "世界机会点系统配置（ADR-024）。事件 → WorldNews → WorldOpportunity（有坐标/价值/过期的持久热点）。NPC 知晓消息后关联机会点，经 Utility 评估收益-风险决定是否前往。默认 enabled=false（关闭时不生成机会点）。",
-  "enabled": false,
+  "_description": "世界机会点系统配置（ADR-024）。事件 → WorldNews → WorldOpportunity（有坐标/价值/过期的持久热点）。NPC 知晓消息后关联机会点，经 Utility 评估收益-风险决定是否前往。默认 enabled=true；设 false 时不生成机会点，用于回退对照。",
+  "enabled": true,
   "_typesComment": "各机会类型默认参数。value 为基础价值；lifespanDays 为存活天数（过期消失）；maxClaims 为可被领取/参与的上限（满后不再吸引新 NPC）；rewardSource 为 reward.json 中对应的收益分布键；riskKey 为 risk.json 中对应风险键。",
   "types": {
     "monster_corpse": {

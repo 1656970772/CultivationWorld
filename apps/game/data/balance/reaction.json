@@ -1,6 +1,6 @@
 {
-  "_description": "反应层（Reaction）平衡配置（四层 AI 架构，ADR-048）。被攻击时受害者的即时反应决策阈值与动作映射，数据驱动、代码不写死。enabled 默认 false（关闭时被攻击不触发反应）——开启后被攻击会向受害者压入 attacked 刺激，触发反应层决策（躲避/疗伤/逃跑/反击）。",
-  "enabled": false,
+  "_description": "反应层（Reaction）平衡配置（四层 AI 架构，ADR-048）。被攻击时受害者的即时反应决策阈值与动作映射，数据驱动、代码不写死。enabled 默认 true，被攻击会向受害者压入 attacked 刺激，触发反应层决策（躲避/疗伤/逃跑/反击）；设 false 时被攻击不触发反应，用于回退对照。",
+  "enabled": true,
 
   "stimulusTtl": 2,
   "stimulusCapacity": 16,
@@ -26,9 +26,9 @@
   "_counter_note": "反击伤害 = 我方战力 × counterDamageRatio，走统一伤害管线 applyDamage（锁血/遁地通用）。仅当血量安全且 powerAdvantage 达标时由反应决策树选反击。",
   "counterDamageRatio": 0.5,
 
-  "_eventReplan_note": "大事件 → 动态决策（ADR-048 意图层）：遇仇人/知晓可达机缘（秘境/拍卖/天材地宝）等新事件即时请求立即重决策（打断当前长链）。默认 enabled=false（关闭时不触发立即重决策）；opportunityReplan 控制机缘类是否触发立即重决策。",
+  "_eventReplan_note": "大事件 → 动态决策（ADR-048 意图层）：遇仇人/知晓可达机缘（秘境/拍卖/天材地宝）等新事件即时请求立即重决策（打断当前长链）。默认 enabled=true；设 false 时不触发立即重决策。opportunityReplan 控制机缘类是否触发立即重决策。",
   "eventReplan": {
-    "enabled": false,
+    "enabled": true,
     "opportunityReplan": true
   },
 
