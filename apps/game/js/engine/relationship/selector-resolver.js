@@ -37,4 +37,18 @@ export class SelectorResolver {
     if (spec.faction != null) ref.factionId = this.resolve(spec.faction, context);
     return ref;
   }
+
+  resolveLedgerRefs(spec = {}, context = {}) {
+    const ref = this.resolveLedgerRef(spec, context);
+    const expandableKeys = ['subjectId', 'objectId', 'groupId', 'factionId'];
+    let refs = [ref];
+
+    for (const key of expandableKeys) {
+      const value = ref[key];
+      if (!Array.isArray(value)) continue;
+      refs = refs.flatMap(item => value.map(v => ({ ...item, [key]: v })));
+    }
+
+    return refs;
+  }
 }

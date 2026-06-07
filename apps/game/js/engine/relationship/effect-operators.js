@@ -5,8 +5,7 @@ export class EffectOperatorRegistry {
     this.selectorResolver = selectorResolver;
   }
 
-  apply(effect, baseContext = {}) {
-    const ref = this.selectorResolver.resolveLedgerRef(effect, baseContext);
+  _applyToRef(effect, ref, baseContext = {}) {
     const ledger = this.repository.getLedger(ref);
     if (!ledger) return null;
     const context = { ...baseContext, ledger };
@@ -45,5 +44,17 @@ export class EffectOperatorRegistry {
     }
 
     return ledger;
+  }
+
+  apply(effect, baseContext = {}) {
+    const refs = typeof this.selectorResolver.resolveLedgerRefs === 'function'
+      ? this.selectorResolver.resolveLedgerRefs(effect, baseContext)
+      : [this.selectorResolver.resolveLedgerRef(effect, baseContext)];
+    const ledgers = [];
+    for (const ref of refs) {
+      const ledger = this._applyToRef(effect, ref, baseContext);
+      if (ledger) ledgers.push(ledger);
+    }
+    return ledgers;
   }
 }

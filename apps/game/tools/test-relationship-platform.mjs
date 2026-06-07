@@ -92,6 +92,53 @@ console.log('3) snapshot/load 恢复账本');
   assert(restored.getIndividualRelation('npc_a', 'npc_c').marks.some(m => m.type === 'bloodFeud'), 'mark 恢复');
 }
 
+console.log('4) 旧边 API 从账本投影 mark/tag');
+{
+  const rs = new RelationshipSystem({ enabled: true, platform: relationshipConfig });
+  rs.addMark({ layer: 'individual', subjectId: 'npc_a', objectId: 'npc_b', type: 'bloodFeud', weight: 80, day: 3 });
+  rs.addTag({ layer: 'individual', subjectId: 'npc_a', objectId: 'npc_c', type: 'sameSect', day: 4 });
+
+  const grudges = rs.edgesOfType('npc_a', 'grudge');
+  const topGrudge = rs.topEdgeOfType('npc_a', 'grudge');
+  assert(grudges.some(e => e.toId === 'npc_b' && e.strength === 80), 'bloodFeud mark 投影为 grudge 边');
+  assert(topGrudge && topGrudge.toId === 'npc_b' && topGrudge.strength === 80, 'topEdgeOfType 可读取 bloodFeud 投影');
+  assert(rs.edgesOfType('npc_a', 'enemy').some(e => e.toId === 'npc_b' && e.strength === 80), 'bloodFeud mark 投影为 enemy 边');
+  assert(rs.edgesOfType('npc_a', 'beast_grudge').some(e => e.toId === 'npc_b' && e.strength === 80), 'bloodFeud mark 投影为 beast_grudge 边');
+  assert(rs.edgesOfType('npc_a', 'same_sect').some(e => e.toId === 'npc_c'), 'sameSect tag 投影为 same_sect 边');
+  rs.addMark({ layer: 'individual', subjectId: 'npc_a', objectId: 'npc_d', type: 'resourceGrudge', weight: 55, day: 5 });
+  rs.addMark({ layer: 'individual', subjectId: 'npc_a', objectId: 'npc_e', type: 'lifeDebt', weight: 45, day: 6 });
+  rs.addMark({ layer: 'individual', subjectId: 'npc_a', objectId: 'npc_f', type: 'favorDebt', weight: 35, day: 7 });
+  rs.addTag({ layer: 'individual', subjectId: 'npc_master', objectId: 'npc_disciple', type: 'masterDisciple', source: { edgeType: 'master' }, day: 8 });
+  rs.addTag({ layer: 'individual', subjectId: 'npc_disciple', objectId: 'npc_master', type: 'masterDisciple', source: { edgeType: 'disciple' }, day: 8 });
+  rs.addTag({ layer: 'individual', subjectId: 'npc_teacher', objectId: 'npc_student', type: 'masterDisciple', day: 9 });
+  assert(rs.edgesOfType('npc_a', 'rival').some(e => e.toId === 'npc_d' && e.strength === 55), 'resourceGrudge mark 投影为 rival 边');
+  assert(rs.edgesOfType('npc_a', 'beast_rival').some(e => e.toId === 'npc_d' && e.strength === 55), 'resourceGrudge mark 投影为 beast_rival 边');
+  assert(rs.edgesOfType('npc_a', 'territory_threat').some(e => e.toId === 'npc_d' && e.strength === 55), 'resourceGrudge mark 投影为 territory_threat 边');
+  assert(rs.edgesOfType('npc_a', 'gratitude').some(e => e.toId === 'npc_e' && e.strength === 45), 'lifeDebt mark 投影为 gratitude 边');
+  assert(rs.edgesOfType('npc_a', 'benefactor').some(e => e.toId === 'npc_e' && e.strength === 45), 'lifeDebt mark 投影为 benefactor 边');
+  assert(rs.edgesOfType('npc_a', 'gratitude').some(e => e.toId === 'npc_f' && e.strength === 35), 'favorDebt mark 投影为 gratitude 边');
+  assert(rs.edgesOfType('npc_a', 'benefactor').some(e => e.toId === 'npc_f' && e.strength === 35), 'favorDebt mark 投影为 benefactor 边');
+  assert(rs.edgesOfType('npc_master', 'master').some(e => e.toId === 'npc_disciple'), 'masterDisciple tag 可投影 master 边');
+  assert(rs.edgesOfType('npc_disciple', 'disciple').some(e => e.toId === 'npc_master'), 'masterDisciple tag 可投影 disciple 边');
+  assert(rs.edgesOfType('npc_teacher', 'master').some(e => e.toId === 'npc_student'), '无 source.edgeType 的 masterDisciple tag 可投影 master 边');
+  assert(rs.edgesOfType('npc_teacher', 'disciple').some(e => e.toId === 'npc_student'), '无 source.edgeType 的 masterDisciple tag 可投影 disciple 边');
+  assert(rs.allEdges().some(e => e.fromId === 'npc_a' && e.toId === 'npc_b' && e.type === 'grudge'), 'allEdges 包含 mark 投影');
+  assert(rs.allEdges().some(e => e.fromId === 'npc_a' && e.toId === 'npc_c' && e.type === 'same_sect'), 'allEdges 包含 tag 投影');
+
+  const restored = new RelationshipSystem({ enabled: true, platform: relationshipConfig });
+  restored.loadFrom(rs.snapshot());
+  assert(restored.edgesOfType('npc_a', 'grudge').some(e => e.toId === 'npc_b' && e.strength === 80), 'loadFrom 后保留 mark 投影');
+  assert(restored.edgesOfType('npc_a', 'same_sect').some(e => e.toId === 'npc_c'), 'loadFrom 后保留 tag 投影');
+  assert(restored.edgesOfType('npc_master', 'master').some(e => e.toId === 'npc_disciple'), 'loadFrom 后保留 master 投影');
+  assert(restored.edgesOfType('npc_disciple', 'disciple').some(e => e.toId === 'npc_master'), 'loadFrom 后保留 disciple 投影');
+
+  const mirrored = new RelationshipSystem({ enabled: true, platform: relationshipConfig });
+  mirrored.addEdge('npc_edge', 'npc_target', 'grudge', { strengthDelta: 70, tick: 10 });
+  assert(mirrored.edgesOfType('npc_edge', 'grudge').some(e => e.toId === 'npc_target' && e.strength === 70), 'addEdge grudge 保持 grudge 兼容边');
+  assert(mirrored.edgesOfType('npc_edge', 'enemy').length === 0, 'source.edgeType 防止 grudge 镜像额外投影 enemy');
+  assert(mirrored.edgesOfType('npc_edge', 'beast_grudge').length === 0, 'source.edgeType 防止 grudge 镜像额外投影 beast_grudge');
+}
+
 if (failed === 0) {
   console.log('\n三层关系平台单元测试全部通过');
   process.exit(0);

@@ -68,6 +68,22 @@ const TAG_BY_EDGE_TYPE = Object.freeze({
   pack_leader: 'packLeader',
 });
 
+const EDGE_TYPES_BY_MARK_TYPE = Object.freeze({
+  bloodFeud: ['grudge', 'enemy', 'beast_grudge'],
+  resourceGrudge: ['rival', 'beast_rival', 'territory_threat'],
+  lifeDebt: ['gratitude', 'benefactor'],
+  favorDebt: ['gratitude', 'benefactor'],
+});
+
+const EDGE_TYPES_BY_TAG_TYPE = Object.freeze({
+  sameSect: ['same_sect'],
+  ally: ['ally'],
+  masterDisciple: ['master', 'disciple'],
+  daoCompanion: ['dao_companion'],
+  packMember: ['pack_member'],
+  packLeader: ['pack_leader'],
+});
+
 function normalizePlatform(config) {
   return config?.platform || config?.relationshipPlatform || null;
 }
@@ -76,6 +92,12 @@ function markWeight(ledger, type) {
   return (ledger?.marks || [])
     .filter(mark => mark.type === type && mark.consumed !== true)
     .reduce((sum, mark) => sum + (Number(mark.weight) || 0), 0);
+}
+
+function projectedTypesFor(source, fallbackTypes) {
+  const edgeType = source?.edgeType || null;
+  if (edgeType && fallbackTypes.includes(edgeType)) return [edgeType];
+  return fallbackTypes;
 }
 
 export class RelationshipSystem {
@@ -126,6 +148,77 @@ export class RelationshipSystem {
   _typeDef(type) { return this._edgeTypes[type] || {}; }
 
   _hasPlatform() { return !!(this.repository && this.impactEngine && this.signals); }
+
+  _edgeIdentity(edge) {
+    return `${edge?.fromId || ''}|${edge?.toId || ''}|${edge?.type || ''}`;
+  }
+
+  _legacyEdges(filter = {}) {
+    const out = [];
+    const buckets = filter.fromId
+      ? [this._edges.get(filter.fromId)].filter(Boolean)
+      : [...this._edges.values()];
+    for (const bucket of buckets) {
+      for (const edge of bucket.values()) {
+        if (filter.type && edge.type !== filter.type) continue;
+        out.push(edge);
+      }
+    }
+    return out;
+  }
+
+  _projectedEdge(fromId, toId, type, source) {
+    const def = this._typeDef(type);
+    return {
+      fromId,
+      toId,
+      type,
+      affinity: clamp(def.affinity ?? 0, -100, 100),
+      strength: clamp(source.strength ?? def.strength ?? 0, 0, 100),
+      originTick: source.createdDay ?? 0,
+      originEventType: source.originEventType ?? null,
+      _projected: true,
+    };
+  }
+
+  _projectedEdges(filter = {}) {
+    if (!this.repository) return [];
+    const out = [];
+    const ledgers = this.repository.findLedgers({ layer: 'individual', subjectId: filter.fromId });
+    for (const ledger of ledgers) {
+      if (!ledger.subjectId || !ledger.objectId) continue;
+      for (const mark of ledger.marks || []) {
+        if (mark.consumed === true || (Number(mark.weight) || 0) <= 0) continue;
+        for (const type of projectedTypesFor(mark.source, EDGE_TYPES_BY_MARK_TYPE[mark.type] || [])) {
+          if (filter.type && type !== filter.type) continue;
+          out.push(this._projectedEdge(ledger.subjectId, ledger.objectId, type, {
+            strength: mark.weight,
+            createdDay: mark.createdDay,
+            originEventType: mark.source?.eventId || mark.source?.id || null,
+          }));
+        }
+      }
+      for (const tag of ledger.tags || []) {
+        if (tag.active === false) continue;
+        for (const type of projectedTypesFor(tag.source, EDGE_TYPES_BY_TAG_TYPE[tag.type] || [])) {
+          if (filter.type && type !== filter.type) continue;
+          out.push(this._projectedEdge(ledger.subjectId, ledger.objectId, type, {
+            strength: this._typeDef(type).strength ?? 100,
+            createdDay: tag.createdDay,
+            originEventType: tag.source?.eventId || tag.source?.id || null,
+          }));
+        }
+      }
+    }
+    return out;
+  }
+
+  _mergedEdges(filter = {}) {
+    const byKey = new Map();
+    for (const edge of this._legacyEdges(filter)) byKey.set(this._edgeIdentity(edge), edge);
+    for (const edge of this._projectedEdges(filter)) byKey.set(this._edgeIdentity(edge), edge);
+    return [...byKey.values()];
+  }
 
   /**
    * 新标准入口：把标准 RelationEvent 写入三层账本。
@@ -215,7 +308,7 @@ export class RelationshipSystem {
         type: markType,
         weight,
         day,
-        source: { eventId: opts.eventType || edge?.originEventType || null },
+        source: { eventId: opts.eventType || edge?.originEventType || null, edgeType: type },
       });
     }
     const tagType = TAG_BY_EDGE_TYPE[type];
@@ -226,7 +319,7 @@ export class RelationshipSystem {
         objectId: toId,
         type: tagType,
         day,
-        source: { eventId: opts.eventType || edge?.originEventType || null },
+        source: { eventId: opts.eventType || edge?.originEventType || null, edgeType: type },
       });
     }
   }
@@ -285,17 +378,16 @@ export class RelationshipSystem {
 
   getEdge(fromId, toId, type) {
     const bucket = this._edges.get(fromId);
-    if (!bucket) return null;
-    return bucket.get(RelationshipSystem._key(toId, type)) || null;
+    const projected = this._projectedEdges({ fromId, type }).find(e => e.toId === toId);
+    return projected || bucket?.get(RelationshipSystem._key(toId, type)) || null;
   }
 
   edgesFrom(fromId) {
-    const bucket = this._edges.get(fromId);
-    return bucket ? [...bucket.values()] : [];
+    return this._mergedEdges({ fromId });
   }
 
   edgesOfType(fromId, type) {
-    return this.edgesFrom(fromId).filter(e => e.type === type).sort((a, b) => b.strength - a.strength);
+    return this._mergedEdges({ fromId, type }).sort((a, b) => b.strength - a.strength);
   }
 
   topEdgeOfType(fromId, type) {
@@ -329,11 +421,7 @@ export class RelationshipSystem {
   }
 
   allEdges() {
-    const out = [];
-    for (const bucket of this._edges.values()) {
-      for (const edge of bucket.values()) out.push(edge);
-    }
-    return out;
+    return this._mergedEdges();
   }
 
   _legacyStats() {
@@ -371,8 +459,10 @@ export class RelationshipSystem {
 
   loadFrom(snap) {
     this._edges = new Map();
+    const hasPlatformSnapshot = !!(snap?.relationshipPlatform || snap?.ledgers);
     if (snap && Array.isArray(snap.edges)) {
       for (const e of snap.edges) {
+        if (hasPlatformSnapshot && e._projected === true) continue;
         if (!e.fromId || !e.toId || !e.type) continue;
         let bucket = this._edges.get(e.fromId);
         if (!bucket) { bucket = new Map(); this._edges.set(e.fromId, bucket); }
