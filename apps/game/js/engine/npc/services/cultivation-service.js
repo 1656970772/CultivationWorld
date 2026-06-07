@@ -1,6 +1,10 @@
 import { getCultivationConfig } from '../actions/npc-action-utils.js';
 import { readTraitSpeedMult } from '../npc-traits.js';
-import { syncNumericCultivationFromRatios } from '../numeric-cultivation.js';
+import {
+  addCultivation,
+  computeCultivationGain,
+  getCultivationRequired,
+} from '../numeric-cultivation.js';
 
 export function runCultivation(entity, worldContext, action = {}, opts = {}) {
   const extraSpeedMultiplier = opts.extraSpeedMultiplier ?? 1.0;
@@ -33,17 +37,17 @@ export function runCultivation(entity, worldContext, action = {}, opts = {}) {
   const days = Math.max(1, action?.duration ?? 1);
   const speed = baseSpeed * speedMultiplier;
   const progressGain = speed * days;
-
-  const capMap = cult.cultivationCap || {};
-  const cap = capMap[rankId] ?? 1.0;
-  const decayK = cult.cultivationDecayK ?? 2.5;
-  const current = entity.state.get('cultivationProgress') || 0;
-  const decayFactor = Math.exp(-decayK * Math.min(1, current / Math.max(cap, 1e-6)));
-  const effectiveGain = progressGain * decayFactor;
-  const newProgress = Math.min(current + effectiveGain, cap);
+  const ranks = worldContext.ranksData || [];
+  const required = getCultivationRequired(entity, ranks);
+  const baseCultivationGain = progressGain * required;
+  const cultivationBefore = entity.state.get('cultivation') || 0;
+  const cultivationGain = computeCultivationGain(entity, ranks, baseCultivationGain, cult);
+  const cultivationDecay = baseCultivationGain > 0 ? cultivationGain / baseCultivationGain : 1;
+  addCultivation(entity, ranks, cultivationGain, cult);
+  const cultivationDelta = (entity.state.get('cultivation') || 0) - cultivationBefore;
   const qiPerProgressMap = cult.qiPerProgress || {};
-  let progressQi = (qiPerProgressMap[rankId] ?? 0) * (newProgress - current);
-  entity.state.set('cultivationProgress', newProgress);
+  // qiPerProgress 是旧配置名，单位仍为每 1.0 比例进度的真气收益。
+  let progressQi = (qiPerProgressMap[rankId] ?? 0) * (required > 0 ? cultivationDelta / required : 0);
 
   if (techniqueLifespanEffect !== 0) {
     const daysPerYear = 360;
@@ -84,16 +88,17 @@ export function runCultivation(entity, worldContext, action = {}, opts = {}) {
         );
         if (dualEffect) dualBonus *= dualEffect.value;
       }
-      const curWithBase = entity.state.get('cultivationProgress') || 0;
-      const dualDecay = Math.exp(-decayK * Math.min(1, curWithBase / Math.max(cap, 1e-6)));
-      const dualProgress = Math.min(curWithBase + speed * days * dualBonus * dualDecay, cap);
-      qiGain += (qiPerProgressMap[rankId] ?? 0) * (dualProgress - curWithBase) * qiMultiplier;
-      entity.state.set('cultivationProgress', dualProgress);
+      const beforeDualCultivation = entity.state.get('cultivation') || 0;
+      const dualBaseGain = speed * days * dualBonus * required;
+      const dualCultivationGain = computeCultivationGain(entity, ranks, dualBaseGain, cult);
+      addCultivation(entity, ranks, dualCultivationGain, cult);
+      const dualCultivationDelta = (entity.state.get('cultivation') || 0) - beforeDualCultivation;
+      qiGain += (qiPerProgressMap[rankId] ?? 0)
+        * (required > 0 ? dualCultivationDelta / required : 0)
+        * qiMultiplier;
       companionBonusApplied = true;
     }
   }
-
-  syncNumericCultivationFromRatios(entity, worldContext.ranksData || []);
 
   const currentQi = entity.state.get('qi') || 0;
   entity.state.set('qi', currentQi + qiGain);
@@ -101,7 +106,10 @@ export function runCultivation(entity, worldContext, action = {}, opts = {}) {
 
   return {
     success: true,
-    progress: entity.state.get('cultivationProgress'),
+    cultivationGain,
+    cultivation: entity.state.get('cultivation') || 0,
+    totalCultivation: entity.state.get('totalCultivation') || 0,
+    cultivationDecay,
     speed,
     qiGain,
     qi: currentQi + qiGain,
@@ -109,7 +117,7 @@ export function runCultivation(entity, worldContext, action = {}, opts = {}) {
     techniqueId: techniqueId || null,
     techniqueBreakthroughBonus,
     companionBonusApplied,
-    description: `${entity.staticData.name} ${descriptionPrefix}，消耗${consumed}灵石，真气+${qiGain.toFixed(1)}`,
+    description: `${entity.staticData.name} ${descriptionPrefix}，消耗${consumed}灵石，修为+${cultivationGain.toFixed(1)}，真气+${qiGain.toFixed(1)}`,
   };
 }
 

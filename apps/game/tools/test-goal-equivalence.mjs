@@ -20,7 +20,10 @@ const { BehaviorSystem } = await imp('js/engine/abstract/behavior-system.js');
 const { NeedSystem } = await imp('js/engine/abstract/need-system.js');
 const { Need, ConfigurableEvaluator } = await imp('js/engine/abstract/need.js');
 
-const npcActions = load('data/actions/npc-actions.json').map(c => new Action(c));
+const npcActions = [
+  ...load('data/actions/npc-actions.json'),
+  ...load('data/actions/npc-job-actions.json'),
+].map(c => new Action(c));
 const npcNeedConfigs = load('data/needs/npc-needs.json');
 
 // mulberry32 确定性 PRNG
@@ -65,8 +68,16 @@ function randomState(rng) {
     alive: true,
     lifespanRemaining: Math.floor(rng() * 200),
     injuryLevel: Math.floor(rng() * 100),
-    cultivationProgress: Math.floor(rng() * 100),
-    totalProgress: Math.floor(rng() * 100),
+    cultivation: Math.floor(rng() * 100),
+    experienceCultivation: Math.floor(rng() * 100),
+    totalCultivation: Math.floor(rng() * 100),
+    nextCultivationRequired: 100,
+    cultivationShortfall: Math.floor(rng() * 100),
+    cultivationRootShortfall: Math.floor(rng() * 100),
+    qi: Math.floor(rng() * 100),
+    nextQiRequired: 100,
+    qiBelowNextRank: rng() > 0.5,
+    rankStage: ['early', 'middle', 'late', 'perfection'][Math.floor(rng() * 4)],
     contribution: Math.floor(rng() * 100),
     monthlyQuotaMet: rng() > 0.5,
     rankOrder: Math.floor(rng() * 5),

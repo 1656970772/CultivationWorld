@@ -4,6 +4,7 @@
  * 只判断"何时重决策"，不直接修改计划或事件感知缓存。
  */
 import { GoalSource } from '../abstract/goal.js';
+import { getCultivationRequired } from './numeric-cultivation.js';
 
 export const InterruptDecision = Object.freeze({
   INTERRUPT_NOW: 'interrupt_now',
@@ -54,10 +55,16 @@ function isCultivationPlan(plan) {
   );
 }
 
+function cultivationCompletion(entity) {
+  const total = Number(readState(entity, 'totalCultivation', 0)) || 0;
+  const required = Number(readState(entity, 'nextCultivationRequired', null) ?? getCultivationRequired(entity, entity?._ranksData || [])) || 0;
+  return required > 0 ? Math.max(0, Math.min(1, total / required)) : 0;
+}
+
 function currentLoss(entity, plan) {
   if (!behaviorBusy(entity)) return 0;
   let loss = 12;
-  const progress = Number(readState(entity, 'totalProgress', 0)) || 0;
+  const progress = cultivationCompletion(entity);
   if (isCultivationPlan(plan)) {
     loss += progress >= 0.95 ? 35 : 15;
   }
@@ -111,7 +118,7 @@ function minDecisionAtLeast(candidate, minimum) {
 function isProtectedPreparation(entity, goal, plan) {
   const kind = goal?.dynamic?.kind || goal?.tag || null;
   if (kind !== 'preparation') return false;
-  const progress = Number(readState(entity, 'totalProgress', 0)) || 0;
+  const progress = cultivationCompletion(entity);
   return progress >= 0.95 && behaviorBusy(entity) && isCultivationPlan(plan);
 }
 

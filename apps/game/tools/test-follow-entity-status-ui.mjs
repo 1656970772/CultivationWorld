@@ -27,9 +27,6 @@ console.log('1) NPC detailed grouped status is Chinese and bounded');
     spatial: { tileX: 22, tileY: 147 },
     qi: 25000,
     nextQiRequired: 50000,
-    cultivationProgress: 0.35,
-    cultivationCap: 0.4,
-    insight: 0.22,
     cultivation: 35000,
     experienceCultivation: 22000,
     totalCultivation: 57000,
@@ -138,7 +135,7 @@ console.log('7) missing upper bounds degrade to Chinese unknown state');
     rankName: '筑基',
     actionStatus: 'unknown_state',
     qi: 1110,
-    cultivationProgress: 0.17,
+    cultivation: 170,
     spatial: { tileX: 84, tileY: 23 },
   };
   const html = statusModelToHtml(buildTrackedStatusModel(npc, 'npc', {}));

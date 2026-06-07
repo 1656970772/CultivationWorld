@@ -195,7 +195,6 @@ export class PopulationService {
       const child = new NPCEntity(childConfig, host.ranksData, host.entityConfig);
       child.state.set('ageDays', 0);
       child.state.set('ageYears', 0);
-      child.state.set('cultivationProgress', 0);
       this.entityRegistry.register(child);
 
       mother.state.set('childrenCount', (mother.state.get('childrenCount') || 0) + 1);

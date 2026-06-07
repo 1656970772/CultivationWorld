@@ -79,8 +79,8 @@ assertMatches(
 console.log('4) breakthrough resets stage and refreshes attributes');
 assertIncludes(
   npcLifecycleSource,
-  "entity.state.set('rankStage', nextRank.id === 'mortal' ? null : 'early')",
-  'breakthrough success resets rankStage for the new rank',
+  'applyBreakthroughSuccess(entity, nextRank',
+  'breakthrough success delegates numeric outcome reset',
 );
 assertIncludes(
   npcLifecycleSource,
@@ -135,6 +135,9 @@ const combatNpc = new NPCEntity(
     role: 'disciple',
     rankId: 'qi_refining',
     rankStage: 'late',
+    cultivation: 300,
+    experienceCultivation: 0,
+    totalCultivation: 300,
     factionId: null,
     spiritRootId: 'triple',
     physiqueId: 'war_body',

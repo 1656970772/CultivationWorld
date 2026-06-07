@@ -51,8 +51,8 @@ let failed = 0;
 const assert = (c, m) => { if (!c) { console.error('  FAIL:', m); failed++; } else { console.log('  OK:', m); } };
 
 /** 构造一个最简 NPC mock，足够 decorateGoalConsiderations 读取。 */
-function makeEntity({ caution = 50, anger = 0, fear = 0, lifeRatio = 0.5, cultivationProgress = 0.5, totalProgress = 0.5, rankId = 'golden_core' } = {}) {
-  const flat = { lifeRatio, cultivationProgress, totalProgress, rankId };
+function makeEntity({ caution = 50, anger = 0, fear = 0, lifeRatio = 0.5, rankStage = 'middle', totalCultivation = 2500, nextCultivationRequired = 5000, rankId = 'golden_core' } = {}) {
+  const flat = { lifeRatio, rankStage, totalCultivation, nextCultivationRequired, rankId };
   return {
     state: { get: (k) => flat[k], set: () => {} },
     staticData: { personality: { caution } },
@@ -152,12 +152,12 @@ console.log('4) 群体目标多样性');
 
   // 6 个差异化 NPC（同为金丹境），各自拥有不同执念，体现修仙世界的人生取向分化。
   const cases = [
-    { e: makeEntity({ caution: 95, lifeRatio: 0.9,  cultivationProgress: 0.3 }), goals: [baseCultivation, { sourceId: 'obsession_retire',    priority: 70 }] }, // 谨慎高龄 → 养老
-    { e: makeEntity({ caution: 10, anger: 90, lifeRatio: 0.4, cultivationProgress: 0.6 }), goals: [baseCultivation, { sourceId: 'obsession_revenge', priority: 78 }] }, // 暴躁莽夫 → 复仇
-    { e: makeEntity({ caution: 50, lifeRatio: 0.3,  cultivationProgress: 0.95 }), goals: [baseCultivation, { sourceId: 'obsession_power',   priority: 72 }] }, // 修为充足 → 夺权
-    { e: makeEntity({ caution: 50, lifeRatio: 0.5,  cultivationProgress: 0.15 }), goals: [baseCultivation] },                                                  // 瓶颈期 → 修炼
-    { e: makeEntity({ caution: 50, lifeRatio: 0.85, cultivationProgress: 0.4 }), goals: [baseCultivation, { sourceId: 'obsession_legacy',  priority: 70 }] }, // 高龄宗师 → 传承
-    { e: makeEntity({ caution: 50, lifeRatio: 0.45, cultivationProgress: 0.5 }), goals: [baseCultivation, { sourceId: 'obsession_supremacy', priority: 65 }] }, // 进取 → 证道(修炼向)
+    { e: makeEntity({ caution: 95, lifeRatio: 0.9,  rankStage: 'middle' }), goals: [baseCultivation, { sourceId: 'obsession_retire',    priority: 70 }] }, // 谨慎高龄 → 养老
+    { e: makeEntity({ caution: 10, anger: 90, lifeRatio: 0.4, rankStage: 'late' }), goals: [baseCultivation, { sourceId: 'obsession_revenge', priority: 78 }] }, // 暴躁莽夫 → 复仇
+    { e: makeEntity({ caution: 50, lifeRatio: 0.3,  rankStage: 'perfection' }), goals: [baseCultivation, { sourceId: 'obsession_power',   priority: 72 }] }, // 修为充足 → 夺权
+    { e: makeEntity({ caution: 50, lifeRatio: 0.5,  rankStage: 'early' }), goals: [baseCultivation] },                                                  // 瓶颈期 → 修炼
+    { e: makeEntity({ caution: 50, lifeRatio: 0.85, rankStage: 'middle' }), goals: [baseCultivation, { sourceId: 'obsession_legacy',  priority: 70 }] }, // 高龄宗师 → 传承
+    { e: makeEntity({ caution: 50, lifeRatio: 0.45, rankStage: 'late' }), goals: [baseCultivation, { sourceId: 'obsession_supremacy', priority: 65 }] }, // 进取 → 证道(修炼向)
   ];
 
   const chosen = cases.map(c => topGoalFor(c.e, c.goals));

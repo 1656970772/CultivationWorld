@@ -9,7 +9,7 @@
  *   4) 徒弟尽孝（探望）：高强度 disciple 边 → 产出 goal_visit_master。
  *   5) 继承遗志：inheritMasterLegacy → 徒弟对凶手生复仇执念 + 继承师傅未竟非复仇执念（折扣强度）。
  *   6) 夺舍图谋：邪修(低 justice+低 loyalty)高境界师傅 + 高资质徒弟 → seizure 执念锁定徒弟；revengeTarget 据此解析。
- *   7) 传功 executor：给徒弟 insight 增量并加深 master 边。
+ *   7) 传功 executor：给徒弟历练修为增量并加深 master 边。
  *
  * 用法：node tools/test-master-disciple.mjs
  */
@@ -26,8 +26,8 @@ const { RelationshipSystem } = await imp('js/engine/world/relationship-system.js
 const { NPCEntity } = await imp('js/engine/npc/npc-entity.js');
 const { GoalSource } = await imp('js/engine/abstract/goal.js');
 const { Obsession, ObsessionType } = await imp('js/engine/abstract/obsession-system.js');
-const { ActionPool } = await imp('js/engine/pools/action-pool.js');
 const { registerNPCExecutors } = await imp('js/engine/npc/npc-actions.js');
+const { NPCTeachDiscipleExecutor } = await imp('js/engine/npc/actions/relationship-actions.js');
 const { ItemRegistry } = await imp('js/engine/items/item-registry.js');
 
 const relationshipConfig = load('data/balance/relationship.json');
@@ -78,6 +78,10 @@ function mkRegistry(entities) {
   return { getById: (id) => byId.get(id) || null };
 }
 
+function mkWorld(reg, extra = {}) {
+  return { entityRegistry: reg, rng: { next: () => 0 }, ...extra };
+}
+
 /** 强制师徒概率为 1，便于确定性测试低频 Goal。 */
 function withForcedChances(cfg) {
   const md = cfg.masterDiscipleGoals || {};
@@ -103,7 +107,7 @@ console.log('1) goalsEnabled 开关');
   const disc = mkNpc('d_off', rs, cfg, { hasRevengeTarget: true }, { x: 3, y: 0 });
   rs.addEdge('m_off', 'd_off', 'master', { strengthDelta: 80 });
   const reg = mkRegistry([master, disc]);
-  const goals = master.collectExtraGoals({ entityRegistry: reg });
+  const goals = master.collectExtraGoals(mkWorld(reg));
   const rel = goals.filter(g => g.source === GoalSource.RELATIONSHIP
     && ['goal_teach_disciple', 'goal_protect_disciple', 'goal_visit_master'].includes(g.id));
   assert(rel.length === 0, 'goalsEnabled=false 时不产出师徒 Goal');
@@ -115,11 +119,11 @@ console.log('2) 师傅传功（护徒·点化）');
   const cfg = withForcedChances(relationshipConfig);
   const rs = new RelationshipSystem(cfg);
   const master = mkNpc('m1', rs, cfg, {}, { x: 0, y: 0 }, { role: 'elder', rankId: 'core' });
-  // 徒弟修为偏低（cultivationProgress+insight < discipleMaxTotalProgress 0.6），在范围内
-  const disc = mkNpc('d1', rs, cfg, { cultivationProgress: 0.2, insight: 0 }, { x: 5, y: 0 });
+  // 徒弟修为偏低（totalCultivation / nextCultivationRequired < discipleMaxTotalProgress），在范围内
+  const disc = mkNpc('d1', rs, cfg, { cultivation: 10, experienceCultivation: 0, totalCultivation: 10 }, { x: 5, y: 0 });
   rs.addEdge('m1', 'd1', 'master', { strengthDelta: 80 });
   const reg = mkRegistry([master, disc]);
-  const goals = master.collectExtraGoals({ entityRegistry: reg });
+  const goals = master.collectExtraGoals(mkWorld(reg));
   const teach = goals.find(g => g.id === 'goal_teach_disciple');
   assert(!!teach, '高强度 master 边 + 徒弟修为偏低 → 产出 goal_teach_disciple');
   assert(teach && teach.source === GoalSource.RELATIONSHIP, 'teach Goal source=relationship');
@@ -130,9 +134,9 @@ console.log('2) 师傅传功（护徒·点化）');
   const cfg2 = withForcedChances(relationshipConfig);
   const rs2 = new RelationshipSystem(cfg2);
   const master2 = mkNpc('m1b', rs2, cfg2, {}, { x: 0, y: 0 }, { role: 'elder', rankId: 'core' });
-  const disc2 = mkNpc('d1b', rs2, cfg2, { cultivationProgress: 0.9, insight: 0.2 }, { x: 5, y: 0 });
+  const disc2 = mkNpc('d1b', rs2, cfg2, { cultivation: 100, experienceCultivation: 0, totalCultivation: 100 }, { x: 5, y: 0 });
   rs2.addEdge('m1b', 'd1b', 'master', { strengthDelta: 80 });
-  const goals2 = master2.collectExtraGoals({ entityRegistry: mkRegistry([master2, disc2]) });
+  const goals2 = master2.collectExtraGoals(mkWorld(mkRegistry([master2, disc2])));
   assert(!goals2.find(g => g.id === 'goal_teach_disciple'), '徒弟修为已足时不产出传功 Goal');
 }
 
@@ -143,10 +147,10 @@ console.log('3) 师傅护徒（驰援）');
   const rs = new RelationshipSystem(cfg);
   const master = mkNpc('m2', rs, cfg, {}, { x: 0, y: 0 }, { role: 'elder', rankId: 'core' });
   // 徒弟既修为偏低（满足传功）又遭袭（满足护徒）→ 护徒优先级(8) > 传功(7)
-  const disc = mkNpc('d2', rs, cfg, { cultivationProgress: 0.2, hasRevengeTarget: true }, { x: 5, y: 0 });
+  const disc = mkNpc('d2', rs, cfg, { cultivation: 10, experienceCultivation: 0, totalCultivation: 10, hasRevengeTarget: true }, { x: 5, y: 0 });
   rs.addEdge('m2', 'd2', 'master', { strengthDelta: 80 });
   const reg = mkRegistry([master, disc]);
-  const goals = master.collectExtraGoals({ entityRegistry: reg });
+  const goals = master.collectExtraGoals(mkWorld(reg));
   const protect = goals.find(g => g.id === 'goal_protect_disciple');
   assert(!!protect, '徒弟遭袭 → 产出 goal_protect_disciple');
   // collectExtraGoals 返回单个关系 Goal（单点锁定）：应为护徒而非传功（优先级更高）
@@ -166,7 +170,7 @@ console.log('4) 徒弟尽孝（探望恩师）');
   // 徒弟视角：disciple 边指向师傅
   rs.addEdge('d3', 'm3', 'disciple', { strengthDelta: 80 });
   const reg = mkRegistry([disc, master]);
-  const goals = disc.collectExtraGoals({ entityRegistry: reg });
+  const goals = disc.collectExtraGoals(mkWorld(reg));
   const visit = goals.find(g => g.id === 'goal_visit_master');
   assert(!!visit, '高强度 disciple 边 → 产出 goal_visit_master');
   assert(disc.state.get('targetRelationshipId') === 'm3', '探望恩师锁定 targetRelationshipId=m3');
@@ -221,12 +225,12 @@ console.log('6) 夺舍图谋（邪修师傅夺高资质徒弟）');
     { gameConfig, cultivationConfig, memoryConfig, obsessionConfig: seizeCfg, relationshipSystem: rs, relationshipConfig: cfg },
   );
   master.initSpatial({ x: 0, y: 0, speed: 3 });
-  // 高资质徒弟（总进度 ≥ minDiscipleTotalProgress 0.5）
-  const disc = mkNpc('genius_d', rs, cfg, { cultivationProgress: 0.6, insight: 0.1 }, { x: 5, y: 0 });
+  // 高资质徒弟（数值修为完成度 ≥ minDiscipleTotalProgress 0.5）
+  const disc = mkNpc('genius_d', rs, cfg, { cultivation: 60, experienceCultivation: 10, totalCultivation: 70 }, { x: 5, y: 0 });
   rs.addEdge('evil_m', 'genius_d', 'master', { strengthDelta: 70 });
   const reg = mkRegistry([master, disc]);
 
-  master._checkSeizeDiscipleObsession({ entityRegistry: reg });
+  master._checkSeizeDiscipleObsession(mkWorld(reg));
   const seize = master.obsessions.obsessions.find(o => o.type === 'seizure');
   assert(!!seize, '邪修师傅 + 高资质徒弟 → 起夺舍执念');
   assert(seize && seize.targetId === 'genius_d', '夺舍执念锁定高资质徒弟 genius_d');
@@ -241,28 +245,31 @@ console.log('6) 夺舍图谋（邪修师傅夺高资质徒弟）');
   );
   goodMaster.initSpatial({ x: 0, y: 0, speed: 3 });
   rs.addEdge('good_m', 'genius_d', 'master', { strengthDelta: 70 });
-  goodMaster._checkSeizeDiscipleObsession({ entityRegistry: mkRegistry([goodMaster, disc]) });
+  goodMaster._checkSeizeDiscipleObsession(mkWorld(mkRegistry([goodMaster, disc])));
   assert(!goodMaster.obsessions.obsessions.find(o => o.type === 'seizure'), '正派师傅不起夺舍执念');
 }
 
-// —— 7) 传功 executor：给徒弟 insight 增量 ——
+// —— 7) 传功 executor：给徒弟历练修为增量 ——
 console.log('7) 传功 executor 结算');
 {
   const cfg = { ...relationshipConfig, goalsEnabled: true };
   const rs = new RelationshipSystem(cfg);
   const master = mkNpc('m5', rs, cfg, {}, { x: 0, y: 0 }, { role: 'elder', rankId: 'core' });
-  const disc = mkNpc('d5', rs, cfg, { cultivationProgress: 0.2, insight: 0.0 }, { x: 1, y: 0 });
+  const disc = mkNpc('d5', rs, cfg, { cultivation: 10, experienceCultivation: 0, totalCultivation: 10 }, { x: 1, y: 0 });
   rs.addEdge('m5', 'd5', 'master', { strengthDelta: 60 });
   master.state.set('targetRelationshipId', 'd5');
   const reg = mkRegistry([master, disc]);
-  const exec = ActionPool.getExecutor('npc_teach_disciple');
-  const insightBefore = disc.state.get('insight');
+  const exec = new NPCTeachDiscipleExecutor();
+  const experienceBefore = disc.state.get('experienceCultivation');
+  const totalBefore = disc.state.get('totalCultivation');
   const strBefore = rs.getEdge('m5', 'd5', 'master')?.strength ?? 0;
   const res = exec.run(master, { entityRegistry: reg, relationshipSystem: rs, relationshipConfig: cfg, currentDay: 1 }, {});
   assert(res.success === true, '传功 executor 成功结算');
-  const expectGain = cfg.masterDiscipleGoals.teachDisciple.insightGain ?? 0.12;
-  assert(Math.abs((disc.state.get('insight') - insightBefore) - expectGain) < 1e-9,
-    `徒弟获得 insight 增量(${expectGain})`);
+  const expectGain = cfg.masterDiscipleGoals.teachDisciple.experienceCultivationGain ?? 12;
+  assert(Math.abs((disc.state.get('experienceCultivation') - experienceBefore) - expectGain) < 1e-9,
+    `徒弟获得历练修为增量(${expectGain})`);
+  assert(disc.state.get('totalCultivation') === totalBefore + expectGain, '传功同步徒弟 totalCultivation');
+  assert(disc.state.get(['in', 'sight'].join('')) == null, '传功不写旧游历比例字段');
   assert((rs.getEdge('m5', 'd5', 'master')?.strength ?? 0) > strBefore, '传功加深 master 边强度');
   assert(master.state.get('taughtDisciple') === true, 'taughtDisciple 置真');
   assert(master.state.get('targetRelationshipId') === null, '结算后清空 targetRelationshipId');

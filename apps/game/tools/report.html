@@ -267,7 +267,7 @@ function render(D) {
   new Chart(document.getElementById('chartProgress'), { type: 'line', data: {
     labels: days,
     datasets: [
-      { label: '平均修为', data: tl.map(t => t.avgProgress), borderColor: '#3fb950', tension: .3, yAxisID: 'y' },
+      { label: '平均修为完成度', data: tl.map(t => t.avgCultivationCompletion), borderColor: '#3fb950', tension: .3, yAxisID: 'y' },
       { label: '累计突破', data: tl.map(t => t.breakthroughs), borderColor: '#f0883e', borderDash: [5,3], tension: .3, yAxisID: 'y1' },
     ]
   }, options: progOpts });
@@ -325,7 +325,7 @@ function render(D) {
     rosterHtml += `<details${group.members.length <= 20 ? ' open' : ''}><summary>${group.factionName} (${alive}/${group.members.length} 存活)</summary>`;
     rosterHtml += '<div class="tbl-wrap"><table><tr><th>姓名</th><th>性别</th><th>境界</th><th>职务</th><th class="num">年龄/寿命</th><th class="num">真气</th><th class="bar-cell">修为</th><th class="num">灵石</th><th>道侣</th><th class="num">子女</th><th>状态</th></tr>';
     for (const m of group.members) {
-      const p = m.progress * 100;
+      const p = m.cultivationCompletion * 100;
       const color = p >= 90 ? '#f0883e' : p >= 50 ? '#58a6ff' : '#3fb950';
       const bar = `<div class="mini-bar"><div class="fill" style="width:${p.toFixed(0)}%;background:${color}"></div><div class="lbl">${p.toFixed(1)}%</div></div>`;
       const st = m.alive ? '🟢' : '💀';
@@ -477,7 +477,7 @@ function renderOneLife(p, esc) {
       <div class="tl-day">第 ${d.day} 天 · ${esc(d.rank)} · 年龄 ${d.age ?? '?'} 岁</div>
       <div class="tl-action">${esc(d.action)}</div>
       ${driver ? `<div class="tl-driver">${driver}</div>` : ''}
-      <div class="tl-state">真气 ${d.qi} · 修为 ${(d.progress * 100).toFixed(1)}%${posStr}</div>
+      <div class="tl-state">真气 ${d.qi} · 修为 ${d.totalCultivation}/${d.nextCultivationRequired}（${(d.cultivationCompletion * 100).toFixed(1)}%）${posStr}</div>
       ${obs}
       ${events}
     </div>`;

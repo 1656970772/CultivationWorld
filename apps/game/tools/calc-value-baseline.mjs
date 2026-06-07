@@ -40,7 +40,8 @@ let expQiMul = 0, wsum = 0;
 for (const e of ev.fortuneEvents) { expQiMul += e.weight * e.qiMultiplier; wsum += e.weight; }
 expQiMul /= wsum;
 const exploreQi = qiMid * expQiMul; // 期望真气
-const exploreInsightMid = (ev.insightMin + ev.insightMax) / 2; // 期望 insight（突破进度）
+const exploreExperienceCultivationMid =
+  ((ev.experienceCultivationMin || 0) + (ev.experienceCultivationMax || 0)) / 2; // 期望历练修为
 
 // 任务奖励（mortal 可接难度<=2，取难度1中值）
 const diff1 = quest.difficulties.find(d => d.level === 1) || {};
@@ -53,7 +54,7 @@ const estimates = {
   act_npc_seek_elixir: 30,                                   // 续命（低成功率但价值高），估30灵石
   act_npc_challenge: 5 * STONE_PER_CONTRIBUTION,             // 晋升带来月俸/地位，估25灵石
   act_npc_assist_faction: 1 * STONE_PER_CONTRIBUTION,        // 辅助≈数灵石
-  act_npc_job_explore: exploreQi * QI_PER_STONE + exploreInsightMid * 1000, // 真气+感悟(进度极值钱)
+  act_npc_job_explore: exploreQi * QI_PER_STONE + exploreExperienceCultivationMid, // 真气+历练修为
   act_npc_accept_quest_job: 2,                                // 仅接取，价值低
   act_npc_execute_quest_job: (diff1.rewardStones || 5) * 0.5, // 执行推进，部分奖励
   act_npc_turn_in_quest_job: (diff1.rewardStones || 5) + (diff1.rewardContribution || 2) * STONE_PER_CONTRIBUTION,

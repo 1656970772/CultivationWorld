@@ -273,9 +273,9 @@
       "minMasterStrength": 40,
       "maxTeachRange": 30,
       "discipleMaxTotalProgress": 0.95,
-      "insightGain": 0.12,
+      "experienceCultivationGain": 12,
       "teachChancePerTick": 0.12,
-      "_comment": "师傅传功（护徒·点化）：师傅对高强度 master 边的徒弟，在徒弟修为总进度(cultivationProgress+insight)偏低(< discipleMaxTotalProgress)且距离≤maxTeachRange 时，低频(teachChancePerTick)前往点化，给徒弟 insightGain 的感悟增量并加深师徒情谊。priority 78 高于日常修炼/任务(60-70)，使传功产出时被 plan() 第一个选中执行（否则永远排在修炼后、轮不到）；产出受 teachChancePerTick(0.06)+徒弟修为偏低 双重低频门控，频率天然低。minMasterStrength 为触发所需 master 边强度下限。"
+      "_comment": "师傅传功（护徒·点化）：师傅对高强度 master 边的徒弟，在徒弟 totalCultivation / nextCultivationRequired 偏低(< discipleMaxTotalProgress)且距离≤maxTeachRange 时，低频(teachChancePerTick)前往点化，给徒弟 experienceCultivationGain 的历练修为/道路感悟数值并加深师徒情谊。priority 78 高于日常修炼/任务(60-70)，使传功产出时被 plan() 第一个选中执行（否则永远排在修炼后、轮不到）；产出受 teachChancePerTick(0.06)+徒弟修为偏低 双重低频门控，频率天然低。minMasterStrength 为触发所需 master 边强度下限。"
     },
     "protectDisciple": {
       "priority": 88,

@@ -141,7 +141,7 @@ export class ConfigurableEvaluator extends NeedEvaluator {
   /**
    * 把 goalState 中标了 incrementOf 的条目解析为「当前值 + step」(夹 max) 的本轮增量阈值。
    *
-   * 条目形如 { op:'gte', incrementOf:'totalProgress', step:0.05, max:1.0 }：
+   * 条目形如 { op:'gte', incrementOf:'totalCultivation', stepRatioOf:'nextCultivationRequired', stepRatio:0.01, maxOf:'nextCultivationRequired' }：
    *   value = min((实体[incrementOf] || 0) + step, max)。
    * 已是终极完成（当前 >= max）时阈值取 max（满足即 satisfied，不再产出无意义子目标）。
    * 无 incrementOf 的条目原样保留（行为不变）。
@@ -153,8 +153,15 @@ export class ConfigurableEvaluator extends NeedEvaluator {
       if (cond && typeof cond === 'object' && typeof cond.incrementOf === 'string') {
         if (!resolved) resolved = { ...goalState };
         const base = entityState.get(cond.incrementOf) || 0;
-        const step = typeof cond.step === 'number' ? cond.step : 0.05;
-        const max = typeof cond.max === 'number' ? cond.max : Infinity;
+        const ratioBase = typeof cond.stepRatioOf === 'string'
+          ? Number(entityState.get(cond.stepRatioOf) || 0)
+          : 0;
+        const ratioStep = typeof cond.stepRatio === 'number' ? ratioBase * cond.stepRatio : 0;
+        const fixedStep = typeof cond.step === 'number' ? cond.step : (ratioStep > 0 ? 0 : 0.05);
+        const step = fixedStep + ratioStep;
+        const max = typeof cond.maxOf === 'string'
+          ? Number(entityState.get(cond.maxOf) || Infinity)
+          : (typeof cond.max === 'number' ? cond.max : Infinity);
         const value = Math.min(base + step, max);
         resolved[key] = { op: cond.op || 'gte', value };
       }
@@ -201,15 +208,26 @@ export class ConfigurableEvaluator extends NeedEvaluator {
       actual = entityState.get(key);
     }
 
+    const comparableActual = this._comparableValue(actual);
+    const comparableValue = this._comparableValue(value);
+
     switch (op) {
-      case 'lt': return actual < value;
-      case 'lte': return actual <= value;
-      case 'gt': return actual > value;
-      case 'gte': return actual >= value;
+      case 'lt': return comparableActual < comparableValue;
+      case 'lte': return comparableActual <= comparableValue;
+      case 'gt': return comparableActual > comparableValue;
+      case 'gte': return comparableActual >= comparableValue;
       case 'eq': return actual === value;
       case 'neq': return actual !== value;
       case 'exists': return actual != null;
       default: return false;
     }
+  }
+
+  _comparableValue(value) {
+    const stageOrder = { early: 0, middle: 1, late: 2, perfection: 3 };
+    if (typeof value === 'string' && Object.prototype.hasOwnProperty.call(stageOrder, value)) {
+      return stageOrder[value];
+    }
+    return value;
   }
 }

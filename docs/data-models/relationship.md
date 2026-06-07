@@ -1,6 +1,6 @@
 ﻿# 数据模型：关系网（Relationship）
 
-> 最后更新：2026-06-01（三期：师徒互动，ADR-029）
+> 最后更新：2026-06-07（三期：师徒互动，ADR-029；数值修为口径）
 >
 > **状态：已实现**（ADR-027 数据层 + ADR-028 关系驱动决策）。运行时为世界级 `RelationshipSystem`（`js/engine/world/relationship-system.js`），
 > 配置见 `data/balance/relationship.json`。NPC 侧 `RelationshipGraph`（`js/engine/npc/relationship.js`）
@@ -97,7 +97,7 @@ RelationEdge {
 `master`/`disciple` 边驱动的师徒专属行为，受同一 `goalsEnabled` gate。复用二期 Goal 单点锁定架构（`masterDiscipleGoals` 参数块）：
 
 - **NPC Goal**（`npc-entity.js._considerMasterDiscipleGoals`，并入 `_buildRelationshipGoals`）：
-  - 师傅传功 `teach_disciple`：对高强度 `master` 边、修为偏低（`cultivationProgress+insight < discipleMaxTotalProgress`）且在范围的徒弟低频前往点化（`act_npc_teach_disciple`，给徒弟 `insight` 增量 + 强化 `master` 边）。
+  - 师傅传功 `teach_disciple`：对高强度 `master` 边、总修为低于点化阈值（`totalCultivation < discipleMaxTotalCultivation`）且在范围的徒弟低频前往点化（`act_npc_teach_disciple`，给徒弟 `experienceCultivation` 增量 + 强化 `master` 边）。
   - 师傅护徒 `protect_disciple`：徒弟遭袭（`hasRevengeTarget`）时前往护卫（`act_npc_protect_disciple`，优先级 8 > 护短同门 6/传功 7，范围更大）。
   - 徒弟尽孝 `visit_master`：对高强度 `disciple` 边师傅低频探望（`act_npc_visit_master`，强化 `disciple` 边）。
 - **继承遗志**（`tick-manager._collectDeaths` 师傅死亡钩子 → 徒弟 `inheritMasterLegacy`）：① 写 `master_lost` 记忆触发 `revenge` 执念（对凶手，复用复仇链）；② 复制师傅未竟非复仇执念（`inheritableObsessionTypes`）按 `inheritObsessionIntensityMult`(0.7) 折扣给徒弟。

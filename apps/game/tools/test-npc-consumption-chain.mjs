@@ -52,13 +52,16 @@ console.log('2) GOAP 串联捐献、兑换、使用');
     donatableMaterialCount: 1,
     factionHasQiPillMaterial: false,
     qiPillCount: 0,
-    cultivationProgress: 0,
-    totalProgress: 0,
+    cultivation: 0,
+    experienceCultivation: 0,
+    totalCultivation: 0,
+    cultivationShortfall: 50,
+    nextCultivationRequired: 50,
   };
-  const goal = { totalProgress: { op: 'gte', value: 0.01 } };
+  const goal = { totalCultivation: { op: 'gte', value: 0.5 } };
   const result = planner.plan(state, goal, actions);
   const ids = result.plan.map(a => a.id);
-  ok(result.success, `GOAP 可以规划到修炼进度目标，实际计划：${ids.join(' -> ') || '(空)'}`);
+  ok(result.success, `GOAP 可以规划到数值修为目标，实际计划：${ids.join(' -> ') || '(空)'}`);
   ok(ids.includes('act_npc_donate_materials'), '计划包含材料捐献');
   ok(ids.includes('act_npc_job_redeem_qi_pill'), '计划包含兑换聚气丹');
   ok(ids.includes('act_npc_job_use_qi_pill'), '计划包含使用聚气丹');
@@ -77,10 +80,13 @@ console.log('3) 有贡献时可直接兑换并使用');
     donatableMaterialCount: 0,
     factionHasQiPillMaterial: true,
     qiPillCount: 0,
-    cultivationProgress: 0,
-    totalProgress: 0,
+    cultivation: 0,
+    experienceCultivation: 0,
+    totalCultivation: 0,
+    cultivationShortfall: 50,
+    nextCultivationRequired: 50,
   };
-  const goal = { totalProgress: { op: 'gte', value: 0.01 } };
+  const goal = { totalCultivation: { op: 'gte', value: 0.5 } };
   const result = planner.plan(state, goal, actions);
   const ids = result.plan.map(a => a.id);
   ok(result.success, `已有贡献时 GOAP 可以规划兑换和使用，实际计划：${ids.join(' -> ') || '(空)'}`);

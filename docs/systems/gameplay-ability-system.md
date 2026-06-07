@@ -74,7 +74,7 @@
   - `flat`（默认，直接用 `magnitude`）
   - `ratioOfMaxHp`（`magnitude × 目标 maxHp`）
   - `rankDecay`（ADR-040 境界递减，阶段2）：`magnitude × decay^max(0, 当前境界order − baseRankId的order)`，夹 `minMagnitude` 下限；参数 `decay`/`baseRankId`/`minMagnitude` 由【挂载来源 spec】提供。用于低阶丹对高境界递减。
-- `modifiers[].clamp`（阶段2）：`[min, max]`，对结算后的最终值夹取。端点可为：数字、`null`（该端不限）、或动态键 `"maxHp"`（从目标读 maxHp）。用于上限语义，如 `cultivationProgress` 夹 `[null,1]`、`hp` 夹 `[null,"maxHp"]`、`breakthroughAidBonus` 夹 `[null,maxBonus]`。
+- `modifiers[].clamp`（阶段2）：`[min, max]`，对结算后的最终值夹取。端点可为：数字、`null`（该端不限）、或动态键 `"maxHp"`（从目标读 maxHp）。用于上限语义，如 `hp` 夹 `[null,"maxHp"]`、`breakthroughAidBonus` 夹 `[null,maxBonus]`。
 - `grantsTags[]`：施加期间授予目标的 Tag（duration/infinite 在 leave 时移除）。
 - `removalTags[]`：目标持有这些 Tag 时移除本 Effect（预留）。
 - `stacking`：`none` | `refresh` | `stack`。

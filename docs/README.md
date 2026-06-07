@@ -2,7 +2,7 @@
 
 > 项目代号：WorldDynamic  
 > 创建日期：2026-05-23  
-> 最后更新：2026-06-07（新增三层关系底座重构规格；此前新增 NPC 效用评分公式升级设计、验证报告与导航；新增修为数值化与突破重构规格、修士战斗属性体系 ADR、系统文档、数据模型与实施计划）
+> 最后更新：2026-06-07（新增三层关系底座重构规格；新增修为数值化与突破重构验证报告、NPC 效用评分公式升级设计/实施计划/验证报告与导航；此前新增修为数值化与突破重构规格、修士战斗属性体系 ADR、系统文档、数据模型与实施计划；新增妖兽属性模板与境界清理实施计划、ADR、系统文档、数据模型和验证报告）
 
 ## 当前事实
 
@@ -107,8 +107,10 @@ docs/
 │       ├── 2026-06-05-Job-Toil启用前验证.md
 │       ├── 2026-06-05-Job-Toil默认启用验证.md
 │       ├── 2026-06-06-NPC战斗智能闭环验证.md
+│       ├── 2026-06-06-妖兽属性模板与境界清理验证.md
 │       ├── 2026-06-07-NPC效用评分公式升级验证.md
-│       └── 2026-06-06-妖兽属性模板与境界清理验证.md
+│       ├── 2026-06-07-修士战斗属性体系验证.md
+│       └── 2026-06-07-修为数值化与突破重构验证.md
 ├── worldbuilding/
 │   ├── README.md
 │   ├── continent.md
@@ -150,7 +152,7 @@ docs/
 | 妖兽伤害、斩妖任务与历练修为规格 | `superpowers/specs/2026-06-05-妖兽伤害与斩妖历练修为规格.md` |
 | 妖兽伤害斩妖 Job 修为实施计划 | `superpowers/plans/2026-06-05-妖兽伤害斩妖Job修为实施计划.md` |
 | 修士战斗属性体系 | `superpowers/specs/2026-06-06-修士战斗属性体系-design.md`、`superpowers/plans/2026-06-07-修士战斗属性体系实施计划.md`、`decisions/adr-053-cultivator-combat-attributes.md`、`systems/cultivator-combat-attributes.md`、`data-models/combat-attributes.md`、`worldbuilding/wiki/rules/combat-attributes-and-realms.md` |
-| 修为数值化与突破重构 | `superpowers/specs/2026-06-07-修为数值化与突破重构-design.md`、`superpowers/plans/2026-06-07-修为数值化与突破重构实施计划.md` |
+| 修为数值化与突破重构 | `superpowers/specs/2026-06-07-修为数值化与突破重构-design.md`、`superpowers/plans/2026-06-07-修为数值化与突破重构实施计划.md`、`superpowers/reports/2026-06-07-修为数值化与突破重构验证.md` |
 | 任务系统角色生涯任务网 | `superpowers/specs/2026-06-06-任务系统角色生涯任务网设计.md` |
 | NPC 战斗智能闭环补完实施计划 | `superpowers/plans/2026-06-06-NPC战斗智能闭环补完实施计划.md`（总入口；阶段 1-6 文档位于同目录） |
 | NPC 战斗智能闭环验证报告 | `superpowers/reports/2026-06-06-NPC战斗智能闭环验证.md` |

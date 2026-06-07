@@ -157,22 +157,22 @@
     "id": "need_npc_cultivation",
     "name": "修炼",
     "selectStrategy": "greedy",
-    "description": "提升境界修为，是修士本业。突破当前境界有两条硬门槛（见 npc-lifecycle.tryBreakthrough）：①修为进度 totalProgress=cultivationProgress+insight>=1；②真气 qi>=下一境界 qiRequired。修炼需求会【判断当前境界还差什么】并分流驱动 GOAP：缺真气(qiBelowNextRank=true)→A* 推导『闭关产气 / 兑换→服用聚气丹』补真气；缺进度(totalProgress<1)→『闭关推进 cultivationProgress(有 cultivationCap 上限)，撞顶后外出游历攒 insight』补进度。两者皆缺则两条同时进规划，缺哪条补哪条（破解进度满但真气不足的死锁，见 ADR-039）。贡献充足时赴修炼场加速，不足时推导『接→做→交任务攒贡献』经济链。",
+    "description": "提升境界修为，是修士本业。突破当前境界有两条硬门槛（见 npc-lifecycle.tryBreakthrough）：①totalCultivation 达到 nextCultivationRequired，且 cultivation 达到根基比例；②真气 qi 达到下一境界 qiRequired。修炼需求会判断当前境界还差什么：缺真气(qiBelowNextRank=true)→A* 推导『闭关产气 / 兑换→服用聚气丹』补真气；缺数值修为(cultivationShortfall>0 或 cultivationRootShortfall>0)→『闭关推进 cultivation / 外出游历攒 experienceCultivation』补修为。贡献充足时赴修炼场加速，不足时推导『接→做→交任务攒贡献』经济链。",
     "basePriority": 30,
     "evaluatorType": "configurable",
     "evaluatorConfig": {
       "basePriority": 30,
       "rules": [
-        { "_comment": "缺进度分档：越缺越紧迫，推动闭关/游历补进度。", "condition": { "key": "totalProgress", "op": "lt", "value": 0.85 }, "priorityBoost": 20, "urgencyBoost": 10 },
-        { "condition": { "key": "totalProgress", "op": "lt", "value": 0.3 }, "priorityBoost": 10, "urgencyBoost": 8 },
+        { "_comment": "缺总修为：推动闭关/游历补数值修为。", "condition": { "key": "cultivationShortfall", "op": "gt", "value": 0 }, "priorityBoost": 20, "urgencyBoost": 10 },
+        { "_comment": "缺根基修为：推动闭关修炼补 cultivation。", "condition": { "key": "cultivationRootShortfall", "op": "gt", "value": 0 }, "priorityBoost": 10, "urgencyBoost": 8 },
         { "_comment": "缺真气：当前境界真气未达下一境界门槛，推动闭关产气/聚气丹补真气。", "condition": { "key": "qiBelowNextRank", "op": "eq", "value": true }, "priorityBoost": 15, "urgencyBoost": 10 },
         { "condition": { "key": "factionAtPeace", "op": "eq", "value": true }, "priorityBoost": 10, "urgencyBoost": 5 }
       ],
       "satisfiedCondition": null
     },
     "goalState": {
-      "_comment": "增量式目标（2026-06-03，ADR-047）：totalProgress 不再设终极 1.0，而是【当前值 + step】(夹 1.0)。每次 GOAP 只规划推进一小步(0.05)、做完重评估、下轮再往前——NPC 行为变成『缺啥补啥、换着做』(闭关撞 cap 自然转游历)，而非一口气折叠上百次闭关到 1.0、撞 cultivationCap 后卡死不突破。qiBelowNextRank=false 与进度同为突破硬门槛，两者皆缺则同时进规划，缺哪条补哪条。",
-      "totalProgress": { "op": "gte", "incrementOf": "totalProgress", "step": 0.01, "max": 1.0 },
+      "_comment": "增量式目标：totalCultivation 每次只要求当前值 + nextCultivationRequired 的 1%，并夹到 nextCultivationRequired。做完重评估，下轮再推进；qiBelowNextRank=false 与数值修为同为突破硬门槛。",
+      "totalCultivation": { "op": "gte", "incrementOf": "totalCultivation", "stepRatioOf": "nextCultivationRequired", "stepRatio": 0.01, "maxOf": "nextCultivationRequired" },
       "qiBelowNextRank": { "op": "eq", "value": false }
     }
   },
@@ -186,7 +186,7 @@
       "basePriority": 0,
       "rules": [
         {
-          "condition": { "key": "totalProgress", "op": "gte", "value": 0.85 },
+          "condition": { "key": "rankStage", "op": "gte", "value": "late" },
           "priorityBoost": 72,
           "urgencyBoost": 58
         },
@@ -254,7 +254,7 @@
           }
         },
         {
-          "condition": { "key": "totalProgress", "op": "gte", "value": 0.7 },
+          "condition": { "key": "rankStage", "op": "gte", "value": "middle" },
           "priorityBoost": 10,
           "urgencyBoost": 12
         },
@@ -319,7 +319,7 @@
       "basePriority": 2,
       "rules": [
         { "condition": { "key": "factionAtPeace", "op": "eq", "value": true }, "priorityBoost": 5, "urgencyBoost": 3 },
-        { "condition": { "key": "cultivationProgress", "op": "gte", "value": 0.6 }, "priorityBoost": 35, "urgencyBoost": 18 },
+        { "condition": { "key": "canBreakthroughByCultivation", "op": "eq", "value": true }, "priorityBoost": 35, "urgencyBoost": 18 },
         { "condition": { "key": "injuryLevel", "op": "gte", "value": 1 }, "priorityBoost": -30, "urgencyBoost": 0 }
       ],
       "satisfiedCondition": { "key": "roleRank", "op": "gte", "value": 5 }

@@ -46,6 +46,12 @@ const DAYS = parseInt(process.argv[2], 10) || 720;
 const engine = new WorldEngine();
 engine.init(configs);
 
+function currentCultivationCompletion(n) {
+  const required = Number(n.state.get('nextCultivationRequired') || 0);
+  const total = Number(n.state.get('totalCultivation') || 0);
+  return required > 0 ? total / required : 0;
+}
+
 function roleDist() {
   const dist = {};
   for (const npc of engine.entityRegistry.getAliveByType('npc')) {
@@ -90,7 +96,7 @@ const alive = engine.entityRegistry.getAliveByType('npc');
 const buckets = { '<0.3': 0, '0.3-0.6': 0, '0.6-0.85': 0, '>=0.85': 0 };
 let ambitiousReady = 0, ambitiousTotal = 0;
 for (const n of alive) {
-  const p = n.state.get('cultivationProgress') || 0;
+  const p = currentCultivationCompletion(n);
   if (p < 0.3) buckets['<0.3']++; else if (p < 0.6) buckets['0.3-0.6']++;
   else if (p < 0.85) buckets['0.6-0.85']++; else buckets['>=0.85']++;
   const amb = n.staticData.personality?.ambition || 0;

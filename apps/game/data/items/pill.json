@@ -12,7 +12,7 @@
       "stackable": true,
       "effects": [
         { "effect": "ge_add_qi", "magnitude": 120, "magnitudeType": "rankDecay", "baseRankId": "qi_refining", "decay": 0.35, "minMagnitude": 1 },
-        { "effect": "ge_add_progress", "magnitude": 0.01 }
+        { "effect": "ge_add_progress", "magnitude": 0.01, "magnitudeType": "ratioOfCultivationRequired" }
       ],
       "description": "服用可恢复真气的丹药（数值来源：本物品 effects；低阶丹对高境界 rankDecay 递减，见 ADR-040/042）"
     },
@@ -121,7 +121,7 @@
       "stackable": true,
       "effects": [
         { "effect": "ge_full_heal" },
-        { "effect": "ge_add_progress", "magnitude": 0.03 }
+        { "effect": "ge_add_progress", "magnitude": 0.03, "magnitudeType": "ratioOfCultivationRequired" }
       ],
       "description": "重塑肉身、起死回生的高阶丹药，回满气血并增进修为",
       "source": "参考自武破九荒/阳神：九转金丹/九转灵丹起死回生、愈重伤"

@@ -1,6 +1,6 @@
 # Job/Toil AI 双重重构规格
 
-> 最后更新：2026-06-06
+> 最后更新：2026-06-07
 > 状态：首批 Job/Toil 动态目标链路已正式默认启用；`ai-config.npc.jobs.enabled=false` 可作为回退开关
 > 架构决策：ADR-048、ADR-049、ADR-050、ADR-051
 > 来源：用户明确要求“保留 GOAP 作为中层规划器，把复杂 Action 的执行升级为 Job/Toil，逻辑和配置都拆清楚，并补齐缺少的 Job 与 Toil”；当前代码 `action.js`、`behavior-system.js`、`job-system.js`、`job-pool.js`、`toil-pool.js`、`npc-toils.js`、`dynamic-goals.json`、`npc-job-actions.json`、`npc-action-sets.json`、`npc-entity.js`。
@@ -521,7 +521,8 @@ ADR-051 后，NPC 直接执行型旧 Action 不再作为默认主路径。迁移
 | `cultivation` | 闭关、修炼场、丹药等直接修炼获得的闭关修为。 |
 | `experienceCultivation` | 外出历练、任务、动态事件、机会点、战斗、外出社交获得的历练修为。 |
 | `totalCultivation` | `cultivation + experienceCultivation`，用于突破修为门槛。 |
-| `cultivationProgressRatio` | `totalCultivation / nextCultivationRequired`，仅作兼容和百分比 UI，不作为主显示语义。 |
+| `nextCultivationRequired` | 下一境界所需总修为，来自 `ranks.json` 的 `cultivationRequired`。 |
+| `cultivationCompletion` | `totalCultivation / nextCultivationRequired` 的显示/统计派生值，不写回 NPC 运行时状态。 |
 
 突破判定使用：
 
@@ -645,10 +646,10 @@ applyCultivationExperience(entity, worldContext, {
 | `apps/game/tools/test-dynamic-event-jobs.mjs` | 秘境准备和参与 Job 写入真实事件状态。 |
 | `apps/game/tools/test-job-interrupt-resume.mjs` | Reaction 打断 Job 后按配置恢复或重规划。 |
 | `apps/game/tools/test-npc-action-job-migration.mjs` | 已迁移旧 NPC Action 不再出现在默认直接执行路径中，对应 JobAction/Job/Toil 可加载。 |
-| `apps/game/tools/test-monster-hunt-job.mjs` | 斩妖任务绑定真实妖兽、推进多日任务并更新击杀进度。 |
+| `apps/game/tools/test-monster-hunt-job.mjs` | 斩妖任务绑定真实妖兽、推进多日任务并更新击杀进度；复仇 Job 追踪/击杀前必须先移动到当前仇人坐标。 |
 | `apps/game/tools/test-combat-intelligence-jobs.mjs` | 战斗风险、撤退疗伤、补给与过强目标处理。 |
 | `apps/game/tools/test-cultivation-experience-gain.mjs` | 任务、动态事件等外出行为按价值和风险追加历练修为。 |
-| `apps/game/tools/test-numeric-cultivation-migration.mjs` | 旧比例进度转换为数值修为字段，并参与突破判定。 |
+| `apps/game/tools/test-numeric-cultivation-migration.mjs` | 数值修为核心 helper、小层推导、闭关递减、突破成功/失败结算与旧 helper 移除。 |
 
 真实模拟观察：
 

@@ -5,7 +5,7 @@ import {
   settleRisk,
   weightedPickFrom,
 } from '../actions/npc-action-utils.js';
-import { applyCultivationExperience } from '../cultivation-experience.js';
+import { addExperienceCultivation } from '../numeric-cultivation.js';
 
 export class NPCCultivateToilExecutor extends ToilExecutor {
   run(entity, worldContext, _job, toil) {
@@ -34,41 +34,34 @@ export class NPCExploreToilExecutor extends ToilExecutor {
   run(entity, worldContext, _job, toil) {
     const cult = getCultivationConfig(worldContext);
     const exploreCfg = cult.actions?.explore || {};
-    const insightMin = exploreCfg.insightMin ?? 0.01;
-    const insightMax = exploreCfg.insightMax ?? 0.03;
+    const experienceMin = exploreCfg.experienceCultivationMin ?? 1;
+    const experienceMax = exploreCfg.experienceCultivationMax ?? 3;
     const qiMin = exploreCfg.fortuneQiMin ?? 5;
     const qiMax = exploreCfg.fortuneQiMax ?? 20;
     const events = exploreCfg.fortuneEvents || [];
     const event = weightedPickFrom(events, worldContext.rng)
-      || { id: 'normal', name: '游历归来', insightMultiplier: 1.0, qiMultiplier: 1.0 };
+      || { id: 'normal', name: '游历归来', experienceCultivationMultiplier: 1.0, qiMultiplier: 1.0 };
 
-    const baseInsight = insightMin + worldContext.rng.next() * (insightMax - insightMin);
-    const insightGain = baseInsight * (event.insightMultiplier ?? 1.0);
-    const currentInsight = entity.state.get('insight') || 0;
-    const minCultivationRatio = cult.minCultivationRatio ?? 0.3;
-    const insightCap = 1 - minCultivationRatio;
-    const newInsight = Math.min(currentInsight + insightGain, insightCap);
-    const appliedInsightGain = newInsight - currentInsight;
-    entity.state.set('insight', newInsight);
+    const baseExperience = experienceMin + worldContext.rng.next() * (experienceMax - experienceMin);
+    const experienceCultivationGain = Number((baseExperience * (event.experienceCultivationMultiplier ?? 1.0)).toFixed(4));
+    const totalCultivation = addExperienceCultivation(
+      entity,
+      worldContext?.ranksData || entity?._ranksData || [],
+      experienceCultivationGain,
+      cult,
+    );
 
     const baseQi = qiMin + Math.floor(worldContext.rng.next() * (qiMax - qiMin + 1));
     const qiGain = Math.round(baseQi * (event.qiMultiplier ?? 1.0));
     if (qiGain > 0) entity.state.set('qi', (entity.state.get('qi') || 0) + qiGain);
 
     const risk = settleRisk(entity, worldContext, 'explore');
-    const cultivationExperience = applyCultivationExperience(entity, worldContext, {
-      sourceKind: 'explore',
-      value: toil?.params?.value ?? 500,
-      riskScore: risk.totalRiskPct ?? 1,
-      durationDays: toil?.params?.duration ?? 1,
-      outcome: risk.died ? 'failure' : 'success',
-    });
 
     if (risk.died) {
       return {
         status: ToilResultStatus.FAILED,
         reason: 'explore_death',
-        contextPatch: { fortuneEvent: event.id, riskTriggered: risk.triggered, cultivationExperience },
+        contextPatch: { fortuneEvent: event.id, riskTriggered: risk.triggered, experienceCultivationGain, totalCultivation },
       };
     }
 
@@ -79,11 +72,11 @@ export class NPCExploreToilExecutor extends ToilExecutor {
         success: true,
         fortuneEvent: event.id,
         fortuneEventName: event.name,
-        insightGain: Number(appliedInsightGain.toFixed(4)),
+        experienceCultivationGain,
+        totalCultivation,
         qiGain,
         riskTriggered: risk.triggered,
-        cultivationExperience,
-        description: `${entity.staticData?.name || entity.name || entity.id} 游历归来：${event.name}，感悟+${appliedInsightGain.toFixed(3)}、真气+${qiGain}`,
+        description: `${entity.staticData?.name || entity.name || entity.id} 游历归来：${event.name}，历练修为+${experienceCultivationGain.toFixed(3)}、真气+${qiGain}`,
       },
     };
   }

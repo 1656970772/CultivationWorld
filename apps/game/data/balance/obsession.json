@@ -22,7 +22,7 @@
         "requireTrait": { "trait": "ambition", "min": 75 },
         "chance": 0.6,
         "intensity": 70,
-        "goalState": { "totalProgress": { "op": "gte", "value": 90 } }
+        "goalState": { "rankStage": { "op": "eq", "value": "perfection" } }
       },
       {
         "type": "protect_dao",
@@ -30,7 +30,7 @@
         "requireTrait": { "trait": "justice", "min": 75 },
         "chance": 0.5,
         "intensity": 60,
-        "goalState": { "totalProgress": { "op": "gte", "value": 70 } }
+        "goalState": { "rankStage": { "op": "eq", "value": "late" } }
       },
       {
         "type": "longevity",
@@ -38,7 +38,7 @@
         "requireSpiritRoot": ["heaven", "earth"],
         "chance": 0.4,
         "intensity": 65,
-        "goalState": { "totalProgress": { "op": "gte", "value": 80 } }
+        "goalState": { "rankStage": { "op": "eq", "value": "perfection" } }
       },
       {
         "type": "plunder",
@@ -107,7 +107,7 @@
         "memoryType": "companion_lost",
         "minMemoryIntensity": 70,
         "intensity": 92,
-        "goalState": { "totalProgress": { "op": "gte", "value": 95 } }
+        "goalState": { "rankStage": { "op": "eq", "value": "perfection" } }
       },
       {
         "type": "revenge",

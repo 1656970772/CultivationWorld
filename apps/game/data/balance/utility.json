@@ -7,8 +7,8 @@
     "need_npc_cultivation": [
       {
         "id": "bottleneck",
-        "_comment": "瓶颈程度：totalProgress 越低越想突破(越接近0效用越高)，接近1则该目标效用降低",
-        "inputKey": "totalProgress",
+        "_comment": "瓶颈程度：rankStage 越低越想修炼，接近 perfection 时该目标效用降低",
+        "inputKey": "rankStage",
         "source": "entity",
         "curve": "inverse",
         "params": { "slope": 0.8, "shift": 0 }
@@ -37,7 +37,7 @@
     "obsession_supremacy": [
       {
         "id": "bottleneck",
-        "inputKey": "totalProgress",
+        "inputKey": "rankStage",
         "source": "entity",
         "curve": "inverse",
         "params": { "slope": 0.7, "shift": 0 }
@@ -87,7 +87,7 @@
       {
         "id": "powerReadiness",
         "_comment": "夺权流（凡人/大道争锋）：修为越充足越有资本争夺掌门位",
-        "inputKey": "cultivationProgress",
+        "inputKey": "rankStage",
         "source": "entity",
         "curve": "linear",
         "params": { "slope": 1.2, "shift": 0.2, "base": 0.2 }
@@ -97,7 +97,7 @@
       {
         "id": "assistReadiness",
         "_comment": "护短同门（ADR-028）：修为越充足越敢驰援御敌，但基线高(0.85)——同门遭袭驰援是高优先义举，不应被 consideration 压垮 priority。仅 utility.enabled=true 时生效。行为精准化(2026-06-02)：base 由 0.3→0.85，避免高 priority 关系 Goal 经乘法效用后 score 被压到选不中。",
-        "inputKey": "cultivationProgress",
+        "inputKey": "rankStage",
         "source": "entity",
         "curve": "linear",
         "params": { "slope": 0.15, "shift": 0, "base": 0.85 }
@@ -117,7 +117,7 @@
       {
         "id": "teachReadiness",
         "_comment": "师傅传功（ADR-029）：自身修为越高越有余力点化徒弟，但基线高(0.85)——传功是师徒纽带核心行为，已受 teachChancePerTick 低频门控，不应再被 consideration 压垮 priority。仅 utility.enabled=true 时生效。行为精准化(2026-06-02)：base 由 0.4→0.85、slope 0.8→0.15，避免 priority78 经乘法后 score 仅25选不中。",
-        "inputKey": "cultivationProgress",
+        "inputKey": "rankStage",
         "source": "entity",
         "curve": "linear",
         "params": { "slope": 0.15, "shift": 0, "base": 0.85 }
@@ -127,7 +127,7 @@
       {
         "id": "protectReadiness",
         "_comment": "师傅护徒（ADR-029）：修为越充足越敢护徒御敌，基线高(0.9)体现『一日为师』护徒最高优先。仅 utility.enabled=true 时生效。行为精准化(2026-06-02)：base 由 0.4→0.9。",
-        "inputKey": "cultivationProgress",
+        "inputKey": "rankStage",
         "source": "entity",
         "curve": "linear",
         "params": { "slope": 0.1, "shift": 0, "base": 0.9 }

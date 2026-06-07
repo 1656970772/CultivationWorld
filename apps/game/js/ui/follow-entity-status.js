@@ -167,7 +167,7 @@ function capStatus(ratio) {
   return { label: '未开始', tone: 'danger' };
 }
 
-function totalProgressStatus(ratio) {
+function totalCultivationStatus(ratio) {
   if (ratio >= 1) return { label: '可突破', tone: 'good' };
   if (ratio >= 0.5) return { label: '积累中', tone: 'warn' };
   if (ratio > 0) return { label: '初步积累', tone: 'danger' };
@@ -206,14 +206,9 @@ function inventorySummary(inventory) {
 function buildNpcSections(entity, snapshot, life, action) {
   const moving = entity.spatial?.moving ? '移动中' : '停留';
   const nextCultivationRequired = num(entity.nextCultivationRequired);
-  const retreatCultivationCap = num(entity.retreatCultivationCap)
-    ?? (nextCultivationRequired != null && num(entity.cultivationCap) != null
-      ? nextCultivationRequired * num(entity.cultivationCap)
-      : null);
-  const cultivation = num(entity.cultivation)
-    ?? (nextCultivationRequired != null ? (num(entity.cultivationProgress) || 0) * nextCultivationRequired : null);
-  const experienceCultivation = num(entity.experienceCultivation)
-    ?? (nextCultivationRequired != null ? (num(entity.insight) || 0) * nextCultivationRequired : null);
+  const retreatCultivationCap = num(entity.retreatCultivationCap);
+  const cultivation = num(entity.cultivation);
+  const experienceCultivation = num(entity.experienceCultivation);
   const totalCultivation = num(entity.totalCultivation)
     ?? (cultivation != null || experienceCultivation != null ? (cultivation || 0) + (experienceCultivation || 0) : null);
   const hasQuest = entity.hasActiveQuest ? '有任务' : '无任务';
@@ -231,7 +226,7 @@ function buildNpcSections(entity, snapshot, life, action) {
       row('境界', text(entity.rankName, '未知')),
       row('下一境界', text(entity.nextRankName, '未知')),
       boundedRow('真气', entity.qi, entity.nextQiRequired, { status: qiStatus }),
-      boundedRow('总修为', totalCultivation, nextCultivationRequired, { status: totalProgressStatus }),
+      boundedRow('总修为', totalCultivation, nextCultivationRequired, { status: totalCultivationStatus }),
       boundedRow('闭关修为', cultivation, retreatCultivationCap, { status: capStatus }),
       boundedRow('历练修为', experienceCultivation, nextCultivationRequired, { status: boundedStatus }),
     ]),

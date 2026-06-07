@@ -175,12 +175,12 @@
     "riskKey": null,
     "preconditions": {
       "alive": { "op": "true" },
-      "cultivationProgress": { "op": "lt", "value": 1.0 }
+      "cultivationShortfall": { "op": "gt", "value": 0 }
     },
     "effects": {},
     "plannerEffects": {
-      "cultivationProgress": { "op": "add", "value": 0.001 },
-      "totalProgress": { "op": "add", "value": 0.001 }
+      "cultivation": { "op": "add", "value": 0.5 },
+      "totalCultivation": { "op": "add", "value": 0.5 }
     }
   },
   {
@@ -196,12 +196,12 @@
       "alive": { "op": "true" },
       "hasFaction": { "op": "true" },
       "contribution": { "op": "gte", "value": 10 },
-      "cultivationProgress": { "op": "lt", "value": 1.0 }
+      "cultivationShortfall": { "op": "gt", "value": 0 }
     },
     "effects": {},
     "plannerEffects": {
-      "cultivationProgress": { "op": "add", "value": 0.002 },
-      "totalProgress": { "op": "add", "value": 0.002 }
+      "cultivation": { "op": "add", "value": 1 },
+      "totalCultivation": { "op": "add", "value": 1 }
     }
   },
   {
@@ -231,12 +231,12 @@
     "riskKey": "explore",
     "preconditions": {
       "alive": { "op": "true" },
-      "totalProgress": { "op": "lt", "value": 1.0 }
+      "cultivationShortfall": { "op": "gt", "value": 0 }
     },
     "effects": {},
     "plannerEffects": {
-      "insight": { "op": "add", "value": 0.005 },
-      "totalProgress": { "op": "add", "value": 0.005 }
+      "experienceCultivation": { "op": "add", "value": 1 },
+      "totalCultivation": { "op": "add", "value": 1 }
     }
   },
   {
@@ -358,8 +358,8 @@
     "plannerEffects": {
       "qiPillCount": { "op": "add", "value": -1 },
       "qi": { "op": "add", "value": 120 },
-      "cultivationProgress": { "op": "add", "value": 0.01 },
-      "totalProgress": { "op": "add", "value": 0.01 },
+      "cultivation": { "op": "add", "value": 0.5 },
+      "totalCultivation": { "op": "add", "value": 0.5 },
       "qiBelowNextRank": { "op": "set", "value": false }
     }
   },
@@ -393,7 +393,7 @@
       "alive": { "op": "true" },
       "hasRevengeTarget": { "op": "true" },
       "nearRevengeTarget": { "op": "true" },
-      "totalProgress": { "op": "gte", "value": 0.3 }
+      "totalCultivation": { "op": "gte", "value": 15 }
     },
     "effects": {},
     "plannerEffects": { "enemyKilled": { "op": "set", "value": true } }

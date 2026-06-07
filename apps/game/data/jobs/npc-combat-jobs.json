@@ -53,6 +53,7 @@
       "successEffects": { "nearRevengeTarget": { "op": "set", "value": true } },
       "interrupt": { "reaction": "pause", "higherDynamicGoal": "abort", "sameDynamicGoal": "keep" },
       "toils": [
+        { "id": "move_to_enemy", "type": "toil_move_to_target", "params": { "targetResolver": "revenge_target" } },
         { "id": "hunt_enemy", "type": "toil_hunt_enemy" }
       ]
     },
@@ -63,6 +64,7 @@
       "successEffects": { "enemyKilled": { "op": "set", "value": true } },
       "interrupt": { "reaction": "keep", "higherDynamicGoal": "keep", "sameDynamicGoal": "keep" },
       "toils": [
+        { "id": "move_to_enemy", "type": "toil_move_to_target", "params": { "targetResolver": "revenge_target" } },
         { "id": "kill_enemy", "type": "toil_kill_enemy" }
       ]
     }

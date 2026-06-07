@@ -784,47 +784,14 @@ export class NPCEntity extends BaseEntity {
         actions.push(ActionPool.create(actionId));
       }
     }
-    this._applyCultivationCapPreconditions(actions);
     const maxDepth = this._aiConfig.maxDepth ?? 10;
     const maxIterations = this._aiConfig.maxIterations ?? 300;
     this.initBehaviorSystem(actions, { maxDepth, maxIterations }, { jobsEnabled: this._aiConfig.jobs?.enabled === true });
   }
 
   /**
-   * 按当前境界把闭关类行为的 cap 前置(cultivationProgress < cap)注入为真实上限。
-   * 这样 GOAP 在搜索中把 cultivationProgress 推到 cap 后，闭关前置不再满足，
-   * A* 只能转而选择游历(产出 insight)继续推进 totalProgress，从而"被迫游历"。
-   * 境界变化（突破）后需重新注入，见 refreshCultivationCapPreconditions。
-   */
-  _applyCultivationCapPreconditions(actions) {
-    const capMap = this._cultivationConfig.cultivationCap || {};
-    const rankId = this.state.get('rankId') || 'mortal';
-    const cap = capMap[rankId] ?? 1.0;
-    const cappedActionIds = ['act_npc_job_cultivate', 'act_npc_job_train_chamber'];
-    // 闭关进度边际递减后实际很难精确到 cap（指数衰减永远逼近不等于），
-    // 故前置阈值取 cap×0.999 即视为“到顶”，避免规划层永久允许闭关却几乎不前进。
-    const capThreshold = cap * 0.999;
-    for (const action of actions) {
-      if (!cappedActionIds.includes(action.id)) continue;
-      action.preconditions = {
-        ...action.preconditions,
-        cultivationProgress: { op: 'lt', value: capThreshold },
-      };
-      // Action 在构造时预存了 _preconditionEntries（GOAP 热路径用），需同步刷新。
-      action._preconditionEntries = Object.entries(action.preconditions);
-    }
-  }
-
-  /** 突破成功境界变化后，按新境界刷新闭关 cap 前置。 */
-  refreshCultivationCapPreconditions() {
-    if (this.behaviorSystem) {
-      this._applyCultivationCapPreconditions(this.behaviorSystem.availableActions);
-    }
-  }
-
-  /**
    * 随机本境界的游历/闭关先后偏好（ADR-017）。
-   * 因“相加制”下先游历或先闭关最终都能到 totalProgress>=1.0，顺序只影响路径不影响可达性。
+   * 数值修为下先游历或先闭关都能累积突破所需总修为，顺序只影响路径不影响可达性。
    * explore_first 会通过 Utility 给探索类目标加分，让 NPC 优先选择探索目标（ADR-021）。
    */
   _rollBreakthroughPathOrder() {
@@ -1015,7 +982,7 @@ export class NPCEntity extends BaseEntity {
   /**
    * 真气是否尚未达到下一境界突破门槛（qi < nextRank.qiRequired）。
    * 用于 gate 聚气丹兑换/服用：只要真气不够突破，就应允许补真气——
-   * 替代旧的错误前置 totalProgress<1.0（进度满≠真气够，会锁死天才，见 ADR-039）。
+   * 替代旧的错误前置（修为达标≠真气够，会锁死天才，见 ADR-039）。
    * 已是最高境界（无下一境界）时返回 false（无需再补真气突破）。
    * @returns {boolean}
    */

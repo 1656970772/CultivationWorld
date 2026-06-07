@@ -33,7 +33,16 @@ export function applyCultivationExperience(entity, worldContext, input = {}) {
   const outcome = input.outcome || 'success';
   const outcomeMultiplier = numeric(cfg.outcomeMultiplier?.[outcome], 1);
   const gain = Number((base * valueMultiplier * riskMultiplier * durationMultiplier * outcomeMultiplier).toFixed(4));
-  const totalCultivation = addExperienceCultivation(entity, worldContext?.ranksData || [], gain);
+  const worldRanks = Array.isArray(worldContext?.ranksData) && worldContext.ranksData.length > 0
+    ? worldContext.ranksData
+    : null;
+  const ranksData = worldRanks || entity?._ranksData || entity?.state?._ranksData || [];
+  const totalCultivation = addExperienceCultivation(
+    entity,
+    ranksData,
+    gain,
+    worldContext?.balanceConfig?.cultivation || {},
+  );
 
   return {
     gain,

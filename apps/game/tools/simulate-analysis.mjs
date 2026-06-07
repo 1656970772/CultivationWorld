@@ -53,7 +53,7 @@ const configs = {
   questTemplates: loadJSON('data/quests/quest-templates.json'),
   mapData:        loadJSON('data/world/map.json'),
   modifierTemplates: loadJSON('data/world/modifiers.json'),
-  // 平衡配置：保证分析工具与真实游戏一致（含闭关上限 cultivationCap、游历机缘、风险结算）
+  // 平衡配置：保证分析工具与真实游戏一致（含修为递减、游历机缘、风险结算）
   balanceCombat:      loadJSON('data/balance/combat.json'),
   balanceEconomy:     loadJSON('data/balance/economy.json'),
   balanceCultivation: loadJSON('data/balance/cultivation.json'),
@@ -388,6 +388,11 @@ function recordLifeDay(day, ent, nl, lifeEvents) {
   if (!actionChanged && !obsChanged && !hasEvent) return; // 无变化，压缩掉
 
   const mind = typeof ent.getMindSummary === 'function' ? ent.getMindSummary() : { obsessions: [], emotions: {} };
+  const totalCultivation = Number(ent.state.get('totalCultivation') || 0);
+  const nextCultivationRequired = Number(ent.state.get('nextCultivationRequired') || 0);
+  const cultivationCompletion = nextCultivationRequired > 0
+    ? totalCultivation / nextCultivationRequired
+    : 0;
   rec.days.push({
     day,
     action: actionName,
@@ -398,7 +403,9 @@ function recordLifeDay(day, ent, nl, lifeEvents) {
     fallback: !!plan.fallback,
     rank: rankShort(ent),
     qi: Math.round(ent.state.get('qi') || 0),
-    progress: Number((ent.state.get('cultivationProgress') || 0).toFixed(3)),
+    totalCultivation: Number(totalCultivation.toFixed(2)),
+    nextCultivationRequired: Number(nextCultivationRequired.toFixed(2)),
+    cultivationCompletion: Number(cultivationCompletion.toFixed(4)),
     age: ent.state.get('ageYears') ?? null,
     pos: npcPosition(ent),
     obsessions: mind.obsessions.map(o => ({ type: o.type, intensity: Math.round(o.intensity || 0) })),
@@ -775,7 +782,10 @@ const timeline = snapshots.map(snap => {
   const ns = Object.values(snap.npcs);
   const alive = ns.filter(n => n.alive);
   const qi = alive.map(n => n.qi || 0);
-  const prog = alive.map(n => n.cultivationProgress || 0);
+  const cultivationCompletion = alive.map(n => {
+    const required = Number(n.nextCultivationRequired || 0);
+    return required > 0 ? Number(n.totalCultivation || 0) / required : 0;
+  });
   const fs = Object.values(snap.factions).filter(f => !f.isDestroyed);
   return {
     day: snap.day,
@@ -783,7 +793,9 @@ const timeline = snapshots.map(snap => {
     aliveFaction: fs.length,
     avgQi: qi.length > 0 ? +(qi.reduce((a, b) => a + b, 0) / qi.length).toFixed(2) : 0,
     maxQi: qi.length > 0 ? +Math.max(...qi).toFixed(2) : 0,
-    avgProgress: prog.length > 0 ? +(prog.reduce((a, b) => a + b, 0) / prog.length).toFixed(4) : 0,
+    avgCultivationCompletion: cultivationCompletion.length > 0
+      ? +(cultivationCompletion.reduce((a, b) => a + b, 0) / cultivationCompletion.length).toFixed(4)
+      : 0,
     avgStone: fs.length > 0 ? Math.round(fs.reduce((s, f) => s + (f.resources?.low_spirit_stone || 0), 0) / fs.length) : 0,
     avgDisciples: fs.length > 0 ? Math.round(fs.reduce((s, f) => s + (f.resources?.disciples || 0), 0) / fs.length) : 0,
     breakthroughs: breakthroughLog.filter(b => b.success && b.day <= snap.day).length,
@@ -831,7 +843,12 @@ const npcRoster = rosterKeys.map(fKey => {
     members: sorted.map(m => ({
       name: m.name, rankName: m.rankName || '?', role: m.role || '-',
       age: m.ageYears ?? '?', maxAge: m.maxAgeYears ?? '?',
-      qi: m.qi || 0, progress: m.cultivationProgress || 0,
+      qi: m.qi || 0,
+      totalCultivation: m.totalCultivation || 0,
+      nextCultivationRequired: m.nextCultivationRequired || 0,
+      cultivationCompletion: m.nextCultivationRequired > 0
+        ? (m.totalCultivation || 0) / m.nextCultivationRequired
+        : 0,
       stone: m.inventory?.low_spirit_stone ?? 0,
       contribution: m.contribution || 0, quests: m.totalQuestsCompleted || 0,
       gender: m.gender || 'male',

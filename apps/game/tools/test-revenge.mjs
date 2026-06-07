@@ -44,10 +44,10 @@ console.log('1) GOAP 复仇链');
   const planner = new GOAPPlanner({ maxDepth: 12, maxIterations: 2000 });
   const goal = { enemyKilled: { op: 'eq', value: true } };
 
-  // 实力足够（totalProgress 高）：应为 追踪 → 击杀
+  // 实力足够（数值修为达标）：应为 追踪 → 击杀
   const strongState = {
     alive: true, hasRevengeTarget: true, nearRevengeTarget: false,
-    enemyKilled: false, totalProgress: 0.9, cultivationProgress: 0.9, insight: 0,
+    enemyKilled: false, totalCultivation: 90, nextCultivationRequired: 100,
   };
   const r1 = planner.plan(strongState, goal, npcActions);
   assert(r1.success, '实力足够时能规划出复仇链');
@@ -55,13 +55,13 @@ console.log('1) GOAP 复仇链');
   assert(ids1.includes('act_npc_job_kill_enemy'), '链含击杀仇人');
   assert(ids1.indexOf('act_npc_job_hunt_enemy') < ids1.indexOf('act_npc_job_kill_enemy'), '先追踪后击杀');
 
-  // 实力不足（totalProgress < 击杀门槛 0.3）：击杀前置不满足。
+  // 实力不足（数值修为低于击杀门槛）：击杀前置不满足。
   // 修仙逻辑下『变强』每步增量极小（cultivate +0.001/步），无法在单次 GOAP 深度内补足到门槛，
   // 因此直接复仇规划应失败——这正是设计意图：弱者由日常『修炼需求』长期变强，
-  // 待 totalProgress 达门槛后，复仇 Goal 才在某轮规划中成功推导出『追踪→击杀』。
+  // 待 totalCultivation 达门槛后，复仇 Goal 才在某轮规划中成功推导出『追踪→击杀』。
   const weakState = {
     alive: true, hasRevengeTarget: true, nearRevengeTarget: false,
-    enemyKilled: false, totalProgress: 0.1, cultivationProgress: 0.1, insight: 0, hasFaction: false,
+    enemyKilled: false, totalCultivation: 10, nextCultivationRequired: 100, hasFaction: false,
   };
   const r2 = planner.plan(weakState, goal, npcActions);
   assert(!r2.success, '实力不足时直接复仇规划失败（强度门槛生效，变强交由日常修炼需求）');
@@ -69,7 +69,7 @@ console.log('1) GOAP 复仇链');
   // 实力恰好达门槛：应能规划出击杀
   const okState = {
     alive: true, hasRevengeTarget: true, nearRevengeTarget: false,
-    enemyKilled: false, totalProgress: 0.3, cultivationProgress: 0.3, insight: 0,
+    enemyKilled: false, totalCultivation: 15, nextCultivationRequired: 100,
   };
   const r3 = planner.plan(okState, goal, npcActions);
   assert(r3.success && r3.plan.map(a => a.id).includes('act_npc_job_kill_enemy'),

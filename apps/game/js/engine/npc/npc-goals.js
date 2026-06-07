@@ -14,6 +14,19 @@
  */
 import { Goal, GoalSource } from '../abstract/goal.js';
 import { Obsession } from '../abstract/obsession-system.js';
+import { nextCultivationRank } from './numeric-cultivation.js';
+
+function numeric(value, fallback = 0) {
+  const n = Number(value);
+  return Number.isFinite(n) ? n : fallback;
+}
+
+function cultivationCompletionRatio(entity) {
+  const next = nextCultivationRank(entity, entity?._ranksData || []);
+  const required = numeric(next?.cultivationRequired ?? next?.qiRequired, 0);
+  if (required <= 0) return 1;
+  return numeric(entity?.state?.get?.('totalCultivation'), 0) / required;
+}
 
 /**
  * 收集执念目标（ADR-019），与日常需求目标一起进入 PlannerNode 的 Utility 选择。
@@ -162,7 +175,7 @@ export function considerMasterDiscipleGoals(entity, consider, registry, here, rn
     ? Math.abs(other.spatial.tileX - here.x) + Math.abs(other.spatial.tileY - here.y)
     : 0;
 
-  // —— 师傅传功（护徒·点化）：对修为偏低的徒弟低频前往点化（给 insight 增量）——
+  // —— 师傅传功（护徒·点化）：对修为偏低的徒弟低频前往点化（给历练修为增量）——
   const teachCfg = mdCfg.teachDisciple || {};
   const teachChance = teachCfg.teachChancePerTick ?? 0.04;
   if (rng.next() < teachChance) {
@@ -174,7 +187,7 @@ export function considerMasterDiscipleGoals(entity, consider, registry, here, rn
       const disciple = registry.getById(edge.toId);
       if (!disciple || !disciple.alive || disciple.id === entity.id) continue;
       if (!(disciple.hasSpatial && disciple.hasSpatial())) continue;
-      const dProg = (disciple.state?.get('cultivationProgress') || 0) + (disciple.state?.get('insight') || 0);
+      const dProg = cultivationCompletionRatio(disciple);
       if (dProg >= maxProg) continue; // 徒弟修为已足，无需点化。
       if (here && dist(disciple) > maxRange) continue;
       consider({
@@ -255,13 +268,13 @@ export function checkSeizeDiscipleObsession(entity, worldContext) {
   const registry = worldContext?.entityRegistry;
   if (!registry || typeof registry.getById !== 'function') return;
   const minProg = cfg.minDiscipleTotalProgress ?? 0.5;
-  // 在徒弟中挑选资质最高（总进度最高）者作为夺舍目标。
+  // 在徒弟中挑选数值修为完成度最高者作为夺舍目标。
   let victim = null;
   let bestProg = minProg;
   for (const edge of entity._relationshipSystem.edgesOfType(entity.id, 'master')) {
     const disciple = registry.getById(edge.toId);
     if (!disciple || !disciple.alive || disciple.id === entity.id) continue;
-    const dProg = (disciple.state?.get('cultivationProgress') || 0) + (disciple.state?.get('insight') || 0);
+    const dProg = cultivationCompletionRatio(disciple);
     if (dProg > bestProg) { bestProg = dProg; victim = disciple; }
   }
   if (!victim) return;

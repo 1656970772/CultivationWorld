@@ -121,7 +121,7 @@
     },
     "useItems": {
       "pillEffects": {
-        "_comment": "丹药机制化开关（ADR-042 阶段2）。enabled=true 时聚气丹/破境丹效果经通用 Effect 原语（data/effects/core-effects.json 的 ge_add_qi/ge_add_progress/ge_add_breakthrough_bonus）由 EffectEngine 结算，数值取自 items.json 各丹药的 effects 字段；false 时走旧的直接 state.set。数值取自同一份 items.json 配置。",
+        "_comment": "丹药机制化开关（ADR-042 阶段2）。enabled=true 时聚气丹/破境丹效果经通用 Effect 原语（data/effects/core-effects.json 的 ge_add_qi/ge_add_progress/ge_add_breakthrough_bonus）由 EffectEngine 结算，修为数值取自 items.json 各丹药的 effects 字段；false 时走直接数值修为接口。数值取自同一份 items.json 配置。",
         "enabled": true
       },
       "qiPill": {
