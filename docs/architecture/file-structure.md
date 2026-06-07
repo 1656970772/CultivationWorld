@@ -1,6 +1,6 @@
 ﻿# 项目文件结构
 
-> 最后更新：2026-06-07
+> 最后更新：2026-06-08
 
 ## 总体原则
 
@@ -85,16 +85,16 @@ CultivationWorld/
 | `apps/game/js/engine/relationship/` | 三层关系底座：账本仓储、事件解释、selector、表达式、effect operator、信号输出 |
 | `apps/game/js/engine/world/` | 世界实体、TickManager、地图、移动、寻路、关系、信息、机会点、动态事件 |
 | `apps/game/js/engine/world/services/` | Tick 子服务：上下文、势力 AI、晋升、人口、死亡、信息、妖兽重生 |
-| `apps/game/js/renderer/` | Canvas 地图渲染、相机、地形、迷雾、自动模拟渲染 |
-| `apps/game/js/ui/` | 日志、状态栏、调试、图谱、事件、存档、地图图例 |
+| `apps/game/js/renderer/` | Canvas/Pixi 地图渲染、相机、地形、迷雾、自动模拟渲染；地图展示颜色读取数据 `presentation` |
+| `apps/game/js/ui/` | 日志、状态栏、调试、图谱、事件、存档、地图图例；图例和缩略图展示元数据来自运行时数据 |
 | `apps/game/tools/` | 单元验证、长程模拟、性能分析、行为验证脚本 |
 
 ## 游戏数据目录
 
 | 路径 | 职责 |
 |------|------|
-| `data/entities/` | 初始势力与 NPC |
-| `data/definitions/` | 境界、地形、妖兽、妖兽属性模板、修士/妖兽战斗属性表、NPC 修炼功法定义、武器、姓名、宏观资源 |
+| `data/entities/` | 初始势力与 NPC；势力/组织可在 `presentation` 中声明展示颜色、徽记和排序 |
+| `data/definitions/` | 境界、地形、妖兽、妖兽属性模板、修士/妖兽战斗属性表、NPC 修炼功法定义、武器、姓名、宏观资源；地形展示元数据写入 `terrains.json` 的 `presentation` |
 | `data/items/` | 可持有物品，按 `currency/material/pill/artifact/talisman/technique` 拆分；其中 `technique` 是秘籍物品，不是 NPC 当前修炼功法定义 |
 | `data/actions/` | 势力/NPC SimpleAction/NPC JobAction/Reaction/世界规则行为，以及 NPC 默认行为集 |
 | `data/jobs/` | NPC Job 定义，按动态事件/经济/社交拆分 |
@@ -110,7 +110,7 @@ CultivationWorld/
 | `data/abilities/` | GameplayAbility 定义 |
 | `data/config/` | 游戏和 AI 系统级配置 |
 | `data/quests/` | 任务模板 |
-| `data/relationships/` | 三层关系全数据平台配置：schema、mark/tag/signal/event 字典、event hook、impact rule、signal rule、group 定义 |
+| `data/relationships/` | 三层关系全数据平台配置：schema、mark/tag/signal/event 字典、event hook、impact rule、signal rule、group 定义和旧边兼容 projections |
 
 详细字段规范见 `docs/data/data-config-rules.md`。
 
@@ -121,7 +121,10 @@ CultivationWorld/
 | `apps/editor/data-editor.html` | 编辑器 Web 入口 |
 | `apps/editor/js/editor/` | 数据扫描、schema 推断、表单、地图编辑、校验、Tauri 适配 |
 | `apps/editor/src-tauri/` | Tauri 2 Rust 后端，负责项目目录、JSON 读写、备份、校验 |
-| `apps/editor/data/` | 编辑器模板数据 |
+| `apps/editor/data/schemas/` | 数据集注册表、字段 schema 和引用关系配置 |
+| `apps/editor/data/templates/` | 新增记录模板 |
+| `apps/editor/data/ui/` | 数据集分类、排序和展示配置 |
+| `apps/editor/data/adapters/` | 地图编辑器等专用编辑体验的声明式适配配置 |
 | `apps/editor/desktop-dist/` | 可再生前端打包输出 |
 | `apps/editor/tools/` | 编辑器构建和验证脚本 |
 

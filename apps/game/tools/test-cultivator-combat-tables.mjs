@@ -137,7 +137,7 @@ try {
     readJson('data/definitions/cultivator-combat.json'),
     readJson('data/definitions/monster-combat.json'),
     readJson('data/definitions/ranks.json'),
-    readText('js/core/config-loader.js'),
+    readJson('data/config/data-manifest.json'),
   ]);
 
   console.log('1) scope and rank coverage');
@@ -200,17 +200,13 @@ try {
     'cultivator qi_refining yuan is greater than base qi_refining yuan',
   );
 
-  console.log('4) config-loader source contains table wiring');
+  console.log('4) data manifest contains table wiring');
   for (const token of [
-    'combat-base-table.json',
-    'cultivator-combat.json',
-    'monster-combat.json',
     'combatBaseTable',
     'cultivatorCombat',
     'monsterCombat',
-    'export async function loadGameConfigs',
   ]) {
-    ok(loaderSource.includes(token), `config-loader.js includes ${token}`);
+    ok(Boolean(loaderSource.singletons?.[token]), `data-manifest.json includes ${token}`);
   }
 
   console.log('5) config-loader returns the actual table objects');

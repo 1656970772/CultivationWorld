@@ -1,16 +1,7 @@
 import { ItemRegistry } from '../items/item-registry.js';
 import { EffectEngine } from '../abstract/gameplay-effect.js';
 import { EffectPool } from '../pools/effect-pool.js';
-import { addCultivation, getCultivationRequired, refreshRankStage, syncTotalCultivation } from './numeric-cultivation.js';
-
-/**
- * 丹药机制化开关（ADR-042 阶段2）：economy.npcExchange.useItems.pillEffects.enabled（默认 true）。
- * 开则丹药效果经 data/effects 的 Instant Effect 由 EffectEngine 结算；关则回退旧的直接 state.set。
- */
-function pillEffectsEnabled(worldContext) {
-  const economy = economyConfigFrom(worldContext);
-  return economy?.npcExchange?.useItems?.pillEffects?.enabled !== false;
-}
+import { refreshRankStage, syncTotalCultivation } from './numeric-cultivation.js';
 
 /**
  * 通用"消耗物品→施加其挂载 Effect"入口（ADR-042 阶段2 增强）。
@@ -26,14 +17,36 @@ function pillEffectsEnabled(worldContext) {
  */
 export function applyItemEffects(entity, itemId) {
   const def = ItemRegistry.get(itemId);
+  if (!def) return { applied: false, deltas: {}, reason: 'missing_item_definition', itemId };
   const specs = def?.properties?.effects || def?.effects;
-  if (!Array.isArray(specs) || specs.length === 0) return { applied: false, deltas: {} };
+  if (!Array.isArray(specs) || specs.length === 0) {
+    return { applied: false, deltas: {}, reason: 'missing_item_effects', itemId };
+  }
+
+  const resolved = [];
+  const missingEffects = [];
+  for (const spec of specs) {
+    if (!spec?.effect) {
+      missingEffects.push(null);
+      continue;
+    }
+    const effDef = EffectPool.get(spec.effect);
+    if (!effDef) missingEffects.push(spec.effect);
+    else resolved.push({ spec, effDef });
+  }
+  if (missingEffects.length > 0) {
+    return {
+      applied: false,
+      deltas: {},
+      reason: 'missing_effect_definition',
+      itemId,
+      missingEffects,
+    };
+  }
 
   const deltas = {};
   let applied = false;
-  for (const spec of specs) {
-    const effDef = EffectPool.get(spec.effect);
-    if (!effDef) continue;
+  for (const { spec, effDef } of resolved) {
     const res = EffectEngine.applyEffect(entity, effDef, { spec });
     applied = applied || res.applied;
     for (const m of res.mods || []) {
@@ -44,7 +57,7 @@ export function applyItemEffects(entity, itemId) {
     syncTotalCultivation(entity);
     refreshRankStage(entity, entity?._ranksData || [], entity?._cultivationConfig || {});
   }
-  return { applied, deltas };
+  return { applied, deltas, reason: applied ? null : 'effect_not_applied', itemId };
 }
 
 function economyConfigFrom(worldContext) {
@@ -91,14 +104,6 @@ function economicSink(id = 'system_sink') {
   };
 }
 
-function addCultivationFromProgressGain(entity, progressGain, worldContext) {
-  const cultivationConfig = worldContext?.balanceConfig?.cultivation || entity?._cultivationConfig || {};
-  const ranks = worldContext?.ranksData || entity?._ranksData || [];
-  const required = getCultivationRequired(entity, ranks);
-  const gain = required > 0 ? progressGain * required : progressGain;
-  return addCultivation(entity, ranks, gain, cultivationConfig);
-}
-
 function artifactBonus(itemId) {
   const def = ItemRegistry.get(itemId);
   return def?.properties?.combatBonus ?? def?.combatBonus ?? 0;
@@ -116,57 +121,121 @@ function resolveFaction(entity, worldContext) {
   return faction?.alive === false ? null : faction;
 }
 
-function donationRules(economyConfig) {
+function monsterResourceRulesFrom(worldContext, economyConfig = null) {
+  return worldContext?.monsterResourceRules
+    || worldContext?.balanceConfig?.monsterResourceRules
+    || economyConfig?.monsterResourceRules
+    || null;
+}
+
+function donationRules(economyConfig, monsterResourceRules = null) {
   const cfg = economyConfig?.npcMaterialDonation || {};
   if (cfg.enabled === false) return [];
   const rules = Array.isArray(cfg.items) ? [...cfg.items] : [];
   const monsterCfg = economyConfig?.monsterResources?.donation || {};
+  const families = Array.isArray(monsterResourceRules?.itemFamilies)
+    ? monsterResourceRules.itemFamilies
+    : [];
   if (monsterCfg.enabled !== false) {
     const maxGrade = Math.max(1, Math.floor(monsterCfg.maxGrade ?? 9));
-    const coreBase = monsterCfg.coreBaseContribution ?? 12;
-    const materialBase = monsterCfg.materialBaseContribution ?? 10;
     const mult = monsterCfg.gradeMultiplier ?? 1.35;
     const existing = new Set(rules.map(r => r.itemId));
     for (let grade = 1; grade <= maxGrade; grade++) {
       const factor = Math.pow(grade, mult);
-      const coreId = `monster_core_g${grade}`;
-      const matId = `beast_material_g${grade}`;
-      if (!existing.has(coreId)) {
-        const contribution = Math.round(coreBase * factor);
-        rules.push({ itemId: coreId, contribution, monthlyContribution: contribution, factionQty: 1 });
-      }
-      if (!existing.has(matId)) {
-        const contribution = Math.round(materialBase * factor);
-        rules.push({ itemId: matId, contribution, monthlyContribution: contribution, factionQty: 1 });
+      for (const family of families) {
+        const itemId = applyGradeTemplate(family.itemIdTemplate, grade);
+        if (!itemId || existing.has(itemId)) continue;
+        const base = family.contributionBase ?? family.baseContribution ?? 0;
+        const monthlyBase = family.monthlyContributionBase ?? base;
+        const contribution = Math.round(base * factor);
+        const monthlyContribution = Math.round(monthlyBase * factor);
+        rules.push({
+          itemId,
+          contribution,
+          monthlyContribution,
+          factionQty: family.factionQty ?? 1,
+        });
+        existing.add(itemId);
       }
     }
   }
   return rules;
 }
 
-function requiredFactionItems(option) {
-  return Array.isArray(option?.requiredFactionItems) ? option.requiredFactionItems : [];
+function monsterResourceFamilyItemId(familyId, grade, monsterResourceRules = null) {
+  if (!familyId) return null;
+  const families = Array.isArray(monsterResourceRules?.itemFamilies) ? monsterResourceRules.itemFamilies : [];
+  const family = families.find(item =>
+    item?.id === familyId
+    || item?.baseItemId === familyId
+    || item?.itemId === familyId
+  );
+  return applyGradeTemplate(family?.itemIdTemplate, Math.max(1, Math.floor(Number(grade) || 1)));
+}
+
+function normalizeRequiredFactionItem(item, monsterResourceRules = null) {
+  if (!item || typeof item !== 'object') return item;
+  const itemId = item.itemId || monsterResourceFamilyItemId(
+    item.family || item.familyId || item.resourceFamily,
+    item.grade,
+    monsterResourceRules,
+  );
+  return { ...item, itemId };
+}
+
+function requiredFactionItems(option, monsterResourceRules = null) {
+  const list = Array.isArray(option?.requiredFactionItems) ? option.requiredFactionItems : [];
+  return list.map(item => normalizeRequiredFactionItem(item, monsterResourceRules));
 }
 
 function missingFactionItems(faction, required) {
   const missing = [];
   for (const req of required) {
     const need = Math.max(0, Math.floor(req.qty ?? 1));
+    if (!req.itemId) {
+      missing.push({ ...req, itemId: null, need, have: 0, reason: 'unresolved_resource_family' });
+      continue;
+    }
     const have = faction?.inventory?.getAmount(req.itemId) || 0;
     if (have < need) missing.push({ itemId: req.itemId, need, have });
   }
   return missing;
 }
 
-function isMonsterExchangeItem(itemId) {
-  return /^monster_core_g\d+$/.test(itemId || '')
-    || /^beast_material_g\d+$/.test(itemId || '');
+function applyGradeTemplate(template, grade) {
+  if (!template) return null;
+  return String(template).replaceAll('{grade}', String(grade));
+}
+
+function templateToPattern(template) {
+  if (!template) return null;
+  const escaped = String(template)
+    .replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
+    .replace('\\{grade\\}', '\\d+');
+  return `^${escaped}$`;
+}
+
+function monsterExchangePatterns(economyConfig) {
+  const monsterRules = monsterResourceRulesFrom(economyConfig, economyConfig);
+  const explicit = Array.isArray(monsterRules?.exchangeItemPatterns) ? monsterRules.exchangeItemPatterns : [];
+  const fromFamilies = Array.isArray(monsterRules?.itemFamilies)
+    ? monsterRules.itemFamilies.map(f => templateToPattern(f.itemIdTemplate)).filter(Boolean)
+    : [];
+  return [...explicit, ...fromFamilies];
+}
+
+function isMonsterExchangeItem(itemId, economyConfig, monsterResourceRules = null) {
+  return monsterExchangePatterns({
+    ...economyConfig,
+    monsterResourceRules,
+  })
+    .some(pattern => new RegExp(pattern).test(itemId || ''));
 }
 
 export function missingFactionExchangeItems(entity, worldContext, optionKey) {
   const economy = economyConfigFrom(worldContext);
   const option = economy.npcExchange?.options?.[optionKey];
-  const required = requiredFactionItems(option);
+  const required = requiredFactionItems(option, monsterResourceRulesFrom(worldContext, economy));
   if (required.length === 0) return [];
   const faction = resolveFaction(entity, worldContext);
   return missingFactionItems(faction, required);
@@ -174,16 +243,18 @@ export function missingFactionExchangeItems(entity, worldContext, optionKey) {
 
 export function factionNeedsMonsterExchangeMaterials(entity, worldContext, optionKeys = ['breakthrough_pill', 'artifact_low']) {
   if (entity?.state?.get?.('hasFaction') === false || !entity?.state?.get?.('factionId')) return false;
+  const economy = economyConfigFrom(worldContext);
+  const monsterResourceRules = monsterResourceRulesFrom(worldContext, economy);
   return optionKeys.some((optionKey) =>
     missingFactionExchangeItems(entity, worldContext, optionKey)
-      .some(m => isMonsterExchangeItem(m.itemId))
+      .some(m => isMonsterExchangeItem(m.itemId, economy, monsterResourceRules))
   );
 }
 
 export function canFactionProvideExchangeMaterials(entity, worldContext, optionKey) {
   const economy = economyConfigFrom(worldContext);
   const option = economy.npcExchange?.options?.[optionKey];
-  const required = requiredFactionItems(option);
+  const required = requiredFactionItems(option, monsterResourceRulesFrom(worldContext, economy));
   if (required.length === 0) return true;
   const faction = resolveFaction(entity, worldContext);
   return missingFactionItems(faction, required).length === 0;
@@ -193,7 +264,7 @@ export function countDonatableMaterials(entity, economyConfig) {
   if (!entity?.inventory) return 0;
   if (entity.state?.get?.('hasFaction') === false || !entity.state?.get?.('factionId')) return 0;
   let total = 0;
-  for (const rule of donationRules(economyConfig)) {
+  for (const rule of donationRules(economyConfig, monsterResourceRulesFrom(economyConfig, economyConfig))) {
     total += entity.inventory.getAmount(rule.itemId) || 0;
   }
   return total;
@@ -242,7 +313,7 @@ export function donateMaterials(entity, worldContext, options = {}) {
   const faction = resolveFaction(entity, worldContext);
   if (!faction) return { success: false, outcome: 'no_faction', eventType: 'material_donate' };
 
-  const candidates = donationRules(economy)
+  const candidates = donationRules(economy, monsterResourceRulesFrom(worldContext, economy))
     .filter(rule => (entity.inventory.getAmount(rule.itemId) || 0) > 0)
     .sort((a, b) => (b.contribution || 0) - (a.contribution || 0));
   const rule = candidates[0];
@@ -340,7 +411,7 @@ export function redeemExchangeItem(entity, worldContext, optionKey, options = {}
   }
 
   const faction = resolveFaction(entity, worldContext);
-  const required = requiredFactionItems(option);
+  const required = requiredFactionItems(option, monsterResourceRulesFrom(worldContext, economy));
   const missing = missingFactionItems(faction, required);
   if (options.checkFactionItems !== false && missing.length > 0) {
     return {
@@ -462,28 +533,18 @@ export function useQiPill(entity, worldContext, options = {}) {
     return { success: false, outcome: 'no_item', eventType: 'use_qi_pill', itemId };
   }
 
-  if (options.consumeItem !== false) entity.inventory.remove(itemId, 1);
-  const baseQiGain = cfg.qiGain ?? 120;
-  const progressGain = cfg.progressGain ?? 0.01;
-
-  // ADR-040: 低阶丹对高境界效果递减（数值与参数现来自 items.json 该丹药的 effects 项）。
-  let qiGain = computeQiPillGain(entity, cfg, baseQiGain);
+  let qiGain = 0;
+  let deltas = {};
 
   if (options.applyState !== false) {
-    if (pillEffectsEnabled(worldContext)) {
-      // ADR-042 阶段2 增强：经通用 Effect 原语结算，数值取自物品 effects（rankDecay/clamp 由 spec 表达）。
-      const { applied, deltas } = applyItemEffects(entity, itemId);
-      if (applied) {
-        qiGain = deltas.qi ?? qiGain;
-      } else {
-        addStateNumber(entity, 'qi', qiGain);
-        addCultivationFromProgressGain(entity, progressGain, worldContext);
-      }
-    } else {
-      addStateNumber(entity, 'qi', qiGain);
-      addCultivationFromProgressGain(entity, progressGain, worldContext);
+    const result = applyItemEffects(entity, itemId);
+    if (!result.applied) {
+      return { success: false, outcome: result.reason || 'item_effect_failed', eventType: 'use_qi_pill', itemId };
     }
+    deltas = result.deltas || {};
+    qiGain = deltas.qi ?? 0;
   }
+  if (options.consumeItem !== false) entity.inventory.remove(itemId, 1);
 
   return {
     success: true,
@@ -491,36 +552,10 @@ export function useQiPill(entity, worldContext, options = {}) {
     eventType: 'use_qi_pill',
     itemId,
     qiGain,
-    baseQiGain,
-    progressGain,
+    cultivationGain: deltas.cultivation ?? 0,
+    deltas,
     description: `${entity.name || entity.staticData?.name || entity.id} 服用聚气丹，真气+${Math.round(qiGain)}`,
   };
-}
-
-/**
- * 计算一颗聚气丹对当前实体的【实际真气增量】，含按境界衰减（ADR-040）。
- * @param {Object} entity NPCEntity（需可读 rankId 与 _ranksData）
- * @param {Object} cfg economy.npcExchange.useItems.qiPill 配置
- * @param {number} baseQiGain 丹药基础真气量
- * @returns {number} 实际真气增量
- */
-export function computeQiPillGain(entity, cfg, baseQiGain) {
-  const decay = cfg.rankDecay;
-  const baseRankId = cfg.baseRankId;
-  const minQiGain = cfg.minQiGain ?? 1;
-  // 未配置衰减 → 退回固定量（向后兼容）
-  if (!decay || decay >= 1 || !baseRankId) return baseQiGain;
-
-  const ranks = entity._ranksData || [];
-  if (ranks.length === 0) return baseQiGain;
-  const curRankId = entity.state.get('rankId') || 'mortal';
-  const curRank = ranks.find(r => r.id === curRankId);
-  const baseRank = ranks.find(r => r.id === baseRankId);
-  if (!curRank || !baseRank) return baseQiGain;
-
-  const step = Math.max(0, (curRank.order ?? 0) - (baseRank.order ?? 0));
-  const effective = baseQiGain * Math.pow(decay, step);
-  return Math.max(minQiGain, effective);
 }
 
 export function useBreakthroughPill(entity, worldContext, options = {}) {
@@ -531,29 +566,20 @@ export function useBreakthroughPill(entity, worldContext, options = {}) {
     return { success: false, outcome: 'no_item', eventType: 'use_breakthrough_pill', itemId };
   }
 
-  if (options.consumeItem !== false) entity.inventory.remove(itemId, 1);
-  let qiGain = cfg.qiGain ?? 300;
-  let bonus = cfg.breakthroughBonus ?? 0.08;
-  const maxBonus = cfg.maxBreakthroughBonus ?? 0.25;
+  let qiGain = 0;
+  let bonus = 0;
+  let deltas = {};
 
   if (options.applyState !== false) {
-    if (pillEffectsEnabled(worldContext)) {
-      // ADR-042 阶段2 增强：经通用 Effect 原语结算，数值取自物品 effects（qi 直加、突破助益累加并 clamp 至 maxBonus）。
-      const { applied, deltas } = applyItemEffects(entity, itemId);
-      if (applied) {
-        qiGain = deltas.qi ?? qiGain;
-        if (deltas.breakthroughAidBonus !== undefined) bonus = deltas.breakthroughAidBonus;
-      } else {
-        addStateNumber(entity, 'qi', qiGain);
-        const nextBonus = Math.min(maxBonus, stateNumber(entity, 'breakthroughAidBonus') + bonus);
-        entity.state.set('breakthroughAidBonus', nextBonus);
-      }
-    } else {
-      addStateNumber(entity, 'qi', qiGain);
-      const nextBonus = Math.min(maxBonus, stateNumber(entity, 'breakthroughAidBonus') + bonus);
-      entity.state.set('breakthroughAidBonus', nextBonus);
+    const result = applyItemEffects(entity, itemId);
+    if (!result.applied) {
+      return { success: false, outcome: result.reason || 'item_effect_failed', eventType: 'use_breakthrough_pill', itemId };
     }
+    deltas = result.deltas || {};
+    qiGain = deltas.qi ?? 0;
+    bonus = deltas.breakthroughAidBonus ?? 0;
   }
+  if (options.consumeItem !== false) entity.inventory.remove(itemId, 1);
 
   return {
     success: true,
@@ -562,6 +588,7 @@ export function useBreakthroughPill(entity, worldContext, options = {}) {
     itemId,
     qiGain,
     breakthroughBonus: bonus,
+    deltas,
     description: `${entity.name || entity.staticData?.name || entity.id} 服用破境丹，下一次突破判定获得加成`,
   };
 }

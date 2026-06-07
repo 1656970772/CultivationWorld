@@ -54,9 +54,20 @@
   },
   "assets": {
     "factionStateResourceIds": ["low_spirit_stone", "food", "disciples"],
-    "organizationPointKeys": ["contribution", "warMerit", "sectCredit"],
+    "organizationPointKeys": ["contribution", "monthlyContribution", "warMerit", "sectCredit"],
     "privateForbiddenKinds": ["organization_point"],
     "collateralAllowedItemCategories": ["currency", "material", "pill", "artifact", "technique"]
+  },
+  "factionTrade": {
+    "_description": "势力 AI 正规贸易资源配置。代码只读取这里的资源 ID，不固定 low_spirit_stone/food。",
+    "scenarioId": "formal_market",
+    "payResourceId": "low_spirit_stone",
+    "receiveResourceId": "food",
+    "payResourceKind": "faction_state_resource",
+    "receiveResourceKind": "faction_state_resource",
+    "payRatio": 0.1,
+    "maxPayAmount": 200,
+    "receiveExchangeRate": 2
   },
   "escrow": {
     "defaultHolderByScenario": {

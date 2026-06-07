@@ -12,31 +12,23 @@
 import { BaseEntity } from '../abstract/base-entity.js';
 import { BTLoader } from '../abstract/bt/bt-loader.js';
 import { BTStatus } from '../abstract/bt/bt-node.js';
+import {
+  getDefaultMonsterBehaviorTreeRegistry,
+  loadDefaultMonsterAIConfig,
+  resolveMonsterBehaviorTreeId,
+  resolveMonsterBTTier,
+  resolveMonsterOrderEquivalent,
+} from '../abstract/bt/bt-registry.js';
 import { MonsterStaticData } from './monster-static-data.js';
 import { MonsterState } from './monster-state.js';
-import { MONSTER_TIER1_BT, MONSTER_TIER2_BT, MONSTER_TIER3_BT } from './monster-bt-presets.js';
 import { applyDamage } from '../combat/combat-pipeline.js';
 import { resolveCombatEncounter } from '../combat/combat-encounter.js';
 import { readEffectiveCombatAttribute } from '../npc/cultivator-combat-attributes.js';
 
-/** 妖兽阶位 → 近似修炼境界 order（用于与 NPC 境界比较强弱） */
-const GRADE_TO_ORDER = {
-  1: 20, 2: 35, 3: 45, 4: 60, 5: 65, 6: 70, 7: 75, 8: 80, 9: 85,
-};
-
-/** grade → BT 档位（1/2/3） */
-function getBTTier(grade) {
-  if (grade >= 5) return 3;
-  if (grade >= 3) return 2;
-  return 1;
+function tierLevel(tier) {
+  const match = String(tier || '').match(/(\d+)$/);
+  return match ? Number(match[1]) : 0;
 }
-
-/** 档位 → BT 定义 */
-const TIER_BT = {
-  1: MONSTER_TIER1_BT,
-  2: MONSTER_TIER2_BT,
-  3: MONSTER_TIER3_BT,
-};
 
 export class MonsterEntity extends BaseEntity {
   /**
@@ -63,14 +55,22 @@ export class MonsterEntity extends BaseEntity {
     this.initSpatial({ x: opts.x, y: opts.y, speed: opts.speed ?? 3 });
 
     this._senseRange = opts.senseRange ?? 8;
+    const monsterAIConfig = opts.aiConfig || loadDefaultMonsterAIConfig();
+    const btRegistry = opts.behaviorTreeRegistry || getDefaultMonsterBehaviorTreeRegistry();
     this._rankOrderMap = opts.rankOrderMap || {};
-    this._orderEquivalent = GRADE_TO_ORDER[def.grade] || (def.grade * 10);
+    this._orderEquivalent = resolveMonsterOrderEquivalent(def.grade, monsterAIConfig);
     this._combat = opts.combatConfig || {};
 
-    // 按阶位装配对应档位的行为树
-    this._btTier = getBTTier(def.grade);
+    // 按配置装配对应档位的行为树。
+    this._btTier = resolveMonsterBTTier(def.grade, monsterAIConfig);
+    this._btTierLevel = tierLevel(this._btTier);
+    this._behaviorTreeId = resolveMonsterBehaviorTreeId(this._btTier, monsterAIConfig);
+    const btRoot = btRegistry.getRoot(this._behaviorTreeId);
+    if (!btRoot) {
+      throw new Error(`MonsterEntity: behavior tree "${this._behaviorTreeId}" not found in registry`);
+    }
     const loader = new BTLoader();
-    this.initBT(loader.build(TIER_BT[this._btTier]));
+    this.initBT(loader.build(btRoot));
 
     // tier3 专用：领地巡逻角度（持久化，避免每次相同路线）
     this._patrolAngle = this._rng.next() * Math.PI * 2;
@@ -365,7 +365,7 @@ export class MonsterEntity extends BaseEntity {
     const territoryCfg = worldContext.relationshipConfig?.territory || {};
     if (territoryCfg.defendEnabled === false) return BTStatus.FAILURE;
     const minTier = territoryCfg.minTierForDefense ?? 2;
-    if (this._btTier < minTier) return BTStatus.FAILURE;
+    if (this._btTierLevel < minTier) return BTStatus.FAILURE;
 
     const intruderId = this.state.get('intruderNpcId');
     if (!intruderId) return BTStatus.FAILURE;
@@ -553,17 +553,13 @@ export class MonsterEntity extends BaseEntity {
 
     const winChance = monsterPower / (monsterPower + npcPower);
     let killed = false;
-    const role = npc.state.get('currentRole');
-    const protectedRole = role === 'leader' || role === 'elder';
 
     // ADR-042：真实攻防扣血走【统一伤害管线】applyDamage（取代妖兽自有的锁血/碾压实现）。
     //   伤害由 resolveCombatEncounter(scene=monster_ambush) 统一计算，再交给 applyDamage。
     //   致死时由 applyDamage 统一判定：非碾压且持锁血能力则锁血到 lockRatio×maxHp（+可能遁地脱险）；
     //   碾压（orderGap≥crushOrderGap 或单击≥maxHp×crushHpMultiple）或无锁血能力则直接死。
-    //   leader/elder 仍受保护：不允许致死，hp<=0 托底锁血到 lockRatio×maxHp（沿用旧语义）。
     const combatCfg = worldContext?.balanceConfig?.combat || {};
     const defMap = combatCfg.npcCombat?.baseDef || {};
-    const lockCfg = combatCfg.lockHp || {};
     const numericArmorDamage = combatCfg.cultivatorAttributes?.numericArmorDamage === true;
     const def = numericArmorDamage
       ? readEffectiveCombatAttribute(npc, 'defense', npc.state?.get?.('defense') ?? 0)
@@ -588,29 +584,21 @@ export class MonsterEntity extends BaseEntity {
     const maxHp = npc.state.get('maxHp') || 0;
     const orderGap = (this._orderEquivalent ?? 0) - npcOrder;
 
-    if (protectedRole) {
-      const lockRatio = lockCfg.lockRatio ?? 0.05;
-      const curHp = npc.state.get('hp') ?? maxHp;
-      const newHp = curHp - damage;
-      npc.state.set('hp', newHp > 0 ? newHp : (maxHp > 0 ? maxHp * lockRatio : 1));
-      npc.state.set('injuryLevel', (npc.state.get('injuryLevel') || 0) + 1);
-    } else {
-      const result = applyDamage(npc, {
-        amount: damage,
-        cause: 'monster',
-        killer: null,
+    const result = applyDamage(npc, {
+      amount: damage,
+      cause: 'monster',
+      killer: null,
+      orderGap,
+      extraDeathInfo: {
+        monsterName: this.name,
+        monsterGrade: this.grade,
+        crushDamage: Math.round(damage),
+        victimMaxHp: Math.round(maxHp),
         orderGap,
-        extraDeathInfo: {
-          monsterName: this.name,
-          monsterGrade: this.grade,
-          crushDamage: Math.round(damage),
-          victimMaxHp: Math.round(maxHp),
-          orderGap,
-        },
-      }, worldContext);
-      killed = result.died;
-      // tier3：被自己猎杀/重创的修士对其他同门造成仇恨种子（外部可监听并设置 grudge）
-    }
+      },
+    }, worldContext);
+    killed = result.died;
+    // tier3：被自己猎杀/重创的修士对其他同门造成仇恨种子（外部可监听并设置 grudge）
 
     // NPC 反击妖兽（只要 NPC 未死）：扣妖兽 hp，妖兽可能被反杀（ADR-041：保留双向伤害交换）。
     if (npc.alive) {
@@ -631,7 +619,7 @@ export class MonsterEntity extends BaseEntity {
       const monHp = (this.state.get('hp') || 0) - counterDmg;
       this.state.set('hp', monHp);
       // tier3：被修士反击，记住仇人
-      if (this._btTier >= 3 && !this.state.get('grudgeTargetId')) {
+      if (this._btTierLevel >= 3 && !this.state.get('grudgeTargetId')) {
         this.state.set('grudgeTargetId', npc.id);
         // 关系网（ADR-027）：在统一关系网建『妖兽仇敌』边（mon→npc）。
         if (worldContext && typeof worldContext.recordMonsterGrudge === 'function') {
@@ -693,6 +681,8 @@ export class MonsterEntity extends BaseEntity {
       name: this.name,
       grade: this.grade,
       btTier: this._btTier,
+      btTierLevel: this._btTierLevel,
+      behaviorTreeId: this._behaviorTreeId,
       defId: this.staticData.get('defId'),
       behaviorState: this.state.get('behaviorState'),
       ageYears: this.state.get('ageYears'),

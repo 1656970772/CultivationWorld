@@ -20,6 +20,7 @@
  *   无需改动 TickManager 或其他实体代码。
  */
 import { applyDamage } from '../../combat/combat-pipeline.js';
+import { FactionStrategyRegistry } from './faction-strategy-registry.js';
 
 export class FactionAIService {
   /**
@@ -32,6 +33,11 @@ export class FactionAIService {
     const combatCfg = combatConfig || {};
     // 缓存完整战斗配置，供攻战致死走统一伤害管线 applyDamage（ADR-042：锁血/遁地不区分攻击者）。
     this._combatConfig = combatCfg;
+    const transactionScenarios = host?.economicTransactionConfig || host?.economicSystem?.config || {};
+    this.strategyRegistry = new FactionStrategyRegistry({
+      ...combatCfg,
+      transactionScenarios,
+    });
 
     // 外交阈值
     this.hostileThreshold = combatCfg.diplomacy?.hostileThreshold ?? -50;
@@ -51,11 +57,7 @@ export class FactionAIService {
     this.allyRelGain = combatCfg.alliance?.relationGain ?? 20;
 
     // 贸易
-    this.tradeStoneRatio = combatCfg.trade?.stoneRatio ?? 0.1;
-    this.tradeMaxAmount = combatCfg.trade?.maxTradeAmount ?? 200;
-    this.tradeFoodRate = combatCfg.trade?.foodExchangeRate ?? 2;
     this.tradeRelGain = combatCfg.trade?.relationGain ?? 3;
-    this.tradeMinRel = combatCfg.trade?.minRelation ?? 20;
 
     // 攻击
     this.attackerMult = combatCfg.attack?.attackerPowerMultiplier ?? 1.2;
@@ -95,19 +97,14 @@ export class FactionAIService {
    * tuning-v5: 取性格 trait（0-100），缺省 50。inv=true 时取 100-trait。
    */
   _trait(npc, name, inv = false) {
-    const p = npc.staticData?.personality || npc.staticData?.get?.('personality') || {};
-    const v = typeof p[name] === 'number' ? p[name] : 50;
-    return inv ? (100 - v) : v;
+    return this.strategyRegistry.trait(npc, name, inv);
   }
 
   /**
    * tuning-v5: 把 trait 按 [lo,hi] 线性映射为权重倍率：lo + (trait/100)*(hi-lo)。
    */
   _traitFactor(npc, name, range, inv = false) {
-    if (!Array.isArray(range)) return 1;
-    const t = this._trait(npc, name, inv);
-    const [lo, hi] = range;
-    return lo + (t / 100) * (hi - lo);
+    return this.strategyRegistry.traitFactor(npc, name, range, inv);
   }
 
   /**
@@ -115,40 +112,7 @@ export class FactionAIService {
    * @returns {'fight'|'evade'|'defect'|'leave'|'coerced'|'flee'}
    */
   _chooseCrisisReaction(npc, ctx) {
-    const reactions = this.cohesionCfg.reactions || {};
-    const isCore = ctx.isCore;
-    const hasStrongerEnemy = ctx.hasStrongerEnemy;
-    const weights = {};
-
-    for (const [key, cfg] of Object.entries(reactions)) {
-      if (cfg.requireStrongerEnemy && !hasStrongerEnemy) { weights[key] = 0; continue; }
-      let w = cfg.base ?? 1;
-      if (cfg.loyalty) w *= this._traitFactor(npc, 'loyalty', cfg.loyalty);
-      if (cfg.loyaltyInv) w *= this._traitFactor(npc, 'loyalty', cfg.loyaltyInv, true);
-      if (cfg.courage) w *= this._traitFactor(npc, 'courage', cfg.courage);
-      if (cfg.courageInv) w *= this._traitFactor(npc, 'courage', cfg.courageInv, true);
-      if (cfg.caution) w *= this._traitFactor(npc, 'caution', cfg.caution);
-      if (cfg.ambition) w *= this._traitFactor(npc, 'ambition', cfg.ambition);
-      if (cfg.ambitionInv) w *= this._traitFactor(npc, 'ambition', cfg.ambitionInv, true);
-      // cautionExtreme：极高谨慎才显著（用 caution^2 放大尾部）
-      if (cfg.cautionExtreme) {
-        const c = this._trait(npc, 'caution') / 100;
-        const [lo, hi] = cfg.cautionExtreme;
-        w *= lo + (c * c) * (hi - lo);
-      }
-      // 核心成员（领袖/继承人/核心同门）死战权重放大，保护顶梁柱
-      if (key === 'fight' && isCore && cfg.coreMult) w *= cfg.coreMult;
-      weights[key] = Math.max(0, w);
-    }
-
-    const total = Object.values(weights).reduce((a, b) => a + b, 0);
-    if (total <= 0) return 'fight';
-    let r = this.host.rng.next() * total;
-    for (const [key, w] of Object.entries(weights)) {
-      r -= w;
-      if (r <= 0) return key;
-    }
-    return 'fight';
+    return this.strategyRegistry.chooseCrisisReaction(npc, ctx, this.host.rng);
   }
 
   /**
@@ -188,21 +152,17 @@ export class FactionAIService {
 
     // 危机态触发（tuning-v5 修订）：稳定度普遍因自然恢复维持虚高，绝对阈值进不去（同 ADR-034 病根）。
     // 改用攻战当下可靠的相对信号：战力悬殊（powerRatio≥crisisPowerRatio）或防守方真实活 NPC 已很少。
-    const crisisStab = cfg.crisisStabilityThreshold ?? 35;
-    const crisisPowerRatio = cfg.crisisPowerRatio ?? 1.5;
-    const crisisAliveNpc = cfg.crisisAliveNpcThreshold ?? 6;
-    const inCrisis = defenderStability <= crisisStab
-      || powerRatio >= crisisPowerRatio
-      || members.length <= crisisAliveNpc;
+    const inCrisis = this.strategyRegistry.isCrisis({
+      defenderStability,
+      powerRatio,
+      aliveCount: members.length,
+    });
     if (!inCrisis) return;
 
     // —— 群体投降归顺判定（整门并入攻方）——
     const sur = cfg.surrender || {};
     if (sur.enabled) {
-      const leaderDead = sur.leaderDeadTriggers && !leaderAlive;
-      const stabCollapse = defenderStability <= (sur.stabilityThreshold ?? 12);
-      const overwhelmed = powerRatio >= (sur.powerRatio ?? 3.0);
-      if (leaderDead || stabCollapse || overwhelmed) {
+      if (this.strategyRegistry.shouldSurrender({ leaderAlive, defenderStability, powerRatio })) {
         for (const npc of members) {
           this._switchFaction(npc, factionId);
           if (typeof npc.recordMemory === 'function') {
@@ -294,16 +254,11 @@ export class FactionAIService {
       const enemy = this.entityRegistry.getById(fId);
       if (!enemy || !enemy.alive) continue;
 
-      let hostile = false;
-      if (rel <= this.hostileThreshold) {
-        hostile = true;
-      } else if (rel <= this.alignmentHostileThreshold && selfType && enemy.factionType) {
-        const enemyType = enemy.factionType;
-        hostile =
-          (selfType === 'righteous' && (enemyType === 'evil' || enemyType === 'demon')) ||
-          ((selfType === 'evil' || selfType === 'demon') && enemyType === 'righteous');
-      }
-      if (!hostile) continue;
+      if (!this.strategyRegistry.isHostileFaction({
+        relation: rel,
+        selfType,
+        targetType: enemy.factionType || '',
+      })) continue;
 
       if (this.host._factionsGeographicallyClose(selfFactionId, fId)) return true;
     }
@@ -313,7 +268,7 @@ export class FactionAIService {
   calculateBorderThreat(territory, relations) {
     let threat = 0;
     for (const [fId, rel] of Object.entries(relations || {})) {
-      if (rel <= this.hostileThreshold) {
+      if (this.strategyRegistry.isHostileRelation(rel)) {
         const enemy = this.entityRegistry.getById(fId);
         if (enemy && enemy.alive) threat++;
       }
@@ -323,12 +278,10 @@ export class FactionAIService {
 
   checkWeakEnemy(relations) {
     for (const [fId, rel] of Object.entries(relations || {})) {
-      if (rel <= this.hostileThreshold) {
+      if (this.strategyRegistry.isHostileRelation(rel)) {
         const enemy = this.entityRegistry.getById(fId);
         if (enemy && enemy.alive) {
-          const stability = enemy.state?.get('stability') || 50;
-          const disciples = enemy.inventory?.getAmount('disciples') || 0;
-          if (stability < this.weakEnemyStability || disciples < this.weakEnemyDisciples) return true;
+          if (this.strategyRegistry.isWeakEnemy(enemy)) return true;
         }
       }
     }
@@ -357,12 +310,12 @@ export class FactionAIService {
       .filter(f => f.alive && (!factionId || f.id !== factionId));
     if (allFactions.length === 0) return 1;
 
-    const myPower = disciples * this.disciplesWeight + territoryCount * this.territoryWeight + stability * this.stabilityWeight;
+    const myPower = this.strategyRegistry.militaryPower({ disciples, territoryCount, stability });
     const avgPower = allFactions.reduce((sum, f) => {
       const d = f.state.get('disciples') || 0;
       const t = f.state.get('territoryCount') || 0;
       const s = f.state.get('stability') || 0;
-      return sum + d * this.disciplesWeight + t * this.territoryWeight + s * this.stabilityWeight;
+      return sum + this.strategyRegistry.militaryPower({ disciples: d, territoryCount: t, stability: s });
     }, 0) / allFactions.length;
 
     return avgPower > 0 ? (myPower - avgPower) / avgPower : 0;
@@ -449,17 +402,12 @@ export class FactionAIService {
     const faction = this.entityRegistry.getById(factionId);
     if (!faction) return { success: false };
     const relations = faction.state.get('relations') || {};
-    let targetId = null;
-    let worstRelation = 0;
-    for (const [fId, rel] of Object.entries(relations)) {
-      if (rel < worstRelation) {
-        const enemy = this.entityRegistry.getById(fId);
-        if (enemy && enemy.alive && host._factionsGeographicallyClose(factionId, fId)) {
-          worstRelation = rel;
-          targetId = fId;
-        }
-      }
-    }
+    const targetId = this.strategyRegistry.selectAttackTarget({
+      relations,
+      selfType: faction.factionType || '',
+      getFaction: (id) => this.entityRegistry.getById(id),
+      isClose: (id) => host._factionsGeographicallyClose(factionId, id),
+    });
     if (!targetId) return { success: false, description: '无可达的敌对势力可攻击' };
 
     if (host._attackedThisTick && host._attackedThisTick.has(targetId)) {
@@ -643,17 +591,10 @@ export class FactionAIService {
     const faction = this.entityRegistry.getById(factionId);
     if (!faction) return { success: false };
     const relations = faction.state.get('relations') || {};
-    let bestId = null;
-    let bestRelation = this.allyMinRel;
-    for (const [fId, rel] of Object.entries(relations)) {
-      if (rel > bestRelation && rel < this.allyMaxRel) {
-        const candidate = this.entityRegistry.getById(fId);
-        if (candidate && candidate.alive) {
-          bestRelation = rel;
-          bestId = fId;
-        }
-      }
-    }
+    const bestId = this.strategyRegistry.selectAllianceCandidate(
+      relations,
+      (id) => this.entityRegistry.getById(id),
+    );
     if (!bestId) return { success: false, description: '无合适的结盟对象' };
 
     const ally = this.entityRegistry.getById(bestId);
@@ -686,42 +627,54 @@ export class FactionAIService {
       .filter(f => f.alive && f.id !== factionId);
     const relations = faction.state.get('relations') || {};
 
-    let bestPartner = null;
-    let bestRelation = this.tradeMinRel;
-    for (const f of allFactions) {
-      const rel = relations[f.id] || 0;
-      if (rel > bestRelation) {
-        bestRelation = rel;
-        bestPartner = f;
-      }
-    }
+    const bestPartner = this.strategyRegistry.selectTradePartner({
+      selfId: factionId,
+      factions: allFactions,
+      relations,
+    });
 
     if (!bestPartner) {
       return { success: false, description: '无合适贸易伙伴' };
     }
 
-    const myStone = faction.state.get('low_spirit_stone') || 0;
-    const tradeAmount = Math.min(Math.floor(myStone * this.tradeStoneRatio), this.tradeMaxAmount);
-    if (tradeAmount <= 0) return { success: false, description: '灵石不足以贸易' };
+    const tradeResources = this.strategyRegistry.tradeResources();
+    if (!tradeResources) {
+      return { success: false, description: '缺少势力贸易资源配置', reason: 'missing_trade_resource_config' };
+    }
 
-    const requestedFood = tradeAmount * this.tradeFoodRate;
-    const partnerFood = bestPartner.state.get('food') || 0;
-    const receivedFood = Math.min(requestedFood, partnerFood);
-    if (receivedFood <= 0) return { success: false, description: '贸易伙伴粮食不足' };
+    const myPayResource = faction.state.get(tradeResources.payResourceId) || 0;
+    const plan = this.strategyRegistry.tradePlan({
+      payerResource: myPayResource,
+      partnerResource: bestPartner.state.get(tradeResources.receiveResourceId) || 0,
+    });
+    const tradeAmount = plan.payAmount;
+    if (tradeAmount <= 0) return { success: false, description: '付款资源不足以贸易' };
+
+    const partnerReceiveResource = bestPartner.state.get(tradeResources.receiveResourceId) || 0;
+    const receiveAmount = plan.receiveAmount;
+    if (receiveAmount <= 0) return { success: false, description: '贸易伙伴资源不足' };
 
     let transactionId = null;
     if (this.host.economicSystem) {
       const transaction = this.host.economicSystem.settle({
         type: 'faction_trade',
-        scenarioId: 'formal_market',
+        scenarioId: tradeResources.scenarioId,
         day: this.worldEntity.currentDay ?? 0,
         parties: [
           { role: 'buyer', entity: faction },
           { role: 'seller', entity: bestPartner },
         ],
         transfers: [
-          { from: 'buyer', to: 'seller', asset: { kind: 'faction_state_resource', itemId: 'low_spirit_stone', quantity: tradeAmount } },
-          { from: 'seller', to: 'buyer', asset: { kind: 'faction_state_resource', itemId: 'food', quantity: receivedFood } },
+          {
+            from: 'buyer',
+            to: 'seller',
+            asset: { kind: tradeResources.payResourceKind, itemId: tradeResources.payResourceId, quantity: tradeAmount },
+          },
+          {
+            from: 'seller',
+            to: 'buyer',
+            asset: { kind: tradeResources.receiveResourceKind, itemId: tradeResources.receiveResourceId, quantity: receiveAmount },
+          },
         ],
         source: { type: 'faction_trade', factionId, partnerId: bestPartner.id },
         visibility: 'institution',
@@ -731,10 +684,10 @@ export class FactionAIService {
       }
       transactionId = transaction.transactionId || null;
     } else {
-      faction.state.set('low_spirit_stone', Math.max(0, myStone - tradeAmount));
-      faction.state.set('food', (faction.state.get('food') || 0) + receivedFood);
-      bestPartner.state.set('low_spirit_stone', (bestPartner.state.get('low_spirit_stone') || 0) + tradeAmount);
-      bestPartner.state.set('food', Math.max(0, partnerFood - receivedFood));
+      faction.state.set(tradeResources.payResourceId, Math.max(0, myPayResource - tradeAmount));
+      faction.state.set(tradeResources.receiveResourceId, (faction.state.get(tradeResources.receiveResourceId) || 0) + receiveAmount);
+      bestPartner.state.set(tradeResources.payResourceId, (bestPartner.state.get(tradeResources.payResourceId) || 0) + tradeAmount);
+      bestPartner.state.set(tradeResources.receiveResourceId, Math.max(0, partnerReceiveResource - receiveAmount));
     }
 
     const fRel = { ...relations };
@@ -750,7 +703,9 @@ export class FactionAIService {
       partnerId: bestPartner.id,
       partnerName: bestPartner.name,
       tradeAmount,
-      foodAmount: receivedFood,
+      receiveAmount,
+      payResourceId: tradeResources.payResourceId,
+      receiveResourceId: tradeResources.receiveResourceId,
       transactionId,
       description: `与 ${bestPartner.name} 完成贸易`,
     };

@@ -12,7 +12,7 @@
  *   3. hp<=0（致死）：
  *      a. 碾压判定（orderGap≥crushOrderGap 或 dmg≥maxHp×crushHpMultiple）→ 授予 Immune.Crush
  *      b. 授予 Trigger.LethalDamage → AbilityComponent 尝试激活被动能力：
- *         - ga_lock_hp（未被 Immune.Crush 阻挡）→ ge_lock_hp → hp 锁到 lockRatio×maxHp + State.Dying
+ *         - ga_lock_hp（未被 Immune.Crush 阻挡）→ ge_lock_hp(spec.lockRatio) → hp 锁到 lockRatio×maxHp + State.Dying
  *         - ga_escape_talisman（持 State.Dying 且有符）→ escape_teleport 瞬移逃脱
  *      c. 锁血生效 → 不死；否则真实死亡，写 _deathInfo
  *   4. 清除瞬时 Tag（Trigger.LethalDamage / Immune.Crush）
@@ -128,30 +128,34 @@ export function applyDamage(target, damageSpec, worldContext) {
     // 碾压：本次致死无法被锁血。
     if (isCrush) comp.tags.add('Immune.Crush');
 
-    // 触发被动锁血能力。
+    // 触发被动锁血能力；HP 覆写只能由 ga_lock_hp → ge_lock_hp → EffectEngine 完成。
     comp.tags.add('Trigger.LethalDamage');
-    const lockResults = comp.tryActivateByTag('Trigger.LethalDamage', worldContext, {
-      source: spec.killer || null,
-      cause: spec.cause,
-    });
-    locked = lockResults.some(r => r.activated);
-
-    if (locked) {
-      // 锁血 Effect 的 magnitude 默认 0.05；以 combat.json lockRatio 为单一真相源覆盖最终 hp。
-      const lockRatio = getLockRatio(worldContext);
-      state.set('hp', maxHp * lockRatio);
-      state.set('injuryLevel', (state.get('injuryLevel') || 0) + 1);
-
-      // 锁血成功 → 持 State.Dying → 尝试遁地瞬移逃脱。
-      const escResults = comp.tryActivateByTag('State.Dying', worldContext, {
-        killer: spec.killer || null,
+    try {
+      const lockResults = comp.tryActivateByTag('Trigger.LethalDamage', worldContext, {
+        source: spec.killer || null,
+        cause: spec.cause,
+        effectSpecs: {
+          ge_lock_hp: { magnitude: getLockRatio(worldContext) },
+        },
       });
-      escaped = escResults.some(r => r.activated);
-    }
+      locked = lockResults.some(r =>
+        r.activated && r.result?.effects?.some(e => e.effectId === 'ge_lock_hp' && e.applied),
+      ) && (state.get('hp') ?? 0) > 0;
 
-    // 清除瞬时 Tag。
-    comp.tags.remove('Trigger.LethalDamage');
-    if (isCrush) comp.tags.remove('Immune.Crush');
+      if (locked) {
+        state.set('injuryLevel', (state.get('injuryLevel') || 0) + 1);
+
+        // 锁血成功 → 持 State.Dying → 尝试遁地瞬移逃脱。
+        const escResults = comp.tryActivateByTag('State.Dying', worldContext, {
+          killer: spec.killer || null,
+        });
+        escaped = escResults.some(r => r.activated);
+      }
+    } finally {
+      // 清除瞬时 Tag。
+      comp.tags.remove('Trigger.LethalDamage');
+      if (isCrush) comp.tags.remove('Immune.Crush');
+    }
   }
 
   if (locked) {

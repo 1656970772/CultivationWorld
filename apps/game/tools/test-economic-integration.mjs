@@ -41,6 +41,7 @@ function world(faction, economicSystem) {
     currentDay: 20,
     balanceConfig: { economy: economyConfig },
     economicSystem,
+    economicTransactionConfig,
     settleTransaction(input) { return economicSystem.settle(input); },
     economicSignalsFor(input) { return economicSystem.signalsFor(input); },
     entityRegistry: { getById(id) { return id === faction.id ? faction : null; } },
@@ -202,6 +203,7 @@ console.log('6) faction trade action uses economic ledger instead of runtime eff
   const result = new FactionTradeExecutor().run(buyer, {
     currentDay: 60,
     entityRegistry: registry,
+    economicTransactionConfig,
     settleTransaction(input) {
       return economicSystem.settle({ day: 60, ...input });
     },

@@ -27,9 +27,12 @@ import { GridGraph } from './world/grid-graph.js';
 import { JpsPlusData } from './world/jps-plus.js';
 import { HierarchicalGraph } from './world/hierarchical-graph.js';
 import { MonsterSpawner } from './monster/monster-spawner.js';
+import { BehaviorTreeRegistry } from './abstract/bt/bt-registry.js';
+import { ResourceRegistry } from './economy/resource-registry.js';
 import { TerritoryLayoutGenerator } from './world/territory-layout-generator.js';
 import { RelationshipSystem } from './world/relationship-system.js';
 import { initRelationships, initMonsterRelationships } from './world/relationship-init.js';
+import { validateGameData } from '../core/game-data-validator.js';
 
 import { registerFactionEvaluators } from './faction/faction-needs.js';
 import { registerFactionExecutors } from './faction/faction-actions.js';
@@ -56,6 +59,8 @@ export class WorldEngine {
    * @param {Object} configs 所有配置数据（含 balance/config/names/modifiers 等）
    */
   init(configs) {
+    validateGameData(configs, { strict: true });
+
     // 确定性种子：优先取 configs.seed；缺省则生成一个并记录，便于重放复现。
     this.seed = (configs.seed != null) ? (configs.seed >>> 0) : Rng.makeSeed();
     this.rng = new Rng(this.seed);
@@ -75,6 +80,7 @@ export class WorldEngine {
       utility: configs.balanceUtility || {},
       reward: configs.balanceReward || {},
       relationship: configs.balanceRelationship || {},
+      monsterResourceRules: configs.monsterResourceRules || {},
       // 反应层配置（四层 AI 架构 Reaction 层，ADR-048）。默认 enabled=false，不改变现有行为。
       reaction: configs.balanceReaction || {},
     };
@@ -98,7 +104,19 @@ export class WorldEngine {
     this._covetConfig = configs.balanceCovet || {};
     this._itemDefs = configs.itemDefs || {};
     this._economicTransactionConfig = configs.economicTransactionConfig || {};
-    this.economicSystem = new EconomicSystem({ config: this._economicTransactionConfig });
+    this.resourceRegistry = ResourceRegistry.fromDefinitions({
+      macroResources: configs.items || [],
+      itemDefs: this._itemDefs,
+      organizationPointKeys: this._economicTransactionConfig?.assets?.organizationPointKeys || [],
+    });
+    this.economicSystem = new EconomicSystem({
+      config: {
+        ...this._economicTransactionConfig,
+        resourceRegistry: this.resourceRegistry,
+      },
+    });
+    this.behaviorTreeRegistry = new BehaviorTreeRegistry();
+    if (configs.behaviorTrees) this.behaviorTreeRegistry.loadFromConfig(configs.behaviorTrees);
 
     // 关系网系统（ADR-027，世界级单一真相源）。在创建 NPC 前建立，
     // 经 _entityConfig 注入各 NPC，使其 RelationshipGraph 成为本系统的兼容查询视图。
@@ -132,6 +150,7 @@ export class WorldEngine {
         { reward: this._balanceConfig.reward },
       ),
       relationshipConfig: this._balanceConfig.relationship,
+      monsterResourceRules: this._balanceConfig.monsterResourceRules,
       // 反应层配置（ADR-048）：NPCEntity 据此设置刺激队列 ttl/容量等。
       reactionConfig: this._balanceConfig.reaction,
       dynamicGoalConfig: this._dynamicGoalsConfig,
@@ -319,6 +338,7 @@ export class WorldEngine {
     for (const factionConfig of factions) {
       const faction = new FactionEntity(factionConfig, {
         aiConfig: this._aiConfig.faction || {},
+        resourceRegistry: this.resourceRegistry,
       });
       this.entityRegistry.register(faction);
     }
@@ -476,6 +496,8 @@ export class WorldEngine {
       mapWidth: this._mapWidth,
       mapHeight: this._mapHeight,
       monsterAttributeTemplates: this._monsterAttributeTemplates,
+      aiConfig: this._aiConfig.monster || {},
+      behaviorTreeRegistry: this.behaviorTreeRegistry,
       // 群居成簇生成（ADR-028）：仅 goalsEnabled 时启用，否则保持一期散点分布。
       monsterPackConfig: this._relationshipGoalsEnabled()
         ? (this._balanceConfig.relationship?.monsterPack || {})

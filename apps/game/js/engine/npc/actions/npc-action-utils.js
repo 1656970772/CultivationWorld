@@ -97,23 +97,68 @@ export function weightedPickFrom(list, rng) {
   return list[list.length - 1];
 }
 
-function gradedResourceValue(baseItemId, grade) {
-  const safeGrade = Math.max(1, Math.min(9, Math.floor(Number(grade) || 1)));
-  const itemId = `${baseItemId}_g${safeGrade}`;
-  const def = ItemRegistry.get(itemId) || ItemRegistry.get(baseItemId);
+function clampConfiguredMonsterGrade(grade, config = {}) {
+  const maxGrade = Math.max(1, Math.floor(Number(config.maxGrade ?? 9) || 9));
+  return Math.max(1, Math.min(maxGrade, Math.floor(Number(grade) || 1)));
+}
+
+function getMonsterResourceConfig(worldContext) {
+  return worldContext?.monsterResourceRules
+    || worldContext?.balanceConfig?.monsterResourceRules
+    || worldContext?.balanceConfig?.economy?.monsterResources
+    || {};
+}
+
+function configuredMonsterFamilies(worldContext) {
+  const cfg = getMonsterResourceConfig(worldContext);
+  return Array.isArray(cfg.itemFamilies) ? cfg.itemFamilies : [];
+}
+
+function applyMonsterGradeTemplate(template, grade) {
+  if (!template || typeof template !== 'string') return null;
+  return template.replaceAll('{grade}', String(grade));
+}
+
+function templateToGradeRegex(template) {
+  if (!template || typeof template !== 'string' || !template.includes('{grade}')) return null;
+  const escaped = template
+    .replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    .replace('\\{grade\\}', '(\\d+)');
+  return new RegExp(`^${escaped}$`);
+}
+
+function monsterFamilyItemId(family, grade, config = {}) {
+  const safeGrade = clampConfiguredMonsterGrade(grade, config);
+  const itemId = applyMonsterGradeTemplate(family?.itemIdTemplate, safeGrade);
+  if (itemId && ItemRegistry.has(itemId)) return itemId;
+  const fallbackId = family?.fallbackItemId || family?.id;
+  return fallbackId && ItemRegistry.has(fallbackId) ? fallbackId : itemId;
+}
+
+function gradedResourceValue(family, grade, config = {}) {
+  const safeGrade = clampConfiguredMonsterGrade(grade, config);
+  const itemId = monsterFamilyItemId(family, safeGrade, config);
+  const def = itemId ? ItemRegistry.get(itemId) : null;
   return Number(def?.properties?.value ?? def?.value ?? 0);
 }
 
-function expectedHuntMaterialValue(difficulty) {
-  const grade = Math.max(1, Math.min(9, Math.floor(Number(difficulty) || 1)));
-  return gradedResourceValue('monster_core', grade) + gradedResourceValue('beast_material', grade);
+function expectedHuntMaterialValue(difficulty, worldContext) {
+  const cfg = getMonsterResourceConfig(worldContext);
+  const grade = clampConfiguredMonsterGrade(difficulty, cfg);
+  return configuredMonsterFamilies(worldContext)
+    .reduce((sum, family) => sum + gradedResourceValue(family, grade, cfg), 0);
 }
 
-function monsterResourceGrade(itemId) {
-  const match = /_g(\d+)$/.exec(itemId || '');
-  if (match) return Math.max(1, Math.min(9, Number(match[1]) || 1));
-  if (itemId === 'beast_material') return 2;
-  if (itemId === 'monster_core') return 3;
+function monsterResourceGrade(itemId, worldContext) {
+  const cfg = getMonsterResourceConfig(worldContext);
+  for (const family of configuredMonsterFamilies(worldContext)) {
+    const regex = templateToGradeRegex(family.itemIdTemplate);
+    const match = regex?.exec(itemId || '');
+    if (match) return clampConfiguredMonsterGrade(Number(match[1]) || 1, cfg);
+    if (family.id && itemId === family.id && Number.isFinite(family.defaultGrade)) {
+      return clampConfiguredMonsterGrade(family.defaultGrade, cfg);
+    }
+  }
   return null;
 }
 
@@ -123,7 +168,7 @@ function preferredHuntGrade(entity, worldContext) {
     ...missingFactionExchangeItems(entity, worldContext, 'artifact_low'),
   ];
   const grades = missing
-    .map(m => monsterResourceGrade(m.itemId))
+    .map(m => monsterResourceGrade(m.itemId, worldContext))
     .filter(g => Number.isFinite(g));
   return grades.length > 0 ? Math.max(...grades) : null;
 }
@@ -154,7 +199,7 @@ export function pickQuestCandidate(entity, worldContext, available, opts = {}) {
       const gradeFit = preferredGrade
         ? 1 / (1 + Math.abs(candidate.difficulty - preferredGrade))
         : 0.5;
-      weight += 2 + expectedHuntMaterialValue(candidate.difficulty) / 500 + gradeFit * 10;
+      weight += 2 + expectedHuntMaterialValue(candidate.difficulty, worldContext) / 500 + gradeFit * 10;
       if (needsHuntMaterials || opts.forceMonsterHunt) weight += 8;
     } else {
       if (needsHuntMaterials) weight *= 0.25;
@@ -442,21 +487,26 @@ export function killNPCByPvP(victim, killer, worldContext) {
  * 与旧的"仅加 qi"不同：若 outcome 带 itemId，则发放实物（artifact/material/pill），
  * 否则回退为真气收益。返回 { outcome, qiGain, grantedItems }。
  */
-export function rollAndGrantReward(entity, rewardCfg, sourceKey, rng) {
+export function rollAndGrantReward(entity, rewardCfg, sourceKey, rng, worldContext = {}) {
   const outcomes = rewardCfg?.rewardsBySource?.[sourceKey]?.outcomes;
   const result = { outcome: null, qiGain: 0, grantedItems: [] };
   if (!Array.isArray(outcomes) || outcomes.length === 0) {
     const match = /^opportunity_corpse_g(\d+)$/.exec(sourceKey || '');
     if (!match) return result;
-    const grade = Math.max(1, Math.min(9, Number(match[1]) || 1));
-    const materialId = ItemRegistry.has(`beast_material_g${grade}`) ? `beast_material_g${grade}` : 'beast_material_g1';
-    const coreId = ItemRegistry.has(`monster_core_g${grade}`) ? `monster_core_g${grade}` : 'monster_core_g1';
-    const materialQty = Math.max(1, Math.floor(grade / 3));
-    grantItemAndMaybeEquip(entity, materialId, materialQty);
-    result.grantedItems.push({ itemId: materialId, qty: materialQty });
-    if (rng.next() < Math.min(0.85, 0.25 + grade * 0.06)) {
-      grantItemAndMaybeEquip(entity, coreId, 1);
-      result.grantedItems.push({ itemId: coreId, qty: 1 });
+    const cfg = getMonsterResourceConfig(worldContext);
+    const grade = clampConfiguredMonsterGrade(Number(match[1]) || 1, cfg);
+    const families = configuredMonsterFamilies(worldContext);
+    for (const family of families) {
+      const itemId = monsterFamilyItemId(family, grade, cfg);
+      if (!itemId) continue;
+      const reward = family.corpseReward || {};
+      const chance = Math.max(0, Math.min(1, Number(reward.chance ?? 1)));
+      if (chance < 1 && rng.next() >= chance) continue;
+      const qtyBase = Number(reward.qty ?? 1);
+      const qtyPerGrade = Number(reward.qtyPerGrade ?? 0);
+      const qty = Math.max(1, Math.floor(qtyBase + grade * qtyPerGrade));
+      grantItemAndMaybeEquip(entity, itemId, qty);
+      result.grantedItems.push({ itemId, qty });
     }
     result.outcome = { id: `corpse_grade_${grade}`, value: Math.min(1, grade / 9) };
     return result;

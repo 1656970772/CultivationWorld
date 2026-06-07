@@ -16,45 +16,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const GAME_ROOT = resolve(__dirname, '..');
 const load = (p) => JSON.parse(readFileSync(resolve(GAME_ROOT, p), 'utf-8'));
 
-function baseConfigs() {
-  return {
-    factions: load('data/entities/factions.json'),
-    npcs: load('data/entities/npcs.json'),
-    ranks: load('data/definitions/ranks.json'),
-    factionNeeds: load('data/needs/faction-needs.json'),
-    npcNeeds: load('data/needs/npc-needs.json'),
-    factionActions: load('data/actions/faction-actions.json'),
-    npcActions: load('data/actions/npc-actions.json'),
-    worldRules: load('data/actions/world-rules.json'),
-    questTemplates: load('data/quests/quest-templates.json'),
-    mapData: load('data/world/map.json'),
-    balanceCombat: load('data/balance/combat.json'),
-    balanceEconomy: load('data/balance/economy.json'),
-    balanceCultivation: load('data/balance/cultivation.json'),
-    balanceSocial: load('data/balance/social.json'),
-    balanceMovement: load('data/balance/movement.json'),
-    balancePersonality: load('data/balance/personality.json'),
-    balanceRisk: load('data/balance/risk.json'),
-    balanceMemory: load('data/balance/memory.json'),
-    balanceObsession: load('data/balance/obsession.json'),
-    balanceEmotion: load('data/balance/emotion.json'),
-    balanceUtility: load('data/balance/utility.json'),
-    balanceReward: load('data/balance/reward.json'),
-    balanceRelationship: load('data/balance/relationship.json'),
-    monsters: load('data/definitions/monsters.json'),
-    monsterAttributeTemplates: load('data/definitions/monster-attribute-templates.json'),
-    monsterSpawn: load('data/balance/monster-spawn.json'),
-    worldNews: load('data/world/news.json'),
-    worldOpportunities: load('data/world/opportunities.json'),
-    balanceCovet: load('data/balance/covet.json'),
-    itemDefs: { items: ['currency','material','pill','artifact','talisman','technique'].flatMap(c => load(`data/items/${c}.json`).items) },
-    tags: load('data/tags/tags.json'),
-    effects: { effects: [...(load('data/effects/combat-effects.json')?.effects || []), ...(load('data/effects/core-effects.json')?.effects || [])] },
-    abilities: load('data/abilities/combat-abilities.json'),
-    seed: 12345,
-  };
-}
-
+const { loadGameConfigsFromManifest } = await import(
+  pathToFileURL(resolve(GAME_ROOT, 'js/core/data-manifest-loader.js')).href
+);
 const { WorldEngine } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/world-engine.js')).href);
 const { applyItemEffects } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/npc/npc-economy.js')).href);
 
@@ -63,7 +27,10 @@ const assert = (cond, msg) => { if (!cond) { console.error('  FAIL:', msg); fail
 const approx = (a, b, eps = 1e-6) => Math.abs(a - b) <= eps;
 
 const engine = new WorldEngine();
-engine.init(baseConfigs());
+engine.init({
+  ...(await loadGameConfigsFromManifest(load('data/config/data-manifest.json'), { loadJson: load })),
+  seed: 12345,
+});
 
 // 取一个真实凡人 NPC 作为试验对象（凡人 → rankDecay step=0，聚气丹 qi 增量应=120）。
 const npc = engine.entityRegistry.getAliveByType('npc').find(n => (n.state.get('rankId') || 'mortal') === 'mortal');

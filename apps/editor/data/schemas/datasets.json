@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "datasets": [
+    {
+      "key": "entities/factions",
+      "path": "apps/game/data/entities/factions.json",
+      "label": "势力",
+      "icon": "宗",
+      "itemName": "势力",
+      "keyField": "id",
+      "collection": "array",
+      "category": "entities",
+      "aliases": ["factions"],
+      "template": "data/templates/records/factions.json",
+      "description": "宗门、妖族和凡人王朝的基础配置，决定初始资源、关系、掌门和行为倾向。"
+    },
+    {
+      "key": "entities/npcs",
+      "path": "apps/game/data/entities/npcs.json",
+      "label": "NPC",
+      "icon": "人",
+      "itemName": "NPC",
+      "keyField": "id",
+      "collection": "array",
+      "category": "entities",
+      "aliases": ["npcs"],
+      "template": "data/templates/records/npcs.json",
+      "description": "势力掌门和关键人物。NPC 性格直接影响所属势力每天的行为决策。"
+    },
+    {
+      "key": "definitions/terrains",
+      "path": "apps/game/data/definitions/terrains.json",
+      "label": "地形",
+      "icon": "地",
+      "itemName": "地形",
+      "keyField": "type",
+      "collection": "array",
+      "category": "definitions",
+      "aliases": ["terrains"],
+      "description": "地图格子的地形定义，控制颜色、通行、移动消耗和资源倍率。"
+    },
+    {
+      "key": "definitions/ranks",
+      "path": "apps/game/data/definitions/ranks.json",
+      "label": "境界",
+      "icon": "阶",
+      "itemName": "境界",
+      "keyField": "id",
+      "collection": "array",
+      "category": "definitions",
+      "description": "修炼境界定义，供 NPC、突破和战斗系统引用。"
+    },
+    {
+      "key": "definitions/techniques",
+      "path": "apps/game/data/definitions/techniques.json",
+      "label": "功法",
+      "icon": "法",
+      "itemName": "功法",
+      "keyField": "id",
+      "collection": "array",
+      "category": "definitions",
+      "description": "功法定义，供 NPC 初始功法和修炼系统引用。"
+    },
+    {
+      "key": "world/modifiers",
+      "path": "apps/game/data/world/modifiers.json",
+      "label": "世界状态",
+      "icon": "象",
+      "itemName": "状态",
+      "keyField": "id",
+      "collection": "array",
+      "category": "world",
+      "aliases": ["modifiers"],
+      "description": "全局时代状态，例如魔气上涨、大旱、秘境开启，影响世界 Tick 的行为权重。"
+    },
+    {
+      "key": "world/map",
+      "path": "apps/game/data/world/map.json",
+      "label": "地图",
+      "icon": "图",
+      "itemName": "地图",
+      "keyField": null,
+      "collection": "object",
+      "category": "world",
+      "aliases": ["map"],
+      "isLarge": true,
+      "adapter": "data/adapters/map-editor.json",
+      "description": "世界地图。编辑器提供摘要、校验和高级编辑入口。"
+    },
+    {
+      "key": "actions/world-rules",
+      "path": "apps/game/data/actions/world-rules.json",
+      "label": "世界规则",
+      "icon": "律",
+      "itemName": "规则",
+      "keyField": "id",
+      "collection": "array",
+      "category": "actions",
+      "description": "世界级规则执行器配置。满足条件后由 executorId 对应的系统执行。"
+    }
+  ]
+}

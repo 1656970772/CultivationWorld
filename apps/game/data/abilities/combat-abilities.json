@@ -8,7 +8,9 @@
       "triggerTags": ["Trigger.LethalDamage"],
       "blockedByTags": ["Immune.Crush", "Immune.LockHP"],
       "requiredItems": [],
-      "grantsEffects": ["ge_lock_hp"],
+      "grantsEffects": [
+        { "effect": "ge_lock_hp", "spec": { "magnitudeType": "ratioOfMaxHp" } }
+      ],
       "executor": null,
       "cooldownDays": 0
     },
@@ -18,7 +20,7 @@
       "abilityTag": "Ability.Escape",
       "triggerTags": ["State.Dying"],
       "blockedByTags": [],
-      "requiredItems": [{ "itemId": "item_escape_talisman", "amount": 1 }],
+      "requiredItems": [{ "selector": { "category": "talisman", "subCategory": "escape" }, "quantity": 1 }],
       "grantsEffects": [],
       "executor": "escape_teleport",
       "cooldownDays": 0

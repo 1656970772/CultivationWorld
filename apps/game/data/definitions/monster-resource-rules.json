@@ -1,0 +1,22 @@
+{
+  "_description": "妖兽资源物品族规则。运行时通过 data-manifest.json 加载，balance/economy.json 的 monsterResources 保留节奏参数并引用同类规则。",
+  "exchangeItemPatterns": ["^monster_core_g\\d+$", "^beast_material_g\\d+$"],
+  "itemFamilies": [
+    {
+      "id": "monster_core",
+      "name": "妖丹",
+      "itemIdTemplate": "monster_core_g{grade}",
+      "contributionBase": 12,
+      "monthlyContributionBase": 12,
+      "factionQty": 1
+    },
+    {
+      "id": "beast_material",
+      "name": "妖兽材料",
+      "itemIdTemplate": "beast_material_g{grade}",
+      "contributionBase": 10,
+      "monthlyContributionBase": 10,
+      "factionQty": 1
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "schemaVersion": 1,
+  "_description": "运行时数据加载清单。新增/删除运行时 JSON 文件时必须更新本清单，代码只按本清单加载与合并。",
+  "singletons": {
+    "factions": "data/entities/factions.json",
+    "npcs": "data/entities/npcs.json",
+    "ranks": "data/definitions/ranks.json",
+    "items": "data/definitions/macro-resources.json",
+    "terrains": "data/definitions/terrains.json",
+    "techniques": "data/definitions/techniques.json",
+    "weapons": "data/definitions/weapons.json",
+    "factionNeeds": "data/needs/faction-needs.json",
+    "npcNeeds": "data/needs/npc-needs.json",
+    "factionActions": "data/actions/faction-actions.json",
+    "npcActions": "data/actions/npc-actions.json",
+    "npcJobActions": "data/actions/npc-job-actions.json",
+    "npcActionSets": "data/actions/npc-action-sets.json",
+    "reactionActions": "data/actions/reaction-actions.json",
+    "worldRules": "data/actions/world-rules.json",
+    "questTemplates": "data/quests/quest-templates.json",
+    "mapData": "data/world/map.json",
+    "modifierTemplates": "data/world/modifiers.json",
+    "balanceCombat": "data/balance/combat.json",
+    "balanceEconomy": "data/balance/economy.json",
+    "balanceCultivation": "data/balance/cultivation.json",
+    "balanceSocial": "data/balance/social.json",
+    "balanceMovement": "data/balance/movement.json",
+    "balancePersonality": "data/balance/personality.json",
+    "balanceRisk": "data/balance/risk.json",
+    "balanceMemory": "data/balance/memory.json",
+    "balanceObsession": "data/balance/obsession.json",
+    "balanceEmotion": "data/balance/emotion.json",
+    "balanceUtility": "data/balance/utility.json",
+    "balanceReward": "data/balance/reward.json",
+    "balanceRelationship": "data/balance/relationship.json",
+    "balanceReaction": "data/balance/reaction.json",
+    "gameConfig": "data/config/game-config.json",
+    "aiConfig": "data/config/ai-config.json",
+    "names": "data/definitions/names.json",
+    "monsters": "data/definitions/monsters.json",
+    "monsterAttributeTemplates": "data/definitions/monster-attribute-templates.json",
+    "monsterResourceRules": "data/definitions/monster-resource-rules.json",
+    "monsterSpawn": "data/balance/monster-spawn.json",
+    "combatBaseTable": "data/definitions/combat-base-table.json",
+    "cultivatorCombat": "data/definitions/cultivator-combat.json",
+    "monsterCombat": "data/definitions/monster-combat.json",
+    "worldNews": "data/world/news.json",
+    "worldOpportunities": "data/world/opportunities.json",
+    "dynamicEvents": "data/world/dynamic-events.json",
+    "dynamicGoals": "data/goals/dynamic-goals.json",
+    "balanceCovet": "data/balance/covet.json",
+    "economicTransactionConfig": "data/economy/transaction-scenarios.json",
+    "tags": "data/tags/tags.json",
+    "relationshipPlatform.schemas.ledgers": "data/relationships/schemas/ledgers.json",
+    "relationshipPlatform.dictionaries.marks": "data/relationships/dictionaries/marks.json",
+    "relationshipPlatform.dictionaries.tags": "data/relationships/dictionaries/tags.json",
+    "relationshipPlatform.dictionaries.signals": "data/relationships/dictionaries/signal-keys.json",
+    "relationshipPlatform.dictionaries.eventTypes": "data/relationships/dictionaries/relation-event-types.json",
+    "relationshipPlatform.dictionaries.groupTypes": "data/relationships/dictionaries/group-types.json",
+    "relationshipPlatform.groups": "data/relationships/groups/groups.json",
+    "relationshipPlatform.projections.legacyEdges": "data/relationships/projections/legacy-edge-projections.json"
+  },
+  "groups": {
+    "itemDefs": {
+      "required": true,
+      "directory": "data/items",
+      "files": [
+        "artifact.json",
+        "currency.json",
+        "material.json",
+        "pill.json",
+        "talisman.json",
+        "technique.json"
+      ],
+      "output": {
+        "mode": "mergeArrayProperty",
+        "property": "items"
+      }
+    },
+    "effects": {
+      "required": true,
+      "directory": "data/effects",
+      "files": [
+        "combat-effects.json",
+        "core-effects.json"
+      ],
+      "output": {
+        "mode": "mergeArrayProperty",
+        "property": "effects"
+      }
+    },
+    "abilities": {
+      "required": true,
+      "directory": "data/abilities",
+      "files": [
+        "combat-abilities.json"
+      ],
+      "output": {
+        "mode": "mergeArrayProperty",
+        "property": "abilities"
+      }
+    },
+    "jobs": {
+      "required": true,
+      "directory": "data/jobs",
+      "files": [
+        "npc-combat-jobs.json",
+        "npc-cultivation-jobs.json",
+        "npc-dynamic-event-jobs.json",
+        "npc-economy-jobs.json",
+        "npc-quest-jobs.json",
+        "npc-social-jobs.json"
+      ],
+      "output": {
+        "mode": "mergeArrayProperty",
+        "property": "jobs"
+      }
+    },
+    "toils": {
+      "required": true,
+      "directory": "data/toils",
+      "files": [
+        "core-toils.json",
+        "npc-combat-toils.json",
+        "npc-cultivation-toils.json",
+        "npc-dynamic-event-toils.json",
+        "npc-economy-toils.json",
+        "npc-quest-toils.json",
+        "npc-social-toils.json"
+      ],
+      "output": {
+        "mode": "mergeArrayProperty",
+        "property": "toils"
+      }
+    },
+    "behaviorTrees": {
+      "required": true,
+      "directory": "data/behavior-trees",
+      "files": [
+        "faction-default.json",
+        "monster-tier1.json",
+        "monster-tier2.json",
+        "monster-tier3.json",
+        "npc-default.json"
+      ],
+      "output": {
+        "mode": "documentArray",
+        "property": "trees"
+      }
+    },
+    "relationshipPlatform.eventHooks": {
+      "directory": "data/relationships/event-hooks",
+      "files": [
+        "legacy-events.json"
+      ],
+      "output": {
+        "mode": "documentArray"
+      }
+    },
+    "relationshipPlatform.impactRules": {
+      "directory": "data/relationships/impact-rules",
+      "files": [
+        "combat.json",
+        "faction.json",
+        "social.json"
+      ],
+      "output": {
+        "mode": "documentArray"
+      }
+    },
+    "relationshipPlatform.signalRules": {
+      "directory": "data/relationships/signal-rules",
+      "files": [
+        "wanted-chain.json"
+      ],
+      "output": {
+        "mode": "documentArray"
+      }
+    }
+  },
+  "validation": {
+    "effectIdPrefix": "ge_",
+    "abilityIdPrefix": "ga_",
+    "abilityEffectReferenceField": "grantsEffects",
+    "abilityEffectReferenceIdField": "effect",
+    "abilityRequiredItemsField": "requiredItems",
+    "requiredItemReferenceField": "itemId",
+    "requiredItemSelectorField": "selector",
+    "requiredItemAnyOfField": "anyOf",
+    "requiredItemSelectorControlFields": [
+      "consumeGrantedSourceFirst"
+    ],
+    "itemEffectListField": "effects",
+    "itemEffectReferenceField": "effect",
+    "itemAbilityListField": "grantsAbilities",
+    "effectTagFields": [
+      "assetTags",
+      "grantsTags",
+      "removalTags"
+    ],
+    "abilityTagFields": [
+      "abilityTag",
+      "triggerTags",
+      "blockedByTags"
+    ],
+    "behaviorTreeReferenceKeys": [
+      "behaviorTreeId",
+      "behaviorTreeIds"
+    ],
+    "macroResourceRequiredFields": [
+      "id",
+      "name",
+      "category",
+      "value"
+    ],
+    "macroResourceFieldTypes": {
+      "id": "string",
+      "name": "string",
+      "category": "string",
+      "value": "number"
+    }
+  }
+}

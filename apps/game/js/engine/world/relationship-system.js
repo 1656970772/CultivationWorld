@@ -44,48 +44,42 @@ export const RelationType = Object.freeze({
 
 const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
 
-const MARK_BY_EDGE_TYPE = Object.freeze({
-  grudge: 'bloodFeud',
-  enemy: 'bloodFeud',
-  beast_grudge: 'bloodFeud',
-  beast_rival: 'resourceGrudge',
-  rival: 'resourceGrudge',
-  territory_threat: 'resourceGrudge',
-  gratitude: 'lifeDebt',
-  benefactor: 'lifeDebt',
-});
-
-const TAG_BY_EDGE_TYPE = Object.freeze({
-  same_sect: 'sameSect',
-  ally: 'ally',
-  master: 'masterDisciple',
-  disciple: 'masterDisciple',
-  dao_companion: 'daoCompanion',
-  kin: 'sameSect',
-  spirit_pet: 'ally',
-  mount: 'ally',
-  pack_member: 'packMember',
-  pack_leader: 'packLeader',
-});
-
-const EDGE_TYPES_BY_MARK_TYPE = Object.freeze({
-  bloodFeud: ['grudge', 'enemy', 'beast_grudge'],
-  resourceGrudge: ['rival', 'beast_rival', 'territory_threat'],
-  lifeDebt: ['gratitude', 'benefactor'],
-  favorDebt: ['gratitude', 'benefactor'],
-});
-
-const EDGE_TYPES_BY_TAG_TYPE = Object.freeze({
-  sameSect: ['same_sect'],
-  ally: ['ally'],
-  masterDisciple: ['master', 'disciple'],
-  daoCompanion: ['dao_companion'],
-  packMember: ['pack_member'],
-  packLeader: ['pack_leader'],
-});
-
 function normalizePlatform(config) {
   return config?.platform || config?.relationshipPlatform || null;
+}
+
+function normalizeLegacyProjectionConfig(platform) {
+  return platform?.projections?.legacyEdges
+    || platform?.legacyEdgeProjections
+    || platform?.projections
+    || null;
+}
+
+function compileLegacyProjectionIndex(platform) {
+  const config = normalizeLegacyProjectionConfig(platform);
+  const index = {
+    edgeToMarkType: new Map(),
+    edgeToTagType: new Map(),
+    edgeTypesByMarkType: new Map(),
+    edgeTypesByTagType: new Map(),
+  };
+
+  for (const entry of config?.edgeToLedger || []) {
+    if (!entry?.edgeType || !entry?.type) continue;
+    if (entry.ledgerKind === 'mark') index.edgeToMarkType.set(entry.edgeType, entry.type);
+    if (entry.ledgerKind === 'tag') index.edgeToTagType.set(entry.edgeType, entry.type);
+  }
+
+  for (const entry of config?.ledgerToEdges || []) {
+    if (!entry?.type || !Array.isArray(entry.edgeTypes)) continue;
+    const target = entry.ledgerKind === 'mark'
+      ? index.edgeTypesByMarkType
+      : (entry.ledgerKind === 'tag' ? index.edgeTypesByTagType : null);
+    if (!target) continue;
+    target.set(entry.type, [...entry.edgeTypes]);
+  }
+
+  return index;
 }
 
 function markWeight(ledger, type) {
@@ -109,6 +103,7 @@ export class RelationshipSystem {
     this._edges = new Map();
 
     this._platformConfig = normalizePlatform(config);
+    this._legacyProjectionIndex = compileLegacyProjectionIndex(this._platformConfig);
     this.repository = null;
     this.impactEngine = null;
     this.eventEmitter = null;
@@ -189,7 +184,8 @@ export class RelationshipSystem {
       if (!ledger.subjectId || !ledger.objectId) continue;
       for (const mark of ledger.marks || []) {
         if (mark.consumed === true || (Number(mark.weight) || 0) <= 0) continue;
-        for (const type of projectedTypesFor(mark.source, EDGE_TYPES_BY_MARK_TYPE[mark.type] || [])) {
+        const projectedTypes = this._legacyProjectionIndex.edgeTypesByMarkType.get(mark.type) || [];
+        for (const type of projectedTypesFor(mark.source, projectedTypes)) {
           if (filter.type && type !== filter.type) continue;
           out.push(this._projectedEdge(ledger.subjectId, ledger.objectId, type, {
             strength: mark.weight,
@@ -200,7 +196,8 @@ export class RelationshipSystem {
       }
       for (const tag of ledger.tags || []) {
         if (tag.active === false) continue;
-        for (const type of projectedTypesFor(tag.source, EDGE_TYPES_BY_TAG_TYPE[tag.type] || [])) {
+        const projectedTypes = this._legacyProjectionIndex.edgeTypesByTagType.get(tag.type) || [];
+        for (const type of projectedTypesFor(tag.source, projectedTypes)) {
           if (filter.type && type !== filter.type) continue;
           out.push(this._projectedEdge(ledger.subjectId, ledger.objectId, type, {
             strength: this._typeDef(type).strength ?? 100,
@@ -299,7 +296,7 @@ export class RelationshipSystem {
     if (!this.repository) return;
     const day = opts.tick ?? opts.day ?? edge?.originTick ?? 0;
     const weight = edge?.strength ?? opts.strengthDelta ?? 0;
-    const markType = MARK_BY_EDGE_TYPE[type];
+    const markType = this._legacyProjectionIndex.edgeToMarkType.get(type);
     if (markType) {
       this.addMark({
         layer: 'individual',
@@ -311,7 +308,7 @@ export class RelationshipSystem {
         source: { eventId: opts.eventType || edge?.originEventType || null, edgeType: type },
       });
     }
-    const tagType = TAG_BY_EDGE_TYPE[type];
+    const tagType = this._legacyProjectionIndex.edgeToTagType.get(type);
     if (tagType) {
       this.addTag({
         layer: 'individual',

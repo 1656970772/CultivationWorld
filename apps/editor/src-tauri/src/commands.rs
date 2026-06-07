@@ -68,9 +68,14 @@ pub fn save_all_datasets(
     datasets: BTreeMap<String, Value>,
 ) -> Result<Vec<SaveResult>, String> {
     validate_dataset_keys(&datasets)?;
-    reject_if_invalid(&datasets)?;
 
     let project = current_project()?;
+    let mut merged = read_all_datasets(&project)?;
+    for (key, data) in &datasets {
+        merged.insert(key.clone(), data.clone());
+    }
+    reject_if_invalid(&merged)?;
+
     let keys: Vec<String> = datasets.keys().cloned().collect();
     let backup_paths = backup_datasets(&project, &keys)?;
 

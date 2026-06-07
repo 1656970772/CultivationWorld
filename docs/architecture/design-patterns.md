@@ -1,6 +1,6 @@
 # 设计模式与原则
 
-> 最后更新：2026-06-01（核心引擎类重构落地，ADR-030）
+> 最后更新：2026-06-08
 
 ## 设计原则
 
@@ -121,16 +121,35 @@ class EventFactory {
 
 ```
 data/
-├── map.json          # 地形数据
-├── factions.json     # 势力初始配置
-├── npcs.json         # NPC 配置
-├── events.json       # 预设事件模板
-├── rules.json        # 规则引擎配置
-├── terrains.json     # 地形类型定义
-└── modifiers.json    # 世界状态类型定义
+├── config/data-manifest.json      # 运行时加载清单
+├── entities/factions.json         # 势力初始配置
+├── entities/npcs.json             # NPC 配置
+├── definitions/terrains.json      # 地形类型定义
+├── relationships/projections/     # 旧边兼容投影配置
+└── world/modifiers.json           # 世界状态类型定义
 ```
 
 新增地形/事件/规则只需编辑 JSON，不改代码。
+
+展示层同样遵循数据驱动。地图图例、缩略图、TileRenderer 使用地形和势力/组织数据中的 `presentation` 元数据读取颜色、图标、徽记和排序；新增地形或势力时不得在 UI 代码中追加固定 ID、固定颜色表或固定图例列表。
+
+### 6.1 清单驱动加载（Manifest-Driven Loading）
+
+**问题：** 目录级配置越来越多，若加载器手写每个文件名，新增 JSON 很容易被遗漏。
+
+**方案：** `apps/game/data/config/data-manifest.json` 声明单文件、目录组、合并模式和 strict 校验字段。`ConfigLoader` 只执行 manifest；新增 `items/`、`effects/`、`abilities/`、`jobs/`、`toils/`、`behavior-trees/` 或关系平台配置时，优先扩展 manifest，而不是改加载器主体。
+
+### 6.2 Strict Validator
+
+**问题：** 缺 GE/GA/Tag、物品效果引用错误、资源未登记、行为树 ID 写错时，如果运行时静默跳过，会把配置错误伪装成模拟行为异常。
+
+**方案：** `game-data-validator.js` 在启动和工具验证中作为守门人。配置缺失、前缀错误、manifest 遗漏和引用不完整应直接失败，不进入旧流程、直写 state 或半配置运行。
+
+### 6.3 声明式 Adapter
+
+**问题：** 编辑器地图、字段控件和新增记录模板如果散落在代码分支里，新增数据集仍需要改编辑器核心。
+
+**方案：** 编辑器以 `apps/editor/data/schemas/*.json` 作为 Dataset/Field/Reference Registry，以 `apps/editor/data/adapters/*.json` 表达地图编辑器等专用适配。代码只解释 adapter，不维护固定 tile 字段、固定数据集白名单或运行时数据镜像。
 
 ## v2 引擎新增设计模式
 
@@ -142,9 +161,9 @@ data/
 
 **方案：** 每个行为封装为可序列化的命令对象，包含前置条件、效果、消耗、产出。支持 GOAP 规划器搜索。
 
-### 9. 注册表模式（Registry） —— EntityRegistry / ItemRegistry / NeedPool / ActionPool
+### 9. 注册表模式（Registry） —— EntityRegistry / ItemRegistry / NeedPool / ActionPool / ResourceRegistry
 
-**方案：** 全局单例管理所有注册类型，支持从 JSON 批量加载和按 ID/类型查询。
+**方案：** 全局单例管理所有注册类型，支持从 JSON 批量加载和按 ID/类型查询。宏观资源、货币和组织点数通过 `ResourceRegistry` 统一解释，业务代码不得维护固定资源白名单。
 
 ### 10. 享元模式（Flyweight） —— StaticData / ItemDefinition
 
@@ -183,13 +202,17 @@ data/
 
 | 扩展需求 | 需要做的 | 不需要改的 |
 |---------|---------|-----------|
-| 新增地形类型 | 在 `terrains.json` 加一条 | 渲染器会自动读取 |
+| 新增地形类型 | 在 `terrains.json` 加一条，并补 `presentation.color`、`presentation.icon`、`presentation.order` | 渲染器和图例会自动读取 |
 | 新增势力类型 | 在 `faction-templates.json` 加模板 + 需求/行为 JSON 配置；势力决策差异在 `world/services/faction-ai-service.js` 加策略分支 | 抽象层、GOAP、`tick-manager.js` 骨架、其他势力代码 |
 | 新增 NPC 行为 | 在 `npc-actions.json` 加一条 + 在 `npc/actions/` 对应业务域文件实现 executor 并在 `npc-actions.js` 注册入口登记 | 需求系统、其他行为域文件、`npc-action-utils.js` |
 | 新增 NPC 目标/执念触发/生命周期规则 | 在 `npc/npc-goals.js` / `npc-obsession-trigger.js` / `npc-lifecycle.js` 加纯函数，`npc-entity.js` 仅加一行转发 | 实体定义、其他协作者模块 |
 | 新增 tick 步骤/子系统 | 在 `world/services/` 加服务类，在 `tick-manager.js` 的 `tick()` 骨架按序调用 | 其他服务、`world-engine.js` 注入 |
 | 新增需求类型 | 在 `*-needs.json` 加一条 + 实现 evaluator | GOAP、行为系统 |
-| 新增物品类型 | 在 `apps/game/data/items/` 对应 category 文件加一条，必要时同步 `config-loader.js` | 所有代码 |
+| 新增物品类型 | 在 `apps/game/data/items/` 对应 category 文件加一条，并同步 `data-manifest.json` 与 strict 校验 | 所有代码 |
+| 新增宏观资源或货币 | 在 `macro-resources.json` 或 `items/currency.json` 增加定义，并通过 `ResourceRegistry` 校验 | 势力状态、经济资产适配器、交易核心 |
+| 新增关系旧边兼容投影 | 在 `relationships/projections/legacy-edge-projections.json` 增加 edge/mark/tag 映射 | `RelationshipSystem` 核心门面 |
+| 新增编辑器地图字段或专用控件适配 | 在 `apps/editor/data/adapters/map-editor.json` 或对应 adapter 中声明字段、选项源和校验 | 编辑器数据源扫描和 Tauri 后端 |
 | 新增世界规则 | 在 `world-rules.json` 加一条 + 实现 executor | 实体系统 |
 | 增加玩家 | 创建 `player/` 目录，PlayerEntity 继承 BaseEntity | 所有已有实体和系统 |
 | 新增 UI 面板 | 新增面板类 + 在 GameManager 注册事件 | 其他面板不受影响 |
+| 新增势力展示样式 | 在 `factions.json` 对应势力/组织补 `presentation.color`、`presentation.badge`、`presentation.order` | 地图图例、缩略图、TileRenderer 的固定 ID 表 |

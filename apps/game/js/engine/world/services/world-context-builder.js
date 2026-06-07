@@ -52,6 +52,7 @@ export class WorldContextBuilder {
       monsterSpawner: host.monsterSpawner || null,
       factionVeinOutput: host._calcFactionVeinOutput(),
       balanceConfig: host.balanceConfig,
+      monsterResourceRules: host.balanceConfig?.monsterResourceRules || {},
       modifierTemplates: host.modifierTemplates,
       techniqueRegistry: host.techniqueRegistry,
       movementSystem: host.movementSystem,

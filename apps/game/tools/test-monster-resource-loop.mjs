@@ -30,6 +30,7 @@ const { TickManager } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine
 ItemRegistry.clear();
 ItemRegistry.loadFromArray(load('data/definitions/macro-resources.json'));
 ItemRegistry.loadFromArray(['currency','material','pill','artifact','talisman','technique'].flatMap(c => load(`data/items/${c}.json`).items));
+const monsterResourceRules = load('data/definitions/monster-resource-rules.json');
 
 let failures = 0;
 function ok(cond, msg) {
@@ -241,6 +242,7 @@ console.log('3) 执行斩妖任务真实击杀并掉落材料');
     questTemplates: {
       difficulties: [{ level: 3, name: '三阶', durationDays: 1, dangerInjury: 0, dangerDeath: 0 }],
     },
+    monsterResourceRules,
     balanceConfig: {
       economy: {
         monsterResources: {
@@ -278,6 +280,7 @@ console.log('3) 执行斩妖任务真实击杀并掉落材料');
     questTemplates: {
       difficulties: [{ level: 3, name: '三阶', durationDays: 2, dangerInjury: 0, dangerDeath: 0 }],
     },
+    monsterResourceRules,
     balanceConfig: {
       economy: {
         monsterResources: {

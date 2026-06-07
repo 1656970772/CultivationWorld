@@ -4,6 +4,12 @@
  * 封装势力的动态属性并提供派生状态计算。
  */
 import { RuntimeState } from '../abstract/runtime-state.js';
+import { ResourceRegistry } from '../economy/resource-registry.js';
+
+function resourceRegistryFor(factionConfig, worldContext) {
+  if (worldContext?.resourceRegistry) return worldContext.resourceRegistry;
+  return ResourceRegistry.fromResourceIds(Object.keys(factionConfig.resources || {}));
+}
 
 export class FactionState extends RuntimeState {
   /**
@@ -14,6 +20,8 @@ export class FactionState extends RuntimeState {
     const territory = factionConfig.territory || [];
     const relations = factionConfig.relations || {};
     const territoryCount = factionConfig.territoryCount ?? territory.length;
+    const resourceRegistry = resourceRegistryFor(factionConfig, worldContext);
+    const initialResources = resourceRegistry.initialStateFrom(factionConfig.resources || {});
 
     super({
       // tuning-v6 2026-06-01: 初始稳定度钳到 [0,100]，防配置脏值或历史溢出值带入世界。
@@ -24,9 +32,7 @@ export class FactionState extends RuntimeState {
       leaderNpcId: factionConfig.leader || null,
       isDestroyed: false,
 
-      low_spirit_stone: factionConfig.resources?.low_spirit_stone || 0,
-      disciples: factionConfig.resources?.disciples || 0,
-      food: factionConfig.resources?.food || 0,
+      ...initialResources,
 
       borderThreat: 0,
       underAttack: false,

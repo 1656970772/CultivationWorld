@@ -20,6 +20,7 @@
 import { ActionExecutor } from '../abstract/action.js';
 import { ActionPool } from '../pools/action-pool.js';
 import { addExperienceCultivation } from '../npc/numeric-cultivation.js';
+import { FactionStrategyRegistry } from '../world/services/faction-strategy-registry.js';
 
 export class FactionDevelopExecutor extends ActionExecutor {
   run(entity, worldContext, action) {
@@ -92,34 +93,46 @@ export class FactionAllyExecutor extends ActionExecutor {
 
 export class FactionTradeExecutor extends ActionExecutor {
   run(entity, worldContext, action) {
+    const combatConfig = worldContext?.balanceConfig?.combat || worldContext?.combatConfig || {};
+    const transactionScenarios = worldContext?.economicTransactionConfig
+      || worldContext?.economicSystem?.config
+      || {};
+    const strategyRegistry = new FactionStrategyRegistry({
+      ...combatConfig,
+      transactionScenarios,
+    });
+    const tradeResources = strategyRegistry.tradeResources();
+    if (!tradeResources) {
+      return { success: false, reason: 'missing_trade_resource_config', description: '缺少势力贸易资源配置' };
+    }
+
     const allFactions = worldContext.entityRegistry
       ? worldContext.entityRegistry.getByType('faction').filter(f => f.alive && f.id !== entity.id)
       : [];
 
-    // 找到关系最好的盟友或友好势力
-    let bestPartner = null;
-    let bestRelation = 20; // 最低贸易关系门槛
-
-    for (const f of allFactions) {
-      const rel = entity.state.get('relations')?.[f.id] || 0;
-      if (rel > bestRelation) {
-        bestRelation = rel;
-        bestPartner = f;
-      }
-    }
+    const relations = entity.state.get('relations') || {};
+    const bestPartner = strategyRegistry.selectTradePartner({
+      selfId: entity.id,
+      factions: allFactions,
+      relations,
+    });
 
     if (!bestPartner) return { success: false, reason: '无合适贸易伙伴' };
 
-    // 双方互利贸易：己方用灵石换粮草。资源统一走经济底座，
+    // 双方互利贸易：资源 ID 与兑换倍率来自 transaction-scenarios.json.factionTrade。
     // faction_state_resource 以 state 为真相源，并在账本留下证据。
-    const myStone = entity.state.get('low_spirit_stone') || 0;
-    const tradeAmount = Math.min(Math.floor(myStone * 0.1), 200);
+    const myPayResource = entity.state.get(tradeResources.payResourceId) || 0;
+    const plan = strategyRegistry.tradePlan({
+      payerResource: myPayResource,
+      partnerResource: bestPartner.state.get(tradeResources.receiveResourceId) || 0,
+    });
+    const tradeAmount = plan.payAmount;
 
-    if (tradeAmount <= 0) return { success: false, reason: '灵石不足以贸易' };
+    if (tradeAmount <= 0) return { success: false, reason: '付款资源不足以贸易' };
 
-    const partnerFood = bestPartner.state.get('food') || 0;
-    const foodAmount = Math.min(tradeAmount * 2, partnerFood);
-    if (foodAmount <= 0) return { success: false, reason: '贸易伙伴粮食不足' };
+    const partnerReceiveResource = bestPartner.state.get(tradeResources.receiveResourceId) || 0;
+    const receiveAmount = plan.receiveAmount;
+    if (receiveAmount <= 0) return { success: false, reason: '贸易伙伴资源不足' };
 
     let transactionId = null;
     if (worldContext?.settleTransaction) {
@@ -131,8 +144,8 @@ export class FactionTradeExecutor extends ActionExecutor {
           { role: 'seller', entity: bestPartner },
         ],
         transfers: [
-          { from: 'buyer', to: 'seller', asset: { kind: 'faction_state_resource', itemId: 'low_spirit_stone', quantity: tradeAmount } },
-          { from: 'seller', to: 'buyer', asset: { kind: 'faction_state_resource', itemId: 'food', quantity: foodAmount } },
+          { from: 'buyer', to: 'seller', asset: { kind: tradeResources.payResourceKind, itemId: tradeResources.payResourceId, quantity: tradeAmount } },
+          { from: 'seller', to: 'buyer', asset: { kind: tradeResources.receiveResourceKind, itemId: tradeResources.receiveResourceId, quantity: receiveAmount } },
         ],
         source: { type: 'faction_action_trade', factionId: entity.id, partnerId: bestPartner.id },
         visibility: 'institution',
@@ -142,22 +155,23 @@ export class FactionTradeExecutor extends ActionExecutor {
       }
       transactionId = transaction.transactionId || null;
     } else {
-      entity.state.set('low_spirit_stone', myStone - tradeAmount);
-      entity.state.set('food', (entity.state.get('food') || 0) + foodAmount);
-      bestPartner.state.set('low_spirit_stone', (bestPartner.state.get('low_spirit_stone') || 0) + tradeAmount);
-      bestPartner.state.set('food', Math.max(0, partnerFood - foodAmount));
+      entity.state.set(tradeResources.payResourceId, Math.max(0, myPayResource - tradeAmount));
+      entity.state.set(tradeResources.receiveResourceId, (entity.state.get(tradeResources.receiveResourceId) || 0) + receiveAmount);
+      bestPartner.state.set(tradeResources.payResourceId, (bestPartner.state.get(tradeResources.payResourceId) || 0) + tradeAmount);
+      bestPartner.state.set(tradeResources.receiveResourceId, Math.max(0, partnerReceiveResource - receiveAmount));
     }
 
     // 贸易增进双方关系
     const currentRel = entity.state.get('relations')?.[bestPartner.id] || 0;
     const partnerRel = bestPartner.state.get('relations')?.[entity.id] || 0;
+    const tradeRelGain = combatConfig.trade?.relationGain ?? 3;
 
-    const relations = entity.state.get('relations') || {};
-    relations[bestPartner.id] = Math.min(currentRel + 3, 100);
-    entity.state.set('relations', { ...relations });
+    const nextRelations = entity.state.get('relations') || {};
+    nextRelations[bestPartner.id] = Math.min(currentRel + tradeRelGain, 100);
+    entity.state.set('relations', { ...nextRelations });
 
     const partnerRelations = bestPartner.state.get('relations') || {};
-    partnerRelations[entity.id] = Math.min(partnerRel + 3, 100);
+    partnerRelations[entity.id] = Math.min(partnerRel + tradeRelGain, 100);
     bestPartner.state.set('relations', { ...partnerRelations });
 
     return {
@@ -165,9 +179,11 @@ export class FactionTradeExecutor extends ActionExecutor {
       partnerId: bestPartner.id,
       partnerName: bestPartner.name,
       tradeAmount,
-      foodAmount,
+      receiveAmount,
+      payResourceId: tradeResources.payResourceId,
+      receiveResourceId: tradeResources.receiveResourceId,
       transactionId,
-      description: `与 ${bestPartner.name} 完成贸易，交换 ${tradeAmount} 灵石`,
+      description: `与 ${bestPartner.name} 完成贸易`,
     };
   }
 }

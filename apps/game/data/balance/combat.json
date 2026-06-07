@@ -130,6 +130,10 @@
     "_comment": "敌意门槛：关系值 ≤ hostileThreshold 视为敌对；正邪对立时关系值 ≤ alignmentHostileThreshold 即敌对。attackReachDistance：势力间地理可达阈值（总部曼哈顿距离），超出则攻不到",
     "hostileThreshold": -50,
     "alignmentHostileThreshold": 0,
+    "hostileMatrix": [
+      { "selfTypes": ["righteous"], "targetTypes": ["evil", "demon"], "relationLte": 0 },
+      { "selfTypes": ["evil", "demon"], "targetTypes": ["righteous"], "relationLte": 0 }
+    ],
     "weakEnemyStabilityThreshold": 30,
     "weakEnemyDisciplesThreshold": 50,
     "maxTerritory": 50,

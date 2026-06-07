@@ -1,5 +1,4 @@
-const DEFAULT_FACTION_STATE_RESOURCE_IDS = ['low_spirit_stone', 'food', 'disciples'];
-const DEFAULT_ORGANIZATION_POINT_KEYS = ['contribution', 'monthlyContribution', 'warMerit', 'sectCredit'];
+import { ResourceRegistry } from './resource-registry.js';
 
 function asQuantity(value) {
   const quantity = Number(value ?? 0);
@@ -25,14 +24,8 @@ function stateSet(entity, key, value) {
 
 export class AssetAdapter {
   constructor(config = {}) {
-    this.factionStateResourceIds = new Set([
-      ...DEFAULT_FACTION_STATE_RESOURCE_IDS,
-      ...(config?.assets?.factionStateResourceIds || []),
-    ]);
-    this.organizationPointKeys = new Set([
-      ...DEFAULT_ORGANIZATION_POINT_KEYS,
-      ...(config?.assets?.organizationPointKeys || []),
-    ]);
+    this.hasExplicitResourceConfig = !!config.resourceRegistry || !!config.assets;
+    this.resourceRegistry = config.resourceRegistry || ResourceRegistry.fromConfig(config);
   }
 
   normalize(asset = {}) {
@@ -63,8 +56,16 @@ export class AssetAdapter {
     const spec = this.normalize(asset);
     if (!entity) return false;
     if (spec.quantity === 0) return true;
-    if (spec.kind === 'organization_point' && !this.organizationPointKeys.has(spec.pointKey)) return false;
-    if (spec.kind === 'faction_state_resource' && !this.factionStateResourceIds.has(spec.itemId)) return false;
+    if (
+      spec.kind === 'organization_point'
+      && this.hasExplicitResourceConfig
+      && !this.resourceRegistry.isOrganizationPoint(spec.pointKey)
+    ) return false;
+    if (
+      spec.kind === 'faction_state_resource'
+      && this.hasExplicitResourceConfig
+      && !this.resourceRegistry.isFactionStateResource(spec.itemId)
+    ) return false;
     if (spec.kind === 'item' && !spec.itemId) return false;
     return this.amountOf(entity, spec) >= spec.quantity;
   }

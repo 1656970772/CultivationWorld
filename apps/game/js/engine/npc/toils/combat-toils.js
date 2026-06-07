@@ -2,6 +2,7 @@ import { ToilExecutor, ToilResultStatus } from '../../abstract/toil.js';
 import { killNPCByPvP } from '../actions/npc-action-utils.js';
 import { resolveCombatEncounter } from '../../combat/combat-encounter.js';
 import { applyCultivationExperience } from '../cultivation-experience.js';
+import { applyItemEffects } from '../npc-economy.js';
 
 export function readCombatState(entity, key, fallback = 0) {
   const value = typeof entity?.state?.get === 'function' ? entity.state.get(key) : entity?.state?.[key];
@@ -244,13 +245,24 @@ export class NPCRetreatToSafePlaceToilExecutor extends ToilExecutor {
 }
 
 export class NPCUseHealItemToilExecutor extends ToilExecutor {
-  run(entity) {
-    if ((entity?.inventory?.getAmount?.('pill_rejuvenation') || 0) > 0) {
-      entity.inventory.remove?.('pill_rejuvenation', 1);
+  run(entity, _worldContext, _job, toil) {
+    const itemId = toil?.params?.itemId || toil?.params?.healItemId || 'pill_rejuvenation';
+    if ((entity?.inventory?.getAmount?.(itemId) || 0) <= 0) {
+      return { status: ToilResultStatus.FAILED, reason: 'no_heal_item', contextPatch: { itemId } };
     }
+
+    const effectResult = applyItemEffects(entity, itemId);
+    if (!effectResult.applied) {
+      return {
+        status: ToilResultStatus.FAILED,
+        reason: effectResult.reason || 'item_effect_failed',
+        contextPatch: { itemId },
+      };
+    }
+    entity.inventory.remove?.(itemId, 1);
     const injury = Number(readCombatState(entity, 'injuryLevel', 0));
     writeCombatState(entity, 'injuryLevel', Math.max(0, injury - 1));
-    return { status: ToilResultStatus.SUCCESS, reason: 'heal_item_used' };
+    return { status: ToilResultStatus.SUCCESS, reason: 'heal_item_used', contextPatch: { itemId, deltas: effectResult.deltas } };
   }
 }
 

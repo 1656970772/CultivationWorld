@@ -1,21 +1,33 @@
-export function createMapSummary(map, datasets = {}) {
+function tileFields(adapter = null) {
+  return {
+    terrain: adapter?.tileFields?.terrain || 'terrain',
+    owner: adapter?.tileFields?.owner || 'ownerId',
+    resource: adapter?.tileFields?.resource || 'resourceType',
+    buildings: adapter?.tileFields?.buildings || 'buildings',
+  };
+}
+
+export function createMapSummary(map, datasets = {}, adapter = null) {
+  const fields = tileFields(adapter);
   const terrainCounts = {};
   const ownerCounts = { unowned: 0 };
   let resourceTileCount = 0;
   let buildingTileCount = 0;
 
   for (const tile of map.tiles || []) {
-    const terrainKey = tile.terrain || 'unknown';
+    const terrainKey = tile[fields.terrain] || 'unknown';
     terrainCounts[terrainKey] = (terrainCounts[terrainKey] || 0) + 1;
 
-    if (tile.ownerId) {
-      ownerCounts[tile.ownerId] = (ownerCounts[tile.ownerId] || 0) + 1;
+    const ownerId = tile[fields.owner];
+    if (ownerId) {
+      ownerCounts[ownerId] = (ownerCounts[ownerId] || 0) + 1;
     } else {
       ownerCounts.unowned++;
     }
 
-    if (tile.resourceType) resourceTileCount++;
-    if (Array.isArray(tile.buildings) && tile.buildings.length > 0) buildingTileCount++;
+    if (tile[fields.resource]) resourceTileCount++;
+    const buildings = tile[fields.buildings];
+    if (Array.isArray(buildings) && buildings.length > 0) buildingTileCount++;
   }
 
   return {
