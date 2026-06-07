@@ -1,28 +1,37 @@
-const TERRAIN_ITEMS = [
-  { type: 'plain', name: '平原', color: '#A0C468', icon: 'plain' },
-  { type: 'mountain', name: '山脉', color: '#9A8462', icon: 'mountain' },
-  { type: 'forest', name: '森林', color: '#367030', icon: 'forest' },
-  { type: 'river', name: '河流', color: '#5A9DE5', icon: 'river' },
-  { type: 'swamp', name: '沼泽', color: '#6B7A48', icon: 'swamp' },
-  { type: 'desert', name: '沙漠', color: '#D4B85A', icon: 'desert' },
-  { type: 'low_spirit_vein',  name: '低级矿脉', color: '#B89FD4', icon: 'spirit_vein' },
-  { type: 'mid_spirit_vein',  name: '中级矿脉', color: '#A45EC0', icon: 'spirit_vein' },
-  { type: 'high_spirit_vein', name: '高级矿脉', color: '#7B2FA0', icon: 'spirit_vein' },
-  { type: 'top_spirit_vein',  name: '极品矿脉', color: '#5A107A', icon: 'spirit_vein' },
-];
+const PRESENTATION_DATA_EVENT = 'cultivation-world:presentation-data';
+const DEFAULT_ORDER = 1000000;
 
-const FACTION_ITEMS = [
-  { id: 'sect_001', name: '青云宗', color: '#5DADE2', badge: '☁' },
-  { id: 'sect_002', name: '天剑宗', color: '#BDC3C7', badge: '⚔' },
-  { id: 'sect_003', name: '玄真观', color: '#F4D03F', badge: '☯' },
-  { id: 'sect_004', name: '血煞门', color: '#E74C3C', badge: '☠' },
-  { id: 'sect_005', name: '幽冥教', color: '#8E44AD', badge: '👁' },
-  { id: 'sect_006', name: '毒蝎帮', color: '#27AE60', badge: '☣' },
-  { id: 'sect_007', name: '药王谷', color: '#2ECC71', badge: '⚕' },
-  { id: 'sect_008', name: '天机阁', color: '#3498DB', badge: '⚙' },
-  { id: 'sect_009', name: '万妖山', color: '#E67E22', badge: '🐾' },
-  { id: 'sect_010', name: '蛮蛟族', color: '#795548', badge: '🐉' },
-];
+function _presentationOrder(value, fallback) {
+  return Number.isFinite(value) ? value : fallback;
+}
+
+function _sortByPresentationOrder(a, b) {
+  if (a.order !== b.order) return a.order - b.order;
+  return a.name.localeCompare(b.name, 'zh-Hans-CN');
+}
+
+function _normalizeTerrain(terrain, index) {
+  const presentation = terrain?.presentation || {};
+  const type = terrain?.type || terrain?.id;
+  return {
+    type,
+    name: terrain?.name || type || '',
+    color: presentation.color || '#888888',
+    icon: presentation.icon || type,
+    order: _presentationOrder(presentation.order, DEFAULT_ORDER + index),
+  };
+}
+
+function _normalizeFaction(faction, index) {
+  const presentation = faction?.presentation || {};
+  return {
+    id: faction?.id,
+    name: faction?.name || faction?.id || '',
+    color: presentation.color || '#888888',
+    badge: presentation.badge || '?',
+    order: _presentationOrder(presentation.order, DEFAULT_ORDER + index),
+  };
+}
 
 function _drawVeinIcon(ctx, cx, cy, color) {
   const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, 8);
@@ -206,10 +215,42 @@ export class MapLegend {
     this.container = document.getElementById(containerId);
     this.terrainExpanded = true;
     this.factionExpanded = false;
+    this.terrainItems = [];
+    this.factionItems = [];
+
+    window.addEventListener(PRESENTATION_DATA_EVENT, (event) => {
+      this.setData(event.detail?.terrains, event.detail?.factions);
+    });
+
+    const data = globalThis.__cultivationWorldPresentationData;
+    if (data) {
+      this.setData(data.terrains, data.factions, { render: false });
+    }
+
     this._render();
   }
 
+  setData(terrains = [], factions = [], options = {}) {
+    const terrainList = Array.isArray(terrains) ? terrains : [];
+    const factionList = Array.isArray(factions) ? factions : [];
+
+    this.terrainItems = terrainList
+      .map(_normalizeTerrain)
+      .filter((item) => item.type)
+      .sort(_sortByPresentationOrder);
+
+    this.factionItems = factionList
+      .map(_normalizeFaction)
+      .filter((item) => item.id)
+      .sort(_sortByPresentationOrder);
+
+    if (options.render !== false) {
+      this._render();
+    }
+  }
+
   _render() {
+    if (!this.container) return;
     this.container.innerHTML = '';
 
     const terrainSection = this._createTerrainSection(this.terrainExpanded, (expanded) => {
@@ -239,7 +280,7 @@ export class MapLegend {
     if (expanded) {
       const grid = document.createElement('div');
       grid.className = 'legend-grid';
-      for (const item of TERRAIN_ITEMS) {
+      for (const item of this.terrainItems) {
         const entry = document.createElement('div');
         entry.className = 'legend-item';
 
@@ -279,7 +320,7 @@ export class MapLegend {
     if (expanded) {
       const grid = document.createElement('div');
       grid.className = 'legend-grid';
-      for (const item of FACTION_ITEMS) {
+      for (const item of this.factionItems) {
         const entry = document.createElement('div');
         entry.className = 'legend-item';
 

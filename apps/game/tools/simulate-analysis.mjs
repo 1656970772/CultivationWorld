@@ -15,98 +15,13 @@ const __dirname  = dirname(__filename);
 const GAME_ROOT  = resolve(__dirname, '..');
 
 function loadJSON(p) { return JSON.parse(readFileSync(resolve(GAME_ROOT, p), 'utf-8')); }
-function mergeConfigArray(key, files) {
-  return { [key]: files.flatMap(file => loadJSON(file)?.[key] || []) };
-}
 
-const configs = {
-  factions:       loadJSON('data/entities/factions.json'),
-  npcs:           loadJSON('data/entities/npcs.json'),
-  ranks:          loadJSON('data/definitions/ranks.json'),
-  items:          loadJSON('data/definitions/macro-resources.json'),
-  terrains:       loadJSON('data/definitions/terrains.json'),
-  factionNeeds:   loadJSON('data/needs/faction-needs.json'),
-  npcNeeds:       loadJSON('data/needs/npc-needs.json'),
-  factionActions: loadJSON('data/actions/faction-actions.json'),
-  npcActions:     loadJSON('data/actions/npc-actions.json'),
-  npcJobActions:  loadJSON('data/actions/npc-job-actions.json'),
-  npcActionSets:  loadJSON('data/actions/npc-action-sets.json'),
-  reactionActions: loadJSON('data/actions/reaction-actions.json'),
-  worldRules:     loadJSON('data/actions/world-rules.json'),
-  jobs:            mergeConfigArray('jobs', [
-    'data/jobs/npc-dynamic-event-jobs.json',
-    'data/jobs/npc-economy-jobs.json',
-    'data/jobs/npc-social-jobs.json',
-    'data/jobs/npc-quest-jobs.json',
-    'data/jobs/npc-combat-jobs.json',
-    'data/jobs/npc-cultivation-jobs.json',
-  ]),
-  toils:           mergeConfigArray('toils', [
-    'data/toils/core-toils.json',
-    'data/toils/npc-dynamic-event-toils.json',
-    'data/toils/npc-economy-toils.json',
-    'data/toils/npc-social-toils.json',
-    'data/toils/npc-quest-toils.json',
-    'data/toils/npc-combat-toils.json',
-    'data/toils/npc-cultivation-toils.json',
-  ]),
-  questTemplates: loadJSON('data/quests/quest-templates.json'),
-  mapData:        loadJSON('data/world/map.json'),
-  modifierTemplates: loadJSON('data/world/modifiers.json'),
-  // 平衡配置：保证分析工具与真实游戏一致（含修为递减、游历机缘、风险结算）
-  balanceCombat:      loadJSON('data/balance/combat.json'),
-  balanceEconomy:     loadJSON('data/balance/economy.json'),
-  balanceCultivation: loadJSON('data/balance/cultivation.json'),
-  balanceSocial:      loadJSON('data/balance/social.json'),
-  balanceMovement:    loadJSON('data/balance/movement.json'),
-  balancePersonality: loadJSON('data/balance/personality.json'),
-  balanceRisk:        loadJSON('data/balance/risk.json'),
-  balanceMemory:      loadJSON('data/balance/memory.json'),
-  balanceObsession:   loadJSON('data/balance/obsession.json'),
-  balanceEmotion:     loadJSON('data/balance/emotion.json'),
-  balanceUtility:     loadJSON('data/balance/utility.json'),
-  balanceReward:      loadJSON('data/balance/reward.json'),
-  balanceRelationship: loadJSON('data/balance/relationship.json'),
-  // 反应层（四层 AI 架构 Reaction 层，ADR-048）。当前默认 enabled=true；可在配置中改 false 回退对照。
-  balanceReaction:    loadJSON('data/balance/reaction.json'),
-  gameConfig:         loadJSON('data/config/game-config.json'),
-  aiConfig:           loadJSON('data/config/ai-config.json'),
-  names:              loadJSON('data/definitions/names.json'),
-  monsters:           loadJSON('data/definitions/monsters.json'),
-  monsterAttributeTemplates: loadJSON('data/definitions/monster-attribute-templates.json'),
-  monsterSpawn:       loadJSON('data/balance/monster-spawn.json'),
-  // 信息传播 / 机会点 / 怀璧其罪系统（ADR-024/025）。当前默认 enabled=true；可在配置中改 false 回退对照。
-  worldNews:          loadJSON('data/world/news.json'),
-  worldOpportunities: loadJSON('data/world/opportunities.json'),
-  dynamicEvents:      loadJSON('data/world/dynamic-events.json'),
-  dynamicGoals:       loadJSON('data/goals/dynamic-goals.json'),
-  balanceCovet:       loadJSON('data/balance/covet.json'),
-  itemDefs:           { items: ['currency','material','pill','artifact','talisman','technique'].flatMap(c => loadJSON(`data/items/${c}.json`).items) },
-  // 战斗机制层（ADR-042）：GameplayTag / Effect / Ability 数据驱动。
-  tags:               loadJSON('data/tags/tags.json'),
-  effects:            { effects: [...(loadJSON('data/effects/combat-effects.json')?.effects || []), ...(loadJSON('data/effects/core-effects.json')?.effects || [])] },
-  abilities:          loadJSON('data/abilities/combat-abilities.json'),
-  relationshipPlatform: {
-    schemas: {
-      ledgers: loadJSON('data/relationships/schemas/ledgers.json'),
-    },
-    dictionaries: {
-      marks: loadJSON('data/relationships/dictionaries/marks.json'),
-      tags: loadJSON('data/relationships/dictionaries/tags.json'),
-      signals: loadJSON('data/relationships/dictionaries/signal-keys.json'),
-      eventTypes: loadJSON('data/relationships/dictionaries/relation-event-types.json'),
-      groupTypes: loadJSON('data/relationships/dictionaries/group-types.json'),
-    },
-    eventHooks: [loadJSON('data/relationships/event-hooks/legacy-events.json')],
-    impactRules: [
-      loadJSON('data/relationships/impact-rules/combat.json'),
-      loadJSON('data/relationships/impact-rules/social.json'),
-      loadJSON('data/relationships/impact-rules/faction.json'),
-    ],
-    signalRules: [loadJSON('data/relationships/signal-rules/wanted-chain.json')],
-    groups: loadJSON('data/relationships/groups/groups.json'),
-  },
-};
+const { loadGameConfigsFromManifest } = await import(
+  pathToFileURL(resolve(GAME_ROOT, 'js/core/data-manifest-loader.js')).href
+);
+const configs = await loadGameConfigsFromManifest(loadJSON('data/config/data-manifest.json'), {
+  loadJson: loadJSON,
+});
 
 // 平衡验证显式激活态（ADR-021/022/023）：当前 Utility/Reward 默认启用；
 // 设 UTILITY_ACTIVE=1 时仍会在内存中强制打开相关开关（不写回 JSON），

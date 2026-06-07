@@ -17,7 +17,12 @@
 import { DataStore, stableStringify } from './data-store.js';
 import { FieldRenderer, createElement } from './field-renderer.js';
 import { inferSchema } from './schema-inferrer.js';
-import { scanDatasets } from './dataset-scanner.js';
+import {
+  cloneEmptyItem,
+  getCategoryLabel,
+  getDatasetSchema,
+  loadDeclarativeRegistry,
+} from './schema-registry.js';
 
 class DataEditorApp {
   constructor() {
@@ -28,6 +33,7 @@ class DataEditorApp {
     this.data = {};
     /** @type {Record<string, SchemaTree>} key → 推断的 schema 树 */
     this.schemas = {};
+    this.schemaRegistry = null;
     this.dirtyDatasets = new Set();
     this.activeDataset = null;
     this.selectedIndex = 0;
@@ -65,6 +71,7 @@ class DataEditorApp {
   async init() {
     this.bindEvents();
     try {
+      this.schemaRegistry = await loadDeclarativeRegistry();
       await this.reloadData();
     } catch (e) {
       this.toast(e.message, 'error');
@@ -95,6 +102,7 @@ class DataEditorApp {
     this.setBusy(true);
     try {
       this.datasets = await this.store.listDatasets();
+      this.datasets = this.applyDatasetRegistry(this.datasets);
       if (this.datasets.length === 0) {
         this.toast('未发现任何 JSON 数据集，请检查 game/data 路径。', 'error');
         this.renderAll();
@@ -107,7 +115,7 @@ class DataEditorApp {
         try {
           const info = await this.store.loadDataset(d.key);
           this.data[d.key] = info.data;
-          this.schemas[d.key] = inferSchema(info.data);
+          this.schemas[d.key] = this.buildEditorSchema(d.key, info.data);
         } catch (e) {
           console.warn(`load ${d.key} failed`, e);
           this.data[d.key] = null;
@@ -155,19 +163,8 @@ class DataEditorApp {
       if (!groups.has(d.category)) groups.set(d.category, []);
       groups.get(d.category).push(d);
     }
-    const categoryLabels = {
-      balance: '数值平衡',
-      actions: '行为定义',
-      config: '引擎配置',
-      data: '静态数据',
-      definitions: '老定义',
-      entities: '老实体',
-      world: '世界/地图',
-      quests: '任务',
-      other: '其他',
-    };
     for (const [cat, ds] of groups) {
-      const header = createElement('div', 'dataset-group-header', categoryLabels[cat] || cat);
+      const header = createElement('div', 'dataset-group-header', getCategoryLabel(cat));
       this.elements.datasetNav.append(header);
       for (const d of ds) {
         const button = createElement('button', d.key === this.activeDataset ? 'dataset-tab active' : 'dataset-tab');
@@ -397,9 +394,11 @@ class DataEditorApp {
 
   addRecord() {
     if (!this.isArrayDataset) return;
+    const datasetSchema = getDatasetSchema(this.activeDataset);
+    const template = cloneEmptyItem(datasetSchema);
+    let next = Object.keys(template).length > 0 ? template : {};
     const schema = this.schemas[this.activeDataset];
-    let next = {};
-    if (schema?.itemFields?.length) {
+    if (Object.keys(next).length === 0 && schema?.itemFields?.length) {
       for (const f of schema.itemFields) {
         if (f.path === 'id') {
           next.id = `${this.activeDataset.replace(/[\/]/g, '_')}_new_${Date.now().toString(36)}`;
@@ -415,6 +414,37 @@ class DataEditorApp {
     this.selectedIndex = this.data[this.activeDataset].length - 1;
     this.markDirty(this.activeDataset);
     this.renderAll();
+  }
+
+  applyDatasetRegistry(datasets) {
+    const declared = this.schemaRegistry?.schemas || {};
+    return datasets.map((dataset) => {
+      const schema = declared[dataset.key];
+      if (!schema) return dataset;
+      return {
+        ...dataset,
+        label: schema.label || dataset.label,
+        icon: schema.icon || dataset.icon,
+        itemName: schema.itemName || dataset.itemName,
+        keyField: schema.keyField,
+        collection: schema.collection,
+        category: schema.category || dataset.category,
+        description: schema.description || dataset.description,
+        isLarge: Boolean(schema.isLarge || dataset.isLarge),
+        declared: true,
+      };
+    });
+  }
+
+  buildEditorSchema(datasetKey, data) {
+    const schema = getDatasetSchema(datasetKey);
+    if (schema?.fields?.length) {
+      if (schema.collection === 'object') {
+        return { rootType: 'object', rootFields: schema.fields };
+      }
+      return { rootType: 'objectArray', itemFields: schema.fields };
+    }
+    return inferSchema(data);
   }
 
   duplicateRecord() {
@@ -450,19 +480,14 @@ class DataEditorApp {
     if (!window.confirm(`将覆盖写入 ${this.dirtyDatasets.size} 个数据集到 game/data（每次保存前会自动备份）。继续？`)) return;
     try {
       this.setBusy(true);
-      let ok = 0, fail = 0;
-      for (const key of this.dirtyDatasets) {
-        try {
-          await this.store.saveDataset(key, this.data[key]);
-          this.dirtyDatasets.delete(key);
-          ok++;
-        } catch (e) {
-          this.toast(`保存 ${key} 失败：${e.message}`, 'error');
-          fail++;
-        }
-      }
-      this.toast(`已保存 ${ok} 个${fail ? `, ${fail} 个失败` : ''}`);
+      const keys = Array.from(this.dirtyDatasets);
+      const payload = Object.fromEntries(keys.map((key) => [key, this.data[key]]));
+      await this.store.saveAll(payload);
+      for (const key of keys) this.dirtyDatasets.delete(key);
+      this.toast(`已保存 ${keys.length} 个数据集。`);
       this.renderAll();
+    } catch (e) {
+      this.toast(`保存全部失败：${e.message}`, 'error');
     } finally {
       this.setBusy(false);
     }

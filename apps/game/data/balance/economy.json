@@ -70,8 +70,6 @@
     "donation": {
       "enabled": true,
       "maxGrade": 9,
-      "coreBaseContribution": 12,
-      "materialBaseContribution": 10,
       "gradeMultiplier": 1.35
     }
   },
@@ -81,9 +79,7 @@
     "maxStacksPerAction": 1,
     "items": [
       { "itemId": "mat_century_ginseng", "contribution": 10, "monthlyContribution": 10, "factionQty": 1 },
-      { "itemId": "mat_black_iron_ore", "contribution": 10, "monthlyContribution": 10, "factionQty": 1 },
-      { "itemId": "monster_core_g1", "contribution": 18, "monthlyContribution": 18, "factionQty": 1 },
-      { "itemId": "beast_material_g1", "contribution": 14, "monthlyContribution": 14, "factionQty": 1 }
+      { "itemId": "mat_black_iron_ore", "contribution": 10, "monthlyContribution": 10, "factionQty": 1 }
     ]
   },
   "npcExchange": {
@@ -105,7 +101,7 @@
         "contributionCost": 80,
         "stoneCost": 250,
         "requiredFactionItems": [
-          { "itemId": "monster_core_g3", "qty": 1 }
+          { "family": "monster_core", "grade": 3, "qty": 1 }
         ]
       },
       "artifact_low": {
@@ -114,30 +110,19 @@
         "contributionCost": 120,
         "stoneCost": 500,
         "requiredFactionItems": [
-          { "itemId": "beast_material_g2", "qty": 2 },
+          { "family": "beast_material", "grade": 2, "qty": 2 },
           { "itemId": "mat_black_iron_ore", "qty": 2 }
         ]
       }
     },
     "useItems": {
-      "pillEffects": {
-        "_comment": "丹药机制化开关（ADR-042 阶段2）。enabled=true 时聚气丹/破境丹效果经通用 Effect 原语（data/effects/core-effects.json 的 ge_add_qi/ge_add_progress/ge_add_breakthrough_bonus）由 EffectEngine 结算，修为数值取自 items.json 各丹药的 effects 字段；false 时走直接数值修为接口。数值取自同一份 items.json 配置。",
-        "enabled": true
-      },
       "qiPill": {
-        "_comment": "聚气丹（低阶丹）：真气可无限累积、服用无境界/进度限制。但低阶丹对高境界效果递减——按当前大境界与丹药基准境界(baseRankId)的阶差，每差一阶乘 rankDecay。effectiveQiGain = qiGain × rankDecay^max(0, 当前order - baseOrder)。凡人/炼气吃满 120，筑基≈42，金丹≈15，元婴≈5……越高越鸡肋，符合'低阶弹药对高境界越来越差'（ADR-040）。",
-        "itemId": "item_qi_pill",
-        "qiGain": 120,
-        "progressGain": 0.01,
-        "baseRankId": "qi_refining",
-        "rankDecay": 0.35,
-        "minQiGain": 1
+        "_comment": "聚气丹效果统一来自 apps/game/data/items/pill.json 的 effects 字段；本处只声明 NPC 消耗入口使用的物品 ID。",
+        "itemId": "item_qi_pill"
       },
       "breakthroughPill": {
-        "itemId": "item_breakthrough_pill",
-        "qiGain": 300,
-        "breakthroughBonus": 0.08,
-        "maxBreakthroughBonus": 0.25
+        "_comment": "破境丹效果统一来自 apps/game/data/items/pill.json 的 effects 字段；本处只声明 NPC 消耗入口使用的物品 ID。",
+        "itemId": "item_breakthrough_pill"
       }
     }
   },

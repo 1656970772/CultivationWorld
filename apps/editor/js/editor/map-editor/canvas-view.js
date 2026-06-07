@@ -1,7 +1,8 @@
 export class MapCanvasView {
-  constructor({ model, datasets = {}, onSelect = () => {}, onPreviewSelection = () => {} }) {
+  constructor({ model, datasets = {}, adapter = null, onSelect = () => {}, onPreviewSelection = () => {} }) {
     this.model = model;
     this.datasets = datasets;
+    this.adapter = adapter;
     this.onSelect = onSelect;
     this.onPreviewSelection = onPreviewSelection;
     this.selectedTile = null;
@@ -51,17 +52,18 @@ export class MapCanvasView {
     const { cellWidth, cellHeight } = this.getCellMetrics();
     ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    const terrainColors = createTerrainColorMap(this.datasets.terrains);
-    const ownerColors = createOwnerColorMap(this.datasets.factions);
+    const fields = tileFields(this.adapter);
+    const terrainColors = createTerrainColorMap(optionList(this.adapter, 'terrains', this.datasets, 'terrains'), this.adapter);
+    const ownerColors = createOwnerColorMap(optionList(this.adapter, 'owners', this.datasets, 'factions'), this.adapter);
 
     for (const tile of this.model.getTiles()) {
       const x = Number(tile.x) * cellWidth;
       const y = Number(tile.y) * cellHeight;
-      ctx.fillStyle = terrainColors.get(tile.terrain) || '#9b927d';
+      ctx.fillStyle = terrainColors.get(tile[fields.terrain]) || '#9b927d';
       ctx.fillRect(x, y, Math.ceil(cellWidth) + 0.5, Math.ceil(cellHeight) + 0.5);
 
-      if (tile.ownerId) {
-        ctx.fillStyle = ownerColors.get(tile.ownerId) || 'rgba(47, 95, 143, 0.28)';
+      if (tile[fields.owner]) {
+        ctx.fillStyle = ownerColors.get(tile[fields.owner]) || 'rgba(47, 95, 143, 0.28)';
         ctx.fillRect(x, y, Math.ceil(cellWidth) + 0.5, Math.ceil(cellHeight) + 0.5);
       }
     }
@@ -185,14 +187,34 @@ export class MapCanvasView {
   }
 }
 
-function createTerrainColorMap(terrains = []) {
-  return new Map((terrains || []).map((terrain) => [terrain.type, terrain.color]));
+function tileFields(adapter = null) {
+  return {
+    terrain: adapter?.tileFields?.terrain || 'terrain',
+    owner: adapter?.tileFields?.owner || 'ownerId',
+  };
 }
 
-function createOwnerColorMap(factions = []) {
+function optionSource(adapter, key) {
+  return adapter?.optionSources?.[key] || {};
+}
+
+function optionList(adapter, key, datasets, fallbackDatasetKey) {
+  const source = optionSource(adapter, key);
+  return datasets[source.dataset] || datasets[fallbackDatasetKey] || [];
+}
+
+function createTerrainColorMap(terrains = [], adapter = null) {
+  const source = optionSource(adapter, 'terrains');
+  const valueField = source.valueField || 'type';
+  return new Map((terrains || []).map((terrain) => [terrain[valueField], terrain.color]));
+}
+
+function createOwnerColorMap(factions = [], adapter = null) {
+  const source = optionSource(adapter, 'owners');
+  const valueField = source.valueField || 'id';
   const colors = new Map();
   (factions || []).forEach((faction, index) => {
-    colors.set(faction.id, getOwnerColor(index));
+    colors.set(faction[valueField], getOwnerColor(index));
   });
   return colors;
 }

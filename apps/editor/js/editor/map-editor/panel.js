@@ -3,11 +3,12 @@ import { TileMapModel } from './model.js';
 import { MapEditHistory } from './history.js';
 import { MapCanvasView as CanvasView } from './canvas-view.js';
 
-export function createMapEditorPanel({ map, datasets = {}, onChange = () => {}, fallback }) {
+export function createMapEditorPanel({ map, datasets = {}, adapter = null, onChange = () => {}, fallback }) {
   if (!CanvasView.isSupported()) {
     return typeof fallback === 'function' ? fallback() : createFallback();
   }
 
+  const fields = tileFields(adapter);
   const model = new TileMapModel(map);
   const history = new MapEditHistory();
   const state = {
@@ -19,12 +20,18 @@ export function createMapEditorPanel({ map, datasets = {}, onChange = () => {}, 
   const toolbar = createElement('div', 'map-editor-toolbar');
   const terrainSelect = createSelect('map-editor-select', [
     { value: '', label: '不修改地形' },
-    ...(datasets.terrains || []).map((terrain) => ({ value: terrain.type, label: terrain.name || terrain.type }))
+    ...optionList(adapter, 'terrains', datasets, 'terrains').map((terrain) => ({
+      value: optionValue(terrain, adapter, 'terrains', 'type'),
+      label: optionLabel(terrain, adapter, 'terrains', 'name'),
+    }))
   ]);
   const ownerSelect = createSelect('map-editor-select', [
     { value: '__keep', label: '不修改归属' },
-    { value: '', label: '无主之地' },
-    ...(datasets.factions || []).map((faction) => ({ value: faction.id, label: faction.name || faction.id }))
+    { value: '', label: emptyLabel(adapter, 'owners', '无主之地') },
+    ...optionList(adapter, 'owners', datasets, 'factions').map((faction) => ({
+      value: optionValue(faction, adapter, 'owners', 'id'),
+      label: optionLabel(faction, adapter, 'owners', 'name'),
+    }))
   ]);
   const rectToggle = createElement('label', 'map-editor-check');
   const rectInput = createElement('input');
@@ -55,6 +62,7 @@ export function createMapEditorPanel({ map, datasets = {}, onChange = () => {}, 
   const view = new CanvasView({
     model,
     datasets,
+    adapter,
     onPreviewSelection: (rect) => {
       state.selectedRect = rect;
       if (!rect) state.selectedTile = null;
@@ -83,7 +91,7 @@ export function createMapEditorPanel({ map, datasets = {}, onChange = () => {}, 
   });
 
   function applyBrush(rect) {
-    const patch = getBrushPatch(terrainSelect.value, ownerSelect.value);
+    const patch = getBrushPatch(terrainSelect.value, ownerSelect.value, fields);
     if (Object.keys(patch).length === 0) {
       renderSelection();
       return;
@@ -117,10 +125,10 @@ export function createMapEditorPanel({ map, datasets = {}, onChange = () => {}, 
 
     const rows = [
       ['坐标', `${tile.x}, ${tile.y}`],
-      ['地形', getTerrainLabel(tile.terrain, datasets)],
-      ['归属', getOwnerLabel(tile.ownerId, datasets)],
-      ['资源', tile.resourceType || '无'],
-      ['建筑', Array.isArray(tile.buildings) && tile.buildings.length > 0 ? tile.buildings.join(', ') : '无']
+      ['地形', getTerrainLabel(tile[fields.terrain], datasets, adapter)],
+      ['归属', getOwnerLabel(tile[fields.owner], datasets, adapter)],
+      ['资源', tile[fields.resource] || '无'],
+      ['建筑', Array.isArray(tile[fields.buildings]) && tile[fields.buildings].length > 0 ? tile[fields.buildings].join(', ') : '无']
     ];
 
     if (rect) rows.unshift(['范围', `${rect.width} x ${rect.height}`]);
@@ -128,7 +136,7 @@ export function createMapEditorPanel({ map, datasets = {}, onChange = () => {}, 
   }
 
   function renderStats() {
-    const summary = createMapSummary(map, datasets);
+    const summary = createMapSummary(map, datasets, adapter);
     statsCard.replaceChildren(
       createElement('h4', '', '统计摘要'),
       createRows([
@@ -137,8 +145,8 @@ export function createMapEditorPanel({ map, datasets = {}, onChange = () => {}, 
         ['资源格', String(summary.resourceTileCount)],
         ['建筑格', String(summary.buildingTileCount)]
       ]),
-      createSummaryPills('地形', summary.terrainCounts, (key) => getTerrainLabel(key, datasets)),
-      createSummaryPills('领地', summary.ownerCounts, (key) => getOwnerLabel(key === 'unowned' ? '' : key, datasets), 8)
+      createSummaryPills('地形', summary.terrainCounts, (key) => getTerrainLabel(key, datasets, adapter)),
+      createSummaryPills('领地', summary.ownerCounts, (key) => getOwnerLabel(key === 'unowned' ? '' : key, datasets, adapter), 8)
     );
   }
 
@@ -155,11 +163,44 @@ export function createMapEditorPanel({ map, datasets = {}, onChange = () => {}, 
   return container;
 }
 
-function getBrushPatch(terrain, ownerId) {
+function tileFields(adapter = null) {
+  return {
+    terrain: adapter?.tileFields?.terrain || 'terrain',
+    owner: adapter?.tileFields?.owner || 'ownerId',
+    resource: adapter?.tileFields?.resource || 'resourceType',
+    buildings: adapter?.tileFields?.buildings || 'buildings',
+  };
+}
+
+function getBrushPatch(terrain, ownerId, fields = tileFields()) {
   const patch = {};
-  if (terrain) patch.terrain = terrain;
-  if (ownerId !== '__keep') patch.ownerId = ownerId || null;
+  if (terrain) patch[fields.terrain] = terrain;
+  if (ownerId !== '__keep') patch[fields.owner] = ownerId || null;
   return patch;
+}
+
+function optionSource(adapter, key) {
+  return adapter?.optionSources?.[key] || {};
+}
+
+function optionList(adapter, key, datasets, fallbackDatasetKey) {
+  const source = optionSource(adapter, key);
+  return datasets[source.dataset] || datasets[fallbackDatasetKey] || [];
+}
+
+function optionValue(item, adapter, key, fallbackField) {
+  const field = optionSource(adapter, key).valueField || fallbackField;
+  return item?.[field] || '';
+}
+
+function optionLabel(item, adapter, key, fallbackField) {
+  const source = optionSource(adapter, key);
+  const value = optionValue(item, adapter, key, fallbackField);
+  return item?.[source.labelField || fallbackField] || value;
+}
+
+function emptyLabel(adapter, key, fallback) {
+  return optionSource(adapter, key).emptyLabel || fallback;
 }
 
 function createLabeledControl(label, control) {
@@ -203,13 +244,21 @@ function createSummaryPills(title, values, labeler, limit = Infinity) {
   return section;
 }
 
-function getTerrainLabel(type, datasets) {
-  return (datasets.terrains || []).find((terrain) => terrain.type === type)?.name || type || '未知';
+function getTerrainLabel(type, datasets, adapter = null) {
+  const source = optionSource(adapter, 'terrains');
+  const valueField = source.valueField || 'type';
+  const labelField = source.labelField || 'name';
+  return optionList(adapter, 'terrains', datasets, 'terrains')
+    .find((terrain) => terrain[valueField] === type)?.[labelField] || type || '未知';
 }
 
-function getOwnerLabel(ownerId, datasets) {
-  if (!ownerId || ownerId === 'unowned') return '无主之地';
-  return (datasets.factions || []).find((faction) => faction.id === ownerId)?.name || ownerId;
+function getOwnerLabel(ownerId, datasets, adapter = null) {
+  if (!ownerId || ownerId === 'unowned') return emptyLabel(adapter, 'owners', '无主之地');
+  const source = optionSource(adapter, 'owners');
+  const valueField = source.valueField || 'id';
+  const labelField = source.labelField || 'name';
+  return optionList(adapter, 'owners', datasets, 'factions')
+    .find((faction) => faction[valueField] === ownerId)?.[labelField] || ownerId;
 }
 
 function createFallback() {

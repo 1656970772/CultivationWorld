@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "optionSets": {
+    "factionTypes": [
+      { "value": "righteous", "label": "正派" },
+      { "value": "evil", "label": "邪派" },
+      { "value": "neutral", "label": "中立" },
+      { "value": "demon", "label": "妖族" },
+      { "value": "mortal_kingdom", "label": "凡人王朝" }
+    ],
+    "factionTraits": [
+      { "value": "expansionist", "label": "扩张倾向" },
+      { "value": "defensive", "label": "防御倾向" },
+      { "value": "scholarly", "label": "研究发展" },
+      { "value": "aggressive", "label": "攻伐倾向" },
+      { "value": "diplomatic", "label": "外交倾向" }
+    ],
+    "npcRoles": [
+      { "value": "leader", "label": "掌门" },
+      { "value": "elder", "label": "长老" },
+      { "value": "heir", "label": "继承人" },
+      { "value": "disciple", "label": "弟子" }
+    ],
+    "genders": [
+      { "value": "male", "label": "男" },
+      { "value": "female", "label": "女" },
+      { "value": "unknown", "label": "未知" }
+    ]
+  },
+  "references": {
+    "entities/factions": {
+      "dataset": "entities/factions",
+      "keyField": "id",
+      "labelField": "name"
+    },
+    "entities/npcs": {
+      "dataset": "entities/npcs",
+      "keyField": "id",
+      "labelField": "name"
+    },
+    "definitions/terrains": {
+      "dataset": "definitions/terrains",
+      "keyField": "type",
+      "labelField": "name"
+    },
+    "definitions/ranks": {
+      "dataset": "definitions/ranks",
+      "keyField": "id",
+      "labelField": "name"
+    },
+    "definitions/techniques": {
+      "dataset": "definitions/techniques",
+      "keyField": "id",
+      "labelField": "name"
+    },
+    "actions/world-rules": {
+      "dataset": "actions/world-rules",
+      "keyField": "id",
+      "labelField": "name"
+    }
+  }
+}

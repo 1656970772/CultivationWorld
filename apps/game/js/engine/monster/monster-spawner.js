@@ -9,7 +9,12 @@
  */
 import { MonsterEntity } from './monster-entity.js';
 import { resolveMonsterAttributes } from './monster-attributes.js';
+import { loadDefaultMonsterAIConfig, resolveMonsterBTTier } from '../abstract/bt/bt-registry.js';
 import { isPassable } from '../world/pathfinding.js';
+
+function hasMonsterAIConfig(aiConfig) {
+  return aiConfig && typeof aiConfig === 'object' && Object.keys(aiConfig).length > 0;
+}
 
 export class MonsterSpawner {
   /**
@@ -26,7 +31,8 @@ export class MonsterSpawner {
    */
   constructor({ tileIndex, terrainIndex, monsterDefs, factions, spawnConfig,
                 movementConfig, rankOrderMap, mapWidth, mapHeight,
-                monsterPackConfig, monsterAttributeTemplates, rng }) {
+                monsterPackConfig, monsterAttributeTemplates, aiConfig,
+                behaviorTreeRegistry, rng }) {
     this.tileIndex = tileIndex;
     this.terrainIndex = terrainIndex;
     this.monsterDefs = monsterDefs || [];
@@ -34,6 +40,8 @@ export class MonsterSpawner {
     this.cfg = spawnConfig || {};
     this.movementConfig = movementConfig || {};
     this.monsterAttributeTemplates = monsterAttributeTemplates || {};
+    this.aiConfig = hasMonsterAIConfig(aiConfig) ? aiConfig : loadDefaultMonsterAIConfig();
+    this.behaviorTreeRegistry = behaviorTreeRegistry || null;
     this.rankOrderMap = rankOrderMap || {};
     this.mapWidth = mapWidth || 300;
     this.mapHeight = mapHeight || 300;
@@ -219,11 +227,9 @@ export class MonsterSpawner {
     }
   }
 
-  /** 妖兽 BT 档位（与 monster-bt-presets.js 的 getBTTier 逻辑一致） */
+  /** 妖兽 BT 档位（由 ai-config.monster.tierGradeMap 配置） */
   _getBTTier(grade) {
-    if (grade >= 5) return 'tier3';
-    if (grade >= 3) return 'tier2';
-    return 'tier1';
+    return resolveMonsterBTTier(grade, this.aiConfig);
   }
 
   /** 用 def 在 (x,y) 实例化一只妖兽（spawn 与 respawn 共用）*/
@@ -243,6 +249,8 @@ export class MonsterSpawner {
       senseRange: tierCfg.senseRange ?? (this.cfg.senseRange ?? 5),
       rankOrderMap: this.rankOrderMap,
       combatConfig,
+      aiConfig: this.aiConfig,
+      behaviorTreeRegistry: this.behaviorTreeRegistry,
       lifespanConfig: this._lifespanConfig,
       rng: this._rng,
       monsterAttributeTemplates: this.monsterAttributeTemplates,

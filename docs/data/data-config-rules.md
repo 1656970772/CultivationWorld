@@ -1,6 +1,6 @@
 # 游戏数据配置规则
 
-> 最后更新：2026-06-07
+> 最后更新：2026-06-08
 
 本文档定义 `apps/game/data/` 的现行目录结构、命名规范和扩展规则。来源以当前 `apps/game/js/core/config-loader.js` 与 `apps/game/data/` 为准。
 
@@ -42,6 +42,7 @@ apps/game/data/
 │   └── npc-default.json
 ├── config/
 │   ├── ai-config.json
+│   ├── data-manifest.json
 │   └── game-config.json
 ├── definitions/
 │   ├── combat-base-table.json
@@ -99,6 +100,8 @@ apps/game/data/
 │   │   ├── combat.json
 │   │   ├── faction.json
 │   │   └── social.json
+│   ├── projections/
+│   │   └── legacy-edge-projections.json
 │   ├── schemas/
 │   │   └── ledgers.json
 │   └── signal-rules/
@@ -131,11 +134,24 @@ apps/game/data/
 | 编码 | UTF-8 |
 | JSON 缩进 | 2 空格 |
 | 注释字段 | 使用 `_description`、`_comment` 等显式字段 |
-| 新数据文件 | 同步更新 `config-loader.js` 和本文档 |
+| 新数据文件 | 同步更新 `config/data-manifest.json`、本文档和对应 strict 校验 |
+
+### 展示元数据 `presentation`
+
+运行时规则字段和 UI 展示字段分离。凡是会被地图图例、缩略图、地图格子渲染或列表 badge 使用的颜色、图标、徽记、排序，都应放在对应数据对象的 `presentation` 字段中。
+
+| 字段 | 类型 | 适用数据 | 说明 |
+|------|------|----------|------|
+| `presentation.color` | string | 地形、势力/组织 | UI 展示颜色，使用 `#RRGGBB` |
+| `presentation.icon` | string | 地形 | 地形图例图标键，如 `plain`、`mountain`、`spirit_vein` |
+| `presentation.badge` | string | 势力/组织 | 图例和面板可用的短徽记 |
+| `presentation.order` | number | 地形、势力/组织 | 图例展示顺序 |
+
+代码不得为新增地形、势力或组织写固定 ID、固定颜色表或固定图例列表。新增或调整 UI 展示时，优先补充数据对象的 `presentation`，再由渲染层读取。
 
 ## 加载约定
 
-`ConfigLoader.loadGameConfigs()` 显式列举所有运行时 JSON。新增文件后不能只放入目录，必须同时接入加载器和相关池/系统。
+`config/data-manifest.json` 是运行时 JSON 加载清单。新增、删除或移动 `apps/game/data/` 下的运行时 JSON 时，必须同步更新 manifest；代码不得再在 `config-loader.js` 中维护目录文件列表。`test-data-manifest-load.mjs` 负责校验目录文件与 manifest 登记项一致。
 
 当前有以下合并或显式加载约定：
 
@@ -149,6 +165,25 @@ apps/game/data/
 - `definitions/monster-attribute-templates.json`：由加载器显式读取为 `monsterAttributeTemplates`，供妖兽属性计算器和运行时生成入口使用。
 - `economy/transaction-scenarios.json`：由加载器显式读取为 `economicTransactionConfig`，供统一经济交易底座读取场景、托管、债务与抽象拍卖规则。
 - `relationships/**/*.json`：三层关系全数据平台配置，由加载器显式读取并组装为 `relationshipPlatform`，交给 `RelationshipSystem` 门面。
+
+### config/data-manifest.json
+
+`data-manifest.json` 是运行时数据加载的单一清单来源，包含 `singletons`、`groups` 和 `validation` 三类信息。
+
+| 字段 | 说明 |
+|------|------|
+| `singletons` | 单文件配置映射，key 对应 `GameConfigs` 输出字段或嵌套字段 |
+| `groups` | 目录组合并规则，如 `items/`、`effects/`、`abilities/`、`jobs/`、`toils/`、`behavior-trees/` |
+| `groups.*.directory` | 相对 `apps/game/` 的目录路径 |
+| `groups.*.files` | 该目录下必须加载的 JSON 文件名列表 |
+| `groups.*.output` | 合并模式和输出属性，如 `mergeArrayProperty` / `documentArray` |
+| `validation` | strict 校验需要的前缀、引用字段和必填字段 |
+
+新增目录级配置时优先扩展 manifest group；只有无法用现有 group 输出模式表达时，才扩展 manifest loader 的通用能力。
+
+### 启动期 strict 校验
+
+`validateGameData(configs, { strict: true })` 是运行时配置引用的启动守门人。缺失 GE/GA/Tag/Item 引用、错误 ID 前缀、未登记行为树、缺失资源注册项、manifest 遗漏和展示元数据缺失都应在加载期暴露，不允许静默跳过、回退直写 state 或继续运行到半配置状态。
 
 ## entities/
 
@@ -172,6 +207,7 @@ apps/game/data/
 | `territoryCount` | number | 初始领地规模参数 |
 | `roleQuota` | object | 高阶职位名额，如 elder/heir |
 | `relations` | object | 与其他势力的初始关系 |
+| `presentation` | object | UI 展示元数据，包含 `color`、`badge`、`order` |
 
 ### npcs.json
 
@@ -223,7 +259,7 @@ apps/game/data/
 | 文件 | 说明 |
 |------|------|
 | `ranks.json` | 修仙境界、寿元、继任评分 |
-| `macro-resources.json` | 势力宏观资源，目前用于 `food`、`disciples` |
+| `macro-resources.json` | 势力宏观资源与货币资源注册源，供 `ResourceRegistry`、经济资产适配和势力状态读写使用 |
 | `terrains.json` | 地形定义 |
 | `techniques.json` | NPC 当前修炼功法定义，供 `techniqueRegistry`、修炼加成和战斗属性修正读取；不同于 `items/technique.json` 的秘籍物品 |
 | `combat-base-table.json` | 境界战斗参考基表，含 `stageMultipliers` 和六项属性参考值 |
@@ -233,6 +269,23 @@ apps/game/data/
 | `monster-attribute-templates.json` | 妖兽阶位基准、体型、移动、战斗风格、属性、特殊类型和习性模板 |
 | `monsters.json` | 妖兽定义，当前 36 条；通过五层模板生成直接面板属性 |
 | `names.json` | 出生 NPC 姓名池 |
+
+### terrains.json
+
+地形定义同时承载运行时规则和展示元数据。`moveCost`、`passable`、`resourceMultiplier`、`spiritBonus`、`produceResource` 等字段影响地图规则；`presentation` 仅影响 UI 展示。
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| `id` / `type` / `name` | string | 地形唯一键、地图 tile 引用键和中文名 |
+| `moveCost` | number | 移动消耗；不可通行地形可为负值或由 `passable=false` 表示 |
+| `passable` | boolean | 是否可通行 |
+| `resourceMultiplier` | number | 资源产出倍率 |
+| `defenseBonus` | number? | 防御加成 |
+| `spiritBonus` | number? | 灵气或矿脉加成 |
+| `produceResource` / `produceAmount` | string / number? | 地形产出资源 |
+| `presentation.color` | string | 地图、缩略图和图例展示颜色 |
+| `presentation.icon` | string | 图例图标键 |
+| `presentation.order` | number | 图例排序 |
 
 `ranks.json` 中 `rankId` 只表示修仙境界，不承载职位、头衔或凡人王朝身份。修仙境界需要同时维护 `qiRequired` 与 `cultivationRequired`。前者是真气突破门槛，后者是数值修为突破门槛；运行时不再使用旧比例进度字段作为突破依据。
 
@@ -440,6 +493,18 @@ GE 必须是通用机制原语；具体数值由物品、能力或调用方 spec
 | `debt.defaultDueDays` | 债务默认到期天数 |
 | `auction.defaultLots` | 无玩家抽象拍卖的默认拍品池 |
 
+## ResourceRegistry
+
+`ResourceRegistry` 以 `definitions/macro-resources.json` 和 `items/currency.json` 为配置来源，统一解释势力宏观资源、货币资源和组织点数。代码不得在 `FactionState`、`FactionEntity`、`AssetAdapter` 或经济结算逻辑里维护固定资源白名单。
+
+| 数据来源 | 用途 |
+|----------|------|
+| `definitions/macro-resources.json` | 势力 state 资源，如粮食、弟子、战略物资等 |
+| `items/currency.json` | 可持有、可交易、可作为计价单位的货币类物品 |
+| `economy/transaction-scenarios.json` | 场景如何使用资源、托管、债务、拍卖和正式/私人交易规则 |
+
+新增资源时，必须补齐资源定义、manifest 登记、strict 校验和 `test-resource-registry.mjs` 观察结果；不能只在业务代码中加入字符串判断。
+
 ## relationships/
 
 `relationships/` 是三层关系底座的运行时规则目录。代码只提供账本仓储、selector、表达式解释器、impact pipeline 和 signal provider；关系业务优先通过本目录 JSON 扩展。
@@ -456,6 +521,7 @@ GE 必须是通用机制原语；具体数值由物品、能力或调用方 spec
 | `impact-rules/*.json` | 标准事件如何写入三层账本 |
 | `signal-rules/*.json` | 三层账本如何输出现有 AI 可消费信号 |
 | `groups/groups.json` | 稳定组织/子群体定义，第一版主要由 `factionId` 派生 |
+| `projections/legacy-edge-projections.json` | 旧 ADR-027 边 API 与三层关系 mark/tag 的兼容投影配置 |
 
 新增关系规则时：
 
@@ -464,6 +530,20 @@ GE 必须是通用机制原语；具体数值由物品、能力或调用方 spec
 3. 新业务影响写入 `impact-rules/`；AI 决策影响写入 `signal-rules/`。
 4. 如果需要新增 selector、condition 或 effect 能力，先确认现有解释器不能表达，再新增 operator，并补 `test-relationship-platform.mjs`。
 5. 修改本目录后至少运行 `test-relationship-platform.mjs`、`test-relationship-wanted-chain.mjs` 和相关 AI 回归。
+
+### projections/legacy-edge-projections.json
+
+旧边投影只服务迁移期兼容调用点，例如 `edgesOfType(fromId, 'master')`、`edgesOfType(fromId, 'same_sect')` 和旧仇恨/恩情边查询。新增投影时必须同时声明：
+
+| 字段 | 说明 |
+|------|------|
+| `edgeToLedger[]` | 旧边类型如何映射到三层账本的 mark/tag |
+| `ledgerToEdges[]` | 三层账本 mark/tag 如何投影回旧边类型 |
+| `ledgerKind` | `mark` 或 `tag` |
+| `type` | 已登记的 RelationMark 或 RelationTag ID |
+| `edgeTypes` | 兼容旧调用点返回的边类型列表 |
+
+本文件补齐后，后续 Runtime worker 应把 `RelationshipSystem` 中代码内的 `MARK_BY_EDGE_TYPE`、`TAG_BY_EDGE_TYPE`、`EDGE_TYPES_BY_*` 映射收敛到此配置，并同步确认 manifest 或等价加载路径；在接入完成前，本文件是计划资产和文档约束，不代表核心实现已经读取。
 
 ## balance/
 
@@ -479,6 +559,21 @@ GE 必须是通用机制原语；具体数值由物品、能力或调用方 spec
 | `relationship.json` | 旧关系边兼容开关、旧关系目标、妖群、师徒过渡参数；新三层关系业务使用 `relationships/` |
 | `reaction.json` | Reaction 层阈值和动作映射 |
 | 其他 | 社交、移动、记忆、执念、情绪、人格、怀璧其罪等 |
+
+## 编辑器数据集与适配器配置
+
+运行时数据单一真相源仍是 `apps/game/data/`；`apps/editor/data/` 只保存编辑器 schema、模板、UI 分类和适配器，不保存运行时镜像。
+
+| 路径 | 说明 |
+|------|------|
+| `apps/editor/data/schemas/datasets.json` | 编辑器数据集注册表，数据源必须指向 `apps/game/data/**/*.json` |
+| `apps/editor/data/schemas/references.json` | 数据集之间的引用源和选项源 |
+| `apps/editor/data/schemas/fields.json` | 字段控件类型、标签、必填和轻量展示规则 |
+| `apps/editor/data/templates/records/*.json` | 新增记录模板 |
+| `apps/editor/data/ui/dataset-categories.json` | 编辑器数据集分类、排序和展示标签 |
+| `apps/editor/data/adapters/map-editor.json` | 地图编辑器 tile 字段、地形/归属选项、画笔和校验适配 |
+
+地图编辑器新增或重命名 tile 字段时，优先更新 `map-editor.json`；只有适配配置无法表达的新交互能力，才修改 `apps/editor/js/editor/map-editor/` 实现。
 
 ### cultivation.json
 
@@ -506,6 +601,10 @@ GE 必须是通用机制原语；具体数值由物品、能力或调用方 spec
 ## 验证要求
 
 - 数据结构改动：运行对应加载/单元脚本。
+- 新增运行时 JSON：运行 `node apps/game/tools/test-data-manifest-load.mjs`。
+- 新增或修改配置引用：运行 `node apps/game/tools/test-game-data-validation.mjs`。
+- 新增资源或货币：运行 `node apps/game/tools/test-resource-registry.mjs`。
+- 新增编辑器数据集、字段 schema 或 adapter：运行 `node apps/editor/tools/test-editor-dataset-registry.mjs`，地图编辑器相关改动再运行地图编辑器测试。
 - 机制或行为改动：运行对应 `tools/test-*.mjs`，并用真实、多种子、长程模拟观察行为。
 - 平衡改动：记录模拟天数、种子、关键统计、异常现象和结论。
 - 不用摘要值代替行为正确性判断。

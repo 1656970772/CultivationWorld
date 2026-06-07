@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "fields": {
+    "entities/factions": [
+      { "path": "id", "label": "势力 ID", "type": "text", "required": true, "help": "唯一标识，其他数据会通过它引用这个势力。" },
+      { "path": "name", "label": "名称", "type": "text", "required": true, "help": "玩家看到的势力名称。" },
+      { "path": "presentation.color", "label": "地图颜色", "type": "color", "help": "势力在地图和列表中的代表色。" },
+      { "path": "presentation.badge", "label": "徽记", "type": "text", "help": "用于紧凑 UI 的单字徽记。" },
+      { "path": "presentation.order", "label": "排序", "type": "number", "min": 0, "step": 1, "help": "同类势力展示排序。" },
+      { "path": "type", "label": "阵营类型", "type": "select", "optionsRef": "factionTypes", "required": true, "help": "影响势力 AI 的策略选择。" },
+      { "path": "headquarters.x", "label": "总部 X", "type": "number", "min": 0, "step": 1, "help": "势力总部横坐标。" },
+      { "path": "headquarters.y", "label": "总部 Y", "type": "number", "min": 0, "step": 1, "help": "势力总部纵坐标。" },
+      { "path": "stability", "label": "稳定度", "type": "range", "min": 0, "max": 100, "step": 1, "help": "0-100，过低会诱发内乱、叛变等事件。" },
+      { "path": "resources", "label": "初始资源", "type": "keyValueNumber", "help": "资源键与数量由运行时资源配置解释。" },
+      { "path": "leader", "label": "掌门 NPC", "type": "reference", "target": "entities/npcs", "required": true, "help": "引用 NPC 数据集中的人物 ID。" },
+      { "path": "traits", "label": "势力特性", "type": "tags", "optionsRef": "factionTraits", "help": "影响势力 AI 权重，可选多个。" },
+      { "path": "territoryCount", "label": "初始领地数", "type": "number", "min": 0, "step": 1, "help": "地图初始化或摘要展示用的领地规模。" },
+      { "path": "roleQuota", "label": "角色名额", "type": "keyValueNumber", "help": "势力关键角色名额配置。" },
+      { "path": "relations", "label": "势力关系", "type": "relations", "target": "entities/factions", "min": -100, "max": 100, "help": "-100 为死敌，100 为至交。" }
+    ],
+    "entities/npcs": [
+      { "path": "id", "label": "NPC ID", "type": "text", "required": true, "help": "唯一标识，势力 leader 会引用它。" },
+      { "path": "name", "label": "名称", "type": "text", "required": true, "help": "人物显示名称。" },
+      { "path": "factionId", "label": "所属势力", "type": "reference", "target": "entities/factions", "help": "引用势力数据集中的势力 ID；散修/游侠可留空。" },
+      { "path": "role", "label": "角色", "type": "select", "optionsRef": "npcRoles", "help": "人物在势力中的默认职责。" },
+      { "path": "personality.ambition", "label": "野心", "type": "range", "min": 0, "max": 100, "step": 1, "help": "高值更倾向扩张和攻伐。" },
+      { "path": "personality.caution", "label": "谨慎", "type": "range", "min": 0, "max": 100, "step": 1, "help": "高值更倾向防守，只在有把握时行动。" },
+      { "path": "personality.loyalty", "label": "忠诚", "type": "range", "min": 0, "max": 100, "step": 1, "help": "低值更容易触发叛变相关事件。" },
+      { "path": "personality.diplomacy", "label": "外交", "type": "range", "min": 0, "max": 100, "step": 1, "help": "高值更倾向结盟、贸易和缓和关系。" },
+      { "path": "alive", "label": "是否存活", "type": "boolean", "help": "陨落后会影响掌门继任。" },
+      { "path": "gender", "label": "性别", "type": "select", "optionsRef": "genders", "help": "叙事与称谓使用。" },
+      { "path": "rankId", "label": "境界", "type": "reference", "target": "definitions/ranks", "help": "引用境界定义。" },
+      { "path": "techniqueId", "label": "功法", "type": "reference", "target": "definitions/techniques", "help": "引用功法定义。" }
+    ],
+    "definitions/terrains": [
+      { "path": "type", "label": "地形类型", "type": "text", "required": true, "help": "唯一标识，地图 tile.terrain 会引用它。" },
+      { "path": "name", "label": "名称", "type": "text", "required": true, "help": "地形显示名称。" },
+      { "path": "moveCost", "label": "移动消耗", "type": "number", "min": -1, "step": 1, "help": "-1 通常表示不可通行。" },
+      { "path": "passable", "label": "可通行", "type": "boolean", "help": "玩家和寻路是否可以穿过该地形。" },
+      { "path": "color", "label": "地图颜色", "type": "color", "required": true, "help": "Canvas 地图渲染颜色。" },
+      { "path": "description", "label": "说明", "type": "textarea", "help": "给设计者和玩家理解地形用途。" },
+      { "path": "resourceMultiplier", "label": "资源倍率", "type": "number", "min": 0, "step": 0.1, "help": "影响资源收益倾向。" },
+      { "path": "defenseBonus", "label": "防守加成", "type": "number", "min": 0, "step": 0.1, "optional": true, "help": "可选字段，山脉等地形用于战斗结算。" },
+      { "path": "spiritBonus", "label": "灵气加成", "type": "number", "min": 0, "step": 0.1, "optional": true, "help": "可选字段，灵脉等特殊地形使用。" }
+    ],
+    "world/modifiers": [
+      { "path": "id", "label": "状态 ID", "type": "text", "required": true, "help": "唯一标识。" },
+      { "path": "type", "label": "状态类型", "type": "text", "required": true, "help": "运行时状态类型。" },
+      { "path": "name", "label": "名称", "type": "text", "required": true, "help": "状态显示名称。" },
+      { "path": "description", "label": "说明", "type": "textarea", "help": "状态叙事描述。" },
+      { "path": "minDuration", "label": "最短持续天数", "type": "number", "min": 0, "step": 1, "help": "随机持续时间下限。" },
+      { "path": "maxDuration", "label": "最长持续天数", "type": "number", "min": 0, "step": 1, "help": "随机持续时间上限。" },
+      { "path": "intensityMin", "label": "最低强度", "type": "range", "min": 0, "max": 1, "step": 0.01, "help": "状态强度随机下限。" },
+      { "path": "intensityMax", "label": "最高强度", "type": "range", "min": 0, "max": 1, "step": 0.01, "help": "状态强度随机上限。" },
+      { "path": "probability", "label": "每日出现概率", "type": "range", "min": 0, "max": 1, "step": 0.001, "help": "0-1，越高越容易在每天 Tick 中出现。" },
+      { "path": "effects", "label": "效果参数", "type": "keyValueNumber", "help": "效果键值由各系统解释，数值通常为倍率或加减权重。" }
+    ],
+    "world/map": [
+      { "path": "width", "label": "地图宽度", "type": "number", "min": 1, "step": 1, "help": "地图横向格子数。" },
+      { "path": "height", "label": "地图高度", "type": "number", "min": 1, "step": 1, "help": "地图纵向格子数。" },
+      { "path": "tiles", "label": "格子数据", "type": "tileSummary", "help": "地图格数据默认展示摘要，避免把完整 JSON 渲染进页面导致卡顿。完整数据仍会随保存保留。" }
+    ],
+    "actions/world-rules": [
+      { "path": "id", "label": "规则 ID", "type": "text", "required": true, "help": "唯一标识，用于调度和日志。" },
+      { "path": "name", "label": "名称", "type": "text", "required": true, "help": "规则显示名称。" },
+      { "path": "description", "label": "说明", "type": "textarea", "help": "规则触发意图说明。" },
+      { "path": "category", "label": "分类", "type": "text", "help": "规则分组。" },
+      { "path": "weight", "label": "权重", "type": "number", "min": 0, "step": 0.01, "help": "调度权重。" },
+      { "path": "preconditions", "label": "前置条件", "type": "json", "help": "规则条件对象，具体键由执行器解释。" },
+      { "path": "effects", "label": "效果参数", "type": "json", "help": "规则效果对象。" },
+      { "path": "costs", "label": "成本", "type": "objectArray", "itemFields": [], "help": "执行成本列表。" },
+      { "path": "yields", "label": "收益", "type": "objectArray", "itemFields": [], "help": "执行收益列表。" },
+      { "path": "executorId", "label": "执行器", "type": "text", "required": true, "help": "运行时执行器 ID。" },
+      { "path": "params", "label": "参数", "type": "json", "help": "执行器专用参数。" }
+    ]
+  }
+}

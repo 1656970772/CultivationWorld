@@ -8,6 +8,7 @@ import { FactionStaticData } from './faction-static-data.js';
 import { FactionState } from './faction-state.js';
 import { NeedPool } from '../pools/need-pool.js';
 import { ActionPool } from '../pools/action-pool.js';
+import { ResourceRegistry } from '../economy/resource-registry.js';
 
 export class FactionEntity extends BaseEntity {
   /**
@@ -19,6 +20,8 @@ export class FactionEntity extends BaseEntity {
     super(factionConfig.id, 'faction');
 
     this._aiConfig = entityConfig.aiConfig || {};
+    this.resourceRegistry = entityConfig.resourceRegistry
+      || ResourceRegistry.fromResourceIds(Object.keys(factionConfig.resources || {}));
     this.initStaticData(factionConfig);
     this._initFactionState(factionConfig);
     this._initInventory(factionConfig);
@@ -32,16 +35,12 @@ export class FactionEntity extends BaseEntity {
   }
 
   _initFactionState(config) {
-    this.state = new FactionState(config);
+    this.state = new FactionState(config, { resourceRegistry: this.resourceRegistry });
   }
 
   _initInventory(config) {
     const resources = config.resources || {};
-    this.inventory.loadFrom({
-      low_spirit_stone: resources.low_spirit_stone || 0,
-      disciples: resources.disciples || 0,
-      food: resources.food || 0,
-    });
+    this.inventory.loadFrom(this.resourceRegistry.initialStateFrom(resources));
   }
 
   _initNeeds(config) {
@@ -81,15 +80,7 @@ export class FactionEntity extends BaseEntity {
    */
   onPreTick(worldContext) {
     this.state.set('underAttack', false);
-    const stone = Math.max(0, this.state.get('low_spirit_stone') || 0);
-    const disc = Math.max(0, this.state.get('disciples') || 0);
-    const food = Math.max(0, this.state.get('food') || 0);
-    this.state.set('low_spirit_stone', stone);
-    this.state.set('disciples', disc);
-    this.state.set('food', food);
-    this.inventory.setAmount('low_spirit_stone', stone);
-    this.inventory.setAmount('disciples', disc);
-    this.inventory.setAmount('food', food);
+    this._syncStateResourcesToInventory();
 
     if (this.state instanceof FactionState) {
       this.state.updateDerived(worldContext);
@@ -102,15 +93,7 @@ export class FactionEntity extends BaseEntity {
   onPostTick(worldContext) {
     // 资源以 state 为单一真相源，同步回 inventory；钳制下限为 0，
     // 防止行为 effects 的负向 add（消耗）把资源压到负数。
-    const stone = Math.max(0, this.state.get('low_spirit_stone') || 0);
-    const disc = Math.max(0, this.state.get('disciples') || 0);
-    const food = Math.max(0, this.state.get('food') || 0);
-    this.state.set('low_spirit_stone', stone);
-    this.state.set('disciples', disc);
-    this.state.set('food', food);
-    this.inventory.setAmount('low_spirit_stone', stone);
-    this.inventory.setAmount('disciples', disc);
-    this.inventory.setAmount('food', food);
+    this._syncStateResourcesToInventory();
 
     if ((this.state.get('stability') || 0) <= 0 || (this.state.get('disciples') || 0) <= 0) {
       this.state.set('isDestroyed', true);
@@ -121,6 +104,14 @@ export class FactionEntity extends BaseEntity {
   /** 便捷访问 */
   get name() { return this.staticData.name; }
   get factionType() { return this.staticData.factionType; }
+
+  _syncStateResourcesToInventory() {
+    for (const resourceId of this.resourceRegistry.factionStateResourceIds()) {
+      const amount = Math.max(0, this.state.get(resourceId) || 0);
+      this.state.set(resourceId, amount);
+      this.inventory.setAmount(resourceId, amount);
+    }
+  }
 
   /** @override */
   toJSON() {

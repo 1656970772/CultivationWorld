@@ -1,7 +1,11 @@
 import { strict as assert } from 'node:assert';
 import { readFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const read = (path) => readFileSync(path, 'utf-8');
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const EDITOR_ROOT = resolve(__dirname, '..');
+const read = (path) => readFileSync(resolve(EDITOR_ROOT, path), 'utf-8');
 
 const projectSource = read('src-tauri/src/project.rs');
 const commandsSource = read('src-tauri/src/commands.rs');
@@ -53,6 +57,30 @@ assert.match(
   projectSource,
   /symlink_metadata\(target\)[\s\S]+is_symlink\(\)/,
   '后端应拒绝访问 symlinked dataset file，避免固定文件名指向 data 目录外。'
+);
+
+assert.match(
+  projectSource,
+  /apps["']\)\s*\.join\(["']game["']\)\s*\.join\(["']data["']\)/,
+  'resolve_project_directory 应能从仓库根优先解析 apps/game/data，不能把仓库根当作 data 目录。'
+);
+
+assert.match(
+  projectSource,
+  /has_data_directory_sentinel[\s\S]+config["']\)\s*\.join\(["']data-manifest\.json["'][\s\S]+entities["']\)\s*\.join\(["']factions\.json["']/,
+  'data 目录识别应要求 config/data-manifest.json 或 entities/factions.json 这类真实 data sentinel。'
+);
+
+assert.doesNotMatch(
+  projectSource,
+  /fallback_dataset_file_name|key_to_relative_path/,
+  '未知 dataset key 不应 fallback 为 ${key}.json，必须由当前 DatasetRegistry strict 决定。'
+);
+
+assert.match(
+  projectSource,
+  /entry\(key\)[\s\S]+ok_or_else\(\|\|\s*format!\("unknown dataset key: \{key\}"\)\)\?/,
+  'dataset_path 应在 registry 中找不到 key 时直接失败。'
 );
 
 assert.match(

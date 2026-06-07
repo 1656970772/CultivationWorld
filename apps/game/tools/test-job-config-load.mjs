@@ -168,6 +168,7 @@ assert(configs.relationshipPlatform?.schemas?.ledgers?.layers?.individual, 'load
 assert(configs.relationshipPlatform?.dictionaries?.marks?.marks?.some(mark => mark.id === 'wantedOrder'), 'loadGameConfigs loads relationship mark dictionary');
 assert(configs.relationshipPlatform?.impactRules?.some(file => file.rules?.some(rule => rule.id === 'combat_kill_public_wanted_order')), 'loadGameConfigs loads relationship impact rules');
 assert(configs.relationshipPlatform?.signalRules?.some(file => file.rules?.some(rule => rule.id === 'wanted_hunt_signal')), 'loadGameConfigs loads relationship signal rules');
+assert(configs.relationshipPlatform?.projections?.legacyEdges?.edgeToLedger?.some(rule => rule.edgeType === 'grudge'), 'loadGameConfigs loads relationship legacy edge projections');
 assert(configs.economicTransactionConfig?.scenarios?.quest_contract, 'loadGameConfigs loads economic transaction scenarios');
 assert(configs.economicTransactionConfig?.auction?.defaultLots?.some(lot => lot.itemId === 'item_breakthrough_pill'), 'loadGameConfigs loads abstract auction defaults');
 

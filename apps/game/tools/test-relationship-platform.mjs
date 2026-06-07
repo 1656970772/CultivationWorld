@@ -37,6 +37,9 @@ const relationshipConfig = {
   ],
   signalRules: [load('data/relationships/signal-rules/wanted-chain.json')],
   groups: load('data/relationships/groups/groups.json'),
+  projections: {
+    legacyEdges: load('data/relationships/projections/legacy-edge-projections.json'),
+  },
 };
 
 let failed = 0;

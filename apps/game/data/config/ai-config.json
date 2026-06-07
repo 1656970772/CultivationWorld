@@ -64,7 +64,28 @@
   },
   "monster": {
     "_comment": "妖兽行为树分档说明（数值平衡见 data/balance/monster-spawn.json behaviorByTier）。grade 1-2=tier1，3-4=tier2，5+=tier3。grade 6+（元婴等价）当前用 tier3，后续接完整 GOBT。",
-    "tierGradeMap": { "tier1": [1, 2], "tier2": [3, 4], "tier3": [5, 6, 7, 8, 9] }
+    "tierGradeMap": { "tier1": [1, 2], "tier2": [3, 4], "tier3": [5, 6, 7, 8, 9] },
+    "orderEquivalentMap": {
+      "1": 20,
+      "2": 35,
+      "3": 45,
+      "4": 60,
+      "5": 65,
+      "6": 70,
+      "7": 75,
+      "8": 80,
+      "9": 85
+    },
+    "tierBehaviorTreeMap": {
+      "tier1": "bt_monster_tier1",
+      "tier2": "bt_monster_tier2",
+      "tier3": "bt_monster_tier3"
+    },
+    "behaviorTreeFiles": {
+      "bt_monster_tier1": "data/behavior-trees/monster-tier1.json",
+      "bt_monster_tier2": "data/behavior-trees/monster-tier2.json",
+      "bt_monster_tier3": "data/behavior-trees/monster-tier3.json"
+    }
   },
   "default": {
     "_comment": "默认规划器参数（当实体未指定时使用）",

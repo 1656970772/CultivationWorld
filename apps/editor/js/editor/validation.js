@@ -1,4 +1,4 @@
-import { DATASET_SCHEMAS } from './schema-registry.js';
+import { DATASET_REFERENCES, DATASET_SCHEMAS } from './schema-registry.js';
 
 export function validateAllData(datasets, schemas = DATASET_SCHEMAS) {
   const issues = [];
@@ -9,7 +9,8 @@ export function validateAllData(datasets, schemas = DATASET_SCHEMAS) {
     validateFieldRules(datasetKey, datasets[datasetKey], schema, issues);
   }
 
-  validateCrossReferences(datasets, issues);
+  validateSchemaReferences(datasets, schemas, issues);
+  validateKnownCollectionRules(datasets, issues);
 
   return issues;
 }
@@ -40,17 +41,21 @@ export function setValueAtPath(target, path, value) {
 }
 
 export function getReferenceOptions(datasets, targetKey, targetField = null) {
+  const reference = DATASET_REFERENCES[targetKey] || {};
   const schema = DATASET_SCHEMAS[targetKey];
   const collection = datasets[targetKey];
   if (!schema || !Array.isArray(collection)) return [];
-  const keyField = targetField || schema.keyField;
+  const keyField = targetField || reference.keyField || schema.keyField;
+  const labelField = reference.labelField || 'name';
   return collection.map((item) => ({
     value: item[keyField],
-    label: item.name ? `${item.name} (${item[keyField]})` : item[keyField]
+    label: item[labelField] ? `${item[labelField]} (${item[keyField]})` : item[keyField],
   })).filter((option) => option.value != null && option.value !== '');
 }
 
 function validateDatasetShape(datasetKey, data, schema, issues) {
+  if (data == null) return;
+
   if (schema.collection === 'array' && !Array.isArray(data)) {
     issues.push(createIssue(
       'error',
@@ -60,7 +65,7 @@ function validateDatasetShape(datasetKey, data, schema, issues) {
     ));
   }
 
-  if (schema.collection === 'object' && (data == null || Array.isArray(data) || typeof data !== 'object')) {
+  if (schema.collection === 'object' && (Array.isArray(data) || typeof data !== 'object')) {
     issues.push(createIssue(
       'error',
       'dataset_shape',
@@ -158,81 +163,95 @@ function validateNumberRange(value, field, path, issues) {
   }
 }
 
-function validateCrossReferences(datasets, issues) {
-  const factionIds = new Set((datasets.factions || []).map((item) => item.id));
-  const npcIds = new Set((datasets.npcs || []).map((item) => item.id));
-  const terrainTypes = new Set((datasets.terrains || []).map((item) => item.type));
-  const eventTypes = new Set((datasets.events || []).map((item) => item.type));
+function validateSchemaReferences(datasets, schemas, issues) {
+  for (const [datasetKey, schema] of Object.entries(schemas)) {
+    const data = datasets[datasetKey];
+    if (schema.collection === 'array' && Array.isArray(data)) {
+      data.forEach((item, index) => validateReferenceFields(
+        item,
+        schema.fields || [],
+        `${datasetKey}[${index}]`,
+        datasets,
+        issues
+      ));
+    } else if (schema.collection === 'object' && data && typeof data === 'object') {
+      validateReferenceFields(data, schema.fields || [], datasetKey, datasets, issues);
+    }
+  }
+}
 
-  validateFactionReferences(datasets.factions || [], factionIds, npcIds, issues);
-  validateNpcReferences(datasets.npcs || [], factionIds, issues);
+function validateReferenceFields(item, fields, basePath, datasets, issues) {
+  for (const field of fields) {
+    if (field.type === 'reference') {
+      validateSingleReference(item, field, `${basePath}.${field.path}`, datasets, issues);
+    }
+    if (field.type === 'relations') {
+      validateRelations(item, field, `${basePath}.${field.path}`, datasets, issues);
+    }
+    if (Array.isArray(field.fields)) {
+      validateReferenceFields(item, field.fields, basePath, datasets, issues);
+    }
+  }
+}
+
+function validateSingleReference(item, field, path, datasets, issues) {
+  const value = getValueAtPath(item, field.path);
+  if (value == null || value === '') return;
+  if (!referenceContains(datasets, field.target, field.targetKey, value)) {
+    issues.push(createIssue(
+      'error',
+      'invalid_reference',
+      path,
+      `引用目标不存在：${value}。`,
+      { value, target: field.target }
+    ));
+  }
+}
+
+function validateRelations(item, field, path, datasets, issues) {
+  const relations = getValueAtPath(item, field.path) || {};
+  for (const [targetId, value] of Object.entries(relations)) {
+    const itemPath = `${path}.${targetId}`;
+    if (!referenceContains(datasets, field.target, null, targetId)) {
+      issues.push(createIssue('error', 'invalid_reference', itemPath, `关系目标不存在：${targetId}。`));
+    }
+    if (typeof value !== 'number' || value < field.min || value > field.max) {
+      issues.push(createIssue(
+        'error',
+        'number_range',
+        itemPath,
+        `关系值必须在 ${field.min} 到 ${field.max} 之间。`,
+        { value, min: field.min, max: field.max }
+      ));
+    }
+  }
+}
+
+function referenceContains(datasets, targetKey, targetField, value) {
+  const collection = datasets[targetKey];
+  if (!Array.isArray(collection)) return false;
+  const reference = DATASET_REFERENCES[targetKey] || {};
+  const schema = DATASET_SCHEMAS[targetKey] || {};
+  const keyField = targetField || reference.keyField || schema.keyField || 'id';
+  return collection.some((item) => item?.[keyField] === value);
+}
+
+function validateKnownCollectionRules(datasets, issues) {
+  validateModifierConsistency(datasets['world/modifiers'] || [], issues);
   validateModifierConsistency(datasets.modifiers || [], issues);
-  validateRuleReferences(datasets.rules || [], eventTypes, issues);
-  validateEventOptions(datasets.events || [], issues);
+  const factionIds = collectKeys(datasets['entities/factions'] || datasets.factions, 'id');
+  const terrainTypes = collectKeys(datasets['definitions/terrains'] || datasets.terrains, 'type');
+  validateMapReferences(
+    datasets['world/map'] || {},
+    factionIds,
+    terrainTypes,
+    issues
+  );
   validateMapReferences(datasets.map || {}, factionIds, terrainTypes, issues);
 }
 
-function validateFactionReferences(factions, factionIds, npcIds, issues) {
-  factions.forEach((faction, index) => {
-    if (faction.leader && !npcIds.has(faction.leader)) {
-      issues.push(createIssue(
-        'error',
-        'invalid_reference',
-        `factions[${index}].leader`,
-        `势力 ${faction.name || faction.id} 的掌门引用不存在：${faction.leader}。`
-      ));
-    }
-
-    const relations = faction.relations || {};
-    for (const [targetId, value] of Object.entries(relations)) {
-      const path = `factions[${index}].relations.${targetId}`;
-      if (!factionIds.has(targetId)) {
-        issues.push(createIssue(
-          'error',
-          'invalid_reference',
-          path,
-          `关系目标势力不存在：${targetId}。`
-        ));
-      }
-      if (typeof value !== 'number' || value < -100 || value > 100) {
-        issues.push(createIssue(
-          'error',
-          'number_range',
-          path,
-          `势力关系值必须在 -100 到 100 之间。`,
-          { value, min: -100, max: 100 }
-        ));
-      }
-    }
-  });
-}
-
-function validateNpcReferences(npcs, factionIds, issues) {
-  npcs.forEach((npc, index) => {
-    if (npc.factionId && !factionIds.has(npc.factionId)) {
-      issues.push(createIssue(
-        'error',
-        'invalid_reference',
-        `npcs[${index}].factionId`,
-        `NPC ${npc.name || npc.id} 的所属势力不存在：${npc.factionId}。`
-      ));
-    }
-
-    for (const [key, value] of Object.entries(npc.personality || {})) {
-      if (typeof value !== 'number' || value < 0 || value > 100) {
-        issues.push(createIssue(
-          'error',
-          'number_range',
-          `npcs[${index}].personality.${key}`,
-          `NPC 性格值必须在 0 到 100 之间。`,
-          { value, min: 0, max: 100 }
-        ));
-      }
-    }
-  });
-}
-
 function validateModifierConsistency(modifiers, issues) {
+  if (!Array.isArray(modifiers)) return;
   modifiers.forEach((modifier, index) => {
     if (typeof modifier.minDuration === 'number' &&
       typeof modifier.maxDuration === 'number' &&
@@ -240,8 +259,8 @@ function validateModifierConsistency(modifiers, issues) {
       issues.push(createIssue(
         'error',
         'duration_order',
-        `modifiers[${index}].maxDuration`,
-        `世界状态 ${modifier.name || modifier.type} 的最长持续天数不能小于最短持续天数。`
+        `world/modifiers[${index}].maxDuration`,
+        `世界状态 ${modifier.name || modifier.id} 的最长持续天数不能小于最短持续天数。`
       ));
     }
 
@@ -250,7 +269,7 @@ function validateModifierConsistency(modifiers, issues) {
         issues.push(createIssue(
           'error',
           'number_type',
-          `modifiers[${index}].effects.${key}`,
+          `world/modifiers[${index}].effects.${key}`,
           `世界状态效果值必须是数字。`
         ));
       }
@@ -258,63 +277,10 @@ function validateModifierConsistency(modifiers, issues) {
   });
 }
 
-function validateRuleReferences(rules, eventTypes, issues) {
-  rules.forEach((rule, index) => {
-    if (rule.event_type && !eventTypes.has(rule.event_type)) {
-      issues.push(createIssue(
-        'error',
-        'invalid_reference',
-        `rules[${index}].event_type`,
-        `规则 ${rule.name || rule.id} 生成的事件类型不存在：${rule.event_type}。`
-      ));
-    }
-  });
-}
-
-function validateEventOptions(events, issues) {
-  events.forEach((event, eventIndex) => {
-    if (typeof event.info_reliability === 'number' &&
-      (event.info_reliability < 0 || event.info_reliability > 1)) {
-      issues.push(createIssue(
-        'error',
-        'number_range',
-        `events[${eventIndex}].info_reliability`,
-        `事件基础可信度必须在 0 到 1 之间。`
-      ));
-    }
-
-    if (!Array.isArray(event.player_options)) {
-      issues.push(createIssue(
-        'error',
-        'dataset_shape',
-        `events[${eventIndex}].player_options`,
-        `事件 ${event.name || event.type} 的玩家选项必须是数组。`
-      ));
-      return;
-    }
-
-    event.player_options.forEach((option, optionIndex) => {
-      const basePath = `events[${eventIndex}].player_options[${optionIndex}]`;
-      for (const key of ['id', 'text', 'effect']) {
-        if (!option[key]) {
-          issues.push(createIssue('error', 'required', `${basePath}.${key}`, `玩家选项缺少 ${key}。`));
-        }
-      }
-      if (typeof option.cost !== 'number' || option.cost < 0) {
-        issues.push(createIssue(
-          'error',
-          'number_range',
-          `${basePath}.cost`,
-          `玩家选项消耗必须是大于等于 0 的数字。`
-        ));
-      }
-    });
-  });
-}
-
 function validateMapReferences(map, factionIds, terrainTypes, issues) {
+  if (!map || typeof map !== 'object') return;
   if (!Array.isArray(map.tiles)) {
-    issues.push(createIssue('error', 'dataset_shape', 'map.tiles', '地图 tiles 必须是数组。'));
+    issues.push(createIssue('error', 'dataset_shape', 'world/map.tiles', '地图 tiles 必须是数组。'));
     return;
   }
 
@@ -328,17 +294,17 @@ function validateMapReferences(map, factionIds, terrainTypes, issues) {
       issues.push(createIssue(
         'error',
         'duplicate_tile',
-        `map.tiles[${index}]`,
+        `world/map.tiles[${index}]`,
         `地图格子坐标重复：${coordKey}。`
       ));
     }
     seenCoords.add(coordKey);
 
-    if (!terrainTypes.has(tile.terrain)) {
+    if (tile.terrain && !terrainTypes.has(tile.terrain)) {
       issues.push(createIssue(
         'error',
         'invalid_reference',
-        `map.tiles[${index}].terrain`,
+        `world/map.tiles[${index}].terrain`,
         `地图格子的地形不存在：${tile.terrain}。`
       ));
     }
@@ -347,7 +313,7 @@ function validateMapReferences(map, factionIds, terrainTypes, issues) {
       issues.push(createIssue(
         'error',
         'invalid_reference',
-        `map.tiles[${index}].ownerId`,
+        `world/map.tiles[${index}].ownerId`,
         `地图格子的所属势力不存在：${tile.ownerId}。`
       ));
     }
@@ -357,7 +323,7 @@ function validateMapReferences(map, factionIds, terrainTypes, issues) {
       issues.push(createIssue(
         'error',
         'number_range',
-        `map.tiles[${index}]`,
+        `world/map.tiles[${index}]`,
         `地图格子坐标超出地图范围。`,
         { x: tile.x, y: tile.y, width, height }
       ));
@@ -365,3 +331,8 @@ function validateMapReferences(map, factionIds, terrainTypes, issues) {
   });
 }
 
+function collectKeys(value, keyField) {
+  return new Set((Array.isArray(value) ? value : [])
+    .map((item) => item?.[keyField])
+    .filter((value) => value != null && value !== ''));
+}

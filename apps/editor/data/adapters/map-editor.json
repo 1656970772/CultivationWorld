@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "adapter": "map-editor",
+  "datasetKey": "world/map",
+  "tileCollection": "tiles",
+  "tileFields": {
+    "terrain": "terrain",
+    "owner": "ownerId",
+    "resource": "resourceType",
+    "buildings": "buildings"
+  },
+  "optionSources": {
+    "terrains": {
+      "dataset": "definitions/terrains",
+      "valueField": "type",
+      "labelField": "name"
+    },
+    "owners": {
+      "dataset": "entities/factions",
+      "valueField": "id",
+      "labelField": "name",
+      "allowEmpty": true,
+      "emptyLabel": "无主之地"
+    }
+  },
+  "defaults": {
+    "ownerId": null,
+    "resourceType": null,
+    "buildings": []
+  }
+}

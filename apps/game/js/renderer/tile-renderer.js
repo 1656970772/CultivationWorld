@@ -6,40 +6,18 @@
 const TILE_PX = 24; // 基准格子像素大小
 export const CHUNK_SIZE = 16; // 每个 chunk 的格子数
 
-// 地形颜色表（十六进制数字格式）
-const TERRAIN_COLORS = {
-  plain:            0xa0c468,
-  mountain:         0x9a8462,
-  forest:           0x367030,
-  river:            0x5a9de5,
-  swamp:            0x6b7a48,
-  desert:           0xd4b85a,
-  low_spirit_vein:  0xb89fd4,
-  mid_spirit_vein:  0xa45ec0,
-  high_spirit_vein: 0x7b2fa0,
-  top_spirit_vein:  0x5a107a,
-};
+const DEFAULT_TERRAIN_COLOR = 0x888888;
+const DEFAULT_FACTION_COLOR = 0xcccccc;
 
-// 势力颜色池（与 minimap.js 保持一致）
-const FACTION_COLOR_MAP = {
-  sect_001: 0x5dade2,
-  sect_002: 0xbdc3c7,
-  sect_003: 0xf4d03f,
-  sect_004: 0xe74c3c,
-  sect_005: 0x8e44ad,
-  sect_006: 0x27ae60,
-  sect_007: 0x2ecc71,
-  sect_008: 0x3498db,
-  sect_009: 0xe67e22,
-  sect_010: 0x795548,
-};
+function _parsePresentationColor(definition) {
+  const color = definition?.presentation?.color;
+  if (typeof color !== 'string') return null;
 
-// 未知势力的备用颜色池
-const FALLBACK_PALETTE = [
-  0xe74c3c, 0x3498db, 0x2ecc71, 0xf39c12,
-  0x9b59b6, 0x1abc9c, 0xe67e22, 0x34495e,
-  0xec407a, 0x26c6da, 0x66bb6a, 0xffa726,
-];
+  const normalized = color.startsWith('#') ? color.slice(1) : color;
+  if (!/^[0-9a-fA-F]{6}$/.test(normalized)) return null;
+
+  return parseInt(normalized, 16);
+}
 
 export class TileRenderer {
   constructor() {
@@ -56,36 +34,31 @@ export class TileRenderer {
    */
   init(pixiApp, terrains, factions) {
     this._pixiApp = pixiApp;
+    this._terrainColorMap.clear();
+    this._factionColorMap.clear();
 
-    // 载入内置颜色，再用 json 中的 color 字段覆盖（如果有）
-    for (const [type, color] of Object.entries(TERRAIN_COLORS)) {
-      this._terrainColorMap.set(type, color);
-    }
     if (Array.isArray(terrains)) {
       for (const t of terrains) {
-        if (t.type && t.color) {
-          const hex = parseInt(t.color.replace('#', ''), 16);
-          this._terrainColorMap.set(t.type, hex);
+        const type = t.type || t.id;
+        const color = _parsePresentationColor(t);
+        if (type && color !== null) {
+          this._terrainColorMap.set(type, color);
         }
       }
     }
 
-    // 分配势力颜色：优先使用预定义表，其次按顺序分配备用色
     if (Array.isArray(factions)) {
-      let fallbackIdx = 0;
       for (const f of factions) {
-        if (FACTION_COLOR_MAP[f.id] !== undefined) {
-          this._factionColorMap.set(f.id, FACTION_COLOR_MAP[f.id]);
-        } else {
-          this._factionColorMap.set(f.id, FALLBACK_PALETTE[fallbackIdx % FALLBACK_PALETTE.length]);
-          fallbackIdx++;
+        const color = _parsePresentationColor(f);
+        if (f.id && color !== null) {
+          this._factionColorMap.set(f.id, color);
         }
       }
     }
   }
 
   _getTerrainColor(terrain) {
-    return this._terrainColorMap.get(terrain) ?? 0x888888;
+    return this._terrainColorMap.get(terrain) ?? DEFAULT_TERRAIN_COLOR;
   }
 
   /**
@@ -120,7 +93,7 @@ export class TileRenderer {
 
         // 势力颜色条（底部 4px）
         if (tile.ownerId) {
-          const fColor = this._factionColorMap.get(tile.ownerId) ?? 0xcccccc;
+          const fColor = this._factionColorMap.get(tile.ownerId) ?? DEFAULT_FACTION_COLOR;
           g.rect(px, py + TILE_PX - 4, TILE_PX, 4).fill({ color: fColor, alpha: 0.85 });
 
           // 边框描边

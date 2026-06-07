@@ -2,7 +2,7 @@
 
 > 项目代号：WorldDynamic  
 > 创建日期：2026-05-23  
-> 最后更新：2026-06-07（新增门派架构与运行模拟设计；新增动态模拟底座默认启用 ADR；新增当前代码功能实现盘点目录与文档；新增首个功能基本齐全版范围设计；新增统一经济交易底座设计与实施计划；新增三层关系底座全数据重构验证报告、实施计划并补强规格；新增十二境界运行时主链 ADR、实施计划更新、数据模型、Wiki 与验证报告导航；新增三层关系底座重构规格；新增修为数值化与突破重构验证报告、NPC 效用评分公式升级设计/实施计划/验证报告与导航；此前新增修为数值化与突破重构规格、修士战斗属性体系 ADR、系统文档、数据模型与实施计划；新增妖兽属性模板与境界清理实施计划、ADR、系统文档、数据模型和验证报告）
+> 最后更新：2026-06-08（补齐 data manifest、strict validation、resource registry、relationship projections、editor dataset/adapters 的文档导航；此前新增硬编码配置化与通用架构清理实施计划、验证报告骨架与 ADR、门派架构与运行模拟实施计划、门派架构与运行模拟设计、动态模拟底座默认启用 ADR、当前代码功能实现盘点目录与文档、首个功能基本齐全版范围设计、统一经济交易底座设计与实施计划、三层关系底座全数据重构验证报告、实施计划并补强规格、十二境界运行时主链 ADR、实施计划更新、数据模型、Wiki 与验证报告导航）
 
 ## 当前事实
 
@@ -77,7 +77,7 @@ docs/
 │   ├── README.md
 │   └── 2026-06-07-当前代码功能实现盘点.md
 ├── decisions/
-│   └── adr-001..adr-055-*.md
+│   └── adr-001..adr-056-*.md
 ├── superpowers/
 │   ├── specs/
 │   │   ├── 2026-06-05-Job-Toil正式启用前收尾规格.md
@@ -112,11 +112,13 @@ docs/
 │   │   ├── 2026-06-06-妖兽属性模板与境界清理实施计划.md
 │   │   ├── 2026-06-07-NPC效用评分公式升级实施计划.md
 │   │   ├── 2026-06-07-三层关系底座全数据重构实施计划.md
+│   │   ├── 2026-06-07-门派架构与运行模拟设计.md
 │   │   ├── 2026-06-07-十二境界运行时主链重构实施计划.md
 │   │   ├── 2026-06-07-修士战斗属性体系实施计划.md
 │   │   ├── 2026-06-07-修为数值化与突破重构实施计划.md
 │   │   ├── 2026-06-07-统一经济交易底座实施计划.md
-│   │   └── 2026-06-06-提交前收尾修复计划.md
+│   │   ├── 2026-06-06-提交前收尾修复计划.md
+│   │   └── 2026-06-08-硬编码配置化与通用架构清理实施计划.md
 │   └── reports/
 │       ├── 2026-06-05-Job-Toil启用前验证.md
 │       ├── 2026-06-05-Job-Toil默认启用验证.md
@@ -127,7 +129,8 @@ docs/
 │       ├── 2026-06-07-十二境界运行时主链重构验证.md
 │       ├── 2026-06-07-修士战斗属性体系验证.md
 │       ├── 2026-06-07-统一经济交易底座验证.md
-│       └── 2026-06-07-修为数值化与突破重构验证.md
+│       ├── 2026-06-07-修为数值化与突破重构验证.md
+│       └── 2026-06-08-硬编码配置化与通用架构清理验证.md
 ├── worldbuilding/
 │   ├── README.md
 │   ├── continent.md
@@ -149,9 +152,10 @@ docs/
 | 首个功能基本齐全版范围 | `superpowers/specs/2026-06-07-首个功能基本齐全版范围设计.md` |
 | 运行时架构 | `architecture/system-overview.md` |
 | 文件结构 | `architecture/file-structure.md` |
-| 数据配置 | `data/data-config-rules.md` |
+| 数据配置 | `data/data-config-rules.md`（包含 data manifest、strict validation、ResourceRegistry、relationship projections、editor dataset/adapters 规则） |
+| 硬编码配置化与通用架构清理 | `superpowers/plans/2026-06-08-硬编码配置化与通用架构清理实施计划.md`、`decisions/adr-056-data-manifest-and-strict-validation.md`、`superpowers/reports/2026-06-08-硬编码配置化与通用架构清理验证.md` |
 | AI 架构 | `systems/behavior-tree.md`、`systems/job-toil-ai-spec.md`、`decisions/adr-048-four-layer-reactive-ai.md`、`decisions/adr-050-goap-job-toil-layered-ai.md` |
-| 门派架构与运行模拟 | `superpowers/specs/2026-06-07-门派架构与运行模拟设计.md` |
+| 门派架构与运行模拟 | `superpowers/specs/2026-06-07-门派架构与运行模拟设计.md`、`superpowers/plans/2026-06-07-门派架构与运行模拟设计.md` |
 | NPC 效用评分公式升级 | `superpowers/specs/2026-06-07-NPC效用评分公式升级设计.md`、`superpowers/plans/2026-06-07-NPC效用评分公式升级实施计划.md`、`superpowers/reports/2026-06-07-NPC效用评分公式升级验证.md` |
 | 三层关系底座重构 | `superpowers/specs/2026-06-07-三层关系底座全数据重构-design.md`、`superpowers/plans/2026-06-07-三层关系底座全数据重构实施计划.md`、`superpowers/reports/2026-06-07-三层关系底座全数据重构验证.md`、`superpowers/specs/2026-06-07-三层关系底座重构-design.md` |
 | 统一经济交易底座 | `superpowers/specs/2026-06-07-统一经济交易底座设计.md`、`superpowers/plans/2026-06-07-统一经济交易底座实施计划.md`、`systems/economic-transaction-system.md`、`data-models/economic-transaction.md`、`superpowers/reports/2026-06-07-统一经济交易底座验证.md` |
@@ -191,7 +195,8 @@ docs/
 ## 维护规则
 
 - 新增或修改文档时，在文件头部更新“最后更新”日期。
-- 新增数据文件时，同步更新 `data/data-config-rules.md`。
+- 新增运行时数据文件时，同步更新 `apps/game/data/config/data-manifest.json` 与 `data/data-config-rules.md`。
+- 新增编辑器数据集、字段 schema 或专用 adapter 时，同步更新 `apps/editor/data/schemas/`、`apps/editor/data/adapters/` 和 `data/data-config-rules.md`。
 - 新增架构或机制决策时，使用 ADR 格式写入 `decisions/`。
 - 世界观决策落地到 `worldbuilding/wiki/`，并标明来源。
 - 世界观参考调研文档新增或重写时，优先使用 `世界观参考/模板/` 下的对应模板。

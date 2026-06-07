@@ -9,8 +9,6 @@ import { resolveCombatEncounter } from '../combat/combat-encounter.js';
 import { applyCultivationExperience } from '../npc/cultivation-experience.js';
 import { resolveMonsterAttributes } from './monster-attributes.js';
 
-const GRADED_BASE_IDS = new Set(['monster_core', 'beast_material']);
-
 export function isMonsterHuntQuest(questTypeId, economyConfig = {}) {
   const ids = economyConfig?.monsterResources?.huntQuestTypeIds
     || ['qt_slay_monster', 'qt_exterminate', 'qt_hunt_beast'];
@@ -21,10 +19,45 @@ export function clampMonsterGrade(grade) {
   return Math.max(1, Math.min(9, Math.floor(Number(grade) || 1)));
 }
 
-export function gradedMonsterResourceId(baseItemId, grade) {
-  if (!GRADED_BASE_IDS.has(baseItemId)) return baseItemId;
-  const id = `${baseItemId}_g${clampMonsterGrade(grade)}`;
-  return ItemRegistry.has(id) ? id : baseItemId;
+function asFamilies(resourceRules = {}) {
+  return Array.isArray(resourceRules?.itemFamilies) ? resourceRules.itemFamilies : [];
+}
+
+function applyGradeTemplate(template, grade) {
+  if (!template) return null;
+  return String(template).replaceAll('{grade}', String(clampMonsterGrade(grade)));
+}
+
+function templateToPattern(template) {
+  if (!template) return null;
+  const escaped = String(template)
+    .replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
+    .replace('\\{grade\\}', '\\d+');
+  return new RegExp(`^${escaped}$`);
+}
+
+function familyMatchesItemId(family, itemId) {
+  if (!family || !itemId) return false;
+  const directIds = [family.id, family.baseItemId, family.itemId].filter(Boolean);
+  if (directIds.includes(itemId)) return true;
+  if (Array.isArray(family.sourceItemIds) && family.sourceItemIds.includes(itemId)) return true;
+  const pattern = templateToPattern(family.itemIdTemplate);
+  return pattern ? pattern.test(itemId) : false;
+}
+
+function resourceRulesFromWorldContext(worldContext = {}) {
+  return worldContext?.monsterResourceRules
+    || worldContext?.balanceConfig?.monsterResourceRules
+    || null;
+}
+
+export function gradedMonsterResourceId(baseItemId, grade, resourceRules = {}) {
+  const family = asFamilies(resourceRules).find(item => familyMatchesItemId(item, baseItemId));
+  if (!family?.itemIdTemplate) return baseItemId;
+  const itemId = applyGradeTemplate(family.itemIdTemplate, grade);
+  if (!itemId) return baseItemId;
+  if (ItemRegistry.has(itemId) || !ItemRegistry.has(baseItemId)) return itemId;
+  return baseItemId;
 }
 
 function monsterGrade(monster) {
@@ -35,14 +68,14 @@ function monsterDrops(monster) {
   return monster?.staticData?.get?.('drops') || monster?._def?.drops || monster?.drops || [];
 }
 
-export function resolveMonsterDrops(monster, randomFn = Math.random) {
+export function resolveMonsterDrops(monster, randomFn = Math.random, resourceRules = {}) {
   const grade = monsterGrade(monster);
   const resolved = [];
   for (const drop of monsterDrops(monster)) {
     const chance = drop.chance ?? 1;
     if (chance < 1 && randomFn() >= chance) continue;
     const dropGrade = drop.coreGrade || grade;
-    const itemId = gradedMonsterResourceId(drop.itemId, dropGrade);
+    const itemId = gradedMonsterResourceId(drop.itemId, dropGrade, resourceRules);
     const qty = Math.max(1, Math.floor(drop.qty ?? 1));
     resolved.push({
       itemId,
@@ -55,8 +88,8 @@ export function resolveMonsterDrops(monster, randomFn = Math.random) {
   return resolved;
 }
 
-export function grantMonsterDrops(entity, monster, randomFn = Math.random) {
-  const drops = resolveMonsterDrops(monster, randomFn);
+export function grantMonsterDrops(entity, monster, randomFn = Math.random, resourceRules = {}) {
+  const drops = resolveMonsterDrops(monster, randomFn, resourceRules);
   if (!entity?.inventory) return drops;
   for (const drop of drops) {
     entity.inventory.add(drop.itemId, drop.qty);
@@ -199,7 +232,7 @@ export function settleMonsterHunt(entity, monster, worldContext = {}, randomFn =
   const winChance = encounter.winChance;
 
   if (randomFn() <= winChance) {
-    const drops = grantMonsterDrops(entity, monster, randomFn);
+    const drops = grantMonsterDrops(entity, monster, randomFn, resourceRulesFromWorldContext(worldContext));
     markMonsterKilled(monster, entity, drops, assistNpcIds);
     const cultivationExperience = grantHuntExperience(entity, partyMembers, worldContext, monsterPower, Math.max(1, effectivePower));
     return {

@@ -1,15 +1,23 @@
-const FACTION_COLORS = {
-  'sect_001': '#5DADE2',  // 青云宗 - 天蓝
-  'sect_002': '#BDC3C7',  // 天剑宗 - 银白
-  'sect_003': '#F4D03F',  // 玄真观 - 金黄
-  'sect_004': '#E74C3C',  // 血煞门 - 深红
-  'sect_005': '#8E44AD',  // 幽冥教 - 暗紫
-  'sect_006': '#27AE60',  // 毒蝎帮 - 毒绿
-  'sect_007': '#2ECC71',  // 药王谷 - 翠绿
-  'sect_008': '#3498DB',  // 天机阁 - 靛蓝
-  'sect_009': '#E67E22',  // 万妖山 - 橙红
-  'sect_010': '#795548',  // 蛮蛟族 - 深棕
-};
+const PRESENTATION_DATA_EVENT = 'cultivation-world:presentation-data';
+
+function _getPresentationColor(definition) {
+  return definition?.presentation?.color;
+}
+
+function _publishPresentationData(terrains, factions) {
+  const detail = {
+    terrains: Array.isArray(terrains) ? terrains : [],
+    factions: Array.isArray(factions) ? factions : [],
+  };
+  globalThis.__cultivationWorldPresentationData = detail;
+
+  if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function') {
+    const EventCtor = window.CustomEvent || globalThis.CustomEvent;
+    if (EventCtor) {
+      window.dispatchEvent(new EventCtor(PRESENTATION_DATA_EVENT, { detail }));
+    }
+  }
+}
 
 export class Minimap {
   constructor(containerId) {
@@ -40,13 +48,23 @@ export class Minimap {
     this.mapData = mapData;
     this.canvas.width = this.container.clientWidth;
     this.canvas.height = this.container.clientHeight;
+    this.factionColors = {};
+    this.terrainColors = {};
+    _publishPresentationData(terrains, factions);
 
-    for (const t of terrains) {
-      this.terrainColors[t.type] = t.color;
+    for (const t of terrains || []) {
+      const terrainType = t.type || t.id;
+      const color = _getPresentationColor(t);
+      if (terrainType && color) {
+        this.terrainColors[terrainType] = color;
+      }
     }
 
-    for (const f of factions) {
-      this.factionColors[f.id] = FACTION_COLORS[f.id] || '#888';
+    for (const f of factions || []) {
+      const color = _getPresentationColor(f);
+      if (f.id && color) {
+        this.factionColors[f.id] = color;
+      }
     }
   }
 

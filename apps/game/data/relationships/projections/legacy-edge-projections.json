@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "_description": "旧关系边 API 到三层关系 mark/tag 的兼容投影配置。运行时接入后，RelationshipSystem 不应再维护代码内投影表。",
+  "defaults": {
+    "strengthField": "strength",
+    "weightField": "weight",
+    "sort": "strength_desc",
+    "minStrength": 1
+  },
+  "edgeToLedger": [
+    { "edgeType": "grudge", "ledgerKind": "mark", "type": "bloodFeud" },
+    { "edgeType": "enemy", "ledgerKind": "mark", "type": "bloodFeud" },
+    { "edgeType": "beast_grudge", "ledgerKind": "mark", "type": "bloodFeud" },
+    { "edgeType": "beast_rival", "ledgerKind": "mark", "type": "resourceGrudge" },
+    { "edgeType": "rival", "ledgerKind": "mark", "type": "resourceGrudge" },
+    { "edgeType": "territory_threat", "ledgerKind": "mark", "type": "resourceGrudge" },
+    { "edgeType": "gratitude", "ledgerKind": "mark", "type": "lifeDebt" },
+    { "edgeType": "benefactor", "ledgerKind": "mark", "type": "lifeDebt" },
+    { "edgeType": "same_sect", "ledgerKind": "tag", "type": "sameSect" },
+    { "edgeType": "ally", "ledgerKind": "tag", "type": "ally" },
+    { "edgeType": "master", "ledgerKind": "tag", "type": "masterDisciple" },
+    { "edgeType": "disciple", "ledgerKind": "tag", "type": "masterDisciple" },
+    { "edgeType": "dao_companion", "ledgerKind": "tag", "type": "daoCompanion" },
+    { "edgeType": "kin", "ledgerKind": "tag", "type": "sameSect" },
+    { "edgeType": "spirit_pet", "ledgerKind": "tag", "type": "ally" },
+    { "edgeType": "mount", "ledgerKind": "tag", "type": "ally" },
+    { "edgeType": "pack_member", "ledgerKind": "tag", "type": "packMember" },
+    { "edgeType": "pack_leader", "ledgerKind": "tag", "type": "packLeader" }
+  ],
+  "ledgerToEdges": [
+    { "ledgerKind": "mark", "type": "wantedOrder", "edgeTypes": ["enemy"] },
+    { "ledgerKind": "mark", "type": "bloodFeud", "edgeTypes": ["grudge", "enemy", "beast_grudge"] },
+    { "ledgerKind": "mark", "type": "resourceGrudge", "edgeTypes": ["rival", "beast_rival", "territory_threat"] },
+    { "ledgerKind": "mark", "type": "lifeDebt", "edgeTypes": ["gratitude", "benefactor"] },
+    { "ledgerKind": "mark", "type": "favorDebt", "edgeTypes": ["gratitude", "benefactor"] },
+    { "ledgerKind": "tag", "type": "sameSect", "edgeTypes": ["same_sect"] },
+    { "ledgerKind": "tag", "type": "ally", "edgeTypes": ["ally"] },
+    { "ledgerKind": "tag", "type": "masterDisciple", "edgeTypes": ["master", "disciple"] },
+    { "ledgerKind": "tag", "type": "daoCompanion", "edgeTypes": ["dao_companion"] },
+    { "ledgerKind": "tag", "type": "packMember", "edgeTypes": ["pack_member"] },
+    { "ledgerKind": "tag", "type": "packLeader", "edgeTypes": ["pack_leader"] }
+  ]
+}

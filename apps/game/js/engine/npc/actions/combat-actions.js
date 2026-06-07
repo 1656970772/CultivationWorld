@@ -287,7 +287,7 @@ export class NPCRaidTreasureExecutor extends ActionExecutor {
     // 期望收益落地：按 reward.json 概率分布 roll 一个结果。
     // 若 outcome 带 itemId，则发放真实物品（法宝/材料/丹药）写入背包（ADR-025），否则回退真气收益。
     const rewardCfg = worldContext.balanceConfig?.reward;
-    const grant = rollAndGrantReward(entity, rewardCfg, 'obsession_plunder', worldContext.rng);
+    const grant = rollAndGrantReward(entity, rewardCfg, 'obsession_plunder', worldContext.rng, worldContext);
 
     entity.state.set('treasureObtained', true);
     const riskNote = risk.triggered.length > 0

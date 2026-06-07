@@ -549,6 +549,7 @@ export class FieldRenderer {
     return createMapEditorPanel({
       map,
       datasets: this.datasets,
+      adapter: field.adapterConfig || null,
       onChange,
       fallback: () => this.createTileSummaryFallback(field, item)
     });
@@ -556,7 +557,7 @@ export class FieldRenderer {
 
   createTileSummaryFallback(field, item) {
     const map = { ...item, tiles: getValueAtPath(item, field.path) || [] };
-    const summary = createMapSummary(map, this.datasets);
+    const summary = createMapSummary(map, this.datasets, field.adapterConfig || null);
     const container = createElement('div', 'tile-summary');
 
     const stats = [

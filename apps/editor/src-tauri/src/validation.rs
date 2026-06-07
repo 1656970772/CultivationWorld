@@ -37,24 +37,29 @@ pub fn validate_all_datasets(datasets: &BTreeMap<String, Value>) -> Result<Vec<I
         }
     }
 
-    validate_array_dataset(datasets, "factions", &mut issues);
-    validate_array_dataset(datasets, "npcs", &mut issues);
-    validate_array_dataset(datasets, "terrains", &mut issues);
-    validate_array_dataset(datasets, "modifiers", &mut issues);
-    validate_array_dataset(datasets, "rules", &mut issues);
-    validate_array_dataset(datasets, "events", &mut issues);
-    validate_map_dataset(datasets.get("map"), &mut issues);
+    for (key, value) in datasets {
+        validate_dataset_shape_and_keys(key, value, &mut issues);
+    }
 
-    let faction_ids = collect_ids(datasets.get("factions"));
-    let npc_ids = collect_ids(datasets.get("npcs"));
-    let terrain_ids = collect_keys(datasets.get("terrains"), "type");
+    let faction_ids = collect_keys(dataset(datasets, "entities/factions", "factions"), "id");
+    let npc_ids = collect_keys(dataset(datasets, "entities/npcs", "npcs"), "id");
+    let mut terrain_ids = collect_keys(dataset(datasets, "definitions/terrains", "terrains"), "type");
+    terrain_ids.extend(collect_keys(datasets.get("terrains"), "type"));
     let event_ids = collect_keys(datasets.get("events"), "type");
 
-    validate_faction_leaders(datasets.get("factions"), &npc_ids, &mut issues);
-    validate_npc_factions(datasets.get("npcs"), &faction_ids, &mut issues);
+    validate_faction_leaders(
+        dataset(datasets, "entities/factions", "factions"),
+        &npc_ids,
+        &mut issues,
+    );
+    validate_npc_factions(
+        dataset(datasets, "entities/npcs", "npcs"),
+        &faction_ids,
+        &mut issues,
+    );
     validate_rule_events(datasets.get("rules"), &event_ids, &mut issues);
     validate_map_references(
-        datasets.get("map"),
+        dataset(datasets, "world/map", "map"),
         &terrain_ids,
         &faction_ids,
         &mut issues,
@@ -67,21 +72,26 @@ pub fn has_error(issues: &[Issue]) -> bool {
     issues.iter().any(|issue| issue.severity == "error")
 }
 
-fn validate_array_dataset(
-    datasets: &BTreeMap<String, Value>,
-    key: &str,
-    issues: &mut Vec<Issue>,
-) {
-    let Some(value) = datasets.get(key) else {
+fn validate_dataset_shape_and_keys(key: &str, value: &Value, issues: &mut Vec<Issue>) {
+    if key == "world/map" || key == "map" {
+        validate_map_dataset(Some(value), issues);
         return;
-    };
-    let Some(items) = value.as_array() else {
+    }
+
+    if value.is_array() {
+        validate_array_dataset(key, value, issues);
+    } else if !value.is_object() {
         issues.push(error(
             "invalid_dataset_type",
             key,
-            format!("{key} must be an array"),
-            Some(json!({ "expected": "array" })),
+            format!("{key} must be an array or object"),
+            Some(json!({ "expected": "array_or_object" })),
         ));
+    }
+}
+
+fn validate_array_dataset(key: &str, value: &Value, issues: &mut Vec<Issue>) {
+    let Some(items) = value.as_array() else {
         return;
     };
 
@@ -90,12 +100,14 @@ fn validate_array_dataset(
     for (index, item) in items.iter().enumerate() {
         let path = format!("{key}[{index}].{primary_key}");
         let Some(id) = item.get(primary_key).and_then(Value::as_str) else {
-            issues.push(error(
-                "missing_primary_key",
-                path,
-                format!("{key}[{index}] is missing string {primary_key}"),
-                None,
-            ));
+            if item.get("id").is_none() && item.get("type").is_none() {
+                issues.push(error(
+                    "missing_primary_key",
+                    path,
+                    format!("{key}[{index}] is missing string {primary_key}"),
+                    None,
+                ));
+            }
             continue;
         };
         if !seen.insert(id.to_string()) {
@@ -116,7 +128,7 @@ fn validate_map_dataset(value: Option<&Value>, issues: &mut Vec<Issue>) {
     let Some(map) = value.as_object() else {
         issues.push(error(
             "invalid_dataset_type",
-            "map",
+            "world/map",
             "map must be an object".to_string(),
             Some(json!({ "expected": "object" })),
         ));
@@ -127,7 +139,7 @@ fn validate_map_dataset(value: Option<&Value>, issues: &mut Vec<Issue>) {
         if map.get(field).and_then(Value::as_i64).is_none() {
             issues.push(error(
                 "invalid_map_shape",
-                format!("map.{field}"),
+                format!("world/map.{field}"),
                 format!("map.{field} must be an integer"),
                 None,
             ));
@@ -137,7 +149,7 @@ fn validate_map_dataset(value: Option<&Value>, issues: &mut Vec<Issue>) {
     let Some(tiles) = map.get("tiles") else {
         issues.push(error(
             "invalid_map_shape",
-            "map.tiles",
+            "world/map.tiles",
             "map.tiles must be an array".to_string(),
             None,
         ));
@@ -146,7 +158,7 @@ fn validate_map_dataset(value: Option<&Value>, issues: &mut Vec<Issue>) {
     if !tiles.is_array() {
         issues.push(error(
             "invalid_map_shape",
-            "map.tiles",
+            "world/map.tiles",
             "map.tiles must be an array".to_string(),
             Some(json!({ "expected": "array" })),
         ));
@@ -166,9 +178,9 @@ fn validate_faction_leaders(
         let Some(leader_id) = faction.get("leader").and_then(Value::as_str) else {
             continue;
         };
-        if !npc_ids.contains(leader_id) {
+        if !leader_id.is_empty() && !npc_ids.contains(leader_id) {
             issues.push(invalid_reference(
-                format!("factions[{index}].leader"),
+                format!("entities/factions[{index}].leader"),
                 leader_id,
                 "NPC",
             ));
@@ -189,9 +201,9 @@ fn validate_npc_factions(
         let Some(faction_id) = npc.get("factionId").and_then(Value::as_str) else {
             continue;
         };
-        if !faction_ids.contains(faction_id) {
+        if !faction_id.is_empty() && !faction_ids.contains(faction_id) {
             issues.push(invalid_reference(
-                format!("npcs[{index}].factionId"),
+                format!("entities/npcs[{index}].factionId"),
                 faction_id,
                 "faction",
             ));
@@ -239,7 +251,7 @@ fn validate_map_references(
     let mut coordinates = BTreeSet::new();
 
     for (index, tile) in tiles.iter().enumerate() {
-        let path = format!("map.tiles[{index}]");
+        let path = format!("world/map.tiles[{index}]");
         let x = tile.get("x").and_then(Value::as_i64);
         let y = tile.get("y").and_then(Value::as_i64);
 
@@ -313,10 +325,20 @@ fn collect_keys(value: Option<&Value>, key_field: &str) -> BTreeSet<String> {
         .collect()
 }
 
+fn dataset<'a>(
+    datasets: &'a BTreeMap<String, Value>,
+    key: &str,
+    legacy_key: &str,
+) -> Option<&'a Value> {
+    datasets.get(key).or_else(|| datasets.get(legacy_key))
+}
+
 fn dataset_primary_key(key: &str) -> Option<&'static str> {
     match key {
-        "factions" | "npcs" | "rules" => Some("id"),
+        "factions" | "npcs" | "rules" | "entities/factions" | "entities/npcs" => Some("id"),
         "terrains" | "modifiers" | "events" => Some("type"),
+        "definitions/terrains" => Some("type"),
+        "world/modifiers" | "actions/world-rules" => Some("id"),
         _ => None,
     }
 }
