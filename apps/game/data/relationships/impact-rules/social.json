@@ -1,0 +1,79 @@
+{
+  "_description": "social 领域关系影响规则。",
+  "rules": [
+    {
+      "id": "social_life_debt_mark",
+      "priority": 70,
+      "match": {
+        "eventType": "social.life_debt",
+        "visibility": ["private", "group", "public"],
+        "conditions": [
+          { "expr": "actor.id != target.id" }
+        ]
+      },
+      "effects": [
+        {
+          "layer": "individual",
+          "subject": "$target.id",
+          "object": "$actor.id",
+          "changes": {
+            "core.affinity": { "delta": { "expr": "25" } },
+            "core.trust": { "delta": { "expr": "30" } },
+            "marks": [
+              { "type": "lifeDebt", "weight": { "expr": "70" } }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "social_blood_feud_mark",
+      "priority": 70,
+      "match": {
+        "eventType": "social.blood_feud",
+        "visibility": ["private", "group", "public"],
+        "conditions": [
+          { "expr": "actor.id != target.id" }
+        ]
+      },
+      "effects": [
+        {
+          "layer": "individual",
+          "subject": "$actor.id",
+          "object": "$target.id",
+          "changes": {
+            "core.affinity": { "delta": { "expr": "-50" } },
+            "core.trust": { "delta": { "expr": "-50" } },
+            "marks": [
+              { "type": "bloodFeud", "weight": { "expr": "80" } }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "social_humiliation_grudge",
+      "priority": 40,
+      "match": {
+        "eventType": "social.humiliation",
+        "visibility": ["private", "group", "public"],
+        "conditions": [
+          { "expr": "actor.id != target.id" }
+        ]
+      },
+      "effects": [
+        {
+          "layer": "individual",
+          "subject": "$actor.id",
+          "object": "$target.id",
+          "changes": {
+            "core.affinity": { "delta": { "expr": "-20" } },
+            "marks": [
+              { "type": "resourceGrudge", "weight": { "expr": "30" } }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

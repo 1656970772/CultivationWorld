@@ -1,0 +1,58 @@
+{
+  "_description": "faction 领域关系影响规则。",
+  "rules": [
+    {
+      "id": "faction_wanted_manual_order",
+      "priority": 80,
+      "match": {
+        "eventType": "faction.wanted",
+        "visibility": ["group", "public"],
+        "conditions": [
+          { "expr": "faction.id != null" },
+          { "expr": "target.id != null" }
+        ]
+      },
+      "effects": [
+        {
+          "layer": "faction",
+          "faction": "$faction.id",
+          "subject": "$target.id",
+          "changes": {
+            "core.reputation": { "delta": { "expr": "-clamp(event.weight || 50, 20, 100)" } },
+            "marks": [
+              { "type": "wantedOrder", "weight": { "expr": "clamp(event.weight || 50, 20, 100)" } }
+            ],
+            "tags": [
+              { "type": "wantedCriminal" }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "faction_wanted_revoked_credit_restore",
+      "priority": 60,
+      "match": {
+        "eventType": "faction.wanted_revoked",
+        "visibility": ["group", "public"],
+        "conditions": [
+          { "expr": "faction.id != null" },
+          { "expr": "target.id != null" }
+        ]
+      },
+      "effects": [
+        {
+          "layer": "faction",
+          "faction": "$faction.id",
+          "subject": "$target.id",
+          "changes": {
+            "core.reputation": { "delta": { "expr": "20" } },
+            "consumeMarks": [
+              { "type": "wantedOrder" }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

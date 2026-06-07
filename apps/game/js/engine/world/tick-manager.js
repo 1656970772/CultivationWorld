@@ -664,6 +664,11 @@ export class TickManager {
       const topEnemy = this.relationshipSystem.topEdgeOfType(entity.id, 'enemy');
       if (topEnemy && topEnemy.strength >= minStrength) targetId = topEnemy.toId;
     }
+    if (!targetId && this._relationGoalsEnabled() && this.relationshipSystem?.topWantedTargetForFaction) {
+      const factionId = entity.state?.get?.('factionId') || null;
+      const wanted = this.relationshipSystem.topWantedTargetForFaction(factionId, entity.id);
+      if (wanted?.targetId) targetId = wanted.targetId;
+    }
     if (!targetId) return null;
     const target = this.entityRegistry.getById(targetId);
     if (!target || !target.alive) return null;

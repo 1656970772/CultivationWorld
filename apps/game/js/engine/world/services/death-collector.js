@@ -22,6 +22,37 @@ export class DeathCollector {
   get worldEntity() { return this.host.worldEntity; }
   get relationshipSystem() { return this.host.relationshipSystem; }
 
+  _publishNpcDeathRelationEvent(npc, info, pos) {
+    if (!this.relationshipSystem || typeof this.relationshipSystem.handleEvent !== 'function') return [];
+    if (!npc?.id || !info?.killerId || info.killerId === npc.id) return [];
+    const day = this.worldEntity?.currentDay ?? 0;
+    return this.relationshipSystem.handleEvent({
+      type: 'combat.kill',
+      visibility: info.visibility || info.relationshipVisibility || 'public',
+      day,
+      actor: {
+        id: info.killerId,
+        name: info.killerName || null,
+        factionId: info.killerFactionId ?? null,
+      },
+      target: {
+        id: npc.id,
+        name: info.npcName || npc.name || null,
+        factionId: info.factionId ?? npc.state?.get?.('factionId') ?? null,
+        roleRank: info.roleRank ?? npc.state?.get?.('roleRank') ?? 0,
+      },
+      witness: {
+        count: info.witnessCount ?? (Array.isArray(info.witnessIds) ? info.witnessIds.length : 0),
+      },
+      source: {
+        type: 'npc_death',
+        cause: info.cause || 'unknown',
+        location: pos ? { x: pos.x, y: pos.y } : null,
+      },
+      world: { day },
+    });
+  }
+
   /**
    * 统一收集本 tick 发生的死亡，写入 tickLog.deaths / monsterDeaths。
    */
@@ -47,6 +78,7 @@ export class DeathCollector {
         y: pos?.y ?? null,
         locationName: pos ? host._resolveLocationName(pos.x, pos.y) : null,
       });
+      this._publishNpcDeathRelationEvent(npc, info, pos);
       const dynamicEvents = host.worldEventSystem?.publishDeathEvents?.(
         npc,
         info,

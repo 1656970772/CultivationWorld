@@ -1,0 +1,54 @@
+{
+  "_description": "RelationTag 字典。第一版只激活旧关系兼容和追杀令链所需标签。",
+  "tags": [
+    {
+      "id": "sameSect",
+      "name": "同门",
+      "layers": ["individual", "group"],
+      "stacking": "unique",
+      "defaultModifiers": { "affinityFloor": 10, "trustDecayMult": 0.8 }
+    },
+    {
+      "id": "ally",
+      "name": "盟友",
+      "layers": ["individual", "group"],
+      "stacking": "unique",
+      "defaultModifiers": { "affinityFloor": 15 }
+    },
+    {
+      "id": "masterDisciple",
+      "name": "师徒",
+      "layers": ["individual"],
+      "stacking": "unique",
+      "defaultModifiers": { "affinityFloor": 20, "trustDecayMult": 0.5 }
+    },
+    {
+      "id": "daoCompanion",
+      "name": "道侣",
+      "layers": ["individual"],
+      "stacking": "unique",
+      "defaultModifiers": { "affinityFloor": 40, "trustDecayMult": 0.4 }
+    },
+    {
+      "id": "packMember",
+      "name": "同群妖兽",
+      "layers": ["individual"],
+      "stacking": "unique",
+      "defaultModifiers": { "affinityFloor": 20 }
+    },
+    {
+      "id": "packLeader",
+      "name": "妖群首领",
+      "layers": ["individual"],
+      "stacking": "unique",
+      "defaultModifiers": { "trustFloor": 20 }
+    },
+    {
+      "id": "wantedCriminal",
+      "name": "通缉犯",
+      "layers": ["faction"],
+      "stacking": "unique",
+      "defaultModifiers": { "tradeAccessMult": 0.2 }
+    }
+  ]
+}

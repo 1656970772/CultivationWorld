@@ -164,17 +164,61 @@ assert(configs.toils.toils.some(toil => toil.id === 'toil_mark_dynamic_event_pre
 assert(configs.toils.toils.some(toil => toil.id === 'toil_accept_quest'), 'loadGameConfigs merges quest toils');
 assert(configs.toils.toils.some(toil => toil.id === 'toil_assess_combat_risk'), 'loadGameConfigs merges combat toils');
 assert(configs.toils.toils.some(toil => toil.id === 'toil_cultivate'), 'loadGameConfigs merges cultivation toils');
+assert(configs.relationshipPlatform?.schemas?.ledgers?.layers?.individual, 'loadGameConfigs loads relationship ledger schema');
+assert(configs.relationshipPlatform?.dictionaries?.marks?.marks?.some(mark => mark.id === 'wantedOrder'), 'loadGameConfigs loads relationship mark dictionary');
+assert(configs.relationshipPlatform?.impactRules?.some(file => file.rules?.some(rule => rule.id === 'combat_kill_public_wanted_order')), 'loadGameConfigs loads relationship impact rules');
+assert(configs.relationshipPlatform?.signalRules?.some(file => file.rules?.some(rule => rule.id === 'wanted_hunt_signal')), 'loadGameConfigs loads relationship signal rules');
 
 console.log('6) WorldEngine can initialize Job/Toil configs twice in one process');
 const { WorldEngine } = await imp('js/engine/world-engine.js');
+const { RelationshipSystem } = await imp('js/engine/world/relationship-system.js');
 const { JobPool } = await imp('js/engine/pools/job-pool.js');
 const { ToilPool } = await imp('js/engine/pools/toil-pool.js');
+
+const relationshipSystem = new RelationshipSystem({
+  enabled: true,
+  platform: configs.relationshipPlatform,
+});
+relationshipSystem.addMark({
+  layer: 'faction',
+  factionId: 'sect_001',
+  subjectId: 'npc_config_target',
+  type: 'wantedOrder',
+  weight: 55,
+  day: 1,
+});
+assert(
+  relationshipSystem.getSignals({
+    actor: { id: 'npc_config_hunter', factionId: 'sect_001' },
+    target: { id: 'npc_config_target' },
+    contextType: 'action',
+    actionId: 'act_npc_job_hunt_enemy',
+  }).gates.canTriggerWantedHunt === true,
+  'loaded relationshipPlatform can construct working RelationshipSystem',
+);
 
 const firstEngine = new WorldEngine();
 firstEngine.init(configs);
 assert(JobPool.has('job_npc_prepare_dynamic_event'), 'first WorldEngine init registers dynamic event job');
 assert(ToilPool.getDefinition('toil_resolve_target'), 'first WorldEngine init registers resolve-target toil');
 assert(ToilPool.getExecutor('toil_resolve_target'), 'first WorldEngine init registers resolve-target executor');
+firstEngine.relationshipSystem.addMark({
+  layer: 'faction',
+  factionId: 'sect_001',
+  subjectId: 'npc_engine_target',
+  type: 'wantedOrder',
+  weight: 60,
+  day: 1,
+});
+assert(
+  firstEngine.relationshipSystem.getSignals({
+    actor: { id: 'npc_engine_hunter', factionId: 'sect_001' },
+    target: { id: 'npc_engine_target' },
+    contextType: 'action',
+    actionId: 'act_npc_job_hunt_enemy',
+  }).gates.canTriggerWantedHunt === true,
+  'WorldEngine injects relationshipPlatform into RelationshipSystem',
+);
 const firstNpc = firstEngine.entityRegistry.getAliveByType('npc')[0];
 const enabledActionIds = new Set(firstNpc.behaviorSystem.availableActions.map(action => action.id));
 assert(firstNpc.state.get('jobsEnabled') === true, 'default NPC state records jobsEnabled=true');
