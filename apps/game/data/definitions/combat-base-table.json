@@ -1,21 +1,129 @@
 {
   "_description": "境界战斗基表。只作同层级参考强度，不是修士表或妖兽表的强制来源。",
-  "_scope": "包含当前运行时境界和未来/参考高阶层级；不扩展 data/definitions/ranks.json 的 canonical runtime 境界。",
+  "_scope": "三张战斗表的 ranks key 必须与 data/definitions/ranks.json 的 12 个运行时境界完全一致；旧高阶只保留在历史资料，不作为运行时表项。",
   "version": 1,
-  "attributeKeys": ["hp", "yuan", "attack", "defense", "speed", "soul"],
-  "stageMultipliers": { "early": 1.0, "middle": 1.15, "late": 1.45, "perfection": 2.0 },
+  "attributeKeys": [
+    "hp",
+    "yuan",
+    "attack",
+    "defense",
+    "speed",
+    "soul"
+  ],
+  "stageMultipliers": {
+    "early": 1,
+    "middle": 1.15,
+    "late": 1.45,
+    "perfection": 2
+  },
   "ranks": {
-    "mortal": { "name": "凡人", "hp": 100, "yuan": 0, "attack": 20, "defense": 8, "speed": 10, "soul": 5 },
-    "qi_refining": { "name": "炼气", "hp": 250, "yuan": 120, "attack": 55, "defense": 25, "speed": 25, "soul": 25 },
-    "foundation_building": { "name": "筑基", "hp": 800, "yuan": 450, "attack": 170, "defense": 85, "speed": 70, "soul": 80 },
-    "golden_core": { "name": "金丹", "hp": 2400, "yuan": 1600, "attack": 520, "defense": 280, "speed": 190, "soul": 260 },
-    "nascent_soul": { "name": "元婴", "hp": 7000, "yuan": 5500, "attack": 1500, "defense": 850, "speed": 500, "soul": 850 },
-    "mahayana": { "name": "大乘", "hp": 20000, "yuan": 18000, "attack": 4200, "defense": 2500, "speed": 1300, "soul": 2600 },
-    "tribulation": { "name": "渡劫", "hp": 60000, "yuan": 65000, "attack": 12500, "defense": 7600, "speed": 3500, "soul": 8000 },
-    "spirit_transformation": { "name": "化神", "hp": 180000, "yuan": 220000, "attack": 38000, "defense": 23000, "speed": 9000, "soul": 25000 },
-    "earth_immortal": { "name": "地仙", "hp": 550000, "yuan": 750000, "attack": 115000, "defense": 70000, "speed": 24000, "soul": 80000 },
-    "heaven_immortal": { "name": "天仙", "hp": 1700000, "yuan": 2500000, "attack": 350000, "defense": 220000, "speed": 65000, "soul": 260000 },
-    "great_luo_heaven_immortal": { "name": "大罗天仙", "hp": 5500000, "yuan": 8500000, "attack": 1100000, "defense": 700000, "speed": 180000, "soul": 900000 },
-    "dao_ancestor": { "name": "道祖", "hp": 20000000, "yuan": 35000000, "attack": 4000000, "defense": 2800000, "speed": 600000, "soul": 4000000 }
+    "mortal": {
+      "name": "凡人",
+      "hp": 100,
+      "yuan": 0,
+      "attack": 20,
+      "defense": 8,
+      "speed": 10,
+      "soul": 5
+    },
+    "qi_refining": {
+      "name": "炼气",
+      "hp": 250,
+      "yuan": 120,
+      "attack": 55,
+      "defense": 25,
+      "speed": 25,
+      "soul": 25
+    },
+    "foundation_building": {
+      "name": "筑基",
+      "hp": 800,
+      "yuan": 450,
+      "attack": 170,
+      "defense": 85,
+      "speed": 70,
+      "soul": 80
+    },
+    "golden_core": {
+      "name": "金丹",
+      "hp": 2400,
+      "yuan": 1600,
+      "attack": 520,
+      "defense": 280,
+      "speed": 190,
+      "soul": 260
+    },
+    "nascent_soul": {
+      "name": "元婴",
+      "hp": 7000,
+      "yuan": 5500,
+      "attack": 1500,
+      "defense": 850,
+      "speed": 500,
+      "soul": 850
+    },
+    "spirit_transformation": {
+      "name": "化神",
+      "hp": 20000,
+      "yuan": 18000,
+      "attack": 4200,
+      "defense": 2500,
+      "speed": 1300,
+      "soul": 2600
+    },
+    "void_refining": {
+      "name": "炼虚",
+      "hp": 60000,
+      "yuan": 65000,
+      "attack": 12500,
+      "defense": 7600,
+      "speed": 3500,
+      "soul": 8000
+    },
+    "body_integration": {
+      "name": "合体",
+      "hp": 180000,
+      "yuan": 220000,
+      "attack": 38000,
+      "defense": 23000,
+      "speed": 9000,
+      "soul": 25000
+    },
+    "mahayana": {
+      "name": "大乘",
+      "hp": 550000,
+      "yuan": 750000,
+      "attack": 115000,
+      "defense": 70000,
+      "speed": 24000,
+      "soul": 80000
+    },
+    "tribulation": {
+      "name": "渡劫",
+      "hp": 1700000,
+      "yuan": 2500000,
+      "attack": 350000,
+      "defense": 220000,
+      "speed": 65000,
+      "soul": 260000
+    },
+    "earth_immortal": {
+      "name": "地仙",
+      "hp": 5500000,
+      "yuan": 8500000,
+      "attack": 1100000,
+      "defense": 700000,
+      "speed": 180000,
+      "soul": 900000
+    },
+    "heaven_immortal": {
+      "name": "天仙",
+      "hp": 20000000,
+      "yuan": 35000000,
+      "attack": 4000000,
+      "defense": 2800000,
+      "speed": 600000,
+      "soul": 4000000
+    }
   }
 }

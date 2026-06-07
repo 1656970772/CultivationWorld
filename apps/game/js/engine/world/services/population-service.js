@@ -54,9 +54,18 @@ export class PopulationService {
     const females = singles.filter(n => n.state.get('gender') === 'female');
 
     const RANK_ORDER = {
-      mortal: 0, disciple: 0, qi_refining: 1,
-      foundation_building: 2, golden_core: 3,
-      nascent_soul: 4, spirit_transformation: 5,
+      mortal: 0,
+      qi_refining: 1,
+      foundation_building: 2,
+      golden_core: 3,
+      nascent_soul: 4,
+      spirit_transformation: 5,
+      void_refining: 6,
+      body_integration: 7,
+      mahayana: 8,
+      tribulation: 9,
+      earth_immortal: 10,
+      heaven_immortal: 11,
     };
 
     const matched = new Set();

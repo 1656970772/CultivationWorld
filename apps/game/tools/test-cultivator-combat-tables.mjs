@@ -7,21 +7,25 @@ const __dirname = path.dirname(__filename);
 const gameRoot = path.resolve(__dirname, '..');
 
 const attrs = ['hp', 'yuan', 'attack', 'defense', 'speed', 'soul'];
-const combatRanks = [
+const expectedRankIds = [
   'mortal',
   'qi_refining',
   'foundation_building',
   'golden_core',
   'nascent_soul',
+  'spirit_transformation',
+  'void_refining',
+  'body_integration',
   'mahayana',
   'tribulation',
-  'spirit_transformation',
   'earth_immortal',
   'heaven_immortal',
-  'great_luo_heaven_immortal',
-  'dao_ancestor',
 ];
-const tableScope = '包含当前运行时境界和未来/参考高阶层级；不扩展 data/definitions/ranks.json 的 canonical runtime 境界。';
+const bannedCombatRanks = [
+  ['great_luo', 'heaven', 'immortal'].join('_'),
+  ['dao', 'ancestor'].join('_'),
+];
+const tableScope = '三张战斗表的 ranks key 必须与 data/definitions/ranks.json 的 12 个运行时境界完全一致；旧高阶只保留在历史资料，不作为运行时表项。';
 
 let failures = 0;
 
@@ -58,12 +62,20 @@ function sameStringSet(actual, expected, message) {
   );
 }
 
+function sameStringArray(actual, expected, message) {
+  const mismatchIndex = actual.findIndex((key, index) => key !== expected[index]);
+  ok(
+    actual.length === expected.length && mismatchIndex === -1,
+    `${message} (actual: ${actual.join(',')}; expected: ${expected.join(',')})`,
+  );
+}
+
 function checkNumber(value, message) {
   ok(typeof value === 'number' && Number.isFinite(value), message);
 }
 
 function checkRankAttrs(table, tableName) {
-  for (const rank of combatRanks) {
+  for (const rank of expectedRankIds) {
     ok(Boolean(table.ranks?.[rank]), `${tableName}.${rank} exists`);
     for (const attr of attrs) {
       checkNumber(table.ranks?.[rank]?.[attr], `${tableName}.${rank}.${attr} is numeric`);
@@ -129,6 +141,11 @@ try {
   ]);
 
   console.log('1) scope and rank coverage');
+  const tables = {
+    base,
+    cultivator,
+    monster,
+  };
   for (const [tableName, table] of [
     ['base', base],
     ['cultivator', cultivator],
@@ -136,10 +153,17 @@ try {
   ]) {
     same(table._scope, tableScope, `${tableName} declares combat table scope`);
     const tableRanks = Object.keys(table.ranks || {});
-    sameStringSet(tableRanks, combatRanks, `${tableName} rank keys match combat rank plan`);
+    sameStringArray(tableRanks, expectedRankIds, `${tableName} rank keys match twelve-realm runtime chain`);
+    for (const bannedRank of bannedCombatRanks) {
+      ok(!Object.hasOwn(table.ranks || {}, bannedRank), `${tableName} omits old combat table key ${bannedRank}`);
+    }
     for (const rank of runtimeRanks) {
       ok(Boolean(table.ranks?.[rank.id]), `${tableName} covers runtime rank ${rank.id}`);
     }
+  }
+  const tableRankKey = JSON.stringify(expectedRankIds);
+  for (const [tableName, table] of Object.entries(tables)) {
+    same(JSON.stringify(Object.keys(table.ranks || {})), tableRankKey, `${tableName} rank keys exactly match other combat tables`);
   }
 
   console.log('2) base table shape');
@@ -150,11 +174,23 @@ try {
   same(base.stageMultipliers?.perfection, 2, 'base.stageMultipliers.perfection');
   checkRankAttrs(base, 'base');
   same(base.ranks.mortal.yuan, 0, 'base mortal yuan');
-  same(base.ranks.dao_ancestor.attack, 4000000, 'base dao_ancestor attack');
+  same(base.ranks.spirit_transformation?.attack, 4200, 'base spirit_transformation attack keeps old mahayana slot');
+  same(base.ranks.void_refining?.attack, 12500, 'base void_refining attack keeps old tribulation slot');
+  same(base.ranks.body_integration?.attack, 38000, 'base body_integration attack keeps old spirit_transformation slot');
+  same(base.ranks.mahayana?.attack, 115000, 'base mahayana attack keeps old earth_immortal slot');
+  same(base.ranks.tribulation?.attack, 350000, 'base tribulation attack keeps old heaven_immortal slot');
+  same(base.ranks.earth_immortal?.attack, 1100000, 'base earth_immortal attack keeps old slot 11 value');
+  same(base.ranks.heaven_immortal?.attack, 4000000, 'base heaven_immortal attack keeps old slot 12 value');
 
   console.log('3) cultivator and monster table shape');
   checkRankAttrs(cultivator, 'cultivator');
   checkRankAttrs(monster, 'monster');
+  same(cultivator.ranks.spirit_transformation?.attack, 3600, 'cultivator spirit_transformation attack keeps old mahayana slot');
+  same(cultivator.ranks.heaven_immortal?.attack, 3400000, 'cultivator heaven_immortal attack keeps old slot 12 value');
+  same(monster.ranks.spirit_transformation?.attack, 5460, 'monster spirit_transformation attack keeps old mahayana slot');
+  same(monster.ranks.heaven_immortal?.attack, 5200000, 'monster heaven_immortal attack keeps old slot 12 value');
+  same(monster.ranks.mortal?.name, '猛兽 / 凡兽', 'monster mortal label');
+  same(monster.ranks.heaven_immortal?.name, '十一阶妖兽', 'monster heaven_immortal label');
   ok(
     cultivator.ranks.qi_refining.hp < monster.ranks.qi_refining.hp,
     'cultivator qi_refining hp is less than monster qi_refining hp',
@@ -188,7 +224,7 @@ try {
   }
 
   same(configs?.combatBaseTable?._description, base._description, 'loader combatBaseTable description comes from combat-base-table.json');
-  same(configs?.combatBaseTable?.ranks?.dao_ancestor?.attack, base.ranks.dao_ancestor.attack, 'loader combatBaseTable dao_ancestor.attack');
+  same(configs?.combatBaseTable?.ranks?.heaven_immortal?.attack, base.ranks.heaven_immortal.attack, 'loader combatBaseTable heaven_immortal.attack');
   same(configs?.cultivatorCombat?.source, cultivator.source, 'loader cultivatorCombat source comes from cultivator-combat.json');
   same(configs?.cultivatorCombat?.ranks?.qi_refining?.yuan, cultivator.ranks.qi_refining.yuan, 'loader cultivatorCombat qi_refining.yuan');
   same(configs?.monsterCombat?.source, monster.source, 'loader monsterCombat source comes from monster-combat.json');

@@ -5,9 +5,9 @@
     "enabled": true
   },
   "cultivatorAttributes": {
-    "_comment": "修士六项战斗属性迁移开关。enabled=false 时保留旧 npcHp/baseDef 路径；enabled=true 时 NPC 初始化写入 maxHp/maxYuan/attack/defense/speed/soul。numericArmorDamage=false 时统一战斗入口仍用旧比例减伤；true 时使用数值护甲公式。",
-    "enabled": false,
-    "numericArmorDamage": false
+    "_comment": "修士六项战斗属性迁移开关。enabled=true 时 NPC 初始化写入 maxHp/maxYuan/attack/defense/speed/soul；显式设为 false 时保留旧 npcHp/baseDef 路径。numericArmorDamage=true 时统一战斗入口使用数值护甲公式；显式设为 false 时使用旧比例减伤。",
+    "enabled": true,
+    "numericArmorDamage": true
   },
   "npcHp": {
     "_comment": "NPC 气血（HP）系统，与境界挂钩（ADR-041 阶段1）。maxHp = baseHp[境界] × 体质 hpBonusMultiplier。初始化与突破后回满。dailyRegenRatio 为每日自然回血占 maxHp 比例（休整/平时缓慢回血）。境界越高血越厚，凡人最脆、化神极厚。",
@@ -18,7 +18,13 @@
       "foundation_building": 600,
       "golden_core": 3000,
       "nascent_soul": 15000,
-      "spirit_transformation": 80000
+      "spirit_transformation": 80000,
+      "void_refining": 240000,
+      "body_integration": 720000,
+      "mahayana": 2160000,
+      "tribulation": 6480000,
+      "earth_immortal": 19440000,
+      "heaven_immortal": 58320000
     },
     "dailyRegenRatio": 0.02
   },
@@ -31,7 +37,13 @@
       "foundation_building": 0.4,
       "golden_core": 0.55,
       "nascent_soul": 0.7,
-      "spirit_transformation": 0.82
+      "spirit_transformation": 0.82,
+      "void_refining": 0.86,
+      "body_integration": 0.88,
+      "mahayana": 0.9,
+      "tribulation": 0.9,
+      "earth_immortal": 0.9,
+      "heaven_immortal": 0.9
     }
   },
   "lockHp": {

@@ -1,9 +1,9 @@
 # 自然死亡规则
 
-> 最后更新：2026-05-28
+> 最后更新：2026-06-07
 > 状态：已敲定
 > 类型：规则
-> 关联文档：`docs/data-models/npc.md`、`docs/data-models/ranks.md`、`docs/data-models/behavior-configs.md`、`docs/systems/world-tick.md`、`docs/worldbuilding/npcs.md`
+> 关联文档：`docs/decisions/adr-054-twelve-realm-runtime-chain.md`、`docs/data-models/npc.md`、`docs/data-models/ranks.md`、`docs/systems/world-tick.md`、`docs/worldbuilding/npcs.md`
 
 ## 一句话定义
 
@@ -13,33 +13,39 @@
 
 - 自然死亡属于 NPC 死亡的一种来源，应纳入世界演化 Tick 中的 NPC 状态更新。
 - 自然死亡只影响具名核心 NPC，不直接消耗 `resources.disciples` 表示的抽象弟子规模。
-- 世界模拟使用 `apps/game/data/behaviors/npc-lifecycle.json` 中的 `time.daysPerYear`，当前为 `1 年 = 360 天`。
-- 每个 NPC 会根据 `rankId` 引用 `apps/game/data/definitions/ranks.json`，获得一个可复现随机寿元上限 `maxAgeYears/maxAgeDays`，同一 seed 下结果一致。
-- 当前寿元表按“凡人修仙传风味 + 项目现有境界/职位”落地，并以 `ranks.json` 为准：
+- 世界模拟使用 `apps/game/data/config/game-config.json` 中的时间设置，当前为 `1 年 = 360 天`。
+- 每个 NPC 根据 `rankId` 引用 `apps/game/data/definitions/ranks.json`，获得一个可复现随机寿元上限 `maxAgeYears/maxAgeDays`，同一 seed 下结果一致。
+- 当前寿元表以十二境界运行时主链为准：
 
-| rankId / 桶 | 寿元上限 |
-|----------|----------|
-| 凡人、弟子、谋士、将军、统领、宗师、武圣 | 80 年 ± 20 年 |
-| 炼气 | 140 年 ± 40 年 |
-| 筑基 | 230 年 ± 30 年 |
-| 金丹 / 结丹 | 550 年 ± 50 年 |
-| 元婴 | 1250 年 ± 250 年 |
-| 化神 | 2000 年 ± 300 年 |
+| 境界 | rankId | 基准寿元 | 浮动 | 最大寿元 |
+|------|--------|---------:|-----:|---------:|
+| 凡人 | `mortal` | 80 | 20 | 100 |
+| 炼气 | `qi_refining` | 125 | 25 | 150 |
+| 筑基 | `foundation_building` | 320 | 60 | 380 |
+| 金丹 | `golden_core` | 750 | 150 | 900 |
+| 元婴 | `nascent_soul` | 1,500 | 300 | 1,800 |
+| 化神 | `spirit_transformation` | 2,200 | 300 | 2,500 |
+| 炼虚 | `void_refining` | 2,850 | 350 | 3,200 |
+| 合体 | `body_integration` | 3,400 | 400 | 3,800 |
+| 大乘 | `mahayana` | 3,900 | 400 | 4,300 |
+| 渡劫 | `tribulation` | 4,350 | 350 | 4,700 |
+| 地仙 | `earth_immortal` | 4,650 | 250 | 4,900 |
+| 天仙 | `heaven_immortal` | 4,850 | 149 | 4,999 |
+
+天仙最大寿元为 4999 年，用于压住当前运行时寿元上限。4999 年大劫、飞升退场、个人天劫等机制不在本轮实现范围内。
+
+## 概率规则
 
 - 当 `age < maxAge * naturalDeath.startRatio` 时，不触发自然死亡。
 - 当 `age >= maxAge * naturalDeath.startRatio` 且 `< maxAge` 时，每日自然死亡概率从 `naturalDeath.minChance` 按 `naturalDeath.curve` 增长到接近 `naturalDeath.maxChance`。
 - 当 `age >= maxAge` 时，当天自然死亡概率为 `naturalDeath.maxChance`。
-- 概率公式：
 
 ```text
 progress = (ageDays - maxAgeDays * startRatio) / (maxAgeDays * (1 - startRatio))
 deathChance = minChance + progress^2 * (maxChance - minChance)
 ```
 
-- NPC 自然死亡后，`alive` 应变为 `false`，并从后续掌门决策、继任候选和事件对象中排除。
-- 如果死亡 NPC 是当前掌门、皇帝、族长或其他 `leader`，应立即触发掌门继任规则。
-- 掌门继任优先从本势力存活核心 NPC 中选择；没有存活候选时不生成新掌门，势力覆灭。
-- 自然死亡应写入调试时间线和模拟报告，日志至少包含 `npcId`、`factionId`、`cause: "natural"`、`ageYears`、`maxAgeYears`、`lifespanProgress`、`deathChance`、`roll`。
+NPC 自然死亡后，`alive` 应变为 `false`，并从后续掌门决策、继任候选和事件对象中排除。如果死亡 NPC 是当前掌门、皇帝、族长或其他 `leader`，应立即触发掌门继任规则。
 
 ## 叙事表现
 
@@ -53,31 +59,18 @@ deathChance = minChance + progress^2 * (maxChance - minChance)
 - 自然死亡不处理战争伤亡、暗杀、叛乱处决、秘境陨落、灾害死亡等事件性死亡。
 - 自然死亡不负责决定继任人选，只负责把死亡结果交给既有继任规则处理。
 - 自然死亡不直接改变势力领地、资源或外交关系；这些影响应由继任、稳定度或事件系统后续结算。
-- 第一阶段不要求每个 NPC 独立日常行动，因此自然死亡不应引入全 NPC AI。
+- 本轮不实现 4999 年大劫、飞升退场或突破失败死亡。
 
 ## 数据与实现提示
 
-- `docs/data-models/npc.md` 已定义 `alive` 字段和掌门继任优先级，自然死亡应复用这些字段与规则。
-- `apps/game/data/definitions/ranks.json` 保存境界/职位静态数据、寿元上限和继任评分。
-- `apps/game/data/behaviors/npc-lifecycle.json` 保存初始年龄比例、自然死亡参数和公式文字说明。
-- `docs/systems/world-tick.md` 已把 `updateNPCs()` 放在 Tick 第 8 步，自然死亡适合在该步骤内结算。
-- `apps/game/js/engine/lifespan.js` 只负责读取行为配置并执行年龄推进和自然死亡概率计算。
-- `apps/game/js/engine/world-engine.js` 的 `initNPCs()` 会为缺少寿元字段的 NPC 自动补齐字段；`updateNPCs()` 每天推进年龄并结算自然死亡。
-- `apps/game/js/engine/simulation-validator.js` 应校验寿元字段为有限非负数，并阻止存活 NPC 超过寿元上限。
-- 长期模拟报告应能区分自然死亡、事件死亡、掌门继任和继承链断绝导致的势力覆灭，避免调参时混淆来源。
-
-## 待扩展
-
-- 不同种族、境界、功法对自然死亡概率的影响。
-- 掌门自然死亡是否必然影响势力稳定度，以及影响幅度如何计算。
-- 玩家是否能通过丹药、事件或干预手段延寿。
+- `apps/game/data/definitions/ranks.json` 保存境界静态数据、寿元桶和继任评分。
+- `apps/game/js/engine/npc/npc-state.js` 会在 NPC 初始化时根据 rank 寿元桶生成 `maxAgeYears/maxAgeDays`。
+- `apps/game/js/engine/npc/npc-lifecycle.js` 在突破成功后刷新寿元。
+- 长期模拟报告应区分自然死亡、事件死亡、掌门继任和继承链断绝导致的势力覆灭，避免调参时混淆来源。
 
 ## 来源
 
-- 用户确认：本次任务要求记录“自然死亡规则”设定，并要求后续敲定设定持续写成 Wiki。
-- 用户确认：采用“凡人修仙传风味”的境界寿元，并采用寿元 95%-100% 期间从 `0.0002` 增长到 `1` 的自然死亡概率。
-- 项目文档：`docs/data-models/npc.md` 已定义核心 NPC、`alive` 字段与掌门继任规则。
-- 项目文档：`docs/systems/world-tick.md` 已定义 Tick 第 8 步 `updateNPCs()` 处理 NPC 死亡与掌门继任。
-- 项目文档：`docs/worldbuilding/npcs.md` 已记录多个年事已高或潜在死亡后果的关键 NPC 设定。
-- 外部资料参考：`https://mortalsjourney.com/zh/realms/` 记录炼气、筑基、结丹、元婴、化神等境界寿命范围；`https://www.im-mortal.cn/game_wiki/level` 记录凡人、金丹、元婴、化神等寿元参考。
-- 我的判断：将自然死亡归入 `worldbuilding/wiki/rules/`，因为它是世界观规则条目，不是代码实现或架构 ADR。
+- ADR-054：十二境界运行时主链。
+- 项目世界观规则：采用“凡人修仙传风味”的寿元阶梯，但把当前运行时上限压到天仙 4999 年。
+- 项目文档：`docs/data-models/npc.md` 定义核心 NPC、`alive` 字段与掌门继任规则。
+- 项目文档：`docs/systems/world-tick.md` 定义世界 Tick 中的 NPC 生命周期处理。
