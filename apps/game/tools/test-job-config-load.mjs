@@ -168,6 +168,8 @@ assert(configs.relationshipPlatform?.schemas?.ledgers?.layers?.individual, 'load
 assert(configs.relationshipPlatform?.dictionaries?.marks?.marks?.some(mark => mark.id === 'wantedOrder'), 'loadGameConfigs loads relationship mark dictionary');
 assert(configs.relationshipPlatform?.impactRules?.some(file => file.rules?.some(rule => rule.id === 'combat_kill_public_wanted_order')), 'loadGameConfigs loads relationship impact rules');
 assert(configs.relationshipPlatform?.signalRules?.some(file => file.rules?.some(rule => rule.id === 'wanted_hunt_signal')), 'loadGameConfigs loads relationship signal rules');
+assert(configs.economicTransactionConfig?.scenarios?.quest_contract, 'loadGameConfigs loads economic transaction scenarios');
+assert(configs.economicTransactionConfig?.auction?.defaultLots?.some(lot => lot.itemId === 'item_breakthrough_pill'), 'loadGameConfigs loads abstract auction defaults');
 
 console.log('6) WorldEngine can initialize Job/Toil configs twice in one process');
 const { WorldEngine } = await imp('js/engine/world-engine.js');
@@ -230,6 +232,12 @@ assert(enabledActionIds.has('act_npc_request_hunt_companion'), 'default NPC acti
 assert(firstNpc.needSystem.getNeed('need_npc_combat_recovery'), 'default NPC installs combat recovery need');
 assert(firstNpc.needSystem.getNeed('need_npc_combat_supply'), 'default NPC installs combat supply need');
 assert(firstNpc.needSystem.getNeed('need_npc_hunt_companion'), 'default NPC installs hunt companion need');
+const firstContext = firstEngine.tickManager._contextBuilder.build();
+assert(firstContext.economicSystem === firstEngine.economicSystem, 'worldContext exposes EconomicSystem instance');
+assert(typeof firstContext.settleTransaction === 'function', 'worldContext exposes settleTransaction economic port');
+assert(typeof firstContext.openEscrow === 'function', 'worldContext exposes openEscrow economic port');
+assert(typeof firstContext.economicSignalsFor === 'function', 'worldContext exposes economicSignalsFor port');
+assert(Array.isArray(firstEngine.getWorldSnapshot().economic?.ledger?.records), 'WorldEngine snapshot exposes economic ledger state');
 
 let repeatedInitError = null;
 try {

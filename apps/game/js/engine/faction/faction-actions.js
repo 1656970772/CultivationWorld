@@ -4,7 +4,7 @@
  * 每种势力行为的具体执行逻辑，注册到 ActionPool。
  *
  * 【资源真相源约定】（修复历史双轨 bug）
- * FactionEntity 的 tick 流程：onPreTick 把 inventory→state，Action.execute 依次跑
+ * FactionEntity 的 tick 流程：onPreTick 把 state→inventory，Action.execute 依次跑
  * costs(扣 inventory)→executor→yields(加 inventory)→_applyEffects(改 state)，onPostTick 用
  * state 覆盖回 inventory。因此 state 是资源（low_spirit_stone/disciples/food）的**单一真相源**，
  * 而 inventory 的 costs/yields 增减会被 onPostTick 的 state 覆盖而丢失（历史 bug 根因）。
@@ -110,19 +110,43 @@ export class FactionTradeExecutor extends ActionExecutor {
 
     if (!bestPartner) return { success: false, reason: '无合适贸易伙伴' };
 
-    // 双方互利贸易：己方用灵石换粮草（粮草+100 已在 JSON effects 结算，此处结算灵石支出与对方收支）。
-    // 资源统一走 state（单一真相源），避免 onPostTick 用 state 覆盖 inventory 导致的丢失。
+    // 双方互利贸易：己方用灵石换粮草。资源统一走经济底座，
+    // faction_state_resource 以 state 为真相源，并在账本留下证据。
     const myStone = entity.state.get('low_spirit_stone') || 0;
     const tradeAmount = Math.min(Math.floor(myStone * 0.1), 200);
 
     if (tradeAmount <= 0) return { success: false, reason: '灵石不足以贸易' };
 
-    entity.state.set('low_spirit_stone', myStone - tradeAmount);
-
-    // 对方：收灵石、付粮草。改对方 state，其下一 tick 的 onPreTick/onPostTick 会同步到 inventory。
-    bestPartner.state.set('low_spirit_stone', (bestPartner.state.get('low_spirit_stone') || 0) + tradeAmount);
     const partnerFood = bestPartner.state.get('food') || 0;
-    bestPartner.state.set('food', Math.max(0, partnerFood - tradeAmount * 2));
+    const foodAmount = Math.min(tradeAmount * 2, partnerFood);
+    if (foodAmount <= 0) return { success: false, reason: '贸易伙伴粮食不足' };
+
+    let transactionId = null;
+    if (worldContext?.settleTransaction) {
+      const transaction = worldContext.settleTransaction({
+        type: 'faction_trade',
+        scenarioId: 'formal_market',
+        parties: [
+          { role: 'buyer', entity },
+          { role: 'seller', entity: bestPartner },
+        ],
+        transfers: [
+          { from: 'buyer', to: 'seller', asset: { kind: 'faction_state_resource', itemId: 'low_spirit_stone', quantity: tradeAmount } },
+          { from: 'seller', to: 'buyer', asset: { kind: 'faction_state_resource', itemId: 'food', quantity: foodAmount } },
+        ],
+        source: { type: 'faction_action_trade', factionId: entity.id, partnerId: bestPartner.id },
+        visibility: 'institution',
+      });
+      if (!transaction.success) {
+        return { success: false, reason: transaction.reason || '贸易结算失败', transactionId: transaction.transactionId };
+      }
+      transactionId = transaction.transactionId || null;
+    } else {
+      entity.state.set('low_spirit_stone', myStone - tradeAmount);
+      entity.state.set('food', (entity.state.get('food') || 0) + foodAmount);
+      bestPartner.state.set('low_spirit_stone', (bestPartner.state.get('low_spirit_stone') || 0) + tradeAmount);
+      bestPartner.state.set('food', Math.max(0, partnerFood - foodAmount));
+    }
 
     // 贸易增进双方关系
     const currentRel = entity.state.get('relations')?.[bestPartner.id] || 0;
@@ -141,6 +165,8 @@ export class FactionTradeExecutor extends ActionExecutor {
       partnerId: bestPartner.id,
       partnerName: bestPartner.name,
       tradeAmount,
+      foodAmount,
+      transactionId,
       description: `与 ${bestPartner.name} 完成贸易，交换 ${tradeAmount} 灵石`,
     };
   }

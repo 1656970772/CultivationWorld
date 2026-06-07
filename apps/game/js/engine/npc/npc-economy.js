@@ -59,6 +59,38 @@ function addStateNumber(entity, key, amount) {
   entity.state.set(key, stateNumber(entity, key) + amount);
 }
 
+function economicSource(id = 'system_source') {
+  return {
+    id,
+    name: id,
+    inventory: {
+      getAmount() { return Number.MAX_SAFE_INTEGER; },
+      remove() { return true; },
+      add() {},
+    },
+    state: {
+      get() { return Number.MAX_SAFE_INTEGER; },
+      set() {},
+    },
+  };
+}
+
+function economicSink(id = 'system_sink') {
+  return {
+    id,
+    name: id,
+    inventory: {
+      getAmount() { return 0; },
+      remove() { return true; },
+      add() {},
+    },
+    state: {
+      get() { return 0; },
+      set() {},
+    },
+  };
+}
+
 function addCultivationFromProgressGain(entity, progressGain, worldContext) {
   const cultivationConfig = worldContext?.balanceConfig?.cultivation || entity?._cultivationConfig || {};
   const ranks = worldContext?.ranksData || entity?._ranksData || [];
@@ -220,13 +252,56 @@ export function donateMaterials(entity, worldContext, options = {}) {
   const qty = Math.min(entity.inventory.getAmount(rule.itemId) || 0, rule.qty ?? maxStacks, maxStacks);
   if (qty <= 0) return { success: false, outcome: 'no_material', eventType: 'material_donate' };
 
+  const contribution = (rule.contribution || 0) * qty;
+  const monthlyContribution = (rule.monthlyContribution ?? rule.contribution ?? 0) * qty;
+  const economicSystem = worldContext?.economicSystem || null;
+  if (economicSystem && options.useEconomicSystem !== false) {
+    const source = economicSource('organization_point_source');
+    const transaction = economicSystem.settle({
+      type: 'material_donation',
+      scenarioId: 'material_donation',
+      day: worldContext?.currentDay ?? 0,
+      parties: [
+        { role: 'donor', entity },
+        { role: 'faction', entity: faction },
+        { role: 'point_source', entity: source },
+      ],
+      transfers: [
+        { from: 'donor', to: 'faction', asset: { kind: 'item', itemId: rule.itemId, quantity: qty } },
+        { from: 'point_source', to: 'donor', asset: { kind: 'organization_point', pointKey: 'contribution', quantity: contribution } },
+        { from: 'point_source', to: 'donor', asset: { kind: 'organization_point', pointKey: 'monthlyContribution', quantity: monthlyContribution } },
+      ],
+      source: { type: 'npc_material_donation', itemId: rule.itemId },
+      visibility: 'institution',
+    });
+    if (!transaction.success) {
+      return {
+        success: false,
+        outcome: transaction.reason || 'transaction_failed',
+        eventType: 'material_donate',
+        transactionId: transaction.transactionId,
+      };
+    }
+
+    const name = ItemRegistry.get(rule.itemId)?.name || rule.itemId;
+    return {
+      success: true,
+      outcome: 'donated',
+      eventType: 'material_donate',
+      itemId: rule.itemId,
+      qty,
+      contribution,
+      monthlyContribution,
+      transactionId: transaction.transactionId,
+      description: `${entity.name || entity.staticData?.name || entity.id} 上交${name}x${qty}，换得${contribution}贡献`,
+    };
+  }
+
   if (options.applyInventory !== false) entity.inventory.remove(rule.itemId, qty);
   if (options.applyFactionInventory !== false) {
     faction.inventory?.add(rule.itemId, (rule.factionQty ?? 1) * qty);
   }
 
-  const contribution = (rule.contribution || 0) * qty;
-  const monthlyContribution = (rule.monthlyContribution ?? rule.contribution ?? 0) * qty;
   if (options.applyContribution !== false) {
     addStateNumber(entity, 'contribution', contribution);
     addStateNumber(entity, 'monthlyContribution', monthlyContribution);
@@ -277,6 +352,82 @@ export function redeemExchangeItem(entity, worldContext, optionKey, options = {}
     };
   }
 
+  const economicSystem = worldContext?.economicSystem || null;
+  const qty = option.qty ?? 1;
+  const name = ItemRegistry.get(option.itemId)?.name || option.itemId;
+  if (economicSystem && options.useEconomicSystem !== false) {
+    const source = economicSource('faction_exchange_source');
+    const sink = economicSink('faction_exchange_sink');
+    const transfers = [];
+    if (contributionCost > 0) {
+      transfers.push({
+        from: 'npc',
+        to: 'sink',
+        asset: { kind: 'organization_point', pointKey: 'contribution', quantity: contributionCost },
+      });
+    }
+    if (stoneCost > 0) {
+      transfers.push({
+        from: 'npc',
+        to: 'faction',
+        asset: { kind: 'item', itemId: 'low_spirit_stone', quantity: stoneCost },
+      });
+    }
+    for (const req of required) {
+      transfers.push({
+        from: 'faction',
+        to: 'sink',
+        asset: { kind: 'item', itemId: req.itemId, quantity: Math.max(0, Math.floor(req.qty ?? 1)) },
+      });
+    }
+    transfers.push({
+      from: 'source',
+      to: 'npc',
+      asset: { kind: 'item', itemId: option.itemId, quantity: qty },
+    });
+
+    const transaction = economicSystem.settle({
+      type: 'contribution_exchange',
+      scenarioId: 'faction_exchange',
+      day: worldContext?.currentDay ?? 0,
+      parties: [
+        { role: 'npc', entity },
+        { role: 'faction', entity: faction },
+        { role: 'source', entity: source },
+        { role: 'sink', entity: sink },
+      ],
+      transfers,
+      source: { type: 'npc_exchange', optionKey },
+      visibility: 'institution',
+    });
+    if (!transaction.success) {
+      return {
+        success: false,
+        outcome: transaction.reason || 'transaction_failed',
+        optionKey,
+        eventType: `redeem_${optionKey}`,
+        transactionId: transaction.transactionId,
+      };
+    }
+    const equip = isArtifact(option.itemId)
+      ? equipBestArtifact(entity)
+      : { changed: false, equippedArtifactId: entity.state?.get?.('equippedArtifactId') || null };
+    return {
+      success: true,
+      outcome: 'redeemed',
+      eventType: `redeem_${optionKey}`,
+      optionKey,
+      itemId: option.itemId,
+      qty,
+      contributionCost,
+      stoneCost,
+      requiredFactionItems: required,
+      equippedArtifactId: equip?.equippedArtifactId || entity.state?.get?.('equippedArtifactId') || null,
+      transactionId: transaction.transactionId,
+      description: `${entity.name || entity.staticData?.name || entity.id} 兑换${name}x${qty}`,
+    };
+  }
+
   if (options.applyContribution !== false) entity.state.set('contribution', contribution - contributionCost);
   if (options.applyStoneCost !== false && stoneCost > 0) entity.inventory.remove('low_spirit_stone', stoneCost);
   if (options.applyFactionItems !== false && faction) {
@@ -285,11 +436,9 @@ export function redeemExchangeItem(entity, worldContext, optionKey, options = {}
     }
   }
 
-  const qty = option.qty ?? 1;
   let grant = null;
   if (options.grantItem !== false) grant = grantItemAndMaybeEquip(entity, option.itemId, qty);
 
-  const name = ItemRegistry.get(option.itemId)?.name || option.itemId;
   return {
     success: true,
     outcome: 'redeemed',

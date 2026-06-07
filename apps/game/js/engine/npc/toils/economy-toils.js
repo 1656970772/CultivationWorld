@@ -88,7 +88,9 @@ function validatePurchaseParams(params, invalidResult = invalidPurchase()) {
   return { ok: true, itemId, amount, priceItemId, priceAmount };
 }
 
-function buyItem(inventory, params, successReason, invalidResult = invalidPurchase()) {
+function buyItem(entity, worldContext, params, successReason, invalidResult = invalidPurchase()) {
+  const inventory = inventoryOf(entity);
+  if (!inventory) return missingInventory();
   const purchase = validatePurchaseParams(params, invalidResult);
   if (!purchase.ok) return purchase.result;
   const { itemId, amount, priceItemId, priceAmount } = purchase;
@@ -98,6 +100,33 @@ function buyItem(inventory, params, successReason, invalidResult = invalidPurcha
   }
   if (typeof inventory.remove !== 'function') {
     return { status: ToilResultStatus.FAILED, reason: 'inventory_remove_failed' };
+  }
+
+  if (worldContext?.settleTransaction) {
+    const vendor = {
+      id: params.vendorId || 'org_market',
+      name: params.vendorName || '坊市',
+      inventory: {
+        getAmount(id) { return id === itemId ? Number.MAX_SAFE_INTEGER : 0; },
+        remove() { return true; },
+        add() {},
+      },
+      state: { get() { return 0; }, set() {} },
+    };
+    const result = worldContext.settleTransaction({
+      type: 'direct_purchase',
+      scenarioId: 'formal_market',
+      parties: [{ role: 'buyer', entity }, { role: 'seller', entity: vendor }],
+      transfers: [
+        { from: 'buyer', to: 'seller', asset: { kind: 'item', itemId: priceItemId, quantity: priceAmount } },
+        { from: 'seller', to: 'buyer', asset: { kind: 'item', itemId, quantity: amount } },
+      ],
+      source: { type: 'toil_buy_item', itemId },
+      visibility: 'institution',
+    });
+    return result.success
+      ? { status: ToilResultStatus.SUCCESS, reason: successReason, contextPatch: { transactionId: result.transactionId } }
+      : { status: ToilResultStatus.FAILED, reason: result.reason || 'transaction_failed', contextPatch: { transactionId: result.transactionId } };
   }
 
   if (amountOf(inventory, priceItemId) < priceAmount) {
@@ -112,7 +141,7 @@ function buyItem(inventory, params, successReason, invalidResult = invalidPurcha
   return { status: ToilResultStatus.SUCCESS, reason: successReason };
 }
 
-function ensureItem(entity, params, defaultItemId = null) {
+function ensureItem(entity, params, defaultItemId = null, worldContext = null) {
   const inventory = inventoryOf(entity);
   if (!inventory) return missingInventory();
 
@@ -131,7 +160,7 @@ function ensureItem(entity, params, defaultItemId = null) {
     return { status: ToilResultStatus.BLOCKED, reason: 'item_missing' };
   }
 
-  return buyItem(inventory, { ...params, itemId, amount: minAmount - current }, 'item_purchased');
+  return buyItem(entity, worldContext, { ...params, itemId, amount: minAmount - current }, 'item_purchased');
 }
 
 export class NPCCheckInventoryItemToilExecutor extends ToilExecutor {
@@ -152,8 +181,8 @@ export class NPCCheckInventoryItemToilExecutor extends ToilExecutor {
 }
 
 export class NPCEnsureItemToilExecutor extends ToilExecutor {
-  run(entity, _worldContext, _job, toil) {
-    return ensureItem(entity, paramsOf(toil));
+  run(entity, worldContext, _job, toil) {
+    return ensureItem(entity, paramsOf(toil), null, worldContext);
   }
 }
 
@@ -172,19 +201,21 @@ export class NPCCheckCurrencyToilExecutor extends ToilExecutor {
 }
 
 export class NPCBuyItemToilExecutor extends ToilExecutor {
-  run(entity, _worldContext, _job, toil) {
-    const inventory = inventoryOf(entity);
-    if (!inventory) return missingInventory();
-    return buyItem(inventory, paramsOf(toil), 'item_purchased');
+  run(entity, worldContext, _job, toil) {
+    return buyItem(entity, worldContext, paramsOf(toil), 'item_purchased');
   }
 }
 
 export class NPCExchangeFactionItemToilExecutor extends ToilExecutor {
-  run(entity, _worldContext, _job, toil) {
+  run(entity, worldContext, _job, toil) {
     const inventory = inventoryOf(entity);
     if (!inventory) return missingInventory();
 
     const params = paramsOf(toil);
+    const purchase = validatePurchaseParams(params, invalidExchange());
+    if (!purchase.ok) return purchase.result;
+    const { itemId, amount, priceItemId, priceAmount } = purchase;
+
     const contributionCost = readAmount(params.contributionCost, { fallback: 0, allowZero: true });
     if (contributionCost == null) return invalidExchange();
     const state = contributionCost > 0 ? stateOf(entity) : null;
@@ -195,12 +226,47 @@ export class NPCExchangeFactionItemToilExecutor extends ToilExecutor {
       }
     }
 
-    const result = buyItem(inventory, params, 'faction_exchange_completed', invalidExchange());
-    if (result.status !== ToilResultStatus.SUCCESS) return result;
-    if (contributionCost > 0) {
-      state.set('contribution', Number(state.get('contribution') || 0) - contributionCost);
+    if (typeof inventory.add !== 'function') {
+      return { status: ToilResultStatus.FAILED, reason: 'inventory_add_failed' };
     }
-    return result;
+    if (typeof inventory.remove !== 'function') {
+      return { status: ToilResultStatus.FAILED, reason: 'inventory_remove_failed' };
+    }
+
+    if (worldContext?.settleTransaction) {
+      const vendor = {
+        id: params.vendorId || 'org_faction_exchange',
+        name: params.vendorName || '宗门库房',
+        inventory: {
+          getAmount(id) { return id === itemId ? Number.MAX_SAFE_INTEGER : 0; },
+          remove() { return true; },
+          add() {},
+        },
+        state: { get() { return 0; }, set() {} },
+      };
+      const transfers = [];
+      if (priceAmount > 0) {
+        transfers.push({ from: 'buyer', to: 'seller', asset: { kind: 'item', itemId: priceItemId, quantity: priceAmount } });
+      }
+      if (contributionCost > 0) {
+        transfers.push({ from: 'buyer', to: 'seller', asset: { kind: 'organization_point', pointKey: 'contribution', quantity: contributionCost } });
+      }
+      transfers.push({ from: 'seller', to: 'buyer', asset: { kind: 'item', itemId, quantity: amount } });
+
+      const transaction = worldContext.settleTransaction({
+        type: 'contribution_exchange',
+        scenarioId: 'faction_exchange',
+        parties: [{ role: 'buyer', entity }, { role: 'seller', entity: vendor }],
+        transfers,
+        source: { type: 'toil_exchange_faction_item', itemId },
+        visibility: 'institution',
+      });
+      return transaction.success
+        ? { status: ToilResultStatus.SUCCESS, reason: 'faction_exchange_completed', contextPatch: { transactionId: transaction.transactionId } }
+        : { status: ToilResultStatus.FAILED, reason: transaction.reason || 'transaction_failed', contextPatch: { transactionId: transaction.transactionId } };
+    }
+
+    return { status: ToilResultStatus.FAILED, reason: 'economic_system_missing' };
   }
 }
 
@@ -223,8 +289,8 @@ export class NPCUseQiPillToilExecutor extends ToilExecutor {
 }
 
 export class NPCEnsureArtifactToilExecutor extends ToilExecutor {
-  run(entity, _worldContext, _job, toil) {
-    return ensureItem(entity, paramsOf(toil), 'artifact_green_sword');
+  run(entity, worldContext, _job, toil) {
+    return ensureItem(entity, paramsOf(toil), 'artifact_green_sword', worldContext);
   }
 }
 

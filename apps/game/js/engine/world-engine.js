@@ -7,6 +7,7 @@
 import { EntityRegistry } from './abstract/entity-registry.js';
 import { Rng } from './abstract/rng.js';
 import { ItemRegistry } from './items/item-registry.js';
+import { EconomicSystem } from './economy/transaction-engine.js';
 import { GameplayTagRegistry } from './abstract/gameplay-tag.js';
 import { EffectPool } from './pools/effect-pool.js';
 import { AbilityPool } from './pools/ability-pool.js';
@@ -96,6 +97,8 @@ export class WorldEngine {
     this.worldEventSystem.seedScheduledEvents(0);
     this._covetConfig = configs.balanceCovet || {};
     this._itemDefs = configs.itemDefs || {};
+    this._economicTransactionConfig = configs.economicTransactionConfig || {};
+    this.economicSystem = new EconomicSystem({ config: this._economicTransactionConfig });
 
     // 关系网系统（ADR-027，世界级单一真相源）。在创建 NPC 前建立，
     // 经 _entityConfig 注入各 NPC，使其 RelationshipGraph 成为本系统的兼容查询视图。
@@ -534,6 +537,8 @@ export class WorldEngine {
       covetConfig: this._covetConfig,
       relationshipConfig: this._balanceConfig.relationship,
       relationshipSystem: this.relationshipSystem,
+      economicSystem: this.economicSystem,
+      economicTransactionConfig: this._economicTransactionConfig,
     });
   }
 
@@ -631,6 +636,7 @@ export class WorldEngine {
       // 关系网（ADR-027）：扁平边数组 + 类型统计，供前端/调试可视化人物关系。
       relationships: this.relationshipSystem ? this.relationshipSystem.allEdges() : [],
       relationshipStats: this.relationshipSystem ? this.relationshipSystem.stats() : null,
+      economic: this.economicSystem ? this.economicSystem.snapshot() : null,
       factions: Object.fromEntries(factions.map(f => [f.id, {
         name: f.name,
         type: f.factionType,

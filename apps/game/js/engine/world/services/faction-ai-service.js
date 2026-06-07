@@ -700,15 +700,42 @@ export class FactionAIService {
       return { success: false, description: '无合适贸易伙伴' };
     }
 
-    const myStone = faction.inventory.getAmount('low_spirit_stone');
+    const myStone = faction.state.get('low_spirit_stone') || 0;
     const tradeAmount = Math.min(Math.floor(myStone * this.tradeStoneRatio), this.tradeMaxAmount);
     if (tradeAmount <= 0) return { success: false, description: '灵石不足以贸易' };
 
-    faction.inventory.remove('low_spirit_stone', tradeAmount);
-    faction.inventory.add('food', tradeAmount * this.tradeFoodRate);
-    bestPartner.inventory.add('low_spirit_stone', tradeAmount);
-    const partnerFood = bestPartner.inventory.getAmount('food');
-    bestPartner.inventory.remove('food', Math.min(tradeAmount * this.tradeFoodRate, partnerFood));
+    const requestedFood = tradeAmount * this.tradeFoodRate;
+    const partnerFood = bestPartner.state.get('food') || 0;
+    const receivedFood = Math.min(requestedFood, partnerFood);
+    if (receivedFood <= 0) return { success: false, description: '贸易伙伴粮食不足' };
+
+    let transactionId = null;
+    if (this.host.economicSystem) {
+      const transaction = this.host.economicSystem.settle({
+        type: 'faction_trade',
+        scenarioId: 'formal_market',
+        day: this.worldEntity.currentDay ?? 0,
+        parties: [
+          { role: 'buyer', entity: faction },
+          { role: 'seller', entity: bestPartner },
+        ],
+        transfers: [
+          { from: 'buyer', to: 'seller', asset: { kind: 'faction_state_resource', itemId: 'low_spirit_stone', quantity: tradeAmount } },
+          { from: 'seller', to: 'buyer', asset: { kind: 'faction_state_resource', itemId: 'food', quantity: receivedFood } },
+        ],
+        source: { type: 'faction_trade', factionId, partnerId: bestPartner.id },
+        visibility: 'institution',
+      });
+      if (!transaction.success) {
+        return { success: false, description: '贸易结算失败', reason: transaction.reason };
+      }
+      transactionId = transaction.transactionId || null;
+    } else {
+      faction.state.set('low_spirit_stone', Math.max(0, myStone - tradeAmount));
+      faction.state.set('food', (faction.state.get('food') || 0) + receivedFood);
+      bestPartner.state.set('low_spirit_stone', (bestPartner.state.get('low_spirit_stone') || 0) + tradeAmount);
+      bestPartner.state.set('food', Math.max(0, partnerFood - receivedFood));
+    }
 
     const fRel = { ...relations };
     fRel[bestPartner.id] = Math.min((fRel[bestPartner.id] || 0) + this.tradeRelGain, 100);
@@ -723,6 +750,8 @@ export class FactionAIService {
       partnerId: bestPartner.id,
       partnerName: bestPartner.name,
       tradeAmount,
+      foodAmount: receivedFood,
+      transactionId,
       description: `与 ${bestPartner.name} 完成贸易`,
     };
   }

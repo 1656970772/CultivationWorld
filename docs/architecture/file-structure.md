@@ -33,6 +33,7 @@ CultivationWorld/
 │   │   │   ├── behavior-trees/
 │   │   │   ├── config/
 │   │   │   ├── definitions/
+│   │   │   ├── economy/
 │   │   │   ├── effects/
 │   │   │   ├── entities/
 │   │   │   ├── goals/
@@ -73,6 +74,7 @@ CultivationWorld/
 | `apps/game/js/core/` | 配置加载、事件总线、常量、GameManager、图谱构建 |
 | `apps/game/js/engine/abstract/` | 实体、状态、需求、行为、GOAP、BT、GAS、记忆/情绪/执念等抽象层 |
 | `apps/game/js/engine/combat/` | 统一伤害管线与能力执行器 |
+| `apps/game/js/engine/economy/` | 统一经济交易底座：资产适配、估价、托管、原子交割、账本、债务、经济信号和抽象拍卖 |
 | `apps/game/js/engine/faction/` | 势力实体、状态、需求和行为执行器 |
 | `apps/game/js/engine/items/` | 物品定义、注册表和交易 |
 | `apps/game/js/engine/monster/` | 妖兽实体、生成器、属性模板计算、资源掉落、行为树预设 |
@@ -101,6 +103,7 @@ CultivationWorld/
 | `data/goals/` | 动态目标配置 |
 | `data/world/` | 地图、世界修正器、消息、机会点、动态事件 |
 | `data/balance/` | 战斗、经济、修炼、社交、风险、关系、反应等数值 |
+| `data/economy/` | 统一经济交易底座配置，如交易场景倍率、托管默认值、正式/私人交易规则、拍卖参数和债务逾期参数 |
 | `data/behavior-trees/` | NPC、势力、妖兽行为树 JSON |
 | `data/tags/` | GameplayTag 登记表 |
 | `data/effects/` | GameplayEffect 定义，加载时合并 |

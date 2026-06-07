@@ -58,6 +58,8 @@ apps/game/data/
 ├── effects/
 │   ├── combat-effects.json
 │   └── core-effects.json
+├── economy/
+│   └── transaction-scenarios.json
 ├── entities/
 │   ├── factions.json
 │   └── npcs.json
@@ -145,6 +147,7 @@ apps/game/data/
 - `definitions/cultivator-combat.json`：由加载器显式读取为 `cultivatorCombat`，提供普通修士裸面板。
 - `definitions/monster-combat.json`：由加载器显式读取为 `monsterCombat`，提供普通妖兽危险层级参考表。
 - `definitions/monster-attribute-templates.json`：由加载器显式读取为 `monsterAttributeTemplates`，供妖兽属性计算器和运行时生成入口使用。
+- `economy/transaction-scenarios.json`：由加载器显式读取为 `economicTransactionConfig`，供统一经济交易底座读取场景、托管、债务与抽象拍卖规则。
 - `relationships/**/*.json`：三层关系全数据平台配置，由加载器显式读取并组装为 `relationshipPlatform`，交给 `RelationshipSystem` 门面。
 
 ## entities/
@@ -419,6 +422,23 @@ Job/Toil 层用于 NPC 复杂行动编排。GOAP 只规划 `actions/npc-job-acti
 | GameplayCue | `cues/*.json` | `gc_` 前缀，预留 |
 
 GE 必须是通用机制原语；具体数值由物品、能力或调用方 spec 提供。
+
+## economy/
+
+`economy/transaction-scenarios.json` 是统一经济交易底座的运行时规则目录。代码只负责执行资产校验、托管、结算、账本、债务和信号；场景倍率、正式/私人规则、拍卖参数和可抵押资产范围由本文件提供。
+
+| 字段 | 说明 |
+|------|------|
+| `currencyItemId` | 第一版基础计价货币，当前为 `low_spirit_stone` |
+| `scenarios` | 交易场景定义；key 使用 snake_case |
+| `scenarios.*.kind` | `formal` 或 `private`；正式交易默认稳定，私人交易允许违约 |
+| `scenarios.*.priceMultiplier` | 基础 `value` 的场景倍率 |
+| `scenarios.*.escrowRequired` | 是否默认要求托管 |
+| `assets.factionStateResourceIds` | 以势力 `state` 为真相源的资源键 |
+| `assets.organizationPointKeys` | 贡献、战功、宗门信用等组织点数 |
+| `escrow.defaultHolderByScenario` | 场景默认托管机构 |
+| `debt.defaultDueDays` | 债务默认到期天数 |
+| `auction.defaultLots` | 无玩家抽象拍卖的默认拍品池 |
 
 ## relationships/
 

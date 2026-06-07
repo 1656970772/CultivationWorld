@@ -60,6 +60,8 @@ export class WorldContextBuilder {
       relationshipSystem: host.relationshipSystem,
       relationshipConfig: host.relationshipConfig,
       relationshipSignals: host.relationshipSystem?.signals || null,
+      economicSystem: host.economicSystem || null,
+      economicTransactionConfig: host.economicTransactionConfig || {},
       dynamicGoalConfig: host.dynamicGoalsConfig || {},
 
       emitRelationEvent(event) {
@@ -72,6 +74,29 @@ export class WorldContextBuilder {
           gates: {},
           modifiers: {},
           targetPreferences: {},
+          traces: [],
+        };
+      },
+
+      settleTransaction(input) {
+        return host.economicSystem?.settle?.({
+          day: host.worldEntity.currentDay,
+          ...input,
+        }) || { success: false, reason: 'economic_system_missing' };
+      },
+
+      openEscrow(input) {
+        return host.economicSystem?.openEscrow?.({
+          day: host.worldEntity.currentDay,
+          ...input,
+        }) || { success: false, reason: 'economic_system_missing' };
+      },
+
+      economicSignalsFor(input) {
+        return host.economicSystem?.signalsFor?.(input) || {
+          facts: {},
+          gates: {},
+          modifiers: {},
           traces: [],
         };
       },

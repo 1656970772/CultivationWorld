@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { readFileSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
@@ -11,6 +12,7 @@ const { ToilPool } = await imp('js/engine/pools/toil-pool.js');
 const { JobSystem } = await imp('js/engine/abstract/job-system.js');
 const { registerNPCToilExecutors } = await imp('js/engine/npc/toils/npc-toils.js');
 const { ToilResultStatus } = await imp('js/engine/abstract/toil.js');
+const { EconomicSystem } = await imp('js/engine/economy/transaction-engine.js');
 
 let failed = 0;
 function assert(cond, msg) {
@@ -313,6 +315,68 @@ entity = makeEntity('npc_check_currency_zero_amount', { inventory: { low_spirit_
 result = runJob('job_test_check_currency_zero_amount', entity);
 assert(result.status === 'success', 'check_currency 显式 amount 0 成功');
 assert(result.reason === 'job_completed', 'check_currency 显式 amount 0 完成 Job');
+
+console.log('14) faction exchange Toil 将贡献扣除纳入同一笔经济交易');
+{
+  const economicConfig = JSON.parse(readFileSync(resolve(GAME_ROOT, 'data/economy/transaction-scenarios.json'), 'utf-8'));
+  const economicSystem = new EconomicSystem({ config: economicConfig });
+  entity = makeEntity('npc_exchange_toil', {
+    inventory: { low_spirit_stone: 10 },
+    state: { contribution: 12 },
+  });
+  const toil = {
+    id: 'exchange',
+    type: 'toil_exchange_faction_item',
+    params: {
+      itemId: 'item_qi_pill',
+      amount: 1,
+      priceItemId: 'low_spirit_stone',
+      priceAmount: 3,
+      contributionCost: 5,
+    },
+  };
+  const result = ToilPool.getExecutor('toil_exchange_faction_item').run(entity, {
+    currentDay: 9,
+    settleTransaction(input) {
+      return economicSystem.settle({ day: 9, ...input });
+    },
+  }, null, toil);
+  assert(result.status === ToilResultStatus.SUCCESS, '贡献兑换 Toil 成功');
+  assert(result.contextPatch?.transactionId, '贡献兑换 Toil 返回交易 id');
+  assert(entity.state.get('contribution') === 7, '贡献点由统一结算扣除');
+  assert(entity.inventory.getAmount('low_spirit_stone') === 7, '灵石由统一结算扣除');
+  assert(entity.inventory.getAmount('item_qi_pill') === 1, '兑换物品由统一结算发放');
+  const record = economicSystem.ledger.all()[0];
+  assert(record.type === 'contribution_exchange', '账本记录贡献兑换类型');
+  assert(record.assets.some(t => t.asset.kind === 'organization_point'), '账本包含贡献点资产转移');
+}
+
+console.log('15) faction exchange Toil 缺少经济端口时失败且不改资产');
+{
+  entity = makeEntity('npc_exchange_toil_no_economy', {
+    inventory: { low_spirit_stone: 10 },
+    state: { contribution: 12 },
+  });
+  const toil = {
+    id: 'exchange_no_economy',
+    type: 'toil_exchange_faction_item',
+    params: {
+      itemId: 'item_qi_pill',
+      amount: 1,
+      priceItemId: 'low_spirit_stone',
+      priceAmount: 3,
+      contributionCost: 5,
+    },
+  };
+  const result = ToilPool.getExecutor('toil_exchange_faction_item').run(entity, {
+    currentDay: 10,
+  }, null, toil);
+  assert(result.status === ToilResultStatus.FAILED, '缺少经济端口时贡献兑换失败');
+  assert(result.reason === 'economic_system_missing', '失败原因是 economic_system_missing');
+  assert(entity.state.get('contribution') === 12, '缺少经济端口时不扣贡献点');
+  assert(entity.inventory.getAmount('low_spirit_stone') === 10, '缺少经济端口时不扣灵石');
+  assert(entity.inventory.getAmount('item_qi_pill') === 0, '缺少经济端口时不发放兑换物品');
+}
 
 if (failed > 0) {
   console.error(`\nEconomy/Social Toil tests failed: ${failed}`);

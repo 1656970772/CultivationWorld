@@ -30,6 +30,22 @@ function randomFn(worldContext) {
   return Math.random;
 }
 
+function economicSource(id = 'quest_reward_source') {
+  return {
+    id,
+    name: id,
+    inventory: {
+      getAmount() { return Number.MAX_SAFE_INTEGER; },
+      remove() { return true; },
+      add() {},
+    },
+    state: {
+      get() { return Number.MAX_SAFE_INTEGER; },
+      set() {},
+    },
+  };
+}
+
 function questValue(diffInfo = {}, difficulty = 1) {
   const stones = Number(diffInfo.rewardStones) || 0;
   const contribution = Number(diffInfo.rewardContribution) || 0;
@@ -584,7 +600,63 @@ export function turnInQuest(entity, worldContext) {
 
   let bountyOrgName = null;
   let faction = null;
-  if (isWanderer) {
+  let rewardTransactionId = null;
+  let debtOnFailedPayer = null;
+  const economicSystem = worldContext?.economicSystem || null;
+  if (economicSystem) {
+    const systemSource = economicSource();
+    const parties = [
+      { role: 'receiver', entity },
+      { role: 'system_source', entity: systemSource },
+    ];
+    const transfers = [];
+    if (isWanderer) {
+      const org = worldContext._resolveBountyOrgFor ? worldContext._resolveBountyOrgFor(entity) : null;
+      if (org && org.alive) {
+        bountyOrgName = org.name;
+        parties.push({ role: 'payer', entity: org });
+        transfers.push({ from: 'payer', to: 'receiver', asset: { kind: 'item', itemId: 'low_spirit_stone', quantity: rewardStones } });
+        debtOnFailedPayer = org;
+      }
+    } else if (worldContext.entityRegistry) {
+      faction = worldContext.entityRegistry.getById(factionId);
+      if (faction && faction.alive) {
+        parties.push({ role: 'faction', entity: faction });
+        if (rewardStones > 0) {
+          transfers.push({ from: 'system_source', to: 'receiver', asset: { kind: 'item', itemId: 'low_spirit_stone', quantity: rewardStones } });
+        }
+        if (rewardContribution > 0) {
+          transfers.push({ from: 'system_source', to: 'receiver', asset: { kind: 'organization_point', pointKey: 'contribution', quantity: rewardContribution } });
+          transfers.push({ from: 'system_source', to: 'receiver', asset: { kind: 'organization_point', pointKey: 'monthlyContribution', quantity: rewardContribution } });
+        }
+        if (factionStones > 0) {
+          transfers.push({ from: 'system_source', to: 'faction', asset: { kind: 'faction_state_resource', itemId: 'low_spirit_stone', quantity: factionStones } });
+        }
+      }
+    }
+    if (transfers.length > 0) {
+      const transaction = economicSystem.settle({
+        type: 'quest_reward',
+        scenarioId: 'quest_contract',
+        day: worldContext?.currentDay ?? 0,
+        parties,
+        transfers,
+        source: { type: 'quest_turn_in', questTypeId },
+        visibility: 'institution',
+      });
+      rewardTransactionId = transaction.transactionId || null;
+      if (!transaction.success && debtOnFailedPayer) {
+        economicSystem.createDebt({
+          day: worldContext?.currentDay ?? 0,
+          debtorId: debtOnFailedPayer.id,
+          creditorId: entity.id,
+          origin: { type: 'quest_reward_shortfall', questTypeId, transactionId: rewardTransactionId },
+          assetsDue: [{ kind: 'item', itemId: 'low_spirit_stone', quantity: rewardStones }],
+          visibility: 'institution',
+        });
+      }
+    }
+  } else if (isWanderer) {
     const org = worldContext._resolveBountyOrgFor
       ? worldContext._resolveBountyOrgFor(entity)
       : null;
@@ -600,7 +672,7 @@ export function turnInQuest(entity, worldContext) {
     }
   }
 
-  entity.inventory.add('low_spirit_stone', rewardStones);
+  if (!economicSystem) entity.inventory.add('low_spirit_stone', rewardStones);
   const extraRewards = applyQuestRewardProfile(
     entity,
     isWanderer ? null : faction,
@@ -610,7 +682,7 @@ export function turnInQuest(entity, worldContext) {
     randomFn(worldContext),
   );
 
-  if (!isWanderer) {
+  if (!isWanderer && !economicSystem) {
     const contribution = entity.state.get('contribution') || 0;
     entity.state.set('contribution', contribution + rewardContribution);
     const monthly = entity.state.get('monthlyContribution') || 0;
@@ -636,6 +708,7 @@ export function turnInQuest(entity, worldContext) {
     factionStones: isWanderer ? 0 : factionStones,
     extraRewards,
     bountyOrgName,
+    transactionId: rewardTransactionId,
     description: `${description}${extraDescription}`,
   };
 }

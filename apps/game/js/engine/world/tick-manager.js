@@ -30,6 +30,7 @@ import { DeathCollector } from './services/death-collector.js';
 import { InfoCoordinator } from './services/info-coordinator.js';
 import { MonsterRespawnService } from './services/monster-respawn-service.js';
 import { readEffectiveCombatAttribute } from '../npc/cultivator-combat-attributes.js';
+import { AuctionService } from '../economy/auction-service.js';
 
 export class TickManager {
   /**
@@ -47,7 +48,8 @@ export class TickManager {
                 techniqueRegistry, monsterSpawner, monsterInitialCount, factionBuildings,
                 gridGraph, hierGraph, worldNewsConfig, opportunityConfig, dynamicEventsConfig, dynamicGoalsConfig,
                 worldEventSystem, covetConfig,
-                relationshipConfig, relationshipSystem }) {
+                relationshipConfig, relationshipSystem,
+                economicSystem, economicTransactionConfig }) {
     this.entityRegistry = entityRegistry;
     this.worldEntity = worldEntity;
     // 确定性随机源（由 WorldEngine 注入）。挂到 worldContext，供所有模拟逻辑取随机。
@@ -91,6 +93,11 @@ export class TickManager {
     // 在各事件结算点维护人际/人妖/妖妖关系边，每日衰减挂在 _updateRelations 旁。
     this.relationshipConfig = relationshipConfig || {};
     this.relationshipSystem = relationshipSystem || null;
+    this.economicSystem = economicSystem || null;
+    this.economicTransactionConfig = economicTransactionConfig || {};
+    this.auctionService = this.economicSystem
+      ? new AuctionService({ economicSystem: this.economicSystem, config: this.economicTransactionConfig })
+      : null;
 
     // ── 子服务装配（各持 host 引用，通过共享 helper 协作）──
     this.factionAIService = new FactionAIService({ host: this, combatConfig: this.balanceConfig.combat || {} });
@@ -165,6 +172,8 @@ export class TickManager {
     if (this.worldEventSystem) {
       tickLog.dynamicEvents = this.worldEventSystem.tick(this.worldEntity.currentDay);
     }
+    const auctionResults = this._resolveAbstractAuctions(tickLog);
+    if (auctionResults.length > 0) tickLog.dynamicAuctions = auctionResults;
 
     // 2. 势力需求评估 + 行为规划
     const factions = this.entityRegistry.getAliveByType('faction');
@@ -200,15 +209,15 @@ export class TickManager {
           state: {
             stability: faction.state.get('stability'),
             territoryCount: faction.state.get('territoryCount'),
-            low_spirit_stone: faction.inventory.getAmount('low_spirit_stone'),
-            disciples: faction.inventory.getAmount('disciples'),
-            food: faction.inventory.getAmount('food'),
+            low_spirit_stone: faction.state.get('low_spirit_stone'),
+            disciples: faction.state.get('disciples'),
+            food: faction.state.get('food'),
             alive: faction.alive,
           },
         });
       }
 
-      tickLog.infoEvents = [...(worldContext.infoEvents || [])];
+      tickLog.infoEvents = [...(tickLog.infoEvents || []), ...(worldContext.infoEvents || [])];
     } else {
       for (const faction of factions) {
         faction.onPreTick(worldContext);
@@ -271,9 +280,43 @@ export class TickManager {
     this.promotionService.processMonthlyContribution(worldContext, tickLog, currentDay);
     this.promotionService.processSectEvents(worldContext, tickLog, currentDay);
     this.promotionService.processPromotions(worldContext, tickLog, currentDay);
+    if (this.economicSystem && this.worldEntity?.currentDay != null) {
+      this.economicSystem.advanceDay(this.worldEntity.currentDay);
+    }
 
     this._tickResults.push(tickLog);
     return tickLog;
+  }
+
+  _resolveAbstractAuctions(tickLog = null) {
+    if (!this.auctionService || !this.worldEventSystem) return [];
+    const day = this.worldEntity.currentDay;
+    const events = this.worldEventSystem.events || [];
+    const resolved = [];
+    for (const event of events) {
+      if (event.type !== 'auction' || event.phase !== 'active' || event._abstractResolved === true) continue;
+      const auctionHouse = this.entityRegistry.getById('org_auction');
+      if (!auctionHouse) continue;
+      const participants = this.entityRegistry.getAliveByType('npc')
+        .filter(npc => (npc.inventory?.getAmount?.('low_spirit_stone') || 0) > 0)
+        .slice(0, this.economicTransactionConfig?.auction?.abstractBid?.maxParticipants ?? 8);
+      const defaultLots = this.economicTransactionConfig?.auction?.defaultLots || [];
+      for (const lot of defaultLots) auctionHouse.inventory?.add?.(lot.itemId, lot.quantity || 1);
+      const result = this.auctionService.resolveAbstractAuction({
+        day,
+        event: typeof event.toJSON === 'function' ? event.toJSON() : event,
+        auctionHouse,
+        lots: defaultLots,
+        participants,
+        rng: this.rng,
+      });
+      event._abstractResolved = true;
+      resolved.push(result);
+      if (tickLog && result.wealthExposureEvents?.length > 0) {
+        tickLog.infoEvents.push(...result.wealthExposureEvents);
+      }
+    }
+    return resolved;
   }
 
   /**

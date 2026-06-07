@@ -38,7 +38,7 @@ export async function loadGameConfigs() {
     gameConfig, aiConfig, names,
     monsters, monsterAttributeTemplates, monsterSpawn,
     combatBaseTable, cultivatorCombat, monsterCombat,
-    worldNews, worldOpportunities, dynamicEvents, dynamicGoals, balanceCovet,
+    worldNews, worldOpportunities, dynamicEvents, dynamicGoals, balanceCovet, economicTransactionConfig,
     itemsCurrency, itemsMaterial, itemsPill, itemsArtifact, itemsTalisman, itemsTechnique,
     tags, combatEffects, coreEffects, abilities,
     relationshipLedgerSchema, relationshipMarks, relationshipTags, relationshipSignals,
@@ -103,6 +103,7 @@ export async function loadGameConfigs() {
     loadJSON('data/world/dynamic-events.json'),
     loadJSON('data/goals/dynamic-goals.json'),
     loadJSON('data/balance/covet.json'),
+    loadJSON('data/economy/transaction-scenarios.json'),
     loadJSON('data/items/currency.json'),
     loadJSON('data/items/material.json'),
     loadJSON('data/items/pill.json'),
@@ -189,7 +190,7 @@ export async function loadGameConfigs() {
     gameConfig, aiConfig, names,
     monsters, monsterAttributeTemplates, monsterSpawn,
     combatBaseTable, cultivatorCombat, monsterCombat,
-    worldNews, worldOpportunities, dynamicEvents, dynamicGoals, balanceCovet, itemDefs,
+    worldNews, worldOpportunities, dynamicEvents, dynamicGoals, balanceCovet, economicTransactionConfig, itemDefs,
     tags, effects, abilities, jobs, toils, relationshipPlatform,
   };
 }
@@ -226,6 +227,7 @@ export async function loadGameConfigs() {
  * @property {Object} balanceRelationship 关系网系统配置（ADR-027）
  * @property {Object} dynamicEvents      动态世界事件配置
  * @property {Object} dynamicGoals       动态 Goal 配置
+ * @property {Object} economicTransactionConfig 统一经济交易底座配置
  * @property {Object} relationshipPlatform 三层关系全数据平台配置
  * @property {Object} jobs               合并后的 Job 定义
  * @property {Object} toils              合并后的 Toil 定义

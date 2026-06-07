@@ -77,13 +77,19 @@ export class FactionEntity extends BaseEntity {
   }
 
   /**
-   * @override 前置处理：同步 inventory 到 state，更新派生状态
+   * @override 前置处理：以 state 为资源真相源，同步给兼容 inventory，再更新派生状态
    */
   onPreTick(worldContext) {
     this.state.set('underAttack', false);
-    this.state.set('low_spirit_stone', this.inventory.getAmount('low_spirit_stone'));
-    this.state.set('disciples', this.inventory.getAmount('disciples'));
-    this.state.set('food', this.inventory.getAmount('food'));
+    const stone = Math.max(0, this.state.get('low_spirit_stone') || 0);
+    const disc = Math.max(0, this.state.get('disciples') || 0);
+    const food = Math.max(0, this.state.get('food') || 0);
+    this.state.set('low_spirit_stone', stone);
+    this.state.set('disciples', disc);
+    this.state.set('food', food);
+    this.inventory.setAmount('low_spirit_stone', stone);
+    this.inventory.setAmount('disciples', disc);
+    this.inventory.setAmount('food', food);
 
     if (this.state instanceof FactionState) {
       this.state.updateDerived(worldContext);

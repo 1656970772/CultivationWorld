@@ -66,7 +66,7 @@ export class FactionState extends RuntimeState {
         if (enemy && enemy.alive) {
           enemyCount++;
           // hasWeakEnemy：敌方弟子 < 自身 70%
-          const enemyDisciples = enemy.inventory?.getAmount('disciples') || 0;
+          const enemyDisciples = enemy.state?.get?.('disciples') || enemy.inventory?.getAmount('disciples') || 0;
           if (enemyDisciples < myDisciples * 0.7) {
             hasWeakEnemyByRelation = true;
           }

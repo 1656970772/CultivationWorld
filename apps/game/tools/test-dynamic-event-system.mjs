@@ -60,6 +60,7 @@ function buildGameConfigs() {
     worldOpportunities: load('data/world/opportunities.json'),
     dynamicEvents: load('data/world/dynamic-events.json'),
     balanceCovet: load('data/balance/covet.json'),
+    economicTransactionConfig: load('data/economy/transaction-scenarios.json'),
     itemDefs: { items: ['currency', 'material', 'pill', 'artifact', 'talisman', 'technique'].flatMap(c => load(`data/items/${c}.json`).items) },
     tags: load('data/tags/tags.json'),
     effects: { effects: [...(combatEffects?.effects || []), ...(coreEffects?.effects || [])] },
@@ -420,6 +421,8 @@ console.log('9) ConfigLoader 加载 dynamic-events.json');
     const loaded = await loadGameConfigs();
     assert(requested.includes('data/world/dynamic-events.json'), 'loadGameConfigs 请求 dynamic-events.json');
     assert(loaded.dynamicEvents?.events?.length === load('data/world/dynamic-events.json').events.length, 'loadGameConfigs 返回 configs.dynamicEvents');
+    assert(requested.includes('data/economy/transaction-scenarios.json'), 'loadGameConfigs 请求经济交易配置');
+    assert(loaded.economicTransactionConfig?.auction?.defaultLots?.length > 0, 'loadGameConfigs 返回经济交易配置');
   } finally {
     globalThis.fetch = originalFetch;
   }
@@ -442,6 +445,44 @@ console.log('10) bundled 宗门大比使用真实 faction id 可见');
   assert(tournament.pos?.factionId === 'sect_001', 'bundled 宗门大比 pos.factionId 指向真实青云宗 sect_001');
   assert(sectVisible.some(e => e.id === 'evt_sect_tournament_001'), 'sect_001 NPC 可见 bundled faction-scoped 宗门大比');
   assert(!outsiderVisible.some(e => e.id === 'evt_sect_tournament_001'), '非 sect_001 NPC 不可见 bundled faction-scoped 宗门大比');
+}
+
+console.log('11) WorldEngine 到期抽象结算拍卖事件');
+{
+  const configs = buildGameConfigs();
+  configs.dynamicEvents = {
+    enabled: true,
+    events: [
+      {
+        id: 'evt_engine_auction',
+        type: 'auction',
+        name: '引擎拍卖验证',
+        announceDay: 1,
+        startDay: 1,
+        endDay: 2,
+        expireDay: 3,
+        scope: 'public',
+        opportunityType: 'auction',
+        pos: { resolver: 'faction_hq', factionId: 'org_auction' },
+      },
+    ],
+  };
+  configs.economicTransactionConfig = JSON.parse(JSON.stringify(configs.economicTransactionConfig));
+  configs.economicTransactionConfig.auction.defaultLots = [
+    { itemId: 'item_qi_pill', quantity: 1, reservePrice: 20 },
+  ];
+  configs.economicTransactionConfig.auction.abstractBid.wealthExposureThreshold = 1;
+
+  const engine = new WorldEngine();
+  engine.init(configs);
+  const bidder = engine.entityRegistry.getAliveByType('npc')[0];
+  bidder.inventory.add('low_spirit_stone', 500);
+  const tickLog = engine.tick();
+  const auctionLog = tickLog.dynamicAuctions?.find(result => result.eventId === 'evt_engine_auction');
+  assert(auctionLog?.lots?.some(lot => lot.status === 'sold'), 'active 拍卖事件由 TickManager 抽象结算成交');
+  assert(engine.economicSystem.ledger.all().some(record => record.type === 'auction_sale'), '抽象拍卖成交写入经济账本');
+  assert(tickLog.infoEvents.some(event => event.type === 'wealth_exposure'), '抽象拍卖财富曝光进入 tickLog.infoEvents');
+  assert(engine.worldEventSystem.getById('evt_engine_auction')?._abstractResolved === true, '拍卖事件标记为已抽象结算，避免重复结算');
 }
 
 if (failed === 0) {

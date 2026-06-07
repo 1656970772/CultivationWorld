@@ -2,7 +2,7 @@
 
 > 项目代号：WorldDynamic  
 > 创建日期：2026-05-23  
-> 最后更新：2026-06-07（新增统一经济交易底座设计；新增三层关系底座全数据重构验证报告、实施计划并补强规格；新增十二境界运行时主链 ADR、实施计划更新、数据模型、Wiki 与验证报告导航；新增三层关系底座重构规格；新增修为数值化与突破重构验证报告、NPC 效用评分公式升级设计/实施计划/验证报告与导航；此前新增修为数值化与突破重构规格、修士战斗属性体系 ADR、系统文档、数据模型与实施计划；新增妖兽属性模板与境界清理实施计划、ADR、系统文档、数据模型和验证报告）
+> 最后更新：2026-06-07（新增统一经济交易底座设计与实施计划；新增三层关系底座全数据重构验证报告、实施计划并补强规格；新增十二境界运行时主链 ADR、实施计划更新、数据模型、Wiki 与验证报告导航；新增三层关系底座重构规格；新增修为数值化与突破重构验证报告、NPC 效用评分公式升级设计/实施计划/验证报告与导航；此前新增修为数值化与突破重构规格、修士战斗属性体系 ADR、系统文档、数据模型与实施计划；新增妖兽属性模板与境界清理实施计划、ADR、系统文档、数据模型和验证报告）
 
 ## 当前事实
 
@@ -45,6 +45,7 @@ docs/
 │   ├── npc.md
 │   ├── monster.md
 │   ├── combat-attributes.md
+│   ├── economic-transaction.md
 │   ├── ranks.md
 │   ├── player.md
 │   ├── relationship.md
@@ -53,6 +54,7 @@ docs/
 │   └── world-modifiers.md
 ├── systems/
 │   ├── behavior-tree.md
+│   ├── economic-transaction-system.md
 │   ├── job-toil-ai-spec.md
 │   ├── event-system.md
 │   ├── faction-ai.md
@@ -107,6 +109,7 @@ docs/
 │   │   ├── 2026-06-07-十二境界运行时主链重构实施计划.md
 │   │   ├── 2026-06-07-修士战斗属性体系实施计划.md
 │   │   ├── 2026-06-07-修为数值化与突破重构实施计划.md
+│   │   ├── 2026-06-07-统一经济交易底座实施计划.md
 │   │   └── 2026-06-06-提交前收尾修复计划.md
 │   └── reports/
 │       ├── 2026-06-05-Job-Toil启用前验证.md
@@ -117,6 +120,7 @@ docs/
 │       ├── 2026-06-07-三层关系底座全数据重构验证.md
 │       ├── 2026-06-07-十二境界运行时主链重构验证.md
 │       ├── 2026-06-07-修士战斗属性体系验证.md
+│       ├── 2026-06-07-统一经济交易底座验证.md
 │       └── 2026-06-07-修为数值化与突破重构验证.md
 ├── worldbuilding/
 │   ├── README.md
@@ -141,7 +145,7 @@ docs/
 | AI 架构 | `systems/behavior-tree.md`、`systems/job-toil-ai-spec.md`、`decisions/adr-048-four-layer-reactive-ai.md`、`decisions/adr-050-goap-job-toil-layered-ai.md` |
 | NPC 效用评分公式升级 | `superpowers/specs/2026-06-07-NPC效用评分公式升级设计.md`、`superpowers/plans/2026-06-07-NPC效用评分公式升级实施计划.md`、`superpowers/reports/2026-06-07-NPC效用评分公式升级验证.md` |
 | 三层关系底座重构 | `superpowers/specs/2026-06-07-三层关系底座全数据重构-design.md`、`superpowers/plans/2026-06-07-三层关系底座全数据重构实施计划.md`、`superpowers/reports/2026-06-07-三层关系底座全数据重构验证.md`、`superpowers/specs/2026-06-07-三层关系底座重构-design.md` |
-| 统一经济交易底座 | `superpowers/specs/2026-06-07-统一经济交易底座设计.md` |
+| 统一经济交易底座 | `superpowers/specs/2026-06-07-统一经济交易底座设计.md`、`superpowers/plans/2026-06-07-统一经济交易底座实施计划.md`、`systems/economic-transaction-system.md`、`data-models/economic-transaction.md`、`superpowers/reports/2026-06-07-统一经济交易底座验证.md` |
 | 十二境界运行时主链重构 | `superpowers/specs/2026-06-07-十二境界运行时主链重构-design.md`、`superpowers/plans/2026-06-07-十二境界运行时主链重构实施计划.md`、`decisions/adr-054-twelve-realm-runtime-chain.md`、`data-models/ranks.md`、`data-models/combat-attributes.md`、`worldbuilding/wiki/rules/combat-attributes-and-realms.md`、`worldbuilding/wiki/rules/natural-death.md`、`superpowers/reports/2026-06-07-十二境界运行时主链重构验证.md` |
 | Job/Toil 正式启用 | `superpowers/specs/2026-06-05-Job-Toil正式启用前收尾规格.md`、`superpowers/plans/2026-06-05-ADR-050-收尾实施计划.md`、`superpowers/reports/2026-06-05-Job-Toil默认启用验证.md` |
 | Job/Toil 实施计划 | `superpowers/plans/2026-06-05-Job-Toil-AI重构实施计划.md` |

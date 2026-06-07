@@ -1,0 +1,87 @@
+{
+  "_description": "统一经济交易底座 V1 配置：场景倍率、托管规则、债务规则和抽象拍卖参数。",
+  "currencyItemId": "low_spirit_stone",
+  "scenarios": {
+    "formal_market": {
+      "name": "正规坊市买卖",
+      "kind": "formal",
+      "priceMultiplier": 1.0,
+      "escrowRequired": false,
+      "allowDefault": false,
+      "visibility": "institution"
+    },
+    "faction_exchange": {
+      "name": "宗门贡献兑换",
+      "kind": "formal",
+      "priceMultiplier": 0.85,
+      "escrowRequired": false,
+      "allowDefault": false,
+      "visibility": "institution"
+    },
+    "material_donation": {
+      "name": "材料上交",
+      "kind": "formal",
+      "priceMultiplier": 1.0,
+      "escrowRequired": false,
+      "allowDefault": false,
+      "visibility": "institution"
+    },
+    "quest_contract": {
+      "name": "任务契约",
+      "kind": "formal",
+      "priceMultiplier": 1.0,
+      "escrowRequired": true,
+      "allowDefault": false,
+      "visibility": "institution"
+    },
+    "private_trade": {
+      "name": "私人交易",
+      "kind": "private",
+      "priceMultiplier": 1.0,
+      "escrowRequired": false,
+      "allowDefault": true,
+      "visibility": "personal",
+      "privateVariance": { "min": 0.75, "max": 1.45 }
+    },
+    "auction": {
+      "name": "拍卖",
+      "kind": "formal",
+      "priceMultiplier": 1.25,
+      "escrowRequired": true,
+      "allowDefault": true,
+      "visibility": "public"
+    }
+  },
+  "assets": {
+    "factionStateResourceIds": ["low_spirit_stone", "food", "disciples"],
+    "organizationPointKeys": ["contribution", "warMerit", "sectCredit"],
+    "privateForbiddenKinds": ["organization_point"],
+    "collateralAllowedItemCategories": ["currency", "material", "pill", "artifact", "technique"]
+  },
+  "escrow": {
+    "defaultHolderByScenario": {
+      "quest_contract": "org_bounty",
+      "auction": "org_auction"
+    }
+  },
+  "debt": {
+    "defaultDueDays": 30,
+    "overdueSignalWeight": 1.0
+  },
+  "auction": {
+    "abstractBid": {
+      "minParticipants": 2,
+      "maxParticipants": 8,
+      "startingMultiplier": 0.85,
+      "winnerMultiplierMin": 1.05,
+      "winnerMultiplierMax": 1.65,
+      "wealthExposureThreshold": 300,
+      "reservePriceMultiplier": 0.8
+    },
+    "defaultLots": [
+      { "itemId": "item_qi_pill", "quantity": 2, "reservePrice": 30 },
+      { "itemId": "item_breakthrough_pill", "quantity": 1, "reservePrice": 180 },
+      { "itemId": "artifact_green_sword", "quantity": 1, "reservePrice": 280 }
+    ]
+  }
+}
