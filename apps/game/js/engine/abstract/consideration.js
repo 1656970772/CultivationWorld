@@ -66,7 +66,10 @@ export class Consideration {
     this.source = config.source || InputSource.ENTITY;
     this.curve = config.curve || CurveType.LINEAR;
     this.params = config.params || {};
-    this.weight = config.weight ?? 1;
+    const weight = Number(config.weight ?? 1);
+    this.weight = Number.isFinite(weight) && weight >= 0 ? weight : 1;
+    const floor = config.floor == null ? null : Number(config.floor);
+    this.floor = Number.isFinite(floor) ? clamp01(floor) : null;
   }
 
   /**

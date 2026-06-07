@@ -24,6 +24,29 @@ export const GoalSource = Object.freeze({
   DYNAMIC: 'dynamic',
 });
 
+const DEFAULT_SCORE_CONFIG = Object.freeze({
+  minBiasMult: 0.25,
+  maxBiasMult: 3,
+  defaultConsiderationFloor: 0.05,
+  rewardWeight: 0.5,
+  riskWeight: 1,
+});
+
+function clamp(value, min, max) {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return min;
+  return n < min ? min : n > max ? max : n;
+}
+
+function clamp01(value) {
+  return clamp(value, 0, 1);
+}
+
+function positiveNumber(value, fallback) {
+  const n = Number(value);
+  return Number.isFinite(n) && n >= 0 ? n : fallback;
+}
+
 /**
  * @typedef {Object} GoalConfig
  * @property {string} id                       目标唯一标识（同一来源稳定）
@@ -75,9 +98,17 @@ export class Goal {
 
     /**
      * 考量因素求值缓存（每次 evaluateConsiderations 写入），供调试/可视化。
-     * @type {{ id: string, value: number }[]|null}
+     * @type {{ id: string, value: number, weight: number, floor: number|null }[]|null}
      */
     this._considerationTrace = null;
+
+    /**
+     * 评分上下文（NPC 效用评分公式升级）。
+     * 默认 null 表示仅按 priority / modulators / considerations 计算；
+     * npc-utility 在 Utility 激活态写入 expectedValue、goalRisk 与评分参数。
+     * @type {null|Object}
+     */
+    this._scoreContext = null;
   }
 
   /**
@@ -97,15 +128,31 @@ export class Goal {
     this._considerationTrace = this.considerations.map(c => ({
       id: c.id,
       value: c.evaluate(entityState, worldContext, derived),
+      weight: c.weight,
+      floor: c.floor,
     }));
   }
 
-  /** 考量因素乘积（无考量因素时为 1）。 */
-  _considerationProduct() {
+  /** 考量因素加权几何平均（无考量因素时为 1）。 */
+  _considerationMean(defaultFloor = DEFAULT_SCORE_CONFIG.defaultConsiderationFloor) {
     if (!this._considerationTrace || this._considerationTrace.length === 0) return 1;
-    let prod = 1;
-    for (const t of this._considerationTrace) prod *= t.value;
-    return prod;
+
+    let weightedLog = 0;
+    let weightSum = 0;
+    const fallbackFloor = clamp01(defaultFloor);
+
+    for (const t of this._considerationTrace) {
+      const weight = positiveNumber(t.weight, 1);
+      if (weight <= 0) continue;
+
+      const floor = t.floor == null ? fallbackFloor : clamp01(t.floor);
+      const safeValue = Math.max(clamp01(t.value), floor);
+      weightedLog += weight * Math.log(safeValue);
+      weightSum += weight;
+    }
+
+    if (weightSum <= 0) return 1;
+    return Math.exp(weightedLog / weightSum);
   }
 
   /**
@@ -123,23 +170,102 @@ export class Goal {
   }
 
   /**
+   * 写入评分上下文。由 Utility 层注入收益、风险和评分参数。
+   * @param {Object} [context]
+   * @returns {Goal}
+   */
+  setScoreContext(context = {}) {
+    const config = {
+      ...DEFAULT_SCORE_CONFIG,
+      ...(context.scoreConfig || {}),
+    };
+
+    const hardGate = context.hardGate == null ? 1 : clamp01(context.hardGate);
+    const expectedValue = clamp01(context.expectedValue ?? 0);
+    const goalRisk = positiveNumber(context.goalRisk, 0);
+    const rewardWeight = positiveNumber(context.rewardWeight ?? config.rewardWeight, DEFAULT_SCORE_CONFIG.rewardWeight);
+    const riskWeight = positiveNumber(context.riskWeight ?? config.riskWeight, DEFAULT_SCORE_CONFIG.riskWeight);
+
+    this._scoreContext = {
+      hardGate,
+      expectedValue,
+      goalRisk,
+      rewardWeight,
+      riskWeight,
+      scoreConfig: {
+        minBiasMult: positiveNumber(config.minBiasMult, DEFAULT_SCORE_CONFIG.minBiasMult),
+        maxBiasMult: positiveNumber(config.maxBiasMult, DEFAULT_SCORE_CONFIG.maxBiasMult),
+        defaultConsiderationFloor: clamp01(config.defaultConsiderationFloor),
+        rewardWeight,
+        riskWeight,
+      },
+    };
+
+    if (this._scoreContext.scoreConfig.maxBiasMult < this._scoreContext.scoreConfig.minBiasMult) {
+      const min = this._scoreContext.scoreConfig.maxBiasMult;
+      const max = this._scoreContext.scoreConfig.minBiasMult;
+      this._scoreContext.scoreConfig.minBiasMult = min;
+      this._scoreContext.scoreConfig.maxBiasMult = max;
+    }
+
+    return this;
+  }
+
+  /**
+   * 返回当前评分上下文快照，供测试和调试面板读取。
+   * @returns {null|Object}
+   */
+  getScoreContext() {
+    return this._scoreContext ? {
+      hardGate: this._scoreContext.hardGate,
+      expectedValue: this._scoreContext.expectedValue,
+      goalRisk: this._scoreContext.goalRisk,
+      rewardWeight: this._scoreContext.rewardWeight,
+      riskWeight: this._scoreContext.riskWeight,
+      scoreConfig: { ...this._scoreContext.scoreConfig },
+    } : null;
+  }
+
+  /**
    * 目标综合评分（Utility 选目标的最终依据，ADR-020）。
    *
-   * 公式：score = (priority + Σdelta) × Π(modulator.mult) × Π(consideration)
+   * 公式：score = hardGate × 100 × base × considerationMean × biasMult × rewardMult × riskMult
    *
    * - 无 considerations 且无 modulators 时严格等于 priority。
-   * - considerations 提供「乘法式」考量因素(修炼需求×瓶颈程度×资源充足度)，∈[0,1]，
+   * - considerations 提供加权几何平均考量因素(修炼需求×瓶颈程度×资源充足度)，∈[0,1]，
    *   缺省时乘积为 1，不影响评分。
    * @returns {number}
    */
   score() {
+    if (!this._scoreContext && (!this._considerationTrace || this._considerationTrace.length === 0) && this.modulators.length === 0) {
+      return this.priority;
+    }
+
+    const ctx = this._scoreContext || {
+      hardGate: 1,
+      expectedValue: 0,
+      goalRisk: 0,
+      rewardWeight: DEFAULT_SCORE_CONFIG.rewardWeight,
+      riskWeight: DEFAULT_SCORE_CONFIG.riskWeight,
+      scoreConfig: DEFAULT_SCORE_CONFIG,
+    };
+
     let p = this.priority;
-    let mult = 1;
+    let biasMult = 1;
     for (const m of this.modulators) {
       p += m.deltaPriority;
-      mult *= m.mult;
+      biasMult *= m.mult;
     }
-    return p * mult * this._considerationProduct();
+
+    const base = clamp01(p / 100);
+    const minBias = ctx.scoreConfig.minBiasMult;
+    const maxBias = ctx.scoreConfig.maxBiasMult;
+    const clampedBias = clamp(biasMult, minBias, maxBias);
+    const considerationMean = this._considerationMean(ctx.scoreConfig.defaultConsiderationFloor);
+    const rewardMult = 1 + ctx.rewardWeight * ctx.expectedValue;
+    const riskMult = 1 / (1 + ctx.riskWeight * ctx.goalRisk);
+
+    return ctx.hardGate * 100 * base * considerationMean * clampedBias * rewardMult * riskMult;
   }
 
   /**
@@ -184,6 +310,7 @@ export class Goal {
       score: this.score(),
       tag: this.tag,
       considerations: this._considerationTrace || undefined,
+      scoreContext: this.getScoreContext() || undefined,
     };
   }
 }
