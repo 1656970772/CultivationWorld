@@ -47,6 +47,12 @@ const DEFAULT_GOAL_RISK_KEYS = {
  * 探索类目标 sourceId 集合，用于路径偏好逻辑识别「explore_first 时应加分的目标」。
  */
 const EXPLORE_GOAL_IDS = new Set(['need_npc_exploration', 'need_npc_explore']);
+const HUNT_SIGNAL_ACTION_ID = 'act_npc_job_hunt_enemy';
+const HUNT_SIGNAL_GOAL_IDS = new Set([
+  'obsession_revenge',
+  'obsession_seizure',
+  'avenge_relationship_death',
+]);
 
 /**
  * 派生时间价值 timeValue ∈ [0,1]：lifeRatio 越接近 1（越接近寿元），时间越宝贵。
@@ -87,6 +93,95 @@ function computeRiskWeight(entity, goalRisk, utilityConfig) {
   }
 
   return Math.max(0, riskWeight);
+}
+
+function stateValue(entity, key, fallback = null) {
+  if (!entity?.state || typeof entity.state.get !== 'function') return fallback;
+  const value = entity.state.get(key);
+  return value == null ? fallback : value;
+}
+
+function directTargetId(goal) {
+  return goal?.targetId
+    || goal?.target?.id
+    || goal?.context?.targetId
+    || goal?.metadata?.targetId
+    || null;
+}
+
+function sourceObsessionType(goal) {
+  const sourceId = goal?.sourceId || goal?.id || '';
+  return sourceId.startsWith('obsession_') ? sourceId.slice('obsession_'.length) : null;
+}
+
+function isHuntSignalGoal(goal) {
+  const ids = [goal?.sourceId, goal?.id, goal?.tag].filter(Boolean);
+  if (ids.some(id => HUNT_SIGNAL_GOAL_IDS.has(id))) return true;
+  const enemyKilled = goal?.goalState?.enemyKilled;
+  return enemyKilled?.value === true || enemyKilled?.op === 'true';
+}
+
+function resolveHuntSignalTargetId(entity, goal, worldContext) {
+  const direct = directTargetId(goal);
+  if (direct) return direct;
+
+  const obsessions = Array.isArray(entity?.obsessions?.obsessions) ? entity.obsessions.obsessions : [];
+  const type = sourceObsessionType(goal);
+  const matched = type ? obsessions.find(o => o.type === type && o.targetId) : null;
+  if (matched?.targetId) return matched.targetId;
+
+  const revenge = obsessions.find(o => (o.type === 'revenge' || o.type === 'seizure') && o.targetId);
+  if (revenge?.targetId) return revenge.targetId;
+
+  const topGrudge = entity?.relationships?.topGrudge?.();
+  if (topGrudge?.actorId) return topGrudge.actorId;
+
+  const rs = entity?._relationshipSystem || worldContext?.relationshipSystem || null;
+  const minStrength = entity?._relationshipConfig?.npcGoals?.relationRevenge?.minEnemyStrength ?? 40;
+  const topEnemy = rs?.topEdgeOfType?.(entity.id, 'enemy');
+  if (topEnemy && topEnemy.strength >= minStrength) return topEnemy.toId;
+
+  const factionId = stateValue(entity, 'factionId', null);
+  const wanted = rs?.topWantedTargetForFaction?.(factionId, entity?.id);
+  return wanted?.targetId || null;
+}
+
+function relationshipTargetPayload(worldContext, targetId) {
+  const target = worldContext?.entityRegistry?.getById?.(targetId);
+  if (!target) return { id: targetId };
+  return {
+    id: targetId,
+    factionId: target.state?.get?.('factionId') ?? target.factionId ?? null,
+    roleRank: target.state?.get?.('roleRank') ?? target.roleRank ?? null,
+  };
+}
+
+function applyRelationshipSignalModulators(entity, goal, worldContext, utilityConfig) {
+  if (utilityConfig?.relationshipSignals?.enabled === false) return;
+  if (!isHuntSignalGoal(goal)) return;
+  if (typeof worldContext?.getRelationshipSignals !== 'function') return;
+
+  const targetId = resolveHuntSignalTargetId(entity, goal, worldContext);
+  if (!targetId) return;
+
+  const signals = worldContext.getRelationshipSignals({
+    actor: {
+      id: entity?.id,
+      factionId: stateValue(entity, 'factionId', null),
+      roleRank: stateValue(entity, 'roleRank', null),
+    },
+    target: relationshipTargetPayload(worldContext, targetId),
+    contextType: 'action',
+    actionId: HUNT_SIGNAL_ACTION_ID,
+  });
+  const huntWeight = Number(signals?.modifiers?.huntWeight);
+  if (!Number.isFinite(huntWeight) || huntWeight <= 0 || huntWeight === 1) return;
+
+  goal.addModulator({
+    label: 'relationship.huntWeight',
+    deltaPriority: 0,
+    mult: huntWeight,
+  });
 }
 
 /**
@@ -166,7 +261,11 @@ export function decorateGoalConsiderations(entity, goal, worldContext, utilityCo
     goal.evaluateConsiderations(considerations, entity.state, worldContext, derived);
   }
 
-  // ── D. 随机扰动（上头，ADR-021 迁入）：
+  // ── D. 关系信号调制（追杀令/血仇/救命恩）：
+  // Utility 只消费 RelationshipSignalProvider 输出，不直接读取账本内部结构。
+  applyRelationshipSignalModulators(entity, goal, worldContext, utilityConfig);
+
+  // ── E. 随机扰动（上头，ADR-021 迁入）：
   // 小概率让某目标分数暴增，使 NPC 做出冲动选择。在目标评估阶段 roll，而非 GOAP 行为级。
   const headstrongCfg = utilityConfig.headstrong || {};
   if (headstrongCfg.enabled === true) {
@@ -186,7 +285,7 @@ export function decorateGoalConsiderations(entity, goal, worldContext, utilityCo
     }
   }
 
-  // ── E. 路径偏好（ADR-021 迁入）：
+  // ── F. 路径偏好（ADR-021 迁入）：
   // breakthroughPathOrder 决定 NPC 在游历/修炼间的倾向，通过给对应目标加分体现，
   // 而非原来降低 GOAP action 的 cost。
   const pathCfg = utilityConfig.pathPreference || {};

@@ -9,6 +9,7 @@
  *   5) npc-utility 把 goalRisk / expectedValue 写入 Goal 评分上下文
  *   6) 随机扰动（上头）：命中时 Goal 分数按 mult 放大且受偏置上限保护
  *   7) 路径偏好：explore_first 时探索类目标获得 deltaPriority 加成
+ *   8) 追杀关系信号：wanted/bloodFeud 等信号可调制复仇类 Goal
  *
  * 用法：node tools/test-utility.mjs
  */
@@ -295,6 +296,56 @@ console.log('7) 路径偏好');
   const gExplore2 = new Goal({ id: 'gE2', sourceId: 'need_npc_exploration', priority: 60 });
   decorateGoalConsiderations(cultivatorEntity, gExplore2, {}, cfgPath);
   assert(!gExplore2.modulators.some(m => m.label === 'pathPreference'), 'cultivate_first 时探索目标不加分');
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 8) 追杀关系信号（wanted/bloodFeud）进入 Utility 调制层
+// ─────────────────────────────────────────────────────────────────────────────
+console.log('8) 追杀关系信号调制');
+{
+  let capturedInput = null;
+  const entity = {
+    id: 'npc_hunter',
+    state: {
+      get(key) {
+        return key === 'factionId' ? 'sect_001' : null;
+      },
+      set: () => {},
+    },
+    staticData: { personality: { caution: 50 } },
+    emotions: null,
+    obsessions: {
+      obsessions: [
+        { type: 'revenge', targetId: 'npc_wanted' },
+      ],
+    },
+  };
+  const worldContext = {
+    getRelationshipSignals(input) {
+      capturedInput = input;
+      return { modifiers: { huntWeight: 2.5 }, traces: [{ ruleId: 'wanted_hunt_signal' }] };
+    },
+  };
+  const goal = new Goal({
+    id: 'goal_obsession_revenge',
+    sourceId: 'obsession_revenge',
+    priority: 80,
+    goalState: { enemyKilled: { op: 'eq', value: true } },
+  });
+  decorateGoalConsiderations(entity, goal, worldContext, { enabled: true });
+  const relMod = goal.modulators.find(m => m.label === 'relationship.huntWeight');
+  assert(relMod != null, '复仇类 Goal 读取关系信号并挂 relationship.huntWeight modulator');
+  assert(relMod?.mult === 2.5, 'relationship.huntWeight.mult 使用信号 huntWeight');
+  assert(capturedInput?.actionId === 'act_npc_job_hunt_enemy', '关系信号查询使用追杀 JobAction id');
+  assert(capturedInput?.actor?.id === 'npc_hunter', '关系信号查询传入 actor.id');
+  assert(capturedInput?.actor?.factionId === 'sect_001', '关系信号查询传入 actor.factionId');
+  assert(capturedInput?.target?.id === 'npc_wanted', '关系信号查询传入执念 targetId');
+  assert(goal.score() > 80, 'huntWeight 提高复仇 Goal 分数');
+
+  const noTarget = new Goal({ id: 'goal_obsession_revenge_2', sourceId: 'obsession_revenge', priority: 80 });
+  const noTargetEntity = { ...entity, obsessions: { obsessions: [] } };
+  decorateGoalConsiderations(noTargetEntity, noTarget, worldContext, { enabled: true });
+  assert(!noTarget.modulators.some(m => m.label === 'relationship.huntWeight'), '无明确追杀目标时不挂关系信号调制');
 }
 
 if (failures === 0) {

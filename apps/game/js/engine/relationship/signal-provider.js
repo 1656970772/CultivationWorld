@@ -54,6 +54,16 @@ export class RelationshipSignalProvider {
     return this.repository.getLedger(ref, { create: false });
   }
 
+  _resolveLedgers(spec, input) {
+    const context = this._context(input);
+    const refs = typeof this.selectorResolver.resolveLedgerRefs === 'function'
+      ? this.selectorResolver.resolveLedgerRefs(spec, context)
+      : [this.selectorResolver.resolveLedgerRef(spec, context)];
+    return refs
+      .map(ref => this.repository.getLedger(ref, { create: false }))
+      .filter(Boolean);
+  }
+
   _conditionsPass(rule, input, ledger) {
     const context = this._context(input, ledger);
     for (const condition of rule.match?.conditions || []) {
@@ -64,7 +74,7 @@ export class RelationshipSignalProvider {
 
   _mergeOutputs(result, outputs, context) {
     for (const [key, value] of Object.entries(outputs.facts || {})) {
-      result.facts[key] = this.evaluator.evaluate(value, context);
+      result.facts[key] = result.facts[key] === true || this.evaluator.evaluate(value, context);
     }
     for (const [key, value] of Object.entries(outputs.gates || {})) {
       result.gates[key] = result.gates[key] === true || this.evaluator.evaluate(value, context);
@@ -95,21 +105,21 @@ export class RelationshipSignalProvider {
         continue;
       }
       for (const spec of ledgers) {
-        const ledger = this._resolveLedger(spec, input);
-        if (!ledger) continue;
-        if (!this._conditionsPass(rule, input, ledger)) continue;
-        const context = this._context(input, ledger);
-        this._mergeOutputs(result, rule.outputs || {}, context);
-        result.traces.push({
-          ruleId: rule.id,
-          ledger: {
-            layer: ledger.layer,
-            subjectId: ledger.subjectId,
-            objectId: ledger.objectId || null,
-            factionId: ledger.factionId || null,
-            groupId: ledger.groupId || null,
-          },
-        });
+        for (const ledger of this._resolveLedgers(spec, input)) {
+          if (!this._conditionsPass(rule, input, ledger)) continue;
+          const context = this._context(input, ledger);
+          this._mergeOutputs(result, rule.outputs || {}, context);
+          result.traces.push({
+            ruleId: rule.id,
+            ledger: {
+              layer: ledger.layer,
+              subjectId: ledger.subjectId,
+              objectId: ledger.objectId || null,
+              factionId: ledger.factionId || null,
+              groupId: ledger.groupId || null,
+            },
+          });
+        }
       }
     }
     return result;
