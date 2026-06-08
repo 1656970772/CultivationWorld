@@ -82,9 +82,9 @@ CultivationWorld/
 | `apps/game/js/engine/npc/actions/` | NPC 行为执行器，按修炼/经济/战斗/关系/事件等业务拆分 |
 | `apps/game/js/engine/npc/toils/` | NPC Job/Toil 执行器，按核心/动态事件/经济/社交拆分 |
 | `apps/game/js/engine/pools/` | Need / Action / Job / Toil / Effect / Ability 模板池 |
-| `apps/game/js/engine/quest/` | 通用任务板：任务仓储、状态机、可见性策略、去重策略、任务来源策略和交付处理器；不属于门派专用模块；本实施计划目标结构，后续实现新增 |
+| `apps/game/js/engine/quest/` | 通用任务板：任务仓储、状态机、可见性策略、去重策略、任务来源策略和交付处理器；不属于门派专用模块 |
 | `apps/game/js/engine/relationship/` | 三层关系底座：账本仓储、事件解释、selector、表达式、effect operator、信号输出 |
-| `apps/game/js/engine/sect/` | 门派运行：门派组织、宗门财政、悬赏托管、月俸库存压力、离宗倒闭规则；只注册宗门任务来源、门派运行规则和悬赏结算策略；本实施计划目标结构，后续实现新增 |
+| `apps/game/js/engine/sect/` | 门派运行：门派组织、宗门财政、悬赏托管、月俸库存压力、离宗倒闭规则；只注册宗门任务来源、门派运行规则和悬赏结算策略 |
 | `apps/game/js/engine/world/` | 世界实体、TickManager、地图、移动、寻路、关系、信息、机会点、动态事件 |
 | `apps/game/js/engine/world/services/` | Tick 子服务：上下文、势力 AI、晋升、人口、死亡、信息、妖兽重生 |
 | `apps/game/js/renderer/` | Canvas/Pixi 地图渲染、相机、地形、迷雾、自动模拟渲染；地图展示颜色读取数据 `presentation` |
@@ -96,7 +96,7 @@ CultivationWorld/
 | 路径 | 职责 |
 |------|------|
 | `data/entities/` | 初始势力与 NPC；势力/组织可在 `presentation` 中声明展示颜色、徽记和排序 |
-| `data/definitions/` | 境界、地形、妖兽、妖兽属性模板、修士/妖兽战斗属性表、NPC 修炼功法定义、武器、姓名、宏观资源；门派组织模板和门派初始化 profile 属于本实施计划目标结构，后续实现新增；地形展示元数据写入 `terrains.json` 的 `presentation` |
+| `data/definitions/` | 境界、地形、妖兽、妖兽属性模板、修士/妖兽战斗属性表、NPC 修炼功法定义、武器、姓名、宏观资源、门派组织模板和门派初始化 profile；地形展示元数据写入 `terrains.json` 的 `presentation` |
 | `data/items/` | 可持有物品，按 `currency/material/pill/artifact/talisman/technique` 拆分；其中 `technique` 是秘籍物品，不是 NPC 当前修炼功法定义 |
 | `data/actions/` | 势力/NPC SimpleAction/NPC JobAction/Reaction/世界规则行为，以及 NPC 默认行为集 |
 | `data/jobs/` | NPC Job 定义，按动态事件/经济/社交拆分 |
@@ -104,7 +104,7 @@ CultivationWorld/
 | `data/needs/` | 势力和 NPC 需求 |
 | `data/goals/` | 动态目标配置 |
 | `data/world/` | 地图、世界修正器、消息、机会点、动态事件 |
-| `data/balance/` | 战斗、经济、修炼、社交、风险、关系、反应等数值；门派运行数值属于本实施计划目标结构，后续实现新增 |
+| `data/balance/` | 战斗、经济、修炼、社交、风险、关系、反应、门派运行等数值 |
 | `data/economy/` | 统一经济交易底座配置，如交易场景倍率、托管默认值、正式/私人交易规则、拍卖参数和债务逾期参数 |
 | `data/behavior-trees/` | NPC、势力、妖兽行为树 JSON |
 | `data/tags/` | GameplayTag 登记表 |

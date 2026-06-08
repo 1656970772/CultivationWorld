@@ -2,7 +2,7 @@
 
 > 最后更新：2026-06-08
 
-本文档定义 `apps/game/data/` 的现行目录结构、命名规范和扩展规则。来源以当前 `apps/game/js/core/config-loader.js`、`apps/game/js/core/game-data-validator.js` 与 `apps/game/data/` 为准。门派组织、门派 seed profile 与门派运行数值三份配置已落地；通用任务板和门派月俸/库存压力运行服务仍属后续目标。
+本文档定义 `apps/game/data/` 的现行目录结构、命名规范和扩展规则。来源以当前 `apps/game/js/core/data-manifest-loader.js`、`apps/game/js/core/game-data-validator.js` 与 `apps/game/data/` 为准。门派组织、门派 seed profile、门派运行数值、通用任务板和门派月俸/库存压力运行服务已落地；新增配置必须继续走 manifest 与 strict validator。
 
 ## 目录总览
 
@@ -203,18 +203,18 @@ apps/game/data/
 | `definitions/sect-seed-profiles.json` | 已落地。门派初始化 profile：宏观资源档、实物库存档、堂口编制档、NPC 初始道具档 |
 | `balance/sect-operation.json` | 已落地。门派运行数值：月俸、丹药俸禄、维护费、安全库存线、离宗阈值、任务板策略和个人悬赏手续费 |
 | `engine/sect/sect-config-registry.js` | 已落地。只负责门派配置聚合、helper 与引用校验，不执行月俸或任务板业务 |
-| `engine/quest/` | 后续目标。通用任务板、任务来源策略和任务交付处理器 |
-| `engine/sect/` 运行服务 | 后续目标。宗门财政、悬赏托管、月俸库存压力和离宗倒闭规则 |
+| `engine/quest/` | 已落地。通用任务板、任务来源策略和任务交付处理器；不属于门派专用模块 |
+| `engine/sect/` 运行服务 | 已落地。宗门财政、悬赏托管、月俸库存压力、离宗和倒闭规则 |
 
 ### 启动期 strict 校验
 
 `validateGameData(configs, { strict: true })` 是运行时配置引用的启动守门人。缺失 GE/GA/Tag/Item 引用、错误 ID 前缀、未登记行为树、缺失资源注册项、manifest 遗漏和展示元数据缺失都应在加载期暴露，不允许静默跳过、回退直写 state 或继续运行到半配置状态。
 
-`game-data-validator.js` 是门派配置 strict 校验的主入口，并复用 `SectConfigRegistry` 的引用校验。当前阶段只对显式声明 `isSect` / `isPublic` / 门派 profile 字段，或带 `subtype` 的功能组织做身份校验；核心宗门的完整 `isSect=true` 标注将在后续任务补齐后再收紧为全量必填。门派运行 strict 校验覆盖：
+`game-data-validator.js` 是门派配置 strict 校验的主入口，并复用 `SectConfigRegistry` 的引用校验。门派运行 strict 校验覆盖：
 
 | 校验项 | 规则 |
 |--------|------|
-| `isSect` / `isPublic` | 本阶段对显式声明门派字段或 `subtype` 功能组织强校验；功能组织需 `isPublic=true` 或 `isSect=false`，公共组织可到后续任务补全 `isSect=false` |
+| `isSect` / `isPublic` | 核心宗门必须显式声明 `isSect=true`；功能组织必须声明 `isPublic=true` 或 `isSect=false`，公共组织不得声明 `isSect=true` |
 | `sectTemplateId` | `isSect=true` 的势力必须引用存在的 `sectOrganization` 模板 |
 | seed profile | `sectSeedProfileId` / `seedProfileId` 必须引用存在的 `resourceProfiles` / `inventoryProfiles` / `seedProfiles` profile |
 | hall profile | `hallAssignmentProfileId` / `hallProfileId` 必须引用存在的堂口编制 profile |
@@ -226,7 +226,7 @@ apps/game/data/
 | `questTemplateId` | 宗门任务、堂口任务和个人悬赏引用的模板必须存在于 `quests/quest-templates.json` |
 | transaction scenario | 悬赏托管、库存回流、月俸或维护费引用的场景必须存在于 `economy/transaction-scenarios.json` |
 | faction state resource | `resourceProfiles` 和运行规则中的宏观资源必须能被 `ResourceRegistry` 解释 |
-| `questSelection` tag | `monsterHuntTags` 必须能匹配任务模板 `category` 或 `tags`；当前任务模板尚未补 tags，因此使用 `category` 匹配 |
+| `questSelection` tag | `monsterHuntTags` 必须能匹配任务模板 `category` 或 `tags`；库存压力引用的任务模板必须声明 `tags` 或 `resourceDemandTags` |
 | `stockPressure` | 安全库存线、回流比例、扣减值、离宗阈值和倒闭阈值必须为有效数值范围 |
 
 ## entities/
@@ -252,8 +252,8 @@ apps/game/data/
 | `roleQuota` | object | 高阶职位名额，如 elder/heir |
 | `relations` | object | 与其他势力的初始关系 |
 | `presentation` | object | UI 展示元数据，包含 `color`、`badge`、`order` |
-| `isSect` | boolean? | 是否为门派；后续任务会给核心宗门补齐 `true` |
-| `isPublic` | boolean? | 是否为公共组织；当前 6 个功能组织已声明 `true` |
+| `isSect` | boolean? | 是否为门派；核心宗门必须显式声明 `true`，公共组织不得声明 `true` |
+| `isPublic` | boolean? | 是否为公共组织；功能组织必须声明 `true` 或显式 `isSect=false` |
 | `sectTemplateId` | string? | `isSect=true` 时引用 `sectOrganization.templates` |
 | `sectSeedProfileId` | string? | `isSect=true` 时引用 `sectSeedProfiles` 中的 seed profile |
 | `hallAssignmentProfileId` | string? | `isSect=true` 时引用 `hallAssignmentProfiles` |
@@ -428,11 +428,11 @@ apps/game/data/
 
 ### quest-templates.json
 
-任务模板只描述可生成任务的类型、难度范围、目标类型和基础描述；NPC 接取后在 `entity.state.activeQuestInstance` 形成运行时任务实例。斩妖、除害、猎灵兽等杀怪任务实例统一为 `type:"monster_hunt"`，并记录真实地图妖兽目标。
+任务模板描述可生成任务的类型、难度范围、目标类型、堂口提示和资源需求标签；NPC 接取后在 `entity.state.activeQuestInstance` 形成运行时任务实例。斩妖、除害、猎灵兽等杀怪任务实例统一记录真实地图妖兽目标。
 
-`engine/quest/` 是后续目标：通用任务板、任务来源策略和任务交付处理器，不属于门派专用模块。宗门任务、个人悬赏、悬赏阁任务、坊市委托和动态事件任务都应复用同一任务仓储、状态机、可见性策略和去重策略。
+`engine/quest/` 是已落地的通用任务域：通用任务板、任务来源策略和任务交付处理器，不属于门派专用模块。宗门任务、个人悬赏、悬赏阁任务、坊市委托和动态事件任务都应复用同一任务仓储、状态机、可见性策略和去重策略。
 
-`engine/sect/` 当前只落地 `sect-config-registry.js` 配置注册表；宗门任务来源、门派运行规则和悬赏结算策略仍是后续目标。任务板服务不得反向依赖门派域。
+`engine/sect/` 承载门派运行子域：配置注册表、宗门财政、悬赏托管、月俸库存压力、离宗和倒闭规则。门派只向任务域注册来源策略和交付处理器，任务板服务不得反向依赖门派域。
 
 QuestBoard canonical 状态集合以 `docs/data-models/sect-operation.md` 为准：`draft`、`available`、`accepted`、`in_progress`、`completed`、`turned_in`、`failed`、`expired`。下方 `activeQuestInstance` / 斩妖任务状态属于 NPC 任务实例兼容状态，不是 QuestBoard canonical 状态。
 
@@ -449,7 +449,7 @@ QuestBoard canonical 状态集合以 `docs/data-models/sect-operation.md` 为准
 | `value` | number | 价值评分，用于 GOAP 与历练修为倍率 |
 | `riskKey` | string | 风险类型键，如 `monster_hunt` |
 | `riskScore` | number | 风险评分，用于决策与历练修为倍率 |
-| `source` | string | 任务来源，如 `quest_hall` |
+| `source` | string | 任务来源，如 `quest_board` |
 | `state` | string | `accepted` / `in_progress` / `completed` / `failed` / `turned_in` |
 | `target.kind` | string | `monster` |
 | `target.x` / `target.y` | number | 接取任务时锁定的目标坐标 |
@@ -648,12 +648,12 @@ GE 必须是通用机制原语；具体数值由物品、能力或调用方 spec
 
 ### sect-operation.json
 
-`sect-operation.json` 只放门派运行数值、任务板策略和交易场景引用，不放执行逻辑。当前已由 manifest 输出为 `balanceSectOperation`，并聚合到 `WorldEngine._balanceConfig.sectOperation`；月俸、任务板、库存压力、离宗和倒闭执行服务仍是后续目标。
+`sect-operation.json` 只放门派运行数值、任务板策略和交易场景引用，不放执行逻辑。当前已由 manifest 输出为 `balanceSectOperation`，并聚合到 `WorldEngine._balanceConfig.sectOperation`；月俸、任务板、库存压力、离宗和倒闭由 `engine/sect/` 与 `engine/quest/` 的运行服务解释。
 
 | 字段 | 说明 |
 |------|------|
 | `monthlyIntervalDays` | 门派月度运行周期 |
-| `operationFlow` | 后续运行服务按配置顺序解释的流程名列表 |
+| `operationFlow` | 门派运行服务按配置顺序解释的流程名列表 |
 | `treasury` | 门派资金和交易场景引用；当前必须引用 `transaction-scenarios.json.scenarios` 中已有场景 |
 | `stipends` | 职位灵石俸禄、境界丹药俸禄、堂口额外俸禄 |
 | `maintenance` | 维护费、堂口消耗或抽象运营成本 |
@@ -707,7 +707,7 @@ GE 必须是通用机制原语；具体数值由物品、能力或调用方 spec
 - 数据结构改动：运行对应加载/单元脚本。
 - 新增运行时 JSON：运行 `node apps/game/tools/test-data-manifest-load.mjs`。
 - 新增或修改配置引用：运行 `node apps/game/tools/test-game-data-validation.mjs`。
-- 新增或修改门派配置：运行 `node apps/game/tools/test-game-data-validation.mjs`，由 `game-data-validator.js` strict 校验拦截门派配置错误；若后续新增 `test-sect-config-load.mjs`，该脚本只能调用 manifest loader + validator，不得维护第二套规则。
+- 新增或修改门派配置：运行 `node apps/game/tools/test-game-data-validation.mjs` 和 `node apps/game/tools/test-sect-config-load.mjs`；后者只能调用 manifest loader + validator，不得维护第二套规则。
 - 新增资源或货币：运行 `node apps/game/tools/test-resource-registry.mjs`。
 - 新增编辑器数据集、字段 schema 或 adapter：运行 `node apps/editor/tools/test-editor-dataset-registry.mjs`，地图编辑器相关改动再运行地图编辑器测试。
 - 机制或行为改动：运行对应 `tools/test-*.mjs`，并用真实、多种子、长程模拟观察行为。

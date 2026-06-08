@@ -24,7 +24,7 @@
 
 - **资源来源**：领地灵脉/产业产出（`act_develop`、`economy.veinOutput`）、任务体系反哺（弟子交付任务的 `factionStones`）、贸易（`act_trade`）、攻伐掠夺（`attackEnemy`）。
 - **资源真相源**：势力资源（`low_spirit_stone`/`disciples`/`food`）以 `state` 为单一真相源，行为的资源增减统一声明在 `faction-actions.json` 的 `effects`（详见 ADR-015）。
-- **资源分配梯度（月俸制）**：按职位发放月俸，形成可见梯度（`economy.salary.roles`）：掌门 200 > 长老 80 > 继承人 60 > 将军/执事 50 > 核心弟子 20 > 内门弟子 5 > 外门弟子 2 > 散修 0。月俸每 30 天结算，宗门灵石不足则扣稳定度。
+- **资源分配梯度（月俸制）**：门派运行月俸以 `sect-operation.json.stipends.roleStones` 为主路径，按 `monthlyIntervalDays=30` 结算：掌门 200 > 长老 80 > 继承人 60 > 将军/执事 50 > 核心弟子 20 > 内门弟子 5 > 外门弟子 2；未配置职位不发放。宗门灵石不足则按门派运行规则扣稳定度并积累欠薪压力。
 - **竞争性奖励**：月度贡献前三名额外奖灵石（月俸 × [5,3,2]）；门派大比前五名梯度奖励（灵石 [5000,1500,800,400,200]、贡献 [50,20,10,5,2]）。
 
 ### 制度层（组织架构 + 晋升机制）
@@ -76,7 +76,7 @@
 - strict 校验入口：`apps/game/js/core/game-data-validator.js`；`apps/game/tools/test-sect-config-load.mjs` 只验证 validator 覆盖，不维护第二套规则。
 - 晋升体系配置：`apps/game/data/balance/cultivation.json` 的 `promotion` 段（ladder/roleRankByStep/contributionByStep/rankOrderByStep/quotaByRole）。
 - 考核与大比配置：同文件 `monthlyContribution` 与 `sectEvents` 段。
-- 月俸梯度：`apps/game/data/balance/economy.json` 的 `salary.roles`。
+- 月俸梯度：`apps/game/data/balance/sect-operation.json` 的 `stipends.roleStones`，结算周期来自 `monthlyIntervalDays`；旧经济薪酬段不作为新门派运行主路径。
 - 实现：`apps/game/js/engine/world/tick-manager.js` 的 `_processMonthlyContribution` / `_processSectEvents` / `_processPromotions` / `_promoteRole`；挑战上位见 `npc-actions.js` 的 `NPCChallengeExecutor`。
 - 势力行为与资源结算：`apps/game/data/actions/faction-actions.json` + `apps/game/js/engine/faction/faction-actions.js`（资源单一真相源约定见文件头注释与 ADR-015）。
 

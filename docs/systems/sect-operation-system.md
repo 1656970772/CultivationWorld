@@ -74,7 +74,7 @@ World Tick / 月度结算
 
 宗门只提供宗门任务来源策略和宗门交付处理器。个人悬赏提供独立来源与结算策略，奖励来自托管，不使用普通任务模板奖励叠加。
 
-QuestBoard canonical 状态集合固定为 `draft`、`available`、`accepted`、`in_progress`、`completed`、`turned_in`、`failed`、`expired`。旧 `activeQuestInstance` / 斩妖任务状态属于 NPC 任务实例兼容状态，不是 QuestBoard canonical 状态；后续接入时只作为旧任务实例到通用任务板的迁移和兼容映射来源。
+QuestBoard canonical 状态集合固定为 `draft`、`available`、`accepted`、`in_progress`、`completed`、`turned_in`、`failed`、`expired`。旧 `activeQuestInstance` / 斩妖任务状态属于 NPC 任务实例兼容状态，不是 QuestBoard canonical 状态；兼容适配时只作为旧任务实例到通用任务板的迁移和映射来源。
 
 ## Strict 校验入口
 
@@ -93,4 +93,4 @@ strict validator 至少校验：
 
 ## 验证要求
 
-门派运行属于平衡、节奏和逻辑类改动。后续实现验证应观察真实行为：月俸是否发放、库存是否下降、库存压力是否回流到任务板、个人悬赏是否托管并交割、成员是否因长期欠薪或库存压力离宗、宗门是否在资源耗尽时倒闭。不得用字节摘要一致性代替行为观察。
+门派运行属于平衡、节奏和逻辑类改动。验证应观察真实行为：月俸是否发放、库存是否下降、库存压力是否回流到任务板、个人悬赏是否托管并交割、成员是否因长期欠薪或库存压力离宗、宗门是否在资源耗尽时倒闭。不得用字节摘要一致性代替行为观察。
