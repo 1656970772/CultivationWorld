@@ -11,6 +11,42 @@ function setStateAmount(entity, key, value) {
   entity?.state?.set?.(key, Math.max(0, Number(value) || 0));
 }
 
+function stateHolder(id) {
+  const values = new Map();
+  return {
+    id,
+    state: {
+      get(key) {
+        return values.get(key) || 0;
+      },
+      set(key, value) {
+        values.set(key, Math.max(0, Number(value) || 0));
+      },
+    },
+  };
+}
+
+function itemHolder(id, itemId, quantity) {
+  let amount = quantityOf(quantity);
+  return {
+    id,
+    inventory: {
+      getAmount(id_) {
+        return id_ === itemId ? amount : 0;
+      },
+      remove(id_, quantity_) {
+        const q = quantityOf(quantity_);
+        if (id_ !== itemId || amount < q) return false;
+        amount -= q;
+        return true;
+      },
+      add(id_, quantity_) {
+        if (id_ === itemId) amount += quantityOf(quantity_);
+      },
+    },
+  };
+}
+
 export class SectTreasury {
   constructor({ economicSystem = null, config = {} } = {}) {
     this.economicSystem = economicSystem;
@@ -41,17 +77,38 @@ export class SectTreasury {
   }
 
   transferFactionStonesToNpc({ day = 0, faction, npc, quantity, source = null } = {}) {
-    return this.settle({
+    if (!this.economicSystem) return { success: false, reason: 'economic_system_missing' };
+    if (!this.config.stipendScenarioId) return { success: false, reason: 'scenario_missing' };
+    if (!this.config.stoneResourceId) return { success: false, reason: 'stone_resource_missing' };
+    const normalizedQuantity = quantityOf(quantity);
+    if (normalizedQuantity <= 0) {
+      return { success: true, skipped: true, reason: 'zero_quantity', quantity: 0 };
+    }
+    const stoneResourceId = this.config.stoneResourceId;
+    return this.economicSystem.settle({
       day,
       scenarioId: this.config.stipendScenarioId,
-      from: faction,
-      to: npc,
-      asset: {
-        kind: 'faction_state_resource',
-        itemId: this.config.stoneResourceId,
-        quantity,
-      },
+      type: this.config.stipendScenarioId,
+      parties: [
+        { role: 'payer', entity: faction },
+        { role: 'receiver', entity: npc },
+        { role: 'conversion_sink', entity: stateHolder(`${faction?.id || 'faction'}:sect_stipend_sink:${npc?.id || 'npc'}`) },
+        { role: 'conversion_source', entity: itemHolder(`${faction?.id || 'faction'}:sect_stipend_source:${npc?.id || 'npc'}`, stoneResourceId, normalizedQuantity) },
+      ],
+      transfers: [
+        {
+          from: 'payer',
+          to: 'conversion_sink',
+          asset: { kind: 'faction_state_resource', itemId: stoneResourceId, quantity: normalizedQuantity },
+        },
+        {
+          from: 'conversion_source',
+          to: 'receiver',
+          asset: { kind: 'item', itemId: stoneResourceId, quantity: normalizedQuantity },
+        },
+      ],
       source,
+      visibility: 'institution',
     });
   }
 

@@ -13,6 +13,8 @@ const { Inventory } = await imp('js/engine/abstract/inventory.js');
 const { RuntimeState } = await imp('js/engine/abstract/runtime-state.js');
 const { EconomicSystem } = await imp('js/engine/economy/transaction-engine.js');
 const { QuestBoard } = await imp('js/engine/quest/quest-board.js');
+const { ResourceRegenExecutor } = await imp('js/engine/world/world-rules.js');
+const { TickManager } = await imp('js/engine/world/tick-manager.js');
 const { SectConfigRegistry } = await imp('js/engine/sect/sect-config-registry.js');
 const { defaultSectOperationRules, SectOperationRuleRegistry } = await imp('js/engine/sect/sect-operation-rules.js');
 const { SectOperationService } = await imp('js/engine/sect/sect-operation-service.js');
@@ -210,7 +212,8 @@ console.log('1) monthly stipend pays stones, pills and maintenance from config')
   ok(faction.state.get(stoneResourceId) === initialStone - expectedStoneDue, '宗门 state 货币扣除月俸与维护费');
   ok(faction.inventory.getAmount(pillRule.itemId) === 0, '宗门 inventory 扣除丹药俸禄');
   for (const npc of members) {
-    ok(getState(npc, stoneResourceId) === expectedMemberStones[npc.id], `${npc.id} 收到配置推导的灵石俸禄`);
+    ok(npc.inventory.getAmount(stoneResourceId) === expectedMemberStones[npc.id], `${npc.id} 收到可消费 inventory 灵石俸禄`);
+    ok(getState(npc, stoneResourceId) === 0, `${npc.id} 不把私人灵石俸禄写入 state 资源口径`);
     ok(npc.inventory.getAmount(expectedMemberPills[npc.id].itemId) === expectedMemberPills[npc.id].quantity, `${npc.id} 收到配置推导的丹药俸禄`);
   }
   ok(faction.state.get('sectSalaryShortfallStreak') === 0, '足额发放后灵石欠发 streak 清零');
@@ -252,6 +255,34 @@ console.log('1) monthly stipend pays stones, pills and maintenance from config')
     ),
     '欠发时至少写入失败经济账本',
   );
+
+  const invalidFaction = entity(
+    'sect_test_invalid_member',
+    'faction',
+    { [pillRule.itemId]: expectedPillDue },
+    { [stoneResourceId]: initialStone, stability: 80, territoryCount },
+    sectStaticData({ name: '坏成员宗门' }),
+  );
+  const invalidMember = entity('npc_invalid_member', 'npc', {}, {
+    factionId: 'sect_test_invalid_member',
+    hasFaction: true,
+    rankId: pillRankId,
+  }, { name: '坏成员' });
+  const invalidPieces = worldPieces();
+  let invalidError = null;
+  try {
+    invalidPieces.service.processMonthly({
+      day: operation.monthlyIntervalDays * 3,
+      faction: invalidFaction,
+      members: [invalidMember],
+      rng: { next: () => 0 },
+    });
+  } catch (err) {
+    invalidError = err;
+  }
+  ok(invalidError && invalidError.message.includes('currentRole'), '成员状态缺失时月俸规则先报配置/状态错误');
+  ok(invalidFaction.state.get(stoneResourceId) === initialStone, '成员预校验失败不会先扣维护费或月俸');
+  ok(invalidPieces.economicSystem.ledger.all().length === 0, '成员预校验失败不会留下半截经济账本');
 }
 
 console.log('2) stock pressure publishes hall quests only once');
@@ -348,6 +379,98 @@ console.log('4) repeated shortfall and low stability make disciple leave sect');
   ok(result.leftNpcIds.includes('npc_disciple'), '欠发且低稳定度触发弟子离宗');
   ok(disciple.state.get('factionId') === null, '离宗后清空 factionId');
   ok(disciple.state.get('isWanderer') === true, '离宗后转为散修');
+}
+
+console.log('5) world resource regen uses faction state as the single resource source');
+{
+  const faction = entity(
+    'sect_state_source',
+    'faction',
+    { low_spirit_stone: 100, food: 50, disciples: 10 },
+    { low_spirit_stone: 100, food: 50, disciples: 10, territoryCount: 1, stability: 60 },
+    sectStaticData({ name: '资源口径宗门' }),
+  );
+  const member = entity('npc_state_source', 'npc', {}, { factionId: faction.id }, { name: '资源口径弟子' });
+  const executor = new ResourceRegenExecutor();
+  executor.run(null, {
+    entityRegistry: {
+      getAliveByType(type) {
+        if (type === 'faction') return [faction];
+        if (type === 'npc') return [member];
+        return [];
+      },
+    },
+    balanceConfig: {
+      economy: {
+        resourceRegen: {
+          foodPerTerritory: 2,
+          stonePerTerritory: 3,
+          disciplesPerDay: 4,
+          maxDisciplesBase: 100,
+          maxDisciplesPerTerritory: 100,
+          discipleNpcRatio: 100,
+          discipleRegressRate: 3,
+          discipleFloor: 0,
+        },
+        dailyCosts: {
+          foodPerDisciple: 0,
+          foodPerTerritory: 0,
+          stonePerDisciple: 0,
+          stonePerTerritory: 0,
+          minDisciplesForFoodCost: 999,
+        },
+        stability: {
+          naturalRecoveryMax: 80,
+          naturalRecoveryRate: 0,
+          decayThreshold: 100,
+          decayRate: 0,
+        },
+      },
+    },
+    factionVeinOutput: new Map(),
+    worldState: null,
+  }, {});
+  ok(faction.state.get('low_spirit_stone') === 103, '世界灵石再生写入 faction state');
+  ok(faction.state.get('food') === 52, '世界粮食再生写入 faction state');
+  ok(faction.state.get('disciples') === 14, '纸面弟子增长写入 faction state');
+}
+
+console.log('6) tick manager without sect config keeps non-sect test worlds runnable');
+{
+  const worldState = new RuntimeState({ currentDay: 0 });
+  const worldEntity = {
+    state: worldState,
+    get currentDay() {
+      return this.state.get('currentDay') || 0;
+    },
+    tick() {
+      this.state.set('currentDay', this.currentDay + 1);
+      return { rules: [] };
+    },
+  };
+  const emptyRegistry = {
+    getAliveByType() {
+      return [];
+    },
+    getByType() {
+      return [];
+    },
+    getById() {
+      return null;
+    },
+  };
+  const tickManager = new TickManager({
+    entityRegistry: emptyRegistry,
+    worldEntity,
+    balanceConfig: {},
+  });
+  let tickError = null;
+  try {
+    tickManager.tick();
+  } catch (err) {
+    tickError = err;
+  }
+  ok(tickError === null, '缺少 sectOperation 配置且没有门派时 tick 不应抛错');
 }
 
 if (failed > 0) {

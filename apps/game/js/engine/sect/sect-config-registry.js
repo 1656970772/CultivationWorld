@@ -302,6 +302,9 @@ function validateFactionSectReferences(configs, ids, errors) {
 function validateStockPressure(operation, itemIds, resourceRegistry, errors) {
   for (const rule of asList(operation?.stockPressure)) {
     const label = `stockPressure ${rule?.dedupeKey || rule?.resourceId || '<missing>'}`;
+    if (typeof rule?.dedupeKey !== 'string' || rule.dedupeKey.trim() === '') {
+      errors.push(`${label}.dedupeKey is required`);
+    }
     if (rule?.kind === 'item') {
       if (!itemIds.has(rule.resourceId)) errors.push(`${label}.resourceId references missing item ${rule.resourceId}`);
     } else if (rule?.kind === 'faction_state_resource') {

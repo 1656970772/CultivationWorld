@@ -36,6 +36,16 @@ import { createQuestCompletionHandlerRegistry } from '../quest/quest-completion-
 import { createQuestSourceStrategyRegistry } from '../quest/quest-source-strategies.js';
 import { SectBountyService } from '../sect/sect-bounty-service.js';
 import { SectEscrowHolderRepository } from '../sect/sect-escrow-holder-repository.js';
+import { SectMemberProvider } from '../sect/sect-member-provider.js';
+import { defaultSectOperationRules, SectOperationRuleRegistry } from '../sect/sect-operation-rules.js';
+import { SectOperationService } from '../sect/sect-operation-service.js';
+
+function hasSectOperationConfig(config = {}) {
+  return Number.isFinite(Number(config.monthlyIntervalDays))
+    && Number(config.monthlyIntervalDays) > 0
+    && Array.isArray(config.operationFlow)
+    && config.operationFlow.length > 0;
+}
 
 export class TickManager {
   /**
@@ -128,7 +138,22 @@ export class TickManager {
         questId,
         completer: completer || npc,
       }));
-    this.sectOperationService = null;
+    this.sectMemberProvider = new SectMemberProvider({ entityRegistry: this.entityRegistry });
+    this.sectOperationRuleRegistry = hasSectOperationConfig(sectOperationConfig)
+      ? new SectOperationRuleRegistry(defaultSectOperationRules())
+      : null;
+    this.sectOperationService = this.sectOperationRuleRegistry
+      ? new SectOperationService({
+        config: sectOperationConfig,
+        organization: this.sectOrganization,
+        ranksData: this.ranksData,
+        economicSystem: this.economicSystem,
+        questBoard: this.questBoard,
+        bountyService: this.sectBountyService,
+        ruleRegistry: this.sectOperationRuleRegistry,
+        memberProvider: this.sectMemberProvider,
+      })
+      : null;
 
     // ── 子服务装配（各持 host 引用，通过共享 helper 协作）──
     this.factionAIService = new FactionAIService({ host: this, combatConfig: this.balanceConfig.combat || {} });
@@ -193,6 +218,7 @@ export class TickManager {
       infoEvents: [],
       deaths: [],
       monsterDeaths: [],
+      sectOperations: [],
     };
 
     this._attackedThisTick = new Set();
@@ -314,6 +340,11 @@ export class TickManager {
     if (this.economicSystem && this.worldEntity?.currentDay != null) {
       this.economicSystem.advanceDay(this.worldEntity.currentDay);
     }
+    this.sectOperationService?.processAllMonthly?.({
+      day: this.worldEntity.currentDay,
+      tickLog,
+      rng: this.rng,
+    });
 
     this._tickResults.push(tickLog);
     return tickLog;

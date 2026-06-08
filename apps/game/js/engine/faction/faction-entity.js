@@ -126,6 +126,10 @@ export class FactionEntity extends BaseEntity {
     }
   }
 
+  syncStateResourcesToInventory() {
+    this._syncStateResourcesToInventory();
+  }
+
   /** @override */
   toJSON() {
     return {

@@ -19,6 +19,26 @@ function randInt(min, max, rng) {
   return Math.floor(randRange(min, max + 1, rng));
 }
 
+function factionResourceAmount(faction, key) {
+  const stateValue = faction?.state?.get?.(key);
+  if (stateValue != null) return Number(stateValue) || 0;
+  return Number(faction?.inventory?.getAmount?.(key) || 0);
+}
+
+function setFactionResourceAmount(faction, key, value) {
+  const amount = Math.max(0, Number(value) || 0);
+  faction?.state?.set?.(key, amount);
+  faction?.inventory?.setAmount?.(key, amount);
+}
+
+function addFactionResource(faction, key, amount) {
+  setFactionResourceAmount(faction, key, factionResourceAmount(faction, key) + amount);
+}
+
+function removeFactionResource(faction, key, amount) {
+  setFactionResourceAmount(faction, key, factionResourceAmount(faction, key) - amount);
+}
+
 export class ModifierSpawnExecutor extends ActionExecutor {
   run(entity, worldContext, action) {
     const worldState = worldContext.worldState;
@@ -111,8 +131,6 @@ export class ResourceRegenExecutor extends ActionExecutor {
     const regen = eco.resourceRegen || {};
     const stabCfg = eco.stability || {};
     const costs = eco.dailyCosts || {};
-    const salaryCfg = eco.salary || {};
-    const formationCfg = eco.formation || {};
     const veinOutput = eco.veinOutput || {};
     const modEffectsCfg = eco.modifierEffects || {};
 
@@ -141,22 +159,12 @@ export class ResourceRegenExecutor extends ActionExecutor {
     const stabilityRecoveryRate = stabCfg.naturalRecoveryRate ?? 1;
     const stabilityDecayThreshold = stabCfg.decayThreshold ?? 50;
     const stabilityDecayRate = stabCfg.decayRate ?? 0.5;
-    const paymentShortfallPenalty = stabCfg.paymentShortfallPenalty ?? 5;
 
     const foodCostPerDisciple = costs.foodPerDisciple ?? 0.04;
     const foodCostPerTerritory = costs.foodPerTerritory ?? 0.5;
     const stoneCostPerDisciple = costs.stonePerDisciple ?? 0.02;
     const stoneCostPerTerritory = costs.stonePerTerritory ?? 0.5;
     const minDisciplesForFoodCost = costs.minDisciplesForFoodCost ?? 10;
-
-    const paymentInterval = salaryCfg.paymentIntervalDays ?? 30;
-    const roleSalary = salaryCfg.roles || {
-      leader: 200, elder: 80, general: 50, officer: 50,
-      heir: 60, core_disciple: 20, disciple: 5, wanderer: 0,
-    };
-
-    const formationBaseCost = formationCfg.baseCost ?? 100;
-    const formationCostPerTerritory = formationCfg.costPerTerritory ?? 20;
 
     // 矿脉产出配置
     const VEIN_VALUES = {
@@ -183,7 +191,7 @@ export class ResourceRegenExecutor extends ActionExecutor {
 
     for (const faction of factions) {
       const territoryCount = faction.state.get('territoryCount') || 1;
-      const disciples = faction.inventory.getAmount('disciples') || 0;
+      const disciples = factionResourceAmount(faction, 'disciples');
       const factionType = faction.factionType || '';
 
       // === 领地产出 ===
@@ -194,13 +202,13 @@ export class ResourceRegenExecutor extends ActionExecutor {
         foodRegen = Math.floor(foodRegen * (1 + modEffects.food_production));
       }
 
-      faction.inventory.add('food', foodRegen);
+      addFactionResource(faction, 'food', foodRegen);
 
       // 矿脉产出
       const factionVeinOutput = worldContext.factionVeinOutput;
       const stoneFromVeins = factionVeinOutput ? (factionVeinOutput.get(faction.id) || 0) : 0;
       const stoneRegen = Math.floor(territoryCount * stonePerTerritory) + stoneFromVeins;
-      faction.inventory.add('low_spirit_stone', stoneRegen);
+      addFactionResource(faction, 'low_spirit_stone', stoneRegen);
 
       // === 弟子自然增长（受真实活 NPC 锚定，tuning-v6）===
       // 弟子上限 = min(领地容量, 真实活 NPC × 折算比)；真实 NPC 越少，纸面弟子上限越低。
@@ -209,10 +217,10 @@ export class ResourceRegenExecutor extends ActionExecutor {
       const npcCap = aliveNpcCount * discipleNpcRatio;
       const maxDisciples = Math.max(discipleFloor, Math.min(territoryCap, npcCap));
       if (disciples < maxDisciples) {
-        faction.inventory.add('disciples', disciplesPerDay);
+        addFactionResource(faction, 'disciples', disciplesPerDay);
       } else if (disciples > maxDisciples) {
         // 纸面弟子虚高（真实 NPC 撑不起）→ 缓慢流失，使势力实力回归真实人口。
-        faction.inventory.remove('disciples', Math.min(discipleRegressRate, disciples - maxDisciples));
+        removeFactionResource(faction, 'disciples', Math.min(discipleRegressRate, disciples - maxDisciples));
       }
 
       // === 稳定度自然恢复 ===
@@ -221,29 +229,8 @@ export class ResourceRegenExecutor extends ActionExecutor {
         stability = Math.min(stabilityRecoveryMax, stability + stabilityRecoveryRate);
       }
 
-      // === 月俸 & 大阵维护（每月一次）===
-      const currentDay = worldContext.currentDay || 0;
-      if (currentDay > 0 && currentDay % paymentInterval === 0) {
-        const registry2 = worldContext.entityRegistry;
-        const factionNPCs = registry2.getAliveByType('npc').filter(n => n.state.get('factionId') === faction.id);
-        let totalSalary = 0;
-        for (const npc of factionNPCs) {
-          const role = npc.state.get('currentRole') || 'disciple';
-          const salary = roleSalary[role] ?? 5;
-          npc.inventory.add('low_spirit_stone', salary);
-          totalSalary += salary;
-        }
-        const formationCost = formationBaseCost + territoryCount * formationCostPerTerritory;
-        totalSalary += formationCost;
-
-        const curStone = faction.inventory.getAmount('low_spirit_stone');
-        faction.inventory.remove('low_spirit_stone', Math.min(totalSalary, curStone));
-
-        if (curStone < totalSalary) {
-          const newStability = Math.max(0, (faction.state.get('stability') || 50) - paymentShortfallPenalty);
-          faction.state.set('stability', newStability);
-        }
-      }
+      // 门派月俸、丹药俸禄、维护费和库存压力统一由 SectOperationService 的规则链处理。
+      // world-rules 不再保留旧月俸 fallback，避免新旧流程双重结算。
 
       // === 每日资源消耗 ===
       const foodCost = disciples > minDisciplesForFoodCost
@@ -251,11 +238,11 @@ export class ResourceRegenExecutor extends ActionExecutor {
         : 0;
       const stoneCost = Math.floor(disciples * stoneCostPerDisciple + territoryCount * stoneCostPerTerritory);
 
-      const currentFood = faction.inventory.getAmount('food');
-      faction.inventory.remove('food', Math.min(foodCost, currentFood));
+      const currentFood = factionResourceAmount(faction, 'food');
+      removeFactionResource(faction, 'food', Math.min(foodCost, currentFood));
 
-      const currentStone = faction.inventory.getAmount('low_spirit_stone');
-      faction.inventory.remove('low_spirit_stone', Math.min(stoneCost, currentStone));
+      const currentStone = factionResourceAmount(faction, 'low_spirit_stone');
+      removeFactionResource(faction, 'low_spirit_stone', Math.min(stoneCost, currentStone));
 
       // 稳定度自然衰减：高于阈值时趋向均衡
       if (stability > stabilityDecayThreshold) {
@@ -272,8 +259,8 @@ export class ResourceRegenExecutor extends ActionExecutor {
       if (modEffects.disciple_loss < 0 && disciples >= 20) {
         const loss = Math.floor(disciples * Math.abs(modEffects.disciple_loss));
         if (loss > 0) {
-          const curDisciples = faction.inventory.getAmount('disciples');
-          faction.inventory.remove('disciples', Math.min(loss, curDisciples));
+          const curDisciples = factionResourceAmount(faction, 'disciples');
+          removeFactionResource(faction, 'disciples', Math.min(loss, curDisciples));
         }
       }
       if (modEffects.all_stability < 0) {

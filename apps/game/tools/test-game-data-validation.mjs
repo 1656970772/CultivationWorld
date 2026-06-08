@@ -148,6 +148,10 @@ ok(hasError(badSectNumberResult, 'monthlyIntervalDays'), 'validator reports inva
 ok(hasError(badSectNumberResult, 'safeStock'), 'validator reports invalid sect stock pressure range');
 ok(hasError(badSectNumberResult, 'ratio'), 'validator reports invalid sect restock ratio');
 
+const badStockDedupeConfigs = clone(configs);
+delete badStockDedupeConfigs.balanceSectOperation.stockPressure[0].dedupeKey;
+ok(hasError(validateGameData(badStockDedupeConfigs, { strict: false }), 'dedupeKey'), 'validator reports missing sect stock pressure dedupeKey');
+
 const badSectEntityConfigs = clone(configs);
 delete badSectEntityConfigs.factions.find(faction => !faction.subtype).isSect;
 ok(hasError(validateGameData(badSectEntityConfigs, { strict: false }), 'explicitly declare isSect'), 'validator reports core faction missing explicit isSect');

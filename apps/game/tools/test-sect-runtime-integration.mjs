@@ -42,7 +42,10 @@ const configuredSect = (configs.factions || [])
   .find(f => f.isSect === true && f.sectSeedProfileId);
 const daysToRun = Number(configs.balanceSectOperation?.monthlyIntervalDays);
 const stipendLedgerType = configs.balanceSectOperation?.treasury?.stipendScenarioId;
+const stoneResourceId = configs.balanceSectOperation?.treasury?.stoneResourceId;
 const stockPressureRules = configs.balanceSectOperation?.stockPressure || [];
+const forcedStockRule = stockPressureRules.find(rule => rule.kind === 'item')
+  || stockPressureRules.find(rule => rule.kind === 'faction_state_resource');
 
 const engine = new WorldEngine();
 engine.init(configs);
@@ -63,21 +66,33 @@ ok(
 );
 
 ok(Number.isFinite(daysToRun) && daysToRun > 0, '从 balanceSectOperation.monthlyIntervalDays 推导运行天数');
+if (sect && forcedStockRule?.kind === 'item') {
+  sect.inventory?.setAmount?.(forcedStockRule.resourceId, 0);
+} else if (sect && forcedStockRule?.kind === 'faction_state_resource') {
+  sect.state?.set?.(forcedStockRule.resourceId, 0);
+  sect.inventory?.setAmount?.(forcedStockRule.resourceId, 0);
+}
 engine.multiTick(Number.isFinite(daysToRun) && daysToRun > 0 ? daysToRun : 0);
 const monthlyLedger = engine.economicSystem.ledger.all()
   .filter(r => Boolean(stipendLedgerType) && r.type === stipendLedgerType);
 const boardOpen = engine.tickManager.questBoard?.openFor?.({ factionId: sect?.id }) || [];
+const snapshot = engine.getWorldSnapshot();
 ok(monthlyLedger.length > 0, '真实 tick 产生月俸账本');
 ok(
   Number.isFinite(daysToRun) && sect?.state?.get('sectLastMonthlyDay') === daysToRun,
   '宗门记录最近月度结算日',
 );
 ok(
-  stockPressureRules.some(rule => boardOpen.some(q =>
-    q.questKind === rule.questKind
-    && q.issuerId === rule.issuerHall
+  Boolean(stoneResourceId)
+    && snapshot.factions?.[sect?.id]?.resources?.[stoneResourceId] === sect?.state?.get?.(stoneResourceId),
+  '月度结算当日快照资源与宗门 state 国库一致',
+);
+ok(
+  Boolean(forcedStockRule) && boardOpen.some(q =>
+    q.questKind === forcedStockRule.questKind
+    && q.issuerId === forcedStockRule.issuerHall
     && q.issuerType === 'hall'
-  )),
+  ),
   '库存压力可生成配置堂口任务',
 );
 
