@@ -2,7 +2,7 @@
 
 > 最后更新：2026-06-08
 > 关联系统：`docs/systems/sect-operation-system.md`
-> 关联 ADR：`docs/decisions/adr-056-sect-operation-and-unified-quest-board.md`
+> 关联 ADR：`docs/decisions/adr-057-sect-operation-and-unified-quest-board.md`
 
 本文记录门派运行与通用任务板接入的数据模型。静态配置位于 `apps/game/data/definitions/`、`apps/game/data/balance/`、`apps/game/data/economy/` 和 `apps/game/data/quests/`；运行时仍以 `FactionEntity`、`FactionState`、faction inventory、任务实例和经济托管记录为真相源。
 
@@ -77,7 +77,7 @@
 | `id` | string | 运行时任务实例 ID |
 | `templateId` | string | 引用 `quests/quest-templates.json` |
 | `source` | object | 来源域、来源实体、来源策略和可见性 |
-| `state` | string | `available` / `accepted` / `in_progress` / `completed` / `turned_in` / `failed` / `expired` |
+| `state` | string | `draft` / `available` / `accepted` / `in_progress` / `completed` / `turned_in` / `failed` / `expired` |
 | `visibility` | object | 公开、宗门、堂口、个人或关系网络可见性 |
 | `dedupeKey` | string? | 去重策略生成的任务去重键 |
 | `target` | object | 目标实体、地点、物品、妖兽或条件 |
@@ -86,6 +86,8 @@
 | `turnIn` | object? | 交付要求、交付处理器和结算记录 |
 
 门派任务可以把奖励策略指向宗门贡献、库存回流或宗门资源；个人悬赏必须指向托管资产，不叠加任务模板中的普通奖励。
+
+QuestBoard canonical 状态集合固定为 `draft`、`available`、`accepted`、`in_progress`、`completed`、`turned_in`、`failed`、`expired`。旧 `activeQuestInstance` / 斩妖任务状态属于 NPC 任务实例兼容状态，不是 QuestBoard canonical 状态；迁移时应由适配器映射到通用任务板状态，不让旧状态继续扩散。
 
 ## SectOperationContext
 

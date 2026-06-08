@@ -79,7 +79,7 @@ docs/
 │   ├── README.md
 │   └── 2026-06-07-当前代码功能实现盘点.md
 ├── decisions/
-│   └── adr-001..adr-056-*.md
+│   └── adr-001..adr-057-*.md
 ├── superpowers/
 │   ├── specs/
 │   │   ├── 2026-06-05-Job-Toil正式启用前收尾规格.md
@@ -157,7 +157,7 @@ docs/
 | 数据配置 | `data/data-config-rules.md`（包含 data manifest、strict validation、ResourceRegistry、relationship projections、editor dataset/adapters 规则） |
 | 硬编码配置化与通用架构清理 | `superpowers/plans/2026-06-08-硬编码配置化与通用架构清理实施计划.md`、`decisions/adr-056-data-manifest-and-strict-validation.md`、`superpowers/reports/2026-06-08-硬编码配置化与通用架构清理验证.md` |
 | AI 架构 | `systems/behavior-tree.md`、`systems/job-toil-ai-spec.md`、`decisions/adr-048-four-layer-reactive-ai.md`、`decisions/adr-050-goap-job-toil-layered-ai.md` |
-| 门派架构与运行模拟 | `superpowers/specs/2026-06-07-门派架构与运行模拟设计.md`、`superpowers/plans/2026-06-07-门派架构与运行模拟设计.md`、`decisions/adr-056-sect-operation-and-unified-quest-board.md`、`systems/sect-operation-system.md`、`data-models/sect-operation.md`、`worldbuilding/wiki/rules/sect-operation.md` |
+| 门派架构与运行模拟 | `superpowers/specs/2026-06-07-门派架构与运行模拟设计.md`、`superpowers/plans/2026-06-07-门派架构与运行模拟设计.md`、`decisions/adr-057-sect-operation-and-unified-quest-board.md`、`systems/sect-operation-system.md`、`data-models/sect-operation.md`、`worldbuilding/wiki/rules/sect-operation.md` |
 | NPC 效用评分公式升级 | `superpowers/specs/2026-06-07-NPC效用评分公式升级设计.md`、`superpowers/plans/2026-06-07-NPC效用评分公式升级实施计划.md`、`superpowers/reports/2026-06-07-NPC效用评分公式升级验证.md` |
 | 三层关系底座重构 | `superpowers/specs/2026-06-07-三层关系底座全数据重构-design.md`、`superpowers/plans/2026-06-07-三层关系底座全数据重构实施计划.md`、`superpowers/reports/2026-06-07-三层关系底座全数据重构验证.md`、`superpowers/specs/2026-06-07-三层关系底座重构-design.md` |
 | 统一经济交易底座 | `superpowers/specs/2026-06-07-统一经济交易底座设计.md`、`superpowers/plans/2026-06-07-统一经济交易底座实施计划.md`、`systems/economic-transaction-system.md`、`data-models/economic-transaction.md`、`superpowers/reports/2026-06-07-统一经济交易底座验证.md` |

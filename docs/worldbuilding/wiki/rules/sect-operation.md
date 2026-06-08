@@ -3,7 +3,7 @@
 > 最后更新：2026-06-08
 > 状态：已敲定
 > 类型：规则
-> 关联文档：`docs/decisions/adr-011-cultivation-incentive-system.md`、`docs/decisions/adr-015-faction-resource-and-promotion.md`、`docs/decisions/adr-056-sect-operation-and-unified-quest-board.md`、`docs/systems/sect-operation-system.md`、`docs/data-models/sect-operation.md`、`docs/worldbuilding/wiki/rules/leader-succession.md`、`docs/data/data-config-rules.md`
+> 关联文档：`docs/decisions/adr-011-cultivation-incentive-system.md`、`docs/decisions/adr-015-faction-resource-and-promotion.md`、`docs/decisions/adr-057-sect-operation-and-unified-quest-board.md`、`docs/systems/sect-operation-system.md`、`docs/data-models/sect-operation.md`、`docs/worldbuilding/wiki/rules/leader-succession.md`、`docs/data/data-config-rules.md`
 
 ## 一句话定义
 
