@@ -188,6 +188,20 @@ function validateRole(role, roleIds, label, errors) {
   if (role && !roleIds.has(role)) errors.push(`${label} references missing role ${role}`);
 }
 
+function validateNumberRange(value, label, errors, { min = null, max = null, required = true } = {}) {
+  if (value == null) {
+    if (required) errors.push(`${label} is required`);
+    return;
+  }
+  const number = Number(value);
+  if (!Number.isFinite(number)) {
+    errors.push(`${label} must be a finite number`);
+    return;
+  }
+  if (min != null && number < min) errors.push(`${label} must be >= ${min}`);
+  if (max != null && number > max) errors.push(`${label} must be <= ${max}`);
+}
+
 function buildRoleIds(configs, organization) {
   const promotion = configs?.balanceCultivation?.promotion
     || configs?.cultivationConfig?.promotion
@@ -269,10 +283,56 @@ function validateStockPressure(operation, itemIds, resourceRegistry, errors) {
       }
     }
 
-    if (typeof rule?.safeStock === 'number' && typeof rule?.criticalStock === 'number' && rule.criticalStock > rule.safeStock) {
+    validateNumberRange(rule?.safeStock, `${label}.safeStock`, errors, { min: 0 });
+    validateNumberRange(rule?.criticalStock, `${label}.criticalStock`, errors, { min: 0 });
+    if (Number.isFinite(Number(rule?.safeStock)) && Number.isFinite(Number(rule?.criticalStock)) && Number(rule.criticalStock) > Number(rule.safeStock)) {
       errors.push(`${label}.criticalStock must be <= safeStock`);
     }
+
+    for (const entry of asList(rule?.settlement?.stateResources)) {
+      if (!resourceRegistry.isFactionStateResource(entry?.resourceId)) {
+        errors.push(`${label}.settlement.stateResources references missing faction state resource ${entry?.resourceId}`);
+      }
+      if (entry && hasOwn(entry, 'quantity')) {
+        validateNumberRange(entry.quantity, `${label}.settlement.stateResources.${entry.resourceId || '<missing>'}.quantity`, errors, { min: 0 });
+      }
+    }
+
+    for (const entry of asList(rule?.settlement?.items)) {
+      if (entry && hasOwn(entry, 'quantity')) {
+        validateNumberRange(entry.quantity, `${label}.settlement.items.${entry.itemId || '<missing>'}.quantity`, errors, { min: 0 });
+      }
+    }
+
+    for (const effect of asList(rule?.settlement?.restockEffects)) {
+      if (effect && hasOwn(effect, 'ratio')) {
+        validateNumberRange(effect.ratio, `${label}.settlement.restockEffects.${effect.itemId || '<missing>'}.ratio`, errors, { min: 0, max: 1 });
+      }
+    }
   }
+}
+
+function validateSectOperationNumbers(operation, errors) {
+  validateNumberRange(operation?.monthlyIntervalDays, 'balanceSectOperation.monthlyIntervalDays', errors, { min: 1 });
+  for (const [role, value] of Object.entries(asObject(operation?.stipends?.roleStones))) {
+    validateNumberRange(value, `balanceSectOperation.stipends.roleStones.${role}`, errors, { min: 0 });
+  }
+  for (const [rankId, rule] of Object.entries(asObject(operation?.stipends?.rankPills))) {
+    validateNumberRange(rule?.quantity, `balanceSectOperation.stipends.rankPills.${rankId}.quantity`, errors, { min: 0 });
+  }
+  validateNumberRange(operation?.stipends?.hallExtraStones?.member, 'balanceSectOperation.stipends.hallExtraStones.member', errors, { min: 0 });
+  validateNumberRange(operation?.stipends?.hallExtraStones?.chief, 'balanceSectOperation.stipends.hallExtraStones.chief', errors, { min: 0 });
+  validateNumberRange(operation?.maintenance?.baseStones, 'balanceSectOperation.maintenance.baseStones', errors, { min: 0 });
+  validateNumberRange(operation?.maintenance?.perTerritoryStones, 'balanceSectOperation.maintenance.perTerritoryStones', errors, { min: 0 });
+  validateNumberRange(operation?.decline?.shortfallStreakForDeparture, 'balanceSectOperation.decline.shortfallStreakForDeparture', errors, { min: 0 });
+  validateNumberRange(operation?.decline?.stabilityForDeparture, 'balanceSectOperation.decline.stabilityForDeparture', errors, { min: 0, max: 100 });
+  validateNumberRange(operation?.decline?.leaveChanceBase, 'balanceSectOperation.decline.leaveChanceBase', errors, { min: 0, max: 1 });
+  validateNumberRange(operation?.decline?.leaveChancePerShortfallStreak, 'balanceSectOperation.decline.leaveChancePerShortfallStreak', errors, { min: 0, max: 1 });
+  validateNumberRange(operation?.decline?.stabilityPenaltyPerMonth, 'balanceSectOperation.decline.stabilityPenaltyPerMonth', errors, { min: 0 });
+  validateNumberRange(operation?.personalBounty?.minRankOrder, 'balanceSectOperation.personalBounty.minRankOrder', errors, { min: 0 });
+  validateNumberRange(operation?.personalBounty?.feeAmount, 'balanceSectOperation.personalBounty.feeAmount', errors, { min: 0 });
+  validateNumberRange(operation?.personalBounty?.defaultPriority, 'balanceSectOperation.personalBounty.defaultPriority', errors, { min: 0 });
+  validateNumberRange(operation?.personalBounty?.defaultDifficulty, 'balanceSectOperation.personalBounty.defaultDifficulty', errors, { min: 1 });
 }
 
 export function collectSectConfigErrors(configs = {}) {
@@ -301,6 +361,7 @@ export function collectSectConfigErrors(configs = {}) {
   const scenarioIds = new Set(Object.keys(asObject(configs.economicTransactionConfig?.scenarios)));
   const resourceRegistry = getResourceRegistry(configs);
   const roleIds = buildRoleIds(configs, organization);
+  validateSectOperationNumbers(operation, errors);
 
   for (const [scale, profileId] of Object.entries(asObject(seedProfiles.scaleToProfile))) {
     if (profileId && !seedProfileIds.has(profileId)) {

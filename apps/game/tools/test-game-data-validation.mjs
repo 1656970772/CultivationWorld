@@ -131,7 +131,24 @@ const badResourceConfigs = clone(configs);
 delete badResourceConfigs.items[0].category;
 ok(hasError(validateGameData(badResourceConfigs, { strict: false }), 'macro resource'), 'validator reports invalid macro resource basic fields');
 
-console.log('7) strict mode throws with collected validation errors');
+console.log('7) sect config references and numeric ranges are validated');
+const badSectSettlementConfigs = clone(configs);
+badSectSettlementConfigs.balanceSectOperation.stockPressure[0].settlement.stateResources[0].resourceId = 'missing_state_resource';
+ok(
+  hasError(validateGameData(badSectSettlementConfigs, { strict: false }), 'missing_state_resource'),
+  'validator reports missing sect settlement faction state resource',
+);
+
+const badSectNumberConfigs = clone(configs);
+badSectNumberConfigs.balanceSectOperation.monthlyIntervalDays = 0;
+badSectNumberConfigs.balanceSectOperation.stockPressure[0].safeStock = -1;
+badSectNumberConfigs.balanceSectOperation.stockPressure[1].settlement.restockEffects[0].ratio = 2;
+const badSectNumberResult = validateGameData(badSectNumberConfigs, { strict: false });
+ok(hasError(badSectNumberResult, 'monthlyIntervalDays'), 'validator reports invalid sect monthly interval');
+ok(hasError(badSectNumberResult, 'safeStock'), 'validator reports invalid sect stock pressure range');
+ok(hasError(badSectNumberResult, 'ratio'), 'validator reports invalid sect restock ratio');
+
+console.log('8) strict mode throws with collected validation errors');
 let strictError = null;
 try {
   validateGameData(badAbilityRefConfigs, { strict: true });
