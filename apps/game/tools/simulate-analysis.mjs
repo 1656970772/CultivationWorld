@@ -235,6 +235,14 @@ const questObservationStats = {
   questProgressSamples: [],
 };
 const eventTypeCounts = {};
+const sectOperationStats = {
+  count: 0,
+  monthlyDays: [],
+  byRule: {},
+  stockPressureCreated: 0,
+  departureEvents: 0,
+  destroyedEvents: 0,
+};
 
 // ── NPC 一生回放（2026-06-02）─────────────────────────────────────────
 // 采样若干"有代表性"的 NPC，逐决策点记录它们的一生日记：
@@ -394,6 +402,14 @@ function topEntries(map, limit = 8) {
     .join(', ');
 }
 
+function isPersonalBountyEscrow(entry) {
+  const rewardScenarioId = configs.balanceSectOperation?.personalBounty?.rewardScenarioId || 'personal_bounty_reward';
+  return entry?.purpose === rewardScenarioId
+    || entry?.purpose === 'personal_bounty_reward'
+    || entry?.source?.type === 'personal_bounty_reward'
+    || entry?.source?.questKind === 'personal_bounty';
+}
+
 // 选定一生回放跟踪对象（初始化后、主循环前）。
 pickLifeTrackTargets();
 console.log(`[一生回放] 跟踪 ${lifeTracked.size} 个 NPC: ${[...lifeTracked.values()].map(r => `${r.meta.label}·${r.meta.name}`).join('、')}`);
@@ -402,6 +418,24 @@ console.log(`[一生回放] 跟踪 ${lifeTracked.size} 个 NPC: ${[...lifeTracke
 const t0 = performance.now();
 for (let day = 1; day <= TOTAL_DAYS; day++) {
   const tick = engine.tick();
+
+  for (const op of tick.sectOperations || []) {
+    sectOperationStats.count++;
+    if (!sectOperationStats.monthlyDays.includes(day)) sectOperationStats.monthlyDays.push(day);
+    for (const [ruleId, result] of Object.entries(op)) {
+      if (ruleId === 'factionId') continue;
+      sectOperationStats.byRule[ruleId] = (sectOperationStats.byRule[ruleId] || 0) + 1;
+      if (ruleId === 'stock_pressure') {
+        sectOperationStats.stockPressureCreated += Array.isArray(result?.created) ? result.created.length : 0;
+      }
+      if (ruleId === 'departure') {
+        sectOperationStats.departureEvents += Array.isArray(result?.leftNpcIds) ? result.leftNpcIds.length : 0;
+      }
+      if (ruleId === 'destruction' && result?.destroyed === true) {
+        sectOperationStats.destroyedEvents++;
+      }
+    }
+  }
 
   for (const md of tick.monsterDeaths || []) {
     monsterResourceStats.deaths++;
@@ -825,6 +859,50 @@ function buildProfile(dimMaps) {
 const npcProfileOut = buildProfile(archetypeProfile);
 const monsterProfileOut = buildProfile(monsterProfile);
 
+const economicSnapshot = engine.economicSystem?.snapshot?.() || {};
+const ledgerRecords = economicSnapshot.ledger?.records || [];
+const questBoardSnapshot = engine.tickManager?.questBoard?.snapshot?.() || [];
+const escrowSnapshot = economicSnapshot.escrows || [];
+const sectEscrowHolders = engine.tickManager?.sectEscrowHolders?.snapshot?.() || [];
+const sectFactions = engine.entityRegistry.getByType('faction')
+  .filter(f => f.staticData?.get?.('isSect') === true);
+const sectSummary = sectFactions.map(f => ({
+  id: f.id,
+  name: f.name,
+  stability: Math.round(Number(f.state.get('stability') || 0)),
+  salaryShortfall: Number(f.state.get('sectSalaryShortfallStreak') || 0),
+  pillShortfall: Number(f.state.get('sectPillShortfallStreak') || 0),
+  departureCount: Number(f.state.get('sectDepartureCount') || 0),
+  openPressureQuestCount: Number(f.state.get('sectOpenPressureQuestCount') || 0),
+  destroyed: f.state.get('isDestroyed') === true || f.alive === false,
+  destroyedReason: f.state.get('destroyedReason') || null,
+}));
+const sectOperationSummary = {
+  sectOperations: sectOperationStats.count,
+  monthlyDays: sectOperationStats.monthlyDays,
+  rules: sectOperationStats.byRule,
+  stipendLedger: ledgerRecords.filter(r => r.type === 'sect_monthly_stipend').length,
+  pillStipendLedger: ledgerRecords.filter(r => r.type === 'sect_pill_stipend').length,
+  maintenanceLedger: ledgerRecords.filter(r => r.source?.type === 'sect_maintenance').length,
+  questBoardOpen: questBoardSnapshot.filter(q => q.state === 'available' || q.state === 'open').length,
+  questBoardTotal: questBoardSnapshot.length,
+  personalBountyEscrows: escrowSnapshot.filter(isPersonalBountyEscrow).length,
+  personalBountyLockedEscrows: escrowSnapshot.filter(e => isPersonalBountyEscrow(e) && e.status === 'locked').length,
+  sectEscrowHolders: sectEscrowHolders.length,
+  stockPressureCreated: sectOperationStats.stockPressureCreated,
+  departureEvents: sectOperationStats.departureEvents,
+  departureCount: sectSummary.reduce((sum, f) => sum + f.departureCount, 0),
+  destroyedFactions: sectSummary.filter(f => f.destroyed).length,
+  destroyedReasons: Object.fromEntries(
+    Object.entries(sectSummary.reduce((map, f) => {
+      if (f.destroyedReason) map[f.destroyedReason] = (map[f.destroyedReason] || 0) + 1;
+      return map;
+    }, {})).sort(),
+  ),
+  sectSummary,
+};
+console.log('门派运行摘要:', JSON.stringify(sectOperationSummary, null, 2));
+
 // 终端打印：逐类行为画像（醒来/每轮分析直接看终端即可）。
 function printProfile(title, profileOut, dimLabels) {
   console.log(`\n========== ${title} ==========`);
@@ -895,6 +973,7 @@ const reportData = {
   relationshipStats: relStats,
   jobActionDiagnostics,
   questObservationStats,
+  sectOperation: sectOperationSummary,
   eventTypeCounts,
   revengePvp: {
     huntTriggers, killTriggers,
