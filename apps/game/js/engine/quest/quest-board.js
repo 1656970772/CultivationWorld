@@ -11,6 +11,17 @@ const CANONICAL_STATES = [
 
 const OPEN_STATES = new Set(['available', 'open']);
 const ACTIVE_DEMAND_STATES = new Set(['available', 'open', 'accepted', 'in_progress']);
+const DEFAULT_TERMINAL_STATES = ['turned_in', 'failed', 'expired'];
+const DEFAULT_TRANSITIONS = {
+  draft: ['available', 'failed', 'expired'],
+  available: ['accepted', 'failed', 'expired'],
+  accepted: ['in_progress', 'completed', 'failed', 'expired'],
+  in_progress: ['in_progress', 'completed', 'failed', 'expired'],
+  completed: ['turned_in', 'failed'],
+  turned_in: [],
+  failed: [],
+  expired: [],
+};
 
 function clone(value) {
   return value == null ? value : JSON.parse(JSON.stringify(value));
@@ -71,24 +82,48 @@ export class QuestRepository {
 }
 
 export class QuestStateMachine {
-  constructor({ allowed = CANONICAL_STATES } = {}) {
+  constructor({ allowed = CANONICAL_STATES, transitions = DEFAULT_TRANSITIONS, terminalStates = DEFAULT_TERMINAL_STATES } = {}) {
     if (!Array.isArray(allowed) || allowed.length === 0) {
       throw new Error('QuestStateMachine requires allowed states');
     }
     this.allowed = new Set(allowed.map(normalizeState));
+    this.transitions = new Map(Object.entries(transitions || {})
+      .map(([from, to]) => [normalizeState(from), new Set((Array.isArray(to) ? to : []).map(normalizeState))]));
+    this.terminalStates = new Set((Array.isArray(terminalStates) ? terminalStates : DEFAULT_TERMINAL_STATES)
+      .map(normalizeState));
   }
 
   allows(state) {
     return this.allowed.has(normalizeState(state));
   }
 
-  transition(quest, state, patch = {}) {
-    const nextState = normalizeState(state);
+  canTransition(quest, state) {
     if (!quest) return { success: false, reason: 'quest_missing' };
+    const currentState = normalizeState(quest.state);
+    const nextState = normalizeState(state);
     if (!this.allows(nextState)) {
       return { success: false, reason: 'quest_state_invalid', state: nextState };
     }
-    return { success: true, patch: { ...patch, state: nextState } };
+    if (this.terminalStates.has(currentState) && currentState !== nextState) {
+      return { success: false, reason: 'quest_terminal', quest };
+    }
+    const allowedNext = this.transitions.get(currentState);
+    if (allowedNext && !allowedNext.has(nextState) && currentState !== nextState) {
+      return {
+        success: false,
+        reason: 'quest_transition_invalid',
+        from: currentState,
+        to: nextState,
+        quest,
+      };
+    }
+    return { success: true, state: nextState };
+  }
+
+  transition(quest, state, patch = {}) {
+    const validation = this.canTransition(quest, state);
+    if (!validation.success) return validation;
+    return { success: true, patch: { ...patch, state: validation.state } };
   }
 }
 
@@ -130,9 +165,16 @@ export class QuestDedupSpecification {
 export class QuestBoard {
   static fromConfig(config = {}) {
     const visibilityPolicy = config.visibilityPolicy || {};
+    const stateMachineConfig = Array.isArray(config.stateMachine)
+      ? { allowed: config.stateMachine }
+      : (config.stateMachine || {});
     return new QuestBoard({
       repository: new QuestRepository(config.repository || {}),
-      stateMachine: new QuestStateMachine({ allowed: config.stateMachine || CANONICAL_STATES }),
+      stateMachine: new QuestStateMachine({
+        allowed: stateMachineConfig.states || stateMachineConfig.allowed || CANONICAL_STATES,
+        transitions: stateMachineConfig.transitions || DEFAULT_TRANSITIONS,
+        terminalStates: stateMachineConfig.terminalStates || DEFAULT_TERMINAL_STATES,
+      }),
       visibilityPolicy: new QuestVisibilityPolicy(visibilityPolicy),
       dedupeSpec: new QuestDedupSpecification({ mode: config.dedupePolicy || 'by_dedupe_key' }),
     });
@@ -148,7 +190,7 @@ export class QuestBoard {
     this.dedupeSpec = dedupeSpec;
   }
 
-  publish(input = {}) {
+  canPublish(input = {}) {
     const state = normalizeState(input.state || 'available');
     if (!this.stateMachine.allows(state)) {
       return { success: false, reason: 'quest_state_invalid', state };
@@ -165,11 +207,17 @@ export class QuestBoard {
         quest: existing,
       };
     }
+    return { success: true, state, dedupeKey };
+  }
+
+  publish(input = {}) {
+    const publishable = this.canPublish(input);
+    if (!publishable.success) return publishable;
 
     const day = dayOf(input.day ?? input.createdDay, 0);
     const quest = {
       success: true,
-      state,
+      state: publishable.state,
       createdDay: day,
       acceptedDay: input.acceptedDay ?? null,
       completedDay: input.completedDay ?? null,
@@ -181,14 +229,14 @@ export class QuestBoard {
       issuerId: input.issuerId || input.factionId || null,
       issuerName: input.issuerName || input.issuerId || input.factionId || 'quest_issuer',
       issuerNpcId: input.issuerNpcId || null,
-      questBoard: input.questBoard || 'sect',
-      questKind: input.questKind || 'sect_task',
+      questBoard: input.questBoard || 'general',
+      questKind: input.questKind || 'generic_task',
       questTemplateId: input.questTemplateId || input.questTypeId || null,
       questTypeId: input.questTypeId || input.questTemplateId || null,
       difficulty: input.difficulty ?? null,
       priority: input.priority ?? 0,
       requiredResourceId: input.requiredResourceId || null,
-      dedupeKey,
+      dedupeKey: publishable.dedupeKey,
       rewardContribution: input.rewardContribution ?? 0,
       rewardAssets: clone(input.rewardAssets || []),
       escrowId: input.escrowId || null,
@@ -241,6 +289,13 @@ export class QuestBoard {
 
   complete(questId, npc, day = 0) {
     const quest = this.repository.byId(questId);
+    const transition = this.canComplete(quest, npc, day);
+    if (!transition.success) return transition;
+    return { success: true, quest: this.repository.update(questId, transition.patch) };
+  }
+
+  canComplete(questOrId, npc, day = 0) {
+    const quest = typeof questOrId === 'string' ? this.repository.byId(questOrId) : questOrId;
     if (!quest) return { success: false, reason: 'quest_missing' };
     if (!['accepted', 'in_progress'].includes(quest.state)) {
       return { success: false, reason: 'quest_not_active', quest };
@@ -251,7 +306,7 @@ export class QuestBoard {
       completedByNpcName: npc?.name || null,
     });
     if (!transition.success) return transition;
-    return { success: true, quest: this.repository.update(questId, transition.patch) };
+    return transition;
   }
 
   markInProgress(questId, npc, day = 0) {
@@ -293,6 +348,13 @@ export class QuestBoard {
 
   expire(questId, day = 0, reason = 'expired') {
     const quest = this.repository.byId(questId);
+    const transition = this.canExpire(quest, day, reason);
+    if (!transition.success) return transition;
+    return { success: true, quest: this.repository.update(questId, transition.patch) };
+  }
+
+  canExpire(questOrId, day = 0, reason = 'expired') {
+    const quest = typeof questOrId === 'string' ? this.repository.byId(questOrId) : questOrId;
     if (!quest) return { success: false, reason: 'quest_missing' };
     if (['completed', 'turned_in', 'failed', 'expired'].includes(quest.state)) {
       return { success: false, reason: 'quest_not_expirable', quest };
@@ -303,7 +365,7 @@ export class QuestBoard {
       cancelledDay: dayOf(day, quest.createdDay || 0),
     });
     if (!transition.success) return transition;
-    return { success: true, quest: this.repository.update(questId, transition.patch) };
+    return transition;
   }
 
   cancel(questId, day = 0, reason = 'cancelled') {

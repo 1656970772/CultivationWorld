@@ -148,6 +148,19 @@ ok(hasError(badSectNumberResult, 'monthlyIntervalDays'), 'validator reports inva
 ok(hasError(badSectNumberResult, 'safeStock'), 'validator reports invalid sect stock pressure range');
 ok(hasError(badSectNumberResult, 'ratio'), 'validator reports invalid sect restock ratio');
 
+const badSectEntityConfigs = clone(configs);
+delete badSectEntityConfigs.factions.find(faction => !faction.subtype).isSect;
+ok(hasError(validateGameData(badSectEntityConfigs, { strict: false }), 'explicitly declare isSect'), 'validator reports core faction missing explicit isSect');
+
+const badSectScaleConfigs = clone(configs);
+const scaledSect = badSectScaleConfigs.factions.find(faction => faction.isSect === true && faction.sectScale);
+scaledSect.sectSeedProfileId = scaledSect.sectScale === 'large' ? 'sect_small' : 'sect_large';
+ok(hasError(validateGameData(badSectScaleConfigs, { strict: false }), 'sectScale'), 'validator reports sectScale and seed profile mismatch');
+
+const badBountyRewardKindConfigs = clone(configs);
+badBountyRewardKindConfigs.balanceSectOperation.personalBounty.allowedRewardKinds = ['item', 'faction_state_resource'];
+ok(hasError(validateGameData(badBountyRewardKindConfigs, { strict: false }), 'allowedRewardKinds'), 'validator reports invalid personal bounty reward kind');
+
 console.log('8) strict mode throws with collected validation errors');
 let strictError = null;
 try {

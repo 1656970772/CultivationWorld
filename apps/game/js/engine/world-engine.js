@@ -147,6 +147,7 @@ export class WorldEngine {
       gameConfig: this._gameConfig,
       cultivationConfig: this._balanceConfig.cultivation,
       economyConfig: this._balanceConfig.economy,
+      economicTransactionConfig: this._economicTransactionConfig,
       combatConfig: this._balanceConfig.combat,
       combatTables: this._combatTables,
       personalityConfig: this._balanceConfig.personality,
@@ -359,6 +360,7 @@ export class WorldEngine {
       const faction = new FactionEntity(factionConfig, {
         aiConfig: this._aiConfig.faction || {},
         resourceRegistry: this.resourceRegistry,
+        sectConfigRegistry: this._sectConfigRegistry,
       });
       this.entityRegistry.register(faction);
     }
@@ -424,7 +426,11 @@ export class WorldEngine {
   }
 
   _createNPCs(configs) {
-    const npcs = configs.npcs || [];
+    const npcs = this._withSectHallAssignments(
+      configs.npcs || [],
+      configs.factions || [],
+      configs.ranks || [],
+    );
     const ranks = configs.ranks || [];
     this._ranksData = ranks;
     for (const npcConfig of npcs) {
@@ -432,6 +438,82 @@ export class WorldEngine {
       this._initNpcSpatial(npc, npcConfig);
       this.entityRegistry.register(npc);
     }
+  }
+
+  _withSectHallAssignments(npcs = [], factions = [], ranks = []) {
+    const assignments = this._buildSectHallAssignments(npcs, factions, ranks);
+    return npcs.map((npcConfig) => {
+      const assigned = assignments.get(npcConfig.id);
+      if (!assigned) return npcConfig;
+      return {
+        ...npcConfig,
+        hallId: Object.prototype.hasOwnProperty.call(npcConfig, 'hallId') ? npcConfig.hallId : assigned.hallId,
+        isHallChief: Object.prototype.hasOwnProperty.call(npcConfig, 'isHallChief') ? npcConfig.isHallChief : assigned.isHallChief,
+        starterKitProfileId: npcConfig.starterKitProfileId || assigned.starterKitProfileId,
+      };
+    });
+  }
+
+  _buildSectHallAssignments(npcs = [], factions = [], ranks = []) {
+    const assignments = new Map();
+    const rankOrderById = new Map(ranks.map(rank => [rank.id, Number(rank.order || 0)]));
+    const memberStarterKitId = this._sectOrganization?.hallMembership?.memberStarterKitId || null;
+    const chiefStarterKitId = this._sectOrganization?.hallMembership?.chiefStarterKitId || memberStarterKitId;
+
+    const sortCandidates = (a, b) => {
+      const rankDiff = (rankOrderById.get(b.rankId) || 0) - (rankOrderById.get(a.rankId) || 0);
+      if (rankDiff !== 0) return rankDiff;
+      const roleDiff = (this._sectConfigRegistry?.roleRankOf?.(b.role, 0) || 0)
+        - (this._sectConfigRegistry?.roleRankOf?.(a.role, 0) || 0);
+      if (roleDiff !== 0) return roleDiff;
+      return String(a.id).localeCompare(String(b.id));
+    };
+
+    for (const faction of factions) {
+      if (this._sectConfigRegistry?.isSectFactionConfig?.(faction) !== true) continue;
+      const profile = this._sectSeedProfiles?.hallAssignmentProfiles?.[faction.hallAssignmentProfileId];
+      if (!profile || !Array.isArray(profile.rules)) continue;
+      const members = npcs
+        .filter(npc => npc?.alive !== false && npc.factionId === faction.id)
+        .filter(npc => !npc.hallId)
+        .sort(sortCandidates);
+      const assignedIds = new Set();
+
+      for (const rule of profile.rules) {
+        const memberMinOrder = Number(rule.memberMinRankOrder || 0);
+        const chiefMinOrder = Number(rule.chiefMinRankOrder ?? memberMinOrder);
+        const available = (minOrder) => members
+          .filter(npc => !assignedIds.has(npc.id))
+          .filter(npc => (rankOrderById.get(npc.rankId) || 0) >= minOrder)
+          .sort(sortCandidates);
+
+        let chief = available(chiefMinOrder).find(npc => npc.role === rule.chiefRole);
+        if (!chief && rule.fallbackChief === 'highest_rank') {
+          chief = available(chiefMinOrder)[0] || available(memberMinOrder)[0] || null;
+        }
+        if (chief) {
+          assignments.set(chief.id, {
+            hallId: rule.hallId,
+            isHallChief: true,
+            starterKitProfileId: chiefStarterKitId,
+          });
+          assignedIds.add(chief.id);
+        }
+
+        const memberSlots = Math.max(0, Math.floor(Number(rule.memberSlots || 0)));
+        const hallMembers = available(memberMinOrder).slice(0, memberSlots);
+        for (const member of hallMembers) {
+          assignments.set(member.id, {
+            hallId: rule.hallId,
+            isHallChief: false,
+            starterKitProfileId: memberStarterKitId,
+          });
+          assignedIds.add(member.id);
+        }
+      }
+    }
+
+    return assignments;
   }
 
   /**

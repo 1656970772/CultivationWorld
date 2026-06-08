@@ -18,6 +18,12 @@ export class FactionStaticData extends StaticData {
       // 顶层稀缺职位名额（按宗门规模配置）：如 { elder: 6, heir: 1 }。
       // 弟子晋入这些职位时受此名额限制（满员则需挑战现任）。详见 wiki/rules/sect-operation.md。
       roleQuota: Object.freeze({ ...(factionConfig.roleQuota || {}) }),
+      isPublic: factionConfig.isPublic === true,
+      isSect: factionConfig.isSect === true,
+      sectTemplateId: factionConfig.sectTemplateId || null,
+      sectSeedProfileId: factionConfig.sectSeedProfileId || null,
+      hallAssignmentProfileId: factionConfig.hallAssignmentProfileId || null,
+      hallOverrides: Object.freeze({ ...(factionConfig.hallOverrides || {}) }),
     });
   }
 
@@ -27,6 +33,12 @@ export class FactionStaticData extends StaticData {
   get headquarters() { return this.get('headquarters'); }
   get name() { return this.get('name'); }
   get roleQuota() { return this.get('roleQuota'); }
+  get isPublic() { return this.get('isPublic'); }
+  get isSect() { return this.get('isSect'); }
+  get sectTemplateId() { return this.get('sectTemplateId'); }
+  get sectSeedProfileId() { return this.get('sectSeedProfileId'); }
+  get hallAssignmentProfileId() { return this.get('hallAssignmentProfileId'); }
+  get hallOverrides() { return this.get('hallOverrides'); }
 
   hasTrait(trait) {
     return this.traits.includes(trait);

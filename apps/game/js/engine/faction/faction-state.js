@@ -21,7 +21,10 @@ export class FactionState extends RuntimeState {
     const relations = factionConfig.relations || {};
     const territoryCount = factionConfig.territoryCount ?? territory.length;
     const resourceRegistry = resourceRegistryFor(factionConfig, worldContext);
-    const initialResources = resourceRegistry.initialStateFrom(factionConfig.resources || {});
+    const resourceInput = worldContext?.sectConfigRegistry?.isSectFactionConfig?.(factionConfig)
+      ? worldContext.sectConfigRegistry.resolveFactionResources(factionConfig)
+      : (factionConfig.resources || {});
+    const initialResources = resourceRegistry.initialStateFrom(resourceInput);
 
     super({
       // tuning-v6 2026-06-01: 初始稳定度钳到 [0,100]，防配置脏值或历史溢出值带入世界。
@@ -31,8 +34,19 @@ export class FactionState extends RuntimeState {
       relations: { ...relations },
       leaderNpcId: factionConfig.leader || null,
       isDestroyed: false,
+      destroyedReason: null,
 
       ...initialResources,
+
+      sectLastMonthlyDay: 0,
+      sectSalaryShortfallStreak: 0,
+      sectPillShortfallStreak: 0,
+      sectLastStoneDue: 0,
+      sectLastStonePaid: 0,
+      sectLastPillDue: 0,
+      sectLastPillPaid: 0,
+      sectDepartureCount: 0,
+      sectOpenPressureQuestCount: 0,
 
       borderThreat: 0,
       underAttack: false,

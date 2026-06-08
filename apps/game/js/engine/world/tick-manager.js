@@ -122,6 +122,12 @@ export class TickManager {
       questBoard: this.questBoard,
       escrowHolders: this.sectEscrowHolders,
     });
+    this.questCompletionHandlerRegistry.register('personal_bounty', ({ questId, npc, completer, day } = {}) =>
+      this.sectBountyService.completePersonalBounty({
+        day,
+        questId,
+        completer: completer || npc,
+      }));
     this.sectOperationService = null;
 
     // ── 子服务装配（各持 host 引用，通过共享 helper 协作）──

@@ -20,6 +20,7 @@ export class FactionEntity extends BaseEntity {
     super(factionConfig.id, 'faction');
 
     this._aiConfig = entityConfig.aiConfig || {};
+    this.entityConfig = entityConfig;
     this.resourceRegistry = entityConfig.resourceRegistry
       || ResourceRegistry.fromResourceIds(Object.keys(factionConfig.resources || {}));
     this.initStaticData(factionConfig);
@@ -35,12 +36,24 @@ export class FactionEntity extends BaseEntity {
   }
 
   _initFactionState(config) {
-    this.state = new FactionState(config, { resourceRegistry: this.resourceRegistry });
+    this.state = new FactionState(config, {
+      resourceRegistry: this.resourceRegistry,
+      sectConfigRegistry: this.entityConfig.sectConfigRegistry,
+    });
   }
 
   _initInventory(config) {
-    const resources = config.resources || {};
-    this.inventory.loadFrom(this.resourceRegistry.initialStateFrom(resources));
+    const isSect = this.entityConfig.sectConfigRegistry?.isSectFactionConfig?.(config) === true;
+    const resources = isSect
+      ? this.entityConfig.sectConfigRegistry.resolveFactionResources(config)
+      : (config.resources || {});
+    const inventoryItems = isSect
+      ? this.entityConfig.sectConfigRegistry.resolveFactionInventory(config)
+      : {};
+    this.inventory.loadFrom({
+      ...this.resourceRegistry.initialStateFrom(resources),
+      ...inventoryItems,
+    });
   }
 
   _initNeeds(config) {

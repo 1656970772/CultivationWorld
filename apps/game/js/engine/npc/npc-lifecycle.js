@@ -208,10 +208,12 @@ export function triggerSuccession(entity, factionId, worldContext) {
   if (!faction) return;
 
   if (successor) {
+    const roleRanks = entity._cultivationConfig?.promotion?.roleRankByStep || {};
+    const leaderRoleRank = Number(roleRanks.leader);
     successor.state.set('currentRole', 'leader');
     successor.state.set('isLeader', true);
     successor.state.set('isElder', false);
-    successor.state.set('roleRank', 6);
+    successor.state.set('roleRank', Number.isFinite(leaderRoleRank) ? leaderRoleRank : 0);
     faction.state.set('leaderNpcId', successor.id);
   } else {
     faction.state.set('isDestroyed', true);

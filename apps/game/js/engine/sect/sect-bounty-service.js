@@ -26,6 +26,9 @@ function availableState(state) {
   return state === 'available' || state === 'open';
 }
 
+const ACTIVE_STATES = new Set(['accepted', 'in_progress']);
+const CANCELLABLE_STATES = new Set(['available', 'open', 'accepted', 'in_progress']);
+
 export class SectBountyService {
   constructor({ config = {}, treasuryConfig = {}, ranksData = [], economicSystem = null, questBoard = null, escrowHolders = null } = {}) {
     if (!config || !treasuryConfig || !Array.isArray(ranksData) || !escrowHolders) {
@@ -83,15 +86,28 @@ export class SectBountyService {
     const validation = this._validateBountyInput({ faction, issuer, questTemplateId, rewardAssets: assets });
     if (!validation.success) return validation;
 
-    const fee = this.treasury.payBountyFeeToFaction({
+    const questInput = {
       day,
-      faction,
-      issuer,
-      feeItemId: this.config.feeItemId,
-      quantity: this.config.feeAmount,
-      source: { type: 'personal_bounty_fee', issuerId: issuer.id, factionId: faction.id },
-    });
-    if (!fee.success) return { ...fee, phase: 'bounty_fee' };
+      factionId: faction.id,
+      issuerType: 'npc',
+      issuerId: issuer.id,
+      issuerNpcId: issuer.id,
+      issuerName: issuer.name || issuer.id,
+      questBoard: this.config.defaultQuestBoard || 'bounty',
+      questKind: 'personal_bounty',
+      questTemplateId,
+      difficulty: difficulty ?? this.config.defaultDifficulty ?? 1,
+      priority: this.config.defaultPriority ?? 0,
+      rewardAssets: assets,
+      dedupeKey,
+      metadata: {
+        ...clone(metadata),
+        rewardAssets: assets,
+        rewardScenarioId: this.config.rewardScenarioId || 'personal_bounty_reward',
+      },
+    };
+    const publishable = this.questBoard.canPublish?.(questInput) || { success: true };
+    if (!publishable.success) return publishable;
 
     const vault = this.vaultFor(faction.id);
     const escrow = this.economicSystem.openEscrow({
@@ -111,26 +127,9 @@ export class SectBountyService {
     if (!escrow.success) return { ...escrow, phase: 'bounty_reward_escrow' };
 
     const quest = this.questBoard.publish({
-      day,
-      factionId: faction.id,
-      issuerType: 'npc',
-      issuerId: issuer.id,
-      issuerNpcId: issuer.id,
-      issuerName: issuer.name || issuer.id,
-      questBoard: this.config.defaultQuestBoard || 'bounty',
-      questKind: 'personal_bounty',
-      questTemplateId,
-      difficulty: difficulty ?? this.config.defaultDifficulty ?? 1,
-      priority: this.config.defaultPriority ?? 0,
-      rewardAssets: assets,
+      ...questInput,
       escrowId: escrow.escrowId,
       escrowRefs: [escrow.escrowId],
-      dedupeKey,
-      metadata: {
-        ...clone(metadata),
-        rewardAssets: assets,
-        rewardScenarioId: this.config.rewardScenarioId || 'personal_bounty_reward',
-      },
     });
 
     if (!quest?.id) {
@@ -143,6 +142,27 @@ export class SectBountyService {
         source: { type: 'personal_bounty_publish_failed', reason: quest?.reason || 'quest_publish_failed' },
       });
       return { success: false, reason: quest?.reason || 'quest_publish_failed', escrowId: escrow.escrowId, quest };
+    }
+
+    const fee = this.treasury.payBountyFeeToFaction({
+      day,
+      faction,
+      issuer,
+      feeItemId: this.config.feeItemId,
+      quantity: this.config.feeAmount,
+      source: { type: 'personal_bounty_fee', issuerId: issuer.id, factionId: faction.id, questId: quest.id },
+    });
+    if (!fee.success) {
+      this.economicSystem.settleEscrow({
+        day,
+        escrowId: escrow.escrowId,
+        holder: vault,
+        destination: issuer,
+        status: 'refunded',
+        source: { type: 'personal_bounty_fee_failed', reason: fee.reason || 'bounty_fee_failed' },
+      });
+      this.questBoard.cancel(quest.id, day, 'fee_failed');
+      return { ...fee, phase: 'bounty_fee', questId: quest.id, escrowId: escrow.escrowId };
     }
 
     return {
@@ -161,6 +181,9 @@ export class SectBountyService {
       if (!accepted.success) return accepted;
       return { success: true, quest: accepted.quest };
     }
+    if (!ACTIVE_STATES.has(quest.state)) {
+      return { success: false, reason: 'quest_not_active', quest };
+    }
     return { success: true, quest };
   }
 
@@ -176,6 +199,9 @@ export class SectBountyService {
 
     const active = this._activateQuestIfNeeded(questId, quest, completer, day);
     if (!active.success) return active;
+    const completion = this.questBoard.canComplete?.(active.quest || questId, completer, day)
+      || { success: true };
+    if (!completion.success) return completion;
 
     const vault = this.vaultFor(quest.factionId);
     const release = this.economicSystem.settleEscrow({
@@ -208,6 +234,14 @@ export class SectBountyService {
       return { success: false, reason: 'bounty_missing' };
     }
     if (!issuer) return { success: false, reason: 'issuer_missing' };
+    if (issuer.id !== quest.issuerId) {
+      return { success: false, reason: 'issuer_mismatch', quest };
+    }
+    if (!CANCELLABLE_STATES.has(quest.state)) {
+      return { success: false, reason: 'quest_not_cancellable', quest };
+    }
+    const cancellable = this.questBoard.canExpire?.(quest, day, 'cancelled') || { success: true };
+    if (!cancellable.success) return cancellable;
 
     const vault = this.vaultFor(quest.factionId);
     const refund = this.economicSystem.settleEscrow({

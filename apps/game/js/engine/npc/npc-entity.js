@@ -100,8 +100,13 @@ export class NPCEntity extends BaseEntity {
     this._utilityConfig = entityConfig.utilityConfig || {};
     this._economyConfig = entityConfig.economyConfig || {};
     this._actionSets = entityConfig.actionSets || {};
+    this.entityConfig = entityConfig;
     this.initStaticData(npcConfig);
-    this.state = new NPCState(npcConfig, ranksData, entityConfig.gameConfig || {}, this._rng);
+    const roleRanks = entityConfig.sectConfigRegistry?.roleRanks
+      || entityConfig.roleRanks
+      || entityConfig.cultivationConfig?.promotion?.roleRankByStep
+      || {};
+    this.state = new NPCState(npcConfig, ranksData, entityConfig.gameConfig || {}, this._rng, roleRanks);
     // 把性格暴露到 state 上（仅作只读引用，存于专用字段，不进 _values，故不污染 GOAP 状态键）
     this.state.personality = this.staticData.personality || {};
     this._initTalent(npcConfig);
@@ -599,13 +604,15 @@ export class NPCEntity extends BaseEntity {
   }
 
   _initInventory(config) {
-    // 起始物品：低阶灵石 + 可选 items 映射（如天才自带遁地符 { item_escape_talisman: 2 }）。
-    const initial = { low_spirit_stone: config.spiritStone || 0 };
-    if (config.items && typeof config.items === 'object') {
-      for (const [itemId, amount] of Object.entries(config.items)) {
-        if (amount > 0) initial[itemId] = (initial[itemId] || 0) + amount;
-      }
-    }
+    const starterItems = this.entityConfig.sectConfigRegistry?.resolveNpcStarterItems?.(config)
+      || { ...(config.items || {}) };
+    const currencyItemId = this.entityConfig.economicTransactionConfig?.currencyItemId
+      || this.entityConfig.currencyItemId
+      || 'low_spirit_stone';
+    const initial = {
+      ...starterItems,
+      [currencyItemId]: config.spiritStone ?? starterItems[currencyItemId] ?? 0,
+    };
     this.inventory.loadFrom(initial);
   }
 
@@ -1164,6 +1171,9 @@ export class NPCEntity extends BaseEntity {
       qi: this.state.get('qi') || 0,
       gender: this.state.get('gender') || 'male',
       daoCompanionId: this.state.get('daoCompanionId') || null,
+      hallId: this.state.get('hallId') || null,
+      isHallChief: this.state.get('isHallChief') === true,
+      activeBoardQuestId: this.state.get('activeBoardQuestId') || null,
     };
   }
 }

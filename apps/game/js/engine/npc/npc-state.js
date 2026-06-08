@@ -18,17 +18,11 @@ import {
 } from './numeric-cultivation.js';
 import { normalizeRankStage } from './cultivator-combat-attributes.js';
 
-const ROLE_RANKS = {
-  'leader': 6,
-  'heir': 5,
-  'elder': 4,
-  'general': 3,
-  'officer': 3,
-  'core_disciple': 2,
-  'disciple': 1,
-  // 外门弟子：门派考核/月度贡献考核未达标被贬谪的最低职位
-  'outer_disciple': 0,
-};
+function roleRankOf(role, roleRanks = {}) {
+  const value = roleRanks?.[role];
+  const n = Number(value);
+  return Number.isFinite(n) ? n : 1;
+}
 
 export class NPCState extends RuntimeState {
   /**
@@ -37,7 +31,7 @@ export class NPCState extends RuntimeState {
    * @param {Object} [gameConfig] data/config/game-config.json 内容（可选，有默认值）
    * @param {import('../abstract/rng.js').Rng} rng 确定性随机源。
    */
-  constructor(npcConfig, ranksData = null, gameConfig = {}, rng) {
+  constructor(npcConfig, ranksData = null, gameConfig = {}, rng, roleRanks = {}) {
     const random = rng && typeof rng.next === 'function' ? rng : { next: () => 0 };
     const timeCfg = gameConfig.time || {};
     const npcCfg = gameConfig.npc || {};
@@ -78,7 +72,7 @@ export class NPCState extends RuntimeState {
       maxAgeYears: Math.floor(maxAgeYears),
       factionId: npcConfig.factionId,
       currentRole: npcConfig.role,
-      roleRank: ROLE_RANKS[npcConfig.role] || 1,
+      roleRank: roleRankOf(npcConfig.role, roleRanks),
       rankId: initialRankId,
       rankName: rankInfo ? rankInfo.name : initialRankId,
       cultivation: initialCultivation,
@@ -98,6 +92,13 @@ export class NPCState extends RuntimeState {
       factionInDanger: false,
       dutyFulfilled: false,
       hasActiveQuest: false,
+      hallId: npcConfig.hallId || null,
+      isHallChief: npcConfig.isHallChief === true,
+      starterKitProfileId: npcConfig.starterKitProfileId || null,
+      hallJoinedDay: npcConfig.hallJoinedDay || null,
+      sectLeftDay: null,
+      sectLeaveReason: null,
+      activeBoardQuestId: null,
       activeQuestTypeId: null,
       activeQuestTypeName: null,
       activeQuestCategory: null,

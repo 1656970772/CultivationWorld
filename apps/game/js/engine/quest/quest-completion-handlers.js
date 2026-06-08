@@ -32,6 +32,10 @@ export class QuestCompletionHandlerRegistry {
 
 export function defaultQuestCompletionHandler({ questBoard, questId, npc, day } = {}) {
   if (!questBoard || !questId) return { success: false, reason: 'quest_context_missing' };
+  const quest = questBoard.byId?.(questId);
+  if (quest?.escrowId || (Array.isArray(quest?.escrowRefs) && quest.escrowRefs.length > 0)) {
+    return { success: false, reason: 'quest_completion_handler_required', quest };
+  }
   return questBoard.complete(questId, npc, day);
 }
 

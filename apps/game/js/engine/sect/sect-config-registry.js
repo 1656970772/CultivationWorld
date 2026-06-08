@@ -1,5 +1,18 @@
 import { ResourceRegistry } from '../economy/resource-registry.js';
 
+const QUEST_BOARD_STATES = new Set([
+  'draft',
+  'available',
+  'accepted',
+  'in_progress',
+  'completed',
+  'turned_in',
+  'failed',
+  'expired',
+]);
+const QUEST_DEDUPE_POLICIES = new Set(['by_dedupe_key', 'none']);
+const PERSONAL_BOUNTY_REWARD_KINDS = new Set(['item']);
+
 function asList(value) {
   return Array.isArray(value) ? value : [];
 }
@@ -218,6 +231,11 @@ function buildRoleIds(configs, organization) {
 function validateFactionSectReferences(configs, ids, errors) {
   const factions = asList(configs?.factions);
   for (const faction of factions) {
+    const isFunctionalOrganization = !!faction?.subtype;
+    if (!isFunctionalOrganization && typeof faction?.isSect !== 'boolean') {
+      errors.push(`Faction ${faction?.id || '<missing>'} core faction must explicitly declare isSect`);
+    }
+
     const hasSectFields = [
       'isSect',
       'isPublic',
@@ -229,7 +247,6 @@ function validateFactionSectReferences(configs, ids, errors) {
       'inventoryOverrides',
     ].some((field) => hasOwn(faction, field));
 
-    const isFunctionalOrganization = !!faction?.subtype;
     if (!hasSectFields && !isFunctionalOrganization) continue;
 
     if (hasOwn(faction, 'isSect') && typeof faction.isSect !== 'boolean') {
@@ -247,6 +264,7 @@ function validateFactionSectReferences(configs, ids, errors) {
     }
 
     const templateId = faction.sectTemplateId;
+    const sectScale = faction.sectScale;
     const seedProfileId = faction.sectSeedProfileId || faction.seedProfileId;
     const hallProfileId = faction.hallAssignmentProfileId || faction.hallProfileId;
     const hasSectRefs = Boolean(templateId || seedProfileId || hallProfileId);
@@ -265,6 +283,15 @@ function validateFactionSectReferences(configs, ids, errors) {
     }
     if (seedProfileId && !ids.seedProfileIds.has(seedProfileId)) {
       errors.push(`Faction ${faction?.id || '<missing>'}.sectSeedProfileId references missing seed profile ${seedProfileId}`);
+    }
+    if (sectScale) {
+      const expectedProfileId = configs?.sectSeedProfiles?.scaleToProfile?.[sectScale]
+        || configs?.seedProfiles?.scaleToProfile?.[sectScale];
+      if (!expectedProfileId) {
+        errors.push(`Faction ${faction?.id || '<missing>'}.sectScale references missing scale ${sectScale}`);
+      } else if (seedProfileId && seedProfileId !== expectedProfileId) {
+        errors.push(`Faction ${faction?.id || '<missing>'}.sectScale ${sectScale} requires sectSeedProfileId ${expectedProfileId}`);
+      }
     }
     if (hallProfileId && !ids.hallProfileIds.has(hallProfileId)) {
       errors.push(`Faction ${faction?.id || '<missing>'}.hallAssignmentProfileId references missing hall assignment profile ${hallProfileId}`);
@@ -335,6 +362,47 @@ function validateSectOperationNumbers(operation, errors) {
   validateNumberRange(operation?.personalBounty?.defaultDifficulty, 'balanceSectOperation.personalBounty.defaultDifficulty', errors, { min: 1 });
 }
 
+function validateSectOperationStructure(operation, errors) {
+  const questBoard = asObject(operation?.questBoard);
+  const stateMachine = questBoard.stateMachine;
+  const states = Array.isArray(stateMachine)
+    ? stateMachine
+    : asList(stateMachine?.states || stateMachine?.allowed);
+  if (states.length === 0) {
+    errors.push('balanceSectOperation.questBoard.stateMachine must declare states');
+  }
+  for (const state of states) {
+    if (!QUEST_BOARD_STATES.has(state)) {
+      errors.push(`balanceSectOperation.questBoard.stateMachine references invalid state ${state}`);
+    }
+  }
+
+  const dedupePolicy = questBoard.dedupePolicy || 'by_dedupe_key';
+  if (!QUEST_DEDUPE_POLICIES.has(dedupePolicy)) {
+    errors.push(`balanceSectOperation.questBoard.dedupePolicy references invalid policy ${dedupePolicy}`);
+  }
+
+  for (const board of asList(questBoard.visibilityPolicy?.publicBoards)) {
+    if (typeof board !== 'string' || board.trim() === '') {
+      errors.push('balanceSectOperation.questBoard.visibilityPolicy.publicBoards must contain non-empty strings');
+    }
+  }
+
+  const personalBounty = asObject(operation?.personalBounty);
+  if (typeof personalBounty.escrowHolderType !== 'string' || personalBounty.escrowHolderType.trim() === '') {
+    errors.push('balanceSectOperation.personalBounty.escrowHolderType must be a non-empty string');
+  }
+  const rewardKinds = asList(personalBounty.allowedRewardKinds);
+  if (rewardKinds.length === 0) {
+    errors.push('balanceSectOperation.personalBounty.allowedRewardKinds must not be empty');
+  }
+  for (const kind of rewardKinds) {
+    if (!PERSONAL_BOUNTY_REWARD_KINDS.has(kind)) {
+      errors.push(`balanceSectOperation.personalBounty.allowedRewardKinds cannot include ${kind}`);
+    }
+  }
+}
+
 export function collectSectConfigErrors(configs = {}) {
   const errors = [];
   const manifest = configs?.dataManifest || null;
@@ -362,6 +430,7 @@ export function collectSectConfigErrors(configs = {}) {
   const resourceRegistry = getResourceRegistry(configs);
   const roleIds = buildRoleIds(configs, organization);
   validateSectOperationNumbers(operation, errors);
+  validateSectOperationStructure(operation, errors);
 
   for (const [scale, profileId] of Object.entries(asObject(seedProfiles.scaleToProfile))) {
     if (profileId && !seedProfileIds.has(profileId)) {
@@ -506,5 +575,52 @@ export class SectConfigRegistry {
 
   hasSeedProfile(id) {
     return this.seedProfileIds.has(id);
+  }
+
+  isSectFactionConfig(config = {}) {
+    return config?.isSect === true
+      && Boolean(config.sectTemplateId)
+      && Boolean(config.sectSeedProfileId);
+  }
+
+  resolveFactionResources(config = {}) {
+    if (!this.isSectFactionConfig(config)) return asObject(config.resources);
+    const profileId = config.sectSeedProfileId;
+    const profile = asObject(this.seedProfiles?.resourceProfiles?.[profileId]);
+    if (!isNonEmptyObject(profile)) throw new Error(`未知 sect resource profile: ${profileId}`);
+    return {
+      ...profile,
+      ...asObject(config.resources),
+    };
+  }
+
+  resolveFactionInventory(config = {}) {
+    if (!this.isSectFactionConfig(config)) return asObject(config.inventoryOverrides);
+    const profileId = config.sectSeedProfileId;
+    const profile = asObject(this.seedProfiles?.inventoryProfiles?.[profileId]);
+    if (!isNonEmptyObject(profile)) throw new Error(`未知 sect inventory profile: ${profileId}`);
+    return {
+      ...profile,
+      ...asObject(config.inventoryOverrides),
+    };
+  }
+
+  resolveNpcStarterItems(config = {}) {
+    const starterKitProfileId = config?.starterKitProfileId;
+    const profile = starterKitProfileId
+      ? this.seedProfiles?.npcStarterKits?.[starterKitProfileId]
+      : null;
+    if (starterKitProfileId && !profile) {
+      throw new Error(`未知 npc starter kit: ${starterKitProfileId}`);
+    }
+    return {
+      ...asObject(profile),
+      ...asObject(config.items),
+    };
+  }
+
+  roleRankOf(role, fallback = 1) {
+    if (hasOwn(this.roleRanks, role)) return Number(this.roleRanks[role]);
+    return fallback;
   }
 }
