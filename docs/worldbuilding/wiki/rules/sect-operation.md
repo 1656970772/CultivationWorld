@@ -1,13 +1,22 @@
 # 宗门运行与成员晋升制度
 
-> 最后更新：2026-05-30
+> 最后更新：2026-06-08
 > 状态：已敲定
 > 类型：规则
-> 关联文档：`docs/decisions/adr-011-cultivation-incentive-system.md`、`docs/decisions/adr-015-faction-resource-and-promotion.md`、`docs/worldbuilding/wiki/rules/leader-succession.md`、`docs/data/data-config-rules.md`
+> 关联文档：`docs/decisions/adr-011-cultivation-incentive-system.md`、`docs/decisions/adr-015-faction-resource-and-promotion.md`、`docs/decisions/adr-056-sect-operation-and-unified-quest-board.md`、`docs/systems/sect-operation-system.md`、`docs/data-models/sect-operation.md`、`docs/worldbuilding/wiki/rules/leader-succession.md`、`docs/data/data-config-rules.md`
 
 ## 一句话定义
 
 宗门按「资源层→制度层→动力层」三层六要素运行：以灵脉/任务/份例获取资源，以职位阶梯与晋升机制分配，以多通道竞争+安全网维持成员留存——形成「资源获取→分配→消耗→再获取」的闭环。本条目参考 `docs/世界观参考/宗门运行流程与制度平衡分析.md` 提炼的九部修仙小说通用模型落地。
+
+## 运行架构约束
+
+- 门派仍复用 `FactionEntity`，不新增独立门派实体。
+- 宗门宏观资源继续由 `ResourceRegistry` + `FactionState` 管理；宗门实物库存只进入 faction inventory。
+- 通用任务板位于 `apps/game/js/engine/quest/`，不属于门派专用模块。宗门任务、个人悬赏、悬赏阁任务、坊市委托和动态事件任务都应复用同一任务仓储、状态机、可见性策略和去重策略。
+- 门派运行位于 `apps/game/js/engine/sect/`，只注册宗门任务来源、门派运行规则和悬赏结算策略，负责门派组织、宗门财政、个人悬赏、月俸库存压力、离宗和倒闭。
+- 个人悬赏奖励使用统一经济托管，不进入宗门普通库存，不叠加普通任务模板奖励。
+- 最新门派运行默认进入正式流程；缺少组织、初始化、运行数值或引用配置时由 strict validator 报错，不保留旧月俸 fallback。
 
 ## 已敲定内容
 
@@ -61,6 +70,10 @@
 
 ## 数据与实现提示
 
+- 门派组织配置：`apps/game/data/definitions/sect-organization.json`，由 `data-manifest.json` 输出为 `sectOrganization`。
+- 门派初始化 profile：`apps/game/data/definitions/sect-seed-profiles.json`，由 `data-manifest.json` 输出为 `sectSeedProfiles`。其中 `resourceProfiles` 只定义宏观资源 profile，应用后仍交给 `ResourceRegistry.initialStateFrom()`；`inventoryProfiles` 与 `npcStarterKits` 只定义实物物品，所有 `itemId` 必须经 `itemDefs.items` 校验。
+- 门派运行数值：`apps/game/data/balance/sect-operation.json`，由 `data-manifest.json` 输出为 `balanceSectOperation`，覆盖月俸、丹药俸禄、维护费、安全库存线、离宗阈值、任务板策略和个人悬赏手续费。
+- strict 校验入口：`apps/game/js/core/game-data-validator.js`；`apps/game/tools/test-sect-config-load.mjs` 只验证 validator 覆盖，不维护第二套规则。
 - 晋升体系配置：`apps/game/data/balance/cultivation.json` 的 `promotion` 段（ladder/roleRankByStep/contributionByStep/rankOrderByStep/quotaByRole）。
 - 考核与大比配置：同文件 `monthlyContribution` 与 `sectEvents` 段。
 - 月俸梯度：`apps/game/data/balance/economy.json` 的 `salary.roles`。

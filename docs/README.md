@@ -2,7 +2,7 @@
 
 > 项目代号：WorldDynamic  
 > 创建日期：2026-05-23  
-> 最后更新：2026-06-08（补齐 data manifest、strict validation、resource registry、relationship projections、editor dataset/adapters 的文档导航；此前新增硬编码配置化与通用架构清理实施计划、验证报告骨架与 ADR、门派架构与运行模拟实施计划、门派架构与运行模拟设计、动态模拟底座默认启用 ADR、当前代码功能实现盘点目录与文档、首个功能基本齐全版范围设计、统一经济交易底座设计与实施计划、三层关系底座全数据重构验证报告、实施计划并补强规格、十二境界运行时主链 ADR、实施计划更新、数据模型、Wiki 与验证报告导航）
+> 最后更新：2026-06-08（补齐门派运行规则链、通用任务板 ADR、系统文档、数据模型与世界观规则导航；此前补齐 data manifest、strict validation、resource registry、relationship projections、editor dataset/adapters 的文档导航、硬编码配置化与通用架构清理实施计划、验证报告骨架与 ADR、门派架构与运行模拟实施计划、门派架构与运行模拟设计、动态模拟底座默认启用 ADR、当前代码功能实现盘点目录与文档、首个功能基本齐全版范围设计、统一经济交易底座设计与实施计划、三层关系底座全数据重构验证报告、实施计划并补强规格、十二境界运行时主链 ADR、实施计划更新、数据模型、Wiki 与验证报告导航）
 
 ## 当前事实
 
@@ -47,6 +47,7 @@ docs/
 │   ├── monster.md
 │   ├── combat-attributes.md
 │   ├── economic-transaction.md
+│   ├── sect-operation.md
 │   ├── ranks.md
 │   ├── player.md
 │   ├── relationship.md
@@ -67,6 +68,7 @@ docs/
 │   ├── opportunity-system.md
 │   ├── renderer.md
 │   ├── save-system.md
+│   ├── sect-operation-system.md
 │   ├── stability.md
 │   ├── time-action.md
 │   ├── ui.md
@@ -155,7 +157,7 @@ docs/
 | 数据配置 | `data/data-config-rules.md`（包含 data manifest、strict validation、ResourceRegistry、relationship projections、editor dataset/adapters 规则） |
 | 硬编码配置化与通用架构清理 | `superpowers/plans/2026-06-08-硬编码配置化与通用架构清理实施计划.md`、`decisions/adr-056-data-manifest-and-strict-validation.md`、`superpowers/reports/2026-06-08-硬编码配置化与通用架构清理验证.md` |
 | AI 架构 | `systems/behavior-tree.md`、`systems/job-toil-ai-spec.md`、`decisions/adr-048-four-layer-reactive-ai.md`、`decisions/adr-050-goap-job-toil-layered-ai.md` |
-| 门派架构与运行模拟 | `superpowers/specs/2026-06-07-门派架构与运行模拟设计.md`、`superpowers/plans/2026-06-07-门派架构与运行模拟设计.md` |
+| 门派架构与运行模拟 | `superpowers/specs/2026-06-07-门派架构与运行模拟设计.md`、`superpowers/plans/2026-06-07-门派架构与运行模拟设计.md`、`decisions/adr-056-sect-operation-and-unified-quest-board.md`、`systems/sect-operation-system.md`、`data-models/sect-operation.md`、`worldbuilding/wiki/rules/sect-operation.md` |
 | NPC 效用评分公式升级 | `superpowers/specs/2026-06-07-NPC效用评分公式升级设计.md`、`superpowers/plans/2026-06-07-NPC效用评分公式升级实施计划.md`、`superpowers/reports/2026-06-07-NPC效用评分公式升级验证.md` |
 | 三层关系底座重构 | `superpowers/specs/2026-06-07-三层关系底座全数据重构-design.md`、`superpowers/plans/2026-06-07-三层关系底座全数据重构实施计划.md`、`superpowers/reports/2026-06-07-三层关系底座全数据重构验证.md`、`superpowers/specs/2026-06-07-三层关系底座重构-design.md` |
 | 统一经济交易底座 | `superpowers/specs/2026-06-07-统一经济交易底座设计.md`、`superpowers/plans/2026-06-07-统一经济交易底座实施计划.md`、`systems/economic-transaction-system.md`、`data-models/economic-transaction.md`、`superpowers/reports/2026-06-07-统一经济交易底座验证.md` |
