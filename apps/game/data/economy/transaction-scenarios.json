@@ -50,6 +50,38 @@
       "escrowRequired": true,
       "allowDefault": true,
       "visibility": "public"
+    },
+    "sect_monthly_stipend": {
+      "name": "宗门月俸",
+      "kind": "formal",
+      "priceMultiplier": 1.0,
+      "escrowRequired": false,
+      "allowDefault": false,
+      "visibility": "institution"
+    },
+    "sect_pill_stipend": {
+      "name": "宗门丹药俸禄",
+      "kind": "formal",
+      "priceMultiplier": 1.0,
+      "escrowRequired": false,
+      "allowDefault": false,
+      "visibility": "institution"
+    },
+    "personal_bounty_fee": {
+      "name": "个人悬赏手续费",
+      "kind": "formal",
+      "priceMultiplier": 1.0,
+      "escrowRequired": false,
+      "allowDefault": false,
+      "visibility": "institution"
+    },
+    "personal_bounty_reward": {
+      "name": "个人悬赏奖励托管",
+      "kind": "private",
+      "priceMultiplier": 1.0,
+      "escrowRequired": true,
+      "allowDefault": false,
+      "visibility": "institution"
     }
   },
   "assets": {
@@ -72,7 +104,8 @@
   "escrow": {
     "defaultHolderByScenario": {
       "quest_contract": "org_bounty",
-      "auction": "org_auction"
+      "auction": "org_auction",
+      "personal_bounty_reward": "sect_bounty_vault"
     }
   },
   "debt": {

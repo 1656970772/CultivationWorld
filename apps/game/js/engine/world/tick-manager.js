@@ -31,6 +31,11 @@ import { InfoCoordinator } from './services/info-coordinator.js';
 import { MonsterRespawnService } from './services/monster-respawn-service.js';
 import { readEffectiveCombatAttribute } from '../npc/cultivator-combat-attributes.js';
 import { AuctionService } from '../economy/auction-service.js';
+import { QuestBoard } from '../quest/quest-board.js';
+import { createQuestCompletionHandlerRegistry } from '../quest/quest-completion-handlers.js';
+import { createQuestSourceStrategyRegistry } from '../quest/quest-source-strategies.js';
+import { SectBountyService } from '../sect/sect-bounty-service.js';
+import { SectEscrowHolderRepository } from '../sect/sect-escrow-holder-repository.js';
 
 export class TickManager {
   /**
@@ -102,6 +107,22 @@ export class TickManager {
     this.auctionService = this.economicSystem
       ? new AuctionService({ economicSystem: this.economicSystem, config: this.economicTransactionConfig })
       : null;
+    const sectOperationConfig = this.balanceConfig.sectOperation || {};
+    this.questBoard = QuestBoard.fromConfig(sectOperationConfig.questBoard || {});
+    this.questCompletionHandlerRegistry = createQuestCompletionHandlerRegistry();
+    this.questSourceStrategyRegistry = createQuestSourceStrategyRegistry();
+    this.sectEscrowHolders = new SectEscrowHolderRepository({
+      holderType: sectOperationConfig.personalBounty?.escrowHolderType || 'sect_bounty_vault',
+    });
+    this.sectBountyService = new SectBountyService({
+      config: sectOperationConfig.personalBounty || {},
+      treasuryConfig: sectOperationConfig.treasury || {},
+      ranksData: this.ranksData,
+      economicSystem: this.economicSystem,
+      questBoard: this.questBoard,
+      escrowHolders: this.sectEscrowHolders,
+    });
+    this.sectOperationService = null;
 
     // ── 子服务装配（各持 host 引用，通过共享 helper 协作）──
     this.factionAIService = new FactionAIService({ host: this, combatConfig: this.balanceConfig.combat || {} });

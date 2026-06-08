@@ -64,6 +64,18 @@ export class WorldContextBuilder {
       economicSystem: host.economicSystem || null,
       economicTransactionConfig: host.economicTransactionConfig || {},
       dynamicGoalConfig: host.dynamicGoalsConfig || {},
+      questBoard: host.questBoard || null,
+      questCompletionHandlerRegistry: host.questCompletionHandlerRegistry || null,
+      questSourceStrategyRegistry: host.questSourceStrategyRegistry || null,
+      sectBountyService: host.sectBountyService || null,
+      sectOperationService: host.sectOperationService || null,
+
+      publishQuest(input = {}) {
+        return host.questBoard?.publish?.({
+          day: host.worldEntity.currentDay,
+          ...input,
+        }) || { success: false, reason: 'quest_board_missing' };
+      },
 
       emitRelationEvent(event) {
         return host.relationshipSystem?.handleEvent?.(event) || [];
