@@ -342,6 +342,39 @@ function validateStockPressure(operation, itemIds, resourceRegistry, errors) {
   }
 }
 
+function validateQuestTemplateSectMetadata(questTemplates, operation, hallIds, errors) {
+  const questTypes = getQuestTypes(questTemplates);
+  const questById = new Map(questTypes.map((quest) => [quest?.id, quest]).filter(([id]) => id));
+
+  for (const quest of questTypes) {
+    const label = `QuestTemplate ${quest?.id || '<missing>'}`;
+    for (const field of ['tags', 'resourceDemandTags', 'sectIssuerHints']) {
+      if (hasOwn(quest, field) && !Array.isArray(quest[field])) {
+        errors.push(`${label}.${field} must be an array when declared`);
+      }
+    }
+    for (const hallId of asList(quest?.sectIssuerHints)) {
+      if (!hallIds.has(hallId)) {
+        errors.push(`${label}.sectIssuerHints references missing hall ${hallId}`);
+      }
+    }
+  }
+
+  for (const rule of asList(operation?.stockPressure)) {
+    if (!rule?.questTemplateId) continue;
+    const quest = questById.get(rule.questTemplateId);
+    if (!quest) continue;
+    const matchKeys = new Set([
+      ...asList(quest.tags),
+      ...asList(quest.resourceDemandTags),
+    ].filter(Boolean));
+    if (matchKeys.size === 0) {
+      const label = rule.dedupeKey || rule.resourceId || '<missing>';
+      errors.push(`stockPressure ${label}.questTemplateId ${rule.questTemplateId} must reference a quest template with tags or resourceDemandTags`);
+    }
+  }
+}
+
 function validateSectOperationNumbers(operation, errors) {
   validateNumberRange(operation?.monthlyIntervalDays, 'balanceSectOperation.monthlyIntervalDays', errors, { min: 1 });
   for (const [role, value] of Object.entries(asObject(operation?.stipends?.roleStones))) {
@@ -434,6 +467,7 @@ export function collectSectConfigErrors(configs = {}) {
   const roleIds = buildRoleIds(configs, organization);
   validateSectOperationNumbers(operation, errors);
   validateSectOperationStructure(operation, errors);
+  validateQuestTemplateSectMetadata(configs.questTemplates, operation, new Set(hallById.keys()), errors);
 
   for (const [scale, profileId] of Object.entries(asObject(seedProfiles.scaleToProfile))) {
     if (profileId && !seedProfileIds.has(profileId)) {

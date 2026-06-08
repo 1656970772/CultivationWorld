@@ -165,6 +165,17 @@ const badBountyRewardKindConfigs = clone(configs);
 badBountyRewardKindConfigs.balanceSectOperation.personalBounty.allowedRewardKinds = ['item', 'faction_state_resource'];
 ok(hasError(validateGameData(badBountyRewardKindConfigs, { strict: false }), 'allowedRewardKinds'), 'validator reports invalid personal bounty reward kind');
 
+const badQuestHallHintConfigs = clone(configs);
+badQuestHallHintConfigs.questTemplates.questTypes.find(quest => Array.isArray(quest.sectIssuerHints)).sectIssuerHints = ['missing_hall_for_quest'];
+ok(hasError(validateGameData(badQuestHallHintConfigs, { strict: false }), 'missing_hall_for_quest'), 'validator reports missing quest sectIssuerHints hall');
+
+const badStockQuestMetadataConfigs = clone(configs);
+const stockQuestId = badStockQuestMetadataConfigs.balanceSectOperation.stockPressure[0].questTemplateId;
+const stockQuest = badStockQuestMetadataConfigs.questTemplates.questTypes.find(quest => quest.id === stockQuestId);
+delete stockQuest.tags;
+delete stockQuest.resourceDemandTags;
+ok(hasError(validateGameData(badStockQuestMetadataConfigs, { strict: false }), 'resourceDemandTags'), 'validator reports stock pressure quest template without tags/resourceDemandTags');
+
 console.log('8) strict mode throws with collected validation errors');
 let strictError = null;
 try {

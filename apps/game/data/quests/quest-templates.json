@@ -108,6 +108,9 @@
       "name": "巡山",
       "repeatable": true,
       "category": "daily",
+      "tags": ["patrol", "security"],
+      "sectIssuerHints": ["deacon_hall", "law_hall"],
+      "resourceDemandTags": ["security"],
       "difficultyRange": [
         1,
         3
@@ -120,6 +123,9 @@
       "name": "采药",
       "repeatable": true,
       "category": "daily",
+      "tags": ["gather", "alchemy_material"],
+      "sectIssuerHints": ["alchemy_hall", "deacon_hall"],
+      "resourceDemandTags": ["alchemy_material"],
       "difficultyRange": [
         1,
         4
@@ -132,6 +138,9 @@
       "name": "值守",
       "repeatable": true,
       "category": "daily",
+      "tags": ["guard", "security"],
+      "sectIssuerHints": ["law_hall", "deacon_hall"],
+      "resourceDemandTags": ["security"],
       "difficultyRange": [
         1,
         2
@@ -144,6 +153,9 @@
       "name": "斩妖",
       "repeatable": false,
       "category": "combat",
+      "tags": ["monster_hunt", "combat_material"],
+      "sectIssuerHints": ["law_hall", "alchemy_hall"],
+      "resourceDemandTags": ["combat_material", "alchemy_material"],
       "difficultyRange": [
         2,
         8
@@ -156,6 +168,9 @@
       "name": "护送",
       "repeatable": false,
       "category": "external",
+      "tags": ["escort", "logistics"],
+      "sectIssuerHints": ["deacon_hall"],
+      "resourceDemandTags": ["logistics"],
       "difficultyRange": [
         2,
         6
@@ -168,6 +183,9 @@
       "name": "探索秘境",
       "repeatable": false,
       "category": "exploration",
+      "tags": ["exploration", "rare_resource"],
+      "sectIssuerHints": ["library_hall"],
+      "resourceDemandTags": ["rare_resource"],
       "difficultyRange": [
         4,
         10
@@ -180,6 +198,9 @@
       "name": "采矿",
       "repeatable": false,
       "category": "resource",
+      "tags": ["mine", "ore_material", "spirit_stone"],
+      "sectIssuerHints": ["artifact_hall", "deacon_hall"],
+      "resourceDemandTags": ["ore_material", "spirit_stone", "artifact_material"],
       "difficultyRange": [
         2,
         5
@@ -192,6 +213,9 @@
       "name": "除害",
       "repeatable": false,
       "category": "combat",
+      "tags": ["monster_hunt", "security"],
+      "sectIssuerHints": ["law_hall"],
+      "resourceDemandTags": ["combat_material", "security"],
       "difficultyRange": [
         3,
         7
@@ -204,6 +228,9 @@
       "name": "调查",
       "repeatable": false,
       "category": "external",
+      "tags": ["investigate", "intelligence"],
+      "sectIssuerHints": ["library_hall", "law_hall"],
+      "resourceDemandTags": ["intelligence"],
       "difficultyRange": [
         2,
         6
@@ -216,6 +243,9 @@
       "name": "猎灵兽",
       "repeatable": false,
       "category": "combat",
+      "tags": ["monster_hunt", "beast_material"],
+      "sectIssuerHints": ["law_hall", "artifact_hall"],
+      "resourceDemandTags": ["beast_material", "combat_material"],
       "difficultyRange": [
         5,
         10
