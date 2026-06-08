@@ -62,6 +62,7 @@ export class NPCAcceptQuestToilExecutor extends ToilExecutor {
       status: ToilResultStatus.SUCCESS,
       reason: 'quest_accepted',
       contextPatch: {
+        boardQuestId: result.boardQuestId || null,
         questTypeId: result.questTypeId,
         questCategory: result.questCategory,
         difficulty: result.difficulty,

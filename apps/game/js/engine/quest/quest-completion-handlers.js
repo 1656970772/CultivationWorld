@@ -18,7 +18,7 @@ export class QuestCompletionHandlerRegistry {
   }
 
   get(id) {
-    return this.handlers.get(id) || this.handlers.get('default') || null;
+    return this.handlers.get(id) || null;
   }
 
   has(id) {
@@ -30,18 +30,27 @@ export class QuestCompletionHandlerRegistry {
   }
 }
 
-export function defaultQuestCompletionHandler({ questBoard, questId, npc, day } = {}) {
-  if (!questBoard || !questId) return { success: false, reason: 'quest_context_missing' };
-  const quest = questBoard.byId?.(questId);
+export function defaultQuestCompletionHandler(input = {}) {
+  const board = input.questBoard || input.worldContext?.questBoard;
+  const id = input.questId || input.boardQuestId;
+  const completer = input.npc || input.entity || input.completer;
+  const currentDay = input.day ?? input.worldContext?.currentDay ?? 0;
+  if (!board || !id) return { success: false, reason: 'quest_context_missing' };
+  const quest = board.byId?.(id);
   if (quest?.escrowId || (Array.isArray(quest?.escrowRefs) && quest.escrowRefs.length > 0)) {
     return { success: false, reason: 'quest_completion_handler_required', quest };
   }
-  return questBoard.complete(questId, npc, day);
+  const completed = board.complete(id, completer, currentDay);
+  if (!completed.success || typeof board.turnIn !== 'function') return completed;
+  const turnedIn = board.turnIn(id, completer, currentDay);
+  if (!turnedIn.success) return turnedIn;
+  return { success: true, quest: turnedIn.quest, completed, turnedIn };
 }
 
 export function createQuestCompletionHandlerRegistry(entries = []) {
   const registry = new QuestCompletionHandlerRegistry();
   registry.register('default', defaultQuestCompletionHandler);
+  registry.register('generic_task', defaultQuestCompletionHandler);
   for (const entry of entries) {
     if (!entry) continue;
     const id = entry.id || entry.questKind || entry.kind;

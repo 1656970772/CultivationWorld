@@ -173,7 +173,7 @@ console.log('6) default completion handler refuses escrowed quests');
     escrowRefs: ['escrow_test'],
   });
   const registry = createQuestCompletionHandlerRegistry();
-  const result = registry.get('personal_bounty')({
+  const result = registry.get('default')({
     questBoard: board,
     questId: quest.id,
     npc: { id: 'npc_default_worker' },

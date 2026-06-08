@@ -32,7 +32,7 @@ import { MonsterRespawnService } from './services/monster-respawn-service.js';
 import { readEffectiveCombatAttribute } from '../npc/cultivator-combat-attributes.js';
 import { AuctionService } from '../economy/auction-service.js';
 import { QuestBoard } from '../quest/quest-board.js';
-import { createQuestCompletionHandlerRegistry } from '../quest/quest-completion-handlers.js';
+import { createQuestCompletionHandlerRegistry, defaultQuestCompletionHandler } from '../quest/quest-completion-handlers.js';
 import { createQuestSourceStrategyRegistry } from '../quest/quest-source-strategies.js';
 import { SectBountyService } from '../sect/sect-bounty-service.js';
 import { SectEscrowHolderRepository } from '../sect/sect-escrow-holder-repository.js';
@@ -120,6 +120,9 @@ export class TickManager {
     const sectOperationConfig = this.balanceConfig.sectOperation || {};
     this.questBoard = QuestBoard.fromConfig(sectOperationConfig.questBoard || {});
     this.questCompletionHandlerRegistry = createQuestCompletionHandlerRegistry();
+    for (const kind of new Set((sectOperationConfig.stockPressure || []).map(rule => rule?.questKind).filter(Boolean))) {
+      this.questCompletionHandlerRegistry.register(kind, defaultQuestCompletionHandler);
+    }
     this.questSourceStrategyRegistry = createQuestSourceStrategyRegistry();
     this.sectEscrowHolders = new SectEscrowHolderRepository({
       holderType: sectOperationConfig.personalBounty?.escrowHolderType || 'sect_bounty_vault',

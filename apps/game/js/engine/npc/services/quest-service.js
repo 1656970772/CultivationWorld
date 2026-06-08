@@ -10,6 +10,11 @@ import {
   pickQuestCandidate,
 } from '../actions/npc-action-utils.js';
 import { chooseSafeHuntTarget } from './combat-route-risk.js';
+import {
+  createQuestSourceStrategyRegistry,
+  pickBoardQuest,
+  validateBoardQuestForEntity,
+} from '../../quest/quest-source-strategies.js';
 
 function questContext(entity, worldContext) {
   const difficulty = entity.state.get('activeQuestDifficulty') || 1;
@@ -90,6 +95,21 @@ function questRewards(diffInfo = {}, difficulty = 1) {
     factionStones: Number(diffInfo.factionStones) || 10,
     difficulty,
   };
+}
+
+function pickBoardQuestFromSources(entity, worldContext, opts = {}) {
+  const registry = worldContext?.questSourceStrategyRegistry || createQuestSourceStrategyRegistry();
+  if (typeof registry?.pick === 'function') {
+    return registry.pick({ entity, worldContext, opts });
+  }
+  const strategy = registry?.get?.('board') || registry?.get?.('quest_board');
+  if (typeof strategy === 'function') {
+    return strategy({ entity, worldContext, opts });
+  }
+  if (typeof strategy?.pick === 'function') {
+    return strategy.pick({ entity, worldContext, opts });
+  }
+  return pickBoardQuest(entity, worldContext, opts);
 }
 
 function buildQuestTarget(picked, questLoc) {
@@ -289,6 +309,11 @@ export function acceptQuest(entity, worldContext, opts = {}) {
     return { success: false, reason: 'quest_templates_missing', description: '任务系统未初始化' };
   }
 
+  const boardQuest = pickBoardQuestFromSources(entity, worldContext, opts);
+  if (boardQuest) {
+    return acceptBoardQuest(entity, worldContext, boardQuest);
+  }
+
   const cult = getCultivationConfig(worldContext);
   const rankMaxDifficulty = cult.rankMaxDifficulty || {};
   const rankId = entity.state.get('rankId') || 'mortal';
@@ -329,6 +354,7 @@ export function acceptQuest(entity, worldContext, opts = {}) {
   }
 
   writeQuestState(entity, picked, diffInfo, questLoc, worldContext);
+  entity.state.set('activeBoardQuestId', null);
 
   const dist = (questLoc && entity.spatial)
     ? Math.abs(questLoc.x - entity.spatial.tileX) + Math.abs(questLoc.y - entity.spatial.tileY)
@@ -349,6 +375,68 @@ export function acceptQuest(entity, worldContext, opts = {}) {
     questTarget: questLoc,
     questDistance: dist,
     description: `${entity.name} 接取了${diffInfo?.name}${picked.quest.name}任务${dist > 0 ? `（地点距 ${dist} 格）` : ''}`,
+  };
+}
+
+export function acceptBoardQuest(entity, worldContext, boardQuest) {
+  const questTemplates = worldContext.questTemplates;
+  const validation = validateBoardQuestForEntity(entity, worldContext, boardQuest);
+  if (!validation.success) return validation;
+  const quest = validation.quest;
+  const difficulty = validation.difficulty;
+  const diffInfo = questTemplates?.difficulties?.find(d => d.level === difficulty);
+  if (!diffInfo) return { success: false, reason: 'board_quest_difficulty_missing' };
+
+  const accepted = worldContext.questBoard.accept(boardQuest.id, entity, worldContext.currentDay ?? 0);
+  if (!accepted.success) return accepted;
+
+  let questLoc = null;
+  if (typeof worldContext.resolveQuestLocation === 'function') {
+    questLoc = worldContext.resolveQuestLocation(entity, quest, difficulty);
+  }
+
+  writeQuestState(entity, { quest, difficulty }, diffInfo, questLoc, worldContext);
+  entity.state.set('activeBoardQuestId', boardQuest.id);
+  const instance = readQuestInstance(entity) || {};
+  writeQuestInstance(entity, {
+    ...instance,
+    boardQuestId: boardQuest.id,
+    issuerType: boardQuest.issuerType || null,
+    issuerId: boardQuest.issuerId || null,
+    issuerName: boardQuest.issuerName || null,
+    questBoard: boardQuest.questBoard || null,
+    questKind: boardQuest.questKind || 'generic_task',
+    escrowId: boardQuest.escrowId || null,
+    rewardContribution: Number(boardQuest.rewardContribution || 0),
+  });
+
+  const dist = (questLoc && entity.spatial)
+    ? Math.abs(questLoc.x - entity.spatial.tileX) + Math.abs(questLoc.y - entity.spatial.tileY)
+    : 0;
+
+  return {
+    success: true,
+    picked: { quest, difficulty },
+    diffInfo,
+    questLoc,
+    boardQuestId: boardQuest.id,
+    issuerType: boardQuest.issuerType || null,
+    issuerId: boardQuest.issuerId || null,
+    issuerName: boardQuest.issuerName || null,
+    questBoard: boardQuest.questBoard || null,
+    questKind: boardQuest.questKind || 'generic_task',
+    escrowId: boardQuest.escrowId || null,
+    rewardContribution: Number(boardQuest.rewardContribution || 0),
+    questTypeId: quest.id,
+    questType: quest.name,
+    questCategory: quest.category || null,
+    questValue: questValue(diffInfo, difficulty),
+    questRiskScore: questRiskScore(diffInfo, difficulty),
+    difficulty,
+    difficultyName: diffInfo?.name,
+    questTarget: questLoc,
+    questDistance: dist,
+    description: `${entity.name} 从${boardQuest.issuerName || '任务板'}接取了${diffInfo?.name}${quest.name}任务${dist > 0 ? `（地点距 ${dist} 格）` : ''}`,
   };
 }
 
@@ -590,8 +678,62 @@ export function turnInQuest(entity, worldContext) {
   const { questTemplates, difficulty, questTypeId, questName, diffName } = questContext(entity, worldContext);
   const factionId = entity.state.get('factionId');
   const diffInfo = questTemplates?.difficulties?.find(d => d.level === difficulty);
+  const activeInstance = readQuestInstance(entity);
+  const boardQuestId = activeInstance?.boardQuestId || entity.state.get('activeBoardQuestId') || null;
+  const boardQuest = boardQuestId && worldContext?.questBoard?.byId
+    ? worldContext.questBoard.byId(boardQuestId)
+    : null;
+  let boardQuestResult = null;
+  if (boardQuestId) {
+    const handlerKind = boardQuest?.questKind || activeInstance?.questKind || 'generic_task';
+    const handler = worldContext?.questCompletionHandlerRegistry?.get?.(handlerKind);
+    if (!handler) {
+      return { success: false, reason: `quest_completion_handler_missing:${handlerKind || 'unknown'}` };
+    }
+    boardQuestResult = handler({
+      entity,
+      npc: entity,
+      completer: entity,
+      worldContext,
+      questBoard: worldContext.questBoard,
+      questId: boardQuestId,
+      boardQuestId,
+      boardQuest,
+      day: worldContext?.currentDay ?? 0,
+    });
+    if (!boardQuestResult?.success) {
+      return {
+        success: false,
+        reason: boardQuestResult?.reason || 'board_quest_completion_failed',
+        boardQuestId,
+        boardQuestResult,
+      };
+    }
+    if (activeInstance?.questKind === 'personal_bounty' || boardQuest?.questKind === 'personal_bounty') {
+      const totalQuests = entity.state.get('totalQuestsCompleted') || 0;
+      entity.state.set('totalQuestsCompleted', totalQuests + 1);
+      resetQuestState(entity);
+      return {
+        success: true,
+        eventType: 'quest_turn_in',
+        isWanderer: !factionId,
+        rewardStones: 0,
+        rewardContribution: 0,
+        factionStones: 0,
+        extraRewards: { questItemReward: 0, rewards: [] },
+        bountyOrgName: null,
+        transactionId: boardQuestResult?.release?.transactionId || null,
+        boardQuestId,
+        boardQuestResult,
+        description: `${entity.name} 交付了${diffName}${questName}个人悬赏，领取托管奖励`,
+      };
+    }
+  }
   const baseReward = diffInfo?.rewardStones || 5;
-  const rewardContribution = diffInfo?.rewardContribution || 2;
+  const boardRewardContribution = Number(activeInstance?.rewardContribution || 0);
+  const rewardContribution = boardRewardContribution > 0
+    ? boardRewardContribution
+    : (diffInfo?.rewardContribution || 2);
   const factionStones = diffInfo?.factionStones || 10;
   const isWanderer = !factionId;
   const bountyCfg = getCultivationConfig(worldContext).bounty || {};
@@ -709,6 +851,8 @@ export function turnInQuest(entity, worldContext) {
     extraRewards,
     bountyOrgName,
     transactionId: rewardTransactionId,
+    boardQuestId,
+    boardQuestResult,
     description: `${description}${extraDescription}`,
   };
 }
@@ -731,5 +875,6 @@ export function resetQuestState(entity) {
   entity.state.set('questTargetMonsterName', null);
   entity.state.set('questTargetMonsterGrade', null);
   entity.state.set('questTargetMonsterCount', 0);
+  entity.state.set('activeBoardQuestId', null);
   entity.state.set('activeQuestInstance', null);
 }

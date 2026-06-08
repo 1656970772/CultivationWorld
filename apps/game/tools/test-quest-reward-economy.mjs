@@ -15,6 +15,7 @@ const load = (p) => JSON.parse(readFileSync(resolve(GAME_ROOT, p), 'utf-8'));
 const { Inventory } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/abstract/inventory.js')).href);
 const { RuntimeState } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/abstract/runtime-state.js')).href);
 const { ItemRegistry } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/items/item-registry.js')).href);
+const { EffectPool } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/pools/effect-pool.js')).href);
 const { NPCEntity } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/npc/npc-entity.js')).href);
 const { applyQuestRewardProfile } = await import(pathToFileURL(resolve(GAME_ROOT, 'js/engine/npc/quest-rewards.js')).href);
 const {
@@ -28,6 +29,9 @@ const {
 ItemRegistry.clear();
 ItemRegistry.loadFromArray(load('data/definitions/macro-resources.json'));
 ItemRegistry.loadFromArray(['currency','material','pill','artifact','talisman','technique'].flatMap(c => load(`data/items/${c}.json`).items));
+EffectPool.clear();
+EffectPool.loadFromConfig(load('data/effects/core-effects.json'));
+EffectPool.loadFromConfig(load('data/effects/combat-effects.json'));
 
 const questTemplates = load('data/quests/quest-templates.json');
 const economyConfig = load('data/balance/economy.json');

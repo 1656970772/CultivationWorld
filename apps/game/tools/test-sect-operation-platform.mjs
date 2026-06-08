@@ -20,6 +20,8 @@ const { defaultSectOperationRules, SectOperationRuleRegistry } = await imp('js/e
 const { SectOperationService } = await imp('js/engine/sect/sect-operation-service.js');
 const { SectEscrowHolderRepository } = await imp('js/engine/sect/sect-escrow-holder-repository.js');
 const { SectBountyService } = await imp('js/engine/sect/sect-bounty-service.js');
+const { acceptBoardQuest, acceptQuest, executeQuestDay, turnInQuest } = await imp('js/engine/npc/services/quest-service.js');
+const { createQuestCompletionHandlerRegistry, defaultQuestCompletionHandler } = await imp('js/engine/quest/quest-completion-handlers.js');
 
 const manifest = load('data/config/data-manifest.json');
 const configs = await loadGameConfigsFromManifest(manifest, { basePath: GAME_ROOT, loadJson: load });
@@ -124,6 +126,10 @@ function memberPillDue(npc) {
 function worldPieces() {
   const economicSystem = new EconomicSystem({ config: configs.economicTransactionConfig });
   const questBoard = QuestBoard.fromConfig(operation.questBoard);
+  const questCompletionHandlerRegistry = createQuestCompletionHandlerRegistry();
+  for (const kind of new Set((operation.stockPressure || []).map(rule => rule.questKind).filter(Boolean))) {
+    questCompletionHandlerRegistry.register(kind, defaultQuestCompletionHandler);
+  }
   const ruleRegistry = new SectOperationRuleRegistry(defaultSectOperationRules({ config: operation }));
   const memberProvider = { aliveSectFactions: () => [], membersOf: () => [] };
   const service = new SectOperationService({
@@ -146,7 +152,42 @@ function worldPieces() {
     questBoard,
     escrowHolders,
   });
-  return { economicSystem, questBoard, service, bounty };
+  questCompletionHandlerRegistry.register('personal_bounty', ({ questId, npc, completer, day } = {}) =>
+    bounty.completePersonalBounty({
+      day,
+      questId,
+      completer: completer || npc,
+    }));
+  return { economicSystem, questBoard, questCompletionHandlerRegistry, service, bounty };
+}
+
+function questWorldContext({ economicSystem, questBoard, questCompletionHandlerRegistry, bounty }, extra = {}) {
+  return {
+    rng: { next: () => 0, fn: () => 0 },
+    currentDay: extra.currentDay ?? 71,
+    questTemplates: configs.questTemplates,
+    balanceConfig: {
+      cultivation: {
+        rankMaxDifficulty: Object.fromEntries(ranksData.map(rank => [rank.id, 9])),
+      },
+      economy: configs.balanceEconomy || {},
+      sectOperation: operation,
+    },
+    economicSystem,
+    questBoard,
+    questCompletionHandlerRegistry,
+    sectBountyService: bounty,
+    entityRegistry: extra.entityRegistry || {
+      getById(id) {
+        return extra.entities?.[id] || null;
+      },
+      getAliveByType() {
+        return [];
+      },
+    },
+    resolveQuestLocation: extra.resolveQuestLocation || (() => null),
+    ...extra,
+  };
 }
 
 // 断言必须从 operation / organization / seed profile 推导，不写固定月俸、固定堂口、
@@ -381,7 +422,167 @@ console.log('4) repeated shortfall and low stability make disciple leave sect');
   ok(disciple.state.get('isWanderer') === true, '离宗后转为散修');
 }
 
-console.log('5) world resource regen uses faction state as the single resource source');
+console.log('5) QuestService accepts and turns in board quests');
+{
+  const faction = entity(
+    'sect_test',
+    'faction',
+    { [stockItemRule.resourceId]: 0 },
+    { [currencyItemId]: 1000, stability: 80 },
+    sectStaticData(),
+  );
+  const workerRole = firstNonExemptRole();
+  const workerRankId = ranksData.find(r => r.order >= organization.hallMembership.minRankOrder)?.id || ranksData[0].id;
+  const npc = entity('npc_worker', 'npc', {}, {
+    factionId: 'sect_test',
+    hasFaction: true,
+    currentRole: workerRole,
+    rankId: workerRankId,
+  }, { name: '接单弟子' });
+  const pieces = worldPieces();
+  pieces.service.processMonthly({ day: operation.monthlyIntervalDays, faction, members: [npc] });
+  const bountyBoardName = operation.personalBounty.defaultQuestBoard || 'bounty';
+  const highPriorityBountyBoardQuest = pieces.questBoard.publish({
+    day: 31,
+    factionId: 'sect_test',
+    issuerType: 'hall',
+    issuerId: 'bounty_hall',
+    issuerName: '悬赏堂',
+    questBoard: bountyBoardName,
+    questKind: 'generic_task',
+    questTemplateId: bountyQuestTemplateId,
+    difficulty: 1,
+    priority: 999,
+    rewardContribution: 1,
+    dedupeKey: 'test:high_priority_bounty_board',
+  });
+  const open = pieces.questBoard.openFor({ factionId: 'sect_test' });
+  ok(open.length > 0, '任务板存在开放任务');
+  const expectedQuest = open.find(q => q.questBoard !== bountyBoardName);
+  ok(highPriorityBountyBoardQuest?.id && expectedQuest?.id, '测试同时存在高优先级悬赏板任务与宗门任务');
+  const invalidDifficultyQuest = pieces.questBoard.publish({
+    day: 32,
+    factionId: 'sect_test',
+    issuerType: 'hall',
+    issuerId: 'test_hall',
+    issuerName: '测试堂',
+    questKind: stockItemRule.questKind,
+    questTemplateId: stockItemRule.questTemplateId,
+    difficulty: 99,
+    priority: 1000,
+    rewardContribution: 99,
+    dedupeKey: 'test:invalid_board_difficulty',
+  });
+  ok(invalidDifficultyQuest?.id, '测试存在超出模板范围的高优先级任务');
+  const directInvalid = acceptBoardQuest(npc, questWorldContext(pieces), invalidDifficultyQuest);
+  ok(directInvalid.success === false && directInvalid.reason === 'board_quest_difficulty_out_of_range', '直接接取超出模板范围的任务会失败');
+  const expectedBoardContribution = Number(expectedQuest.rewardContribution || 0);
+  const accepted = acceptQuest(npc, questWorldContext(pieces));
+  ok(accepted.success === true, 'QuestService 可从任务板接取任务');
+  ok(accepted.boardQuestId === expectedQuest.id, 'QuestService 按配置来源顺序接取宗门任务，跳过高优先级悬赏板和非法难度任务');
+  ok(npc.state.get('activeBoardQuestId') === expectedQuest.id, '接取后写入 activeBoardQuestId');
+  npc.state.set('questDaysRemaining', 1);
+  const executed = executeQuestDay(npc, questWorldContext(pieces, {
+    currentDay: 72,
+    rng: { next: () => 0.99, fn: () => 0.99 },
+  }));
+  ok(executed.success === true && executed.outcome === 'complete', 'QuestService 可执行任务板任务到完成');
+  const turnedIn = turnInQuest(npc, questWorldContext(pieces, {
+    currentDay: 73,
+    entities: { sect_test: faction },
+  }));
+  const boardAfter = pieces.questBoard.byId(expectedQuest.id);
+  ok(turnedIn.success === true, 'QuestService 可交付任务板任务');
+  ok(turnedIn.boardQuestId === expectedQuest.id, 'turnInQuest 返回任务板 ID');
+  ok(expectedBoardContribution > 0 && npc.state.get('contribution') === expectedBoardContribution, '任务板贡献奖励覆盖模板默认贡献');
+  ok(npc.state.get('monthlyContribution') === expectedBoardContribution, '任务板贡献奖励同步月贡献');
+  ok(boardAfter.state === 'turned_in', '交付后任务板任务进入已交付状态');
+
+  const blockedNpc = entity('npc_missing_handler', 'npc', {}, {
+    factionId: 'sect_test',
+    hasFaction: true,
+    currentRole: workerRole,
+    rankId: workerRankId,
+  }, { name: '缺处理器弟子' });
+  const blockedPieces = worldPieces();
+  const missingHandlerQuest = blockedPieces.questBoard.publish({
+    day: 74,
+    factionId: 'sect_test',
+    issuerType: 'hall',
+    issuerId: 'test_hall',
+    issuerName: '测试堂',
+    questKind: 'unregistered_task',
+    questTemplateId: stockItemRule.questTemplateId,
+    difficulty: stockItemRule.difficultyBySeverity?.safe || 1,
+    priority: 999,
+    rewardContribution: 1,
+    dedupeKey: 'test:missing_completion_handler',
+  });
+  ok(missingHandlerQuest?.id, '真实 registry 缺处理器场景发布未注册 kind 任务');
+  const blockedAccepted = acceptQuest(blockedNpc, questWorldContext(blockedPieces));
+  ok(blockedAccepted.success === true && blockedAccepted.boardQuestId === missingHandlerQuest.id, '缺处理器场景先成功接取未注册 kind 任务');
+  blockedNpc.state.set('questDaysRemaining', 1);
+  executeQuestDay(blockedNpc, questWorldContext(blockedPieces, {
+    currentDay: 72,
+    rng: { next: () => 0.99, fn: () => 0.99 },
+  }));
+  const blockedTurnIn = turnInQuest(blockedNpc, questWorldContext(blockedPieces, {
+    currentDay: 73,
+  }));
+  ok(blockedTurnIn.success === false && String(blockedTurnIn.reason).startsWith('quest_completion_handler_missing'), '缺少任务板交付处理器时明确失败');
+  ok(blockedNpc.state.get('activeBoardQuestId') === missingHandlerQuest.id && blockedNpc.state.get('hasActiveQuest') === true, '缺处理器失败不会重置任务状态');
+}
+
+console.log('6) personal bounty turn-in only releases escrow reward');
+{
+  const feeItemId = operation.personalBounty.feeItemId;
+  const feeAmount = operation.personalBounty.feeAmount;
+  const rewardAmount = feeAmount * 9;
+  const eligibleRankId = ranksData.find(r => r.order >= operation.personalBounty.minRankOrder)?.id;
+  const faction = entity('sect_test', 'faction', {}, { [currencyItemId]: 1000 }, sectStaticData());
+  const issuer = entity(
+    'npc_issuer_service',
+    'npc',
+    { [feeItemId]: rewardAmount + feeAmount },
+    { factionId: 'sect_test', rankId: eligibleRankId },
+    { name: '悬赏发布者' },
+  );
+  const worker = entity(
+    'npc_bounty_worker',
+    'npc',
+    {},
+    { factionId: 'sect_test', rankId: eligibleRankId, contribution: 0, monthlyContribution: 0 },
+    { name: '悬赏完成者' },
+  );
+  const pieces = worldPieces();
+  const created = pieces.bounty.createPersonalBounty({
+    day: 80,
+    faction,
+    issuer,
+    questTemplateId: bountyQuestTemplateId,
+    difficulty: operation.personalBounty.defaultDifficulty,
+    rewardAssets: [{ kind: 'item', itemId: feeItemId, quantity: rewardAmount }],
+  });
+  ok(created.success === true, '个人悬赏可发布到任务板');
+  const accepted = acceptQuest(worker, questWorldContext(pieces, {
+    currentDay: 81,
+    entities: { sect_test: faction },
+  }));
+  ok(accepted.success === true && accepted.boardQuestId === created.questId, 'QuestService 可接取个人悬赏');
+  worker.state.set('questDaysRemaining', 1);
+  executeQuestDay(worker, questWorldContext(pieces, { currentDay: 82 }));
+  const beforeInventory = worker.inventory.getAmount(feeItemId);
+  const turnedIn = turnInQuest(worker, questWorldContext(pieces, {
+    currentDay: 83,
+    entities: { sect_test: faction },
+  }));
+  ok(turnedIn.success === true, 'QuestService 可交付个人悬赏');
+  ok(worker.inventory.getAmount(feeItemId) - beforeInventory === rewardAmount, '个人悬赏只释放托管奖励');
+  ok(turnedIn.rewardStones === 0 && turnedIn.rewardContribution === 0 && turnedIn.factionStones === 0, '个人悬赏不叠加普通模板奖励或贡献');
+  ok(worker.state.get('contribution') === 0 && worker.state.get('monthlyContribution') === 0, '个人悬赏不写普通贡献点');
+}
+
+console.log('7) world resource regen uses faction state as the single resource source');
 {
   const faction = entity(
     'sect_state_source',
@@ -435,7 +636,7 @@ console.log('5) world resource regen uses faction state as the single resource s
   ok(faction.state.get('disciples') === 14, '纸面弟子增长写入 faction state');
 }
 
-console.log('6) tick manager without sect config keeps non-sect test worlds runnable');
+console.log('8) tick manager without sect config keeps non-sect test worlds runnable');
 {
   const worldState = new RuntimeState({ currentDay: 0 });
   const worldEntity = {

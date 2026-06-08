@@ -29,6 +29,8 @@ const { registerNPCToilExecutors } = await imp('js/engine/npc/toils/npc-toils.js
 const { bindMonsterHuntTarget, executeQuestDay } = await imp('js/engine/npc/services/quest-service.js');
 const { settleMonsterHunt } = await imp('js/engine/monster/monster-resources.js');
 
+const monsterResourceRules = load('data/definitions/monster-resource-rules.json');
+
 let failed = 0;
 function assert(cond, msg) {
   if (!cond) {
@@ -170,6 +172,7 @@ function mkWorld(monsterOrMonsters) {
       randomQuestSpawnChance: { 3: 1 },
     },
     balanceConfig: {
+      monsterResourceRules,
       cultivation: {
         cultivationSpeed: { foundation_building: 0.01 },
         spiritStoneCost: { foundation_building: 1 },
@@ -188,6 +191,7 @@ function mkWorld(monsterOrMonsters) {
         },
       },
     },
+    monsterResourceRules,
     ranksData: load('data/definitions/ranks.json'),
     entityRegistry: {
       getById(id) {
