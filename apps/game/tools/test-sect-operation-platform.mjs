@@ -56,8 +56,7 @@ const currencyItemId = must(configs.economicTransactionConfig?.currencyItemId, '
 const firstSectConfig = (configs.factions || []).find(f => f.isSect === true && f.sectSeedProfileId);
 const stockItemRule = (operation.stockPressure || []).find(r => r.kind === 'item');
 const stockResourceRule = (operation.stockPressure || []).find(r => r.kind === 'faction_state_resource');
-const bountyQuestTemplateId = operation.personalBounty?.allowedQuestTemplateIds?.[0]
-  || stockItemRule?.questTemplateId;
+const bountyQuestTemplateId = operation.personalBounty?.allowedQuestTemplateIds?.[0];
 
 must(firstSectConfig, '测试需要至少一个显式 isSect 且配置 seed profile 的宗门');
 must(stockItemRule && stockResourceRule, '测试需要 item 与 faction_state_resource 两类库存压力配置');
@@ -65,7 +64,73 @@ must(operation.personalBounty, '测试需要 personalBounty 配置');
 must(operation.decline, '测试需要 decline 配置');
 must(operation.stipends?.roleStones, '测试需要 stipends.roleStones 配置');
 must(operation.questBoard, '测试需要 questBoard 配置');
-must(bountyQuestTemplateId, '测试需要个人悬赏任务模板配置');
+must(bountyQuestTemplateId, '测试需要 personalBounty.allowedQuestTemplateIds[0]');
+
+function number(value, message) {
+  const n = Number(value);
+  if (!Number.isFinite(n)) throw new Error(message || `测试需要有效数值: ${value}`);
+  return n;
+}
+
+function getState(entity, key) {
+  return Number(entity?.state?.get?.(key) || 0);
+}
+
+function sectStaticData(overrides = {}) {
+  const data = {
+    name: '测试宗门',
+    isSect: true,
+    sectTemplateId: firstSectConfig.sectTemplateId,
+    sectSeedProfileId: firstSectConfig.sectSeedProfileId,
+    ...overrides,
+  };
+  return {
+    ...data,
+    get(key) {
+      return this[key];
+    },
+  };
+}
+
+function firstNonExemptRole() {
+  return must(
+    Object.keys(operation.stipends.roleStones)
+      .find(role => !(operation.decline.exemptRoles || []).includes(role)),
+    '测试需要至少一个非豁免身份月俸配置',
+  );
+}
+
+function memberStoneDue(npc) {
+  const role = must(npc.state.get('currentRole'), `NPC ${npc.id} 缺少 currentRole`);
+  const roleStones = number(operation.stipends.roleStones[role], `缺少身份月俸配置: ${role}`);
+  const extras = operation.stipends.hallExtraStones || {};
+  const hallExtra = npc.state.get('hallId')
+    ? (npc.state.get('isHallChief') === true
+      ? number(extras.chief, '测试需要 hallExtraStones.chief')
+      : number(extras.member, '测试需要 hallExtraStones.member'))
+    : 0;
+  return roleStones + hallExtra;
+}
+
+function memberPillDue(npc) {
+  const rankId = must(npc.state.get('rankId'), `NPC ${npc.id} 缺少 rankId`);
+  const rule = operation.stipends.rankPills?.[rankId];
+  if (!rule?.itemId || !(Number(rule.quantity) > 0)) return null;
+  return { itemId: rule.itemId, quantity: number(rule.quantity, `缺少 ${rankId} 丹药俸禄数量`) };
+}
+
+function memberContributionDue(npc) {
+  const contribution = operation.stipends.roleContribution || operation.stipends.roleContributions || {};
+  const hallContribution = operation.stipends.hallExtraContribution || operation.stipends.hallExtraContributions || {};
+  const role = must(npc.state.get('currentRole'), `NPC ${npc.id} 缺少 currentRole`);
+  const roleAmount = Number(contribution[role] || 0);
+  const hallAmount = npc.state.get('hallId')
+    ? (npc.state.get('isHallChief') === true
+      ? Number(hallContribution.chief || 0)
+      : Number(hallContribution.member || 0))
+    : 0;
+  return roleAmount + hallAmount;
+}
 
 function worldPieces() {
   const economicSystem = new EconomicSystem({ config: configs.economicTransactionConfig });
@@ -98,14 +163,132 @@ function worldPieces() {
 // 断言必须从 operation / organization / seed profile 推导，不写固定月俸、固定堂口、
 // 固定物品或固定门派 ID。sect_test / npc_worker 只作为内存 fixture ID。
 
-console.log('1) stock pressure publishes hall quests only once');
+console.log('1) monthly stipend pays stones, pills, contribution and maintenance from config');
+{
+  const stoneResourceId = must(operation.treasury?.stoneResourceId, '测试需要 treasury.stoneResourceId');
+  const pillRankEntry = must(
+    Object.entries(operation.stipends.rankPills || {})
+      .find(([, rule]) => rule?.itemId && Number(rule.quantity) > 0),
+    '测试需要至少一条 rankPills 丹药俸禄配置',
+  );
+  const [pillRankId, pillRule] = pillRankEntry;
+  const role = firstNonExemptRole();
+  const hallId = must((organization.halls || [])[0]?.id || stockItemRule.issuerHall, '测试需要堂口配置');
+  const contributionKey = must(
+    operation.stipends.contributionKey
+      || configs.economicTransactionConfig?.assets?.organizationPointKeys?.find(key => key === 'contribution'),
+    '测试需要月俸贡献点 key 配置',
+  );
+  const territoryCount = Math.max(1, number(firstSectConfig.territoryCount || 1, '测试需要宗门 territoryCount'));
+  const members = [
+    entity('npc_chief', 'npc', {}, {
+      factionId: 'sect_test',
+      hasFaction: true,
+      currentRole: role,
+      rankId: pillRankId,
+      hallId,
+      isHallChief: true,
+      [contributionKey]: 0,
+    }, { name: '堂主' }),
+    entity('npc_member', 'npc', {}, {
+      factionId: 'sect_test',
+      hasFaction: true,
+      currentRole: role,
+      rankId: pillRankId,
+      hallId,
+      isHallChief: false,
+      [contributionKey]: 0,
+    }, { name: '堂众' }),
+  ];
+  const expectedMemberStones = Object.fromEntries(members.map(npc => [npc.id, memberStoneDue(npc)]));
+  const expectedMemberPills = Object.fromEntries(members.map(npc => [npc.id, must(
+    memberPillDue(npc),
+    `NPC ${npc.id} 需要 rankPills 丹药俸禄配置`,
+  )]));
+  const expectedMemberContribution = Object.fromEntries(members.map(npc => [npc.id, memberContributionDue(npc)]));
+  must(
+    Object.values(expectedMemberContribution).some(amount => amount > 0),
+    '测试需要从 stipends 配置推导出正数贡献俸禄',
+  );
+  const maintenanceDue = number(operation.maintenance?.baseStones, '测试需要 maintenance.baseStones')
+    + territoryCount * number(operation.maintenance?.perTerritoryStones, '测试需要 maintenance.perTerritoryStones');
+  const expectedStoneDue = Object.values(expectedMemberStones).reduce((sum, amount) => sum + amount, 0)
+    + maintenanceDue;
+  const expectedPillDue = Object.values(expectedMemberPills).reduce((sum, rule) => sum + rule.quantity, 0);
+  const initialStone = expectedStoneDue + Math.max(1, expectedStoneDue);
+  const faction = entity(
+    'sect_test',
+    'faction',
+    { [pillRule.itemId]: expectedPillDue },
+    { [stoneResourceId]: initialStone, stability: 80, territoryCount },
+    sectStaticData(),
+  );
+  const { economicSystem, service } = worldPieces();
+  const result = service.processMonthly({
+    day: operation.monthlyIntervalDays,
+    faction,
+    members,
+    rng: { next: () => 0 },
+  }).monthly_stipend;
+  ok(result.totalStoneDue === expectedStoneDue, '月俸和维护费应从配置合计应付灵石');
+  ok(result.totalPillDue === expectedPillDue, '丹药俸禄应从 rankPills 配置合计');
+  ok(faction.state.get(stoneResourceId) === initialStone - expectedStoneDue, '宗门 state 货币扣除月俸与维护费');
+  ok(faction.inventory.getAmount(pillRule.itemId) === 0, '宗门 inventory 扣除丹药俸禄');
+  for (const npc of members) {
+    ok(getState(npc, stoneResourceId) === expectedMemberStones[npc.id], `${npc.id} 收到配置推导的灵石俸禄`);
+    ok(npc.inventory.getAmount(expectedMemberPills[npc.id].itemId) === expectedMemberPills[npc.id].quantity, `${npc.id} 收到配置推导的丹药俸禄`);
+    ok(getState(npc, contributionKey) === expectedMemberContribution[npc.id], `${npc.id} 收到配置推导的贡献俸禄`);
+  }
+  ok(faction.state.get('sectSalaryShortfallStreak') === 0, '足额发放后灵石欠发 streak 清零');
+  ok(faction.state.get('sectPillShortfallStreak') === 0, '足额发放后丹药欠发 streak 清零');
+  ok(economicSystem.ledger.all().some(r => r.type === operation.treasury.stipendScenarioId && r.status === 'settled'), '月俸写入 settled 经济账本');
+  ok(economicSystem.ledger.all().some(r => r.type === operation.treasury.pillScenarioId && r.status === 'settled'), '丹药俸禄写入 settled 经济账本');
+
+  const shortFaction = entity(
+    'sect_test_shortfall',
+    'faction',
+    { [pillRule.itemId]: 0 },
+    { [stoneResourceId]: 0, stability: 80, territoryCount },
+    sectStaticData({ name: '短缺宗门' }),
+  );
+  const shortMember = entity('npc_shortfall', 'npc', {}, {
+    factionId: 'sect_test_shortfall',
+    hasFaction: true,
+    currentRole: role,
+    rankId: pillRankId,
+    hallId,
+    isHallChief: false,
+    [contributionKey]: 0,
+  }, { name: '欠发弟子' });
+  const short = service.processMonthly({
+    day: operation.monthlyIntervalDays * 2,
+    faction: shortFaction,
+    members: [shortMember],
+    rng: { next: () => 0 },
+  }).monthly_stipend;
+  ok(short.stoneShort === true || short.pillShort === true, '资源不足时月度结果记录欠发');
+  ok(
+    shortFaction.state.get('sectSalaryShortfallStreak') > 0
+      || shortFaction.state.get('sectPillShortfallStreak') > 0,
+    '资源不足时欠发 streak 增长',
+  );
+  ok(
+    economicSystem.ledger.all().some(r =>
+      [operation.treasury.stipendScenarioId, operation.treasury.pillScenarioId].includes(r.type)
+      && r.status === 'failed'
+    ),
+    '欠发时至少写入失败经济账本',
+  );
+}
+
+console.log('2) stock pressure publishes hall quests only once');
 {
   const faction = entity(
     'sect_test',
     'faction',
     { [stockItemRule.resourceId]: 0 },
     { [stockResourceRule.resourceId]: 0, stability: 70 },
-    { name: '测试宗门' },
+    sectStaticData(),
   );
   const { service, questBoard } = worldPieces();
   const first = service.processMonthly({
@@ -125,14 +308,14 @@ console.log('1) stock pressure publishes hall quests only once');
   ok(open.some(q => q.issuerId === stockItemRule.issuerHall), '物品压力由配置的堂口发布');
 }
 
-console.log('2) personal bounty escrows reward and releases to completer');
+console.log('3) personal bounty escrows reward and releases to completer');
 {
   const feeItemId = operation.personalBounty.feeItemId;
   const feeAmount = operation.personalBounty.feeAmount;
   const rewardAmount = feeAmount * 12;
   const eligibleRankId = ranksData.find(r => r.order >= operation.personalBounty.minRankOrder)?.id;
   const workerRankId = ranksData.find(r => r.order < operation.personalBounty.minRankOrder)?.id || eligibleRankId;
-  const faction = entity('sect_test', 'faction', {}, { [currencyItemId]: 1000 }, { name: '测试宗门' });
+  const faction = entity('sect_test', 'faction', {}, { [currencyItemId]: 1000 }, sectStaticData());
   const issuer = entity(
     'npc_issuer',
     'npc',
@@ -166,14 +349,14 @@ console.log('2) personal bounty escrows reward and releases to completer');
   ok(worker.inventory.getAmount(feeItemId) === rewardAmount, '完成者获得托管奖励');
 }
 
-console.log('3) repeated shortfall and low stability make disciple leave sect');
+console.log('4) repeated shortfall and low stability make disciple leave sect');
 {
   const faction = entity('sect_test', 'faction', {}, {
     [currencyItemId]: 0,
     stability: operation.decline.stabilityForDeparture - 1,
     sectSalaryShortfallStreak: operation.decline.shortfallStreakForDeparture,
     sectPillShortfallStreak: operation.decline.shortfallStreakForDeparture,
-  }, { name: '测试宗门' });
+  }, sectStaticData());
   const disciple = entity('npc_disciple', 'npc', {}, {
     factionId: 'sect_test',
     hasFaction: true,
