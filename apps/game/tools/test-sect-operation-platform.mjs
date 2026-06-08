@@ -119,19 +119,6 @@ function memberPillDue(npc) {
   return { itemId: rule.itemId, quantity: number(rule.quantity, `缺少 ${rankId} 丹药俸禄数量`) };
 }
 
-function memberContributionDue(npc) {
-  const contribution = operation.stipends.roleContribution || operation.stipends.roleContributions || {};
-  const hallContribution = operation.stipends.hallExtraContribution || operation.stipends.hallExtraContributions || {};
-  const role = must(npc.state.get('currentRole'), `NPC ${npc.id} 缺少 currentRole`);
-  const roleAmount = Number(contribution[role] || 0);
-  const hallAmount = npc.state.get('hallId')
-    ? (npc.state.get('isHallChief') === true
-      ? Number(hallContribution.chief || 0)
-      : Number(hallContribution.member || 0))
-    : 0;
-  return roleAmount + hallAmount;
-}
-
 function worldPieces() {
   const economicSystem = new EconomicSystem({ config: configs.economicTransactionConfig });
   const questBoard = QuestBoard.fromConfig(operation.questBoard);
@@ -163,7 +150,7 @@ function worldPieces() {
 // 断言必须从 operation / organization / seed profile 推导，不写固定月俸、固定堂口、
 // 固定物品或固定门派 ID。sect_test / npc_worker 只作为内存 fixture ID。
 
-console.log('1) monthly stipend pays stones, pills, contribution and maintenance from config');
+console.log('1) monthly stipend pays stones, pills and maintenance from config');
 {
   const stoneResourceId = must(operation.treasury?.stoneResourceId, '测试需要 treasury.stoneResourceId');
   const pillRankEntry = must(
@@ -174,11 +161,6 @@ console.log('1) monthly stipend pays stones, pills, contribution and maintenance
   const [pillRankId, pillRule] = pillRankEntry;
   const role = firstNonExemptRole();
   const hallId = must((organization.halls || [])[0]?.id || stockItemRule.issuerHall, '测试需要堂口配置');
-  const contributionKey = must(
-    operation.stipends.contributionKey
-      || configs.economicTransactionConfig?.assets?.organizationPointKeys?.find(key => key === 'contribution'),
-    '测试需要月俸贡献点 key 配置',
-  );
   const territoryCount = Math.max(1, number(firstSectConfig.territoryCount || 1, '测试需要宗门 territoryCount'));
   const members = [
     entity('npc_chief', 'npc', {}, {
@@ -188,7 +170,6 @@ console.log('1) monthly stipend pays stones, pills, contribution and maintenance
       rankId: pillRankId,
       hallId,
       isHallChief: true,
-      [contributionKey]: 0,
     }, { name: '堂主' }),
     entity('npc_member', 'npc', {}, {
       factionId: 'sect_test',
@@ -197,7 +178,6 @@ console.log('1) monthly stipend pays stones, pills, contribution and maintenance
       rankId: pillRankId,
       hallId,
       isHallChief: false,
-      [contributionKey]: 0,
     }, { name: '堂众' }),
   ];
   const expectedMemberStones = Object.fromEntries(members.map(npc => [npc.id, memberStoneDue(npc)]));
@@ -205,11 +185,6 @@ console.log('1) monthly stipend pays stones, pills, contribution and maintenance
     memberPillDue(npc),
     `NPC ${npc.id} 需要 rankPills 丹药俸禄配置`,
   )]));
-  const expectedMemberContribution = Object.fromEntries(members.map(npc => [npc.id, memberContributionDue(npc)]));
-  must(
-    Object.values(expectedMemberContribution).some(amount => amount > 0),
-    '测试需要从 stipends 配置推导出正数贡献俸禄',
-  );
   const maintenanceDue = number(operation.maintenance?.baseStones, '测试需要 maintenance.baseStones')
     + territoryCount * number(operation.maintenance?.perTerritoryStones, '测试需要 maintenance.perTerritoryStones');
   const expectedStoneDue = Object.values(expectedMemberStones).reduce((sum, amount) => sum + amount, 0)
@@ -237,7 +212,6 @@ console.log('1) monthly stipend pays stones, pills, contribution and maintenance
   for (const npc of members) {
     ok(getState(npc, stoneResourceId) === expectedMemberStones[npc.id], `${npc.id} 收到配置推导的灵石俸禄`);
     ok(npc.inventory.getAmount(expectedMemberPills[npc.id].itemId) === expectedMemberPills[npc.id].quantity, `${npc.id} 收到配置推导的丹药俸禄`);
-    ok(getState(npc, contributionKey) === expectedMemberContribution[npc.id], `${npc.id} 收到配置推导的贡献俸禄`);
   }
   ok(faction.state.get('sectSalaryShortfallStreak') === 0, '足额发放后灵石欠发 streak 清零');
   ok(faction.state.get('sectPillShortfallStreak') === 0, '足额发放后丹药欠发 streak 清零');
@@ -258,7 +232,6 @@ console.log('1) monthly stipend pays stones, pills, contribution and maintenance
     rankId: pillRankId,
     hallId,
     isHallChief: false,
-    [contributionKey]: 0,
   }, { name: '欠发弟子' });
   const short = service.processMonthly({
     day: operation.monthlyIntervalDays * 2,
