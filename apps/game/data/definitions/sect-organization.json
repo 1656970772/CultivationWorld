@@ -1,0 +1,128 @@
+{
+  "_description": "门派组织结构定义。堂口只承担任务来源、兑换入口和身份标签，不做独立库存或独立预算。",
+  "roleSource": {
+    "kind": "cultivation_promotion",
+    "roleRankPath": "promotion.roleRankByStep",
+    "ladderPath": "promotion.ladder"
+  },
+  "identityRoles": [
+    "leader",
+    "heir",
+    "elder",
+    "general",
+    "officer",
+    "core_disciple",
+    "disciple",
+    "outer_disciple",
+    "wanderer"
+  ],
+  "templates": {
+    "default_sect": {
+      "id": "default_sect",
+      "name": "标准宗门",
+      "hallIds": [
+        "deacon_hall",
+        "law_hall",
+        "alchemy_hall",
+        "artifact_hall",
+        "library_hall",
+        "misc_hall"
+      ]
+    }
+  },
+  "managementRoles": [
+    "leader",
+    "elder"
+  ],
+  "hallMembership": {
+    "minRankOrder": 40,
+    "chiefPreferredRankOrder": 60,
+    "fallbackChief": "highest_rank",
+    "memberStarterKitId": "sect_hall_member",
+    "chiefStarterKitId": "sect_hall_chief"
+  },
+  "halls": [
+    {
+      "id": "deacon_hall",
+      "name": "执事堂",
+      "issuerName": "执事堂",
+      "buildingResolver": "quest_hall",
+      "questTemplateIds": [
+        "qt_herb",
+        "qt_mine_ore",
+        "qt_escort"
+      ],
+      "roles": [
+        "sect_task",
+        "personal_bounty"
+      ]
+    },
+    {
+      "id": "law_hall",
+      "name": "执法堂",
+      "issuerName": "执法堂",
+      "buildingResolver": "quest_hall",
+      "questTemplateIds": [
+        "qt_patrol",
+        "qt_guard",
+        "qt_exterminate"
+      ],
+      "roles": [
+        "defense_task"
+      ]
+    },
+    {
+      "id": "alchemy_hall",
+      "name": "炼丹堂",
+      "issuerName": "炼丹堂",
+      "buildingResolver": "alchemy",
+      "questTemplateIds": [
+        "qt_herb",
+        "qt_slay_monster"
+      ],
+      "roles": [
+        "material_collection",
+        "pill_exchange"
+      ]
+    },
+    {
+      "id": "artifact_hall",
+      "name": "炼器堂",
+      "issuerName": "炼器堂",
+      "buildingResolver": "quest_hall",
+      "questTemplateIds": [
+        "qt_mine_ore",
+        "qt_hunt_beast"
+      ],
+      "roles": [
+        "material_collection",
+        "artifact_exchange"
+      ]
+    },
+    {
+      "id": "library_hall",
+      "name": "藏经阁",
+      "issuerName": "藏经阁",
+      "buildingResolver": "library",
+      "questTemplateIds": [
+        "qt_explore_realm",
+        "qt_investigate"
+      ],
+      "roles": [
+        "technique_exchange",
+        "trial_task"
+      ]
+    },
+    {
+      "id": "misc_hall",
+      "name": "杂物堂",
+      "issuerName": "杂物堂",
+      "buildingResolver": "quest_hall",
+      "questTemplateIds": [],
+      "roles": [
+        "material_turn_in",
+        "misc_exchange"
+      ]
+    }
+  ]
+}

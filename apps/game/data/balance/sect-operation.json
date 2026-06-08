@@ -1,0 +1,245 @@
+{
+  "_description": "门派运行模拟第一版数值。灵石月俸从 faction state 扣除，丹药和材料从 faction inventory 扣除；本文件只声明数值与引用，不承载执行逻辑。",
+  "monthlyIntervalDays": 30,
+  "operationFlow": [
+    "monthly_stipend",
+    "stock_pressure",
+    "departure",
+    "destruction"
+  ],
+  "treasury": {
+    "stoneResourceId": "low_spirit_stone",
+    "stipendScenarioId": "faction_exchange",
+    "pillScenarioId": "material_donation",
+    "bountyFeeScenarioId": "quest_contract",
+    "bountyRewardScenarioId": "quest_contract"
+  },
+  "stipends": {
+    "roleStones": {
+      "leader": 200,
+      "heir": 60,
+      "elder": 80,
+      "general": 50,
+      "officer": 50,
+      "core_disciple": 20,
+      "disciple": 5,
+      "outer_disciple": 2
+    },
+    "rankPills": {
+      "qi_refining": {
+        "itemId": "item_qi_pill",
+        "quantity": 1
+      },
+      "foundation_building": {
+        "itemId": "item_qi_pill",
+        "quantity": 2
+      },
+      "golden_core": {
+        "itemId": "item_breakthrough_pill",
+        "quantity": 1
+      }
+    },
+    "hallExtraStones": {
+      "member": 10,
+      "chief": 30
+    }
+  },
+  "maintenance": {
+    "baseStones": 100,
+    "perTerritoryStones": 20
+  },
+  "stockPressure": [
+    {
+      "resourceId": "low_spirit_stone",
+      "kind": "faction_state_resource",
+      "safeStock": 1200,
+      "criticalStock": 500,
+      "issuerHall": "deacon_hall",
+      "questTemplateId": "qt_mine_ore",
+      "priority": 90,
+      "difficultyBySeverity": {
+        "safe": 1,
+        "critical": 3
+      },
+      "rewardContributionBySeverity": {
+        "safe": 6,
+        "critical": 12
+      },
+      "questKind": "sect_task",
+      "dedupeKey": "stock_pressure:low_spirit_stone",
+      "settlement": {
+        "stateResources": [
+          {
+            "resourceId": "low_spirit_stone",
+            "quantityFromQuestReward": true
+          }
+        ]
+      }
+    },
+    {
+      "resourceId": "item_qi_pill",
+      "kind": "item",
+      "safeStock": 40,
+      "criticalStock": 15,
+      "issuerHall": "alchemy_hall",
+      "questTemplateId": "qt_herb",
+      "priority": 75,
+      "difficultyBySeverity": {
+        "safe": 1,
+        "critical": 3
+      },
+      "rewardContributionBySeverity": {
+        "safe": 6,
+        "critical": 12
+      },
+      "questKind": "sect_task",
+      "dedupeKey": "stock_pressure:item_qi_pill",
+      "settlement": {
+        "items": [
+          {
+            "itemId": "mat_century_ginseng",
+            "quantityFromQuestReward": true
+          }
+        ],
+        "restockEffects": [
+          {
+            "kind": "craft_proxy",
+            "itemId": "item_qi_pill",
+            "perInputItemId": "mat_century_ginseng",
+            "ratio": 0.25
+          }
+        ]
+      }
+    },
+    {
+      "resourceId": "item_breakthrough_pill",
+      "kind": "item",
+      "safeStock": 8,
+      "criticalStock": 2,
+      "issuerHall": "alchemy_hall",
+      "questTemplateId": "qt_slay_monster",
+      "priority": 70,
+      "difficultyBySeverity": {
+        "safe": 1,
+        "critical": 3
+      },
+      "rewardContributionBySeverity": {
+        "safe": 6,
+        "critical": 12
+      },
+      "questKind": "sect_task",
+      "dedupeKey": "stock_pressure:item_breakthrough_pill",
+      "settlement": {
+        "items": [
+          {
+            "itemId": "monster_core_g1",
+            "quantityFromQuestReward": true
+          }
+        ],
+        "restockEffects": [
+          {
+            "kind": "craft_proxy",
+            "itemId": "item_breakthrough_pill",
+            "perInputItemId": "monster_core_g1",
+            "ratio": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "resourceId": "mat_black_iron_ore",
+      "kind": "item",
+      "safeStock": 20,
+      "criticalStock": 6,
+      "issuerHall": "artifact_hall",
+      "questTemplateId": "qt_mine_ore",
+      "priority": 60,
+      "difficultyBySeverity": {
+        "safe": 1,
+        "critical": 3
+      },
+      "rewardContributionBySeverity": {
+        "safe": 6,
+        "critical": 12
+      },
+      "questKind": "sect_task",
+      "dedupeKey": "stock_pressure:mat_black_iron_ore",
+      "settlement": {
+        "items": [
+          {
+            "itemId": "mat_black_iron_ore",
+            "quantityFromQuestReward": true
+          }
+        ]
+      }
+    }
+  ],
+  "decline": {
+    "shortfallStreakForDeparture": 2,
+    "stabilityForDeparture": 35,
+    "leaveChanceBase": 0.35,
+    "leaveChancePerShortfallStreak": 0.15,
+    "stabilityPenaltyPerMonth": 8,
+    "exemptRoles": [
+      "leader"
+    ]
+  },
+  "personalBounty": {
+    "minRankOrder": 40,
+    "feeItemId": "low_spirit_stone",
+    "feeAmount": 5,
+    "defaultPriority": 50,
+    "defaultDifficulty": 1,
+    "allowedQuestTemplateIds": [
+      "qt_herb",
+      "qt_mine_ore",
+      "qt_slay_monster"
+    ],
+    "allowedRewardKinds": [
+      "item",
+      "faction_state_resource"
+    ],
+    "rewardScenarioId": "quest_contract",
+    "escrowHolderType": "sect_bounty_vault",
+    "defaultQuestBoard": "bounty"
+  },
+  "questBoard": {
+    "visibilityPolicy": {
+      "id": "same_faction_or_public_bounty",
+      "publicBoards": [
+        "bounty"
+      ]
+    },
+    "stateMachine": [
+      "draft",
+      "available",
+      "accepted",
+      "in_progress",
+      "completed",
+      "turned_in",
+      "failed",
+      "expired"
+    ],
+    "dedupePolicy": "by_dedupe_key"
+  },
+  "questSelection": {
+    "monsterHuntTags": [
+      "combat"
+    ],
+    "sectIssuerHints": {
+      "daily": "deacon_hall",
+      "combat": [
+        "law_hall",
+        "alchemy_hall",
+        "artifact_hall"
+      ],
+      "resource": "artifact_hall",
+      "exploration": "library_hall"
+    },
+    "boardSourceOrder": [
+      "sect",
+      "bounty",
+      "generated"
+    ]
+  }
+}

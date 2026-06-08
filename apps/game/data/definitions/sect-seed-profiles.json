@@ -1,0 +1,100 @@
+{
+  "_description": "门派初始化模板。所有势力初始宏观资源、实物库存、NPC 初始道具、堂口样例编制都从 profile 或实体覆盖读取；代码不得写死具体宗门、具体 NPC 或具体库存数量。",
+  "scaleToProfile": {
+    "large": "sect_large",
+    "medium": "sect_medium",
+    "small": "sect_small"
+  },
+  "resourceProfiles": {
+    "sect_large": {
+      "low_spirit_stone": 5000,
+      "disciples": 500,
+      "food": 3000
+    },
+    "sect_medium": {
+      "low_spirit_stone": 3000,
+      "disciples": 250,
+      "food": 1500
+    },
+    "sect_small": {
+      "low_spirit_stone": 1200,
+      "disciples": 100,
+      "food": 600
+    }
+  },
+  "inventoryProfiles": {
+    "sect_large": {
+      "item_qi_pill": 80,
+      "item_breakthrough_pill": 12,
+      "mat_century_ginseng": 40,
+      "mat_black_iron_ore": 30,
+      "monster_core_g1": 10,
+      "beast_material_g1": 20,
+      "artifact_green_sword": 3,
+      "item_escape_talisman": 5
+    },
+    "sect_medium": {
+      "item_qi_pill": 45,
+      "item_breakthrough_pill": 6,
+      "mat_century_ginseng": 24,
+      "mat_black_iron_ore": 18,
+      "monster_core_g1": 6,
+      "beast_material_g1": 12,
+      "artifact_green_sword": 2,
+      "item_escape_talisman": 3
+    },
+    "sect_small": {
+      "item_qi_pill": 20,
+      "item_breakthrough_pill": 3,
+      "mat_century_ginseng": 12,
+      "mat_black_iron_ore": 10,
+      "monster_core_g1": 4,
+      "beast_material_g1": 8,
+      "artifact_green_sword": 1,
+      "item_escape_talisman": 2
+    }
+  },
+  "npcStarterKits": {
+    "sect_hall_member": {
+      "item_escape_talisman": 1
+    },
+    "sect_hall_chief": {
+      "item_escape_talisman": 2,
+      "item_qi_pill": 2
+    }
+  },
+  "hallAssignmentProfiles": {
+    "default_sect_halls": {
+      "rules": [
+        {
+          "hallId": "alchemy_hall",
+          "chiefRole": "elder",
+          "chiefMinRankOrder": 60,
+          "memberMinRankOrder": 40,
+          "memberSlots": 1
+        },
+        {
+          "hallId": "law_hall",
+          "chiefRole": "elder",
+          "chiefMinRankOrder": 60,
+          "memberMinRankOrder": 40,
+          "memberSlots": 1
+        },
+        {
+          "hallId": "artifact_hall",
+          "chiefRole": "elder",
+          "chiefMinRankOrder": 60,
+          "memberMinRankOrder": 40,
+          "memberSlots": 1
+        },
+        {
+          "hallId": "library_hall",
+          "chiefRole": "elder",
+          "chiefMinRankOrder": 60,
+          "memberMinRankOrder": 40,
+          "memberSlots": 1
+        }
+      ]
+    }
+  }
+}

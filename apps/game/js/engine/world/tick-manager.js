@@ -49,7 +49,8 @@ export class TickManager {
                 gridGraph, hierGraph, worldNewsConfig, opportunityConfig, dynamicEventsConfig, dynamicGoalsConfig,
                 worldEventSystem, covetConfig,
                 relationshipConfig, relationshipSystem,
-                economicSystem, economicTransactionConfig }) {
+                economicSystem, economicTransactionConfig,
+                sectOrganization, sectSeedProfiles, sectConfigRegistry }) {
     this.entityRegistry = entityRegistry;
     this.worldEntity = worldEntity;
     // 确定性随机源（由 WorldEngine 注入）。挂到 worldContext，供所有模拟逻辑取随机。
@@ -95,6 +96,9 @@ export class TickManager {
     this.relationshipSystem = relationshipSystem || null;
     this.economicSystem = economicSystem || null;
     this.economicTransactionConfig = economicTransactionConfig || {};
+    this.sectOrganization = sectOrganization || {};
+    this.sectSeedProfiles = sectSeedProfiles || {};
+    this.sectConfigRegistry = sectConfigRegistry || null;
     this.auctionService = this.economicSystem
       ? new AuctionService({ economicSystem: this.economicSystem, config: this.economicTransactionConfig })
       : null;

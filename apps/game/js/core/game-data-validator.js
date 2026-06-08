@@ -4,6 +4,7 @@
  * 校验规则参数来自 configs.dataManifest.validation，必需目录组来自
  * configs.dataManifest.groups[*].required，避免在代码中维护业务数据清单。
  */
+import { collectSectConfigErrors } from '../engine/sect/sect-config-registry.js';
 
 function getByPath(target, path) {
   return String(path).split('.').filter(Boolean)
@@ -335,6 +336,10 @@ function validateMacroResources(configs, rules, errors) {
   }
 }
 
+export function validateSectConfig(configs, _rules, errors) {
+  errors.push(...collectSectConfigErrors(configs || {}));
+}
+
 /**
  * 校验运行时游戏数据。
  * @param {Object} configs WorldEngine.init 使用的配置对象
@@ -355,6 +360,7 @@ export function validateGameData(configs, options = {}) {
   validateGameplayTagReferences(configs || {}, rules, errors);
   validateBehaviorTreeReferences(configs || {}, rules, errors);
   validateMacroResources(configs || {}, rules, errors);
+  validateSectConfig(configs || {}, rules, errors);
 
   if (errors.length > 0 && options.strict === true) {
     const error = new Error(`[GameDataValidation] ${errors.join('; ')}`);

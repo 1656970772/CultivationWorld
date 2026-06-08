@@ -29,6 +29,7 @@ import { HierarchicalGraph } from './world/hierarchical-graph.js';
 import { MonsterSpawner } from './monster/monster-spawner.js';
 import { BehaviorTreeRegistry } from './abstract/bt/bt-registry.js';
 import { ResourceRegistry } from './economy/resource-registry.js';
+import { SectConfigRegistry } from './sect/sect-config-registry.js';
 import { TerritoryLayoutGenerator } from './world/territory-layout-generator.js';
 import { RelationshipSystem } from './world/relationship-system.js';
 import { initRelationships, initMonsterRelationships } from './world/relationship-init.js';
@@ -81,6 +82,7 @@ export class WorldEngine {
       reward: configs.balanceReward || {},
       relationship: configs.balanceRelationship || {},
       monsterResourceRules: configs.monsterResourceRules || {},
+      sectOperation: configs.balanceSectOperation || {},
       // 反应层配置（四层 AI 架构 Reaction 层，ADR-048）。默认 enabled=false，不改变现有行为。
       reaction: configs.balanceReaction || {},
     };
@@ -102,6 +104,8 @@ export class WorldEngine {
     this.worldEventSystem = new WorldEventSystem(this._dynamicEventsConfig);
     this.worldEventSystem.seedScheduledEvents(0);
     this._covetConfig = configs.balanceCovet || {};
+    this._sectOrganization = configs.sectOrganization || {};
+    this._sectSeedProfiles = configs.sectSeedProfiles || {};
     this._itemDefs = configs.itemDefs || {};
     this._economicTransactionConfig = configs.economicTransactionConfig || {};
     this.resourceRegistry = ResourceRegistry.fromDefinitions({
@@ -109,6 +113,18 @@ export class WorldEngine {
       itemDefs: this._itemDefs,
       organizationPointKeys: this._economicTransactionConfig?.assets?.organizationPointKeys || [],
     });
+    this._sectConfigRegistry = new SectConfigRegistry({
+      organization: this._sectOrganization,
+      seedProfiles: this._sectSeedProfiles,
+      operation: this._balanceConfig.sectOperation,
+      ranksData: configs.ranks || [],
+      itemDefs: this._itemDefs,
+      questTemplates: configs.questTemplates,
+      cultivationConfig: this._balanceConfig.cultivation,
+      resourceRegistry: this.resourceRegistry,
+      economicTransactionConfig: this._economicTransactionConfig,
+    });
+    this._sectConfigRegistry.assertValid();
     this.economicSystem = new EconomicSystem({
       config: {
         ...this._economicTransactionConfig,
@@ -151,6 +167,10 @@ export class WorldEngine {
       ),
       relationshipConfig: this._balanceConfig.relationship,
       monsterResourceRules: this._balanceConfig.monsterResourceRules,
+      sectOrganization: this._sectOrganization,
+      sectSeedProfiles: this._sectSeedProfiles,
+      sectConfigRegistry: this._sectConfigRegistry,
+      sectOperationConfig: this._balanceConfig.sectOperation,
       // 反应层配置（ADR-048）：NPCEntity 据此设置刺激队列 ttl/容量等。
       reactionConfig: this._balanceConfig.reaction,
       dynamicGoalConfig: this._dynamicGoalsConfig,
@@ -561,6 +581,9 @@ export class WorldEngine {
       relationshipSystem: this.relationshipSystem,
       economicSystem: this.economicSystem,
       economicTransactionConfig: this._economicTransactionConfig,
+      sectOrganization: this._sectOrganization,
+      sectSeedProfiles: this._sectSeedProfiles,
+      sectConfigRegistry: this._sectConfigRegistry,
     });
   }
 

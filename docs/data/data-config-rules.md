@@ -2,7 +2,7 @@
 
 > 最后更新：2026-06-08
 
-本文档定义 `apps/game/data/` 的现行目录结构、命名规范和扩展规则。来源以当前 `apps/game/js/core/config-loader.js` 与 `apps/game/data/` 为准。标注“本实施计划目标结构，后续实现新增”的条目是门派运行实施计划要求的目标结构，当前代码或数据中尚未落地。
+本文档定义 `apps/game/data/` 的现行目录结构、命名规范和扩展规则。来源以当前 `apps/game/js/core/config-loader.js`、`apps/game/js/core/game-data-validator.js` 与 `apps/game/data/` 为准。门派组织、门派 seed profile 与门派运行数值三份配置已落地；通用任务板和门派月俸/库存压力运行服务仍属后续目标。
 
 ## 目录总览
 
@@ -32,7 +32,7 @@ apps/game/data/
 │   ├── relationship.json
 │   ├── reward.json
 │   ├── risk.json
-│   ├── sect-operation.json（本实施计划目标结构，后续实现新增）
+│   ├── sect-operation.json
 │   ├── social.json
 │   └── utility.json
 ├── behavior-trees/
@@ -54,8 +54,8 @@ apps/game/data/
 │   ├── monsters.json
 │   ├── names.json
 │   ├── ranks.json
-│   ├── sect-organization.json（本实施计划目标结构，后续实现新增）
-│   ├── sect-seed-profiles.json（本实施计划目标结构，后续实现新增）
+│   ├── sect-organization.json
+│   ├── sect-seed-profiles.json
 │   ├── techniques.json
 │   ├── terrains.json
 │   └── weapons.json
@@ -166,9 +166,9 @@ apps/game/data/
 - `definitions/cultivator-combat.json`：由加载器显式读取为 `cultivatorCombat`，提供普通修士裸面板。
 - `definitions/monster-combat.json`：由加载器显式读取为 `monsterCombat`，提供普通妖兽危险层级参考表。
 - `definitions/monster-attribute-templates.json`：由加载器显式读取为 `monsterAttributeTemplates`，供妖兽属性计算器和运行时生成入口使用。
-- `definitions/sect-organization.json`（本实施计划目标结构，后续实现新增）：由 manifest 输出为 `sectOrganization`，提供门派组织模板、堂口、管理层、身份边界和堂口资格。
-- `definitions/sect-seed-profiles.json`（本实施计划目标结构，后续实现新增）：由 manifest 输出为 `sectSeedProfiles`，提供门派初始化宏观资源档、实物库存档、堂口编制档和 NPC 初始道具档。
-- `balance/sect-operation.json`（本实施计划目标结构，后续实现新增）：由 manifest 输出为 `balanceSectOperation`，提供月俸、丹药俸禄、维护费、安全库存线、离宗阈值、任务板策略和个人悬赏手续费。
+- `definitions/sect-organization.json`：由 manifest 输出为 `sectOrganization`，提供门派组织模板、堂口、管理层、身份边界和堂口资格。
+- `definitions/sect-seed-profiles.json`：由 manifest 输出为 `sectSeedProfiles`，提供门派初始化宏观资源档、实物库存档、堂口编制档和 NPC 初始道具档。
+- `balance/sect-operation.json`：由 manifest 输出为 `balanceSectOperation`，提供月俸、丹药俸禄、维护费、安全库存线、离宗阈值、任务板策略和个人悬赏手续费。
 - `economy/transaction-scenarios.json`：由加载器显式读取为 `economicTransactionConfig`，供统一经济交易底座读取场景、托管、债务与抽象拍卖规则。
 - `relationships/**/*.json`：三层关系全数据平台配置，由加载器显式读取并组装为 `relationshipPlatform`，交给 `RelationshipSystem` 门面。
 
@@ -191,41 +191,42 @@ apps/game/data/
 
 | 输出字段 | 文件 | 说明 |
 |----------|------|------|
-| `sectOrganization` | `definitions/sect-organization.json`（本实施计划目标结构，后续实现新增） | 门派组织模板、堂口、管理层、身份边界和堂口资格 |
-| `sectSeedProfiles` | `definitions/sect-seed-profiles.json`（本实施计划目标结构，后续实现新增） | 门派初始化 profile：宏观资源档、实物库存档、堂口编制档、NPC 初始道具档 |
-| `balanceSectOperation` | `balance/sect-operation.json`（本实施计划目标结构，后续实现新增） | 门派运行数值：月俸、丹药俸禄、维护费、安全库存线、离宗阈值、任务板策略和个人悬赏手续费 |
+| `sectOrganization` | `definitions/sect-organization.json` | 门派组织模板、堂口、管理层、身份边界和堂口资格 |
+| `sectSeedProfiles` | `definitions/sect-seed-profiles.json` | 门派初始化 profile：宏观资源档、实物库存档、堂口编制档和 NPC 初始道具档 |
+| `balanceSectOperation` | `balance/sect-operation.json` | 门派运行数值：月俸、丹药俸禄、维护费、安全库存线、离宗阈值、任务板策略和个人悬赏手续费 |
 
 门派运行相关文件和代码边界：
 
 | 路径 | 说明 |
 |------|------|
-| `definitions/sect-organization.json` | 门派组织模板、堂口、管理层、身份边界和堂口资格；本实施计划目标结构，后续实现新增 |
-| `definitions/sect-seed-profiles.json` | 门派初始化 profile：宏观资源档、实物库存档、堂口编制档、NPC 初始道具档；本实施计划目标结构，后续实现新增 |
-| `balance/sect-operation.json` | 门派运行数值：月俸、丹药俸禄、维护费、安全库存线、离宗阈值、任务板策略和个人悬赏手续费；本实施计划目标结构，后续实现新增 |
-| `engine/quest/` | 通用任务板、任务来源策略和任务交付处理器；本实施计划目标结构，后续实现新增 |
-| `engine/sect/` | 门派组织、宗门财政、悬赏托管、月俸库存压力和离宗倒闭规则；本实施计划目标结构，后续实现新增 |
+| `definitions/sect-organization.json` | 已落地。门派组织模板、堂口、管理层、身份边界和堂口资格 |
+| `definitions/sect-seed-profiles.json` | 已落地。门派初始化 profile：宏观资源档、实物库存档、堂口编制档、NPC 初始道具档 |
+| `balance/sect-operation.json` | 已落地。门派运行数值：月俸、丹药俸禄、维护费、安全库存线、离宗阈值、任务板策略和个人悬赏手续费 |
+| `engine/sect/sect-config-registry.js` | 已落地。只负责门派配置聚合、helper 与引用校验，不执行月俸或任务板业务 |
+| `engine/quest/` | 后续目标。通用任务板、任务来源策略和任务交付处理器 |
+| `engine/sect/` 运行服务 | 后续目标。宗门财政、悬赏托管、月俸库存压力和离宗倒闭规则 |
 
 ### 启动期 strict 校验
 
 `validateGameData(configs, { strict: true })` 是运行时配置引用的启动守门人。缺失 GE/GA/Tag/Item 引用、错误 ID 前缀、未登记行为树、缺失资源注册项、manifest 遗漏和展示元数据缺失都应在加载期暴露，不允许静默跳过、回退直写 state 或继续运行到半配置状态。
 
-`game-data-validator.js` 是门派配置 strict 校验的主入口；`test-sect-config-load.mjs` 只验证 validator 覆盖，不维护第二套规则。门派运行 strict 校验至少覆盖：
+`game-data-validator.js` 是门派配置 strict 校验的主入口，并复用 `SectConfigRegistry` 的引用校验。当前阶段只对显式声明 `isSect` / `isPublic` / 门派 profile 字段，或带 `subtype` 的功能组织做身份校验；核心宗门的完整 `isSect=true` 标注将在后续任务补齐后再收紧为全量必填。门派运行 strict 校验覆盖：
 
 | 校验项 | 规则 |
 |--------|------|
-| `isSect` / `isPublic` | `entities/factions.json` 中必须显式声明，不靠缺字段推断 |
+| `isSect` / `isPublic` | 本阶段对显式声明门派字段或 `subtype` 功能组织强校验；功能组织需 `isPublic=true` 或 `isSect=false`，公共组织可到后续任务补全 `isSect=false` |
 | `sectTemplateId` | `isSect=true` 的势力必须引用存在的 `sectOrganization` 模板 |
-| seed profile | `seedProfileId` 必须引用存在的 `sectSeedProfiles.seedProfiles` |
-| hall profile | `hallProfileId` 必须引用存在的堂口编制 profile |
-| starter kit | NPC 初始道具 profile 必须存在，且引用的 kit key 不得悬空 |
+| seed profile | `sectSeedProfileId` / `seedProfileId` 必须引用存在的 `resourceProfiles` / `inventoryProfiles` / `seedProfiles` profile |
+| hall profile | `hallAssignmentProfileId` / `hallProfileId` 必须引用存在的堂口编制 profile |
+| starter kit | `hallMembership` 引用的 NPC 初始道具 profile 必须存在，且 kit 内 item 必须存在 |
 | `hallId` | 堂口编制、成员分配和任务来源引用的堂口必须存在于组织模板 |
 | `role` | 管理层、成员、starter kit 和堂口资格引用的职位必须存在于组织模板或项目职位字典 |
-| `rank` | 堂口资格、starter kit 和成员规则引用的境界必须存在于 `definitions/ranks.json` |
+| `rank` | `rankPills` 等运行规则引用的境界必须存在于 `definitions/ranks.json` |
 | `itemId` | `inventoryProfiles` 与 `npcStarterKits` 只允许引用 `itemDefs.items` 中存在的实物物品 |
 | `questTemplateId` | 宗门任务、堂口任务和个人悬赏引用的模板必须存在于 `quests/quest-templates.json` |
 | transaction scenario | 悬赏托管、库存回流、月俸或维护费引用的场景必须存在于 `economy/transaction-scenarios.json` |
 | faction state resource | `resourceProfiles` 和运行规则中的宏观资源必须能被 `ResourceRegistry` 解释 |
-| `questSelection` tag | 任务选择标签必须来自任务模板标签或任务板策略登记项 |
+| `questSelection` tag | `monsterHuntTags` 必须能匹配任务模板 `category` 或 `tags`；当前任务模板尚未补 tags，因此使用 `category` 匹配 |
 | `stockPressure` | 安全库存线、回流比例、扣减值、离宗阈值和倒闭阈值必须为有效数值范围 |
 
 ## entities/
@@ -251,6 +252,12 @@ apps/game/data/
 | `roleQuota` | object | 高阶职位名额，如 elder/heir |
 | `relations` | object | 与其他势力的初始关系 |
 | `presentation` | object | UI 展示元数据，包含 `color`、`badge`、`order` |
+| `isSect` | boolean? | 是否为门派；后续任务会给核心宗门补齐 `true` |
+| `isPublic` | boolean? | 是否为公共组织；当前 6 个功能组织已声明 `true` |
+| `sectTemplateId` | string? | `isSect=true` 时引用 `sectOrganization.templates` |
+| `sectSeedProfileId` | string? | `isSect=true` 时引用 `sectSeedProfiles` 中的 seed profile |
+| `hallAssignmentProfileId` | string? | `isSect=true` 时引用 `hallAssignmentProfiles` |
+| `inventoryOverrides` | object? | 覆盖 seed profile 的宗门实物库存，key 必须存在于 `itemDefs.items` |
 
 ### npcs.json
 
@@ -269,6 +276,7 @@ apps/game/data/
 | `personality` | object | 野心、谨慎、忠诚、外交等维度 |
 | `techniqueId` | string? | 引用 `definitions/techniques.json` |
 | `alive` | boolean | 初始存活状态 |
+| `items` | object/array? | NPC 初始实物物品，所有 itemId 必须存在于 `itemDefs.items` |
 
 运行时会补齐年龄、寿元、血量、空间坐标、灵根/体质、背包、关系、记忆、执念等状态。
 
@@ -308,8 +316,8 @@ apps/game/data/
 | `combat-base-table.json` | 境界战斗参考基表，含 `stageMultipliers` 和六项属性参考值 |
 | `cultivator-combat.json` | 普通修士裸面板，供修士战斗属性新路径初始化 |
 | `monster-combat.json` | 普通妖兽危险层级参考表，不替代妖兽模板运行时 |
-| `sect-organization.json` | 门派组织模板、堂口、管理层、身份边界和堂口资格；本实施计划目标结构，后续实现新增 |
-| `sect-seed-profiles.json` | 门派初始化 profile：宏观资源档、实物库存档、堂口编制档、NPC 初始道具档；本实施计划目标结构，后续实现新增 |
+| `sect-organization.json` | 门派组织模板、堂口、管理层、身份边界和堂口资格 |
+| `sect-seed-profiles.json` | 门派初始化 profile：宏观资源档、实物库存档、堂口编制档、NPC 初始道具档 |
 | `weapons.json` | 武器/法宝参考定义 |
 | `monster-attribute-templates.json` | 妖兽阶位基准、体型、移动、战斗风格、属性、特殊类型和习性模板 |
 | `monsters.json` | 妖兽定义，当前 36 条；通过五层模板生成直接面板属性 |
@@ -340,30 +348,31 @@ apps/game/data/
 
 `monsters.json` 中新妖兽必须声明 `templates` 与 typed `skills[]`。运行时通过 `monsterAttributeTemplates` 和 `resolveMonsterAttributes()` 得到 `hp`、`qi`、`attack`、`defense`、`speed`、`spirit` 直接面板，并保留 `vitality`、`strength`、`sense` 兼容镜像。
 
-### sect-organization.json（本实施计划目标结构，后续实现新增）
+### sect-organization.json
 
-门派组织模板只描述组织结构和资格边界，不写运行数值。
+门派组织模板只描述组织结构和资格边界，不写运行数值。当前 `templates.default_sect` 通过 `hallIds` 引用 6 个堂口；堂口列表本身统一放在顶层 `halls`，便于多个模板复用。
 
 | 字段 | 说明 |
 |------|------|
-| `templates[]` | 门派组织模板 |
-| `templates[].halls[]` | 堂口定义，`hallId` 必须唯一 |
-| `templates[].leadershipRoles[]` | 管理层职位 |
-| `templates[].memberRoles[]` | 成员职位 |
-| `templates[].identityBoundary` | 门派、公共组织、客卿、散修等身份边界 |
-| `templates[].hallEligibility` | 堂口资格，引用已登记 `hallId`、`role`、`rank` 或贡献条件 |
+| `roleSource` | 身份阶梯来源，当前指向 `balance/cultivation.json -> promotion` |
+| `identityRoles` | 组织身份字典，补充 `leader` 等不在晋升 ladder 内但运行规则会引用的身份 |
+| `templates.default_sect` | 标准宗门模板，引用顶层堂口 ID |
+| `managementRoles` | 管理层身份，必须能在晋升字典或 `identityRoles` 中找到 |
+| `hallMembership` | 堂口成员和堂主的境界门槛、fallback 与 starter kit 引用 |
+| `halls[]` | 堂口定义，当前包括 `deacon_hall`、`law_hall`、`alchemy_hall`、`artifact_hall`、`library_hall`、`misc_hall` |
+| `halls[].questTemplateIds` | 堂口可发布任务模板，必须存在于 `quests/quest-templates.json` |
 
-### sect-seed-profiles.json（本实施计划目标结构，后续实现新增）
+### sect-seed-profiles.json
 
 门派初始化 profile 只声明初始数据组合，不执行结算逻辑。
 
 | 字段 | 说明 |
 |------|------|
-| `resourceProfiles` | 只定义宏观资源 profile，应用后仍交给 `ResourceRegistry.initialStateFrom()` |
-| `inventoryProfiles` | 只定义宗门实物库存，所有 `itemId` 必须经 `itemDefs.items` 校验 |
-| `hallProfiles` | 堂口编制档，引用组织模板中的 `hallId`、`role` 与 `rank` |
+| `scaleToProfile` | 规模到 seed profile 的映射，值必须引用已存在 profile |
+| `resourceProfiles` | 只定义宏观资源 profile，key 必须能被 `ResourceRegistry` 解释为 faction state resource |
+| `inventoryProfiles` | 只定义宗门实物库存，所有 key 必须经 `itemDefs.items` 校验 |
+| `hallAssignmentProfiles` | 堂口编制档，引用组织模板中的 `hallId` 与身份字典中的 `role` |
 | `npcStarterKits` | NPC 初始道具档，只定义实物物品，所有 `itemId` 必须经 `itemDefs.items` 校验 |
-| `seedProfiles` | 组合引用资源、库存、堂口和 starter kit profile |
 
 ## world/
 
@@ -421,9 +430,9 @@ apps/game/data/
 
 任务模板只描述可生成任务的类型、难度范围、目标类型和基础描述；NPC 接取后在 `entity.state.activeQuestInstance` 形成运行时任务实例。斩妖、除害、猎灵兽等杀怪任务实例统一为 `type:"monster_hunt"`，并记录真实地图妖兽目标。
 
-`engine/quest/` 是通用任务板、任务来源策略和任务交付处理器，不属于门派专用模块；该目录是本实施计划目标结构，后续实现新增。宗门任务、个人悬赏、悬赏阁任务、坊市委托和动态事件任务都应复用同一任务仓储、状态机、可见性策略和去重策略。
+`engine/quest/` 是后续目标：通用任务板、任务来源策略和任务交付处理器，不属于门派专用模块。宗门任务、个人悬赏、悬赏阁任务、坊市委托和动态事件任务都应复用同一任务仓储、状态机、可见性策略和去重策略。
 
-`engine/sect/` 只注册宗门任务来源、门派运行规则和悬赏结算策略；该目录是本实施计划目标结构，后续实现新增。任务板服务不得反向依赖门派域。
+`engine/sect/` 当前只落地 `sect-config-registry.js` 配置注册表；宗门任务来源、门派运行规则和悬赏结算策略仍是后续目标。任务板服务不得反向依赖门派域。
 
 QuestBoard canonical 状态集合以 `docs/data-models/sect-operation.md` 为准：`draft`、`available`、`accepted`、`in_progress`、`completed`、`turned_in`、`failed`、`expired`。下方 `activeQuestInstance` / 斩妖任务状态属于 NPC 任务实例兼容状态，不是 QuestBoard canonical 状态。
 
@@ -634,21 +643,24 @@ GE 必须是通用机制原语；具体数值由物品、能力或调用方 spec
 | `reward.json` | 期望收益与掉落 |
 | `relationship.json` | 旧关系边兼容开关、旧关系目标、妖群、师徒过渡参数；新三层关系业务使用 `relationships/` |
 | `reaction.json` | Reaction 层阈值和动作映射 |
-| `sect-operation.json` | 门派运行数值：月俸、丹药俸禄、维护费、安全库存线、离宗阈值、任务板策略和个人悬赏手续费；本实施计划目标结构，后续实现新增 |
+| `sect-operation.json` | 门派运行数值：月俸、丹药俸禄、维护费、安全库存线、离宗阈值、任务板策略和个人悬赏手续费 |
 | 其他 | 社交、移动、记忆、执念、情绪、人格、怀璧其罪等 |
 
-### sect-operation.json（本实施计划目标结构，后续实现新增）
+### sect-operation.json
 
-`sect-operation.json`（本实施计划目标结构，后续实现新增）只放门派运行数值、任务板策略和交易场景引用，不放执行逻辑。
+`sect-operation.json` 只放门派运行数值、任务板策略和交易场景引用，不放执行逻辑。当前已由 manifest 输出为 `balanceSectOperation`，并聚合到 `WorldEngine._balanceConfig.sectOperation`；月俸、任务板、库存压力、离宗和倒闭执行服务仍是后续目标。
 
 | 字段 | 说明 |
 |------|------|
-| `salary` | 月俸周期、职位灵石俸禄、欠薪处理 |
-| `pillSalary` | 丹药俸禄、发放条件、库存不足处理 |
+| `monthlyIntervalDays` | 门派月度运行周期 |
+| `operationFlow` | 后续运行服务按配置顺序解释的流程名列表 |
+| `treasury` | 门派资金和交易场景引用；当前必须引用 `transaction-scenarios.json.scenarios` 中已有场景 |
+| `stipends` | 职位灵石俸禄、境界丹药俸禄、堂口额外俸禄 |
 | `maintenance` | 维护费、堂口消耗或抽象运营成本 |
 | `stockPressure` | 安全库存线、库存压力、回流比例、离宗阈值和倒闭阈值 |
-| `questBoard` | 任务板可见性、任务选择、去重和来源策略 |
 | `personalBounty` | 个人悬赏手续费、托管场景和交付策略 |
+| `questBoard` | 任务板可见性、状态机、去重和来源策略 |
+| `questSelection` | 任务来源选择、堂口提示和怪物任务匹配标签 |
 
 个人悬赏奖励使用统一经济托管，不进入宗门普通库存，不叠加普通任务模板奖励。
 
@@ -695,7 +707,7 @@ GE 必须是通用机制原语；具体数值由物品、能力或调用方 spec
 - 数据结构改动：运行对应加载/单元脚本。
 - 新增运行时 JSON：运行 `node apps/game/tools/test-data-manifest-load.mjs`。
 - 新增或修改配置引用：运行 `node apps/game/tools/test-game-data-validation.mjs`。
-- 新增或修改门派配置：运行 `node apps/game/tools/test-sect-config-load.mjs`（本实施计划目标结构，后续实现新增），并确认失败样例由 `game-data-validator.js` strict 校验拦截；测试脚本不得维护第二套门派规则。
+- 新增或修改门派配置：运行 `node apps/game/tools/test-game-data-validation.mjs`，由 `game-data-validator.js` strict 校验拦截门派配置错误；若后续新增 `test-sect-config-load.mjs`，该脚本只能调用 manifest loader + validator，不得维护第二套规则。
 - 新增资源或货币：运行 `node apps/game/tools/test-resource-registry.mjs`。
 - 新增编辑器数据集、字段 schema 或 adapter：运行 `node apps/editor/tools/test-editor-dataset-registry.mjs`，地图编辑器相关改动再运行地图编辑器测试。
 - 机制或行为改动：运行对应 `tools/test-*.mjs`，并用真实、多种子、长程模拟观察行为。
