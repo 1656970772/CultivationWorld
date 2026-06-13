@@ -1,8 +1,8 @@
 # 游戏数据配置规则
 
-> 最后更新：2026-06-08
+> 最后更新：2026-06-09
 
-本文档定义 `apps/game/data/` 的现行目录结构、命名规范和扩展规则。来源以当前 `apps/game/js/core/data-manifest-loader.js`、`apps/game/js/core/game-data-validator.js` 与 `apps/game/data/` 为准。门派组织、门派 seed profile、门派运行数值、通用任务板和门派月俸/库存压力运行服务已落地；新增配置必须继续走 manifest 与 strict validator。
+本文档定义 `apps/game/data/` 的现行目录结构、命名规范和扩展规则。来源以当前 `apps/game/js/core/data-manifest-loader.js`、`apps/game/js/core/game-data-validator.js` 与 `apps/game/data/` 为准。门派组织、门派 seed profile、门派运行数值、通用任务板、门派月俸/库存压力运行服务和 ADR-058 分层模拟架构均要求新增配置继续走 manifest 与 strict validator。
 
 ## 目录总览
 
@@ -487,6 +487,27 @@ QuestBoard canonical 状态集合以 `docs/data-models/sect-operation.md` 为准
 4. 必要时补充目标状态、targetResolver、风险键、收益键。
 5. 已迁移旧 NPC Action 不得继续出现在 `defaultNpcActionIds` 中；默认主路径由 `defaultNpcJobActionIds` 承载。
 6. 新增或修改 JobAction 时必须运行配置加载/规划/迁移守卫测试，至少覆盖 `test-job-config-load.mjs`；涉及默认 NPC 行为迁移时同时运行 `test-npc-action-job-migration.mjs`；涉及 GOAP 规划时运行 `test-job-action-planning.mjs`。
+
+## simulation/ 与 drama/（ADR-058 预留）
+
+分层模拟与玩家相遇对话实际落地时，建议新增以下目录。新增真实 JSON 文件时必须同步更新 `config/data-manifest.json`、strict 校验和本文档目录树。
+
+| 目录 | 说明 |
+|---|---|
+| `simulation/time-domains.json` | Hot/Warm/Cold 半径、月长、切域滞后、玩家标记提升规则。 |
+| `simulation/fidelity-rules.json` | NPC 保真等级评分、重要 NPC episode 数量、日志保留策略。 |
+| `simulation/monthly-phases.json` | 月压缩阶段顺序与 executor id。 |
+| `simulation/monthly-agendas.json` | 修炼、任务、交易、社交、疗伤、游历等月度 agenda 权重。 |
+| `drama/dialogues/*.json` | 对话候选、条件、权重、节点、选项、成本和副作用命令。 |
+| `drama/packages/*.json` | 剧情包触发、step、绑定 NPC、冷却、失败和等待玩家接触状态。 |
+| `drama/text/*.json` | 对话文本 key 到正文的映射，逻辑配置优先使用 `textKey`。 |
+
+配置规则：
+
+1. ID 使用 snake_case；剧情包建议 `pkg_` 前缀，对话建议 `dlg_` 前缀，对话节点与选项在所属对话内唯一。
+2. 条件、权重和副作用命令必须由解释器执行，不允许在 UI 或 `TickManager` 中按 NPC id、势力 id、境界或地点写固定对白分支。
+3. 重要 NPC 配置只能影响保真等级、episode 数量、日志保留和切域策略，不得提供免死、锁血、无限资源或固定成功率。
+4. 对话副作用必须写入统一状态 delta，优先复用关系、经济、任务、战斗、GAS、记忆和日志服务。
 7. 运行相关 `apps/game/tools/test-*.mjs` 或长程模拟观察。
 
 ## jobs/ 与 toils/

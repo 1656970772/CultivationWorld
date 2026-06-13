@@ -1,6 +1,6 @@
 # 系统设计：存档系统
 
-> 最后更新：2026-05-23
+> 最后更新：2026-06-09
 
 ## 概述
 
@@ -31,6 +31,29 @@ SaveData {
   logHistory: InfoRecord[]     // 日志历史
 }
 ```
+
+ADR-058 后，完整引擎存档还需要覆盖分层模拟状态：
+
+```javascript
+worldSnapshot: {
+  ...,
+  simulationDomains: {
+    hotEntityIds: string[],
+    warmEntityIds: string[],
+    coldCohorts: object
+  },
+  monthlyCompression: {
+    monthIndex: number,
+    pendingStates: MonthlyCompressionState[],
+    monthLogs: MonthLog[],
+    stateDeltaLedger: StateDelta[]
+  },
+  dramaPackages: DramaPackageState[],
+  playerEncounterHistory: EncounterRecord[]
+}
+```
+
+当前 UI 层自建快照不能作为完整引擎恢复的长期方案。后续接入分层模拟时，存档边界必须以 `WorldEngine.getWorldSnapshot()` 或等价完整引擎快照为准。
 
 ## 功能
 
@@ -63,3 +86,5 @@ class SaveManager {
 - 保存时对世界状态做深拷贝快照，避免引用问题
 - 读档后完全替换当前世界状态
 - 导出的 JSON 包含版本号，用于未来兼容性处理
+- Cold 月压缩中的 NPC 必须保存当前 Job 快照、月内 episode、去过地点和已提交 delta，读档后能恢复到 Warm/Hot。
+- 剧情包 step、绑定 NPC、冷却、失败次数和等待玩家接触状态必须进入存档，不能只存在 UI。

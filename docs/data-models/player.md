@@ -1,6 +1,6 @@
 # 数据模型：玩家（Player）
 
-> 最后更新：2026-05-23
+> 最后更新：2026-06-09
 
 ## 结构
 
@@ -12,7 +12,13 @@ Player {
   actionsPerDay: number,      // 每天行动点上限（5）
   senseRange: number,         // 神识覆盖半径（格数）
   knownInfo: InfoRecord[],    // 已知信息列表
-  currentDay: number          // 当前天数
+  currentDay: number,         // 当前天数
+  focusDomain: {
+    hotRadiusTiles: number,
+    warmRadiusTiles: number,
+    markedNpcIds: string[]
+  },
+  encounterHistory: EncounterRecord[]
 }
 
 InfoRecord {
@@ -41,3 +47,15 @@ InfoRecord {
 | 打坐（快进） | 玩家自选 N 点 |
 
 每消耗满 5 行动点（actionsPerDay），触发一次世界 Tick。
+
+## 分层模拟与相遇
+
+玩家位置和神识范围是 `SimulationZoneResolver` 的主要输入：
+
+| 字段 | 说明 |
+|---|---|
+| `senseRange` | 决定直接感知和信息确认范围。 |
+| `focusDomain.hotRadiusTiles` | 玩家附近逐帧模拟半径。 |
+| `focusDomain.warmRadiusTiles` | 玩家附近日域模拟半径。 |
+| `markedNpcIds` | 玩家追踪或关注的 NPC，可提升模拟保真度。 |
+| `encounterHistory` | 记录与 NPC 的相遇、对话节点和选择，供后续对白条件读取。 |

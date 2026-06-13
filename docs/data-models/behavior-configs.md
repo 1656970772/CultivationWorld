@@ -1,12 +1,12 @@
 # 数据模型：行为配置
 
-> 最后更新：2026-06-06
+> 最后更新：2026-06-09
 
 ## 定位
 
 行为配置描述“静态开局数据进入世界 Tick 后如何变化”。它不替代 `npcs.json`、`factions.json`、`map.json` 等开局数据，而是记录计算规则、可调参数和公式文字说明。
 
-第一阶段不做通用公式解释器。代码仍按明确函数执行规则，但公式参数、阈值、表格和文字描述应放在 `apps/game/data/behaviors/`，方便后续调参、校验和生成模拟报告。
+运行时规则优先由现有 `apps/game/data/actions/`、`jobs/`、`toils/`、`needs/`、`goals/`、`balance/` 和未来的 `simulation/`、`drama/` 配置表达。代码负责解释配置、执行服务和提交状态 delta，不在核心流程中写固定 NPC、固定地点或固定对白分支。
 
 ## 开局数据与行为配置
 
@@ -15,25 +15,9 @@
 | 静态开局数据 | 世界开始时已经存在的对象和初始状态 | `npcs.json`、`factions.json`、`ranks.json`、`map.json`、`terrains.json` |
 | 行为配置 | 世界运转时的规则参数、阈值、公式描述 | `behaviors/npc-lifecycle.json`、后续 `succession.json`、`combat.json` |
 
-## 计划目录
+## 历史目录说明
 
-```text
-apps/game/data/
-├── npcs.json                 # NPC 开局数据
-├── factions.json             # 势力开局数据
-├── ranks.json                # 修仙境界、寿元与继任分数静态表
-├── terrains.json             # 地形开局数据
-├── events.json               # 事件模板数据
-├── rules.json                # 事件触发数据
-└── behaviors/
-    ├── npc-lifecycle.json    # NPC 寿元、自然死亡、年龄初始化
-    ├── succession.json       # 掌门继任与无候选覆灭行为
-    ├── faction-ai.json       # 势力决策行为（计划）
-    ├── stability.json        # 稳定度行为（计划）
-    ├── territory.json        # 扩张/占领行为（计划）
-    ├── combat.json           # 战斗结算行为（计划）
-    └── economy.json          # 发展/贸易/资源行为（计划）
-```
+早期文档曾设想 `apps/game/data/behaviors/`。当前正式数据结构已演进为 manifest 驱动的分目录配置，新增行为规则应优先进入现有目录或新增受 manifest 管理的目录。
 
 ## 当前已落地
 
@@ -61,3 +45,5 @@ apps/game/data/
 - 行为配置只保存可调参数和公式说明，不在 JSON 中写可执行 JavaScript。
 - 代码读取行为配置执行规则；如果关键行为配置缺失，校验器应报告错误。
 - 每新增一个行为配置文件，需要同步更新本文、`docs/README.md` 和 `docs/architecture/file-structure.md`。
+- 分层模拟配置应覆盖时间域半径、月压缩周期、保真度评分、月度 agenda 权重、episode 保留数量和恢复实时域策略。
+- 玩家相遇对话配置应覆盖对白候选、条件、权重、选项、成本、冷却、剧情包 step 和副作用命令。

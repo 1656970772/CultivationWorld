@@ -2,7 +2,7 @@
 
 > 项目代号：WorldDynamic  
 > 创建日期：2026-05-23  
-> 最后更新：2026-06-08（补齐门派运行规则链、通用任务板 ADR、系统文档、数据模型、世界观规则导航与验证报告；此前补齐 data manifest、strict validation、resource registry、relationship projections、editor dataset/adapters 的文档导航、硬编码配置化与通用架构清理实施计划、验证报告骨架与 ADR、门派架构与运行模拟实施计划、门派架构与运行模拟设计、动态模拟底座默认启用 ADR、当前代码功能实现盘点目录与文档、首个功能基本齐全版范围设计、统一经济交易底座设计与实施计划、三层关系底座全数据重构验证报告、实施计划并补强规格、十二境界运行时主链 ADR、实施计划更新、数据模型、Wiki 与验证报告导航）
+> 最后更新：2026-06-09（补充月压缩关键状态结算细节、项目落地接口与改造路线、月压缩事件因果图实施计划；新增世界模拟架构目录、近处实时与远处月压缩模拟设计、NPC 遇见玩家剧情对话架构、重要 NPC 保真度文档与 ADR-058；此前补齐门派运行规则链、通用任务板 ADR、系统文档、数据模型、世界观规则导航与验证报告、data manifest、strict validation、resource registry、relationship projections、editor dataset/adapters 的文档导航）
 
 ## 当前事实
 
@@ -37,13 +37,27 @@ docs/
 │   ├── system-overview.md
 │   ├── file-structure.md
 │   ├── design-patterns.md
-│   └── reference-acs-rimworld.md
+│   ├── reference-acs-rimworld.md
+│   └── world-simulation/
+│       ├── README.md
+│       ├── 00-架构契约与证据.md
+│       ├── 01-鬼谷八荒参考模型.md
+│       ├── 02-分层时间域总架构.md
+│       ├── 03-远处月压缩模拟.md
+│       ├── 04-近处实时模拟.md
+│       ├── 05-NPC遇见玩家剧情对话.md
+│       ├── 06-重要NPC保真度.md
+│       ├── 07-月压缩关键状态结算细节.md
+│       └── 08-项目落地接口与改造路线.md
 ├── data/
 │   └── data-config-rules.md
 ├── data-models/
 │   ├── world-map.md
 │   ├── faction.md
 │   ├── npc.md
+│   ├── simulation-time-domain.md
+│   ├── player-encounter-dialogue.md
+│   ├── compressed-event-record.md
 │   ├── monster.md
 │   ├── combat-attributes.md
 │   ├── economic-transaction.md
@@ -56,6 +70,8 @@ docs/
 │   └── world-modifiers.md
 ├── systems/
 │   ├── behavior-tree.md
+│   ├── simulation-lod.md
+│   ├── player-encounter-dialogue.md
 │   ├── economic-transaction-system.md
 │   ├── job-toil-ai-spec.md
 │   ├── event-system.md
@@ -120,7 +136,8 @@ docs/
 │   │   ├── 2026-06-07-修为数值化与突破重构实施计划.md
 │   │   ├── 2026-06-07-统一经济交易底座实施计划.md
 │   │   ├── 2026-06-06-提交前收尾修复计划.md
-│   │   └── 2026-06-08-硬编码配置化与通用架构清理实施计划.md
+│   │   ├── 2026-06-08-硬编码配置化与通用架构清理实施计划.md
+│   │   └── 2026-06-09-月压缩事件因果图实施计划.md
 │   └── reports/
 │       ├── 2026-06-05-Job-Toil启用前验证.md
 │       ├── 2026-06-05-Job-Toil默认启用验证.md
@@ -155,6 +172,11 @@ docs/
 | 首个功能基本齐全版范围 | `superpowers/specs/2026-06-07-首个功能基本齐全版范围设计.md` |
 | 运行时架构 | `architecture/system-overview.md` |
 | 文件结构 | `architecture/file-structure.md` |
+| 世界模拟架构：近处实时、远处月压缩、相遇对话 | `architecture/world-simulation/README.md`、`architecture/world-simulation/07-月压缩关键状态结算细节.md`、`architecture/world-simulation/08-项目落地接口与改造路线.md`、`decisions/adr-058-layered-time-domain-and-monthly-compressed-simulation.md` |
+| 月压缩事件因果图实施计划 | `superpowers/plans/2026-06-09-月压缩事件因果图实施计划.md` |
+| 架构参考：《鬼谷八荒》世界时间与 NPC 行为 | `architecture/world-simulation/01-鬼谷八荒参考模型.md` |
+| 分层模拟系统 | `systems/simulation-lod.md`、`data-models/simulation-time-domain.md`、`data-models/compressed-event-record.md` |
+| 玩家相遇与 NPC 对话 | `systems/player-encounter-dialogue.md`、`data-models/player-encounter-dialogue.md` |
 | 数据配置 | `data/data-config-rules.md`（包含 data manifest、strict validation、ResourceRegistry、relationship projections、editor dataset/adapters 规则） |
 | 硬编码配置化与通用架构清理 | `superpowers/plans/2026-06-08-硬编码配置化与通用架构清理实施计划.md`、`decisions/adr-056-data-manifest-and-strict-validation.md`、`superpowers/reports/2026-06-08-硬编码配置化与通用架构清理验证.md` |
 | AI 架构 | `systems/behavior-tree.md`、`systems/job-toil-ai-spec.md`、`decisions/adr-048-four-layer-reactive-ai.md`、`decisions/adr-050-goap-job-toil-layered-ai.md` |

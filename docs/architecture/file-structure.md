@@ -1,6 +1,6 @@
 ﻿# 项目文件结构
 
-> 最后更新：2026-06-08
+> 最后更新：2026-06-09
 
 ## 总体原则
 
@@ -138,4 +138,15 @@ CultivationWorld/
 | 本地依赖缓存 | `node_modules/`、`src-tauri/target/` | 不作为源码文档维护 |
 | 模拟报告输出 | `apps/game/tools/report*.html`、`report-data.js` | 可按需要重跑生成 |
 | 文档历史计划 | `旧实施计划目录（已清理）`、`旧执行计划目录（已清理）` | 已清理；机制结论以 ADR 和系统文档为准 |
+
+## 架构文档目录
+
+| 路径 | 职责 |
+|------|------|
+| `docs/architecture/world-simulation/` | 世界时间域、近处实时模拟、远处月压缩、月压缩关键状态结算、项目落地接口、NPC 遇见玩家剧情对话和重要 NPC 保真度架构。 |
+| `docs/systems/simulation-lod.md` | 分层模拟调度、月压缩、时间域切换和存档恢复边界。 |
+| `docs/systems/player-encounter-dialogue.md` | 玩家相遇检测、NPC 对话 DSL、选项命令和剧情包交互边界。 |
+| `docs/data-models/simulation-time-domain.md` | Hot/Warm/Cold 配置、NPC 保真度和 StateDelta 模型。 |
+| `docs/data-models/player-encounter-dialogue.md` | 相遇上下文、对白定义、选项命令和剧情包状态模型。 |
+| `docs/data-models/compressed-event-record.md` | 月压缩摘要事件、传闻和相遇对话可读取的结构化记录。 |
 

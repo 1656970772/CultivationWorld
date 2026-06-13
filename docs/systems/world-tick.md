@@ -1,10 +1,12 @@
 # 系统设计：世界演化 Tick
 
-> 最后更新：2026-05-27
+> 最后更新：2026-06-09
 
 ## 概述
 
 每消耗 5 行动点（1 天），WorldEngine 执行一次 Tick，按固定顺序推进世界状态。
+
+说明：本页描述当前日 Tick 主流程。正式运行期的近处实时模拟与远处月压缩模拟见 `docs/architecture/world-simulation/README.md`；远处月压缩不得简单等同于 `multiTick(30)`。
 
 ## Tick 执行流程（模板方法模式）
 

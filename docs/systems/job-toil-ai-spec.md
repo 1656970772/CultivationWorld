@@ -1,8 +1,8 @@
 # Job/Toil AI 双重重构规格
 
-> 最后更新：2026-06-07
+> 最后更新：2026-06-09
 > 状态：首批 Job/Toil 动态目标链路已正式默认启用；`ai-config.npc.jobs.enabled=false` 可作为回退开关
-> 架构决策：ADR-048、ADR-049、ADR-050、ADR-051
+> 架构决策：ADR-048、ADR-049、ADR-050、ADR-051、ADR-058
 > 来源：用户明确要求“保留 GOAP 作为中层规划器，把复杂 Action 的执行升级为 Job/Toil，逻辑和配置都拆清楚，并补齐缺少的 Job 与 Toil”；当前代码 `action.js`、`behavior-system.js`、`job-system.js`、`job-pool.js`、`toil-pool.js`、`npc-toils.js`、`dynamic-goals.json`、`npc-job-actions.json`、`npc-action-sets.json`、`npc-entity.js`。
 
 ## 目标
@@ -17,6 +17,8 @@
 6. 补齐动态目标、秘境准备、宗门大比准备、获取回血丹、获取法器所需的初始 Job 和 Toil。
 
 当前四层 AI 已落地；首批 Job/Toil 已作为默认启用的复杂行动执行层接入。`ai-config.npc.jobs.enabled=false` 回退时，运行时仍保持 `Reaction → Utility / Intent → GOAP → Execution`；默认启用后，复杂 JobAction 走 `Reaction → Utility / Intent → GOAP → Job / Toil → Execution`。
+
+ADR-058 增补：Job/Toil 也是近处实时、日域推进和远处月压缩之间的行为连续性边界。Hot 域可以暂停或恢复当前 Job；Cold 月压缩可以读取 Job/Toil 配置语义生成月度 agenda，并在切回 Warm/Hot 时恢复 `currentJobId/currentToilId/jobContext` 等快照。
 
 ## 非目标
 
@@ -683,7 +685,7 @@ node tools/verify-dynamic-goals.mjs
 - 验证报告：`docs/superpowers/reports/2026-06-05-Job-Toil默认启用验证.md`。
 - 命令不依赖 `JOBS_ACTIVE`、`DYNAMIC_EVENTS_ACTIVE`、`DYNAMIC_GOALS_ACTIVE` 环境变量。
 - 验收门槛：900 天、3 种子、Job 失败/abort 为 0、动态行动后普通行为恢复率不低于 90%。
-- 验证方式仍是完整模拟行为观察，不使用固定摘要一致性证明。
+- 验证方式仍是完整模拟行为观察，不用输出相同来替代行为判断。
 
 ## 迁移顺序
 

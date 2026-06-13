@@ -1,6 +1,6 @@
 ﻿# 数据模型：信息传播（InfoPropagation）
 
-> 最后更新：2026-05-30
+> 最后更新：2026-06-09
 >
 > **状态：已实现**（ADR-024）。运行时实体为 `WorldNews`（`js/engine/world/info-propagation.js`），
 > 参数见 `data/world/news.json`。下文 `InfoEvent` 为早期设计名，运行时对应 `WorldNews`，
@@ -57,5 +57,17 @@ InfoEvent {
 - 传播由 `InfoPropagationSystem.tick`（半径）+ `TickManager._propagateChannels`（口耳/城镇/宗门/商会）驱动。
 - NPC 知晓写入 `npc._knownNews: Map<newsId, {reliability, value, opportunityId, subjectId, tickKnown}>`。
 - 知晓后经 `_bestOpportunityFor` 关联机会点并参与 Utility 决策（ADR-024 决策层）。
-- 默认 `enabled=false` 时整套系统静默，保护既有 golden 摘要。
+- 信息传播系统关闭时整套系统静默；开启时应通过真实模拟观察信息传播、机会点参与和玩家获知结果是否合理。
+
+## 月压缩摘要信息
+
+ADR-058 后，Cold 月压缩会把远处世界变化转成摘要信息源：
+
+| 信息源 | 说明 |
+|---|---|
+| `month_log` | 月度压缩阶段产生的门派、NPC、地图和市场摘要。 |
+| `important_npc_episode` | 重要 NPC 的突破、受伤、任务、交易、仇杀、获得宝物等 episode。 |
+| `drama_package_summary` | 玩家不在场时剧情包推进产生的世界事实摘要。 |
+
+摘要信息仍进入 `WorldNews` 或等价传播入口，由传播半径、渠道、可信度和玩家感知决定可见性。
 

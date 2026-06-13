@@ -1,6 +1,6 @@
 # 设计模式与原则
 
-> 最后更新：2026-06-08
+> 最后更新：2026-06-09
 
 ## 设计原则
 
@@ -216,3 +216,14 @@ data/
 | 增加玩家 | 创建 `player/` 目录，PlayerEntity 继承 BaseEntity | 所有已有实体和系统 |
 | 新增 UI 面板 | 新增面板类 + 在 GameManager 注册事件 | 其他面板不受影响 |
 | 新增势力展示样式 | 在 `factions.json` 对应势力/组织补 `presentation.color`、`presentation.badge`、`presentation.order` | 地图图例、缩略图、TileRenderer 的固定 ID 表 |
+
+## ADR-058 新增模式适配
+
+| 模式 | 应用位置 | 说明 |
+|---|---|---|
+| 策略模式 | `SimulationZoneResolver`、`NpcFidelityPolicy` | 按玩家位置、神识、标记、剧情包和 NPC 重要度决定 Hot/Warm/Cold 与保真等级。 |
+| 责任链模式 | `MonthlyCompressionPipeline` | 月压缩按世界、势力、NPC agenda、路线、事件、经济、修为、关系、死亡、日志阶段顺序执行。 |
+| 命令模式 | `StateDelta`、`DialogueCommand` | 月压缩和对话都只提交命令或 delta，由统一服务校验后写状态。 |
+| 状态机模式 | `DramaPackageRuntime` | 剧情包保存 active、step、cooldown、closed、waitingForPlayerContact 等状态。 |
+| 解释器模式 | `DialogueConditionEvaluator`、`MonthlyAgendaResolver` | 解释配置化条件、权重和上下文，不在代码中写固定对白或固定 NPC 分支。 |
+| 注册表模式 | `DialogueRegistry`、`MonthlyPhaseRegistry` | 对话模板、月压缩阶段和 executor 通过配置登记与加载。 |

@@ -1,7 +1,7 @@
 # 系统设计：行为树与五层 AI
 
-> 最后更新：2026-06-05  
-> 架构决策：ADR-018、ADR-021、ADR-022、ADR-023、ADR-048、ADR-049、ADR-050
+> 最后更新：2026-06-09
+> 架构决策：ADR-018、ADR-021、ADR-022、ADR-023、ADR-048、ADR-049、ADR-050、ADR-058
 
 ## 概述
 
@@ -27,6 +27,18 @@ ADR-050 的首批 Job/Toil 运行时已接入并默认启用。复杂 JobAction 
 | Job / Toil | 对复杂 Action 做多步骤编排，例如绑定动态事件、移动、等待阶段、标记准备或参与 | `abstract/job-system.js`、`pools/job-pool.js`、`pools/toil-pool.js`、`npc/toils/*.js` |
 
 GOAP 仍只规划 Action ID，不直接规划 Toil ID；Job/Toil 只在执行当前 JobAction 时推进。
+
+## 分层模拟接入
+
+ADR-058 后，NPC AI 不再假定所有 NPC 都在同一时间粒度下运行。
+
+| 时间域 | AI 入口 | 行为语义 |
+|---|---|---|
+| Hot 实时域 | Reaction、相遇检测、对话、即时战斗优先；当前 Job 可暂停或恢复。 | 玩家附近逐帧表现，但仍写入同一 NPC state 和 Job 快照。 |
+| Warm 日域 | 继续使用本页的 Reaction → Utility / Intent → GOAP → Job / Toil → Execution。 | 当前日 Tick 主路径。 |
+| Cold 月压缩域 | `MonthlyAgendaResolver` 读取 Need/Utility/Job/Toil 配置语义，按月生成 agenda 和 episode。 | 不逐日完整跑 BT，但不能绕过关系、经济、修为、战斗和日志底座。 |
+
+Cold 域的 agenda 不是新的 NPC AI 真相源。它是当前五层 AI 在月尺度下的压缩执行视图，输出 `StateDelta`、`JobSnapshot`、`recentEpisodes` 和月志，供进入 Warm/Hot 时恢复。
 
 ## 目标来源
 
@@ -70,6 +82,8 @@ ADR-049 新增动态目标接入：
 5. `InterruptPolicy.decide()` 判断是否 `interrupt_now`、`after_step`、`keep_current_queue` 或 `ignore`。
 
 打断策略只决定时机，不执行行为；行为仍由 GOAP 选出的 Action 完成。当前 Action 是 JobAction 时，Reaction 会暂停 Job，Reaction 行为结束后再恢复或重规划；关闭 Jobs 时仍按四层 SimpleAction 路径执行。
+
+玩家相遇属于 Hot 域交互事件。相遇本身不直接改 NPC 行为计划，而是通过 `EncounterDetector` 构建上下文，再由 `DialogueResolver` 和命令副作用决定是否暂停、恢复或中止当前 Job。
 
 ## GOAP 职责边界
 

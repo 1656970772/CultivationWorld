@@ -1,6 +1,6 @@
 # 数据模型：NPC
 
-> 最后更新：2026-06-06
+> 最后更新：2026-06-09
 > 数据来源：`apps/game/data/entities/npcs.json`
 
 ## 当前规模
@@ -41,6 +41,7 @@ NPC {
 - 背包、装备、物品效果和能力组件。
 - 记忆、情绪、执念、关系图兼容视图。
 - 事件感知、动态目标和打断状态。
+- 分层模拟保真度、月压缩 agenda、近期 episode、去过地点和当前 Job 快照。
 
 ## 角色
 
@@ -77,3 +78,18 @@ NPC 每 tick 通过行为树推进：
 5. Execution 处理移动、耗时、结算、重规划。
 
 相关文档：`docs/systems/behavior-tree.md`、`docs/decisions/adr-048-four-layer-reactive-ai.md`、`docs/decisions/adr-049-dynamic-goal-interrupt-policy.md`。
+
+## 分层模拟字段
+
+ADR-058 后，NPC 运行态需要能支持 Hot/Warm/Cold 切换：
+
+| 字段 | 说明 |
+|---|---|
+| `simulationDomain` | 当前时间域：`hot`、`warm`、`cold`。 |
+| `fidelityTier` | 保真等级：`S/A/B/C`，只影响模拟细节和日志，不提供特权。 |
+| `visitedPlaces` | 月内去过的主要地点摘要。 |
+| `recentEpisodes` | 重要月内事件，用于日志、传闻和玩家相遇对白。 |
+| `currentJobSnapshot` | 当前 Job/Toil、剩余时间、上下文和打断状态。 |
+| `encounterCooldowns` | 与玩家或特定剧情的相遇冷却。 |
+
+这些字段应由分层模拟系统维护，不在 NPC 初始配置中硬编码单个重要 NPC 白名单。
