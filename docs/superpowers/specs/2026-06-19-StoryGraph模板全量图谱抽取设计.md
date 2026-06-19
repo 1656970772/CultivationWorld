@@ -110,7 +110,7 @@ StoryGraph 分为六层：
 | `template_id` | 模板 ID |
 | `started_at` / `finished_at` | 运行时间 |
 | `status` | `running`、`completed`、`failed`、`needs_review` |
-| `stats` | 候选数、确认数、待核验数、疑似遗漏数等摘要 |
+| `stats` | 候选数、确认数、待核验数、疑似遗漏数、LLM schema 校验失败数、无证据拒绝数、新候选建议数、字段级缺证数等摘要 |
 
 ### candidate_mentions
 
@@ -131,6 +131,8 @@ StoryGraph 分为六层：
 | `line_start` / `line_end` | 行号 |
 | `rule_id` | 命中的召回规则 |
 | `confidence` | 召回置信度 |
+| `origin` | `rule`、`llm_suggestion`、`manual_review` |
+| `parent_review_id` | 来源审查记录，可为空 |
 
 候选不等于事实。候选可以是泛称、噪声或待核验线索，但不能被静默丢弃。
 
@@ -147,11 +149,47 @@ StoryGraph 分为六层：
 | `story_node_id` | 对应统一总图节点，可为空表示尚未归并 |
 | `template_type` | 模板类型，例如 `pill`、`artifact`、`organization` |
 | `name` | 实体名 |
-| `fields` | 模板字段 JSON |
+| `fields` | 模板字段断言 JSON，字段值必须携带证据状态 |
 | `status` | `confirmed`、`needs_review`、`rejected` |
 | `primary_evidence_id` | 主证据 |
 
-示例：`掌天瓶` 在统一总图中可以是 `story_node.kind=item`，在法宝模板中投影为 `template_type=artifact`，在秘境机缘模板中可投影为 `template_type=opportunity_item`。
+`fields` 不保存裸值。每个字段值必须使用统一断言结构：
+
+```json
+{
+  "字段名": {
+    "value": "字段值，或 unknown，或 原文未说明",
+    "status": "confirmed | needs_review | unknown | rejected",
+    "confidence": 0.86,
+    "evidence_ids": ["evidence_anchor_id"],
+    "review_reason": "证据不足、冲突、原文未说明或其他原因"
+  }
+}
+```
+
+也可以把字段断言拆成独立的 `template_field_assertions` 表；若采用独立表，`template_entities.fields` 只保留规范化后的展示快照，事实判定以断言表为准。
+
+### template_field_assertions
+
+记录字段级事实断言，用于防止无证据字段混入 confirmed。
+
+核心字段：
+
+| 字段 | 含义 |
+|------|------|
+| `id` | 字段断言 ID |
+| `run_id` | 所属运行 |
+| `template_entity_id` | 所属模板实体 |
+| `field_name` | 模板字段名 |
+| `value` | 字段值，或 `unknown`、`原文未说明` |
+| `status` | `confirmed`、`needs_review`、`unknown`、`rejected` |
+| `confidence` | 字段级置信度 |
+| `evidence_ids` | 字段级证据锚点列表 |
+| `review_reason` | 缺证、冲突、低置信或原文未说明原因 |
+
+confirmed 门槛：实体、关系、事件边和关键字段断言都必须至少绑定一个 `evidence_anchor`。字段级事实没有证据时，只能进入 `needs_review`、`unknown` 或标记为 `原文未说明`，不能进入 confirmed 结论，也不能被 coverage report 计入已确认覆盖。
+
+示例：同一个统一总图物品节点可以在法宝模板中投影为 `template_type=artifact`，在秘境机缘模板中投影为 `template_type=opportunity_item`；具体字段能否 confirmed 取决于字段断言自己的证据锚点。
 
 ### template_relations
 
@@ -167,13 +205,15 @@ StoryGraph 分为六层：
 | `story_edge_id` | 对应总图边，可为空 |
 | `relation_type` | 模板关系类型 |
 | `label` | 可读标签 |
-| `evidence_id` | 证据 |
+| `evidence_ids` | 关系或事件边证据锚点列表 |
 | `confidence` | 置信度 |
 | `status` | 状态 |
 
+关系和事件边不能只继承实体证据。每条 confirmed 关系或事件边必须绑定至少一个直接支持该关系、因果、时序或归属判断的证据锚点；缺少边级证据时进入 `needs_review`。
+
 ### coverage_items
 
-记录覆盖率账本。
+记录覆盖率目标账本。覆盖项不只面向候选或模板实体，也面向模板字段断言、模板关系和事件边，保证 coverage audit 可以按字段级、关系级和边级目标核对输出遗漏。
 
 核心字段：
 
@@ -181,13 +221,17 @@ StoryGraph 分为六层：
 |------|------|
 | `id` | 覆盖项 ID |
 | `run_id` | 所属运行 |
-| `candidate_id` | 来源候选 |
-| `template_entity_id` | 对应模板实体 |
+| `target_type` | 覆盖目标类型：`candidate`、`entity`、`field_assertion`、`relation`、`event_edge` |
+| `target_id` | 对应目标 ID；分别指向 `candidate_mentions`、`template_entities`、`template_field_assertions`、`template_relations`，事件边可指向事件边记录或带事件边语义的 `template_relations.id` |
+| `candidate_id` | 来源候选，可为空 |
+| `template_entity_id` | 关联模板实体，可为空；字段断言、关系和事件边可通过该字段回溯所属实体 |
 | `coverage_status` | 覆盖状态 |
 | `evidence_count` | 证据数量 |
 | `missing_fields` | 缺失字段列表 |
 | `review_reason` | 待核验或疑似遗漏原因 |
 | `used_in_output` | 是否已被最终文档使用 |
+
+`target_type + target_id` 是 coverage item 的通用定位机制，必须覆盖 `template_entities`、`template_field_assertions`、`template_relations` 和事件边目标。`used_in_output` 与 `missing_from_output` 不只用于实体，也同样用于字段断言、关系和事件边：只要某个已确认或需显式说明的目标没有出现在最终 Markdown 对应条目中，就应在覆盖率报告中标记为 `missing_from_output`。
 
 覆盖状态枚举：
 
@@ -212,7 +256,7 @@ missing_from_output
 |------|------|
 | `id` | 审查记录 ID |
 | `run_id` | 所属运行 |
-| `target_type` | `candidate`、`entity`、`relation`、`coverage_item` |
+| `target_type` | `candidate`、`entity`、`field_assertion`、`relation`、`event_edge`、`coverage_item` |
 | `target_id` | 目标 ID |
 | `severity` | `info`、`warning`、`error` |
 | `category` | `low_confidence`、`conflict`、`duplicate`、`insufficient_evidence` 等 |
@@ -239,10 +283,11 @@ missing_from_output
   需要哪些模板实体类型、模板关系类型、允许哪些 story_node kind 投影。
 
 覆盖规则
-  哪些字段必须有证据，哪些字段允许“原文未说明”，哪些候选必须进入待核验。
+  哪些字段必须有证据，哪些字段属于关键字段断言，哪些字段允许“原文未说明”，哪些候选必须进入待核验。
 
 LLM JSON Schema
   结构化抽取时允许输出的字段、关系、状态和置信度。
+  字段、关系和事件边必须显式声明 evidence_ids；没有证据的事实只能输出为 needs_review、unknown 或 原文未说明。
 ```
 
 示例：
@@ -275,6 +320,9 @@ templates:
       - consequence
     coverage:
       requireEvidenceForConfirmed: true
+      requireEvidenceForConfirmedFields: true
+      requireEvidenceForConfirmedEdges: true
+      criticalFields: [丹药名称, 功效, 来源]
       reportUnresolvedCandidates: true
       minEvidenceAnchors: 1
 ```
@@ -345,11 +393,14 @@ templates:
 - 实体名称和模板类型。
 - 模板字段。
 - 相关关系或事件。
-- 证据 ID 或证据位置。
+- 实体、字段断言、关系和事件边各自的证据 ID 或证据位置。
 - 置信度。
 - 待核验原因。
+- `new_candidate_suggestion`。
 
 LLM 不能凭空新增事实。若发现候选外的重要线索，应输出为 `new_candidate_suggestion`，再进入候选池和证据回查，而不是直接进入 confirmed。
+
+阶段 1 必须实现最小回流闭环：`new_candidate_suggestion` 先写入 `candidate_mentions.origin=llm_suggestion`，或在证据位置不足时写入 `extraction_reviews.category=insufficient_evidence`；随后触发 Evidence Expansion 回查。只有回查得到支持对应实体、字段断言、关系或事件边的证据锚点，并通过 schema 校验后，才允许进入 `structured_extracted`、`needs_review` 或 `confirmed` 等后续状态。
 
 ### 6. Merge & Normalize
 
@@ -385,10 +436,12 @@ LLM 不能凭空新增事实。若发现候选外的重要线索，应输出为 
 - 已确认条目。
 - 待核验条目。
 - 疑似遗漏。
-- 证据覆盖。
+- 实体、字段断言、关系和事件边的证据覆盖。
 - 去重与冲突。
 - 模板字段缺口。
 - 已入图但未输出的条目。
+
+报告中的疑似遗漏和已入图未输出条目必须按 `coverage_items.target_type` 分组，至少能分别列出实体、关键字段断言、关系和事件边。字段断言是否属于关键字段由模板 Registry 的 coverage 配置定义。
 
 ## 查询接口
 
@@ -397,7 +450,7 @@ StoryGraph 查询层需要新增模板级 CLI/MCP/API。建议工具名称如下
 | 工具 | 作用 |
 |------|------|
 | `storygraph_index` | 建统一总图 |
-| `storygraph_template_run` | 对某作品某模板运行候选召回、结构化抽取、子图生成和覆盖率审计 |
+| `storygraph_template_run` | 对某作品某模板串起候选召回、证据扩展、LLM 抽取、schema 校验、子图生成和 coverage audit |
 | `storygraph_template_status` | 查看模板运行状态和统计 |
 | `storygraph_template_coverage` | 返回覆盖率报告 |
 | `storygraph_template_explore` | 主力工具，返回模板证据包、子图关系、缺口和建议输出顺序 |
@@ -422,7 +475,7 @@ StoryGraph 查询层需要新增模板级 CLI/MCP/API。建议工具名称如下
 - 已确认条目。
 - 待核验条目。
 - 疑似遗漏。
-- 相关证据锚点。
+- 实体、字段断言、关系和事件边的相关证据锚点。
 - 子图关系。
 - 建议输出顺序。
 - 查询预算统计。
@@ -441,11 +494,12 @@ StoryGraph 查询层需要新增模板级 CLI/MCP/API。建议工具名称如下
 ```text
 1. Codex 调用 storygraph_template_status。
 2. 若目标模板未运行或已过期，调用 storygraph_template_run。
-3. 调用 storygraph_template_coverage 检查疑似遗漏和待核验。
-4. 调用 storygraph_template_explore 获取证据包。
-5. 按模板字段生成 Markdown。
-6. 将文档条目与 coverage_item 对齐，标记 used_in_output。
-7. 若存在 missing_from_output，补写或向用户说明。
+3. storygraph_template_run 必须完成候选召回、证据扩展、LLM 抽取、schema 校验、子图生成和 coverage audit。
+4. 调用 storygraph_template_coverage 检查疑似遗漏、待核验和字段级缺证。
+5. 调用 storygraph_template_explore 获取证据包。
+6. 按模板字段生成 Markdown，只使用 confirmed 或明确标注为待核验、unknown、原文未说明的断言。
+7. 将文档条目与实体、字段断言、关系和事件边的 coverage item 对齐，标记 used_in_output。
+8. 若任一实体、关键字段断言、关系或事件边存在 missing_from_output，补写或向用户说明。
 ```
 
 生成文档时仍遵循模板目录规则：最终输出只按模板案例格式和字段输出，不添加模板未要求的章节。
@@ -466,13 +520,26 @@ templates   = 丹药、法宝、人物关系、事件因果链、势力、秘境
 验收标准：
 
 1. 能完成《凡人修仙传》统一总图索引。
-2. 6 个模板都能生成 `template_run`。
+2. 6 个模板都能通过 `storygraph_template_run` 生成 `template_run`。
 3. 6 个模板都能生成 coverage report。
-4. 每个 confirmed 条目至少有一个证据锚点。
+4. 每个 confirmed 的实体、关系、事件边和关键字段断言都必须绑定至少一个 evidence anchor。
 5. 每个模板能列出待核验和疑似遗漏。
 6. `storygraph_template_explore` 能返回某个模板的证据包、子图关系和输出建议。
 7. 模板 Registry 不硬编码《凡人修仙传》的具体实体；实体名只能出现在索引结果、测试 fixture 或验收报告中。
 8. 写作阶段能根据 coverage report 检查已入图但未输出的条目。
+9. 无证据字段必须进入 `needs_review`、`unknown` 或标记为 `原文未说明`，不能进入 confirmed 结论。
+10. 6 个模板的 coverage report 必须能分别列出未输出的实体、关键字段断言、关系和事件边。
+
+6 模板最小闭环验收矩阵：
+
+| 模板 | 必须验证的 confirmed 证据粒度 | 缺证处理 |
+|------|-------------------------------|----------|
+| 丹药 | 实体、功效/来源等关键字段断言 | 字段进入 `needs_review`、`unknown` 或 `原文未说明` |
+| 法宝 | 实体、能力/来源/使用事件字段断言、使用事件边 | 字段或事件边缺证时不计入 confirmed |
+| 人物关系 | 人物实体、关系边、关系变化事件边 | 关系缺少边级证据时进入 `needs_review` |
+| 事件因果链 | 事件节点、因果边、时序边 | 因果或时序证据不足时进入 `needs_review` |
+| 势力 | 组织实体、成员/层级/规则字段断言、隶属关系边 | 字段或关系缺证时标记缺口 |
+| 秘境遗迹与机缘 | 地点实体、进入条件/机缘字段断言、冲突或结果事件边 | 字段或事件边缺证时标记缺口 |
 
 ## 阶段推进规划
 
@@ -509,16 +576,18 @@ StoryGraph 模板全量图谱抽取分为 6 个阶段推进。每个阶段都必
 
 范围：
 
-- 增加 `template_profiles`、`template_runs`、`candidate_mentions`、`template_entities`、`template_relations`、`coverage_items`、`extraction_reviews`。
+- 增加 `template_profiles`、`template_runs`、`candidate_mentions`、`template_entities`、`template_field_assertions`、`template_relations`、`coverage_items`、`extraction_reviews`。
 - 建立 6 个模板的 Registry 配置。
-- 实现规则候选池、证据扩展、最小 LLM 结构化抽取、模板子图生成和 coverage report。
+- 实现 `storygraph_template_run` 串联规则候选池、证据扩展、最小 LLM 结构化抽取、schema 校验、模板子图生成和 coverage audit。
 - 为 6 个模板提供最小 JSON Schema，至少覆盖实体表、关系链、因果链、组织设定和地点机缘。
-- 增加 `storygraph_template_status`、`storygraph_template_coverage`、`storygraph_template_explore` 的 CLI 版本。
+- 增加 `storygraph_template_run`、`storygraph_template_status`、`storygraph_template_coverage`、`storygraph_template_explore` 的 CLI 版本。
 - LLM adapter 可以先只支持一个实际可用模型后端，但接口必须可替换，且所有 LLM 输出都必须经过 schema 校验、证据绑定和审查落库。
+- 实现 `new_candidate_suggestion` 的最小回流：写入 `candidate_mentions` 或 `extraction_reviews`，触发证据回查后再进入后续状态。
 
 交付物：
 
 - 6 个模板的配置文件。
+- `storygraph_template_run` CLI 运行样例和运行统计样例。
 - 《凡人修仙传》6 个模板的 coverage report。
 - CLI 查询结果样例。
 - 单元测试和真实资料验收命令。
@@ -526,11 +595,14 @@ StoryGraph 模板全量图谱抽取分为 6 个阶段推进。每个阶段都必
 
 进入下一阶段门槛：
 
-- 6 个模板都能生成 `template_run`。
-- 每个 confirmed 条目都有证据锚点。
+- 6 个模板都能通过 `storygraph_template_run` 生成 `template_run`，且运行链路覆盖候选召回、证据扩展、LLM 抽取、schema 校验、子图生成和 coverage audit。
+- 每个 confirmed 的实体、关系、事件边和关键字段断言都有至少一个 evidence anchor。
+- 无证据字段必须进入 `needs_review`、`unknown` 或标记为 `原文未说明`，不能进入 confirmed 结论。
 - 每个模板都能列出待核验和疑似遗漏。
-- `template_explore` 能返回分批、可预算控制的证据包。
-- 6 个模板的 LLM 输出全部通过对应 schema 校验；无证据的 LLM 事实不能进入 confirmed。
+- `storygraph_template_explore` 能返回分批、可预算控制的证据包。
+- 6 个模板的 coverage report 必须能分别列出未输出的实体、关键字段断言、关系和事件边。
+- 6 个模板的 LLM 输出全部通过对应 schema 校验；无证据的 LLM 事实、字段断言、关系或事件边不能进入 confirmed。
+- LLM `new_candidate_suggestion` 能落库并完成一次证据回查；无证据建议保留为待核验或审查记录。
 
 ### 阶段 2：LLM 结构化抽取强化与规模化
 
@@ -540,7 +612,7 @@ StoryGraph 模板全量图谱抽取分为 6 个阶段推进。每个阶段都必
 
 - 完善不同 template shape 的 JSON Schema，覆盖更多字段、关系和审查状态。
 - 强化 LLM adapter，支持批处理、重试、超时、预算限制、结构校验和失败落审。
-- 将 LLM 新发现线索写回 `candidate_mentions`，而不是直接确认为事实。
+- 强化阶段 1 已有的新候选回流，支持批处理、重试、去重和质量评估；新发现线索仍不得直接确认为事实。
 - 对低置信、冲突、重复和证据不足条目写入 `extraction_reviews`。
 - 对同一模板运行规则-only、LLM-assisted 和复核后的 coverage 对比，形成质量评估。
 
@@ -587,7 +659,7 @@ StoryGraph 模板全量图谱抽取分为 6 个阶段推进。每个阶段都必
 范围：
 
 - 插件调用 `storygraph_template_status`、`storygraph_template_run`、`storygraph_template_coverage` 和 `storygraph_template_explore`。
-- 写作阶段把输出条目关联回 `coverage_items`。
+- 写作阶段把输出条目关联回实体、字段断言、关系和事件边的 `coverage_items`。
 - 生成后标记 `used_in_output`，并报告 `missing_from_output`。
 - 保持模板输出只按模板案例格式和字段生成，不添加额外章节。
 
