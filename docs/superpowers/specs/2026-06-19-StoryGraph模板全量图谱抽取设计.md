@@ -505,13 +505,16 @@ StoryGraph 模板全量图谱抽取分为 6 个阶段推进。每个阶段都必
 
 目标：以《凡人修仙传》跑通第一批 6 个模板，证明候选、证据、模板子图和覆盖率账本闭环有效。
 
+本阶段必须接入最小可用的 LLM 结构化抽取。原因是人物关系、事件因果、势力和秘境机缘模板不能只靠规则候选池完成闭环；规则负责召回，LLM 负责在证据窗口内抽取关系、因果、字段和待核验原因，覆盖率账本负责检查遗漏。
+
 范围：
 
 - 增加 `template_profiles`、`template_runs`、`candidate_mentions`、`template_entities`、`template_relations`、`coverage_items`、`extraction_reviews`。
 - 建立 6 个模板的 Registry 配置。
-- 实现规则候选池、证据扩展、模板子图生成和 coverage report。
+- 实现规则候选池、证据扩展、最小 LLM 结构化抽取、模板子图生成和 coverage report。
+- 为 6 个模板提供最小 JSON Schema，至少覆盖实体表、关系链、因果链、组织设定和地点机缘。
 - 增加 `storygraph_template_status`、`storygraph_template_coverage`、`storygraph_template_explore` 的 CLI 版本。
-- LLM 结构化抽取可以先以接口和可替换 adapter 形式落地；本阶段优先保证流程边界和审计数据模型稳定。
+- LLM adapter 可以先只支持一个实际可用模型后端，但接口必须可替换，且所有 LLM 输出都必须经过 schema 校验、证据绑定和审查落库。
 
 交付物：
 
@@ -519,6 +522,7 @@ StoryGraph 模板全量图谱抽取分为 6 个阶段推进。每个阶段都必
 - 《凡人修仙传》6 个模板的 coverage report。
 - CLI 查询结果样例。
 - 单元测试和真实资料验收命令。
+- 6 个模板的 LLM 结构化抽取样例和失败落审样例。
 
 进入下一阶段门槛：
 
@@ -526,30 +530,32 @@ StoryGraph 模板全量图谱抽取分为 6 个阶段推进。每个阶段都必
 - 每个 confirmed 条目都有证据锚点。
 - 每个模板都能列出待核验和疑似遗漏。
 - `template_explore` 能返回分批、可预算控制的证据包。
+- 6 个模板的 LLM 输出全部通过对应 schema 校验；无证据的 LLM 事实不能进入 confirmed。
 
-### 阶段 2：LLM 结构化抽取正式接入
+### 阶段 2：LLM 结构化抽取强化与规模化
 
-目标：让 StoryGraph 在候选和证据约束下使用 LLM 理解复杂关系、因果链、职业机制和场景链。
+目标：在阶段 1 最小可用 LLM 闭环基础上，提高 LLM 抽取的稳定性、可复核性、成本控制和跨模板扩展能力。
 
 范围：
 
-- 为不同 template shape 定义 JSON Schema。
-- 增加 LLM adapter，支持批处理、重试、结构校验和失败落审。
+- 完善不同 template shape 的 JSON Schema，覆盖更多字段、关系和审查状态。
+- 强化 LLM adapter，支持批处理、重试、超时、预算限制、结构校验和失败落审。
 - 将 LLM 新发现线索写回 `candidate_mentions`，而不是直接确认为事实。
 - 对低置信、冲突、重复和证据不足条目写入 `extraction_reviews`。
+- 对同一模板运行规则-only、LLM-assisted 和复核后的 coverage 对比，形成质量评估。
 
 交付物：
 
-- `entity_table`、`relationship_chain`、`causal_chain`、`organization_profile`、`location_opportunity` 的结构化抽取 schema。
-- LLM 抽取运行日志和失败审计样例。
+- 扩展后的 `entity_table`、`relationship_chain`、`causal_chain`、`organization_profile`、`location_opportunity` 结构化抽取 schema。
+- LLM 抽取运行日志、预算统计和失败审计样例。
 - 6 个模板在 LLM 接入后的 coverage 对比报告。
 
 进入下一阶段门槛：
 
-- LLM 输出全部通过 schema 校验。
-- 无证据的 LLM 事实不能进入 confirmed。
+- LLM 批处理、重试和失败落审路径都有测试覆盖。
 - 新候选能回流到候选池并参与证据回查。
 - 复杂模板的待核验原因可读、可追踪。
+- 对每个样板模板都能说明 LLM 相比规则-only 增加了哪些关系、字段或待核验线索。
 
 ### 阶段 3：扩展到全部模板 Registry
 
@@ -649,5 +655,6 @@ StoryGraph 模板全量图谱抽取分为 6 个阶段推进。每个阶段都必
 - 已明确模板配置化范围，避免硬编码小说实体和固定模板数量。
 - 已明确覆盖率账本是“尽量全”的工程判定方式。
 - 已明确 LLM 只做结构化理解，不单独决定事实存在。
+- 已明确阶段 1 必须包含最小 LLM 结构化抽取，阶段 2 负责强化与规模化。
 - 已明确阶段 0 到阶段 5 的推进目标、交付物和升级门槛。
 - 已明确与现有 StoryGraph 设计和通用抽取插件设计的边界。
