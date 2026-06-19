@@ -2,7 +2,7 @@
 
 > 项目代号：WorldDynamic  
 > 创建日期：2026-05-23  
-> 最后更新：2026-06-09（补充月压缩关键状态结算细节、项目落地接口与改造路线、月压缩事件因果图实施计划；新增世界模拟架构目录、近处实时与远处月压缩模拟设计、NPC 遇见玩家剧情对话架构、重要 NPC 保真度文档与 ADR-058；此前补齐门派运行规则链、通用任务板 ADR、系统文档、数据模型、世界观规则导航与验证报告、data manifest、strict validation、resource registry、relationship projections、editor dataset/adapters 的文档导航）
+> 最后更新：2026-06-19（新增 StoryGraph 模板全量图谱抽取设计；此前补充月压缩关键状态结算细节、项目落地接口与改造路线、月压缩事件因果图实施计划；新增世界模拟架构目录、近处实时与远处月压缩模拟设计、NPC 遇见玩家剧情对话架构、重要 NPC 保真度文档与 ADR-058；此前补齐门派运行规则链、通用任务板 ADR、系统文档、数据模型、世界观规则导航与验证报告、data manifest、strict validation、resource registry、relationship projections、editor dataset/adapters 的文档导航）
 
 ## 当前事实
 
@@ -101,6 +101,7 @@ docs/
 │   │   ├── 2026-06-05-Job-Toil正式启用前收尾规格.md
 │   │   ├── 2026-06-05-StoryGraph小说图谱设计.md
 │   │   ├── 2026-06-05-StoryGraph单作品本地索引库规格.md
+│   │   ├── 2026-06-19-StoryGraph模板全量图谱抽取设计.md
 │   │   ├── 2026-06-05-妖兽伤害与斩妖历练修为规格.md
 │   │   ├── 2026-06-06-妖兽属性模板与境界清理-design.md
 │   │   ├── 2026-06-06-修士战斗属性体系-design.md
@@ -198,6 +199,7 @@ docs/
 | 世界观参考原文补充修正计划 | `superpowers/plans/2026-06-05-世界观参考原文补充修正计划.md` |
 | StoryGraph 小说图谱设计 | `superpowers/specs/2026-06-05-StoryGraph小说图谱设计.md` |
 | StoryGraph 单作品本地索引库规格 | `superpowers/specs/2026-06-05-StoryGraph单作品本地索引库规格.md` |
+| StoryGraph 模板全量图谱抽取设计 | `superpowers/specs/2026-06-19-StoryGraph模板全量图谱抽取设计.md` |
 | StoryGraph 小说图谱 MVP 实施计划 | `superpowers/plans/2026-06-05-StoryGraph小说图谱MVP实施计划.md` |
 | StoryGraph 单作品本地索引库实施计划 | `superpowers/plans/2026-06-05-StoryGraph单作品本地索引库实施计划.md` |
 | 跟随角色状态面板 | `superpowers/plans/2026-06-05-跟随角色状态面板实施计划.md` |
