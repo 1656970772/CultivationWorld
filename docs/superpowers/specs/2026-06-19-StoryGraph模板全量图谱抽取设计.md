@@ -474,6 +474,152 @@ templates   = 丹药、法宝、人物关系、事件因果链、势力、秘境
 7. 模板 Registry 不硬编码《凡人修仙传》的具体实体；实体名只能出现在索引结果、测试 fixture 或验收报告中。
 8. 写作阶段能根据 coverage report 检查已入图但未输出的条目。
 
+## 阶段推进规划
+
+StoryGraph 模板全量图谱抽取分为 6 个阶段推进。每个阶段都必须有可验证产物，不能只停留在模型自述或人工印象。
+
+### 阶段 0：基线整理与工程边界冻结
+
+目标：确认当前 StoryGraph MVP 的真实基线，避免在未提交改动和旧设计假设上继续叠加。
+
+范围：
+
+- 梳理 `E:\AI_Projects\storygraph` 当前未提交改动。
+- 确认现有 work-local `.storygraph/storygraph.db` 定位规则仍成立。
+- 确认《凡人修仙传》原文编码、章节切分和源文件扫描结果。
+- 为模板抽取新增配置目录、测试 fixture 和数据库迁移入口，但不引入模板逻辑。
+
+交付物：
+
+- StoryGraph 基线状态说明。
+- 数据库迁移策略说明。
+- 《凡人修仙传》索引前置检查报告。
+
+进入下一阶段门槛：
+
+- `npm test` 通过。
+- 单作品索引路径和查询路径一致。
+- 当前未提交改动被确认、提交或隔离。
+
+### 阶段 1：6 个样板模板闭环
+
+目标：以《凡人修仙传》跑通第一批 6 个模板，证明候选、证据、模板子图和覆盖率账本闭环有效。
+
+范围：
+
+- 增加 `template_profiles`、`template_runs`、`candidate_mentions`、`template_entities`、`template_relations`、`coverage_items`、`extraction_reviews`。
+- 建立 6 个模板的 Registry 配置。
+- 实现规则候选池、证据扩展、模板子图生成和 coverage report。
+- 增加 `storygraph_template_status`、`storygraph_template_coverage`、`storygraph_template_explore` 的 CLI 版本。
+- LLM 结构化抽取可以先以接口和可替换 adapter 形式落地；本阶段优先保证流程边界和审计数据模型稳定。
+
+交付物：
+
+- 6 个模板的配置文件。
+- 《凡人修仙传》6 个模板的 coverage report。
+- CLI 查询结果样例。
+- 单元测试和真实资料验收命令。
+
+进入下一阶段门槛：
+
+- 6 个模板都能生成 `template_run`。
+- 每个 confirmed 条目都有证据锚点。
+- 每个模板都能列出待核验和疑似遗漏。
+- `template_explore` 能返回分批、可预算控制的证据包。
+
+### 阶段 2：LLM 结构化抽取正式接入
+
+目标：让 StoryGraph 在候选和证据约束下使用 LLM 理解复杂关系、因果链、职业机制和场景链。
+
+范围：
+
+- 为不同 template shape 定义 JSON Schema。
+- 增加 LLM adapter，支持批处理、重试、结构校验和失败落审。
+- 将 LLM 新发现线索写回 `candidate_mentions`，而不是直接确认为事实。
+- 对低置信、冲突、重复和证据不足条目写入 `extraction_reviews`。
+
+交付物：
+
+- `entity_table`、`relationship_chain`、`causal_chain`、`organization_profile`、`location_opportunity` 的结构化抽取 schema。
+- LLM 抽取运行日志和失败审计样例。
+- 6 个模板在 LLM 接入后的 coverage 对比报告。
+
+进入下一阶段门槛：
+
+- LLM 输出全部通过 schema 校验。
+- 无证据的 LLM 事实不能进入 confirmed。
+- 新候选能回流到候选池并参与证据回查。
+- 复杂模板的待核验原因可读、可追踪。
+
+### 阶段 3：扩展到全部模板 Registry
+
+目标：把 6 个样板模板沉淀出的 shape、字段、候选规则和覆盖规则扩展到模板目录内全部 active 模板。
+
+范围：
+
+- 扫描模板目录并生成 active template 清单。
+- 为每个模板配置 shape、字段、候选规则、证据角色和覆盖规则。
+- 启动时检查模板文件、README 清单和 Registry 一致性。
+- 将模板数量作为扫描结果，不在代码里固定为 38 或其他数字。
+
+交付物：
+
+- 全量 `template-registry.yaml`。
+- 模板一致性检查命令。
+- 每类 shape 的最小 fixture 和测试。
+
+进入下一阶段门槛：
+
+- active 模板全部有 Registry 配置。
+- Registry、模板目录、README 清单一致性检查通过。
+- 任一模板缺少字段、shape 或覆盖规则时，启动门禁能给出明确错误。
+
+### 阶段 4：与世界观通用抽取插件联动
+
+目标：让 Codex 插件调用 StoryGraph 的模板图谱能力，按模板生成世界观参考 Markdown，并用 coverage 防止写作阶段漏项。
+
+范围：
+
+- 插件调用 `storygraph_template_status`、`storygraph_template_run`、`storygraph_template_coverage` 和 `storygraph_template_explore`。
+- 写作阶段把输出条目关联回 `coverage_items`。
+- 生成后标记 `used_in_output`，并报告 `missing_from_output`。
+- 保持模板输出只按模板案例格式和字段生成，不添加额外章节。
+
+交付物：
+
+- 插件与 StoryGraph 的调用契约。
+- 6 个样板模板的 Markdown 写作演示。
+- coverage 与输出文档对齐报告。
+
+进入下一阶段门槛：
+
+- 输出文档中的条目能追溯到 coverage item 和 evidence anchor。
+- 已入图但未输出的条目会被报告或补写。
+- 待核验和疑似遗漏不会混入事实结论。
+
+### 阶段 5：质量评测与多作品推广
+
+目标：建立类似 CodeGraph 搜索质量循环的 StoryGraph 评测体系，并从《凡人修仙传》推广到多部作品。
+
+范围：
+
+- 为不同作品和模板建立评测问题集。
+- 统计候选召回、confirmed 数量、待核验比例、疑似遗漏比例、输出覆盖率。
+- 对模板 shape、候选规则和 LLM schema 做版本化。
+- 支持多作品分别建库、分别验收；不做跨作品强合并。
+
+交付物：
+
+- StoryGraph 模板抽取质量报告。
+- 多作品试运行报告。
+- Registry 和 schema 版本升级记录。
+
+进入稳定使用门槛：
+
+- 每个作品都能独立生成 `.storygraph/storygraph.db`。
+- 模板抽取质量报告能明确说明覆盖、缺口和风险。
+- Codex 写文档前能优先使用 StoryGraph，不再从整本小说全文无约束搜索开始。
+
 ## 与现有设计的关系
 
 本设计补充并细化以下文档：
@@ -503,4 +649,5 @@ templates   = 丹药、法宝、人物关系、事件因果链、势力、秘境
 - 已明确模板配置化范围，避免硬编码小说实体和固定模板数量。
 - 已明确覆盖率账本是“尽量全”的工程判定方式。
 - 已明确 LLM 只做结构化理解，不单独决定事实存在。
+- 已明确阶段 0 到阶段 5 的推进目标、交付物和升级门槛。
 - 已明确与现有 StoryGraph 设计和通用抽取插件设计的边界。
