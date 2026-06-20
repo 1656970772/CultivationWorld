@@ -18,7 +18,12 @@ function assert(cond, msg) {
 
 const imp = (p) => import(pathToFileURL(resolve(GAME_ROOT, p)).href);
 const { ToilPool } = await imp('js/engine/pools/toil-pool.js');
+const { JobPool } = await imp('js/engine/pools/job-pool.js');
+const { EffectPool } = await imp('js/engine/pools/effect-pool.js');
+const { ItemRegistry } = await imp('js/engine/items/item-registry.js');
 const { ToilResultStatus } = await imp('js/engine/abstract/toil.js');
+const { JobResultStatus } = await imp('js/engine/abstract/job.js');
+const { JobSystem } = await imp('js/engine/abstract/job-system.js');
 const { registerNPCToilExecutors } = await imp('js/engine/npc/toils/npc-toils.js');
 const load = (p) => JSON.parse(readFileSync(resolve(GAME_ROOT, p), 'utf-8'));
 
@@ -40,9 +45,15 @@ for (const id of ['act_npc_prepare_combat', 'act_npc_retreat_and_heal', 'act_npc
 }
 
 ToilPool.clear();
+JobPool.clear();
+EffectPool.clear();
+ItemRegistry.clear();
 ToilPool.loadFromConfig(load('data/toils/npc-combat-toils.json'));
 ToilPool.loadFromConfig(load('data/toils/npc-quest-toils.json'));
 ToilPool.loadFromConfig(load('data/toils/npc-social-toils.json'));
+JobPool.loadFromConfig(load('data/jobs/npc-combat-jobs.json'));
+EffectPool.loadFromConfig(load('data/effects/core-effects.json'));
+ItemRegistry.loadFromArray(load('data/items/pill.json').items);
 registerNPCToilExecutors();
 
 console.log('1) 过强斩妖目标会触发重规划');
@@ -87,6 +98,37 @@ const heal = ToilPool.getExecutor('toil_use_heal_item')?.run(supplyNpc, worldCon
 assert(heal?.status === ToilResultStatus.SUCCESS, 'heal item toil succeeds');
 assert(removed === 1, 'heal item toil consumes one pill');
 assert(supplyNpc.state.get('injuryLevel') === 1, 'heal item toil lowers injury');
+
+console.log('2b) 已安全且满血时撤退疗伤无丹也能结束并清理恢复态');
+const recoveredNpc = {
+  id: 'npc_recovered_after_retreat',
+  state: state({
+    hp: 120,
+    maxHp: 120,
+    injuryLevel: 0,
+    needsCombatRecovery: true,
+    needsCombatSupply: true,
+    shouldRetreat: true,
+    combatReady: false,
+    lastCombatReaction: 'retreat',
+  }),
+  inventory: { getAmount: () => 0 },
+  spatial: {
+    tileX: 3,
+    tileY: 4,
+    setDestination() {},
+  },
+};
+const recoverySystem = new JobSystem();
+recoverySystem.start('job_npc_retreat_and_heal');
+let recoveryResult = recoverySystem.executeStep(recoveredNpc, { resolveTarget: () => ({ x: 3, y: 4 }) });
+assert(recoveryResult.status === JobResultStatus.RUNNING, 'safe retreat advances to recovery toil');
+recoveryResult = recoverySystem.executeStep(recoveredNpc, worldContext);
+assert(recoveryResult.status === JobResultStatus.SUCCESS, 'already recovered retreat job completes without heal item');
+assert(recoveredNpc.state.get('needsCombatRecovery') === false, 'retreat job clears needsCombatRecovery');
+assert(recoveredNpc.state.get('needsCombatSupply') === false, 'retreat job clears stale needsCombatSupply after recovery');
+assert(recoveredNpc.state.get('shouldRetreat') === false, 'retreat job clears shouldRetreat');
+assert(recoveredNpc.state.get('combatReady') === true, 'retreat job restores combatReady after recovery');
 
 console.log('3) 斩妖任务风险 Toil 复用战斗评估');
 const huntNpc = {

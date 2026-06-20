@@ -22,7 +22,10 @@
       "category": "combat_recovery",
       "successEffects": {
         "needsCombatRecovery": { "op": "set", "value": false },
-        "shouldRetreat": { "op": "set", "value": false }
+        "needsCombatSupply": { "op": "set", "value": false },
+        "shouldRetreat": { "op": "set", "value": false },
+        "combatReady": { "op": "set", "value": true },
+        "lastCombatReaction": { "op": "set", "value": null }
       },
       "interrupt": { "reaction": "keep", "higherDynamicGoal": "keep", "sameDynamicGoal": "keep" },
       "toils": [

@@ -157,21 +157,22 @@
     "id": "need_npc_cultivation",
     "name": "修炼",
     "selectStrategy": "greedy",
-    "description": "提升境界修为，是修士本业。突破当前境界有两条硬门槛（见 npc-lifecycle.tryBreakthrough）：①totalCultivation 达到 nextCultivationRequired，且 cultivation 达到根基比例；②真气 qi 达到下一境界 qiRequired。修炼需求会判断当前境界还差什么：缺真气(qiBelowNextRank=true)→A* 推导『闭关产气 / 兑换→服用聚气丹』补真气；缺数值修为(cultivationShortfall>0 或 cultivationRootShortfall>0)→『闭关推进 cultivation / 外出游历攒 experienceCultivation』补修为。贡献充足时赴修炼场加速，不足时推导『接→做→交任务攒贡献』经济链。",
-    "basePriority": 30,
+    "description": "提升境界修为，是修士本业。突破当前境界有两条硬门槛（见 npc-lifecycle.tryBreakthrough）：①有效 totalCultivation 达到 nextCultivationRequired，且 cultivation 达到根基比例；②真气 qi 达到下一境界 qiRequired。修炼是非动态目标中的主线需求；基础分较高，额外按总修为缺口比例、根基缺口比例、真气缺口比例与临门突破冲刺进度叠加。缺真气(qiBelowNextRank=true)→A* 推导『闭关产气 / 炼化灵石 / 兑换→服用聚气丹』补真气；缺数值修为(cultivationShortfall>0 或 cultivationRootShortfall>0)→『闭关推进 cultivation / 外出游历攒 experienceCultivation』补修为。experienceCultivation 原始值不截断，但只在 maxExperienceCultivationRatio 内计入有效 totalCultivation。灵石充足时赴修炼场加速，不足时推导『接→做→交任务攒灵石/贡献』经济链。",
+    "basePriority": 50,
     "evaluatorType": "configurable",
     "evaluatorConfig": {
-      "basePriority": 30,
+      "basePriority": 50,
       "rules": [
-        { "_comment": "缺总修为：推动闭关/游历补数值修为。", "condition": { "key": "cultivationShortfall", "op": "gt", "value": 0 }, "priorityBoost": 20, "urgencyBoost": 10 },
-        { "_comment": "缺根基修为：推动闭关修炼补 cultivation。", "condition": { "key": "cultivationRootShortfall", "op": "gt", "value": 0 }, "priorityBoost": 10, "urgencyBoost": 8 },
-        { "_comment": "缺真气：当前境界真气未达下一境界门槛，推动闭关产气/聚气丹补真气。", "condition": { "key": "qiBelowNextRank", "op": "eq", "value": true }, "priorityBoost": 15, "urgencyBoost": 10 },
-        { "condition": { "key": "factionAtPeace", "op": "eq", "value": true }, "priorityBoost": 10, "urgencyBoost": 5 }
+        { "_comment": "缺口压力：总修为缺得越多越需要修炼，按缺口比例动态加分。", "condition": { "key": "cultivationShortfallRatio", "op": "gt", "value": 0 }, "priorityBoost": { "key": "cultivationShortfallRatio", "scale": 20 }, "urgencyBoost": { "key": "cultivationShortfallRatio", "scale": 10 } },
+        { "_comment": "根基压力：闭关根基不足时按根基缺口比例加分，推动 cultivation 本体达标。", "condition": { "key": "cultivationRootShortfallRatio", "op": "gt", "value": 0 }, "priorityBoost": { "key": "cultivationRootShortfallRatio", "scale": 10 }, "urgencyBoost": { "key": "cultivationRootShortfallRatio", "scale": 8 } },
+        { "_comment": "缺真气：当前境界真气未达下一境界门槛，按真气缺口比例推动闭关产气/聚气丹补真气。", "condition": { "key": "qiShortfallRatio", "op": "gt", "value": 0 }, "priorityBoost": { "key": "qiShortfallRatio", "scale": 10 }, "urgencyBoost": { "key": "qiShortfallRatio", "scale": 10 } },
+        { "_comment": "临门突破冲刺：总修为进度超过 75% 后逐步加分，越接近突破越不该被杂事打断。", "condition": { "key": "cultivationBreakthroughSprint", "op": "gt", "value": 0 }, "priorityBoost": { "key": "cultivationBreakthroughSprint", "scale": 25 }, "urgencyBoost": { "key": "cultivationBreakthroughSprint", "scale": 15 } },
+        { "condition": { "key": "factionAtPeace", "op": "eq", "value": true }, "priorityBoost": 5, "urgencyBoost": 5 }
       ],
       "satisfiedCondition": null
     },
     "goalState": {
-      "_comment": "增量式目标：totalCultivation 每次只要求当前值 + nextCultivationRequired 的 1%，并夹到 nextCultivationRequired。做完重评估，下轮再推进；qiBelowNextRank=false 与数值修为同为突破硬门槛。",
+      "_comment": "增量式目标：有效 totalCultivation 每次只要求当前值 + nextCultivationRequired 的 1%，并夹到 nextCultivationRequired。做完重评估，下轮再推进；qiBelowNextRank=false 与数值修为同为突破硬门槛。",
       "totalCultivation": { "op": "gte", "incrementOf": "totalCultivation", "stepRatioOf": "nextCultivationRequired", "stepRatio": 0.01, "maxOf": "nextCultivationRequired" },
       "qiBelowNextRank": { "op": "eq", "value": false }
     }

@@ -110,10 +110,10 @@ export function tryBreakthrough(entity) {
     const beforeQi = entity.state.get('qi') || 0;
     const beforeCultivation = entity.state.get('cultivation') || 0;
     const beforeExperienceCultivation = entity.state.get('experienceCultivation') || 0;
-    const beforeTotalCultivation = syncTotalCultivation(entity);
+    const beforeTotalCultivation = syncTotalCultivation(entity, ranks, entity._cultivationConfig);
 
     // 突破失败：两类数值修为按统一接口折损，totalCultivation 随后重算并刷新小层。
-    applyBreakthroughFailure(entity, entity._cultivationConfig);
+    applyBreakthroughFailure(entity, entity._cultivationConfig, ranks);
     refreshRankStage(entity, ranks, entity._cultivationConfig);
     const afterQi = entity.state.get('qi') || 0;
     const afterCultivation = entity.state.get('cultivation') || 0;

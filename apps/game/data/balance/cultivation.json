@@ -20,11 +20,13 @@
     "heaven_immortal": 1.20625e-8
   },
   "cultivationDecayK": 2.5,
-  "_cultivationDecayKComment": "闭关修为递减系数。公式：基础修为收益 × e^(-k × cultivation / cultivationRequired)。k 越大，闭关修为越高时收益衰减越明显。",
+  "_cultivationDecayKComment": "修为收益递减系数。闭关公式：基础修为收益 × e^(-k × cultivation / cultivationRequired)；历练超过有效占比后，新增历练使用同一指数递减口径。k 越大，修为越高时收益衰减越明显。闭关修为不封顶，只是收益持续变慢。",
   "minCultivationRatio": 0.3,
   "_minCultivationRatioComment": "突破所需修为中，闭关修为必须达到的最低占比；其余可由历练修为补足。",
+  "maxExperienceCultivationRatio": 0.7,
+  "_maxExperienceCultivationRatioComment": "历练修为对当前境界进度与突破判定的最高有效占比。experienceCultivation 原始数值不截断，超过该比例后仍可累计，但 totalCultivation 只计入 required × maxExperienceCultivationRatio 的有效贡献，新增历练按 cultivationDecayK 同公式递减。",
   "stageThresholds": {
-    "_comment": "境界阶段按 totalCultivation / cultivationRequired 判定。",
+    "_comment": "境界阶段按有效 totalCultivation / cultivationRequired 判定；有效 totalCultivation = cultivation + min(experienceCultivation, cultivationRequired × maxExperienceCultivationRatio)。",
     "early": 0,
     "middle": 0.25,
     "late": 0.6,
@@ -236,7 +238,7 @@
     "failureInjuryLevel": 3
   },
   "experience": {
-    "_comment": "历练修为：闭关/原地待命之外的外出任务、事件、战斗按价值、风险、时长追加 experienceCultivation，并同步 totalCultivation。",
+    "_comment": "历练修为：闭关/原地待命之外的外出任务、事件、战斗按价值、风险、时长追加 experienceCultivation；原始 experienceCultivation 不截断，同步时 totalCultivation 只计入 maxExperienceCultivationRatio 内的有效历练贡献。",
     "enabled": true,
     "valueScale": 500,
     "riskWeight": 0.75,
@@ -271,7 +273,7 @@
       "successRate": 0.2
     },
     "explore": {
-      "_comment": "游历归来后 roll 一次机缘事件表(fortuneEvents)，产出历练修为并计入 totalCultivation。风险结算见 risk.json。",
+      "_comment": "游历归来后 roll 一次机缘事件表(fortuneEvents)，产出历练修为；totalCultivation 按有效历练贡献同步。风险结算见 risk.json。",
       "experienceCultivationMin": 1,
       "experienceCultivationMax": 3,
       "fortuneQiMin": 5,
@@ -330,9 +332,15 @@
       "stabilityBonusPerContribution": 0.5
     },
     "trainChamber": {
-      "_comment": "赴修炼场修炼：消耗 contributionCost 门派贡献点，修炼速度乘以 speedBonusMultiplier（2.0=+100%，翻倍）。贡献不足时由行为 preconditions 拦截，执行器兜底回退为普通闭关。",
-      "contributionCost": 10,
+      "_comment": "赴修炼场修炼：消耗 currencyItemId/stoneCost 灵石费用，修炼速度乘以 speedBonusMultiplier（2.0=+100%，翻倍）。灵石不足时由行为 preconditions 拦截，执行器兜底回退为普通闭关。",
+      "currencyItemId": "low_spirit_stone",
+      "stoneCost": 10,
       "speedBonusMultiplier": 2
+    },
+    "absorbSpiritStone": {
+      "_comment": "炼化灵石补真气：灵石本身仍是货币物品，NPC 缺突破真气时可按物品 effects 直接炼化。maxConsumePerUse 限制单次 Toil 最多消耗数量，避免一次性清空库存。",
+      "itemId": "low_spirit_stone",
+      "maxConsumePerUse": 50
     }
   },
   "bounty": {

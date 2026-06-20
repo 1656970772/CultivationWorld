@@ -45,6 +45,7 @@ export class WorldContextBuilder {
       entityRegistry: host.entityRegistry,
       get currentDay() { return host.worldEntity.currentDay; },
       activeModifiers: host.worldEntity.activeModifiers,
+      ranksData: host.ranksData || [],
       questTemplates: host.questTemplates || null,
       tileIndex: host.tileIndex,
       terrainIndex: host.terrainIndex,

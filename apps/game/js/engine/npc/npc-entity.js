@@ -72,6 +72,7 @@ const DYNAMIC_INTERRUPT_DECISION_RANK = Object.freeze({
 });
 const TECHNIQUE_COMBAT_SOURCE = 'technique_combat';
 const ARTIFACT_COMBAT_SOURCE = 'artifact_combat';
+const NPC_FACTION_DUTY_NEED_ID = 'need_npc_loyalty_duty';
 
 export class NPCEntity extends BaseEntity {
   /**
@@ -106,7 +107,13 @@ export class NPCEntity extends BaseEntity {
       || entityConfig.roleRanks
       || entityConfig.cultivationConfig?.promotion?.roleRankByStep
       || {};
-    this.state = new NPCState(npcConfig, ranksData, entityConfig.gameConfig || {}, this._rng, roleRanks);
+    this.state = new NPCState(
+      npcConfig,
+      ranksData,
+      { ...(entityConfig.gameConfig || {}), cultivationConfig: this._cultivationConfig },
+      this._rng,
+      roleRanks,
+    );
     // 把性格暴露到 state 上（仅作只读引用，存于专用字段，不进 _values，故不污染 GOAP 状态键）
     this.state.personality = this.staticData.personality || {};
     this._initTalent(npcConfig);
@@ -713,17 +720,31 @@ export class NPCEntity extends BaseEntity {
       'need_npc_active_quest', 'need_npc_donate_materials',
       'need_npc_combat_recovery', 'need_npc_combat_supply', 'need_npc_hunt_companion',
       'need_npc_cultivation', 'need_npc_breakthrough_aid',
-      'need_npc_combat_gear', 'need_npc_hunt_resources', 'need_npc_loyalty_duty',
+      'need_npc_combat_gear', 'need_npc_hunt_resources',
       'need_npc_ambition',
       // 散修生计（2026-06-02 行为精准化）：散修无门派俸禄，须接坊市悬赏自食其力，仅 isWanderer 触发。
       'need_npc_wanderer_subsistence',
     ];
 
     for (const needId of needIds) {
+      if (needId === NPC_FACTION_DUTY_NEED_ID) continue;
       if (NeedPool.has(needId)) {
         this.needSystem.addNeed(NeedPool.create(needId));
       }
     }
+    this.syncFactionDutyNeed();
+  }
+
+  syncFactionDutyNeed() {
+    const hasFaction = !!this.state.get('factionId') && this.state.get('hasFaction') !== false;
+    const hasNeed = !!this.needSystem.getNeed(NPC_FACTION_DUTY_NEED_ID);
+    if (hasFaction) {
+      if (!hasNeed && NeedPool.has(NPC_FACTION_DUTY_NEED_ID)) {
+        this.needSystem.addNeed(NeedPool.create(NPC_FACTION_DUTY_NEED_ID));
+      }
+      return;
+    }
+    if (hasNeed) this.needSystem.removeNeed(NPC_FACTION_DUTY_NEED_ID);
   }
 
   _initActions(config) {
@@ -764,6 +785,7 @@ export class NPCEntity extends BaseEntity {
       'act_npc_acquire_artifact',
       'act_npc_job_cultivate',
       'act_npc_job_train_chamber',
+      'act_npc_job_absorb_spirit_stone',
       'act_npc_job_heal',
       'act_npc_job_explore',
       'act_npc_accept_monster_hunt_job',
@@ -1036,6 +1058,7 @@ export class NPCEntity extends BaseEntity {
   /** @override */
   onPreTick(worldContext) {
     this.state.advanceAge();
+    this.syncFactionDutyNeed();
 
     // 反应层刺激队列每日清理过期刺激（ADR-048）：避免未消费刺激堆积。
     if (this.stimulusQueue) {
@@ -1115,6 +1138,7 @@ export class NPCEntity extends BaseEntity {
         this.state.set('isWanderer', true);
         this.state.set('factionAtPeace', true);
         this.state.set('factionInDanger', false);
+        this.syncFactionDutyNeed();
         // 记忆：门派被灭（ADR-019）。仅在"首次"察觉覆灭时记一次，避免每 tick 重复写入。
         if (wasInFaction && this.memory && this.memory.getByType('sect_destroyed').length === 0) {
           this.recordMemory('sect_destroyed', {

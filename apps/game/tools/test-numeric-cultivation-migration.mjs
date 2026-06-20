@@ -93,6 +93,67 @@ const ranks = [
 }
 
 {
+  const overExperience = {
+    state: {
+      rankId: 'mortal',
+      cultivation: 20,
+      experienceCultivation: 120,
+    },
+  };
+  assertEqual(
+    mod.getTotalCultivation(overExperience, ranks, { maxExperienceCultivationRatio: 0.7 }),
+    55,
+    'getTotalCultivation 按 required * 70% 计算历练有效贡献，保留闭关修为继续累加'
+  );
+  assertEqual(
+    mod.syncTotalCultivation(overExperience, ranks, { maxExperienceCultivationRatio: 0.7 }),
+    55,
+    'syncTotalCultivation 写入有效总修为而不是原始历练总和'
+  );
+  assertEqual(overExperience.state.totalCultivation, 55, 'totalCultivation 存储有效总修为');
+  assertEqual(overExperience.state.experienceCultivation, 120, 'experienceCultivation 原始数值不截断');
+
+  const nearExperienceCap = {
+    state: {
+      rankId: 'mortal',
+      cultivation: 15,
+      experienceCultivation: 34,
+    },
+  };
+  assertEqual(
+    mod.addExperienceCultivation(nearExperienceCap, ranks, 10, { cultivationDecayK: 2.5, maxExperienceCultivationRatio: 0.7 }),
+    50,
+    'addExperienceCultivation 跨过 70% 上限时 totalCultivation 只计入有效历练贡献'
+  );
+  assertEqual(nearExperienceCap.state.experienceCultivation, 44, 'addExperienceCultivation 不截断原始历练数值');
+
+  const saturatedExperience = {
+    state: {
+      rankId: 'mortal',
+      cultivation: 15,
+      experienceCultivation: 35,
+    },
+  };
+  const expectedGain = 10 * Math.exp(-2.5 * (35 / 50));
+  mod.addExperienceCultivation(
+    saturatedExperience,
+    ranks,
+    10,
+    { cultivationDecayK: 2.5, maxExperienceCultivationRatio: 0.7 },
+  );
+  assertClose(
+    saturatedExperience.state.experienceCultivation,
+    35 + expectedGain,
+    '历练达到 70% 后新增历练按闭关同一指数公式递减'
+  );
+  assertEqual(
+    saturatedExperience.state.totalCultivation,
+    50,
+    '历练超额继续入账但有效总修为不超过闭关修为 + 70%历练贡献'
+  );
+}
+
+{
   const thresholds = { early: 0, middle: 0.25, late: 0.6, perfection: 0.9 };
   assertEqual(mod.computeRankStage({ state: { rankId: 'qi_refining', totalCultivation: 0 } }, ranks, thresholds), 'early', 'computeRankStage 0 为 early');
   assertEqual(mod.computeRankStage({ state: { rankId: 'qi_refining', totalCultivation: 124.99 } }, ranks, thresholds), 'early', 'computeRankStage 低于 0.25 为 early');
@@ -169,6 +230,21 @@ const ranks = [
     },
   };
   assertEqual(mod.canAttemptBreakthrough(ready, ranks, { minCultivationRatio: 0.3 }), true, 'canAttemptBreakthrough 要求 total 满、闭关修为达标、qi 满');
+
+  const overRawExperience = {
+    state: {
+      rankId: 'mortal',
+      cultivation: 14,
+      experienceCultivation: 120,
+      totalCultivation: 134,
+      qi: 50,
+    },
+  };
+  assertEqual(
+    mod.canAttemptBreakthrough(overRawExperience, ranks, { minCultivationRatio: 0.3, maxExperienceCultivationRatio: 0.7 }),
+    false,
+    'canAttemptBreakthrough 不允许靠超额历练原始值绕过闭关根基'
+  );
 }
 
 {
@@ -216,6 +292,30 @@ const ranks = [
   assertEqual(plain.state.experienceCultivation, 4, 'applyBreakthroughFailure 保留 20% experienceCultivation');
   assertEqual(plain.state.totalCultivation, 10, 'applyBreakthroughFailure 重算 totalCultivation');
   assertEqual(plain.state.injuryLevel, 3, 'applyBreakthroughFailure injuryLevel 至少为 3');
+}
+
+{
+  const plain = {
+    state: {
+      rankId: 'mortal',
+      cultivation: 100,
+      experienceCultivation: 400,
+      totalCultivation: 500,
+      qi: 81,
+      injuryLevel: 1,
+    },
+  };
+  mod.applyBreakthroughFailure(plain, {
+    maxExperienceCultivationRatio: 0.7,
+    breakthrough: {
+      failureQiRetention: 0.5,
+      failureCultivationRetention: 0.2,
+      failureInjuryLevel: 3,
+    },
+  }, ranks);
+  assertEqual(plain.state.cultivation, 20, 'applyBreakthroughFailure 高历练场景保留 20% cultivation');
+  assertEqual(plain.state.experienceCultivation, 80, 'applyBreakthroughFailure 高历练场景保留原始历练折损值');
+  assertEqual(plain.state.totalCultivation, 55, 'applyBreakthroughFailure 高历练场景按有效历练贡献重算 totalCultivation');
 }
 
 if (failed > 0) {

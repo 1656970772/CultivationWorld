@@ -1,5 +1,6 @@
 import { ToilExecutor, ToilResultStatus } from '../../abstract/toil.js';
 import { runCultivation, runHeal, runTrainChamber } from '../services/cultivation-service.js';
+import { absorbSpiritStoneQi } from '../npc-economy.js';
 import {
   getCultivationConfig,
   settleRisk,
@@ -20,6 +21,15 @@ export class NPCTrainChamberToilExecutor extends ToilExecutor {
     const params = toil?.params || {};
     const result = runTrainChamber(entity, worldContext, { duration: params.duration ?? 30 });
     return { status: ToilResultStatus.SUCCESS, reason: 'trained_chamber', contextPatch: result };
+  }
+}
+
+export class NPCAbsorbSpiritStoneToilExecutor extends ToilExecutor {
+  run(entity, worldContext, _job, toil) {
+    const result = absorbSpiritStoneQi(entity, worldContext, toil?.params || {});
+    return result.success
+      ? { status: ToilResultStatus.SUCCESS, reason: 'spirit_stone_absorbed', contextPatch: result }
+      : { status: ToilResultStatus.FAILED, reason: result.outcome || 'spirit_stone_absorb_failed', contextPatch: result };
   }
 }
 

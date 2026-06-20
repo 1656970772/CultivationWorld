@@ -267,6 +267,7 @@ export class DepartureRule {
       npc.state.set('activeBoardQuestId', null);
       npc.state.set('sectLeftDay', day);
       npc.state.set('sectLeaveReason', lowStability ? 'low_stability' : 'stipend_shortfall');
+      npc.syncFactionDutyNeed?.();
       leftNpcIds.push(npc.id);
     }
 

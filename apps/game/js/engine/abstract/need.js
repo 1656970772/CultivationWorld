@@ -112,8 +112,8 @@ export class ConfigurableEvaluator extends NeedEvaluator {
 
     for (const rule of this.rules) {
       if (this._evaluateCondition(rule.condition, entityState, worldContext)) {
-        priority += rule.priorityBoost || 0;
-        urgency += rule.urgencyBoost || 0;
+        priority += this._resolveNumber(rule.priorityBoost ?? rule.priority ?? 0, entityState, worldContext);
+        urgency += this._resolveNumber(rule.urgencyBoost ?? rule.urgency ?? 0, entityState, worldContext);
         if (rule.goalStateOverride) {
           Object.assign(goalState, rule.goalStateOverride);
         }
@@ -201,12 +201,7 @@ export class ConfigurableEvaluator extends NeedEvaluator {
     if (!condition) return true;
     const { key, op, value, source } = condition;
 
-    let actual;
-    if (source === 'world') {
-      actual = worldContext[key];
-    } else {
-      actual = entityState.get(key);
-    }
+    const actual = this._readValue({ key, source }, entityState, worldContext);
 
     const comparableActual = this._comparableValue(actual);
     const comparableValue = this._comparableValue(value);
@@ -221,6 +216,37 @@ export class ConfigurableEvaluator extends NeedEvaluator {
       case 'exists': return actual != null;
       default: return false;
     }
+  }
+
+  _resolveNumber(spec, entityState, worldContext) {
+    if (typeof spec === 'number') return spec;
+    if (spec == null) return 0;
+    if (typeof spec !== 'object') return Number(spec) || 0;
+
+    const raw = Object.prototype.hasOwnProperty.call(spec, 'value')
+      ? spec.value
+      : this._readValue(spec, entityState, worldContext);
+    const base = Number(raw ?? 0);
+    const scaled = base * Number(spec.scale ?? 1) + Number(spec.offset ?? 0);
+    const safe = Number.isFinite(scaled) ? scaled : 0;
+    if (Array.isArray(spec.clamp)) {
+      const lo = Number(spec.clamp[0] ?? -Infinity);
+      const hi = Number(spec.clamp[1] ?? Infinity);
+      return Math.max(lo, Math.min(hi, safe));
+    }
+    return safe;
+  }
+
+  _readValue(spec = {}, entityState, worldContext) {
+    const source = spec.source || 'state';
+    const key = spec.key;
+    const root = source === 'world' || source === 'context' ? worldContext : entityState;
+    if (!key) return root;
+    if (source === 'state' || source == null) {
+      if (typeof root?.get === 'function') return root.get(key);
+      return root?.[key];
+    }
+    return String(key).split('.').reduce((value, part) => value?.[part], root);
   }
 
   _comparableValue(value) {

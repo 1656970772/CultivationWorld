@@ -29,6 +29,7 @@ console.log('1) NPC detailed grouped status is Chinese and bounded');
     nextQiRequired: 50000,
     cultivation: 35000,
     experienceCultivation: 22000,
+    effectiveExperienceCultivation: 22000,
     totalCultivation: 57000,
     nextCultivationRequired: 100000,
     retreatCultivationCap: 40000,
@@ -66,6 +67,27 @@ console.log('1) NPC detailed grouped status is Chinese and bounded');
   assert.ok(!html.includes('NPC ·'), 'subtitle avoids visible English NPC');
   assert.ok(!html.includes('>executing<'), 'action status is localized');
   assert.ok(!html.includes('>elder<'), 'role is localized');
+}
+
+console.log('1a) 历练修为显示原始数值但按有效贡献计算百分比');
+{
+  const npc = {
+    name: '行脚客',
+    alive: true,
+    rankName: '凡人',
+    actionStatus: 'idle',
+    cultivation: 15,
+    experienceCultivation: 120,
+    effectiveExperienceCultivation: 70,
+    totalCultivation: 85,
+    nextCultivationRequired: 100,
+    retreatCultivationCap: 30,
+  };
+  const html = statusModelToHtml(buildTrackedStatusModel(npc, 'npc', {}));
+  hasText(html, '总修为');
+  hasText(html, '85/100（85% · 积累中）');
+  hasText(html, '历练修为');
+  hasText(html, '120/100（70% · 积累中）');
 }
 
 console.log('2) dead NPC shows dead and no action');

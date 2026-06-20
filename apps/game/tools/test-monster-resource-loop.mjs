@@ -342,6 +342,7 @@ console.log('4) 宗门兑换消耗妖兽材料库存');
 console.log('5) 高阶妖兽死亡生成尸骸机会点');
 {
   const tickManager = new TickManager({
+    entityRegistry: { getAliveByType: () => [] },
     balanceConfig: {
       economy: {
         monsterResources: {

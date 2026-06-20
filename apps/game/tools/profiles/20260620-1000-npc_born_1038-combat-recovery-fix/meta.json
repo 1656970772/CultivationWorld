@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "npc_execution_profile.v1",
+  "format": {
+    "records": "jsonl",
+    "index": "json",
+    "lineBase": 1
+  },
+  "engineAdapter": {
+    "name": "worlddynamic-js",
+    "boundary": "WorldEngine.tick + entity snapshots",
+    "unityPortability": "Unity should emit the same JSON schema from its simulation adapter."
+  },
+  "seed": 20260620,
+  "days": 1000,
+  "targets": {
+    "includeAllNpcs": false,
+    "ids": [
+      "npc_born_1038"
+    ]
+  },
+  "recordCount": 641,
+  "generatedAt": "2026-06-20T01:14:57.536Z"
+}

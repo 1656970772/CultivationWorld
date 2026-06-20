@@ -40,6 +40,13 @@ function numeric(value, fallback = 0) {
   return Number.isFinite(n) ? n : fallback;
 }
 
+function maxExperienceCultivationRatio(config = {}) {
+  const configured = numeric(config.maxExperienceCultivationRatio, NaN);
+  if (Number.isFinite(configured) && configured >= 0) return configured;
+  const minCultivationRatio = numeric(config.minCultivationRatio, 0.3);
+  return Math.max(0, 1 - minCultivationRatio);
+}
+
 function rankIdOf(entityOrRankId) {
   return typeof entityOrRankId === 'string'
     ? entityOrRankId
@@ -94,14 +101,35 @@ export function getCultivationRequired(entityOrRankId, ranks = []) {
   return next ? requiredOf(next) : 0;
 }
 
-export function getTotalCultivation(entity) {
+function getRawTotalCultivation(entity) {
   const cultivation = numeric(readState(entity, 'cultivation', 0));
   const experienceCultivation = numeric(readState(entity, 'experienceCultivation', 0));
   return cultivation + experienceCultivation;
 }
 
-export function syncTotalCultivation(entity) {
-  const total = getTotalCultivation(entity);
+export function getTotalCultivation(entity, ranks = null, config = {}) {
+  if (Array.isArray(ranks) && ranks.length > 0) {
+    return getEffectiveTotalCultivation(entity, ranks, config);
+  }
+  return getRawTotalCultivation(entity);
+}
+
+export function getEffectiveExperienceCultivation(entity, ranks = [], config = {}) {
+  const experienceCultivation = numeric(readState(entity, 'experienceCultivation', 0));
+  const required = getCultivationRequired(entity, ranks);
+  if (required <= 0) return experienceCultivation;
+  const cap = required * maxExperienceCultivationRatio(config);
+  return Math.min(experienceCultivation, cap);
+}
+
+export function getEffectiveTotalCultivation(entity, ranks = [], config = {}) {
+  const cultivation = numeric(readState(entity, 'cultivation', 0));
+  const experienceCultivation = getEffectiveExperienceCultivation(entity, ranks, config);
+  return cultivation + experienceCultivation;
+}
+
+export function syncTotalCultivation(entity, ranks = [], config = {}) {
+  const total = getEffectiveTotalCultivation(entity, ranks, config);
   writeState(entity, 'totalCultivation', total);
   return total;
 }
@@ -111,17 +139,29 @@ export function addCultivation(entity, ranks = [], gain = 0, config = {}) {
   if (amount > 0) {
     writeState(entity, 'cultivation', numeric(readState(entity, 'cultivation', 0)) + amount);
   }
-  const total = syncTotalCultivation(entity);
+  const total = syncTotalCultivation(entity, ranks, config);
   refreshRankStage(entity, ranks, config);
   return total;
 }
 
+export function computeExperienceCultivationGain(entity, ranks = [], baseGain = 0, cultivationConfig = {}) {
+  const amount = numeric(baseGain, 0);
+  const required = getCultivationRequired(entity, ranks);
+  if (amount <= 0 || required <= 0) return amount;
+  const experienceCultivation = numeric(readState(entity, 'experienceCultivation', 0));
+  const cap = required * maxExperienceCultivationRatio(cultivationConfig);
+  if (experienceCultivation < cap) return amount;
+  const k = numeric(cultivationConfig.cultivationDecayK, 0);
+  const ratio = required > 0 ? experienceCultivation / required : 0;
+  return amount * Math.exp(-k * ratio);
+}
+
 export function addExperienceCultivation(entity, ranks = [], gain = 0, config = {}) {
-  const amount = numeric(gain);
+  const amount = computeExperienceCultivationGain(entity, ranks, gain, config);
   if (amount > 0) {
     writeState(entity, 'experienceCultivation', numeric(readState(entity, 'experienceCultivation', 0)) + amount);
   }
-  const total = syncTotalCultivation(entity);
+  const total = syncTotalCultivation(entity, ranks, config);
   refreshRankStage(entity, ranks, config);
   return total;
 }
@@ -144,7 +184,7 @@ export function computeRankStage(entity, ranks = [], thresholdsOrConfig = {}) {
 }
 
 export function refreshRankStage(entity, ranks = [], thresholdsOrConfig = {}) {
-  syncTotalCultivation(entity);
+  syncTotalCultivation(entity, ranks, thresholdsOrConfig);
   const stage = computeRankStage(entity, ranks, thresholdsOrConfig);
   writeState(entity, 'rankStage', stage);
   return stage;
@@ -163,7 +203,7 @@ export function canAttemptBreakthrough(entity, ranks = [], cultivationConfig = {
   const next = nextCultivationRank(entity, ranks);
   if (!next) return false;
   const required = requiredOf(next, 0);
-  const total = syncTotalCultivation(entity);
+  const total = syncTotalCultivation(entity, ranks, cultivationConfig);
   const cultivation = numeric(readState(entity, 'cultivation', 0));
   const qi = numeric(readState(entity, 'qi', 0));
   const minRatio = numeric(cultivationConfig.minCultivationRatio, 0.3);
@@ -187,7 +227,7 @@ export function applyBreakthroughSuccess(entity, nextRank, opts = {}) {
   return nextRank;
 }
 
-export function applyBreakthroughFailure(entity, cultivationConfig = {}) {
+export function applyBreakthroughFailure(entity, cultivationConfig = {}, ranks = []) {
   const qiRetention = numeric(cultivationConfig?.breakthrough?.failureQiRetention ?? cultivationConfig?.failureQiRetention, 0.5);
   const cultivationRetention = numeric(
     cultivationConfig?.breakthrough?.failureCultivationRetention ?? cultivationConfig?.failureCultivationRetention,
@@ -201,6 +241,6 @@ export function applyBreakthroughFailure(entity, cultivationConfig = {}) {
   writeState(entity, 'qi', Math.floor(numeric(readState(entity, 'qi', 0)) * qiRetention));
   writeState(entity, 'cultivation', numeric(readState(entity, 'cultivation', 0)) * cultivationRetention);
   writeState(entity, 'experienceCultivation', numeric(readState(entity, 'experienceCultivation', 0)) * cultivationRetention);
-  syncTotalCultivation(entity);
+  syncTotalCultivation(entity, ranks, cultivationConfig);
   writeState(entity, 'injuryLevel', Math.max(numeric(readState(entity, 'injuryLevel', 0)), injuryLevel));
 }

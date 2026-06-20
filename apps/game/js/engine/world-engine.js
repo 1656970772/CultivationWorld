@@ -41,6 +41,10 @@ import { registerNPCEvaluators } from './npc/npc-needs.js';
 import { registerNPCExecutors } from './npc/npc-actions.js';
 import { registerNPCToilExecutors } from './npc/toils/npc-toils.js';
 import { registerWorldRuleExecutors } from './world/world-rules.js';
+import {
+  getEffectiveExperienceCultivation,
+  getEffectiveTotalCultivation,
+} from './npc/numeric-cultivation.js';
 
 export class WorldEngine {
   constructor() {
@@ -709,12 +713,13 @@ export class WorldEngine {
     const rankId = n.state.get('rankId');
     const cultivationCfg = this._balanceConfig?.cultivation || {};
     const minCultivationRatio = cultivationCfg.minCultivationRatio ?? 0.3;
+    const maxExperienceCultivationRatio = cultivationCfg.maxExperienceCultivationRatio ?? Math.max(0, 1 - minCultivationRatio);
     const nextRank = this._nextCultivationRank(rankId);
     const nextCultivationRequired = nextRank?.cultivationRequired ?? nextRank?.qiRequired ?? null;
     const cultivation = n.state.get('cultivation') ?? 0;
     const experienceCultivation = n.state.get('experienceCultivation') ?? 0;
-    const totalCultivation = n.state.get('totalCultivation')
-      ?? (cultivation + experienceCultivation);
+    const effectiveExperienceCultivation = getEffectiveExperienceCultivation(n, this._ranksData || [], cultivationCfg);
+    const totalCultivation = getEffectiveTotalCultivation(n, this._ranksData || [], cultivationCfg);
 
     return {
       hp: n.state.get('hp') || 0,
@@ -723,11 +728,13 @@ export class WorldEngine {
       lifeRatio: n.state.get('lifeRatio') || 0,
       cultivation,
       experienceCultivation,
+      effectiveExperienceCultivation,
       totalCultivation,
       nextCultivationRequired,
       rankStage: n.state.get('rankStage') ?? null,
       actionRemaining: n.state.get('actionRemaining') || 0,
       minCultivationRatio,
+      maxExperienceCultivationRatio,
       nextRankName: nextRank?.name || null,
       nextQiRequired: nextRank?.qiRequired ?? null,
       spiritRootId: n.state.get('spiritRootId') || null,

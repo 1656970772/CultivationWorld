@@ -114,14 +114,15 @@ function row(label, value, opts = {}) {
 
 function boundedRow(label, current, max, opts = {}) {
   const cur = num(current);
+  const ratioCur = num(opts.ratioCurrent) ?? cur;
   const upper = num(max);
   const unit = opts.unit || '';
 
   if (cur == null) return row(label, '未知');
   if (upper == null || upper <= 0) return row(label, `${fmtNumber(cur)}${unit}（上限未知）`, { tone: 'unknown' });
 
-  const ratio = upper > 0 ? cur / upper : 0;
-  const status = opts.status ? opts.status(ratio, cur, upper) : boundedStatus(ratio);
+  const ratio = upper > 0 ? ratioCur / upper : 0;
+  const status = opts.status ? opts.status(ratio, ratioCur, upper) : boundedStatus(ratio);
   const displayCurrent = opts.percentValue ? fmtPercent(cur) : `${fmtNumber(cur)}${unit}`;
   const displayMax = opts.percentValue ? fmtPercent(upper) : `${fmtNumber(upper)}${unit}`;
   return row(label, `${displayCurrent}/${displayMax}（${fmtPercent(ratio)} · ${status.label}）`, {
@@ -209,6 +210,7 @@ function buildNpcSections(entity, snapshot, life, action) {
   const retreatCultivationCap = num(entity.retreatCultivationCap);
   const cultivation = num(entity.cultivation);
   const experienceCultivation = num(entity.experienceCultivation);
+  const effectiveExperienceCultivation = num(entity.effectiveExperienceCultivation);
   const totalCultivation = num(entity.totalCultivation)
     ?? (cultivation != null || experienceCultivation != null ? (cultivation || 0) + (experienceCultivation || 0) : null);
   const hasQuest = entity.hasActiveQuest ? '有任务' : '无任务';
@@ -228,7 +230,10 @@ function buildNpcSections(entity, snapshot, life, action) {
       boundedRow('真气', entity.qi, entity.nextQiRequired, { status: qiStatus }),
       boundedRow('总修为', totalCultivation, nextCultivationRequired, { status: totalCultivationStatus }),
       boundedRow('闭关修为', cultivation, retreatCultivationCap, { status: capStatus }),
-      boundedRow('历练修为', experienceCultivation, nextCultivationRequired, { status: boundedStatus }),
+      boundedRow('历练修为', experienceCultivation, nextCultivationRequired, {
+        ratioCurrent: effectiveExperienceCultivation ?? experienceCultivation,
+        status: boundedStatus,
+      }),
     ]),
     section('action', '当前行动', [
       row('行为', action.label, { tone: action.tone === 'busy' ? 'warn' : '' }),

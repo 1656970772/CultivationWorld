@@ -14,6 +14,13 @@ const { WorldEngine } = await imp('js/engine/world-engine.js');
 function buildGameConfigs() {
   const combatEffects = load('data/effects/combat-effects.json');
   const coreEffects = load('data/effects/core-effects.json');
+  const behaviorTreeFiles = [
+    'faction-default',
+    'monster-tier1',
+    'monster-tier2',
+    'monster-tier3',
+    'npc-default',
+  ];
   return {
     seed: 12345,
     factions: load('data/entities/factions.json'),
@@ -72,10 +79,17 @@ function buildGameConfigs() {
     dynamicEvents: load('data/world/dynamic-events.json'),
     dynamicGoals: load('data/goals/dynamic-goals.json'),
     balanceCovet: load('data/balance/covet.json'),
+    economicTransactionConfig: load('data/economy/transaction-scenarios.json'),
+    sectOrganization: load('data/definitions/sect-organization.json'),
+    sectSeedProfiles: load('data/definitions/sect-seed-profiles.json'),
+    balanceSectOperation: load('data/balance/sect-operation.json'),
     itemDefs: { items: ['currency', 'material', 'pill', 'artifact', 'talisman', 'technique'].flatMap(c => load(`data/items/${c}.json`).items) },
     tags: load('data/tags/tags.json'),
     effects: { effects: [...(combatEffects?.effects || []), ...(coreEffects?.effects || [])] },
     abilities: load('data/abilities/combat-abilities.json'),
+    behaviorTrees: {
+      trees: behaviorTreeFiles.map(name => load(`data/behavior-trees/${name}.json`)),
+    },
   };
 }
 
@@ -92,11 +106,13 @@ console.log('1) NPC 快照提供详细状态面板所需字段');
   assert.equal(typeof npc.injuryLevel, 'number', '包含受伤程度');
   assert.equal(typeof npc.cultivation, 'number', '包含闭关修为');
   assert.equal(typeof npc.experienceCultivation, 'number', '包含历练修为');
+  assert.equal(typeof npc.effectiveExperienceCultivation, 'number', '包含有效历练修为');
   assert.equal(typeof npc.totalCultivation, 'number', '包含总修为');
   assert.ok('nextCultivationRequired' in npc, '包含下境界所需修为');
   assert.ok('rankStage' in npc, '包含当前小层');
   assert.equal(typeof npc.actionRemaining, 'number', '包含剩余行动天数');
   assert.equal(typeof npc.minCultivationRatio, 'number', '包含最低闭关占比');
+  assert.equal(typeof npc.maxExperienceCultivationRatio, 'number', '包含最高历练有效占比');
   assert.ok('nextRankName' in npc, '包含下一境界名称');
   assert.ok('nextQiRequired' in npc, '包含突破所需真气');
   assert.equal(['cultivation', 'Progress'].join('') in npc, false, '不再输出旧闭关比例');

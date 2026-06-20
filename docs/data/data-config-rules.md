@@ -1,6 +1,6 @@
 # 游戏数据配置规则
 
-> 最后更新：2026-06-09
+> 最后更新：2026-06-20
 
 本文档定义 `apps/game/data/` 的现行目录结构、命名规范和扩展规则。来源以当前 `apps/game/js/core/data-manifest-loader.js`、`apps/game/js/core/game-data-validator.js` 与 `apps/game/data/` 为准。门派组织、门派 seed profile、门派运行数值、通用任务板、门派月俸/库存压力运行服务和 ADR-058 分层模拟架构均要求新增配置继续走 manifest 与 strict validator。
 
@@ -286,13 +286,21 @@ apps/game/data/
 |------|------|------|
 | `cultivation` | number | 闭关、修炼场、丹药等直接修炼获得的闭关修为 |
 | `experienceCultivation` | number | 任务、游历、动态事件、机会点、PvP、外出社交获得的历练修为 |
-| `totalCultivation` | number | `cultivation + experienceCultivation`，突破修为门槛使用 |
+| `totalCultivation` | number | 有效总修为：`cultivation + min(experienceCultivation, nextCultivationRequired × maxExperienceCultivationRatio)`，突破、小层与 AI 修为门槛使用 |
 | `rankStage` | string | `early` / `middle` / `late` / `perfection`，按总修为完成度派生 |
 | `nextCultivationRequired` | number | 下一境界所需数值修为；顶级境界为 0 |
 | `cultivationShortfall` | number | 距下一境界修为门槛的差额 |
 | `cultivationRootShortfall` | number | 距最低闭关修为占比的差额 |
+| `cultivationProgress` | number | 有效总修为进度，`totalCultivation / nextCultivationRequired`，夹取到 0-1 |
+| `cultivationShortfallRatio` | number | 有效总修为缺口比例，`1 - cultivationProgress`，供修炼需求按缺口压力动态加分 |
+| `cultivationRootProgress` | number | 闭关根基进度，`cultivation / (nextCultivationRequired × minCultivationRatio)`，夹取到 0-1 |
+| `cultivationRootShortfallRatio` | number | 闭关根基缺口比例，供修炼需求按根基压力动态加分 |
+| `qiRequired` | number | 下一境界突破所需真气 |
+| `qiProgress` | number | 真气进度，`qi / qiRequired`，夹取到 0-1 |
+| `qiShortfallRatio` | number | 真气缺口比例，供修炼需求按真气压力动态加分 |
+| `cultivationBreakthroughSprint` | number | 临门突破冲刺系数；总修为进度超过 75% 后从 0 线性升到 1，用于提高修炼优先级 |
 
-旧比例字段已从运行时、快照、UI 和应用工具中移除。真气 `qi` 独立保留，突破同时检查数值修为、最低闭关修为占比与真气。
+旧比例字段已从运行时、快照、UI 和应用工具中移除。真气 `qi` 独立保留，突破同时检查数值修为、最低闭关修为占比与真气。`needs/npc-needs.json` 中的修炼需求以较高基础分作为 NPC 非动态主线需求，再叠加上述比例字段表达缺口压力与临门突破冲刺；资源/任务类需求不得仅因身份常驻压过修炼。
 
 战斗智能与斩妖任务运行时还会维护以下状态：
 
@@ -477,7 +485,11 @@ QuestBoard canonical 状态集合以 `docs/data-models/sect-operation.md` 为准
 | `actions/reaction-actions.json` | Reaction 层即时反应行为 |
 | `actions/world-rules.json` | 世界 Tick 级规则 |
 
+`needs/npc-needs.json` 中的 `need_npc_loyalty_duty` 是宗门成员身份赋予需求，不属于散修默认常驻需求；NPC 加入宗门时由实体同步加入，脱离宗门或 `hasFaction=false` 时同步移除。散修仍可通过悬赏阁/坊市接取任务，但不承担宗门月度职责。
+
 `npcConfig.actionIds` 是单体 NPC 的显式行为覆盖：存在时按该列表直接初始化行为，不再读取默认行为集；`ai-config.npc.jobs.enabled=false` 只控制默认行为集是否追加 `defaultNpcJobActionIds`。
+
+任务执行类 JobAction 不得把 `act_npc_execute_quest_job` 静态绑定到斩妖 Job。该 action 默认指向 `job_npc_execute_quest_generic`，并通过 `jobInput.questExecutionRoutes` 配置路由：普通任务走 generic，`combat`/`monster_hunt` 等杀怪任务走 `job_npc_monster_hunt`。普通任务 Job 只使用 `toil_update_quest_progress` 推进天数与完成状态，不依赖任务坐标。
 
 新增行为时需要：
 
@@ -485,8 +497,9 @@ QuestBoard canonical 状态集合以 `docs/data-models/sect-operation.md` 为准
 2. 在 `apps/game/data/jobs/*.json` 中新增或复用 Job，并在 `apps/game/data/toils/*.json` 中新增或复用 Toil。
 3. 在 `apps/game/js/engine/npc/toils/npc-toils.js` 注册 Toil executor。
 4. 必要时补充目标状态、targetResolver、风险键、收益键。
-5. 已迁移旧 NPC Action 不得继续出现在 `defaultNpcActionIds` 中；默认主路径由 `defaultNpcJobActionIds` 承载。
-6. 新增或修改 JobAction 时必须运行配置加载/规划/迁移守卫测试，至少覆盖 `test-job-config-load.mjs`；涉及默认 NPC 行为迁移时同时运行 `test-npc-action-job-migration.mjs`；涉及 GOAP 规划时运行 `test-job-action-planning.mjs`。
+5. 若行为只应在 `selectStrategy="greedy"` 的候选集中被优先选择，可配置 `greedyPriority`；默认 0，正数最高优先级候选先于普通推进性价比加权随机。
+6. 已迁移旧 NPC Action 不得继续出现在 `defaultNpcActionIds` 中；默认主路径由 `defaultNpcJobActionIds` 承载。
+7. 新增或修改 JobAction 时必须运行配置加载/规划/迁移守卫测试，至少覆盖 `test-job-config-load.mjs`；涉及默认 NPC 行为迁移时同时运行 `test-npc-action-job-migration.mjs`；涉及 GOAP 规划时运行 `test-job-action-planning.mjs`。
 
 ## simulation/ 与 drama/（ADR-058 预留）
 
@@ -702,7 +715,17 @@ GE 必须是通用机制原语；具体数值由物品、能力或调用方 spec
 
 ### cultivation.json
 
-`cultivation.json` 继续维护修炼速度、闭关收益递减、突破最低闭关修为占比、突破失败保留比例和真气产出。数值修为迁移后新增或维护 `experience` 段，用于非闭关、非原地待命事件的历练修为收益。
+`cultivation.json` 继续维护修炼速度、闭关收益递减、突破最低闭关修为占比、历练有效贡献占比、突破失败保留比例、真气产出、修炼场费用和灵石炼化参数。数值修为迁移后新增或维护 `experience` 段，用于非闭关、非原地待命事件的历练修为收益。
+
+顶层常用字段：
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| `cultivationDecayK` | number | 闭关收益递减系数；闭关不封顶，随 `cultivation / nextCultivationRequired` 变慢；历练超过有效占比后也使用同一递减口径 |
+| `minCultivationRatio` | number | 突破所需修为中，闭关修为必须达到的最低占比 |
+| `maxExperienceCultivationRatio` | number | 历练修为对有效总修为、小层与突破判定的最高贡献占比；原始 `experienceCultivation` 不截断 |
+| `actions.trainChamber.currencyItemId` / `stoneCost` | string / number | 修炼场消耗的灵石类物品与费用；`speedBonusMultiplier=2` 表示普通闭关 2 倍效率 |
+| `actions.absorbSpiritStone.itemId` / `maxConsumePerUse` | string / number | NPC 缺突破真气时可炼化的灵石物品与单次最大消耗数量；实际真气增量来自该物品的 `effects` |
 
 `experience` 常用字段：
 
@@ -717,7 +740,7 @@ GE 必须是通用机制原语；具体数值由物品、能力或调用方 spec
 | `baseBySource` | object | 不同来源的基础历练修为，如 `monster_hunt_success`、`dynamic_event`、`explore` |
 | `outcomeMultiplier` | object | `success` / `partial` / `failure` 等结果倍率 |
 
-追加历练修为的来源包括任务推进、任务完成、真实斩妖成功或失败、游历、动态事件、机会点、PvP、外出社交。闭关修炼、原地等待、纯状态刷新和已死亡 NPC 的失败结果不追加。
+追加历练修为的来源包括任务推进、任务完成、真实斩妖成功或失败、游历、动态事件、机会点、PvP、外出社交。闭关修炼、原地等待、纯状态刷新和已死亡 NPC 的失败结果不追加。写回时保留原始 `experienceCultivation` 数值，`totalCultivation` 只同步有效历练贡献。
 
 ### monster-spawn.json
 

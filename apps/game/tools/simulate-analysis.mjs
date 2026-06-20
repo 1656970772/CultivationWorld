@@ -74,6 +74,9 @@ if (REL_GOALS_ENV === '1' || REL_GOALS_ENV === '0') {
 const { WorldEngine } = await import(
   pathToFileURL(resolve(GAME_ROOT, 'js/engine/world-engine.js')).href
 );
+const { getCultivationRequired, nextCultivationRank } = await import(
+  pathToFileURL(resolve(GAME_ROOT, 'js/engine/npc/numeric-cultivation.js')).href
+);
 
 function parseDaysArg() {
   for (const arg of process.argv.slice(2)) {
@@ -93,8 +96,19 @@ function parseSeedArg() {
   return Number.isFinite(envSeed) ? (envSeed >>> 0) : null;
 }
 
+function parseTrackNamesArg() {
+  const names = [];
+  for (const arg of process.argv.slice(2)) {
+    const match = /^--track-name=(.+)$/.exec(arg);
+    if (match) names.push(...match[1].split(',').map(s => s.trim()).filter(Boolean));
+  }
+  return [...new Set(names)];
+}
+
 const TOTAL_DAYS = parseDaysArg();
 const SEED_ARG = parseSeedArg();
+const TRACK_NAMES = parseTrackNamesArg();
+const LIFELOG_ALL_DAYS = process.argv.slice(2).includes('--lifelog-all-days');
 if (SEED_ARG != null) configs.seed = SEED_ARG;
 const SNAPSHOT_EVERY = 50;
 
@@ -253,6 +267,7 @@ const sectOperationStats = {
 // 当前先跟踪 5 个有代表性的 NPC（验证工具好用后，去掉上限即可扩展到"调试所有人"）。
 const LIFELOG_MAX = 5;
 const lifeTracked = new Map(); // npcId -> { meta, days: [...] }
+const lifeTrackNames = new Set(TRACK_NAMES);
 
 function rankShort(ent) {
   return ent.state.get('rankName') || ent.state.get('rankId') || '?';
@@ -291,21 +306,35 @@ function pickLifeTrackTargets() {
   }
   for (const [id, label] of picked) {
     const ent = engine.entityRegistry.getById(id);
-    lifeTracked.set(id, {
-      meta: {
-        id, label,
-        name: ent.name || id,
-        factionId: ent.state.get('factionId') || null,
-        factionName: ent.state.get('factionId') ? (initRes[ent.state.get('factionId')]?.name || ent.state.get('factionId')) : '散修',
-        role: role(ent) || '-',
-        gender: ent.state.get('gender') || 'male',
-        bornRank: rankShort(ent),
-        spiritRoot: ent.state.get('spiritRootGrade') || ent.staticData?.get?.('spiritRoot') || null,
-      },
-      days: [],
-      _lastAction: null,
-      _lastObs: '',
-    });
+    addLifeTrack(ent, label);
+  }
+}
+
+function addLifeTrack(ent, label = '指定') {
+  if (!ent || lifeTracked.has(ent.id)) return;
+  const factionId = ent.state.get('factionId') || null;
+  lifeTracked.set(ent.id, {
+    meta: {
+      id: ent.id, label,
+      name: ent.name || ent.staticData?.name || ent.id,
+      factionId,
+      factionName: factionId ? (initRes[factionId]?.name || factionId) : '散修',
+      role: ent.state.get('currentRole') || '-',
+      gender: ent.state.get('gender') || 'male',
+      bornRank: rankShort(ent),
+      spiritRoot: ent.state.get('spiritRootGrade') || ent.staticData?.get?.('spiritRoot') || null,
+    },
+    days: [],
+    _lastAction: null,
+    _lastObs: '',
+  });
+}
+
+function trackNamedTargets() {
+  if (lifeTrackNames.size === 0) return;
+  for (const ent of engine.entityRegistry.getByType('npc')) {
+    const name = ent.name || ent.staticData?.name || ent.id;
+    if (lifeTrackNames.has(name)) addLifeTrack(ent, '指定');
   }
 }
 
@@ -323,16 +352,27 @@ function recordLifeDay(day, ent, nl, lifeEvents) {
   const actionName = isIdle ? '空闲' : actName(exec.action?.name || exec.result?.actionName || '空闲');
   const plan = nl.plan || {};
   const obsSig = obsSignature(ent);
+  const jobSnapshot = nl.execution?.job || null;
 
   // 执念变化也算"变化点"。
   const obsChanged = obsSig !== rec._lastObs;
   const actionChanged = actionName !== rec._lastAction;
   const hasEvent = lifeEvents && lifeEvents.length > 0;
-  if (!actionChanged && !obsChanged && !hasEvent) return; // 无变化，压缩掉
+  if (!LIFELOG_ALL_DAYS && !actionChanged && !obsChanged && !hasEvent) return; // 无变化，压缩掉
 
   const mind = typeof ent.getMindSummary === 'function' ? ent.getMindSummary() : { obsessions: [], emotions: {} };
-  const totalCultivation = Number(ent.state.get('totalCultivation') || 0);
-  const nextCultivationRequired = Number(ent.state.get('nextCultivationRequired') || 0);
+  const nextCultivationRequired = Number(getCultivationRequired(ent, configs.ranks || []) || 0);
+  const cultivation = Number(ent.state.get('cultivation') || 0);
+  const experienceCultivation = Number(ent.state.get('experienceCultivation') || 0);
+  const minCultivationRatio = Number(configs.balanceCultivation?.minCultivationRatio ?? 0.3);
+  const maxExperienceCultivationRatio = Number(configs.balanceCultivation?.maxExperienceCultivationRatio ?? Math.max(0, 1 - minCultivationRatio));
+  const effectiveExperienceCultivation = nextCultivationRequired > 0
+    ? Math.min(experienceCultivation, nextCultivationRequired * maxExperienceCultivationRatio)
+    : experienceCultivation;
+  const totalCultivation = cultivation + effectiveExperienceCultivation;
+  const nextRank = nextCultivationRank(ent, configs.ranks || []);
+  const qiRequired = Number(nextRank?.qiRequired ?? nextCultivationRequired);
+  const cultivationRootRequired = nextCultivationRequired * minCultivationRatio;
   const cultivationCompletion = nextCultivationRequired > 0
     ? totalCultivation / nextCultivationRequired
     : 0;
@@ -354,6 +394,29 @@ function recordLifeDay(day, ent, nl, lifeEvents) {
     obsessions: mind.obsessions.map(o => ({ type: o.type, intensity: Math.round(o.intensity || 0) })),
     anger: Math.round(mind.emotions?.anger || 0),
     innerDemon: Math.round(mind.emotions?.inner_demon || 0),
+    cultivation: Number(cultivation.toFixed(4)),
+    experienceCultivation: Number(experienceCultivation.toFixed(4)),
+    effectiveExperienceCultivation: Number(effectiveExperienceCultivation.toFixed(4)),
+    cultivationShortfall: Number(Math.max(0, nextCultivationRequired - totalCultivation).toFixed(4)),
+    cultivationRootShortfall: Number(Math.max(0, cultivationRootRequired - cultivation).toFixed(4)),
+    qiShortfall: Number(Math.max(0, qiRequired - (ent.state.get('qi') || 0)).toFixed(4)),
+    stone: ent.inventory?.getAmount?.('low_spirit_stone') ?? 0,
+    contribution: Number(ent.state.get('contribution') || 0),
+    hasActiveQuest: ent.state.get('hasActiveQuest') === true,
+    activeQuestTypeId: ent.state.get('activeQuestTypeId') || null,
+    activeQuestTypeName: ent.state.get('activeQuestTypeName') || null,
+    activeQuestCategory: ent.state.get('activeQuestCategory') || null,
+    activeQuestDifficulty: ent.state.get('activeQuestDifficulty') || 0,
+    activeQuestDiffName: ent.state.get('activeQuestDiffName') || null,
+    activeQuestInstance: ent.state.get('activeQuestInstance') || null,
+    questComplete: ent.state.get('questComplete') === true,
+    questDaysRemaining: ent.state.get('questDaysRemaining') ?? null,
+    questTargetMonsterName: ent.state.get('questTargetMonsterName') || null,
+    questTargetMonsterGrade: ent.state.get('questTargetMonsterGrade') || null,
+    currentJobId: jobSnapshot?.currentJobId || ent.state.get('currentJobId') || null,
+    currentToilId: jobSnapshot?.currentToilId || ent.state.get('currentToilId') || null,
+    jobStatus: jobSnapshot?.jobStatus || ent.state.get('jobStatus') || null,
+    jobRemaining: jobSnapshot?.jobRemaining ?? ent.state.get('jobRemaining') ?? null,
     events: lifeEvents || [],
   });
   rec._lastAction = actionName;
@@ -412,12 +475,14 @@ function isPersonalBountyEscrow(entry) {
 
 // 选定一生回放跟踪对象（初始化后、主循环前）。
 pickLifeTrackTargets();
+trackNamedTargets();
 console.log(`[一生回放] 跟踪 ${lifeTracked.size} 个 NPC: ${[...lifeTracked.values()].map(r => `${r.meta.label}·${r.meta.name}`).join('、')}`);
 
 // ── 主循环 ─────────────────────────
 const t0 = performance.now();
 for (let day = 1; day <= TOTAL_DAYS; day++) {
   const tick = engine.tick();
+  trackNamedTargets();
 
   for (const op of tick.sectOperations || []) {
     sectOperationStats.count++;
@@ -807,28 +872,52 @@ const rosterKeys = [...factionOrder.filter(k => npcByFaction[k]), ...(npcByFacti
 const npcRoster = rosterKeys.map(fKey => {
   const members = npcByFaction[fKey] || [];
   const fName = fKey === '__wanderer__' ? '散修（无门派）' : (finalSnap.factions[fKey]?.name || fKey);
+  const cultCfg = configs.balanceCultivation || {};
+  const minCultivationRatio = Number(cultCfg.minCultivationRatio ?? 0.3);
+  const maxExperienceCultivationRatio = Number(cultCfg.maxExperienceCultivationRatio ?? Math.max(0, 1 - minCultivationRatio));
   const sorted = [...members].sort((a, b) => {
     if (a.alive !== b.alive) return a.alive ? -1 : 1;
     return (b.qi || 0) - (a.qi || 0);
   });
   return {
     factionId: fKey, factionName: fName,
-    members: sorted.map(m => ({
-      name: m.name, rankName: m.rankName || '?', role: m.role || '-',
-      age: m.ageYears ?? '?', maxAge: m.maxAgeYears ?? '?',
-      qi: m.qi || 0,
-      totalCultivation: m.totalCultivation || 0,
-      nextCultivationRequired: m.nextCultivationRequired || 0,
-      cultivationCompletion: m.nextCultivationRequired > 0
-        ? (m.totalCultivation || 0) / m.nextCultivationRequired
-        : 0,
-      stone: m.inventory?.low_spirit_stone ?? 0,
-      contribution: m.contribution || 0, quests: m.totalQuestsCompleted || 0,
-      gender: m.gender || 'male',
-      daoCompanionId: m.daoCompanionId || null,
-      childrenCount: m.childrenCount || 0,
-      alive: m.alive,
-    })),
+    members: sorted.map(m => {
+      const nextRequired = m.nextCultivationRequired || 0;
+      const cultivation = Number(m.cultivation || 0);
+      const experienceCultivation = Number(m.experienceCultivation || 0);
+      const effectiveExperienceCultivation = nextRequired > 0
+        ? Math.min(experienceCultivation, nextRequired * maxExperienceCultivationRatio)
+        : experienceCultivation;
+      const totalCultivation = Number(m.totalCultivation || 0);
+      const cultivationShortfall = Math.max(0, nextRequired - totalCultivation);
+      const cultivationRootRequired = nextRequired * minCultivationRatio;
+      const cultivationRootShortfall = Math.max(0, cultivationRootRequired - cultivation);
+      return {
+        name: m.name, rankName: m.rankName || '?', role: m.role || '-',
+        age: m.ageYears ?? '?', maxAge: m.maxAgeYears ?? '?',
+        qi: m.qi || 0,
+        cultivation,
+        experienceCultivation,
+        effectiveExperienceCultivation,
+        totalCultivation,
+        nextCultivationRequired: nextRequired,
+        cultivationRootRequired,
+        cultivationShortfall,
+        cultivationRootShortfall,
+        canBreakthroughByCultivation: nextRequired > 0
+          && cultivationShortfall <= 0
+          && cultivationRootShortfall <= 0,
+        cultivationCompletion: nextRequired > 0
+          ? totalCultivation / nextRequired
+          : 0,
+        stone: m.inventory?.low_spirit_stone ?? 0,
+        contribution: m.contribution || 0, quests: m.totalQuestsCompleted || 0,
+        gender: m.gender || 'male',
+        daoCompanionId: m.daoCompanionId || null,
+        childrenCount: m.childrenCount || 0,
+        alive: m.alive,
+      };
+    }),
   };
 });
 

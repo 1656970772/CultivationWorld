@@ -13,10 +13,18 @@
 import { RuntimeState } from '../abstract/runtime-state.js';
 import {
   getCultivationRequired,
+  nextCultivationRank,
   syncTotalCultivation,
   refreshRankStage,
 } from './numeric-cultivation.js';
 import { normalizeRankStage } from './cultivator-combat-attributes.js';
+
+function ratio(value, required) {
+  const n = Number(value);
+  const d = Number(required);
+  if (!Number.isFinite(n) || !Number.isFinite(d) || d <= 0) return 0;
+  return Math.max(0, Math.min(1, n / d));
+}
 
 function roleRankOf(role, roleRanks = {}) {
   const value = roleRanks?.[role];
@@ -196,6 +204,7 @@ export class NPCState extends RuntimeState {
 
     this._rng = random;
     this._ranksData = ranksData || [];
+    this._cultivationConfig = gameConfig?.cultivationConfig || {};
     this._daysPerYear = daysPerYear;
     this._naturalDeath = {
       startRatio: deathCfg.startRatio ?? 0.95,
@@ -229,8 +238,8 @@ export class NPCState extends RuntimeState {
   }
 
   _syncNumericCultivation() {
-    syncTotalCultivation(this);
-    refreshRankStage(this, this._ranksData || []);
+    syncTotalCultivation(this, this._ranksData || [], this._cultivationConfig || {});
+    refreshRankStage(this, this._ranksData || [], this._cultivationConfig || {});
   }
 
   /**
@@ -241,14 +250,29 @@ export class NPCState extends RuntimeState {
     const flat = super.toGOAPState();
     const nextCultivationRequired = getCultivationRequired(this, this._ranksData || []);
     const cultivation = this.get('cultivation') || 0;
-    const totalCultivation = this.get('totalCultivation') ?? syncTotalCultivation(this);
-    const minCultivationRatio = 0.3;
+    const totalCultivation = syncTotalCultivation(this, this._ranksData || [], this._cultivationConfig || {});
+    const nextRank = nextCultivationRank(this, this._ranksData || []);
+    const qi = this.get('qi') || 0;
+    const qiRequired = Number(nextRank?.qiRequired ?? nextCultivationRequired) || 0;
+    const minCultivationRatio = this._cultivationConfig?.minCultivationRatio ?? 0.3;
+    const rootRequired = nextCultivationRequired * minCultivationRatio;
+    const cultivationProgress = ratio(totalCultivation, nextCultivationRequired);
+    const cultivationRootProgress = ratio(cultivation, rootRequired);
+    const qiProgress = ratio(qi, qiRequired);
     flat.nextCultivationRequired = nextCultivationRequired;
     flat.cultivationShortfall = Math.max(0, nextCultivationRequired - totalCultivation);
     flat.cultivationRootShortfall = Math.max(
       0,
-      nextCultivationRequired * minCultivationRatio - cultivation,
+      rootRequired - cultivation,
     );
+    flat.cultivationProgress = cultivationProgress;
+    flat.cultivationShortfallRatio = Math.max(0, 1 - cultivationProgress);
+    flat.cultivationRootProgress = cultivationRootProgress;
+    flat.cultivationRootShortfallRatio = Math.max(0, 1 - cultivationRootProgress);
+    flat.qiRequired = qiRequired;
+    flat.qiProgress = qiProgress;
+    flat.qiShortfallRatio = Math.max(0, 1 - qiProgress);
+    flat.cultivationBreakthroughSprint = Math.max(0, (cultivationProgress - 0.75) / 0.25);
     flat.canBreakthroughByCultivation = nextCultivationRequired > 0
       && flat.cultivationShortfall <= 0
       && flat.cultivationRootShortfall <= 0;

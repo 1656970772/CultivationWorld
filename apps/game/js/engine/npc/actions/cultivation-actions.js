@@ -25,7 +25,7 @@ export class NPCCultivateExecutor extends ActionExecutor {
 }
 
 /**
- * 赴修炼场修炼：消耗门派贡献点，换取修炼速度加成。
+ * 赴修炼场修炼：消耗灵石，换取修炼速度加成。
  * 复用 NPCCultivateExecutor 的核心修炼逻辑（单一职责 + 开闭），仅注入速度倍率并扣减贡献。
  * 贡献不足由行为 preconditions 拦截（GOAP 不会规划本行为），此处兜底再校验一次。
  */

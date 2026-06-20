@@ -242,10 +242,18 @@ export class BehaviorSystem {
       : (a) => a.weight;
 
     let chosen;
-    if (executable.length === 1) {
-      chosen = executable[0].action;
+    const maxGreedyPriority = executable.reduce(
+      (max, c) => Math.max(max, Number(c.action.greedyPriority || 0)),
+      0,
+    );
+    const prioritized = maxGreedyPriority > 0
+      ? executable.filter(c => Number(c.action.greedyPriority || 0) === maxGreedyPriority)
+      : executable;
+
+    if (prioritized.length === 1) {
+      chosen = prioritized[0].action;
     } else {
-      chosen = this._pickByProgressValue(executable, costOf, worldContext) || executable[0].action;
+      chosen = this._pickByProgressValue(prioritized, costOf, worldContext) || prioritized[0].action;
     }
     this.currentPlan = [chosen];
     this.currentActionIndex = 0;
@@ -409,13 +417,15 @@ export class BehaviorSystem {
       return { status: 'replan', reason: 'jobs_disabled', actionId: action.id };
     }
     if (!this.jobSystem) this.jobSystem = new JobSystem();
-    if (this.jobSystem.hasJob() && !this._activeJobMatchesAction(action)) {
+    const resolvedJobId = this._resolveJobActionId(entity, action);
+    if (this.jobSystem.hasJob() && !this._activeJobMatchesAction(action, resolvedJobId)) {
       this.jobSystem.abort('job_action_mismatch');
       this._syncJobState(entity);
     }
     if (!this.jobSystem.hasJob()) {
-      this.jobSystem.start(action.jobId, {
+      this.jobSystem.start(resolvedJobId, {
         actionId: action.id,
+        resolvedFromJobId: action.jobId,
         ...(action.jobInput || {}),
         dynamicEventId: entity?.state?.get?.('targetDynamicEventId') || null,
       });
@@ -441,7 +451,7 @@ export class BehaviorSystem {
       this._resetLifecycle(entity);
       return {
         status: this.currentActionIndex >= this.currentPlan.length ? 'plan_complete' : 'step_done',
-        result: { actionId: action.id, jobId: action.jobId, jobInstanceId, ...result },
+        result: { actionId: action.id, jobId: resolvedJobId, jobInstanceId, ...result },
         action: { id: action.id, name: action.name },
       };
     }
@@ -452,11 +462,11 @@ export class BehaviorSystem {
         status: 'replan',
         reason: result.reason || result.status,
         actionId: action.id,
-        jobId: action.jobId,
+        jobId: resolvedJobId,
         result: {
           ...result,
           actionId: action.id,
-          jobId: action.jobId,
+          jobId: resolvedJobId,
           jobInstanceId,
           status: result.status,
           reason: result.reason || result.status,
@@ -470,6 +480,49 @@ export class BehaviorSystem {
       job: this.jobSystem.snapshot(),
       action: { id: action.id, name: action.name },
     };
+  }
+
+  _resolveJobActionId(entity, action) {
+    const routes = action?.jobInput?.questExecutionRoutes || null;
+    if (!routes || typeof routes !== 'object') return action.jobId;
+
+    const state = entity?.state;
+    const get = (key) => (typeof state?.get === 'function' ? state.get(key) : state?.[key]);
+    const instance = get('activeQuestInstance') || {};
+    const target = instance?.target || {};
+    const firstMatchingRoute = (routeMap, keys) => {
+      if (!routeMap || typeof routeMap !== 'object') return null;
+      for (const key of keys) {
+        if (key != null && routeMap[key]) return routeMap[key];
+      }
+      return null;
+    };
+
+    const explicit = firstMatchingRoute(routes.byRoute, [
+      get('activeQuestExecutionRoute'),
+      instance.executionRoute,
+      instance.questKind,
+    ]);
+    if (explicit) return explicit;
+
+    const byCategory = firstMatchingRoute(routes.byCategory, [
+      get('activeQuestCategory'),
+      instance.category,
+    ]);
+    if (byCategory) return byCategory;
+
+    const byType = firstMatchingRoute(routes.byType, [
+      get('activeQuestType'),
+      instance.type,
+      instance.templateId,
+      get('activeQuestTypeId'),
+    ]);
+    if (byType) return byType;
+
+    const byTargetKind = firstMatchingRoute(routes.byTargetKind, [target.kind]);
+    if (byTargetKind) return byTargetKind;
+
+    return routes.default || action.jobId;
   }
 
   _stateForCurrentPlan(currentGOAPState) {
@@ -501,10 +554,10 @@ export class BehaviorSystem {
     target.state.set('jobRemaining', snapshot.jobRemaining);
   }
 
-  _activeJobMatchesAction(action) {
+  _activeJobMatchesAction(action, resolvedJobId = action.jobId) {
     if (!this.jobSystem?.hasJob?.()) return false;
     const snapshot = this.jobSystem.snapshot();
-    return snapshot.currentJobId === action.jobId
+    return snapshot.currentJobId === resolvedJobId
       && snapshot.jobContext?.actionId === action.id;
   }
 

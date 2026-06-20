@@ -21,6 +21,7 @@ const { applyQuestRewardProfile } = await import(pathToFileURL(resolve(GAME_ROOT
 const {
   donateMaterials,
   redeemExchangeItem,
+  absorbSpiritStoneQi,
   useQiPill,
   useBreakthroughPill,
   grantItemAndMaybeEquip,
@@ -150,6 +151,20 @@ console.log('3) 贡献兑换与聚气丹消耗');
   ok(npc.state.get('cultivation') > beforeCultivation, '使用聚气丹后数值修为增加');
   ok(npc.state.get('totalCultivation') === npc.state.get('cultivation') + npc.state.get('experienceCultivation'), '使用聚气丹后同步 totalCultivation');
   ok(npc.state.get(['cultivation', 'Progress'].join('')) == null, '使用聚气丹不写旧闭关比例字段');
+}
+
+console.log('3a) 灵石既可作为货币也可直接炼化补真气');
+{
+  const npc = mkEntity({
+    inventory: { low_spirit_stone: 10 },
+    state: { qi: 45, rankId: 'mortal' },
+  });
+  const use = absorbSpiritStoneQi(npc, mkWorld(mkFaction()));
+  ok(use.success, '可炼化低级灵石');
+  ok(use.consumed === 5, '只消耗补足真气所需的灵石');
+  ok(use.qiGain === 5, '按 low_spirit_stone 的 ge_add_qi effect 增加真气');
+  ok(npc.inventory.getAmount('low_spirit_stone') === 5, '炼化后灵石库存减少');
+  ok(npc.state.get('qi') === 50, '炼化后真气达到下一境界门槛');
 }
 
 console.log('4) 破境丹加成与突破判定清空');

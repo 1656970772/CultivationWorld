@@ -11,6 +11,16 @@
       ]
     },
     {
+      "id": "job_npc_execute_quest_generic",
+      "name": "执行普通任务",
+      "category": "quest",
+      "successEffects": { "questComplete": { "op": "set", "value": true } },
+      "interrupt": { "reaction": "pause", "higherDynamicGoal": "abort", "sameDynamicGoal": "keep" },
+      "toils": [
+        { "id": "progress", "type": "toil_update_quest_progress" }
+      ]
+    },
+    {
       "id": "job_npc_monster_hunt",
       "name": "执行斩妖任务",
       "category": "quest",

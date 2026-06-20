@@ -123,6 +123,7 @@ export class FactionAIService {
     npc.state.set('hasFaction', false);
     npc.state.set('isWanderer', true);
     npc.state.set('role', 'wanderer');
+    npc.syncFactionDutyNeed?.();
   }
 
   /**
@@ -133,6 +134,7 @@ export class FactionAIService {
     npc.state.set('hasFaction', true);
     npc.state.set('isWanderer', false);
     npc.state.set('role', 'disciple');
+    npc.syncFactionDutyNeed?.();
   }
 
   /**

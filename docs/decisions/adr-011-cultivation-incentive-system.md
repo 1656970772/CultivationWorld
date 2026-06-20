@@ -4,9 +4,11 @@
 > 状态：已接受 · 已实现并验证（无头模拟）
 > 关联：ADR-010（修炼场修炼行为）、ADR-005（需求驱动 GOAP 架构）、ADR-008（建筑功能化）
 
+> **2026-06-19 当前实现修订**：本文保留"任务/资源压力驱动修炼"的历史设计脉络；当前修炼场费用已由贡献点改为配置化灵石费用（`actions.trainChamber.currencyItemId/stoneCost`），并新增 `job_npc_absorb_spirit_stone` 让 NPC 在缺突破真气时直接炼化灵石物品补真气。贡献仍用于宗门兑换、职位和其他经济链，不再是进入修炼场的门槛。
+
 ## 背景
 
-ADR-010 新增了"赴修炼场修炼"（消耗贡献换加速），但实跑中修炼场执行次数为 0。根因有三层：
+ADR-010 最初新增"赴修炼场修炼"（当时费用使用贡献点），但实跑中修炼场执行次数为 0。根因有三层：
 
 1. **架构错误——"任务"被当成需求**：`need_npc_quest` 把"完成任务"（`questTurnedIn`）当作目的。但任务本是获取贡献/灵石的**手段**，不应是需求。这导致一直在调"修炼需求 vs 任务需求"优先级，越调越拧巴。
 2. **GOAP 经济链断裂**：`act_npc_turn_in_quest` 的 JSON `effects` 不含 `contribution`，规划层看不到"交任务涨贡献"，永远推不出"为进修炼场先做任务"。
@@ -29,7 +31,7 @@ NPC 只保留底层动机需求（`npc-needs.json`），删除"手段型/派生�
 
 ### 2. 打通 GOAP 经济链（做任务成为修炼的可推导手段）
 
-给 `act_npc_turn_in_quest.effects` 增加 `contribution: { op: "add", value: 5 }`，使规划层可见"交任务涨贡献"。于是当修炼需求目标为 `cultivationProgress >= 1.0`、而贡献 < 10 时，A\* 会**自动推导出**：`接→做→交（×N 攒够贡献）→赴修炼场`。修炼场行为（weight 0.5）比普通闭关代价低，贡献足时直接被选。
+给 `act_npc_turn_in_quest.effects` 增加 `contribution: { op: "add", value: 5 }`，使规划层可见"交任务涨贡献"。当前实现中，修炼场门槛已改为灵石，贡献链仍服务于宗门兑换、职位晋升和其他经济目标；当 NPC 有灵石且需要修炼时，`act_npc_job_train_chamber` 会作为比普通闭关代价更低的加速路径被选择。
 
 > 真实贡献增量仍由 `NPCTurnInQuestExecutor` 按任务难度发放（2~500），effects 里的 5 仅为规划估算。
 
@@ -64,7 +66,7 @@ flowchart LR
 ## 后果
 
 ### 正面
-- 概念正确：任务回归"手段"，需求只剩真实动机；GOAP 自动串起"做任务→进修炼场→升境界"经济链。
+- 概念正确：任务回归"手段"，需求只剩真实动机；GOAP 自动串起"获取资源→进修炼场或炼化灵石→升境界"经济链。
 - 修炼场成为晋升刚需，三层压力（月考核/门派考核/大比）持续驱动 NPC 修炼，世界更有"修仙宗门"的运转感。
 - 全部数据驱动（`cultivation.json` 的 `monthlyContribution`/`sectEvents`、`npc-needs.json`），可调。
 
@@ -75,7 +77,7 @@ flowchart LR
 
 ## 涉及文件
 - 改 `apps/game/data/needs/npc-needs.json`（精简为 4 需求、回血、职责绑定月考核）
-- 改 `apps/game/data/actions/npc-actions.json`（turn_in 加 contribution effect、新增 act_npc_heal、train_chamber 描述/effect 改 100%）
+- 改 `apps/game/data/actions/npc-job-actions.json`（turn_in 加 contribution effect、新增 heal/train_chamber/absorb_spirit_stone 作业行为）
 - 改 `apps/game/data/balance/cultivation.json`（cultivationSpeed 下调、新增 monthlyContribution/sectEvents）
 - 改 `apps/game/data/balance/economy.json`（月俸加 outer_disciple）
 - 改 `apps/game/js/engine/npc/npc-state.js`（outer_disciple、monthlyContribution、monthlyQuotaMet、injuryLevel）

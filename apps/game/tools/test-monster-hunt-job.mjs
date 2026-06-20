@@ -18,6 +18,8 @@ const imp = (p) => import(pathToFileURL(resolve(GAME_ROOT, p)).href);
 const load = (p) => JSON.parse(readFileSync(resolve(GAME_ROOT, p), 'utf-8'));
 
 const { Inventory } = await imp('js/engine/abstract/inventory.js');
+const { Action } = await imp('js/engine/abstract/action.js');
+const { BehaviorSystem } = await imp('js/engine/abstract/behavior-system.js');
 const { JobResultStatus } = await imp('js/engine/abstract/job.js');
 const { JobSystem } = await imp('js/engine/abstract/job-system.js');
 const { RuntimeState } = await imp('js/engine/abstract/runtime-state.js');
@@ -62,6 +64,12 @@ function setupPools() {
   JobPool.loadFromConfig(load('data/jobs/npc-combat-jobs.json'));
   JobPool.loadFromConfig(load('data/jobs/npc-cultivation-jobs.json'));
   registerNPCToilExecutors();
+}
+
+function npcJobAction(id) {
+  const config = load('data/actions/npc-job-actions.json').find(action => action.id === id);
+  if (!config) throw new Error(`missing npc job action: ${id}`);
+  return new Action(config);
 }
 
 function mkNpc(overrides = {}) {
@@ -181,7 +189,7 @@ function mkWorld(monsterOrMonsters) {
         rankMaxDifficulty: { foundation_building: 3 },
         speedVariance: { min: 1, max: 1 },
         actions: {
-          trainChamber: { contributionCost: 10, speedBonusMultiplier: 2 },
+          trainChamber: { currencyItemId: 'low_spirit_stone', stoneCost: 10, speedBonusMultiplier: 2 },
         },
       },
       economy: {
@@ -355,7 +363,139 @@ console.log('3) 多日斩妖 Job 不提前结算');
   assert(npc.inventory.getAmount('beast_material_g3') === 1, '斩妖 Job 发放三阶灵兽材料');
 }
 
-console.log('3) 斩妖任务写入结构化字段');
+console.log('4) qt_slay_monster 通过 JobAction 路由到斩妖 Job');
+{
+  const monster = mkMonster();
+  const npc = mkNpc({
+    inventory: { pill_rejuvenation: 1, artifact_green_sword: 1 },
+    state: {
+      hasActiveQuest: true,
+      activeQuestTypeId: 'qt_slay_monster',
+      activeQuestTypeName: '斩妖',
+      activeQuestCategory: 'combat',
+      activeQuestDifficulty: 3,
+      activeQuestDiffName: '三阶',
+      questDaysRemaining: 1,
+      questComplete: false,
+      questTargetX: 16,
+      questTargetY: 18,
+      questTargetMonsterId: 'monster_test_3',
+      equippedArtifactId: 'artifact_green_sword',
+      activeQuestInstance: {
+        id: 'quest_route_monster_hunt',
+        templateId: 'qt_slay_monster',
+        type: 'qt_slay_monster',
+        name: '斩妖',
+        category: 'combat',
+        difficulty: 3,
+        value: 75,
+        riskScore: 0.3,
+        source: 'test',
+        state: 'accepted',
+        target: {
+          kind: 'monster',
+          x: 16,
+          y: 18,
+          monsterIds: ['monster_test_3'],
+          monsterName: '雪爪熊王',
+          monsterGrade: 3,
+          requiredKills: 1,
+          killedCount: 0,
+        },
+        rewards: {},
+      },
+    },
+  });
+  const worldContext = mkWorld(monster);
+  const executeQuestAction = npcJobAction('act_npc_execute_quest_job');
+  const behavior = new BehaviorSystem(null, [executeQuestAction], { jobsEnabled: true });
+  assert(behavior.setSingleActionPlan('act_npc_execute_quest_job'), '设置斩妖执行任务 JobAction 计划');
+
+  const seenJobIds = [];
+  const seenToilIds = [];
+  const terminalStatuses = [];
+  for (let i = 0; i < 12 && behavior.hasPlan(); i++) {
+    const result = withRandom(0, () => behavior.executeStep(npc, worldContext));
+    const snapshot = behavior.jobSystem?.snapshot?.();
+    const currentJobId = result?.job?.currentJobId || snapshot?.currentJobId || result?.result?.jobId;
+    const currentToilId = result?.job?.currentToilId || snapshot?.currentToilId || result?.result?.currentToilId;
+    if (currentJobId) seenJobIds.push(currentJobId);
+    if (currentToilId) seenToilIds.push(currentToilId);
+    if (result?.status !== 'in_progress') terminalStatuses.push(result.status);
+    if (result?.status === 'replan') break;
+  }
+
+  const monsterHuntToils = new Set(['bind_target', 'assess_risk', 'prepare', 'plan_route', 'move', 'hunt', 'progress']);
+  assert(seenJobIds.includes('job_npc_monster_hunt'), 'qt_slay_monster/combat 经 BehaviorSystem 路由到 job_npc_monster_hunt');
+  assert(seenToilIds.some(id => monsterHuntToils.has(id)), 'qt_slay_monster 进入斩妖专用 toil');
+  assert(terminalStatuses.includes('plan_complete'), 'qt_slay_monster 执行任务 JobAction 完成计划');
+  assert(npc.state.get('questComplete') === true, 'qt_slay_monster 最终推进到 questComplete=true');
+  assert(monster.alive === false && monster._deathInfo?.cause === 'quest_hunt', 'qt_slay_monster 通过斩妖 Job 击杀目标妖兽');
+  assert(npc.inventory.getAmount('monster_core_g3') === 1, 'qt_slay_monster 路由后发放三阶妖兽内丹');
+}
+
+console.log('5) qt_guard 普通任务通过 JobAction 只推进任务进度');
+{
+  const npc = mkNpc({
+    state: {
+      hasActiveQuest: true,
+      activeQuestTypeId: 'qt_guard',
+      activeQuestTypeName: '值守',
+      activeQuestCategory: 'service',
+      activeQuestDifficulty: 1,
+      activeQuestDiffName: '一阶',
+      questDaysRemaining: 2,
+      questComplete: false,
+      questTargetX: null,
+      questTargetY: null,
+      questTargetMonsterId: null,
+      activeQuestInstance: {
+        id: 'quest_guard_1',
+        templateId: 'qt_guard',
+        type: 'qt_guard',
+        name: '值守',
+        category: 'service',
+        difficulty: 1,
+        value: 20,
+        riskScore: 0,
+        source: 'test',
+        state: 'accepted',
+        target: { kind: 'none', x: null, y: null, monsterIds: [], requiredKills: 0, killedCount: 0 },
+        rewards: {},
+      },
+    },
+  });
+  const worldContext = mkWorld([]);
+  worldContext.questTemplates = {
+    difficulties: [{ level: 1, name: '一阶', durationDays: 2, dangerInjury: 0, dangerDeath: 0 }],
+    questTypes: [{ id: 'qt_guard', name: '值守', repeatable: true, category: 'service', difficultyRange: [1, 1] }],
+    randomQuestSpawnChance: { 1: 1 },
+  };
+  const executeQuestAction = npcJobAction('act_npc_execute_quest_job');
+  const behavior = new BehaviorSystem(null, [executeQuestAction], { jobsEnabled: true });
+  assert(behavior.setSingleActionPlan('act_npc_execute_quest_job'), '设置执行任务 JobAction 计划');
+
+  const seenJobIds = [];
+  const seenToilIds = [];
+  const terminalStatuses = [];
+  for (let i = 0; i < 6 && behavior.hasPlan(); i++) {
+    const result = withRandom(0, () => behavior.executeStep(npc, worldContext));
+    const snapshot = behavior.jobSystem?.snapshot?.();
+    if (snapshot?.currentJobId) seenJobIds.push(snapshot.currentJobId);
+    if (snapshot?.currentToilId) seenToilIds.push(snapshot.currentToilId);
+    if (result?.status !== 'in_progress') terminalStatuses.push(result.status);
+    if (result?.status === 'replan') break;
+  }
+
+  const monsterHuntToils = new Set(['bind_target', 'assess_risk', 'prepare', 'plan_route', 'move', 'hunt']);
+  assert(!seenJobIds.includes('job_npc_monster_hunt'), 'qt_guard 不启动斩妖 Job');
+  assert(!seenToilIds.some(id => monsterHuntToils.has(id)), 'qt_guard 不进入斩妖风险/击杀 toil');
+  assert(npc.state.get('questDaysRemaining') === 0, 'qt_guard 普通任务推进到 questDaysRemaining=0');
+  assert(npc.state.get('questComplete') === true, 'qt_guard 普通任务最终 questComplete=true');
+  assert(terminalStatuses.includes('plan_complete'), 'qt_guard 执行任务 JobAction 完成计划');
+}
+
+console.log('6) 斩妖任务写入结构化字段');
 {
   const monster = mkMonster();
   const worldContext = mkWorld(monster);
@@ -381,7 +521,7 @@ console.log('3) 斩妖任务写入结构化字段');
   assert(instance?.target?.killedCount === 0, 'activeQuestInstance target.killedCount 初始 0');
 }
 
-console.log('4) 斩妖目标会避开排除列表并重定向');
+console.log('7) 斩妖目标会避开排除列表并重定向');
 {
   const excluded = mkMonster({ id: 'monster_excluded', name: '过强妖兽', x: 16, y: 18, power: 10 });
   const safe = mkMonster({ id: 'monster_safe', name: '可斩妖兽', x: 17, y: 18, power: 10 });
@@ -404,7 +544,7 @@ console.log('4) 斩妖目标会避开排除列表并重定向');
   assert(npc.state.get('questTargetMonsterId') === 'monster_safe', '重定向目标写回 state');
 }
 
-console.log('5) 锁定目标死亡或失踪时重定向同阶附近妖兽');
+console.log('8) 锁定目标死亡或失踪时重定向同阶附近妖兽');
 {
   const dead = mkMonster({ id: 'monster_dead', name: '已死妖兽', alive: false, x: 16, y: 18, power: 10 });
   const replacement = mkMonster({ id: 'monster_replacement', name: '替代妖兽', x: 18, y: 18, power: 10 });
@@ -426,7 +566,7 @@ console.log('5) 锁定目标死亡或失踪时重定向同阶附近妖兽');
   assert(npc.state.get('questTargetMonsterName') === '替代妖兽', '重定向后写回妖兽名');
 }
 
-console.log('6) 找不到安全替代目标时明确失败');
+console.log('9) 找不到安全替代目标时明确失败');
 {
   const excluded = mkMonster({ id: 'monster_only', name: '唯一妖兽', x: 16, y: 18, power: 10 });
   const npc = mkNpc({
@@ -447,7 +587,7 @@ console.log('6) 找不到安全替代目标时明确失败');
   assert(['safe_hunt_target_missing', 'target_lost'].includes(result.reason), '无安全替代目标时返回明确失败原因');
 }
 
-console.log('7) 多目标斩妖只由真实妖兽死亡推进进度');
+console.log('10) 多目标斩妖只由真实妖兽死亡推进进度');
 {
   const first = mkMonster({ id: 'monster_multi_1', name: '第一头妖兽', x: 16, y: 18, power: 10 });
   const second = mkMonster({ id: 'monster_multi_2', name: '第二头妖兽', x: 17, y: 18, power: 10 });
@@ -505,7 +645,7 @@ console.log('7) 多目标斩妖只由真实妖兽死亡推进进度');
   assert(npc.state.get('questComplete') === true, '达到 requiredKills 后 questComplete=true');
 }
 
-console.log('8) 目标失踪失败会写 activeQuestInstance failureReason');
+console.log('11) 目标失踪失败会写 activeQuestInstance failureReason');
 {
   const npc = mkNpc({
     state: {
@@ -550,7 +690,7 @@ console.log('8) 目标失踪失败会写 activeQuestInstance failureReason');
   assert(instance?.failureReason === 'target_lost', '目标失踪时 failureReason=target_lost');
 }
 
-console.log('9) 组队斩妖使用共同战力并记录助攻收益');
+console.log('12) 组队斩妖使用共同战力并记录助攻收益');
 {
   const hunter = mkNpc({
     id: 'npc_party_hunter',
@@ -586,7 +726,7 @@ console.log('9) 组队斩妖使用共同战力并记录助攻收益');
   assert(companion.state.get('experienceCultivation') < hunter.state.get('experienceCultivation'), '同伴历练收益低于主猎人');
 }
 
-console.log('10) 修炼与疗伤 Toil 可运行');
+console.log('13) 修炼与疗伤 Toil 可运行');
 {
   const monster = mkMonster();
   const worldContext = mkWorld(monster);
@@ -603,8 +743,10 @@ console.log('10) 修炼与疗伤 Toil 可运行');
   const trainExecutor = ToilPool.getExecutor('toil_train_chamber');
   const trained = withRandom(0, () => trainExecutor?.run(trainNpc, worldContext, { context: {} }, { params: { duration: 1 } }));
   assert(trained?.status === 'success', 'toil_train_chamber 可运行');
-  assert(trainNpc.state.get('contribution') === 10, 'toil_train_chamber 扣除贡献');
-  assert(trained?.contextPatch?.contributionSpent === 10, 'toil_train_chamber 返回 contributionSpent');
+  assert(trainNpc.state.get('contribution') === 20, 'toil_train_chamber 不扣贡献');
+  assert(trainNpc.inventory.getAmount('low_spirit_stone') === 0, 'toil_train_chamber 扣除修炼场灵石费用');
+  assert(trained?.contextPatch?.stoneFeeSpent === 10, 'toil_train_chamber 返回 stoneFeeSpent');
+  assert(trained?.contextPatch?.speedBonusMultiplier === 2, 'toil_train_chamber 返回 2 倍效率');
 
   const healNpc = mkNpc({ state: { injuryLevel: 2 } });
   const healExecutor = ToilPool.getExecutor('toil_heal');

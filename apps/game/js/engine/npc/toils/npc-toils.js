@@ -43,6 +43,7 @@ import {
   NPCUpdateQuestProgressToilExecutor,
 } from './quest-toils.js';
 import {
+  NPCAbsorbSpiritStoneToilExecutor,
   NPCCultivateToilExecutor,
   NPCExploreToilExecutor,
   NPCHealToilExecutor,
@@ -94,6 +95,7 @@ export function registerNPCToilExecutors() {
   ToilPool.registerExecutor('toil_turn_in_quest', new NPCTurnInQuestToilExecutor());
   ToilPool.registerExecutor('toil_cultivate', new NPCCultivateToilExecutor());
   ToilPool.registerExecutor('toil_train_chamber', new NPCTrainChamberToilExecutor());
+  ToilPool.registerExecutor('toil_absorb_spirit_stone', new NPCAbsorbSpiritStoneToilExecutor());
   ToilPool.registerExecutor('toil_heal', new NPCHealToilExecutor());
   ToilPool.registerExecutor('toil_explore', new NPCExploreToilExecutor());
   ToilPool.registerExecutor('toil_assess_combat_risk', new NPCAssessCombatRiskToilExecutor());

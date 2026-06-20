@@ -140,7 +140,10 @@
     "effects": {},
     "plannerEffects": {
       "needsCombatRecovery": { "op": "set", "value": false },
-      "shouldRetreat": { "op": "set", "value": false }
+      "needsCombatSupply": { "op": "set", "value": false },
+      "shouldRetreat": { "op": "set", "value": false },
+      "combatReady": { "op": "set", "value": true },
+      "lastCombatReaction": { "op": "set", "value": null }
     }
   },
   {
@@ -190,18 +193,41 @@
     "executionKind": "job",
     "jobId": "job_npc_train_chamber",
     "weight": 0.5,
+    "greedyPriority": 10,
     "valueScore": 2,
     "riskKey": null,
     "preconditions": {
       "alive": { "op": "true" },
       "hasFaction": { "op": "true" },
-      "contribution": { "op": "gte", "value": 10 },
+      "lowSpiritStone": { "op": "gte", "value": 10 },
       "cultivationShortfall": { "op": "gt", "value": 0 }
     },
     "effects": {},
     "plannerEffects": {
       "cultivation": { "op": "add", "value": 1 },
       "totalCultivation": { "op": "add", "value": 1 }
+    }
+  },
+  {
+    "id": "act_npc_job_absorb_spirit_stone",
+    "name": "炼化灵石",
+    "category": "npc_job",
+    "executionKind": "job",
+    "jobId": "job_npc_absorb_spirit_stone",
+    "weight": 0.6,
+    "greedyPriority": 20,
+    "valueScore": 9,
+    "riskKey": null,
+    "preconditions": {
+      "alive": { "op": "true" },
+      "lowSpiritStone": { "op": "gte", "value": 1 },
+      "qiBelowNextRank": { "op": "true" }
+    },
+    "effects": {},
+    "plannerEffects": {
+      "lowSpiritStone": { "op": "add", "value": -1 },
+      "qi": { "op": "add", "value": 1 },
+      "qiBelowNextRank": { "op": "set", "value": false }
     }
   },
   {
@@ -280,7 +306,18 @@
     "name": "执行任务",
     "category": "npc_job",
     "executionKind": "job",
-    "jobId": "job_npc_monster_hunt",
+    "jobId": "job_npc_execute_quest_generic",
+    "jobInput": {
+      "questExecutionRoutes": {
+        "default": "job_npc_execute_quest_generic",
+        "byCategory": {
+          "combat": "job_npc_monster_hunt"
+        },
+        "byType": {
+          "monster_hunt": "job_npc_monster_hunt"
+        }
+      }
+    },
     "weight": 2,
     "valueScore": 7,
     "riskKey": null,

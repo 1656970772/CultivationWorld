@@ -52,6 +52,29 @@ function inventoryAmount(entity, itemId) {
   return num(entity?.inventory?.getAmount?.(itemId), 0);
 }
 
+function combatRecoveryResolved(entity, worldContext) {
+  const cfg = worldContext?.balanceConfig?.reaction || {};
+  const hp = num(readCombatState(entity, 'hp', 0), 0);
+  const maxHp = Math.max(1, num(readCombatState(entity, 'maxHp', 1), 1));
+  const injury = num(readCombatState(entity, 'injuryLevel', 0), 0);
+  const lowHpRatio = cfg?.combat?.lowHpRatio ?? cfg?.healHpRatio ?? 0.45;
+  return hp / maxHp >= lowHpRatio
+    && injury < 2
+    && readCombatState(entity, 'shouldRetreat', false) !== true;
+}
+
+function restForCombatRecovery(entity, worldContext) {
+  const cfg = worldContext?.balanceConfig?.reaction || {};
+  const maxHp = Math.max(0, num(readCombatState(entity, 'maxHp', 0), 0));
+  const hp = num(readCombatState(entity, 'hp', maxHp), maxHp);
+  const injury = num(readCombatState(entity, 'injuryLevel', 0), 0);
+  const restRatio = cfg.restHealRatio ?? 0.1;
+  const nextHp = maxHp > 0 ? Math.min(maxHp, hp + Math.round(maxHp * restRatio)) : hp;
+  writeCombatState(entity, 'hp', nextHp);
+  if (injury > 0) writeCombatState(entity, 'injuryLevel', Math.max(0, injury - 1));
+  return { healed: Math.max(0, nextHp - hp), injuryDelta: injury > 0 ? -1 : 0 };
+}
+
 function hasEquippedArtifact(entity) {
   return readCombatState(entity, 'hasEquippedArtifact', false) === true
     || !!readCombatState(entity, 'equippedArtifactId', null)
@@ -245,10 +268,17 @@ export class NPCRetreatToSafePlaceToilExecutor extends ToilExecutor {
 }
 
 export class NPCUseHealItemToilExecutor extends ToilExecutor {
-  run(entity, _worldContext, _job, toil) {
+  run(entity, worldContext, _job, toil) {
     const itemId = toil?.params?.itemId || toil?.params?.healItemId || 'pill_rejuvenation';
     if ((entity?.inventory?.getAmount?.(itemId) || 0) <= 0) {
-      return { status: ToilResultStatus.FAILED, reason: 'no_heal_item', contextPatch: { itemId } };
+      if (combatRecoveryResolved(entity, worldContext)) {
+        return { status: ToilResultStatus.SUCCESS, reason: 'combat_recovery_already_resolved', contextPatch: { itemId } };
+      }
+      const rest = restForCombatRecovery(entity, worldContext);
+      if (combatRecoveryResolved(entity, worldContext)) {
+        return { status: ToilResultStatus.SUCCESS, reason: 'combat_recovery_rest_complete', contextPatch: { itemId, rest } };
+      }
+      return { status: ToilResultStatus.RUNNING, remaining: 1, reason: 'combat_recovery_resting', contextPatch: { itemId, rest } };
     }
 
     const effectResult = applyItemEffects(entity, itemId);

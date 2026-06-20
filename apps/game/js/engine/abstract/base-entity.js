@@ -176,8 +176,26 @@ export class BaseEntity {
    * 需求评估
    */
   _evaluateNeeds(worldContext) {
-    this.needSystem.evaluate(this.state, worldContext);
+    const visibleState = this._buildNeedEvaluationState(worldContext);
+    this.needSystem.evaluate(visibleState, worldContext);
     this._tickLog.needs = this.needSystem.getLastEvaluation();
+  }
+
+  _buildNeedEvaluationState(worldContext) {
+    const flat = this.buildGOAPState(worldContext) || {};
+    if (typeof flat.get === 'function') return flat;
+    return {
+      personality: this.state?.personality,
+      get(key) {
+        return flat[key];
+      },
+      has(key) {
+        return Object.prototype.hasOwnProperty.call(flat, key);
+      },
+      snapshot() {
+        return { ...flat };
+      },
+    };
   }
 
   /**

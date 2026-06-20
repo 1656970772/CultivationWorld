@@ -6,6 +6,12 @@ import {
   getCultivationRequired,
 } from '../numeric-cultivation.js';
 
+function formatGainForDescription(value) {
+  const amount = Number.isFinite(value) ? value : 0;
+  if (amount !== 0 && Math.abs(amount) < 0.1) return amount.toFixed(3);
+  return amount.toFixed(1);
+}
+
 export function runCultivation(entity, worldContext, action = {}, opts = {}) {
   const extraSpeedMultiplier = opts.extraSpeedMultiplier ?? 1.0;
   const descriptionPrefix = opts.descriptionPrefix ?? '闭关修炼';
@@ -117,30 +123,32 @@ export function runCultivation(entity, worldContext, action = {}, opts = {}) {
     techniqueId: techniqueId || null,
     techniqueBreakthroughBonus,
     companionBonusApplied,
-    description: `${entity.staticData.name} ${descriptionPrefix}，消耗${consumed}灵石，修为+${cultivationGain.toFixed(1)}，真气+${qiGain.toFixed(1)}`,
+    description: `${entity.staticData.name} ${descriptionPrefix}，消耗${consumed}灵石，修为+${formatGainForDescription(cultivationGain)}，真气+${formatGainForDescription(qiGain)}`,
   };
 }
 
 export function runTrainChamber(entity, worldContext, action = {}) {
   const cult = getCultivationConfig(worldContext);
   const chamberCfg = cult.actions?.trainChamber || {};
-  const contributionCost = chamberCfg.contributionCost ?? 10;
+  const currencyItemId = chamberCfg.currencyItemId || 'low_spirit_stone';
+  const stoneCost = Math.max(0, Math.floor(chamberCfg.stoneCost ?? 10));
   const speedBonus = chamberCfg.speedBonusMultiplier ?? 1.25;
 
-  const contribution = entity.state.get('contribution') || 0;
-  if (contribution < contributionCost) {
+  const available = entity.inventory?.getAmount?.(currencyItemId) || 0;
+  if (available < stoneCost) {
     return runCultivation(entity, worldContext, action);
   }
 
-  entity.state.set('contribution', contribution - contributionCost);
+  if (stoneCost > 0) entity.inventory.remove(currencyItemId, stoneCost);
 
   const result = runCultivation(entity, worldContext, action, {
     extraSpeedMultiplier: speedBonus,
-    descriptionPrefix: `入修炼场加速修炼（消耗${contributionCost}贡献）`,
+    descriptionPrefix: `入修炼场加速修炼（消耗${stoneCost}灵石）`,
   });
   return {
     ...result,
-    contributionSpent: contributionCost,
+    stoneFeeItemId: currencyItemId,
+    stoneFeeSpent: stoneCost,
     speedBonusMultiplier: speedBonus,
   };
 }

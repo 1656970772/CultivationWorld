@@ -1,6 +1,6 @@
 # Job/Toil AI 双重重构规格
 
-> 最后更新：2026-06-09
+> 最后更新：2026-06-20
 > 状态：首批 Job/Toil 动态目标链路已正式默认启用；`ai-config.npc.jobs.enabled=false` 可作为回退开关
 > 架构决策：ADR-048、ADR-049、ADR-050、ADR-051、ADR-058
 > 来源：用户明确要求“保留 GOAP 作为中层规划器，把复杂 Action 的执行升级为 Job/Toil，逻辑和配置都拆清楚，并补齐缺少的 Job 与 Toil”；当前代码 `action.js`、`behavior-system.js`、`job-system.js`、`job-pool.js`、`toil-pool.js`、`npc-toils.js`、`dynamic-goals.json`、`npc-job-actions.json`、`npc-action-sets.json`、`npc-entity.js`。
@@ -76,14 +76,15 @@ JobAction 是 GOAP 可规划的高层动作，但自身不写复杂流程：
 | `act_npc_acquire_heal_item` | `job_npc_acquire_heal_item` | 获取回血丹或等价恢复物。 |
 | `act_npc_acquire_artifact` | `job_npc_acquire_artifact` | 获取、兑换或装备法器。 |
 | `act_npc_job_cultivate` | `job_npc_cultivate` | 闭关修炼，结算数值修为与真气。 |
-| `act_npc_job_train_chamber` | `job_npc_train_chamber` | 前往修炼场修炼。 |
+| `act_npc_job_train_chamber` | `job_npc_train_chamber` | 前往修炼场修炼；通过 `greedyPriority` 在修炼 greedy 候选中优先于普通闭关。 |
+| `act_npc_job_absorb_spirit_stone` | `job_npc_absorb_spirit_stone` | 炼化灵石补突破真气；`greedyPriority` 高于修炼场，因此真气不足时先补真气，真气达标后再闭关/修炼场补修为。 |
 | `act_npc_job_heal` | `job_npc_heal` | 疗伤恢复。 |
 | `act_npc_accept_quest_job` | `job_npc_accept_quest` | 接取普通任务。 |
 | `act_npc_accept_monster_hunt_job` | `job_npc_accept_quest` | 接取斩妖/猎妖任务并绑定结构化任务实例。 |
-| `act_npc_execute_quest_job` | `job_npc_monster_hunt` 或普通任务 Job | 推进任务，斩妖任务必须真实移动并击杀目标妖兽。 |
+| `act_npc_execute_quest_job` | `job_npc_execute_quest_generic`，按 `questExecutionRoutes` 可路由到 `job_npc_monster_hunt` | 推进任务；普通任务只更新进度，斩妖任务必须真实移动并击杀目标妖兽。 |
 | `act_npc_turn_in_quest_job` | `job_npc_turn_in_quest` | 交付任务并发放奖励。 |
 
-JobAction 的 `plannerEffects` 继续给 GOAP 使用；真实状态只在 Job 成功后写入。
+JobAction 的 `plannerEffects` 继续给 GOAP 使用；真实状态只在 Job 成功后写入。任务执行类 JobAction 的实际 Job 在启动前由 `BehaviorSystem` 解析 `jobInput.questExecutionRoutes`，默认走 `job_npc_execute_quest_generic`，`combat`/`monster_hunt` 路由走 `job_npc_monster_hunt`。
 
 示例：
 
@@ -343,13 +344,15 @@ NPC 战斗智能闭环分层执行：即时生死反应留在 Reaction 层；是
 | `job_npc_acquire_heal_item` | 获取回血丹 | 查背包、找坊市或丹房、移动、检查灵石、购买或兑换、放入背包。 |
 | `job_npc_acquire_artifact` | 获取法器 | 查装备、找宗门库房或坊市、检查贡献或灵石、兑换或购买、装备。 |
 | `job_npc_accept_quest` | 接取任务 | 选择任务候选；斩妖任务绑定真实妖兽目标并生成结构化任务实例。 |
+| `job_npc_execute_quest_generic` | 执行普通任务 | 只调用 `toil_update_quest_progress` 推进普通任务天数和完成状态。 |
 | `job_npc_monster_hunt` | 执行斩妖任务 | 绑定任务、评估风险、准备补给、移动、真实击杀目标、更新进度。 |
 | `job_npc_turn_in_quest` | 交付任务 | 校验任务完成状态，发放奖励并清理任务状态。 |
 | `job_npc_prepare_combat` | 准备战斗 | 评估风险并准备战斗补给。 |
-| `job_npc_retreat_and_heal` | 撤退疗伤 | 移动到安全地点并使用疗伤物资。 |
+| `job_npc_retreat_and_heal` | 撤退疗伤 | 移动到安全地点并处理战斗恢复；安全且恢复达标后清理 `needsCombatRecovery`、`needsCombatSupply`、`shouldRetreat`、`lastCombatReaction` 并恢复 `combatReady`。 |
 | `job_npc_request_hunt_companion` | 邀请同伴斩妖 | 发起结伴请求，失败后不能卡死任务链。 |
 | `job_npc_cultivate` | 闭关修炼 | 结算闭关修为与真气。 |
-| `job_npc_train_chamber` | 修炼场修炼 | 移动到修炼场并结算加速修炼收益。 |
+| `job_npc_train_chamber` | 修炼场修炼 | 移动到修炼场，消耗配置化灵石费用并结算 2 倍加速修炼收益。 |
+| `job_npc_absorb_spirit_stone` | 炼化灵石 | 缺突破真气时消耗灵石物品，按物品 effects 增加真气。 |
 | `job_npc_heal` | 疗伤 | 恢复伤势。 |
 
 ## 首批 Toil 清单
@@ -385,10 +388,11 @@ NPC 战斗智能闭环分层执行：即时生死反应留在 Reaction 层；是
 | `toil_assess_combat_risk` | 通用战斗风险评估。 | `toils/npc-combat-toils.json` |
 | `toil_prepare_combat_supply` | 准备战斗补给。 | `toils/npc-combat-toils.json` |
 | `toil_retreat_to_safe_place` | 撤退到安全地点。 | `toils/npc-combat-toils.json` |
-| `toil_use_heal_item` | 使用疗伤物资。 | `toils/npc-combat-toils.json` |
+| `toil_use_heal_item` | 使用疗伤物资；若没有疗伤物资但已安全且 HP/伤势达到恢复阈值，则视为恢复完成；否则静养推进，不让撤退疗伤 Job 因无丹永久失败。 | `toils/npc-combat-toils.json` |
 | `toil_abort_overdangerous_target` | 放弃明显过强目标。 | `toils/npc-combat-toils.json` |
 | `toil_cultivate` | 闭关修炼，结算数值修为与真气。 | `toils/npc-cultivation-toils.json` |
 | `toil_train_chamber` | 修炼场修炼。 | `toils/npc-cultivation-toils.json` |
+| `toil_absorb_spirit_stone` | 炼化灵石补真气。 | `toils/npc-cultivation-toils.json` |
 | `toil_heal` | 疗伤。 | `toils/npc-cultivation-toils.json` |
 
 `toil_ensure_item` 是组合型 Toil：内部只做分派，不直接购买。它根据背包、灵石、贡献和可用地点，把 Job context 写成下一步应走 `toil_buy_item` 或 `toil_exchange_faction_item`。
@@ -436,8 +440,8 @@ ADR-051 后，NPC 直接执行型旧 Action 不再作为默认主路径。迁移
 
 | 领域 | 旧行为语义 | Job/Toil 主路径 |
 |------|------------|-----------------|
-| 修炼 | 闭关、修炼场、服用/兑换修炼资源、疗伤 | `job_npc_cultivate`、`job_npc_train_chamber`、`job_npc_heal` 与修炼/经济 Toil。 |
-| 任务 | 接任务、执行任务、交付任务 | `job_npc_accept_quest`、`job_npc_monster_hunt`、`job_npc_turn_in_quest` 与任务 Toil。 |
+| 修炼 | 闭关、修炼场、炼化灵石、服用/兑换修炼资源、疗伤 | `job_npc_cultivate`、`job_npc_train_chamber`、`job_npc_absorb_spirit_stone`、`job_npc_heal` 与修炼/经济 Toil。 |
+| 任务 | 接任务、执行任务、交付任务 | `job_npc_accept_quest`、`job_npc_execute_quest_generic`、`job_npc_monster_hunt`、`job_npc_turn_in_quest` 与任务 Toil。 |
 | 游历/事件 | 外出游历、机会点、动态事件参与 | 游历、动态事件、机会点 Job 成功后统一追加历练修为。 |
 | 战斗 | 斩妖、复仇、PvP、遭遇风险 | 战斗准备、风险评估、撤退疗伤、真实交战 Toil。 |
 | 外出社交 | 拜访、师徒点化、结伴 | 社交 Job/Toil，并按价值和风险追加历练修为。 |
@@ -501,14 +505,15 @@ ADR-051 后，NPC 直接执行型旧 Action 不再作为默认主路径。迁移
 
 执行规则：
 
-1. `job_npc_monster_hunt` 必须先绑定任务实例，再评估风险、准备补给、移动到目标、真实结算击杀、更新进度。
-2. `toil_assess_monster_hunt_risk` 需要比较 NPC 战力、真气、伤势、补给、目标阶位和距离；明显过强时返回重规划、撤退、请求同伴或放弃任务。
-3. `toil_prepare_monster_hunt` 负责疗伤丹、符箓、基础法器等补给准备；补给不足时先转经济/兑换 Job，不能硬杀。
-4. `toil_hunt_monster_target` 必须调用统一战斗/风险结算服务，场景为 `monster_hunt_quest`。
-5. 成功击杀时，目标妖兽必须写 `alive=false`，死亡原因使用 `quest_hunt`，并进入 `tickLog.monsterDeaths`。
-6. 目标已死亡、迁移或失联时，允许按同阶位、同任务坐标附近重定向；新目标 id、名称、坐标必须写回任务实例。
-7. 找不到替代目标时任务失败为 `target_lost`，不得凭空完成。
-8. `killedCount >= requiredKills` 后才允许写 `questComplete=true`。
+1. `act_npc_execute_quest_job` 必须通过配置化 `questExecutionRoutes` 选择执行 Job；普通非杀怪任务走 `job_npc_execute_quest_generic`，不得进入斩妖风险、移动或击杀 Toil。
+2. `job_npc_monster_hunt` 必须先绑定任务实例，再评估风险、准备补给、移动到目标、真实结算击杀、更新进度。
+3. `toil_assess_monster_hunt_risk` 需要比较 NPC 战力、真气、伤势、补给、目标阶位和距离；明显过强时返回重规划、撤退、请求同伴或放弃任务。
+4. `toil_prepare_monster_hunt` 负责疗伤丹、符箓、基础法器等补给准备；补给不足时先转经济/兑换 Job，不能硬杀。
+5. `toil_hunt_monster_target` 必须调用统一战斗/风险结算服务，场景为 `monster_hunt_quest`。
+6. 成功击杀时，目标妖兽必须写 `alive=false`，死亡原因使用 `quest_hunt`，并进入 `tickLog.monsterDeaths`。
+7. 目标已死亡、迁移或失联时，允许按同阶位、同任务坐标附近重定向；新目标 id、名称、坐标必须写回任务实例。
+8. 找不到替代目标时任务失败为 `target_lost`，不得凭空完成。
+9. `killedCount >= requiredKills` 后才允许写 `questComplete=true`。
 
 任务日志和 `infoEvents` 至少包含 NPC、任务类型、难度、价值、风险、目标妖兽名、妖兽 id、阶位、坐标、击杀进度、成功/失败原因。
 
@@ -521,15 +526,15 @@ ADR-051 后，NPC 直接执行型旧 Action 不再作为默认主路径。迁移
 | 字段 | 语义 |
 |------|------|
 | `cultivation` | 闭关、修炼场、丹药等直接修炼获得的闭关修为。 |
-| `experienceCultivation` | 外出历练、任务、动态事件、机会点、战斗、外出社交获得的历练修为。 |
-| `totalCultivation` | `cultivation + experienceCultivation`，用于突破修为门槛。 |
+| `experienceCultivation` | 外出历练、任务、动态事件、机会点、战斗、外出社交获得的历练修为；原始值不截断。 |
+| `totalCultivation` | `cultivation + min(experienceCultivation, nextCultivationRequired × maxExperienceCultivationRatio)`，用于突破修为门槛、小层与 AI 判定。 |
 | `nextCultivationRequired` | 下一境界所需总修为，来自 `ranks.json` 的 `cultivationRequired`。 |
-| `cultivationCompletion` | `totalCultivation / nextCultivationRequired` 的显示/统计派生值，不写回 NPC 运行时状态。 |
+| `cultivationCompletion` | 有效 `totalCultivation / nextCultivationRequired` 的显示/统计派生值，不写回 NPC 运行时状态。 |
 
 突破判定使用：
 
 ```text
-totalCultivation >= nextRank.cultivationRequired
+effective totalCultivation >= nextRank.cultivationRequired
 qi >= nextRank.qiRequired
 cultivation >= nextRank.cultivationRequired * minCultivationRatio
 ```
@@ -567,7 +572,7 @@ applyCultivationExperience(entity, worldContext, {
 - 原地等待事件阶段、待命、纯 UI 刷新或纯状态同步。
 - 已死亡 NPC 的失败结果。
 
-收益公式由 `apps/game/data/balance/cultivation.json` 的 `experience` 段控制；收益随 `value`、`riskScore`、`durationDays` 和 `outcome` 放大，并写入 `experienceCultivation` 后同步 `totalCultivation`。日志展示为 `历练修为+X.X`。
+收益公式由 `apps/game/data/balance/cultivation.json` 的 `experience` 段控制；收益随 `value`、`riskScore`、`durationDays` 和 `outcome` 放大，并写入原始 `experienceCultivation` 后同步有效 `totalCultivation`。默认 `maxExperienceCultivationRatio=0.7`，超过该有效占比后新增历练仍会累计，但按与闭关相同的指数递减公式降低增量。日志展示为 `历练修为+X.X`。
 
 ## 妖兽主动伤害场景隔离
 
@@ -649,7 +654,7 @@ applyCultivationExperience(entity, worldContext, {
 | `apps/game/tools/test-job-interrupt-resume.mjs` | Reaction 打断 Job 后按配置恢复或重规划。 |
 | `apps/game/tools/test-npc-action-job-migration.mjs` | 已迁移旧 NPC Action 不再出现在默认直接执行路径中，对应 JobAction/Job/Toil 可加载。 |
 | `apps/game/tools/test-monster-hunt-job.mjs` | 斩妖任务绑定真实妖兽、推进多日任务并更新击杀进度；复仇 Job 追踪/击杀前必须先移动到当前仇人坐标。 |
-| `apps/game/tools/test-combat-intelligence-jobs.mjs` | 战斗风险、撤退疗伤、补给与过强目标处理。 |
+| `apps/game/tools/test-combat-intelligence-jobs.mjs` | 战斗风险、撤退疗伤、补给与过强目标处理；覆盖已安全且恢复达标时无丹也能完成撤退疗伤并清理战斗恢复/补给摘要态。 |
 | `apps/game/tools/test-cultivation-experience-gain.mjs` | 任务、动态事件等外出行为按价值和风险追加历练修为。 |
 | `apps/game/tools/test-numeric-cultivation-migration.mjs` | 数值修为核心 helper、小层推导、闭关递减、突破成功/失败结算与旧 helper 移除。 |
 

@@ -1,6 +1,6 @@
 # 数据模型：境界表
 
-> 最后更新：2026-06-07
+> 最后更新：2026-06-19
 
 ## 定位
 
@@ -29,7 +29,7 @@ Rank {
 }
 ```
 
-`cultivationRequired` 与 `qiRequired` 必须相等。运行时突破同时检查 `totalCultivation`、最低闭关修为占比和 `qi`；不再使用旧比例进度字段。
+`cultivationRequired` 与 `qiRequired` 必须相等。运行时突破同时检查有效 `totalCultivation`、最低闭关修为占比和 `qi`；有效 `totalCultivation` 只计入 `maxExperienceCultivationRatio` 内的历练贡献，不再使用旧比例进度字段。
 
 ## 运行时主链
 
@@ -58,7 +58,7 @@ Rank {
 - `disciple`、`outer_disciple`、`core_disciple`、`elder`、`leader`、`general`、`officer` 等是 `role`，不得作为 `rankId`。
 - `WorldEngine.initNPCs()` 用 `rankId` 查询 `ranks.json`，补齐 `rankName`、`lifespanBucket`、`maxAgeYears/maxAgeDays` 等运行时字段。
 - 掌门继任先按 `role` 候选范围筛选，再在同角色候选中使用 `successionScore` 排序。
-- 运行时小层 `rankStage` 由 `totalCultivation / nextCultivationRequired` 派生，阈值来自 `apps/game/data/balance/cultivation.json` 的 `stageThresholds`。
+- 运行时小层 `rankStage` 由有效 `totalCultivation / nextCultivationRequired` 派生，阈值来自 `apps/game/data/balance/cultivation.json` 的 `stageThresholds`。
 - 天仙为当前顶级；顶级无下一境界时，GOAP 派生的 `nextCultivationRequired` 为 0，不能制造假突破。
 
 ## 表内唯一 ID

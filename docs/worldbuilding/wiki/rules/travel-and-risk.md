@@ -1,13 +1,13 @@
 # 游历修为与风险规则
 
-> 最后更新：2026-06-07
+> 最后更新：2026-06-19
 > 状态：已敲定（数值修为版，机缘/风险细项可扩展）
 > 类型：规则
 > 关联文档：`docs/decisions/adr-016-travel-insight-and-risk.md`、`docs/decisions/adr-017-value-risk-decision-and-cultivation-curve.md`、`docs/decisions/adr-051-numeric-cultivation-and-job-action-migration.md`、`docs/data/data-config-rules.md`
 
 ## 一句话定义
 
-修士的突破准备由数值修为与真气共同约束：闭关、修炼场、丹药等增加 `cultivation`，游历、任务、动态事件、机会点、PvP 与外出社交增加 `experienceCultivation`，二者相加为 `totalCultivation`；游历途中按数据驱动风险表结算受伤、掉落、死亡等结果。
+修士的突破准备由数值修为与真气共同约束：闭关、修炼场、丹药等增加 `cultivation`，游历、任务、动态事件、机会点、PvP 与外出社交增加 `experienceCultivation`；`totalCultivation` 使用闭关修为加有效历练贡献，游历途中按数据驱动风险表结算受伤、掉落、死亡等结果。
 
 ## 已敲定内容
 
@@ -15,10 +15,11 @@
 
 - `cultivation`：闭关、修炼场、丹药等直接修炼所得。
 - `experienceCultivation`：游历、任务、战斗、机会点、动态事件、外出社交等经历所得。
-- `totalCultivation = cultivation + experienceCultivation`，用于对比下一境界的 `cultivationRequired`。
+- `experienceCultivation` 原始值不截断，可超过当前境界 70% 的所需修为。
+- `totalCultivation = cultivation + min(experienceCultivation, nextCultivationRequired × maxExperienceCultivationRatio)`，用于对比下一境界的 `cultivationRequired`；默认 `maxExperienceCultivationRatio = 0.7`。
 - 突破还要求 `cultivation` 达到 `minCultivationRatio × nextCultivationRequired`，默认最低闭关占比为 30%。
 - 闭关没有硬上限，但收益随 `cultivation / nextCultivationRequired` 指数递减，避免只靠闭关高速冲顶。
-- `rankStage` 由 `totalCultivation / nextCultivationRequired` 派生，阈值来自 `stageThresholds`。
+- `rankStage` 由有效 `totalCultivation / nextCultivationRequired` 派生，阈值来自 `stageThresholds`。
 
 ### 游历机缘事件
 
@@ -32,7 +33,7 @@
 | 洞天福地 | 5 | 4.0 | 预留：限时修炼加速 |
 | 拾得遗宝 | 3 | 1.5 | 预留：掉落法宝/材料/药草 |
 
-历练修为统一通过 `applyCultivationExperience()` 或对应 Toil/Action 入口结算，并同步 `totalCultivation` 与 `rankStage`。
+历练修为统一通过 `applyCultivationExperience()` 或对应 Toil/Action 入口结算，并同步有效 `totalCultivation` 与 `rankStage`。达到 70% 有效占比后，新增历练修为继续累加原始值，但按与闭关相同的指数递减公式降低增量。
 
 ### 游历风险
 

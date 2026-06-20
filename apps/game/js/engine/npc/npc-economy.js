@@ -1,7 +1,11 @@
 import { ItemRegistry } from '../items/item-registry.js';
 import { EffectEngine } from '../abstract/gameplay-effect.js';
 import { EffectPool } from '../pools/effect-pool.js';
-import { refreshRankStage, syncTotalCultivation } from './numeric-cultivation.js';
+import {
+  getCultivationRequired,
+  refreshRankStage,
+  syncTotalCultivation,
+} from './numeric-cultivation.js';
 
 /**
  * 通用"消耗物品→施加其挂载 Effect"入口（ADR-042 阶段2 增强）。
@@ -54,7 +58,7 @@ export function applyItemEffects(entity, itemId) {
     }
   }
   if (deltas.cultivation !== undefined || deltas.experienceCultivation !== undefined) {
-    syncTotalCultivation(entity);
+    syncTotalCultivation(entity, entity?._ranksData || [], entity?._cultivationConfig || {});
     refreshRankStage(entity, entity?._ranksData || [], entity?._cultivationConfig || {});
   }
   return { applied, deltas, reason: applied ? null : 'effect_not_applied', itemId };
@@ -555,6 +559,63 @@ export function useQiPill(entity, worldContext, options = {}) {
     cultivationGain: deltas.cultivation ?? 0,
     deltas,
     description: `${entity.name || entity.staticData?.name || entity.id} 服用聚气丹，真气+${Math.round(qiGain)}`,
+  };
+}
+
+export function absorbSpiritStoneQi(entity, worldContext, options = {}) {
+  const cult = worldContext?.balanceConfig?.cultivation || entity?._cultivationConfig || {};
+  const cfg = cult.actions?.absorbSpiritStone || {};
+  const itemId = options.itemId || cfg.itemId || 'low_spirit_stone';
+  const available = entity?.inventory?.getAmount?.(itemId) || 0;
+  if (available <= 0) {
+    return { success: false, outcome: 'no_item', eventType: 'absorb_spirit_stone', itemId };
+  }
+
+  const ranks = worldContext?.ranksData || entity?._ranksData || [];
+  const required = getCultivationRequired(entity, ranks);
+  const qi = Number(entity?.state?.get?.('qi') || 0);
+  const shortfall = required > 0 ? Math.max(0, required - qi) : Infinity;
+  const maxConsume = Math.max(1, Math.floor(options.maxConsume ?? cfg.maxConsumePerUse ?? 50));
+  const targetConsume = Number.isFinite(shortfall)
+    ? Math.max(1, Math.min(available, maxConsume, Math.ceil(shortfall)))
+    : Math.min(available, maxConsume);
+
+  let consumed = 0;
+  let qiGain = 0;
+  const deltas = {};
+  for (let i = 0; i < targetConsume; i++) {
+    const result = applyItemEffects(entity, itemId);
+    if (!result.applied) {
+      if (consumed === 0) {
+        return {
+          success: false,
+          outcome: result.reason || 'item_effect_failed',
+          eventType: 'absorb_spirit_stone',
+          itemId,
+        };
+      }
+      break;
+    }
+    if (options.consumeItem !== false) entity.inventory.remove(itemId, 1);
+    consumed += 1;
+    const patch = result.deltas || {};
+    for (const [key, value] of Object.entries(patch)) {
+      deltas[key] = (deltas[key] || 0) + value;
+    }
+    qiGain += patch.qi ?? 0;
+    const nextQi = Number(entity?.state?.get?.('qi') || 0);
+    if (required > 0 && nextQi >= required) break;
+  }
+
+  return {
+    success: consumed > 0,
+    outcome: consumed > 0 ? 'absorbed' : 'no_effect',
+    eventType: 'absorb_spirit_stone',
+    itemId,
+    consumed,
+    qiGain,
+    deltas,
+    description: `${entity.name || entity.staticData?.name || entity.id} 炼化灵石，真气+${Math.round(qiGain)}`,
   };
 }
 

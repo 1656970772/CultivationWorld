@@ -1,6 +1,6 @@
 # 宗门运行与成员晋升制度
 
-> 最后更新：2026-06-08
+> 最后更新：2026-06-19
 > 状态：已敲定
 > 类型：规则
 > 关联文档：`docs/decisions/adr-011-cultivation-incentive-system.md`、`docs/decisions/adr-015-faction-resource-and-promotion.md`、`docs/decisions/adr-057-sect-operation-and-unified-quest-board.md`、`docs/systems/sect-operation-system.md`、`docs/data-models/sect-operation.md`、`docs/worldbuilding/wiki/rules/leader-succession.md`、`docs/data/data-config-rules.md`
@@ -90,5 +90,5 @@
 ## 来源
 
 - 项目文档：`docs/世界观参考/宗门运行流程与制度平衡分析.md`（九部修仙小说宗门制度综合分析，三层六要素框架）。
-- 项目文档：`docs/decisions/adr-011-cultivation-incentive-system.md`（任务-贡献-修炼场经济链）。
+- 项目文档：`docs/decisions/adr-011-cultivation-incentive-system.md`（任务/资源压力驱动修炼；当前修炼场费用为灵石）。
 - 用户确认：参考宗门运行资料优化宗门与成员制度，符合现有项目规则与规范（数据驱动、开闭原则、单一职责）。

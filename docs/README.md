@@ -2,7 +2,7 @@
 
 > 项目代号：WorldDynamic  
 > 创建日期：2026-05-23  
-> 最后更新：2026-06-19（新增功能规划文档目录并移除旧功能盘点导航；此前补充月压缩关键状态结算细节、项目落地接口与改造路线、月压缩事件因果图实施计划；新增世界模拟架构目录、近处实时与远处月压缩模拟设计、NPC 遇见玩家剧情对话架构、重要 NPC 保真度文档与 ADR-058；此前补齐门派运行规则链、通用任务板 ADR、系统文档、数据模型、世界观规则导航与验证报告、data manifest、strict validation、resource registry、relationship projections、editor dataset/adapters 的文档导航）
+> 最后更新：2026-06-20（新增 NPC 执行 Profiler 文档；此前新增功能规划文档目录并移除旧功能盘点导航；此前补充月压缩关键状态结算细节、项目落地接口与改造路线、月压缩事件因果图实施计划；新增世界模拟架构目录、近处实时与远处月压缩模拟设计、NPC 遇见玩家剧情对话架构、重要 NPC 保真度文档与 ADR-058；此前补齐门派运行规则链、通用任务板 ADR、系统文档、数据模型、世界观规则导航与验证报告、data manifest、strict validation、resource registry、relationship projections、editor dataset/adapters 的文档导航）
 
 ## 当前事实
 
@@ -81,6 +81,7 @@ docs/
 │   ├── info-sense.md
 │   ├── item-covet.md
 │   ├── monster-attribute-templates.md
+│   ├── npc-execution-profiler.md
 │   ├── opportunity-system.md
 │   ├── renderer.md
 │   ├── save-system.md

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import assert from 'node:assert/strict';
 import { Inventory } from '../js/engine/abstract/inventory.js';
-import { runCultivation } from '../js/engine/npc/services/cultivation-service.js';
+import { runCultivation, runTrainChamber } from '../js/engine/npc/services/cultivation-service.js';
 
 const oldRetreatRatioField = ['cultivation', 'Progress'].join('');
 const oldTravelRatioField = ['in', 'sight'].join('');
@@ -112,6 +112,38 @@ console.log('2) 高 cultivation 闭关收益递减，qi 仍随修为增量增长
     true,
     'required=50 且 qiPerProgress=50 时 qiGain 与本次修为增量同量级',
   );
+}
+
+console.log('3) 修炼场消耗灵石并按 2 倍效率修炼');
+{
+  const entity = makeEntity({ contribution: 0 });
+  const world = makeWorld();
+  world.balanceConfig.cultivation.actions = {
+    trainChamber: {
+      currencyItemId: 'low_spirit_stone',
+      stoneCost: 10,
+      speedBonusMultiplier: 2,
+    },
+  };
+
+  const result = runTrainChamber(entity, world, { duration: 1 });
+
+  assert.equal(entity.state.get('contribution'), 0, '修炼场不消耗贡献');
+  assert.equal(entity.inventory.getAmount('low_spirit_stone'), 90, '修炼场扣除配置化灵石费用');
+  assert.equal(result.cultivationGain, 10, '修炼场 2 倍效率带来 2 倍修为增量');
+  assert.equal(result.stoneFeeSpent, 10, '返回灵石费用');
+  assert.equal(result.speedBonusMultiplier, 2, '返回修炼场倍率');
+}
+
+console.log('4) 小额闭关修为收益不显示成 0.0');
+{
+  const entity = makeEntity({ cultivation: 160, totalCultivation: 160 });
+  const result = runCultivation(entity, makeWorld(), { duration: 1 });
+
+  assert.equal(result.cultivationGain > 0, true, '实际修为收益为正数');
+  assert.equal(result.cultivationGain < 0.1, true, '复现小于 0.1 的小额修为收益');
+  assert.doesNotMatch(result.description, /修为\+0\.0，/, '正数小额收益不能被描述成修为+0.0');
+  assert.match(result.description, /修为\+0\.\d{3}，/, '小额修为收益保留三位小数');
 }
 
 console.log('Cultivation service numeric tests passed');

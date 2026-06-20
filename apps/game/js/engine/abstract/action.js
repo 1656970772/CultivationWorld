@@ -21,6 +21,7 @@
  * @property {Array}  [costs]        [{ itemId, amount }]
  * @property {Array}  [yields]       [{ itemId, amount }]
  * @property {number} [weight=1]     GOAP 路径代价
+ * @property {number} [greedyPriority=0] selectStrategy=greedy 时的可选优先级；>0 的最高优先级候选会先于普通加权随机
  * @property {string} [category]     行为分类
  * @property {number} [duration=1]   基础耗时（游戏日）：到达目标地点后执行行为本身所需天数
  * @property {boolean} [requiresTravel=false] 是否需先移动到目标地点再执行
@@ -46,6 +47,7 @@ export class Action {
     this.costs = config.costs || [];
     this.yields = config.yields || [];
     this.weight = config.weight ?? 1;
+    this.greedyPriority = config.greedyPriority ?? 0;
     this.category = config.category || 'general';
     this.executor = config.executor || null;
     this.executionKind = config.executionKind || 'simple';
