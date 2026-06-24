@@ -1,0 +1,3253 @@
+{
+  "chunk_id": "chunk-0005",
+  "source_range": [
+    4970,
+    6696
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "task_packet_id": "chunk-0005:comprehensive_extraction:attempt-001",
+      "chunk_id": "chunk-0005",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "produced_at": "2026-06-23T00:00:00+08:00",
+      "extracted_nodes": [
+        {
+          "id": "node:chunk-0005:character:001",
+          "label": "韩立",
+          "aliases": [],
+          "node_type": "character",
+          "description": "参加七玄门入门考试的孩童；在车厢中缩到边角观察他人。",
+          "attributes": {
+            "current_stage": "七玄门入门考试途中",
+            "observed_state": "瘦弱、机灵、来自穷乡僻壤一类候选孩童"
+          },
+          "evidence_ids": [
+            "evidence:chunk-0005:001",
+            "evidence:chunk-0005:011",
+            "evidence:chunk-0005:012"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            5048,
+            5083
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5048,
+              5083
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0005:character:002",
+          "label": "舞岩",
+          "aliases": [
+            "舞少爷",
+            "舞大哥"
+          ],
+          "node_type": "character",
+          "description": "车内年龄最大的锦衣少年，因姻亲关系获得参加机会，家境富裕且练过拳脚。",
+          "attributes": {
+            "age": "十三岁",
+            "family_background": "家中开武馆，颇为富裕",
+            "privilege_source": "表姐嫁给七玄门内掌权人物"
+          },
+          "evidence_ids": [
+            "evidence:chunk-0005:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            5155,
+            5253
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5155,
+              5253
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0005:faction:001",
+          "label": "七玄门",
+          "aliases": [],
+          "node_type": "faction",
+          "description": "占有彩霞山并把总门/总堂设在山中的江湖门派，正在进行入门弟子选拔。",
+          "attributes": {
+            "headquarters": "彩霞山总门；落日峰总堂",
+            "selection_context": "入门考试与合格弟子选拔"
+          },
+          "evidence_ids": [
+            "evidence:chunk-0005:003",
+            "evidence:chunk-0005:005",
+            "evidence:chunk-0005:007",
+            "evidence:chunk-0005:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            5635,
+            5696
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5635,
+              5696
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0005:location:001",
+          "label": "青牛镇",
+          "aliases": [],
+          "node_type": "location",
+          "description": "马车出发地点。",
+          "attributes": {
+            "role_in_chunk": "七玄门入门候选孩童行程起点"
+          },
+          "evidence_ids": [
+            "evidence:chunk-0005:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            5635,
+            5696
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5635,
+              5696
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0005:location:002",
+          "label": "彩霞山",
+          "aliases": [
+            "落凤山"
+          ],
+          "node_type": "location",
+          "description": "七玄门总门所在地，原名落凤山，镜州境内第二大山。",
+          "attributes": {
+            "former_name": "落凤山",
+            "region_rank": "镜州境内第二大山",
+            "controller": "七玄门"
+          },
+          "evidence_ids": [
+            "evidence:chunk-0005:003",
+            "evidence:chunk-0005:004",
+            "evidence:chunk-0005:005",
+            "evidence:chunk-0005:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            5635,
+            5906
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5635,
+              5906
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0005:location:003",
+          "label": "镜州",
+          "aliases": [],
+          "node_type": "location",
+          "description": "彩霞山所在地域；彩霞山被称为镜州境内第二大山。",
+          "attributes": {
+            "referenced_for": "彩霞山地理等级"
+          },
+          "evidence_ids": [
+            "evidence:chunk-0005:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            5859,
+            5906
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5859,
+              5906
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0005:location:004",
+          "label": "百莽山",
+          "aliases": [],
+          "node_type": "location",
+          "description": "镜州境内比彩霞山更大的山。",
+          "attributes": {
+            "referenced_for": "与彩霞山规模比较"
+          },
+          "evidence_ids": [
+            "evidence:chunk-0005:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            5859,
+            5906
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5859,
+              5906
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0005:location:005",
+          "label": "落日峰",
+          "aliases": [],
+          "node_type": "location",
+          "description": "彩霞山主峰，七玄门总堂所在处，地势险要且只有一条路可上。",
+          "attributes": {
+            "terrain": "奇高陡峭",
+            "access": "从山底到峰顶只有一条路"
+          },
+          "evidence_ids": [
+            "evidence:chunk-0005:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            5945,
+            6024
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5945,
+              6024
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0005:facility:001",
+          "label": "落日峰十三处哨卡",
+          "aliases": [
+            "十三处或明或暗的哨卡"
+          ],
+          "node_type": "facility",
+          "description": "七玄门在落日峰唯一通路险要处设置的明暗防卫哨卡。",
+          "attributes": {
+            "count": "十三处",
+            "visibility": "或明或暗",
+            "function": "防守总堂通路"
+          },
+          "evidence_ids": [
+            "evidence:chunk-0005:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            5986,
+            6024
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5986,
+              6024
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0005:character:003",
+          "label": "王护法",
+          "aliases": [
+            "王老弟"
+          ],
+          "node_type": "character",
+          "description": "护送候选孩童上山的七玄门护法；对岳堂主恭敬并在门内熟人很多。",
+          "attributes": {
+            "role": "护法/带路者",
+            "social_state": "门内熟人很多，人缘不错"
+          },
+          "evidence_ids": [
+            "evidence:chunk-0005:008",
+            "evidence:chunk-0005:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            6114,
+            6184
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              6114,
+              6184
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0005:character:004",
+          "label": "岳堂主",
+          "aliases": [
+            "岳堂主",
+            "岳姓堂主"
+          ],
+          "node_type": "character",
+          "description": "在彩霞山接收候选弟子的堂主，命令王护法把孩童送往清客院并安排次日选拔。",
+          "attributes": {
+            "role": "堂主",
+            "authority_in_scene": "安排候选弟子休息与选拔"
+          },
+          "evidence_ids": [
+            "evidence:chunk-0005:008",
+            "evidence:chunk-0005:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "宗门任务体系",
+              "requirement_id": "faction_society_economy_task",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            6114,
+            6303
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              6114,
+              6303
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0005:facility:002",
+          "label": "清客院",
+          "aliases": [],
+          "node_type": "facility",
+          "description": "岳堂主指示候选孩童休息一晚的场所。",
+          "attributes": {
+            "function": "候选弟子选拔前休息安置"
+          },
+          "evidence_ids": [
+            "evidence:chunk-0005:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "宗门任务体系",
+              "requirement_id": "faction_society_economy_task",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            6248,
+            6303
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              6248,
+              6303
+            ]
+          }
+        }
+      ],
+      "extracted_edges": [
+        {
+          "id": "edge:chunk-0005:001",
+          "source": "node:chunk-0005:faction:001",
+          "target": "node:chunk-0005:location:002",
+          "edge_type": "has_headquarters_at",
+          "label": "七玄门总门位于彩霞山",
+          "fact_summary": "彩霞山是七玄门总门所在地。",
+          "evidence_ids": [
+            "evidence:chunk-0005:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            5635,
+            5696
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5635,
+              5696
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0005:002",
+          "source": "node:chunk-0005:faction:001",
+          "target": "node:chunk-0005:location:002",
+          "edge_type": "controls_location",
+          "label": "七玄门占有彩霞山",
+          "fact_summary": "彩霞山被七玄门占有，外人不能随意来此。",
+          "evidence_ids": [
+            "evidence:chunk-0005:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            5822,
+            5855
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5822,
+              5855
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0005:003",
+          "source": "node:chunk-0005:location:005",
+          "target": "node:chunk-0005:location:002",
+          "edge_type": "part_of",
+          "label": "落日峰属于彩霞山",
+          "fact_summary": "落日峰是彩霞山的主峰。",
+          "evidence_ids": [
+            "evidence:chunk-0005:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            5945,
+            5962
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5945,
+              5962
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0005:004",
+          "source": "node:chunk-0005:faction:001",
+          "target": "node:chunk-0005:location:005",
+          "edge_type": "has_total_hall_at",
+          "label": "七玄门总堂设在落日峰",
+          "fact_summary": "七玄门将总堂放在落日峰处。",
+          "evidence_ids": [
+            "evidence:chunk-0005:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            5986,
+            6024
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5986,
+              6024
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0005:005",
+          "source": "node:chunk-0005:faction:001",
+          "target": "node:chunk-0005:facility:001",
+          "edge_type": "established_defense",
+          "label": "七玄门设置十三处哨卡",
+          "fact_summary": "七玄门在落日峰通路险要处设下十三处明暗哨卡。",
+          "evidence_ids": [
+            "evidence:chunk-0005:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            5986,
+            6024
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5986,
+              6024
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0005:006",
+          "source": "node:chunk-0005:character:003",
+          "target": "node:chunk-0005:faction:001",
+          "edge_type": "affiliated_with",
+          "label": "王护法在七玄门内活动",
+          "fact_summary": "王护法在门内熟人很多、人缘不错。",
+          "evidence_ids": [
+            "evidence:chunk-0005:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            6384,
+            6433
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              6384,
+              6433
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0005:007",
+          "source": "node:chunk-0005:character:004",
+          "target": "node:chunk-0005:character:003",
+          "edge_type": "gives_order_to",
+          "label": "岳堂主命令王护法安置候选孩童",
+          "fact_summary": "岳堂主命令把候选孩童送到清客院并次日选拔，王护法遵命。",
+          "evidence_ids": [
+            "evidence:chunk-0005:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "宗门任务体系",
+              "requirement_id": "faction_society_economy_task",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            6248,
+            6303
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              6248,
+              6303
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0005:008",
+          "source": "node:chunk-0005:character:002",
+          "target": "node:chunk-0005:faction:001",
+          "edge_type": "has_privileged_access_to_selection",
+          "label": "舞岩因姻亲关系获得入门考试资格",
+          "fact_summary": "舞岩年龄超过规定，但因表姐嫁给七玄门掌权人物，年龄问题不成问题。",
+          "evidence_ids": [
+            "evidence:chunk-0005:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            5155,
+            5253
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5155,
+              5253
+            ]
+          }
+        }
+      ],
+      "extracted_events": [
+        {
+          "id": "event:chunk-0005:001",
+          "event_type": "arrival",
+          "label": "候选孩童抵达彩霞山",
+          "summary": "王护法护送的候选孩童乘马车从青牛镇出发，数日后抵达七玄门总门所在地彩霞山。",
+          "participants": [
+            "node:chunk-0005:character:001",
+            "node:chunk-0005:character:003",
+            "node:chunk-0005:faction:001",
+            "node:chunk-0005:location:001",
+            "node:chunk-0005:location:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0005:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            5635,
+            5696
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5635,
+              5696
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0005:002",
+          "event_type": "selection_arrangement",
+          "label": "岳堂主安排入门选拔前安置",
+          "summary": "岳堂主要求将候选孩童送到清客院休息一晚，并说明次日选拔和未过关下山的处理。",
+          "participants": [
+            "node:chunk-0005:character:004",
+            "node:chunk-0005:character:003",
+            "node:chunk-0005:facility:002",
+            "node:chunk-0005:faction:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0005:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "宗门任务体系",
+              "requirement_id": "faction_society_economy_task",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            6248,
+            6303
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              6248,
+              6303
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0005:003",
+          "event_type": "overnight_lodging",
+          "label": "韩立等人在山峰土房过夜",
+          "summary": "韩立等人被带到较矮山峰上的土房并住了一宿。",
+          "participants": [
+            "node:chunk-0005:character:001",
+            "node:chunk-0005:character:003"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0005:011"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            6526,
+            6562
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              6526,
+              6562
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0005:004",
+          "event_type": "dream",
+          "label": "韩立梦见自己威风报复",
+          "summary": "韩立梦见自己身穿锦衣、手拿金剑、身怀绝世武功，并痛打村里铁匠儿子。",
+          "participants": [
+            "node:chunk-0005:character:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0005:012"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            6570,
+            6617
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              6570,
+              6617
+            ]
+          }
+        }
+      ],
+      "extracted_evidence": [
+        {
+          "evidence_id": "evidence:chunk-0005:001",
+          "chunk_id": "chunk-0005",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            5048,
+            5083
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5048,
+              5083
+            ]
+          },
+          "source_excerpt": "韩立机灵地把瘦弱的身子缩到车厢内的边角里，偷偷的打量着车内的其他孩童。",
+          "fact_summary": "韩立在拥挤车厢中缩到边角并观察其他孩童。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "id": "evidence:chunk-0005:001"
+        },
+        {
+          "evidence_id": "evidence:chunk-0005:002",
+          "chunk_id": "chunk-0005",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            5155,
+            5253
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5155,
+              5253
+            ]
+          },
+          "source_excerpt": "那名少年叫舞岩，今年十三岁，是车内年龄最大的一个。本来年龄已超过了规定，但其有一表姐嫁给七玄门内的一名掌权人物，年龄问题自然也就不成问题了。舞岩家开了一间武馆，家中颇为富裕，还自小练了一些拳脚功夫",
+          "fact_summary": "舞岩十三岁，因与七玄门掌权人物有姻亲关系而年龄超限仍可参加，家中开武馆且练过拳脚。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "id": "evidence:chunk-0005:002"
+        },
+        {
+          "evidence_id": "evidence:chunk-0005:003",
+          "chunk_id": "chunk-0005",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            5635,
+            5696
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5635,
+              5696
+            ]
+          },
+          "source_excerpt": "马车从青牛镇出发一路向西飞奔，路途中去了好几个地方，又接了几个孩童，终于在第五天傍晚时分赶到了彩霞山——七玄门总门所在地。",
+          "fact_summary": "马车从青牛镇出发，多地接孩童后于第五天傍晚抵达彩霞山；彩霞山是七玄门总门所在地。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "id": "evidence:chunk-0005:003"
+        },
+        {
+          "evidence_id": "evidence:chunk-0005:004",
+          "chunk_id": "chunk-0005",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            5756,
+            5822
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5756,
+              5822
+            ]
+          },
+          "source_excerpt": "彩霞山原名落凤山，相传古时一头五色彩凤落在此地，化成此山。后由于来此的人发现此山在落日时分美丽异常，犹如彩霞笼罩，又被人改为彩霞山。",
+          "fact_summary": "彩霞山原名落凤山，传说五色彩凤化山，后因落日美景改名彩霞山。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "id": "evidence:chunk-0005:004"
+        },
+        {
+          "evidence_id": "evidence:chunk-0005:005",
+          "chunk_id": "chunk-0005",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            5822,
+            5855
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5822,
+              5855
+            ]
+          },
+          "source_excerpt": "当然此山自从被七玄门占有后，外人自然不能再来此随意欣赏如此美景了。",
+          "fact_summary": "彩霞山被七玄门占有后，外人不能随意来此欣赏美景。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "id": "evidence:chunk-0005:005"
+        },
+        {
+          "evidence_id": "evidence:chunk-0005:006",
+          "chunk_id": "chunk-0005",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            5859,
+            5906
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5859,
+              5906
+            ]
+          },
+          "source_excerpt": "彩霞山是镜州境内第二大山，除了另一座百莽山，就数此山占地最广，方圆十几里内都是此山的山脉所在。",
+          "fact_summary": "彩霞山是镜州境内第二大山，规模仅次于百莽山，方圆十几里属于其山脉。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "id": "evidence:chunk-0005:006"
+        },
+        {
+          "evidence_id": "evidence:chunk-0005:007",
+          "chunk_id": "chunk-0005",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            5945,
+            6024
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5945,
+              6024
+            ]
+          },
+          "source_excerpt": "彩霞山的主峰“落日峰”更是险恶无比，不但奇高陡峭，而且从山底到峰顶只有一条路可走，七玄门将总堂放在此处后，又在这条路的险要之处，一连设下了十三处或明或暗的哨卡",
+          "fact_summary": "彩霞山主峰落日峰险要，七玄门将总堂设在此处，并在唯一通路上设十三处明暗哨卡。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "id": "evidence:chunk-0005:007"
+        },
+        {
+          "evidence_id": "evidence:chunk-0005:008",
+          "chunk_id": "chunk-0005",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            6114,
+            6184
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              6114,
+              6184
+            ]
+          },
+          "source_excerpt": "“岳堂主，路上耽搁了些时间，劳烦您老费心了。”王护法站在人群前，恭敬的向一位红脸的老者施了一礼，一改路上一直的跋扈神色，脸上露出了几分谄媚。",
+          "fact_summary": "王护法向岳堂主恭敬施礼并解释路上耽搁，态度由跋扈转为谄媚。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "id": "evidence:chunk-0005:008"
+        },
+        {
+          "evidence_id": "evidence:chunk-0005:009",
+          "chunk_id": "chunk-0005",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            6248,
+            6303
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              6248,
+              6303
+            ]
+          },
+          "source_excerpt": "“送到清客院，让他们好好休息一晚，明天一早就开始选拔合格弟子。没过关的，及早让他们下山，免得犯了山上的规矩。”",
+          "fact_summary": "岳堂主命令把候选孩童送到清客院休息一晚，次日一早选拔合格弟子，未过关者及早下山。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "宗门任务体系",
+              "requirement_id": "faction_society_economy_task",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "id": "evidence:chunk-0005:009"
+        },
+        {
+          "evidence_id": "evidence:chunk-0005:010",
+          "chunk_id": "chunk-0005",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            6384,
+            6433
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              6384,
+              6433
+            ]
+          },
+          "source_excerpt": "王护法一边在前面带路，一边面带微笑的与路上遇到的人打着招呼，可以看的出他在门内熟人很多，人缘不错。",
+          "fact_summary": "王护法带路时与沿途遇到的人打招呼，显示他在门内熟人很多、人缘不错。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "id": "evidence:chunk-0005:010"
+        },
+        {
+          "evidence_id": "evidence:chunk-0005:011",
+          "chunk_id": "chunk-0005",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            6526,
+            6562
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              6526,
+              6562
+            ]
+          },
+          "source_excerpt": "韩立等人被带到一座较矮的山峰上，山顶有一片土房，在这里韩立等人住了一宿。",
+          "fact_summary": "韩立等人被带到较矮山峰上的一片土房并在那里住了一宿。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "id": "evidence:chunk-0005:011"
+        },
+        {
+          "evidence_id": "evidence:chunk-0005:012",
+          "chunk_id": "chunk-0005",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            6570,
+            6617
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              6570,
+              6617
+            ]
+          },
+          "source_excerpt": "韩立在梦里梦到自己身穿锦衣，手拿金剑，身怀绝世武功，把村里自己一直都打不过的铁匠儿子痛打了一顿",
+          "fact_summary": "韩立梦见自己身穿锦衣、手拿金剑、身怀绝世武功并痛打村里铁匠儿子。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "id": "evidence:chunk-0005:012"
+        }
+      ],
+      "supports_templates": [
+        {
+          "id": "support:chunk-0005:001",
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "linked_node_ids": [
+            "node:chunk-0005:location:002",
+            "node:chunk-0005:location:005"
+          ],
+          "linked_edge_ids": [
+            "edge:chunk-0005:001",
+            "edge:chunk-0005:002",
+            "edge:chunk-0005:004"
+          ],
+          "linked_event_ids": [
+            "event:chunk-0005:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0005:003",
+            "evidence:chunk-0005:004",
+            "evidence:chunk-0005:005",
+            "evidence:chunk-0005:006",
+            "evidence:chunk-0005:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            5635,
+            6024
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5635,
+              6024
+            ]
+          }
+        },
+        {
+          "id": "support:chunk-0005:002",
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "status": "covered",
+          "linked_node_ids": [
+            "node:chunk-0005:faction:001",
+            "node:chunk-0005:facility:001"
+          ],
+          "linked_edge_ids": [
+            "edge:chunk-0005:001",
+            "edge:chunk-0005:005"
+          ],
+          "linked_event_ids": [
+            "event:chunk-0005:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0005:003",
+            "evidence:chunk-0005:007",
+            "evidence:chunk-0005:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            5635,
+            6303
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5635,
+              6303
+            ]
+          }
+        },
+        {
+          "id": "support:chunk-0005:003",
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "status": "covered",
+          "linked_node_ids": [
+            "node:chunk-0005:character:001",
+            "node:chunk-0005:character:002",
+            "node:chunk-0005:character:003",
+            "node:chunk-0005:character:004"
+          ],
+          "linked_edge_ids": [
+            "edge:chunk-0005:007",
+            "edge:chunk-0005:008"
+          ],
+          "linked_event_ids": [
+            "event:chunk-0005:004"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0005:001",
+            "evidence:chunk-0005:002",
+            "evidence:chunk-0005:008",
+            "evidence:chunk-0005:012"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            5048,
+            6617
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5048,
+              6617
+            ]
+          }
+        }
+      ],
+      "uncertainties": [
+        {
+          "id": "uncertainty:chunk-0005:001",
+          "description": "舞岩表姐和“七玄门内的一名掌权人物”未具名，当前 chunk 只能确认姻亲关系带来考试资格便利，不能补全具体身份。",
+          "reason": "质量规则要求不回填后文身份；原文仅给关系称谓。",
+          "evidence_ids": [
+            "evidence:chunk-0005:002"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            5155,
+            5253
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              5155,
+              5253
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0005:002",
+          "description": "清客院与“较矮山峰上的一片土房”的空间关系未被当前 chunk 明确等同。",
+          "reason": "岳堂主先命令送到清客院，后文只写被带到较矮山峰土房过夜，二者是否完全同一设施需后续确认。",
+          "evidence_ids": [
+            "evidence:chunk-0005:009",
+            "evidence:chunk-0005:011"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            6248,
+            6562
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              6248,
+              6562
+            ]
+          }
+        }
+      ],
+      "rejected_candidates": [
+        {
+          "id": "rejected:chunk-0005:001",
+          "candidate_label": "铁匠儿子",
+          "candidate_type": "character",
+          "rejection_reason": "只出现在韩立梦境中作为被痛打对象，当前 chunk 没有现实剧情行动、决策或资源关系，按低戏份角色规则不建节点。",
+          "evidence_ids": [
+            "evidence:chunk-0005:012"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            6570,
+            6617
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              6570,
+              6617
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0005:002",
+          "candidate_label": "金剑",
+          "candidate_type": "weapon",
+          "rejection_reason": "“手拿金剑”是韩立梦境中的普通描述，不是现实剧情中的具名武器或法宝，按具名物品规则不建节点。",
+          "evidence_ids": [
+            "evidence:chunk-0005:012"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "武器分析",
+              "requirement_id": "resource_item_craft_profession",
+              "status": "not_found_in_source",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "rejected"
+            }
+          ],
+          "source_range": [
+            6570,
+            6617
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0005",
+            "chapter_hint": "第三章 七玄门",
+            "source_range": [
+              6570,
+              6617
+            ]
+          }
+        }
+      ],
+      "structured_failures": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0005/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "id": "node:chunk-0005:character:001",
+      "label": "韩立",
+      "aliases": [],
+      "node_type": "character",
+      "description": "参加七玄门入门考试的孩童；在车厢中缩到边角观察他人。",
+      "attributes": {
+        "current_stage": "七玄门入门考试途中",
+        "observed_state": "瘦弱、机灵、来自穷乡僻壤一类候选孩童"
+      },
+      "evidence_ids": [
+        "evidence:chunk-0005:001",
+        "evidence:chunk-0005:011",
+        "evidence:chunk-0005:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        5048,
+        5083
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5048,
+          5083
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0005:character:002",
+      "label": "舞岩",
+      "aliases": [
+        "舞少爷",
+        "舞大哥"
+      ],
+      "node_type": "character",
+      "description": "车内年龄最大的锦衣少年，因姻亲关系获得参加机会，家境富裕且练过拳脚。",
+      "attributes": {
+        "age": "十三岁",
+        "family_background": "家中开武馆，颇为富裕",
+        "privilege_source": "表姐嫁给七玄门内掌权人物"
+      },
+      "evidence_ids": [
+        "evidence:chunk-0005:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        5155,
+        5253
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5155,
+          5253
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0005:faction:001",
+      "label": "七玄门",
+      "aliases": [],
+      "node_type": "faction",
+      "description": "占有彩霞山并把总门/总堂设在山中的江湖门派，正在进行入门弟子选拔。",
+      "attributes": {
+        "headquarters": "彩霞山总门；落日峰总堂",
+        "selection_context": "入门考试与合格弟子选拔"
+      },
+      "evidence_ids": [
+        "evidence:chunk-0005:003",
+        "evidence:chunk-0005:005",
+        "evidence:chunk-0005:007",
+        "evidence:chunk-0005:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        5635,
+        5696
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5635,
+          5696
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0005:location:001",
+      "label": "青牛镇",
+      "aliases": [],
+      "node_type": "location",
+      "description": "马车出发地点。",
+      "attributes": {
+        "role_in_chunk": "七玄门入门候选孩童行程起点"
+      },
+      "evidence_ids": [
+        "evidence:chunk-0005:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        5635,
+        5696
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5635,
+          5696
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0005:location:002",
+      "label": "彩霞山",
+      "aliases": [
+        "落凤山"
+      ],
+      "node_type": "location",
+      "description": "七玄门总门所在地，原名落凤山，镜州境内第二大山。",
+      "attributes": {
+        "former_name": "落凤山",
+        "region_rank": "镜州境内第二大山",
+        "controller": "七玄门"
+      },
+      "evidence_ids": [
+        "evidence:chunk-0005:003",
+        "evidence:chunk-0005:004",
+        "evidence:chunk-0005:005",
+        "evidence:chunk-0005:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        5635,
+        5906
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5635,
+          5906
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0005:location:003",
+      "label": "镜州",
+      "aliases": [],
+      "node_type": "location",
+      "description": "彩霞山所在地域；彩霞山被称为镜州境内第二大山。",
+      "attributes": {
+        "referenced_for": "彩霞山地理等级"
+      },
+      "evidence_ids": [
+        "evidence:chunk-0005:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        5859,
+        5906
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5859,
+          5906
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0005:location:004",
+      "label": "百莽山",
+      "aliases": [],
+      "node_type": "location",
+      "description": "镜州境内比彩霞山更大的山。",
+      "attributes": {
+        "referenced_for": "与彩霞山规模比较"
+      },
+      "evidence_ids": [
+        "evidence:chunk-0005:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        5859,
+        5906
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5859,
+          5906
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0005:location:005",
+      "label": "落日峰",
+      "aliases": [],
+      "node_type": "location",
+      "description": "彩霞山主峰，七玄门总堂所在处，地势险要且只有一条路可上。",
+      "attributes": {
+        "terrain": "奇高陡峭",
+        "access": "从山底到峰顶只有一条路"
+      },
+      "evidence_ids": [
+        "evidence:chunk-0005:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        5945,
+        6024
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5945,
+          6024
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0005:facility:001",
+      "label": "落日峰十三处哨卡",
+      "aliases": [
+        "十三处或明或暗的哨卡"
+      ],
+      "node_type": "facility",
+      "description": "七玄门在落日峰唯一通路险要处设置的明暗防卫哨卡。",
+      "attributes": {
+        "count": "十三处",
+        "visibility": "或明或暗",
+        "function": "防守总堂通路"
+      },
+      "evidence_ids": [
+        "evidence:chunk-0005:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        5986,
+        6024
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5986,
+          6024
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0005:character:003",
+      "label": "王护法",
+      "aliases": [
+        "王老弟"
+      ],
+      "node_type": "character",
+      "description": "护送候选孩童上山的七玄门护法；对岳堂主恭敬并在门内熟人很多。",
+      "attributes": {
+        "role": "护法/带路者",
+        "social_state": "门内熟人很多，人缘不错"
+      },
+      "evidence_ids": [
+        "evidence:chunk-0005:008",
+        "evidence:chunk-0005:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        6114,
+        6184
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          6114,
+          6184
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0005:character:004",
+      "label": "岳堂主",
+      "aliases": [
+        "岳堂主",
+        "岳姓堂主"
+      ],
+      "node_type": "character",
+      "description": "在彩霞山接收候选弟子的堂主，命令王护法把孩童送往清客院并安排次日选拔。",
+      "attributes": {
+        "role": "堂主",
+        "authority_in_scene": "安排候选弟子休息与选拔"
+      },
+      "evidence_ids": [
+        "evidence:chunk-0005:008",
+        "evidence:chunk-0005:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        6114,
+        6303
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          6114,
+          6303
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0005:facility:002",
+      "label": "清客院",
+      "aliases": [],
+      "node_type": "facility",
+      "description": "岳堂主指示候选孩童休息一晚的场所。",
+      "attributes": {
+        "function": "候选弟子选拔前休息安置"
+      },
+      "evidence_ids": [
+        "evidence:chunk-0005:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        6248,
+        6303
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          6248,
+          6303
+        ]
+      }
+    }
+  ],
+  "normalized_edges": [
+    {
+      "id": "edge:chunk-0005:001",
+      "source": "node:chunk-0005:faction:001",
+      "target": "node:chunk-0005:location:002",
+      "edge_type": "has_headquarters_at",
+      "label": "七玄门总门位于彩霞山",
+      "fact_summary": "彩霞山是七玄门总门所在地。",
+      "evidence_ids": [
+        "evidence:chunk-0005:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        5635,
+        5696
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5635,
+          5696
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0005:002",
+      "source": "node:chunk-0005:faction:001",
+      "target": "node:chunk-0005:location:002",
+      "edge_type": "controls_location",
+      "label": "七玄门占有彩霞山",
+      "fact_summary": "彩霞山被七玄门占有，外人不能随意来此。",
+      "evidence_ids": [
+        "evidence:chunk-0005:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        5822,
+        5855
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5822,
+          5855
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0005:003",
+      "source": "node:chunk-0005:location:005",
+      "target": "node:chunk-0005:location:002",
+      "edge_type": "part_of",
+      "label": "落日峰属于彩霞山",
+      "fact_summary": "落日峰是彩霞山的主峰。",
+      "evidence_ids": [
+        "evidence:chunk-0005:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        5945,
+        5962
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5945,
+          5962
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0005:004",
+      "source": "node:chunk-0005:faction:001",
+      "target": "node:chunk-0005:location:005",
+      "edge_type": "has_total_hall_at",
+      "label": "七玄门总堂设在落日峰",
+      "fact_summary": "七玄门将总堂放在落日峰处。",
+      "evidence_ids": [
+        "evidence:chunk-0005:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        5986,
+        6024
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5986,
+          6024
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0005:005",
+      "source": "node:chunk-0005:faction:001",
+      "target": "node:chunk-0005:facility:001",
+      "edge_type": "established_defense",
+      "label": "七玄门设置十三处哨卡",
+      "fact_summary": "七玄门在落日峰通路险要处设下十三处明暗哨卡。",
+      "evidence_ids": [
+        "evidence:chunk-0005:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        5986,
+        6024
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5986,
+          6024
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0005:006",
+      "source": "node:chunk-0005:character:003",
+      "target": "node:chunk-0005:faction:001",
+      "edge_type": "affiliated_with",
+      "label": "王护法在七玄门内活动",
+      "fact_summary": "王护法在门内熟人很多、人缘不错。",
+      "evidence_ids": [
+        "evidence:chunk-0005:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        6384,
+        6433
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          6384,
+          6433
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0005:007",
+      "source": "node:chunk-0005:character:004",
+      "target": "node:chunk-0005:character:003",
+      "edge_type": "gives_order_to",
+      "label": "岳堂主命令王护法安置候选孩童",
+      "fact_summary": "岳堂主命令把候选孩童送到清客院并次日选拔，王护法遵命。",
+      "evidence_ids": [
+        "evidence:chunk-0005:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        6248,
+        6303
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          6248,
+          6303
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0005:008",
+      "source": "node:chunk-0005:character:002",
+      "target": "node:chunk-0005:faction:001",
+      "edge_type": "has_privileged_access_to_selection",
+      "label": "舞岩因姻亲关系获得入门考试资格",
+      "fact_summary": "舞岩年龄超过规定，但因表姐嫁给七玄门掌权人物，年龄问题不成问题。",
+      "evidence_ids": [
+        "evidence:chunk-0005:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        5155,
+        5253
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5155,
+          5253
+        ]
+      }
+    }
+  ],
+  "normalized_events": [
+    {
+      "id": "event:chunk-0005:001",
+      "event_type": "arrival",
+      "label": "候选孩童抵达彩霞山",
+      "summary": "王护法护送的候选孩童乘马车从青牛镇出发，数日后抵达七玄门总门所在地彩霞山。",
+      "participants": [
+        "node:chunk-0005:character:001",
+        "node:chunk-0005:character:003",
+        "node:chunk-0005:faction:001",
+        "node:chunk-0005:location:001",
+        "node:chunk-0005:location:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0005:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        5635,
+        5696
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5635,
+          5696
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0005:002",
+      "event_type": "selection_arrangement",
+      "label": "岳堂主安排入门选拔前安置",
+      "summary": "岳堂主要求将候选孩童送到清客院休息一晚，并说明次日选拔和未过关下山的处理。",
+      "participants": [
+        "node:chunk-0005:character:004",
+        "node:chunk-0005:character:003",
+        "node:chunk-0005:facility:002",
+        "node:chunk-0005:faction:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0005:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        6248,
+        6303
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          6248,
+          6303
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0005:003",
+      "event_type": "overnight_lodging",
+      "label": "韩立等人在山峰土房过夜",
+      "summary": "韩立等人被带到较矮山峰上的土房并住了一宿。",
+      "participants": [
+        "node:chunk-0005:character:001",
+        "node:chunk-0005:character:003"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0005:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        6526,
+        6562
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          6526,
+          6562
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0005:004",
+      "event_type": "dream",
+      "label": "韩立梦见自己威风报复",
+      "summary": "韩立梦见自己身穿锦衣、手拿金剑、身怀绝世武功，并痛打村里铁匠儿子。",
+      "participants": [
+        "node:chunk-0005:character:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0005:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        6570,
+        6617
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          6570,
+          6617
+        ]
+      }
+    }
+  ],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0005:001",
+      "chunk_id": "chunk-0005",
+      "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+      "source_range": [
+        5048,
+        5083
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5048,
+          5083
+        ]
+      },
+      "source_excerpt": "韩立机灵地把瘦弱的身子缩到车厢内的边角里，偷偷的打量着车内的其他孩童。",
+      "fact_summary": "韩立在拥挤车厢中缩到边角并观察其他孩童。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0005:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0005:002",
+      "chunk_id": "chunk-0005",
+      "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+      "source_range": [
+        5155,
+        5253
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5155,
+          5253
+        ]
+      },
+      "source_excerpt": "那名少年叫舞岩，今年十三岁，是车内年龄最大的一个。本来年龄已超过了规定，但其有一表姐嫁给七玄门内的一名掌权人物，年龄问题自然也就不成问题了。舞岩家开了一间武馆，家中颇为富裕，还自小练了一些拳脚功夫",
+      "fact_summary": "舞岩十三岁，因与七玄门掌权人物有姻亲关系而年龄超限仍可参加，家中开武馆且练过拳脚。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0005:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0005:003",
+      "chunk_id": "chunk-0005",
+      "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+      "source_range": [
+        5635,
+        5696
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5635,
+          5696
+        ]
+      },
+      "source_excerpt": "马车从青牛镇出发一路向西飞奔，路途中去了好几个地方，又接了几个孩童，终于在第五天傍晚时分赶到了彩霞山——七玄门总门所在地。",
+      "fact_summary": "马车从青牛镇出发，多地接孩童后于第五天傍晚抵达彩霞山；彩霞山是七玄门总门所在地。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0005:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0005:004",
+      "chunk_id": "chunk-0005",
+      "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+      "source_range": [
+        5756,
+        5822
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5756,
+          5822
+        ]
+      },
+      "source_excerpt": "彩霞山原名落凤山，相传古时一头五色彩凤落在此地，化成此山。后由于来此的人发现此山在落日时分美丽异常，犹如彩霞笼罩，又被人改为彩霞山。",
+      "fact_summary": "彩霞山原名落凤山，传说五色彩凤化山，后因落日美景改名彩霞山。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0005:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0005:005",
+      "chunk_id": "chunk-0005",
+      "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+      "source_range": [
+        5822,
+        5855
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5822,
+          5855
+        ]
+      },
+      "source_excerpt": "当然此山自从被七玄门占有后，外人自然不能再来此随意欣赏如此美景了。",
+      "fact_summary": "彩霞山被七玄门占有后，外人不能随意来此欣赏美景。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0005:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0005:006",
+      "chunk_id": "chunk-0005",
+      "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+      "source_range": [
+        5859,
+        5906
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5859,
+          5906
+        ]
+      },
+      "source_excerpt": "彩霞山是镜州境内第二大山，除了另一座百莽山，就数此山占地最广，方圆十几里内都是此山的山脉所在。",
+      "fact_summary": "彩霞山是镜州境内第二大山，规模仅次于百莽山，方圆十几里属于其山脉。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0005:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0005:007",
+      "chunk_id": "chunk-0005",
+      "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+      "source_range": [
+        5945,
+        6024
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          5945,
+          6024
+        ]
+      },
+      "source_excerpt": "彩霞山的主峰“落日峰”更是险恶无比，不但奇高陡峭，而且从山底到峰顶只有一条路可走，七玄门将总堂放在此处后，又在这条路的险要之处，一连设下了十三处或明或暗的哨卡",
+      "fact_summary": "彩霞山主峰落日峰险要，七玄门将总堂设在此处，并在唯一通路上设十三处明暗哨卡。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0005:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0005:008",
+      "chunk_id": "chunk-0005",
+      "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+      "source_range": [
+        6114,
+        6184
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          6114,
+          6184
+        ]
+      },
+      "source_excerpt": "“岳堂主，路上耽搁了些时间，劳烦您老费心了。”王护法站在人群前，恭敬的向一位红脸的老者施了一礼，一改路上一直的跋扈神色，脸上露出了几分谄媚。",
+      "fact_summary": "王护法向岳堂主恭敬施礼并解释路上耽搁，态度由跋扈转为谄媚。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0005:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0005:009",
+      "chunk_id": "chunk-0005",
+      "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+      "source_range": [
+        6248,
+        6303
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          6248,
+          6303
+        ]
+      },
+      "source_excerpt": "“送到清客院，让他们好好休息一晚，明天一早就开始选拔合格弟子。没过关的，及早让他们下山，免得犯了山上的规矩。”",
+      "fact_summary": "岳堂主命令把候选孩童送到清客院休息一晚，次日一早选拔合格弟子，未过关者及早下山。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0005:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0005:010",
+      "chunk_id": "chunk-0005",
+      "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+      "source_range": [
+        6384,
+        6433
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          6384,
+          6433
+        ]
+      },
+      "source_excerpt": "王护法一边在前面带路，一边面带微笑的与路上遇到的人打着招呼，可以看的出他在门内熟人很多，人缘不错。",
+      "fact_summary": "王护法带路时与沿途遇到的人打招呼，显示他在门内熟人很多、人缘不错。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0005:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0005:011",
+      "chunk_id": "chunk-0005",
+      "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+      "source_range": [
+        6526,
+        6562
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          6526,
+          6562
+        ]
+      },
+      "source_excerpt": "韩立等人被带到一座较矮的山峰上，山顶有一片土房，在这里韩立等人住了一宿。",
+      "fact_summary": "韩立等人被带到较矮山峰上的一片土房并在那里住了一宿。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0005:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0005:012",
+      "chunk_id": "chunk-0005",
+      "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+      "source_range": [
+        6570,
+        6617
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0005",
+        "chapter_hint": "第三章 七玄门",
+        "source_range": [
+          6570,
+          6617
+        ]
+      },
+      "source_excerpt": "韩立在梦里梦到自己身穿锦衣，手拿金剑，身怀绝世武功，把村里自己一直都打不过的铁匠儿子痛打了一顿",
+      "fact_summary": "韩立梦见自己身穿锦衣、手拿金剑、身怀绝世武功并痛打村里铁匠儿子。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0005:012"
+    }
+  ]
+}

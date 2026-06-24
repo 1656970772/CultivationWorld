@@ -1,0 +1,283 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0063:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0063",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T18:00:00Z",
+  "extracted_nodes": [
+    {
+      "id": "n-ch0063-001",
+      "node_type": "character",
+      "label": "辰南",
+      "aliases": [
+        "败类"
+      ],
+      "properties": {
+        "role": "主角",
+        "current_action": "随队飞往仙武学院途中，教小龙喝酒"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0063",
+        "source_range": [
+          342146,
+          342246
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0063-001"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0063"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "n-ch0063-002",
+      "node_type": "beast",
+      "label": "圣龙艾米",
+      "aliases": [
+        "龙宝宝",
+        "小龙"
+      ],
+      "properties": {
+        "beast_type": "五阶圣龙",
+        "action": "初次饮酒大醉，飞行中坠落差点摔死；后由飞龙驮着飞行",
+        "note": "众人评价可爱又强大"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0063",
+        "source_range": [
+          342146,
+          342246
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0063-002"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "cat_fac_006"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0063"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "n-ch0063-003",
+      "node_type": "character",
+      "label": "龙舞",
+      "aliases": [],
+      "properties": {
+        "role": "队伍向导",
+        "action": "反对辰南教小龙喝酒；想从小龙那里抢过来"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0063",
+        "source_range": [
+          342146,
+          342246
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0063-003"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0063"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "e-ch0063-001",
+      "source": "n-ch0063-001",
+      "target": "n-ch0063-002",
+      "edge_type": "interacts_with",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0063",
+        "source_range": [
+          342146,
+          342246
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0063-002"
+      ],
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0063"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "evt-ch0063-001",
+      "event_type": "event",
+      "label": "小龙初次饮酒大醉飞行中坠落",
+      "participants": [
+        "n-ch0063-001",
+        "n-ch0063-002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0063",
+        "source_range": [
+          342146,
+          342246
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0063-002"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "cat_fac_006"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0063"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:ev-ch0063-001",
+      "source_location": {
+        "chunk_id": "chunk-0063",
+        "source_range": [
+          2,
+          52
+        ]
+      },
+      "source_range": [
+        342146,
+        342646
+      ],
+      "fact_summary": "十人乘四龙飞离十万大山进入楚国境内；小龙速度远超成年飞龙；在偏远小镇降落住宿",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0063"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "evidence_id": "evidence:ev-ch0063-002",
+      "source_location": {
+        "chunk_id": "chunk-0063",
+        "source_range": [
+          42,
+          120
+        ]
+      },
+      "source_range": [
+        342146,
+        342646
+      ],
+      "fact_summary": "辰南给小龙吃百年人参并教它喝酒；小龙吞三头猪五头烤全羊十几只烤鹅又喝十几坛酒；次日飞行时醉意未消坠向地面险些摔死",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0063"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "evidence_id": "evidence:ev-ch0063-003",
+      "source_location": {
+        "chunk_id": "chunk-0063",
+        "source_range": [
+          88,
+          104
+        ]
+      },
+      "source_range": [
+        342146,
+        342646
+      ],
+      "fact_summary": "龙舞骂辰南教坏小龙；辰南回嘴叫龙舞做小龙小妹；小龙竟认真点头同意令龙舞气极",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0063"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "uncertainties": [],
+  "rejected_candidates": [
+    {
+      "candidate_id": "rej-ch0063-001",
+      "type": "character",
+      "label": "客栈伙计",
+      "reason": "仅提供住宿服务，无独立剧情功能（Rule 2）"
+    }
+  ],
+  "structured_failures": [],
+  "supports_templates": []
+}

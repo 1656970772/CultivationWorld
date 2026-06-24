@@ -1,0 +1,2243 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0070:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0070",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T16:30:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0070:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [
+        "韩大夫",
+        "韩神医"
+      ],
+      "fact_summary": "韩立能使用天眼术观察法力，也继续练习火弹术；作为神手谷医者，他被马容请去救治中毒的李长老，但自知不擅解罕见剧毒。",
+      "evidence_ids": [
+        "evidence:chunk-0070:001",
+        "evidence:chunk-0070:002",
+        "evidence:chunk-0070:004",
+        "evidence:chunk-0070:005",
+        "evidence:chunk-0070:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        136851,
+        138167
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          136851,
+          138167
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0070:technique:001",
+      "node_type": "technique",
+      "label": "天眼术",
+      "aliases": [],
+      "fact_summary": "天眼术是把法力用于眼部的小技巧，可观察人体内是否有法力及法力深浅；韩立用它看到自身丹田附近白光较浓。",
+      "evidence_ids": [
+        "evidence:chunk-0070:001",
+        "evidence:chunk-0070:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        136851,
+        137181
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          136851,
+          137181
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0070:technique:002",
+      "node_type": "technique",
+      "label": "火弹术",
+      "aliases": [],
+      "fact_summary": "韩立在本 chunk 中继续加紧火弹术练习，希望能熟练用于实战。",
+      "evidence_ids": [
+        "evidence:chunk-0070:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        137265,
+        137347
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137265,
+          137347
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0070:faction:001",
+      "node_type": "faction",
+      "label": "七玄门",
+      "aliases": [],
+      "fact_summary": "七玄门在本 chunk 中被作为韩立所在门派环境提及，韩立认为门中只有自己算半个修仙者，李长老则是门中排行第五的长老。",
+      "evidence_ids": [
+        "evidence:chunk-0070:003",
+        "evidence:chunk-0070:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        137214,
+        137740
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137214,
+          137740
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0070:location:001",
+      "node_type": "location",
+      "label": "神手谷",
+      "aliases": [],
+      "fact_summary": "神手谷是马容曾随李长老见过韩立的地点；本次求医也从谷外树林出口和谷口展开。",
+      "evidence_ids": [
+        "evidence:chunk-0070:005",
+        "evidence:chunk-0070:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        137415,
+        137740
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137415,
+          137740
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0070:character:002",
+      "node_type": "character",
+      "label": "马容",
+      "aliases": [
+        "马荣"
+      ],
+      "fact_summary": "马容是李长老的得意弟子，焦急来神手谷求韩立救治中毒的师父，后又急切拉着韩立赶往李长老住所。",
+      "evidence_ids": [
+        "evidence:chunk-0070:006",
+        "evidence:chunk-0070:008",
+        "evidence:chunk-0070:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        137542,
+        138446
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137542,
+          138446
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0070:character:003",
+      "node_type": "character",
+      "label": "李长老",
+      "aliases": [],
+      "fact_summary": "李长老是七玄门中排行第五的长老、马容的师父；他下山办事时与野狼帮高手打斗，中暗青子后毒发昏迷。",
+      "evidence_ids": [
+        "evidence:chunk-0070:006",
+        "evidence:chunk-0070:007",
+        "evidence:chunk-0070:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        137542,
+        137991
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137542,
+          137991
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0070:faction:002",
+      "node_type": "faction",
+      "label": "野狼帮",
+      "aliases": [],
+      "fact_summary": "野狼帮在本 chunk 中作为与李长老冲突的一方出现，其一名高手与李长老打斗并使用暗青子。",
+      "evidence_ids": [
+        "evidence:chunk-0070:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        137795,
+        137874
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137795,
+          137874
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0070:character:004",
+      "node_type": "character",
+      "label": "野狼帮的一名高手",
+      "aliases": [],
+      "fact_summary": "野狼帮的一名高手与李长老打斗，使李长老中暗青子；马容称李长老随后击毙了对方。",
+      "evidence_ids": [
+        "evidence:chunk-0070:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        137795,
+        137874
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137795,
+          137874
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0070:weapon:001",
+      "node_type": "weapon",
+      "label": "暗青子",
+      "aliases": [],
+      "fact_summary": "暗青子是野狼帮高手打斗中使李长老中毒的一粒暗器或武器，具体毒性来源和构造未说明。",
+      "evidence_ids": [
+        "evidence:chunk-0070:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        137795,
+        137874
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137795,
+          137874
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0070:medicine:001",
+      "node_type": "medicine",
+      "label": "清灵散",
+      "aliases": [],
+      "fact_summary": "清灵散被韩立称为能解百毒的圣药，但他不确定它能否对症解掉李长老所中罕见剧毒。",
+      "evidence_ids": [
+        "evidence:chunk-0070:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        138043,
+        138167
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          138043,
+          138167
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0070:character:005",
+      "node_type": "character",
+      "label": "墨大夫",
+      "aliases": [],
+      "fact_summary": "墨大夫与韩立名为师徒实为对头；韩立的医术和长春功来自墨大夫传授，但两人曾火拼，墨大夫意外死于韩立之手。",
+      "evidence_ids": [
+        "evidence:chunk-0070:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "记忆情绪与执念",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        138449,
+        138614
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          138449,
+          138614
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0070:cultivation_method:001",
+      "node_type": "cultivation_method",
+      "label": "长春功",
+      "aliases": [],
+      "fact_summary": "长春功在韩立回忆中被明确为墨大夫传授给他的修炼内容之一。",
+      "evidence_ids": [
+        "evidence:chunk-0070:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        138449,
+        138614
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          138449,
+          138614
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0070:001",
+      "edge_type": "practices_technique",
+      "source": "node:chunk-0070:character:001",
+      "target": "node:chunk-0070:technique:001",
+      "fact_summary": "韩立使用天眼术观察自身法力分布。",
+      "evidence_ids": [
+        "evidence:chunk-0070:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        137008,
+        137181
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137008,
+          137181
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0070:002",
+      "edge_type": "practices_technique",
+      "source": "node:chunk-0070:character:001",
+      "target": "node:chunk-0070:technique:002",
+      "fact_summary": "韩立继续加紧火弹术练习，目标是熟练用于实战。",
+      "evidence_ids": [
+        "evidence:chunk-0070:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        137265,
+        137347
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137265,
+          137347
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0070:003",
+      "edge_type": "member_of",
+      "source": "node:chunk-0070:character:003",
+      "target": "node:chunk-0070:faction:001",
+      "fact_summary": "李长老是七玄门中排行第五的长老。",
+      "evidence_ids": [
+        "evidence:chunk-0070:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        137542,
+        137740
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137542,
+          137740
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0070:004",
+      "edge_type": "disciple_of",
+      "source": "node:chunk-0070:character:002",
+      "target": "node:chunk-0070:character:003",
+      "fact_summary": "马容是李长老的得意弟子，并表现出很深的师徒感情。",
+      "evidence_ids": [
+        "evidence:chunk-0070:006",
+        "evidence:chunk-0070:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        137542,
+        138446
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137542,
+          138446
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0070:005",
+      "edge_type": "member_of",
+      "source": "node:chunk-0070:character:004",
+      "target": "node:chunk-0070:faction:002",
+      "fact_summary": "与李长老打斗并使用暗青子的人被马容称为野狼帮的一名高手。",
+      "evidence_ids": [
+        "evidence:chunk-0070:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        137795,
+        137874
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137795,
+          137874
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0070:006",
+      "edge_type": "poisoned_by",
+      "source": "node:chunk-0070:character:003",
+      "target": "node:chunk-0070:weapon:001",
+      "fact_summary": "李长老与野狼帮高手打斗时中了对方一粒暗青子，回山后毒发昏迷。",
+      "evidence_ids": [
+        "evidence:chunk-0070:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        137795,
+        137874
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137795,
+          137874
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0070:007",
+      "edge_type": "possesses_medicine",
+      "source": "node:chunk-0070:character:001",
+      "target": "node:chunk-0070:medicine:001",
+      "fact_summary": "韩立拥有一种号称能解百毒的圣药清灵散。",
+      "evidence_ids": [
+        "evidence:chunk-0070:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        138043,
+        138167
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          138043,
+          138167
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0070:008",
+      "edge_type": "taught_method",
+      "source": "node:chunk-0070:character:005",
+      "target": "node:chunk-0070:character:001",
+      "fact_summary": "韩立的长春功和医术来自墨大夫传授，但二人关系名为师徒实为对头。",
+      "evidence_ids": [
+        "evidence:chunk-0070:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        138449,
+        138614
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          138449,
+          138614
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0070:009",
+      "edge_type": "taught_cultivation_method",
+      "source": "node:chunk-0070:character:005",
+      "target": "node:chunk-0070:cultivation_method:001",
+      "fact_summary": "墨大夫曾把长春功传授给韩立。",
+      "evidence_ids": [
+        "evidence:chunk-0070:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        138449,
+        138614
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          138449,
+          138614
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0070:001",
+      "event_type": "technique_use_event",
+      "label": "韩立试用天眼术",
+      "fact_summary": "韩立使用天眼术观察自身法力，看见白光笼罩身体且丹田附近更浓，并判断法力无形无质。",
+      "participants": [
+        "node:chunk-0070:character:001",
+        "node:chunk-0070:technique:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0070:001",
+        "evidence:chunk-0070:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        136851,
+        137181
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          136851,
+          137181
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0070:002",
+      "event_type": "training_event",
+      "label": "韩立继续练习火弹术和其他法术",
+      "fact_summary": "韩立因七玄门缺少可用天眼术观察的修仙对象而失去兴趣，转而继续练习火弹术和其他未学会法术。",
+      "participants": [
+        "node:chunk-0070:character:001",
+        "node:chunk-0070:technique:001",
+        "node:chunk-0070:technique:002",
+        "node:chunk-0070:faction:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0070:003",
+        "evidence:chunk-0070:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        137214,
+        137347
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137214,
+          137347
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0070:003",
+      "event_type": "medical_call_event",
+      "label": "马容求韩立救治李长老",
+      "fact_summary": "谷外钟声引韩立出谷，马容在树林出口求韩立去救治中了剧毒的师父李长老。",
+      "participants": [
+        "node:chunk-0070:character:001",
+        "node:chunk-0070:character:002",
+        "node:chunk-0070:character:003",
+        "node:chunk-0070:location:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0070:005",
+        "evidence:chunk-0070:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        137415,
+        137740
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137415,
+          137740
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0070:004",
+      "event_type": "conflict_event",
+      "label": "李长老中暗青子毒发",
+      "fact_summary": "李长老下山办事时与野狼帮高手打斗，中暗青子后虽击毙对方，回山后毒发昏迷。",
+      "participants": [
+        "node:chunk-0070:character:003",
+        "node:chunk-0070:character:004",
+        "node:chunk-0070:faction:002",
+        "node:chunk-0070:weapon:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0070:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        137795,
+        137874
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137795,
+          137874
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0070:005",
+      "event_type": "decision_event",
+      "label": "韩立评估解毒风险",
+      "fact_summary": "韩立得知其他大夫不敢开药方后，判断自己对罕见剧毒也没有把握，清灵散是否对症仍未知。",
+      "participants": [
+        "node:chunk-0070:character:001",
+        "node:chunk-0070:character:002",
+        "node:chunk-0070:character:003",
+        "node:chunk-0070:medicine:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0070:008",
+        "evidence:chunk-0070:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        137894,
+        138167
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137894,
+          138167
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0070:006",
+      "event_type": "travel_event",
+      "label": "马容带韩立赶往李长老住所",
+      "fact_summary": "马容半架着韩立小跑赶往李长老住处，韩立由此看出马容和李长老师徒情深。",
+      "participants": [
+        "node:chunk-0070:character:001",
+        "node:chunk-0070:character:002",
+        "node:chunk-0070:character:003"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0070:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        138369,
+        138446
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          138369,
+          138446
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0070:007",
+      "event_type": "memory_event",
+      "label": "韩立回想与墨大夫的师徒敌对关系",
+      "fact_summary": "韩立受马容师徒关系触动，想起自己与墨大夫名为师徒实为对头，既敬重其传授医术和长春功，又记得二人火拼及墨大夫死亡。",
+      "participants": [
+        "node:chunk-0070:character:001",
+        "node:chunk-0070:character:005",
+        "node:chunk-0070:cultivation_method:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0070:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "记忆情绪与执念",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        138449,
+        138614
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          138449,
+          138614
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0070:001",
+      "chunk_id": "chunk-0070",
+      "source_range": [
+        136851,
+        137005
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          136851,
+          137005
+        ]
+      },
+      "excerpt": "至于另一种法术“天眼术”，韩立在见识到“火弹术”的不凡之后，对它也怀有很高的期待。\n　　可真正施法以后韩立才明白，这种法术只不过是往眼上使用法力的一种小技巧，根本没有任何的难度可言，很简单的就上手了。\n　　但它的作用却也和它的难易度相符，只是一种用来观察人体内是否拥有法力，以及法力的深厚与否的纯辅助型法术。",
+      "fact_summary": "天眼术是向眼部使用法力的小技巧，能观察人体内是否有法力及法力深浅，难度不高。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0070:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0070:002",
+      "chunk_id": "chunk-0070",
+      "source_range": [
+        137008,
+        137181
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137008,
+          137181
+        ]
+      },
+      "excerpt": "韩立一开始对它倒也是兴致勃勃，不停地往自己双目上使用“天眼术”，然后再用施法后的眼睛观察自己身体的状况，结果看到了一层淡淡的白光笼罩在他身上，而且越是靠近丹田的地方，白光越显得浓厚。\n　　看来这就是所谓的法力了，韩立看到之后，不由的伸手摸了摸白光，可是什么感觉也没有，看来法力是和真气一样，都是无形无质的，也只有在“天眼术”之下，它才能观察出来。",
+      "fact_summary": "韩立用天眼术观察自己，看到白光在丹田附近更浓，并判断法力无形无质、需天眼术才能观察。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0070:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0070:003",
+      "chunk_id": "chunk-0070",
+      "source_range": [
+        137214,
+        137262
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137214,
+          137262
+        ]
+      },
+      "excerpt": "因为整个七玄门也就只有他一人算是半个修仙者，他用“天眼术”要去看谁？总不能整天自恋的老瞅自己吧！",
+      "fact_summary": "韩立认为整个七玄门只有他一人算半个修仙者，因此天眼术在门内缺少观察对象。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0070:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0070:004",
+      "chunk_id": "chunk-0070",
+      "source_range": [
+        137265,
+        137347
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137265,
+          137347
+        ]
+      },
+      "excerpt": "于是韩立除了继续加紧“火弹术”的练习，希望能够熟练的运用到实战中外，又把兴趣转移到了其它几种还未学会的法术上面，开始一点一点的重复练习和实践，希望自己能再有所突破。",
+      "fact_summary": "韩立继续加紧火弹术练习以便实战运用，同时重复练习其他未学会的法术。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0070:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0070:005",
+      "chunk_id": "chunk-0070",
+      "source_range": [
+        137415,
+        137539
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137415,
+          137539
+        ]
+      },
+      "excerpt": "“铛——铛——”一阵沉沉的钟声从谷外传了过来。\n　　韩立皱了下眉头，最近不知怎么了，好像来求医的人忽然间多了起来，并且大多都是断手断脚、刀伤剑伤之类的外伤。\n　　他不敢怠慢，要知道救人如救火，抓起自己事先准备好的医药包裹就出了屋子，直奔谷口处走去。",
+      "fact_summary": "谷外钟声传来，韩立意识到近期求医者增多，多为外伤，于是携医药包裹赶往谷口。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0070:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0070:006",
+      "chunk_id": "chunk-0070",
+      "source_range": [
+        137542,
+        137740
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137542,
+          137740
+        ]
+      },
+      "excerpt": "在谷外的树林出口处，韩立就见到一名身穿锦衣的高级弟子，正焦急的在大钟下走来走去，如同热锅上的蚂蚁一样急躁。\n　　他一见到韩立，立刻大喜的急忙凑了上来：\n　　“韩大夫，你可来了，我师父中了剧毒，眼看要不行了，麻烦你赶快去看看，看能否解掉此毒。”\n　　这个人一靠近，韩立才发现此人倒也面熟，见过几次，是门中排行第五的李长老的得意弟子马容，曾随他的师父李长老来神手谷见过韩立几面，因此倒也算是半个熟人。",
+      "fact_summary": "马容在谷外树林出口焦急等韩立，称师父李长老中了剧毒将危，并被叙述为李长老得意弟子。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0070:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0070:007",
+      "chunk_id": "chunk-0070",
+      "source_range": [
+        137795,
+        137874
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137795,
+          137874
+        ]
+      },
+      "excerpt": "“是的，我师傅在下山办事时，和野狼帮的一名高手打斗起来，结果不慎中了对方一粒暗青子，刚开始还没在意，甚至还击毙了对方。但谁知一回山中，立刻就毒发昏迷不醒了。”",
+      "fact_summary": "马容说明李长老下山办事时与野狼帮高手打斗，中暗青子后虽击毙对方，回山后却毒发昏迷。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0070:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0070:008",
+      "chunk_id": "chunk-0070",
+      "source_range": [
+        137894,
+        137991
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137894,
+          137991
+        ]
+      },
+      "excerpt": "“当然找过，要是普通中毒的话，我也不会来麻烦韩神医了。那几个庸医除了知道我师父是中了一种不常见的毒外，就什么也不知了，连个药方都不敢开。”马荣说到这里，一脸的鄙夷神色，看来对其他的大夫大为不满。",
+      "fact_summary": "马荣说其他大夫只知李长老中了不常见的毒，不敢开药方，因此才来求助韩立。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0070:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0070:009",
+      "chunk_id": "chunk-0070",
+      "source_range": [
+        138043,
+        138167
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          138043,
+          138167
+        ]
+      },
+      "excerpt": "说实话，他对解毒实在不怎么在行，要说治个内伤外伤的话，他依仗着几种好药，还有几分的把握。如果让他解某种罕见的巨毒，他心里可就没了谱。\n　　要知道他虽然也有一种能解百毒的圣药“清灵散”，但天底下带毒的东西多不胜数，谁知道“清灵散”是否能对症解掉此毒？",
+      "fact_summary": "韩立心知自己不擅解罕见剧毒，虽有号称能解百毒的清灵散，也不确定是否对症。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0070:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0070:010",
+      "chunk_id": "chunk-0070",
+      "source_range": [
+        138369,
+        138446
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          138369,
+          138446
+        ]
+      },
+      "excerpt": "就在韩立仔细琢磨对策之时，马荣几乎是半架着韩立一路小跑，紧扯着他的衣袖往李长老的住处奔去。\n　　看着他风风火火的样子，韩立就知他们师徒间的感情还真的很深。",
+      "fact_summary": "马荣急切半架着韩立赶往李长老住所，韩立据此判断马荣师徒感情很深。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0070:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0070:011",
+      "chunk_id": "chunk-0070",
+      "source_range": [
+        138449,
+        138614
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          138449,
+          138614
+        ]
+      },
+      "excerpt": "韩立心中有些黯然了，因为他想到了自己和墨大夫之间名为师徒实为对头的关系，要是他们之间能像马荣师徒感情这么和睦，那就好了。\n　　在他心底深处，其实一直对墨大夫还是抱有几分敬意的，毕竟他一身不弱的医术和长春功都是来自于对方的传授。\n　　但只可惜造化弄人，上天注定他二人无法共存于世，还让他们火拼了一场，并让墨大夫意外死在了自己的手上。",
+      "fact_summary": "韩立被马荣师徒关系触动，想起自己与墨大夫名为师徒实为对头；他仍敬重墨大夫传授医术和长春功，但二人曾火拼并导致墨大夫死于韩立之手。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "记忆情绪与执念",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0070:011"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "角色修炼历程",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "功法术法神通",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "境界提升与功法分析",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "战斗与保命机制",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "势力设定",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "建筑设施与场所功能",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "世界观设定",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "冲突事件分析",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "武器分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "丹药分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "记忆情绪与执念",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "动态事件与机会点",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "有限视角与叙事日志",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "事件因果链（长程因果图）",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0070:001",
+      "kind": "ma_rong_name_variant",
+      "fact_summary": "同一求医弟子在文本中先写作“马容”，后写作“马荣”；本输出按同一人物处理并把“马荣”列为 alias，但姓名正字需后续复核。",
+      "evidence_ids": [
+        "evidence:chunk-0070:006",
+        "evidence:chunk-0070:008",
+        "evidence:chunk-0070:010"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        137542,
+        138446
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137542,
+          138446
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0070:002",
+      "kind": "poison_mechanism_unknown",
+      "fact_summary": "李长老所中之毒只被描述为不常见、来自暗青子并导致昏迷，毒名、成分、发作机制和解法未说明。",
+      "evidence_ids": [
+        "evidence:chunk-0070:007",
+        "evidence:chunk-0070:008"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        137795,
+        137991
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137795,
+          137991
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0070:003",
+      "kind": "qingling_san_effectiveness_unknown",
+      "fact_summary": "清灵散被称为能解百毒，但韩立明确不确定它能否对症解掉李长老所中剧毒，不能写成已确认解药。",
+      "evidence_ids": [
+        "evidence:chunk-0070:009"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        138043,
+        138167
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          138043,
+          138167
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0070:004",
+      "kind": "tianyan_scope_limited",
+      "fact_summary": "天眼术的作用在本 chunk 中只限观察人体法力有无与深浅，未说明可识破隐身、阵法、妖兽或其他外部灵力现象。",
+      "evidence_ids": [
+        "evidence:chunk-0070:001",
+        "evidence:chunk-0070:002"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        136851,
+        137181
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          136851,
+          137181
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0070:001",
+      "candidate": "其他大夫",
+      "reason": "其他大夫只作为无法治疗李长老中毒的背景群体出现，未具名、无独立行动链，不建角色节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        137894,
+        137991
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137894,
+          137991
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0070:002",
+      "candidate": "求医的人",
+      "reason": "近期求医者增多只是背景说明，没有具名人物、具体事件闭合或后续关系。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        137415,
+        137539
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137415,
+          137539
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0070:003",
+      "candidate": "医药包裹",
+      "reason": "医药包裹只是韩立出诊时携带的普通泛指物品，未给专名、内容清单或关键功能，不建 tool 节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        137415,
+        137539
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          137415,
+          137539
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0070:004",
+      "candidate": "几种好药",
+      "reason": "韩立笼统提到几种好药作为内外伤依仗，未给专属名称；除已具名的清灵散外不另建药物节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        138043,
+        138167
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0070",
+        "source_path": "intermediate/chunks/chunk-0070.txt",
+        "source_range": [
+          138043,
+          138167
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

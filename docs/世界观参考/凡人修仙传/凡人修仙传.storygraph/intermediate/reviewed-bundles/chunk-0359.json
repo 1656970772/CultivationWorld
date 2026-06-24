@@ -1,0 +1,3202 @@
+{
+  "chunk_id": "chunk-0359",
+  "source_range": [
+    910514,
+    913413
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "task_packet_id": "chunk-0359:comprehensive_extraction:attempt-001",
+      "chunk_id": "chunk-0359",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "produced_at": "2026-06-23T14:30:00+08:00",
+      "extracted_nodes": [
+        {
+          "id": "node:chunk-0359:character:001",
+          "node_type": "character",
+          "label": "韩立",
+          "aliases": [
+            "韩道友"
+          ],
+          "fact_summary": "韩立到星尘阁六层购买丹方和成套法器，辨认丹方、查看红线遁光针，并能同时驱使十三根飞针。",
+          "evidence_ids": [
+            "evidence:chunk-0359:002",
+            "evidence:chunk-0359:003",
+            "evidence:chunk-0359:004",
+            "evidence:chunk-0359:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            910868,
+            913066
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              910868,
+              913066
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0359:character:002",
+          "node_type": "character",
+          "label": "蓝夫人",
+          "aliases": [
+            "蓝姨",
+            "妇人"
+          ],
+          "fact_summary": "蓝夫人把韩立带到星尘阁六层，交给少女招待购买丹方和成套法器。",
+          "evidence_ids": [
+            "evidence:chunk-0359:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            910868,
+            910914
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              910868,
+              910914
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0359:character:003",
+          "node_type": "character",
+          "label": "秀儿",
+          "aliases": [
+            "少女",
+            "六层的掌柜"
+          ],
+          "fact_summary": "秀儿是星尘阁六层掌柜，当前 chunk 明示她是没有法力的凡人少女，并负责接待韩立交易。",
+          "evidence_ids": [
+            "evidence:chunk-0359:001",
+            "evidence:chunk-0359:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            910665,
+            910914
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              910665,
+              910914
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0359:facility:001",
+          "node_type": "facility",
+          "label": "星尘阁六层",
+          "aliases": [
+            "贵阁",
+            "六层"
+          ],
+          "fact_summary": "星尘阁六层用于接待韩立购买丹方和成套法器，并由秀儿负责交易。",
+          "evidence_ids": [
+            "evidence:chunk-0359:001",
+            "evidence:chunk-0359:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            910665,
+            910914
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              910665,
+              910914
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0359:formula:001",
+          "node_type": "formula",
+          "label": "聚灵丹古方",
+          "aliases": [
+            "聚灵丹"
+          ],
+          "fact_summary": "韩立在两张丹方中认出聚灵丹古方，且此古方对他已无用。",
+          "evidence_ids": [
+            "evidence:chunk-0359:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            911751,
+            911792
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              911751,
+              911792
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0359:formula:002",
+          "node_type": "formula",
+          "label": "真元丹丹方",
+          "aliases": [
+            "真元丹"
+          ],
+          "fact_summary": "真元丹丹方不是古方，药材除年份久外较容易配齐，适合韩立使用。",
+          "evidence_ids": [
+            "evidence:chunk-0359:004",
+            "evidence:chunk-0359:009",
+            "evidence:chunk-0359:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            911792,
+            913276
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              911792,
+              913276
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0359:artifact:001",
+          "node_type": "artifact",
+          "label": "红线遁光针",
+          "aliases": [
+            "飞针",
+            "这套飞针"
+          ],
+          "fact_summary": "红线遁光针是一套十三枚火红细针法器，必须同时祭出十三根才能催动，韩立现场证明自己能驱使。",
+          "evidence_ids": [
+            "evidence:chunk-0359:005",
+            "evidence:chunk-0359:006",
+            "evidence:chunk-0359:007",
+            "evidence:chunk-0359:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            911953,
+            913066
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              911953,
+              913066
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0359:rule:001",
+          "node_type": "rule",
+          "label": "红线遁光针驱使限制",
+          "aliases": [
+            "同时祭出十三根飞针"
+          ],
+          "fact_summary": "红线遁光针没有子母之分，使用者必须同时祭出十三根飞针，否则无法催动。",
+          "evidence_ids": [
+            "evidence:chunk-0359:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            912773,
+            912819
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              912773,
+              912819
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0359:material:001",
+          "node_type": "material",
+          "label": "千年灵药",
+          "aliases": [
+            "千年灵草"
+          ],
+          "fact_summary": "韩立在交易末尾询问星尘阁对千年灵药的收购方式，当前 chunk 未展示具体灵药。",
+          "evidence_ids": [
+            "evidence:chunk-0359:011"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            913393,
+            913409
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              913393,
+              913409
+            ]
+          }
+        }
+      ],
+      "extracted_edges": [
+        {
+          "id": "edge:chunk-0359:001",
+          "edge_type": "introduces_customer_to",
+          "source": "node:chunk-0359:character:002",
+          "target": "node:chunk-0359:character:003",
+          "fact_summary": "蓝夫人将来买丹方和成套法器的韩立带上六层并交给秀儿招待。",
+          "evidence_ids": [
+            "evidence:chunk-0359:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            910868,
+            910914
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              910868,
+              910914
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0359:002",
+          "edge_type": "manages_trade_at",
+          "source": "node:chunk-0359:character:003",
+          "target": "node:chunk-0359:facility:001",
+          "fact_summary": "秀儿作为六层掌柜负责在星尘阁六层接待韩立交易。",
+          "evidence_ids": [
+            "evidence:chunk-0359:001",
+            "evidence:chunk-0359:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            910665,
+            910914
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              910665,
+              910914
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0359:003",
+          "edge_type": "requires_operation_rule",
+          "source": "node:chunk-0359:artifact:001",
+          "target": "node:chunk-0359:rule:001",
+          "fact_summary": "红线遁光针必须按同时祭出十三根飞针的限制来驱使。",
+          "evidence_ids": [
+            "evidence:chunk-0359:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            912773,
+            912819
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              912773,
+              912819
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0359:004",
+          "edge_type": "suitable_for",
+          "source": "node:chunk-0359:formula:002",
+          "target": "node:chunk-0359:character:001",
+          "fact_summary": "真元丹丹方所需药材较容易配齐，正适合韩立使用。",
+          "evidence_ids": [
+            "evidence:chunk-0359:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            911792,
+            911847
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              911792,
+              911847
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0359:005",
+          "edge_type": "priced_with",
+          "source": "node:chunk-0359:artifact:001",
+          "target": "node:chunk-0359:formula:002",
+          "fact_summary": "红线遁光针与真元丹丹方一起报价四千灵石，其中飞针二千五百、丹方一千五百。",
+          "evidence_ids": [
+            "evidence:chunk-0359:009",
+            "evidence:chunk-0359:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            913166,
+            913276
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              913166,
+              913276
+            ]
+          }
+        }
+      ],
+      "extracted_events": [
+        {
+          "id": "event:chunk-0359:001",
+          "event_type": "trade_setup_event",
+          "label": "蓝夫人带韩立上六层交易",
+          "fact_summary": "蓝夫人把来买丹方和成套法器的韩立带到星尘阁六层，并交给秀儿招待。",
+          "participants": [
+            "node:chunk-0359:character:001",
+            "node:chunk-0359:character:002",
+            "node:chunk-0359:character:003",
+            "node:chunk-0359:facility:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0359:001",
+            "evidence:chunk-0359:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            910665,
+            910914
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              910665,
+              910914
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0359:002",
+          "event_type": "formula_appraisal_event",
+          "label": "韩立辨认聚灵丹古方与真元丹丹方",
+          "fact_summary": "韩立查看两枚玉简后，判断聚灵丹古方对自己无用，而真元丹丹方药材较易配齐且适合自己。",
+          "participants": [
+            "node:chunk-0359:character:001",
+            "node:chunk-0359:formula:001",
+            "node:chunk-0359:formula:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0359:003",
+            "evidence:chunk-0359:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            911751,
+            911847
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              911751,
+              911847
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0359:003",
+          "event_type": "artifact_appraisal_event",
+          "label": "韩立查看红线遁光针",
+          "fact_summary": "韩立在大玉匣中看到十三枚红色飞针，并得知这套飞针名为红线遁光针。",
+          "participants": [
+            "node:chunk-0359:character:001",
+            "node:chunk-0359:character:003",
+            "node:chunk-0359:artifact:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0359:005",
+            "evidence:chunk-0359:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            911953,
+            912581
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              911953,
+              912581
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0359:004",
+          "event_type": "restriction_disclosure_event",
+          "label": "秀儿说明红线遁光针驱使限制",
+          "fact_summary": "秀儿说明红线遁光针不同于一般成套法器，必须同时祭出十三根飞针才能催动。",
+          "participants": [
+            "node:chunk-0359:character:003",
+            "node:chunk-0359:artifact:001",
+            "node:chunk-0359:rule:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0359:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            912773,
+            912819
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              912773,
+              912819
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0359:005",
+          "event_type": "artifact_demonstration_event",
+          "label": "韩立同时驱使十三枚飞针",
+          "fact_summary": "韩立同时驱使所有飞针，使其化为红线并围绕身边形成纤细红色丝网，证明自己能使用该法器。",
+          "participants": [
+            "node:chunk-0359:character:001",
+            "node:chunk-0359:artifact:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0359:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            913001,
+            913066
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              913001,
+              913066
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0359:006",
+          "event_type": "price_quote_event",
+          "label": "秀儿报价真元丹丹方和红线遁光针",
+          "fact_summary": "确认韩立能使用红线遁光针后，秀儿报出真元丹丹方和飞针合计四千灵石的价格。",
+          "participants": [
+            "node:chunk-0359:character:001",
+            "node:chunk-0359:character:003",
+            "node:chunk-0359:artifact:001",
+            "node:chunk-0359:formula:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0359:009",
+            "evidence:chunk-0359:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            913166,
+            913276
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              913166,
+              913276
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0359:007",
+          "event_type": "resource_inquiry_event",
+          "label": "韩立询问千年灵药收购",
+          "fact_summary": "韩立在高价交易后转而询问星尘阁如何收购千年灵药。",
+          "participants": [
+            "node:chunk-0359:character:001",
+            "node:chunk-0359:facility:001",
+            "node:chunk-0359:material:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0359:011"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            913393,
+            913409
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              913393,
+              913409
+            ]
+          }
+        }
+      ],
+      "extracted_evidence": [
+        {
+          "evidence_id": "evidence:chunk-0359:001",
+          "chunk_id": "chunk-0359",
+          "source_range": [
+            910665,
+            910699
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              910665,
+              910699
+            ]
+          },
+          "excerpt": "六层的掌柜竟是这么一个丝毫法力都没有的凡人少女，这太出乎韩立意料了。",
+          "fact_summary": "韩立发现星尘阁六层掌柜是没有法力的凡人少女。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0359:001"
+        },
+        {
+          "evidence_id": "evidence:chunk-0359:002",
+          "chunk_id": "chunk-0359",
+          "source_range": [
+            910868,
+            910914
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              910868,
+              910914
+            ]
+          },
+          "excerpt": "是啊，这位韩道友要来买丹方，和我们上次收到的那件成套法器。所以我将人带上六层，交给你招待了。",
+          "fact_summary": "蓝夫人说明韩立来买丹方和成套法器，并把他交给六层少女招待。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0359:002"
+        },
+        {
+          "evidence_id": "evidence:chunk-0359:003",
+          "chunk_id": "chunk-0359",
+          "source_range": [
+            911751,
+            911792
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              911751,
+              911792
+            ]
+          },
+          "excerpt": "这两个丹方，其中一个竟是那雷万鹤提供过的“聚灵丹”古方，对其来说已经没有什么用了。",
+          "fact_summary": "韩立辨认出两张丹方之一是雷万鹤曾提供过的聚灵丹古方，对自己已无用。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0359:003"
+        },
+        {
+          "evidence_id": "evidence:chunk-0359:004",
+          "chunk_id": "chunk-0359",
+          "source_range": [
+            911792,
+            911847
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              911792,
+              911847
+            ]
+          },
+          "excerpt": "另一张并不是古方，而是种叫“真元丹”的丹方，炼制所需要的药材除了年份久点外，倒是很容易配齐的，正好挺适合他用。",
+          "fact_summary": "另一张是真元丹丹方，所需药材除年份较久外容易配齐，适合韩立使用。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0359:004"
+        },
+        {
+          "evidence_id": "evidence:chunk-0359:005",
+          "chunk_id": "chunk-0359",
+          "source_range": [
+            911953,
+            912019
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              911953,
+              912019
+            ]
+          },
+          "excerpt": "结果匣中的法器，让韩立看了之后不禁一怔，因为玉匣中竟然摆放了十三枚红光灿灿的细针，每根细针都只有寸许来长，但通体火红，隐有荧光流动。",
+          "fact_summary": "大玉匣中放着十三枚寸许长、通体火红且有荧光流动的细针法器。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0359:005"
+        },
+        {
+          "evidence_id": "evidence:chunk-0359:006",
+          "chunk_id": "chunk-0359",
+          "source_range": [
+            912500,
+            912581
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              912500,
+              912581
+            ]
+          },
+          "excerpt": "“这位姑娘，这套飞针有名称吗？”韩立心里惊喜异常，但表面上还是不动声色的向少女忽然问道。\n　　“红线遁光针！”少女听到韩立如此一问，将手中的书本放下，淡然的说道。",
+          "fact_summary": "少女告知这套飞针名为红线遁光针。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0359:006"
+        },
+        {
+          "evidence_id": "evidence:chunk-0359:007",
+          "chunk_id": "chunk-0359",
+          "source_range": [
+            912773,
+            912819
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              912773,
+              912819
+            ]
+          },
+          "excerpt": "它们可没有子母之分，要想驱使它们，就必须同时将十三根飞针一齐祭出才行，否则是无法催动它们的。",
+          "fact_summary": "红线遁光针没有子母之分，必须同时祭出十三根飞针才能驱使。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0359:007"
+        },
+        {
+          "evidence_id": "evidence:chunk-0359:008",
+          "chunk_id": "chunk-0359",
+          "source_range": [
+            913001,
+            913066
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              913001,
+              913066
+            ]
+          },
+          "excerpt": "所有的飞针同时漂浮了起来。接着，它们就化为了十余道肉眼难见的红线，围绕韩立身边飞速穿梭了起来，竟刹那间幻化出了一张纤细的红色丝网。",
+          "fact_summary": "韩立同时驱使十三枚飞针，使其化为肉眼难见的红线并幻化红色丝网。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0359:008"
+        },
+        {
+          "evidence_id": "evidence:chunk-0359:009",
+          "chunk_id": "chunk-0359",
+          "source_range": [
+            913166,
+            913197
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              913166,
+              913197
+            ]
+          },
+          "excerpt": "既然阁下能用，当然可以了！加上那真元丹的丹方，一共四千块灵石。",
+          "fact_summary": "少女确认韩立能用红线遁光针后，同意出售并报出真元丹丹方加飞针合计四千灵石。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0359:009"
+        },
+        {
+          "evidence_id": "evidence:chunk-0359:010",
+          "chunk_id": "chunk-0359",
+          "source_range": [
+            913264,
+            913276
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              913264,
+              913276
+            ]
+          },
+          "excerpt": "丹方一千五，飞针两千五！",
+          "fact_summary": "少女分项报价：丹方一千五百灵石，飞针两千五百灵石。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0359:010"
+        },
+        {
+          "evidence_id": "evidence:chunk-0359:011",
+          "chunk_id": "chunk-0359",
+          "source_range": [
+            913393,
+            913409
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              913393,
+              913409
+            ]
+          },
+          "excerpt": "不知贵阁，对千年灵药如何收购的？",
+          "fact_summary": "韩立在报价后询问星尘阁如何收购千年灵药。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0359:011"
+        }
+      ],
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "uncertainties": [
+        {
+          "id": "uncertainty:chunk-0359:001",
+          "kind": "identity_context_missing",
+          "fact_summary": "本 chunk 只说明秀儿是星尘阁六层掌柜且没有法力，未说明她为何以凡人身份掌管六层或与星尘阁的正式身份关系。",
+          "evidence_ids": [
+            "evidence:chunk-0359:001",
+            "evidence:chunk-0359:002"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            910665,
+            910914
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              910665,
+              910914
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0359:002",
+          "kind": "artifact_details_missing",
+          "fact_summary": "红线遁光针的具体炼制材料、品阶、来历和完整威能未在本 chunk 明示，只能确认数量、形态、名称与驱使限制。",
+          "evidence_ids": [
+            "evidence:chunk-0359:005",
+            "evidence:chunk-0359:006",
+            "evidence:chunk-0359:007"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            911953,
+            912819
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              911953,
+              912819
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0359:003",
+          "kind": "resource_trade_outcome_missing",
+          "fact_summary": "韩立只询问千年灵药收购方式，本 chunk 尚未明示是否拿出千年灵药或达成交易。",
+          "evidence_ids": [
+            "evidence:chunk-0359:011"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            913393,
+            913409
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              913393,
+              913409
+            ]
+          }
+        }
+      ],
+      "rejected_candidates": [
+        {
+          "id": "rejected:chunk-0359:001",
+          "candidate": "年轻的女修士",
+          "reason": "她只负责把玉匣送入六层并退出，没有独立决策、冲突、资源归属或后续悬念；不单独建节点。",
+          "evidence_ids": [
+            "evidence:chunk-0359:005"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            911953,
+            912019
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              911953,
+              912019
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0359:002",
+          "candidate": "五层其他客人",
+          "reason": "仅为蓝夫人下楼的可能性说明，当前 chunk 没有具体角色、行动或交易事实。",
+          "evidence_ids": [
+            "evidence:chunk-0359:002"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            910868,
+            910914
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0359",
+            "source_path": "intermediate/chunks/chunk-0359.txt",
+            "source_range": [
+              910868,
+              910914
+            ]
+          }
+        }
+      ],
+      "structured_failures": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0359/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "id": "node:chunk-0359:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [
+        "韩道友"
+      ],
+      "fact_summary": "韩立到星尘阁六层购买丹方和成套法器，辨认丹方、查看红线遁光针，并能同时驱使十三根飞针。",
+      "evidence_ids": [
+        "evidence:chunk-0359:002",
+        "evidence:chunk-0359:003",
+        "evidence:chunk-0359:004",
+        "evidence:chunk-0359:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        910868,
+        913066
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          910868,
+          913066
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0359:character:002",
+      "node_type": "character",
+      "label": "蓝夫人",
+      "aliases": [
+        "蓝姨",
+        "妇人"
+      ],
+      "fact_summary": "蓝夫人把韩立带到星尘阁六层，交给少女招待购买丹方和成套法器。",
+      "evidence_ids": [
+        "evidence:chunk-0359:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        910868,
+        910914
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          910868,
+          910914
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0359:character:003",
+      "node_type": "character",
+      "label": "秀儿",
+      "aliases": [
+        "少女",
+        "六层的掌柜"
+      ],
+      "fact_summary": "秀儿是星尘阁六层掌柜，当前 chunk 明示她是没有法力的凡人少女，并负责接待韩立交易。",
+      "evidence_ids": [
+        "evidence:chunk-0359:001",
+        "evidence:chunk-0359:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        910665,
+        910914
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          910665,
+          910914
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0359:facility:001",
+      "node_type": "facility",
+      "label": "星尘阁六层",
+      "aliases": [
+        "贵阁",
+        "六层"
+      ],
+      "fact_summary": "星尘阁六层用于接待韩立购买丹方和成套法器，并由秀儿负责交易。",
+      "evidence_ids": [
+        "evidence:chunk-0359:001",
+        "evidence:chunk-0359:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        910665,
+        910914
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          910665,
+          910914
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0359:formula:001",
+      "node_type": "formula",
+      "label": "聚灵丹古方",
+      "aliases": [
+        "聚灵丹"
+      ],
+      "fact_summary": "韩立在两张丹方中认出聚灵丹古方，且此古方对他已无用。",
+      "evidence_ids": [
+        "evidence:chunk-0359:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        911751,
+        911792
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          911751,
+          911792
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0359:formula:002",
+      "node_type": "formula",
+      "label": "真元丹丹方",
+      "aliases": [
+        "真元丹"
+      ],
+      "fact_summary": "真元丹丹方不是古方，药材除年份久外较容易配齐，适合韩立使用。",
+      "evidence_ids": [
+        "evidence:chunk-0359:004",
+        "evidence:chunk-0359:009",
+        "evidence:chunk-0359:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        911792,
+        913276
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          911792,
+          913276
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0359:artifact:001",
+      "node_type": "artifact",
+      "label": "红线遁光针",
+      "aliases": [
+        "飞针",
+        "这套飞针"
+      ],
+      "fact_summary": "红线遁光针是一套十三枚火红细针法器，必须同时祭出十三根才能催动，韩立现场证明自己能驱使。",
+      "evidence_ids": [
+        "evidence:chunk-0359:005",
+        "evidence:chunk-0359:006",
+        "evidence:chunk-0359:007",
+        "evidence:chunk-0359:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        911953,
+        913066
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          911953,
+          913066
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0359:rule:001",
+      "node_type": "rule",
+      "label": "红线遁光针驱使限制",
+      "aliases": [
+        "同时祭出十三根飞针"
+      ],
+      "fact_summary": "红线遁光针没有子母之分，使用者必须同时祭出十三根飞针，否则无法催动。",
+      "evidence_ids": [
+        "evidence:chunk-0359:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        912773,
+        912819
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          912773,
+          912819
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0359:material:001",
+      "node_type": "material",
+      "label": "千年灵药",
+      "aliases": [
+        "千年灵草"
+      ],
+      "fact_summary": "韩立在交易末尾询问星尘阁对千年灵药的收购方式，当前 chunk 未展示具体灵药。",
+      "evidence_ids": [
+        "evidence:chunk-0359:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        913393,
+        913409
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          913393,
+          913409
+        ]
+      }
+    }
+  ],
+  "normalized_edges": [
+    {
+      "id": "edge:chunk-0359:001",
+      "edge_type": "introduces_customer_to",
+      "source": "node:chunk-0359:character:002",
+      "target": "node:chunk-0359:character:003",
+      "fact_summary": "蓝夫人将来买丹方和成套法器的韩立带上六层并交给秀儿招待。",
+      "evidence_ids": [
+        "evidence:chunk-0359:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        910868,
+        910914
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          910868,
+          910914
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0359:002",
+      "edge_type": "manages_trade_at",
+      "source": "node:chunk-0359:character:003",
+      "target": "node:chunk-0359:facility:001",
+      "fact_summary": "秀儿作为六层掌柜负责在星尘阁六层接待韩立交易。",
+      "evidence_ids": [
+        "evidence:chunk-0359:001",
+        "evidence:chunk-0359:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        910665,
+        910914
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          910665,
+          910914
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0359:003",
+      "edge_type": "requires_operation_rule",
+      "source": "node:chunk-0359:artifact:001",
+      "target": "node:chunk-0359:rule:001",
+      "fact_summary": "红线遁光针必须按同时祭出十三根飞针的限制来驱使。",
+      "evidence_ids": [
+        "evidence:chunk-0359:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        912773,
+        912819
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          912773,
+          912819
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0359:004",
+      "edge_type": "suitable_for",
+      "source": "node:chunk-0359:formula:002",
+      "target": "node:chunk-0359:character:001",
+      "fact_summary": "真元丹丹方所需药材较容易配齐，正适合韩立使用。",
+      "evidence_ids": [
+        "evidence:chunk-0359:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        911792,
+        911847
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          911792,
+          911847
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0359:005",
+      "edge_type": "priced_with",
+      "source": "node:chunk-0359:artifact:001",
+      "target": "node:chunk-0359:formula:002",
+      "fact_summary": "红线遁光针与真元丹丹方一起报价四千灵石，其中飞针二千五百、丹方一千五百。",
+      "evidence_ids": [
+        "evidence:chunk-0359:009",
+        "evidence:chunk-0359:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        913166,
+        913276
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          913166,
+          913276
+        ]
+      }
+    }
+  ],
+  "normalized_events": [
+    {
+      "id": "event:chunk-0359:001",
+      "event_type": "trade_setup_event",
+      "label": "蓝夫人带韩立上六层交易",
+      "fact_summary": "蓝夫人把来买丹方和成套法器的韩立带到星尘阁六层，并交给秀儿招待。",
+      "participants": [
+        "node:chunk-0359:character:001",
+        "node:chunk-0359:character:002",
+        "node:chunk-0359:character:003",
+        "node:chunk-0359:facility:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0359:001",
+        "evidence:chunk-0359:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        910665,
+        910914
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          910665,
+          910914
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0359:002",
+      "event_type": "formula_appraisal_event",
+      "label": "韩立辨认聚灵丹古方与真元丹丹方",
+      "fact_summary": "韩立查看两枚玉简后，判断聚灵丹古方对自己无用，而真元丹丹方药材较易配齐且适合自己。",
+      "participants": [
+        "node:chunk-0359:character:001",
+        "node:chunk-0359:formula:001",
+        "node:chunk-0359:formula:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0359:003",
+        "evidence:chunk-0359:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        911751,
+        911847
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          911751,
+          911847
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0359:003",
+      "event_type": "artifact_appraisal_event",
+      "label": "韩立查看红线遁光针",
+      "fact_summary": "韩立在大玉匣中看到十三枚红色飞针，并得知这套飞针名为红线遁光针。",
+      "participants": [
+        "node:chunk-0359:character:001",
+        "node:chunk-0359:character:003",
+        "node:chunk-0359:artifact:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0359:005",
+        "evidence:chunk-0359:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        911953,
+        912581
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          911953,
+          912581
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0359:004",
+      "event_type": "restriction_disclosure_event",
+      "label": "秀儿说明红线遁光针驱使限制",
+      "fact_summary": "秀儿说明红线遁光针不同于一般成套法器，必须同时祭出十三根飞针才能催动。",
+      "participants": [
+        "node:chunk-0359:character:003",
+        "node:chunk-0359:artifact:001",
+        "node:chunk-0359:rule:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0359:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        912773,
+        912819
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          912773,
+          912819
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0359:005",
+      "event_type": "artifact_demonstration_event",
+      "label": "韩立同时驱使十三枚飞针",
+      "fact_summary": "韩立同时驱使所有飞针，使其化为红线并围绕身边形成纤细红色丝网，证明自己能使用该法器。",
+      "participants": [
+        "node:chunk-0359:character:001",
+        "node:chunk-0359:artifact:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0359:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        913001,
+        913066
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          913001,
+          913066
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0359:006",
+      "event_type": "price_quote_event",
+      "label": "秀儿报价真元丹丹方和红线遁光针",
+      "fact_summary": "确认韩立能使用红线遁光针后，秀儿报出真元丹丹方和飞针合计四千灵石的价格。",
+      "participants": [
+        "node:chunk-0359:character:001",
+        "node:chunk-0359:character:003",
+        "node:chunk-0359:artifact:001",
+        "node:chunk-0359:formula:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0359:009",
+        "evidence:chunk-0359:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        913166,
+        913276
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          913166,
+          913276
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0359:007",
+      "event_type": "resource_inquiry_event",
+      "label": "韩立询问千年灵药收购",
+      "fact_summary": "韩立在高价交易后转而询问星尘阁如何收购千年灵药。",
+      "participants": [
+        "node:chunk-0359:character:001",
+        "node:chunk-0359:facility:001",
+        "node:chunk-0359:material:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0359:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        913393,
+        913409
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          913393,
+          913409
+        ]
+      }
+    }
+  ],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0359:001",
+      "chunk_id": "chunk-0359",
+      "source_range": [
+        910665,
+        910699
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          910665,
+          910699
+        ]
+      },
+      "excerpt": "六层的掌柜竟是这么一个丝毫法力都没有的凡人少女，这太出乎韩立意料了。",
+      "fact_summary": "韩立发现星尘阁六层掌柜是没有法力的凡人少女。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0359:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0359:002",
+      "chunk_id": "chunk-0359",
+      "source_range": [
+        910868,
+        910914
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          910868,
+          910914
+        ]
+      },
+      "excerpt": "是啊，这位韩道友要来买丹方，和我们上次收到的那件成套法器。所以我将人带上六层，交给你招待了。",
+      "fact_summary": "蓝夫人说明韩立来买丹方和成套法器，并把他交给六层少女招待。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0359:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0359:003",
+      "chunk_id": "chunk-0359",
+      "source_range": [
+        911751,
+        911792
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          911751,
+          911792
+        ]
+      },
+      "excerpt": "这两个丹方，其中一个竟是那雷万鹤提供过的“聚灵丹”古方，对其来说已经没有什么用了。",
+      "fact_summary": "韩立辨认出两张丹方之一是雷万鹤曾提供过的聚灵丹古方，对自己已无用。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0359:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0359:004",
+      "chunk_id": "chunk-0359",
+      "source_range": [
+        911792,
+        911847
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          911792,
+          911847
+        ]
+      },
+      "excerpt": "另一张并不是古方，而是种叫“真元丹”的丹方，炼制所需要的药材除了年份久点外，倒是很容易配齐的，正好挺适合他用。",
+      "fact_summary": "另一张是真元丹丹方，所需药材除年份较久外容易配齐，适合韩立使用。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0359:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0359:005",
+      "chunk_id": "chunk-0359",
+      "source_range": [
+        911953,
+        912019
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          911953,
+          912019
+        ]
+      },
+      "excerpt": "结果匣中的法器，让韩立看了之后不禁一怔，因为玉匣中竟然摆放了十三枚红光灿灿的细针，每根细针都只有寸许来长，但通体火红，隐有荧光流动。",
+      "fact_summary": "大玉匣中放着十三枚寸许长、通体火红且有荧光流动的细针法器。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0359:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0359:006",
+      "chunk_id": "chunk-0359",
+      "source_range": [
+        912500,
+        912581
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          912500,
+          912581
+        ]
+      },
+      "excerpt": "“这位姑娘，这套飞针有名称吗？”韩立心里惊喜异常，但表面上还是不动声色的向少女忽然问道。\n　　“红线遁光针！”少女听到韩立如此一问，将手中的书本放下，淡然的说道。",
+      "fact_summary": "少女告知这套飞针名为红线遁光针。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0359:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0359:007",
+      "chunk_id": "chunk-0359",
+      "source_range": [
+        912773,
+        912819
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          912773,
+          912819
+        ]
+      },
+      "excerpt": "它们可没有子母之分，要想驱使它们，就必须同时将十三根飞针一齐祭出才行，否则是无法催动它们的。",
+      "fact_summary": "红线遁光针没有子母之分，必须同时祭出十三根飞针才能驱使。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0359:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0359:008",
+      "chunk_id": "chunk-0359",
+      "source_range": [
+        913001,
+        913066
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          913001,
+          913066
+        ]
+      },
+      "excerpt": "所有的飞针同时漂浮了起来。接着，它们就化为了十余道肉眼难见的红线，围绕韩立身边飞速穿梭了起来，竟刹那间幻化出了一张纤细的红色丝网。",
+      "fact_summary": "韩立同时驱使十三枚飞针，使其化为肉眼难见的红线并幻化红色丝网。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0359:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0359:009",
+      "chunk_id": "chunk-0359",
+      "source_range": [
+        913166,
+        913197
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          913166,
+          913197
+        ]
+      },
+      "excerpt": "既然阁下能用，当然可以了！加上那真元丹的丹方，一共四千块灵石。",
+      "fact_summary": "少女确认韩立能用红线遁光针后，同意出售并报出真元丹丹方加飞针合计四千灵石。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0359:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0359:010",
+      "chunk_id": "chunk-0359",
+      "source_range": [
+        913264,
+        913276
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          913264,
+          913276
+        ]
+      },
+      "excerpt": "丹方一千五，飞针两千五！",
+      "fact_summary": "少女分项报价：丹方一千五百灵石，飞针两千五百灵石。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0359:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0359:011",
+      "chunk_id": "chunk-0359",
+      "source_range": [
+        913393,
+        913409
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0359",
+        "source_path": "intermediate/chunks/chunk-0359.txt",
+        "source_range": [
+          913393,
+          913409
+        ]
+      },
+      "excerpt": "不知贵阁，对千年灵药如何收购的？",
+      "fact_summary": "韩立在报价后询问星尘阁如何收购千年灵药。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0359:011"
+    }
+  ]
+}

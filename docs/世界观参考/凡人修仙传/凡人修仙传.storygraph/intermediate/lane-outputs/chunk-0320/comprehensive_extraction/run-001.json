@@ -1,0 +1,2113 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0320:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0320",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T23:30:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0320:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立否认太岳山脉旧事，随后为黑煞教大战检查傀儡兽、遣走蒙山四友并赠法器，最后参与武炫失踪后的出发决定。",
+      "evidence_ids": [
+        "evidence:chunk-0320:001",
+        "evidence:chunk-0320:004",
+        "evidence:chunk-0320:005",
+        "evidence:chunk-0320:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        797832,
+        800645
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          797832,
+          800645
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0320:character:002",
+      "node_type": "character",
+      "label": "陈巧倩",
+      "aliases": [
+        "陈师姐"
+      ],
+      "fact_summary": "陈巧倩听韩立否认旧事后失望疲倦，虽让韩立离开，却仍认为韩立最可能是当年那个人。",
+      "evidence_ids": [
+        "evidence:chunk-0320:001",
+        "evidence:chunk-0320:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        797832,
+        798368
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          797832,
+          798368
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0320:faction:001",
+      "node_type": "faction",
+      "label": "黄枫谷众修士",
+      "aliases": [
+        "黄枫谷众人"
+      ],
+      "fact_summary": "黄枫谷众修士在秦宅为围剿黑煞教做战前准备，既谨慎保命又期待战利品。",
+      "evidence_ids": [
+        "evidence:chunk-0320:003",
+        "evidence:chunk-0320:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        798671,
+        800193
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          798671,
+          800193
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0320:faction:002",
+      "node_type": "faction",
+      "label": "黑煞教",
+      "aliases": [],
+      "fact_summary": "黑煞教是黄枫谷众修士准备围剿的对象，也被韩立猜测可能与武炫失踪有关。",
+      "evidence_ids": [
+        "evidence:chunk-0320:003",
+        "evidence:chunk-0320:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "邪修分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        798671,
+        800645
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          798671,
+          800645
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0320:faction:003",
+      "node_type": "faction",
+      "label": "蒙山四友",
+      "aliases": [],
+      "fact_summary": "蒙山四友以韩立马首是瞻，被韩立劝离黑煞教战场，获赠上阶法器并承诺愿到蒙山为韩立效力。",
+      "evidence_ids": [
+        "evidence:chunk-0320:004",
+        "evidence:chunk-0320:005",
+        "evidence:chunk-0320:006",
+        "evidence:chunk-0320:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        798986,
+        799888
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          798986,
+          799888
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0320:character:003",
+      "node_type": "character",
+      "label": "黑脸老者",
+      "aliases": [],
+      "fact_summary": "黑脸老者代表蒙山四友回应韩立，并临行前私下告诉韩立众兄弟明白五妹不会再出现在黑煞教。",
+      "evidence_ids": [
+        "evidence:chunk-0320:004",
+        "evidence:chunk-0320:005",
+        "evidence:chunk-0320:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        798986,
+        799888
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          798986,
+          799888
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0320:character:004",
+      "node_type": "character",
+      "label": "五妹",
+      "aliases": [],
+      "fact_summary": "五妹没有出场，只被黑脸老者称作已泥足深陷太深、不会再出现在黑煞教的人。",
+      "evidence_ids": [
+        "evidence:chunk-0320:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        799667,
+        799888
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          799667,
+          799888
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0320:character:005",
+      "node_type": "character",
+      "label": "刘靖",
+      "aliases": [
+        "三师兄",
+        "刘师兄"
+      ],
+      "fact_summary": "刘靖去劝六师弟武炫参加大战但未见到人，打听后报告武炫昨日一早外出未归，随后决定先出发剿灭黑煞教。",
+      "evidence_ids": [
+        "evidence:chunk-0320:008",
+        "evidence:chunk-0320:009",
+        "evidence:chunk-0320:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        799964,
+        800645
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          799964,
+          800645
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0320:character:006",
+      "node_type": "character",
+      "label": "宋蒙",
+      "aliases": [
+        "四师兄"
+      ],
+      "fact_summary": "宋蒙在秦宅大厅擦洗蓝色长剑法器，并告诉韩立刘靖去劝武炫参战。",
+      "evidence_ids": [
+        "evidence:chunk-0320:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        799964,
+        800193
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          799964,
+          800193
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0320:character:007",
+      "node_type": "character",
+      "label": "武炫",
+      "aliases": [
+        "武师弟",
+        "六师弟"
+      ],
+      "fact_summary": "武炫原住附近客栈，刘靖去找他时未见其人；客栈消息显示他昨日一早出去后未归且衣物未收拾。",
+      "evidence_ids": [
+        "evidence:chunk-0320:008",
+        "evidence:chunk-0320:009",
+        "evidence:chunk-0320:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        799964,
+        800645
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          799964,
+          800645
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0320:facility:001",
+      "node_type": "facility",
+      "label": "秦宅大厅",
+      "aliases": [
+        "大厅"
+      ],
+      "fact_summary": "秦宅大厅是黄枫谷众人整装待发、韩立发现刘靖不在并得知武炫失踪消息的地点。",
+      "evidence_ids": [
+        "evidence:chunk-0320:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        799964,
+        800193
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          799964,
+          800193
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0320:facility:002",
+      "node_type": "facility",
+      "label": "武炫入住客栈",
+      "aliases": [
+        "附近的客栈"
+      ],
+      "fact_summary": "武炫住在附近客栈；刘靖从客栈老板处得知武炫昨日一早外出未归且衣物未收拾。",
+      "evidence_ids": [
+        "evidence:chunk-0320:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        800284,
+        800496
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          800284,
+          800496
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0320:001",
+      "edge_type": "denies_past_event_to",
+      "source": "node:chunk-0320:character:001",
+      "target": "node:chunk-0320:character:002",
+      "fact_summary": "韩立向陈巧倩否认七八年前在太岳山脉东侧发生意外。",
+      "evidence_ids": [
+        "evidence:chunk-0320:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        797832,
+        798033
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          797832,
+          798033
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0320:002",
+      "edge_type": "suspects_identity_of",
+      "source": "node:chunk-0320:character:002",
+      "target": "node:chunk-0320:character:001",
+      "fact_summary": "陈巧倩仍认为当年谷中有实力且恰巧外出的人只有韩立。",
+      "evidence_ids": [
+        "evidence:chunk-0320:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        798036,
+        798368
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          798036,
+          798368
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0320:003",
+      "edge_type": "prepares_conflict_against",
+      "source": "node:chunk-0320:faction:001",
+      "target": "node:chunk-0320:faction:002",
+      "fact_summary": "黄枫谷众修士为围剿黑煞教做战前准备。",
+      "evidence_ids": [
+        "evidence:chunk-0320:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        798671,
+        798983
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          798671,
+          798983
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0320:004",
+      "edge_type": "commands_to_withdraw",
+      "source": "node:chunk-0320:character:001",
+      "target": "node:chunk-0320:faction:003",
+      "fact_summary": "韩立要求蒙山四友不要参加与黑煞教之战，连夜出京暂避。",
+      "evidence_ids": [
+        "evidence:chunk-0320:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        799207,
+        799440
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          799207,
+          799440
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0320:005",
+      "edge_type": "gifts_resource_to",
+      "source": "node:chunk-0320:character:001",
+      "target": "node:chunk-0320:faction:003",
+      "fact_summary": "韩立送给蒙山四友数件上阶法器作为临别礼物。",
+      "evidence_ids": [
+        "evidence:chunk-0320:005",
+        "evidence:chunk-0320:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        799207,
+        799664
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          799207,
+          799664
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0320:006",
+      "edge_type": "reveals_about",
+      "source": "node:chunk-0320:character:003",
+      "target": "node:chunk-0320:character:004",
+      "fact_summary": "黑脸老者私下向韩立说明兄弟们知道五妹不会再出现在黑煞教。",
+      "evidence_ids": [
+        "evidence:chunk-0320:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        799667,
+        799888
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          799667,
+          799888
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0320:007",
+      "edge_type": "investigates_absence_of",
+      "source": "node:chunk-0320:character:005",
+      "target": "node:chunk-0320:character:007",
+      "fact_summary": "刘靖去找武炫但没有见到人，并向客栈老板打听其去向。",
+      "evidence_ids": [
+        "evidence:chunk-0320:008",
+        "evidence:chunk-0320:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        799964,
+        800496
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          799964,
+          800496
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0320:008",
+      "edge_type": "missing_from",
+      "source": "node:chunk-0320:character:007",
+      "target": "node:chunk-0320:facility:002",
+      "fact_summary": "武炫昨日一早从客栈外出后未归，衣物也未收拾。",
+      "evidence_ids": [
+        "evidence:chunk-0320:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        800284,
+        800496
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          800284,
+          800496
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0320:001",
+      "event_type": "dialogue_denial_event",
+      "label": "韩立否认太岳旧事",
+      "fact_summary": "韩立用看药园、准备血色试炼和收购法器符箓作为说法，否认七八年前太岳山脉东侧发生意外。",
+      "participants": [
+        "node:chunk-0320:character:001",
+        "node:chunk-0320:character:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0320:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        797832,
+        798033
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          797832,
+          798033
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0320:002",
+      "event_type": "battle_preparation_event",
+      "label": "黄枫谷众修士战前准备",
+      "fact_summary": "黄枫谷众修士白天各自准备大战，既谨慎又期待剿灭黑煞教后的材料与法器收益。",
+      "participants": [
+        "node:chunk-0320:faction:001",
+        "node:chunk-0320:faction:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0320:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        798671,
+        798983
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          798671,
+          798983
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0320:003",
+      "event_type": "withdrawal_gift_event",
+      "label": "韩立遣走蒙山四友并赠法器",
+      "fact_summary": "韩立认为蒙山四友参加大战只是送命，劝他们连夜出京暂避，并赠予数件上阶法器。",
+      "participants": [
+        "node:chunk-0320:character:001",
+        "node:chunk-0320:faction:003",
+        "node:chunk-0320:character:003"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0320:004",
+        "evidence:chunk-0320:005",
+        "evidence:chunk-0320:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        798986,
+        799664
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          798986,
+          799664
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0320:004",
+      "event_type": "farewell_revelation_event",
+      "label": "黑脸老者临别谈五妹",
+      "fact_summary": "韩立送蒙山四友出越京城时，黑脸老者私下说明众兄弟知道五妹不会再出现在黑煞教且已陷得太深。",
+      "participants": [
+        "node:chunk-0320:character:001",
+        "node:chunk-0320:faction:003",
+        "node:chunk-0320:character:003",
+        "node:chunk-0320:character:004"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0320:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        799667,
+        799888
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          799667,
+          799888
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0320:005",
+      "event_type": "missing_person_report_event",
+      "label": "刘靖报告武炫失踪",
+      "fact_summary": "刘靖去劝武炫参战但未见到人，打听得知武炫昨日一早出门未归且衣物未收拾。",
+      "participants": [
+        "node:chunk-0320:character:005",
+        "node:chunk-0320:character:007",
+        "node:chunk-0320:character:006",
+        "node:chunk-0320:character:001",
+        "node:chunk-0320:facility:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0320:008",
+        "evidence:chunk-0320:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        799964,
+        800496
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          799964,
+          800496
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0320:006",
+      "event_type": "departure_decision_event",
+      "label": "刘靖决定立即出发剿灭黑煞教",
+      "fact_summary": "韩立猜测武炫可能被黑煞教抓走后，刘靖看天色并决定暂放武炫之事、立刻出发剿灭黑煞教。",
+      "participants": [
+        "node:chunk-0320:character:001",
+        "node:chunk-0320:character:005",
+        "node:chunk-0320:character:007",
+        "node:chunk-0320:faction:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0320:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        800528,
+        800645
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          800528,
+          800645
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0320:001",
+      "chunk_id": "chunk-0320",
+      "source_range": [
+        797832,
+        798033
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          797832,
+          798033
+        ]
+      },
+      "excerpt": "“没有，七八年前在下正帮马师兄看药园，血色试炼不也是发生在那时吗？陈师姐为何有此一问？”韩立抬起头来，坦然的回答道，甚至脸上还恰到好处的露出些好奇之色。\n　　陈巧倩“刷”的一下，脸色变得苍白，咬了一下红唇后，有点生硬的说道：“没有？可我记得韩师弟当年正好外出过一次，时间上似乎刚刚好啊！”\n　　“哦，那时我正在准备血色试炼，所以外出收购些法器符箓，不过并没有发生什么意外的事情。”韩立从容不迫的否认道。",
+      "fact_summary": "韩立否认七八年前在太岳山脉东侧发生意外，称当时帮马师兄看药园并外出收购法器符箓准备血色试炼。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0320:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0320:002",
+      "chunk_id": "chunk-0320",
+      "source_range": [
+        798036,
+        798368
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          798036,
+          798368
+        ]
+      },
+      "excerpt": "听到韩立如此一说，陈巧倩半响无语！只是冷冷的用目光望着韩立，直盯的韩立心里有些毛毛的。\n　　“既然这样，就没什么可说了！师弟你可以走了，我想一个人静静呆一会儿。”陈巧倩脸上闪过一丝不易察觉的失望之色，轻轻的把脸转到一边去，声音充满了疲倦之意。\n　　韩立见此，叹了一口气，知道不管对方信不信这番话，这位陈师姐都不会再打扰自己了。因为他远而敬之的意思，这位师姐应该听得出来才是。而凭对方的骄傲性子，自然不会接二连三的主动来找他了。\n　　“师姐，那我告辞了！”韩立双手一抱，没有丝毫停留的转身走出了花园。\n　　等到韩立的身影彻底消失之后，陈巧倩才回过身来用复杂的眼神望着园门的方向，幽幽的低声道：“不是你又会是谁？当年谷中有此实力而又恰巧外出的人，也只有你了，韩师弟！”",
+      "fact_summary": "陈巧倩听后失望疲倦，表面让韩立离开，事后仍低声判断当年谷中有实力且恰巧外出的人只有韩立。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0320:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0320:003",
+      "chunk_id": "chunk-0320",
+      "source_range": [
+        798671,
+        798983
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          798671,
+          798983
+        ]
+      },
+      "excerpt": "时间过的飞快，白天的时间很快就过去了。\n　　黄枫谷众修士早已回了各自屋中，正在做大战前的准备。\n　　虽然人人觉得自己这方筑基期修士人数大占上风，取胜应该不成问题，但还都一个个谨慎万分，毕竟谁都不会拿自己的小命来马虎大意的。\n　　不过，一想到剿灭黑煞教老巢后，能够得到的众多好处，这些人还是难耐心中的激动。\n　　毕竟平常这些人哪有机会，可以光明正大的围剿筑基期的修士，当然和魔道修士厮杀，那种把脑袋别在腰间的生死斗除外。\n　　这次的黑煞教筑基期修士可不是一两个，想必身上的好材料、精品法器都可以分到不少吧！特别是前来助拳的那些陈师妹同门，其实大半也是为了此点才来的。\n　　否则光凭一句剿灭邪修的空话，谁会无缘无故的来此拼命呢！",
+      "fact_summary": "黄枫谷众修士白天为大战做准备，虽觉得人数占优仍谨慎，同时期待剿灭黑煞教后获得材料和精品法器。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0320:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0320:004",
+      "chunk_id": "chunk-0320",
+      "source_range": [
+        798986,
+        799204
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          798986,
+          799204
+        ]
+      },
+      "excerpt": "韩立同样待在屋子内。静静的检查着手上的几具傀儡兽，而那蒙山四友则恭敬的站在他身前，一副以韩立为马首的样子。\n　　说起来自从韩立的这些同门来了后，黑脸老者倒也想上前和这些筑基期修士套些近乎。看看能不能捞些好处。\n　　但是不论是宋蒙等人，还是后来的陈师妹等修士，岂会把黑脸老者这样的炼气期散修放在眼里，几句不客气的话说出后，就将这几人打发掉了。让这几人清楚的认识到，七大派中并不是每一个筑基期修士都愿意和他们交往的，因此对韩立越发的敬畏了。",
+      "fact_summary": "韩立检查傀儡兽，蒙山四友恭敬站在身前；黑脸老者等炼气期散修被其他筑基修士轻视后更加敬畏韩立。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0320:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0320:005",
+      "chunk_id": "chunk-0320",
+      "source_range": [
+        799207,
+        799440
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          799207,
+          799440
+        ]
+      },
+      "excerpt": "“这次和黑煞教一战，无论输赢你们几人没有必要去了，还是连夜出京暂避一下的好。”韩立手上的傀儡兽白光一闪，被收进了储物袋后神色淡淡的说道。\n　　“可是前辈，我等怎么可以临阵退缩呢！”黑脸老者急忙代表他人开口道。\n　　“这不是什么退不退缩的问题，而你们根本呢插不上手，私自加入进去只是白送命而已。这里有几件上阶法器，你们一人一件拿去吧！也算我这个做前辈的送的临别之礼。”韩立摇摇头后，微微一笑的说道。\n　　说完，韩立袍袖往桌面上一拂，上面就多出了数件闪闪发光的精致法器。",
+      "fact_summary": "韩立劝蒙山四友不要参加与黑煞教之战，认为他们加入只是送命，并拿出数件上阶法器作为临别礼物。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0320:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0320:006",
+      "chunk_id": "chunk-0320",
+      "source_range": [
+        799443,
+        799664
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          799443,
+          799664
+        ]
+      },
+      "excerpt": "韩立身上并非没有多余的顶阶法器，而且数量还不在少数。毕竟他击杀了这么多的筑基期修士，收藏当然十分惊人。\n　　不过，他可没有拿出来送这几人的意思。几件上阶法器对这些炼气期的散修来说，就算是不错的礼物了。若是拿出顶阶法器来，恐怕反而会刺激这几人的贪婪之心，更不利于他以后收服这几人。\n　　果然，蒙山四友几人见到这些法器，人人面带喜色，连连的口中称谢，并称韩立以后若是有什么事情需要他们几人效劳，尽管到蒙山找他们即可，他们四人非常乐意愿为韩立效力。",
+      "fact_summary": "韩立刻意不送顶阶法器以免激起贪婪，蒙山四友得到上阶法器后承诺愿到蒙山为韩立效力。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0320:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0320:007",
+      "chunk_id": "chunk-0320",
+      "source_range": [
+        799667,
+        799888
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          799667,
+          799888
+        ]
+      },
+      "excerpt": "既然听到了心里想听到的承诺，韩立干脆给足了他们面子，亲自将几人送出了越京城，让这几人更是感激不尽。\n　　但是临走时，黑脸老者突然私下将韩立拉到一边，小心的说道：“前辈，五妹是不是不会出现在黑煞教了？前辈什么也不用说，我等兄弟其实心知肚明的，就是四弟恐怕也猜到了几分。不过，大伙谁也没有点破这层纱窗而已，毕竟五妹已泥足深陷太深了，就这样不再出现在我们兄弟面前也好！”大有深意的说完这些话，此老似乎放下了什么重担，恢复恭谨之色的向韩立告辞离去了。",
+      "fact_summary": "韩立亲自将蒙山四友送出越京城，黑脸老者私下表示兄弟们明白五妹不会再出现在黑煞教，且五妹已泥足深陷太深。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0320:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0320:008",
+      "chunk_id": "chunk-0320",
+      "source_range": [
+        799964,
+        800193
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          799964,
+          800193
+        ]
+      },
+      "excerpt": "回到秦宅后，天色已暗了下来。黄枫谷众人都已在大厅内整装待发，可是他却惊讶的发现，那位三师兄竟然不在屋内了。\n　　韩立不禁愕然的向抱着一把蓝色长剑法器擦洗的宋蒙问道：“四师兄，三师兄呢？”\n　　“刘师兄要去再劝说一下六师弟，若是武师弟答应一同前去，今晚一战就更有点把握了。不过照我看，刘师兄是白费时间罢了！武炫小子若是肯帮忙，当初就不会离去的！”宋蒙头也不抬的说道。\n　　“找六师兄去了？”韩立皱了一下眉头，刚想再细问些时，刘靖却已神色古怪的一人从外面回来了。",
+      "fact_summary": "韩立回秦宅后发现三师兄刘靖不在，宋蒙说明刘靖去劝六师弟武炫参战，随后刘靖神色古怪地回来。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0320:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0320:009",
+      "chunk_id": "chunk-0320",
+      "source_range": [
+        800284,
+        800496
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          800284,
+          800496
+        ]
+      },
+      "excerpt": "“若是这样，就好了！关键是这次过去，我根本就没有见到武师弟！”刘靖苦笑了一声，缓缓的说道。\n　　这一下，包括韩立在内的其他人，都是一怔。\n　　“怎么回事，刘师兄！那胆小鬼不就住在附近的客栈里吗？难道提前退房回师门了吗？”钟卫娘眨了眨大眼，猜测的问道。\n　　“不是！我和客栈的老板打听了一下。武师弟昨日一早出去后，就再也没见回来。而客栈内的随身换洗衣服，也根本没有收拾，不像是返回谷内的样子。”刘靖摇摇头，话里充满了担心之色。",
+      "fact_summary": "刘靖称没有见到武炫，并从客栈老板处得知武炫昨日一早出去后未归，随身衣物也未收拾，不像返回谷内。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0320:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0320:010",
+      "chunk_id": "chunk-0320",
+      "source_range": [
+        800528,
+        800645
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          800528,
+          800645
+        ]
+      },
+      "excerpt": "不过韩立却在一旁，隐隐的想道：“难道这位武炫这么不走运，竟然被黑煞教的抓走了不成。”\n　　也许刘靖和韩立有了同样的想法，所以他看了看外面的天色，就果断的说道：“武师弟的事情回头再说，我们现在就出发吧！一定要一战成功，彻底剿灭黑煞教！”",
+      "fact_summary": "韩立猜测武炫可能被黑煞教抓走，刘靖也可能有同样想法，随后决定立即出发剿灭黑煞教。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0320:010"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "角色AI行为参考",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "相遇剧情与对话设计",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "有限视角与叙事日志",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "世界观设定",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "建筑设施与场所功能",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "信息传播与情报",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "势力设定",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "法宝分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "战斗与保命机制",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "事件因果链（长程因果图）",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "邪修分析",
+      "requirement_id": "creature_deviant_practice_ecology",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0320:001",
+      "kind": "taiyue_rescuer_identity_still_unconfirmed",
+      "fact_summary": "陈巧倩坚信韩立最可疑，但韩立明确否认；本 chunk 仍未客观确认韩立是否就是七八年前太岳山脉东侧救她的人。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        797832,
+        798368
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          797832,
+          798368
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0320:002",
+      "kind": "wuxuan_disappearance_cause_unknown",
+      "fact_summary": "韩立猜测武炫可能被黑煞教抓走，刘靖也可能同想，但当前证据只确认武炫从客栈外出未归，失踪原因未证实。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        800284,
+        800645
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          800284,
+          800645
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0320:003",
+      "kind": "fifth_sister_identity_and_fate_unclear",
+      "fact_summary": "黑脸老者只称五妹不会再出现在黑煞教且泥足深陷，本 chunk 未给出五妹姓名、当前位置、是否存活或具体陷入原因。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "邪修分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        799667,
+        799888
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          799667,
+          799888
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0320:001",
+      "candidate": "马师兄作为当前剧情行动者",
+      "reason": "马师兄只出现在韩立解释七八年前去向的说法中，本 chunk 无出场、决策或资源流转；不建人物节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "not_found_in_source",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected"
+        }
+      ],
+      "source_range": [
+        797832,
+        798033
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          797832,
+          798033
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0320:002",
+      "candidate": "几具傀儡兽作为具名法宝",
+      "reason": "原文只写“几具傀儡兽”，未给出专属名称、来源或单体特征；不硬造具名法宝节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "not_found_in_source",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected"
+        }
+      ],
+      "source_range": [
+        798986,
+        799204
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          798986,
+          799204
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0320:003",
+      "candidate": "武炫已被黑煞教抓走作为既定事实",
+      "reason": "本 chunk 只呈现韩立猜测武炫可能被黑煞教抓走，尚无直接证据；不写成已验证因果。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "not_found_in_source",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "not_found_in_source",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected"
+        }
+      ],
+      "source_range": [
+        800528,
+        800645
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0320",
+        "source_path": "intermediate/chunks/chunk-0320.txt",
+        "source_range": [
+          800528,
+          800645
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

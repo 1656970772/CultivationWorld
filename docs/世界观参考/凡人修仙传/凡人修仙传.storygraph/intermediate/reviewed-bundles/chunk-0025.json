@@ -1,0 +1,4323 @@
+{
+  "chunk_id": "chunk-0025",
+  "source_range": [
+    45035,
+    47404
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "task_packet_id": "chunk-0025:comprehensive_extraction:attempt-001",
+      "chunk_id": "chunk-0025",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "produced_at": "2026-06-23T00:00:00+08:00",
+      "extracted_nodes": [
+        {
+          "id": "node:chunk-0025:character:001",
+          "node_type": "character",
+          "label": "韩立",
+          "aliases": [],
+          "fact_summary": "韩立用平安符平息异常并驱除心魔危机，随后发现小瓶和绿液，购买灰毛野兔并实施稀释绿液活体试验。",
+          "evidence_ids": [
+            "evidence:chunk-0025:001",
+            "evidence:chunk-0025:002",
+            "evidence:chunk-0025:003",
+            "evidence:chunk-0025:005",
+            "evidence:chunk-0025:009",
+            "evidence:chunk-0025:011",
+            "evidence:chunk-0025:012"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            45076,
+            47401
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45076,
+              47401
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0025:inscription:001",
+          "node_type": "inscription",
+          "label": "平安符",
+          "aliases": [],
+          "fact_summary": "父母给韩立的平安符在当前 chunk 被韩立触碰后带来清心感觉，平息烦躁、难受和身体异常，并被叙事称为帮助驱除心魔的外物。",
+          "evidence_ids": [
+            "evidence:chunk-0025:001",
+            "evidence:chunk-0025:002",
+            "evidence:chunk-0025:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "符师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            45076,
+            45705
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45076,
+              45705
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0025:rule:001",
+          "node_type": "rule",
+          "label": "心魔入侵",
+          "aliases": [],
+          "fact_summary": "心魔入侵被叙事区分于走火入魔；若不提前驱除，可能侵入元神、控制幻境并操纵躯体狂舞而死。",
+          "evidence_ids": [
+            "evidence:chunk-0025:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "夺舍设定分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            45378,
+            45500
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45378,
+              45500
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0025:cultivation_method:001",
+          "node_type": "cultivation_method",
+          "label": "口诀",
+          "aliases": [],
+          "fact_summary": "韩立修炼的口诀让他头脑较以前聪慧；本 chunk 还记录他功力增长并接近第四层，但未明示口诀正式名称。",
+          "evidence_ids": [
+            "evidence:chunk-0025:003",
+            "evidence:chunk-0025:005"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            45501,
+            45916
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45501,
+              45916
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0025:realm:001",
+          "node_type": "realm",
+          "label": "口诀第三层顶峰",
+          "aliases": [],
+          "fact_summary": "韩立尚未突破第三层到第四层，但功力已达到第三层顶峰，距离第四层不远。",
+          "evidence_ids": [
+            "evidence:chunk-0025:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            45501,
+            45586
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45501,
+              45586
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0025:tool:001",
+          "node_type": "tool",
+          "label": "神秘的小瓶子",
+          "aliases": [
+            "小瓶",
+            "瓶子"
+          ],
+          "fact_summary": "韩立在袋中重新发现遗忘多年的神秘小瓶子，判断其是世间少有奇物，并决定挖掘其价值。",
+          "evidence_ids": [
+            "evidence:chunk-0025:005",
+            "evidence:chunk-0025:006",
+            "evidence:chunk-0025:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            45706,
+            46228
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45706,
+              46228
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0025:medicine:001",
+          "node_type": "medicine",
+          "label": "绿液",
+          "aliases": [
+            "翠绿色的液体"
+          ],
+          "fact_summary": "小瓶底部有一滴翠绿色液体；韩立认为绿液可能隐藏瓶子秘密，并将其稀释后喂给野兔试验。",
+          "evidence_ids": [
+            "evidence:chunk-0025:006",
+            "evidence:chunk-0025:007",
+            "evidence:chunk-0025:011",
+            "evidence:chunk-0025:012",
+            "evidence:chunk-0025:013",
+            "evidence:chunk-0025:014"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            46078,
+            47401
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46078,
+              47401
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0025:faction:001",
+          "node_type": "faction",
+          "label": "七玄门",
+          "aliases": [],
+          "fact_summary": "当前 chunk 只说明墨大夫不在七玄门后，厨房不再给神手谷送饭，体现七玄门内后勤待遇受权力影响。",
+          "evidence_ids": [
+            "evidence:chunk-0025:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            46409,
+            46570
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46409,
+              46570
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0025:character:002",
+          "node_type": "character",
+          "label": "墨大夫",
+          "aliases": [],
+          "fact_summary": "墨大夫当前不在七玄门；其在山上时可吩咐厨房把饭送到神手谷，韩立曾借此受益。",
+          "evidence_ids": [
+            "evidence:chunk-0025:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            46409,
+            46570
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46409,
+              46570
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0025:facility:001",
+          "node_type": "facility",
+          "label": "谷外的大厨房",
+          "aliases": [
+            "厨房"
+          ],
+          "fact_summary": "韩立到谷外大厨房吃早饭，并从厨房管事处换得两只灰毛野兔。",
+          "evidence_ids": [
+            "evidence:chunk-0025:008",
+            "evidence:chunk-0025:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            46409,
+            46635
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46409,
+              46635
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0025:character:003",
+          "node_type": "character",
+          "label": "厨房的管事",
+          "aliases": [],
+          "fact_summary": "厨房的管事与韩立完成一次资源交换，收碎银子并给出两只灰毛野兔；当前未明示姓名或身份背景。",
+          "evidence_ids": [
+            "evidence:chunk-0025:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            46571,
+            46635
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46571,
+              46635
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0025:location:001",
+          "node_type": "location",
+          "label": "神手谷",
+          "aliases": [],
+          "fact_summary": "韩立饭后带野兔回到神手谷，并在谷中药园进行绿液试验。",
+          "evidence_ids": [
+            "evidence:chunk-0025:009",
+            "evidence:chunk-0025:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            46571,
+            46679
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46571,
+              46679
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0025:facility:002",
+          "node_type": "facility",
+          "label": "药园",
+          "aliases": [],
+          "fact_summary": "韩立把野兔拴在药园中较宽广处，让兔子暴晒后进行绿液试验。",
+          "evidence_ids": [
+            "evidence:chunk-0025:010",
+            "evidence:chunk-0025:011"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            46636,
+            46810
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46636,
+              46810
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0025:beast:001",
+          "node_type": "beast",
+          "label": "灰毛野兔",
+          "aliases": [
+            "野兔",
+            "兔子"
+          ],
+          "fact_summary": "两只灰毛野兔被韩立买回神手谷，暴晒口渴后饮用稀释绿液，并出现急躁、疙瘩和全身膨胀。",
+          "evidence_ids": [
+            "evidence:chunk-0025:009",
+            "evidence:chunk-0025:010",
+            "evidence:chunk-0025:012",
+            "evidence:chunk-0025:013",
+            "evidence:chunk-0025:014"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            46571,
+            47401
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46571,
+              47401
+            ]
+          }
+        }
+      ],
+      "extracted_edges": [
+        {
+          "id": "edge:chunk-0025:001",
+          "edge_type": "uses_item",
+          "source": "node:chunk-0025:character:001",
+          "target": "node:chunk-0025:inscription:001",
+          "fact_summary": "韩立取出并触碰平安符后，烦躁、难受和身体异常平息。",
+          "evidence_ids": [
+            "evidence:chunk-0025:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "符师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            45076,
+            45253
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45076,
+              45253
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0025:002",
+          "edge_type": "counteracts",
+          "source": "node:chunk-0025:inscription:001",
+          "target": "node:chunk-0025:rule:001",
+          "fact_summary": "平安符作为外物帮助韩立提前驱除心魔，避免心魔侵入元神。",
+          "evidence_ids": [
+            "evidence:chunk-0025:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "夺舍设定分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            45378,
+            45500
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45378,
+              45500
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0025:003",
+          "edge_type": "reaches_stage",
+          "source": "node:chunk-0025:character:001",
+          "target": "node:chunk-0025:realm:001",
+          "fact_summary": "韩立运功检查后发现自己已达到口诀第三层顶峰。",
+          "evidence_ids": [
+            "evidence:chunk-0025:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            45501,
+            45586
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45501,
+              45586
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0025:004",
+          "edge_type": "investigates_item",
+          "source": "node:chunk-0025:character:001",
+          "target": "node:chunk-0025:tool:001",
+          "fact_summary": "韩立重新发现小瓶，判断其是奇物并打算挖掘价值。",
+          "evidence_ids": [
+            "evidence:chunk-0025:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            45706,
+            45986
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45706,
+              45986
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0025:005",
+          "edge_type": "contains",
+          "source": "node:chunk-0025:tool:001",
+          "target": "node:chunk-0025:medicine:001",
+          "fact_summary": "小瓶瓶底有一滴翠绿色液体，韩立认为瓶子的秘密可能在绿液上。",
+          "evidence_ids": [
+            "evidence:chunk-0025:006",
+            "evidence:chunk-0025:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            46078,
+            46228
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46078,
+              46228
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0025:006",
+          "edge_type": "trades_for",
+          "source": "node:chunk-0025:character:001",
+          "target": "node:chunk-0025:beast:001",
+          "fact_summary": "韩立花几钱碎银子从厨房管事处换来两只灰毛野兔。",
+          "evidence_ids": [
+            "evidence:chunk-0025:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            46571,
+            46635
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46571,
+              46635
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0025:007",
+          "edge_type": "provides_resource",
+          "source": "node:chunk-0025:character:003",
+          "target": "node:chunk-0025:beast:001",
+          "fact_summary": "厨房的管事向韩立交付两只灰毛野兔。",
+          "evidence_ids": [
+            "evidence:chunk-0025:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            46571,
+            46635
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46571,
+              46635
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0025:008",
+          "edge_type": "experimented_on",
+          "source": "node:chunk-0025:medicine:001",
+          "target": "node:chunk-0025:beast:001",
+          "fact_summary": "绿液被稀释后喂给野兔，野兔随后出现急躁、疙瘩和剧烈膨胀。",
+          "evidence_ids": [
+            "evidence:chunk-0025:011",
+            "evidence:chunk-0025:012",
+            "evidence:chunk-0025:013"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            46680,
+            47279
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46680,
+              47279
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0025:009",
+          "edge_type": "conducts_experiment_at",
+          "source": "node:chunk-0025:character:001",
+          "target": "node:chunk-0025:facility:002",
+          "fact_summary": "韩立在神手谷药园中布置野兔和绿液试验。",
+          "evidence_ids": [
+            "evidence:chunk-0025:010",
+            "evidence:chunk-0025:011",
+            "evidence:chunk-0025:012"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            46636,
+            46964
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46636,
+              46964
+            ]
+          }
+        }
+      ],
+      "extracted_events": [
+        {
+          "id": "event:chunk-0025:001",
+          "event_type": "heart_demon_crisis_resolved",
+          "label": "韩立借平安符平复心魔危机",
+          "fact_summary": "韩立取出父母所赠平安符后身心清明，叙事说明这是提前借外物驱除了心魔。",
+          "participants": [
+            "node:chunk-0025:character:001",
+            "node:chunk-0025:inscription:001",
+            "node:chunk-0025:rule:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0025:001",
+            "evidence:chunk-0025:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "夺舍设定分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            45076,
+            45500
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45076,
+              45500
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0025:002",
+          "event_type": "cultivation_progress_event",
+          "label": "韩立功力增长至第三层顶峰",
+          "fact_summary": "韩立运功察看后确认身体无碍，并发现功力增长到第三层顶峰、接近第四层。",
+          "participants": [
+            "node:chunk-0025:character:001",
+            "node:chunk-0025:cultivation_method:001",
+            "node:chunk-0025:realm:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0025:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            45501,
+            45586
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45501,
+              45586
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0025:003",
+          "event_type": "item_rediscovery_event",
+          "label": "韩立重新发现神秘小瓶",
+          "fact_summary": "韩立在装平安符的皮袋中意外发现遗忘多年的神秘小瓶子，并决定挖掘其价值。",
+          "participants": [
+            "node:chunk-0025:character:001",
+            "node:chunk-0025:tool:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0025:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            45706,
+            45986
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45706,
+              45986
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0025:004",
+          "event_type": "experiment_decision_event",
+          "label": "韩立决定用小动物试验绿液",
+          "fact_summary": "韩立认为瓶子秘密可能在绿液上，为弄清作用决定寻找小动物做活体试验。",
+          "participants": [
+            "node:chunk-0025:character:001",
+            "node:chunk-0025:tool:001",
+            "node:chunk-0025:medicine:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0025:006",
+            "evidence:chunk-0025:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            46078,
+            46228
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46078,
+              46228
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0025:005",
+          "event_type": "resource_trade_event",
+          "label": "韩立换得两只灰毛野兔",
+          "fact_summary": "韩立吃完早饭后从厨房管事处用碎银换得两只灰毛野兔，并带回神手谷。",
+          "participants": [
+            "node:chunk-0025:character:001",
+            "node:chunk-0025:character:003",
+            "node:chunk-0025:beast:001",
+            "node:chunk-0025:facility:001",
+            "node:chunk-0025:location:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0025:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            46571,
+            46635
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46571,
+              46635
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0025:006",
+          "event_type": "live_test_event",
+          "label": "韩立给野兔喂稀释绿液",
+          "fact_summary": "韩立在药园里晒渴野兔，将绿液掺清水稀释后让野兔饮用，并等待反应。",
+          "participants": [
+            "node:chunk-0025:character:001",
+            "node:chunk-0025:medicine:001",
+            "node:chunk-0025:beast:001",
+            "node:chunk-0025:facility:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0025:010",
+            "evidence:chunk-0025:011",
+            "evidence:chunk-0025:012"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            46636,
+            46964
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46636,
+              46964
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0025:007",
+          "event_type": "medicine_effect_event",
+          "label": "野兔饮绿液后剧烈膨胀",
+          "fact_summary": "野兔饮用稀释绿液后一炷香内急躁蹦跳，皮毛下起疙瘩，全身逐渐膨胀成圆鼓鼓的大球体。",
+          "participants": [
+            "node:chunk-0025:medicine:001",
+            "node:chunk-0025:beast:001",
+            "node:chunk-0025:character:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0025:013",
+            "evidence:chunk-0025:014"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            46965,
+            47401
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46965,
+              47401
+            ]
+          }
+        }
+      ],
+      "extracted_evidence": [
+        {
+          "evidence_id": "evidence:chunk-0025:001",
+          "chunk_id": "chunk-0025",
+          "excerpt": "　　他飞快的冲向被扔在远处的袋子，几个箭步就跑到了跟前，一俯身把袋子捡了起来，三下五除二把皮袋的口子撑开，从里面把父母给他的平安符抓了出来。\n　　手掌心一触到这张平安符，一股透入身心的清心感觉从他手心处传了过来。韩立烦躁的内心马上就平静了下来，原来郁闷、难受的感觉一股脑儿统统消失的无影无踪，身体内的种种异常现象也都自动的销声匿迹，一切似乎都恢复了正常。",
+          "fact_summary": "韩立从皮袋中取出父母给他的平安符，触碰后烦躁、难受和身体异常都平息。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "符师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            45076,
+            45253
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45076,
+              45253
+            ]
+          },
+          "id": "evidence:chunk-0025:001"
+        },
+        {
+          "evidence_id": "evidence:chunk-0025:002",
+          "chunk_id": "chunk-0025",
+          "excerpt": "　　韩立并不知道，这次令他差点没命的麻烦并不是“走火入魔”，而是修道之人的“心魔入侵”。若不是他见机的早，提前借助外物驱除掉了心魔，恐怕他不久就会被心魔侵入元神，然后被控制陷入幻境，操纵躯体狂舞而死。当然，这一切都是他后来踏上修道之路才知道的。",
+          "fact_summary": "叙事说明韩立这次不是走火入魔，而是心魔入侵；他提前借外物驱除心魔，否则可能被侵入元神并狂舞而死。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "夺舍设定分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            45378,
+            45500
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45378,
+              45500
+            ]
+          },
+          "id": "evidence:chunk-0025:002"
+        },
+        {
+          "evidence_id": "evidence:chunk-0025:003",
+          "chunk_id": "chunk-0025",
+          "excerpt": "　　韩立运功察看了全身上下，觉得一切都没有问题，并且让他惊喜的是，他的功力居然也增长了不少，虽然还没有突破第三层到达第四层，但也达到了第三层的顶峰，距离到第四层也不远了。",
+          "fact_summary": "韩立运功检查后发现功力增长，尚未突破第三层到第四层，但已达第三层顶峰。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            45501,
+            45586
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45501,
+              45586
+            ]
+          },
+          "id": "evidence:chunk-0025:003"
+        },
+        {
+          "evidence_id": "evidence:chunk-0025:004",
+          "chunk_id": "chunk-0025",
+          "excerpt": "　　韩立因这突如其来的意外惊喜，脸上露出了一丝笑容，但他紧接着又急忙收敛住了内心的激动。生怕因情绪不稳定，再来这么一次惊险的走火入魔，他可没有把握能再一次有惊无险的过去。他拿住装平安符的皮袋，准备把立了大功的平安符放回袋子，再妥善收好。",
+          "fact_summary": "韩立因刚经历惊险而收敛激动，并准备把立功的平安符放回皮袋妥善收好。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "符师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            45587,
+            45705
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45587,
+              45705
+            ]
+          },
+          "id": "evidence:chunk-0025:004"
+        },
+        {
+          "evidence_id": "evidence:chunk-0025:005",
+          "chunk_id": "chunk-0025",
+          "excerpt": "　　“咦！”韩立意外发现袋子里一个被他遗忘了好久的物品，一个已放了好几年的收藏品——那个神秘的小瓶子。\n　　这个小瓶的事情早已被韩立忘得一干二净，若不是现在又瞅见它，他还仍不会想起这回事。\n　　现在的韩立和四年前相比，见识和眼力又大大不同了，他通过饱读墨大夫房里的各类藏书而大长许多见识，因修炼口诀头脑也比以前聪慧了许多。他此时能轻易地从这瓶子曾发生的种种异象，判断出这个小瓶绝对是个世间少有的奇物，有着非同寻常的功用。",
+          "fact_summary": "韩立在袋中重新发现遗忘多年的神秘小瓶子，并凭见识判断其是少有奇物、有非同寻常功用。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            45706,
+            45916
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45706,
+              45916
+            ]
+          },
+          "id": "evidence:chunk-0025:005"
+        },
+        {
+          "evidence_id": "evidence:chunk-0025:006",
+          "chunk_id": "chunk-0025",
+          "excerpt": "　　韩立不再无谓的浪费时间，他把瓶盖小心的打开，瓶子里那滴翠绿色的液体仍老老实实的待在瓶子的底部，和四年前相比并没有什么不同。",
+          "fact_summary": "韩立打开小瓶，看到瓶底仍有一滴翠绿色液体。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            46078,
+            46141
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46078,
+              46141
+            ]
+          },
+          "id": "evidence:chunk-0025:006"
+        },
+        {
+          "evidence_id": "evidence:chunk-0025:007",
+          "chunk_id": "chunk-0025",
+          "excerpt": "　　韩立很清楚，瓶子所有的秘密可能都存在了这小小的绿液上，这滴绿液一定有着某些他还没发现的特殊作用，为了搞清这液体的秘密，他看来必须要找到一些小动物，去做些残忍的活体试验。",
+          "fact_summary": "韩立认为绿液可能藏有瓶子秘密，为弄清作用决定找小动物做活体试验。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            46142,
+            46228
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46142,
+              46228
+            ]
+          },
+          "id": "evidence:chunk-0025:007"
+        },
+        {
+          "evidence_id": "evidence:chunk-0025:008",
+          "chunk_id": "chunk-0025",
+          "excerpt": "　　第二天早上，韩立起床洗漱完毕后，先去谷外的大厨房吃了份普通的早饭。以前墨大夫在山上的时候，都是由墨大夫吩咐厨房的人亲自送到神手谷来，韩立沾了墨大夫的光，也不用到山谷外去用饭，厨房中的伙夫也把他的饭一并送了过来。现在墨大夫不在七玄门，厨房的人自然不会再送饭上门，这让韩立心里好一阵感慨厨房管事的势利之处，大叹权力的好处。",
+          "fact_summary": "墨大夫不在七玄门后，厨房不再送饭到神手谷，韩立到谷外大厨房吃早饭并感慨权力好处。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            46409,
+            46570
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46409,
+              46570
+            ]
+          },
+          "id": "evidence:chunk-0025:008"
+        },
+        {
+          "evidence_id": "evidence:chunk-0025:009",
+          "chunk_id": "chunk-0025",
+          "excerpt": "　　吃完早饭后，韩立没有马上离开厨房，而是找到厨房的管事，花了几钱的碎银子，从他那里换来了两个活蹦乱跳的灰毛野兔，带回了神手谷。",
+          "fact_summary": "韩立花几钱碎银子从厨房管事处换来两只灰毛野兔，并带回神手谷。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            46571,
+            46635
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46571,
+              46635
+            ]
+          },
+          "id": "evidence:chunk-0025:009"
+        },
+        {
+          "evidence_id": "evidence:chunk-0025:010",
+          "chunk_id": "chunk-0025",
+          "excerpt": "　　回到谷中，韩立把野兔用绳子拴在药园里一块比较宽广的地方，让兔子在太阳下暴晒了起来。",
+          "fact_summary": "韩立把野兔拴在药园较宽广处，让兔子在太阳下暴晒。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            46636,
+            46679
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46636,
+              46679
+            ]
+          },
+          "id": "evidence:chunk-0025:010"
+        },
+        {
+          "evidence_id": "evidence:chunk-0025:011",
+          "chunk_id": "chunk-0025",
+          "excerpt": "　　等到野兔被晒的无精打采、口干舌燥的时候，才去找来一个大瓷碗，小心翼翼的把瓶中的绿液倒入碗中，再掺入一些普通的清水。\n　　这豆粒大小的绿液，很轻易的消融到了清水之中，使整碗水都变成了碧绿色。这绿绿的碧意让人一看，不由自主就有一股深深的凉意，从心底涌上了心头。",
+          "fact_summary": "野兔口干后，韩立把瓶中绿液倒入大瓷碗并掺入清水，绿液消融后整碗水变成碧绿色。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            46680,
+            46810
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46680,
+              46810
+            ]
+          },
+          "id": "evidence:chunk-0025:011"
+        },
+        {
+          "evidence_id": "evidence:chunk-0025:012",
+          "chunk_id": "chunk-0025",
+          "excerpt": "　　韩立端起这碗稀释好的清水，来到已口渴的兔子跟前，把碗在它们身边放了下来。\n　　早已晒得口干舌燥的兔子们急忙拥了上来，围在了瓷碗边，大口大口的喝起碗里的水来，韩立不愿让它们一次喝的太多，在被喝掉一小半的时候又把碗从兔子跟前拿了开来。然后端着瓷碗站在一边，耐心的等待兔子的反应，看它们是否有什么有趣的变化。",
+          "fact_summary": "韩立把稀释绿液放到口渴兔子身边，兔子饮用后他移开瓷碗并等待反应。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            46811,
+            46964
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46811,
+              46964
+            ]
+          },
+          "id": "evidence:chunk-0025:012"
+        },
+        {
+          "evidence_id": "evidence:chunk-0025:013",
+          "chunk_id": "chunk-0025",
+          "excerpt": "　　时间过的不长，只不过是一炷香的功夫，兔子们开始急躁地蹦跳起来，然后动作是越来越冲动，越来越猛烈。接着身上也开始起了惊人的变化，它们的皮毛下开始凸起一个个鸡蛋大小的疙瘩，而且是越来越多，渐渐的布满了全身，随后这些疙瘩连成了一片，让兔子的身体看上去好像无缘无故的大上了一圈，和它硕小的脑袋比起来，显得很是可笑。\n　　兔子肥硕的躯体只维持了一小会儿，就一点一点的慢慢鼓起来，而且随着时间的流逝，膨胀的速度也变得更快，它们体内就好像被不停地注入了某种气体，被撑得越来越大，越来越鼓。到了最后，它们的身子就像是两个大西瓜一样，被撑成了两个圆鼓鼓的大球体。\n　　看着眼前兔子们变得异常诡异的身体，再听着它们痛苦的哀鸣声，韩立有些吃惊了。",
+          "fact_summary": "一炷香后兔子急躁蹦跳，皮毛下起疙瘩并全身膨胀成圆鼓鼓的大球体。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            46965,
+            47279
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46965,
+              47279
+            ]
+          },
+          "id": "evidence:chunk-0025:013"
+        },
+        {
+          "evidence_id": "evidence:chunk-0025:014",
+          "chunk_id": "chunk-0025",
+          "excerpt": "　　眼前发生的一切大大出乎了他的意料之外，如果说这不知名的液体是某种致人性命的剧毒，或者是能增加功力的灵药，这都没什么，也都在他的想象之中。可他万万没想到，会出现眼前这种令人头皮发麻的景象，兔子身体竟然就好像是被人吹大了一般，变得无比的恐怖。",
+          "fact_summary": "韩立被兔子诡异痛苦的变化惊到，意识到绿液效果既不像普通剧毒也不像单纯增加功力的灵药。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            47280,
+            47401
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              47280,
+              47401
+            ]
+          },
+          "id": "evidence:chunk-0025:014"
+        }
+      ],
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_range": [
+            45501,
+            45586
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45501,
+              45586
+            ]
+          }
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_range": [
+            45378,
+            45500
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45378,
+              45500
+            ]
+          }
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "source_range": [
+            45076,
+            45500
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45076,
+              45500
+            ]
+          }
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "source_range": [
+            45706,
+            46228
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45706,
+              46228
+            ]
+          }
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "source_range": [
+            46078,
+            47401
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46078,
+              47401
+            ]
+          }
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "source_range": [
+            46078,
+            46810
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46078,
+              46810
+            ]
+          }
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_range": [
+            46571,
+            46635
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46571,
+              46635
+            ]
+          }
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "source_range": [
+            46571,
+            47401
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46571,
+              47401
+            ]
+          }
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_range": [
+            46409,
+            46810
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46409,
+              46810
+            ]
+          }
+        }
+      ],
+      "uncertainties": [
+        {
+          "id": "uncertainty:chunk-0025:001",
+          "kind": "bottle_identity_missing",
+          "fact_summary": "当前 chunk 只称关键物为神秘小瓶子/小瓶/瓶子，虽判断其为奇物，但未明示正式名称、品阶或法宝类别。",
+          "evidence_ids": [
+            "evidence:chunk-0025:005",
+            "evidence:chunk-0025:006"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            45706,
+            46141
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45706,
+              46141
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0025:002",
+          "kind": "green_liquid_mechanism_unknown",
+          "fact_summary": "绿液导致野兔剧烈膨胀的机制、是否为毒药、灵药或材料，当前 chunk 仍未确认。",
+          "evidence_ids": [
+            "evidence:chunk-0025:011",
+            "evidence:chunk-0025:013",
+            "evidence:chunk-0025:014"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            46680,
+            47401
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46680,
+              47401
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0025:003",
+          "kind": "method_name_missing",
+          "fact_summary": "韩立修炼的口诀在当前 chunk 未明示正式名称；只按“口诀”保守抽取。",
+          "evidence_ids": [
+            "evidence:chunk-0025:003",
+            "evidence:chunk-0025:005"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            45501,
+            45916
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45501,
+              45916
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0025:004",
+          "kind": "parents_identity_missing",
+          "fact_summary": "平安符来源只写父母所赠，当前 chunk 未给出韩立父母姓名、所在地点或更多关系事件。",
+          "evidence_ids": [
+            "evidence:chunk-0025:001"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            45076,
+            45253
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45076,
+              45253
+            ]
+          }
+        }
+      ],
+      "rejected_candidates": [
+        {
+          "id": "rejected:chunk-0025:001",
+          "candidate": "皮袋",
+          "reason": "皮袋只是装平安符和小瓶的普通容器，当前没有独立功能、名称或规则效果，不作为具名物品节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            45076,
+            45146
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              45076,
+              45146
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0025:002",
+          "candidate": "几钱的碎银子",
+          "reason": "碎银子仅作为换取野兔的通用价款出现，不是具名资源或关键物品节点；交易事实保留在事件和证据中。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            46571,
+            46635
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46571,
+              46635
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0025:003",
+          "candidate": "普通清水/大瓷碗",
+          "reason": "清水和瓷碗只是稀释与盛放绿液的普通工具，当前无名称或独立剧情功能，不单独建节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            46680,
+            46810
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46680,
+              46810
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0025:004",
+          "candidate": "厨房中的伙夫",
+          "reason": "伙夫只出现在过往送饭背景中，没有当前独立行动或资源决策；不建路人节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            46409,
+            46570
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0025",
+            "source_path": "intermediate/chunks/chunk-0025.txt",
+            "source_range": [
+              46409,
+              46570
+            ]
+          }
+        }
+      ],
+      "structured_failures": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0025/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "id": "node:chunk-0025:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立用平安符平息异常并驱除心魔危机，随后发现小瓶和绿液，购买灰毛野兔并实施稀释绿液活体试验。",
+      "evidence_ids": [
+        "evidence:chunk-0025:001",
+        "evidence:chunk-0025:002",
+        "evidence:chunk-0025:003",
+        "evidence:chunk-0025:005",
+        "evidence:chunk-0025:009",
+        "evidence:chunk-0025:011",
+        "evidence:chunk-0025:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        45076,
+        47401
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          45076,
+          47401
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0025:inscription:001",
+      "node_type": "inscription",
+      "label": "平安符",
+      "aliases": [],
+      "fact_summary": "父母给韩立的平安符在当前 chunk 被韩立触碰后带来清心感觉，平息烦躁、难受和身体异常，并被叙事称为帮助驱除心魔的外物。",
+      "evidence_ids": [
+        "evidence:chunk-0025:001",
+        "evidence:chunk-0025:002",
+        "evidence:chunk-0025:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        45076,
+        45705
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          45076,
+          45705
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0025:rule:001",
+      "node_type": "rule",
+      "label": "心魔入侵",
+      "aliases": [],
+      "fact_summary": "心魔入侵被叙事区分于走火入魔；若不提前驱除，可能侵入元神、控制幻境并操纵躯体狂舞而死。",
+      "evidence_ids": [
+        "evidence:chunk-0025:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        45378,
+        45500
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          45378,
+          45500
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0025:cultivation_method:001",
+      "node_type": "cultivation_method",
+      "label": "口诀",
+      "aliases": [],
+      "fact_summary": "韩立修炼的口诀让他头脑较以前聪慧；本 chunk 还记录他功力增长并接近第四层，但未明示口诀正式名称。",
+      "evidence_ids": [
+        "evidence:chunk-0025:003",
+        "evidence:chunk-0025:005"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        45501,
+        45916
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          45501,
+          45916
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0025:realm:001",
+      "node_type": "realm",
+      "label": "口诀第三层顶峰",
+      "aliases": [],
+      "fact_summary": "韩立尚未突破第三层到第四层，但功力已达到第三层顶峰，距离第四层不远。",
+      "evidence_ids": [
+        "evidence:chunk-0025:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        45501,
+        45586
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          45501,
+          45586
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0025:tool:001",
+      "node_type": "tool",
+      "label": "神秘的小瓶子",
+      "aliases": [
+        "小瓶",
+        "瓶子"
+      ],
+      "fact_summary": "韩立在袋中重新发现遗忘多年的神秘小瓶子，判断其是世间少有奇物，并决定挖掘其价值。",
+      "evidence_ids": [
+        "evidence:chunk-0025:005",
+        "evidence:chunk-0025:006",
+        "evidence:chunk-0025:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        45706,
+        46228
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          45706,
+          46228
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0025:medicine:001",
+      "node_type": "medicine",
+      "label": "绿液",
+      "aliases": [
+        "翠绿色的液体"
+      ],
+      "fact_summary": "小瓶底部有一滴翠绿色液体；韩立认为绿液可能隐藏瓶子秘密，并将其稀释后喂给野兔试验。",
+      "evidence_ids": [
+        "evidence:chunk-0025:006",
+        "evidence:chunk-0025:007",
+        "evidence:chunk-0025:011",
+        "evidence:chunk-0025:012",
+        "evidence:chunk-0025:013",
+        "evidence:chunk-0025:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        46078,
+        47401
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46078,
+          47401
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0025:faction:001",
+      "node_type": "faction",
+      "label": "七玄门",
+      "aliases": [],
+      "fact_summary": "当前 chunk 只说明墨大夫不在七玄门后，厨房不再给神手谷送饭，体现七玄门内后勤待遇受权力影响。",
+      "evidence_ids": [
+        "evidence:chunk-0025:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        46409,
+        46570
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46409,
+          46570
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0025:character:002",
+      "node_type": "character",
+      "label": "墨大夫",
+      "aliases": [],
+      "fact_summary": "墨大夫当前不在七玄门；其在山上时可吩咐厨房把饭送到神手谷，韩立曾借此受益。",
+      "evidence_ids": [
+        "evidence:chunk-0025:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        46409,
+        46570
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46409,
+          46570
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0025:facility:001",
+      "node_type": "facility",
+      "label": "谷外的大厨房",
+      "aliases": [
+        "厨房"
+      ],
+      "fact_summary": "韩立到谷外大厨房吃早饭，并从厨房管事处换得两只灰毛野兔。",
+      "evidence_ids": [
+        "evidence:chunk-0025:008",
+        "evidence:chunk-0025:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        46409,
+        46635
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46409,
+          46635
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0025:character:003",
+      "node_type": "character",
+      "label": "厨房的管事",
+      "aliases": [],
+      "fact_summary": "厨房的管事与韩立完成一次资源交换，收碎银子并给出两只灰毛野兔；当前未明示姓名或身份背景。",
+      "evidence_ids": [
+        "evidence:chunk-0025:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        46571,
+        46635
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46571,
+          46635
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0025:location:001",
+      "node_type": "location",
+      "label": "神手谷",
+      "aliases": [],
+      "fact_summary": "韩立饭后带野兔回到神手谷，并在谷中药园进行绿液试验。",
+      "evidence_ids": [
+        "evidence:chunk-0025:009",
+        "evidence:chunk-0025:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        46571,
+        46679
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46571,
+          46679
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0025:facility:002",
+      "node_type": "facility",
+      "label": "药园",
+      "aliases": [],
+      "fact_summary": "韩立把野兔拴在药园中较宽广处，让兔子暴晒后进行绿液试验。",
+      "evidence_ids": [
+        "evidence:chunk-0025:010",
+        "evidence:chunk-0025:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        46636,
+        46810
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46636,
+          46810
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0025:beast:001",
+      "node_type": "beast",
+      "label": "灰毛野兔",
+      "aliases": [
+        "野兔",
+        "兔子"
+      ],
+      "fact_summary": "两只灰毛野兔被韩立买回神手谷，暴晒口渴后饮用稀释绿液，并出现急躁、疙瘩和全身膨胀。",
+      "evidence_ids": [
+        "evidence:chunk-0025:009",
+        "evidence:chunk-0025:010",
+        "evidence:chunk-0025:012",
+        "evidence:chunk-0025:013",
+        "evidence:chunk-0025:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        46571,
+        47401
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46571,
+          47401
+        ]
+      }
+    }
+  ],
+  "normalized_edges": [
+    {
+      "id": "edge:chunk-0025:001",
+      "edge_type": "uses_item",
+      "source": "node:chunk-0025:character:001",
+      "target": "node:chunk-0025:inscription:001",
+      "fact_summary": "韩立取出并触碰平安符后，烦躁、难受和身体异常平息。",
+      "evidence_ids": [
+        "evidence:chunk-0025:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        45076,
+        45253
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          45076,
+          45253
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0025:002",
+      "edge_type": "counteracts",
+      "source": "node:chunk-0025:inscription:001",
+      "target": "node:chunk-0025:rule:001",
+      "fact_summary": "平安符作为外物帮助韩立提前驱除心魔，避免心魔侵入元神。",
+      "evidence_ids": [
+        "evidence:chunk-0025:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        45378,
+        45500
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          45378,
+          45500
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0025:003",
+      "edge_type": "reaches_stage",
+      "source": "node:chunk-0025:character:001",
+      "target": "node:chunk-0025:realm:001",
+      "fact_summary": "韩立运功检查后发现自己已达到口诀第三层顶峰。",
+      "evidence_ids": [
+        "evidence:chunk-0025:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        45501,
+        45586
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          45501,
+          45586
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0025:004",
+      "edge_type": "investigates_item",
+      "source": "node:chunk-0025:character:001",
+      "target": "node:chunk-0025:tool:001",
+      "fact_summary": "韩立重新发现小瓶，判断其是奇物并打算挖掘价值。",
+      "evidence_ids": [
+        "evidence:chunk-0025:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        45706,
+        45986
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          45706,
+          45986
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0025:005",
+      "edge_type": "contains",
+      "source": "node:chunk-0025:tool:001",
+      "target": "node:chunk-0025:medicine:001",
+      "fact_summary": "小瓶瓶底有一滴翠绿色液体，韩立认为瓶子的秘密可能在绿液上。",
+      "evidence_ids": [
+        "evidence:chunk-0025:006",
+        "evidence:chunk-0025:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        46078,
+        46228
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46078,
+          46228
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0025:006",
+      "edge_type": "trades_for",
+      "source": "node:chunk-0025:character:001",
+      "target": "node:chunk-0025:beast:001",
+      "fact_summary": "韩立花几钱碎银子从厨房管事处换来两只灰毛野兔。",
+      "evidence_ids": [
+        "evidence:chunk-0025:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        46571,
+        46635
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46571,
+          46635
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0025:007",
+      "edge_type": "provides_resource",
+      "source": "node:chunk-0025:character:003",
+      "target": "node:chunk-0025:beast:001",
+      "fact_summary": "厨房的管事向韩立交付两只灰毛野兔。",
+      "evidence_ids": [
+        "evidence:chunk-0025:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        46571,
+        46635
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46571,
+          46635
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0025:008",
+      "edge_type": "experimented_on",
+      "source": "node:chunk-0025:medicine:001",
+      "target": "node:chunk-0025:beast:001",
+      "fact_summary": "绿液被稀释后喂给野兔，野兔随后出现急躁、疙瘩和剧烈膨胀。",
+      "evidence_ids": [
+        "evidence:chunk-0025:011",
+        "evidence:chunk-0025:012",
+        "evidence:chunk-0025:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        46680,
+        47279
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46680,
+          47279
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0025:009",
+      "edge_type": "conducts_experiment_at",
+      "source": "node:chunk-0025:character:001",
+      "target": "node:chunk-0025:facility:002",
+      "fact_summary": "韩立在神手谷药园中布置野兔和绿液试验。",
+      "evidence_ids": [
+        "evidence:chunk-0025:010",
+        "evidence:chunk-0025:011",
+        "evidence:chunk-0025:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        46636,
+        46964
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46636,
+          46964
+        ]
+      }
+    }
+  ],
+  "normalized_events": [
+    {
+      "id": "event:chunk-0025:001",
+      "event_type": "heart_demon_crisis_resolved",
+      "label": "韩立借平安符平复心魔危机",
+      "fact_summary": "韩立取出父母所赠平安符后身心清明，叙事说明这是提前借外物驱除了心魔。",
+      "participants": [
+        "node:chunk-0025:character:001",
+        "node:chunk-0025:inscription:001",
+        "node:chunk-0025:rule:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0025:001",
+        "evidence:chunk-0025:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        45076,
+        45500
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          45076,
+          45500
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0025:002",
+      "event_type": "cultivation_progress_event",
+      "label": "韩立功力增长至第三层顶峰",
+      "fact_summary": "韩立运功察看后确认身体无碍，并发现功力增长到第三层顶峰、接近第四层。",
+      "participants": [
+        "node:chunk-0025:character:001",
+        "node:chunk-0025:cultivation_method:001",
+        "node:chunk-0025:realm:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0025:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        45501,
+        45586
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          45501,
+          45586
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0025:003",
+      "event_type": "item_rediscovery_event",
+      "label": "韩立重新发现神秘小瓶",
+      "fact_summary": "韩立在装平安符的皮袋中意外发现遗忘多年的神秘小瓶子，并决定挖掘其价值。",
+      "participants": [
+        "node:chunk-0025:character:001",
+        "node:chunk-0025:tool:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0025:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        45706,
+        45986
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          45706,
+          45986
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0025:004",
+      "event_type": "experiment_decision_event",
+      "label": "韩立决定用小动物试验绿液",
+      "fact_summary": "韩立认为瓶子秘密可能在绿液上，为弄清作用决定寻找小动物做活体试验。",
+      "participants": [
+        "node:chunk-0025:character:001",
+        "node:chunk-0025:tool:001",
+        "node:chunk-0025:medicine:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0025:006",
+        "evidence:chunk-0025:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        46078,
+        46228
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46078,
+          46228
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0025:005",
+      "event_type": "resource_trade_event",
+      "label": "韩立换得两只灰毛野兔",
+      "fact_summary": "韩立吃完早饭后从厨房管事处用碎银换得两只灰毛野兔，并带回神手谷。",
+      "participants": [
+        "node:chunk-0025:character:001",
+        "node:chunk-0025:character:003",
+        "node:chunk-0025:beast:001",
+        "node:chunk-0025:facility:001",
+        "node:chunk-0025:location:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0025:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        46571,
+        46635
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46571,
+          46635
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0025:006",
+      "event_type": "live_test_event",
+      "label": "韩立给野兔喂稀释绿液",
+      "fact_summary": "韩立在药园里晒渴野兔，将绿液掺清水稀释后让野兔饮用，并等待反应。",
+      "participants": [
+        "node:chunk-0025:character:001",
+        "node:chunk-0025:medicine:001",
+        "node:chunk-0025:beast:001",
+        "node:chunk-0025:facility:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0025:010",
+        "evidence:chunk-0025:011",
+        "evidence:chunk-0025:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        46636,
+        46964
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46636,
+          46964
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0025:007",
+      "event_type": "medicine_effect_event",
+      "label": "野兔饮绿液后剧烈膨胀",
+      "fact_summary": "野兔饮用稀释绿液后一炷香内急躁蹦跳，皮毛下起疙瘩，全身逐渐膨胀成圆鼓鼓的大球体。",
+      "participants": [
+        "node:chunk-0025:medicine:001",
+        "node:chunk-0025:beast:001",
+        "node:chunk-0025:character:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0025:013",
+        "evidence:chunk-0025:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        46965,
+        47401
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46965,
+          47401
+        ]
+      }
+    }
+  ],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0025:001",
+      "chunk_id": "chunk-0025",
+      "excerpt": "　　他飞快的冲向被扔在远处的袋子，几个箭步就跑到了跟前，一俯身把袋子捡了起来，三下五除二把皮袋的口子撑开，从里面把父母给他的平安符抓了出来。\n　　手掌心一触到这张平安符，一股透入身心的清心感觉从他手心处传了过来。韩立烦躁的内心马上就平静了下来，原来郁闷、难受的感觉一股脑儿统统消失的无影无踪，身体内的种种异常现象也都自动的销声匿迹，一切似乎都恢复了正常。",
+      "fact_summary": "韩立从皮袋中取出父母给他的平安符，触碰后烦躁、难受和身体异常都平息。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        45076,
+        45253
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          45076,
+          45253
+        ]
+      },
+      "id": "evidence:chunk-0025:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0025:002",
+      "chunk_id": "chunk-0025",
+      "excerpt": "　　韩立并不知道，这次令他差点没命的麻烦并不是“走火入魔”，而是修道之人的“心魔入侵”。若不是他见机的早，提前借助外物驱除掉了心魔，恐怕他不久就会被心魔侵入元神，然后被控制陷入幻境，操纵躯体狂舞而死。当然，这一切都是他后来踏上修道之路才知道的。",
+      "fact_summary": "叙事说明韩立这次不是走火入魔，而是心魔入侵；他提前借外物驱除心魔，否则可能被侵入元神并狂舞而死。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        45378,
+        45500
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          45378,
+          45500
+        ]
+      },
+      "id": "evidence:chunk-0025:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0025:003",
+      "chunk_id": "chunk-0025",
+      "excerpt": "　　韩立运功察看了全身上下，觉得一切都没有问题，并且让他惊喜的是，他的功力居然也增长了不少，虽然还没有突破第三层到达第四层，但也达到了第三层的顶峰，距离到第四层也不远了。",
+      "fact_summary": "韩立运功检查后发现功力增长，尚未突破第三层到第四层，但已达第三层顶峰。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        45501,
+        45586
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          45501,
+          45586
+        ]
+      },
+      "id": "evidence:chunk-0025:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0025:004",
+      "chunk_id": "chunk-0025",
+      "excerpt": "　　韩立因这突如其来的意外惊喜，脸上露出了一丝笑容，但他紧接着又急忙收敛住了内心的激动。生怕因情绪不稳定，再来这么一次惊险的走火入魔，他可没有把握能再一次有惊无险的过去。他拿住装平安符的皮袋，准备把立了大功的平安符放回袋子，再妥善收好。",
+      "fact_summary": "韩立因刚经历惊险而收敛激动，并准备把立功的平安符放回皮袋妥善收好。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        45587,
+        45705
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          45587,
+          45705
+        ]
+      },
+      "id": "evidence:chunk-0025:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0025:005",
+      "chunk_id": "chunk-0025",
+      "excerpt": "　　“咦！”韩立意外发现袋子里一个被他遗忘了好久的物品，一个已放了好几年的收藏品——那个神秘的小瓶子。\n　　这个小瓶的事情早已被韩立忘得一干二净，若不是现在又瞅见它，他还仍不会想起这回事。\n　　现在的韩立和四年前相比，见识和眼力又大大不同了，他通过饱读墨大夫房里的各类藏书而大长许多见识，因修炼口诀头脑也比以前聪慧了许多。他此时能轻易地从这瓶子曾发生的种种异象，判断出这个小瓶绝对是个世间少有的奇物，有着非同寻常的功用。",
+      "fact_summary": "韩立在袋中重新发现遗忘多年的神秘小瓶子，并凭见识判断其是少有奇物、有非同寻常功用。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        45706,
+        45916
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          45706,
+          45916
+        ]
+      },
+      "id": "evidence:chunk-0025:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0025:006",
+      "chunk_id": "chunk-0025",
+      "excerpt": "　　韩立不再无谓的浪费时间，他把瓶盖小心的打开，瓶子里那滴翠绿色的液体仍老老实实的待在瓶子的底部，和四年前相比并没有什么不同。",
+      "fact_summary": "韩立打开小瓶，看到瓶底仍有一滴翠绿色液体。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        46078,
+        46141
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46078,
+          46141
+        ]
+      },
+      "id": "evidence:chunk-0025:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0025:007",
+      "chunk_id": "chunk-0025",
+      "excerpt": "　　韩立很清楚，瓶子所有的秘密可能都存在了这小小的绿液上，这滴绿液一定有着某些他还没发现的特殊作用，为了搞清这液体的秘密，他看来必须要找到一些小动物，去做些残忍的活体试验。",
+      "fact_summary": "韩立认为绿液可能藏有瓶子秘密，为弄清作用决定找小动物做活体试验。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        46142,
+        46228
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46142,
+          46228
+        ]
+      },
+      "id": "evidence:chunk-0025:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0025:008",
+      "chunk_id": "chunk-0025",
+      "excerpt": "　　第二天早上，韩立起床洗漱完毕后，先去谷外的大厨房吃了份普通的早饭。以前墨大夫在山上的时候，都是由墨大夫吩咐厨房的人亲自送到神手谷来，韩立沾了墨大夫的光，也不用到山谷外去用饭，厨房中的伙夫也把他的饭一并送了过来。现在墨大夫不在七玄门，厨房的人自然不会再送饭上门，这让韩立心里好一阵感慨厨房管事的势利之处，大叹权力的好处。",
+      "fact_summary": "墨大夫不在七玄门后，厨房不再送饭到神手谷，韩立到谷外大厨房吃早饭并感慨权力好处。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        46409,
+        46570
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46409,
+          46570
+        ]
+      },
+      "id": "evidence:chunk-0025:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0025:009",
+      "chunk_id": "chunk-0025",
+      "excerpt": "　　吃完早饭后，韩立没有马上离开厨房，而是找到厨房的管事，花了几钱的碎银子，从他那里换来了两个活蹦乱跳的灰毛野兔，带回了神手谷。",
+      "fact_summary": "韩立花几钱碎银子从厨房管事处换来两只灰毛野兔，并带回神手谷。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        46571,
+        46635
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46571,
+          46635
+        ]
+      },
+      "id": "evidence:chunk-0025:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0025:010",
+      "chunk_id": "chunk-0025",
+      "excerpt": "　　回到谷中，韩立把野兔用绳子拴在药园里一块比较宽广的地方，让兔子在太阳下暴晒了起来。",
+      "fact_summary": "韩立把野兔拴在药园较宽广处，让兔子在太阳下暴晒。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        46636,
+        46679
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46636,
+          46679
+        ]
+      },
+      "id": "evidence:chunk-0025:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0025:011",
+      "chunk_id": "chunk-0025",
+      "excerpt": "　　等到野兔被晒的无精打采、口干舌燥的时候，才去找来一个大瓷碗，小心翼翼的把瓶中的绿液倒入碗中，再掺入一些普通的清水。\n　　这豆粒大小的绿液，很轻易的消融到了清水之中，使整碗水都变成了碧绿色。这绿绿的碧意让人一看，不由自主就有一股深深的凉意，从心底涌上了心头。",
+      "fact_summary": "野兔口干后，韩立把瓶中绿液倒入大瓷碗并掺入清水，绿液消融后整碗水变成碧绿色。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        46680,
+        46810
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46680,
+          46810
+        ]
+      },
+      "id": "evidence:chunk-0025:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0025:012",
+      "chunk_id": "chunk-0025",
+      "excerpt": "　　韩立端起这碗稀释好的清水，来到已口渴的兔子跟前，把碗在它们身边放了下来。\n　　早已晒得口干舌燥的兔子们急忙拥了上来，围在了瓷碗边，大口大口的喝起碗里的水来，韩立不愿让它们一次喝的太多，在被喝掉一小半的时候又把碗从兔子跟前拿了开来。然后端着瓷碗站在一边，耐心的等待兔子的反应，看它们是否有什么有趣的变化。",
+      "fact_summary": "韩立把稀释绿液放到口渴兔子身边，兔子饮用后他移开瓷碗并等待反应。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        46811,
+        46964
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46811,
+          46964
+        ]
+      },
+      "id": "evidence:chunk-0025:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0025:013",
+      "chunk_id": "chunk-0025",
+      "excerpt": "　　时间过的不长，只不过是一炷香的功夫，兔子们开始急躁地蹦跳起来，然后动作是越来越冲动，越来越猛烈。接着身上也开始起了惊人的变化，它们的皮毛下开始凸起一个个鸡蛋大小的疙瘩，而且是越来越多，渐渐的布满了全身，随后这些疙瘩连成了一片，让兔子的身体看上去好像无缘无故的大上了一圈，和它硕小的脑袋比起来，显得很是可笑。\n　　兔子肥硕的躯体只维持了一小会儿，就一点一点的慢慢鼓起来，而且随着时间的流逝，膨胀的速度也变得更快，它们体内就好像被不停地注入了某种气体，被撑得越来越大，越来越鼓。到了最后，它们的身子就像是两个大西瓜一样，被撑成了两个圆鼓鼓的大球体。\n　　看着眼前兔子们变得异常诡异的身体，再听着它们痛苦的哀鸣声，韩立有些吃惊了。",
+      "fact_summary": "一炷香后兔子急躁蹦跳，皮毛下起疙瘩并全身膨胀成圆鼓鼓的大球体。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        46965,
+        47279
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          46965,
+          47279
+        ]
+      },
+      "id": "evidence:chunk-0025:013"
+    },
+    {
+      "evidence_id": "evidence:chunk-0025:014",
+      "chunk_id": "chunk-0025",
+      "excerpt": "　　眼前发生的一切大大出乎了他的意料之外，如果说这不知名的液体是某种致人性命的剧毒，或者是能增加功力的灵药，这都没什么，也都在他的想象之中。可他万万没想到，会出现眼前这种令人头皮发麻的景象，兔子身体竟然就好像是被人吹大了一般，变得无比的恐怖。",
+      "fact_summary": "韩立被兔子诡异痛苦的变化惊到，意识到绿液效果既不像普通剧毒也不像单纯增加功力的灵药。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        47280,
+        47401
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0025",
+        "source_path": "intermediate/chunks/chunk-0025.txt",
+        "source_range": [
+          47280,
+          47401
+        ]
+      },
+      "id": "evidence:chunk-0025:014"
+    }
+  ]
+}

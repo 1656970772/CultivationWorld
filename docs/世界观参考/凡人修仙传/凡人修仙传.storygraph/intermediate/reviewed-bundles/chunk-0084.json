@@ -1,0 +1,4286 @@
+{
+  "chunk_id": "chunk-0084",
+  "source_range": [
+    164263,
+    166368
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "task_packet_id": "chunk-0084:comprehensive_extraction:attempt-001",
+      "chunk_id": "chunk-0084",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "produced_at": "2026-06-23T16:30:00+08:00",
+      "extracted_nodes": [
+        {
+          "id": "node:chunk-0084:character:001",
+          "node_type": "character",
+          "label": "贾天龙",
+          "aliases": [
+            "贾帮主",
+            "贾大帮主"
+          ],
+          "fact_summary": "贾天龙以三千两黄金请来金光上人，并准备率野狼帮攻打七玄门总堂七玄殿。",
+          "evidence_ids": [
+            "evidence:chunk-0084:002",
+            "evidence:chunk-0084:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            164505,
+            164654
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164505,
+              164654
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0084:character:002",
+          "node_type": "character",
+          "label": "金光上人",
+          "aliases": [
+            "红袍侏儒",
+            "侏儒",
+            "本上人"
+          ],
+          "fact_summary": "金光上人是贾天龙请来的红袍侏儒，自称法力无穷，贪恋金子，轻视七玄门俗人高手。",
+          "evidence_ids": [
+            "evidence:chunk-0084:001",
+            "evidence:chunk-0084:002",
+            "evidence:chunk-0084:004",
+            "evidence:chunk-0084:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            164804,
+            164869
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164804,
+              164869
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0084:faction:001",
+          "node_type": "faction",
+          "label": "野狼帮",
+          "aliases": [],
+          "fact_summary": "野狼帮由贾天龙率领，准备进入落日峰峰顶攻打七玄门总堂。",
+          "evidence_ids": [
+            "evidence:chunk-0084:008",
+            "evidence:chunk-0084:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            165280,
+            165348
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              165280,
+              165348
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0084:faction:002",
+          "node_type": "faction",
+          "label": "七玄门",
+          "aliases": [],
+          "fact_summary": "七玄门是贾天龙要歼灭的目标，其门主和三位师叔均在本段被提及。",
+          "evidence_ids": [
+            "evidence:chunk-0084:003",
+            "evidence:chunk-0084:014"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            164657,
+            164801
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164657,
+              164801
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0084:facility:001",
+          "node_type": "facility",
+          "label": "金光观",
+          "aliases": [],
+          "fact_summary": "金光观是金光上人被贾天龙花三千两黄金请来的地点。",
+          "evidence_ids": [
+            "evidence:chunk-0084:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            164505,
+            164654
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164505,
+              164654
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0084:character:003",
+          "node_type": "character",
+          "label": "七玄门门主的三位师叔",
+          "aliases": [
+            "三位师叔"
+          ],
+          "fact_summary": "七玄门门主的三位师叔据贾天龙所说对外宣称过世，实则隐居落日峰密室做生死关，是七玄门此时最大依仗。",
+          "evidence_ids": [
+            "evidence:chunk-0084:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            164657,
+            164801
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164657,
+              164801
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0084:location:001",
+          "node_type": "location",
+          "label": "落日峰",
+          "aliases": [
+            "落日峰峰顶"
+          ],
+          "fact_summary": "落日峰峰顶有七玄门总堂七玄殿，野狼帮和中小帮派已涌上峰顶并围住石殿。",
+          "evidence_ids": [
+            "evidence:chunk-0084:008",
+            "evidence:chunk-0084:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            165280,
+            165348
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              165280,
+              165348
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0084:facility:002",
+          "node_type": "facility",
+          "label": "落日峰密室",
+          "aliases": [
+            "密室"
+          ],
+          "fact_summary": "贾天龙称七玄门门主的三位师叔一直隐居在落日峰密室里做生死关。",
+          "evidence_ids": [
+            "evidence:chunk-0084:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            164657,
+            164801
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164657,
+              164801
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0084:technique:001",
+          "node_type": "technique",
+          "label": "飞剑之术",
+          "aliases": [
+            "飞剑术"
+          ],
+          "fact_summary": "金光上人曾向贾天龙演示飞剑之术，并称三位师叔也绝不是他飞剑术的对手。",
+          "evidence_ids": [
+            "evidence:chunk-0084:004",
+            "evidence:chunk-0084:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            164804,
+            164869
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164804,
+              164869
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0084:technique:002",
+          "node_type": "technique",
+          "label": "金刚不坏之功",
+          "aliases": [],
+          "fact_summary": "金光上人曾亲自向贾天龙演示金刚不坏之功。",
+          "evidence_ids": [
+            "evidence:chunk-0084:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            164804,
+            164869
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164804,
+              164869
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0084:facility:003",
+          "node_type": "facility",
+          "label": "七玄殿",
+          "aliases": [
+            "七玄门总堂"
+          ],
+          "fact_summary": "七玄殿是七玄门总堂，位于落日峰顶，由青色巨石修筑成一大六小几座石殿。",
+          "evidence_ids": [
+            "evidence:chunk-0084:008",
+            "evidence:chunk-0084:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            165280,
+            165348
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              165280,
+              165348
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0084:character:004",
+          "node_type": "character",
+          "label": "王绝楚",
+          "aliases": [
+            "王门主",
+            "王大门主",
+            "七玄门门主"
+          ],
+          "fact_summary": "王绝楚是七玄门门主，白衣持剑从主殿入口处出现，与贾天龙对峙并表示要商量投降。",
+          "evidence_ids": [
+            "evidence:chunk-0084:012",
+            "evidence:chunk-0084:013",
+            "evidence:chunk-0084:014"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            166111,
+            166279
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              166111,
+              166279
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0084:faction:003",
+          "node_type": "faction",
+          "label": "中小帮派",
+          "aliases": [],
+          "fact_summary": "其他中小帮派的人与野狼帮一起围住七玄殿石殿，暂未立即开始进攻。",
+          "evidence_ids": [
+            "evidence:chunk-0084:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            165463,
+            165614
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              165463,
+              165614
+            ]
+          }
+        }
+      ],
+      "extracted_edges": [
+        {
+          "id": "edge:chunk-0084:001",
+          "edge_type": "hired",
+          "source": "node:chunk-0084:character:001",
+          "target": "node:chunk-0084:character:002",
+          "fact_summary": "贾天龙花三千两黄金把金光上人从金光观请来出手。",
+          "evidence_ids": [
+            "evidence:chunk-0084:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            164505,
+            164654
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164505,
+              164654
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0084:002",
+          "edge_type": "associated_with_place",
+          "source": "node:chunk-0084:character:002",
+          "target": "node:chunk-0084:facility:001",
+          "fact_summary": "金光上人被称为从金光观被请来。",
+          "evidence_ids": [
+            "evidence:chunk-0084:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            164505,
+            164654
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164505,
+              164654
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0084:003",
+          "edge_type": "demonstrated",
+          "source": "node:chunk-0084:character:002",
+          "target": "node:chunk-0084:technique:001",
+          "fact_summary": "金光上人曾向贾天龙演示飞剑之术。",
+          "evidence_ids": [
+            "evidence:chunk-0084:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            164804,
+            164869
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164804,
+              164869
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0084:004",
+          "edge_type": "demonstrated",
+          "source": "node:chunk-0084:character:002",
+          "target": "node:chunk-0084:technique:002",
+          "fact_summary": "金光上人曾向贾天龙演示金刚不坏之功。",
+          "evidence_ids": [
+            "evidence:chunk-0084:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            164804,
+            164869
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164804,
+              164869
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0084:005",
+          "edge_type": "targets_with_hired_help",
+          "source": "node:chunk-0084:character:001",
+          "target": "node:chunk-0084:character:003",
+          "fact_summary": "贾天龙请金光上人来对付七玄门门主的三位师叔。",
+          "evidence_ids": [
+            "evidence:chunk-0084:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            164657,
+            164801
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164657,
+              164801
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0084:006",
+          "edge_type": "hidden_in",
+          "source": "node:chunk-0084:character:003",
+          "target": "node:chunk-0084:facility:002",
+          "fact_summary": "贾天龙称三位师叔一直隐居在落日峰密室里做生死关。",
+          "evidence_ids": [
+            "evidence:chunk-0084:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            164657,
+            164801
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164657,
+              164801
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0084:007",
+          "edge_type": "located_in",
+          "source": "node:chunk-0084:facility:003",
+          "target": "node:chunk-0084:location:001",
+          "fact_summary": "七玄殿位于落日峰峰顶。",
+          "evidence_ids": [
+            "evidence:chunk-0084:008",
+            "evidence:chunk-0084:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            165280,
+            165348
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              165280,
+              165348
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0084:008",
+          "edge_type": "leader_of",
+          "source": "node:chunk-0084:character:004",
+          "target": "node:chunk-0084:faction:002",
+          "fact_summary": "王绝楚被明示为七玄门门主。",
+          "evidence_ids": [
+            "evidence:chunk-0084:014"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            166282,
+            166365
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              166282,
+              166365
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0084:009",
+          "edge_type": "confronts",
+          "source": "node:chunk-0084:character:004",
+          "target": "node:chunk-0084:character:001",
+          "fact_summary": "王绝楚从主殿入口处现身，与贾天龙互相叫出姓名并展开对峙。",
+          "evidence_ids": [
+            "evidence:chunk-0084:012",
+            "evidence:chunk-0084:013"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            165852,
+            166018
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              165852,
+              166018
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0084:010",
+          "edge_type": "plans_to_occupy",
+          "source": "node:chunk-0084:character:001",
+          "target": "node:chunk-0084:facility:003",
+          "fact_summary": "贾天龙看到七玄殿宏伟后，决定灭掉七玄门后把总坛搬到此地。",
+          "evidence_ids": [
+            "evidence:chunk-0084:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            165617,
+            165731
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              165617,
+              165731
+            ]
+          }
+        }
+      ],
+      "extracted_events": [
+        {
+          "id": "event:chunk-0084:001",
+          "event_type": "hiring_dialogue_event",
+          "label": "金光上人索问出手对象",
+          "fact_summary": "金光上人对贾天龙傲慢发问，指出贾天龙花三千两黄金把他从金光观请来，不应只干看一夜。",
+          "participants": [
+            "node:chunk-0084:character:001",
+            "node:chunk-0084:character:002",
+            "node:chunk-0084:facility:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0084:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            164505,
+            164654
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164505,
+              164654
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0084:002",
+          "event_type": "target_revelation_event",
+          "label": "贾天龙说明请金光上人对付三位师叔",
+          "fact_summary": "贾天龙说七玄门门主不足以劳烦金光上人，真正目标是隐居落日峰密室、做生死关的三位师叔。",
+          "participants": [
+            "node:chunk-0084:character:001",
+            "node:chunk-0084:character:002",
+            "node:chunk-0084:character:003",
+            "node:chunk-0084:facility:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0084:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            164657,
+            164801
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164657,
+              164801
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0084:003",
+          "event_type": "relationship_setup_event",
+          "label": "贾天龙用黄金打动金光上人",
+          "fact_summary": "贾天龙在邻近蛮人地界的道观认识自称金光上人的红袍侏儒，见其演示飞剑之术和金刚不坏之功后，以巨金和奉承换来出手帮助一次的承诺。",
+          "participants": [
+            "node:chunk-0084:character:001",
+            "node:chunk-0084:character:002",
+            "node:chunk-0084:technique:001",
+            "node:chunk-0084:technique:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0084:004",
+            "evidence:chunk-0084:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            164804,
+            164869
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164804,
+              164869
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0084:004",
+          "event_type": "combat_commitment_event",
+          "label": "金光上人承诺以飞剑术应对俗人高手",
+          "fact_summary": "金光上人狂笑后称几个俗人交给自己，即使功力和武艺再强，也不是飞剑术的对手；贾天龙随即承诺事成后再加两千两黄金酬礼。",
+          "participants": [
+            "node:chunk-0084:character:001",
+            "node:chunk-0084:character:002",
+            "node:chunk-0084:technique:001",
+            "node:chunk-0084:character:003"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0084:006",
+            "evidence:chunk-0084:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            165054,
+            165131
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              165054,
+              165131
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0084:005",
+          "event_type": "attack_preparation_event",
+          "label": "贾天龙命令攻打七玄殿",
+          "fact_summary": "得到金光上人的保证后，贾天龙命令野狼帮进入落日峰峰顶，准备攻打七玄门总堂七玄殿。",
+          "participants": [
+            "node:chunk-0084:character:001",
+            "node:chunk-0084:character:002",
+            "node:chunk-0084:faction:001",
+            "node:chunk-0084:faction:002",
+            "node:chunk-0084:location:001",
+            "node:chunk-0084:facility:003"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0084:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            165280,
+            165348
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              165280,
+              165348
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0084:006",
+          "event_type": "encirclement_event",
+          "label": "野狼帮和中小帮派围住七玄殿",
+          "fact_summary": "野狼帮和其他中小帮派涌上落日峰，被七玄殿石殿的宏伟震慑，一时没有进攻，只将几座石殿围住；贾天龙决定灭门后迁总坛至此。",
+          "participants": [
+            "node:chunk-0084:faction:001",
+            "node:chunk-0084:faction:003",
+            "node:chunk-0084:facility:003",
+            "node:chunk-0084:location:001",
+            "node:chunk-0084:character:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0084:009",
+            "evidence:chunk-0084:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            165463,
+            165614
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              165463,
+              165614
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0084:007",
+          "event_type": "confrontation_dialogue_event",
+          "label": "王绝楚现身与贾天龙谈投降",
+          "fact_summary": "贾天龙举手准备发动攻防战时，白衣中年人王绝楚从主殿入口处出现，与贾天龙互称姓名；贾天龙调侃其是否投降，王绝楚冷冷回答要商量投降。",
+          "participants": [
+            "node:chunk-0084:character:001",
+            "node:chunk-0084:character:004",
+            "node:chunk-0084:facility:003",
+            "node:chunk-0084:faction:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0084:011",
+            "evidence:chunk-0084:012",
+            "evidence:chunk-0084:013",
+            "evidence:chunk-0084:014"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            165734,
+            165849
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              165734,
+              165849
+            ]
+          }
+        }
+      ],
+      "extracted_evidence": [
+        {
+          "evidence_id": "evidence:chunk-0084:001",
+          "chunk_id": "chunk-0084",
+          "source_range": [
+            164276,
+            164409
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164276,
+              164409
+            ]
+          },
+          "excerpt": "说话之人就站在贾天龙的身侧，是一个三尺来高的侏儒。\n　　这侏儒有四十几岁的年纪，长得干干瘦瘦，他身上套着一件金丝绣边的红袍，手指、脖子上分别带着金戒指和挂着粗粗的金链，腰间还系着几个金铃，张嘴说话间口中金光闪闪，看来镶了金牙在里面，从外表上看，一副十足的暴发户打扮。",
+          "fact_summary": "说话者是站在贾天龙身侧的三尺高侏儒，穿金丝红袍并满身金饰。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0084:001"
+        },
+        {
+          "evidence_id": "evidence:chunk-0084:002",
+          "chunk_id": "chunk-0084",
+          "source_range": [
+            164505,
+            164654
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164505,
+              164654
+            ]
+          },
+          "excerpt": "这个侏儒也看出了这些铁卫的不满，但他嘿嘿冷笑一声，根本不予理睬，反而对贾天龙傲然说道：“贾帮主，你花了三千两的黄金，把本上人从金光观老远给请来，不会就这么干看一夜吧！有什么要我出手对付的人，现在就可以明说了。总不会让我对付的是七玄门的门主吧，这么弱的对手你自己就可以解决了，还值得花重金请我出手？”",
+          "fact_summary": "金光上人称贾天龙花三千两黄金把自己从金光观请来，并要求说明出手对象。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0084:002"
+        },
+        {
+          "evidence_id": "evidence:chunk-0084:003",
+          "chunk_id": "chunk-0084",
+          "source_range": [
+            164657,
+            164801
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164657,
+              164801
+            ]
+          },
+          "excerpt": "“一个七玄门的门主还不劳仙师出手，我请仙师来对付的是七玄门门主的三位师叔。这三个人虽然对外早已宣称过世，但其实却一直隐居在落日峰的密室里，正做生死关，现在功力恐怕早已进入化境，非普通的高手可以抵挡，乃是七玄门此时的最大依仗，也只有请仙师你出手对付了。”贾天龙说的很谦卑，没有一点怠慢之意。",
+          "fact_summary": "贾天龙说明请金光上人对付的是七玄门门主的三位师叔，称他们隐居落日峰密室做生死关，是七玄门最大依仗。",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0084:003"
+        },
+        {
+          "evidence_id": "evidence:chunk-0084:004",
+          "chunk_id": "chunk-0084",
+          "source_range": [
+            164804,
+            164869
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164804,
+              164869
+            ]
+          },
+          "excerpt": "要知道这红袍侏儒可是他无意中在邻近蛮人地界的某一道观中认识的，此人自称金光上人，法力无穷，并亲自给他演示了飞剑之术和金刚不坏之功。",
+          "fact_summary": "贾天龙在邻近蛮人地界的道观认识红袍侏儒；此人自称金光上人，演示过飞剑之术和金刚不坏之功。",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0084:004"
+        },
+        {
+          "evidence_id": "evidence:chunk-0084:005",
+          "chunk_id": "chunk-0084",
+          "source_range": [
+            164922,
+            165051
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164922,
+              165051
+            ]
+          },
+          "excerpt": "在知道这人对金子有某种痴迷后，他立即在此人身上撒下了大把的巨金，并刻意奉承，终于打动了对方，得到了其出手帮助自己一次的承诺。\n　　因此贾天龙对这侏儒时刻持以晚辈之礼，对其自大之色不敢流露出丝毫厌恶之意，他可很清楚，这金光上人可不是他这小小野狼帮能对抗得了的。",
+          "fact_summary": "贾天龙利用金光上人痴迷金子，大量投入金子并奉承，换来其帮助一次的承诺；贾天龙认为野狼帮无法对抗金光上人。",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0084:005"
+        },
+        {
+          "evidence_id": "evidence:chunk-0084:006",
+          "chunk_id": "chunk-0084",
+          "source_range": [
+            165054,
+            165131
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              165054,
+              165131
+            ]
+          },
+          "excerpt": "金光上人一听后，哈哈一阵狂笑，等笑声止住后，他才倨傲的说道：“几个俗人而已，就交给我吧！哪怕他们功力再高，武艺再强，也绝不是我飞剑术的对手，你尽管放心！”",
+          "fact_summary": "金光上人称几个俗人交给自己，即便功力武艺再强也不是飞剑术对手。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0084:006"
+        },
+        {
+          "evidence_id": "evidence:chunk-0084:007",
+          "chunk_id": "chunk-0084",
+          "source_range": [
+            165134,
+            165225
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              165134,
+              165225
+            ]
+          },
+          "excerpt": "“那就有劳仙师你了，我答应的酬金也绝不失言，并且事成之后，我情愿再出两千两黄金当作酬礼。”贾天龙大喜，忙把酬金的筹码又加上了不少，他可知道对方并不是什么善良之辈，还是用金子说话的好。",
+          "fact_summary": "贾天龙承诺酬金不失言，并愿事成后再出两千两黄金作酬礼。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0084:007"
+        },
+        {
+          "evidence_id": "evidence:chunk-0084:008",
+          "chunk_id": "chunk-0084",
+          "source_range": [
+            165280,
+            165348
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              165280,
+              165348
+            ]
+          },
+          "excerpt": "既然有了金光上人这位大能之人的保证，贾天龙也不再迟疑了，马上命令野狼帮的人，也全都进入到落日峰的峰顶上，准备攻打七玄门的总堂——七玄殿。",
+          "fact_summary": "贾天龙在金光上人的保证下命令野狼帮进入落日峰峰顶，准备攻打七玄门总堂七玄殿。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0084:008"
+        },
+        {
+          "evidence_id": "evidence:chunk-0084:009",
+          "chunk_id": "chunk-0084",
+          "source_range": [
+            165463,
+            165614
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              165463,
+              165614
+            ]
+          },
+          "excerpt": "只见在落日峰顶的数十亩空地上，拔地而起了几座由青色巨石修筑而成的石殿，一大六小。\n　　虽然在黑夜里，由于火把的昏暗而看不清它们的全貌，但那种黑乎乎的，高大粗犷、宏伟壮丽的气势，还是把初到此地的野狼帮和其他中小帮派的人震慑住了，一时之间竟然没有马上开始进攻，而只是把这几座石殿团团的围住，给围个水泄不通。",
+          "fact_summary": "七玄殿所在石殿位于落日峰顶，青色巨石修筑，一大六小，野狼帮和中小帮派的人围住石殿。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0084:009"
+        },
+        {
+          "evidence_id": "evidence:chunk-0084:010",
+          "chunk_id": "chunk-0084",
+          "source_range": [
+            165617,
+            165731
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              165617,
+              165731
+            ]
+          },
+          "excerpt": "“对方毕竟还是传承了二百余年的门派，其财力还是不是他这个才崛起十余年的帮派所能比的，真是奢侈豪华啊！”贾天龙不禁暗暗想道。\n　　他已拿定了主意，只要一灭了七玄门，他就马上把总坛搬到此地来，这样宏伟的建筑才能符合他一方霸主的身份。",
+          "fact_summary": "贾天龙认为七玄门传承二百余年、财力优于野狼帮，并决定灭门后将总坛搬到此地。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0084:010"
+        },
+        {
+          "evidence_id": "evidence:chunk-0084:011",
+          "chunk_id": "chunk-0084",
+          "source_range": [
+            165734,
+            165849
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              165734,
+              165849
+            ]
+          },
+          "excerpt": "贾天龙看了看对面主殿黑不隆冬的入口处，又看了下四周的属下，终于把右手缓缓的举了起来。\n　　刹那间，整座落日峰上变得鸦雀无声，所有人的眼光都盯在他这只手掌上，他们都知道只要这只手一开始落下，这场歼灭七玄门总堂的惨烈攻防战就要开始了。",
+          "fact_summary": "贾天龙举起右手准备发动歼灭七玄门总堂的攻防战。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0084:011"
+        },
+        {
+          "evidence_id": "evidence:chunk-0084:012",
+          "chunk_id": "chunk-0084",
+          "source_range": [
+            165852,
+            166018
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              165852,
+              166018
+            ]
+          },
+          "excerpt": "“且慢！”就在此时，忽然从那黑黑的主殿入口处传来了一声冰冷的声音。\n　　然后一阵“啪嗒”“啪嗒”的有节奏的脚步声，从里面传了出来，并且越来越清晰。\n　　最后一个白色衣衫的中年人出现在了入口处，此人头上插着一把木簪，全身上下只挎有一把白色剑鞘的长剑，脸色苍白无比，然而眼睛却炯炯有神，目光所到之处，犹如利剑般直刺人心扉，令人不寒而颤。",
+          "fact_summary": "一名白衣中年人从主殿入口处出现，头插木簪，挎白色剑鞘长剑，目光如利剑般令人不寒而颤。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0084:012"
+        },
+        {
+          "evidence_id": "evidence:chunk-0084:013",
+          "chunk_id": "chunk-0084",
+          "source_range": [
+            166111,
+            166279
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              166111,
+              166279
+            ]
+          },
+          "excerpt": "“贾天龙”这名中年人叫出了贾大帮主的名字。\n　　“王绝楚”贾天龙也毫不示弱的喊出了对方的身份。\n　　“说起来，我们两人身为一方之主，倒是第一次面对面的见过，是不是，我的王大门主！”贾天龙用一种非常惬意的口气说着，嘴角上挂起了一丝讥讽之色，然后把举起的右手慢慢缩了回来。\n　　王绝楚毫无表情的回视着贾天龙，一言不发，气氛似乎开始紧张起来。",
+          "fact_summary": "白衣中年人叫出贾天龙，贾天龙叫出王绝楚，并称双方作为一方之主第一次面对面相见。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0084:013"
+        },
+        {
+          "evidence_id": "evidence:chunk-0084:014",
+          "chunk_id": "chunk-0084",
+          "source_range": [
+            166282,
+            166365
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              166282,
+              166365
+            ]
+          },
+          "excerpt": "“王门主独自一人来此，难道是打算投降吗？”贾天龙带有调侃的口气，微笑着说道。\n　　“不错，我是打算和你商量一下，投降的事。”七玄门门主王绝楚，犹如冰人般的冷冷回答道。",
+          "fact_summary": "贾天龙调侃王门主是否投降，七玄门门主王绝楚冷冷回答打算商量投降。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0084:014"
+        }
+      ],
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "uncertainties": [
+        {
+          "id": "uncertainty:chunk-0084:001",
+          "kind": "cultivation_identity_needs_review",
+          "fact_summary": "金光上人自称法力无穷，贾天龙认为其属于传说中的修仙之流，但本 chunk 未给出客观境界或修仙体系认证。",
+          "evidence_ids": [
+            "evidence:chunk-0084:004",
+            "evidence:chunk-0084:005"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            164804,
+            164869
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164804,
+              164869
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0084:002",
+          "kind": "reported_state_unverified",
+          "fact_summary": "三位师叔隐居密室、做生死关、功力进入化境等信息来自贾天龙陈述，当前 chunk 未由三位师叔本人或叙事直接验证。",
+          "evidence_ids": [
+            "evidence:chunk-0084:003"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            164657,
+            164801
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164657,
+              164801
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0084:003",
+          "kind": "intention_unclear",
+          "fact_summary": "王绝楚表示要商量投降，但当前 chunk 尚未说明这是实意投降、拖延还是另有安排。",
+          "evidence_ids": [
+            "evidence:chunk-0084:014"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            166282,
+            166365
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              166282,
+              166365
+            ]
+          }
+        }
+      ],
+      "rejected_candidates": [
+        {
+          "id": "rejected:chunk-0084:001",
+          "candidate": "附近铁卫",
+          "reason": "铁卫只表现为对侏儒不敬态度的不满，未给出新的群体设定或独立行动；本 chunk 不重复建节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            164505,
+            164654
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              164505,
+              164654
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0084:002",
+          "candidate": "黄金",
+          "reason": "三千两、两千两黄金是交易酬金而非具名器物或材料；保留在事件和证据中，不作为物品节点。",
+          "confidence": "EXTRACTED",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            165134,
+            165225
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              165134,
+              165225
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0084:003",
+          "candidate": "围观众人",
+          "reason": "围在石殿前的人群只承担场面背景；已用野狼帮和中小帮派群体节点承载剧情功能。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            165463,
+            165614
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0084",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              165463,
+              165614
+            ]
+          }
+        }
+      ],
+      "structured_failures": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0084/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "id": "node:chunk-0084:character:001",
+      "node_type": "character",
+      "label": "贾天龙",
+      "aliases": [
+        "贾帮主",
+        "贾大帮主"
+      ],
+      "fact_summary": "贾天龙以三千两黄金请来金光上人，并准备率野狼帮攻打七玄门总堂七玄殿。",
+      "evidence_ids": [
+        "evidence:chunk-0084:002",
+        "evidence:chunk-0084:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        164505,
+        164654
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          164505,
+          164654
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0084:character:002",
+      "node_type": "character",
+      "label": "金光上人",
+      "aliases": [
+        "红袍侏儒",
+        "侏儒",
+        "本上人"
+      ],
+      "fact_summary": "金光上人是贾天龙请来的红袍侏儒，自称法力无穷，贪恋金子，轻视七玄门俗人高手。",
+      "evidence_ids": [
+        "evidence:chunk-0084:001",
+        "evidence:chunk-0084:002",
+        "evidence:chunk-0084:004",
+        "evidence:chunk-0084:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        164804,
+        164869
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          164804,
+          164869
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0084:faction:001",
+      "node_type": "faction",
+      "label": "野狼帮",
+      "aliases": [],
+      "fact_summary": "野狼帮由贾天龙率领，准备进入落日峰峰顶攻打七玄门总堂。",
+      "evidence_ids": [
+        "evidence:chunk-0084:008",
+        "evidence:chunk-0084:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        165280,
+        165348
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          165280,
+          165348
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0084:faction:002",
+      "node_type": "faction",
+      "label": "七玄门",
+      "aliases": [],
+      "fact_summary": "七玄门是贾天龙要歼灭的目标，其门主和三位师叔均在本段被提及。",
+      "evidence_ids": [
+        "evidence:chunk-0084:003",
+        "evidence:chunk-0084:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        164657,
+        164801
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          164657,
+          164801
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0084:facility:001",
+      "node_type": "facility",
+      "label": "金光观",
+      "aliases": [],
+      "fact_summary": "金光观是金光上人被贾天龙花三千两黄金请来的地点。",
+      "evidence_ids": [
+        "evidence:chunk-0084:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        164505,
+        164654
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          164505,
+          164654
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0084:character:003",
+      "node_type": "character",
+      "label": "七玄门门主的三位师叔",
+      "aliases": [
+        "三位师叔"
+      ],
+      "fact_summary": "七玄门门主的三位师叔据贾天龙所说对外宣称过世，实则隐居落日峰密室做生死关，是七玄门此时最大依仗。",
+      "evidence_ids": [
+        "evidence:chunk-0084:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        164657,
+        164801
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          164657,
+          164801
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0084:location:001",
+      "node_type": "location",
+      "label": "落日峰",
+      "aliases": [
+        "落日峰峰顶"
+      ],
+      "fact_summary": "落日峰峰顶有七玄门总堂七玄殿，野狼帮和中小帮派已涌上峰顶并围住石殿。",
+      "evidence_ids": [
+        "evidence:chunk-0084:008",
+        "evidence:chunk-0084:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        165280,
+        165348
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          165280,
+          165348
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0084:facility:002",
+      "node_type": "facility",
+      "label": "落日峰密室",
+      "aliases": [
+        "密室"
+      ],
+      "fact_summary": "贾天龙称七玄门门主的三位师叔一直隐居在落日峰密室里做生死关。",
+      "evidence_ids": [
+        "evidence:chunk-0084:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        164657,
+        164801
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          164657,
+          164801
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0084:technique:001",
+      "node_type": "technique",
+      "label": "飞剑之术",
+      "aliases": [
+        "飞剑术"
+      ],
+      "fact_summary": "金光上人曾向贾天龙演示飞剑之术，并称三位师叔也绝不是他飞剑术的对手。",
+      "evidence_ids": [
+        "evidence:chunk-0084:004",
+        "evidence:chunk-0084:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        164804,
+        164869
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          164804,
+          164869
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0084:technique:002",
+      "node_type": "technique",
+      "label": "金刚不坏之功",
+      "aliases": [],
+      "fact_summary": "金光上人曾亲自向贾天龙演示金刚不坏之功。",
+      "evidence_ids": [
+        "evidence:chunk-0084:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        164804,
+        164869
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          164804,
+          164869
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0084:facility:003",
+      "node_type": "facility",
+      "label": "七玄殿",
+      "aliases": [
+        "七玄门总堂"
+      ],
+      "fact_summary": "七玄殿是七玄门总堂，位于落日峰顶，由青色巨石修筑成一大六小几座石殿。",
+      "evidence_ids": [
+        "evidence:chunk-0084:008",
+        "evidence:chunk-0084:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        165280,
+        165348
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          165280,
+          165348
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0084:character:004",
+      "node_type": "character",
+      "label": "王绝楚",
+      "aliases": [
+        "王门主",
+        "王大门主",
+        "七玄门门主"
+      ],
+      "fact_summary": "王绝楚是七玄门门主，白衣持剑从主殿入口处出现，与贾天龙对峙并表示要商量投降。",
+      "evidence_ids": [
+        "evidence:chunk-0084:012",
+        "evidence:chunk-0084:013",
+        "evidence:chunk-0084:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        166111,
+        166279
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          166111,
+          166279
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0084:faction:003",
+      "node_type": "faction",
+      "label": "中小帮派",
+      "aliases": [],
+      "fact_summary": "其他中小帮派的人与野狼帮一起围住七玄殿石殿，暂未立即开始进攻。",
+      "evidence_ids": [
+        "evidence:chunk-0084:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        165463,
+        165614
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          165463,
+          165614
+        ]
+      }
+    }
+  ],
+  "normalized_edges": [
+    {
+      "id": "edge:chunk-0084:001",
+      "edge_type": "hired",
+      "source": "node:chunk-0084:character:001",
+      "target": "node:chunk-0084:character:002",
+      "fact_summary": "贾天龙花三千两黄金把金光上人从金光观请来出手。",
+      "evidence_ids": [
+        "evidence:chunk-0084:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        164505,
+        164654
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          164505,
+          164654
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0084:002",
+      "edge_type": "associated_with_place",
+      "source": "node:chunk-0084:character:002",
+      "target": "node:chunk-0084:facility:001",
+      "fact_summary": "金光上人被称为从金光观被请来。",
+      "evidence_ids": [
+        "evidence:chunk-0084:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        164505,
+        164654
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          164505,
+          164654
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0084:003",
+      "edge_type": "demonstrated",
+      "source": "node:chunk-0084:character:002",
+      "target": "node:chunk-0084:technique:001",
+      "fact_summary": "金光上人曾向贾天龙演示飞剑之术。",
+      "evidence_ids": [
+        "evidence:chunk-0084:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        164804,
+        164869
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          164804,
+          164869
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0084:004",
+      "edge_type": "demonstrated",
+      "source": "node:chunk-0084:character:002",
+      "target": "node:chunk-0084:technique:002",
+      "fact_summary": "金光上人曾向贾天龙演示金刚不坏之功。",
+      "evidence_ids": [
+        "evidence:chunk-0084:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        164804,
+        164869
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          164804,
+          164869
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0084:005",
+      "edge_type": "targets_with_hired_help",
+      "source": "node:chunk-0084:character:001",
+      "target": "node:chunk-0084:character:003",
+      "fact_summary": "贾天龙请金光上人来对付七玄门门主的三位师叔。",
+      "evidence_ids": [
+        "evidence:chunk-0084:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        164657,
+        164801
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          164657,
+          164801
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0084:006",
+      "edge_type": "hidden_in",
+      "source": "node:chunk-0084:character:003",
+      "target": "node:chunk-0084:facility:002",
+      "fact_summary": "贾天龙称三位师叔一直隐居在落日峰密室里做生死关。",
+      "evidence_ids": [
+        "evidence:chunk-0084:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        164657,
+        164801
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          164657,
+          164801
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0084:007",
+      "edge_type": "located_in",
+      "source": "node:chunk-0084:facility:003",
+      "target": "node:chunk-0084:location:001",
+      "fact_summary": "七玄殿位于落日峰峰顶。",
+      "evidence_ids": [
+        "evidence:chunk-0084:008",
+        "evidence:chunk-0084:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        165280,
+        165348
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          165280,
+          165348
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0084:008",
+      "edge_type": "leader_of",
+      "source": "node:chunk-0084:character:004",
+      "target": "node:chunk-0084:faction:002",
+      "fact_summary": "王绝楚被明示为七玄门门主。",
+      "evidence_ids": [
+        "evidence:chunk-0084:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        166282,
+        166365
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          166282,
+          166365
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0084:009",
+      "edge_type": "confronts",
+      "source": "node:chunk-0084:character:004",
+      "target": "node:chunk-0084:character:001",
+      "fact_summary": "王绝楚从主殿入口处现身，与贾天龙互相叫出姓名并展开对峙。",
+      "evidence_ids": [
+        "evidence:chunk-0084:012",
+        "evidence:chunk-0084:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        165852,
+        166018
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          165852,
+          166018
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0084:010",
+      "edge_type": "plans_to_occupy",
+      "source": "node:chunk-0084:character:001",
+      "target": "node:chunk-0084:facility:003",
+      "fact_summary": "贾天龙看到七玄殿宏伟后，决定灭掉七玄门后把总坛搬到此地。",
+      "evidence_ids": [
+        "evidence:chunk-0084:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        165617,
+        165731
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          165617,
+          165731
+        ]
+      }
+    }
+  ],
+  "normalized_events": [
+    {
+      "id": "event:chunk-0084:001",
+      "event_type": "hiring_dialogue_event",
+      "label": "金光上人索问出手对象",
+      "fact_summary": "金光上人对贾天龙傲慢发问，指出贾天龙花三千两黄金把他从金光观请来，不应只干看一夜。",
+      "participants": [
+        "node:chunk-0084:character:001",
+        "node:chunk-0084:character:002",
+        "node:chunk-0084:facility:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0084:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        164505,
+        164654
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          164505,
+          164654
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0084:002",
+      "event_type": "target_revelation_event",
+      "label": "贾天龙说明请金光上人对付三位师叔",
+      "fact_summary": "贾天龙说七玄门门主不足以劳烦金光上人，真正目标是隐居落日峰密室、做生死关的三位师叔。",
+      "participants": [
+        "node:chunk-0084:character:001",
+        "node:chunk-0084:character:002",
+        "node:chunk-0084:character:003",
+        "node:chunk-0084:facility:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0084:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        164657,
+        164801
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          164657,
+          164801
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0084:003",
+      "event_type": "relationship_setup_event",
+      "label": "贾天龙用黄金打动金光上人",
+      "fact_summary": "贾天龙在邻近蛮人地界的道观认识自称金光上人的红袍侏儒，见其演示飞剑之术和金刚不坏之功后，以巨金和奉承换来出手帮助一次的承诺。",
+      "participants": [
+        "node:chunk-0084:character:001",
+        "node:chunk-0084:character:002",
+        "node:chunk-0084:technique:001",
+        "node:chunk-0084:technique:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0084:004",
+        "evidence:chunk-0084:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        164804,
+        164869
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          164804,
+          164869
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0084:004",
+      "event_type": "combat_commitment_event",
+      "label": "金光上人承诺以飞剑术应对俗人高手",
+      "fact_summary": "金光上人狂笑后称几个俗人交给自己，即使功力和武艺再强，也不是飞剑术的对手；贾天龙随即承诺事成后再加两千两黄金酬礼。",
+      "participants": [
+        "node:chunk-0084:character:001",
+        "node:chunk-0084:character:002",
+        "node:chunk-0084:technique:001",
+        "node:chunk-0084:character:003"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0084:006",
+        "evidence:chunk-0084:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        165054,
+        165131
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          165054,
+          165131
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0084:005",
+      "event_type": "attack_preparation_event",
+      "label": "贾天龙命令攻打七玄殿",
+      "fact_summary": "得到金光上人的保证后，贾天龙命令野狼帮进入落日峰峰顶，准备攻打七玄门总堂七玄殿。",
+      "participants": [
+        "node:chunk-0084:character:001",
+        "node:chunk-0084:character:002",
+        "node:chunk-0084:faction:001",
+        "node:chunk-0084:faction:002",
+        "node:chunk-0084:location:001",
+        "node:chunk-0084:facility:003"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0084:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        165280,
+        165348
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          165280,
+          165348
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0084:006",
+      "event_type": "encirclement_event",
+      "label": "野狼帮和中小帮派围住七玄殿",
+      "fact_summary": "野狼帮和其他中小帮派涌上落日峰，被七玄殿石殿的宏伟震慑，一时没有进攻，只将几座石殿围住；贾天龙决定灭门后迁总坛至此。",
+      "participants": [
+        "node:chunk-0084:faction:001",
+        "node:chunk-0084:faction:003",
+        "node:chunk-0084:facility:003",
+        "node:chunk-0084:location:001",
+        "node:chunk-0084:character:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0084:009",
+        "evidence:chunk-0084:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        165463,
+        165614
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          165463,
+          165614
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0084:007",
+      "event_type": "confrontation_dialogue_event",
+      "label": "王绝楚现身与贾天龙谈投降",
+      "fact_summary": "贾天龙举手准备发动攻防战时，白衣中年人王绝楚从主殿入口处出现，与贾天龙互称姓名；贾天龙调侃其是否投降，王绝楚冷冷回答要商量投降。",
+      "participants": [
+        "node:chunk-0084:character:001",
+        "node:chunk-0084:character:004",
+        "node:chunk-0084:facility:003",
+        "node:chunk-0084:faction:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0084:011",
+        "evidence:chunk-0084:012",
+        "evidence:chunk-0084:013",
+        "evidence:chunk-0084:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        165734,
+        165849
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          165734,
+          165849
+        ]
+      }
+    }
+  ],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0084:001",
+      "chunk_id": "chunk-0084",
+      "source_range": [
+        164276,
+        164409
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          164276,
+          164409
+        ]
+      },
+      "excerpt": "说话之人就站在贾天龙的身侧，是一个三尺来高的侏儒。\n　　这侏儒有四十几岁的年纪，长得干干瘦瘦，他身上套着一件金丝绣边的红袍，手指、脖子上分别带着金戒指和挂着粗粗的金链，腰间还系着几个金铃，张嘴说话间口中金光闪闪，看来镶了金牙在里面，从外表上看，一副十足的暴发户打扮。",
+      "fact_summary": "说话者是站在贾天龙身侧的三尺高侏儒，穿金丝红袍并满身金饰。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0084:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0084:002",
+      "chunk_id": "chunk-0084",
+      "source_range": [
+        164505,
+        164654
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          164505,
+          164654
+        ]
+      },
+      "excerpt": "这个侏儒也看出了这些铁卫的不满，但他嘿嘿冷笑一声，根本不予理睬，反而对贾天龙傲然说道：“贾帮主，你花了三千两的黄金，把本上人从金光观老远给请来，不会就这么干看一夜吧！有什么要我出手对付的人，现在就可以明说了。总不会让我对付的是七玄门的门主吧，这么弱的对手你自己就可以解决了，还值得花重金请我出手？”",
+      "fact_summary": "金光上人称贾天龙花三千两黄金把自己从金光观请来，并要求说明出手对象。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0084:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0084:003",
+      "chunk_id": "chunk-0084",
+      "source_range": [
+        164657,
+        164801
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          164657,
+          164801
+        ]
+      },
+      "excerpt": "“一个七玄门的门主还不劳仙师出手，我请仙师来对付的是七玄门门主的三位师叔。这三个人虽然对外早已宣称过世，但其实却一直隐居在落日峰的密室里，正做生死关，现在功力恐怕早已进入化境，非普通的高手可以抵挡，乃是七玄门此时的最大依仗，也只有请仙师你出手对付了。”贾天龙说的很谦卑，没有一点怠慢之意。",
+      "fact_summary": "贾天龙说明请金光上人对付的是七玄门门主的三位师叔，称他们隐居落日峰密室做生死关，是七玄门最大依仗。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0084:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0084:004",
+      "chunk_id": "chunk-0084",
+      "source_range": [
+        164804,
+        164869
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          164804,
+          164869
+        ]
+      },
+      "excerpt": "要知道这红袍侏儒可是他无意中在邻近蛮人地界的某一道观中认识的，此人自称金光上人，法力无穷，并亲自给他演示了飞剑之术和金刚不坏之功。",
+      "fact_summary": "贾天龙在邻近蛮人地界的道观认识红袍侏儒；此人自称金光上人，演示过飞剑之术和金刚不坏之功。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0084:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0084:005",
+      "chunk_id": "chunk-0084",
+      "source_range": [
+        164922,
+        165051
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          164922,
+          165051
+        ]
+      },
+      "excerpt": "在知道这人对金子有某种痴迷后，他立即在此人身上撒下了大把的巨金，并刻意奉承，终于打动了对方，得到了其出手帮助自己一次的承诺。\n　　因此贾天龙对这侏儒时刻持以晚辈之礼，对其自大之色不敢流露出丝毫厌恶之意，他可很清楚，这金光上人可不是他这小小野狼帮能对抗得了的。",
+      "fact_summary": "贾天龙利用金光上人痴迷金子，大量投入金子并奉承，换来其帮助一次的承诺；贾天龙认为野狼帮无法对抗金光上人。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0084:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0084:006",
+      "chunk_id": "chunk-0084",
+      "source_range": [
+        165054,
+        165131
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          165054,
+          165131
+        ]
+      },
+      "excerpt": "金光上人一听后，哈哈一阵狂笑，等笑声止住后，他才倨傲的说道：“几个俗人而已，就交给我吧！哪怕他们功力再高，武艺再强，也绝不是我飞剑术的对手，你尽管放心！”",
+      "fact_summary": "金光上人称几个俗人交给自己，即便功力武艺再强也不是飞剑术对手。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0084:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0084:007",
+      "chunk_id": "chunk-0084",
+      "source_range": [
+        165134,
+        165225
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          165134,
+          165225
+        ]
+      },
+      "excerpt": "“那就有劳仙师你了，我答应的酬金也绝不失言，并且事成之后，我情愿再出两千两黄金当作酬礼。”贾天龙大喜，忙把酬金的筹码又加上了不少，他可知道对方并不是什么善良之辈，还是用金子说话的好。",
+      "fact_summary": "贾天龙承诺酬金不失言，并愿事成后再出两千两黄金作酬礼。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0084:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0084:008",
+      "chunk_id": "chunk-0084",
+      "source_range": [
+        165280,
+        165348
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          165280,
+          165348
+        ]
+      },
+      "excerpt": "既然有了金光上人这位大能之人的保证，贾天龙也不再迟疑了，马上命令野狼帮的人，也全都进入到落日峰的峰顶上，准备攻打七玄门的总堂——七玄殿。",
+      "fact_summary": "贾天龙在金光上人的保证下命令野狼帮进入落日峰峰顶，准备攻打七玄门总堂七玄殿。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0084:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0084:009",
+      "chunk_id": "chunk-0084",
+      "source_range": [
+        165463,
+        165614
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          165463,
+          165614
+        ]
+      },
+      "excerpt": "只见在落日峰顶的数十亩空地上，拔地而起了几座由青色巨石修筑而成的石殿，一大六小。\n　　虽然在黑夜里，由于火把的昏暗而看不清它们的全貌，但那种黑乎乎的，高大粗犷、宏伟壮丽的气势，还是把初到此地的野狼帮和其他中小帮派的人震慑住了，一时之间竟然没有马上开始进攻，而只是把这几座石殿团团的围住，给围个水泄不通。",
+      "fact_summary": "七玄殿所在石殿位于落日峰顶，青色巨石修筑，一大六小，野狼帮和中小帮派的人围住石殿。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0084:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0084:010",
+      "chunk_id": "chunk-0084",
+      "source_range": [
+        165617,
+        165731
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          165617,
+          165731
+        ]
+      },
+      "excerpt": "“对方毕竟还是传承了二百余年的门派，其财力还是不是他这个才崛起十余年的帮派所能比的，真是奢侈豪华啊！”贾天龙不禁暗暗想道。\n　　他已拿定了主意，只要一灭了七玄门，他就马上把总坛搬到此地来，这样宏伟的建筑才能符合他一方霸主的身份。",
+      "fact_summary": "贾天龙认为七玄门传承二百余年、财力优于野狼帮，并决定灭门后将总坛搬到此地。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0084:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0084:011",
+      "chunk_id": "chunk-0084",
+      "source_range": [
+        165734,
+        165849
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          165734,
+          165849
+        ]
+      },
+      "excerpt": "贾天龙看了看对面主殿黑不隆冬的入口处，又看了下四周的属下，终于把右手缓缓的举了起来。\n　　刹那间，整座落日峰上变得鸦雀无声，所有人的眼光都盯在他这只手掌上，他们都知道只要这只手一开始落下，这场歼灭七玄门总堂的惨烈攻防战就要开始了。",
+      "fact_summary": "贾天龙举起右手准备发动歼灭七玄门总堂的攻防战。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0084:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0084:012",
+      "chunk_id": "chunk-0084",
+      "source_range": [
+        165852,
+        166018
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          165852,
+          166018
+        ]
+      },
+      "excerpt": "“且慢！”就在此时，忽然从那黑黑的主殿入口处传来了一声冰冷的声音。\n　　然后一阵“啪嗒”“啪嗒”的有节奏的脚步声，从里面传了出来，并且越来越清晰。\n　　最后一个白色衣衫的中年人出现在了入口处，此人头上插着一把木簪，全身上下只挎有一把白色剑鞘的长剑，脸色苍白无比，然而眼睛却炯炯有神，目光所到之处，犹如利剑般直刺人心扉，令人不寒而颤。",
+      "fact_summary": "一名白衣中年人从主殿入口处出现，头插木簪，挎白色剑鞘长剑，目光如利剑般令人不寒而颤。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0084:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0084:013",
+      "chunk_id": "chunk-0084",
+      "source_range": [
+        166111,
+        166279
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          166111,
+          166279
+        ]
+      },
+      "excerpt": "“贾天龙”这名中年人叫出了贾大帮主的名字。\n　　“王绝楚”贾天龙也毫不示弱的喊出了对方的身份。\n　　“说起来，我们两人身为一方之主，倒是第一次面对面的见过，是不是，我的王大门主！”贾天龙用一种非常惬意的口气说着，嘴角上挂起了一丝讥讽之色，然后把举起的右手慢慢缩了回来。\n　　王绝楚毫无表情的回视着贾天龙，一言不发，气氛似乎开始紧张起来。",
+      "fact_summary": "白衣中年人叫出贾天龙，贾天龙叫出王绝楚，并称双方作为一方之主第一次面对面相见。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0084:013"
+    },
+    {
+      "evidence_id": "evidence:chunk-0084:014",
+      "chunk_id": "chunk-0084",
+      "source_range": [
+        166282,
+        166365
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0084",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          166282,
+          166365
+        ]
+      },
+      "excerpt": "“王门主独自一人来此，难道是打算投降吗？”贾天龙带有调侃的口气，微笑着说道。\n　　“不错，我是打算和你商量一下，投降的事。”七玄门门主王绝楚，犹如冰人般的冷冷回答道。",
+      "fact_summary": "贾天龙调侃王门主是否投降，七玄门门主王绝楚冷冷回答打算商量投降。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0084:014"
+    }
+  ]
+}

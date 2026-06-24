@@ -1,0 +1,2361 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0061:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0061",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T16:30:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0061:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立听完余子童讲述后追问墨大夫死因，确认两团元神身份，并冷静推断余子童设计墨大夫与自己夺舍相残；余子童承认韩立资质好且长春功已练至第六层。",
+      "evidence_ids": [
+        "evidence:chunk-0061:013",
+        "evidence:chunk-0061:014",
+        "evidence:chunk-0061:015",
+        "evidence:chunk-0061:016",
+        "evidence:chunk-0061:018"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        119592,
+        120606
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119592,
+          120606
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0061:character:002",
+      "node_type": "character",
+      "label": "余子童",
+      "aliases": [],
+      "fact_summary": "余子童元神滞留墨大夫体内并面临同化和法力消耗风险，因夺舍铁则无法直接夺舍凡人墨大夫，遂与墨大夫协议并暗中设计夺取韩立身体，后向韩立提出合作和引路条件。",
+      "evidence_ids": [
+        "evidence:chunk-0061:002",
+        "evidence:chunk-0061:003",
+        "evidence:chunk-0061:004",
+        "evidence:chunk-0061:005",
+        "evidence:chunk-0061:006",
+        "evidence:chunk-0061:015",
+        "evidence:chunk-0061:016",
+        "evidence:chunk-0061:018"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        118230,
+        120606
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          118230,
+          120606
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0061:character:003",
+      "node_type": "character",
+      "label": "墨大夫",
+      "aliases": [
+        "墨居仁"
+      ],
+      "fact_summary": "墨大夫受阴魂咒急速衰老，因凡人无灵根而无法自行修出法力；他与余子童协议寻找有灵根童子修炼长春功后夺舍，后来进入七玄门收下韩立，却因错估韩立法力夺舍失败反被吞噬。",
+      "evidence_ids": [
+        "evidence:chunk-0061:001",
+        "evidence:chunk-0061:004",
+        "evidence:chunk-0061:007",
+        "evidence:chunk-0061:009",
+        "evidence:chunk-0061:010",
+        "evidence:chunk-0061:013",
+        "evidence:chunk-0061:014",
+        "evidence:chunk-0061:017"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        118054,
+        120518
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          118054,
+          120518
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0061:technique:001",
+      "node_type": "technique",
+      "label": "阴魂咒",
+      "aliases": [
+        "血咒"
+      ],
+      "fact_summary": "阴魂咒在墨大夫身上表现为急速衰老和身体可能因血咒崩溃；当前 chunk 未说明其完整施术过程。",
+      "evidence_ids": [
+        "evidence:chunk-0061:001",
+        "evidence:chunk-0061:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "邪修分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        118054,
+        119138
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          118054,
+          119138
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0061:rule:001",
+      "node_type": "rule",
+      "label": "同化",
+      "aliases": [],
+      "fact_summary": "同化是外来元神长期滞留他人体内后受宿主元神无意识影响、最终只剩一个意识的被动夺舍现象。",
+      "evidence_ids": [
+        "evidence:chunk-0061:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        118230,
+        118343
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          118230,
+          118343
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0061:rule:002",
+      "node_type": "rule",
+      "label": "夺舍三大铁则",
+      "aliases": [],
+      "fact_summary": "夺舍三大铁则规定修仙者不可夺舍凡人、法力高者夺法力低者才可能成功且安全、修仙者一生只能夺舍一次。",
+      "evidence_ids": [
+        "evidence:chunk-0061:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        118336,
+        118632
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          118336,
+          118632
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0061:technique:002",
+      "node_type": "technique",
+      "label": "夺舍大法",
+      "aliases": [],
+      "fact_summary": "余子童曾传给墨大夫夺舍大法，但韩立指出他故意隐瞒夺舍成败和法力高深相关，借此设计两败俱伤。",
+      "evidence_ids": [
+        "evidence:chunk-0061:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        119983,
+        120254
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119983,
+          120254
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0061:cultivation_method:001",
+      "node_type": "cultivation_method",
+      "label": "长春功",
+      "aliases": [],
+      "fact_summary": "长春功需要身具灵根者修炼；墨大夫计划教童子修炼后夺舍，后来传授给韩立，而韩立在当前对话中被确认已练至第六层。",
+      "evidence_ids": [
+        "evidence:chunk-0061:009",
+        "evidence:chunk-0061:013",
+        "evidence:chunk-0061:014",
+        "evidence:chunk-0061:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        119217,
+        120395
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119217,
+          120395
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0061:technique:003",
+      "node_type": "technique",
+      "label": "噬魂大法",
+      "aliases": [],
+      "fact_summary": "韩立判断墨大夫使用自残的噬魂大法后，其法力会与自己第四层长春功相近，从而正中余子童设计。",
+      "evidence_ids": [
+        "evidence:chunk-0061:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        119983,
+        120254
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119983,
+          120254
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0061:faction:001",
+      "node_type": "faction",
+      "label": "余子童家族",
+      "aliases": [
+        "家族"
+      ],
+      "fact_summary": "余子童提到自己的家族有隐居地和长老，可作为求助或引见收徒的对象，但当前 chunk 未给出家族名称。",
+      "evidence_ids": [
+        "evidence:chunk-0061:012",
+        "evidence:chunk-0061:018"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        119507,
+        120606
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119507,
+          120606
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0061:faction:002",
+      "node_type": "faction",
+      "label": "七玄门",
+      "aliases": [],
+      "fact_summary": "墨大夫在前几年没寻到合适人选后进入七玄门，并在那里意外收下韩立、传授长春功。",
+      "evidence_ids": [
+        "evidence:chunk-0061:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        119592,
+        119778
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119592,
+          119778
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0061:rule:003",
+      "node_type": "rule",
+      "label": "灵根修炼限制",
+      "aliases": [
+        "灵根"
+      ],
+      "fact_summary": "当前 chunk 明示没有灵根者无法修炼出法力，而韩立被余子童称为天生灵根、资质过人。",
+      "evidence_ids": [
+        "evidence:chunk-0061:010",
+        "evidence:chunk-0061:018"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "灵根体质血脉",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        119286,
+        120606
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119286,
+          120606
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0061:001",
+      "edge_type": "possessed_body",
+      "source": "node:chunk-0061:character:002",
+      "target": "node:chunk-0061:character:003",
+      "fact_summary": "余子童的元神进入墨大夫体内后，时间一长发生被墨大夫元神同化的现象。",
+      "evidence_ids": [
+        "evidence:chunk-0061:001",
+        "evidence:chunk-0061:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        118054,
+        118343
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          118054,
+          118343
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0061:002",
+      "edge_type": "afflicts",
+      "source": "node:chunk-0061:technique:001",
+      "target": "node:chunk-0061:character:003",
+      "fact_summary": "阴魂咒使墨大夫以极快速度衰老，并与身体可能崩溃的血咒危机相关。",
+      "evidence_ids": [
+        "evidence:chunk-0061:001",
+        "evidence:chunk-0061:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        118054,
+        119138
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          118054,
+          119138
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0061:003",
+      "edge_type": "constrains_action",
+      "source": "node:chunk-0061:rule:002",
+      "target": "node:chunk-0061:character:002",
+      "fact_summary": "夺舍三大铁则限制余子童直接夺舍凡人墨大夫，也限制其随意寻找新身体。",
+      "evidence_ids": [
+        "evidence:chunk-0061:003",
+        "evidence:chunk-0061:004",
+        "evidence:chunk-0061:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        118336,
+        118960
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          118336,
+          118960
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0061:004",
+      "edge_type": "made_agreement_with",
+      "source": "node:chunk-0061:character:003",
+      "target": "node:chunk-0061:character:002",
+      "fact_summary": "墨大夫与余子童在彼此危机下达成协议：控制同化、交换秘术、寻找灵根童子并相互协助夺舍。",
+      "evidence_ids": [
+        "evidence:chunk-0061:007",
+        "evidence:chunk-0061:008",
+        "evidence:chunk-0061:009",
+        "evidence:chunk-0061:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        119074,
+        119507
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119074,
+          119507
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0061:005",
+      "edge_type": "teaches_method",
+      "source": "node:chunk-0061:character:003",
+      "target": "node:chunk-0061:character:001",
+      "fact_summary": "墨大夫进入七玄门后意外收下韩立，并传授其长春功。",
+      "evidence_ids": [
+        "evidence:chunk-0061:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        119592,
+        119778
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119592,
+          119778
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0061:006",
+      "edge_type": "cultivates_method",
+      "source": "node:chunk-0061:character:001",
+      "target": "node:chunk-0061:cultivation_method:001",
+      "fact_summary": "韩立修炼长春功，并被余子童确认短时间内练至第六层。",
+      "evidence_ids": [
+        "evidence:chunk-0061:014",
+        "evidence:chunk-0061:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        119778,
+        120395
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119778,
+          120395
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0061:007",
+      "edge_type": "deceived_about_method",
+      "source": "node:chunk-0061:character:002",
+      "target": "node:chunk-0061:character:003",
+      "fact_summary": "韩立指出余子童传授夺舍大法时故意不说明成功与法力深浅有关；余子童随后承认这是自己的设计。",
+      "evidence_ids": [
+        "evidence:chunk-0061:015",
+        "evidence:chunk-0061:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        119983,
+        120395
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119983,
+          120395
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0061:008",
+      "edge_type": "offers_guidance_to",
+      "source": "node:chunk-0061:character:002",
+      "target": "node:chunk-0061:character:001",
+      "fact_summary": "余子童提出若韩立帮他寻找肉身并协助夺舍，他愿做韩立引路人并引见家族长老收徒。",
+      "evidence_ids": [
+        "evidence:chunk-0061:018"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        120518,
+        120606
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          120518,
+          120606
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0061:001",
+      "event_type": "spiritual_crisis",
+      "label": "阴魂咒与同化双重危机",
+      "participants": [
+        "node:chunk-0061:character:003",
+        "node:chunk-0061:character:002"
+      ],
+      "fact_summary": "墨大夫因阴魂咒急速衰老，余子童元神则面临同化和法力耗尽，二人危机共同推动后续协商。",
+      "evidence_ids": [
+        "evidence:chunk-0061:001",
+        "evidence:chunk-0061:002",
+        "evidence:chunk-0061:005",
+        "evidence:chunk-0061:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        118054,
+        119138
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          118054,
+          119138
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0061:002",
+      "event_type": "agreement_event",
+      "label": "墨大夫与余子童约法三章",
+      "participants": [
+        "node:chunk-0061:character:003",
+        "node:chunk-0061:character:002"
+      ],
+      "fact_summary": "墨大夫与余子童在危机中达成协议，约定控制意识、传授秘术、寻找灵根童子修炼长春功并相互协助夺舍。",
+      "evidence_ids": [
+        "evidence:chunk-0061:007",
+        "evidence:chunk-0061:008",
+        "evidence:chunk-0061:009",
+        "evidence:chunk-0061:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        119074,
+        119507
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119074,
+          119507
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0061:003",
+      "event_type": "training_setup",
+      "label": "墨大夫进入七玄门并传授韩立长春功",
+      "participants": [
+        "node:chunk-0061:character:003",
+        "node:chunk-0061:character:001",
+        "node:chunk-0061:faction:002",
+        "node:chunk-0061:cultivation_method:001"
+      ],
+      "fact_summary": "墨大夫未能找到合适人选后进入七玄门，意外收下韩立并传授长春功。",
+      "evidence_ids": [
+        "evidence:chunk-0061:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        119592,
+        119778
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119592,
+          119778
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0061:004",
+      "event_type": "revelation_event",
+      "label": "余子童说明墨大夫夺舍失败原因",
+      "participants": [
+        "node:chunk-0061:character:002",
+        "node:chunk-0061:character:001",
+        "node:chunk-0061:character:003"
+      ],
+      "fact_summary": "余子童向韩立说明，墨大夫因错估韩立长春功进度和法力差距，夺舍不成反被韩立吞噬。",
+      "evidence_ids": [
+        "evidence:chunk-0061:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        119778,
+        119983
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119778,
+          119983
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0061:005",
+      "event_type": "deduction_event",
+      "label": "韩立识破余子童渔翁得利设计",
+      "participants": [
+        "node:chunk-0061:character:001",
+        "node:chunk-0061:character:002",
+        "node:chunk-0061:character:003"
+      ],
+      "fact_summary": "韩立冷静推断余子童隐瞒夺舍成败与法力有关，设计墨大夫和自己自相残杀，以便余子童夺取韩立身体。",
+      "evidence_ids": [
+        "evidence:chunk-0061:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        119983,
+        120254
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119983,
+          120254
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0061:006",
+      "event_type": "confession_event",
+      "label": "余子童承认设计并评价韩立资质",
+      "participants": [
+        "node:chunk-0061:character:002",
+        "node:chunk-0061:character:001",
+        "node:chunk-0061:character:003"
+      ],
+      "fact_summary": "余子童承认一切是自己设计，并说明韩立长春功已至第六层，导致墨大夫与余子童元神相继败于韩立。",
+      "evidence_ids": [
+        "evidence:chunk-0061:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        120254,
+        120395
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          120254,
+          120395
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0061:007",
+      "event_type": "proposal_event",
+      "label": "余子童向韩立提出引路合作",
+      "participants": [
+        "node:chunk-0061:character:002",
+        "node:chunk-0061:character:001",
+        "node:chunk-0061:faction:001"
+      ],
+      "fact_summary": "余子童转而称赞韩立天生灵根和资质，提出韩立协助其夺舍则由自己引见家族长老收徒。",
+      "evidence_ids": [
+        "evidence:chunk-0061:018"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        120518,
+        120606
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          120518,
+          120606
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0061:001",
+      "chunk_id": "chunk-0061",
+      "source_range": [
+        118054,
+        118230
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          118054,
+          118230
+        ]
+      },
+      "excerpt": "墨大夫没能高兴几日，阴魂咒的威力不久就体现了出来，他几乎以一日衰老一年的恐怖速度，迅速变老了下去。\n　　他很恐惧，想尽了办法来控制身上发生的诡异现象，但收效甚微。\n　　如果这样下去的话，不久他自然会一命呜呼，像个正常老人那样衰竭而死。但庆幸的是，此时余子童的元神更不好受。",
+      "fact_summary": "阴魂咒使墨大夫急速衰老并难以控制，同时余子童的元神也出现更严重的问题。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0061:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0061:002",
+      "chunk_id": "chunk-0061",
+      "source_range": [
+        118230,
+        118343
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          118230,
+          118343
+        ]
+      },
+      "excerpt": "“同化”是一种被动的夺舍行为，是长时间滞留在他人体内的外来元神，被躯体主人的元神无意识的潜移默化，互相影响，但最后只有一个意识可以存留下来的凶恶现象。\n　　余子童一见如此，无奈之下只好打起了主动夺舍的主意。",
+      "fact_summary": "同化被解释为外来元神长期滞留他人体内后被宿主元神影响、最终只剩一个意识的被动夺舍现象。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0061:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0061:003",
+      "chunk_id": "chunk-0061",
+      "source_range": [
+        118336,
+        118632
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          118336,
+          118632
+        ]
+      },
+      "excerpt": "他之所以会如此的不情愿，不是因为他心存善念，而是害怕修仙界传说中的夺舍三大铁则：第一，修仙者不可对凡人进行夺舍，否则被夺舍躯体，会因为承受不住夺舍行为而自行崩溃掉。\n　　第二，只有法力高的人向法力低的人进行夺舍，才有可能成功，不会遭受对方反噬，并且法力差距越大越最安全。\n　　第三，一名修仙者一生中，不论法力的高低，都只可进行一次夺舍，在进行第二次时，元神会无缘无故的消亡掉。",
+      "fact_summary": "修仙界传说的夺舍三大铁则限制修仙者夺舍凡人、要求高法力夺低法力才安全，并规定一生只能夺舍一次。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0061:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0061:004",
+      "chunk_id": "chunk-0061",
+      "source_range": [
+        118632,
+        118854
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          118632,
+          118854
+        ]
+      },
+      "excerpt": "因此若墨大夫是个修仙者，余子童倒反而不惧，正可和对方来个鱼死网破，和其争夺一下此肉身，但墨大夫只是个凡人，无丝毫的法力在身，根本无法承受夺舍的行为，恐怕他只进行了一半，争夺的身体就会彻底的崩溃掉。",
+      "fact_summary": "墨大夫只是凡人且无法力，按夺舍规则无法承受余子童主动夺舍。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0061:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0061:005",
+      "chunk_id": "chunk-0061",
+      "source_range": [
+        118733,
+        118960
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          118733,
+          118960
+        ]
+      },
+      "excerpt": "而且就算是另找他人的躯体藏身，那也无法避免再次同化的命运，会重新面临尴尬的困境，并且还更加的糟糕。因为他的法力会随着元神的每次出入而变得急剧减少，很快就会损失殆尽，无法再进出自如，会活生生的困在他人身体内最终被同化掉。\n　　要知道变成了元神后，他没有身体可打坐补充，所携带的法力是用一次就少一次，并且随着时间流逝会渐渐消减，他也不知还能支撑了多久。",
+      "fact_summary": "余子童作为元神离体会不断消耗法力且无法打坐补充，另找身体仍会面临同化和法力耗尽风险。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0061:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0061:006",
+      "chunk_id": "chunk-0061",
+      "source_range": [
+        118960,
+        119138
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          118960,
+          119138
+        ]
+      },
+      "excerpt": "在对方的身体即将因血咒崩溃掉而使自己的元神无处藏身，和自己面临被对方元神同化的危险，这两种巨大压力下，贪生的余子童经过思前想后，只好暂时抛弃两人间的仇怨，无奈的同墨大夫联系上，把事情的原委和其中的利害关系，通通告诉了对方。",
+      "fact_summary": "身体崩溃和元神同化的双重压力促使余子童暂时放下仇怨，与墨大夫联系并说明利害。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0061:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0061:007",
+      "chunk_id": "chunk-0061",
+      "source_range": [
+        119074,
+        119217
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119074,
+          119217
+        ]
+      },
+      "excerpt": "墨大夫听了后，刚开始有些愤怒，但很快意识到其中的大好机缘，他不假思索的就和余子童约法三章，达成了协议，显露出了枭雄的本色。\n　　首先，墨大夫要按余子童所教授的方法，控制住自己的意识，尽量避免同化对方的元神。",
+      "fact_summary": "墨大夫意识到机缘后与余子童达成协议，其中一项是按余子童方法控制意识，避免同化对方元神。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0061:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0061:008",
+      "chunk_id": "chunk-0061",
+      "source_range": [
+        119138,
+        119286
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119138,
+          119286
+        ]
+      },
+      "excerpt": "首先，墨大夫要按余子童所教授的方法，控制住自己的意识，尽量避免同化对方的元神。而余子童则教会对方一些秘术，让对方可以减缓衰老的速度，并可短暂的拥有法力。",
+      "fact_summary": "协议要求墨大夫控制意识避免同化余子童元神，余子童则传授秘术以减缓衰老并让墨大夫短暂拥有法力。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0061:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0061:009",
+      "chunk_id": "chunk-0061",
+      "source_range": [
+        119217,
+        119366
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119217,
+          119366
+        ]
+      },
+      "excerpt": "其次，墨大夫要寻找一名身具灵根、可修炼长春功的童子，教会他修炼此功，然后等到时机成熟，墨大夫依靠暂时获得的法力，进行夺舍，重获新生。",
+      "fact_summary": "协议要求墨大夫寻找身具灵根且可修炼长春功的童子，教其修炼后再借暂时法力夺舍重生。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0061:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0061:010",
+      "chunk_id": "chunk-0061",
+      "source_range": [
+        119286,
+        119366
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119286,
+          119366
+        ]
+      },
+      "excerpt": "对此墨大夫曾心有疑问，想要亲自修炼此功，结果自然毫无所成，还被余子童嘲笑了一番，这才知道没有灵根的人，是无法修炼出法力的，而他就是修仙者口中无灵根的庸人。",
+      "fact_summary": "墨大夫亲自修炼长春功毫无所成，由此得知没有灵根的人无法修炼出法力。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0061:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0061:011",
+      "chunk_id": "chunk-0061",
+      "source_range": [
+        119366,
+        119507
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119366,
+          119507
+        ]
+      },
+      "excerpt": "最后一点，则夺舍成功后的墨大夫，有了充足缓冲时间后，就要帮对方也寻觅一个合适的肉身，并协助其夺舍。\n　　以上的条款，看起来对墨大夫比较有利，但这也是没有办法的事情，谁让余子童被同化的危机就在眼前呢。",
+      "fact_summary": "协议最后要求夺舍成功后的墨大夫帮助余子童寻找合适肉身并协助其夺舍，条款偏向墨大夫是因余子童危机迫近。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0061:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0061:012",
+      "chunk_id": "chunk-0061",
+      "source_range": [
+        119507,
+        119592
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119507,
+          119592
+        ]
+      },
+      "excerpt": "在以上过程中，余子童曾提出，要墨大夫去他家族的隐居地寻求帮助，但经验老到的墨大夫又怎肯授之于柄，毫无商量余地的拒绝了，这让余子童在以后的日子里一直都恨得牙根直痒痒。",
+      "fact_summary": "余子童曾提议去其家族隐居地求助，但墨大夫拒绝授人把柄。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0061:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0061:013",
+      "chunk_id": "chunk-0061",
+      "source_range": [
+        119592,
+        119778
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119592,
+          119778
+        ]
+      },
+      "excerpt": "后面发生的事情，就没有什么可说的了，墨大夫前几年没能寻到合适的人选，灰心的进入七玄门，然后意外的收下韩立，传授其长春功等等，这些又和墨大夫所讲的差不了多少，甚至韩立本身还经历了一番。\n　　韩立听完了这些话后，长长的出了一口气，心中的大部分疑团都被解开了。",
+      "fact_summary": "墨大夫前几年未找到合适人选，后来进入七玄门，意外收下韩立并传授长春功；韩立听后解开大部分疑团。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0061:013"
+    },
+    {
+      "evidence_id": "evidence:chunk-0061:014",
+      "chunk_id": "chunk-0061",
+      "source_range": [
+        119778,
+        119983
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119778,
+          119983
+        ]
+      },
+      "excerpt": "“这没什么好解释的，不过是墨大夫错估阁下的长春功进度，法力远不如你，让夺舍不成，反被你吞噬。”余子童的声音犹豫了下，还是开口说出了实情。\n　　“这么说，第一次进入我体内的黄色光球，就是墨大夫的元神，第二个绿色的就是你了。”韩立轻描淡写的说道。",
+      "fact_summary": "余子童承认墨大夫因错估韩立长春功进度、法力不如韩立而夺舍失败并反被吞噬；韩立确认黄色和绿色光球对应二人的元神。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0061:014"
+    },
+    {
+      "evidence_id": "evidence:chunk-0061:015",
+      "chunk_id": "chunk-0061",
+      "source_range": [
+        119983,
+        120254
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119983,
+          120254
+        ]
+      },
+      "excerpt": "“余子童，你当初传给墨大夫夺舍大法时，恐怕就没安什么好心，故意没提到成功与否，和法力的高深有关。以你原先的设计，墨大夫用了自残的噬魂大法和我第四层长春功，法力大小都差不多，一旦夺舍起来，正好两人自相残杀，同归于尽。然后就便宜了你这个渔翁得利的第三者，趁机占据了我的身体，夺舍成功。我猜得没错吧，我的余大修仙者！”韩立一口气、冷静的说出了自己的判断。",
+      "fact_summary": "韩立判断余子童传夺舍大法时隐瞒成功与法力深浅相关，意图让墨大夫与韩立两败俱伤后自己占据韩立身体。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0061:015"
+    },
+    {
+      "evidence_id": "evidence:chunk-0061:016",
+      "chunk_id": "chunk-0061",
+      "source_range": [
+        120254,
+        120395
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          120254,
+          120395
+        ]
+      },
+      "excerpt": "“你猜得很对，这一切的确是我设计的，可是没想到你的修仙资质如此的好，竟然短短时间内，就练至了第六层的长春功，只比我低了一层，不但轻而易举的吞噬了墨大夫的元神，就连我这个元气大伤的修仙者元神，也不是你的对手，反而又损失掉不少的元气。”",
+      "fact_summary": "余子童承认设计，并说明韩立资质好、短时间练至第六层长春功，吞噬墨大夫元神后连余子童受损元神也不是对手。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0061:016"
+    },
+    {
+      "evidence_id": "evidence:chunk-0061:017",
+      "chunk_id": "chunk-0061",
+      "source_range": [
+        120395,
+        120518
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          120395,
+          120518
+        ]
+      },
+      "excerpt": "“墨居仁，不过是一个凡俗中人，竟然想要和我们修仙者平起平坐、称兄道弟，他也配？”\n　　“更不能容忍的是，他竟用卑劣的手段毁了我的法身，还想要踏足仙道，真是白日做梦！”余子童又咬牙切齿说道，看来心中对墨大夫痛恨已久，现在才毫无顾忌的展露出来。",
+      "fact_summary": "余子童鄙视墨居仁的凡俗身份并痛恨其毁掉自己的法身、试图踏足仙道。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "记忆情绪与执念",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0061:017"
+    },
+    {
+      "evidence_id": "evidence:chunk-0061:018",
+      "chunk_id": "chunk-0061",
+      "source_range": [
+        120518,
+        120606
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          120518,
+          120606
+        ]
+      },
+      "excerpt": "“不过你就不同了，阁下天生灵根，资质过人，在世俗中实在是太可惜了，要是肯帮我找到合适的肉身，并协助夺舍的话，我愿做你的引路人，帮你引见给家族的长老，收你为徒，你看怎么样？”",
+      "fact_summary": "余子童称韩立天生灵根、资质过人，并提出若韩立帮其找肉身和协助夺舍，他愿做引路人、引见家族长老收徒。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0061:018"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "有限视角与叙事日志",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "记忆情绪与执念",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "功法术法神通",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "境界提升与功法分析",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "夺舍设定分析",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "势力设定",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "世界观设定",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "事件因果链（长程因果图）",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "冲突事件分析",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0061:001",
+      "kind": "curse_alias_boundary",
+      "fact_summary": "当前 chunk 同时出现“阴魂咒”和“血咒”，可判断都指向墨大夫身体崩溃相关咒害，但未在本 chunk 明示二者完整同名关系或施术细节。",
+      "evidence_ids": [
+        "evidence:chunk-0061:001",
+        "evidence:chunk-0061:006"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        118054,
+        119138
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          118054,
+          119138
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0061:002",
+      "kind": "yuzitong_family_unnamed",
+      "fact_summary": "余子童家族只以“家族的隐居地”和“家族的长老”出现，名称、地域、层级和收徒规则未说明。",
+      "evidence_ids": [
+        "evidence:chunk-0061:012",
+        "evidence:chunk-0061:018"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        119507,
+        120606
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119507,
+          120606
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0061:003",
+      "kind": "speaker_bias_and_confession_scope",
+      "fact_summary": "许多往事由余子童讲述或承认；虽然韩立指出并得到余子童承认设计，但更早的协议细节仍应保留叙述视角边界。",
+      "evidence_ids": [
+        "evidence:chunk-0061:006",
+        "evidence:chunk-0061:015",
+        "evidence:chunk-0061:016"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        118960,
+        120395
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          118960,
+          120395
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0061:004",
+      "kind": "unnamed_secret_arts",
+      "fact_summary": "余子童教墨大夫的秘术只说明能减缓衰老并短暂拥有法力，未给出名称、施法条件、代价或持续时间。",
+      "evidence_ids": [
+        "evidence:chunk-0061:008"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        119138,
+        119286
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119138,
+          119286
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0061:001",
+      "candidate": "秘术",
+      "reason": "余子童教授墨大夫的秘术未给出专名，只有效果说明；保留在事件和疑点中，不硬造 technique 节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        119138,
+        119286
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119138,
+          119286
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0061:002",
+      "candidate": "合适的肉身",
+      "reason": "这是夺舍目标的泛指条件，不是当前 chunk 明示的具名人物或实体。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "夺舍设定分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        119366,
+        119507
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119366,
+          119507
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0061:003",
+      "candidate": "童子",
+      "reason": "协议中“身具灵根、可修炼长春功的童子”是目标条件；后来韩立符合并被抽取，不另建泛指童子节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        119217,
+        119366
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_path": "intermediate/chunks/chunk-0061.txt",
+        "source_range": [
+          119217,
+          119366
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

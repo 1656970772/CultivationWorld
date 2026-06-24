@@ -1,0 +1,1238 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0038:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0038",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T14:30:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0038:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立在本 chunk 中从发怒转为冷静，要求厉飞雨解释带来大量秘籍的原因，并亲自翻看秘籍确认内容。",
+      "evidence_ids": [
+        "evidence:chunk-0038:001",
+        "evidence:chunk-0038:005",
+        "evidence:chunk-0038:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        72611,
+        73444
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          72611,
+          73444
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0038:character:002",
+      "node_type": "character",
+      "label": "厉飞雨",
+      "aliases": [],
+      "fact_summary": "厉飞雨面对韩立质问时先装委屈，随后拿秘籍给韩立查看，并说明自己发现并清点了同名秘籍。",
+      "evidence_ids": [
+        "evidence:chunk-0038:002",
+        "evidence:chunk-0038:003",
+        "evidence:chunk-0038:008",
+        "evidence:chunk-0038:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        72993,
+        74023
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          72993,
+          74023
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0038:technique:001",
+      "node_type": "technique",
+      "label": "眨眼剑谱",
+      "aliases": [
+        "眨眼剑谱秘籍"
+      ],
+      "fact_summary": "韩立打开厉飞雨递来的秘籍后确认首页写有“眨眼剑谱”，随后又发现多本书正文前也写着同名标题。",
+      "evidence_ids": [
+        "evidence:chunk-0038:005",
+        "evidence:chunk-0038:006",
+        "evidence:chunk-0038:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        73251,
+        73535
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          73251,
+          73535
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0038:facility:001",
+      "node_type": "facility",
+      "label": "书库",
+      "aliases": [],
+      "fact_summary": "厉飞雨说自己在书库的角落里见到很多同名秘籍，但本 chunk 未给出书库的正式名称或所属地点。",
+      "evidence_ids": [
+        "evidence:chunk-0038:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        73690,
+        73720
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          73690,
+          73720
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0038:001",
+      "edge_type": "questions_reason",
+      "source": "node:chunk-0038:character:001",
+      "target": "node:chunk-0038:character:002",
+      "fact_summary": "韩立冷静后要求厉飞雨解释做出带走大量秘籍这种危险事情的原因。",
+      "evidence_ids": [
+        "evidence:chunk-0038:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        72611,
+        72632
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          72611,
+          72632
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0038:002",
+      "edge_type": "hands_manual_to",
+      "source": "node:chunk-0038:character:002",
+      "target": "node:chunk-0038:character:001",
+      "fact_summary": "厉飞雨捡起一本秘籍递给韩立，并示意他掀开书皮查看。",
+      "evidence_ids": [
+        "evidence:chunk-0038:003",
+        "evidence:chunk-0038:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        72993,
+        73109
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          72993,
+          73109
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0038:003",
+      "edge_type": "reveals_manual_title",
+      "source": "node:chunk-0038:technique:001",
+      "target": "node:chunk-0038:character:001",
+      "fact_summary": "韩立翻开秘籍后看到第一页写着“眨眼剑谱”，随后多本书正文前也写着同名标题。",
+      "evidence_ids": [
+        "evidence:chunk-0038:005",
+        "evidence:chunk-0038:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        73251,
+        73444
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          73251,
+          73444
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0038:004",
+      "edge_type": "found_in_facility",
+      "source": "node:chunk-0038:character:002",
+      "target": "node:chunk-0038:facility:001",
+      "fact_summary": "厉飞雨说自己在书库角落里见到很多同名秘籍。",
+      "evidence_ids": [
+        "evidence:chunk-0038:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        73690,
+        73720
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          73690,
+          73720
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0038:005",
+      "edge_type": "counted_copies",
+      "source": "node:chunk-0038:character:002",
+      "target": "node:chunk-0038:technique:001",
+      "fact_summary": "厉飞雨清点过这些同名秘籍，确认一共七十四本。",
+      "evidence_ids": [
+        "evidence:chunk-0038:009",
+        "evidence:chunk-0038:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        73996,
+        74086
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          73996,
+          74086
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0038:001",
+      "event_type": "dialogue_event",
+      "label": "韩立要求厉飞雨解释偷带秘籍风险",
+      "fact_summary": "韩立冷静后认为厉飞雨做出不要命的事必有原因，并担心处理不好会让两人惹上天大麻烦。",
+      "participants": [
+        "node:chunk-0038:character:001",
+        "node:chunk-0038:character:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0038:001",
+        "evidence:chunk-0038:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        72611,
+        72990
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          72611,
+          72990
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0038:002",
+      "event_type": "handoff_event",
+      "label": "厉飞雨递秘籍让韩立查看",
+      "fact_summary": "厉飞雨从包裹前捡起一本秘籍，带着神秘神情递给韩立，并示意他掀开书皮。",
+      "participants": [
+        "node:chunk-0038:character:001",
+        "node:chunk-0038:character:002",
+        "node:chunk-0038:technique:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0038:003",
+        "evidence:chunk-0038:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        72993,
+        73109
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          72993,
+          73109
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0038:003",
+      "event_type": "discovery_event",
+      "label": "韩立确认多本秘籍同名眨眼剑谱",
+      "fact_summary": "韩立打开第一本秘籍看到“眨眼剑谱”，又浏览数本后发现每本正文前都写着“眨眼剑谱”。",
+      "participants": [
+        "node:chunk-0038:character:001",
+        "node:chunk-0038:character:002",
+        "node:chunk-0038:technique:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0038:005",
+        "evidence:chunk-0038:006",
+        "evidence:chunk-0038:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        73251,
+        73535
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          73251,
+          73535
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0038:004",
+      "event_type": "information_reveal_event",
+      "label": "厉飞雨说明同名秘籍来源和数量",
+      "fact_summary": "厉飞雨说自己在书库角落看到很多同名秘籍，并清点出七十四本，以免还回去时遗漏。",
+      "participants": [
+        "node:chunk-0038:character:002",
+        "node:chunk-0038:technique:001",
+        "node:chunk-0038:facility:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0038:008",
+        "evidence:chunk-0038:009",
+        "evidence:chunk-0038:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        73690,
+        74086
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          73690,
+          74086
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0038:001",
+      "chunk_id": "chunk-0038",
+      "source_range": [
+        72611,
+        72632
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          72611,
+          72632
+        ]
+      },
+      "excerpt": "做出这么不要命的事，总有个说得出的因由吧。",
+      "fact_summary": "韩立要求厉飞雨说明带走大量秘籍这种危险行为的原因。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0038:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0038:002",
+      "chunk_id": "chunk-0038",
+      "source_range": [
+        72970,
+        72990
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          72970,
+          72990
+        ]
+      },
+      "excerpt": "这件事一个处理不好，两人都有天大的麻烦。",
+      "fact_summary": "韩立认为这件事若处理不好会给两人带来极大麻烦。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0038:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0038:003",
+      "chunk_id": "chunk-0038",
+      "source_range": [
+        72993,
+        73055
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          72993,
+          73055
+        ]
+      },
+      "excerpt": "厉飞雨好像也明白韩立此时所想的东西，就不再对他的讥讽加以驳斥，而是懒洋洋的走到包裹面前俯下身子，随意捡起了一本秘籍站了起来。",
+      "fact_summary": "厉飞雨理解韩立顾虑后，从包裹前捡起一本秘籍。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0038:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0038:004",
+      "chunk_id": "chunk-0038",
+      "source_range": [
+        73065,
+        73109
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          73065,
+          73109
+        ]
+      },
+      "excerpt": "他脸上带着一丝神秘光彩、似笑非笑的把书递给了韩立，然后用眼色示意他，掀起书皮来看上一眼。",
+      "fact_summary": "厉飞雨将秘籍递给韩立并示意翻看。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0038:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0038:005",
+      "chunk_id": "chunk-0038",
+      "source_range": [
+        73251,
+        73292
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          73251,
+          73292
+        ]
+      },
+      "excerpt": "一打开封面，显露出秘籍的第一页，上面白纸黑字，清清楚楚的写着“眨眼剑谱”四个大字。",
+      "fact_summary": "韩立打开第一本秘籍后看到第一页写着“眨眼剑谱”。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0038:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0038:006",
+      "chunk_id": "chunk-0038",
+      "source_range": [
+        73412,
+        73444
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          73412,
+          73444
+        ]
+      },
+      "excerpt": "这些书每一本正文的前面，都明明白白的写着“眨眼剑谱”这几个黑字。",
+      "fact_summary": "韩立浏览多本书后发现每本正文前都写着“眨眼剑谱”。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0038:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0038:007",
+      "chunk_id": "chunk-0038",
+      "source_range": [
+        73507,
+        73535
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          73507,
+          73535
+        ]
+      },
+      "excerpt": "你……你千万别告诉我，这……这些，全部都是‘眨眼剑谱’！",
+      "fact_summary": "韩立推测面前这些书全部都是眨眼剑谱。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0038:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0038:008",
+      "chunk_id": "chunk-0038",
+      "source_range": [
+        73690,
+        73720
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          73690,
+          73720
+        ]
+      },
+      "excerpt": "我在书库的角落里，猛然见到这么多同名的秘籍，我还吃惊不小呢！",
+      "fact_summary": "厉飞雨说自己在书库角落看到很多同名秘籍。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0038:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0038:009",
+      "chunk_id": "chunk-0038",
+      "source_range": [
+        73996,
+        74023
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          73996,
+          74023
+        ]
+      },
+      "excerpt": "我当然清点过，还不只一遍，一共七十四本名字一样的秘籍。",
+      "fact_summary": "厉飞雨说自己多次清点，确认有七十四本名字一样的秘籍。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0038:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0038:010",
+      "chunk_id": "chunk-0038",
+      "source_range": [
+        74051,
+        74086
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          74051,
+          74086
+        ]
+      },
+      "excerpt": "不弄清这些书的准确数量，万一还回去时遗漏了一两本，那还不真要出大问题。",
+      "fact_summary": "厉飞雨解释清点准确数量是为了避免归还时遗漏导致问题。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0038:010"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "相遇剧情与对话设计",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "角色AI行为参考",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "冲突事件分析",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "事件因果链（长程因果图）",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "动态事件与机会点",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "needs_review",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review"
+    },
+    {
+      "template_name": "功法术法神通",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "武器分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "needs_review",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review"
+    },
+    {
+      "template_name": "建筑设施与场所功能",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "needs_review",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review"
+    },
+    {
+      "template_name": "信息传播与情报",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "物资产出与消耗",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "势力设定",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "needs_review",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0038:001",
+      "kind": "cause_missing",
+      "fact_summary": "本 chunk 确认大量秘籍同名为眨眼剑谱，但未解释为何会有七十四本同名秘籍。",
+      "evidence_ids": [
+        "evidence:chunk-0038:006",
+        "evidence:chunk-0038:009"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        73412,
+        74023
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          73412,
+          74023
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0038:002",
+      "kind": "facility_identity_missing",
+      "fact_summary": "厉飞雨只说“书库的角落”，未说明书库正式名称、所属势力、看守规则或进入权限。",
+      "evidence_ids": [
+        "evidence:chunk-0038:008"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        73690,
+        73720
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          73690,
+          73720
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0038:003",
+      "kind": "return_plan_missing",
+      "fact_summary": "厉飞雨说明清点是为避免还回去时遗漏，但本 chunk 未说明他如何归还、何时归还或是否已有风险规避方案。",
+      "evidence_ids": [
+        "evidence:chunk-0038:010"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        74051,
+        74086
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          74051,
+          74086
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0038:001",
+      "candidate": "崇拜你的师弟们",
+      "reason": "仅作为韩立讥讽厉飞雨形象时提到的未命名群体，没有实际出场或推动事件；不建角色节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        72870,
+        72920
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          72870,
+          72920
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0038:002",
+      "candidate": "冷酷杀手",
+      "reason": "这是韩立讥讽厉飞雨“形象”的说法，本 chunk 未把它确认为客观职业或身份节点；保留为角色表现语境。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        72870,
+        72920
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          72870,
+          72920
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0038:003",
+      "candidate": "二百五 / 自大狂",
+      "reason": "这是韩立用来排除厉飞雨鲁莽动机的评价性称谓，不是独立实体或稳定属性节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        72600,
+        72632
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0038",
+        "source_path": "intermediate/chunks/chunk-0038.txt",
+        "source_range": [
+          72600,
+          72632
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

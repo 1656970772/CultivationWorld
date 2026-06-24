@@ -1,0 +1,819 @@
+{
+  "chunk_id": "chunk-0061",
+  "source_range": [
+    332522,
+    334841
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "task_packet_id": "chunk-0061:comprehensive_extraction:attempt-001",
+      "chunk_id": "chunk-0061",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "produced_at": "2026-06-23T18:00:00Z",
+      "extracted_nodes": [
+        {
+          "id": "n-ch0061-001",
+          "node_type": "beast",
+          "label": "虎王小玉",
+          "aliases": [
+            "小玉",
+            "飞天神猫"
+          ],
+          "properties": {
+            "beast_type": "飞虎/虎王",
+            "action": "夜里偷窃神风学院厨房肉食熟食，被学生发现后被称为飞天神猫",
+            "note": "受辰南在魔殿附近的话影响开始偷熟食，嘴巴越来越刁"
+          },
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0061",
+            "source_range": [
+              332522,
+              332622
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0061-001"
+          ],
+          "supports_templates": [
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "cat_fac_006"
+            }
+          ],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0061"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "id": "n-ch0061-002",
+          "node_type": "character",
+          "label": "小公主",
+          "aliases": [
+            "小麻烦"
+          ],
+          "properties": {
+            "role": "虎王小玉的主人",
+            "action": "发现小玉偷食后兴奋纵容；请求东方凤凰保密"
+          },
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0061",
+            "source_range": [
+              332522,
+              332622
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0061-001"
+          ],
+          "supports_templates": [
+            {
+              "template_name": "NPC性格与代表事件",
+              "requirement_id": "cat_chr_001"
+            }
+          ],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0061"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "id": "n-ch0061-003",
+          "node_type": "character",
+          "label": "东方凤凰",
+          "aliases": [
+            "凤凰姐姐"
+          ],
+          "properties": {
+            "role": "小公主同寝室友",
+            "action": "认出飞天神猫是小玉，答应保密但要求收敛"
+          },
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0061",
+            "source_range": [
+              332522,
+              332622
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0061-002"
+          ],
+          "supports_templates": [
+            {
+              "template_name": "NPC性格与代表事件",
+              "requirement_id": "cat_chr_001"
+            }
+          ],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0061"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "id": "n-ch0061-004",
+          "node_type": "character",
+          "label": "关浩",
+          "aliases": [
+            "耗子"
+          ],
+          "properties": {
+            "role": "神风学院学生，西方武系",
+            "note": "曾护送辰南和小公主从楚国到罪恶之城；被小玉教训过"
+          },
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0061",
+            "source_range": [
+              332522,
+              332622
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0061-003"
+          ],
+          "supports_templates": [
+            {
+              "template_name": "NPC性格与代表事件",
+              "requirement_id": "cat_chr_001"
+            }
+          ],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0061"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "id": "n-ch0061-005",
+          "node_type": "event",
+          "label": "四大学院强者对抗选拔赛",
+          "aliases": [],
+          "properties": {
+            "description": "神风学院选派十六名代表参加三个月后强者大对抗；八位内定顶尖高手+八名通过各系比武选拔；魔法系、修道系、东方武系、西方武系正进行淘汰赛"
+          },
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0061",
+            "source_range": [
+              332522,
+              332622
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0061-004"
+          ],
+          "supports_templates": [
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "cat_chr_001"
+            }
+          ],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0061"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        }
+      ],
+      "extracted_edges": [
+        {
+          "id": "e-ch0061-001",
+          "source": "n-ch0061-002",
+          "target": "n-ch0061-001",
+          "edge_type": "spirit_pet_owner",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0061",
+            "source_range": [
+              332522,
+              332622
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0061-001"
+          ],
+          "supports_templates": [],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0061"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "id": "e-ch0061-002",
+          "source": "n-ch0061-001",
+          "target": "n-ch0061-004",
+          "edge_type": "attacks",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0061",
+            "source_range": [
+              332522,
+              332622
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0061-003"
+          ],
+          "supports_templates": [],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0061"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        }
+      ],
+      "extracted_events": [
+        {
+          "id": "evt-ch0061-001",
+          "event_type": "event",
+          "label": "虎王小玉偷窃厨房被传为飞天神猫",
+          "participants": [
+            "n-ch0061-001",
+            "n-ch0061-002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0061",
+            "source_range": [
+              332522,
+              332622
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0061-001"
+          ],
+          "supports_templates": [
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "cat_fac_006"
+            }
+          ],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0061"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        }
+      ],
+      "extracted_evidence": [
+        {
+          "evidence_id": "evidence:ev-ch0061-001",
+          "source_location": {
+            "chunk_id": "chunk-0061",
+            "source_range": [
+              4,
+              62
+            ]
+          },
+          "source_range": [
+            332522,
+            333022
+          ],
+          "fact_summary": "神风学院数十个厨房接连失窃肉食；虎王小玉受辰南影响开始偷熟食不吃生肉；被学生发现后称为飞天神猫；小公主纵容，东方凤凰认出后要求保密",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0061"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "evidence_id": "evidence:ev-ch0061-002",
+          "source_location": {
+            "chunk_id": "chunk-0061",
+            "source_range": [
+              34,
+              62
+            ]
+          },
+          "source_range": [
+            332522,
+            333022
+          ],
+          "fact_summary": "东方凤凰认出飞天神猫就是小玉，之前曾见过小玉变身；小公主求她保密，东方凤凰答应但要求收敛",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0061"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "evidence_id": "evidence:ev-ch0061-003",
+          "source_location": {
+            "chunk_id": "chunk-0061",
+            "source_range": [
+              72,
+              92
+            ]
+          },
+          "source_range": [
+            332522,
+            333022
+          ],
+          "fact_summary": "关浩跟同学吹牛说飞天神猫其实是虎王且自己教训过它；小公主抱着小玉出现在他身后，小玉恶狠狠盯着他",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0061"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "evidence_id": "evidence:ev-ch0061-004",
+          "source_location": {
+            "chunk_id": "chunk-0061",
+            "source_range": [
+              64,
+              72
+            ]
+          },
+          "source_range": [
+            332522,
+            333022
+          ],
+          "fact_summary": "神风学院选派十六名代表参加三个月后四大学院强者对抗；八位内定顶尖高手+八名通过各系淘汰赛选拔",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0061"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        }
+      ],
+      "uncertainties": [],
+      "rejected_candidates": [
+        {
+          "candidate_id": "rej-ch0061-001",
+          "type": "character",
+          "label": "厨房管理者",
+          "reason": "仅背景提及，无独立剧情功能（Rule 2）"
+        }
+      ],
+      "structured_failures": [],
+      "supports_templates": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0061/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "id": "n-ch0061-001",
+      "node_type": "beast",
+      "label": "虎王小玉",
+      "aliases": [
+        "小玉",
+        "飞天神猫"
+      ],
+      "properties": {
+        "beast_type": "飞虎/虎王",
+        "action": "夜里偷窃神风学院厨房肉食熟食，被学生发现后被称为飞天神猫",
+        "note": "受辰南在魔殿附近的话影响开始偷熟食，嘴巴越来越刁"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_range": [
+          332522,
+          332622
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0061-001"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "cat_fac_006"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0061"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "n-ch0061-002",
+      "node_type": "character",
+      "label": "小公主",
+      "aliases": [
+        "小麻烦"
+      ],
+      "properties": {
+        "role": "虎王小玉的主人",
+        "action": "发现小玉偷食后兴奋纵容；请求东方凤凰保密"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_range": [
+          332522,
+          332622
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0061-001"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0061"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "n-ch0061-003",
+      "node_type": "character",
+      "label": "东方凤凰",
+      "aliases": [
+        "凤凰姐姐"
+      ],
+      "properties": {
+        "role": "小公主同寝室友",
+        "action": "认出飞天神猫是小玉，答应保密但要求收敛"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_range": [
+          332522,
+          332622
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0061-002"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0061"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "n-ch0061-004",
+      "node_type": "character",
+      "label": "关浩",
+      "aliases": [
+        "耗子"
+      ],
+      "properties": {
+        "role": "神风学院学生，西方武系",
+        "note": "曾护送辰南和小公主从楚国到罪恶之城；被小玉教训过"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_range": [
+          332522,
+          332622
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0061-003"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0061"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "n-ch0061-005",
+      "node_type": "event",
+      "label": "四大学院强者对抗选拔赛",
+      "aliases": [],
+      "properties": {
+        "description": "神风学院选派十六名代表参加三个月后强者大对抗；八位内定顶尖高手+八名通过各系比武选拔；魔法系、修道系、东方武系、西方武系正进行淘汰赛"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_range": [
+          332522,
+          332622
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0061-004"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0061"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "normalized_edges": [
+    {
+      "id": "e-ch0061-001",
+      "source": "n-ch0061-002",
+      "target": "n-ch0061-001",
+      "edge_type": "spirit_pet_owner",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_range": [
+          332522,
+          332622
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0061-001"
+      ],
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0061"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "e-ch0061-002",
+      "source": "n-ch0061-001",
+      "target": "n-ch0061-004",
+      "edge_type": "attacks",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_range": [
+          332522,
+          332622
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0061-003"
+      ],
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0061"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "normalized_events": [
+    {
+      "id": "evt-ch0061-001",
+      "event_type": "event",
+      "label": "虎王小玉偷窃厨房被传为飞天神猫",
+      "participants": [
+        "n-ch0061-001",
+        "n-ch0061-002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_range": [
+          332522,
+          332622
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0061-001"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "cat_fac_006"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0061"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:ev-ch0061-001",
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_range": [
+          4,
+          62
+        ]
+      },
+      "source_range": [
+        332522,
+        333022
+      ],
+      "fact_summary": "神风学院数十个厨房接连失窃肉食；虎王小玉受辰南影响开始偷熟食不吃生肉；被学生发现后称为飞天神猫；小公主纵容，东方凤凰认出后要求保密",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0061"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "evidence_id": "evidence:ev-ch0061-002",
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_range": [
+          34,
+          62
+        ]
+      },
+      "source_range": [
+        332522,
+        333022
+      ],
+      "fact_summary": "东方凤凰认出飞天神猫就是小玉，之前曾见过小玉变身；小公主求她保密，东方凤凰答应但要求收敛",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0061"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "evidence_id": "evidence:ev-ch0061-003",
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_range": [
+          72,
+          92
+        ]
+      },
+      "source_range": [
+        332522,
+        333022
+      ],
+      "fact_summary": "关浩跟同学吹牛说飞天神猫其实是虎王且自己教训过它；小公主抱着小玉出现在他身后，小玉恶狠狠盯着他",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0061"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "evidence_id": "evidence:ev-ch0061-004",
+      "source_location": {
+        "chunk_id": "chunk-0061",
+        "source_range": [
+          64,
+          72
+        ]
+      },
+      "source_range": [
+        332522,
+        333022
+      ],
+      "fact_summary": "神风学院选派十六名代表参加三个月后四大学院强者对抗；八位内定顶尖高手+八名通过各系淘汰赛选拔",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0061"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ]
+}

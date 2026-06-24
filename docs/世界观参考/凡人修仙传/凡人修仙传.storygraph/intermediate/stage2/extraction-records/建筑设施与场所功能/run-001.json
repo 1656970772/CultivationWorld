@@ -1,0 +1,2399 @@
+{
+  "schema": "stage2-extraction-record.v1",
+  "template_name": "建筑设施与场所功能",
+  "template_file": "建筑设施与场所功能模板.md",
+  "source_graph": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\graphify-out\\graph.json",
+  "source_novel": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+  "output_language": "zh-CN",
+  "stage2_policy": {
+    "stage2_categories": {
+      "facts": "原作事实",
+      "judgments": "我的判断",
+      "pending_verifications": "待核验",
+      "not_found_items": "未见可靠证据"
+    },
+    "stage2_output_policy": {
+      "default_dir": "drafts",
+      "allow_overwrite_existing_docs": false,
+      "existing_document_action": "write_versioned_draft",
+      "allowed_policies": [
+        "draft",
+        "backup-and-overwrite",
+        "merge"
+      ],
+      "draft_action": "write_draft"
+    },
+    "stage2_render_policy": {
+      "citation_format": "[{evidence_id}]",
+      "draft_entry_policy": {
+        "source_sections": [
+          "facts"
+        ],
+        "field_aliases": {
+          "name": [
+            "name",
+            "title",
+            "item_name",
+            "entity_name",
+            "名称"
+          ],
+          "classification": [
+            "classification",
+            "type",
+            "category_label",
+            "类别",
+            "分类"
+          ],
+          "usage": [
+            "usage",
+            "purpose",
+            "effect",
+            "effects",
+            "用途",
+            "功效"
+          ],
+          "formula": [
+            "formula",
+            "materials",
+            "ingredients",
+            "components",
+            "recipe",
+            "方方",
+            "材料",
+            "成分"
+          ],
+          "source_excerpt": [
+            "source_excerpt",
+            "original_excerpt",
+            "quote",
+            "原文摘录"
+          ],
+          "review_status": [
+            "review_status",
+            "verification_status",
+            "审核状态"
+          ]
+        },
+        "fallback_name": "未命名条目",
+        "kept_fields": [
+          "name",
+          "classification",
+          "usage",
+          "formula",
+          "source_range",
+          "source_excerpt",
+          "evidence_ids",
+          "confidence",
+          "review_status"
+        ]
+      },
+      "final_entry_policy": {
+        "allowed_confidence": [
+          "EXTRACTED"
+        ],
+        "min_evidence_count": 1,
+        "require_explicit_name": true,
+        "require_source_excerpt": true,
+        "required_any_fields": [
+          "usage",
+          "formula"
+        ],
+        "unstable_name_prefixes": [
+          "未名",
+          "未命名",
+          "未知",
+          "不明"
+        ],
+        "unstable_name_contains": [
+          "某种",
+          "某类"
+        ],
+        "composite_name_markers": [
+          "与",
+          "或",
+          "/",
+          "、"
+        ],
+        "review_only_statuses": [
+          "needs_review",
+          "pending_review",
+          "rejected",
+          "ambiguous"
+        ],
+        "allow_missing_review_status": true
+      },
+      "dedupe_policy": {
+        "key_fields": [
+          "name",
+          "classification"
+        ],
+        "merge_text_fields": [
+          "usage",
+          "formula",
+          "source_excerpt"
+        ],
+        "confidence_strategy": "most_conservative",
+        "review_status_strategy": "review_only_wins"
+      },
+      "final_template_policy": {
+        "case_section_names": [
+          "案例",
+          "典型案例",
+          "案例清单",
+          "示例"
+        ],
+        "excluded_section_names": [
+          "待复核",
+          "缺口",
+          "资料来源",
+          "说明"
+        ],
+        "fallback_to_first_non_root_heading": true
+      }
+    }
+  },
+  "coverage_scope": {
+    "scope": "whole_novel",
+    "stage1_chunk_ledger": "coverage/chunk-ledger.json",
+    "chunk_ranges": [
+      {
+        "chunk_id": "chunk-0104",
+        "source_range": [
+          202161,
+          202340
+        ]
+      },
+      {
+        "chunk_id": "chunk-0258",
+        "source_range": [
+          615728,
+          615778
+        ]
+      },
+      {
+        "chunk_id": "chunk-0372",
+        "source_range": [
+          948022,
+          948110
+        ]
+      },
+      {
+        "chunk_id": "chunk-0373",
+        "source_range": [
+          948351,
+          948408
+        ]
+      },
+      {
+        "chunk_id": "chunk-0376",
+        "source_range": [
+          958751,
+          958827
+        ]
+      },
+      {
+        "chunk_id": "chunk-0394",
+        "source_range": [
+          1010261,
+          1010280
+        ]
+      },
+      {
+        "chunk_id": "chunk-0395",
+        "source_range": [
+          1011863,
+          1012013
+        ]
+      },
+      {
+        "chunk_id": "chunk-0398",
+        "source_range": [
+          1020629,
+          1020726
+        ]
+      },
+      {
+        "chunk_id": "chunk-0159",
+        "source_range": [
+          335009,
+          335092
+        ]
+      },
+      {
+        "chunk_id": "chunk-0217",
+        "source_range": [
+          496356,
+          496454
+        ]
+      },
+      {
+        "chunk_id": "chunk-0218",
+        "source_range": [
+          497118,
+          497242
+        ]
+      },
+      {
+        "chunk_id": "chunk-0085",
+        "source_range": [
+          166743,
+          166792
+        ]
+      },
+      {
+        "chunk_id": "chunk-0086",
+        "source_range": [
+          169390,
+          169464
+        ]
+      },
+      {
+        "chunk_id": "chunk-0087",
+        "source_range": [
+          172247,
+          172278
+        ]
+      },
+      {
+        "chunk_id": "chunk-0088",
+        "source_range": [
+          172301,
+          172391
+        ]
+      },
+      {
+        "chunk_id": "chunk-0225",
+        "source_range": [
+          518220,
+          518310
+        ]
+      },
+      {
+        "chunk_id": "chunk-0238",
+        "source_range": [
+          557612,
+          557681
+        ]
+      },
+      {
+        "chunk_id": "chunk-0427",
+        "source_range": [
+          1103166,
+          1103205
+        ]
+      }
+    ],
+    "ledger_path": "coverage/template-run-ledger.json"
+  },
+  "fulfilled_sections": [
+    {
+      "requirement_id": "world_region_state_place",
+      "requirement_kind": "section",
+      "status": "covered",
+      "section_heading": "案例 1：中立交通设施",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0394:018",
+        "evidence:chunk-0394:019",
+        "evidence:chunk-0395:003",
+        "evidence:chunk-0395:006",
+        "evidence:chunk-0395:007",
+        "evidence:chunk-0398:008",
+        "evidence:chunk-0398:009",
+        "evidence:chunk-0398:014",
+        "evidence:chunk-0398:016",
+        "evidence:chunk-0104:003",
+        "evidence:chunk-0104:004"
+      ],
+      "notes": [
+        "按模板案例方向整理，优先采用 supports_templates 指向本模板的 Stage1 证据。"
+      ]
+    },
+    {
+      "requirement_id": "world_region_state_place",
+      "requirement_kind": "section",
+      "status": "covered",
+      "section_heading": "案例 2：公共服务设施",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0258:003",
+        "evidence:chunk-0258:004",
+        "evidence:chunk-0258:005"
+      ],
+      "notes": [
+        "按模板案例方向整理，优先采用 supports_templates 指向本模板的 Stage1 证据。"
+      ]
+    },
+    {
+      "requirement_id": "world_region_state_place",
+      "requirement_kind": "section",
+      "status": "covered",
+      "section_heading": "案例 3：检测与登记设施",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0372:011",
+        "evidence:chunk-0373:001",
+        "evidence:chunk-0373:003",
+        "evidence:chunk-0373:004",
+        "evidence:chunk-0373:005",
+        "evidence:chunk-0373:013",
+        "evidence:chunk-0376:011",
+        "evidence:chunk-0376:014",
+        "evidence:chunk-0376:015"
+      ],
+      "notes": [
+        "按模板案例方向整理，优先采用 supports_templates 指向本模板的 Stage1 证据。"
+      ]
+    },
+    {
+      "requirement_id": "world_region_state_place",
+      "requirement_kind": "section",
+      "status": "covered",
+      "section_heading": "案例 4：封印与镇压设施",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0427:001",
+        "evidence:chunk-0427:014",
+        "evidence:chunk-0427:017",
+        "evidence:chunk-0427:018",
+        "evidence:chunk-0085:003",
+        "evidence:chunk-0085:004",
+        "evidence:chunk-0085:005",
+        "evidence:chunk-0085:009",
+        "evidence:chunk-0086:010",
+        "evidence:chunk-0086:011",
+        "evidence:chunk-0086:012"
+      ],
+      "notes": [
+        "按模板案例方向整理，优先采用 supports_templates 指向本模板的 Stage1 证据。"
+      ]
+    },
+    {
+      "requirement_id": "world_region_state_place",
+      "requirement_kind": "section",
+      "status": "covered",
+      "section_heading": "案例 5：独立功能地标",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0159:005",
+        "evidence:chunk-0217:013",
+        "evidence:chunk-0217:014",
+        "evidence:chunk-0218:003",
+        "evidence:chunk-0218:005",
+        "evidence:chunk-0218:006",
+        "evidence:chunk-0218:007",
+        "evidence:chunk-0218:008",
+        "evidence:chunk-0225:005",
+        "evidence:chunk-0225:007",
+        "evidence:chunk-0225:011",
+        "evidence:chunk-0238:008",
+        "evidence:chunk-0238:010",
+        "evidence:chunk-0238:011"
+      ],
+      "notes": [
+        "按模板案例方向整理，优先采用 supports_templates 指向本模板的 Stage1 证据。"
+      ]
+    },
+    {
+      "requirement_id": "world_region_state_place",
+      "requirement_kind": "section",
+      "status": "covered",
+      "section_heading": "案例 6：公共事件场所",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0087:009",
+        "evidence:chunk-0088:001"
+      ],
+      "notes": [
+        "按模板案例方向整理，优先采用 supports_templates 指向本模板的 Stage1 证据。"
+      ]
+    }
+  ],
+  "fulfilled_fields": [
+    {
+      "requirement_id": "world_region_state_place",
+      "requirement_kind": "field",
+      "status": "covered",
+      "field_name": "设施名称和类型",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0104:003",
+        "evidence:chunk-0104:004",
+        "evidence:chunk-0258:003",
+        "evidence:chunk-0258:004",
+        "evidence:chunk-0258:005",
+        "evidence:chunk-0372:011",
+        "evidence:chunk-0372:012",
+        "evidence:chunk-0373:001",
+        "evidence:chunk-0373:003",
+        "evidence:chunk-0373:004",
+        "evidence:chunk-0373:005",
+        "evidence:chunk-0373:013",
+        "evidence:chunk-0376:011",
+        "evidence:chunk-0376:014",
+        "evidence:chunk-0376:015",
+        "evidence:chunk-0394:018",
+        "evidence:chunk-0394:019",
+        "evidence:chunk-0395:003",
+        "evidence:chunk-0395:004",
+        "evidence:chunk-0395:006",
+        "evidence:chunk-0395:007",
+        "evidence:chunk-0395:008",
+        "evidence:chunk-0398:008",
+        "evidence:chunk-0398:009",
+        "evidence:chunk-0398:014",
+        "evidence:chunk-0398:016",
+        "evidence:chunk-0159:005",
+        "evidence:chunk-0217:013",
+        "evidence:chunk-0217:014",
+        "evidence:chunk-0218:003",
+        "evidence:chunk-0218:005",
+        "evidence:chunk-0218:006",
+        "evidence:chunk-0218:007",
+        "evidence:chunk-0218:008",
+        "evidence:chunk-0085:003",
+        "evidence:chunk-0085:004",
+        "evidence:chunk-0085:005",
+        "evidence:chunk-0085:009",
+        "evidence:chunk-0086:010",
+        "evidence:chunk-0086:011",
+        "evidence:chunk-0086:012",
+        "evidence:chunk-0087:009",
+        "evidence:chunk-0088:001",
+        "evidence:chunk-0225:005",
+        "evidence:chunk-0225:007",
+        "evidence:chunk-0225:011",
+        "evidence:chunk-0238:008",
+        "evidence:chunk-0238:010",
+        "evidence:chunk-0238:011",
+        "evidence:chunk-0427:001",
+        "evidence:chunk-0427:014",
+        "evidence:chunk-0427:017",
+        "evidence:chunk-0427:018"
+      ],
+      "notes": []
+    },
+    {
+      "requirement_id": "world_region_state_place",
+      "requirement_kind": "field",
+      "status": "covered",
+      "field_name": "所属地点或控制者",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0104:003",
+        "evidence:chunk-0104:004",
+        "evidence:chunk-0258:003",
+        "evidence:chunk-0258:004",
+        "evidence:chunk-0258:005",
+        "evidence:chunk-0372:011",
+        "evidence:chunk-0372:012",
+        "evidence:chunk-0373:001",
+        "evidence:chunk-0373:003",
+        "evidence:chunk-0373:004",
+        "evidence:chunk-0373:005",
+        "evidence:chunk-0373:013",
+        "evidence:chunk-0376:011",
+        "evidence:chunk-0376:014",
+        "evidence:chunk-0376:015",
+        "evidence:chunk-0394:018",
+        "evidence:chunk-0394:019",
+        "evidence:chunk-0395:003",
+        "evidence:chunk-0395:004",
+        "evidence:chunk-0395:006",
+        "evidence:chunk-0395:007",
+        "evidence:chunk-0395:008",
+        "evidence:chunk-0398:008",
+        "evidence:chunk-0398:009",
+        "evidence:chunk-0398:014",
+        "evidence:chunk-0398:016",
+        "evidence:chunk-0159:005",
+        "evidence:chunk-0217:013",
+        "evidence:chunk-0217:014",
+        "evidence:chunk-0218:003",
+        "evidence:chunk-0218:005",
+        "evidence:chunk-0218:006",
+        "evidence:chunk-0218:007",
+        "evidence:chunk-0218:008",
+        "evidence:chunk-0085:003",
+        "evidence:chunk-0085:004",
+        "evidence:chunk-0085:005",
+        "evidence:chunk-0085:009",
+        "evidence:chunk-0086:010",
+        "evidence:chunk-0086:011",
+        "evidence:chunk-0086:012",
+        "evidence:chunk-0087:009",
+        "evidence:chunk-0088:001",
+        "evidence:chunk-0225:005",
+        "evidence:chunk-0225:007",
+        "evidence:chunk-0225:011",
+        "evidence:chunk-0238:008",
+        "evidence:chunk-0238:010",
+        "evidence:chunk-0238:011",
+        "evidence:chunk-0427:001",
+        "evidence:chunk-0427:014",
+        "evidence:chunk-0427:017",
+        "evidence:chunk-0427:018"
+      ],
+      "notes": []
+    },
+    {
+      "requirement_id": "world_region_state_place",
+      "requirement_kind": "field",
+      "status": "covered",
+      "field_name": "主要功能",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0104:003",
+        "evidence:chunk-0104:004",
+        "evidence:chunk-0258:003",
+        "evidence:chunk-0258:004",
+        "evidence:chunk-0258:005",
+        "evidence:chunk-0372:011",
+        "evidence:chunk-0372:012",
+        "evidence:chunk-0373:001",
+        "evidence:chunk-0373:003",
+        "evidence:chunk-0373:004",
+        "evidence:chunk-0373:005",
+        "evidence:chunk-0373:013",
+        "evidence:chunk-0376:011",
+        "evidence:chunk-0376:014",
+        "evidence:chunk-0376:015",
+        "evidence:chunk-0394:018",
+        "evidence:chunk-0394:019",
+        "evidence:chunk-0395:003",
+        "evidence:chunk-0395:004",
+        "evidence:chunk-0395:006",
+        "evidence:chunk-0395:007",
+        "evidence:chunk-0395:008",
+        "evidence:chunk-0398:008",
+        "evidence:chunk-0398:009",
+        "evidence:chunk-0398:014",
+        "evidence:chunk-0398:016",
+        "evidence:chunk-0159:005",
+        "evidence:chunk-0217:013",
+        "evidence:chunk-0217:014",
+        "evidence:chunk-0218:003",
+        "evidence:chunk-0218:005",
+        "evidence:chunk-0218:006",
+        "evidence:chunk-0218:007",
+        "evidence:chunk-0218:008",
+        "evidence:chunk-0085:003",
+        "evidence:chunk-0085:004",
+        "evidence:chunk-0085:005",
+        "evidence:chunk-0085:009",
+        "evidence:chunk-0086:010",
+        "evidence:chunk-0086:011",
+        "evidence:chunk-0086:012",
+        "evidence:chunk-0087:009",
+        "evidence:chunk-0088:001",
+        "evidence:chunk-0225:005",
+        "evidence:chunk-0225:007",
+        "evidence:chunk-0225:011",
+        "evidence:chunk-0238:008",
+        "evidence:chunk-0238:010",
+        "evidence:chunk-0238:011",
+        "evidence:chunk-0427:001",
+        "evidence:chunk-0427:014",
+        "evidence:chunk-0427:017",
+        "evidence:chunk-0427:018"
+      ],
+      "notes": []
+    },
+    {
+      "requirement_id": "world_region_state_place",
+      "requirement_kind": "field",
+      "status": "covered",
+      "field_name": "使用条件与流程",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0104:003",
+        "evidence:chunk-0104:004",
+        "evidence:chunk-0258:003",
+        "evidence:chunk-0258:004",
+        "evidence:chunk-0258:005",
+        "evidence:chunk-0372:011",
+        "evidence:chunk-0372:012",
+        "evidence:chunk-0373:001",
+        "evidence:chunk-0373:003",
+        "evidence:chunk-0373:004",
+        "evidence:chunk-0373:005",
+        "evidence:chunk-0373:013",
+        "evidence:chunk-0376:011",
+        "evidence:chunk-0376:014",
+        "evidence:chunk-0376:015",
+        "evidence:chunk-0394:018",
+        "evidence:chunk-0394:019",
+        "evidence:chunk-0395:003",
+        "evidence:chunk-0395:004",
+        "evidence:chunk-0395:006",
+        "evidence:chunk-0395:007",
+        "evidence:chunk-0395:008",
+        "evidence:chunk-0398:008",
+        "evidence:chunk-0398:009",
+        "evidence:chunk-0398:014",
+        "evidence:chunk-0398:016",
+        "evidence:chunk-0159:005",
+        "evidence:chunk-0217:013",
+        "evidence:chunk-0217:014",
+        "evidence:chunk-0218:003",
+        "evidence:chunk-0218:005",
+        "evidence:chunk-0218:006",
+        "evidence:chunk-0218:007",
+        "evidence:chunk-0218:008",
+        "evidence:chunk-0085:003",
+        "evidence:chunk-0085:004",
+        "evidence:chunk-0085:005",
+        "evidence:chunk-0085:009",
+        "evidence:chunk-0086:010",
+        "evidence:chunk-0086:011",
+        "evidence:chunk-0086:012",
+        "evidence:chunk-0087:009",
+        "evidence:chunk-0088:001",
+        "evidence:chunk-0225:005",
+        "evidence:chunk-0225:007",
+        "evidence:chunk-0225:011",
+        "evidence:chunk-0238:008",
+        "evidence:chunk-0238:010",
+        "evidence:chunk-0238:011",
+        "evidence:chunk-0427:001",
+        "evidence:chunk-0427:014",
+        "evidence:chunk-0427:017",
+        "evidence:chunk-0427:018"
+      ],
+      "notes": []
+    },
+    {
+      "requirement_id": "world_region_state_place",
+      "requirement_kind": "field",
+      "status": "covered",
+      "field_name": "风险与后续影响",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0104:003",
+        "evidence:chunk-0104:004",
+        "evidence:chunk-0258:003",
+        "evidence:chunk-0258:004",
+        "evidence:chunk-0258:005",
+        "evidence:chunk-0372:011",
+        "evidence:chunk-0372:012",
+        "evidence:chunk-0373:001",
+        "evidence:chunk-0373:003",
+        "evidence:chunk-0373:004",
+        "evidence:chunk-0373:005",
+        "evidence:chunk-0373:013",
+        "evidence:chunk-0376:011",
+        "evidence:chunk-0376:014",
+        "evidence:chunk-0376:015",
+        "evidence:chunk-0394:018",
+        "evidence:chunk-0394:019",
+        "evidence:chunk-0395:003",
+        "evidence:chunk-0395:004",
+        "evidence:chunk-0395:006",
+        "evidence:chunk-0395:007",
+        "evidence:chunk-0395:008",
+        "evidence:chunk-0398:008",
+        "evidence:chunk-0398:009",
+        "evidence:chunk-0398:014",
+        "evidence:chunk-0398:016",
+        "evidence:chunk-0159:005",
+        "evidence:chunk-0217:013",
+        "evidence:chunk-0217:014",
+        "evidence:chunk-0218:003",
+        "evidence:chunk-0218:005",
+        "evidence:chunk-0218:006",
+        "evidence:chunk-0218:007",
+        "evidence:chunk-0218:008",
+        "evidence:chunk-0085:003",
+        "evidence:chunk-0085:004",
+        "evidence:chunk-0085:005",
+        "evidence:chunk-0085:009",
+        "evidence:chunk-0086:010",
+        "evidence:chunk-0086:011",
+        "evidence:chunk-0086:012",
+        "evidence:chunk-0087:009",
+        "evidence:chunk-0088:001",
+        "evidence:chunk-0225:005",
+        "evidence:chunk-0225:007",
+        "evidence:chunk-0225:011",
+        "evidence:chunk-0238:008",
+        "evidence:chunk-0238:010",
+        "evidence:chunk-0238:011",
+        "evidence:chunk-0427:001",
+        "evidence:chunk-0427:014",
+        "evidence:chunk-0427:017",
+        "evidence:chunk-0427:018"
+      ],
+      "notes": []
+    }
+  ],
+  "fulfilled_tables": [],
+  "fulfilled_cards": [],
+  "fulfilled_cases": [
+    {
+      "requirement_id": "world_region_state_place",
+      "case_heading": "案例 1：中立交通设施",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0394:018",
+        "evidence:chunk-0394:019",
+        "evidence:chunk-0395:003",
+        "evidence:chunk-0395:006",
+        "evidence:chunk-0395:007",
+        "evidence:chunk-0398:008",
+        "evidence:chunk-0398:009",
+        "evidence:chunk-0398:014",
+        "evidence:chunk-0398:016",
+        "evidence:chunk-0104:003",
+        "evidence:chunk-0104:004"
+      ]
+    },
+    {
+      "requirement_id": "world_region_state_place",
+      "case_heading": "案例 2：公共服务设施",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0258:003",
+        "evidence:chunk-0258:004",
+        "evidence:chunk-0258:005"
+      ]
+    },
+    {
+      "requirement_id": "world_region_state_place",
+      "case_heading": "案例 3：检测与登记设施",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0372:011",
+        "evidence:chunk-0373:001",
+        "evidence:chunk-0373:003",
+        "evidence:chunk-0373:004",
+        "evidence:chunk-0373:005",
+        "evidence:chunk-0373:013",
+        "evidence:chunk-0376:011",
+        "evidence:chunk-0376:014",
+        "evidence:chunk-0376:015"
+      ]
+    },
+    {
+      "requirement_id": "world_region_state_place",
+      "case_heading": "案例 4：封印与镇压设施",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0427:001",
+        "evidence:chunk-0427:014",
+        "evidence:chunk-0427:017",
+        "evidence:chunk-0427:018",
+        "evidence:chunk-0085:003",
+        "evidence:chunk-0085:004",
+        "evidence:chunk-0085:005",
+        "evidence:chunk-0085:009",
+        "evidence:chunk-0086:010",
+        "evidence:chunk-0086:011",
+        "evidence:chunk-0086:012"
+      ]
+    },
+    {
+      "requirement_id": "world_region_state_place",
+      "case_heading": "案例 5：独立功能地标",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0159:005",
+        "evidence:chunk-0217:013",
+        "evidence:chunk-0217:014",
+        "evidence:chunk-0218:003",
+        "evidence:chunk-0218:005",
+        "evidence:chunk-0218:006",
+        "evidence:chunk-0218:007",
+        "evidence:chunk-0218:008",
+        "evidence:chunk-0225:005",
+        "evidence:chunk-0225:007",
+        "evidence:chunk-0225:011",
+        "evidence:chunk-0238:008",
+        "evidence:chunk-0238:010",
+        "evidence:chunk-0238:011"
+      ]
+    },
+    {
+      "requirement_id": "world_region_state_place",
+      "case_heading": "案例 6：公共事件场所",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0087:009",
+        "evidence:chunk-0088:001"
+      ]
+    }
+  ],
+  "facts": [
+    {
+      "content": "嘉元城码头：码头狭小简陋且由脚夫帮派维持本地行规，上岸客商通常需要花钱雇本码头苦力。",
+      "category": "原作事实",
+      "name": "嘉元城码头",
+      "classification": "中立交通/劳务码头",
+      "usage": "承担上岸、搬运、雇脚夫和地方帮派接触功能；风险是行规强制、脚夫恶意对待或帮派冲突。",
+      "evidence_ids": [
+        "evidence:chunk-0104:003",
+        "evidence:chunk-0104:004"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0104:003",
+          "chunk_id": "chunk-0104",
+          "source_range": [
+            202161,
+            202340
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0104",
+            "source_path": "intermediate/chunks/chunk-0104.txt",
+            "source_range": [
+              202161,
+              202340
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0104:004",
+          "chunk_id": "chunk-0104",
+          "source_range": [
+            202386,
+            202527
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0104",
+            "source_path": "intermediate/chunks/chunk-0104.txt",
+            "source_range": [
+              202386,
+              202527
+            ]
+          }
+        }
+      ],
+      "source_excerpt": "evidence:chunk-0104:003: 这个码头给韩立的第一眼，就是太烂了。\n　　整个码头全部都用简易的木板搭制而成，不但地方狭小简陋，而且东一处西一角的堆得到处是烂筐、破袋子，显的脏乱无比。而在码头上搭建的唯一两座竹棚内，各站着数十名精壮的汉子，这些汉子上半身要么光着膀子，要么只穿一件短褂，全都透露出一股彪悍的味道。\n　　现在这些汉子，全都不眨眼的注视着他与曲魂，有些人眼里还露出了热切的眼神。；evidence:chunk-0104:004: 在嘉元城这个地方的码头有个不成文的规定，不管上岸的客商携带的物品多少，都要花钱雇本码头的一名苦力帮忙提拿东西。如若不然，就会遭遇到这些苦力脚夫不善对待，甚至会被毒打一顿也说不定。\n　　韩立初到此地，并没有打破坏别人行规的想法，因此他很老实的招呼了一声：“我要雇脚夫，有没有人来啊！”",
+      "linked_node_ids": [
+        "node:chunk-0104:facility:001"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0104:002"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "unreviewed_usable"
+    },
+    {
+      "content": "风悦客栈：燕翎堡东南角不起眼客栈，修士少且靠近城墙，被韩立选作避事和预留逃走路线的住处。",
+      "category": "原作事实",
+      "name": "风悦客栈",
+      "classification": "公共服务设施/客栈",
+      "usage": "提供住宿、短期修整、避开人群和靠近城墙的逃离便利；限制是只适合低调暂住，安全依赖位置而非明确禁斗规则。",
+      "evidence_ids": [
+        "evidence:chunk-0258:003",
+        "evidence:chunk-0258:004",
+        "evidence:chunk-0258:005"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0258:003",
+          "chunk_id": "chunk-0258",
+          "source_range": [
+            615728,
+            615778
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0258",
+            "source_path": "intermediate/chunks/chunk-0258.txt",
+            "source_range": [
+              615728,
+              615778
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0258:004",
+          "chunk_id": "chunk-0258",
+          "source_range": [
+            615815,
+            615843
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0258",
+            "source_path": "intermediate/chunks/chunk-0258.txt",
+            "source_range": [
+              615815,
+              615843
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0258:005",
+          "chunk_id": "chunk-0258",
+          "source_range": [
+            615899,
+            615935
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0258",
+            "source_path": "intermediate/chunks/chunk-0258.txt",
+            "source_range": [
+              615899,
+              615935
+            ]
+          }
+        }
+      ],
+      "source_excerpt": "evidence:chunk-0258:003: 这客栈处在燕翎堡的东南角，不大也非常的不起眼，和其他几家相比明显差远了，因此住在这里的修士不多才对。；evidence:chunk-0258:004: 此地离城墙较近，万一有意外发生时。韩立也方便逃之夭夭啊！；evidence:chunk-0258:005: 这家“风悦客栈”果然修士不多，而且都是不喜热闹或生性孤僻些的人住在这里。",
+      "linked_node_ids": [
+        "node:chunk-0258:facility:009"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0258:001"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "unreviewed_usable"
+    },
+    {
+      "content": "魁星岛港口与港口石屋：陌生修仙者上岛需通知港口并办理手续，港口有修仙者维持秩序。",
+      "category": "原作事实",
+      "name": "魁星岛港口与港口石屋",
+      "classification": "检测与登记设施/港口入境登记",
+      "usage": "办理外来修士上岛手续、确认来历、收取灵石并发放身份玉牌；未办证或丢失玉牌会被按乱闯治罪。",
+      "evidence_ids": [
+        "evidence:chunk-0372:011",
+        "evidence:chunk-0372:012",
+        "evidence:chunk-0373:001",
+        "evidence:chunk-0373:003",
+        "evidence:chunk-0373:004",
+        "evidence:chunk-0373:005"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0372:011",
+          "chunk_id": "chunk-0372",
+          "source_range": [
+            948022,
+            948110
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0372",
+            "source_path": "intermediate/chunks/chunk-0372.txt",
+            "source_range": [
+              948022,
+              948110
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0372:012",
+          "chunk_id": "chunk-0372",
+          "source_range": [
+            948176,
+            948210
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0372",
+            "source_path": "intermediate/chunks/chunk-0372.txt",
+            "source_range": [
+              948176,
+              948210
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0373:001",
+          "chunk_id": "chunk-0373",
+          "source_range": [
+            948351,
+            948408
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0373",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              948351,
+              948408
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0373:003",
+          "chunk_id": "chunk-0373",
+          "source_range": [
+            948844,
+            948983
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0373",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              948844,
+              948983
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0373:004",
+          "chunk_id": "chunk-0373",
+          "source_range": [
+            949027,
+            949100
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0373",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              949027,
+              949100
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0373:005",
+          "chunk_id": "chunk-0373",
+          "source_range": [
+            949103,
+            949197
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0373",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              949103,
+              949197
+            ]
+          }
+        }
+      ],
+      "source_excerpt": "evidence:chunk-0372:011: 四日后，这艘巨船终于在船上之人的欢呼声中，到达了魁星岛。\n　　韩立则在顾东主和王长青的带领下，兴冲冲的给韩立办理一些上岛的手续。毕竟一位陌生的修仙者到了此岛，一定要通知一声港口；evidence:chunk-0372:012: 无论是船只的数量，还是船只的体积，根本不是天南的那些小码头可以比的。；evidence:chunk-0373:001: 韩立在留意凡人数量的同时，也隐隐约约的在港口同感应到了众多修仙者的气息，看来这些人应该是专门负责港口秩序的修仙者。；evidence:chunk-0373:003: 顾东主恭敬的叫了一声“杨仙师”，接着凑到了黄脸修士的跟前，低声的说了几句什么，然后回头一指韩立，似乎在解释他的来历，接着又往这位手上塞了数块灵石。\n　　摸了摸手上的灵石，这位“杨仙师”的神色缓和了许多。接着从身上一摸，掏出了块绿色的玉牌出来，硬邦邦地向韩立问道：“叫什么名字？”；evidence:chunk-0373:004: 杨仙师手上绿光一闪，将玉牌彻底罩在了其中。片刻后，光芒散尽，玉牌上就多出了两个韩立不识的古怪符号出来。\n　　然后黄脸老者手一抬，玉牌就扔向了韩立。；evidence:chunk-0373:005: “这个牌子要好好的收好，若是丢失了，就要及时到我这补领，否则就要按照乱闯魁星岛治罪的。当然，你以后若是定居此地的话，这个玉牌就不需要了，会被收回去的。至于你身后的这具炼尸，当然不需要了。”",
+      "linked_node_ids": [
+        "node:chunk-0373:facility:001",
+        "node:chunk-0373:facility:002",
+        "node:chunk-0373:tool:001"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0373:001"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "unreviewed_usable"
+    },
+    {
+      "content": "魁星岛城门照验：城门卫兵用圆筒状器物照验韩立，见绿光后放行并只检查凡人同行者令牌。",
+      "category": "原作事实",
+      "name": "魁星岛城门照验",
+      "classification": "检测与登记设施/身份照验",
+      "usage": "用器物验证修仙者身份凭证，区分修士与凡人通行检查；产出是放行资格和守卫态度变化。",
+      "evidence_ids": [
+        "evidence:chunk-0373:013"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0373:013",
+          "chunk_id": "chunk-0373",
+          "source_range": [
+            951189,
+            951232
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0373",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              951189,
+              951232
+            ]
+          }
+        }
+      ],
+      "source_excerpt": "evidence:chunk-0373:013: 在看到圆筒上有绿光放出后，就立刻恭敬的给韩立施了一礼，就只检查顾东主和王长青的令牌了。",
+      "linked_node_ids": [],
+      "linked_event_ids": [
+        "event:chunk-0373:007"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "unreviewed_usable"
+    },
+    {
+      "content": "登仙阁：青云山峰顶阁楼负责魁星岛定居登记，收取文书、登记名字、收回绿色玉牌并换发蓝色玉佩。",
+      "category": "原作事实",
+      "name": "登仙阁",
+      "classification": "检测与登记设施/定居登记处",
+      "usage": "办理长期定居、换发凭证、分配可选修炼地；银色画册以金光和白色标示已占和空置地点。",
+      "evidence_ids": [
+        "evidence:chunk-0376:011",
+        "evidence:chunk-0376:014",
+        "evidence:chunk-0376:015"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0376:011",
+          "chunk_id": "chunk-0376",
+          "source_range": [
+            958751,
+            958827
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0376",
+            "source_path": "intermediate/chunks/chunk-0376.txt",
+            "source_range": [
+              958751,
+              958827
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0376:014",
+          "chunk_id": "chunk-0376",
+          "source_range": [
+            959424,
+            959555
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0376",
+            "source_path": "intermediate/chunks/chunk-0376.txt",
+            "source_range": [
+              959424,
+              959555
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0376:015",
+          "chunk_id": "chunk-0376",
+          "source_range": [
+            959590,
+            959630
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0376",
+            "source_path": "intermediate/chunks/chunk-0376.txt",
+            "source_range": [
+              959590,
+              959630
+            ]
+          }
+        }
+      ],
+      "source_excerpt": "evidence:chunk-0376:011: “有！”韩立立刻将顾家人给的那份文书拿出来，并上前两步交予了对方。他可不敢小视此人，因为对方身上的灵力波动，清楚的告诉他，此人可是名筑基后期的强大修士。；evidence:chunk-0376:014: 所谓的定居手续倒很是简单，中年人从身上摸出一块金色的书册，将韩立的名字誊写了上去，就可以了。当然，韩立当初进港时的那个绿色玉牌自然要被收走，而换发给了另一种蓝色的玉佩。\n　　此玉佩蓝光闪闪，竟还是一件低阶的法器。听中年人说，此物具有小幅的避水效果，倒也实用的很。；evidence:chunk-0376:015: 上面凡是有金光的地方，是已有人住下了。白色的，则是空着的可修炼之地，你自己选吧！",
+      "linked_node_ids": [
+        "node:chunk-0376:facility:001"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0376:008"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "unreviewed_usable"
+    },
+    {
+      "content": "天星城海岸门户与身份灵环：高大石墙下分设凡人码头、妖兽海湾和修士小城门，入城修士用蓝色或红色身份灵环区分停留类型。",
+      "category": "原作事实",
+      "name": "天星城海岸门户与身份灵环",
+      "classification": "中立交通与登记复合设施/城门体系",
+      "usage": "承担分流入城、收费、临时停留和永久居住身份标识；蓝环三块灵石七天有效，红环八百灵石并可滴血认主。",
+      "evidence_ids": [
+        "evidence:chunk-0395:003",
+        "evidence:chunk-0395:004",
+        "evidence:chunk-0395:006",
+        "evidence:chunk-0395:007",
+        "evidence:chunk-0395:008"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0395:003",
+          "chunk_id": "chunk-0395",
+          "source_range": [
+            1011863,
+            1012013
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0395",
+            "source_path": "intermediate/chunks/chunk-0395.txt",
+            "source_range": [
+              1011863,
+              1012013
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0395:004",
+          "chunk_id": "chunk-0395",
+          "source_range": [
+            1012062,
+            1012160
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0395",
+            "source_path": "intermediate/chunks/chunk-0395.txt",
+            "source_range": [
+              1012062,
+              1012160
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0395:006",
+          "chunk_id": "chunk-0395",
+          "source_range": [
+            1012420,
+            1012586
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0395",
+            "source_path": "intermediate/chunks/chunk-0395.txt",
+            "source_range": [
+              1012420,
+              1012586
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0395:007",
+          "chunk_id": "chunk-0395",
+          "source_range": [
+            1012645,
+            1012824
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0395",
+            "source_path": "intermediate/chunks/chunk-0395.txt",
+            "source_range": [
+              1012645,
+              1012824
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0395:008",
+          "chunk_id": "chunk-0395",
+          "source_range": [
+            1012972,
+            1013051
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0395",
+            "source_path": "intermediate/chunks/chunk-0395.txt",
+            "source_range": [
+              1012972,
+              1013051
+            ]
+          }
+        }
+      ],
+      "source_excerpt": "evidence:chunk-0395:003: 此时才发现眼前的城市，竟然被一座高达数十丈的参天石墙，沿着海岸边围了起来。而在那望不到尽头的高墙之下，仅韩立所能看到的，就有大大小小十几个各式各样的门户。\n　　既有专门给凡人的海船停靠的码头，也有让各种妖兽栖息的海湾，当然最多的还是修士单人就可通过的小城门，韩立就随着一道青光飞向其中一个矮小的城门。；evidence:chunk-0395:004: 在韩立前面的是位相貌端庄的青衣女子，看修为是筑基中期的样子。她和站在城门下的两位白衣修士温雅的说了几句什么，就递出了几块灵石，从对方手里接过来一个蓝色指环随意地带在了手上，然后莲步轻移的走了进去。；evidence:chunk-0395:006: 这是证明身份的灵环，蓝色的是临时待在本城的修士所戴的，只要缴纳三块灵石即可，红色的则是永久居住的表示，普通修士需缴纳灵石八百，才可长久留在本城。因此蓝色指环的灵光只能闪烁七天，七天后灵光熄灭之前，指环主人就必须离开天星城，或者再到城门处换个新指环。红色指环的灵光则是永久性的，不过红色指环，滴入精血后就能认主发光，不用怕被别人抢去。；evidence:chunk-0395:007: 曲魂默默的点点头，当即接过了指环，稍微犹豫了一下后就滴了精血在其上，然后戴在了手上。\n　　“麻烦道友给在下一个红色的吧！在下也打算在城中长住。”韩立笑吟吟的从储物袋中摸出了八块中品灵石递给了其中一名修士。\n　　两名白衣修士有点意外的望了韩立一眼，但没有说什么的接过了灵石，随后同样递过来了一个红色指环。\n　　韩立也滴了精血的戴好后，就微笑着和曲魂走进了城门。；evidence:chunk-0395:008: 韩立略微打量了一下，就不经意的抬首望了望天空，发现天上有不少道光芒在飞来飞去，竟有修士在天上御器飞行。\n　　乱星海第一大城竟没有禁空的禁制，这让韩立大感意外。",
+      "linked_node_ids": [
+        "node:chunk-0395:006",
+        "node:chunk-0395:007"
+      ],
+      "linked_event_ids": [],
+      "confidence": "EXTRACTED",
+      "review_status": "unreviewed_usable"
+    },
+    {
+      "content": "天星城星空殿传送阵：星空殿位于天星城第五十层，殿内排列多座标明目的地的传送阵，可付灵石前往外星海妖兽岛。",
+      "category": "原作事实",
+      "name": "天星城星空殿传送阵",
+      "classification": "中立交通设施/跨海传送阵",
+      "usage": "跨距离传送至外星海诸岛；使用流程包括到星空殿、选择传送阵、缴纳灵石、领取传送符、站阵传送并抵达目标石屋。",
+      "evidence_ids": [
+        "evidence:chunk-0394:018",
+        "evidence:chunk-0394:019",
+        "evidence:chunk-0398:008",
+        "evidence:chunk-0398:009",
+        "evidence:chunk-0398:014",
+        "evidence:chunk-0398:016"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0394:018",
+          "chunk_id": "chunk-0394",
+          "source_range": [
+            1010261,
+            1010280
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0394",
+            "source_path": "intermediate/chunks/chunk-0394.txt",
+            "source_range": [
+              1010261,
+              1010280
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0394:019",
+          "chunk_id": "chunk-0394",
+          "source_range": [
+            1010283,
+            1010324
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0394",
+            "source_path": "intermediate/chunks/chunk-0394.txt",
+            "source_range": [
+              1010283,
+              1010324
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0398:008",
+          "chunk_id": "chunk-0398",
+          "source_range": [
+            1020629,
+            1020726
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0398",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              1020629,
+              1020726
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0398:009",
+          "chunk_id": "chunk-0398",
+          "source_range": [
+            1020785,
+            1020883
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0398",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              1020785,
+              1020883
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0398:014",
+          "chunk_id": "chunk-0398",
+          "source_range": [
+            1021475,
+            1021589
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0398",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              1021475,
+              1021589
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0398:016",
+          "chunk_id": "chunk-0398",
+          "source_range": [
+            1021728,
+            1021859
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0398",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              1021728,
+              1021859
+            ]
+          }
+        }
+      ],
+      "source_excerpt": "evidence:chunk-0394:018: 天星宫竟然建有直接通往外星海的传送阵。；evidence:chunk-0394:019: 只要有人肯交大笔的灵石，就可通过传送阵，传送至外星海的数十个大小不一的“妖兽岛”去；evidence:chunk-0398:008: 转眼间，又过了半年，韩立和曲魂出现在了天星城的第五十层区域。\n　　此刻在他们前面的，是一座用白色大理石砌成的大殿，上面有块数丈长的巨匾，用金粉写着“星空殿”三个大字。大殿的门口处，一个人都没有。；evidence:chunk-0398:009: 而在这间厅内，正有四男一女五名修士和一位白衣的天星宫修士在交谈着什么。在他们身后的地方，则有数排并列的许多大小一样的传送阵。每个传送阵前还有一块小石碑，上面写着传送阵传送的地点名称，让人一目了然。；evidence:chunk-0398:014: 接下来韩立交了二百灵石，妇人那伙人交了五百灵石，一同站到了标有“凝翠岛”的传送阵上。\n　　而白衣修士收了他们的灵石后，分给他们一人一张“传送符”，贴在了身上。此符和那“大挪移令”有同样的保护效果，防止他们在长距离传送中出了意外。；evidence:chunk-0398:016: 传送很顺利！在白光闪过后，韩立等七人就出现在了一个简陋的石屋内，屋内除了一名面无表情的星宫修士外，就空无一人了。\n　　这位星宫的修士只是筑基中期的样子，正在石屋的一角盘膝打坐，虽然见韩立等七人传送过来后，但冷漠的望了一眼后，就轻闭上双目没有丝毫想理睬他们的意思。",
+      "linked_node_ids": [
+        "node:chunk-0398:facility:003",
+        "node:chunk-0398:formation:001",
+        "node:chunk-0398:facility:004"
+      ],
+      "linked_event_ids": [],
+      "confidence": "EXTRACTED",
+      "review_status": "unreviewed_usable"
+    },
+    {
+      "content": "岳麓殿玄阳火地与十九号地火间：岳麓殿无标记通道通往付费地火设施，地火间由坞石建造并可用于炼丹炼器。",
+      "category": "原作事实",
+      "name": "岳麓殿玄阳火地与十九号地火间",
+      "classification": "独立功能地标/付费地火设施",
+      "usage": "交灵石借用地火，安排稳定火力房间；十九号屋中心地火口由八个龙首喷火，可调火焰大小高度，火星砂可短时增强地火，玉牌封门隔绝外界。",
+      "evidence_ids": [
+        "evidence:chunk-0159:005",
+        "evidence:chunk-0217:013",
+        "evidence:chunk-0217:014",
+        "evidence:chunk-0218:003",
+        "evidence:chunk-0218:005",
+        "evidence:chunk-0218:006",
+        "evidence:chunk-0218:007",
+        "evidence:chunk-0218:008"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0159:005",
+          "chunk_id": "chunk-0159",
+          "source_range": [
+            335009,
+            335092
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0159",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              335009,
+              335092
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0217:013",
+          "chunk_id": "chunk-0217",
+          "source_range": [
+            496356,
+            496454
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0217",
+            "source_path": "intermediate/chunks/chunk-0217.txt",
+            "source_range": [
+              496356,
+              496454
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0217:014",
+          "chunk_id": "chunk-0217",
+          "source_range": [
+            496594,
+            496649
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0217",
+            "source_path": "intermediate/chunks/chunk-0217.txt",
+            "source_range": [
+              496594,
+              496649
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0218:003",
+          "chunk_id": "chunk-0218",
+          "source_range": [
+            497118,
+            497242
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0218",
+            "source_path": "intermediate/chunks/chunk-0218.txt",
+            "source_range": [
+              497118,
+              497242
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0218:005",
+          "chunk_id": "chunk-0218",
+          "source_range": [
+            497610,
+            497727
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0218",
+            "source_path": "intermediate/chunks/chunk-0218.txt",
+            "source_range": [
+              497610,
+              497727
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0218:006",
+          "chunk_id": "chunk-0218",
+          "source_range": [
+            497839,
+            497999
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0218",
+            "source_path": "intermediate/chunks/chunk-0218.txt",
+            "source_range": [
+              497839,
+              497999
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0218:007",
+          "chunk_id": "chunk-0218",
+          "source_range": [
+            498059,
+            498129
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0218",
+            "source_path": "intermediate/chunks/chunk-0218.txt",
+            "source_range": [
+              498059,
+              498129
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0218:008",
+          "chunk_id": "chunk-0218",
+          "source_range": [
+            498164,
+            498298
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0218",
+            "source_path": "intermediate/chunks/chunk-0218.txt",
+            "source_range": [
+              498164,
+              498298
+            ]
+          }
+        }
+      ],
+      "source_excerpt": "evidence:chunk-0159:005: “小友刚进岳麓殿时，是不是看到了一条没有做任何标记的通道，那条通道就是通往玄阳火地的，在那里交些灵石的话，就可以借用到地火了！”老者畅笑了一通后，终于告诉了韩立实话。；evidence:chunk-0217:013: 韩立愿本就想依仗李师祖的名号，看看能否得到一些地火方面的特殊照顾，见对方识趣的主动说出了口，便脸上神色一缓道：“在下是打算炼些丹药，所以希望能安排一间，火力较稳定较温和的地火间，还请阁下费心了！”；evidence:chunk-0217:014: “该交多少灵石，在下当然会按标准交付的！因为这次炼丹时间较长，所以这块中阶灵石算是定金，到时多退少补就是了！”；evidence:chunk-0218:003: 这坞石虽然不算稀罕之物，但是也不是世俗间普通材料。能一下找到这么多。并用其来当砖石修建通道和房屋，这也是前代几位大神通祖师们。费尽心机才大功告成的。不过，也就凭借坞石的耐高温，不怕地火熔炼的古怪特性，这地火之地自从开放以来，还从未出过什么大事故呢！；evidence:chunk-0218:005: 这个大厅下面就地火最旺盛的聚集地，所以本门一共在此开辟了三十六间炼器炼丹的地火间，而最好地炼丹房就是十八号和十九号了。\n　　不过十八号已被一位师伯占用了，所以师弟还是用十九号屋子吧！虽然它比十八号稍差了点，但火力和稳定性也都极为出色。；evidence:chunk-0218:006: 这屋子是个方形建筑。面积一般，只有七八丈大小，但在屋子的中心有个丈许宽的圆敦，四面墙壁上也各挂一个拳头大小的葫芦，不远处的墙角里还有一个翠绿色的蒲团。\n　　圆敦同样是坞石制成，甚为扁平，只有半尺来高。但是在圆敦外侧，却镶嵌着八个火红色迷你型龙首，栩栩如生。而且龙首口部微抬，正好对准圆敦中心的上空，做喷吐姿势，非常逼真。；evidence:chunk-0218:007: 这个就是此屋的地火口，炼丹所需要的地火，就是从这八个龙首中喷出。并且根据需要，还可自行调节火焰大小和高度，具体驱使之法，就刻在石墩外壁上了。；evidence:ch",
+      "linked_node_ids": [
+        "node:chunk-0218:facility:003",
+        "node:chunk-0218:facility:004",
+        "node:chunk-0218:facility:005"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0218:facility_assignment_event:004",
+        "event:chunk-0218:facility_instruction_event:005"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "unreviewed_usable"
+    },
+    {
+      "content": "落日峰石乳洞机关陷阱：第七代李门主利用落日峰易守难攻的山势、山腹巨大石乳洞和土木机关，将整座山峰改造成可塌山埋人的陷阱。",
+      "category": "原作事实",
+      "name": "落日峰石乳洞机关陷阱",
+      "classification": "封印与镇压相邻设施/大型防御机关",
+      "usage": "主要用于极端防守和同归于尽式围困；触发二号机关后地面震动、石殿消失并留下深洞，风险是峰上人员无差别被埋葬。",
+      "evidence_ids": [
+        "evidence:chunk-0085:003",
+        "evidence:chunk-0085:004",
+        "evidence:chunk-0085:005",
+        "evidence:chunk-0085:009",
+        "evidence:chunk-0086:010",
+        "evidence:chunk-0086:011",
+        "evidence:chunk-0086:012"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0085:003",
+          "chunk_id": "chunk-0085",
+          "source_range": [
+            166743,
+            166792
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0085",
+            "source_path": "intermediate/chunks/chunk-0085.txt",
+            "source_range": [
+              166743,
+              166792
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0085:004",
+          "chunk_id": "chunk-0085",
+          "source_range": [
+            166832,
+            166909
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0085",
+            "source_path": "intermediate/chunks/chunk-0085.txt",
+            "source_range": [
+              166832,
+              166909
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0085:005",
+          "chunk_id": "chunk-0085",
+          "source_range": [
+            166950,
+            167033
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0085",
+            "source_path": "intermediate/chunks/chunk-0085.txt",
+            "source_range": [
+              166950,
+              167033
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0085:009",
+          "chunk_id": "chunk-0085",
+          "source_range": [
+            167771,
+            167799
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0085",
+            "source_path": "intermediate/chunks/chunk-0085.txt",
+            "source_range": [
+              167771,
+              167799
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0086:010",
+          "chunk_id": "chunk-0086",
+          "source_range": [
+            169390,
+            169464
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0086",
+            "source_path": "intermediate/chunks/chunk-0086.txt",
+            "source_range": [
+              169390,
+              169464
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0086:011",
+          "chunk_id": "chunk-0086",
+          "source_range": [
+            169587,
+            169623
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0086",
+            "source_path": "intermediate/chunks/chunk-0086.txt",
+            "source_range": [
+              169587,
+              169623
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0086:012",
+          "chunk_id": "chunk-0086",
+          "source_range": [
+            169975,
+            170016
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0086",
+            "source_path": "intermediate/chunks/chunk-0086.txt",
+            "source_range": [
+              169975,
+              170016
+            ]
+          }
+        }
+      ],
+      "source_excerpt": "evidence:chunk-0085:003: 把本门迁移到此地的是第七代门主李门主，其人不但雄才大略，而且擅长土木机关之术，可称得上是一代奇才。；evidence:chunk-0085:004: 李门主选定落日峰作为本门总堂所在，其原因有二：一是此峰山势险恶，易守难攻，是绝佳的防守要地；二是因为此峰山腹之内，另有乾坤，乃有一个先天形成的巨大石乳洞。；evidence:chunk-0085:005: 他利用自己所会的土木之术，结合石乳洞的地势，把整座山峰变成了一个天然的大陷井。现在只要有人开动事先设定好的机关，那么整座山峰就会立刻倒塌掉，把所有峰上之人都埋葬在此。；evidence:chunk-0085:009: “启动二号机关！”王绝楚突然回过头，对着主殿大声命令道。；evidence:chunk-0086:010: 脚底下的地面突然开始颤动起来，起初还是很轻微，但接着就剧烈起来，有许多的人都站立不住，纷纷跌倒在了地上，还有不少山石也随着山峰的颤动而滚落下了山峰。；evidence:chunk-0086:011: “轰隆隆！”一阵巨大的倒塌之声传了过来，地面也猛得更加剧烈的摇晃了一阵。；evidence:chunk-0086:012: 原来那座被人所关注的石殿，已消失得无影无踪，只在原地留下了一个数亩大小的惊人大洞。",
+      "linked_node_ids": [
+        "node:chunk-0085:facility:002",
+        "node:chunk-0085:location:002"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0085:003",
+        "event:chunk-0085:006",
+        "event:chunk-0086:007"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "unreviewed_usable"
+    },
+    {
+      "content": "七玄殿前死斗场：王绝楚命令划出死斗场并准备生死书，锦衣弟子在殿前空地用木桩和绳索圈出场地。",
+      "category": "原作事实",
+      "name": "七玄殿前死斗场",
+      "classification": "公共事件场所/死契斗场",
+      "usage": "承载公开死契斗、见证生死规则和临时裁决；进入者受生死书和场地边界约束，风险是公开决斗不可逆。",
+      "evidence_ids": [
+        "evidence:chunk-0087:009",
+        "evidence:chunk-0088:001"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0087:009",
+          "chunk_id": "chunk-0087",
+          "source_range": [
+            172247,
+            172278
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0087",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              172247,
+              172278
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0088:001",
+          "chunk_id": "chunk-0088",
+          "source_range": [
+            172301,
+            172391
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0088",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              172301,
+              172391
+            ]
+          }
+        }
+      ],
+      "source_excerpt": "evidence:chunk-0087:009: “来人！划出死斗场！准备好生死书！”王绝楚对着身后，厉声说道。；evidence:chunk-0088:001: 从主殿内奔出了三十多名锦衣弟子。\n　　这些人全都一言不发，只是不声不响的在殿前空地上，用木桩和绳索圈起了死斗场，从他们麻利的动作上看，这些人个个训练有素，不是普通的七玄门低级弟子。",
+      "linked_node_ids": [
+        "node:chunk-0088:facility:001"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0087:006",
+        "event:chunk-0088:001"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "unreviewed_usable"
+    },
+    {
+      "content": "灵眼之泉洞府密房：韩立因无法移走灵眼之泉而在原地建洞府，并把灵泉岩洞预定为秘密练功密房。",
+      "category": "原作事实",
+      "name": "灵眼之泉洞府密房",
+      "classification": "独立功能地标/灵眼之泉",
+      "usage": "用于修炼和资源隐藏；洞府初建含十三间屋子与三处大厅，韩立用颠倒五行阵禁断神识来遮蔽储藏室和密封灵泉，防止高阶修士窥见生贪。",
+      "evidence_ids": [
+        "evidence:chunk-0225:005",
+        "evidence:chunk-0225:007",
+        "evidence:chunk-0225:011",
+        "evidence:chunk-0238:008",
+        "evidence:chunk-0238:010",
+        "evidence:chunk-0238:011"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0225:005",
+          "chunk_id": "chunk-0225",
+          "source_range": [
+            518220,
+            518310
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0225",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              518220,
+              518310
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0225:007",
+          "chunk_id": "chunk-0225",
+          "source_range": [
+            518451,
+            518477
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0225",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              518451,
+              518477
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0225:011",
+          "chunk_id": "chunk-0225",
+          "source_range": [
+            519005,
+            519023
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0225",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              519005,
+              519023
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0238:008",
+          "chunk_id": "chunk-0238",
+          "source_range": [
+            557612,
+            557681
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0238",
+            "source_path": "intermediate/chunks/chunk-0238.txt",
+            "source_range": [
+              557612,
+              557681
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0238:010",
+          "chunk_id": "chunk-0238",
+          "source_range": [
+            557909,
+            557973
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0238",
+            "source_path": "intermediate/chunks/chunk-0238.txt",
+            "source_range": [
+              557909,
+              557973
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0238:011",
+          "chunk_id": "chunk-0238",
+          "source_range": [
+            558297,
+            558427
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0238",
+            "source_path": "intermediate/chunks/chunk-0238.txt",
+            "source_range": [
+              558297,
+              558427
+            ]
+          }
+        }
+      ],
+      "source_excerpt": "evidence:chunk-0225:005: 因为灵眼之泉虽然是可以移走的，不过那是结丹期修士才有的手段，韩立可还没有这么大的本事。所以理所当然，他决定将洞府就建在了此地，并将此灵泉岩洞预定成了自己的练功密房，要秘密掩藏起来。；evidence:chunk-0225:007: 共开出了十三间大小不一的屋子、和三处占地上亩的大厅。；evidence:chunk-0225:011: 如此一来，韩立的洞府就算初步建成了。；evidence:chunk-0238:008: 不过，韩立为了怕这位雷师伯的神识过人，将自己储藏室内的东西和那口灵眼之泉全都收入了眼底。就早发动了颠倒五行大阵中的禁断神识之法的特殊变化。；evidence:chunk-0238:010: 否则，对方神识只要一扫查自己的储藏室内，和另一口被他密封起来的灵眼之泉。\n　　相信这位雷万鹤师伯，恐怕十有七八转动不好的念头了。；evidence:chunk-0238:011: 可是他的神识在离开自身十余丈的距离时，竟然如滞千斤，再也无法向外扩散分毫。\n　　这让雷万鹤的大脸，当时就露出了震惊之容。\n　　这种神识被局限的情况，他并非没有见到过。在好几位和他交好的修士洞府那里，他都遇到过相同的事情。这分明是某种阻断神识探查的禁制在起作用。",
+      "linked_node_ids": [
+        "node:chunk-0225:facility:001"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0225:002",
+        "event:chunk-0238:005",
+        "event:chunk-0238:006"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "unreviewed_usable"
+    },
+    {
+      "content": "封灵柱：封灵柱是古修士用于封印附近灵气、隔绝灵气外泄的巨大法器，推倒前需用巨力旋转，倒塌后显露通往地下的黑洞与白石台阶。",
+      "category": "原作事实",
+      "name": "封灵柱",
+      "classification": "封印设施/灵气封锁法器",
+      "usage": "承担封锁灵气外泄和隐藏地下入口的功能；破除流程是旋转封灵柱后推倒，风险是解除封印后暴露未知地下空间。",
+      "evidence_ids": [
+        "evidence:chunk-0427:001",
+        "evidence:chunk-0427:014",
+        "evidence:chunk-0427:017",
+        "evidence:chunk-0427:018"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0427:001",
+          "chunk_id": "chunk-0427",
+          "source_range": [
+            1103166,
+            1103205
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0427",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              1103166,
+              1103205
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0427:014",
+          "chunk_id": "chunk-0427",
+          "source_range": [
+            1104499,
+            1104531
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0427",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              1104499,
+              1104531
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0427:017",
+          "chunk_id": "chunk-0427",
+          "source_range": [
+            1104895,
+            1104913
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0427",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              1104895,
+              1104913
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0427:018",
+          "chunk_id": "chunk-0427",
+          "source_range": [
+            1105008,
+            1105018
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0427",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              1105008,
+              1105018
+            ]
+          }
+        }
+      ],
+      "source_excerpt": "evidence:chunk-0427:001: 所谓的“封灵柱”其实就是古修士专门封印附近灵气，彻底隔绝灵气外泄的一种巨大法器；evidence:chunk-0427:014: 这封灵柱的推倒有点麻烦，必须用巨力将它旋转了几圈后，才可以放倒的；evidence:chunk-0427:017: 将石柱转动了三圈后，使劲的往一侧一推；evidence:chunk-0427:018: 地上忽露出的一个大洞",
+      "linked_node_ids": [
+        "node:chunk-0427:artifact:001"
+      ],
+      "linked_event_ids": [],
+      "confidence": "EXTRACTED",
+      "review_status": "unreviewed_usable"
+    }
+  ],
+  "judgments": [
+    {
+      "content": "星空殿传送阵、魁星岛港口登记、天星城身份灵环和玄阳火地最符合本模板“中立/特殊/跨势力/公共功能”的收录口径；百药园、宗门山门等普通宗门内部设施虽有证据支撑，但正式正文应谨慎排除或转入势力/宗门任务模板。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0398:009",
+        "evidence:chunk-0373:005",
+        "evidence:chunk-0395:006",
+        "evidence:chunk-0218:005"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0398:009",
+          "chunk_id": "chunk-0398",
+          "source_range": [
+            1020785,
+            1020883
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0398",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              1020785,
+              1020883
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0373:005",
+          "chunk_id": "chunk-0373",
+          "source_range": [
+            949103,
+            949197
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0373",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              949103,
+              949197
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0395:006",
+          "chunk_id": "chunk-0395",
+          "source_range": [
+            1012420,
+            1012586
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0395",
+            "source_path": "intermediate/chunks/chunk-0395.txt",
+            "source_range": [
+              1012420,
+              1012586
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0218:005",
+          "chunk_id": "chunk-0218",
+          "source_range": [
+            497610,
+            497727
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0218",
+            "source_path": "intermediate/chunks/chunk-0218.txt",
+            "source_range": [
+              497610,
+              497727
+            ]
+          }
+        }
+      ],
+      "confidence": "INFERRED"
+    },
+    {
+      "content": "落日峰大陷阱更接近大型防御机关，能为“封印与镇压设施”提供风险和触发机制样本，但它不是稳定公共封印设施；封灵柱才是明确的封印类设施证据。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0085:005",
+        "evidence:chunk-0086:012",
+        "evidence:chunk-0427:001"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0085:005",
+          "chunk_id": "chunk-0085",
+          "source_range": [
+            166950,
+            167033
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0085",
+            "source_path": "intermediate/chunks/chunk-0085.txt",
+            "source_range": [
+              166950,
+              167033
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0086:012",
+          "chunk_id": "chunk-0086",
+          "source_range": [
+            169975,
+            170016
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0086",
+            "source_path": "intermediate/chunks/chunk-0086.txt",
+            "source_range": [
+              169975,
+              170016
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0427:001",
+          "chunk_id": "chunk-0427",
+          "source_range": [
+            1103166,
+            1103205
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0427",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              1103166,
+              1103205
+            ]
+          }
+        }
+      ],
+      "confidence": "INFERRED"
+    }
+  ],
+  "pending_verifications": [
+    {
+      "content": "青牛客栈、春香酒楼、隆兴客栈等普通客栈酒楼证据较多，但多数只是住宿、用饭或观察据点；正式渲染时应只保留具备特殊功能、公共规则或明确风险机制的样本。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0258:003",
+        "evidence:chunk-0258:004",
+        "evidence:chunk-0258:005"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0258:003",
+          "chunk_id": "chunk-0258",
+          "source_range": [
+            615728,
+            615778
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0258",
+            "source_path": "intermediate/chunks/chunk-0258.txt",
+            "source_range": [
+              615728,
+              615778
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0258:004",
+          "chunk_id": "chunk-0258",
+          "source_range": [
+            615815,
+            615843
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0258",
+            "source_path": "intermediate/chunks/chunk-0258.txt",
+            "source_range": [
+              615815,
+              615843
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0258:005",
+          "chunk_id": "chunk-0258",
+          "source_range": [
+            615899,
+            615935
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0258",
+            "source_path": "intermediate/chunks/chunk-0258.txt",
+            "source_range": [
+              615899,
+              615935
+            ]
+          }
+        }
+      ],
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "风属性古禁、血色禁地入口等证据与“封闭/禁制设施”有关，但其主体更像秘境遗迹与机缘入口；本记录未纳入正文案例，需由秘境遗迹模板优先承接。",
+      "category": "待核验",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "not_found_items": [
+    {
+      "content": "未在本轮优先证据中发现明确名为测灵台、测灵石、问心设施或血脉照验台的公共检测设施。",
+      "category": "未见可靠证据",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "未在本轮优先证据中发现镇魔塔、镇魂碑、封印井、灾害隔离阵等长期公共镇压设施；现有明确封印样本是封灵柱，另有落日峰机关陷阱作为相邻样本。",
+      "category": "未见可靠证据",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "document_sections": [
+    {
+      "heading": "案例 1：中立交通设施",
+      "markdown": "设施名称和类型：天星城星空殿传送阵，另有天星城海岸门户和嘉元城码头作为入城/上岸交通样本。\n\n所属地点或控制者：星空殿在天星城第五十层，由天星宫/星宫修士管理；天星城海岸门户位于沿海高墙下；嘉元城码头由本地脚夫帮派和行规实际维持。\n\n主要功能：星空殿多座传送阵标明目的地，缴纳灵石后可传送到外星海妖兽岛；海岸门户按凡人海船、妖兽栖息和修士小城门分流；嘉元城码头承担上岸与搬运。\n\n进入条件与流程：星空殿样本中，韩立交二百灵石，同队另交五百灵石，白衣修士发传送符保护长距离传送，七人站上凝翠岛传送阵后抵达简陋石屋。天星城入城需身份灵环，蓝环三块灵石七天有效，红环八百灵石且可滴血认主。嘉元城码头有必须雇本码头苦力的不成文规定。\n\n风险：传送依赖管理者、费用和传送符；天星城身份灵环会留下停留类型；嘉元城码头若违背行规，可能遭脚夫恶待甚至毒打。",
+      "evidence_ids": [
+        "evidence:chunk-0394:018",
+        "evidence:chunk-0394:019",
+        "evidence:chunk-0395:003",
+        "evidence:chunk-0395:006",
+        "evidence:chunk-0395:007",
+        "evidence:chunk-0398:008",
+        "evidence:chunk-0398:009",
+        "evidence:chunk-0398:014",
+        "evidence:chunk-0398:016",
+        "evidence:chunk-0104:003",
+        "evidence:chunk-0104:004"
+      ],
+      "requirement_ids": [
+        "world_region_state_place"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 2：公共服务设施",
+      "markdown": "设施名称和类型：风悦客栈，修士暂住与避事型客栈。\n\n所属地点或控制者：位于燕翎堡东南角，靠近城墙，原文未说明掌柜或正式中立规则。\n\n主要功能：提供住宿和短期修整；韩立因鬼灵门风险而选择此处，核心用途不是舒适，而是修士少、位置偏、方便脱身。\n\n使用条件与流程：按客栈入住即可，原文未说明费用、登记、禁斗规矩或护卫管理。\n\n风险与后续影响：此类客栈可降低被人注意的概率，但安全性依靠“修士少”和“近城墙”的地形优势；若意外发生，韩立预设从城墙方向逃走。",
+      "evidence_ids": [
+        "evidence:chunk-0258:003",
+        "evidence:chunk-0258:004",
+        "evidence:chunk-0258:005"
+      ],
+      "requirement_ids": [
+        "world_region_state_place"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 3：检测与登记设施",
+      "markdown": "设施名称和类型：魁星岛港口石屋、城门照验点、登仙阁定居登记处。\n\n所属地点或控制者：魁星岛港口有修仙者负责秩序，港口石屋由杨仙师办理外来修士玉牌；登仙阁位于青云山峰顶，负责定居手续和修炼地选择。\n\n主要功能：港口石屋收取灵石、询问姓名、制作绿色玉牌；城门用圆筒状器物照验凭证；登仙阁收文书、登记名字、收回绿色玉牌、换发蓝色玉佩，并用银色画册标示可选修炼地。\n\n进入条件与产出：陌生修仙者上岛需通知港口，顾东主向杨仙师解释来历并塞灵石；玉牌是进入魁星岛的身份凭证，丢失需补领，乱闯会治罪；定居后绿色玉牌被收回，换发低阶法器蓝色玉佩。\n\n风险：身份被登记，凭证丢失会触发治罪风险；登记和选地由高阶修士经手，外来者议价空间有限。",
+      "evidence_ids": [
+        "evidence:chunk-0372:011",
+        "evidence:chunk-0373:001",
+        "evidence:chunk-0373:003",
+        "evidence:chunk-0373:004",
+        "evidence:chunk-0373:005",
+        "evidence:chunk-0373:013",
+        "evidence:chunk-0376:011",
+        "evidence:chunk-0376:014",
+        "evidence:chunk-0376:015"
+      ],
+      "requirement_ids": [
+        "world_region_state_place"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 4：封印与镇压设施",
+      "markdown": "设施名称和类型：封灵柱为封印灵气外泄的巨大法器；落日峰石乳洞机关陷阱属于防御镇压相邻样本，不是公共安全封印。\n\n封灵柱功能：古修士用它封印附近灵气、隔绝灵气外泄；破除时需用巨力旋转数圈再推倒，倒塌后露出通往地下的黑洞和白石台阶。\n\n落日峰机关功能：第七代李门主利用落日峰易守难攻的山势、山腹巨大石乳洞和土木机关，把整座山峰改成可塌山埋人的大陷阱；王绝楚下令启动二号机关后，地面震动、倒塌声传来，石殿消失并留下深洞。\n\n限制与风险：封灵柱的维护者、供能和封印寿命原文未说明；落日峰机关一旦启动会无差别危及峰上众人，属于极端防御机关而非稳定镇压设施。",
+      "evidence_ids": [
+        "evidence:chunk-0427:001",
+        "evidence:chunk-0427:014",
+        "evidence:chunk-0427:017",
+        "evidence:chunk-0427:018",
+        "evidence:chunk-0085:003",
+        "evidence:chunk-0085:004",
+        "evidence:chunk-0085:005",
+        "evidence:chunk-0085:009",
+        "evidence:chunk-0086:010",
+        "evidence:chunk-0086:011",
+        "evidence:chunk-0086:012"
+      ],
+      "requirement_ids": [
+        "world_region_state_place"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 5：独立功能地标",
+      "markdown": "设施名称和类型：岳麓殿玄阳火地/十九号地火间；灵眼之泉洞府密房。\n\n玄阳火地功能：岳麓殿无标记通道通往玄阳火地，交灵石即可借用地火。地火之地以下方旺盛地火为基础，开辟三十六间炼器炼丹地火间，通道和房屋由耐高温坞石修建。十九号屋中心地火口以八个龙首喷出地火，可调火焰大小和高度，火星砂可短时增强威力，玉牌封门后外人难以进入。\n\n灵眼之泉功能：韩立因无法以筑基期手段移走灵眼之泉，在原地建洞府并把灵泉岩洞作为秘密练功密房；洞府初建有十三间屋子和三处大厅。为避免雷万鹤神识窥见储藏室和密封灵眼之泉，韩立提前发动颠倒五行阵禁断神识变化。\n\n风险：地火使用有费用、火力和房间占用限制；灵眼之泉会引来高阶修士贪念，必须依赖阵法遮蔽。",
+      "evidence_ids": [
+        "evidence:chunk-0159:005",
+        "evidence:chunk-0217:013",
+        "evidence:chunk-0217:014",
+        "evidence:chunk-0218:003",
+        "evidence:chunk-0218:005",
+        "evidence:chunk-0218:006",
+        "evidence:chunk-0218:007",
+        "evidence:chunk-0218:008",
+        "evidence:chunk-0225:005",
+        "evidence:chunk-0225:007",
+        "evidence:chunk-0225:011",
+        "evidence:chunk-0238:008",
+        "evidence:chunk-0238:010",
+        "evidence:chunk-0238:011"
+      ],
+      "requirement_ids": [
+        "world_region_state_place"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 6：公共事件场所",
+      "markdown": "设施名称和类型：七玄殿前死斗场，临时划设的公开死契斗场。\n\n所属地点或控制者：位于七玄殿主殿前空地，由王绝楚下令，三十多名锦衣弟子执行场地划设。\n\n主要功能：以木桩和绳索划出边界，配合生死书承载公开死斗和生死规则见证。\n\n使用流程：管理者先命令划场并准备生死书，锦衣弟子从主殿奔出，在殿前空地圈定场地；决斗者随后进入既定边界。\n\n风险与后续影响：死斗场的功能是把冲突公开化、规则化，但结果高度危险；原文未说明医治区、退场路线、裁判席和战后修复安排。",
+      "evidence_ids": [
+        "evidence:chunk-0087:009",
+        "evidence:chunk-0088:001"
+      ],
+      "requirement_ids": [
+        "world_region_state_place"
+      ],
+      "confidence": "EXTRACTED"
+    }
+  ],
+  "evidence_citations": [
+    "evidence:chunk-0104:003",
+    "evidence:chunk-0104:004",
+    "evidence:chunk-0258:003",
+    "evidence:chunk-0258:004",
+    "evidence:chunk-0258:005",
+    "evidence:chunk-0372:011",
+    "evidence:chunk-0372:012",
+    "evidence:chunk-0373:001",
+    "evidence:chunk-0373:003",
+    "evidence:chunk-0373:004",
+    "evidence:chunk-0373:005",
+    "evidence:chunk-0373:013",
+    "evidence:chunk-0376:011",
+    "evidence:chunk-0376:014",
+    "evidence:chunk-0376:015",
+    "evidence:chunk-0394:018",
+    "evidence:chunk-0394:019",
+    "evidence:chunk-0395:003",
+    "evidence:chunk-0395:004",
+    "evidence:chunk-0395:006",
+    "evidence:chunk-0395:007",
+    "evidence:chunk-0395:008",
+    "evidence:chunk-0398:008",
+    "evidence:chunk-0398:009",
+    "evidence:chunk-0398:014",
+    "evidence:chunk-0398:016",
+    "evidence:chunk-0159:005",
+    "evidence:chunk-0217:013",
+    "evidence:chunk-0217:014",
+    "evidence:chunk-0218:003",
+    "evidence:chunk-0218:005",
+    "evidence:chunk-0218:006",
+    "evidence:chunk-0218:007",
+    "evidence:chunk-0218:008",
+    "evidence:chunk-0085:003",
+    "evidence:chunk-0085:004",
+    "evidence:chunk-0085:005",
+    "evidence:chunk-0085:009",
+    "evidence:chunk-0086:010",
+    "evidence:chunk-0086:011",
+    "evidence:chunk-0086:012",
+    "evidence:chunk-0087:009",
+    "evidence:chunk-0088:001",
+    "evidence:chunk-0225:005",
+    "evidence:chunk-0225:007",
+    "evidence:chunk-0225:011",
+    "evidence:chunk-0238:008",
+    "evidence:chunk-0238:010",
+    "evidence:chunk-0238:011",
+    "evidence:chunk-0427:001",
+    "evidence:chunk-0427:014",
+    "evidence:chunk-0427:017",
+    "evidence:chunk-0427:018"
+  ],
+  "gap_items": [
+    {
+      "requirement_id": "world_region_state_place",
+      "status": "partial",
+      "content": "检测设施和长期公共镇压设施样本不足，需后续按“测灵/问心/镇魔/镇魂/隔离阵”等关键词增量复核。",
+      "evidence_ids": []
+    }
+  ],
+  "render_target": "drafts",
+  "overwrite_policy": "draft",
+  "task_packet_id": "template-batch-0018-fc375317cc3c",
+  "agent_role": "stage2-template-document-agent"
+}

@@ -1,0 +1,214 @@
+{
+  "chunk_id": "chunk-0001",
+  "source_range": [
+    0,
+    71
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "task_packet_id": "chunk-0001:comprehensive_extraction:attempt-001",
+      "chunk_id": "chunk-0001",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "produced_at": "2025-07-17T00:00:00.000Z",
+      "extracted_nodes": [
+        {
+          "id": "n-ch0001-001",
+          "node_type": "location",
+          "label": "神墓",
+          "aliases": [],
+          "properties": {
+            "node_nature": "title_reference",
+            "first_mention_context": "小说标题《神墓》",
+            "explicit_as_location": false,
+            "volume_context": null
+          },
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_range": [
+              1,
+              3
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0001-001"
+          ],
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "cat_loc_002"
+            }
+          ],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0001"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        }
+      ],
+      "extracted_edges": [],
+      "extracted_events": [],
+      "extracted_evidence": [
+        {
+          "evidence_id": "evidence:ev-ch0001-001",
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_range": [
+              0,
+              4
+            ]
+          },
+          "source_range": [
+            0,
+            4
+          ],
+          "fact_summary": "小说标题为《神墓》，作者辰东。'神墓'作为作品名称首次出现，可能指向故事核心地点——一座神之墓。",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "cat_loc_002"
+            }
+          ],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0001"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        }
+      ],
+      "uncertainties": [
+        {
+          "uncertainty_id": "unc-ch0001-001",
+          "description": "'神墓'在当前chunk仅作为小说标题出现，尚不明确其具体性质：是真实存在的地理位置、秘境遗迹、还是隐喻性名称。后续chunk需确认其是否为具名地点。",
+          "related_nodes": [
+            "n-ch0001-001"
+          ],
+          "related_evidence": [
+            "evidence:ev-ch0001-001"
+          ],
+          "resolution_strategy": "待后续chunk中'神墓'以地点身份被角色提及或访问时确认"
+        },
+        {
+          "uncertainty_id": "unc-ch0001-002",
+          "description": "作者'辰东'为现实世界作者名，非故事内角色。本chunk无任何故事内人物、势力或事件信息。chunk内容属于书籍前页元数据（标题、作者、下载站广告），故事正文尚未开始。",
+          "related_nodes": [],
+          "related_evidence": [],
+          "resolution_strategy": "无需解析为故事实体；等待正文chunk开始后再抽取角色与剧情"
+        }
+      ],
+      "rejected_candidates": [
+        {
+          "candidate": "辰东",
+          "reason": "现实世界作者姓名，非故事内角色",
+          "node_type_considered": "character",
+          "rejection_rule": "Rule 1: 只抽当前chunk明示的剧情信息；Rule 2: 无剧情功能"
+        },
+        {
+          "candidate": "55X小说下载/无限小说网",
+          "reason": "外部下载站点广告，非故事内势力或地点",
+          "node_type_considered": "faction",
+          "rejection_rule": "Rule 1: 非故事内容"
+        }
+      ],
+      "structured_failures": [],
+      "supports_templates": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0001/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "id": "n-ch0001-001",
+      "node_type": "location",
+      "label": "神墓",
+      "aliases": [],
+      "properties": {
+        "node_nature": "title_reference",
+        "first_mention_context": "小说标题《神墓》",
+        "explicit_as_location": false,
+        "volume_context": null
+      },
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "source_location": {
+        "chunk_id": "chunk-0001",
+        "source_range": [
+          1,
+          3
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0001-001"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "cat_loc_002"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0001"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "normalized_edges": [],
+  "normalized_events": [],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:ev-ch0001-001",
+      "source_location": {
+        "chunk_id": "chunk-0001",
+        "source_range": [
+          0,
+          4
+        ]
+      },
+      "source_range": [
+        0,
+        4
+      ],
+      "fact_summary": "小说标题为《神墓》，作者辰东。'神墓'作为作品名称首次出现，可能指向故事核心地点——一座神之墓。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "cat_loc_002"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0001"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ]
+}

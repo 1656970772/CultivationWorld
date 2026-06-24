@@ -1,0 +1,2458 @@
+{
+  "schema": "stage2-extraction-record.v1",
+  "template_name": "事件因果链（长程因果图）",
+  "template_file": "事件因果链（长程因果图）模板.md",
+  "source_graph": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\graphify-out\\graph.json",
+  "source_novel": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+  "output_language": "zh-CN",
+  "task_packet_id": "template-batch-0005-34d17967cf3a",
+  "agent_role": "stage2-template-document-agent",
+  "stage2_policy": {
+    "stage2_categories": {
+      "facts": "原作事实",
+      "judgments": "我的判断",
+      "pending_verifications": "待核验",
+      "not_found_items": "未见可靠证据"
+    },
+    "stage2_output_policy": {
+      "default_dir": "drafts",
+      "allow_overwrite_existing_docs": false,
+      "existing_document_action": "write_versioned_draft",
+      "allowed_policies": [
+        "draft",
+        "backup-and-overwrite",
+        "merge"
+      ],
+      "draft_action": "write_draft"
+    },
+    "stage2_render_policy": {
+      "citation_format": "[{evidence_id}]",
+      "draft_entry_policy": {
+        "source_sections": [
+          "facts"
+        ],
+        "field_aliases": {
+          "name": [
+            "name",
+            "title",
+            "item_name",
+            "entity_name",
+            "名称"
+          ],
+          "classification": [
+            "classification",
+            "type",
+            "category_label",
+            "类别",
+            "分类"
+          ],
+          "usage": [
+            "usage",
+            "purpose",
+            "effect",
+            "effects",
+            "用途",
+            "功效"
+          ],
+          "formula": [
+            "formula",
+            "materials",
+            "ingredients",
+            "components",
+            "recipe",
+            "方方",
+            "材料",
+            "成分"
+          ],
+          "source_excerpt": [
+            "source_excerpt",
+            "original_excerpt",
+            "quote",
+            "原文摘录"
+          ],
+          "review_status": [
+            "review_status",
+            "verification_status",
+            "审核状态"
+          ]
+        },
+        "fallback_name": "未命名条目",
+        "kept_fields": [
+          "name",
+          "classification",
+          "usage",
+          "formula",
+          "source_range",
+          "source_excerpt",
+          "evidence_ids",
+          "confidence",
+          "review_status"
+        ]
+      },
+      "final_entry_policy": {
+        "allowed_confidence": [
+          "EXTRACTED"
+        ],
+        "min_evidence_count": 1,
+        "require_explicit_name": true,
+        "require_source_excerpt": true,
+        "required_any_fields": [
+          "usage",
+          "formula"
+        ],
+        "unstable_name_prefixes": [
+          "未名",
+          "未命名",
+          "未知",
+          "不明"
+        ],
+        "unstable_name_contains": [
+          "某种",
+          "某类"
+        ],
+        "composite_name_markers": [
+          "与",
+          "或",
+          "/",
+          "、"
+        ],
+        "review_only_statuses": [
+          "needs_review",
+          "pending_review",
+          "rejected",
+          "ambiguous"
+        ],
+        "allow_missing_review_status": true
+      },
+      "dedupe_policy": {
+        "key_fields": [
+          "name",
+          "classification"
+        ],
+        "merge_text_fields": [
+          "usage",
+          "formula",
+          "source_excerpt"
+        ],
+        "confidence_strategy": "most_conservative",
+        "review_status_strategy": "review_only_wins"
+      },
+      "final_template_policy": {
+        "case_section_names": [
+          "案例",
+          "典型案例",
+          "案例清单",
+          "示例"
+        ],
+        "excluded_section_names": [
+          "待复核",
+          "缺口",
+          "资料来源",
+          "说明"
+        ],
+        "fallback_to_first_non_root_heading": true
+      }
+    }
+  },
+  "coverage_scope": {
+    "scope": "whole_novel",
+    "stage1_chunk_ledger": "coverage/chunk-ledger.json",
+    "chunk_ranges": [
+      {
+        "chunk_id": "chunk-0007"
+      },
+      {
+        "chunk_id": "chunk-0008"
+      },
+      {
+        "chunk_id": "chunk-0010"
+      },
+      {
+        "chunk_id": "chunk-0017"
+      },
+      {
+        "chunk_id": "chunk-0028"
+      },
+      {
+        "chunk_id": "chunk-0029"
+      },
+      {
+        "chunk_id": "chunk-0036"
+      },
+      {
+        "chunk_id": "chunk-0044"
+      },
+      {
+        "chunk_id": "chunk-0047"
+      },
+      {
+        "chunk_id": "chunk-0055"
+      },
+      {
+        "chunk_id": "chunk-0058"
+      },
+      {
+        "chunk_id": "chunk-0059"
+      },
+      {
+        "chunk_id": "chunk-0061"
+      },
+      {
+        "chunk_id": "chunk-0063"
+      },
+      {
+        "chunk_id": "chunk-0064"
+      },
+      {
+        "chunk_id": "chunk-0259"
+      },
+      {
+        "chunk_id": "chunk-0260"
+      },
+      {
+        "chunk_id": "chunk-0263"
+      },
+      {
+        "chunk_id": "chunk-0266"
+      },
+      {
+        "chunk_id": "chunk-0267"
+      },
+      {
+        "chunk_id": "chunk-0269"
+      },
+      {
+        "chunk_id": "chunk-0357"
+      },
+      {
+        "chunk_id": "chunk-0361"
+      },
+      {
+        "chunk_id": "chunk-0367"
+      },
+      {
+        "chunk_id": "chunk-0440"
+      },
+      {
+        "chunk_id": "chunk-0441"
+      },
+      {
+        "chunk_id": "chunk-0451"
+      },
+      {
+        "chunk_id": "chunk-0452"
+      },
+      {
+        "chunk_id": "chunk-0453"
+      },
+      {
+        "chunk_id": "chunk-0454"
+      },
+      {
+        "chunk_id": "chunk-0459"
+      },
+      {
+        "chunk_id": "chunk-0460"
+      },
+      {
+        "chunk_id": "chunk-0461"
+      },
+      {
+        "chunk_id": "chunk-0470"
+      }
+    ],
+    "ledger_path": "coverage/template-run-ledger.json"
+  },
+  "fulfilled_sections": [
+    {
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_kind": "template_document",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [
+        "event:chunk-0007:004",
+        "event:chunk-0008:003",
+        "event:chunk-0010:0010",
+        "event:chunk-0017:002",
+        "event:chunk-0017:004",
+        "event:chunk-0028:006",
+        "event:chunk-0028:007",
+        "event:chunk-0029:002",
+        "event:chunk-0036:007",
+        "event:chunk-0044:001",
+        "event:chunk-0044:007",
+        "event:chunk-0047:002",
+        "event:chunk-0055:002",
+        "event:chunk-0058:003",
+        "event:chunk-0058:004",
+        "event:chunk-0059:002",
+        "event:chunk-0061:004",
+        "event:chunk-0061:006",
+        "event:chunk-0063:002",
+        "event:chunk-0063:004",
+        "event:chunk-0064:006",
+        "event:chunk-0259:006",
+        "event:chunk-0260:004",
+        "event:chunk-0263:002",
+        "event:chunk-0263:005",
+        "event:chunk-0266:008",
+        "event:chunk-0267:intelligence_revelation:001",
+        "event:chunk-0269:002",
+        "event:chunk-0269:003",
+        "event:chunk-0357:002",
+        "event:chunk-0361:004",
+        "event:chunk-0367:010",
+        "event:chunk-0440:003",
+        "event:chunk-0441:002",
+        "event:chunk-0441:004",
+        "event:chunk-0451:001",
+        "event:chunk-0452:003",
+        "event:chunk-0453:002",
+        "event:chunk-0454:005",
+        "event:chunk-0459:003",
+        "event:chunk-0460:003",
+        "event:chunk-0460:005",
+        "event:chunk-0461:001",
+        "event:chunk-0470:006",
+        "event:chunk-0470:007"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0007:016",
+        "evidence:chunk-0008:009",
+        "evidence:chunk-0010:0013",
+        "evidence:chunk-0010:0014",
+        "evidence:chunk-0017:006",
+        "evidence:chunk-0017:007",
+        "evidence:chunk-0028:010",
+        "evidence:chunk-0028:011",
+        "evidence:chunk-0029:002",
+        "evidence:chunk-0029:005",
+        "evidence:chunk-0036:009",
+        "evidence:chunk-0044:002",
+        "evidence:chunk-0044:019",
+        "evidence:chunk-0047:004",
+        "evidence:chunk-0055:004",
+        "evidence:chunk-0055:005",
+        "evidence:chunk-0055:006",
+        "evidence:chunk-0058:003",
+        "evidence:chunk-0058:004",
+        "evidence:chunk-0059:002",
+        "evidence:chunk-0061:014",
+        "evidence:chunk-0061:016",
+        "evidence:chunk-0063:007",
+        "evidence:chunk-0063:008",
+        "evidence:chunk-0063:003",
+        "evidence:chunk-0063:004",
+        "evidence:chunk-0064:008",
+        "evidence:chunk-0259:014",
+        "evidence:chunk-0260:010",
+        "evidence:chunk-0260:011",
+        "evidence:chunk-0263:005",
+        "evidence:chunk-0263:006",
+        "evidence:chunk-0263:007",
+        "evidence:chunk-0263:017",
+        "evidence:chunk-0263:018",
+        "evidence:chunk-0263:019",
+        "evidence:chunk-0266:018",
+        "evidence:chunk-0266:019",
+        "evidence:chunk-0267:001",
+        "evidence:chunk-0269:007",
+        "evidence:chunk-0269:008",
+        "evidence:chunk-0269:009",
+        "evidence:chunk-0269:010",
+        "evidence:chunk-0269:011",
+        "evidence:chunk-0269:012",
+        "evidence:chunk-0269:013",
+        "evidence:chunk-0269:014",
+        "evidence:chunk-0357:004",
+        "evidence:chunk-0357:005",
+        "evidence:chunk-0361:007",
+        "evidence:chunk-0367:030",
+        "evidence:chunk-0440:003",
+        "evidence:chunk-0440:004",
+        "evidence:chunk-0440:005",
+        "evidence:chunk-0441:003",
+        "evidence:chunk-0441:005",
+        "evidence:chunk-0451:001",
+        "evidence:chunk-0451:002",
+        "evidence:chunk-0451:003",
+        "evidence:chunk-0452:006",
+        "evidence:chunk-0452:007",
+        "evidence:chunk-0452:008",
+        "evidence:chunk-0453:003",
+        "evidence:chunk-0454:014",
+        "evidence:chunk-0459:009",
+        "evidence:chunk-0459:010",
+        "evidence:chunk-0459:011",
+        "evidence:chunk-0460:006",
+        "evidence:chunk-0460:009",
+        "evidence:chunk-0460:013",
+        "evidence:chunk-0460:014",
+        "evidence:chunk-0460:015",
+        "evidence:chunk-0460:016",
+        "evidence:chunk-0461:001",
+        "evidence:chunk-0461:002",
+        "evidence:chunk-0461:003",
+        "evidence:chunk-0461:004",
+        "evidence:chunk-0461:005",
+        "evidence:chunk-0470:020",
+        "evidence:chunk-0470:021",
+        "evidence:chunk-0470:022",
+        "evidence:chunk-0470:023",
+        "evidence:chunk-0470:024",
+        "evidence:chunk-0470:025",
+        "evidence:chunk-0470:026",
+        "evidence:chunk-0470:027",
+        "evidence:chunk-0470:028",
+        "evidence:chunk-0470:029"
+      ],
+      "notes": [
+        "优先使用 supports_templates 命中“事件因果链（长程因果图）”的事件与证据；未闭合项保留在 pending_verifications / not_found_items。"
+      ]
+    }
+  ],
+  "fulfilled_fields": [
+    {
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_kind": "template_document",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [
+        "event:chunk-0007:004",
+        "event:chunk-0008:003",
+        "event:chunk-0010:0010",
+        "event:chunk-0017:002",
+        "event:chunk-0017:004",
+        "event:chunk-0028:006",
+        "event:chunk-0028:007",
+        "event:chunk-0029:002",
+        "event:chunk-0036:007",
+        "event:chunk-0044:001",
+        "event:chunk-0044:007",
+        "event:chunk-0047:002",
+        "event:chunk-0055:002",
+        "event:chunk-0058:003",
+        "event:chunk-0058:004",
+        "event:chunk-0059:002",
+        "event:chunk-0061:004",
+        "event:chunk-0061:006",
+        "event:chunk-0063:002",
+        "event:chunk-0063:004",
+        "event:chunk-0064:006",
+        "event:chunk-0259:006",
+        "event:chunk-0260:004",
+        "event:chunk-0263:002",
+        "event:chunk-0263:005",
+        "event:chunk-0266:008",
+        "event:chunk-0267:intelligence_revelation:001",
+        "event:chunk-0269:002",
+        "event:chunk-0269:003",
+        "event:chunk-0357:002",
+        "event:chunk-0361:004",
+        "event:chunk-0367:010",
+        "event:chunk-0440:003",
+        "event:chunk-0441:002",
+        "event:chunk-0441:004",
+        "event:chunk-0451:001",
+        "event:chunk-0452:003",
+        "event:chunk-0453:002",
+        "event:chunk-0454:005",
+        "event:chunk-0459:003",
+        "event:chunk-0460:003",
+        "event:chunk-0460:005",
+        "event:chunk-0461:001",
+        "event:chunk-0470:006",
+        "event:chunk-0470:007"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0007:016",
+        "evidence:chunk-0008:009",
+        "evidence:chunk-0010:0013",
+        "evidence:chunk-0010:0014",
+        "evidence:chunk-0017:006",
+        "evidence:chunk-0017:007",
+        "evidence:chunk-0028:010",
+        "evidence:chunk-0028:011",
+        "evidence:chunk-0029:002",
+        "evidence:chunk-0029:005",
+        "evidence:chunk-0036:009",
+        "evidence:chunk-0044:002",
+        "evidence:chunk-0044:019",
+        "evidence:chunk-0047:004",
+        "evidence:chunk-0055:004",
+        "evidence:chunk-0055:005",
+        "evidence:chunk-0055:006",
+        "evidence:chunk-0058:003",
+        "evidence:chunk-0058:004",
+        "evidence:chunk-0059:002",
+        "evidence:chunk-0061:014",
+        "evidence:chunk-0061:016",
+        "evidence:chunk-0063:007",
+        "evidence:chunk-0063:008",
+        "evidence:chunk-0063:003",
+        "evidence:chunk-0063:004",
+        "evidence:chunk-0064:008",
+        "evidence:chunk-0259:014",
+        "evidence:chunk-0260:010",
+        "evidence:chunk-0260:011",
+        "evidence:chunk-0263:005",
+        "evidence:chunk-0263:006",
+        "evidence:chunk-0263:007",
+        "evidence:chunk-0263:017",
+        "evidence:chunk-0263:018",
+        "evidence:chunk-0263:019",
+        "evidence:chunk-0266:018",
+        "evidence:chunk-0266:019",
+        "evidence:chunk-0267:001",
+        "evidence:chunk-0269:007",
+        "evidence:chunk-0269:008",
+        "evidence:chunk-0269:009",
+        "evidence:chunk-0269:010",
+        "evidence:chunk-0269:011",
+        "evidence:chunk-0269:012",
+        "evidence:chunk-0269:013",
+        "evidence:chunk-0269:014",
+        "evidence:chunk-0357:004",
+        "evidence:chunk-0357:005",
+        "evidence:chunk-0361:007",
+        "evidence:chunk-0367:030",
+        "evidence:chunk-0440:003",
+        "evidence:chunk-0440:004",
+        "evidence:chunk-0440:005",
+        "evidence:chunk-0441:003",
+        "evidence:chunk-0441:005",
+        "evidence:chunk-0451:001",
+        "evidence:chunk-0451:002",
+        "evidence:chunk-0451:003",
+        "evidence:chunk-0452:006",
+        "evidence:chunk-0452:007",
+        "evidence:chunk-0452:008",
+        "evidence:chunk-0453:003",
+        "evidence:chunk-0454:014",
+        "evidence:chunk-0459:009",
+        "evidence:chunk-0459:010",
+        "evidence:chunk-0459:011",
+        "evidence:chunk-0460:006",
+        "evidence:chunk-0460:009",
+        "evidence:chunk-0460:013",
+        "evidence:chunk-0460:014",
+        "evidence:chunk-0460:015",
+        "evidence:chunk-0460:016",
+        "evidence:chunk-0461:001",
+        "evidence:chunk-0461:002",
+        "evidence:chunk-0461:003",
+        "evidence:chunk-0461:004",
+        "evidence:chunk-0461:005",
+        "evidence:chunk-0470:020",
+        "evidence:chunk-0470:021",
+        "evidence:chunk-0470:022",
+        "evidence:chunk-0470:023",
+        "evidence:chunk-0470:024",
+        "evidence:chunk-0470:025",
+        "evidence:chunk-0470:026",
+        "evidence:chunk-0470:027",
+        "evidence:chunk-0470:028",
+        "evidence:chunk-0470:029"
+      ],
+      "notes": [
+        "优先使用 supports_templates 命中“事件因果链（长程因果图）”的事件与证据；未闭合项保留在 pending_verifications / not_found_items。"
+      ]
+    }
+  ],
+  "fulfilled_tables": [],
+  "fulfilled_cards": [],
+  "fulfilled_cases": [
+    {
+      "case_name": "案例 1：韩立与墨大夫、余子童的早期夺舍因果链",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0007:016",
+        "evidence:chunk-0008:009",
+        "evidence:chunk-0017:006",
+        "evidence:chunk-0017:007",
+        "evidence:chunk-0047:004",
+        "evidence:chunk-0055:004",
+        "evidence:chunk-0058:003",
+        "evidence:chunk-0061:014",
+        "evidence:chunk-0063:007",
+        "evidence:chunk-0063:003",
+        "evidence:chunk-0063:004",
+        "evidence:chunk-0064:008"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "case_name": "案例 2：神秘小瓶与早期自保机会链",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0028:010",
+        "evidence:chunk-0028:011",
+        "evidence:chunk-0029:002",
+        "evidence:chunk-0029:005"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "case_name": "案例 3：魔道入侵与天南格局重组因果链",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0259:014",
+        "evidence:chunk-0260:010",
+        "evidence:chunk-0260:011",
+        "evidence:chunk-0263:005",
+        "evidence:chunk-0263:017",
+        "evidence:chunk-0266:018",
+        "evidence:chunk-0266:019",
+        "evidence:chunk-0267:001",
+        "evidence:chunk-0269:007",
+        "evidence:chunk-0269:011",
+        "evidence:chunk-0269:013",
+        "evidence:chunk-0357:004",
+        "evidence:chunk-0361:007",
+        "evidence:chunk-0367:030"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "case_name": "案例 4：虚天殿开启与虚天鼎争夺因果链",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0440:003",
+        "evidence:chunk-0440:004",
+        "evidence:chunk-0440:005",
+        "evidence:chunk-0441:003",
+        "evidence:chunk-0441:005",
+        "evidence:chunk-0451:001",
+        "evidence:chunk-0452:006",
+        "evidence:chunk-0453:003",
+        "evidence:chunk-0454:014",
+        "evidence:chunk-0459:009",
+        "evidence:chunk-0460:006",
+        "evidence:chunk-0460:013",
+        "evidence:chunk-0461:002",
+        "evidence:chunk-0470:020",
+        "evidence:chunk-0470:021",
+        "evidence:chunk-0470:024",
+        "evidence:chunk-0470:028"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ],
+      "confidence": "EXTRACTED"
+    }
+  ],
+  "facts": [
+    {
+      "content": "墨大夫将韩立、张铁安置在神手谷，并开始传授无名口诀，同时严令不得外传；这构成早期师徒控制与后续夺舍链的起点。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0007:016",
+        "evidence:chunk-0008:009"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0007:016",
+          "chunk_id": "chunk-0007",
+          "source_range": [
+            11201,
+            11266
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0008:009",
+          "chunk_id": "chunk-0008",
+          "source_range": [
+            12986,
+            13062
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "linked_event_ids": [
+        "event:chunk-0007:004",
+        "event:chunk-0008:003"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    },
+    {
+      "content": "墨大夫在韩立体内确认“想要的东西”后显露疯狂反应，韩立由此产生恐惧和警惕。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0010:0013",
+        "evidence:chunk-0010:0014"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0010:0013",
+          "chunk_id": "chunk-0010",
+          "source_range": [
+            16747,
+            16789
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0010:0014",
+          "chunk_id": "chunk-0010",
+          "source_range": [
+            16888,
+            16948
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "linked_event_ids": [
+        "event:chunk-0010:0010"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    },
+    {
+      "content": "韩立修炼停滞后，墨大夫下山寻找药材；此前张铁在练成象甲功第三层后失踪，形成韩立对墨大夫安排的疑点。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0017:006",
+        "evidence:chunk-0017:007"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0017:006",
+          "chunk_id": "chunk-0017",
+          "source_range": [
+            30144,
+            30329
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0017:007",
+          "chunk_id": "chunk-0017",
+          "source_range": [
+            30333,
+            30431
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "linked_event_ids": [
+        "event:chunk-0017:002",
+        "event:chunk-0017:004"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    },
+    {
+      "content": "韩立验证小瓶绿液可催生药草，随后决定严守小瓶秘密，并计划在墨大夫回来前用绿液按配方催生药材。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0028:010",
+        "evidence:chunk-0028:011",
+        "evidence:chunk-0029:002",
+        "evidence:chunk-0029:005"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0028:010",
+          "chunk_id": "chunk-0028",
+          "source_range": [
+            53052,
+            53264
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0028:011",
+          "chunk_id": "chunk-0028",
+          "source_range": [
+            53622,
+            53806
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0029:002",
+          "chunk_id": "chunk-0029",
+          "source_range": [
+            54292,
+            54397
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0029:005",
+          "chunk_id": "chunk-0029",
+          "source_range": [
+            54726,
+            54836
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "linked_event_ids": [
+        "event:chunk-0028:006",
+        "event:chunk-0028:007",
+        "event:chunk-0029:002"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    },
+    {
+      "content": "墨大夫对韩立施加通牒压力；余子童提醒墨大夫防备韩立，墨大夫又在石室布置阵法，说明夺舍冲突进入收束阶段。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0036:009",
+        "evidence:chunk-0044:002",
+        "evidence:chunk-0044:019"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0036:009",
+          "chunk_id": "chunk-0036",
+          "source_range": [
+            70150,
+            70330
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0044:002",
+          "chunk_id": "chunk-0044",
+          "source_range": [
+            83833,
+            83931
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0044:019",
+          "chunk_id": "chunk-0044",
+          "source_range": [
+            85655,
+            85724
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "linked_event_ids": [
+        "event:chunk-0036:007",
+        "event:chunk-0044:001",
+        "event:chunk-0044:007"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    },
+    {
+      "content": "墨大夫验明韩立长春功达到要求后，施展七鬼噬魂大法；余子童指出此法代价，墨大夫仍决定冒险施法，最终死亡。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0047:004",
+        "evidence:chunk-0055:004",
+        "evidence:chunk-0055:005",
+        "evidence:chunk-0055:006",
+        "evidence:chunk-0058:003",
+        "evidence:chunk-0058:004",
+        "evidence:chunk-0059:002"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0047:004",
+          "chunk_id": "chunk-0047",
+          "source_range": [
+            90451,
+            90641
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0055:004",
+          "chunk_id": "chunk-0055",
+          "source_range": [
+            106087,
+            106134
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0055:005",
+          "chunk_id": "chunk-0055",
+          "source_range": [
+            106137,
+            106208
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0055:006",
+          "chunk_id": "chunk-0055",
+          "source_range": [
+            106269,
+            106339
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0058:003",
+          "chunk_id": "chunk-0058",
+          "source_range": [
+            111987,
+            112044
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0058:004",
+          "chunk_id": "chunk-0058",
+          "source_range": [
+            112214,
+            112253
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0059:002",
+          "chunk_id": "chunk-0059",
+          "source_range": [
+            114293,
+            114674
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "linked_event_ids": [
+        "event:chunk-0047:002",
+        "event:chunk-0055:002",
+        "event:chunk-0058:003",
+        "event:chunk-0058:004",
+        "event:chunk-0059:002"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    },
+    {
+      "content": "余子童说明墨大夫夺舍失败原因，并承认自己设计韩立资质；韩立随后得知七毒水会妨碍元神施法。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0061:014",
+        "evidence:chunk-0061:016",
+        "evidence:chunk-0063:007",
+        "evidence:chunk-0063:008"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0061:014",
+          "chunk_id": "chunk-0061",
+          "source_range": [
+            119778,
+            119983
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0061:016",
+          "chunk_id": "chunk-0061",
+          "source_range": [
+            120254,
+            120395
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0063:007",
+          "chunk_id": "chunk-0063",
+          "source_range": [
+            123372,
+            123513
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0063:008",
+          "chunk_id": "chunk-0063",
+          "source_range": [
+            123516,
+            123608
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "linked_event_ids": [
+        "event:chunk-0061:004",
+        "event:chunk-0061:006",
+        "event:chunk-0063:004"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    },
+    {
+      "content": "韩立拒绝余子童合作；墨大夫遗书又要求韩立保护并安置妻小，使夺舍冲突的后果转化为身后交易和后续任务。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0063:003",
+        "evidence:chunk-0063:004",
+        "evidence:chunk-0064:008"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0063:003",
+          "chunk_id": "chunk-0063",
+          "source_range": [
+            122868,
+            122934
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0063:004",
+          "chunk_id": "chunk-0063",
+          "source_range": [
+            123076,
+            123121
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0064:008",
+          "chunk_id": "chunk-0064",
+          "source_range": [
+            125958,
+            126168
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "linked_event_ids": [
+        "event:chunk-0063:002",
+        "event:chunk-0064:006"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    },
+    {
+      "content": "魔道六宗入侵与两国陷落的情报传入燕家，玄夜主张燕家加入鬼灵门，显示局部家族选择被大战压力重塑。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0259:014",
+        "evidence:chunk-0260:010",
+        "evidence:chunk-0260:011"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0259:014",
+          "chunk_id": "chunk-0259",
+          "source_range": [
+            620174,
+            620261
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0260:010",
+          "chunk_id": "chunk-0260",
+          "source_range": [
+            622448,
+            622470
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0260:011",
+          "chunk_id": "chunk-0260",
+          "source_range": [
+            622900,
+            622940
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "linked_event_ids": [
+        "event:chunk-0259:006",
+        "event:chunk-0260:004"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    },
+    {
+      "content": "鬼灵门在燕家夺宝大会中布置阴火大阵并下令开阵追杀，王蝉随后被逼毒并加深对韩立的仇恨。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0263:005",
+        "evidence:chunk-0263:006",
+        "evidence:chunk-0263:007",
+        "evidence:chunk-0263:017",
+        "evidence:chunk-0263:018",
+        "evidence:chunk-0263:019",
+        "evidence:chunk-0266:018",
+        "evidence:chunk-0266:019"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0263:005",
+          "chunk_id": "chunk-0263",
+          "source_range": [
+            630964,
+            631009
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0263:006",
+          "chunk_id": "chunk-0263",
+          "source_range": [
+            631050,
+            631071
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0263:007",
+          "chunk_id": "chunk-0263",
+          "source_range": [
+            631100,
+            631135
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0263:017",
+          "chunk_id": "chunk-0263",
+          "source_range": [
+            632832,
+            632862
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0263:018",
+          "chunk_id": "chunk-0263",
+          "source_range": [
+            632892,
+            632909
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0263:019",
+          "chunk_id": "chunk-0263",
+          "source_range": [
+            632940,
+            632967
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0266:018",
+          "chunk_id": "chunk-0266",
+          "source_range": [
+            641211,
+            641319
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0266:019",
+          "chunk_id": "chunk-0266",
+          "source_range": [
+            641375,
+            641412
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "linked_event_ids": [
+        "event:chunk-0263:002",
+        "event:chunk-0263:005",
+        "event:chunk-0266:008"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    },
+    {
+      "content": "韩立得知魔道六宗入侵后，越国修仙界大劫成为明确信息；随后灵兽山反制御灵宗暗桩，并诱发七派伏击。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0267:001",
+        "evidence:chunk-0269:007",
+        "evidence:chunk-0269:008",
+        "evidence:chunk-0269:009",
+        "evidence:chunk-0269:010"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0267:001",
+          "chunk_id": "chunk-0267",
+          "source_range": [
+            642049,
+            642092
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0269:007",
+          "chunk_id": "chunk-0269",
+          "source_range": [
+            648733,
+            648783
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0269:008",
+          "chunk_id": "chunk-0269",
+          "source_range": [
+            648834,
+            648890
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0269:009",
+          "chunk_id": "chunk-0269",
+          "source_range": [
+            648893,
+            648943
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0269:010",
+          "chunk_id": "chunk-0269",
+          "source_range": [
+            648946,
+            649013
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "linked_event_ids": [
+        "event:chunk-0267:intelligence_revelation:001",
+        "event:chunk-0269:002"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    },
+    {
+      "content": "魔道六宗与七派阵营大战转入消耗，后续败讯引发坊市波动、越国修仙家族分化，并最终出现天道会成立的三足鼎立格局。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0269:011",
+        "evidence:chunk-0269:012",
+        "evidence:chunk-0269:013",
+        "evidence:chunk-0269:014",
+        "evidence:chunk-0357:004",
+        "evidence:chunk-0357:005",
+        "evidence:chunk-0361:007",
+        "evidence:chunk-0367:030"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0269:011",
+          "chunk_id": "chunk-0269",
+          "source_range": [
+            649086,
+            649149
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0269:012",
+          "chunk_id": "chunk-0269",
+          "source_range": [
+            649387,
+            649442
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0269:013",
+          "chunk_id": "chunk-0269",
+          "source_range": [
+            649582,
+            649644
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0269:014",
+          "chunk_id": "chunk-0269",
+          "source_range": [
+            649676,
+            649695
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0357:004",
+          "chunk_id": "chunk-0357",
+          "source_range": [
+            905602,
+            905649
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0357:005",
+          "chunk_id": "chunk-0357",
+          "source_range": [
+            905727,
+            905768
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0361:007",
+          "chunk_id": "chunk-0361",
+          "source_range": [
+            917917,
+            918013
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0367:030",
+          "chunk_id": "chunk-0367",
+          "source_range": [
+            936378,
+            936424
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "linked_event_ids": [
+        "event:chunk-0269:003",
+        "event:chunk-0357:002",
+        "event:chunk-0361:004",
+        "event:chunk-0367:010"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    },
+    {
+      "content": "虚天殿中，极阴提出瓜分虚天鼎收益；随后大厅封闭，众修士被引向外殿，争夺由谈判预期转为封闭场域内的行动竞争。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0440:003",
+        "evidence:chunk-0440:004",
+        "evidence:chunk-0440:005",
+        "evidence:chunk-0441:003",
+        "evidence:chunk-0441:005"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0440:003",
+          "chunk_id": "chunk-0440",
+          "source_range": [
+            1140697,
+            1140729
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0440:004",
+          "chunk_id": "chunk-0440",
+          "source_range": [
+            1140879,
+            1140894
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0440:005",
+          "chunk_id": "chunk-0440",
+          "source_range": [
+            1141015,
+            1141026
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0441:003",
+          "chunk_id": "chunk-0441",
+          "source_range": [
+            1143317,
+            1143420
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0441:005",
+          "chunk_id": "chunk-0441",
+          "source_range": [
+            1143788,
+            1143827
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "linked_event_ids": [
+        "event:chunk-0440:003",
+        "event:chunk-0441:002",
+        "event:chunk-0441:004"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    },
+    {
+      "content": "玄骨与浑厚男声围绕肉身和对付极阴达成约定，后以九曲灵参换取韩立助杀极阴，并提示韩立避开极阴追索。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0451:001",
+        "evidence:chunk-0451:002",
+        "evidence:chunk-0451:003",
+        "evidence:chunk-0452:006",
+        "evidence:chunk-0452:007",
+        "evidence:chunk-0452:008",
+        "evidence:chunk-0453:003",
+        "evidence:chunk-0454:014"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0451:001",
+          "chunk_id": "chunk-0451",
+          "source_range": [
+            1171185,
+            1171224
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0451:002",
+          "chunk_id": "chunk-0451",
+          "source_range": [
+            1171246,
+            1171280
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0451:003",
+          "chunk_id": "chunk-0451",
+          "source_range": [
+            1171364,
+            1171412
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0452:006",
+          "chunk_id": "chunk-0452",
+          "source_range": [
+            1174793,
+            1174848
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0452:007",
+          "chunk_id": "chunk-0452",
+          "source_range": [
+            1174857,
+            1174881
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0452:008",
+          "chunk_id": "chunk-0452",
+          "source_range": [
+            1175034,
+            1175058
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0453:003",
+          "chunk_id": "chunk-0453",
+          "source_range": [
+            1177312,
+            1177344
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0454:014",
+          "chunk_id": "chunk-0454",
+          "source_range": [
+            1181749,
+            1181785
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "linked_event_ids": [
+        "event:chunk-0451:001",
+        "event:chunk-0452:003",
+        "event:chunk-0453:002",
+        "event:chunk-0454:005"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    },
+    {
+      "content": "韩立放出血玉蜘蛛后，其取鼎用途被揭开；极阴半威胁半诱惑韩立接受安排，随后多方传音争夺韩立。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0459:009",
+        "evidence:chunk-0459:010",
+        "evidence:chunk-0459:011",
+        "evidence:chunk-0460:006",
+        "evidence:chunk-0460:009",
+        "evidence:chunk-0460:013",
+        "evidence:chunk-0460:014",
+        "evidence:chunk-0460:015",
+        "evidence:chunk-0460:016",
+        "evidence:chunk-0461:001",
+        "evidence:chunk-0461:002",
+        "evidence:chunk-0461:003",
+        "evidence:chunk-0461:004",
+        "evidence:chunk-0461:005"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0459:009",
+          "chunk_id": "chunk-0459",
+          "source_range": [
+            1195540,
+            1195568
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0459:010",
+          "chunk_id": "chunk-0459",
+          "source_range": [
+            1195624,
+            1195640
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0459:011",
+          "chunk_id": "chunk-0459",
+          "source_range": [
+            1195785,
+            1195811
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0460:006",
+          "chunk_id": "chunk-0460",
+          "source_range": [
+            1197762,
+            1197829
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0460:009",
+          "chunk_id": "chunk-0460",
+          "source_range": [
+            1198276,
+            1198377
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0460:013",
+          "chunk_id": "chunk-0460",
+          "source_range": [
+            1199056,
+            1199087
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0460:014",
+          "chunk_id": "chunk-0460",
+          "source_range": [
+            1199121,
+            1199162
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0460:015",
+          "chunk_id": "chunk-0460",
+          "source_range": [
+            1199214,
+            1199249
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0460:016",
+          "chunk_id": "chunk-0460",
+          "source_range": [
+            1199555,
+            1199567
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0461:001",
+          "chunk_id": "chunk-0461",
+          "source_range": [
+            1199689,
+            1199702
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0461:002",
+          "chunk_id": "chunk-0461",
+          "source_range": [
+            1199864,
+            1199916
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0461:003",
+          "chunk_id": "chunk-0461",
+          "source_range": [
+            1199916,
+            1199950
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0461:004",
+          "chunk_id": "chunk-0461",
+          "source_range": [
+            1199987,
+            1200014
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0461:005",
+          "chunk_id": "chunk-0461",
+          "source_range": [
+            1200134,
+            1200173
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "linked_event_ids": [
+        "event:chunk-0459:003",
+        "event:chunk-0460:003",
+        "event:chunk-0460:005",
+        "event:chunk-0461:001"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    },
+    {
+      "content": "星宫动用铁火蚁和银光鼠等禁制，并以强硬手段拖延到圣主出关，说明虚天殿争夺之外还存在星宫层面的策略制衡。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0470:020",
+        "evidence:chunk-0470:021",
+        "evidence:chunk-0470:022",
+        "evidence:chunk-0470:023",
+        "evidence:chunk-0470:024",
+        "evidence:chunk-0470:025",
+        "evidence:chunk-0470:026",
+        "evidence:chunk-0470:027",
+        "evidence:chunk-0470:028",
+        "evidence:chunk-0470:029"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0470:020",
+          "chunk_id": "chunk-0470",
+          "source_range": [
+            1227398,
+            1227420
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0470:021",
+          "chunk_id": "chunk-0470",
+          "source_range": [
+            1227446,
+            1227507
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0470:022",
+          "chunk_id": "chunk-0470",
+          "source_range": [
+            1227605,
+            1227633
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0470:023",
+          "chunk_id": "chunk-0470",
+          "source_range": [
+            1227682,
+            1227702
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0470:024",
+          "chunk_id": "chunk-0470",
+          "source_range": [
+            1227778,
+            1227810
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0470:025",
+          "chunk_id": "chunk-0470",
+          "source_range": [
+            1227856,
+            1227868
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0470:026",
+          "chunk_id": "chunk-0470",
+          "source_range": [
+            1227935,
+            1227969
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0470:027",
+          "chunk_id": "chunk-0470",
+          "source_range": [
+            1228008,
+            1228038
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0470:028",
+          "chunk_id": "chunk-0470",
+          "source_range": [
+            1228040,
+            1228074
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0470:029",
+          "chunk_id": "chunk-0470",
+          "source_range": [
+            1228083,
+            1228105
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "linked_event_ids": [
+        "event:chunk-0470:006",
+        "event:chunk-0470:007"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    }
+  ],
+  "judgments": [
+    {
+      "content": "早期夺舍链的关键不是单一战斗，而是“药物投入、功法控制、身体衰败、韩立资质确认、余子童设计、韩立反制”连续叠加。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0017:006",
+        "evidence:chunk-0047:004",
+        "evidence:chunk-0061:014",
+        "evidence:chunk-0061:016",
+        "evidence:chunk-0063:007"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0017:006",
+          "chunk_id": "chunk-0017",
+          "source_range": [
+            30144,
+            30329
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0047:004",
+          "chunk_id": "chunk-0047",
+          "source_range": [
+            90451,
+            90641
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0061:014",
+          "chunk_id": "chunk-0061",
+          "source_range": [
+            119778,
+            119983
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0061:016",
+          "chunk_id": "chunk-0061",
+          "source_range": [
+            120254,
+            120395
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0063:007",
+          "chunk_id": "chunk-0063",
+          "source_range": [
+            123372,
+            123513
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "INFERRED",
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    },
+    {
+      "content": "小瓶绿液链条是机会点而非公开资源：证据显示韩立验证催生效果后转向保密和配药，因此它在早期主要改变韩立对墨大夫压迫的应对能力。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0028:010",
+        "evidence:chunk-0028:011",
+        "evidence:chunk-0029:002",
+        "evidence:chunk-0029:005"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0028:010",
+          "chunk_id": "chunk-0028",
+          "source_range": [
+            53052,
+            53264
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0028:011",
+          "chunk_id": "chunk-0028",
+          "source_range": [
+            53622,
+            53806
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0029:002",
+          "chunk_id": "chunk-0029",
+          "source_range": [
+            54292,
+            54397
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0029:005",
+          "chunk_id": "chunk-0029",
+          "source_range": [
+            54726,
+            54836
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "INFERRED",
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    },
+    {
+      "content": "魔道入侵链条体现从情报、家族站队、陷阱伏杀到阵营消耗的层层升级，而不是单次战斗即可概括。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0259:014",
+        "evidence:chunk-0260:010",
+        "evidence:chunk-0263:005",
+        "evidence:chunk-0269:011",
+        "evidence:chunk-0367:030"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0259:014",
+          "chunk_id": "chunk-0259",
+          "source_range": [
+            620174,
+            620261
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0260:010",
+          "chunk_id": "chunk-0260",
+          "source_range": [
+            622448,
+            622470
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0263:005",
+          "chunk_id": "chunk-0263",
+          "source_range": [
+            630964,
+            631009
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0269:011",
+          "chunk_id": "chunk-0269",
+          "source_range": [
+            649086,
+            649149
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0367:030",
+          "chunk_id": "chunk-0367",
+          "source_range": [
+            936378,
+            936424
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "INFERRED",
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    },
+    {
+      "content": "虚天鼎争夺链把韩立从旁观者推成资源门槛本身：血玉蜘蛛使他被极阴等多方争夺，玄骨与星宫策略又把取宝行动推入多层博弈。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0459:009",
+        "evidence:chunk-0460:006",
+        "evidence:chunk-0461:002",
+        "evidence:chunk-0470:020"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0459:009",
+          "chunk_id": "chunk-0459",
+          "source_range": [
+            1195540,
+            1195568
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0460:006",
+          "chunk_id": "chunk-0460",
+          "source_range": [
+            1197762,
+            1197829
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0461:002",
+          "chunk_id": "chunk-0461",
+          "source_range": [
+            1199864,
+            1199916
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0470:020",
+          "chunk_id": "chunk-0470",
+          "source_range": [
+            1227398,
+            1227420
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "INFERRED",
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    }
+  ],
+  "pending_verifications": [
+    {
+      "content": "虚天殿链中“正魔双方疑似争夺虚天鼎”的具体阵营边界和每方最终收益仍需后续章节证据复核；当前只确认多方围绕取鼎条件、韩立和血玉蜘蛛展开争夺。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0460:006",
+        "evidence:chunk-0461:002",
+        "evidence:chunk-0470:026"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0460:006",
+          "chunk_id": "chunk-0460",
+          "source_range": [
+            1197762,
+            1197829
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0461:002",
+          "chunk_id": "chunk-0461",
+          "source_range": [
+            1199864,
+            1199916
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0470:026",
+          "chunk_id": "chunk-0470",
+          "source_range": [
+            1227935,
+            1227969
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "AMBIGUOUS",
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    },
+    {
+      "content": "魔道入侵链中的具体战损人数、资源消耗清单和每个宗门的独立战略目标未在当前证据中闭合，应保留为待核验。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0269:011",
+        "evidence:chunk-0269:012",
+        "evidence:chunk-0357:004"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0269:011",
+          "chunk_id": "chunk-0269",
+          "source_range": [
+            649086,
+            649149
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0269:012",
+          "chunk_id": "chunk-0269",
+          "source_range": [
+            649387,
+            649442
+          ],
+          "chapter_hint": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0357:004",
+          "chunk_id": "chunk-0357",
+          "source_range": [
+            905602,
+            905649
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "AMBIGUOUS",
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    },
+    {
+      "content": "墨大夫遗书后的妻小安置如何继续影响韩立后续路线，当前仅能确认遗书任务本身，长程偿付关系需在后续证据中继续追踪。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0064:008"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0064:008",
+          "chunk_id": "chunk-0064",
+          "source_range": [
+            125958,
+            126168
+          ],
+          "chapter_hint": null
+        }
+      ],
+      "confidence": "AMBIGUOUS",
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    }
+  ],
+  "not_found_items": [
+    {
+      "content": "未见可靠证据支持把所有时间相邻事件自动判定为因果；本记录只把有动机、行动、结果或后果证据闭合的节点写入因果链。",
+      "category": "未见可靠证据",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS",
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    },
+    {
+      "content": "未见当前证据给出七鬼噬魂大法、阴火大阵、虚天殿禁制等机制的完整数值化消耗或伤亡统计。",
+      "category": "未见可靠证据",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS",
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    },
+    {
+      "content": "未见当前证据完整覆盖虚天鼎争夺的最终归属、所有参与者收益分配和全部失败路径。",
+      "category": "未见可靠证据",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS",
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ]
+    }
+  ],
+  "evidence_citations": [
+    "evidence:chunk-0007:016",
+    "evidence:chunk-0008:009",
+    "evidence:chunk-0010:0013",
+    "evidence:chunk-0010:0014",
+    "evidence:chunk-0017:006",
+    "evidence:chunk-0017:007",
+    "evidence:chunk-0028:010",
+    "evidence:chunk-0028:011",
+    "evidence:chunk-0029:002",
+    "evidence:chunk-0029:005",
+    "evidence:chunk-0036:009",
+    "evidence:chunk-0044:002",
+    "evidence:chunk-0044:019",
+    "evidence:chunk-0047:004",
+    "evidence:chunk-0055:004",
+    "evidence:chunk-0055:005",
+    "evidence:chunk-0055:006",
+    "evidence:chunk-0058:003",
+    "evidence:chunk-0058:004",
+    "evidence:chunk-0059:002",
+    "evidence:chunk-0061:014",
+    "evidence:chunk-0061:016",
+    "evidence:chunk-0063:007",
+    "evidence:chunk-0063:008",
+    "evidence:chunk-0063:003",
+    "evidence:chunk-0063:004",
+    "evidence:chunk-0064:008",
+    "evidence:chunk-0259:014",
+    "evidence:chunk-0260:010",
+    "evidence:chunk-0260:011",
+    "evidence:chunk-0263:005",
+    "evidence:chunk-0263:006",
+    "evidence:chunk-0263:007",
+    "evidence:chunk-0263:017",
+    "evidence:chunk-0263:018",
+    "evidence:chunk-0263:019",
+    "evidence:chunk-0266:018",
+    "evidence:chunk-0266:019",
+    "evidence:chunk-0267:001",
+    "evidence:chunk-0269:007",
+    "evidence:chunk-0269:008",
+    "evidence:chunk-0269:009",
+    "evidence:chunk-0269:010",
+    "evidence:chunk-0269:011",
+    "evidence:chunk-0269:012",
+    "evidence:chunk-0269:013",
+    "evidence:chunk-0269:014",
+    "evidence:chunk-0357:004",
+    "evidence:chunk-0357:005",
+    "evidence:chunk-0361:007",
+    "evidence:chunk-0367:030",
+    "evidence:chunk-0440:003",
+    "evidence:chunk-0440:004",
+    "evidence:chunk-0440:005",
+    "evidence:chunk-0441:003",
+    "evidence:chunk-0441:005",
+    "evidence:chunk-0451:001",
+    "evidence:chunk-0451:002",
+    "evidence:chunk-0451:003",
+    "evidence:chunk-0452:006",
+    "evidence:chunk-0452:007",
+    "evidence:chunk-0452:008",
+    "evidence:chunk-0453:003",
+    "evidence:chunk-0454:014",
+    "evidence:chunk-0459:009",
+    "evidence:chunk-0459:010",
+    "evidence:chunk-0459:011",
+    "evidence:chunk-0460:006",
+    "evidence:chunk-0460:009",
+    "evidence:chunk-0460:013",
+    "evidence:chunk-0460:014",
+    "evidence:chunk-0460:015",
+    "evidence:chunk-0460:016",
+    "evidence:chunk-0461:001",
+    "evidence:chunk-0461:002",
+    "evidence:chunk-0461:003",
+    "evidence:chunk-0461:004",
+    "evidence:chunk-0461:005",
+    "evidence:chunk-0470:020",
+    "evidence:chunk-0470:021",
+    "evidence:chunk-0470:022",
+    "evidence:chunk-0470:023",
+    "evidence:chunk-0470:024",
+    "evidence:chunk-0470:025",
+    "evidence:chunk-0470:026",
+    "evidence:chunk-0470:027",
+    "evidence:chunk-0470:028",
+    "evidence:chunk-0470:029"
+  ],
+  "document_sections": [
+    {
+      "heading": "案例 1：韩立与墨大夫、余子童的早期夺舍因果链",
+      "markdown": "- 起点是墨大夫把韩立、张铁纳入神手谷体系，教授无名口诀并严禁外传，使功法、药物和师徒控制绑定在一起。 [evidence:chunk-0007:016] [evidence:chunk-0008:009]\n- 中段压力来自墨大夫身体恶化、韩立修炼停滞和张铁失踪疑点，韩立因此逐步从感恩转向防备。 [evidence:chunk-0017:006] [evidence:chunk-0017:007]\n- 收束阶段是墨大夫验明长春功后施七鬼噬魂大法，余子童揭示代价和夺舍失败原因，韩立再以七毒水等信息反制元神威胁。 [evidence:chunk-0047:004] [evidence:chunk-0055:004] [evidence:chunk-0058:003] [evidence:chunk-0061:014] [evidence:chunk-0063:007]\n- 后果没有在墨大夫死亡处终止：余子童合作被拒，墨大夫遗书把冲突遗留为保护妻小的身后任务。 [evidence:chunk-0063:003] [evidence:chunk-0063:004] [evidence:chunk-0064:008]",
+      "evidence_ids": [
+        "evidence:chunk-0007:016",
+        "evidence:chunk-0008:009",
+        "evidence:chunk-0017:006",
+        "evidence:chunk-0017:007",
+        "evidence:chunk-0047:004",
+        "evidence:chunk-0055:004",
+        "evidence:chunk-0058:003",
+        "evidence:chunk-0061:014",
+        "evidence:chunk-0063:007",
+        "evidence:chunk-0063:003",
+        "evidence:chunk-0063:004",
+        "evidence:chunk-0064:008"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 2：神秘小瓶与早期自保机会链",
+      "markdown": "- 韩立通过小瓶绿液验证草药催生能力，这一机会点解决了墨大夫药物断供带来的修炼压力。 [evidence:chunk-0028:010]\n- 韩立随即决定严守小瓶秘密，说明该机会的核心门槛是隐蔽性，而非公开交换。 [evidence:chunk-0028:011]\n- 他计划用绿液按配方催生药材，并赶在墨大夫回来前完成准备，使小瓶从偶然发现转化为对抗压迫的资源策略。 [evidence:chunk-0029:002] [evidence:chunk-0029:005]",
+      "evidence_ids": [
+        "evidence:chunk-0028:010",
+        "evidence:chunk-0028:011",
+        "evidence:chunk-0029:002",
+        "evidence:chunk-0029:005"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 3：魔道入侵与天南格局重组因果链",
+      "markdown": "- 魔道六宗入侵和两国陷落的情报进入燕家议事场景，直接改变燕家老祖与鬼灵门的合作压力。 [evidence:chunk-0259:014] [evidence:chunk-0260:010] [evidence:chunk-0260:011]\n- 鬼灵门借夺宝大会布置阴火大阵并追杀，局部陷阱把大战情报落实为韩立亲历的生死冲突和王蝉仇恨。 [evidence:chunk-0263:005] [evidence:chunk-0263:017] [evidence:chunk-0266:018] [evidence:chunk-0266:019]\n- 韩立随后确认魔道六宗入侵消息，灵兽山暗桩反制和七派伏击使战争升级为阵营消耗。 [evidence:chunk-0267:001] [evidence:chunk-0269:007] [evidence:chunk-0269:011] [evidence:chunk-0269:013]\n- 后续败讯、家族分化和天道会成立显示大战造成的长期政治后果，而非一次战斗的即时结算。 [evidence:chunk-0357:004] [evidence:chunk-0361:007] [evidence:chunk-0367:030]",
+      "evidence_ids": [
+        "evidence:chunk-0259:014",
+        "evidence:chunk-0260:010",
+        "evidence:chunk-0260:011",
+        "evidence:chunk-0263:005",
+        "evidence:chunk-0263:017",
+        "evidence:chunk-0266:018",
+        "evidence:chunk-0266:019",
+        "evidence:chunk-0267:001",
+        "evidence:chunk-0269:007",
+        "evidence:chunk-0269:011",
+        "evidence:chunk-0269:013",
+        "evidence:chunk-0357:004",
+        "evidence:chunk-0361:007",
+        "evidence:chunk-0367:030"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 4：虚天殿开启与虚天鼎争夺因果链",
+      "markdown": "- 极阴先提出瓜分虚天鼎收益，随后虚天殿大厅封闭、修士进入外殿，争夺环境由开放谈判转入封闭试炼。 [evidence:chunk-0440:003] [evidence:chunk-0440:004] [evidence:chunk-0440:005] [evidence:chunk-0441:003] [evidence:chunk-0441:005]\n- 玄骨另以肉身、九曲灵参和对付极阴为条件布置支线交易，使韩立卷入虚天鼎之外的旧怨偿付。 [evidence:chunk-0451:001] [evidence:chunk-0452:006] [evidence:chunk-0453:003] [evidence:chunk-0454:014]\n- 血玉蜘蛛用途被揭开后，韩立被极阴半威胁半诱惑纳入取鼎行动，并遭多方传音争夺。 [evidence:chunk-0459:009] [evidence:chunk-0460:006] [evidence:chunk-0460:013] [evidence:chunk-0461:002]\n- 星宫再以铁火蚁、银光鼠等禁制和拖延圣主出关的策略介入，说明虚天鼎争夺同时受个人资源、阵营策略和场所禁制三重驱动。 [evidence:chunk-0470:020] [evidence:chunk-0470:021] [evidence:chunk-0470:024] [evidence:chunk-0470:028]",
+      "evidence_ids": [
+        "evidence:chunk-0440:003",
+        "evidence:chunk-0440:004",
+        "evidence:chunk-0440:005",
+        "evidence:chunk-0441:003",
+        "evidence:chunk-0441:005",
+        "evidence:chunk-0451:001",
+        "evidence:chunk-0452:006",
+        "evidence:chunk-0453:003",
+        "evidence:chunk-0454:014",
+        "evidence:chunk-0459:009",
+        "evidence:chunk-0460:006",
+        "evidence:chunk-0460:013",
+        "evidence:chunk-0461:002",
+        "evidence:chunk-0470:020",
+        "evidence:chunk-0470:021",
+        "evidence:chunk-0470:024",
+        "evidence:chunk-0470:028"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ],
+      "confidence": "EXTRACTED"
+    }
+  ],
+  "gap_items": [
+    {
+      "content": "虚天殿链中“正魔双方疑似争夺虚天鼎”的具体阵营边界和每方最终收益仍需后续章节证据复核；当前只确认多方围绕取鼎条件、韩立和血玉蜘蛛展开争夺。",
+      "category": "待核验",
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "魔道入侵链中的具体战损人数、资源消耗清单和每个宗门的独立战略目标未在当前证据中闭合，应保留为待核验。",
+      "category": "待核验",
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "墨大夫遗书后的妻小安置如何继续影响韩立后续路线，当前仅能确认遗书任务本身，长程偿付关系需在后续证据中继续追踪。",
+      "category": "待核验",
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "未见可靠证据支持把所有时间相邻事件自动判定为因果；本记录只把有动机、行动、结果或后果证据闭合的节点写入因果链。",
+      "category": "未见可靠证据",
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "未见当前证据给出七鬼噬魂大法、阴火大阵、虚天殿禁制等机制的完整数值化消耗或伤亡统计。",
+      "category": "未见可靠证据",
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "未见当前证据完整覆盖虚天鼎争夺的最终归属、所有参与者收益分配和全部失败路径。",
+      "category": "未见可靠证据",
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "render_target": "drafts",
+  "overwrite_policy": "draft",
+  "provenance": {
+    "semantic_generation": "agent-produced",
+    "graph_dir": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph",
+    "task_packet": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\intermediate\\stage2\\task-packets\\template-batch-0005-34d17967cf3a.json",
+    "selection_rule": "supports_templates[].template_name == 事件因果链（长程因果图） first; evidence-index closed citations.",
+    "selected_event_ids": [
+      "event:chunk-0007:004",
+      "event:chunk-0008:003",
+      "event:chunk-0010:0010",
+      "event:chunk-0017:002",
+      "event:chunk-0017:004",
+      "event:chunk-0028:006",
+      "event:chunk-0028:007",
+      "event:chunk-0029:002",
+      "event:chunk-0036:007",
+      "event:chunk-0044:001",
+      "event:chunk-0044:007",
+      "event:chunk-0047:002",
+      "event:chunk-0055:002",
+      "event:chunk-0058:003",
+      "event:chunk-0058:004",
+      "event:chunk-0059:002",
+      "event:chunk-0061:004",
+      "event:chunk-0061:006",
+      "event:chunk-0063:002",
+      "event:chunk-0063:004",
+      "event:chunk-0064:006",
+      "event:chunk-0259:006",
+      "event:chunk-0260:004",
+      "event:chunk-0263:002",
+      "event:chunk-0263:005",
+      "event:chunk-0266:008",
+      "event:chunk-0267:intelligence_revelation:001",
+      "event:chunk-0269:002",
+      "event:chunk-0269:003",
+      "event:chunk-0357:002",
+      "event:chunk-0361:004",
+      "event:chunk-0367:010",
+      "event:chunk-0440:003",
+      "event:chunk-0441:002",
+      "event:chunk-0441:004",
+      "event:chunk-0451:001",
+      "event:chunk-0452:003",
+      "event:chunk-0453:002",
+      "event:chunk-0454:005",
+      "event:chunk-0459:003",
+      "event:chunk-0460:003",
+      "event:chunk-0460:005",
+      "event:chunk-0461:001",
+      "event:chunk-0470:006",
+      "event:chunk-0470:007"
+    ]
+  }
+}

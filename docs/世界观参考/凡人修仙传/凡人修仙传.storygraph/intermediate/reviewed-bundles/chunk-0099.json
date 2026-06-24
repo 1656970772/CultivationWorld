@@ -1,0 +1,2887 @@
+{
+  "chunk_id": "chunk-0099",
+  "source_range": [
+    194100,
+    196069
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "produced_at": "2026-06-23T16:30:00+08:00",
+      "task_packet_id": "chunk-0099:comprehensive_extraction:attempt-001",
+      "chunk_id": "chunk-0099",
+      "extracted_nodes": [
+        {
+          "id": "node:chunk-0099:character:001",
+          "node_type": "character",
+          "label": "韩立",
+          "aliases": [
+            "韩神医",
+            "韩大夫",
+            "这位韩大夫"
+          ],
+          "fact_summary": "韩立是七玄门高层争议和王绝楚会面的核心对象；他提前密会试探王绝楚，随后提出离开彩霞山并交易。",
+          "evidence_ids": [
+            "evidence:chunk-0099:001",
+            "evidence:chunk-0099:006",
+            "evidence:chunk-0099:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            195695,
+            195761
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              195695,
+              195761
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0099:character:002",
+          "node_type": "character",
+          "label": "王绝楚",
+          "aliases": [
+            "王门主",
+            "王大门主"
+          ],
+          "fact_summary": "王绝楚作为七玄门门主与韩立秘密会面，试图探韩立口风，并在午时会场宣布韩立已离开。",
+          "evidence_ids": [
+            "evidence:chunk-0099:005",
+            "evidence:chunk-0099:007",
+            "evidence:chunk-0099:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            195095,
+            195176
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              195095,
+              195176
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0099:faction:001",
+          "node_type": "faction",
+          "label": "七玄门",
+          "aliases": [
+            "本门"
+          ],
+          "fact_summary": "七玄门内部高层围绕如何对待韩立发生争执，随后统一采用温和方式。",
+          "evidence_ids": [
+            "evidence:chunk-0099:001",
+            "evidence:chunk-0099:004",
+            "evidence:chunk-0099:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            194674,
+            194753
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              194674,
+              194753
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0099:faction:002",
+          "node_type": "faction",
+          "label": "七玄门高层",
+          "aliases": [
+            "高层们",
+            "其他高层"
+          ],
+          "fact_summary": "七玄门高层中有人主张暗害韩立并图谋其修炼法门，后在风险提醒下改为温和对待。",
+          "evidence_ids": [
+            "evidence:chunk-0099:001",
+            "evidence:chunk-0099:002",
+            "evidence:chunk-0099:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            194150,
+            194221
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              194150,
+              194221
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0099:character:003",
+          "node_type": "character",
+          "label": "厉飞雨",
+          "aliases": [],
+          "fact_summary": "厉飞雨向七玄门高层传达韩立将在明日午时来落日峰的通知。",
+          "evidence_ids": [
+            "evidence:chunk-0099:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "信息传播与情报",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            194150,
+            194221
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              194150,
+              194221
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0099:character:004",
+          "node_type": "character",
+          "label": "灰衣师叔",
+          "aliases": [
+            "灰衣人",
+            "幸存下来的灰衣师叔"
+          ],
+          "fact_summary": "幸存的灰衣师叔提醒七玄门高层杀韩立可能引来其长辈报复，促使众人冷静。",
+          "evidence_ids": [
+            "evidence:chunk-0099:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            194543,
+            194601
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              194543,
+              194601
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0099:facility:001",
+          "node_type": "facility",
+          "label": "落日峰主殿",
+          "aliases": [
+            "落日峰"
+          ],
+          "fact_summary": "落日峰主殿是原定午时会面的会场，韩立并未按原计划出现。",
+          "evidence_ids": [
+            "evidence:chunk-0099:001",
+            "evidence:chunk-0099:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            194150,
+            194221
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              194150,
+              194221
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0099:location:001",
+          "node_type": "location",
+          "label": "彩霞山",
+          "aliases": [],
+          "fact_summary": "韩立告知王绝楚自己可能永不再回彩霞山，王绝楚后来也宣布韩立已离开彩霞山。",
+          "evidence_ids": [
+            "evidence:chunk-0099:007",
+            "evidence:chunk-0099:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            195695,
+            195761
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              195695,
+              195761
+            ]
+          }
+        }
+      ],
+      "extracted_edges": [
+        {
+          "id": "edge:chunk-0099:001",
+          "edge_type": "delivered_meeting_notice_to",
+          "source": "node:chunk-0099:character:003",
+          "target": "node:chunk-0099:faction:002",
+          "fact_summary": "厉飞雨将韩立将在明日午时来落日峰的消息通知给七玄门高层。",
+          "evidence_ids": [
+            "evidence:chunk-0099:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "信息传播与情报",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            194150,
+            194221
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              194150,
+              194221
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0099:002",
+          "edge_type": "considered_killing",
+          "source": "node:chunk-0099:faction:002",
+          "target": "node:chunk-0099:character:001",
+          "fact_summary": "七玄门部分高层以韩立危险且不好控制为由，提出趁会面做手脚杀死韩立。",
+          "evidence_ids": [
+            "evidence:chunk-0099:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            194150,
+            194221
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              194150,
+              194221
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0099:003",
+          "edge_type": "coveted_cultivation_method_of",
+          "source": "node:chunk-0099:faction:002",
+          "target": "node:chunk-0099:character:001",
+          "fact_summary": "七玄门高层中有人图谋韩立的修炼法门，想从韩立身上获取好处。",
+          "evidence_ids": [
+            "evidence:chunk-0099:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            194336,
+            194402
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              194336,
+              194402
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0099:004",
+          "edge_type": "warned_against_killing",
+          "source": "node:chunk-0099:character:004",
+          "target": "node:chunk-0099:faction:002",
+          "fact_summary": "灰衣师叔提醒七玄门高层杀韩立可能招来其长辈报复。",
+          "evidence_ids": [
+            "evidence:chunk-0099:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            194543,
+            194601
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              194543,
+              194601
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0099:005",
+          "edge_type": "secretly_met",
+          "source": "node:chunk-0099:character:001",
+          "target": "node:chunk-0099:character:002",
+          "fact_summary": "韩立提前半日秘密独自会见王绝楚。",
+          "evidence_ids": [
+            "evidence:chunk-0099:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            195513,
+            195547
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              195513,
+              195547
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0099:006",
+          "edge_type": "proposed_trade_to",
+          "source": "node:chunk-0099:character:001",
+          "target": "node:chunk-0099:character:002",
+          "fact_summary": "韩立在离开彩霞山前向王绝楚提出一笔对双方有好处的交易。",
+          "evidence_ids": [
+            "evidence:chunk-0099:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            195695,
+            195761
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              195695,
+              195761
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0099:007",
+          "edge_type": "left_location",
+          "source": "node:chunk-0099:character:001",
+          "target": "node:chunk-0099:location:001",
+          "fact_summary": "韩立离开彩霞山且不知所踪，王绝楚在午时会场公开宣布此事。",
+          "evidence_ids": [
+            "evidence:chunk-0099:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "信息传播与情报",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            195926,
+            195990
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              195926,
+              195990
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0099:008",
+          "edge_type": "leads_faction",
+          "source": "node:chunk-0099:character:002",
+          "target": "node:chunk-0099:faction:001",
+          "fact_summary": "王绝楚以王门主身份代表七玄门向韩立解释本门态度并主持午时会场。",
+          "evidence_ids": [
+            "evidence:chunk-0099:005",
+            "evidence:chunk-0099:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            195095,
+            195176
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              195095,
+              195176
+            ]
+          }
+        }
+      ],
+      "extracted_events": [
+        {
+          "id": "event:chunk-0099:001",
+          "event_type": "internal_conflict_event",
+          "label": "七玄门高层争议是否暗害韩立",
+          "fact_summary": "七玄门高层收到厉飞雨通知后，一派主张会面时暗害韩立，另一派认为风险太大应先谈后定。",
+          "participants": [
+            "node:chunk-0099:faction:002",
+            "node:chunk-0099:character:001",
+            "node:chunk-0099:character:003",
+            "node:chunk-0099:facility:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0099:001",
+            "evidence:chunk-0099:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            194150,
+            194221
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              194150,
+              194221
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0099:002",
+          "event_type": "decision_change_event",
+          "label": "灰衣师叔警告促成温和方案",
+          "fact_summary": "灰衣师叔用韩立可能有长辈报复的风险提醒高层，促使原主张下手的人改变口风，最终统一温和对待韩立。",
+          "participants": [
+            "node:chunk-0099:character:004",
+            "node:chunk-0099:faction:002",
+            "node:chunk-0099:character:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0099:003",
+            "evidence:chunk-0099:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            194543,
+            194601
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              194543,
+              194601
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0099:003",
+          "event_type": "secret_meeting_event",
+          "label": "韩立提前密会王绝楚",
+          "fact_summary": "韩立为安全起见提前半日秘密独自会见王绝楚，并通过试探确认七玄门高层确实考虑过动手。",
+          "participants": [
+            "node:chunk-0099:character:001",
+            "node:chunk-0099:character:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0099:006",
+            "evidence:chunk-0099:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            195513,
+            195547
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              195513,
+              195547
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0099:004",
+          "event_type": "dialogue_event",
+          "label": "王绝楚用败类说法安抚韩立",
+          "fact_summary": "王绝楚承认七玄门内有人企图忘恩负义，但声称这些败类已被拿下看管，试图稳住韩立与七玄门关系。",
+          "participants": [
+            "node:chunk-0099:character:002",
+            "node:chunk-0099:character:001",
+            "node:chunk-0099:faction:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0099:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "有限视角与叙事日志",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            195095,
+            195176
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              195095,
+              195176
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0099:005",
+          "event_type": "trade_and_departure_event",
+          "label": "韩立宣布离开彩霞山并提出交易",
+          "fact_summary": "韩立告诉王绝楚自己会离开彩霞山远走他乡，并在离开前提出一笔对双方都有好处的交易。",
+          "participants": [
+            "node:chunk-0099:character:001",
+            "node:chunk-0099:character:002",
+            "node:chunk-0099:location:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0099:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            195695,
+            195761
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              195695,
+              195761
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0099:006",
+          "event_type": "announcement_event",
+          "label": "王绝楚宣布韩立已离开",
+          "fact_summary": "午时原定会面时韩立没有出现在落日峰主殿，王绝楚宣布韩立已离开彩霞山且一切麻烦消失。",
+          "participants": [
+            "node:chunk-0099:character:002",
+            "node:chunk-0099:character:001",
+            "node:chunk-0099:facility:001",
+            "node:chunk-0099:location:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0099:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "信息传播与情报",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            195926,
+            195990
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              195926,
+              195990
+            ]
+          }
+        }
+      ],
+      "extracted_evidence": [
+        {
+          "evidence_id": "evidence:chunk-0099:001",
+          "chunk_id": "chunk-0099",
+          "source_range": [
+            194150,
+            194221
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              194150,
+              194221
+            ]
+          },
+          "excerpt": "接到了厉飞雨说的韩立将在明日午时来落日峰的通知后，其中有些人马上就以对方过于危险、不好控制为由，提出了要在会面时做些手脚，趁机杀死韩立的提议。",
+          "fact_summary": "厉飞雨通知七玄门高层韩立将在明日午时到落日峰后，部分高层提出在会面时设计杀死韩立。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0099:001"
+        },
+        {
+          "evidence_id": "evidence:chunk-0099:002",
+          "chunk_id": "chunk-0099",
+          "source_range": [
+            194336,
+            194402
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              194336,
+              194402
+            ]
+          },
+          "excerpt": "其实所有人都心知肚明，说韩立太过危险，这只不过是个借口而已，其实还是某些人想要图谋人家的修炼法门，打算从这位韩大夫身上捞取好处罢了。",
+          "fact_summary": "七玄门高层内部知道“韩立危险”只是借口，真正动机是图谋韩立的修炼法门并从他身上获利。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0099:002"
+        },
+        {
+          "evidence_id": "evidence:chunk-0099:003",
+          "chunk_id": "chunk-0099",
+          "source_range": [
+            194543,
+            194601
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              194543,
+              194601
+            ]
+          },
+          "excerpt": "“你们杀掉了这位韩大夫，难道就不怕其长辈找上门来吗？”灰衣人的这句话，如同一桶凉水一样，立即浇醒了头脑发热的高层们。",
+          "fact_summary": "幸存灰衣师叔提醒众人若杀韩立可能招来其长辈报复，使头脑发热的高层冷静下来。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0099:003"
+        },
+        {
+          "evidence_id": "evidence:chunk-0099:004",
+          "chunk_id": "chunk-0099",
+          "source_range": [
+            194674,
+            194753
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              194674,
+              194753
+            ]
+          },
+          "excerpt": "在明白过来害这位韩大夫，也就是害死自己时，原先主张下毒手的人统统改变了口风，即便还有一两个利欲熏心的人仍试图坚持，但以温和方式对待韩立的意见还是被统一了下来。",
+          "fact_summary": "七玄门高层认识到害韩立可能害死自己后，统一采用温和方式对待韩立。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0099:004"
+        },
+        {
+          "evidence_id": "evidence:chunk-0099:005",
+          "chunk_id": "chunk-0099",
+          "source_range": [
+            195095,
+            195176
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              195095,
+              195176
+            ]
+          },
+          "excerpt": "昨日本门的确出了几个败类，企图忘恩负义。但阁下请放心，这几人早已被拿下严加看管了，要知道本门大多数人对韩大夫还是心存感激的，绝不会做出一些亲者痛、仇者快的事情来。",
+          "fact_summary": "王绝楚向韩立承认七玄门内有人企图忘恩负义，并声称这些人已被拿下看管，多数人仍感激韩立。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "有限视角与叙事日志",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0099:005"
+        },
+        {
+          "evidence_id": "evidence:chunk-0099:006",
+          "chunk_id": "chunk-0099",
+          "source_range": [
+            195513,
+            195547
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              195513,
+              195547
+            ]
+          },
+          "excerpt": "因此为了安全起见，他特意提前了半日时间，偷偷独自一人见这位王大门主。",
+          "fact_summary": "韩立出于安全考虑提前半日独自秘密会见王绝楚。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0099:006"
+        },
+        {
+          "evidence_id": "evidence:chunk-0099:007",
+          "chunk_id": "chunk-0099",
+          "source_range": [
+            195695,
+            195761
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              195695,
+              195761
+            ]
+          },
+          "excerpt": "不瞒王门主，我和阁下见过此面后，就会离开此地，远走他乡，很可能永不再回彩霞山了。而在离开之前，我想和门主做一笔对双方都有好处的交易。",
+          "fact_summary": "韩立告知王绝楚会在此次会面后离开彩霞山远走他乡，并提出离开前做一笔对双方有利的交易。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0099:007"
+        },
+        {
+          "evidence_id": "evidence:chunk-0099:008",
+          "chunk_id": "chunk-0099",
+          "source_range": [
+            195926,
+            195990
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              195926,
+              195990
+            ]
+          },
+          "excerpt": "王大门主当场宣布，不用再等侯对方了，因为韩立已经离开了彩霞山，不知所踪。估计对方会离开镜州，甚至越国，所以一切的麻烦都已消失了。",
+          "fact_summary": "午时会场上王绝楚宣布韩立已经离开彩霞山且不知所踪，可能离开镜州甚至越国。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "信息传播与情报",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0099:008"
+        }
+      ],
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "uncertainties": [
+        {
+          "id": "uncertainty:chunk-0099:001",
+          "kind": "cultivation_method_unspecified",
+          "fact_summary": "原文只说七玄门高层图谋韩立的“修炼法门”，未说明具体功法名称、品阶、机制或是否真能被夺取。",
+          "evidence_ids": [
+            "evidence:chunk-0099:002"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            194336,
+            194402
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              194336,
+              194402
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0099:002",
+          "kind": "trade_terms_missing",
+          "fact_summary": "韩立只提出要和王绝楚做一笔交易，本 chunk 尚未明示交易内容、代价、交付物和约束。",
+          "evidence_ids": [
+            "evidence:chunk-0099:007"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            195695,
+            195761
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              195695,
+              195761
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0099:003",
+          "kind": "claim_truth_uncertain",
+          "fact_summary": "王绝楚声称七玄门几个败类已被拿下严加看管，但当前段落只呈现他的说法，未独立验证是否真实执行。",
+          "evidence_ids": [
+            "evidence:chunk-0099:005"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "有限视角与叙事日志",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            195095,
+            195176
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              195095,
+              195176
+            ]
+          }
+        }
+      ],
+      "rejected_candidates": [
+        {
+          "id": "rejected:chunk-0099:001",
+          "candidate": "韩立的神仙之流长辈",
+          "reason": "这是七玄门高层基于韩立年轻且厉害作出的风险猜测，当前 chunk 未明示韩立确有此类长辈；不建角色或势力节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "有限视角与叙事日志",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "rejected"
+            }
+          ],
+          "source_range": [
+            194543,
+            194601
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              194543,
+              194601
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0099:002",
+          "candidate": "几个败类",
+          "reason": "“几个败类”是王绝楚对内部人员的笼统说法，缺少姓名、人数、身份和独立行动细节；不单独建人物节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "rejected"
+            }
+          ],
+          "source_range": [
+            195095,
+            195176
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              195095,
+              195176
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0099:003",
+          "candidate": "镜州、越国",
+          "reason": "本 chunk 只说韩立可能离开镜州甚至越国，属于王绝楚估计的去向，没有具体到达、行动或场景证据；不在本 chunk 建地点节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "rejected"
+            }
+          ],
+          "source_range": [
+            195926,
+            195990
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0099",
+            "source_path": "intermediate/chunks/chunk-0099.txt",
+            "source_range": [
+              195926,
+              195990
+            ]
+          }
+        }
+      ],
+      "structured_failures": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0099/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "id": "node:chunk-0099:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [
+        "韩神医",
+        "韩大夫",
+        "这位韩大夫"
+      ],
+      "fact_summary": "韩立是七玄门高层争议和王绝楚会面的核心对象；他提前密会试探王绝楚，随后提出离开彩霞山并交易。",
+      "evidence_ids": [
+        "evidence:chunk-0099:001",
+        "evidence:chunk-0099:006",
+        "evidence:chunk-0099:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        195695,
+        195761
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          195695,
+          195761
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0099:character:002",
+      "node_type": "character",
+      "label": "王绝楚",
+      "aliases": [
+        "王门主",
+        "王大门主"
+      ],
+      "fact_summary": "王绝楚作为七玄门门主与韩立秘密会面，试图探韩立口风，并在午时会场宣布韩立已离开。",
+      "evidence_ids": [
+        "evidence:chunk-0099:005",
+        "evidence:chunk-0099:007",
+        "evidence:chunk-0099:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        195095,
+        195176
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          195095,
+          195176
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0099:faction:001",
+      "node_type": "faction",
+      "label": "七玄门",
+      "aliases": [
+        "本门"
+      ],
+      "fact_summary": "七玄门内部高层围绕如何对待韩立发生争执，随后统一采用温和方式。",
+      "evidence_ids": [
+        "evidence:chunk-0099:001",
+        "evidence:chunk-0099:004",
+        "evidence:chunk-0099:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        194674,
+        194753
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          194674,
+          194753
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0099:faction:002",
+      "node_type": "faction",
+      "label": "七玄门高层",
+      "aliases": [
+        "高层们",
+        "其他高层"
+      ],
+      "fact_summary": "七玄门高层中有人主张暗害韩立并图谋其修炼法门，后在风险提醒下改为温和对待。",
+      "evidence_ids": [
+        "evidence:chunk-0099:001",
+        "evidence:chunk-0099:002",
+        "evidence:chunk-0099:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        194150,
+        194221
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          194150,
+          194221
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0099:character:003",
+      "node_type": "character",
+      "label": "厉飞雨",
+      "aliases": [],
+      "fact_summary": "厉飞雨向七玄门高层传达韩立将在明日午时来落日峰的通知。",
+      "evidence_ids": [
+        "evidence:chunk-0099:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        194150,
+        194221
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          194150,
+          194221
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0099:character:004",
+      "node_type": "character",
+      "label": "灰衣师叔",
+      "aliases": [
+        "灰衣人",
+        "幸存下来的灰衣师叔"
+      ],
+      "fact_summary": "幸存的灰衣师叔提醒七玄门高层杀韩立可能引来其长辈报复，促使众人冷静。",
+      "evidence_ids": [
+        "evidence:chunk-0099:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        194543,
+        194601
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          194543,
+          194601
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0099:facility:001",
+      "node_type": "facility",
+      "label": "落日峰主殿",
+      "aliases": [
+        "落日峰"
+      ],
+      "fact_summary": "落日峰主殿是原定午时会面的会场，韩立并未按原计划出现。",
+      "evidence_ids": [
+        "evidence:chunk-0099:001",
+        "evidence:chunk-0099:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        194150,
+        194221
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          194150,
+          194221
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0099:location:001",
+      "node_type": "location",
+      "label": "彩霞山",
+      "aliases": [],
+      "fact_summary": "韩立告知王绝楚自己可能永不再回彩霞山，王绝楚后来也宣布韩立已离开彩霞山。",
+      "evidence_ids": [
+        "evidence:chunk-0099:007",
+        "evidence:chunk-0099:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        195695,
+        195761
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          195695,
+          195761
+        ]
+      }
+    }
+  ],
+  "normalized_edges": [
+    {
+      "id": "edge:chunk-0099:001",
+      "edge_type": "delivered_meeting_notice_to",
+      "source": "node:chunk-0099:character:003",
+      "target": "node:chunk-0099:faction:002",
+      "fact_summary": "厉飞雨将韩立将在明日午时来落日峰的消息通知给七玄门高层。",
+      "evidence_ids": [
+        "evidence:chunk-0099:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        194150,
+        194221
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          194150,
+          194221
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0099:002",
+      "edge_type": "considered_killing",
+      "source": "node:chunk-0099:faction:002",
+      "target": "node:chunk-0099:character:001",
+      "fact_summary": "七玄门部分高层以韩立危险且不好控制为由，提出趁会面做手脚杀死韩立。",
+      "evidence_ids": [
+        "evidence:chunk-0099:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        194150,
+        194221
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          194150,
+          194221
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0099:003",
+      "edge_type": "coveted_cultivation_method_of",
+      "source": "node:chunk-0099:faction:002",
+      "target": "node:chunk-0099:character:001",
+      "fact_summary": "七玄门高层中有人图谋韩立的修炼法门，想从韩立身上获取好处。",
+      "evidence_ids": [
+        "evidence:chunk-0099:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        194336,
+        194402
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          194336,
+          194402
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0099:004",
+      "edge_type": "warned_against_killing",
+      "source": "node:chunk-0099:character:004",
+      "target": "node:chunk-0099:faction:002",
+      "fact_summary": "灰衣师叔提醒七玄门高层杀韩立可能招来其长辈报复。",
+      "evidence_ids": [
+        "evidence:chunk-0099:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        194543,
+        194601
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          194543,
+          194601
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0099:005",
+      "edge_type": "secretly_met",
+      "source": "node:chunk-0099:character:001",
+      "target": "node:chunk-0099:character:002",
+      "fact_summary": "韩立提前半日秘密独自会见王绝楚。",
+      "evidence_ids": [
+        "evidence:chunk-0099:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        195513,
+        195547
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          195513,
+          195547
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0099:006",
+      "edge_type": "proposed_trade_to",
+      "source": "node:chunk-0099:character:001",
+      "target": "node:chunk-0099:character:002",
+      "fact_summary": "韩立在离开彩霞山前向王绝楚提出一笔对双方有好处的交易。",
+      "evidence_ids": [
+        "evidence:chunk-0099:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        195695,
+        195761
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          195695,
+          195761
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0099:007",
+      "edge_type": "left_location",
+      "source": "node:chunk-0099:character:001",
+      "target": "node:chunk-0099:location:001",
+      "fact_summary": "韩立离开彩霞山且不知所踪，王绝楚在午时会场公开宣布此事。",
+      "evidence_ids": [
+        "evidence:chunk-0099:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        195926,
+        195990
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          195926,
+          195990
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0099:008",
+      "edge_type": "leads_faction",
+      "source": "node:chunk-0099:character:002",
+      "target": "node:chunk-0099:faction:001",
+      "fact_summary": "王绝楚以王门主身份代表七玄门向韩立解释本门态度并主持午时会场。",
+      "evidence_ids": [
+        "evidence:chunk-0099:005",
+        "evidence:chunk-0099:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        195095,
+        195176
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          195095,
+          195176
+        ]
+      }
+    }
+  ],
+  "normalized_events": [
+    {
+      "id": "event:chunk-0099:001",
+      "event_type": "internal_conflict_event",
+      "label": "七玄门高层争议是否暗害韩立",
+      "fact_summary": "七玄门高层收到厉飞雨通知后，一派主张会面时暗害韩立，另一派认为风险太大应先谈后定。",
+      "participants": [
+        "node:chunk-0099:faction:002",
+        "node:chunk-0099:character:001",
+        "node:chunk-0099:character:003",
+        "node:chunk-0099:facility:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0099:001",
+        "evidence:chunk-0099:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        194150,
+        194221
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          194150,
+          194221
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0099:002",
+      "event_type": "decision_change_event",
+      "label": "灰衣师叔警告促成温和方案",
+      "fact_summary": "灰衣师叔用韩立可能有长辈报复的风险提醒高层，促使原主张下手的人改变口风，最终统一温和对待韩立。",
+      "participants": [
+        "node:chunk-0099:character:004",
+        "node:chunk-0099:faction:002",
+        "node:chunk-0099:character:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0099:003",
+        "evidence:chunk-0099:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        194543,
+        194601
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          194543,
+          194601
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0099:003",
+      "event_type": "secret_meeting_event",
+      "label": "韩立提前密会王绝楚",
+      "fact_summary": "韩立为安全起见提前半日秘密独自会见王绝楚，并通过试探确认七玄门高层确实考虑过动手。",
+      "participants": [
+        "node:chunk-0099:character:001",
+        "node:chunk-0099:character:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0099:006",
+        "evidence:chunk-0099:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        195513,
+        195547
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          195513,
+          195547
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0099:004",
+      "event_type": "dialogue_event",
+      "label": "王绝楚用败类说法安抚韩立",
+      "fact_summary": "王绝楚承认七玄门内有人企图忘恩负义，但声称这些败类已被拿下看管，试图稳住韩立与七玄门关系。",
+      "participants": [
+        "node:chunk-0099:character:002",
+        "node:chunk-0099:character:001",
+        "node:chunk-0099:faction:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0099:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        195095,
+        195176
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          195095,
+          195176
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0099:005",
+      "event_type": "trade_and_departure_event",
+      "label": "韩立宣布离开彩霞山并提出交易",
+      "fact_summary": "韩立告诉王绝楚自己会离开彩霞山远走他乡，并在离开前提出一笔对双方都有好处的交易。",
+      "participants": [
+        "node:chunk-0099:character:001",
+        "node:chunk-0099:character:002",
+        "node:chunk-0099:location:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0099:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        195695,
+        195761
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          195695,
+          195761
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0099:006",
+      "event_type": "announcement_event",
+      "label": "王绝楚宣布韩立已离开",
+      "fact_summary": "午时原定会面时韩立没有出现在落日峰主殿，王绝楚宣布韩立已离开彩霞山且一切麻烦消失。",
+      "participants": [
+        "node:chunk-0099:character:002",
+        "node:chunk-0099:character:001",
+        "node:chunk-0099:facility:001",
+        "node:chunk-0099:location:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0099:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        195926,
+        195990
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          195926,
+          195990
+        ]
+      }
+    }
+  ],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0099:001",
+      "chunk_id": "chunk-0099",
+      "source_range": [
+        194150,
+        194221
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          194150,
+          194221
+        ]
+      },
+      "excerpt": "接到了厉飞雨说的韩立将在明日午时来落日峰的通知后，其中有些人马上就以对方过于危险、不好控制为由，提出了要在会面时做些手脚，趁机杀死韩立的提议。",
+      "fact_summary": "厉飞雨通知七玄门高层韩立将在明日午时到落日峰后，部分高层提出在会面时设计杀死韩立。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0099:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0099:002",
+      "chunk_id": "chunk-0099",
+      "source_range": [
+        194336,
+        194402
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          194336,
+          194402
+        ]
+      },
+      "excerpt": "其实所有人都心知肚明，说韩立太过危险，这只不过是个借口而已，其实还是某些人想要图谋人家的修炼法门，打算从这位韩大夫身上捞取好处罢了。",
+      "fact_summary": "七玄门高层内部知道“韩立危险”只是借口，真正动机是图谋韩立的修炼法门并从他身上获利。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0099:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0099:003",
+      "chunk_id": "chunk-0099",
+      "source_range": [
+        194543,
+        194601
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          194543,
+          194601
+        ]
+      },
+      "excerpt": "“你们杀掉了这位韩大夫，难道就不怕其长辈找上门来吗？”灰衣人的这句话，如同一桶凉水一样，立即浇醒了头脑发热的高层们。",
+      "fact_summary": "幸存灰衣师叔提醒众人若杀韩立可能招来其长辈报复，使头脑发热的高层冷静下来。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0099:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0099:004",
+      "chunk_id": "chunk-0099",
+      "source_range": [
+        194674,
+        194753
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          194674,
+          194753
+        ]
+      },
+      "excerpt": "在明白过来害这位韩大夫，也就是害死自己时，原先主张下毒手的人统统改变了口风，即便还有一两个利欲熏心的人仍试图坚持，但以温和方式对待韩立的意见还是被统一了下来。",
+      "fact_summary": "七玄门高层认识到害韩立可能害死自己后，统一采用温和方式对待韩立。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0099:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0099:005",
+      "chunk_id": "chunk-0099",
+      "source_range": [
+        195095,
+        195176
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          195095,
+          195176
+        ]
+      },
+      "excerpt": "昨日本门的确出了几个败类，企图忘恩负义。但阁下请放心，这几人早已被拿下严加看管了，要知道本门大多数人对韩大夫还是心存感激的，绝不会做出一些亲者痛、仇者快的事情来。",
+      "fact_summary": "王绝楚向韩立承认七玄门内有人企图忘恩负义，并声称这些人已被拿下看管，多数人仍感激韩立。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0099:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0099:006",
+      "chunk_id": "chunk-0099",
+      "source_range": [
+        195513,
+        195547
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          195513,
+          195547
+        ]
+      },
+      "excerpt": "因此为了安全起见，他特意提前了半日时间，偷偷独自一人见这位王大门主。",
+      "fact_summary": "韩立出于安全考虑提前半日独自秘密会见王绝楚。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0099:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0099:007",
+      "chunk_id": "chunk-0099",
+      "source_range": [
+        195695,
+        195761
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          195695,
+          195761
+        ]
+      },
+      "excerpt": "不瞒王门主，我和阁下见过此面后，就会离开此地，远走他乡，很可能永不再回彩霞山了。而在离开之前，我想和门主做一笔对双方都有好处的交易。",
+      "fact_summary": "韩立告知王绝楚会在此次会面后离开彩霞山远走他乡，并提出离开前做一笔对双方有利的交易。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0099:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0099:008",
+      "chunk_id": "chunk-0099",
+      "source_range": [
+        195926,
+        195990
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0099",
+        "source_path": "intermediate/chunks/chunk-0099.txt",
+        "source_range": [
+          195926,
+          195990
+        ]
+      },
+      "excerpt": "王大门主当场宣布，不用再等侯对方了，因为韩立已经离开了彩霞山，不知所踪。估计对方会离开镜州，甚至越国，所以一切的麻烦都已消失了。",
+      "fact_summary": "午时会场上王绝楚宣布韩立已经离开彩霞山且不知所踪，可能离开镜州甚至越国。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0099:008"
+    }
+  ]
+}

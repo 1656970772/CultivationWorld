@@ -1,0 +1,363 @@
+{
+  "producer": "template-requirements-analysis-agent",
+  "templates": [
+    {
+      "template_name": "灵根体质血脉",
+      "template_file": "灵根体质血脉模板.md",
+      "required_fields": [
+        "灵根类型",
+        "灵根品质",
+        "体质名称",
+        "体质效果",
+        "血脉名称",
+        "血脉来源",
+        "血脉觉醒条件",
+        "血脉能力",
+        "血脉副作用",
+        "检测方式",
+        "改变方式",
+        "对修炼的影响",
+        "代表角色"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "灵根体质血脉卡"
+      ],
+      "required_case_patterns": [
+        "灵根检测案例",
+        "体质觉醒案例",
+        "血脉觉醒案例",
+        "血脉传承案例",
+        "灵根改变案例"
+      ],
+      "required_evidence_fields": [
+        "灵根类型原文依据",
+        "体质效果原文依据",
+        "血脉来源原文依据",
+        "觉醒条件原文依据"
+      ],
+      "graph_node_mapping": [
+        "character",
+        "beast",
+        "faction",
+        "realm",
+        "cultivation_method",
+        "pill",
+        "medicine",
+        "material",
+        "technique",
+        "event",
+        "rule"
+      ],
+      "graph_event_mapping": [
+        "bloodline_awakening",
+        "body_constitution_awakening",
+        "spirit_root_testing",
+        "spirit_root_change"
+      ],
+      "graph_relation_mapping": [
+        "character_has_bloodline",
+        "bloodline_from_beast",
+        "character_has_constitution",
+        "character_has_spirit_root",
+        "spirit_root_affects_realm"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": [
+          "covered",
+          "needs_review",
+          "not_found_in_source"
+        ]
+      }
+    },
+    {
+      "template_name": "炼丹师",
+      "template_file": "炼丹师模板.md",
+      "required_fields": [
+        "炼丹师姓名",
+        "炼丹师等级",
+        "所属势力",
+        "擅长丹药类型",
+        "丹方掌握",
+        "炼丹设施",
+        "炼丹工具",
+        "材料来源",
+        "代表作品",
+        "炼丹失败与风险",
+        "师承关系",
+        "炼丹收入",
+        "对剧情的影响"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "炼丹师卡"
+      ],
+      "required_case_patterns": [
+        "初级炼丹师案例",
+        "高级炼丹师案例",
+        "丹道宗师案例",
+        "邪修炼丹师案例"
+      ],
+      "required_evidence_fields": [
+        "炼丹师等级原文依据",
+        "擅长丹药原文依据",
+        "代表作品原文依据",
+        "师承关系原文依据"
+      ],
+      "graph_node_mapping": [
+        "character",
+        "pill",
+        "medicine",
+        "material",
+        "formula",
+        "facility",
+        "tool",
+        "location",
+        "faction",
+        "realm",
+        "technique",
+        "beast",
+        "event",
+        "secret_realm",
+        "rule",
+        "inscription"
+      ],
+      "graph_event_mapping": [
+        "pill_refining",
+        "formula_discovery",
+        "alchemy_competition",
+        "alchemy_failure",
+        "pill_trade"
+      ],
+      "graph_relation_mapping": [
+        "character_refines_pill",
+        "pill_follows_formula",
+        "formula_requires_material",
+        "character_uses_facility",
+        "character_uses_tool",
+        "character_taught_by",
+        "character_sells_pill"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": [
+          "covered",
+          "needs_review",
+          "not_found_in_source"
+        ]
+      }
+    },
+    {
+      "template_name": "炼器师",
+      "template_file": "炼器师模板.md",
+      "required_fields": [
+        "炼器师姓名",
+        "炼器师等级",
+        "所属势力",
+        "擅长器物类型",
+        "器方掌握",
+        "炼器设施",
+        "炼器工具",
+        "材料来源",
+        "代表作品",
+        "炼器失败与风险",
+        "师承关系",
+        "炼器收入",
+        "对剧情的影响"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "炼器师卡"
+      ],
+      "required_case_patterns": [
+        "初级炼器师案例",
+        "高级炼器师案例",
+        "炼器宗师案例",
+        "邪修炼器师案例"
+      ],
+      "required_evidence_fields": [
+        "炼器师等级原文依据",
+        "擅长器物原文依据",
+        "代表作品原文依据",
+        "师承关系原文依据"
+      ],
+      "graph_node_mapping": [
+        "character",
+        "artifact",
+        "weapon",
+        "tool",
+        "material",
+        "formula",
+        "facility",
+        "formation",
+        "inscription",
+        "location",
+        "faction",
+        "realm",
+        "technique",
+        "beast",
+        "event",
+        "secret_realm",
+        "rule"
+      ],
+      "graph_event_mapping": [
+        "artifact_refining",
+        "weapon_forging",
+        "tool_crafting",
+        "refining_failure",
+        "artifact_trade"
+      ],
+      "graph_relation_mapping": [
+        "character_refines_artifact",
+        "artifact_follows_formula",
+        "artifact_binds_to_character",
+        "character_uses_material",
+        "character_uses_facility"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": [
+          "covered",
+          "needs_review",
+          "not_found_in_source"
+        ]
+      }
+    },
+    {
+      "template_name": "物资产出与消耗",
+      "template_file": "物资产出与消耗模板.md",
+      "required_fields": [
+        "物资名称",
+        "物资类型",
+        "产出地点",
+        "产出方式",
+        "产出量",
+        "消耗场景",
+        "消耗量",
+        "流通渠道",
+        "价格",
+        "控制势力",
+        "影响事件"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "物资流转卡"
+      ],
+      "required_case_patterns": [
+        "灵石产出与消耗案例",
+        "丹药材料产出与消耗案例",
+        "法宝材料产出与消耗案例",
+        "妖兽材料产出与消耗案例"
+      ],
+      "required_evidence_fields": [
+        "物资产出地点原文依据",
+        "消耗场景原文依据",
+        "流通渠道原文依据",
+        "控制势力原文依据"
+      ],
+      "graph_node_mapping": [
+        "character",
+        "material",
+        "pill",
+        "artifact",
+        "weapon",
+        "formation",
+        "tool",
+        "faction",
+        "location",
+        "facility",
+        "beast",
+        "secret_realm",
+        "event",
+        "conflict",
+        "rule",
+        "opportunity"
+      ],
+      "graph_event_mapping": [
+        "resource_extraction",
+        "resource_trade",
+        "resource_consumption",
+        "resource_conflict",
+        "resource_discovery"
+      ],
+      "graph_relation_mapping": [
+        "location_produces_material",
+        "character_consumes_material",
+        "faction_controls_resource",
+        "character_trades_material",
+        "event_depletes_resource"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": [
+          "covered",
+          "needs_review",
+          "not_found_in_source"
+        ]
+      }
+    },
+    {
+      "template_name": "相遇剧情与对话设计",
+      "template_file": "相遇剧情与对话设计模板.md",
+      "required_fields": [
+        "相遇场景",
+        "参与者",
+        "相遇地点",
+        "触发条件",
+        "对话内容要点",
+        "信息传递",
+        "关系变化",
+        "后续钩子",
+        "冲突升级可能"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "相遇剧情卡"
+      ],
+      "required_case_patterns": [
+        "偶然相遇案例",
+        "故意设局相遇案例",
+        "冲突引发相遇案例",
+        "交易相遇案例",
+        "师徒相遇案例"
+      ],
+      "required_evidence_fields": [
+        "相遇场景原文依据",
+        "参与者原文依据",
+        "对话内容原文依据",
+        "关系变化原文依据"
+      ],
+      "graph_node_mapping": [
+        "character",
+        "location",
+        "faction",
+        "realm",
+        "event",
+        "conflict",
+        "opportunity",
+        "secret_realm",
+        "material",
+        "rule"
+      ],
+      "graph_event_mapping": [
+        "encounter_event",
+        "dialogue_event",
+        "confrontation_event",
+        "recruitment_event",
+        "information_exchange_event"
+      ],
+      "graph_relation_mapping": [
+        "character_encounters_character",
+        "character_confronts_character",
+        "character_recruits_character",
+        "event_escalates_to_conflict",
+        "event_creates_opportunity"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": [
+          "covered",
+          "needs_review",
+          "not_found_in_source"
+        ]
+      }
+    }
+  ],
+  "template_count": 5
+}

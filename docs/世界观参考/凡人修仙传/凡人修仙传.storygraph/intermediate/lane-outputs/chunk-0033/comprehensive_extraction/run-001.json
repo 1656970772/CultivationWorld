@@ -1,0 +1,1590 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0033:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0033",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T16:30:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0033:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立在墨大夫逼迫下吞下尸虫丸，并因亲人被威胁承诺一年内把长春功练至第四层。",
+      "evidence_ids": [
+        "evidence:chunk-0033:001",
+        "evidence:chunk-0033:003",
+        "evidence:chunk-0033:005",
+        "evidence:chunk-0033:008",
+        "evidence:chunk-0033:009",
+        "evidence:chunk-0033:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        62566,
+        62618
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          62566,
+          62618
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0033:character:002",
+      "node_type": "character",
+      "label": "墨大夫",
+      "aliases": [
+        "墨老"
+      ],
+      "fact_summary": "墨大夫指责韩立拖延修炼，用尸虫丸和亲人威胁逼迫韩立承诺一年内练成第四层。",
+      "evidence_ids": [
+        "evidence:chunk-0033:002",
+        "evidence:chunk-0033:003",
+        "evidence:chunk-0033:005",
+        "evidence:chunk-0033:007",
+        "evidence:chunk-0033:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        62795,
+        62915
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          62795,
+          62915
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0033:cultivation_method:001",
+      "node_type": "cultivation_method",
+      "label": "长春功",
+      "aliases": [],
+      "fact_summary": "长春功在本 chunk 中被要求一年内练至第四层，并被叙事说明对修炼者有一定洗髓开智之功。",
+      "evidence_ids": [
+        "evidence:chunk-0033:003",
+        "evidence:chunk-0033:011",
+        "evidence:chunk-0033:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        63021,
+        63137
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          63021,
+          63137
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0033:realm:001",
+      "node_type": "realm",
+      "label": "长春功第四层",
+      "aliases": [
+        "第四层"
+      ],
+      "fact_summary": "长春功第四层是墨大夫要求韩立一年内达到的修炼进度目标。",
+      "evidence_ids": [
+        "evidence:chunk-0033:002",
+        "evidence:chunk-0033:003",
+        "evidence:chunk-0033:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        62795,
+        62915
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          62795,
+          62915
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0033:pill:001",
+      "node_type": "pill",
+      "label": "尸虫丸",
+      "aliases": [
+        "白色的药丸",
+        "药丸"
+      ],
+      "fact_summary": "尸虫丸被墨大夫逼韩立吞下；墨大夫说明它实为秘法泡制虫卵，潜伏一年后需特制解药解除，否则致死。",
+      "evidence_ids": [
+        "evidence:chunk-0033:005",
+        "evidence:chunk-0033:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "邪修分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        63754,
+        63975
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          63754,
+          63975
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0033:rule:001",
+      "node_type": "rule",
+      "label": "尸虫丸一年潜伏与解药规则",
+      "aliases": [],
+      "fact_summary": "尸虫丸进入人体后一年内安全；一年后需服下特制解药，否则虫卵孵化吞食内脏致死。",
+      "evidence_ids": [
+        "evidence:chunk-0033:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "邪修分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        63754,
+        63975
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          63754,
+          63975
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0033:tool:001",
+      "node_type": "tool",
+      "label": "檀木盒",
+      "aliases": [
+        "四角形、雕刻精致的檀木盒"
+      ],
+      "fact_summary": "檀木盒是墨大夫用来盛放白色药丸并递给韩立的容器。",
+      "evidence_ids": [
+        "evidence:chunk-0033:004",
+        "evidence:chunk-0033:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        63253,
+        63321
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          63253,
+          63321
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0033:001",
+      "edge_type": "practices",
+      "source": "node:chunk-0033:character:001",
+      "target": "node:chunk-0033:cultivation_method:001",
+      "fact_summary": "韩立正在修炼长春功，修炼进度成为墨大夫逼迫他的关键。",
+      "evidence_ids": [
+        "evidence:chunk-0033:003",
+        "evidence:chunk-0033:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        63021,
+        63184
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          63021,
+          63184
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0033:002",
+      "edge_type": "coerces_with",
+      "source": "node:chunk-0033:character:002",
+      "target": "node:chunk-0033:pill:001",
+      "fact_summary": "墨大夫用尸虫丸作为保险，逼韩立吞下以约束其一年内修炼。",
+      "evidence_ids": [
+        "evidence:chunk-0033:005",
+        "evidence:chunk-0033:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        63400,
+        63589
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          63400,
+          63589
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0033:003",
+      "edge_type": "governed_by_rule",
+      "source": "node:chunk-0033:pill:001",
+      "target": "node:chunk-0033:rule:001",
+      "fact_summary": "尸虫丸的风险由一年潜伏、特制解药和无解药致死规则构成。",
+      "evidence_ids": [
+        "evidence:chunk-0033:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        63754,
+        63975
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          63754,
+          63975
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0033:004",
+      "edge_type": "coerces",
+      "source": "node:chunk-0033:character:002",
+      "target": "node:chunk-0033:character:001",
+      "fact_summary": "墨大夫用韩立父母亲人作把柄，使韩立暂时屈服并承诺一年内练至第四层。",
+      "evidence_ids": [
+        "evidence:chunk-0033:008",
+        "evidence:chunk-0033:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        64044,
+        64148
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          64044,
+          64148
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0033:005",
+      "edge_type": "target_realm",
+      "source": "node:chunk-0033:character:001",
+      "target": "node:chunk-0033:realm:001",
+      "fact_summary": "韩立在威胁下承诺一年内练至长春功第四层。",
+      "evidence_ids": [
+        "evidence:chunk-0033:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        64262,
+        64319
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          64262,
+          64319
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0033:006",
+      "edge_type": "has_cultivation_effect",
+      "source": "node:chunk-0033:cultivation_method:001",
+      "target": "node:chunk-0033:character:001",
+      "fact_summary": "叙事说明韩立修炼长春功后智能心计远超普通少年。",
+      "evidence_ids": [
+        "evidence:chunk-0033:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        64541,
+        64626
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          64541,
+          64626
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0033:001",
+      "event_type": "conflict_event",
+      "label": "墨大夫质疑韩立拖延长春功进度",
+      "fact_summary": "墨大夫认定韩立两年未练成第四层是在拖延，并用压力逼问韩立一年内是否能练成第四层。",
+      "participants": [
+        "node:chunk-0033:character:001",
+        "node:chunk-0033:character:002",
+        "node:chunk-0033:cultivation_method:001",
+        "node:chunk-0033:realm:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0033:002",
+        "evidence:chunk-0033:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        62795,
+        63184
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          62795,
+          63184
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0033:002",
+      "event_type": "coercion_event",
+      "label": "墨大夫逼韩立吞下尸虫丸",
+      "fact_summary": "墨大夫取出檀木盒中的白色药丸，解开穴道后让韩立吞下，以此作为约束韩立修炼的保险。",
+      "participants": [
+        "node:chunk-0033:character:001",
+        "node:chunk-0033:character:002",
+        "node:chunk-0033:pill:001",
+        "node:chunk-0033:tool:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0033:004",
+        "evidence:chunk-0033:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        63253,
+        63589
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          63253,
+          63589
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0033:003",
+      "event_type": "revelation_event",
+      "label": "墨大夫说明尸虫丸毒性规则",
+      "fact_summary": "墨大夫解释尸虫丸是秘法泡制虫卵，会潜伏一年；一年后若无特制解药会孵化吞食内脏致死。",
+      "participants": [
+        "node:chunk-0033:character:002",
+        "node:chunk-0033:pill:001",
+        "node:chunk-0033:rule:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0033:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "邪修分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        63754,
+        63975
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          63754,
+          63975
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0033:004",
+      "event_type": "threat_event",
+      "label": "墨大夫以亲人威胁韩立",
+      "fact_summary": "墨大夫提及韩立父母亲人和家用银子，抓住韩立致命之处，迫使韩立在一年内练至第四层。",
+      "participants": [
+        "node:chunk-0033:character:001",
+        "node:chunk-0033:character:002",
+        "node:chunk-0033:realm:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0033:008",
+        "evidence:chunk-0033:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        64044,
+        64359
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          64044,
+          64359
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0033:005",
+      "event_type": "cultivation_mechanism_note",
+      "label": "叙事说明长春功洗髓开智效果",
+      "fact_summary": "叙事说明长春功对修炼者有一定洗髓开智之功，韩立修炼后在智能心计上远超普通少年。",
+      "participants": [
+        "node:chunk-0033:character:001",
+        "node:chunk-0033:cultivation_method:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0033:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        64541,
+        64626
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          64541,
+          64626
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0033:001",
+      "chunk_id": "chunk-0033",
+      "source_range": [
+        62566,
+        62618
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          62566,
+          62618
+        ]
+      },
+      "excerpt": "韩立心乱如麻，有点恐惧、有点后悔，还有的则是茫然。尽管拖延到了现在，还是想不出脱身的办法来，他有些慌了。",
+      "fact_summary": "韩立在墨大夫压力下恐惧、后悔并想不出脱身办法。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0033:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0033:002",
+      "chunk_id": "chunk-0033",
+      "source_range": [
+        62795,
+        62915
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          62795,
+          62915
+        ]
+      },
+      "excerpt": "“当然，两年时间还练不成第四层，你真的以为我会看不穿你的小把戏吗？前三层，只花了三年时间就完成，就算第四层太难练，没有药物帮助，也不至两年内没有一丁点进步。”墨大夫森然说道，两只眉毛倒竖了起来，充满煞气，似乎对韩立早就不满，如今才发作起来。",
+      "fact_summary": "墨大夫指责韩立两年未练成第四层是在拖延，并对韩立修炼进度不满。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0033:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0033:003",
+      "chunk_id": "chunk-0033",
+      "source_range": [
+        63021,
+        63184
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          63021,
+          63184
+        ]
+      },
+      "excerpt": "“不用再说什么，我也不想知道你以往的所作所为是真是假。好好听着，现在我只问你一句话：再给你一年时间，你能把长春功练至第四层吗？”墨大夫冷笑一声，徐徐地说出了今天最重要的一句话，接着眼皮眨都不眨，死死地盯住了韩立，慎重的等着他的回答。\n　　韩立很清醒，知道这个问题的回答不但关系到对方一年后的性命，更是自己此时能否活下来的关键。",
+      "fact_summary": "墨大夫要求韩立回答一年内能否把长春功练至第四层；韩立意识到回答关系到自己能否活下去。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0033:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0033:004",
+      "chunk_id": "chunk-0033",
+      "source_range": [
+        63253,
+        63321
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          63253,
+          63321
+        ]
+      },
+      "excerpt": "墨大夫听到他所说的话，神色缓和起来，眼中露出了些许赞赏之意，可并没有上前给韩立解穴，反而谨慎的从怀里拿出了一个四角形、雕刻精致的檀木盒。",
+      "fact_summary": "墨大夫没有立即解穴，而是谨慎取出一个精致檀木盒作为额外保险。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0033:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0033:005",
+      "chunk_id": "chunk-0033",
+      "source_range": [
+        63400,
+        63589
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          63400,
+          63589
+        ]
+      },
+      "excerpt": "小心的打开了盒盖，一颗白色的药丸，静静地躺在了盒子的中央。\n　　墨大夫伸手在韩立身上一戳，解开了穴道，没等他动弹，就把盒子递到了他的面前。\n　　“你是个聪明人，不用我再多说废话，你知道该怎么做。”墨大夫眯起了双眼，有些不怀好意。\n　　韩立稍微活动了下有点麻木的手脚，二话不说，伸手接过了檀木盒，用两根手指把盒中的药丸轻轻的夹出。当着对方的面，看也不看，直接送进了口中，吞了下去。",
+      "fact_summary": "墨大夫打开檀木盒露出白色药丸，随后解开韩立穴道并逼韩立吞下药丸。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0033:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0033:006",
+      "chunk_id": "chunk-0033",
+      "source_range": [
+        63592,
+        63697
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          63592,
+          63697
+        ]
+      },
+      "excerpt": "“啪啪！很好，识时务者为俊杰，只要帮我恢复正常，少不了会重重的谢你。我也不拿虚话晃你，你我之间有了隔阂，真收你做徒弟是不可能了，但保你一生的荣华富贵还是做得到的。”墨大夫拍了几下手掌，很诚挚的对韩立许下了重诺。",
+      "fact_summary": "韩立吞药后，墨大夫承诺若韩立帮他恢复正常，就保韩立一生荣华富贵，但不再真收其为徒。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0033:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0033:007",
+      "chunk_id": "chunk-0033",
+      "source_range": [
+        63754,
+        63975
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          63754,
+          63975
+        ]
+      },
+      "excerpt": "“呵呵，这药叫‘尸虫丸’，不真是一种药物，而是某种秘法泡制出的虫卵，你吃下后，它会在你体内潜伏一年，你放心，在这一年内绝对是安全的，不会影响到你做其他事情。在一年后，你只要服下特制的解药，它就会自动消融掉，不会有任何隐患留下。但如果一年后，没有解药服下。嘿嘿！虫卵就会吸够养分，孵化出壳，并把人身体内的大大小小内脏，给活生生的吃个干净，让人在痛不欲生中，哀嚎个三天三夜，才慢慢死去。”墨大夫若无其事的说着这药丸的厉害之处，暗地里在警告着韩立。",
+      "fact_summary": "墨大夫说明尸虫丸实为秘法泡制虫卵，在体内潜伏一年；一年后若无特制解药，虫卵会孵化并吞食内脏致死。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "邪修分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0033:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0033:008",
+      "chunk_id": "chunk-0033",
+      "source_range": [
+        64044,
+        64148
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          64044,
+          64148
+        ]
+      },
+      "excerpt": "“对了，听说你家里的父母亲人不少，不知每月送回家的银子还够用吗？不够的话，尽管向我开口要，我对你的亲人很挂念啊。”墨大夫悠悠地说出了一句语重心长的话来。此时他才真正露出了獠牙，一下子狠狠咬在了韩立的致命之处。",
+      "fact_summary": "墨大夫以韩立父母亲人和家用银子作威胁，抓住韩立的致命把柄。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0033:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0033:009",
+      "chunk_id": "chunk-0033",
+      "source_range": [
+        64262,
+        64359
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          64262,
+          64359
+        ]
+      },
+      "excerpt": "“你尽管放心，在一年之内，我一定练至第四层。”韩立咬紧牙关，一字一顿的说出了上面的话，不再掩饰对墨大夫的痛恨之情。\n　　在赤裸裸的威胁下，他只能暂时屈服。他还做不到六亲不认，罔顾父母死活的地步。",
+      "fact_summary": "韩立在亲人被威胁后咬牙承诺一年内练至第四层，并在赤裸威胁下暂时屈服。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0033:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0033:010",
+      "chunk_id": "chunk-0033",
+      "source_range": [
+        64424,
+        64480
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          64424,
+          64480
+        ]
+      },
+      "excerpt": "墨大夫听到韩立屈从的话语后，长长出了一口心中的闷气，他的紧张并不在韩立之下，只不过用诡异多变的表情完全掩盖住了。",
+      "fact_summary": "墨大夫听到韩立屈从后松了一口气，他此前同样紧张但用诡异表情掩盖。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0033:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0033:011",
+      "chunk_id": "chunk-0033",
+      "source_range": [
+        64483,
+        64538
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          64483,
+          64538
+        ]
+      },
+      "excerpt": "“这长春功真是邪门，臭小子年纪轻轻，就这么不好对付。”墨大夫内心不知是羡慕，还是妒忌，恶狠狠的咒骂了这么一句。",
+      "fact_summary": "墨大夫内心咒骂长春功邪门，认为韩立年纪轻轻却不好对付。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0033:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0033:012",
+      "chunk_id": "chunk-0033",
+      "source_range": [
+        64541,
+        64626
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          64541,
+          64626
+        ]
+      },
+      "excerpt": "其实这长春功，虽然对修炼之人有一定洗髓开智之功，但具体的效用也要看搁在什么人身上，韩立天生就比一般同龄人早熟聪颖的多，修炼这长春功后，更是在智能心计上远远超出普通的少年。",
+      "fact_summary": "叙事说明长春功对修炼者有一定洗髓开智之功，韩立修炼后心计远超普通少年。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0033:012"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "角色AI行为参考",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "角色修炼历程",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "有限视角与叙事日志",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "冲突事件分析",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "事件因果链（长程因果图）",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "战斗与保命机制",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "丹药分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "法宝分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "needs_review",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review"
+    },
+    {
+      "template_name": "邪修分析",
+      "requirement_id": "creature_deviant_practice_ecology",
+      "requirement_status": "needs_review",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review"
+    },
+    {
+      "template_name": "功法术法神通",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "境界提升与功法分析",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0033:001",
+      "kind": "family_identity_boundary",
+      "fact_summary": "本 chunk 只以“父母亲人”概称韩立家人，未逐一给出姓名、人数或具体处境；不得补写亲属身份。",
+      "evidence_ids": [
+        "evidence:chunk-0033:008",
+        "evidence:chunk-0033:009"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        64044,
+        64359
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          64044,
+          64359
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0033:002",
+      "kind": "antidote_details_missing",
+      "fact_summary": "本 chunk 只说明一年后需服下特制解药，未说明解药名称、来源、配方或是否由墨大夫唯一持有。",
+      "evidence_ids": [
+        "evidence:chunk-0033:007"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        63754,
+        63975
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          63754,
+          63975
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0033:003",
+      "kind": "changchun_gong_effect_boundary",
+      "fact_summary": "长春功洗髓开智效果被说明为“一定”且因人而异，具体机制、上限和境界数值未在本 chunk 交代。",
+      "evidence_ids": [
+        "evidence:chunk-0033:012"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        64541,
+        64626
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          64541,
+          64626
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0033:001",
+      "candidate": "韩立父母亲人",
+      "reason": "当前 chunk 只作为墨大夫威胁韩立的概称对象出现，未给姓名、独立行动或可闭合角色信息；不单独建角色节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected"
+        }
+      ],
+      "source_range": [
+        64044,
+        64148
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          64044,
+          64148
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0033:002",
+      "candidate": "特制的解药",
+      "reason": "原文只泛称“特制的解药”，未给专属名称或配方；作为尸虫丸规则要素保留，不硬造丹药节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "not_found_in_source",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected"
+        }
+      ],
+      "source_range": [
+        63754,
+        63975
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0033",
+        "source_path": "intermediate/chunks/chunk-0033.txt",
+        "source_range": [
+          63754,
+          63975
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

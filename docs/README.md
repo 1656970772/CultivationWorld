@@ -2,7 +2,7 @@
 
 > 项目代号：WorldDynamic  
 > 创建日期：2026-05-23  
-> 最后更新：2026-06-20（新增 NPC 执行 Profiler 文档；此前新增功能规划文档目录并移除旧功能盘点导航；此前补充月压缩关键状态结算细节、项目落地接口与改造路线、月压缩事件因果图实施计划；新增世界模拟架构目录、近处实时与远处月压缩模拟设计、NPC 遇见玩家剧情对话架构、重要 NPC 保真度文档与 ADR-058；此前补齐门派运行规则链、通用任务板 ADR、系统文档、数据模型、世界观规则导航与验证报告、data manifest、strict validation、resource registry、relationship projections、editor dataset/adapters 的文档导航）
+> 最后更新：2026-06-20（新增基础世界循环缺口调研报告；新增 NPC 执行 Profiler 文档；此前新增功能规划文档目录并移除旧功能盘点导航；此前补充月压缩关键状态结算细节、项目落地接口与改造路线、月压缩事件因果图实施计划；新增世界模拟架构目录、近处实时与远处月压缩模拟设计、NPC 遇见玩家剧情对话架构、重要 NPC 保真度文档与 ADR-058；此前补齐门派运行规则链、通用任务板 ADR、系统文档、数据模型、世界观规则导航与验证报告、data manifest、strict validation、resource registry、relationship projections、editor dataset/adapters 的文档导航）
 
 ## 当前事实
 
@@ -151,7 +151,8 @@ docs/
 │       ├── 2026-06-07-统一经济交易底座验证.md
 │       ├── 2026-06-07-修为数值化与突破重构验证.md
 │       ├── 2026-06-07-门派架构与运行模拟验证.md
-│       └── 2026-06-08-硬编码配置化与通用架构清理验证.md
+│       ├── 2026-06-08-硬编码配置化与通用架构清理验证.md
+│       └── 2026-06-20-基础世界循环缺口调研.md
 ├── worldbuilding/
 │   ├── README.md
 │   ├── continent.md
@@ -171,6 +172,7 @@ docs/
 | 当前项目状态 | `overview.md` |
 | 功能规划总清单 | `功能规划/总功能清单.md` |
 | 首个功能基本齐全版范围 | `superpowers/specs/2026-06-07-首个功能基本齐全版范围设计.md` |
+| 基础世界循环缺口调研 | `superpowers/reports/2026-06-20-基础世界循环缺口调研.md` |
 | 运行时架构 | `architecture/system-overview.md` |
 | 文件结构 | `architecture/file-structure.md` |
 | 世界模拟架构：近处实时、远处月压缩、相遇对话 | `architecture/world-simulation/README.md`、`architecture/world-simulation/07-月压缩关键状态结算细节.md`、`architecture/world-simulation/08-项目落地接口与改造路线.md`、`decisions/adr-058-layered-time-domain-and-monthly-compressed-simulation.md` |

@@ -1,0 +1,4070 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0404:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0404",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T14:45:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0404:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [
+        "韩前辈",
+        "韩某"
+      ],
+      "fact_summary": "韩立结丹后处理传音符，回绝组织招揽，拜访附近结丹修士；之后炼化绿煌剑、筹措法宝和傀儡材料，并因出售珍稀妖兽材料被妙音门范静梅邀约。",
+      "evidence_ids": [
+        "evidence:chunk-0404:002",
+        "evidence:chunk-0404:003",
+        "evidence:chunk-0404:004",
+        "evidence:chunk-0404:005",
+        "evidence:chunk-0404:006",
+        "evidence:chunk-0404:018",
+        "evidence:chunk-0404:025",
+        "evidence:chunk-0404:027"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1036822,
+        1039082
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1036822,
+          1039082
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0404:inscription:001",
+      "node_type": "inscription",
+      "label": "传音符",
+      "aliases": [],
+      "fact_summary": "七八道传音符滞留在韩立洞府禁制中，内容包括结丹修士恭贺和大小组织招揽。",
+      "evidence_ids": [
+        "evidence:chunk-0404:001",
+        "evidence:chunk-0404:002",
+        "evidence:chunk-0404:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1036708,
+        1036986
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1036708,
+          1036986
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0404:faction:001",
+      "node_type": "faction",
+      "label": "大小组织",
+      "aliases": [],
+      "fact_summary": "几个未具名大小组织通过传音符招揽韩立，有的给客卿长老名位，有的给奇珍异宝或婢女作为聘礼；韩立直接回绝。",
+      "evidence_ids": [
+        "evidence:chunk-0404:002",
+        "evidence:chunk-0404:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1036822,
+        1036986
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1036822,
+          1036986
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0404:character:002",
+      "node_type": "character",
+      "label": "附近几位结丹修士",
+      "aliases": [
+        "附近结丹期修士"
+      ],
+      "fact_summary": "附近几位结丹修士向韩立发来恭贺，后又接受韩立拜访并指点结丹期注意事项，还与韩立以定颜丹交换珍稀物品。",
+      "evidence_ids": [
+        "evidence:chunk-0404:002",
+        "evidence:chunk-0404:004",
+        "evidence:chunk-0404:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1036822,
+        1037342
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1036822,
+          1037342
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0404:pill:001",
+      "node_type": "pill",
+      "label": "定颜丹",
+      "aliases": [],
+      "fact_summary": "韩立用手上几粒定颜丹与附近结丹修士交换了一些珍稀物品。",
+      "evidence_ids": [
+        "evidence:chunk-0404:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1037295,
+        1037342
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037295,
+          1037342
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0404:artifact:001",
+      "node_type": "artifact",
+      "label": "绿煌剑",
+      "aliases": [],
+      "fact_summary": "韩立在结丹后炼化绿煌剑。",
+      "evidence_ids": [
+        "evidence:chunk-0404:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1037406,
+        1037441
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037406,
+          1037441
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0404:artifact:002",
+      "node_type": "artifact",
+      "label": "青竹蜂云剑",
+      "aliases": [],
+      "fact_summary": "韩立要炼制青竹蜂云剑，其主材料需要数千年灵竹；他在天星城坊市寻找满意的异种神竹未果。",
+      "evidence_ids": [
+        "evidence:chunk-0404:010",
+        "evidence:chunk-0404:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼器师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1037745,
+        1037891
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037745,
+          1037891
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0404:material:001",
+      "node_type": "material",
+      "label": "数千年的灵竹",
+      "aliases": [
+        "灵竹",
+        "异种神竹"
+      ],
+      "fact_summary": "数千年灵竹是青竹蜂云剑主要材料，韩立想找传说中的异种神竹作主材。",
+      "evidence_ids": [
+        "evidence:chunk-0404:010",
+        "evidence:chunk-0404:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1037745,
+        1037891
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037745,
+          1037891
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0404:facility:001",
+      "node_type": "facility",
+      "label": "天星城坊市",
+      "aliases": [],
+      "fact_summary": "韩立在天星城坊市蹲守寻找炼制青竹蜂云剑的满意竹类材料。",
+      "evidence_ids": [
+        "evidence:chunk-0404:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1037864,
+        1037891
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037864,
+          1037891
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0404:artifact:003",
+      "node_type": "artifact",
+      "label": "小瓶",
+      "aliases": [],
+      "fact_summary": "小瓶具有催熟功能，理论上可帮助韩立较容易获得灵竹材料。",
+      "evidence_ids": [
+        "evidence:chunk-0404:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1037785,
+        1037816
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037785,
+          1037816
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0404:tool:001",
+      "node_type": "tool",
+      "label": "三级傀儡",
+      "aliases": [],
+      "fact_summary": "三级傀儡据傀儡真经所说全力一击相当于筑基中期修士，材料昂贵且有多种形态。",
+      "evidence_ids": [
+        "evidence:chunk-0404:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "炼器师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1037993,
+        1038052
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037993,
+          1038052
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0404:rule:001",
+      "node_type": "rule",
+      "label": "傀儡真经",
+      "aliases": [],
+      "fact_summary": "傀儡真经说明三级傀儡的攻击强度、材料成本和形态分化。",
+      "evidence_ids": [
+        "evidence:chunk-0404:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼器师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1037993,
+        1038052
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037993,
+          1038052
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0404:tool:002",
+      "node_type": "tool",
+      "label": "猿型傀儡",
+      "aliases": [],
+      "fact_summary": "韩立选择炼制以木制材料为主的猿型傀儡，该傀儡需要高年份铁木和天晶木。",
+      "evidence_ids": [
+        "evidence:chunk-0404:014",
+        "evidence:chunk-0404:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "炼器师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1038055,
+        1038117
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038055,
+          1038117
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0404:material:002",
+      "node_type": "material",
+      "label": "铁木",
+      "aliases": [],
+      "fact_summary": "猿型傀儡需要年份增加许多的铁木。",
+      "evidence_ids": [
+        "evidence:chunk-0404:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼器师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1038082,
+        1038117
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038082,
+          1038117
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0404:material:003",
+      "node_type": "material",
+      "label": "天晶木",
+      "aliases": [],
+      "fact_summary": "猿型傀儡炼制时需要掺入稀罕的天晶木。",
+      "evidence_ids": [
+        "evidence:chunk-0404:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼器师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1038082,
+        1038117
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038082,
+          1038117
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0404:medicine:001",
+      "node_type": "medicine",
+      "label": "绿液",
+      "aliases": [],
+      "fact_summary": "韩立可以用绿液催生木制材料，以降低猿型傀儡材料成本。",
+      "evidence_ids": [
+        "evidence:chunk-0404:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼器师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1038118,
+        1038150
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038118,
+          1038150
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0404:material:004",
+      "node_type": "material",
+      "label": "五级妖兽的珍稀材料",
+      "aliases": [
+        "珍稀妖兽材料"
+      ],
+      "fact_summary": "韩立为缓解灵石窘迫再次放出一部分五级妖兽珍稀材料，后引起妙音门关注。",
+      "evidence_ids": [
+        "evidence:chunk-0404:018",
+        "evidence:chunk-0404:019",
+        "evidence:chunk-0404:025"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1038255,
+        1038982
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038255,
+          1038982
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0404:character:003",
+      "node_type": "character",
+      "label": "莲儿",
+      "aliases": [
+        "少女"
+      ],
+      "fact_summary": "莲儿是受夫人差遣拦请韩立的炼气期少女，似乎修炼媚术并向韩立偷偷使用，后被范静梅称为管教不严。",
+      "evidence_ids": [
+        "evidence:chunk-0404:020",
+        "evidence:chunk-0404:021",
+        "evidence:chunk-0404:022",
+        "evidence:chunk-0404:023"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1038355,
+        1038705
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038355,
+          1038705
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0404:character:004",
+      "node_type": "character",
+      "label": "范静梅",
+      "aliases": [
+        "妙音门范静梅",
+        "夫人",
+        "妙音门女子"
+      ],
+      "fact_summary": "范静梅自称妙音门成员，为莲儿冒犯道歉，并代表妙音门邀请韩立到茶馆静室商谈珍稀妖兽材料。",
+      "evidence_ids": [
+        "evidence:chunk-0404:023",
+        "evidence:chunk-0404:025",
+        "evidence:chunk-0404:026",
+        "evidence:chunk-0404:027",
+        "evidence:chunk-0404:028"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1038659,
+        1039292
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038659,
+          1039292
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0404:faction:002",
+      "node_type": "faction",
+      "label": "妙音门",
+      "aliases": [],
+      "fact_summary": "妙音门由范静梅在本 chunk 中自称所属，并对韩立出售的珍稀妖兽材料表现出兴趣。",
+      "evidence_ids": [
+        "evidence:chunk-0404:023",
+        "evidence:chunk-0404:025"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1038659,
+        1038982
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038659,
+          1038982
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0404:facility:002",
+      "node_type": "facility",
+      "label": "清河茶馆",
+      "aliases": [
+        "茶馆静室",
+        "茶馆阁楼"
+      ],
+      "fact_summary": "清河茶馆是莲儿和范静梅邀请韩立详谈的场所，韩立随后随她们进入茶馆阁楼和二楼单间。",
+      "evidence_ids": [
+        "evidence:chunk-0404:021",
+        "evidence:chunk-0404:026",
+        "evidence:chunk-0404:028",
+        "evidence:chunk-0404:030"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1038378,
+        1039486
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038378,
+          1039486
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0404:character:005",
+      "node_type": "character",
+      "label": "茶馆中年人",
+      "aliases": [
+        "中年人"
+      ],
+      "fact_summary": "茶馆中年人称范静梅为师叔，并已为她和客人定好房间。",
+      "evidence_ids": [
+        "evidence:chunk-0404:029"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1039305,
+        1039362
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1039305,
+          1039362
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0404:character:006",
+      "node_type": "character",
+      "label": "灰衣老者",
+      "aliases": [],
+      "fact_summary": "灰衣老者已在茶馆单间内不慌不忙沏茶，对韩立等人进入没有反应；身份未明。",
+      "evidence_ids": [
+        "evidence:chunk-0404:030"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1039434,
+        1039486
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1039434,
+          1039486
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0404:001",
+      "edge_type": "receives_message",
+      "source": "node:chunk-0404:character:001",
+      "target": "node:chunk-0404:inscription:001",
+      "fact_summary": "韩立收取并查看洞府禁制中的七八道传音符。",
+      "evidence_ids": [
+        "evidence:chunk-0404:001",
+        "evidence:chunk-0404:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1036708,
+        1036867
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1036708,
+          1036867
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0404:002",
+      "edge_type": "rejects_recruitment_from",
+      "source": "node:chunk-0404:character:001",
+      "target": "node:chunk-0404:faction:001",
+      "fact_summary": "韩立直接回绝几个大小组织的招揽。",
+      "evidence_ids": [
+        "evidence:chunk-0404:002",
+        "evidence:chunk-0404:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1036822,
+        1036986
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1036822,
+          1036986
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0404:003",
+      "edge_type": "consults_with",
+      "source": "node:chunk-0404:character:001",
+      "target": "node:chunk-0404:character:002",
+      "fact_summary": "韩立拜访附近几位结丹修士，请教进入结丹期后的注意事项。",
+      "evidence_ids": [
+        "evidence:chunk-0404:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1037038,
+        1037082
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037038,
+          1037082
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0404:004",
+      "edge_type": "trades_item_for_goods",
+      "source": "node:chunk-0404:character:001",
+      "target": "node:chunk-0404:pill:001",
+      "fact_summary": "韩立用几粒定颜丹从附近结丹修士手中换得珍稀物品。",
+      "evidence_ids": [
+        "evidence:chunk-0404:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1037295,
+        1037342
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037295,
+          1037342
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0404:005",
+      "edge_type": "refines_artifact",
+      "source": "node:chunk-0404:character:001",
+      "target": "node:chunk-0404:artifact:001",
+      "fact_summary": "韩立在此期间炼化绿煌剑。",
+      "evidence_ids": [
+        "evidence:chunk-0404:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1037406,
+        1037441
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037406,
+          1037441
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0404:006",
+      "edge_type": "requires_main_material",
+      "source": "node:chunk-0404:artifact:002",
+      "target": "node:chunk-0404:material:001",
+      "fact_summary": "青竹蜂云剑主要材料需要数千年的灵竹。",
+      "evidence_ids": [
+        "evidence:chunk-0404:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1037745,
+        1037782
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037745,
+          1037782
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0404:007",
+      "edge_type": "can_catalyze_material",
+      "source": "node:chunk-0404:artifact:003",
+      "target": "node:chunk-0404:material:001",
+      "fact_summary": "韩立的小瓶催熟功能可帮助获得灵竹材料。",
+      "evidence_ids": [
+        "evidence:chunk-0404:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1037785,
+        1037816
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037785,
+          1037816
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0404:008",
+      "edge_type": "searches_at_market",
+      "source": "node:chunk-0404:character:001",
+      "target": "node:chunk-0404:facility:001",
+      "fact_summary": "韩立在天星城坊市蹲守寻找满意的异种神竹。",
+      "evidence_ids": [
+        "evidence:chunk-0404:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1037864,
+        1037891
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037864,
+          1037891
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0404:009",
+      "edge_type": "selects_crafting_target",
+      "source": "node:chunk-0404:character:001",
+      "target": "node:chunk-0404:tool:002",
+      "fact_summary": "韩立斟酌后选择炼制以木制材料为主的猿型傀儡。",
+      "evidence_ids": [
+        "evidence:chunk-0404:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "炼器师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1038055,
+        1038079
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038055,
+          1038079
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0404:010",
+      "edge_type": "requires_material",
+      "source": "node:chunk-0404:tool:002",
+      "target": "node:chunk-0404:material:002",
+      "fact_summary": "猿型傀儡需要更高年份铁木。",
+      "evidence_ids": [
+        "evidence:chunk-0404:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼器师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1038082,
+        1038117
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038082,
+          1038117
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0404:011",
+      "edge_type": "requires_material",
+      "source": "node:chunk-0404:tool:002",
+      "target": "node:chunk-0404:material:003",
+      "fact_summary": "猿型傀儡炼制时需要掺入稀罕天晶木。",
+      "evidence_ids": [
+        "evidence:chunk-0404:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼器师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1038082,
+        1038117
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038082,
+          1038117
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0404:012",
+      "edge_type": "catalyzes_material",
+      "source": "node:chunk-0404:medicine:001",
+      "target": "node:chunk-0404:material:002",
+      "fact_summary": "韩立可以用绿液催生木制材料以降低成本，铁木属于该类傀儡木制材料。",
+      "evidence_ids": [
+        "evidence:chunk-0404:015",
+        "evidence:chunk-0404:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼器师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1038082,
+        1038150
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038082,
+          1038150
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0404:013",
+      "edge_type": "sells_material",
+      "source": "node:chunk-0404:character:001",
+      "target": "node:chunk-0404:material:004",
+      "fact_summary": "韩立为缓解窘迫再次放出五级妖兽珍稀材料。",
+      "evidence_ids": [
+        "evidence:chunk-0404:018",
+        "evidence:chunk-0404:019"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1038255,
+        1038318
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038255,
+          1038318
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0404:014",
+      "edge_type": "serves_faction",
+      "source": "node:chunk-0404:character:004",
+      "target": "node:chunk-0404:faction:002",
+      "fact_summary": "范静梅自称妙音门成员，并代表本门表达对珍稀妖兽材料的兴趣。",
+      "evidence_ids": [
+        "evidence:chunk-0404:023",
+        "evidence:chunk-0404:025"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1038659,
+        1038982
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038659,
+          1038982
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0404:015",
+      "edge_type": "subordinate_or_junior_of",
+      "source": "node:chunk-0404:character:003",
+      "target": "node:chunk-0404:character:004",
+      "fact_summary": "范静梅称莲儿管教不严，并为莲儿冒犯韩立致歉，显示莲儿受其约束。",
+      "evidence_ids": [
+        "evidence:chunk-0404:023"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1038659,
+        1038705
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038659,
+          1038705
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0404:016",
+      "edge_type": "invites_to_location",
+      "source": "node:chunk-0404:character:004",
+      "target": "node:chunk-0404:facility:002",
+      "fact_summary": "范静梅邀请韩立到茶馆静室商谈珍稀妖兽材料。",
+      "evidence_ids": [
+        "evidence:chunk-0404:025",
+        "evidence:chunk-0404:026",
+        "evidence:chunk-0404:027",
+        "evidence:chunk-0404:028"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1038939,
+        1039292
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038939,
+          1039292
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0404:017",
+      "edge_type": "interested_in_material",
+      "source": "node:chunk-0404:faction:002",
+      "target": "node:chunk-0404:material:004",
+      "fact_summary": "妙音门对韩立近期出售的大批珍稀妖兽材料感兴趣。",
+      "evidence_ids": [
+        "evidence:chunk-0404:025"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1038939,
+        1038982
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038939,
+          1038982
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0404:018",
+      "edge_type": "prepares_room_for",
+      "source": "node:chunk-0404:character:005",
+      "target": "node:chunk-0404:character:004",
+      "fact_summary": "茶馆中年人为范静梅及客人定好了房间，并称范静梅为师叔。",
+      "evidence_ids": [
+        "evidence:chunk-0404:029"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1039305,
+        1039362
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1039305,
+          1039362
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0404:001",
+      "event_type": "information_response_event",
+      "label": "韩立处理传音符与招揽",
+      "fact_summary": "韩立收取洞府禁制中滞留的传音符，回复结丹修士恭贺并回绝大小组织招揽。",
+      "participants": [
+        "node:chunk-0404:character:001",
+        "node:chunk-0404:inscription:001",
+        "node:chunk-0404:faction:001",
+        "node:chunk-0404:character:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0404:001",
+        "evidence:chunk-0404:002",
+        "evidence:chunk-0404:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1036708,
+        1036986
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1036708,
+          1036986
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0404:002",
+      "event_type": "social_trade_event",
+      "label": "韩立与附近结丹修士往来并交换定颜丹",
+      "fact_summary": "韩立拜访附近结丹修士请教结丹期注意事项，并用定颜丹换取珍稀物品。",
+      "participants": [
+        "node:chunk-0404:character:001",
+        "node:chunk-0404:character:002",
+        "node:chunk-0404:pill:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0404:004",
+        "evidence:chunk-0404:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1037038,
+        1037342
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037038,
+          1037342
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0404:003",
+      "event_type": "crafting_preparation_event",
+      "label": "韩立寻找法宝与傀儡材料",
+      "fact_summary": "韩立炼化绿煌剑，寻找青竹蜂云剑和三级傀儡材料；法宝规则强调材料、秘法和元神培炼的重要性。",
+      "participants": [
+        "node:chunk-0404:character:001",
+        "node:chunk-0404:artifact:001",
+        "node:chunk-0404:artifact:002",
+        "node:chunk-0404:material:001",
+        "node:chunk-0404:tool:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0404:006",
+        "evidence:chunk-0404:007",
+        "evidence:chunk-0404:008",
+        "evidence:chunk-0404:009",
+        "evidence:chunk-0404:010",
+        "evidence:chunk-0404:012",
+        "evidence:chunk-0404:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼器师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1037406,
+        1038052
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037406,
+          1038052
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0404:004",
+      "event_type": "puppet_crafting_event",
+      "label": "韩立选择猿型傀儡并筹齐材料",
+      "fact_summary": "韩立选择木制猿型傀儡，利用绿液催生木制材料降低成本，但凑齐材料后灵石再次紧张。",
+      "participants": [
+        "node:chunk-0404:character:001",
+        "node:chunk-0404:tool:002",
+        "node:chunk-0404:material:002",
+        "node:chunk-0404:material:003",
+        "node:chunk-0404:medicine:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0404:014",
+        "evidence:chunk-0404:015",
+        "evidence:chunk-0404:016",
+        "evidence:chunk-0404:017"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "炼器师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1038055,
+        1038247
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038055,
+          1038247
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0404:005",
+      "event_type": "resource_exposure_event",
+      "label": "韩立放出五级妖兽材料引起注意",
+      "fact_summary": "韩立为缓解灵石窘迫再次出售五级妖兽珍稀材料，即使小心仍被有心人注意。",
+      "participants": [
+        "node:chunk-0404:character:001",
+        "node:chunk-0404:material:004"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0404:018",
+        "evidence:chunk-0404:019"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1038255,
+        1038318
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038255,
+          1038318
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0404:006",
+      "event_type": "encounter_invitation_event",
+      "label": "莲儿拦请韩立去清河茶馆",
+      "fact_summary": "莲儿在街道上拦住交易后的韩立，邀请他去清河茶馆见夫人；韩立看出她似乎使用媚术后冷淡拒绝。",
+      "participants": [
+        "node:chunk-0404:character:001",
+        "node:chunk-0404:character:003",
+        "node:chunk-0404:facility:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0404:020",
+        "evidence:chunk-0404:021",
+        "evidence:chunk-0404:022"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1038355,
+        1038524
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038355,
+          1038524
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0404:007",
+      "event_type": "negotiation_invitation_event",
+      "label": "范静梅代表妙音门邀韩立商谈材料",
+      "fact_summary": "范静梅现身表明妙音门身份，说明本门对韩立出售的珍稀妖兽材料感兴趣，并邀请韩立到茶馆静室详谈；韩立同意前往。",
+      "participants": [
+        "node:chunk-0404:character:001",
+        "node:chunk-0404:character:004",
+        "node:chunk-0404:faction:002",
+        "node:chunk-0404:material:004",
+        "node:chunk-0404:facility:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0404:023",
+        "evidence:chunk-0404:024",
+        "evidence:chunk-0404:025",
+        "evidence:chunk-0404:026",
+        "evidence:chunk-0404:027",
+        "evidence:chunk-0404:028"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1038659,
+        1039292
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038659,
+          1039292
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0404:008",
+      "event_type": "meeting_room_setup_event",
+      "label": "茶馆单间会面准备",
+      "fact_summary": "韩立随范静梅等人进入茶馆阁楼，中年人称房间已定，单间内已有灰衣老者沏茶等候。",
+      "participants": [
+        "node:chunk-0404:character:001",
+        "node:chunk-0404:character:004",
+        "node:chunk-0404:character:003",
+        "node:chunk-0404:character:005",
+        "node:chunk-0404:character:006",
+        "node:chunk-0404:facility:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0404:028",
+        "evidence:chunk-0404:029",
+        "evidence:chunk-0404:030"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1039245,
+        1039486
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1039245,
+          1039486
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0404:001",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1036708,
+        1036736
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1036708,
+          1036736
+        ]
+      },
+      "excerpt": "有七八道颜色各异的传音符，正如无头苍蝇一样的到处乱撞着。",
+      "fact_summary": "韩立洞府禁制中有七八道传音符滞留。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:002",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1036822,
+        1036867
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1036822,
+          1036867
+        ]
+      },
+      "excerpt": "这些传音符一小半，是住在附近的结丹期修士发来的恭贺之言，另一部分竟是几个大小组织的招揽之言",
+      "fact_summary": "传音符内容分为附近结丹修士的恭贺和大小组织对韩立的招揽。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:003",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1036949,
+        1036986
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1036949,
+          1036986
+        ]
+      },
+      "excerpt": "除了那些结丹期修士的传音符，客气的回了一下外，那些大小组织的则直接回绝了。",
+      "fact_summary": "韩立礼貌回复结丹修士，直接回绝大小组织招揽。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:004",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1037038,
+        1037082
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037038,
+          1037082
+        ]
+      },
+      "excerpt": "韩立开始频繁的到附近几位结丹修士的洞府串了下门，虚心请教了一些进入结丹期后要注意的问题。",
+      "fact_summary": "韩立结丹后拜访附近结丹修士并请教结丹期注意事项。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:005",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1037295,
+        1037342
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037295,
+          1037342
+        ]
+      },
+      "excerpt": "韩立这次没有敝帚自珍，当即用手上的几粒定颜丹，从他们手中换了一些珍稀的物品，大家皆大欢喜起来。",
+      "fact_summary": "韩立用几粒定颜丹与附近结丹修士交换珍稀物品。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:006",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1037406,
+        1037441
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037406,
+          1037441
+        ]
+      },
+      "excerpt": "在此期间，韩立同时炼化那“绿煌剑”及四处寻觅炼制法宝和三级傀儡的材料。",
+      "fact_summary": "韩立同时炼化绿煌剑，并寻找炼制法宝和三级傀儡的材料。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼器师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:007",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1037490,
+        1037528
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037490,
+          1037528
+        ]
+      },
+      "excerpt": "用上好材料炼制出的法宝比普通材料炼制的，有着截然不同的威力和更大的提升潜力。",
+      "fact_summary": "法宝材料品质会影响法宝威力和提升潜力。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼器师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:008",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1037591,
+        1037618
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037591,
+          1037618
+        ]
+      },
+      "excerpt": "稍有些特殊的炼制秘法，各个宗门和势力都不会轻易外泄的。",
+      "fact_summary": "特殊炼宝秘法通常被宗门和势力保密，不会轻易外泄。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼器师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:009",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1037661,
+        1037694
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037661,
+          1037694
+        ]
+      },
+      "excerpt": "法宝的真正威力，最主要还是靠炼化它的修士在元神内不停的培炼和滋养。",
+      "fact_summary": "法宝真正威力主要依赖炼化者在元神内持续培炼滋养。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼器师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:010",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1037745,
+        1037782
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037745,
+          1037782
+        ]
+      },
+      "excerpt": "而韩立要炼制的“青竹蜂云剑”，顾名思义，主要材料要用数千年的灵竹炼制而成。",
+      "fact_summary": "青竹蜂云剑的主要材料需用数千年灵竹。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼器师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:011",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1037785,
+        1037816
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037785,
+          1037816
+        ]
+      },
+      "excerpt": "原本这材料，以韩立的小瓶催熟功能，再花费些时间是很容易弄到手的",
+      "fact_summary": "韩立原本可借小瓶催熟功能较容易获得灵竹材料。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:012",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1037864,
+        1037891
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037864,
+          1037891
+        ]
+      },
+      "excerpt": "韩立在天星城坊市蹲守至今，却一直没得到让他满意的品种。",
+      "fact_summary": "韩立在天星城坊市蹲守寻找异种神竹，但尚未得到满意品种。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:013",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1037993,
+        1038052
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1037993,
+          1038052
+        ]
+      },
+      "excerpt": "三级傀儡按照傀儡真经上所说，其全力一击已相当于筑基中期的修士，炼制的材料也越发昂贵起来，并且出现了数种不同形态的傀儡。",
+      "fact_summary": "傀儡真经称三级傀儡全力一击相当于筑基中期修士，材料更昂贵且有多种形态。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "炼器师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:013"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:014",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1038055,
+        1038079
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038055,
+          1038079
+        ]
+      },
+      "excerpt": "韩立经过斟酌后，挑选了以木制材料为主的猿型傀儡。",
+      "fact_summary": "韩立选择炼制以木制材料为主的猿型三级傀儡。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "炼器师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:014"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:015",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1038082,
+        1038117
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038082,
+          1038117
+        ]
+      },
+      "excerpt": "这种傀儡，虽然需要的铁木年份增加了许多，并要在炼制时掺入稀罕的天晶木。",
+      "fact_summary": "猿型傀儡需要更高年份铁木，并需掺入稀罕天晶木。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "炼器师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:015"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:016",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1038118,
+        1038150
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038118,
+          1038150
+        ]
+      },
+      "excerpt": "既然都是木制材料，韩立自然可以用绿液催生出来，可大大减少成本的。",
+      "fact_summary": "韩立可用绿液催生木制材料，从而降低傀儡材料成本。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼器师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:016"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:017",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1038211,
+        1038247
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038211,
+          1038247
+        ]
+      },
+      "excerpt": "这些灵石虽然没让韩立倾家荡产，但也让其凑齐材料后，重新变得一贫如洗起来。",
+      "fact_summary": "凑齐傀儡相关材料使韩立重新变得一贫如洗。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:017"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:018",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1038255,
+        1038285
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038255,
+          1038285
+        ]
+      },
+      "excerpt": "韩立只好再次放出一部分五级妖兽的珍稀材料，来暂缓窘迫的情景。",
+      "fact_summary": "韩立为缓解灵石窘迫，再次放出一部分五级妖兽珍稀材料。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:018"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:019",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1038300,
+        1038318
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038300,
+          1038318
+        ]
+      },
+      "excerpt": "这次的材料放出还是让有心人注意到了。",
+      "fact_summary": "韩立放出五级妖兽珍稀材料引起有心人注意。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:019"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:020",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1038355,
+        1038375
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038355,
+          1038375
+        ]
+      },
+      "excerpt": "却被一位嫣然似花的少女在街道上拦了下来。",
+      "fact_summary": "韩立交易后返洞府途中，被一位少女在街道上拦下。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:020"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:021",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1038378,
+        1038407
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038378,
+          1038407
+        ]
+      },
+      "excerpt": "“这位可是韩前辈吗？我家夫人请前辈到不远处的清河茶馆一叙！",
+      "fact_summary": "少女代其夫人邀请韩立到清河茶馆一叙。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:021"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:022",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1038486,
+        1038524
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038486,
+          1038524
+        ]
+      },
+      "excerpt": "此女虽然只是炼气期的修为，但似乎修炼了某种媚术，还不知轻重的胡乱向他偷偷使用",
+      "fact_summary": "韩立看出少女是炼气期，似乎修炼媚术并向他偷偷使用。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:022"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:023",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1038659,
+        1038705
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038659,
+          1038705
+        ]
+      },
+      "excerpt": "“韩前辈且慢！晚辈妙音门范静梅拜见韩前辈了。在下管教不严，刚才莲儿多有得罪，还望前辈恕罪！”",
+      "fact_summary": "范静梅自称妙音门成员，称少女为莲儿，并为其冒犯韩立致歉。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:023"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:024",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1038835,
+        1038867
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038835,
+          1038867
+        ]
+      },
+      "excerpt": "“在下并不认识夫人。有什么事就长话短说吧，韩某还要回府修炼呢！”",
+      "fact_summary": "韩立表示不认识范静梅，要求对方长话短说并表露回府修炼的意图。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:024"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:025",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1038939,
+        1038982
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038939,
+          1038982
+        ]
+      },
+      "excerpt": "前辈是不是最近出售了大批的珍稀妖兽材料，本门对这些材料大感兴趣，想找前辈好好商谈一下。",
+      "fact_summary": "范静梅说明妙音门对韩立近期出售的大批珍稀妖兽材料感兴趣，想商谈。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:025"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:026",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1038982,
+        1039009
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038982,
+          1039009
+        ]
+      },
+      "excerpt": "不过这里人多嘴杂，前辈不如随我到茶馆静室一叙，如何？”",
+      "fact_summary": "范静梅以人多嘴杂为由，邀请韩立到茶馆静室详谈。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:026"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:027",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1039071,
+        1039082
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1039071,
+          1039082
+        ]
+      },
+      "excerpt": "“好吧，你前头带路！”",
+      "fact_summary": "韩立最终同意范静梅带路前往茶馆。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:027"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:028",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1039245,
+        1039292
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1039245,
+          1039292
+        ]
+      },
+      "excerpt": "妙音门女子口中的茶馆并不远，一会儿的功夫后，韩立就随她们走进了一处挂着巨大“茶”旗幡某阁楼内。",
+      "fact_summary": "韩立随妙音门女子与莲儿进入挂有“茶”旗幡的茶馆阁楼。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:028"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:029",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1039305,
+        1039362
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1039305,
+          1039362
+        ]
+      },
+      "excerpt": "其中一位正品茶的中年人，一见女子和少女走了进来，急忙起身跑到身前说道：“师叔，房间已经定好了！可以和客人进去了！”",
+      "fact_summary": "茶馆中年人称范静梅为师叔，并表示房间已经定好。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:029"
+    },
+    {
+      "evidence_id": "evidence:chunk-0404:030",
+      "chunk_id": "chunk-0404",
+      "source_range": [
+        1039434,
+        1039486
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1039434,
+          1039486
+        ]
+      },
+      "excerpt": "屋内竟然已有一位灰衣老者，正不慌不忙的沏着一壶热茶，热气腾腾的，见韩立等人进来了，仍眼皮都没有动上一下。",
+      "fact_summary": "茶馆单间内已有一位灰衣老者从容沏茶，对韩立等人进入没有反应。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0404:030"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "角色AI行为参考",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "相遇剧情与对话设计",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "信息传播与情报",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "建筑设施与场所功能",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "势力设定",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "拍卖坊市与交易",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "物资产出与消耗",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "境界提升与功法分析",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "功法术法神通",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "事件因果链（长程因果图）",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "法宝分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "材料分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "炼器师",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "妖兽分析",
+      "requirement_id": "creature_deviant_practice_ecology",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0404:001",
+      "kind": "unnamed_factions",
+      "fact_summary": "招揽韩立的“几个大小组织”未在本 chunk 给出名称、所在地域或组织类型，不能补写具体势力。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        1036822,
+        1036986
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1036822,
+          1036986
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0404:002",
+      "kind": "unknown_identity",
+      "fact_summary": "灰衣老者当前只表现为在茶馆单间内沏茶且反应从容，身份、修为、与妙音门关系均未明示。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        1039434,
+        1039486
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1039434,
+          1039486
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0404:003",
+      "kind": "technique_uncertain",
+      "fact_summary": "莲儿被韩立判断似乎修炼某种媚术，但该媚术名称、层次和实际效果未被原文确认。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        1038486,
+        1038524
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038486,
+          1038524
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0404:001",
+      "candidate": "招揽韩立的具体组织名称",
+      "reason": "本 chunk 只称“几个大小组织”，未给出组织名称；不能根据后文或常识补全。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "not_found_in_source",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected"
+        }
+      ],
+      "source_range": [
+        1036822,
+        1036986
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1036822,
+          1036986
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0404:002",
+      "candidate": "范静梅的完整修为和职务",
+      "reason": "本 chunk 只明示范静梅自称妙音门、被中年人称师叔，并未说明修为、正式职位或门内权力边界。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "not_found_in_source",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected"
+        }
+      ],
+      "source_range": [
+        1038659,
+        1039362
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0404",
+        "chapter_hint": "第三百九十九章 妙音门",
+        "source_path": "intermediate/chunks/chunk-0404.txt",
+        "source_range": [
+          1038659,
+          1039362
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

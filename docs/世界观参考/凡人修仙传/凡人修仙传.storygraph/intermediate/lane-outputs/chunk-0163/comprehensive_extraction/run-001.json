@@ -1,0 +1,1832 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0163:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0163",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T18:19:12+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0163:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [
+        "韩师弟"
+      ],
+      "fact_summary": "韩立向吴风询问筑基丹主药出处，得知血禁试炼的风险和半年后的时间后陷入是否参加的两难。",
+      "evidence_ids": [
+        "evidence:chunk-0163:001",
+        "evidence:chunk-0163:012",
+        "evidence:chunk-0163:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "记忆情绪与执念",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        344583,
+        344619
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          344583,
+          344619
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0163:character:002",
+      "node_type": "character",
+      "label": "吴风",
+      "aliases": [
+        "吴师兄"
+      ],
+      "fact_summary": "吴风向韩立说明玉髓芝等灵药、筑基丹主药、禁地机制、门派争抢和血禁试炼的奖励风险。",
+      "evidence_ids": [
+        "evidence:chunk-0163:001",
+        "evidence:chunk-0163:012",
+        "evidence:chunk-0163:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        344602,
+        344619
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          344602,
+          344619
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0163:pill:001",
+      "node_type": "pill",
+      "label": "筑基丹",
+      "aliases": [],
+      "fact_summary": "筑基丹由禁地灵药共同炼制，分配时按各派提供的灵药多少按比例分配，也是黄枫谷血禁试炼重奖之一。",
+      "evidence_ids": [
+        "evidence:chunk-0163:011",
+        "evidence:chunk-0163:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        346011,
+        346028
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          346011,
+          346028
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0163:material:001",
+      "node_type": "material",
+      "label": "玉髓芝",
+      "aliases": [],
+      "fact_summary": "玉髓芝被韩立作为筑基丹主药相关灵药之一向吴风询问出处。",
+      "evidence_ids": [
+        "evidence:chunk-0163:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        344602,
+        344619
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          344602,
+          344619
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0163:secret_realm:001",
+      "node_type": "secret_realm",
+      "label": "被风属性古禁封闭的禁地",
+      "aliases": [
+        "禁地",
+        "后一种禁地"
+      ],
+      "fact_summary": "越国修仙派历年筑基丹主药出自某处被风属性古禁封闭的禁地，只有禁法衰弱期和结丹期修士合力破禁时才能暂时打开通路。",
+      "evidence_ids": [
+        "evidence:chunk-0163:002",
+        "evidence:chunk-0163:003",
+        "evidence:chunk-0163:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        344968,
+        345084
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          344968,
+          345084
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0163:formation:001",
+      "node_type": "formation",
+      "label": "风属性古禁",
+      "aliases": [
+        "禁法"
+      ],
+      "fact_summary": "风属性古禁一直封闭着筑基丹主药所在禁地，每五年有五天衰弱期，可由数名结丹期修士合力暂时破开通路。",
+      "evidence_ids": [
+        "evidence:chunk-0163:003",
+        "evidence:chunk-0163:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        344968,
+        345084
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          344968,
+          345084
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0163:formation:002",
+      "node_type": "formation",
+      "label": "里层古怪禁制",
+      "aliases": [
+        "另一种古怪禁制"
+      ],
+      "fact_summary": "禁地通路出现后，里层古怪禁制会挡住筑基以后的修仙者，却不阻碍炼气期修士进入。",
+      "evidence_ids": [
+        "evidence:chunk-0163:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        345169,
+        345212
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          345169,
+          345212
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0163:realm:001",
+      "node_type": "realm",
+      "label": "炼气期",
+      "aliases": [],
+      "fact_summary": "炼气期修士可不受里层古怪禁制阻碍进入禁地，因此七大修仙派每五年派筑基期以下弟子入内采药。",
+      "evidence_ids": [
+        "evidence:chunk-0163:005",
+        "evidence:chunk-0163:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        345169,
+        345280
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          345169,
+          345280
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0163:realm:002",
+      "node_type": "realm",
+      "label": "筑基期",
+      "aliases": [],
+      "fact_summary": "筑基以后的修仙者会被禁地里层古怪禁制挡在外面，血禁试炼因此面向筑基期以下弟子。",
+      "evidence_ids": [
+        "evidence:chunk-0163:005",
+        "evidence:chunk-0163:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        345169,
+        345280
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          345169,
+          345280
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0163:faction:001",
+      "node_type": "faction",
+      "label": "七大修仙派",
+      "aliases": [
+        "各大派",
+        "越国各派"
+      ],
+      "fact_summary": "七大修仙派每五年派筑基期以下弟子进入禁地采集灵药，后来因灵药减少和分配压力鼓励弟子争抢。",
+      "evidence_ids": [
+        "evidence:chunk-0163:006",
+        "evidence:chunk-0163:007",
+        "evidence:chunk-0163:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        345255,
+        345501
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          345255,
+          345501
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0163:faction:002",
+      "node_type": "faction",
+      "label": "黄枫谷",
+      "aliases": [],
+      "fact_summary": "黄枫谷属于越国修仙派之一，并明文规定血禁试炼报名弟子可先得中阶灵石和灵器，带出灵药后另有重奖。",
+      "evidence_ids": [
+        "evidence:chunk-0163:003",
+        "evidence:chunk-0163:010",
+        "evidence:chunk-0163:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        344968,
+        346028
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          344968,
+          346028
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0163:facility:001",
+      "node_type": "facility",
+      "label": "传功阁",
+      "aliases": [],
+      "fact_summary": "韩立在问清下次血禁试炼半年后举行后，在吴师兄叮嘱下离开传功阁。",
+      "evidence_ids": [
+        "evidence:chunk-0163:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        346727,
+        346759
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          346727,
+          346759
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0163:facility:002",
+      "node_type": "facility",
+      "label": "百药园",
+      "aliases": [],
+      "fact_summary": "韩立离开传功阁后回到百药园，并在之后数日反复掂量血禁试炼的利害风险。",
+      "evidence_ids": [
+        "evidence:chunk-0163:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "记忆情绪与执念",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        346727,
+        346826
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          346727,
+          346826
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0163:001",
+      "edge_type": "asks_about",
+      "source": "node:chunk-0163:character:001",
+      "target": "node:chunk-0163:material:001",
+      "fact_summary": "韩立向吴风询问玉髓芝等筑基丹主药灵药的出处。",
+      "evidence_ids": [
+        "evidence:chunk-0163:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        344583,
+        344619
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          344583,
+          344619
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0163:002",
+      "edge_type": "main_ingredient_sourced_from",
+      "source": "node:chunk-0163:pill:001",
+      "target": "node:chunk-0163:secret_realm:001",
+      "fact_summary": "越国修仙派历年来的筑基丹主药出自被风属性古禁封闭的禁地。",
+      "evidence_ids": [
+        "evidence:chunk-0163:002",
+        "evidence:chunk-0163:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        344836,
+        344997
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          344836,
+          344997
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0163:003",
+      "edge_type": "sealed_by",
+      "source": "node:chunk-0163:secret_realm:001",
+      "target": "node:chunk-0163:formation:001",
+      "fact_summary": "筑基丹主药所在禁地一直被风属性古禁封闭。",
+      "evidence_ids": [
+        "evidence:chunk-0163:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        344968,
+        344997
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          344968,
+          344997
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0163:004",
+      "edge_type": "entry_rule",
+      "source": "node:chunk-0163:formation:002",
+      "target": "node:chunk-0163:realm:002",
+      "fact_summary": "里层古怪禁制会将筑基以后的修仙者挡在禁地外。",
+      "evidence_ids": [
+        "evidence:chunk-0163:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        345169,
+        345212
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          345169,
+          345212
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0163:005",
+      "edge_type": "entry_rule",
+      "source": "node:chunk-0163:formation:002",
+      "target": "node:chunk-0163:realm:001",
+      "fact_summary": "炼气期修士可毫无阻碍地进入禁地。",
+      "evidence_ids": [
+        "evidence:chunk-0163:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        345169,
+        345212
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          345169,
+          345212
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0163:006",
+      "edge_type": "dispatches_disciples_to",
+      "source": "node:chunk-0163:faction:001",
+      "target": "node:chunk-0163:secret_realm:001",
+      "fact_summary": "七大修仙派每五年派一批筑基期以下弟子进入禁地收集灵药。",
+      "evidence_ids": [
+        "evidence:chunk-0163:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        345255,
+        345280
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          345255,
+          345280
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0163:007",
+      "edge_type": "reward_policy",
+      "source": "node:chunk-0163:faction:002",
+      "target": "node:chunk-0163:character:001",
+      "fact_summary": "黄枫谷对报名参加血禁试炼的弟子先赐中阶灵石和灵器，带出灵药后再按数量质量给重奖。",
+      "evidence_ids": [
+        "evidence:chunk-0163:010",
+        "evidence:chunk-0163:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        345913,
+        346028
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          345913,
+          346028
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0163:008",
+      "edge_type": "allocation_rule",
+      "source": "node:chunk-0163:pill:001",
+      "target": "node:chunk-0163:faction:001",
+      "fact_summary": "共同炼制的筑基丹按各派提供灵药多少比例分配，推动各门派争抢灵药。",
+      "evidence_ids": [
+        "evidence:chunk-0163:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        346648,
+        346673
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          346648,
+          346673
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0163:009",
+      "edge_type": "travels_from_to",
+      "source": "node:chunk-0163:character:001",
+      "target": "node:chunk-0163:facility:002",
+      "fact_summary": "韩立问清下次血禁试炼时间后离开传功阁，回到百药园。",
+      "evidence_ids": [
+        "evidence:chunk-0163:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        346727,
+        346759
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          346727,
+          346759
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0163:001",
+      "event_type": "information_request",
+      "label": "韩立询问筑基丹主药出处",
+      "fact_summary": "韩立向吴风问起筑基丹主药和玉髓芝等灵药的出处，触发血禁试炼信息说明。",
+      "participants": [
+        "node:chunk-0163:character:001",
+        "node:chunk-0163:character:002",
+        "node:chunk-0163:pill:001",
+        "node:chunk-0163:material:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0163:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        344583,
+        344619
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          344583,
+          344619
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0163:002",
+      "event_type": "secret_realm_access_rule",
+      "label": "禁地通路五年一开且限制境界",
+      "fact_summary": "风属性古禁每五年有五天衰弱期，数名结丹期修士可暂时破出通路；里层禁制阻挡筑基以上修士，只让炼气期进入。",
+      "participants": [
+        "node:chunk-0163:secret_realm:001",
+        "node:chunk-0163:formation:001",
+        "node:chunk-0163:formation:002",
+        "node:chunk-0163:realm:001",
+        "node:chunk-0163:realm:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0163:004",
+        "evidence:chunk-0163:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        345066,
+        345212
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          345066,
+          345212
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0163:003",
+      "event_type": "trial_system_established",
+      "label": "七派定期派弟子入禁地采药",
+      "fact_summary": "发现炼气期可入禁地采药后，七大修仙派每五年派筑基期以下弟子进入禁地收集灵药，筑基丹主药为重中之重。",
+      "participants": [
+        "node:chunk-0163:faction:001",
+        "node:chunk-0163:secret_realm:001",
+        "node:chunk-0163:realm:001",
+        "node:chunk-0163:pill:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0163:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        345255,
+        345280
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          345255,
+          345280
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0163:004",
+      "event_type": "conflict_escalation",
+      "label": "禁地之行演变为血禁试炼",
+      "fact_summary": "禁地灵药逐渐减少后，各门派争执出手乃至弟子丧命，各大派鼓励门下弟子抢夺，使禁地之行染上血色并被称为血禁试炼。",
+      "participants": [
+        "node:chunk-0163:faction:001",
+        "node:chunk-0163:secret_realm:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0163:007",
+        "evidence:chunk-0163:008",
+        "evidence:chunk-0163:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        345323,
+        345626
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          345323,
+          345626
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0163:005",
+      "event_type": "reward_policy",
+      "label": "黄枫谷以重赏招募血禁试炼弟子",
+      "fact_summary": "黄枫谷规定报名参加者可先获中阶灵石和灵器，带出灵药后按数量和质量获得灵石、法器、灵丹乃至筑基丹等奖励。",
+      "participants": [
+        "node:chunk-0163:faction:002",
+        "node:chunk-0163:pill:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0163:010",
+        "evidence:chunk-0163:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        345913,
+        346028
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          345913,
+          346028
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0163:006",
+      "event_type": "decision_pressure",
+      "label": "韩立权衡是否参加血禁试炼",
+      "fact_summary": "韩立得知下次血禁试炼在半年后，并因禁地外找不到灵药、试炼死亡率超过四分之三而左右为难。",
+      "participants": [
+        "node:chunk-0163:character:001",
+        "node:chunk-0163:character:002",
+        "node:chunk-0163:facility:001",
+        "node:chunk-0163:facility:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0163:014",
+        "evidence:chunk-0163:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        346727,
+        347020
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          346727,
+          347020
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "id": "evidence:chunk-0163:001",
+      "evidence_type": "dialogue",
+      "fact_summary": "韩立转而询问筑基丹主药，吴风确认他想知道玉髓芝等灵药出处。",
+      "quote": "终于开口问起了筑基丹主药的事。\n　　“韩师弟想知道玉髓芝等灵药物的出处？”吴风惊讶的问道。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        344583,
+        344628
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          344583,
+          344628
+        ]
+      },
+      "evidence_id": "evidence:chunk-0163:001"
+    },
+    {
+      "id": "evidence:chunk-0163:002",
+      "evidence_type": "narration",
+      "fact_summary": "此类灵药在普通地方消失，唯一还能找到它们的地方是禁地。",
+      "quote": "现在唯一还能找到它们的地方，也只有那些所谓的禁地了。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        344836,
+        344862
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          344836,
+          344862
+        ]
+      },
+      "evidence_id": "evidence:chunk-0163:002"
+    },
+    {
+      "id": "evidence:chunk-0163:003",
+      "evidence_type": "narration",
+      "fact_summary": "黄枫谷等越国修仙派的筑基丹主药出自某处被风属性古禁封闭的禁地。",
+      "quote": "而黄枫谷等越国的修仙派，历年来的筑基丹主药就是出自后一种禁地，那是某处被风属性古禁给一直封闭住的所在。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        344967,
+        345018
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          344967,
+          345018
+        ]
+      },
+      "evidence_id": "evidence:chunk-0163:003"
+    },
+    {
+      "id": "evidence:chunk-0163:004",
+      "evidence_type": "narration",
+      "fact_summary": "风属性古禁每五年有五天衰弱期，数名结丹期修士合力可暂时打开通路。",
+      "quote": "这禁法每过五年时间就会有五天的衰弱期，在这期间如果有数名结丹期修士一齐施法强行破禁的话，可以暂时打开一条通路，可让一定数量的人入内。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        345066,
+        345132
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          345066,
+          345132
+        ]
+      },
+      "evidence_id": "evidence:chunk-0163:004"
+    },
+    {
+      "id": "evidence:chunk-0163:005",
+      "evidence_type": "narration",
+      "fact_summary": "筑基以后的修仙者被里层古怪禁制挡住，炼气期则可无阻进入。",
+      "quote": "筑基以后的修仙者全被里层的另一种古怪禁制挡在了外面，而炼气期的人则毫无阻碍的进入了其内",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        345169,
+        345212
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          345169,
+          345212
+        ]
+      },
+      "evidence_id": "evidence:chunk-0163:005"
+    },
+    {
+      "id": "evidence:chunk-0163:006",
+      "evidence_type": "narration",
+      "fact_summary": "七大修仙派每五年派筑基期以下弟子入禁地采灵药，筑基丹主药是重点。",
+      "quote": "于是七大修仙派每五年，就派一批筑基期以下的弟子进入禁地，去收集大量灵药，当然筑基丹主药更是其中的重中之重。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        345253,
+        345306
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          345253,
+          345306
+        ]
+      },
+      "evidence_id": "evidence:chunk-0163:006"
+    },
+    {
+      "id": "evidence:chunk-0163:007",
+      "evidence_type": "narration",
+      "fact_summary": "禁地灵药渐少后，各门派为奇药争执出手，最终出现弟子丧命。",
+      "quote": "但随着历年不断的收集搜刮，禁地内的灵药渐渐稀少后，各门派间为了某株奇药互相争执、大大出手的事开始不断发生。到了数百年前的某次，甚至有弟子在争斗中丧失了性命。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        345353,
+        345431
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          345353,
+          345431
+        ]
+      },
+      "evidence_id": "evidence:chunk-0163:007"
+    },
+    {
+      "id": "evidence:chunk-0163:008",
+      "evidence_type": "narration",
+      "fact_summary": "弟子丧命后，各大派鼓励抢夺，使禁地之行染上血色。",
+      "quote": "那一次的人命出现，让各大派间彻底撕破了脸皮，干脆明打起了弱肉强食、天地不仁的旗号，鼓励起门下弟子去抢夺他人，让禁地之行彻底染上了血色。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        345434,
+        345501
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          345434,
+          345501
+        ]
+      },
+      "evidence_id": "evidence:chunk-0163:008"
+    },
+    {
+      "id": "evidence:chunk-0163:009",
+      "evidence_type": "narration",
+      "fact_summary": "禁地厮杀惨烈，近百年活着出来者不足原先三分之一，弟子称其为血禁试炼。",
+      "quote": "到了近百年，由于厮杀的太惨烈了，能从禁地内活着出来的弟子还不足原先的三分之一，让各门派低阶弟子中的精锐都损失了不少！更让各派众弟子开始把禁地之行称之为“血禁试炼”",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        345545,
+        345626
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          345545,
+          345626
+        ]
+      },
+      "evidence_id": "evidence:chunk-0163:009"
+    },
+    {
+      "id": "evidence:chunk-0163:010",
+      "evidence_type": "narration",
+      "fact_summary": "黄枫谷规定报名血禁试炼的弟子先得中阶灵石和灵器鼓励。",
+      "quote": "只要报名参加的弟子，就可获得块中阶灵石和门内一件灵器的事先赐予，以资鼓励。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        345913,
+        345950
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          345913,
+          345950
+        ]
+      },
+      "evidence_id": "evidence:chunk-0163:010"
+    },
+    {
+      "id": "evidence:chunk-0163:011",
+      "evidence_type": "narration",
+      "fact_summary": "带出灵药后，黄枫谷按数量质量给重奖，最高包括筑基丹。",
+      "quote": "等真能从禁地内带出灵药后，门内还会视其所带东西的多少和质量的高低给予更加丰盛的重奖！从灵石到法器、灵丹应有尽有，甚至更高的奖励还包括了门内秘藏的筑基丹",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        345953,
+        346028
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          345953,
+          346028
+        ]
+      },
+      "evidence_id": "evidence:chunk-0163:011"
+    },
+    {
+      "id": "evidence:chunk-0163:012",
+      "evidence_type": "narration",
+      "fact_summary": "重赏后，能走出血禁试炼者不足四分之一，且带出灵药者更少。",
+      "quote": "重赏之后能走出血禁试炼的竟连四分之一都不足了，并且活着的弟子中，能够带出灵药的人更是少中又少",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        346170,
+        346216
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          346170,
+          346216
+        ]
+      },
+      "evidence_id": "evidence:chunk-0163:012"
+    },
+    {
+      "id": "evidence:chunk-0163:013",
+      "evidence_type": "dialogue",
+      "fact_summary": "吴风说明筑基丹按各派提供灵药多少比例分配，所以各门派会争抢灵药。",
+      "quote": "即使共同炼制的筑基丹，但是分配丹药时却全看各派提供的灵药多少，来按比例分配的。这种情形下，怎能不让各门拼命争抢灵药呢？",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        346635,
+        346694
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          346635,
+          346694
+        ]
+      },
+      "evidence_id": "evidence:chunk-0163:013"
+    },
+    {
+      "id": "evidence:chunk-0163:014",
+      "evidence_type": "narration",
+      "fact_summary": "韩立问清下次血禁试炼在半年后，离开传功阁回到百药园并数日思量风险。",
+      "quote": "最后，满肚子心事的他，在问清楚了下次的“血禁试炼”就在半年以后，就在吴师兄的叮嘱下离开了传功阁，回到了百药园。\n　　接下来的数日内，韩立整天无精打采的想着这件事，反复掂量着其中的利害关系和所冒的风险",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "记忆情绪与执念",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        346711,
+        346810
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          346711,
+          346810
+        ]
+      },
+      "evidence_id": "evidence:chunk-0163:014"
+    },
+    {
+      "id": "evidence:chunk-0163:015",
+      "evidence_type": "internal_state",
+      "fact_summary": "韩立认为禁地外找不到三味灵药，参加血禁试炼又有超过四分之三死亡率，因而左右为难。",
+      "quote": "很显然在越国这里，在禁地以外的地方，是找不到这三味灵药了，否则七大仙派也不用每五年血拼一次，进行对内的自我削弱了。\n　　韩立如果不想冒此奇险的话，那就只有寄希望于越国以外的其他地方还能找得到灵药，否则筑基就彻底无望了，在百余年后要成为一堆白骨。不过仔细一想就知道，到境外去寻找灵药这事更加渺茫无比，根本一点希望都没有。\n　　但如果真参加“血禁试炼”，四分之三还多的死亡率也太大了点吧！",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        346829,
+        347021
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          346829,
+          347021
+        ]
+      },
+      "evidence_id": "evidence:chunk-0163:015"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "秘境遗迹与机缘",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "fact_summary": "本 chunk 覆盖禁地入口机制、古禁、境界限制、五年周期和采药收益风险。"
+    },
+    {
+      "template_name": "宗门任务体系",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "fact_summary": "本 chunk 覆盖七派定期派遣弟子、黄枫谷报名奖励和带出灵药后的奖励规则。"
+    },
+    {
+      "template_name": "事件因果链（长程因果图）",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "fact_summary": "本 chunk 覆盖灵药稀少、争抢、伤亡、奖励刺激和高死亡率造成血禁试炼制度化的因果链。"
+    },
+    {
+      "template_name": "丹药分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "fact_summary": "本 chunk 覆盖筑基丹主药来源和筑基丹按灵药贡献比例分配的规则。"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0163:001",
+      "kind": "unnamed_ingredients",
+      "fact_summary": "韩立想到三味灵药，但本 chunk 只明示玉髓芝，另外两味名称未出现，未建立材料节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "not_found_in_source",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        346839,
+        346878
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          346839,
+          346878
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0163:002",
+      "kind": "unnamed_forbidden_land",
+      "fact_summary": "禁地位置只描述为某处被风属性古禁封闭的所在，本 chunk 未给出正式地名。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        344968,
+        345023
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          344968,
+          345023
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0163:001",
+      "candidate": "结丹期修士",
+      "reason": "原文只说数名结丹期修士合力破禁，没有给出姓名、门派或个体行为；保留在事件摘要中，不建立人物节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "not_found_in_source",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected"
+        }
+      ],
+      "source_range": [
+        345066,
+        345134
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          345066,
+          345134
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0163:002",
+      "candidate": "普通被选弟子",
+      "reason": "本 chunk 多处泛指进入禁地的门派弟子，但没有命名个体或独立剧情功能；不机械建立角色节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "not_found_in_source",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected"
+        }
+      ],
+      "source_range": [
+        345255,
+        345626
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0163",
+        "source_path": "intermediate/chunks/chunk-0163.txt",
+        "source_range": [
+          345255,
+          345626
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

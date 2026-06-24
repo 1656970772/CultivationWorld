@@ -1,0 +1,1682 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0037:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0037",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T14:30:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0037:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立在本 chunk 中频繁出入神手谷，与厉飞雨碰头，并在发现包裹内容后担心两人会因七绝堂藏书惹上大麻烦。",
+      "evidence_ids": [
+        "evidence:chunk-0037:001",
+        "evidence:chunk-0037:005",
+        "evidence:chunk-0037:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        70392,
+        70428
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          70392,
+          70428
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0037:character:002",
+      "node_type": "character",
+      "label": "墨大夫",
+      "aliases": [],
+      "fact_summary": "墨大夫明知韩立经常出谷却不干涉；韩立推断其放任与用尸虫丸和家人性命控制韩立后的修炼目的有关。",
+      "evidence_ids": [
+        "evidence:chunk-0037:001",
+        "evidence:chunk-0037:002",
+        "evidence:chunk-0037:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        70392,
+        70717
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          70392,
+          70717
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0037:character:003",
+      "node_type": "character",
+      "label": "厉飞雨",
+      "aliases": [],
+      "fact_summary": "厉飞雨在小水潭边等韩立，并带来一大包标称为眨眼剑法剑谱的书，后续还称赞韩立使用缠丝手。",
+      "evidence_ids": [
+        "evidence:chunk-0037:006",
+        "evidence:chunk-0037:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        71313,
+        71910
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          71313,
+          71910
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0037:pill:001",
+      "node_type": "pill",
+      "label": "尸虫丸",
+      "aliases": [],
+      "fact_summary": "尸虫丸被明示为墨大夫压制韩立的两把大锁之一。",
+      "evidence_ids": [
+        "evidence:chunk-0037:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        70576,
+        70603
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          70576,
+          70603
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0037:cultivation_method:001",
+      "node_type": "cultivation_method",
+      "label": "长春功",
+      "aliases": [],
+      "fact_summary": "长春功是墨大夫希望韩立主动积极修炼的功法，韩立出谷后也运用它提升耳目触觉。",
+      "evidence_ids": [
+        "evidence:chunk-0037:003",
+        "evidence:chunk-0037:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        70678,
+        70906
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          70678,
+          70906
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0037:technique:001",
+      "node_type": "technique",
+      "label": "眨眼剑法",
+      "aliases": [
+        "眨眼剑法的剑谱"
+      ],
+      "fact_summary": "厉飞雨称韩立让他把眨眼剑法的剑谱带出来。",
+      "evidence_ids": [
+        "evidence:chunk-0037:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        71313,
+        71332
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          71313,
+          71332
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0037:technique:002",
+      "node_type": "technique",
+      "label": "缠丝手",
+      "aliases": [],
+      "fact_summary": "厉飞雨称韩立将缠丝手这门武功用得出神入化，并说明是自己两个月前教会韩立。",
+      "evidence_ids": [
+        "evidence:chunk-0037:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        71841,
+        71910
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          71841,
+          71910
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0037:location:001",
+      "node_type": "location",
+      "label": "神手谷",
+      "aliases": [],
+      "fact_summary": "韩立在本 chunk 开头又从神手谷溜出，与厉飞雨碰头。",
+      "evidence_ids": [
+        "evidence:chunk-0037:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        70345,
+        70376
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          70345,
+          70376
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0037:facility:001",
+      "node_type": "facility",
+      "label": "老槐树中的秘密通道",
+      "aliases": [],
+      "fact_summary": "韩立通过老槐树中的秘密通道进入上次碰头的小水潭附近。",
+      "evidence_ids": [
+        "evidence:chunk-0037:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        70985,
+        71028
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          70985,
+          71028
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0037:location:002",
+      "node_type": "location",
+      "label": "小水潭附近",
+      "aliases": [
+        "上次碰头的小水潭附近"
+      ],
+      "fact_summary": "小水潭附近是韩立和厉飞雨本次碰头地点。",
+      "evidence_ids": [
+        "evidence:chunk-0037:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        70985,
+        71028
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          70985,
+          71028
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0037:faction:001",
+      "node_type": "faction",
+      "label": "七绝堂",
+      "aliases": [
+        "七绝堂藏书"
+      ],
+      "fact_summary": "包裹中大量秘籍的书皮左上角统一圈注“七绝堂藏书”，韩立据此认为厉飞雨搬来了七绝堂藏书的一小半。",
+      "evidence_ids": [
+        "evidence:chunk-0037:008",
+        "evidence:chunk-0037:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        72350,
+        72456
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          72350,
+          72456
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0037:001",
+      "edge_type": "allows_movement",
+      "source": "node:chunk-0037:character:002",
+      "target": "node:chunk-0037:character:001",
+      "fact_summary": "墨大夫明知韩立经常出谷，却不干涉并任由其进出自由。",
+      "evidence_ids": [
+        "evidence:chunk-0037:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        70392,
+        70428
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          70392,
+          70428
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0037:002",
+      "edge_type": "coerces_with_item",
+      "source": "node:chunk-0037:character:002",
+      "target": "node:chunk-0037:character:001",
+      "fact_summary": "墨大夫用尸虫丸和家人性命两把大锁压制韩立。",
+      "evidence_ids": [
+        "evidence:chunk-0037:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        70576,
+        70603
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          70576,
+          70603
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0037:003",
+      "edge_type": "uses_method",
+      "source": "node:chunk-0037:character:001",
+      "target": "node:chunk-0037:cultivation_method:001",
+      "fact_summary": "韩立出谷后运用长春功提升耳目触觉并扩大侦察范围。",
+      "evidence_ids": [
+        "evidence:chunk-0037:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        70847,
+        70906
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          70847,
+          70906
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0037:004",
+      "edge_type": "travels_through",
+      "source": "node:chunk-0037:character:001",
+      "target": "node:chunk-0037:facility:001",
+      "fact_summary": "韩立避开巡山弟子，通过老槐树中的秘密通道进入碰头地点。",
+      "evidence_ids": [
+        "evidence:chunk-0037:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        70985,
+        71028
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          70985,
+          71028
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0037:005",
+      "edge_type": "brings_requested_manual",
+      "source": "node:chunk-0037:character:003",
+      "target": "node:chunk-0037:technique:001",
+      "fact_summary": "厉飞雨称自己带来的包裹是韩立要求带出的眨眼剑法剑谱。",
+      "evidence_ids": [
+        "evidence:chunk-0037:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        71313,
+        71332
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          71313,
+          71332
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0037:006",
+      "edge_type": "taught_technique_to",
+      "source": "node:chunk-0037:character:003",
+      "target": "node:chunk-0037:character:001",
+      "fact_summary": "厉飞雨明说缠丝手是自己教会韩立的。",
+      "evidence_ids": [
+        "evidence:chunk-0037:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        71841,
+        71910
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          71841,
+          71910
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0037:007",
+      "edge_type": "contains_marked_books_from",
+      "source": "node:chunk-0037:faction:001",
+      "target": "node:chunk-0037:technique:001",
+      "fact_summary": "韩立发现大堆秘籍书皮圈注“七绝堂藏书”，但本 chunk 尚未确认这些书是否都属于眨眼剑法剑谱。",
+      "evidence_ids": [
+        "evidence:chunk-0037:008",
+        "evidence:chunk-0037:009"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        72350,
+        72456
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          72350,
+          72456
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0037:001",
+      "event_type": "control_arrangement_event",
+      "label": "墨大夫放任韩立出谷",
+      "fact_summary": "墨大夫明知韩立经常出谷却不干涉；韩立推断这是因为墨大夫虽以尸虫丸和家人性命压制他，却仍希望他主动修炼长春功。",
+      "participants": [
+        "node:chunk-0037:character:001",
+        "node:chunk-0037:character:002",
+        "node:chunk-0037:pill:001",
+        "node:chunk-0037:cultivation_method:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0037:001",
+        "evidence:chunk-0037:002",
+        "evidence:chunk-0037:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        70392,
+        70717
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          70392,
+          70717
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0037:002",
+      "event_type": "travel_event",
+      "label": "韩立谨慎赴小水潭碰头",
+      "fact_summary": "韩立出谷后运用长春功提升感知，避开巡山弟子，通过老槐树中的秘密通道来到小水潭附近。",
+      "participants": [
+        "node:chunk-0037:character:001",
+        "node:chunk-0037:cultivation_method:001",
+        "node:chunk-0037:facility:001",
+        "node:chunk-0037:location:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0037:004",
+        "evidence:chunk-0037:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        70847,
+        71028
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          70847,
+          71028
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0037:003",
+      "event_type": "handoff_event",
+      "label": "厉飞雨交出大包裹",
+      "fact_summary": "厉飞雨把身后的特大包裹扔给韩立，并称这是韩立让他带出的眨眼剑法剑谱。",
+      "participants": [
+        "node:chunk-0037:character:001",
+        "node:chunk-0037:character:003",
+        "node:chunk-0037:technique:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0037:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        71233,
+        71332
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          71233,
+          71332
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0037:004",
+      "event_type": "technique_display_event",
+      "label": "韩立用缠丝手解开包裹",
+      "fact_summary": "韩立用缠丝手一类手法解开死结，厉飞雨称赞他把缠丝手用得出神入化，并说明这门武功由自己教会韩立。",
+      "participants": [
+        "node:chunk-0037:character:001",
+        "node:chunk-0037:character:003",
+        "node:chunk-0037:technique:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0037:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        71716,
+        71910
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          71716,
+          71910
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0037:005",
+      "event_type": "discovery_event",
+      "label": "韩立发现包裹内有七绝堂藏书",
+      "fact_summary": "韩立打开包裹后发现大堆秘籍书皮标有七绝堂藏书，并担心若被巡堂护法发现，两人会陷入极大危险。",
+      "participants": [
+        "node:chunk-0037:character:001",
+        "node:chunk-0037:character:003",
+        "node:chunk-0037:faction:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0037:008",
+        "evidence:chunk-0037:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        72350,
+        72456
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          72350,
+          72456
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0037:001",
+      "chunk_id": "chunk-0037",
+      "source_range": [
+        70392,
+        70428
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          70392,
+          70428
+        ]
+      },
+      "excerpt": "墨大夫对他经常出谷的事情早已了如指掌，但对此毫不干涉，任由韩立进出自由。",
+      "fact_summary": "墨大夫知道韩立经常出谷却不干涉。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0037:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0037:002",
+      "chunk_id": "chunk-0037",
+      "source_range": [
+        70576,
+        70603
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          70576,
+          70603
+        ]
+      },
+      "excerpt": "他虽然用“尸虫丸”和家人性命两把大锁，把韩立压得死死的",
+      "fact_summary": "墨大夫用尸虫丸和家人性命压制韩立。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0037:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0037:003",
+      "chunk_id": "chunk-0037",
+      "source_range": [
+        70678,
+        70717
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          70678,
+          70717
+        ]
+      },
+      "excerpt": "墨大夫的本意是想让他主动积极的去修炼长春功，而不能绑着他的手脚强逼着他去修炼。",
+      "fact_summary": "韩立认为墨大夫放任其行动，是为了让他主动修炼长春功。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0037:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0037:004",
+      "chunk_id": "chunk-0037",
+      "source_range": [
+        70847,
+        70906
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          70847,
+          70906
+        ]
+      },
+      "excerpt": "一走出谷外，他就运用起了长春功，使自己的耳目触觉提升到一个不可思议的境界，把数十丈内所有能活动的物体都纳入了控制之中。",
+      "fact_summary": "韩立运用长春功提升感知并扩大侦察范围。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0037:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0037:005",
+      "chunk_id": "chunk-0037",
+      "source_range": [
+        70985,
+        71028
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          70985,
+          71028
+        ]
+      },
+      "excerpt": "一路之上，韩立小心的避开巡山弟子，通过老槐树中的秘密通道，爬进了上次碰头的小水潭附近。",
+      "fact_summary": "韩立避开巡山弟子，通过老槐树中的秘密通道来到小水潭附近。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0037:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0037:006",
+      "chunk_id": "chunk-0037",
+      "source_range": [
+        71313,
+        71332
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          71313,
+          71332
+        ]
+      },
+      "excerpt": "不是你让我把眨眼剑法的剑谱带出来的吗？",
+      "fact_summary": "厉飞雨称韩立让他带出眨眼剑法的剑谱。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0037:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0037:007",
+      "chunk_id": "chunk-0037",
+      "source_range": [
+        71841,
+        71910
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          71841,
+          71910
+        ]
+      },
+      "excerpt": "每次看到你把‘缠丝手’这门武功用的如此出神入化，我都觉得不可思议，这门武学好像天生就是为你打造的，从我教会你到现在，才短短两个月的时间啊。",
+      "fact_summary": "厉飞雨称赞韩立使用缠丝手出神入化，并说明自己两个月前教会韩立。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0037:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0037:008",
+      "chunk_id": "chunk-0037",
+      "source_range": [
+        72350,
+        72391
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          72350,
+          72391
+        ]
+      },
+      "excerpt": "你竟然把七绝堂藏书的一小半都给搬了过来，这要是被巡堂护法发现，你我二人想死都很难。",
+      "fact_summary": "韩立认为厉飞雨搬来了七绝堂藏书的一小半，且担心被巡堂护法发现会给两人带来危险。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0037:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0037:009",
+      "chunk_id": "chunk-0037",
+      "source_range": [
+        72423,
+        72456
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          72423,
+          72456
+        ]
+      },
+      "excerpt": "这些书皮左上角，全都统一用毛笔圈注着“七绝堂藏书”几个惹眼的金字。",
+      "fact_summary": "包裹中的秘籍书皮统一圈注“七绝堂藏书”。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0037:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0037:010",
+      "chunk_id": "chunk-0037",
+      "source_range": [
+        70345,
+        70376
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          70345,
+          70376
+        ]
+      },
+      "excerpt": "十几日后的某一下午，韩立又偷偷的溜出神手谷，和厉飞雨碰头去了。",
+      "fact_summary": "韩立从神手谷出来与厉飞雨碰头。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0037:010"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "角色AI行为参考",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "角色修炼历程",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "相遇剧情与对话设计",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "事件因果链（长程因果图）",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "冲突事件分析",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "战斗与保命机制",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "needs_review",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review"
+    },
+    {
+      "template_name": "功法术法神通",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "丹药分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "世界观设定",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "建筑设施与场所功能",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "势力设定",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "needs_review",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review"
+    },
+    {
+      "template_name": "物资产出与消耗",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "needs_review",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0037:001",
+      "kind": "identity_boundary",
+      "fact_summary": "本 chunk 只出现“七绝堂藏书”和“巡堂护法”，未说明七绝堂的组织结构、巡堂护法身份或这些藏书的合法归属边界。",
+      "evidence_ids": [
+        "evidence:chunk-0037:008",
+        "evidence:chunk-0037:009"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        72350,
+        72456
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          72350,
+          72456
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0037:002",
+      "kind": "item_count_missing",
+      "fact_summary": "韩立在本 chunk 只说厉飞雨搬来七绝堂藏书的一小半，未确认数量、是否全为眨眼剑法剑谱，以及是否真正从七绝堂合法/非法取出。",
+      "evidence_ids": [
+        "evidence:chunk-0037:008",
+        "evidence:chunk-0037:009"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        72350,
+        72456
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          72350,
+          72456
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0037:003",
+      "kind": "mechanism_missing",
+      "fact_summary": "尸虫丸在本 chunk 只作为控制韩立的丹药名称出现，具体药性、发作机制、解法和副作用未说明。",
+      "evidence_ids": [
+        "evidence:chunk-0037:002"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        70576,
+        70603
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          70576,
+          70603
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0037:001",
+      "candidate": "巡山弟子",
+      "reason": "仅作为韩立避开的背景巡逻人员出现，无姓名、决策或独立剧情后果；不建角色节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        70985,
+        71028
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          70985,
+          71028
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0037:002",
+      "candidate": "巡堂护法",
+      "reason": "仅作为韩立担心被发现的泛称人员出现，未实际登场、未给姓名或具体行动；不建角色节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        72350,
+        72391
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          72350,
+          72391
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0037:003",
+      "candidate": "家人性命",
+      "reason": "这是墨大夫控制韩立的威胁筹码，但本体表无合适节点类型，且本 chunk 未出现具体家人个体；保留在 evidence 中，不临时造节点。",
+      "confidence": "EXTRACTED",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        70576,
+        70603
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0037",
+        "source_path": "intermediate/chunks/chunk-0037.txt",
+        "source_range": [
+          70576,
+          70603
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

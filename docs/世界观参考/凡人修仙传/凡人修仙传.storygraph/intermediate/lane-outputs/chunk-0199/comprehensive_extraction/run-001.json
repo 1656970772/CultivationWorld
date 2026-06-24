@@ -1,0 +1,1928 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0199:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0199",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T19:08:52+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0199:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立醒来后恢复法力，整理储物袋、符箓和法器，随后前往环形山通道观察月阳宝珠驱雾并准备进山。",
+      "evidence_ids": [
+        "evidence:chunk-0199:001",
+        "evidence:chunk-0199:002",
+        "evidence:chunk-0199:008",
+        "evidence:chunk-0199:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        437831,
+        437963
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          437831,
+          437963
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0199:facility:001",
+      "node_type": "facility",
+      "label": "树洞",
+      "aliases": [],
+      "fact_summary": "韩立醒来后仍在树洞内盘膝恢复，随后才准备离开。",
+      "evidence_ids": [
+        "evidence:chunk-0199:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        437831,
+        437880
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          437831,
+          437880
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0199:tool:001",
+      "node_type": "tool",
+      "label": "储物袋",
+      "aliases": [],
+      "fact_summary": "韩立检查多个储物袋，其中五个储物袋内共有二十三件法器。",
+      "evidence_ids": [
+        "evidence:chunk-0199:002",
+        "evidence:chunk-0199:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        437932,
+        438127
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          437932,
+          438127
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0199:technique:001",
+      "node_type": "technique",
+      "label": "土牢术",
+      "aliases": [],
+      "fact_summary": "回忆中络腮胡子曾被韩立的土牢术困住，无法摆脱。",
+      "evidence_ids": [
+        "evidence:chunk-0199:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        438214,
+        438282
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          438214,
+          438282
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0199:tool:002",
+      "node_type": "tool",
+      "label": "金光砖",
+      "aliases": [],
+      "fact_summary": "回忆中韩立用金光砖拍死被土牢术困住的络腮胡子。",
+      "evidence_ids": [
+        "evidence:chunk-0199:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        438214,
+        438282
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          438214,
+          438282
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0199:inscription:001",
+      "node_type": "inscription",
+      "label": "符宝",
+      "aliases": [],
+      "fact_summary": "叙事说明进入结丹期前，除符宝外，顶级法器是厉害的争斗依仗。",
+      "evidence_ids": [
+        "evidence:chunk-0199:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        438611,
+        438705
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          438611,
+          438705
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0199:weapon:001",
+      "node_type": "weapon",
+      "label": "蓝汪汪的飞刀",
+      "aliases": [],
+      "fact_summary": "韩立从上品法器中挑出蓝汪汪的飞刀，作为备用法器之一。",
+      "evidence_ids": [
+        "evidence:chunk-0199:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        438973,
+        439005
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          438973,
+          439005
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0199:tool:003",
+      "node_type": "tool",
+      "label": "金钹",
+      "aliases": [],
+      "fact_summary": "韩立挑出一面金钹，叙事说明它属于纯粹的进攻性法器。",
+      "evidence_ids": [
+        "evidence:chunk-0199:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        438973,
+        439005
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          438973,
+          439005
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0199:tool:004",
+      "node_type": "tool",
+      "label": "翡翠壶",
+      "aliases": [],
+      "fact_summary": "翡翠壶是韩立挑中的罕见辅助性法器，可喷出绿色毒雾，但毒雾会被五行护罩阻挡，韩立主要看中其遮蔽视线的用途。",
+      "evidence_ids": [
+        "evidence:chunk-0199:006",
+        "evidence:chunk-0199:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        438973,
+        439146
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          438973,
+          439146
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0199:location:001",
+      "node_type": "location",
+      "label": "环形山",
+      "aliases": [],
+      "fact_summary": "环形山被弥天大雾覆盖，空中飞入会引来能飞妖兽围攻，月阳宝珠驱雾后其高大险恶轮廓显现。",
+      "evidence_ids": [
+        "evidence:chunk-0199:008",
+        "evidence:chunk-0199:009",
+        "evidence:chunk-0199:013",
+        "evidence:chunk-0199:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        439254,
+        440613
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          439254,
+          440613
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0199:rule:001",
+      "node_type": "rule",
+      "label": "环形山空中进入风险",
+      "aliases": [],
+      "fact_summary": "驱散迷雾后若从空中直接飞进环形山，会被无数能飞妖兽注意并围攻致死，因此需要走已探明的小路。",
+      "evidence_ids": [
+        "evidence:chunk-0199:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        439254,
+        439340
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          439254,
+          439340
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0199:beast:001",
+      "node_type": "beast",
+      "label": "环形山妖兽",
+      "aliases": [
+        "能飞的妖兽",
+        "各种妖兽"
+      ],
+      "fact_summary": "环形山内存在妖兽风险，空中进入会遭能飞妖兽围攻，大雾内也会遭受各种来无影去无踪的妖兽袭击。",
+      "evidence_ids": [
+        "evidence:chunk-0199:008",
+        "evidence:chunk-0199:009",
+        "evidence:chunk-0199:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        439254,
+        440613
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          439254,
+          440613
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0199:artifact:001",
+      "node_type": "artifact",
+      "label": "月阳宝珠",
+      "aliases": [
+        "宝珠"
+      ],
+      "fact_summary": "月阳宝珠由天阙堡弟子执掌，用于驱散环形山弥天大雾，韩立见识后认为这是高级法宝的真正威力。",
+      "evidence_ids": [
+        "evidence:chunk-0199:009",
+        "evidence:chunk-0199:010",
+        "evidence:chunk-0199:011",
+        "evidence:chunk-0199:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        439466,
+        440299
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          439466,
+          440299
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0199:faction:001",
+      "node_type": "faction",
+      "label": "天阙堡",
+      "aliases": [],
+      "fact_summary": "韩立推测执掌月阳宝珠的天阙堡弟子尚未开始施法驱雾，说明天阙堡弟子承担驱雾职责。",
+      "evidence_ids": [
+        "evidence:chunk-0199:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        439466,
+        439530
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          439466,
+          439530
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0199:location:002",
+      "node_type": "location",
+      "label": "上山之路",
+      "aliases": [
+        "通道",
+        "环形山小路"
+      ],
+      "fact_summary": "历年探出的安全进入环形山的小路有数条，韩立赶到离自己最近的通道入口并等待驱雾。",
+      "evidence_ids": [
+        "evidence:chunk-0199:008",
+        "evidence:chunk-0199:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        439254,
+        440353
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          439254,
+          440353
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0199:001",
+      "edge_type": "located_in",
+      "source": "node:chunk-0199:character:001",
+      "target": "node:chunk-0199:facility:001",
+      "fact_summary": "韩立醒来后仍在树洞内盘膝恢复。",
+      "evidence_ids": [
+        "evidence:chunk-0199:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        437831,
+        437880
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          437831,
+          437880
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0199:002",
+      "edge_type": "prepared_with",
+      "source": "node:chunk-0199:character:001",
+      "target": "node:chunk-0199:tool:001",
+      "fact_summary": "韩立检查储物袋内符箓和法器，为进入环形山做最后准备。",
+      "evidence_ids": [
+        "evidence:chunk-0199:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        437932,
+        437963
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          437932,
+          437963
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0199:003",
+      "edge_type": "selected_backup_item",
+      "source": "node:chunk-0199:character:001",
+      "target": "node:chunk-0199:weapon:001",
+      "fact_summary": "韩立把蓝汪汪的飞刀选作备用法器。",
+      "evidence_ids": [
+        "evidence:chunk-0199:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        438973,
+        439005
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          438973,
+          439005
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0199:004",
+      "edge_type": "selected_backup_item",
+      "source": "node:chunk-0199:character:001",
+      "target": "node:chunk-0199:tool:003",
+      "fact_summary": "韩立把金钹选作备用法器。",
+      "evidence_ids": [
+        "evidence:chunk-0199:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        438973,
+        439005
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          438973,
+          439005
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0199:005",
+      "edge_type": "selected_backup_item",
+      "source": "node:chunk-0199:character:001",
+      "target": "node:chunk-0199:tool:004",
+      "fact_summary": "韩立选中翡翠壶，原因是绿色毒雾虽难让修仙者中毒，但可暂时遮挡敌人视线。",
+      "evidence_ids": [
+        "evidence:chunk-0199:006",
+        "evidence:chunk-0199:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        438973,
+        439146
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          438973,
+          439146
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0199:006",
+      "edge_type": "entry_risk",
+      "source": "node:chunk-0199:location:001",
+      "target": "node:chunk-0199:beast:001",
+      "fact_summary": "从空中直接飞进环形山会被能飞妖兽注意并围攻致死。",
+      "evidence_ids": [
+        "evidence:chunk-0199:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        439254,
+        439340
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          439254,
+          439340
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0199:007",
+      "edge_type": "required_access_route",
+      "source": "node:chunk-0199:character:001",
+      "target": "node:chunk-0199:location:002",
+      "fact_summary": "韩立没有从空中飞入环形山，而是直奔离自己最近的安全通道。",
+      "evidence_ids": [
+        "evidence:chunk-0199:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        439254,
+        439340
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          439254,
+          439340
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0199:008",
+      "edge_type": "used_to_dispel",
+      "source": "node:chunk-0199:artifact:001",
+      "target": "node:chunk-0199:location:001",
+      "fact_summary": "月阳宝珠施展出的光球光点驱散环形山大片迷雾，使山体轮廓显现。",
+      "evidence_ids": [
+        "evidence:chunk-0199:010",
+        "evidence:chunk-0199:011",
+        "evidence:chunk-0199:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        439719,
+        440353
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          439719,
+          440353
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0199:001",
+      "event_type": "recovery_event",
+      "label": "韩立在树洞内恢复法力",
+      "fact_summary": "韩立醒来后没有立即离开树洞，而是盘膝恢复，法力恢复到进入禁地前的巅峰，体力也充沛。",
+      "participants": [
+        "node:chunk-0199:character:001",
+        "node:chunk-0199:facility:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0199:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        437831,
+        437880
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          437831,
+          437880
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0199:002",
+      "event_type": "preparation_event",
+      "label": "韩立整理并筛选备用法器",
+      "fact_summary": "韩立检查储物袋内符箓和法器，确认五个储物袋共有二十三件法器，并从上品法器中挑出飞刀、金钹和翡翠壶备用。",
+      "participants": [
+        "node:chunk-0199:character:001",
+        "node:chunk-0199:tool:001",
+        "node:chunk-0199:weapon:001",
+        "node:chunk-0199:tool:003",
+        "node:chunk-0199:tool:004"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0199:002",
+        "evidence:chunk-0199:003",
+        "evidence:chunk-0199:006",
+        "evidence:chunk-0199:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        437932,
+        439146
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          437932,
+          439146
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0199:003",
+      "event_type": "travel_event",
+      "label": "韩立前往环形山最近通道",
+      "fact_summary": "韩立整理完后悄悄离开树洞，因空中直接飞入环形山会招致妖兽围攻，选择奔向离自己最近的安全通道。",
+      "participants": [
+        "node:chunk-0199:character:001",
+        "node:chunk-0199:location:001",
+        "node:chunk-0199:location:002",
+        "node:chunk-0199:beast:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0199:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        439254,
+        439340
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          439254,
+          439340
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0199:004",
+      "event_type": "item_use_event",
+      "label": "月阳宝珠驱散环形山迷雾",
+      "fact_summary": "西南方向出现惊人灵力和白色光柱，光球爆裂为光点洒入迷雾，大片浓雾逐渐稀薄，环形山轮廓显现，韩立因此见识高级法宝威力。",
+      "participants": [
+        "node:chunk-0199:artifact:001",
+        "node:chunk-0199:location:001",
+        "node:chunk-0199:character:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0199:010",
+        "evidence:chunk-0199:011",
+        "evidence:chunk-0199:012",
+        "evidence:chunk-0199:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        439719,
+        440353
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          439719,
+          440353
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0199:005",
+      "event_type": "entry_event",
+      "label": "潜伏修士抢先进山",
+      "fact_summary": "环形山显现且传来妖兽低吼后，一个黄色人影从草丛中射出进入山中，随后又有数人从不同地点潜入环形山；韩立暂时没有出来，继续观察同行者。",
+      "participants": [
+        "node:chunk-0199:character:001",
+        "node:chunk-0199:location:001",
+        "node:chunk-0199:location:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0199:014",
+        "evidence:chunk-0199:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        440578,
+        440676
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          440578,
+          440676
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0199:001",
+      "chunk_id": "chunk-0199",
+      "source_range": [
+        437831,
+        437880
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          437831,
+          437880
+        ]
+      },
+      "excerpt": "韩立醒来后，并没有立即走出树洞，而是盘膝坐了下来，体内的灵力澎湃着，法力恢复到了进入禁地前的颠峰。",
+      "fact_summary": "韩立在树洞内醒来后盘膝恢复，法力恢复到进入禁地前的巅峰。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0199:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0199:002",
+      "chunk_id": "chunk-0199",
+      "source_range": [
+        437932,
+        437963
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          437932,
+          437963
+        ]
+      },
+      "excerpt": "他这才站起身来，检查了下储物袋内的符箓和法器，做好最后的准备。",
+      "fact_summary": "韩立检查储物袋内符箓和法器，为行动做最后准备。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0199:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0199:003",
+      "chunk_id": "chunk-0199",
+      "source_range": [
+        438087,
+        438127
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          438087,
+          438127
+        ]
+      },
+      "excerpt": "总共五个储物袋中，法器一共二十三件，下品法器五件、中品法器七件、上品法器十一件。",
+      "fact_summary": "五个储物袋内共有二十三件法器，包含下品、中品和上品法器。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0199:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0199:004",
+      "chunk_id": "chunk-0199",
+      "source_range": [
+        438214,
+        438282
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          438214,
+          438282
+        ]
+      },
+      "excerpt": "这么一大堆储物袋，连一件顶级法器都没有，怪不得当日络腮胡子被自己的“土牢术”困住后，丝毫办法都没有，只能眼睁睁的被自己用“金光砖”拍死。",
+      "fact_summary": "络腮胡子曾被韩立用土牢术困住并以金光砖击杀，且这些储物袋中没有顶级法器。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0199:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0199:005",
+      "chunk_id": "chunk-0199",
+      "source_range": [
+        438611,
+        438705
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          438611,
+          438705
+        ]
+      },
+      "excerpt": "韩立这样，拥有顶级法器三四件在身的人，已经可让所谓的精锐弟子们，大流口水了！毕竟在进入结丹期前，除了“符宝”外。顶级法器就算最厉害的争斗依仗了，每多一件顶级法器，都可让自己的实力焕然一新！",
+      "fact_summary": "叙事说明顶级法器在结丹期前极具战斗价值，除符宝外是厉害争斗依仗。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0199:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0199:006",
+      "chunk_id": "chunk-0199",
+      "source_range": [
+        438973,
+        439005
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          438973,
+          439005
+        ]
+      },
+      "excerpt": "一把蓝汪汪的飞刀、一面金钹、一个翡翠壶！这些就是韩立相中的东西。",
+      "fact_summary": "韩立选中蓝汪汪的飞刀、金钹和翡翠壶作为备用法器。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0199:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0199:007",
+      "chunk_id": "chunk-0199",
+      "source_range": [
+        439057,
+        439146
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          439057,
+          439146
+        ]
+      },
+      "excerpt": "从那壶中可喷出绿濛濛的毒雾，围绕敌人的附近，让人中毒亡！猛一听，这壶的功效似乎还不错，但其实却是个鸡肋型的法器。因为所有的五行护罩，都可将毒雾阻挡在外，根本无法让修仙者真正中毒！",
+      "fact_summary": "翡翠壶可喷毒雾，但五行护罩能阻挡毒雾，因此难以让修仙者真正中毒。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0199:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0199:008",
+      "chunk_id": "chunk-0199",
+      "source_range": [
+        439254,
+        439340
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          439254,
+          439340
+        ]
+      },
+      "excerpt": "驱散迷雾后从空中直接飞进环形山，那绝对不行的！会被无数能飞的妖兽给注意到，被围攻而死。而历年来，探出的能安全进入环形山的小路，倒也有那么几条。韩立就直奔向了离他最近的通道。",
+      "fact_summary": "空中直接进入环形山会招致飞行妖兽围攻，韩立选择前往最近的安全通道。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0199:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0199:009",
+      "chunk_id": "chunk-0199",
+      "source_range": [
+        439466,
+        439530
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          439466,
+          439530
+        ]
+      },
+      "excerpt": "怪不得，以前没有“月阳宝珠”时，几乎没人敢上此山！一想到在这样的大雾内，要时刻遭受来无影去无踪的各种妖兽袭击，韩立也无语了半天！",
+      "fact_summary": "没有月阳宝珠时几乎无人敢上环形山，大雾中存在妖兽袭击风险。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0199:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0199:010",
+      "chunk_id": "chunk-0199",
+      "source_range": [
+        439719,
+        439815
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          439719,
+          439815
+        ]
+      },
+      "excerpt": "时间，在一刻钟一刻钟的过去！\n　　韩立在苦等了三四个时辰后，忽然感到西南的方向，传来了一股惊人的灵力，接着一道冲天的白色光柱，在极远之地直冲云霄！在茫茫一片雾海的上空，凝聚成了一颗巨大的光球。",
+      "fact_summary": "韩立等待三四个时辰后，西南方向出现惊人灵力、白色光柱和巨大光球。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0199:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0199:011",
+      "chunk_id": "chunk-0199",
+      "source_range": [
+        440004,
+        440082
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          440004,
+          440082
+        ]
+      },
+      "excerpt": "“砰”的一声惊天动地的巨响，巨型光球终于在高空中爆裂了开来，化为了无数拳头大小的漂亮光点飘落了下来，洒向了其下大片的迷雾，就如同下了一场艳丽之极的光雨一样！",
+      "fact_summary": "巨型光球爆裂为无数光点并洒向大片迷雾。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0199:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0199:012",
+      "chunk_id": "chunk-0199",
+      "source_range": [
+        440241,
+        440299
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          440241,
+          440299
+        ]
+      },
+      "excerpt": "韩立双目眨也不眨的直盯着这一切，他生平第一次见识到了高级法宝的真正威力！他在震撼之余，内心深处充满了羡慕与渴望之情！",
+      "fact_summary": "韩立第一次见识高级法宝的真正威力，并产生羡慕与渴望。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0199:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0199:013",
+      "chunk_id": "chunk-0199",
+      "source_range": [
+        440302,
+        440353
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          440302,
+          440353
+        ]
+      },
+      "excerpt": "大雾在和光球的一番搏斗后，终于开始渐渐稀薄了起来。高大险恶的环形山轮廓，第一次出现在了韩立等人的面前。",
+      "fact_summary": "大雾被光球削弱后渐渐稀薄，高大险恶的环形山轮廓显现。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0199:013"
+    },
+    {
+      "evidence_id": "evidence:chunk-0199:014",
+      "chunk_id": "chunk-0199",
+      "source_range": [
+        440578,
+        440613
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          440578,
+          440613
+        ]
+      },
+      "excerpt": "此时从山中，隐隐传来了几声妖兽的低吼，声音狰狞凄厉，让人听了不寒而栗！",
+      "fact_summary": "环形山中传来妖兽低吼，声音凄厉可怖。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0199:014"
+    },
+    {
+      "evidence_id": "evidence:chunk-0199:015",
+      "chunk_id": "chunk-0199",
+      "source_range": [
+        440629,
+        440676
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          440629,
+          440676
+        ]
+      },
+      "excerpt": "“嗖”的一声，一个黄色人影，如箭一样的从韩立这边草丛中射出，蹿入了黑乎乎的大山中，消失不见了。",
+      "fact_summary": "一个黄色人影从韩立附近草丛中射出并率先进入环形山。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0199:015"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "角色修炼历程",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "角色AI行为参考",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "世界观设定",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "秘境遗迹与机缘",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "法宝分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "战斗与保命机制",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "妖兽与修士关系分析",
+      "requirement_id": "creature_deviant_practice_ecology",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0199:001",
+      "kind": "unresolved_item_grade",
+      "fact_summary": "蓝汪汪的飞刀、金钹和翡翠壶被称为上品法器中的备用法器，但当前 chunk 未说明具体品阶细目、来源主人或后续使用结果。",
+      "evidence_ids": [
+        "evidence:chunk-0199:006",
+        "evidence:chunk-0199:007"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        438973,
+        439146
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          438973,
+          439146
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0199:002",
+      "kind": "actor_identity_missing",
+      "fact_summary": "黄色人影和随后数名潜伏之人进入环形山，但当前 chunk 未明示姓名、门派或具体身份，未单独建角色节点。",
+      "evidence_ids": [
+        "evidence:chunk-0199:015"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        440629,
+        440676
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          440629,
+          440676
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0199:001",
+      "candidate": "普通弟子",
+      "reason": "当前 chunk 中主要作为资源水平对比群体出现，非具体势力或角色；不临时用 faction/character 类型建节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "散修生存方式",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        438611,
+        438705
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          438611,
+          438705
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0199:002",
+      "candidate": "大雾",
+      "reason": "弥天大雾在当前 chunk 是环形山环境状态和月阳宝珠作用对象，已通过环形山节点和驱雾事件表达；不单独创造未在本体中稳定对应的节点类型。",
+      "confidence": "EXTRACTED",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        440302,
+        440353
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0199",
+        "source_path": "intermediate/chunks/chunk-0199.txt",
+        "source_range": [
+          440302,
+          440353
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

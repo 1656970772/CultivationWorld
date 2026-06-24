@@ -1,0 +1,2446 @@
+{
+  "schema": "stage2-extraction-record.v1",
+  "template_name": "妖兽与修士关系分析",
+  "template_file": "妖兽与修士关系分析模板.md",
+  "source_graph": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\graphify-out\\graph.json",
+  "source_novel": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+  "output_language": "zh-CN",
+  "stage2_policy": {
+    "stage2_categories": {
+      "facts": "原作事实",
+      "judgments": "我的判断",
+      "pending_verifications": "待核验",
+      "not_found_items": "未见可靠证据"
+    },
+    "stage2_output_policy": {
+      "default_dir": "drafts",
+      "allow_overwrite_existing_docs": false,
+      "existing_document_action": "write_versioned_draft",
+      "allowed_policies": [
+        "draft",
+        "backup-and-overwrite",
+        "merge"
+      ],
+      "draft_action": "write_draft"
+    },
+    "stage2_render_policy": {
+      "citation_format": "[{evidence_id}]",
+      "draft_entry_policy": {
+        "source_sections": [
+          "facts"
+        ],
+        "field_aliases": {
+          "name": [
+            "name",
+            "title",
+            "item_name",
+            "entity_name",
+            "名称"
+          ],
+          "classification": [
+            "classification",
+            "type",
+            "category_label",
+            "类别",
+            "分类"
+          ],
+          "usage": [
+            "usage",
+            "purpose",
+            "effect",
+            "effects",
+            "用途",
+            "功效"
+          ],
+          "formula": [
+            "formula",
+            "materials",
+            "ingredients",
+            "components",
+            "recipe",
+            "方方",
+            "材料",
+            "成分"
+          ],
+          "source_excerpt": [
+            "source_excerpt",
+            "original_excerpt",
+            "quote",
+            "原文摘录"
+          ],
+          "review_status": [
+            "review_status",
+            "verification_status",
+            "审核状态"
+          ]
+        },
+        "fallback_name": "未命名条目",
+        "kept_fields": [
+          "name",
+          "classification",
+          "usage",
+          "formula",
+          "source_range",
+          "source_excerpt",
+          "evidence_ids",
+          "confidence",
+          "review_status"
+        ]
+      },
+      "final_entry_policy": {
+        "allowed_confidence": [
+          "EXTRACTED"
+        ],
+        "min_evidence_count": 1,
+        "require_explicit_name": true,
+        "require_source_excerpt": true,
+        "required_any_fields": [
+          "usage",
+          "formula"
+        ],
+        "unstable_name_prefixes": [
+          "未名",
+          "未命名",
+          "未知",
+          "不明"
+        ],
+        "unstable_name_contains": [
+          "某种",
+          "某类"
+        ],
+        "composite_name_markers": [
+          "与",
+          "或",
+          "/",
+          "、"
+        ],
+        "review_only_statuses": [
+          "needs_review",
+          "pending_review",
+          "rejected",
+          "ambiguous"
+        ],
+        "allow_missing_review_status": true
+      },
+      "dedupe_policy": {
+        "key_fields": [
+          "name",
+          "classification"
+        ],
+        "merge_text_fields": [
+          "usage",
+          "formula",
+          "source_excerpt"
+        ],
+        "confidence_strategy": "most_conservative",
+        "review_status_strategy": "review_only_wins"
+      },
+      "final_template_policy": {
+        "case_section_names": [
+          "案例",
+          "典型案例",
+          "案例清单",
+          "示例"
+        ],
+        "excluded_section_names": [
+          "待复核",
+          "缺口",
+          "资料来源",
+          "说明"
+        ],
+        "fallback_to_first_non_root_heading": true
+      }
+    }
+  },
+  "coverage_scope": {
+    "scope": "whole_novel",
+    "stage1_chunk_ledger": "coverage/chunk-ledger.json",
+    "chunk_ranges": [
+      {
+        "chunk_id": "chunk-0123",
+        "source_range": [
+          241622,
+          241825
+        ],
+        "source_path": "intermediate/chunks/chunk-0123.txt"
+      },
+      {
+        "chunk_id": "chunk-0185",
+        "source_range": [
+          401502,
+          401780
+        ],
+        "source_path": "intermediate/chunks/chunk-0185.txt"
+      },
+      {
+        "chunk_id": "chunk-0139",
+        "source_range": [
+          283157,
+          283208
+        ],
+        "source_path": null
+      },
+      {
+        "chunk_id": "chunk-0184",
+        "source_range": [
+          400228,
+          400310
+        ],
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+      },
+      {
+        "chunk_id": "chunk-0201",
+        "source_range": [
+          444971,
+          445329
+        ],
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+      },
+      {
+        "chunk_id": "chunk-0202",
+        "source_range": [
+          447424,
+          447782
+        ],
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+      },
+      {
+        "chunk_id": "chunk-0210",
+        "source_range": [
+          470600,
+          470785
+        ],
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+      },
+      {
+        "chunk_id": "chunk-0211",
+        "source_range": [
+          476512,
+          476660
+        ],
+        "source_path": "intermediate/chunks/chunk-0211.txt"
+      },
+      {
+        "chunk_id": "chunk-0223",
+        "source_range": [
+          514448,
+          514485
+        ],
+        "source_path": "intermediate/chunks/chunk-0223.txt"
+      },
+      {
+        "chunk_id": "chunk-0224",
+        "source_range": [
+          515014,
+          515061
+        ],
+        "source_path": "intermediate/chunks/chunk-0224.txt"
+      },
+      {
+        "chunk_id": "chunk-0275",
+        "source_range": [
+          666414,
+          666478
+        ],
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+      },
+      {
+        "chunk_id": "chunk-0276",
+        "source_range": [
+          668957,
+          669011
+        ],
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+      },
+      {
+        "chunk_id": "chunk-0349",
+        "source_range": [
+          882427,
+          882482
+        ],
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+      },
+      {
+        "chunk_id": "chunk-0346",
+        "source_range": [
+          874617,
+          874649
+        ],
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+      },
+      {
+        "chunk_id": "chunk-0348",
+        "source_range": [
+          879965,
+          880007
+        ],
+        "source_path": "intermediate/chunks/chunk-0348.txt"
+      },
+      {
+        "chunk_id": "chunk-0392",
+        "source_range": [
+          1003766,
+          1003963
+        ],
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+      },
+      {
+        "chunk_id": "chunk-0397",
+        "source_range": [
+          1017486,
+          1017681
+        ],
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+      },
+      {
+        "chunk_id": "chunk-0468",
+        "source_range": [
+          1219709,
+          1219792
+        ],
+        "source_path": "intermediate/chunks/chunk-0468.txt"
+      },
+      {
+        "chunk_id": "chunk-0469",
+        "source_range": [
+          1224615,
+          1224647
+        ],
+        "source_path": "intermediate/chunks/chunk-0469.txt"
+      },
+      {
+        "chunk_id": "chunk-0470",
+        "source_range": [
+          1225603,
+          1225636
+        ],
+        "source_path": "intermediate/chunks/chunk-0470.txt"
+      }
+    ],
+    "ledger_path": "coverage/template-run-ledger.json"
+  },
+  "fulfilled_sections": [
+    {
+      "requirement_id": "creature_deviant_practice_ecology",
+      "requirement_kind": "template_category",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0123:009",
+        "evidence:chunk-0185:007",
+        "evidence:chunk-0139:010",
+        "evidence:chunk-0184:009",
+        "evidence:chunk-0185:008",
+        "evidence:chunk-0201:007",
+        "evidence:chunk-0202:004",
+        "evidence:chunk-0202:006",
+        "evidence:chunk-0210:004",
+        "evidence:chunk-0210:005",
+        "evidence:chunk-0211:008",
+        "evidence:chunk-0211:009",
+        "evidence:chunk-0211:015",
+        "evidence:chunk-0223:015",
+        "evidence:chunk-0223:017",
+        "evidence:chunk-0224:004",
+        "evidence:chunk-0224:006",
+        "evidence:chunk-0224:011",
+        "evidence:chunk-0275:005",
+        "evidence:chunk-0275:010",
+        "evidence:chunk-0276:005",
+        "evidence:chunk-0349:004",
+        "evidence:chunk-0349:005",
+        "evidence:chunk-0349:007",
+        "evidence:chunk-0346:009",
+        "evidence:chunk-0346:013",
+        "evidence:chunk-0346:014",
+        "evidence:chunk-0348:005",
+        "evidence:chunk-0348:007",
+        "evidence:chunk-0348:020",
+        "evidence:chunk-0348:021",
+        "evidence:chunk-0392:007",
+        "evidence:chunk-0392:011",
+        "evidence:chunk-0392:012",
+        "evidence:chunk-0392:014",
+        "evidence:chunk-0397:004",
+        "evidence:chunk-0397:005",
+        "evidence:chunk-0397:008",
+        "evidence:chunk-0397:010",
+        "evidence:chunk-0468:001",
+        "evidence:chunk-0468:004",
+        "evidence:chunk-0468:006",
+        "evidence:chunk-0469:008",
+        "evidence:chunk-0469:012",
+        "evidence:chunk-0469:013",
+        "evidence:chunk-0470:001",
+        "evidence:chunk-0470:002"
+      ],
+      "notes": [
+        "覆盖妖兽/灵兽/灵虫与修士之间的猎杀、驯养、租借、契约、驱使、交易式转让、失控和资源回收关系。"
+      ]
+    }
+  ],
+  "fulfilled_fields": [
+    {
+      "requirement_id": "creature_deviant_practice_ecology.target.1",
+      "requirement_kind": "template_category",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0123:009",
+        "evidence:chunk-0185:007",
+        "evidence:chunk-0139:010",
+        "evidence:chunk-0184:009",
+        "evidence:chunk-0185:008",
+        "evidence:chunk-0201:007",
+        "evidence:chunk-0202:004",
+        "evidence:chunk-0202:006",
+        "evidence:chunk-0210:004",
+        "evidence:chunk-0210:005",
+        "evidence:chunk-0211:008",
+        "evidence:chunk-0211:009",
+        "evidence:chunk-0211:015",
+        "evidence:chunk-0223:015",
+        "evidence:chunk-0223:017",
+        "evidence:chunk-0224:004",
+        "evidence:chunk-0224:006",
+        "evidence:chunk-0224:011",
+        "evidence:chunk-0275:005",
+        "evidence:chunk-0275:010",
+        "evidence:chunk-0276:005",
+        "evidence:chunk-0349:004",
+        "evidence:chunk-0349:005",
+        "evidence:chunk-0349:007",
+        "evidence:chunk-0346:009",
+        "evidence:chunk-0346:013",
+        "evidence:chunk-0346:014",
+        "evidence:chunk-0348:005",
+        "evidence:chunk-0348:007",
+        "evidence:chunk-0348:020",
+        "evidence:chunk-0348:021",
+        "evidence:chunk-0392:007",
+        "evidence:chunk-0392:011",
+        "evidence:chunk-0392:012",
+        "evidence:chunk-0392:014",
+        "evidence:chunk-0397:004",
+        "evidence:chunk-0397:005",
+        "evidence:chunk-0397:008",
+        "evidence:chunk-0397:010",
+        "evidence:chunk-0468:001",
+        "evidence:chunk-0468:004",
+        "evidence:chunk-0468:006",
+        "evidence:chunk-0469:008",
+        "evidence:chunk-0469:012",
+        "evidence:chunk-0469:013",
+        "evidence:chunk-0470:001",
+        "evidence:chunk-0470:002"
+      ],
+      "notes": [
+        "覆盖妖兽、灵兽、灵虫、特殊灵兽的名称、种类、地域/场景、能力、资源价值和关系用途。"
+      ]
+    },
+    {
+      "requirement_id": "creature_deviant_practice_ecology.target.2",
+      "requirement_kind": "template_category",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0123:009",
+        "evidence:chunk-0185:007",
+        "evidence:chunk-0139:010",
+        "evidence:chunk-0184:009",
+        "evidence:chunk-0185:008",
+        "evidence:chunk-0201:007",
+        "evidence:chunk-0202:004",
+        "evidence:chunk-0202:006",
+        "evidence:chunk-0210:004",
+        "evidence:chunk-0210:005",
+        "evidence:chunk-0211:008",
+        "evidence:chunk-0211:009",
+        "evidence:chunk-0211:015",
+        "evidence:chunk-0223:015",
+        "evidence:chunk-0223:017",
+        "evidence:chunk-0224:004",
+        "evidence:chunk-0224:006",
+        "evidence:chunk-0224:011",
+        "evidence:chunk-0275:005",
+        "evidence:chunk-0275:010",
+        "evidence:chunk-0276:005",
+        "evidence:chunk-0349:004",
+        "evidence:chunk-0349:005",
+        "evidence:chunk-0349:007",
+        "evidence:chunk-0346:009",
+        "evidence:chunk-0346:013",
+        "evidence:chunk-0346:014",
+        "evidence:chunk-0348:005",
+        "evidence:chunk-0348:007",
+        "evidence:chunk-0348:020",
+        "evidence:chunk-0348:021",
+        "evidence:chunk-0392:007",
+        "evidence:chunk-0392:011",
+        "evidence:chunk-0392:012",
+        "evidence:chunk-0392:014",
+        "evidence:chunk-0397:004",
+        "evidence:chunk-0397:005",
+        "evidence:chunk-0397:008",
+        "evidence:chunk-0397:010",
+        "evidence:chunk-0468:001",
+        "evidence:chunk-0468:004",
+        "evidence:chunk-0468:006",
+        "evidence:chunk-0469:008",
+        "evidence:chunk-0469:012",
+        "evidence:chunk-0469:013",
+        "evidence:chunk-0470:001",
+        "evidence:chunk-0470:002"
+      ],
+      "notes": [
+        "覆盖猎杀、驯养、租借、契约、控制、合作、材料回收和灵兽转让等互动类型。"
+      ]
+    },
+    {
+      "requirement_id": "creature_deviant_practice_ecology.target.4",
+      "requirement_kind": "template_category",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0123:009",
+        "evidence:chunk-0185:007",
+        "evidence:chunk-0139:010",
+        "evidence:chunk-0184:009",
+        "evidence:chunk-0185:008",
+        "evidence:chunk-0201:007",
+        "evidence:chunk-0202:004",
+        "evidence:chunk-0202:006",
+        "evidence:chunk-0210:004",
+        "evidence:chunk-0210:005",
+        "evidence:chunk-0211:008",
+        "evidence:chunk-0211:009",
+        "evidence:chunk-0211:015",
+        "evidence:chunk-0223:015",
+        "evidence:chunk-0223:017",
+        "evidence:chunk-0224:004",
+        "evidence:chunk-0224:006",
+        "evidence:chunk-0224:011",
+        "evidence:chunk-0275:005",
+        "evidence:chunk-0275:010",
+        "evidence:chunk-0276:005",
+        "evidence:chunk-0349:004",
+        "evidence:chunk-0349:005",
+        "evidence:chunk-0349:007",
+        "evidence:chunk-0346:009",
+        "evidence:chunk-0346:013",
+        "evidence:chunk-0346:014",
+        "evidence:chunk-0348:005",
+        "evidence:chunk-0348:007",
+        "evidence:chunk-0348:020",
+        "evidence:chunk-0348:021",
+        "evidence:chunk-0392:007",
+        "evidence:chunk-0392:011",
+        "evidence:chunk-0392:012",
+        "evidence:chunk-0392:014",
+        "evidence:chunk-0397:004",
+        "evidence:chunk-0397:005",
+        "evidence:chunk-0397:008",
+        "evidence:chunk-0397:010",
+        "evidence:chunk-0468:001",
+        "evidence:chunk-0468:004",
+        "evidence:chunk-0468:006",
+        "evidence:chunk-0469:008",
+        "evidence:chunk-0469:012",
+        "evidence:chunk-0469:013",
+        "evidence:chunk-0470:001",
+        "evidence:chunk-0470:002"
+      ],
+      "notes": [
+        "覆盖妖兽互动对角色战斗、洞府选择、资源取得、风险暴露和后续冲突的影响。"
+      ]
+    }
+  ],
+  "fulfilled_tables": [],
+  "fulfilled_cards": [],
+  "fulfilled_cases": [
+    {
+      "case_name": "韩立驱使云翅鸟跟踪孙二狗",
+      "requirement_id": "creature_deviant_practice_ecology.case",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0123:009",
+        "evidence:chunk-0185:007"
+      ],
+      "notes": [
+        "灵宠 / 侦察监视 / 主仆驱使"
+      ]
+    },
+    {
+      "case_name": "燕家圈养双首鹜",
+      "requirement_id": "creature_deviant_practice_ecology.case",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0139:010"
+      ],
+      "notes": [
+        "家族圈养 / 载人灵禽 / 势力威慑"
+      ]
+    },
+    {
+      "case_name": "灵兽山弟子驱使寒冰蟾与五彩飞蛾",
+      "requirement_id": "creature_deviant_practice_ecology.case",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0184:009",
+        "evidence:chunk-0185:008"
+      ],
+      "notes": [
+        "驱兽伏杀 / 灵虫警戒 / 宗门手法"
+      ]
+    },
+    {
+      "case_name": "巨型蜈蚣守护紫猴花并被韩立暗算",
+      "requirement_id": "creature_deviant_practice_ecology.case",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0201:007",
+        "evidence:chunk-0202:004",
+        "evidence:chunk-0202:006"
+      ],
+      "notes": [
+        "守药冲突 / 猎杀 / 材料回收"
+      ]
+    },
+    {
+      "case_name": "墨蛟进阶后二阶化并被合力击杀",
+      "requirement_id": "creature_deviant_practice_ecology.case",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0210:004",
+        "evidence:chunk-0210:005",
+        "evidence:chunk-0211:008",
+        "evidence:chunk-0211:009",
+        "evidence:chunk-0211:015"
+      ],
+      "notes": [
+        "高危猎妖 / 协作击杀 / 元神与材料分配"
+      ]
+    },
+    {
+      "case_name": "黄枫谷麒麟阁出租双瞳鼠",
+      "requirement_id": "creature_deviant_practice_ecology.case",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0223:015",
+        "evidence:chunk-0223:017",
+        "evidence:chunk-0224:004",
+        "evidence:chunk-0224:006",
+        "evidence:chunk-0224:011"
+      ],
+      "notes": [
+        "宗门驯养 / 灵兽租借 / 探查服务"
+      ]
+    },
+    {
+      "case_name": "韩立孵化并控制血玉蜘蛛",
+      "requirement_id": "creature_deviant_practice_ecology.case",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0275:005",
+        "evidence:chunk-0275:010",
+        "evidence:chunk-0276:005",
+        "evidence:chunk-0349:004",
+        "evidence:chunk-0349:005",
+        "evidence:chunk-0349:007"
+      ],
+      "notes": [
+        "妖兽卵获取 / 控神禁制 / 灵宠培养"
+      ]
+    },
+    {
+      "case_name": "御灵宗修士失控的金背妖螂",
+      "requirement_id": "creature_deviant_practice_ecology.case",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0346:009",
+        "evidence:chunk-0346:013",
+        "evidence:chunk-0346:014",
+        "evidence:chunk-0348:005",
+        "evidence:chunk-0348:007",
+        "evidence:chunk-0348:020",
+        "evidence:chunk-0348:021"
+      ],
+      "notes": [
+        "驯养失控 / 借兽杀人 / 阵法猎杀"
+      ]
+    },
+    {
+      "case_name": "韩立以血玉蜘蛛捕获并培育噬金虫",
+      "requirement_id": "creature_deviant_practice_ecology.case",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0392:007",
+        "evidence:chunk-0392:011",
+        "evidence:chunk-0392:012",
+        "evidence:chunk-0392:014",
+        "evidence:chunk-0397:004",
+        "evidence:chunk-0397:005",
+        "evidence:chunk-0397:008",
+        "evidence:chunk-0397:010",
+        "evidence:chunk-0468:001",
+        "evidence:chunk-0468:004",
+        "evidence:chunk-0468:006"
+      ],
+      "notes": [
+        "灵虫捕获 / 饲养培育 / 虫群作战"
+      ]
+    },
+    {
+      "case_name": "韩立以护送条件索要啼魂兽并炼化鸣魂珠",
+      "requirement_id": "creature_deviant_practice_ecology.case",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0469:008",
+        "evidence:chunk-0469:012",
+        "evidence:chunk-0469:013",
+        "evidence:chunk-0470:001",
+        "evidence:chunk-0470:002"
+      ],
+      "notes": [
+        "特殊灵兽 / 控制法器 / 所有权转移"
+      ]
+    }
+  ],
+  "facts": [
+    {
+      "name": "韩立驱使云翅鸟跟踪孙二狗",
+      "classification": "灵宠 / 侦察监视 / 主仆驱使",
+      "usage": "韩立以黄栗丸喂食并下达跟踪命令，云翅鸟可远距离监视目标；后来入黄枫谷后被放养太岳山脉，仍曾回来讨要丸药，最终飞野不返。",
+      "formula": "原文未说明固定配方；按事件记录资源投入、控制条件或材料流向。",
+      "content": "关系类型：灵宠驱使、跟踪监视、放养关系。参与方为韩立、云翅鸟、被跟踪的孙二狗。主动方是韩立，他以黄栗丸作为喂食和驱使条件，命云翅鸟跟踪孙二狗，若对方离城逃跑就回报。资源流向是黄栗丸投入到灵宠喂养，云翅鸟提供侦察与信息回报。关系变化上，云翅鸟后来被韩立放养到太岳山脉，初期还会回来讨要黄栗丸，后来飞野后一去不返。风险与限制是这种关系依赖灵性、喂养和活动范围，放养后控制力减弱。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0123:009",
+        "evidence:chunk-0185:007"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0123:009",
+          "chunk_id": "chunk-0123",
+          "source_range": [
+            241622,
+            241825
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0123",
+            "source_path": "intermediate/chunks/chunk-0123.txt",
+            "source_range": [
+              241622,
+              241825
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0185:007",
+          "chunk_id": "chunk-0185",
+          "source_range": [
+            401502,
+            401780
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0185",
+            "source_path": "intermediate/chunks/chunk-0185.txt",
+            "source_range": [
+              401502,
+              401780
+            ]
+          }
+        }
+      ],
+      "source_excerpt": "韩立以黄栗丸喂云翅鸟，并命它跟踪刚离开的孙二狗，若孙二狗离城逃跑就回报。；韩立回忆曾用云翅鸟远距离跟踪监视他人，入黄枫谷后将其放养太岳山脉；云翅鸟曾回来讨要黄栗丸，后来飞野后一去不返。",
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "燕家圈养双首鹜",
+      "classification": "家族圈养 / 载人灵禽 / 势力威慑",
+      "usage": "双首鹜被明确称为第一修仙大族姑雨山燕家圈养的灵禽，背上载人，旁观者因燕家身份而不敢轻举妄动。",
+      "formula": "原文未说明固定配方；按事件记录资源投入、控制条件或材料流向。",
+      "content": "关系类型：家族圈养、飞行载具、势力身份标识。参与方为姑雨山燕家、双首鹜、围观修士。主动方是燕家长期圈养并使用灵禽；被动方是围观者，他们因灵禽背后有燕家成员而被威慑。触发场景是交易场路上灵禽飞过。资源与功能不表现为材料回收，而是交通、身份显示和安全威慑。原文未说明圈养流程、饲养成本、契约方式或双首鹜与燕家的长期关系变化。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0139:010"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0139:010",
+          "chunk_id": "chunk-0139",
+          "source_range": [
+            283157,
+            283208
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0139",
+            "chapter_hint": "第一百三十六章 燕家",
+            "source_range": [
+              283157,
+              283208
+            ]
+          }
+        }
+      ],
+      "source_excerpt": "有人警告围观者不要动手，称此鸟是第一修仙大族姑雨山燕家圈养的灵禽“双首鹜”，上面肯定有燕家的人。",
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "灵兽山弟子驱使寒冰蟾与五彩飞蛾",
+      "classification": "驱兽伏杀 / 灵虫警戒 / 宗门手法",
+      "usage": "灵兽山二人以驱兽粉暂时控制寒冰蟾，从背后施放冰锥术杀人；离开后又放出五彩飞蛾，形成百余丈活警戒网。",
+      "formula": "原文未说明固定配方；按事件记录资源投入、控制条件或材料流向。",
+      "content": "关系类型：驱兽伏杀、灵虫警戒。参与方为灵兽山二人、寒冰蟾、天阙堡弟子和五彩飞蛾。主动方是灵兽山弟子，他们提前到乌龙潭撒驱兽粉，暂时控制一窝寒冰蟾，并借其冰锥术从背后袭杀目标；离开后又放出五彩飞蛾，借飞蛾颜色融入环境来侦测接近者。资源流向上，妖兽/灵虫并非被回收，而是被当作战斗与预警工具。风险在于手法隐蔽，旁人可能误认飞蛾为禁地自然生物。原文未说明驱兽粉配方、控制时限的精确边界。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0184:009",
+        "evidence:chunk-0185:008"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0184:009",
+          "chunk_id": "chunk-0184",
+          "source_range": [
+            400228,
+            400310
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0184",
+            "source_range": [
+              400228,
+              400310
+            ],
+            "chapter_hint": "第一百八十章 乌龙潭",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0185:008",
+          "chunk_id": "chunk-0185",
+          "source_range": [
+            401811,
+            402123
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0185",
+            "source_path": "intermediate/chunks/chunk-0185.txt",
+            "source_range": [
+              401811,
+              402123
+            ]
+          }
+        }
+      ],
+      "source_excerpt": "灵兽山二人提前到乌龙潭撒驱兽粉暂时控制寒冰蟾，并借寒冰蟾从背后施放冰锥术杀死蓝衣人。；灵兽山二人离开乌龙潭后各自放出大片五彩飞蛾，飞蛾散布百余丈、颜色融入景物，形成发现接近者的活警戒网。",
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "巨型蜈蚣守护紫猴花并被韩立暗算",
+      "classification": "守药冲突 / 猎杀 / 材料回收",
+      "usage": "巨型蜈蚣趴在紫猴花附近，韩立以金蚨子母刃陷阱剖腹杀死，随后切下可抵挡顶级法器攻击的背部硬壳收入储物袋。",
+      "formula": "原文未说明固定配方；按事件记录资源投入、控制条件或材料流向。",
+      "content": "关系类型：妖兽守药、资源点争夺、修士猎妖回收。参与方为韩立和守护紫猴花的巨型蜈蚣。主动方先是韩立发现灵药后试图绕开/处理守护妖兽，随后布置金蚨子母刃陷阱；被动方是巨型蜈蚣，它作为毒虫类妖兽守在紫色石壁下。互动流程是韩立判断其至少中阶且毒术难缠，用倒插并遮光的金刃诱其追击，最终剖腹击杀。资源流向是紫猴花所在资源点被修士夺取，蜈蚣背壳被切割收走，用作防护材料。风险与代价包括毒血气味、强硬外壳、时间紧迫和毒虫类妖兽难缠。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0201:007",
+        "evidence:chunk-0202:004",
+        "evidence:chunk-0202:006"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0201:007",
+          "chunk_id": "chunk-0201",
+          "source_range": [
+            444971,
+            445329
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0201",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              444971,
+              445329
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0202:004",
+          "chunk_id": "chunk-0202",
+          "source_range": [
+            447424,
+            447782
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0202",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              447424,
+              447782
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0202:006",
+          "chunk_id": "chunk-0202",
+          "source_range": [
+            447945,
+            448305
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0202",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              447945,
+              448305
+            ]
+          }
+        }
+      ],
+      "source_excerpt": "紫色石壁下趴着巨型蜈蚣；韩立根据毒虫类妖兽恶名和体型判断其至少中阶，并意识到它守护着紫猴花。；韩立拔出金蚨子母刃子刃；叙事说明他先前将八柄子刃倒插通道并以黑泥遮光，巨蜈蚣追击时被金刃剖腹而死。；韩立测试巨蜈蚣尸体各部后发现背部外壳最硬，切下几块足以抵挡顶级法器全力一击的硬壳收起，并因时间紧只带走部分后转向天灵果目标。",
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "墨蛟进阶后二阶化并被合力击杀",
+      "classification": "高危猎妖 / 协作击杀 / 元神与材料分配",
+      "usage": "墨蛟进化到第二阶后堪比筑基中阶，紫液灭杀掩月宗弟子；少女以小瓶摄走墨蛟元神，韩立获得躯体并可回收蛟皮、尖角、爪子和残余丹液。",
+      "formula": "原文未说明固定配方；按事件记录资源投入、控制条件或材料流向。",
+      "content": "关系类型：高危猎妖、协作击杀、资源分配。参与方为墨蛟、掩月宗少女及弟子、韩立。主动/被动关系在战斗中变化：掩月宗一方起初围杀，墨蛟进阶后二阶化并反杀弟子，韩立和少女随后协力压制。风险与代价极高，墨蛟实力被判断堪比筑基中阶，紫液能溶解防护并使五六名弟子丧命。结束方式是少女用水晶小瓶摄出元神，墨蛟躯体落给韩立。资源流向清楚：元神归少女，躯体归韩立；蛟皮可炼护甲，尖角爪子可炼顶级法器，残余丹液可入珍贵丹药。后续影响包括韩立获得高价值材料，也暴露出高阶妖兽材料在修士间的巨大价值。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0210:004",
+        "evidence:chunk-0210:005",
+        "evidence:chunk-0211:008",
+        "evidence:chunk-0211:009",
+        "evidence:chunk-0211:015"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0210:004",
+          "chunk_id": "chunk-0210",
+          "source_range": [
+            470600,
+            470785
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0210",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              470600,
+              470785
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0210:005",
+          "chunk_id": "chunk-0210",
+          "source_range": [
+            470788,
+            471371
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0210",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              470788,
+              471371
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0211:008",
+          "chunk_id": "chunk-0211",
+          "source_range": [
+            476512,
+            476660
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0211",
+            "source_path": "intermediate/chunks/chunk-0211.txt",
+            "source_range": [
+              476512,
+              476660
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0211:009",
+          "chunk_id": "chunk-0211",
+          "source_range": [
+            476743,
+            476923
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0211",
+            "source_path": "intermediate/chunks/chunk-0211.txt",
+            "source_range": [
+              476743,
+              476923
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0211:015",
+          "chunk_id": "chunk-0211",
+          "source_range": [
+            478076,
+            478248
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0211",
+            "source_path": "intermediate/chunks/chunk-0211.txt",
+            "source_range": [
+              478076,
+              478248
+            ]
+          }
+        }
+      ],
+      "source_excerpt": "少女判断墨蛟已进化到第二阶、实力堪比筑基中阶，命令众人撤退并以朱雀环防御。；部分掩月宗弟子不听警告硬接墨蛟紫液，护身法器被溶解，五六名弟子被紫液消灭，只留下数丈深洞。；少女用水晶小瓶放出黑气，从墨蛟体内摄出绿色小蛟并收入瓶中。；韩立判断少女收走墨蛟元神，少女随后将朱雀环收回，并把墨蛟躯体分给韩立。；韩立用银剑剖开墨蛟，少女说明二阶墨蛟全身是材料，蛟皮、尖角爪子和残余丹液分别可用于护甲、顶级法器和珍贵丹药。",
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "黄枫谷麒麟阁出租双瞳鼠",
+      "classification": "宗门驯养 / 灵兽租借 / 探查服务",
+      "usage": "双瞳鼠经训练后可寻找灵眼之地；韩立向麒麟阁租用，按每日一块低阶灵石付费，并以土梨果喂养，三日后放归麒麟阁。",
+      "formula": "原文未说明固定配方；按事件记录资源投入、控制条件或材料流向。",
+      "content": "关系类型：宗门豢养、灵兽租借、探查服务。参与方为黄枫谷麒麟阁、女弟子、韩立和双瞳鼠。主动方是韩立提出租用；麒麟阁作为制度化管理者交付灵兽并收取灵石。触发原因是韩立需要寻找洞府/灵眼之地。资源流向为韩立支付三块灵石，麒麟阁提供双瞳鼠和土梨果；双瞳鼠提供寻觅灵气稠密地点的能力。关系限制包括租期、喂食要求、三日后自行返回麒麟阁，以及韩立用绳索防止跟丢。原文未说明麒麟阁长期繁育规模和完整训练流程。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0223:015",
+        "evidence:chunk-0223:017",
+        "evidence:chunk-0224:004",
+        "evidence:chunk-0224:006",
+        "evidence:chunk-0224:011"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0223:015",
+          "chunk_id": "chunk-0223",
+          "source_range": [
+            514448,
+            514485
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0223",
+            "source_path": "intermediate/chunks/chunk-0223.txt",
+            "source_range": [
+              514448,
+              514485
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0223:017",
+          "chunk_id": "chunk-0223",
+          "source_range": [
+            514651,
+            514680
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0223",
+            "source_path": "intermediate/chunks/chunk-0223.txt",
+            "source_range": [
+              514651,
+              514680
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0224:004",
+          "chunk_id": "chunk-0224",
+          "source_range": [
+            515014,
+            515061
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0224",
+            "source_path": "intermediate/chunks/chunk-0224.txt",
+            "source_range": [
+              515014,
+              515061
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0224:006",
+          "chunk_id": "chunk-0224",
+          "source_range": [
+            515095,
+            515193
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0224",
+            "source_path": "intermediate/chunks/chunk-0224.txt",
+            "source_range": [
+              515095,
+              515193
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0224:011",
+          "chunk_id": "chunk-0224",
+          "source_range": [
+            516101,
+            516183
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0224",
+            "source_path": "intermediate/chunks/chunk-0224.txt",
+            "source_range": [
+              516101,
+              516183
+            ]
+          }
+        }
+      ],
+      "source_excerpt": "经过训练后双瞳鼠可作为寻找灵眼之地的探子，受黄枫谷弟子喜爱。；韩立询问是否有空闲双瞳鼠，并提出租用一只两日。；麒麟阁女弟子把双瞳鼠带给韩立，并说明租借价格为每日低阶灵石一块。；女弟子说明双瞳鼠三日后会自行返回麒麟阁，并把土梨果交给韩立作为喂食之物。；韩立给双瞳鼠套上绳索防止跟丢，并用土梨果喂食。",
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "韩立孵化并控制血玉蜘蛛",
+      "classification": "妖兽卵获取 / 控神禁制 / 灵宠培养",
+      "usage": "韩立取得蜘蛛妖兽卵，以灵眼之泉滋育孵化，又用控神法阵和精血控制；孵化后的血玉蜘蛛将韩立视为父母，被装入皮袋带走慢慢调教。",
+      "formula": "原文未说明固定配方；按事件记录资源投入、控制条件或材料流向。",
+      "content": "关系类型：妖兽卵获取、契约/禁制控制、灵宠培养。参与方为韩立、蜘蛛妖兽卵、血玉蜘蛛。主动方是韩立，他在洞穴中发现透明圆卵后带回洞府，以灵眼之泉滋育孵化，再用控神法阵和精血处理。控制条件为控神禁制生效，孵化出的白蜘蛛将韩立视为父母并表现亲近。资源流向为灵眼之泉、精血和调教时间投入到灵宠培养；血玉蜘蛛则成为可携带、可调教的奇虫/灵宠资源。风险与代价在本证据中未展开，原文未说明禁制失败反噬。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0275:005",
+        "evidence:chunk-0275:010",
+        "evidence:chunk-0276:005",
+        "evidence:chunk-0349:004",
+        "evidence:chunk-0349:005",
+        "evidence:chunk-0349:007"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0275:005",
+          "chunk_id": "chunk-0275",
+          "source_range": [
+            666414,
+            666478
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0275",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              666414,
+              666478
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0275:010",
+          "chunk_id": "chunk-0275",
+          "source_range": [
+            667464,
+            667503
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0275",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              667464,
+              667503
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0276:005",
+          "chunk_id": "chunk-0276",
+          "source_range": [
+            668957,
+            669011
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0276",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              668957,
+              669011
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0349:004",
+          "chunk_id": "chunk-0349",
+          "source_range": [
+            882427,
+            882482
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0349",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              882427,
+              882482
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0349:005",
+          "chunk_id": "chunk-0349",
+          "source_range": [
+            882598,
+            882647
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0349",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              882598,
+              882647
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0349:007",
+          "chunk_id": "chunk-0349",
+          "source_range": [
+            882871,
+            882937
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0349",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              882871,
+              882937
+            ]
+          }
+        }
+      ],
+      "source_excerpt": "韩立发现两枚拳头大小的透明圆卵，并判断它们是蜘蛛妖兽卵。；韩立将蜘蛛卵浸泡于灵眼之泉，用灵气滋育其孵化。；韩立画控神法阵并滴入精血，把蜘蛛卵放入阵中控制。；灵眼之泉中两枚蜘蛛卵孵化成两只拳头大小的白蜘蛛。；韩立先前用精血下的控神禁制生效，两只小蜘蛛将韩立视为父母并表现亲近。；韩立把两只血玉蜘蛛装入皮袋带在身上，准备以后慢慢调教。",
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "御灵宗修士失控的金背妖螂",
+      "classification": "驯养失控 / 借兽杀人 / 阵法猎杀",
+      "usage": "韩立根据对方御灵宗身份推测巨螳螂是驯养灵兽，又判断对方已无法控制它；巨螳螂后被玉简称为金背妖螂，韩立以阵法圈套和符宝击杀。",
+      "formula": "原文未说明固定配方；按事件记录资源投入、控制条件或材料流向。",
+      "content": "关系类型：驯养失控、借兽杀人、阵法猎杀。参与方为韩立、御灵宗修士、巨螳螂/金背妖螂。主动方表面上是御灵宗修士借巨螳螂杀人，但韩立推断对方也控制不了螳螂灵兽，否则不会不让其贴身保护。关系变化是灵兽从可能被御灵宗驯养，转为失控威胁。结束方式是韩立利用其有灵智但不懂阵法的弱点设圈套，在傀儡掩护下用符宝击穿头部。后续资源价值由玉简补充：此虫被称为金背妖螂，在众多奇虫中排第七十三位。失控细节与原契约方式仍需复核。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0346:009",
+        "evidence:chunk-0346:013",
+        "evidence:chunk-0346:014",
+        "evidence:chunk-0348:005",
+        "evidence:chunk-0348:007",
+        "evidence:chunk-0348:020",
+        "evidence:chunk-0348:021"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0346:009",
+          "chunk_id": "chunk-0346",
+          "source_range": [
+            874617,
+            874649
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0346",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              874617,
+              874649
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0346:013",
+          "chunk_id": "chunk-0346",
+          "source_range": [
+            875503,
+            875540
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0346",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              875503,
+              875540
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0346:014",
+          "chunk_id": "chunk-0346",
+          "source_range": [
+            875572,
+            875604
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0346",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              875572,
+              875604
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0348:005",
+          "chunk_id": "chunk-0348",
+          "source_range": [
+            879965,
+            880007
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0348",
+            "source_path": "intermediate/chunks/chunk-0348.txt",
+            "source_range": [
+              879965,
+              880007
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0348:007",
+          "chunk_id": "chunk-0348",
+          "source_range": [
+            880283,
+            880338
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0348",
+            "source_path": "intermediate/chunks/chunk-0348.txt",
+            "source_range": [
+              880283,
+              880338
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0348:020",
+          "chunk_id": "chunk-0348",
+          "source_range": [
+            881686,
+            881718
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0348",
+            "source_path": "intermediate/chunks/chunk-0348.txt",
+            "source_range": [
+              881686,
+              881718
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0348:021",
+          "chunk_id": "chunk-0348",
+          "source_range": [
+            881741,
+            881778
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0348",
+            "source_path": "intermediate/chunks/chunk-0348.txt",
+            "source_range": [
+              881741,
+              881778
+            ]
+          }
+        }
+      ],
+      "source_excerpt": "韩立基于对方御灵宗修士身份，推测巨螳螂十有八九是其驯养灵兽。；韩立判断对方也控制不了螳螂灵兽，否则不会不让其贴身保护。；韩立推断对方因控制不了失控巨螳螂，才骗他去山洞借巨螳螂杀人。；巨螳螂有一定灵智但不懂阵法，落入韩立圈套并被困阵内。；韩立用带柄黄色小刀符宝在傀儡掩护下击穿巨螳螂头部，将其击毙在大阵中。；玉简将此前的巨螳螂称为金背妖螂。；金背妖螂在众多奇虫中排名第七十三位，前面还有七十二种更厉害的妖虫。",
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "韩立以血玉蜘蛛捕获并培育噬金虫",
+      "classification": "灵虫捕获 / 饲养培育 / 虫群作战",
+      "usage": "韩立利用血玉蜘蛛克制噬金虫幼虫并活捉，后以灵兽袋、玉璧密室、虫粮和饲灵丸培育；虫群后来可从灵兽袋中放出，与铁火蚁交战并占上风。",
+      "formula": "原文未说明固定配方；按事件记录资源投入、控制条件或材料流向。",
+      "content": "关系类型：灵虫捕获、长期培育、虫群作战。参与方为韩立、血玉蜘蛛、噬金虫、铁火蚁。主动方是韩立，他先判断血玉蜘蛛可克制银色噬金虫幼虫，命血玉蜘蛛喷网活捉；随后按奇虫特性选择盛装方式，使用玉璧密室、虫粮和饲灵丸进行培育。关系限制明确：普通灵兽宜用灵兽袋，奇虫榜奇虫生命力强韧，驱兽御敌仍以灵兽袋最合用。资源投入包括虫粮、饲灵丸、灵兽袋和调教时间；噬金虫因数量庞大，短期培育成本过高，韩立一度放弃重点调教。后续作战中，韩立可从数只灵兽袋放出大量噬金虫，虫群与铁火蚁交战时迅速占上风并消灭箭矢形态的铁火蚁。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0392:007",
+        "evidence:chunk-0392:011",
+        "evidence:chunk-0392:012",
+        "evidence:chunk-0392:014",
+        "evidence:chunk-0397:004",
+        "evidence:chunk-0397:005",
+        "evidence:chunk-0397:008",
+        "evidence:chunk-0397:010",
+        "evidence:chunk-0468:001",
+        "evidence:chunk-0468:004",
+        "evidence:chunk-0468:006"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0392:007",
+          "chunk_id": "chunk-0392",
+          "source_range": [
+            1003766,
+            1003963
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0392",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              1003766,
+              1003963
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0392:011",
+          "chunk_id": "chunk-0392",
+          "source_range": [
+            1004545,
+            1004695
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0392",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              1004545,
+              1004695
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0392:012",
+          "chunk_id": "chunk-0392",
+          "source_range": [
+            1004741,
+            1004926
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0392",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              1004741,
+              1004926
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0392:014",
+          "chunk_id": "chunk-0392",
+          "source_range": [
+            1005009,
+            1005179
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0392",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              1005009,
+              1005179
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0397:004",
+          "chunk_id": "chunk-0397",
+          "source_range": [
+            1017486,
+            1017681
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0397",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              1017486,
+              1017681
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0397:005",
+          "chunk_id": "chunk-0397",
+          "source_range": [
+            1017684,
+            1017783
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0397",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              1017684,
+              1017783
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0397:008",
+          "chunk_id": "chunk-0397",
+          "source_range": [
+            1018227,
+            1018421
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0397",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              1018227,
+              1018421
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0397:010",
+          "chunk_id": "chunk-0397",
+          "source_range": [
+            1018557,
+            1018707
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0397",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              1018557,
+              1018707
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0468:001",
+          "chunk_id": "chunk-0468",
+          "source_range": [
+            1219709,
+            1219792
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0468",
+            "source_path": "intermediate/chunks/chunk-0468.txt",
+            "source_range": [
+              1219709,
+              1219792
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0468:004",
+          "chunk_id": "chunk-0468",
+          "source_range": [
+            1220116,
+            1220217
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0468",
+            "source_path": "intermediate/chunks/chunk-0468.txt",
+            "source_range": [
+              1220116,
+              1220217
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0468:006",
+          "chunk_id": "chunk-0468",
+          "source_range": [
+            1220362,
+            1220435
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0468",
+            "source_path": "intermediate/chunks/chunk-0468.txt",
+            "source_range": [
+              1220362,
+              1220435
+            ]
+          }
+        }
+      ],
+      "source_excerpt": "韩立认为噬金虫排名在金背刀螂之前，且除玉石木头外几乎无物不食；他准备用两头血玉蜘蛛克制这些银色幼虫。；韩立放出两头血玉蜘蛛并命令活捉；血玉蜘蛛喷出蛛网罩住所有银甲虫。；噬金虫化为银色箭矢冲击蛛网并撕咬蛛丝，血玉蜘蛛持续喷白液将其包成巨大团子。；文本说明普通灵兽应用灵兽袋，否则会在储物袋中闷死；奇虫榜奇虫生命强韧，不呼吸也可在储物袋中安然无恙，但驱兽御敌仍以灵兽袋最合用。；韩立洞府中奇虫气味唤醒噬金虫，噬金虫因畏惧相克的血玉蜘蛛而潜伏。；血玉蜘蛛离开后，噬金虫吞食韩立所养奇虫并占据药园，最后被韩立捕获。；韩立炼成饲灵丸并喂给噬金虫和血玉蜘蛛，确认丹药对奇虫升阶有效但效果差距大。；韩立判断百余年内难培育大规模噬金虫，放弃重点调教并改把饲灵丸喂给血玉蜘蛛。；韩立开启数只灵兽袋，放出大量噬金虫。；噬金虫与铁火蚁交战后，",
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "韩立以护送条件索要啼魂兽并炼化鸣魂珠",
+      "classification": "特殊灵兽 / 控制法器 / 所有权转移",
+      "usage": "韩立以带元瑶走出熔岩路为条件索要啼魂兽；元瑶说明鸣魂珠是控制啼魂兽之物，炼化后啼魂兽将归韩立所有，炼化过程稍有不适。",
+      "formula": "原文未说明固定配方；按事件记录资源投入、控制条件或材料流向。",
+      "content": "关系类型：条件交换、控制法器、灵兽归属转移。参与方为韩立、元瑶、啼魂兽。主动方是韩立，他提出以护送元瑶走出熔岩路为条件换取啼魂兽，看中其吸魂化鬼能力。元瑶交代控制条件：鸣魂珠是控制啼魂兽之物，按普通法宝方式炼化后啼魂兽永远归韩立所有，并可抹去元瑶神识痕迹。风险与代价方面，韩立追问炼化是否有害，元瑶称没有大问题，只是炼化过程稍有不适。关系变化为啼魂兽由元瑶未完全炼化的控制状态，转向韩立可通过鸣魂珠取得所有权。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0469:008",
+        "evidence:chunk-0469:012",
+        "evidence:chunk-0469:013",
+        "evidence:chunk-0470:001",
+        "evidence:chunk-0470:002"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0469:008",
+          "chunk_id": "chunk-0469",
+          "source_range": [
+            1224615,
+            1224647
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0469",
+            "source_path": "intermediate/chunks/chunk-0469.txt",
+            "source_range": [
+              1224615,
+              1224647
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0469:012",
+          "chunk_id": "chunk-0469",
+          "source_range": [
+            1225168,
+            1225261
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0469",
+            "source_path": "intermediate/chunks/chunk-0469.txt",
+            "source_range": [
+              1225168,
+              1225261
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0469:013",
+          "chunk_id": "chunk-0469",
+          "source_range": [
+            1225360,
+            1225395
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0469",
+            "source_path": "intermediate/chunks/chunk-0469.txt",
+            "source_range": [
+              1225360,
+              1225395
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0470:001",
+          "chunk_id": "chunk-0470",
+          "source_range": [
+            1225603,
+            1225636
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0470",
+            "source_path": "intermediate/chunks/chunk-0470.txt",
+            "source_range": [
+              1225603,
+              1225636
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0470:002",
+          "chunk_id": "chunk-0470",
+          "source_range": [
+            1225671,
+            1225708
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0470",
+            "source_path": "intermediate/chunks/chunk-0470.txt",
+            "source_range": [
+              1225671,
+              1225708
+            ]
+          }
+        }
+      ],
+      "source_excerpt": "韩立提出以带元瑶走出熔岩路为条件索要啼魂兽，并点出其吸魂化鬼能力。；元瑶说明鸣魂珠控制啼魂兽，按普通法宝方式炼化后啼魂兽将归韩立所有，并可抹去她的神识痕迹。；韩立观察推断元瑶未炼化成功鸣魂珠，依据是她不能得心应手指挥啼魂兽。；韩立询问炼化鸣魂珠后是否会对自身有害。；元瑶声称炼化鸣魂珠没有大问题，只是在炼化过程中稍有不适。",
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    }
+  ],
+  "judgments": [
+    {
+      "content": "本批证据中，人妖互动最稳定的闭环是“控制条件或诱因 -> 妖兽/灵虫执行功能 -> 修士获得信息、战力、材料或通行能力 -> 控制失败、成本过高或材料分配形成后续风险”。云翅鸟、双瞳鼠、血玉蜘蛛、噬金虫和啼魂兽分别展示了喂食、租借、禁制、容器/饲灵丸、鸣魂珠等控制条件。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0123:009",
+        "evidence:chunk-0224:006",
+        "evidence:chunk-0276:005",
+        "evidence:chunk-0392:014",
+        "evidence:chunk-0469:012"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0123:009",
+          "chunk_id": "chunk-0123",
+          "source_range": [
+            241622,
+            241825
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0123",
+            "source_path": "intermediate/chunks/chunk-0123.txt",
+            "source_range": [
+              241622,
+              241825
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0224:006",
+          "chunk_id": "chunk-0224",
+          "source_range": [
+            515095,
+            515193
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0224",
+            "source_path": "intermediate/chunks/chunk-0224.txt",
+            "source_range": [
+              515095,
+              515193
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0276:005",
+          "chunk_id": "chunk-0276",
+          "source_range": [
+            668957,
+            669011
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0276",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              668957,
+              669011
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0392:014",
+          "chunk_id": "chunk-0392",
+          "source_range": [
+            1005009,
+            1005179
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0392",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              1005009,
+              1005179
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0469:012",
+          "chunk_id": "chunk-0469",
+          "source_range": [
+            1225168,
+            1225261
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0469",
+            "source_path": "intermediate/chunks/chunk-0469.txt",
+            "source_range": [
+              1225168,
+              1225261
+            ]
+          }
+        }
+      ],
+      "confidence": "INFERRED"
+    },
+    {
+      "content": "宗门或专门势力会把灵兽关系制度化：燕家以圈养灵禽形成交通和威慑，灵兽山将灵兽/灵虫用于伏杀和警戒，黄枫谷麒麟阁把双瞳鼠做成可租借的探查服务。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0139:010",
+        "evidence:chunk-0184:009",
+        "evidence:chunk-0185:008",
+        "evidence:chunk-0224:004"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0139:010",
+          "chunk_id": "chunk-0139",
+          "source_range": [
+            283157,
+            283208
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0139",
+            "chapter_hint": "第一百三十六章 燕家",
+            "source_range": [
+              283157,
+              283208
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0184:009",
+          "chunk_id": "chunk-0184",
+          "source_range": [
+            400228,
+            400310
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0184",
+            "source_range": [
+              400228,
+              400310
+            ],
+            "chapter_hint": "第一百八十章 乌龙潭",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0185:008",
+          "chunk_id": "chunk-0185",
+          "source_range": [
+            401811,
+            402123
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0185",
+            "source_path": "intermediate/chunks/chunk-0185.txt",
+            "source_range": [
+              401811,
+              402123
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0224:004",
+          "chunk_id": "chunk-0224",
+          "source_range": [
+            515014,
+            515061
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0224",
+            "source_path": "intermediate/chunks/chunk-0224.txt",
+            "source_range": [
+              515014,
+              515061
+            ]
+          }
+        }
+      ],
+      "confidence": "INFERRED"
+    },
+    {
+      "content": "猎妖与资源回收常伴随高风险材料收益：巨型蜈蚣、墨蛟和金背妖螂案例都显示，修士需要先用法器、阵法或协作压制妖兽，随后才能获得甲壳、元神、蛟皮、尖角、爪子、丹液或奇虫谱价值信息。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0202:004",
+        "evidence:chunk-0202:006",
+        "evidence:chunk-0211:009",
+        "evidence:chunk-0211:015",
+        "evidence:chunk-0348:007",
+        "evidence:chunk-0348:021"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0202:004",
+          "chunk_id": "chunk-0202",
+          "source_range": [
+            447424,
+            447782
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0202",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              447424,
+              447782
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0202:006",
+          "chunk_id": "chunk-0202",
+          "source_range": [
+            447945,
+            448305
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0202",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              447945,
+              448305
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0211:009",
+          "chunk_id": "chunk-0211",
+          "source_range": [
+            476743,
+            476923
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0211",
+            "source_path": "intermediate/chunks/chunk-0211.txt",
+            "source_range": [
+              476743,
+              476923
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0211:015",
+          "chunk_id": "chunk-0211",
+          "source_range": [
+            478076,
+            478248
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0211",
+            "source_path": "intermediate/chunks/chunk-0211.txt",
+            "source_range": [
+              478076,
+              478248
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0348:007",
+          "chunk_id": "chunk-0348",
+          "source_range": [
+            880283,
+            880338
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0348",
+            "source_path": "intermediate/chunks/chunk-0348.txt",
+            "source_range": [
+              880283,
+              880338
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0348:021",
+          "chunk_id": "chunk-0348",
+          "source_range": [
+            881741,
+            881778
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0348",
+            "source_path": "intermediate/chunks/chunk-0348.txt",
+            "source_range": [
+              881741,
+              881778
+            ]
+          }
+        }
+      ],
+      "confidence": "INFERRED"
+    }
+  ],
+  "pending_verifications": [
+    {
+      "content": "金背妖螂原本是否存在正式契约、何时失控、御灵宗修士与其控制关系的完整前因，当前证据主要来自韩立推断和后续玉简定名，建议后续回查相邻 chunk 或相关节点。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0346:009",
+        "evidence:chunk-0346:013",
+        "evidence:chunk-0346:014",
+        "evidence:chunk-0348:020"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0346:009",
+          "chunk_id": "chunk-0346",
+          "source_range": [
+            874617,
+            874649
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0346",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              874617,
+              874649
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0346:013",
+          "chunk_id": "chunk-0346",
+          "source_range": [
+            875503,
+            875540
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0346",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              875503,
+              875540
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0346:014",
+          "chunk_id": "chunk-0346",
+          "source_range": [
+            875572,
+            875604
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0346",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              875572,
+              875604
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0348:020",
+          "chunk_id": "chunk-0348",
+          "source_range": [
+            881686,
+            881718
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0348",
+            "source_path": "intermediate/chunks/chunk-0348.txt",
+            "source_range": [
+              881686,
+              881718
+            ]
+          }
+        }
+      ],
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "啼魂兽的本体分类、长期培养代价、炼化鸣魂珠后的完整副作用，本批证据只覆盖转让控制条件与“稍有不适”的说法，缺少长期后果。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0469:008",
+        "evidence:chunk-0469:012",
+        "evidence:chunk-0470:001",
+        "evidence:chunk-0470:002"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0469:008",
+          "chunk_id": "chunk-0469",
+          "source_range": [
+            1224615,
+            1224647
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0469",
+            "source_path": "intermediate/chunks/chunk-0469.txt",
+            "source_range": [
+              1224615,
+              1224647
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0469:012",
+          "chunk_id": "chunk-0469",
+          "source_range": [
+            1225168,
+            1225261
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0469",
+            "source_path": "intermediate/chunks/chunk-0469.txt",
+            "source_range": [
+              1225168,
+              1225261
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0470:001",
+          "chunk_id": "chunk-0470",
+          "source_range": [
+            1225603,
+            1225636
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0470",
+            "source_path": "intermediate/chunks/chunk-0470.txt",
+            "source_range": [
+              1225603,
+              1225636
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0470:002",
+          "chunk_id": "chunk-0470",
+          "source_range": [
+            1225671,
+            1225708
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0470",
+            "source_path": "intermediate/chunks/chunk-0470.txt",
+            "source_range": [
+              1225671,
+              1225708
+            ]
+          }
+        }
+      ],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "not_found_items": [
+    {
+      "content": "本批优先证据中未形成可闭合的“兽潮 / 护山兽 / 妖族势力与人族战争”完整案例；当前 record 不以模板示例补造这些关系。",
+      "category": "未见可靠证据",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "双首鹜、云翅鸟、双瞳鼠等案例未见完整契约文本、繁育制度、等阶晋升规则或长期忠诚机制，相关字段保留为原文未说明。",
+      "category": "未见可靠证据",
+      "evidence_ids": [
+        "evidence:chunk-0139:010",
+        "evidence:chunk-0185:007",
+        "evidence:chunk-0224:006"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0139:010",
+          "chunk_id": "chunk-0139",
+          "source_range": [
+            283157,
+            283208
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0139",
+            "chapter_hint": "第一百三十六章 燕家",
+            "source_range": [
+              283157,
+              283208
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0185:007",
+          "chunk_id": "chunk-0185",
+          "source_range": [
+            401502,
+            401780
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0185",
+            "source_path": "intermediate/chunks/chunk-0185.txt",
+            "source_range": [
+              401502,
+              401780
+            ]
+          }
+        },
+        {
+          "evidence_id": "evidence:chunk-0224:006",
+          "chunk_id": "chunk-0224",
+          "source_range": [
+            515095,
+            515193
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0224",
+            "source_path": "intermediate/chunks/chunk-0224.txt",
+            "source_range": [
+              515095,
+              515193
+            ]
+          }
+        }
+      ],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "document_sections": [
+    {
+      "heading": "案例 1：云翅鸟用于跟踪监视与放养失联",
+      "markdown": "关系类型：灵宠驱使、跟踪监视、放养关系。参与方为韩立、云翅鸟、被跟踪的孙二狗。主动方是韩立，他以黄栗丸作为喂食和驱使条件，命云翅鸟跟踪孙二狗，若对方离城逃跑就回报。资源流向是黄栗丸投入到灵宠喂养，云翅鸟提供侦察与信息回报。关系变化上，云翅鸟后来被韩立放养到太岳山脉，初期还会回来讨要黄栗丸，后来飞野后一去不返。风险与限制是这种关系依赖灵性、喂养和活动范围，放养后控制力减弱。\n\n证据：[evidence:chunk-0123:009]、[evidence:chunk-0185:007]",
+      "evidence_ids": [
+        "evidence:chunk-0123:009",
+        "evidence:chunk-0185:007"
+      ],
+      "requirement_ids": [
+        "creature_deviant_practice_ecology.target.1",
+        "creature_deviant_practice_ecology.target.2",
+        "creature_deviant_practice_ecology.target.4",
+        "creature_deviant_practice_ecology.evidence.1",
+        "creature_deviant_practice_ecology.evidence.2"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 2：姑雨山燕家圈养双首鹜作为载人灵禽",
+      "markdown": "关系类型：家族圈养、飞行载具、势力身份标识。参与方为姑雨山燕家、双首鹜、围观修士。主动方是燕家长期圈养并使用灵禽；被动方是围观者，他们因灵禽背后有燕家成员而被威慑。触发场景是交易场路上灵禽飞过。资源与功能不表现为材料回收，而是交通、身份显示和安全威慑。原文未说明圈养流程、饲养成本、契约方式或双首鹜与燕家的长期关系变化。\n\n证据：[evidence:chunk-0139:010]",
+      "evidence_ids": [
+        "evidence:chunk-0139:010"
+      ],
+      "requirement_ids": [
+        "creature_deviant_practice_ecology.target.1",
+        "creature_deviant_practice_ecology.target.2",
+        "creature_deviant_practice_ecology.target.4",
+        "creature_deviant_practice_ecology.evidence.1",
+        "creature_deviant_practice_ecology.evidence.2"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 3：灵兽山以寒冰蟾设伏并以五彩飞蛾警戒",
+      "markdown": "关系类型：驱兽伏杀、灵虫警戒。参与方为灵兽山二人、寒冰蟾、天阙堡弟子和五彩飞蛾。主动方是灵兽山弟子，他们提前到乌龙潭撒驱兽粉，暂时控制一窝寒冰蟾，并借其冰锥术从背后袭杀目标；离开后又放出五彩飞蛾，借飞蛾颜色融入环境来侦测接近者。资源流向上，妖兽/灵虫并非被回收，而是被当作战斗与预警工具。风险在于手法隐蔽，旁人可能误认飞蛾为禁地自然生物。原文未说明驱兽粉配方、控制时限的精确边界。\n\n证据：[evidence:chunk-0184:009]、[evidence:chunk-0185:008]",
+      "evidence_ids": [
+        "evidence:chunk-0184:009",
+        "evidence:chunk-0185:008"
+      ],
+      "requirement_ids": [
+        "creature_deviant_practice_ecology.target.1",
+        "creature_deviant_practice_ecology.target.2",
+        "creature_deviant_practice_ecology.target.4",
+        "creature_deviant_practice_ecology.evidence.1",
+        "creature_deviant_practice_ecology.evidence.2"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 4：巨型蜈蚣守紫猴花，韩立猎杀后回收甲壳",
+      "markdown": "关系类型：妖兽守药、资源点争夺、修士猎妖回收。参与方为韩立和守护紫猴花的巨型蜈蚣。主动方先是韩立发现灵药后试图绕开/处理守护妖兽，随后布置金蚨子母刃陷阱；被动方是巨型蜈蚣，它作为毒虫类妖兽守在紫色石壁下。互动流程是韩立判断其至少中阶且毒术难缠，用倒插并遮光的金刃诱其追击，最终剖腹击杀。资源流向是紫猴花所在资源点被修士夺取，蜈蚣背壳被切割收走，用作防护材料。风险与代价包括毒血气味、强硬外壳、时间紧迫和毒虫类妖兽难缠。\n\n证据：[evidence:chunk-0201:007]、[evidence:chunk-0202:004]、[evidence:chunk-0202:006]",
+      "evidence_ids": [
+        "evidence:chunk-0201:007",
+        "evidence:chunk-0202:004",
+        "evidence:chunk-0202:006"
+      ],
+      "requirement_ids": [
+        "creature_deviant_practice_ecology.target.1",
+        "creature_deviant_practice_ecology.target.2",
+        "creature_deviant_practice_ecology.target.4",
+        "creature_deviant_practice_ecology.evidence.1",
+        "creature_deviant_practice_ecology.evidence.2"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 5：掩月宗、韩立合杀墨蛟并分配元神与躯体",
+      "markdown": "关系类型：高危猎妖、协作击杀、资源分配。参与方为墨蛟、掩月宗少女及弟子、韩立。主动/被动关系在战斗中变化：掩月宗一方起初围杀，墨蛟进阶后二阶化并反杀弟子，韩立和少女随后协力压制。风险与代价极高，墨蛟实力被判断堪比筑基中阶，紫液能溶解防护并使五六名弟子丧命。结束方式是少女用水晶小瓶摄出元神，墨蛟躯体落给韩立。资源流向清楚：元神归少女，躯体归韩立；蛟皮可炼护甲，尖角爪子可炼顶级法器，残余丹液可入珍贵丹药。后续影响包括韩立获得高价值材料，也暴露出高阶妖兽材料在修士间的巨大价值。\n\n证据：[evidence:chunk-0210:004]、[evidence:chunk-0210:005]、[evidence:chunk-0211:008]、[evidence:chunk-0211:009]、[evidence:chunk-0211:015]",
+      "evidence_ids": [
+        "evidence:chunk-0210:004",
+        "evidence:chunk-0210:005",
+        "evidence:chunk-0211:008",
+        "evidence:chunk-0211:009",
+        "evidence:chunk-0211:015"
+      ],
+      "requirement_ids": [
+        "creature_deviant_practice_ecology.target.1",
+        "creature_deviant_practice_ecology.target.2",
+        "creature_deviant_practice_ecology.target.4",
+        "creature_deviant_practice_ecology.evidence.1",
+        "creature_deviant_practice_ecology.evidence.2"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 6：麒麟阁租借双瞳鼠寻灵眼之地",
+      "markdown": "关系类型：宗门豢养、灵兽租借、探查服务。参与方为黄枫谷麒麟阁、女弟子、韩立和双瞳鼠。主动方是韩立提出租用；麒麟阁作为制度化管理者交付灵兽并收取灵石。触发原因是韩立需要寻找洞府/灵眼之地。资源流向为韩立支付三块灵石，麒麟阁提供双瞳鼠和土梨果；双瞳鼠提供寻觅灵气稠密地点的能力。关系限制包括租期、喂食要求、三日后自行返回麒麟阁，以及韩立用绳索防止跟丢。原文未说明麒麟阁长期繁育规模和完整训练流程。\n\n证据：[evidence:chunk-0223:015]、[evidence:chunk-0223:017]、[evidence:chunk-0224:004]、[evidence:chunk-0224:006]、[evidence:chunk-0224:011]",
+      "evidence_ids": [
+        "evidence:chunk-0223:015",
+        "evidence:chunk-0223:017",
+        "evidence:chunk-0224:004",
+        "evidence:chunk-0224:006",
+        "evidence:chunk-0224:011"
+      ],
+      "requirement_ids": [
+        "creature_deviant_practice_ecology.target.1",
+        "creature_deviant_practice_ecology.target.2",
+        "creature_deviant_practice_ecology.target.4",
+        "creature_deviant_practice_ecology.evidence.1",
+        "creature_deviant_practice_ecology.evidence.2"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 7：蜘蛛妖兽卵到血玉蜘蛛契约调教",
+      "markdown": "关系类型：妖兽卵获取、契约/禁制控制、灵宠培养。参与方为韩立、蜘蛛妖兽卵、血玉蜘蛛。主动方是韩立，他在洞穴中发现透明圆卵后带回洞府，以灵眼之泉滋育孵化，再用控神法阵和精血处理。控制条件为控神禁制生效，孵化出的白蜘蛛将韩立视为父母并表现亲近。资源流向为灵眼之泉、精血和调教时间投入到灵宠培养；血玉蜘蛛则成为可携带、可调教的奇虫/灵宠资源。风险与代价在本证据中未展开，原文未说明禁制失败反噬。\n\n证据：[evidence:chunk-0275:005]、[evidence:chunk-0275:010]、[evidence:chunk-0276:005]、[evidence:chunk-0349:004]、[evidence:chunk-0349:005]、[evidence:chunk-0349:007]",
+      "evidence_ids": [
+        "evidence:chunk-0275:005",
+        "evidence:chunk-0275:010",
+        "evidence:chunk-0276:005",
+        "evidence:chunk-0349:004",
+        "evidence:chunk-0349:005",
+        "evidence:chunk-0349:007"
+      ],
+      "requirement_ids": [
+        "creature_deviant_practice_ecology.target.1",
+        "creature_deviant_practice_ecology.target.2",
+        "creature_deviant_practice_ecology.target.4",
+        "creature_deviant_practice_ecology.evidence.1",
+        "creature_deviant_practice_ecology.evidence.2"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 8：御灵宗金背妖螂疑似驯养后失控并被韩立耗杀",
+      "markdown": "关系类型：驯养失控、借兽杀人、阵法猎杀。参与方为韩立、御灵宗修士、巨螳螂/金背妖螂。主动方表面上是御灵宗修士借巨螳螂杀人，但韩立推断对方也控制不了螳螂灵兽，否则不会不让其贴身保护。关系变化是灵兽从可能被御灵宗驯养，转为失控威胁。结束方式是韩立利用其有灵智但不懂阵法的弱点设圈套，在傀儡掩护下用符宝击穿头部。后续资源价值由玉简补充：此虫被称为金背妖螂，在众多奇虫中排第七十三位。失控细节与原契约方式仍需复核。\n\n证据：[evidence:chunk-0346:009]、[evidence:chunk-0346:013]、[evidence:chunk-0346:014]、[evidence:chunk-0348:005]、[evidence:chunk-0348:007]、[evidence:chunk-0348:020]、[evidence:chunk-0348:021]",
+      "evidence_ids": [
+        "evidence:chunk-0346:009",
+        "evidence:chunk-0346:013",
+        "evidence:chunk-0346:014",
+        "evidence:chunk-0348:005",
+        "evidence:chunk-0348:007",
+        "evidence:chunk-0348:020",
+        "evidence:chunk-0348:021"
+      ],
+      "requirement_ids": [
+        "creature_deviant_practice_ecology.target.1",
+        "creature_deviant_practice_ecology.target.2",
+        "creature_deviant_practice_ecology.target.4",
+        "creature_deviant_practice_ecology.evidence.1",
+        "creature_deviant_practice_ecology.evidence.2"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 9：噬金虫捕获、培育与虫群对抗",
+      "markdown": "关系类型：灵虫捕获、长期培育、虫群作战。参与方为韩立、血玉蜘蛛、噬金虫、铁火蚁。主动方是韩立，他先判断血玉蜘蛛可克制银色噬金虫幼虫，命血玉蜘蛛喷网活捉；随后按奇虫特性选择盛装方式，使用玉璧密室、虫粮和饲灵丸进行培育。关系限制明确：普通灵兽宜用灵兽袋，奇虫榜奇虫生命力强韧，驱兽御敌仍以灵兽袋最合用。资源投入包括虫粮、饲灵丸、灵兽袋和调教时间；噬金虫因数量庞大，短期培育成本过高，韩立一度放弃重点调教。后续作战中，韩立可从数只灵兽袋放出大量噬金虫，虫群与铁火蚁交战时迅速占上风并消灭箭矢形态的铁火蚁。\n\n证据：[evidence:chunk-0392:007]、[evidence:chunk-0392:011]、[evidence:chunk-0392:012]、[evidence:chunk-0392:014]、[evidence:chunk-0397:004]、[evidence:chunk-0397:005]、[evidence:chunk-0397:008]、[evidence:chunk-0397:010]、[evidence:chunk-0468:001]、[evidence:chunk-0468:004]、[evidence:chunk-0468:006]",
+      "evidence_ids": [
+        "evidence:chunk-0392:007",
+        "evidence:chunk-0392:011",
+        "evidence:chunk-0392:012",
+        "evidence:chunk-0392:014",
+        "evidence:chunk-0397:004",
+        "evidence:chunk-0397:005",
+        "evidence:chunk-0397:008",
+        "evidence:chunk-0397:010",
+        "evidence:chunk-0468:001",
+        "evidence:chunk-0468:004",
+        "evidence:chunk-0468:006"
+      ],
+      "requirement_ids": [
+        "creature_deviant_practice_ecology.target.1",
+        "creature_deviant_practice_ecology.target.2",
+        "creature_deviant_practice_ecology.target.4",
+        "creature_deviant_practice_ecology.evidence.1",
+        "creature_deviant_practice_ecology.evidence.2"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 10：啼魂兽通过鸣魂珠转让控制权",
+      "markdown": "关系类型：条件交换、控制法器、灵兽归属转移。参与方为韩立、元瑶、啼魂兽。主动方是韩立，他提出以护送元瑶走出熔岩路为条件换取啼魂兽，看中其吸魂化鬼能力。元瑶交代控制条件：鸣魂珠是控制啼魂兽之物，按普通法宝方式炼化后啼魂兽永远归韩立所有，并可抹去元瑶神识痕迹。风险与代价方面，韩立追问炼化是否有害，元瑶称没有大问题，只是炼化过程稍有不适。关系变化为啼魂兽由元瑶未完全炼化的控制状态，转向韩立可通过鸣魂珠取得所有权。\n\n证据：[evidence:chunk-0469:008]、[evidence:chunk-0469:012]、[evidence:chunk-0469:013]、[evidence:chunk-0470:001]、[evidence:chunk-0470:002]",
+      "evidence_ids": [
+        "evidence:chunk-0469:008",
+        "evidence:chunk-0469:012",
+        "evidence:chunk-0469:013",
+        "evidence:chunk-0470:001",
+        "evidence:chunk-0470:002"
+      ],
+      "requirement_ids": [
+        "creature_deviant_practice_ecology.target.1",
+        "creature_deviant_practice_ecology.target.2",
+        "creature_deviant_practice_ecology.target.4",
+        "creature_deviant_practice_ecology.evidence.1",
+        "creature_deviant_practice_ecology.evidence.2"
+      ],
+      "confidence": "EXTRACTED"
+    }
+  ],
+  "evidence_citations": [
+    "evidence:chunk-0123:009",
+    "evidence:chunk-0185:007",
+    "evidence:chunk-0139:010",
+    "evidence:chunk-0184:009",
+    "evidence:chunk-0185:008",
+    "evidence:chunk-0201:007",
+    "evidence:chunk-0202:004",
+    "evidence:chunk-0202:006",
+    "evidence:chunk-0210:004",
+    "evidence:chunk-0210:005",
+    "evidence:chunk-0211:008",
+    "evidence:chunk-0211:009",
+    "evidence:chunk-0211:015",
+    "evidence:chunk-0223:015",
+    "evidence:chunk-0223:017",
+    "evidence:chunk-0224:004",
+    "evidence:chunk-0224:006",
+    "evidence:chunk-0224:011",
+    "evidence:chunk-0275:005",
+    "evidence:chunk-0275:010",
+    "evidence:chunk-0276:005",
+    "evidence:chunk-0349:004",
+    "evidence:chunk-0349:005",
+    "evidence:chunk-0349:007",
+    "evidence:chunk-0346:009",
+    "evidence:chunk-0346:013",
+    "evidence:chunk-0346:014",
+    "evidence:chunk-0348:005",
+    "evidence:chunk-0348:007",
+    "evidence:chunk-0348:020",
+    "evidence:chunk-0348:021",
+    "evidence:chunk-0392:007",
+    "evidence:chunk-0392:011",
+    "evidence:chunk-0392:012",
+    "evidence:chunk-0392:014",
+    "evidence:chunk-0397:004",
+    "evidence:chunk-0397:005",
+    "evidence:chunk-0397:008",
+    "evidence:chunk-0397:010",
+    "evidence:chunk-0468:001",
+    "evidence:chunk-0468:004",
+    "evidence:chunk-0468:006",
+    "evidence:chunk-0469:008",
+    "evidence:chunk-0469:012",
+    "evidence:chunk-0469:013",
+    "evidence:chunk-0470:001",
+    "evidence:chunk-0470:002"
+  ],
+  "gap_items": [
+    {
+      "requirement_id": "creature_deviant_practice_ecology.evidence.2",
+      "status": "needs_review",
+      "content": "部分案例的契约规则、控制时限、失控前因和长期后果只有局部证据，已在 pending_verifications 中标注。",
+      "evidence_ids": [
+        "evidence:chunk-0346:013",
+        "evidence:chunk-0469:012",
+        "evidence:chunk-0470:002"
+      ]
+    },
+    {
+      "requirement_id": "creature_deviant_practice_ecology.template.example_missing",
+      "status": "not_found_in_source",
+      "content": "本批优先证据未发现可闭合的兽潮、护山兽和妖族势力战争案例。",
+      "evidence_ids": []
+    }
+  ],
+  "render_target": "drafts",
+  "overwrite_policy": "draft",
+  "producer": {
+    "agent_role": "stage2-template-document-agent",
+    "batch_id": "template-batch-0015-954dd3910bde",
+    "generated_from": {
+      "task_packet": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\intermediate\\stage2\\task-packets\\template-batch-0015-954dd3910bde.json",
+      "graph": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\graphify-out\\graph.json",
+      "evidence_index": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\coverage\\evidence-index.json"
+    }
+  }
+}

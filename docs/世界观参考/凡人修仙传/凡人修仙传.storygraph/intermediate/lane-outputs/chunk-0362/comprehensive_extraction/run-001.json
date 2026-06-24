@@ -1,0 +1,2801 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0362:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0362",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T00:00:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0362:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立在得知越国混乱后权衡远遁和修复古传送阵两条路线，最终倾向先修复古传送阵。",
+      "evidence_ids": [
+        "evidence:chunk-0362:002",
+        "evidence:chunk-0362:017"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        919393,
+        919460
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919393,
+          919460
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0362:character:002",
+      "node_type": "character",
+      "label": "曲魂",
+      "aliases": [],
+      "fact_summary": "曲魂始终站在石亭外，随后被韩立招呼着走向其它石亭；当前 chunk 中仅作为随行者出现。",
+      "evidence_ids": [
+        "evidence:chunk-0362:018"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        919344,
+        919379
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919344,
+          919379
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0362:location:001",
+      "node_type": "location",
+      "label": "越国",
+      "aliases": [],
+      "fact_summary": "越国修仙界在韩立收集的多方消息中极其混乱，且处于魔道、正道盟和六派撤离路线判断的核心位置。",
+      "evidence_ids": [
+        "evidence:chunk-0362:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        919393,
+        919460
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919393,
+          919460
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0362:formation:001",
+      "node_type": "formation",
+      "label": "古传送阵",
+      "aliases": [],
+      "fact_summary": "古传送阵是韩立考虑修复并赌远距离传送去向的关键机会点。",
+      "evidence_ids": [
+        "evidence:chunk-0362:003",
+        "evidence:chunk-0362:017"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        919487,
+        919551
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919487,
+          919551
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0362:faction:001",
+      "node_type": "faction",
+      "label": "魔道",
+      "aliases": [],
+      "fact_summary": "魔道老巢在天罗国，并可能与正道盟争夺北方中小国家。",
+      "evidence_ids": [
+        "evidence:chunk-0362:004",
+        "evidence:chunk-0362:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        919644,
+        919685
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919644,
+          919685
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0362:faction:002",
+      "node_type": "faction",
+      "label": "正道盟",
+      "aliases": [],
+      "fact_summary": "正道盟的风都国位于越国东西方向之一，并与魔道可能争夺北方中小国家。",
+      "evidence_ids": [
+        "evidence:chunk-0362:004",
+        "evidence:chunk-0362:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        919644,
+        919685
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919644,
+          919685
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0362:location:002",
+      "node_type": "location",
+      "label": "天罗国",
+      "aliases": [],
+      "fact_summary": "天罗国被韩立视为魔道的老巢，位于越国东西方向之一。",
+      "evidence_ids": [
+        "evidence:chunk-0362:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        919644,
+        919685
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919644,
+          919685
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0362:location:003",
+      "node_type": "location",
+      "label": "风都国",
+      "aliases": [],
+      "fact_summary": "风都国被韩立视为正道盟所在方向，位于越国东西方向之一。",
+      "evidence_ids": [
+        "evidence:chunk-0362:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        919644,
+        919685
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919644,
+          919685
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0362:location:004",
+      "node_type": "location",
+      "label": "无边海",
+      "aliases": [],
+      "fact_summary": "无边海位于天南地区极北之地，浑浊无际且难以飞越，结丹期修士落海也极危险。",
+      "evidence_ids": [
+        "evidence:chunk-0362:006",
+        "evidence:chunk-0362:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        919895,
+        919970
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919895,
+          919970
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0362:realm:001",
+      "node_type": "realm",
+      "label": "结丹期",
+      "aliases": [],
+      "fact_summary": "无边海危险到结丹期修士落入其中也极为危险。",
+      "evidence_ids": [
+        "evidence:chunk-0362:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        919895,
+        919970
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919895,
+          919970
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0362:realm:002",
+      "node_type": "realm",
+      "label": "元婴期",
+      "aliases": [],
+      "fact_summary": "传闻曾有元婴期高人沿无边海飞行年余仍未见尽头。",
+      "evidence_ids": [
+        "evidence:chunk-0362:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        919994,
+        920079
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919994,
+          920079
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0362:faction:003",
+      "node_type": "faction",
+      "label": "九国盟",
+      "aliases": [],
+      "fact_summary": "九国盟是越国南面大小九国组成的紧密联盟，由九国修仙界主导形成以对付慕兰族法士。",
+      "evidence_ids": [
+        "evidence:chunk-0362:008",
+        "evidence:chunk-0362:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        920193,
+        920236
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          920193,
+          920236
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0362:faction:004",
+      "node_type": "faction",
+      "label": "慕兰族",
+      "aliases": [
+        "慕兰人"
+      ],
+      "fact_summary": "慕兰族为游牧民族，拥有法士群体，与九国修仙界和燕族人长期敌对，并与突兀人互为世敌。",
+      "evidence_ids": [
+        "evidence:chunk-0362:009",
+        "evidence:chunk-0362:013",
+        "evidence:chunk-0362:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        920239,
+        920292
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          920239,
+          920292
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0362:faction:005",
+      "node_type": "faction",
+      "label": "慕兰族法士",
+      "aliases": [
+        "法士",
+        "慕兰法士"
+      ],
+      "fact_summary": "慕兰族法士是慕兰族内修仙者称谓，形成独特灵术流派，并因资源需求入侵九国。",
+      "evidence_ids": [
+        "evidence:chunk-0362:010",
+        "evidence:chunk-0362:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        920532,
+        920638
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          920532,
+          920638
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0362:technique:001",
+      "node_type": "technique",
+      "label": "灵术",
+      "aliases": [],
+      "fact_summary": "灵术是慕兰人由五行道术结合草原土生秘术形成的独特法术流派。",
+      "evidence_ids": [
+        "evidence:chunk-0362:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        920532,
+        920638
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          920532,
+          920638
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0362:location:005",
+      "node_type": "location",
+      "label": "慕兰草原",
+      "aliases": [
+        "天澜草原"
+      ],
+      "fact_summary": "慕兰草原是慕兰人的称呼，突兀人称其为天澜草原，草原另一头生活着突兀人。",
+      "evidence_ids": [
+        "evidence:chunk-0362:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        921289,
+        921386
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          921289,
+          921386
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0362:faction:006",
+      "node_type": "faction",
+      "label": "突兀人",
+      "aliases": [],
+      "fact_summary": "突兀人与慕兰人同为游牧民族，并被叙述为慕兰人真正的世敌。",
+      "evidence_ids": [
+        "evidence:chunk-0362:014",
+        "evidence:chunk-0362:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        921289,
+        921386
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          921289,
+          921386
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0362:faction:007",
+      "node_type": "faction",
+      "label": "燕族人",
+      "aliases": [],
+      "fact_summary": "燕族人与慕兰族人的仇恨受九国修仙界和慕兰族法士长期冲突影响，成为世仇。",
+      "evidence_ids": [
+        "evidence:chunk-0362:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        921032,
+        921108
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          921032,
+          921108
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0362:beast:001",
+      "node_type": "beast",
+      "label": "天澜兽",
+      "aliases": [],
+      "fact_summary": "天澜兽是突兀人世代信奉为守护神的传说存在。",
+      "evidence_ids": [
+        "evidence:chunk-0362:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        921289,
+        921386
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          921289,
+          921386
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0362:faction:008",
+      "node_type": "faction",
+      "label": "六派",
+      "aliases": [],
+      "fact_summary": "韩立推测六派撤离后不会停留附近国家，而会转道前往九国联盟。",
+      "evidence_ids": [
+        "evidence:chunk-0362:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        921716,
+        921770
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          921716,
+          921770
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0362:001",
+      "edge_type": "considers_route_option",
+      "source": "node:chunk-0362:character:001",
+      "target": "node:chunk-0362:formation:001",
+      "fact_summary": "韩立把修复古传送阵作为离开当前乱局的路线选项之一。",
+      "evidence_ids": [
+        "evidence:chunk-0362:003",
+        "evidence:chunk-0362:017"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        919487,
+        919551
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919487,
+          919551
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0362:002",
+      "edge_type": "base_region",
+      "source": "node:chunk-0362:faction:001",
+      "target": "node:chunk-0362:location:002",
+      "fact_summary": "天罗国被称为魔道的老巢。",
+      "evidence_ids": [
+        "evidence:chunk-0362:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        919644,
+        919685
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919644,
+          919685
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0362:003",
+      "edge_type": "base_region",
+      "source": "node:chunk-0362:faction:002",
+      "target": "node:chunk-0362:location:003",
+      "fact_summary": "风都国被描述为正道盟方向的国家。",
+      "evidence_ids": [
+        "evidence:chunk-0362:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        919644,
+        919685
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919644,
+          919685
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0362:004",
+      "edge_type": "blocks_northern_route",
+      "source": "node:chunk-0362:location:004",
+      "target": "node:chunk-0362:character:001",
+      "fact_summary": "无边海极难飞越且缺乏补给，成为韩立排除北上远遁路线的重要障碍。",
+      "evidence_ids": [
+        "evidence:chunk-0362:006",
+        "evidence:chunk-0362:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        919895,
+        919970
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919895,
+          919970
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0362:005",
+      "edge_type": "formed_to_resist",
+      "source": "node:chunk-0362:faction:003",
+      "target": "node:chunk-0362:faction:005",
+      "fact_summary": "九国盟由九国修仙界主导形成，目的是对付慕兰族法士入侵大军。",
+      "evidence_ids": [
+        "evidence:chunk-0362:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        920239,
+        920292
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          920239,
+          920292
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0362:006",
+      "edge_type": "practices",
+      "source": "node:chunk-0362:faction:005",
+      "target": "node:chunk-0362:technique:001",
+      "fact_summary": "慕兰族法士形成并使用独特法术流派灵术。",
+      "evidence_ids": [
+        "evidence:chunk-0362:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        920532,
+        920638
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          920532,
+          920638
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0362:007",
+      "edge_type": "raids_for_resources",
+      "source": "node:chunk-0362:faction:005",
+      "target": "node:chunk-0362:faction:003",
+      "fact_summary": "慕兰族法士因灵脉灵矿等修炼资源需求，频繁抢占九国资源。",
+      "evidence_ids": [
+        "evidence:chunk-0362:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        920774,
+        920833
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          920774,
+          920833
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0362:008",
+      "edge_type": "long_term_enemy",
+      "source": "node:chunk-0362:faction:004",
+      "target": "node:chunk-0362:faction:007",
+      "fact_summary": "慕兰族人与燕族人因长期冲突影响世俗而成为世仇。",
+      "evidence_ids": [
+        "evidence:chunk-0362:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        921032,
+        921108
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          921032,
+          921108
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0362:009",
+      "edge_type": "long_term_enemy",
+      "source": "node:chunk-0362:faction:004",
+      "target": "node:chunk-0362:faction:006",
+      "fact_summary": "突兀人被叙述为慕兰人真正的世敌。",
+      "evidence_ids": [
+        "evidence:chunk-0362:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        921289,
+        921386
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          921289,
+          921386
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0362:010",
+      "edge_type": "worships",
+      "source": "node:chunk-0362:faction:006",
+      "target": "node:chunk-0362:beast:001",
+      "fact_summary": "突兀人世代信奉传说中的天澜兽为守护神。",
+      "evidence_ids": [
+        "evidence:chunk-0362:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        921289,
+        921386
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          921289,
+          921386
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0362:011",
+      "edge_type": "expected_to_relocate_to",
+      "source": "node:chunk-0362:faction:008",
+      "target": "node:chunk-0362:faction:003",
+      "fact_summary": "韩立推测六派撤离后一定会转道前往九国联盟。",
+      "evidence_ids": [
+        "evidence:chunk-0362:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        921716,
+        921770
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          921716,
+          921770
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0362:001",
+      "event_type": "route_decision_event",
+      "label": "韩立权衡离开越国的路线",
+      "fact_summary": "韩立综合越国混乱局势后，在远遁和修复古传送阵之间权衡。",
+      "participants": [
+        "node:chunk-0362:character:001",
+        "node:chunk-0362:location:001",
+        "node:chunk-0362:formation:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0362:002",
+        "evidence:chunk-0362:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        919393,
+        919460
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919393,
+          919460
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0362:002",
+      "event_type": "route_blocked_by_politics_event",
+      "label": "东西与北方路线受大势力战场风险限制",
+      "fact_summary": "越国东西有魔道天罗国和正道盟风都国，北方中小国家也可能成为双方战场，韩立因此不能停留。",
+      "participants": [
+        "node:chunk-0362:character:001",
+        "node:chunk-0362:faction:001",
+        "node:chunk-0362:faction:002",
+        "node:chunk-0362:location:002",
+        "node:chunk-0362:location:003"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0362:004",
+        "evidence:chunk-0362:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        919644,
+        919685
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919644,
+          919685
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0362:003",
+      "event_type": "world_rule_event",
+      "label": "无边海阻断极北远行",
+      "fact_summary": "无边海因环境凶险、无边无际和缺乏落脚补给，即使元婴期高人也未能探到尽头。",
+      "participants": [
+        "node:chunk-0362:location:004",
+        "node:chunk-0362:realm:001",
+        "node:chunk-0362:realm:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0362:006",
+        "evidence:chunk-0362:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        919895,
+        919970
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919895,
+          919970
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0362:004",
+      "event_type": "alliance_formation_event",
+      "label": "九国盟形成以抵抗慕兰法士",
+      "fact_summary": "九国盟由九国修仙界主导形成，核心目标是抵抗慕兰族法士组成的入侵大军。",
+      "participants": [
+        "node:chunk-0362:faction:003",
+        "node:chunk-0362:faction:005"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0362:008",
+        "evidence:chunk-0362:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        920193,
+        920236
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          920193,
+          920236
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0362:005",
+      "event_type": "resource_war_event",
+      "label": "慕兰法士抢占九国灵脉灵矿",
+      "fact_summary": "慕兰族法士因慕兰草原修炼资源贫乏，将目标转向九国并频繁抢占灵脉灵矿，引发血腥斗法争斗。",
+      "participants": [
+        "node:chunk-0362:faction:005",
+        "node:chunk-0362:faction:003"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0362:011",
+        "evidence:chunk-0362:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        920774,
+        920833
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          920774,
+          920833
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0362:006",
+      "event_type": "counterattack_event",
+      "label": "九国结盟后夺回被占土地",
+      "fact_summary": "九国起初独立抗敌惨败，后来结成九国盟并逐步击败慕兰族法士、夺回土地。",
+      "participants": [
+        "node:chunk-0362:faction:003",
+        "node:chunk-0362:faction:005"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0362:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        920882,
+        921005
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          920882,
+          921005
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0362:007",
+      "event_type": "century_battle_event",
+      "label": "慕兰人与突兀人百年大会战",
+      "fact_summary": "慕兰人与突兀人每隔百年在草原中央展开大会战，凡人战士和修仙者分别在地面与空中厮杀。",
+      "participants": [
+        "node:chunk-0362:faction:004",
+        "node:chunk-0362:faction:006",
+        "node:chunk-0362:location:005"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0362:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        921462,
+        921521
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          921462,
+          921521
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0362:008",
+      "event_type": "decision_event",
+      "label": "韩立决定先修复古传送阵",
+      "fact_summary": "韩立排除南北路线顾虑后，认为只能先修复古传送阵，修好后再考虑是否传走。",
+      "participants": [
+        "node:chunk-0362:character:001",
+        "node:chunk-0362:formation:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0362:016",
+        "evidence:chunk-0362:017"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        921716,
+        921770
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          921716,
+          921770
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0362:001",
+      "chunk_id": "chunk-0362",
+      "source_range": [
+        919193,
+        919212
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919193,
+          919212
+        ]
+      },
+      "excerpt": "这么说来，现在的越国实在乱的够可以啊！",
+      "fact_summary": "韩立概括判断当前越国局势十分混乱。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0362:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0362:002",
+      "chunk_id": "chunk-0362",
+      "source_range": [
+        919393,
+        919460
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919393,
+          919460
+        ]
+      },
+      "excerpt": "韩立站在山峰的角落里，低头思量了起来。\n　　他刚才一连和好几伙修士打听了越国修仙界的情况，结果，现在的越国只能用一个“乱”字来形容了。",
+      "fact_summary": "韩立在白池山角落思量，综合多伙修士消息后认为越国修仙界只能用“乱”概括。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0362:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0362:003",
+      "chunk_id": "chunk-0362",
+      "source_range": [
+        919487,
+        919551
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919487,
+          919551
+        ]
+      },
+      "excerpt": "一是御器飞行，远远的飞离越国等国家，另找一处合适的地点接着修炼。\n　　二是想办法修复那个古传送阵，直接赌赌运气看能被传送到何处。",
+      "fact_summary": "韩立面临两条路线：御器远离越国等国家继续修炼，或修复古传送阵赌传送去向。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0362:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0362:004",
+      "chunk_id": "chunk-0362",
+      "source_range": [
+        919644,
+        919685
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919644,
+          919685
+        ]
+      },
+      "excerpt": "越国东西方向，分别是魔道的老巢天罗国和正道盟的风都国，所以能去的只有往北或向南了。",
+      "fact_summary": "越国东西方向分别是魔道老巢天罗国和正道盟风都国，因此韩立认为只能考虑北上或南下。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0362:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0362:005",
+      "chunk_id": "chunk-0362",
+      "source_range": [
+        919807,
+        919840
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919807,
+          919840
+        ]
+      },
+      "excerpt": "这些国家，随时都有可能成为魔道和正道盟的战场，韩立自然不能留下了。",
+      "fact_summary": "通过元武国北走所经中小国家随时可能成为魔道和正道盟战场，韩立不能停留。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0362:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0362:006",
+      "chunk_id": "chunk-0362",
+      "source_range": [
+        919895,
+        919970
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919895,
+          919970
+        ]
+      },
+      "excerpt": "此海不但浑浊无比，无边无际，而且罕有鱼类能生存其中，能存活的几种鱼类都凶猛无比，厉害不下于高等级的陆地妖兽，就是结丹期的修士掉入海中也是极危险的事情。",
+      "fact_summary": "无边海浑浊无际，鱼类罕少且凶猛如高等级陆地妖兽，结丹期修士落海也极危险。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0362:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0362:007",
+      "chunk_id": "chunk-0362",
+      "source_range": [
+        919994,
+        920079
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919994,
+          920079
+        ]
+      },
+      "excerpt": "曾经有一位修为到了元婴期的高人，对此海的尽头是什么，大为的好奇。就在准备充分的情况下，他沿着此海一连飞行了年余，可入目的竟然还是无尽的海水，连一个落脚的地方都未曾见到过。",
+      "fact_summary": "曾有元婴期高人准备充分后沿无边海飞行一年多仍只见海水、没有落脚地。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0362:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0362:008",
+      "chunk_id": "chunk-0362",
+      "source_range": [
+        920193,
+        920236
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          920193,
+          920236
+        ]
+      },
+      "excerpt": "越国的南面，穿过紫金国等五六个国家，则是号称是“九国盟”的大小九个国家组成的紧密联盟。",
+      "fact_summary": "越国南面穿过紫金国等五六国后，是大小九个国家组成的紧密联盟九国盟。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0362:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0362:009",
+      "chunk_id": "chunk-0362",
+      "source_range": [
+        920239,
+        920292
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          920239,
+          920292
+        ]
+      },
+      "excerpt": "这个联盟是在九国修仙界的主导下，才形成的，为的是对付一位强大而疯狂的对手，由慕兰族“法士”组成的入侵大军。",
+      "fact_summary": "九国盟由九国修仙界主导形成，目的在于对付慕兰族法士组成的入侵大军。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0362:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0362:010",
+      "chunk_id": "chunk-0362",
+      "source_range": [
+        920532,
+        920638
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          920532,
+          920638
+        ]
+      },
+      "excerpt": "这些法士在结丹之前并不怎么注重法器和符箓之类的外物，反而一个个将五行道术修习的出神入化，甚至还结合草原上的一些土生的秘术，研究出更厉害、更诡异的新法术，从而形成了慕兰人自己独特的法术流派，他们称之为——“灵术”。",
+      "fact_summary": "慕兰法士结丹前不重法器符箓，而修习五行道术并结合草原秘术，形成慕兰人独特法术流派“灵术”。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0362:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0362:011",
+      "chunk_id": "chunk-0362",
+      "source_range": [
+        920774,
+        920833
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          920774,
+          920833
+        ]
+      },
+      "excerpt": "慕兰族的法士们，就将目光瞅上了灵气更多，资源更丰富的九国，开始频繁的去这些国家抢占灵脉灵矿等大批修仙者视若性命的东西。",
+      "fact_summary": "慕兰族法士因修炼资源需求，将目标转向灵气和资源更丰富的九国，频繁抢占灵脉灵矿。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0362:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0362:012",
+      "chunk_id": "chunk-0362",
+      "source_range": [
+        920882,
+        921005
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          920882,
+          921005
+        ]
+      },
+      "excerpt": "一开始，九国全都是独立抗敌，结果被整合的慕兰族联军，打得大败，甚至还丢掉了一小半的领土和资源。\n　　后来知道对手厉害的九国修仙界，急忙吸取教训的结成“九国盟”，并开始频繁使用诡计等见不得人的手段，终于一点点的击败了慕兰族的法士，夺回了被占的土地。",
+      "fact_summary": "九国起初独立抗敌被整合的慕兰族联军击败并失去一小半领土资源，后来结成九国盟并逐步击败慕兰法士、夺回土地。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0362:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0362:013",
+      "chunk_id": "chunk-0362",
+      "source_range": [
+        921032,
+        921108
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          921032,
+          921108
+        ]
+      },
+      "excerpt": "在以后的无尽岁月里，他们不停的和九国修仙界纠缠不清，双方的仇恨，因为死亡人数的直线上升是越结越深了，从而影响到了世俗的世界，让燕族人和慕兰族人成了世仇。",
+      "fact_summary": "慕兰族法士与九国修仙界长期纠缠，仇恨因死亡增多加深并影响世俗，使燕族人与慕兰族人成为世仇。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0362:013"
+    },
+    {
+      "evidence_id": "evidence:chunk-0362:014",
+      "chunk_id": "chunk-0362",
+      "source_range": [
+        921289,
+        921386
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          921289,
+          921386
+        ]
+      },
+      "excerpt": "慕兰草原只是慕兰人自封的而已，在草原的另一头，则生活着慕兰人真正的世敌“突兀人”。\n　　这些同样以游牧为生的民族，却将这巨大的草原称之为“天澜草原”，因为他们世代信奉传说中的“天澜兽”为守护神。",
+      "fact_summary": "慕兰草原是慕兰人自称；草原另一头生活着其世敌突兀人，突兀人称此草原为天澜草原并信奉天澜兽。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0362:014"
+    },
+    {
+      "evidence_id": "evidence:chunk-0362:015",
+      "chunk_id": "chunk-0362",
+      "source_range": [
+        921462,
+        921521
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          921462,
+          921521
+        ]
+      },
+      "excerpt": "双方每隔百年，肯定就会在草原的正中间展开大会战。以千万而论的凡人战士，在地面上厮杀，而成千上万的修仙者们则在天上争斗。",
+      "fact_summary": "慕兰人与突兀人每隔百年在草原正中展开大会战，凡人战士在地面厮杀，修仙者在天上争斗。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0362:015"
+    },
+    {
+      "evidence_id": "evidence:chunk-0362:016",
+      "chunk_id": "chunk-0362",
+      "source_range": [
+        921716,
+        921770
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          921716,
+          921770
+        ]
+      },
+      "excerpt": "当他排除了这些杂七杂八的东西后，经过思量还是认为，六派撤离后不会在附近的国家停留的，一定会转道前往九国联盟。",
+      "fact_summary": "韩立思量后认为六派撤离后不会停留在附近国家，一定会转道前往九国联盟。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0362:016"
+    },
+    {
+      "evidence_id": "evidence:chunk-0362:017",
+      "chunk_id": "chunk-0362",
+      "source_range": [
+        921936,
+        921967
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          921936,
+          921967
+        ]
+      },
+      "excerpt": "只有先把古传送阵修复一下。若真的修好了，再考虑是否真的要传走。",
+      "fact_summary": "韩立最终认为应先修复古传送阵，修好后再考虑是否传送离开。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0362:017"
+    },
+    {
+      "evidence_id": "evidence:chunk-0362:018",
+      "chunk_id": "chunk-0362",
+      "source_range": [
+        919344,
+        919379
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919344,
+          919379
+        ]
+      },
+      "excerpt": "韩立随意的摆摆手，就招呼了一声始终站在外面的曲魂，人向其它的石亭走去。",
+      "fact_summary": "韩立招呼始终站在外面的曲魂，一起走向其它石亭。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0362:018"
+    },
+    {
+      "evidence_id": "evidence:chunk-0362:019",
+      "chunk_id": "chunk-0362",
+      "source_range": [
+        921566,
+        921639
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          921566,
+          921639
+        ]
+      },
+      "excerpt": "而据说在慕兰草原的另一头，则有个庞大的令人难以置信的大帝国，听说整个天南地区加起来，尚还不足对方的十分之一大。\n　　这种传闻，韩立听了实在难以相信",
+      "fact_summary": "慕兰草原另一头大帝国的规模只是传闻，且韩立难以相信。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0362:019"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "角色AI行为参考",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "世界观设定",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "信息传播与情报",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "势力设定",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "物资产出与消耗",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "功法术法神通",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "境界提升与功法分析",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "needs_review",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review"
+    },
+    {
+      "template_name": "事件因果链（长程因果图）",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "冲突事件分析",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "动态事件与机会点",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "阵法师",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "needs_review",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review"
+    },
+    {
+      "template_name": "妖兽分析",
+      "requirement_id": "creature_deviant_practice_ecology",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0362:001",
+      "kind": "route_outcome_unknown",
+      "fact_summary": "韩立只是决定先修复古传送阵，当前 chunk 未明示阵法是否修好、会通往何处或最终是否传走。",
+      "evidence_ids": [
+        "evidence:chunk-0362:017"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        921936,
+        921967
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          921936,
+          921967
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0362:002",
+      "kind": "hearsay_world_knowledge",
+      "fact_summary": "慕兰草原另一头大帝国的规模属于传闻，且韩立明确难以相信；本 output 不将其建为已验证地点节点。",
+      "evidence_ids": [
+        "evidence:chunk-0362:019"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        921566,
+        921639
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          921566,
+          921639
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0362:003",
+      "kind": "legendary_beast_status",
+      "fact_summary": "天澜兽在当前 chunk 中是突兀人世代信奉的传说守护神，未明示其真实存在、能力或生态细节。",
+      "evidence_ids": [
+        "evidence:chunk-0362:014"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        921289,
+        921386
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          921289,
+          921386
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0362:001",
+      "candidate": "无边海中的几种鱼类",
+      "reason": "原文只泛称几种鱼类凶猛无比，没有给出专属名称；按具名实体规则不硬造妖兽节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "not_found_in_source",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected"
+        }
+      ],
+      "source_range": [
+        919895,
+        919970
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919895,
+          919970
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0362:002",
+      "candidate": "元婴期高人",
+      "reason": "该人物仅作为无边海难渡规则的传闻案例出现，未给出姓名、身份或后续关系；保留为事件证据，不单独建角色节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        919994,
+        920079
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          919994,
+          920079
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0362:003",
+      "candidate": "庞大大帝国",
+      "reason": "当前文本明确只是“据说”和韩立难以相信的传闻，且与韩立计划无关；不建验证地点或势力节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected"
+        }
+      ],
+      "source_range": [
+        921566,
+        921639
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0362",
+        "source_path": "intermediate/chunks/chunk-0362.txt",
+        "source_range": [
+          921566,
+          921639
+        ]
+      },
+      "evidence_ids": [
+        "evidence:chunk-0362:019"
+      ]
+    }
+  ],
+  "structured_failures": []
+}

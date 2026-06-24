@@ -1,0 +1,2233 @@
+{
+  "schema": "stage2-extraction-record.v1",
+  "template_name": "炼器师",
+  "template_file": "炼器师模板.md",
+  "template_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\模板\\炼器师模板.md",
+  "template_sha256": "fd2560601b075ba73fd78904c1223be4d82d8ab4196fc33e047e757e0f323e0e",
+  "source_graph": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\graphify-out\\graph.json",
+  "source_novel": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+  "output_language": "zh-CN",
+  "stage2_policy": {
+    "stage2_categories": {
+      "facts": "原作事实",
+      "judgments": "我的判断",
+      "pending_verifications": "待核验",
+      "not_found_items": "未见可靠证据"
+    },
+    "stage2_output_policy": {
+      "default_dir": "drafts",
+      "allow_overwrite_existing_docs": false,
+      "existing_document_action": "write_versioned_draft",
+      "allowed_policies": [
+        "draft",
+        "backup-and-overwrite",
+        "merge"
+      ],
+      "draft_action": "write_draft"
+    },
+    "stage2_render_policy": {
+      "citation_format": "[{evidence_id}]",
+      "draft_entry_policy": {
+        "source_sections": [
+          "facts"
+        ],
+        "field_aliases": {
+          "name": [
+            "name",
+            "title",
+            "item_name",
+            "entity_name",
+            "名称"
+          ],
+          "classification": [
+            "classification",
+            "type",
+            "category_label",
+            "类别",
+            "分类"
+          ],
+          "usage": [
+            "usage",
+            "purpose",
+            "effect",
+            "effects",
+            "用途",
+            "功效"
+          ],
+          "formula": [
+            "formula",
+            "materials",
+            "ingredients",
+            "components",
+            "recipe",
+            "方方",
+            "材料",
+            "成分"
+          ],
+          "source_excerpt": [
+            "source_excerpt",
+            "original_excerpt",
+            "quote",
+            "原文摘录"
+          ],
+          "review_status": [
+            "review_status",
+            "verification_status",
+            "审核状态"
+          ]
+        },
+        "fallback_name": "未命名条目",
+        "kept_fields": [
+          "name",
+          "classification",
+          "usage",
+          "formula",
+          "source_range",
+          "source_excerpt",
+          "evidence_ids",
+          "confidence",
+          "review_status"
+        ]
+      },
+      "final_entry_policy": {
+        "allowed_confidence": [
+          "EXTRACTED"
+        ],
+        "min_evidence_count": 1,
+        "require_explicit_name": true,
+        "require_source_excerpt": true,
+        "required_any_fields": [
+          "usage",
+          "formula"
+        ],
+        "unstable_name_prefixes": [
+          "未名",
+          "未命名",
+          "未知",
+          "不明"
+        ],
+        "unstable_name_contains": [
+          "某种",
+          "某类"
+        ],
+        "composite_name_markers": [
+          "与",
+          "或",
+          "/",
+          "、"
+        ],
+        "review_only_statuses": [
+          "needs_review",
+          "pending_review",
+          "rejected",
+          "ambiguous"
+        ],
+        "allow_missing_review_status": true
+      },
+      "dedupe_policy": {
+        "key_fields": [
+          "name",
+          "classification"
+        ],
+        "merge_text_fields": [
+          "usage",
+          "formula",
+          "source_excerpt"
+        ],
+        "confidence_strategy": "most_conservative",
+        "review_status_strategy": "review_only_wins"
+      },
+      "final_template_policy": {
+        "case_section_names": [
+          "案例",
+          "典型案例",
+          "案例清单",
+          "示例"
+        ],
+        "excluded_section_names": [
+          "待复核",
+          "缺口",
+          "资料来源",
+          "说明"
+        ],
+        "fallback_to_first_non_root_heading": true
+      }
+    }
+  },
+  "coverage_scope": {
+    "scope": "whole_novel",
+    "stage1_chunk_ledger": "coverage/chunk-ledger.json",
+    "chunk_ranges": [
+      {
+        "chunk_id": "chunk-0166",
+        "source_range": [
+          352507,
+          352548
+        ]
+      },
+      {
+        "chunk_id": "chunk-0166",
+        "source_range": [
+          352644,
+          352687
+        ]
+      },
+      {
+        "chunk_id": "chunk-0218",
+        "source_range": [
+          497610,
+          497727
+        ]
+      },
+      {
+        "chunk_id": "chunk-0225",
+        "source_range": [
+          520563,
+          520600
+        ]
+      },
+      {
+        "chunk_id": "chunk-0226",
+        "source_range": [
+          521928,
+          521950
+        ]
+      },
+      {
+        "chunk_id": "chunk-0226",
+        "source_range": [
+          522051,
+          522112
+        ]
+      },
+      {
+        "chunk_id": "chunk-0226",
+        "source_range": [
+          522197,
+          522288
+        ]
+      },
+      {
+        "chunk_id": "chunk-0226",
+        "source_range": [
+          522396,
+          522483
+        ]
+      },
+      {
+        "chunk_id": "chunk-0226",
+        "source_range": [
+          522656,
+          522737
+        ]
+      },
+      {
+        "chunk_id": "chunk-0226",
+        "source_range": [
+          522894,
+          522937
+        ]
+      },
+      {
+        "chunk_id": "chunk-0226",
+        "source_range": [
+          522955,
+          522986
+        ]
+      },
+      {
+        "chunk_id": "chunk-0231",
+        "source_range": [
+          537950,
+          538004
+        ]
+      },
+      {
+        "chunk_id": "chunk-0231",
+        "source_range": [
+          538007,
+          538063
+        ]
+      },
+      {
+        "chunk_id": "chunk-0231",
+        "source_range": [
+          538138,
+          538214
+        ]
+      },
+      {
+        "chunk_id": "chunk-0232",
+        "source_range": [
+          538427,
+          538485
+        ]
+      },
+      {
+        "chunk_id": "chunk-0232",
+        "source_range": [
+          538683,
+          538724
+        ]
+      },
+      {
+        "chunk_id": "chunk-0232",
+        "source_range": [
+          539109,
+          539144
+        ]
+      },
+      {
+        "chunk_id": "chunk-0232",
+        "source_range": [
+          539165,
+          539210
+        ]
+      },
+      {
+        "chunk_id": "chunk-0231",
+        "source_range": [
+          535637,
+          535685
+        ]
+      },
+      {
+        "chunk_id": "chunk-0231",
+        "source_range": [
+          535761,
+          535881
+        ]
+      },
+      {
+        "chunk_id": "chunk-0231",
+        "source_range": [
+          535912,
+          535982
+        ]
+      },
+      {
+        "chunk_id": "chunk-0231",
+        "source_range": [
+          536607,
+          536752
+        ]
+      },
+      {
+        "chunk_id": "chunk-0355",
+        "source_range": [
+          901552,
+          901608
+        ]
+      },
+      {
+        "chunk_id": "chunk-0357",
+        "source_range": [
+          905415,
+          905458
+        ]
+      },
+      {
+        "chunk_id": "chunk-0360",
+        "source_range": [
+          914600,
+          914671
+        ]
+      },
+      {
+        "chunk_id": "chunk-0360",
+        "source_range": [
+          914803,
+          914836
+        ]
+      },
+      {
+        "chunk_id": "chunk-0241",
+        "source_range": [
+          565347,
+          565423
+        ]
+      },
+      {
+        "chunk_id": "chunk-0241",
+        "source_range": [
+          565497,
+          565598
+        ]
+      },
+      {
+        "chunk_id": "chunk-0267",
+        "source_range": [
+          644633,
+          644697
+        ]
+      },
+      {
+        "chunk_id": "chunk-0268",
+        "source_range": [
+          645740,
+          645845
+        ]
+      },
+      {
+        "chunk_id": "chunk-0269",
+        "source_range": [
+          648293,
+          648339
+        ]
+      },
+      {
+        "chunk_id": "chunk-0268",
+        "source_range": [
+          647261,
+          647351
+        ]
+      },
+      {
+        "chunk_id": "chunk-0269",
+        "source_range": [
+          650441,
+          650472
+        ]
+      },
+      {
+        "chunk_id": "chunk-0397",
+        "source_range": [
+          1018731,
+          1018918
+        ]
+      },
+      {
+        "chunk_id": "chunk-0397",
+        "source_range": [
+          1018921,
+          1019014
+        ]
+      },
+      {
+        "chunk_id": "chunk-0397",
+        "source_range": [
+          1019017,
+          1019134
+        ]
+      },
+      {
+        "chunk_id": "chunk-0404",
+        "source_range": [
+          1037993,
+          1038052
+        ]
+      },
+      {
+        "chunk_id": "chunk-0404",
+        "source_range": [
+          1038055,
+          1038079
+        ]
+      },
+      {
+        "chunk_id": "chunk-0404",
+        "source_range": [
+          1038082,
+          1038117
+        ]
+      },
+      {
+        "chunk_id": "chunk-0404",
+        "source_range": [
+          1038118,
+          1038150
+        ]
+      },
+      {
+        "chunk_id": "chunk-0407",
+        "source_range": [
+          1047277,
+          1047303
+        ]
+      },
+      {
+        "chunk_id": "chunk-0417",
+        "source_range": [
+          1076301,
+          1076431
+        ]
+      },
+      {
+        "chunk_id": "chunk-0417",
+        "source_range": [
+          1076476,
+          1076667
+        ]
+      },
+      {
+        "chunk_id": "chunk-0418",
+        "source_range": [
+          1077443,
+          1077599
+        ]
+      },
+      {
+        "chunk_id": "chunk-0418",
+        "source_range": [
+          1078394,
+          1078641
+        ]
+      },
+      {
+        "chunk_id": "chunk-0418",
+        "source_range": [
+          1078644,
+          1078892
+        ]
+      },
+      {
+        "chunk_id": "chunk-0416",
+        "source_range": [
+          1073897,
+          1073974
+        ]
+      },
+      {
+        "chunk_id": "chunk-0417",
+        "source_range": [
+          1074970,
+          1075462
+        ]
+      },
+      {
+        "chunk_id": "chunk-0417",
+        "source_range": [
+          1077289,
+          1077320
+        ]
+      },
+      {
+        "chunk_id": "chunk-0418",
+        "source_range": [
+          1079228,
+          1079332
+        ]
+      },
+      {
+        "chunk_id": "chunk-0418",
+        "source_range": [
+          1079335,
+          1079504
+        ]
+      },
+      {
+        "chunk_id": "chunk-0418",
+        "source_range": [
+          1079507,
+          1079694
+        ]
+      },
+      {
+        "chunk_id": "chunk-0418",
+        "source_range": [
+          1079697,
+          1079836
+        ]
+      },
+      {
+        "chunk_id": "chunk-0418",
+        "source_range": [
+          1079839,
+          1079999
+        ]
+      },
+      {
+        "chunk_id": "chunk-0418",
+        "source_range": [
+          1080043,
+          1080218
+        ]
+      },
+      {
+        "chunk_id": "chunk-0419",
+        "source_range": [
+          1080528,
+          1080576
+        ]
+      },
+      {
+        "chunk_id": "chunk-0419",
+        "source_range": [
+          1081599,
+          1081647
+        ]
+      },
+      {
+        "chunk_id": "chunk-0419",
+        "source_range": [
+          1082181,
+          1082235
+        ]
+      },
+      {
+        "chunk_id": "chunk-0419",
+        "source_range": [
+          1082409,
+          1082459
+        ]
+      },
+      {
+        "chunk_id": "chunk-0419",
+        "source_range": [
+          1082868,
+          1082934
+        ]
+      },
+      {
+        "chunk_id": "chunk-0471",
+        "source_range": [
+          1230720,
+          1230750
+        ]
+      },
+      {
+        "chunk_id": "chunk-0480",
+        "source_range": [
+          1255634,
+          1255761
+        ]
+      },
+      {
+        "chunk_id": "chunk-0480",
+        "source_range": [
+          1255954,
+          1256080
+        ]
+      }
+    ],
+    "ledger_path": "coverage/template-run-ledger.json"
+  },
+  "fulfilled_sections": [
+    {
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_kind": "summary_category",
+      "status": "covered",
+      "linked_node_ids": [
+        "node:chunk-0226:character:002",
+        "node:chunk-0226:technique:003",
+        "node:chunk-0231:character:002",
+        "node:chunk-0231:faction:001",
+        "node:chunk-0231:cultivation_method:001",
+        "node:chunk-0232:character:002",
+        "node:chunk-0241:formula:001",
+        "node:chunk-0268:formula:001",
+        "node:chunk-0397:tool:002",
+        "node:chunk-0404:tool:001",
+        "node:chunk-0404:tool:002",
+        "node:chunk-0417:artifact:005",
+        "node:chunk-0418:artifact:009",
+        "node:chunk-0480:tool:002"
+      ],
+      "linked_edge_ids": [],
+      "linked_event_ids": [
+        "event:chunk-0226:004",
+        "event:chunk-0226:005",
+        "event:chunk-0231:001",
+        "event:chunk-0232:001",
+        "event:chunk-0360:005",
+        "event:chunk-0397:003",
+        "event:chunk-0417:002",
+        "event:chunk-0418:007",
+        "event:chunk-0419:004",
+        "event:chunk-0471:005"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0166:001",
+        "evidence:chunk-0166:004",
+        "evidence:chunk-0218:005",
+        "evidence:chunk-0225:023",
+        "evidence:chunk-0226:009",
+        "evidence:chunk-0226:010",
+        "evidence:chunk-0226:011",
+        "evidence:chunk-0226:012",
+        "evidence:chunk-0226:013",
+        "evidence:chunk-0226:014",
+        "evidence:chunk-0226:015",
+        "evidence:chunk-0231:015",
+        "evidence:chunk-0231:016",
+        "evidence:chunk-0231:017",
+        "evidence:chunk-0232:001",
+        "evidence:chunk-0232:003",
+        "evidence:chunk-0232:007",
+        "evidence:chunk-0232:008",
+        "evidence:chunk-0231:002",
+        "evidence:chunk-0231:003",
+        "evidence:chunk-0231:004",
+        "evidence:chunk-0231:007",
+        "evidence:chunk-0355:014",
+        "evidence:chunk-0357:003",
+        "evidence:chunk-0360:008",
+        "evidence:chunk-0360:010",
+        "evidence:chunk-0241:003",
+        "evidence:chunk-0241:004",
+        "evidence:chunk-0267:008",
+        "evidence:chunk-0268:002",
+        "evidence:chunk-0269:003",
+        "evidence:chunk-0268:007",
+        "evidence:chunk-0269:021",
+        "evidence:chunk-0397:011",
+        "evidence:chunk-0397:012",
+        "evidence:chunk-0397:013",
+        "evidence:chunk-0404:013",
+        "evidence:chunk-0404:014",
+        "evidence:chunk-0404:015",
+        "evidence:chunk-0404:016",
+        "evidence:chunk-0407:011",
+        "evidence:chunk-0417:005",
+        "evidence:chunk-0417:006",
+        "evidence:chunk-0418:001",
+        "evidence:chunk-0418:005",
+        "evidence:chunk-0418:006",
+        "evidence:chunk-0416:013",
+        "evidence:chunk-0417:003",
+        "evidence:chunk-0417:010",
+        "evidence:chunk-0418:008",
+        "evidence:chunk-0418:009",
+        "evidence:chunk-0418:010",
+        "evidence:chunk-0418:011",
+        "evidence:chunk-0418:012",
+        "evidence:chunk-0418:013",
+        "evidence:chunk-0419:001",
+        "evidence:chunk-0419:007",
+        "evidence:chunk-0419:008",
+        "evidence:chunk-0419:009",
+        "evidence:chunk-0419:010",
+        "evidence:chunk-0471:012",
+        "evidence:chunk-0480:009",
+        "evidence:chunk-0480:012"
+      ],
+      "notes": []
+    }
+  ],
+  "fulfilled_fields": [
+    {
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_kind": "field",
+      "status": "covered",
+      "linked_node_ids": [
+        "node:chunk-0226:character:002",
+        "node:chunk-0226:technique:003",
+        "node:chunk-0231:character:002",
+        "node:chunk-0231:faction:001",
+        "node:chunk-0231:cultivation_method:001",
+        "node:chunk-0232:character:002",
+        "node:chunk-0241:formula:001",
+        "node:chunk-0268:formula:001",
+        "node:chunk-0397:tool:002",
+        "node:chunk-0404:tool:001",
+        "node:chunk-0404:tool:002",
+        "node:chunk-0417:artifact:005",
+        "node:chunk-0418:artifact:009",
+        "node:chunk-0480:tool:002"
+      ],
+      "linked_edge_ids": [],
+      "linked_event_ids": [
+        "event:chunk-0226:004",
+        "event:chunk-0226:005",
+        "event:chunk-0231:001",
+        "event:chunk-0232:001",
+        "event:chunk-0360:005",
+        "event:chunk-0397:003",
+        "event:chunk-0417:002",
+        "event:chunk-0418:007",
+        "event:chunk-0419:004",
+        "event:chunk-0471:005"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0166:001",
+        "evidence:chunk-0166:004",
+        "evidence:chunk-0218:005",
+        "evidence:chunk-0225:023",
+        "evidence:chunk-0226:009",
+        "evidence:chunk-0226:010",
+        "evidence:chunk-0226:011",
+        "evidence:chunk-0226:012",
+        "evidence:chunk-0226:013",
+        "evidence:chunk-0226:014",
+        "evidence:chunk-0226:015",
+        "evidence:chunk-0231:015",
+        "evidence:chunk-0231:016",
+        "evidence:chunk-0231:017",
+        "evidence:chunk-0232:001",
+        "evidence:chunk-0232:003",
+        "evidence:chunk-0232:007",
+        "evidence:chunk-0232:008",
+        "evidence:chunk-0231:002",
+        "evidence:chunk-0231:003",
+        "evidence:chunk-0231:004",
+        "evidence:chunk-0231:007",
+        "evidence:chunk-0355:014",
+        "evidence:chunk-0357:003",
+        "evidence:chunk-0360:008",
+        "evidence:chunk-0360:010",
+        "evidence:chunk-0241:003",
+        "evidence:chunk-0241:004",
+        "evidence:chunk-0267:008",
+        "evidence:chunk-0268:002",
+        "evidence:chunk-0269:003",
+        "evidence:chunk-0268:007",
+        "evidence:chunk-0269:021",
+        "evidence:chunk-0397:011",
+        "evidence:chunk-0397:012",
+        "evidence:chunk-0397:013",
+        "evidence:chunk-0404:013",
+        "evidence:chunk-0404:014",
+        "evidence:chunk-0404:015",
+        "evidence:chunk-0404:016",
+        "evidence:chunk-0407:011",
+        "evidence:chunk-0417:005",
+        "evidence:chunk-0417:006",
+        "evidence:chunk-0418:001",
+        "evidence:chunk-0418:005",
+        "evidence:chunk-0418:006",
+        "evidence:chunk-0416:013",
+        "evidence:chunk-0417:003",
+        "evidence:chunk-0417:010",
+        "evidence:chunk-0418:008",
+        "evidence:chunk-0418:009",
+        "evidence:chunk-0418:010",
+        "evidence:chunk-0418:011",
+        "evidence:chunk-0418:012",
+        "evidence:chunk-0418:013",
+        "evidence:chunk-0419:001",
+        "evidence:chunk-0419:007",
+        "evidence:chunk-0419:008",
+        "evidence:chunk-0419:009",
+        "evidence:chunk-0419:010",
+        "evidence:chunk-0471:012",
+        "evidence:chunk-0480:009",
+        "evidence:chunk-0480:012"
+      ],
+      "notes": []
+    }
+  ],
+  "fulfilled_tables": [
+    {
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_kind": "table",
+      "status": "covered",
+      "linked_node_ids": [
+        "node:chunk-0226:character:002",
+        "node:chunk-0226:technique:003",
+        "node:chunk-0231:character:002",
+        "node:chunk-0231:faction:001",
+        "node:chunk-0231:cultivation_method:001",
+        "node:chunk-0232:character:002",
+        "node:chunk-0241:formula:001",
+        "node:chunk-0268:formula:001",
+        "node:chunk-0397:tool:002",
+        "node:chunk-0404:tool:001",
+        "node:chunk-0404:tool:002",
+        "node:chunk-0417:artifact:005",
+        "node:chunk-0418:artifact:009",
+        "node:chunk-0480:tool:002"
+      ],
+      "linked_edge_ids": [],
+      "linked_event_ids": [
+        "event:chunk-0226:004",
+        "event:chunk-0226:005",
+        "event:chunk-0231:001",
+        "event:chunk-0232:001",
+        "event:chunk-0360:005",
+        "event:chunk-0397:003",
+        "event:chunk-0417:002",
+        "event:chunk-0418:007",
+        "event:chunk-0419:004",
+        "event:chunk-0471:005"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0166:001",
+        "evidence:chunk-0166:004",
+        "evidence:chunk-0218:005",
+        "evidence:chunk-0225:023",
+        "evidence:chunk-0226:009",
+        "evidence:chunk-0226:010",
+        "evidence:chunk-0226:011",
+        "evidence:chunk-0226:012",
+        "evidence:chunk-0226:013",
+        "evidence:chunk-0226:014",
+        "evidence:chunk-0226:015",
+        "evidence:chunk-0231:015",
+        "evidence:chunk-0231:016",
+        "evidence:chunk-0231:017",
+        "evidence:chunk-0232:001",
+        "evidence:chunk-0232:003",
+        "evidence:chunk-0232:007",
+        "evidence:chunk-0232:008",
+        "evidence:chunk-0231:002",
+        "evidence:chunk-0231:003",
+        "evidence:chunk-0231:004",
+        "evidence:chunk-0231:007",
+        "evidence:chunk-0355:014",
+        "evidence:chunk-0357:003",
+        "evidence:chunk-0360:008",
+        "evidence:chunk-0360:010",
+        "evidence:chunk-0241:003",
+        "evidence:chunk-0241:004",
+        "evidence:chunk-0267:008",
+        "evidence:chunk-0268:002",
+        "evidence:chunk-0269:003",
+        "evidence:chunk-0268:007",
+        "evidence:chunk-0269:021",
+        "evidence:chunk-0397:011",
+        "evidence:chunk-0397:012",
+        "evidence:chunk-0397:013",
+        "evidence:chunk-0404:013",
+        "evidence:chunk-0404:014",
+        "evidence:chunk-0404:015",
+        "evidence:chunk-0404:016",
+        "evidence:chunk-0407:011",
+        "evidence:chunk-0417:005",
+        "evidence:chunk-0417:006",
+        "evidence:chunk-0418:001",
+        "evidence:chunk-0418:005",
+        "evidence:chunk-0418:006",
+        "evidence:chunk-0416:013",
+        "evidence:chunk-0417:003",
+        "evidence:chunk-0417:010",
+        "evidence:chunk-0418:008",
+        "evidence:chunk-0418:009",
+        "evidence:chunk-0418:010",
+        "evidence:chunk-0418:011",
+        "evidence:chunk-0418:012",
+        "evidence:chunk-0418:013",
+        "evidence:chunk-0419:001",
+        "evidence:chunk-0419:007",
+        "evidence:chunk-0419:008",
+        "evidence:chunk-0419:009",
+        "evidence:chunk-0419:010",
+        "evidence:chunk-0471:012",
+        "evidence:chunk-0480:009",
+        "evidence:chunk-0480:012"
+      ],
+      "notes": []
+    }
+  ],
+  "fulfilled_cards": [],
+  "fulfilled_cases": [
+    {
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_kind": "case",
+      "status": "covered",
+      "linked_node_ids": [
+        "node:chunk-0226:character:002",
+        "node:chunk-0226:technique:003",
+        "node:chunk-0231:character:002",
+        "node:chunk-0231:faction:001",
+        "node:chunk-0231:cultivation_method:001",
+        "node:chunk-0232:character:002",
+        "node:chunk-0241:formula:001",
+        "node:chunk-0268:formula:001",
+        "node:chunk-0397:tool:002",
+        "node:chunk-0404:tool:001",
+        "node:chunk-0404:tool:002",
+        "node:chunk-0417:artifact:005",
+        "node:chunk-0418:artifact:009",
+        "node:chunk-0480:tool:002"
+      ],
+      "linked_edge_ids": [],
+      "linked_event_ids": [
+        "event:chunk-0226:004",
+        "event:chunk-0226:005",
+        "event:chunk-0231:001",
+        "event:chunk-0232:001",
+        "event:chunk-0360:005",
+        "event:chunk-0397:003",
+        "event:chunk-0417:002",
+        "event:chunk-0418:007",
+        "event:chunk-0419:004",
+        "event:chunk-0471:005"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0166:001",
+        "evidence:chunk-0166:004",
+        "evidence:chunk-0218:005",
+        "evidence:chunk-0225:023",
+        "evidence:chunk-0226:009",
+        "evidence:chunk-0226:010",
+        "evidence:chunk-0226:011",
+        "evidence:chunk-0226:012",
+        "evidence:chunk-0226:013",
+        "evidence:chunk-0226:014",
+        "evidence:chunk-0226:015",
+        "evidence:chunk-0231:015",
+        "evidence:chunk-0231:016",
+        "evidence:chunk-0231:017",
+        "evidence:chunk-0232:001",
+        "evidence:chunk-0232:003",
+        "evidence:chunk-0232:007",
+        "evidence:chunk-0232:008",
+        "evidence:chunk-0231:002",
+        "evidence:chunk-0231:003",
+        "evidence:chunk-0231:004",
+        "evidence:chunk-0231:007",
+        "evidence:chunk-0355:014",
+        "evidence:chunk-0357:003",
+        "evidence:chunk-0360:008",
+        "evidence:chunk-0360:010",
+        "evidence:chunk-0241:003",
+        "evidence:chunk-0241:004",
+        "evidence:chunk-0267:008",
+        "evidence:chunk-0268:002",
+        "evidence:chunk-0269:003",
+        "evidence:chunk-0268:007",
+        "evidence:chunk-0269:021",
+        "evidence:chunk-0397:011",
+        "evidence:chunk-0397:012",
+        "evidence:chunk-0397:013",
+        "evidence:chunk-0404:013",
+        "evidence:chunk-0404:014",
+        "evidence:chunk-0404:015",
+        "evidence:chunk-0404:016",
+        "evidence:chunk-0407:011",
+        "evidence:chunk-0417:005",
+        "evidence:chunk-0417:006",
+        "evidence:chunk-0418:001",
+        "evidence:chunk-0418:005",
+        "evidence:chunk-0418:006",
+        "evidence:chunk-0416:013",
+        "evidence:chunk-0417:003",
+        "evidence:chunk-0417:010",
+        "evidence:chunk-0418:008",
+        "evidence:chunk-0418:009",
+        "evidence:chunk-0418:010",
+        "evidence:chunk-0418:011",
+        "evidence:chunk-0418:012",
+        "evidence:chunk-0418:013",
+        "evidence:chunk-0419:001",
+        "evidence:chunk-0419:007",
+        "evidence:chunk-0419:008",
+        "evidence:chunk-0419:009",
+        "evidence:chunk-0419:010",
+        "evidence:chunk-0471:012",
+        "evidence:chunk-0480:009",
+        "evidence:chunk-0480:012"
+      ],
+      "notes": []
+    }
+  ],
+  "facts": [
+    {
+      "name": "金蚨子母刃",
+      "classification": "成套攻击法器/炼器成品",
+      "usage": "一套含母刃一把、子刃八把，是坊市中被作为法器成品介绍和交易的案例。",
+      "formula": "以精铁精金为原料，由筑基期高手三天三夜炼制而成。",
+      "source_range": [
+        352507,
+        352548
+      ],
+      "source_excerpt": "金蚨子母刃一套，母刃一把，子刃八把，以精铁精金为原料，由筑基期高手三天三夜炼制而成",
+      "review_status": "verified",
+      "content": "金蚨子母刃：一套含母刃一把、子刃八把，是坊市中被作为法器成品介绍和交易的案例。；输入/材料/流程：以精铁精金为原料，由筑基期高手三天三夜炼制而成。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0166:001"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0166",
+          "source_range": [
+            352507,
+            352548
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "玄铁飞天盾",
+      "classification": "防御性法器/炼器成品",
+      "usage": "被介绍为罕见防御性法器，特点是牢固无比、坚不可破。",
+      "formula": "由寒阴之地的大块玄铁精炼而成。",
+      "source_range": [
+        352644,
+        352687
+      ],
+      "source_excerpt": "玄铁飞天盾，非常罕见的防御性法器，用大块寒阴之地的玄铁精炼而成，不但牢固无比、坚不可破",
+      "review_status": "verified",
+      "content": "玄铁飞天盾：被介绍为罕见防御性法器，特点是牢固无比、坚不可破。；输入/材料/流程：由寒阴之地的大块玄铁精炼而成。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0166:004"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0166",
+          "source_range": [
+            352644,
+            352687
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "天星宗炼器屋与地火间",
+      "classification": "炼器设施/坊市服务",
+      "usage": "坊市中存在可承接修仙者材料、按材料主人要求炼制法器的炼器屋；门派地火间也可供炼丹炼器使用。",
+      "formula": "地火间建在地火最旺盛处，火力和稳定性是房间优劣指标；炼器屋接受外来材料与定制要求。",
+      "source_range": [
+        497610,
+        520600
+      ],
+      "source_excerpt": "这个大厅下面就地火最旺盛的聚集地，所以本门一共在此开辟了三十六间炼器炼丹的地火间，而最好地炼丹房就是十八号和十九号了。 不过十八号已被一位师伯占用了，所以师弟还是用十九号屋子吧！虽然它比十八号稍差了点，但火力和稳定性也都极为出色。 / 一间炼器的屋子，可以随时接受修仙者的材料，来按材料主人的要求炼制各种法器。",
+      "review_status": "verified",
+      "content": "天星宗炼器屋与地火间：坊市中存在可承接修仙者材料、按材料主人要求炼制法器的炼器屋；门派地火间也可供炼丹炼器使用。；输入/材料/流程：地火间建在地火最旺盛处，火力和稳定性是房间优劣指标；炼器屋接受外来材料与定制要求。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0218:005",
+        "evidence:chunk-0225:023"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0218",
+          "source_range": [
+            497610,
+            497727
+          ]
+        },
+        {
+          "chunk_id": "chunk-0225",
+          "source_range": [
+            520563,
+            520600
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "徐家炼器店与火鸦妖火",
+      "classification": "家传炼器师/旁门火法",
+      "usage": "徐家炼器店可承接顶阶法器炼制；徐老哥被旁人评价为炼器水平不逊名门大派炼器师。",
+      "formula": "顶阶法器需先天真火或地火锤炼；徐家供养二级初阶火鸦，其妖火强于先天真火，但妖火炼器炼丹需要特别技巧，被大派视作旁门左道。一般材料和要求下，徐店主自称炼制顶阶法器约有三分之一把握，失败不赔材料。",
+      "source_range": [
+        521928,
+        522737
+      ],
+      "source_excerpt": "只要有合适的材料，老朽的确可以炼制顶阶法器。 / 炼制顶阶法器可不像中阶上阶法器那样。世间的凡火即可炼制。而是需像炼制筑基丹一样，用先天真火或者地火加以锤炼。才能炼制成功。 / 徐老哥对炼器一道是家学渊源，其炼器水平绝对不在名门大派的炼器师之下。并且徐家数百年来，一直供养了一只二级初阶的火鸦，其喷出的妖火比先天真火还要厉害三分，这足可以炼制顶阶法器而无忧了。 / 用妖火炼器甚至炼丹，是需要一些特别的技巧，是不被各大仙派正式承认的，它被认为是旁门左道的小术，并没有流传的太广。我们家族要不是偶尔得到了这样一只火鸦的话，也不会专门研究此道。 / 如果材料一般，法器的要求也一般的话，我有三分之一的把握。不过顶阶法器炼制失败的话，店铺是不会赔偿材料的，因为失败的概率太高了！双倍赔偿只是针对中阶和上阶法器而言。",
+      "review_status": "verified",
+      "content": "徐家炼器店与火鸦妖火：徐家炼器店可承接顶阶法器炼制；徐老哥被旁人评价为炼器水平不逊名门大派炼器师。；输入/材料/流程：顶阶法器需先天真火或地火锤炼；徐家供养二级初阶火鸦，其妖火强于先天真火，但妖火炼器炼丹需要特别技巧，被大派视作旁门左道。一般材料和要求下，徐店主自称炼制顶阶法器约有三分之一把握，失败不赔材料。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0226:009",
+        "evidence:chunk-0226:010",
+        "evidence:chunk-0226:011",
+        "evidence:chunk-0226:012",
+        "evidence:chunk-0226:013"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0226",
+          "source_range": [
+            521928,
+            521950
+          ]
+        },
+        {
+          "chunk_id": "chunk-0226",
+          "source_range": [
+            522051,
+            522112
+          ]
+        },
+        {
+          "chunk_id": "chunk-0226",
+          "source_range": [
+            522197,
+            522288
+          ]
+        },
+        {
+          "chunk_id": "chunk-0226",
+          "source_range": [
+            522396,
+            522483
+          ]
+        },
+        {
+          "chunk_id": "chunk-0226",
+          "source_range": [
+            522656,
+            522737
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "韩立委托炼器交易",
+      "classification": "委托炼器/报酬机制",
+      "usage": "韩立以自带珍稀材料委托徐店主炼制，并要求炼制时在旁观看；成功后以部分原料作为报酬。",
+      "formula": "委托材料包括蜈蚣背壳、墨蛟材料等；徐店主需辨认材料并评估适合炼制的法器类型。",
+      "source_range": [
+        522894,
+        539210
+      ],
+      "source_excerpt": "我的确有些材料，可以让你尝试炼制一下。但是，在你炼制法器的时候，我必须在一旁观看才行。 / 只要炼制成功，我会将部分的原料当作报酬赠予你！不会让你白忙的！ / 接下来，韩立当着此老的面，先将那些蜈蚣的背壳拿了出来。让这老者神色一动，立即拿起一小块，仔细抚摸辨认了起来。 / “这时一级上阶毒虫类妖兽的外壳，的确是很好的炼器材料！特别在外界妖兽越来越少，毒虫类妖兽更是难得一见的情况下。” / 这可是很适合做护甲或盾牌类法器的极好材料。 如同据他估计，这些虫壳没炼制前，就可硬接顶阶法器一击而无大碍！若炼制成功后，自然能轻易跻身顶阶法器之中。 / 韩立虽然对这位店主的炼器手段有些怀疑，但一时之间也找不到更放心的炼器师，只好有些犹豫的将墨蛟的材料，一一摆在了桌上。 / “这是蛟龙的皮、还有尖角、獠牙、这是眼珠！天哪，前辈莫非独自屠杀了一只恶蛟不成？” / “徐店主，这么快就认出来了，在下倒放心了不少。那就请徐老动手炼制吧！” / “行！行！前辈尽管放心，这蛟龙的材料徐某学艺时，曾跟家父一同炼制过一回，把握绝对小不了！”",
+      "review_status": "verified",
+      "content": "韩立委托炼器交易：韩立以自带珍稀材料委托徐店主炼制，并要求炼制时在旁观看；成功后以部分原料作为报酬。；输入/材料/流程：委托材料包括蜈蚣背壳、墨蛟材料等；徐店主需辨认材料并评估适合炼制的法器类型。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0226:014",
+        "evidence:chunk-0226:015",
+        "evidence:chunk-0231:015",
+        "evidence:chunk-0231:016",
+        "evidence:chunk-0231:017",
+        "evidence:chunk-0232:001",
+        "evidence:chunk-0232:003",
+        "evidence:chunk-0232:007",
+        "evidence:chunk-0232:008"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0226",
+          "source_range": [
+            522894,
+            522937
+          ]
+        },
+        {
+          "chunk_id": "chunk-0226",
+          "source_range": [
+            522955,
+            522986
+          ]
+        },
+        {
+          "chunk_id": "chunk-0231",
+          "source_range": [
+            537950,
+            538004
+          ]
+        },
+        {
+          "chunk_id": "chunk-0231",
+          "source_range": [
+            538007,
+            538063
+          ]
+        },
+        {
+          "chunk_id": "chunk-0231",
+          "source_range": [
+            538138,
+            538214
+          ]
+        },
+        {
+          "chunk_id": "chunk-0232",
+          "source_range": [
+            538427,
+            538485
+          ]
+        },
+        {
+          "chunk_id": "chunk-0232",
+          "source_range": [
+            538683,
+            538724
+          ]
+        },
+        {
+          "chunk_id": "chunk-0232",
+          "source_range": [
+            539109,
+            539144
+          ]
+        },
+        {
+          "chunk_id": "chunk-0232",
+          "source_range": [
+            539165,
+            539210
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "齐云霄与《云霄心得》",
+      "classification": "炼器传承/神兵门密法",
+      "usage": "齐云霄只能交出整理的炼器心得，不能亲身教授；其炼器术来自曾为神兵门炼器长老的祖父。",
+      "formula": "《云霄心得》含多种神兵门不外流炼器方法，后来韩立又从辛如音处得到该心得、炼器典籍和阵法典籍。",
+      "source_range": [
+        535637,
+        901608
+      ],
+      "source_excerpt": "“不过，碍于祖训，晚辈只能将整理的炼器心得交予阁下，不能亲身教授此术！”青年马上又结巴的补充道。 / “家祖以前是神兵门的炼器长老，炼器之术早已是登峰造极！在下的炼器术，就是家祖手把手教出来的。晚辈今日将炼器心得交给阁下，其实已经犯了祖训！至于前辈到底能从中收益多少，也全看前辈自己的造化了！但我可以保证，绝对都是修仙界不曾外流的不传之密！” / 这神兵门不正是和天星宗、万妙观并列的元武国三大正派之一吗！其门中下的炼器术和天星宗的阵法、万妙观的符道在附近几国的修仙界，那可是赫赫有名的。 / “这有十八块阵盘和三十六根阵旗，是颠倒五行阵的全套布阵法器。只要按照这枚玉简中所说的方法。将它们纹丝不差的布置好，就可立即让大阵生效。而这本云霄心术，就是在下二十多年来的炼器心得，希望前辈看了以后尽量别往外间流传，以免被神兵门的人找上门来。因为这里面的许多炼器方法，都是神兵门的门中之密！” / 这两个匣子，一个匣子内是我夫君的《云霄心得》和他收藏的炼器典籍，另一个则是我在阵法方面的所有心血和大量的阵法道书",
+      "review_status": "verified",
+      "content": "齐云霄与《云霄心得》：齐云霄只能交出整理的炼器心得，不能亲身教授；其炼器术来自曾为神兵门炼器长老的祖父。；输入/材料/流程：《云霄心得》含多种神兵门不外流炼器方法，后来韩立又从辛如音处得到该心得、炼器典籍和阵法典籍。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0231:002",
+        "evidence:chunk-0231:003",
+        "evidence:chunk-0231:004",
+        "evidence:chunk-0231:007",
+        "evidence:chunk-0355:014"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0231",
+          "source_range": [
+            535637,
+            535685
+          ]
+        },
+        {
+          "chunk_id": "chunk-0231",
+          "source_range": [
+            535761,
+            535881
+          ]
+        },
+        {
+          "chunk_id": "chunk-0231",
+          "source_range": [
+            535912,
+            535982
+          ]
+        },
+        {
+          "chunk_id": "chunk-0231",
+          "source_range": [
+            536607,
+            536752
+          ]
+        },
+        {
+          "chunk_id": "chunk-0355",
+          "source_range": [
+            901552,
+            901608
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "徐店主炼制妖兽材料的失败案例",
+      "classification": "炼器失败/材料损耗",
+      "usage": "徐店主后续炼制妖兽材料时技术不足，导致珍稀材料大量毁坏；最终只炼出一套法器。",
+      "formula": "韩立要求将蜘蛛下肢炼成可成套使用的攻击法器；结果螳螂妖兽材料全部毁坏，只留下以白蜘蛛肢腿炼出的五把洁白飞刀。",
+      "source_range": [
+        905415,
+        914836
+      ],
+      "source_excerpt": "我这次要求炼制的法器，比较特殊，首先最好能将这些蜘蛛下肢给我炼制成可成套使用的攻击法器 / 他太高估了那徐店主的炼器之术了，竟让那些珍稀的材料毁坏了七七八八，才炼出了一套法器出来。而他最重视的螳螂妖兽材料，全都在炼制中毁坏的一干二净。 / 看到这五把用白蜘蛛的肢腿炼制出的一整套法器，韩立的心情略好了一些。",
+      "review_status": "verified",
+      "content": "徐店主炼制妖兽材料的失败案例：徐店主后续炼制妖兽材料时技术不足，导致珍稀材料大量毁坏；最终只炼出一套法器。；输入/材料/流程：韩立要求将蜘蛛下肢炼成可成套使用的攻击法器；结果螳螂妖兽材料全部毁坏，只留下以白蜘蛛肢腿炼出的五把洁白飞刀。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0357:003",
+        "evidence:chunk-0360:008",
+        "evidence:chunk-0360:010"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0357",
+          "source_range": [
+            905415,
+            905458
+          ]
+        },
+        {
+          "chunk_id": "chunk-0360",
+          "source_range": [
+            914600,
+            914671
+          ]
+        },
+        {
+          "chunk_id": "chunk-0360",
+          "source_range": [
+            914803,
+            914836
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "《傀儡真解》/《傀儡真经》",
+      "classification": "傀儡制作法门/炼器分支",
+      "usage": "玉简中记载炼制各阶傀儡兽和傀儡人的法门，韩立将其作为大衍诀配套战力来源研究。",
+      "formula": "傀儡炼制需要法器材料，并需将生灵魂魄与材料一同融炼，否则傀儡没有灵性；二级傀儡需上阶法器材料，更高阶傀儡至少需顶阶法器材料。",
+      "source_range": [
+        565347,
+        648339
+      ],
+      "source_excerpt": "在他将大衍诀的功法全看完后，后面竟紧接着又出现了一部叫“傀儡真解”的经文，里面全是教授如何炼制各阶傀儡兽和傀儡人的法门，竟是一部非常详尽的傀儡制作大全！ / 大衍诀和傀儡真解这么一对组合，如果同时修炼了，简直就搭配的天衣无缝，只要二者都修炼到了一定层次，想必就能像当日黄龙那样，一人就凭借诸多傀儡的威力，将数名筑基同阶的修士压得死死的，连一丝反抗的机会都没有！ / 韩立还要研习傀儡真经，期望短时间制造简单机关傀儡，使大衍诀成为筑基期持续战力。 / 韩立发现炼制傀儡需要法器材料、生灵魂魄与材料一同融炼，否则傀儡没有灵性。 / 既然炼制二级傀儡就要用上阶法器的材料，那炼制更高阶的傀儡，那还不至少需要顶阶法器的材料方可！",
+      "review_status": "verified",
+      "content": "《傀儡真解》/《傀儡真经》：玉简中记载炼制各阶傀儡兽和傀儡人的法门，韩立将其作为大衍诀配套战力来源研究。；输入/材料/流程：傀儡炼制需要法器材料，并需将生灵魂魄与材料一同融炼，否则傀儡没有灵性；二级傀儡需上阶法器材料，更高阶傀儡至少需顶阶法器材料。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0241:003",
+        "evidence:chunk-0241:004",
+        "evidence:chunk-0267:008",
+        "evidence:chunk-0268:002",
+        "evidence:chunk-0269:003"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0241",
+          "source_range": [
+            565347,
+            565423
+          ]
+        },
+        {
+          "chunk_id": "chunk-0241",
+          "source_range": [
+            565497,
+            565598
+          ]
+        },
+        {
+          "chunk_id": "chunk-0267",
+          "source_range": [
+            644633,
+            644697
+          ]
+        },
+        {
+          "chunk_id": "chunk-0268",
+          "source_range": [
+            645740,
+            645845
+          ]
+        },
+        {
+          "chunk_id": "chunk-0269",
+          "source_range": [
+            648293,
+            648339
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "韩立炼制二级傀儡",
+      "classification": "傀儡量产/资源消耗",
+      "usage": "韩立先炼成数十具初级机关傀儡，再尝试二级傀儡；二级傀儡兽经历十几次失败后成功。",
+      "formula": "二级傀儡主原料可用数百年铁木；魂魄来自聚魂钵中已失灵识的魂魄；二百多只兽形傀儡完工也消耗大量灵石和报废材料。",
+      "source_range": [
+        647261,
+        1019134
+      ],
+      "source_excerpt": "韩立炼制数十具初级机关傀儡后，决定尝试炼制二级傀儡，视其为千竹教等人的主战傀儡等级。 / 而第一只二级傀儡兽，在失败了十几次后，终于在两日前炼制出来了。 / 剩下的日子里，他闭关疯狂的制造起二级傀儡和各种符箓来。 符箓就不说了，没有结丹的他依然无法掌握中级法术，自然也无法制作出中级符箓了。这么多符箓制作出来后，他得到的唯一好处，就是初级符箓的制符水平大大增加了。即使是初级高阶符箓，也有了接近一半成功率，这让他省下了不少的制符材料。 而二级傀儡的主原料是数百年的铁木，韩立自己就可以催熟，所以制造一只傀儡的成本降低了多半。 / 而炼制傀儡所需要的魂魄，恰巧他以前得的那只“聚魂钵”内多的是，都是灵识早失的孤魂野鬼，韩立也不客气的直接拿来用了。毕竟没有了灵识，这些魂魄也丧失了轮回的资格，只能当做普通的祭炼材料用了。 / 二百多只傀儡终于完工，全都是清一色的兽形傀儡，这让韩立满意之极。 但这些傀儡的出现，也意味着韩立口袋中的灵石，又消失了一部分。因为一只傀儡的成本也许不算多高，但两百只多只，再加上那些因为制造失败而报废的材料，其价格可就让人咋舌了。",
+      "review_status": "verified",
+      "content": "韩立炼制二级傀儡：韩立先炼成数十具初级机关傀儡，再尝试二级傀儡；二级傀儡兽经历十几次失败后成功。；输入/材料/流程：二级傀儡主原料可用数百年铁木；魂魄来自聚魂钵中已失灵识的魂魄；二百多只兽形傀儡完工也消耗大量灵石和报废材料。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0268:007",
+        "evidence:chunk-0269:021",
+        "evidence:chunk-0397:011",
+        "evidence:chunk-0397:012",
+        "evidence:chunk-0397:013"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0268",
+          "source_range": [
+            647261,
+            647351
+          ]
+        },
+        {
+          "chunk_id": "chunk-0269",
+          "source_range": [
+            650441,
+            650472
+          ]
+        },
+        {
+          "chunk_id": "chunk-0397",
+          "source_range": [
+            1018731,
+            1018918
+          ]
+        },
+        {
+          "chunk_id": "chunk-0397",
+          "source_range": [
+            1018921,
+            1019014
+          ]
+        },
+        {
+          "chunk_id": "chunk-0397",
+          "source_range": [
+            1019017,
+            1019134
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "猿型三级傀儡",
+      "classification": "高阶傀儡/材料选择",
+      "usage": "三级傀儡按傀儡真经全力一击相当于筑基中期修士；韩立选择炼制以木制材料为主的猿型傀儡。",
+      "formula": "猿型傀儡需要更高年份铁木并掺入稀罕天晶木；韩立可用绿液催生木制材料以降低成本。",
+      "source_range": [
+        1037993,
+        1047303
+      ],
+      "source_excerpt": "三级傀儡按照傀儡真经上所说，其全力一击已相当于筑基中期的修士，炼制的材料也越发昂贵起来，并且出现了数种不同形态的傀儡。 / 韩立经过斟酌后，挑选了以木制材料为主的猿型傀儡。 / 这种傀儡，虽然需要的铁木年份增加了许多，并要在炼制时掺入稀罕的天晶木。 / 既然都是木制材料，韩立自然可以用绿液催生出来，可大大减少成本的。 / 他当即回到洞府，日夜不停的加快了三级傀儡的炼制速度。",
+      "review_status": "verified",
+      "content": "猿型三级傀儡：三级傀儡按傀儡真经全力一击相当于筑基中期修士；韩立选择炼制以木制材料为主的猿型傀儡。；输入/材料/流程：猿型傀儡需要更高年份铁木并掺入稀罕天晶木；韩立可用绿液催生木制材料以降低成本。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0404:013",
+        "evidence:chunk-0404:014",
+        "evidence:chunk-0404:015",
+        "evidence:chunk-0404:016",
+        "evidence:chunk-0407:011"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0404",
+          "source_range": [
+            1037993,
+            1038052
+          ]
+        },
+        {
+          "chunk_id": "chunk-0404",
+          "source_range": [
+            1038055,
+            1038079
+          ]
+        },
+        {
+          "chunk_id": "chunk-0404",
+          "source_range": [
+            1038082,
+            1038117
+          ]
+        },
+        {
+          "chunk_id": "chunk-0404",
+          "source_range": [
+            1038118,
+            1038150
+          ]
+        },
+        {
+          "chunk_id": "chunk-0407",
+          "source_range": [
+            1047277,
+            1047303
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "韩立自学炼器与阵法",
+      "classification": "自学型炼器师/长期训练",
+      "usage": "韩立开青竹小轩并非为灵石，而是磨炼入世心境、研究炼器和阵法；二十余年中炼器水准和阵法理解逐渐提高。",
+      "formula": "他趁培育天雷竹期间钻研《云霄心得》和阵法典籍；第九年开始摸索炼制阵旗、阵盘，并把练习服务于青竹蜂云剑一次成功。",
+      "source_range": [
+        1076301,
+        1078892
+      ],
+      "source_excerpt": "青年和大汉当然是韩立和那曲魂易容装扮的。虽然只是江湖上最普通的改头换面手法，但对付几个凡人和一位低阶修仙者，自然是绰绰有余了。 而韩立会到来此处开店，当然不是为了想挣那点看不上的灵石，而是为了磨炼自己的入世心境，准备研究炼器之道和阵法知识，专门挑选的地方。 / 但如今结丹已成，并且下一步炼制法宝也需要这两方面的知识和经验，他自然要趁着培育天雷竹的这段时间，稍加钻研那本《云霄心得》及那辛如音赠予的阵法典籍了。 其实在韩立的心底深处，对炼器和阵法之术很感兴趣的。 区区二十年的时间，而且同时兼顾这两方面的学习，他不敢奢望自己能够达到那两位天才的程度，但能各拥有他们一部分本事，也就心满意足了。至少能让他自己，炼制出最简单的阵旗、阵盘吧！ / 世俗人的生活确和修仙者大不一样，里面充满了悲欢离合，生老病死。 短短的几年观察，就让韩立感受到了许多早已忘却的滋味，既有正面的情感，也有负面的情绪。但无论哪一种，都给韩立心境上一定的触动，让他重新体验过后并从修仙者角度再加以领悟、自省。 而与此同时，他的炼器水准和对阵法的理解，也日积月累的渐渐提高起来。 / 但到来此的第九个年头时，韩立结合自己领悟的一些简单阵法，开始摸索着炼制阵旗和阵盘了。 因为有齐云霄和辛如音提供的相关心得，韩立可以少走了许多弯路，能掌握一些关键性的小技巧。但即使这样，炼制一整套布阵器具对初涉此道的他来说，仍是一件困难之极的事情，并非短时间内可以见效的。 不过韩立并不心急，结丹后的他，有的是时间可以慢慢积累经验和领悟。 况且现在最重要的，还是在炼制东西中顺便琢磨那“青竹蜂云剑”炼制方法，以确保一次就能成功。毕竟炼制... / 时间就这样在韩立炼制法器和钻研阵法中，一天天的过去了。 春去秋来，不知不觉中，韩立这间小有名气的“青竹小轩”已开了二十余年了，韩立也成了一副五十余岁老者的模样。 这当然不是韩立的真正容貌，只不过为了掩饰自己的容颜永驻，随着时间地流逝不得不将外貌易容的苍老起来。 而现在的韩立，正站在店铺的后院内，望着四周的一切心里充满了异样的感情。 就在昨日，他将此店铺转给了另外一人，终于结束自己的入世生活。因为就在前几日，期盼已久的第六根“金雷竹...",
+      "review_status": "verified",
+      "content": "韩立自学炼器与阵法：韩立开青竹小轩并非为灵石，而是磨炼入世心境、研究炼器和阵法；二十余年中炼器水准和阵法理解逐渐提高。；输入/材料/流程：他趁培育天雷竹期间钻研《云霄心得》和阵法典籍；第九年开始摸索炼制阵旗、阵盘，并把练习服务于青竹蜂云剑一次成功。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0417:005",
+        "evidence:chunk-0417:006",
+        "evidence:chunk-0418:001",
+        "evidence:chunk-0418:005",
+        "evidence:chunk-0418:006"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0417",
+          "source_range": [
+            1076301,
+            1076431
+          ]
+        },
+        {
+          "chunk_id": "chunk-0417",
+          "source_range": [
+            1076476,
+            1076667
+          ]
+        },
+        {
+          "chunk_id": "chunk-0418",
+          "source_range": [
+            1077443,
+            1077599
+          ]
+        },
+        {
+          "chunk_id": "chunk-0418",
+          "source_range": [
+            1078394,
+            1078641
+          ]
+        },
+        {
+          "chunk_id": "chunk-0418",
+          "source_range": [
+            1078644,
+            1078892
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "青竹蜂云剑炼制准备",
+      "classification": "本命法宝/成套飞剑",
+      "usage": "韩立计划以六七根金雷竹开始炼制青竹蜂云剑；成套飞剑可整体收入体内，也可拆开单独使用。",
+      "formula": "青竹蜂云剑以灵木为主料，还需辅助珍稀材料并用丹火炼制；七十二把同根天雷竹解决主材差异问题，但炼器水平、辅助材料和特殊法阵祭炼仍是难点，且无多余材料可供第二次尝试。",
+      "source_range": [
+        1073897,
+        1078641
+      ],
+      "source_excerpt": "因为那“青竹蜂云剑”，除了以灵木作为主原料外，还是需要掺进一些辅助的珍稀材料，才能最终用丹火炼制而成。 并且此剑可是成套的法宝，所需的材料自然远超同类 / 虽然这么多飞剑，以他结丹初期的法力根本无法炼化和驱动得了，但他并不着急，完全可以视自己的修为情况，一把把的慢慢炼化。 反正只要是成套的飞剑，既可以视作一件法宝收入体内，也可以单独拆开来使用，根本没有什么影响的。 这样的念头一出现，韩立心里火热无比，开始考虑自己是不是真能够做到此事。 炼制成套法宝的最大难题，就是主原料的差异不同，让它们很难炼制成功，但现在他是采用同一个竹根上的天雷竹炼制，这个可不是问题了。 下面就要看他炼制水平和辅... / 等到凑齐了六七根时，也就是他可以开始炼制“青竹蜂云剑”的时候。 / 但到来此的第九个年头时，韩立结合自己领悟的一些简单阵法，开始摸索着炼制阵旗和阵盘了。 因为有齐云霄和辛如音提供的相关心得，韩立可以少走了许多弯路，能掌握一些关键性的小技巧。但即使这样，炼制一整套布阵器具对初涉此道的他来说，仍是一件困难之极的事情，并非短时间内可以见效的。 不过韩立并不心急，结丹后的他，有的是时间可以慢慢积累经验和领悟。 况且现在最重要的，还是在炼制东西中顺便琢磨那“青竹蜂云剑”炼制方法，以确保一次就能成功。毕竟炼制...",
+      "review_status": "verified",
+      "content": "青竹蜂云剑炼制准备：韩立计划以六七根金雷竹开始炼制青竹蜂云剑；成套飞剑可整体收入体内，也可拆开单独使用。；输入/材料/流程：青竹蜂云剑以灵木为主料，还需辅助珍稀材料并用丹火炼制；七十二把同根天雷竹解决主材差异问题，但炼器水平、辅助材料和特殊法阵祭炼仍是难点，且无多余材料可供第二次尝试。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0416:013",
+        "evidence:chunk-0417:003",
+        "evidence:chunk-0417:010",
+        "evidence:chunk-0418:005"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0416",
+          "source_range": [
+            1073897,
+            1073974
+          ]
+        },
+        {
+          "chunk_id": "chunk-0417",
+          "source_range": [
+            1074970,
+            1075462
+          ]
+        },
+        {
+          "chunk_id": "chunk-0417",
+          "source_range": [
+            1077289,
+            1077320
+          ]
+        },
+        {
+          "chunk_id": "chunk-0418",
+          "source_range": [
+            1078394,
+            1078641
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "青竹蜂云剑炼化流程",
+      "classification": "法宝炼制流程/丹火炼化",
+      "usage": "韩立在洞府密室布置遮掩灵气波动的小阵法，打坐三天三夜至最佳状态后，以丹火炼化天雷竹。",
+      "formula": "炼化中以灵石和丹药补充法力；前三天天雷竹表面电弧耗尽后，竹身被丹火炼成碧绿色浓液，再以十指灵丝分成十二块；三个月后所有天雷竹化液，随后以法阵、七十二根火柱、一日一夜操纵使七十二把液态飞剑成形，并加入辅助材料继续炼制。",
+      "source_range": [
+        1079228,
+        1082934
+      ],
+      "source_excerpt": "一回到洞府，韩立立刻带着众多炼器材料进入了密室内，并在外面布置了一座这些年间领悟的小阵法。此阵法别的作用没有，但可以有效的遮掩灵气波动，正好适合韩立炼制法宝时使用。他可不想法宝炼制一半时，就被其他人窥视到了。 / 然后，韩立密室内先静静打坐了三天三夜，让自己的精神法力完全处于最佳的状态中，才开始炼制法宝的举动。 首先将那膏玉盒从储物袋中取出来，平放在身前的地上。接着打开盒盖，露出了里面翠绿的六根天雷竹。 韩立凝重的望着这些竹子，深吸了一口气，才伸出一根手指冲着盒内的一根青竹轻轻一点，顿时那根尺许长的天雷竹飞出了盒子，漂浮在他的胸前不动了。 / 韩立神色郑重的掐了一个法诀，脸上莹光流动，渐渐浮现了一层青光出来。 随着青光越来越浓，韩立一张口，一道纤细如丝的青色丹火脱口而出，正好喷在眼前的天雷竹上。 “噼啪”一声，一道淡金色电弧在竹子表面出现了，它毫不客气的将丹火隔离了开来，不让其靠近半步。 见到此幕，韩立眼中精光一闪，那青色丹火马上粗数分，瞬间连电弧和竹子本体一同裹在了青火之中，开始了漫长的炼化过程。 / 丹火对灵力的消耗比较大，但幸亏韩立对此早就有了准备，在一放出丹火的同时，两只手就同时抓着一块深青色的灵石，同开始吸纳其中的灵气，并在连灵石也开始补充不及时，他就随手从掏出一颗丹药服下去。 这些丹药即使不能马上转化为法力，但其蕴含的充足灵力，足以让准备打持久战的韩立有恃无恐。 / 前三天的时间过去了，天雷竹表面的电弧终于因竹子本身的灵力耗尽而消散了。没有阻挡的青色丹火，直接炼烧到天雷竹的本体。 再过数日后，竹子表面出现了融化的迹象，有些部位开始隐隐发亮，渗出密密麻麻的各色小液珠出来。 如此一连十几天后，整个天雷竹终于杂质尽除，被韩立炼化成了一块拳头大小的碧绿色浓液，看起来粘稠无比的样子！ / 这样想罢，韩立口中的丹火一停，将两手的灵石收了起来。接着两手十指一张，十指细若弦丝的灵丝飞射而出，正好插入绿液中。 随后，韩立的手指弹动个不停，在灵线的牵动下，那液团开始旋转变形起来。 在灵丝的牵引下，一小块绿液从主体中分离了出来，同样漂浮在附近的空中。 接着第二块，第三块…… 当最后一块分离完毕后，空中出现了十二块大小一样的液体。 / 转眼间，三个月的时间过去了。韩立费了九牛二虎的力气，终于将所有天雷竹都炼成了纯净之极的液态存在。 / 韩立神色肃然的两手一挥，数十个装着天雷竹液体的玉盒，纷纷落在了法阵的各处，并暗含某种法则排列着。 / 韩立毫不迟疑的一口接一口的丹火喷出，将所有的光柱都点燃了起来。七十二根两丈高的火柱，在密室内闪着耀眼的红光。 / 不过说的简单，但实际上韩立经过了一天一夜的操纵后，七十二把绿莹莹的液态飞剑才正式出现在各个火柱之中。 / 韩立小心的按照炼制之法，将一样样的辅助材料全都加入了七十二口剑胚之中，然后再次唤出七十二根火柱，让飞剑都遁入其内，开始再次炼制起来。",
+      "review_status": "verified",
+      "content": "青竹蜂云剑炼化流程：韩立在洞府密室布置遮掩灵气波动的小阵法，打坐三天三夜至最佳状态后，以丹火炼化天雷竹。；输入/材料/流程：炼化中以灵石和丹药补充法力；前三天天雷竹表面电弧耗尽后，竹身被丹火炼成碧绿色浓液，再以十指灵丝分成十二块；三个月后所有天雷竹化液，随后以法阵、七十二根火柱、一日一夜操纵使七十二把液态飞剑成形，并加入辅助材料继续炼制。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0418:008",
+        "evidence:chunk-0418:009",
+        "evidence:chunk-0418:010",
+        "evidence:chunk-0418:011",
+        "evidence:chunk-0418:012",
+        "evidence:chunk-0418:013",
+        "evidence:chunk-0419:001",
+        "evidence:chunk-0419:007",
+        "evidence:chunk-0419:008",
+        "evidence:chunk-0419:009",
+        "evidence:chunk-0419:010"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0418",
+          "source_range": [
+            1079228,
+            1079332
+          ]
+        },
+        {
+          "chunk_id": "chunk-0418",
+          "source_range": [
+            1079335,
+            1079504
+          ]
+        },
+        {
+          "chunk_id": "chunk-0418",
+          "source_range": [
+            1079507,
+            1079694
+          ]
+        },
+        {
+          "chunk_id": "chunk-0418",
+          "source_range": [
+            1079697,
+            1079836
+          ]
+        },
+        {
+          "chunk_id": "chunk-0418",
+          "source_range": [
+            1079839,
+            1079999
+          ]
+        },
+        {
+          "chunk_id": "chunk-0418",
+          "source_range": [
+            1080043,
+            1080218
+          ]
+        },
+        {
+          "chunk_id": "chunk-0419",
+          "source_range": [
+            1080528,
+            1080576
+          ]
+        },
+        {
+          "chunk_id": "chunk-0419",
+          "source_range": [
+            1081599,
+            1081647
+          ]
+        },
+        {
+          "chunk_id": "chunk-0419",
+          "source_range": [
+            1082181,
+            1082235
+          ]
+        },
+        {
+          "chunk_id": "chunk-0419",
+          "source_range": [
+            1082409,
+            1082459
+          ]
+        },
+        {
+          "chunk_id": "chunk-0419",
+          "source_range": [
+            1082868,
+            1082934
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "青竹蜂云剑重新祭炼",
+      "classification": "法宝升级/重炼",
+      "usage": "韩立后续计划用炼晶重新祭炼青竹蜂云剑，使这套法宝威力更上一等。",
+      "formula": "证据只明确“重新祭炼”和预期增强，未给出完整重炼步骤。",
+      "source_range": [
+        1230720,
+        1230750
+      ],
+      "source_excerpt": "把青竹蜂云剑重新祭炼一下后，想必这套法宝的威力就更上一等了。",
+      "review_status": "verified",
+      "content": "青竹蜂云剑重新祭炼：韩立后续计划用炼晶重新祭炼青竹蜂云剑，使这套法宝威力更上一等。；输入/材料/流程：证据只明确“重新祭炼”和预期增强，未给出完整重炼步骤。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0471:012"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0471",
+          "source_range": [
+            1230720,
+            1230750
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "上古机关傀儡残件",
+      "classification": "傀儡研究素材/上古炼制手法",
+      "usage": "韩立收取被击碎的机关傀儡残件，意在研究上古修士傀儡术造诣和特点。",
+      "formula": "残件包括银色不知名金属、半个残破金色狼首、乌黑刀刃等；韩立将其与自己《傀儡真经》最高四级傀儡水平作比较。",
+      "source_range": [
+        1255634,
+        1256080
+      ],
+      "source_excerpt": "“机关傀儡！”果然是这种东西，不过这是什么等级的傀儡啊，竟能和元婴中期修士过招一会儿，没有被秒杀掉，韩立心里有些骇然。 地上大部分都是碎成一块块的银色不知名金属，除此之外还有半个残破的金色狼首，数截乌黑无光的粗厚刀刃，以及其它一些杂七杂八的奇怪东西。 / 韩立的想法很简单，即使这些东西真的没用，但这傀儡的设计构造及炼制手法，总可以让他了解一些上古修士的傀儡术造诣和特点。毕竟他那本傀儡真经最高一层的四级傀儡，也只是相当于筑基后期的假丹水平而已，就是当日曾经见过的，全力一击就要消耗一颗中阶灵石的巨虎傀儡兽。",
+      "review_status": "verified",
+      "content": "上古机关傀儡残件：韩立收取被击碎的机关傀儡残件，意在研究上古修士傀儡术造诣和特点。；输入/材料/流程：残件包括银色不知名金属、半个残破金色狼首、乌黑刀刃等；韩立将其与自己《傀儡真经》最高四级傀儡水平作比较。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0480:009",
+        "evidence:chunk-0480:012"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0480",
+          "source_range": [
+            1255634,
+            1255761
+          ]
+        },
+        {
+          "chunk_id": "chunk-0480",
+          "source_range": [
+            1255954,
+            1256080
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    }
+  ],
+  "judgments": [
+    {
+      "content": "《凡人修仙传》前期的炼器师体系兼有“坊市服务职业”和“宗门/家族秘传技艺”两面：徐家店铺能承接材料定制，神兵门与齐云霄线索则强调核心炼器法门的保密性。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0225:023",
+        "evidence:chunk-0226:011",
+        "evidence:chunk-0231:003",
+        "evidence:chunk-0231:004",
+        "evidence:chunk-0231:007"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0225",
+          "source_range": [
+            520563,
+            520600
+          ]
+        },
+        {
+          "chunk_id": "chunk-0226",
+          "source_range": [
+            522197,
+            522288
+          ]
+        },
+        {
+          "chunk_id": "chunk-0231",
+          "source_range": [
+            535761,
+            535881
+          ]
+        },
+        {
+          "chunk_id": "chunk-0231",
+          "source_range": [
+            535912,
+            535982
+          ]
+        },
+        {
+          "chunk_id": "chunk-0231",
+          "source_range": [
+            536607,
+            536752
+          ]
+        }
+      ],
+      "confidence": "INFERRED"
+    },
+    {
+      "content": "炼器成功高度依赖火源、材料、操作者经验和配套阵法；同一体系中既有徐店主失败毁材，也有韩立长期自学后完成复杂成套法宝的正例。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0226:010",
+        "evidence:chunk-0360:008",
+        "evidence:chunk-0417:003",
+        "evidence:chunk-0418:005",
+        "evidence:chunk-0419:009"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0226",
+          "source_range": [
+            522051,
+            522112
+          ]
+        },
+        {
+          "chunk_id": "chunk-0360",
+          "source_range": [
+            914600,
+            914671
+          ]
+        },
+        {
+          "chunk_id": "chunk-0417",
+          "source_range": [
+            1074970,
+            1075462
+          ]
+        },
+        {
+          "chunk_id": "chunk-0418",
+          "source_range": [
+            1078394,
+            1078641
+          ]
+        },
+        {
+          "chunk_id": "chunk-0419",
+          "source_range": [
+            1082409,
+            1082459
+          ]
+        }
+      ],
+      "confidence": "INFERRED"
+    },
+    {
+      "content": "傀儡术可作为炼器师模板的分支处理：它明确涉及材料、魂魄融炼、成品等级、失败损耗与战力效果，结构上与普通法器、法宝炼制共享“材料-火候/法门-成器-使用”的生命周期。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0241:003",
+        "evidence:chunk-0268:002",
+        "evidence:chunk-0397:013",
+        "evidence:chunk-0404:013"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0241",
+          "source_range": [
+            565347,
+            565423
+          ]
+        },
+        {
+          "chunk_id": "chunk-0268",
+          "source_range": [
+            645740,
+            645845
+          ]
+        },
+        {
+          "chunk_id": "chunk-0397",
+          "source_range": [
+            1019017,
+            1019134
+          ]
+        },
+        {
+          "chunk_id": "chunk-0404",
+          "source_range": [
+            1037993,
+            1038052
+          ]
+        }
+      ],
+      "confidence": "INFERRED"
+    }
+  ],
+  "pending_verifications": [
+    {
+      "content": "红罗天炉“对法器炼制有加成”的说法来自竞卖方“据说”，且店方明说真伪不知，应保留为待核验，不宜写成确定规则。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0228:005"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0228",
+          "source_range": [
+            527236,
+            527289
+          ]
+        }
+      ],
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "徐店主半个月炼制后韩立微笑离开，图谱事件提示“神风舟炼制完成”，但当前模板优先证据未直接展开最终成品细节；正式文档中应避免补写未闭合的成品参数。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0232:008",
+        "evidence:chunk-0232:009"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0232",
+          "source_range": [
+            539165,
+            539210
+          ]
+        },
+        {
+          "chunk_id": "chunk-0232",
+          "source_range": [
+            539366,
+            539402
+          ]
+        }
+      ],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "not_found_items": [
+    {
+      "content": "未见可靠证据给出《云霄心得》内部具体炼器步骤、完整器方目录或神兵门密法条文。",
+      "category": "未见可靠证据",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "未见可靠证据给出青竹蜂云剑全部辅助珍稀材料的清单；证据只说明需要辅助材料并在剑胚阶段逐样加入。",
+      "category": "未见可靠证据",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "未见可靠证据给出徐家妖火炼器技巧的具体操作法门，只能确认其被称为旁门火法且需特别技巧。",
+      "category": "未见可靠证据",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "evidence_citations": [
+    "evidence:chunk-0166:001",
+    "evidence:chunk-0166:004",
+    "evidence:chunk-0218:005",
+    "evidence:chunk-0225:023",
+    "evidence:chunk-0226:009",
+    "evidence:chunk-0226:010",
+    "evidence:chunk-0226:011",
+    "evidence:chunk-0226:012",
+    "evidence:chunk-0226:013",
+    "evidence:chunk-0226:014",
+    "evidence:chunk-0226:015",
+    "evidence:chunk-0231:015",
+    "evidence:chunk-0231:016",
+    "evidence:chunk-0231:017",
+    "evidence:chunk-0232:001",
+    "evidence:chunk-0232:003",
+    "evidence:chunk-0232:007",
+    "evidence:chunk-0232:008",
+    "evidence:chunk-0231:002",
+    "evidence:chunk-0231:003",
+    "evidence:chunk-0231:004",
+    "evidence:chunk-0231:007",
+    "evidence:chunk-0355:014",
+    "evidence:chunk-0357:003",
+    "evidence:chunk-0360:008",
+    "evidence:chunk-0360:010",
+    "evidence:chunk-0241:003",
+    "evidence:chunk-0241:004",
+    "evidence:chunk-0267:008",
+    "evidence:chunk-0268:002",
+    "evidence:chunk-0269:003",
+    "evidence:chunk-0268:007",
+    "evidence:chunk-0269:021",
+    "evidence:chunk-0397:011",
+    "evidence:chunk-0397:012",
+    "evidence:chunk-0397:013",
+    "evidence:chunk-0404:013",
+    "evidence:chunk-0404:014",
+    "evidence:chunk-0404:015",
+    "evidence:chunk-0404:016",
+    "evidence:chunk-0407:011",
+    "evidence:chunk-0417:005",
+    "evidence:chunk-0417:006",
+    "evidence:chunk-0418:001",
+    "evidence:chunk-0418:005",
+    "evidence:chunk-0418:006",
+    "evidence:chunk-0416:013",
+    "evidence:chunk-0417:003",
+    "evidence:chunk-0417:010",
+    "evidence:chunk-0418:008",
+    "evidence:chunk-0418:009",
+    "evidence:chunk-0418:010",
+    "evidence:chunk-0418:011",
+    "evidence:chunk-0418:012",
+    "evidence:chunk-0418:013",
+    "evidence:chunk-0419:001",
+    "evidence:chunk-0419:007",
+    "evidence:chunk-0419:008",
+    "evidence:chunk-0419:009",
+    "evidence:chunk-0419:010",
+    "evidence:chunk-0471:012",
+    "evidence:chunk-0480:009",
+    "evidence:chunk-0480:012",
+    "evidence:chunk-0228:005",
+    "evidence:chunk-0232:009"
+  ],
+  "gap_items": [
+    {
+      "template_name": "炼器师",
+      "requirement_id": "resource_item_craft_profession",
+      "status": "needs_review",
+      "evidence_ids": [
+        "evidence:chunk-0228:005"
+      ],
+      "notes": [
+        "红罗天炉加成说法真伪不明。"
+      ]
+    },
+    {
+      "template_name": "炼器师",
+      "requirement_id": "resource_item_craft_profession",
+      "status": "not_found_in_source",
+      "evidence_ids": [],
+      "notes": [
+        "未见完整器方、徐家妖火技巧细则、青竹蜂云剑全部辅助材料清单。"
+      ]
+    }
+  ],
+  "document_sections": [
+    {
+      "heading": "职业定位",
+      "markdown": "炼器师在本阶段证据中主要有三类形态：一是坊市中承接外来材料、按主人要求炼制法器的店铺职业；二是神兵门、徐家这类依靠门派或家族传承的专业技艺；三是韩立后期为炼制本命法宝而自学炼器、阵法的修士型实践者。天星宗坊市的炼器屋证明炼器可作为公开服务存在 [evidence:chunk-0225:023]；徐家和神兵门线索则说明核心炼器水平仍强依赖传承、火源和秘法 [evidence:chunk-0226:011] [evidence:chunk-0231:003] [evidence:chunk-0231:004]。",
+      "evidence_ids": [
+        "evidence:chunk-0225:023",
+        "evidence:chunk-0226:011",
+        "evidence:chunk-0231:003",
+        "evidence:chunk-0231:004"
+      ],
+      "requirement_ids": [
+        "resource_item_craft_profession"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "输入资源与设施",
+      "markdown": "炼器输入包括精铁精金、寒阴玄铁、蜈蚣背壳、墨蛟材料、白蜘蛛肢腿、铁木、天晶木、金雷竹等；不同成品对材料品质和属性有显著要求。顶阶法器需要先天真火或地火锤炼，徐家则以火鸦妖火替代传统火源 [evidence:chunk-0226:010] [evidence:chunk-0226:011] [evidence:chunk-0226:012]。门派地火间以火力和稳定性区分优劣，说明炼器环境本身也是资源 [evidence:chunk-0218:005]。",
+      "evidence_ids": [
+        "evidence:chunk-0166:001",
+        "evidence:chunk-0166:004",
+        "evidence:chunk-0218:005",
+        "evidence:chunk-0226:010",
+        "evidence:chunk-0226:011",
+        "evidence:chunk-0226:012",
+        "evidence:chunk-0231:016",
+        "evidence:chunk-0232:003",
+        "evidence:chunk-0404:015",
+        "evidence:chunk-0416:013"
+      ],
+      "requirement_ids": [
+        "resource_item_craft_profession"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "委托炼器案例",
+      "markdown": "韩立与徐店主的交易体现了委托炼器流程：材料主人携带材料进入炼器店，炼器师先辨认材料与来历，再决定是否承接；韩立要求旁观炼制，并承诺成功后以部分原料作为报酬 [evidence:chunk-0226:014] [evidence:chunk-0226:015] [evidence:chunk-0232:007]。徐店主能够认出蛟龙皮、尖角、獠牙和眼珠，并称曾随父亲炼制过蛟龙材料，是韩立判断其见识和手段的重要依据 [evidence:chunk-0232:003] [evidence:chunk-0232:008]。",
+      "evidence_ids": [
+        "evidence:chunk-0226:014",
+        "evidence:chunk-0226:015",
+        "evidence:chunk-0232:003",
+        "evidence:chunk-0232:007",
+        "evidence:chunk-0232:008"
+      ],
+      "requirement_ids": [
+        "resource_item_craft_profession"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "失败、代价与收益",
+      "markdown": "炼器失败后果可以非常直接：徐店主后续炼制妖兽材料时毁掉大半珍稀材料，韩立最重视的螳螂妖兽材料全部损毁，只炼出一套由白蜘蛛肢腿制成的洁白飞刀 [evidence:chunk-0360:008] [evidence:chunk-0360:010]。顶阶法器炼制失败也不赔偿材料，徐店主自述一般材料和一般要求下只有三分之一把握 [evidence:chunk-0226:013]。收益则可表现为成品交易、委托报酬、法器自用或战力提升。",
+      "evidence_ids": [
+        "evidence:chunk-0226:013",
+        "evidence:chunk-0360:008",
+        "evidence:chunk-0360:010"
+      ],
+      "requirement_ids": [
+        "resource_item_craft_profession"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "傀儡制作分支",
+      "markdown": "傀儡术应归入炼器师模板的特殊分支。《傀儡真解》教授各阶傀儡兽和傀儡人的炼制法门，傀儡制作不仅需要法器材料，还要把生灵魂魄与材料融炼，否则成品没有灵性 [evidence:chunk-0241:003] [evidence:chunk-0268:002]。韩立二级傀儡经历十几次失败才成，二百多只兽形傀儡又造成灵石和报废材料的大量消耗 [evidence:chunk-0269:021] [evidence:chunk-0397:013]。三级猿型傀儡进一步要求高年份铁木和天晶木，显示等级越高，材料门槛越高 [evidence:chunk-0404:013] [evidence:chunk-0404:015]。",
+      "evidence_ids": [
+        "evidence:chunk-0241:003",
+        "evidence:chunk-0268:002",
+        "evidence:chunk-0269:021",
+        "evidence:chunk-0397:013",
+        "evidence:chunk-0404:013",
+        "evidence:chunk-0404:015"
+      ],
+      "requirement_ids": [
+        "resource_item_craft_profession"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "青竹蜂云剑炼制",
+      "markdown": "青竹蜂云剑是本批证据中最完整的炼器流程。韩立先长期自学炼器和阵法，依靠《云霄心得》、阵法典籍和二十余年实践提升水平 [evidence:chunk-0417:006] [evidence:chunk-0418:001] [evidence:chunk-0418:005] [evidence:chunk-0418:006]。正式炼制时，他在洞府密室布置遮掩灵气波动的小阵法，打坐三天三夜至最佳状态，以青色丹火炼化天雷竹，并用灵石、丹药补充法力 [evidence:chunk-0418:008] [evidence:chunk-0418:009] [evidence:chunk-0418:010] [evidence:chunk-0418:011]。天雷竹经十几天化为碧绿色浓液，三个月后全部化液，再通过法阵、七十二根火柱和辅助材料使七十二口剑胚成形并继续炼制 [evidence:chunk-0418:012] [evidence:chunk-0418:013] [evidence:chunk-0419:001] [evidence:chunk-0419:007] [evidence:chunk-0419:008] [evidence:chunk-0419:009] [evidence:chunk-0419:010]。",
+      "evidence_ids": [
+        "evidence:chunk-0417:006",
+        "evidence:chunk-0418:001",
+        "evidence:chunk-0418:005",
+        "evidence:chunk-0418:006",
+        "evidence:chunk-0418:008",
+        "evidence:chunk-0418:009",
+        "evidence:chunk-0418:010",
+        "evidence:chunk-0418:011",
+        "evidence:chunk-0418:012",
+        "evidence:chunk-0418:013",
+        "evidence:chunk-0419:001",
+        "evidence:chunk-0419:007",
+        "evidence:chunk-0419:008",
+        "evidence:chunk-0419:009",
+        "evidence:chunk-0419:010"
+      ],
+      "requirement_ids": [
+        "resource_item_craft_profession"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "待复核缺口",
+      "markdown": "红罗天炉“加成炼制”的信息仅为竞卖方据说，真伪不明 [evidence:chunk-0228:005]；《云霄心得》、神兵门密法、徐家妖火技巧和青竹蜂云剑辅助材料清单均未在当前证据中完整展开，正式正文应保守呈现为“有此来源/有此需求”，不补造具体器方。",
+      "evidence_ids": [
+        "evidence:chunk-0228:005"
+      ],
+      "requirement_ids": [
+        "resource_item_craft_profession"
+      ],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "render_target": "drafts",
+  "overwrite_policy": "draft",
+  "producer": {
+    "agent_role": "stage2-template-document-agent",
+    "batch_id": "template-batch-0028-b3b5802407ea",
+    "model_or_agent_identity": "Codex stage2-template-document-agent"
+  }
+}

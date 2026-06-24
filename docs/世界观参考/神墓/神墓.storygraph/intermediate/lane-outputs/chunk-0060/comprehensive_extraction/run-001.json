@@ -1,0 +1,81 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0060:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0060",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T18:00:00Z",
+  "extracted_nodes": [
+    {
+      "id": "n-ch0060-001",
+      "node_type": "secret_realm",
+      "label": "古仙遗地",
+      "aliases": [],
+      "properties": {
+        "note": "第六卷标题，具体内容尚未展开"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0060",
+        "source_range": [
+          332512,
+          332522
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0060-001"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "cat_loc_002"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0060"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "extracted_edges": [],
+  "extracted_events": [],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:ev-ch0060-001",
+      "source_location": {
+        "chunk_id": "chunk-0060",
+        "source_range": [
+          0,
+          10
+        ]
+      },
+      "source_range": [
+        332512,
+        332522
+      ],
+      "fact_summary": "第六卷标题为「古仙遗地」",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0060"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "uncertainties": [],
+  "rejected_candidates": [],
+  "structured_failures": [],
+  "supports_templates": []
+}

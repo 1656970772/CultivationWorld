@@ -1,0 +1,401 @@
+{
+  "schema_version": "storygraph.template-requirements-part.v1",
+  "producer": "codex-template-requirements-analysis-agent",
+  "batch_id": "batch-0001",
+  "task_packet_id": "stage1-template-requirements-batch-0001:template_requirements:attempt-001",
+  "template_count": 5,
+  "templates": [
+    {
+      "template_name": "NPC性格与代表事件",
+      "template_file": "NPC性格与代表事件模板.md",
+      "required_fields": [
+        "角色定位",
+        "核心性格",
+        "代表事件一",
+        "代表事件二",
+        "代表事件三",
+        "性格变化",
+        "行为后果",
+        "变化原因",
+        "阶段前后差异",
+        "身份、境界、地域、势力、场景、结局样本范围"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "完整性格案例",
+        "谨慎隐忍型角色案例",
+        "贪婪冒险型角色案例",
+        "忠诚守护型角色案例",
+        "复杂矛盾型角色案例"
+      ],
+      "required_case_patterns": [
+        "由具体行动证明性格判断，不能只给单个形容词",
+        "核心角色需支持多个代表事件，配角或短线角色可支持一到两个典型事件",
+        "同一角色不同阶段性格变化需记录触发事件、变化前后差异和后果",
+        "台词、外貌、旁人评价只能作为辅助证据，不能替代行动事件",
+        "样本需覆盖主角、配角、反派、宗门高层、散修、妖修、邪修、普通弟子等有原文支撑的角色"
+      ],
+      "required_evidence_fields": [
+        "角色名称与别名",
+        "角色身份、境界、所属势力、活动地域",
+        "代表事件 source_range、章节提示、原文摘录或证据 id",
+        "事件中的行动选择、动机、风险、代价和结果",
+        "性格判断对应的行动证据与辅助评价证据",
+        "性格变化的触发事件、变化节点、后续行为",
+        "未说明字段需保留 not_found_in_source 或原文未说明状态"
+      ],
+      "graph_node_mapping": [
+        "Character 节点承载角色名称、别名、身份、境界、势力、地域",
+        "Faction 节点承载宗门、家族、势力、组织",
+        "Location 节点承载事件地点和活动地域",
+        "Trait 或 Attribute 节点承载性格倾向、欲望倾向、阶段性状态",
+        "Resource 或 Item 节点承载宝物、丹药、传承、机缘等诱因"
+      ],
+      "graph_event_mapping": [
+        "DecisionEvent 记录角色面对强敌、宝物、背叛、宗门命令等场景的关键选择",
+        "ConflictEvent 记录反击、杀人夺宝、背叛、护送、救援、牺牲等行动",
+        "ChangeEvent 记录亲友死亡、救命之恩、被背叛、突破失败等导致的性格变化",
+        "ConsequenceEvent 记录结仇、结盟、被追杀、掌权、失势、被清算等后果"
+      ],
+      "graph_relation_mapping": [
+        "Character HAS_TRAIT Trait 需由具体事件证据支撑",
+        "Character PARTICIPATED_IN Event 记录角色在代表事件中的角色与行动",
+        "Event CAUSED TraitChange 或 ConsequenceEvent 记录变化原因和后果",
+        "Character MEMBER_OF Faction、LOCATED_IN Location 支撑身份和地域覆盖",
+        "Character RELATION_CHANGED_WITH Character 或 Faction 记录恩义、背叛、敌对、结盟、追随"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": [
+          "covered",
+          "needs_review",
+          "not_found_in_source"
+        ],
+        "covered": "性格判断、代表事件、行动后果均有 source_range 或 evidence_id，且未超出原文证据。",
+        "needs_review": "只有旁人评价、台词风格或单一弱证据，或性格变化链条不完整但疑似可由上下文支持。",
+        "not_found_in_source": "模板字段在原文中无可靠依据时标注为原文未说明，不补造境界、身份、地点、动机或后果。",
+        "coverage_notes": [
+          "优先覆盖有矛盾、有变化、有代价的角色样本。",
+          "不得为了补齐案例格式而虚构代表事件或性格变化。"
+        ]
+      }
+    },
+    {
+      "template_name": "世界状态与灾变",
+      "template_file": "世界状态与灾变模板.md",
+      "required_fields": [
+        "状态变化链",
+        "时间",
+        "范围",
+        "产生原因",
+        "强度变化",
+        "资源变化",
+        "角色或势力行为变化",
+        "灾害或收益",
+        "消退或恶化结果",
+        "后续影响"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "完整世界状态变化链案例",
+        "魔气上涨导致区域污染与修士迁徙案例",
+        "灵脉枯竭引发宗门资源压力案例",
+        "兽潮爆发改变边境区域状态案例"
+      ],
+      "required_case_patterns": [
+        "只收录对区域、势力、资源、修炼环境、生态、贸易、战争节奏或群体行为产生持续影响的状态变化",
+        "状态链按原文先后顺序记录开始、扩散、应对、升级、压制、消退或恶化",
+        "单个短场景事件不能误写为长期世界状态",
+        "需区分灾害、资源潮、政治战争状态、生态变化、经济波动和行为影响",
+        "原文没有持续时间、影响区域、资源增减、人员伤亡或价格变化时不得补造"
+      ],
+      "required_evidence_fields": [
+        "状态名称或状态类型",
+        "影响区域、势力、种族、资源环境或时代范围",
+        "起始事件、持续阶段、结束或转化事件的 source_range 与证据 id",
+        "资源、生态、修炼环境、贸易、战争或群体行为变化证据",
+        "参与应对的宗门、家族、坊市、王朝、散修或妖兽群体",
+        "人员伤亡、迁徙、价格、任务、封锁、清剿、防御等可证实结果",
+        "未说明字段需保留 not_found_in_source 或原文未说明状态"
+      ],
+      "graph_node_mapping": [
+        "WorldState 节点承载长期状态、灾变、资源潮、战争状态或环境压力",
+        "Location 或 Region 节点承载影响区域和范围变化",
+        "Faction 节点承载宗门、家族、坊市、王朝等应对主体",
+        "Resource 节点承载灵脉、矿脉、灵药、丹药、妖兽材料、商路等变化对象",
+        "Species 或 CreatureGroup 节点承载妖兽、异族、兽潮相关群体"
+      ],
+      "graph_event_mapping": [
+        "StateOnsetEvent 记录状态最初出现或被发现",
+        "EscalationEvent 记录强度上升、范围扩大、污染扩散、战争升级或兽潮推进",
+        "ResponseEvent 记录封锁、调查、迁徙、任务发布、防御、清剿、交易等应对",
+        "ResolutionEvent 记录压制、封印、消退、恶化为禁地、迁宗、衰落或长期化",
+        "AftermathEvent 记录价格变化、路线变化、势力格局变化和长期风险收益"
+      ],
+      "graph_relation_mapping": [
+        "WorldState AFFECTS Location、Faction、Resource、Species 或 CreatureGroup",
+        "Event CHANGES WorldState 记录状态强度、范围或性质变化",
+        "Faction RESPONDS_TO WorldState 记录调查、封锁、发布任务、防御或迁移",
+        "WorldState CAUSES Event 记录冲突、迁徙、资源争夺、价格波动和后续灾害",
+        "Resource LOCATED_IN Location 且 CHANGED_BY WorldState 支撑资源变化链"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": [
+          "covered",
+          "needs_review",
+          "not_found_in_source"
+        ],
+        "covered": "状态链至少有起点、范围、持续影响和结局或阶段性变化证据，且能证明其不是单场事件。",
+        "needs_review": "只有局部事件证据但疑似形成长期影响，或缺少持续范围、强度变化、资源变化中的关键环节。",
+        "not_found_in_source": "原文未提供时间、范围、资源变化、伤亡、价格或恢复信息时标注未说明，不扩写。",
+        "coverage_notes": [
+          "按状态变化链而非抽象规则表整理。",
+          "持续影响是纳入本模板的核心门槛。"
+        ]
+      }
+    },
+    {
+      "template_name": "世界观设定",
+      "template_file": "世界观设定模板.md",
+      "required_fields": [
+        "背景时间线",
+        "底层世界规则",
+        "世界区域风貌",
+        "区域定位",
+        "地图位置与相邻关系",
+        "地形地貌与自然环境",
+        "城镇、建筑与聚落形态",
+        "风俗与人文地理",
+        "生物种类与生态",
+        "修仙痕迹",
+        "视觉关键词"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "区域风貌卡",
+        "界面层级分组卡",
+        "区域条目卡"
+      ],
+      "required_case_patterns": [
+        "按界面层级或大区域组织区域风貌，不写成剧情梗概或任务流程",
+        "每个区域需尽量呈现可感知的地貌、聚落、人文、生态和修仙痕迹",
+        "主角经历只在揭示当地风貌、地图功能或生态结构时作为证据",
+        "境界突破、宗门制度、秘境机制、交易细节和单个灾变应映射到其他模板，不在本模板扩写",
+        "原文没有衣着、建筑样式、物种或地貌细节时需标注原文未说明"
+      ],
+      "required_evidence_fields": [
+        "区域名称、别名、所属界面或上级区域",
+        "区域定位、相邻关系、连接方式或地图路径证据",
+        "地形地貌、气候、灵气、魔气、阴气、瘴气等环境证据",
+        "聚落、建筑、宗门山门、坊市、港口、洞府、遗迹或封印建筑证据",
+        "风俗、人文、贸易习惯、凡人与修士互动证据",
+        "生物、妖兽、灵草、灵木、药园、灵田、生态分布证据",
+        "护山大阵、传送阵、灵脉、禁制、古战场、秘境入口等修仙痕迹证据",
+        "未说明字段需保留 not_found_in_source 或原文未说明状态"
+      ],
+      "graph_node_mapping": [
+        "World 或 Realm 节点承载人界、灵界、仙界、魔界、小世界、洞天等界面层级",
+        "Region 或 Location 节点承载区域、山脉、海域、草原、城镇、宗门山门、坊市、禁地等地图对象",
+        "Settlement 或 Structure 节点承载都城、港口、岛城、洞府、宫殿、古遗迹、封印建筑",
+        "Ecology 或 Species 节点承载妖兽、灵兽、灵虫、灵草、灵木、海兽等生态对象",
+        "WorldRule 或 EnvironmentFeature 节点承载灵气浓淡、魔气污染、界面压制、飞升通道等风貌规则"
+      ],
+      "graph_event_mapping": [
+        "FormationEvent 记录区域风貌形成的古史、封印、遗迹、迁徙或战争背景",
+        "DiscoveryEvent 记录角色或叙事首次揭示区域地貌、人文、生态或地图功能",
+        "ChangeEvent 记录魔化、战争、通道开启、秘境开启等改变区域风貌的事件",
+        "TravelEvent 记录区域连接、相邻关系、传送阵、跨界通道和路线证据"
+      ],
+      "graph_relation_mapping": [
+        "Region PART_OF Realm 或上级 Region",
+        "Region ADJACENT_TO 或 CONNECTED_TO Region 记录地图位置与连接",
+        "Structure LOCATED_IN Region，Faction BASED_IN Region",
+        "Species 或 Resource DISTRIBUTED_IN Region 记录生态与资源分布",
+        "EnvironmentFeature CHARACTERIZES Region 记录气候、灵气、魔气、瘴气、风貌关键词",
+        "Event REVEALS 或 CHANGES Region 记录风貌证据来源和变化来源"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": [
+          "covered",
+          "needs_review",
+          "not_found_in_source"
+        ],
+        "covered": "区域条目具有区域身份、至少一项地貌或聚落证据、至少一项生态/人文/修仙痕迹证据，并有 source_range 或 evidence_id。",
+        "needs_review": "区域只由剧情经过间接推断，或风貌倾向存在但地貌、人文、生态字段证据不足。",
+        "not_found_in_source": "衣着、建筑、具体物种、方位、相邻关系等无原文依据时标注未说明。",
+        "coverage_notes": [
+          "正文应支持地理志和风物志，不以主线剧情复述替代区域风貌。",
+          "区域差异和可视化关键词需要来源于证据概括。"
+        ]
+      }
+    },
+    {
+      "template_name": "丹药分析",
+      "template_file": "丹药分析模板.md",
+      "required_fields": [
+        "丹药名称",
+        "稀有度",
+        "功效",
+        "用途",
+        "丹方",
+        "炼制方式",
+        "来源",
+        "限制/副作用",
+        "适用境界"
+      ],
+      "required_tables": [
+        "丹药总表：丹药名称、稀有度、功效、用途、丹方、炼制方式、来源、限制/副作用、适用境界"
+      ],
+      "required_cards": [
+        "丹药条目",
+        "药剂/药散/毒丹/禁丹/药液条目",
+        "可直接服用并产生药效的灵液条目"
+      ],
+      "required_case_patterns": [
+        "只整理小说中出现过或能由内容明确支撑的丹药、药剂、药散、毒丹、禁丹、药液和可服用灵液",
+        "按功效类型和适用境界尽可能覆盖完整",
+        "药材、灵草、妖兽材料、矿材、灵液等材料本体只作为丹方投入材料引用，不展开材料本体分析",
+        "丹方、炼制方式、来源、限制副作用、境界梯度没有依据时写原文未说明",
+        "不得为了补齐品阶、效果类型、数值体系或境界梯度而虚构"
+      ],
+      "required_evidence_fields": [
+        "丹药或药液名称与别名",
+        "药物类型：丹药、药剂、药散、毒丹、禁丹、药液、灵液",
+        "功效、用途、服用对象、适用境界证据",
+        "丹方材料、材料规则、炼制方式或生成方式证据",
+        "获得来源：宗门兑换、坊市购买、炼丹师出售、秘境、拍卖、遗迹、任务奖励、杀人夺宝等证据",
+        "限制、副作用、丹毒、耐药、境界限制、服用间隔、体质要求证据",
+        "稀有度或垄断程度在作品中的描述证据",
+        "未说明字段需保留 not_found_in_source 或原文未说明状态"
+      ],
+      "graph_node_mapping": [
+        "Medicine 或 Pill 节点承载丹药、药剂、药散、毒丹、禁丹、药液、灵液",
+        "Material 或 Resource 节点承载丹方投入材料和通用材料规则",
+        "RealmStage 节点承载适用境界或服用阶段",
+        "Faction、Location、Market、SecretRealm、Ruin 节点承载来源与流通地点",
+        "Effect 或 Constraint 节点承载功效、用途、限制、副作用和稀有度"
+      ],
+      "graph_event_mapping": [
+        "UseEvent 记录服用、疗伤、突破、战斗、解毒、延寿、喂养灵兽等使用场景",
+        "CraftEvent 记录炼丹师炼制、天地生成、妖兽体内凝结、古修遗留、仙界流传等产生方式",
+        "AcquireEvent 记录兑换、购买、拍卖、秘境获得、遗迹发现、任务奖励、杀人夺宝等来源",
+        "AdverseEffectEvent 记录丹毒、耐药、透支潜力、毒性或其他副作用"
+      ],
+      "graph_relation_mapping": [
+        "Medicine HAS_EFFECT Effect，HAS_USE 用途标签或 UseEvent",
+        "Medicine REQUIRES_MATERIAL Material 记录丹方或材料规则",
+        "Medicine APPLIES_TO RealmStage 或 CharacterGroup 记录适用境界",
+        "Medicine PRODUCED_BY CraftEvent 或 SourceRelation 记录炼制和生成方式",
+        "Medicine ACQUIRED_FROM Location、Faction、Market、SecretRealm、Ruin 或 AcquireEvent",
+        "Medicine HAS_CONSTRAINT Constraint 记录限制和副作用"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": [
+          "covered",
+          "needs_review",
+          "not_found_in_source"
+        ],
+        "covered": "药物名称、功效或用途、来源或使用场景至少有明确证据；其余字段按证据填写或标注原文未说明。",
+        "needs_review": "名称或类型明确但功效、用途、境界、来源等关键字段证据不足，或材料本体与药物条目边界需人工确认。",
+        "not_found_in_source": "丹方、炼制方式、稀有度、限制副作用、适用境界等无依据时标注未说明，不补造体系。",
+        "coverage_notes": [
+          "丹药总表是本模板核心表格。",
+          "材料本体分析应留给材料模板，本模板只记录作为丹方投入的材料。"
+        ]
+      }
+    },
+    {
+      "template_name": "事件因果链（长程因果图）",
+      "template_file": "事件因果链（长程因果图）模板.md",
+      "required_fields": [
+        "因果链类型",
+        "起点事件",
+        "深层背景",
+        "第一阶段：起点如何发生",
+        "第二阶段：消息如何扩散",
+        "第三阶段：各方如何反应",
+        "第四阶段：冲突如何升级",
+        "第五阶段：地点如何转移",
+        "第六阶段：资源如何流转",
+        "第七阶段：关系如何改变",
+        "第八阶段：阶段性结算",
+        "长期余波",
+        "波及范围",
+        "信息传播链",
+        "资源流转链",
+        "关系变化链",
+        "机会点与错过点",
+        "最终结果",
+        "可作为参考的点"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "长程因果链案例",
+        "资源争夺链案例",
+        "宝物出世链案例",
+        "秘境余波链案例",
+        "宗门战争链案例",
+        "通缉追杀链案例",
+        "复仇链案例",
+        "跨区域逃亡链案例"
+      ],
+      "required_case_patterns": [
+        "只收录具备较长时间跨度、多阶段传播、多地点转移、多方参与、长期余波或后续触发的事件链",
+        "单场战斗、单次机缘、单段关系变化不硬扩展成长程因果",
+        "每条链需写清为什么下一步会发生，不能只罗列字段名",
+        "每部作品至少需要代表性长程因果链样本，且不要只选主角相关链条",
+        "需覆盖起点、背景、传播、反应、升级、地点、资源、关系、结算、余波、机会点和最终结果"
+      ],
+      "required_evidence_fields": [
+        "因果链名称、类型、起点事件 source_range 与证据 id",
+        "深层背景证据：资源稀缺、势力旧怨、功法需求、寿元压力、战争、强者布局等",
+        "各阶段事件的时间顺序、参与者、地点、行动、资源、伤亡、身份暴露或误判证据",
+        "消息传播证据：目击、传闻、公告、通缉、黑市情报、幸存者泄露等",
+        "地点轨迹证据：山门、坊市、边境、海域、秘境、传送阵、跨界通道等",
+        "资源流转证据：宝物、丹药、功法、灵石、地图、令牌、情报、人情、地盘等",
+        "关系变化证据：结怨、结盟、背叛、投靠、分裂、追杀、和解等",
+        "长期余波、波及范围、机会点与错过点、最终结果证据",
+        "未说明字段需保留 not_found_in_source 或原文未说明状态"
+      ],
+      "graph_node_mapping": [
+        "CausalChain 节点承载长程因果链整体名称、类型和覆盖范围",
+        "Event 节点承载链条各阶段事件和结算事件",
+        "Character 与 Faction 节点承载参与者、势力和受影响群体",
+        "Location 或 Route 节点承载地点轨迹、迁移路径和跨区域转移",
+        "Resource 或 Information 节点承载宝物、功法、丹药、令牌、情报、人情等流转对象",
+        "WorldState 节点承载区域局势、战争、恐慌、资源环境等长期余波"
+      ],
+      "graph_event_mapping": [
+        "TriggerEvent 记录起点事件",
+        "PropagationEvent 记录消息扩散、泄露、公告、通缉、传闻、情报买卖",
+        "ReactionEvent 记录各方准备、追踪、观望、封锁、隐藏、调查",
+        "EscalationEvent 记录冲突升级、围攻、逃亡、伏击、宗门介入、战争扩大",
+        "TransferEvent 记录地点转移和资源转手",
+        "SettlementEvent 记录死亡、逃走、得利、背锅、被通缉、失去资源、改变路线",
+        "AftermathEvent 记录复仇、战争、拍卖截杀、黑市交易、势力洗牌、NPC 离线演化"
+      ],
+      "graph_relation_mapping": [
+        "CausalChain HAS_STAGE Event 且阶段顺序稳定",
+        "Event CAUSES Event 记录显式或强证据因果边",
+        "Event PROPAGATES_INFORMATION Information 记录信息传播链",
+        "Resource TRANSFERRED_FROM Character 或 Faction TO Character 或 Faction THROUGH Event",
+        "Character 或 Faction RELATION_CHANGED_WITH Character 或 Faction THROUGH Event",
+        "Event OCCURS_IN Location，Route CONNECTS Location 支撑地点转移",
+        "CausalChain AFFECTS Character、Faction、Location、WorldState 或 Resource 记录波及范围和长期余波"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": [
+          "covered",
+          "needs_review",
+          "not_found_in_source"
+        ],
+        "covered": "链条具有起点、多阶段因果推进、参与方反应、资源或关系变化、阶段性结算与长期余波证据。",
+        "needs_review": "事件跨度或因果边疑似成立但缺少传播、地点、资源、关系或余波中的关键证据。",
+        "not_found_in_source": "原文未说明时间、地点、传播范围、资源去向、动机、波及范围或最终结果时标注未说明。",
+        "coverage_notes": [
+          "因果边需表达为什么下一步发生，避免流水账。",
+          "单场事件应交给冲突事件或动态事件模板，不纳入长程因果链。"
+        ]
+      }
+    }
+  ]
+}

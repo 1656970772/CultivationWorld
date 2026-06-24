@@ -1,0 +1,1661 @@
+{
+  "schema": "stage2-extraction-record.v1",
+  "template_name": "战斗与保命机制",
+  "template_file": "战斗与保命机制模板.md",
+  "source_graph": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\graphify-out\\graph.json",
+  "source_novel": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+  "output_language": "zh-CN",
+  "stage2_policy": {
+    "stage2_categories": {
+      "facts": "原作事实",
+      "judgments": "我的判断",
+      "pending_verifications": "待核验",
+      "not_found_items": "未见可靠证据"
+    },
+    "stage2_output_policy": {
+      "default_dir": "drafts",
+      "allow_overwrite_existing_docs": false,
+      "existing_document_action": "write_versioned_draft",
+      "allowed_policies": [
+        "draft",
+        "backup-and-overwrite",
+        "merge"
+      ],
+      "draft_action": "write_draft"
+    },
+    "stage2_render_policy": {
+      "citation_format": "[{evidence_id}]",
+      "draft_entry_policy": {
+        "source_sections": [
+          "facts"
+        ],
+        "field_aliases": {
+          "name": [
+            "name",
+            "title",
+            "item_name",
+            "entity_name",
+            "名称"
+          ],
+          "classification": [
+            "classification",
+            "type",
+            "category_label",
+            "类别",
+            "分类"
+          ],
+          "usage": [
+            "usage",
+            "purpose",
+            "effect",
+            "effects",
+            "用途",
+            "功效"
+          ],
+          "formula": [
+            "formula",
+            "materials",
+            "ingredients",
+            "components",
+            "recipe",
+            "方方",
+            "材料",
+            "成分"
+          ],
+          "source_excerpt": [
+            "source_excerpt",
+            "original_excerpt",
+            "quote",
+            "原文摘录"
+          ],
+          "review_status": [
+            "review_status",
+            "verification_status",
+            "审核状态"
+          ]
+        },
+        "fallback_name": "未命名条目",
+        "kept_fields": [
+          "name",
+          "classification",
+          "usage",
+          "formula",
+          "source_range",
+          "source_excerpt",
+          "evidence_ids",
+          "confidence",
+          "review_status"
+        ]
+      },
+      "final_entry_policy": {
+        "allowed_confidence": [
+          "EXTRACTED"
+        ],
+        "min_evidence_count": 1,
+        "require_explicit_name": true,
+        "require_source_excerpt": true,
+        "required_any_fields": [
+          "usage",
+          "formula"
+        ],
+        "unstable_name_prefixes": [
+          "未名",
+          "未命名",
+          "未知",
+          "不明"
+        ],
+        "unstable_name_contains": [
+          "某种",
+          "某类"
+        ],
+        "composite_name_markers": [
+          "与",
+          "或",
+          "/",
+          "、"
+        ],
+        "review_only_statuses": [
+          "needs_review",
+          "pending_review",
+          "rejected",
+          "ambiguous"
+        ],
+        "allow_missing_review_status": true
+      },
+      "dedupe_policy": {
+        "key_fields": [
+          "name",
+          "classification"
+        ],
+        "merge_text_fields": [
+          "usage",
+          "formula",
+          "source_excerpt"
+        ],
+        "confidence_strategy": "most_conservative",
+        "review_status_strategy": "review_only_wins"
+      },
+      "final_template_policy": {
+        "case_section_names": [
+          "案例",
+          "典型案例",
+          "案例清单",
+          "示例"
+        ],
+        "excluded_section_names": [
+          "待复核",
+          "缺口",
+          "资料来源",
+          "说明"
+        ],
+        "fallback_to_first_non_root_heading": true
+      }
+    }
+  },
+  "coverage_scope": {
+    "scope": "whole_novel",
+    "stage1_chunk_ledger": "coverage/chunk-ledger.json",
+    "chunk_ranges": [
+      {
+        "chunk_id": "chunk-0170",
+        "source_range": [
+          365407,
+          365449
+        ]
+      },
+      {
+        "chunk_id": "chunk-0172",
+        "source_range": [
+          370837,
+          370889
+        ]
+      },
+      {
+        "chunk_id": "chunk-0173",
+        "source_range": [
+          371076,
+          371232
+        ]
+      },
+      {
+        "chunk_id": "chunk-0192",
+        "source_range": [
+          419232,
+          419530
+        ]
+      },
+      {
+        "chunk_id": "chunk-0193",
+        "source_range": [
+          423552,
+          423601
+        ]
+      },
+      {
+        "chunk_id": "chunk-0206",
+        "source_range": [
+          460657,
+          460708
+        ]
+      },
+      {
+        "chunk_id": "chunk-0213",
+        "source_range": [
+          483228,
+          483287
+        ]
+      },
+      {
+        "chunk_id": "chunk-0387",
+        "source_range": [
+          990899,
+          990967
+        ]
+      },
+      {
+        "chunk_id": "chunk-0388",
+        "source_range": [
+          993906,
+          994065
+        ]
+      },
+      {
+        "chunk_id": "chunk-0389",
+        "source_range": [
+          995548,
+          995645
+        ]
+      },
+      {
+        "chunk_id": "chunk-0401",
+        "source_range": [
+          1030688,
+          1030751
+        ]
+      }
+    ],
+    "ledger_path": "coverage/template-run-ledger.json"
+  },
+  "fulfilled_sections": [
+    {
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_kind": "section",
+      "status": "covered",
+      "heading": "案例 1：越级战斗后依靠遁术逃生",
+      "linked_node_ids": [],
+      "linked_edge_ids": [
+        "edge:chunk-0388:006",
+        "edge:chunk-0388:007",
+        "edge:chunk-0388:008",
+        "edge:chunk-0388:009",
+        "edge:chunk-0388:011",
+        "edge:chunk-0388:012"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0387:006",
+        "event:chunk-0388:001",
+        "event:chunk-0388:004",
+        "event:chunk-0389:001",
+        "event:chunk-0389:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0387:013",
+        "evidence:chunk-0387:014",
+        "evidence:chunk-0388:001",
+        "evidence:chunk-0388:004",
+        "evidence:chunk-0388:005",
+        "evidence:chunk-0388:006",
+        "evidence:chunk-0388:007",
+        "evidence:chunk-0388:008",
+        "evidence:chunk-0388:011",
+        "evidence:chunk-0388:012",
+        "evidence:chunk-0388:013",
+        "evidence:chunk-0388:014",
+        "evidence:chunk-0388:015",
+        "evidence:chunk-0389:001",
+        "evidence:chunk-0389:002",
+        "evidence:chunk-0389:003",
+        "evidence:chunk-0389:004",
+        "evidence:chunk-0389:006",
+        "evidence:chunk-0389:007"
+      ],
+      "notes": []
+    },
+    {
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_kind": "section",
+      "status": "covered",
+      "heading": "案例 2：秘境混战中的法宝损毁与夺宝",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [
+        "event:chunk-0192:003",
+        "event:chunk-0192:004",
+        "event:chunk-0193:005",
+        "event:chunk-0206:002",
+        "event:chunk-0206:003",
+        "event:chunk-0206:007",
+        "event:chunk-0213:005"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0192:005",
+        "evidence:chunk-0192:006",
+        "evidence:chunk-0193:012",
+        "evidence:chunk-0193:013",
+        "evidence:chunk-0193:014",
+        "evidence:chunk-0206:004",
+        "evidence:chunk-0206:005",
+        "evidence:chunk-0206:006",
+        "evidence:chunk-0206:016",
+        "evidence:chunk-0206:017",
+        "evidence:chunk-0206:018",
+        "evidence:chunk-0206:019",
+        "evidence:chunk-0213:009"
+      ],
+      "notes": []
+    },
+    {
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_kind": "section",
+      "status": "covered",
+      "heading": "案例 3：保命手段触发后的后续代价",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [
+        "event:chunk-0170:005",
+        "event:chunk-0172:006",
+        "event:chunk-0173:001",
+        "event:chunk-0401:006"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0170:016",
+        "evidence:chunk-0170:018",
+        "evidence:chunk-0172:014",
+        "evidence:chunk-0172:015",
+        "evidence:chunk-0172:016",
+        "evidence:chunk-0172:017",
+        "evidence:chunk-0173:001",
+        "evidence:chunk-0173:002",
+        "evidence:chunk-0401:017"
+      ],
+      "notes": []
+    }
+  ],
+  "fulfilled_fields": [
+    {
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_kind": "field",
+      "status": "covered",
+      "heading": "参与者、地点、时间顺序、触发因素、关键动作、结局和后续影响",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [
+        "event:chunk-0387:006",
+        "event:chunk-0388:001",
+        "event:chunk-0388:004",
+        "event:chunk-0389:001",
+        "event:chunk-0389:002",
+        "event:chunk-0192:003",
+        "event:chunk-0192:004",
+        "event:chunk-0193:005",
+        "event:chunk-0206:002",
+        "event:chunk-0206:003",
+        "event:chunk-0206:007",
+        "event:chunk-0213:005",
+        "event:chunk-0170:005",
+        "event:chunk-0172:006",
+        "event:chunk-0173:001",
+        "event:chunk-0401:006"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0387:013",
+        "evidence:chunk-0387:014",
+        "evidence:chunk-0388:001",
+        "evidence:chunk-0388:004",
+        "evidence:chunk-0388:005",
+        "evidence:chunk-0388:006",
+        "evidence:chunk-0388:007",
+        "evidence:chunk-0388:008",
+        "evidence:chunk-0388:011",
+        "evidence:chunk-0388:012",
+        "evidence:chunk-0388:013",
+        "evidence:chunk-0388:014",
+        "evidence:chunk-0388:015",
+        "evidence:chunk-0389:001",
+        "evidence:chunk-0389:002",
+        "evidence:chunk-0389:003",
+        "evidence:chunk-0389:004",
+        "evidence:chunk-0389:006",
+        "evidence:chunk-0389:007",
+        "evidence:chunk-0192:005",
+        "evidence:chunk-0192:006",
+        "evidence:chunk-0193:012",
+        "evidence:chunk-0193:013",
+        "evidence:chunk-0193:014",
+        "evidence:chunk-0206:004",
+        "evidence:chunk-0206:005",
+        "evidence:chunk-0206:006",
+        "evidence:chunk-0206:016",
+        "evidence:chunk-0206:017",
+        "evidence:chunk-0206:018",
+        "evidence:chunk-0206:019",
+        "evidence:chunk-0213:009",
+        "evidence:chunk-0170:016",
+        "evidence:chunk-0170:018",
+        "evidence:chunk-0172:014",
+        "evidence:chunk-0172:015",
+        "evidence:chunk-0172:016",
+        "evidence:chunk-0172:017",
+        "evidence:chunk-0173:001",
+        "evidence:chunk-0173:002",
+        "evidence:chunk-0401:017"
+      ],
+      "notes": []
+    }
+  ],
+  "fulfilled_tables": [],
+  "fulfilled_cards": [],
+  "fulfilled_cases": [
+    {
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_kind": "case",
+      "status": "covered",
+      "heading": "筑基韩立借神风舟、法器消耗和碧水青甲阵围杀结丹古长老",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0387:013",
+        "evidence:chunk-0387:014",
+        "evidence:chunk-0388:001",
+        "evidence:chunk-0388:004",
+        "evidence:chunk-0388:005",
+        "evidence:chunk-0388:006",
+        "evidence:chunk-0388:007",
+        "evidence:chunk-0388:008",
+        "evidence:chunk-0388:011",
+        "evidence:chunk-0388:012",
+        "evidence:chunk-0388:013",
+        "evidence:chunk-0388:014",
+        "evidence:chunk-0388:015",
+        "evidence:chunk-0389:001",
+        "evidence:chunk-0389:002",
+        "evidence:chunk-0389:003",
+        "evidence:chunk-0389:004",
+        "evidence:chunk-0389:006",
+        "evidence:chunk-0389:007"
+      ],
+      "notes": []
+    },
+    {
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_kind": "case",
+      "status": "covered",
+      "heading": "血色试炼中符宝、天雷子、银盘和隐身近战造成的损毁与夺宝",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0192:005",
+        "evidence:chunk-0192:006",
+        "evidence:chunk-0193:012",
+        "evidence:chunk-0193:013",
+        "evidence:chunk-0193:014",
+        "evidence:chunk-0206:004",
+        "evidence:chunk-0206:005",
+        "evidence:chunk-0206:006",
+        "evidence:chunk-0206:016",
+        "evidence:chunk-0206:017",
+        "evidence:chunk-0206:018",
+        "evidence:chunk-0206:019",
+        "evidence:chunk-0213:009"
+      ],
+      "notes": []
+    },
+    {
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_kind": "case",
+      "status": "covered",
+      "heading": "符宝施法前置防御、罗烟步避杀、符宝报废和舍阵逃命",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0170:016",
+        "evidence:chunk-0170:018",
+        "evidence:chunk-0172:014",
+        "evidence:chunk-0172:015",
+        "evidence:chunk-0172:016",
+        "evidence:chunk-0172:017",
+        "evidence:chunk-0173:001",
+        "evidence:chunk-0173:002",
+        "evidence:chunk-0401:017"
+      ],
+      "notes": []
+    }
+  ],
+  "facts": [
+    {
+      "content": "青算子察觉危险后先化青虹逃遁；韩立随即放出神风舟，拉曲魂登舟，向无名小岛方向急遁。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0387:013",
+        "evidence:chunk-0387:014"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0387",
+          "source_path": "intermediate/chunks/chunk-0387.txt",
+          "source_range": [
+            990775,
+            990882
+          ]
+        },
+        {
+          "chunk_id": "chunk-0387",
+          "source_path": "intermediate/chunks/chunk-0387.txt",
+          "source_range": [
+            990899,
+            990967
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "content": "韩立以筑基后期修为驱动神风舟，神风舟速度极快，迅速抵达无名小岛附近。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0388:001"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            991299,
+            991360
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "content": "古长老催动圆形法宝护身，并放出月牙光刃群压向韩立和曲魂。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0388:004"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            991863,
+            991985
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "content": "韩立先以龟壳法器和青凝镜迎击光刃；青凝镜被毁，龟壳法器也只能争取片刻并被斩碎。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0388:005",
+        "evidence:chunk-0388:006",
+        "evidence:chunk-0388:007"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            992038,
+            992116
+          ]
+        },
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            992210,
+            992334
+          ]
+        },
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            992395,
+            992578
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "content": "乌龙夺和五把白色飞刃形成刃幕后仍被光刃毁去，曲魂再以血色红光化成赤红光蛟抵挡，傀儡士兵光矢配合形成短暂僵持。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0388:007",
+        "evidence:chunk-0388:008"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            992395,
+            992578
+          ]
+        },
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            992629,
+            992753
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "content": "韩立把古长老引入自己布下的碧水青甲阵，阵中景象变为碧海并产生巨大压力；韩立本人能借阵法掌控轻松出阵。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0388:011",
+        "evidence:chunk-0388:012"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            993274,
+            993427
+          ]
+        },
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            993536,
+            993591
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "content": "古长老在阵中狂攻禁制并连续破坏数层，韩立判断直接逃跑仍会因法宝与法器速度差被追上，于是借禁制掩护回阵接近古长老。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0388:013",
+        "evidence:chunk-0388:014"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            993621,
+            993739
+          ]
+        },
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            993742,
+            993824
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "content": "韩立用主阵旗加大阵法压力，配合曲魂血光、冰枪、遁术突袭、飞针和银色巨剑，最终击溃古长老护体黄光并斩首。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0388:015",
+        "evidence:chunk-0389:001",
+        "evidence:chunk-0389:002",
+        "evidence:chunk-0389:003",
+        "evidence:chunk-0389:004",
+        "evidence:chunk-0389:006"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            993906,
+            994065
+          ]
+        },
+        {
+          "chunk_id": "chunk-0389",
+          "source_path": "intermediate/chunks/chunk-0389.txt",
+          "source_range": [
+            994083,
+            994231
+          ]
+        },
+        {
+          "chunk_id": "chunk-0389",
+          "source_path": "intermediate/chunks/chunk-0389.txt",
+          "source_range": [
+            994234,
+            994361
+          ]
+        },
+        {
+          "chunk_id": "chunk-0389",
+          "source_path": "intermediate/chunks/chunk-0389.txt",
+          "source_range": [
+            994364,
+            994456
+          ]
+        },
+        {
+          "chunk_id": "chunk-0389",
+          "source_path": "intermediate/chunks/chunk-0389.txt",
+          "source_range": [
+            994498,
+            994594
+          ]
+        },
+        {
+          "chunk_id": "chunk-0389",
+          "source_path": "intermediate/chunks/chunk-0389.txt",
+          "source_range": [
+            995210,
+            995281
+          ]
+        },
+        {
+          "chunk_id": "chunk-0389",
+          "source_path": "intermediate/chunks/chunk-0389.txt",
+          "source_range": [
+            995337,
+            995516
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "content": "古长老死后，韩立取得储物袋，曲魂捡起黄色钵形法宝，二人乘神方舟离开。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0389:007"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0389",
+          "source_path": "intermediate/chunks/chunk-0389.txt",
+          "source_range": [
+            995548,
+            995645
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "content": "封岳以小刀符宝化黄虹斩向韩立头颅；韩立用飞天盾暂时挡住小刀符宝。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0192:005",
+        "evidence:chunk-0192:006"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0192",
+          "source_path": "intermediate/chunks/chunk-0192.txt",
+          "source_range": [
+            418976,
+            419121
+          ]
+        },
+        {
+          "chunk_id": "chunk-0192",
+          "source_path": "intermediate/chunks/chunk-0192.txt",
+          "source_range": [
+            419122,
+            419231
+          ]
+        },
+        {
+          "chunk_id": "chunk-0192",
+          "source_path": "intermediate/chunks/chunk-0192.txt",
+          "source_range": [
+            419232,
+            419530
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "content": "韩立最终动用最大杀手锏天雷子，并通过虚假掩饰行动让天雷子命中封岳，使其化为飞灰。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0193:012",
+        "evidence:chunk-0193:013",
+        "evidence:chunk-0193:014"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0193",
+          "source_path": "intermediate/chunks/chunk-0193.txt",
+          "source_range": [
+            423315,
+            423366
+          ]
+        },
+        {
+          "chunk_id": "chunk-0193",
+          "source_path": "intermediate/chunks/chunk-0193.txt",
+          "source_range": [
+            423426,
+            423452
+          ]
+        },
+        {
+          "chunk_id": "chunk-0193",
+          "source_path": "intermediate/chunks/chunk-0193.txt",
+          "source_range": [
+            423552,
+            423601
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "content": "赤脚大汉操纵银盘状巨剑，远距摄走并绞碎韩立的蓝色飞刀、金色飞钹，随后又开始逐一摄毁金刃。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0206:004",
+        "evidence:chunk-0206:005",
+        "evidence:chunk-0206:006"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0206",
+          "source_path": "intermediate/chunks/chunk-0206.txt",
+          "source_range": [
+            458128,
+            458189
+          ]
+        },
+        {
+          "chunk_id": "chunk-0206",
+          "source_path": "intermediate/chunks/chunk-0206.txt",
+          "source_range": [
+            458313,
+            458430
+          ]
+        },
+        {
+          "chunk_id": "chunk-0206",
+          "source_path": "intermediate/chunks/chunk-0206.txt",
+          "source_range": [
+            458552,
+            458655
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "content": "韩立抓住双方距离进入十丈内且对方未施防护术的条件，身形消失后贴近大汉背后，用丝线斩首。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0206:016",
+        "evidence:chunk-0206:017",
+        "evidence:chunk-0206:018",
+        "evidence:chunk-0206:019"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0206",
+          "source_path": "intermediate/chunks/chunk-0206.txt",
+          "source_range": [
+            460355,
+            460423
+          ]
+        },
+        {
+          "chunk_id": "chunk-0206",
+          "source_path": "intermediate/chunks/chunk-0206.txt",
+          "source_range": [
+            460426,
+            460514
+          ]
+        },
+        {
+          "chunk_id": "chunk-0206",
+          "source_path": "intermediate/chunks/chunk-0206.txt",
+          "source_range": [
+            460517,
+            460623
+          ]
+        },
+        {
+          "chunk_id": "chunk-0206",
+          "source_path": "intermediate/chunks/chunk-0206.txt",
+          "source_range": [
+            460657,
+            460708
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "content": "韩立隐身突袭灵兽山弟子后重新现身，手上多出储物袋，附近树上落下一具无头尸体。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0213:009"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0213",
+          "source_path": "intermediate/chunks/chunk-0213.txt",
+          "source_range": [
+            483228,
+            483287
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "content": "韩立放大钢环，并以精钢巨环、玄铁飞天盾、蓝色光罩形成三层防御。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0170:016",
+        "evidence:chunk-0170:018"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0170",
+          "source_path": "intermediate/chunks/chunk-0170.txt",
+          "source_range": [
+            364997,
+            365008
+          ]
+        },
+        {
+          "chunk_id": "chunk-0170",
+          "source_path": "intermediate/chunks/chunk-0170.txt",
+          "source_range": [
+            365245,
+            365259
+          ]
+        },
+        {
+          "chunk_id": "chunk-0170",
+          "source_path": "intermediate/chunks/chunk-0170.txt",
+          "source_range": [
+            365346,
+            365360
+          ]
+        },
+        {
+          "chunk_id": "chunk-0170",
+          "source_path": "intermediate/chunks/chunk-0170.txt",
+          "source_range": [
+            365407,
+            365449
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "content": "韩立用罗烟步在小范围极限腾挪避开风刃，风刃失控入土后，陆师兄已被巨剑斩成两半。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0172:014",
+        "evidence:chunk-0172:015",
+        "evidence:chunk-0172:016",
+        "evidence:chunk-0172:017"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0172",
+          "source_path": "intermediate/chunks/chunk-0172.txt",
+          "source_range": [
+            370428,
+            370466
+          ]
+        },
+        {
+          "chunk_id": "chunk-0172",
+          "source_path": "intermediate/chunks/chunk-0172.txt",
+          "source_range": [
+            370548,
+            370591
+          ]
+        },
+        {
+          "chunk_id": "chunk-0172",
+          "source_path": "intermediate/chunks/chunk-0172.txt",
+          "source_range": [
+            370695,
+            370736
+          ]
+        },
+        {
+          "chunk_id": "chunk-0172",
+          "source_path": "intermediate/chunks/chunk-0172.txt",
+          "source_range": [
+            370837,
+            370889
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "content": "巨剑符宝战后还原成符箓时自燃成灰，韩立确认其因持久战耗尽威能而彻底报废，但青蛟旗和筑基丹可弥补损失。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0173:001",
+        "evidence:chunk-0173:002"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0173",
+          "source_path": "intermediate/chunks/chunk-0173.txt",
+          "source_range": [
+            370918,
+            371044
+          ]
+        },
+        {
+          "chunk_id": "chunk-0173",
+          "source_path": "intermediate/chunks/chunk-0173.txt",
+          "source_range": [
+            371076,
+            371232
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "content": "韩立不慎引来七级妖兽后，只能舍弃颠倒五行阵暂困妖兽，并与曲魂逃走。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0401:017"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0401",
+          "source_path": "intermediate/chunks/chunk-0401.txt",
+          "source_range": [
+            1030688,
+            1030751
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED"
+    }
+  ],
+  "judgments": [
+    {
+      "content": "古长老一战的保命逻辑不是单纯逃跑成功，而是“先高速转移、再以消耗性法器挡第一轮、用阵法改变速度差与压力差、最后在无法继续逃的情况下反围杀”。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0387:013",
+        "evidence:chunk-0387:014",
+        "evidence:chunk-0388:001",
+        "evidence:chunk-0388:004",
+        "evidence:chunk-0388:005",
+        "evidence:chunk-0388:006",
+        "evidence:chunk-0388:007",
+        "evidence:chunk-0388:008",
+        "evidence:chunk-0388:011",
+        "evidence:chunk-0388:012",
+        "evidence:chunk-0388:013",
+        "evidence:chunk-0388:014",
+        "evidence:chunk-0388:015",
+        "evidence:chunk-0389:001",
+        "evidence:chunk-0389:002",
+        "evidence:chunk-0389:003",
+        "evidence:chunk-0389:004",
+        "evidence:chunk-0389:006",
+        "evidence:chunk-0389:007"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0387",
+          "source_path": "intermediate/chunks/chunk-0387.txt",
+          "source_range": [
+            990775,
+            990882
+          ]
+        },
+        {
+          "chunk_id": "chunk-0387",
+          "source_path": "intermediate/chunks/chunk-0387.txt",
+          "source_range": [
+            990899,
+            990967
+          ]
+        },
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            991299,
+            991360
+          ]
+        },
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            991863,
+            991985
+          ]
+        },
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            992038,
+            992116
+          ]
+        },
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            992210,
+            992334
+          ]
+        },
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            992395,
+            992578
+          ]
+        },
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            992629,
+            992753
+          ]
+        },
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            993274,
+            993427
+          ]
+        },
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            993536,
+            993591
+          ]
+        },
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            993621,
+            993739
+          ]
+        },
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            993742,
+            993824
+          ]
+        },
+        {
+          "chunk_id": "chunk-0388",
+          "source_path": "intermediate/chunks/chunk-0388.txt",
+          "source_range": [
+            993906,
+            994065
+          ]
+        },
+        {
+          "chunk_id": "chunk-0389",
+          "source_path": "intermediate/chunks/chunk-0389.txt",
+          "source_range": [
+            994083,
+            994231
+          ]
+        },
+        {
+          "chunk_id": "chunk-0389",
+          "source_path": "intermediate/chunks/chunk-0389.txt",
+          "source_range": [
+            994234,
+            994361
+          ]
+        },
+        {
+          "chunk_id": "chunk-0389",
+          "source_path": "intermediate/chunks/chunk-0389.txt",
+          "source_range": [
+            994364,
+            994456
+          ]
+        },
+        {
+          "chunk_id": "chunk-0389",
+          "source_path": "intermediate/chunks/chunk-0389.txt",
+          "source_range": [
+            994498,
+            994594
+          ]
+        },
+        {
+          "chunk_id": "chunk-0389",
+          "source_path": "intermediate/chunks/chunk-0389.txt",
+          "source_range": [
+            995210,
+            995281
+          ]
+        },
+        {
+          "chunk_id": "chunk-0389",
+          "source_path": "intermediate/chunks/chunk-0389.txt",
+          "source_range": [
+            995337,
+            995516
+          ]
+        },
+        {
+          "chunk_id": "chunk-0389",
+          "source_path": "intermediate/chunks/chunk-0389.txt",
+          "source_range": [
+            995548,
+            995645
+          ]
+        }
+      ],
+      "confidence": "INFERRED"
+    },
+    {
+      "content": "血色试炼类战斗中，夺宝往往和法宝损毁并存：韩立在多个场景中先承受符宝或强力法器压制，再用一次性底牌、距离条件或隐身突袭换取击杀与储物袋收益。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0192:005",
+        "evidence:chunk-0192:006",
+        "evidence:chunk-0193:012",
+        "evidence:chunk-0193:013",
+        "evidence:chunk-0193:014",
+        "evidence:chunk-0206:004",
+        "evidence:chunk-0206:005",
+        "evidence:chunk-0206:006",
+        "evidence:chunk-0206:016",
+        "evidence:chunk-0206:017",
+        "evidence:chunk-0206:018",
+        "evidence:chunk-0206:019",
+        "evidence:chunk-0213:009"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0192",
+          "source_path": "intermediate/chunks/chunk-0192.txt",
+          "source_range": [
+            418976,
+            419121
+          ]
+        },
+        {
+          "chunk_id": "chunk-0192",
+          "source_path": "intermediate/chunks/chunk-0192.txt",
+          "source_range": [
+            419122,
+            419231
+          ]
+        },
+        {
+          "chunk_id": "chunk-0192",
+          "source_path": "intermediate/chunks/chunk-0192.txt",
+          "source_range": [
+            419232,
+            419530
+          ]
+        },
+        {
+          "chunk_id": "chunk-0193",
+          "source_path": "intermediate/chunks/chunk-0193.txt",
+          "source_range": [
+            423315,
+            423366
+          ]
+        },
+        {
+          "chunk_id": "chunk-0193",
+          "source_path": "intermediate/chunks/chunk-0193.txt",
+          "source_range": [
+            423426,
+            423452
+          ]
+        },
+        {
+          "chunk_id": "chunk-0193",
+          "source_path": "intermediate/chunks/chunk-0193.txt",
+          "source_range": [
+            423552,
+            423601
+          ]
+        },
+        {
+          "chunk_id": "chunk-0206",
+          "source_path": "intermediate/chunks/chunk-0206.txt",
+          "source_range": [
+            458128,
+            458189
+          ]
+        },
+        {
+          "chunk_id": "chunk-0206",
+          "source_path": "intermediate/chunks/chunk-0206.txt",
+          "source_range": [
+            458313,
+            458430
+          ]
+        },
+        {
+          "chunk_id": "chunk-0206",
+          "source_path": "intermediate/chunks/chunk-0206.txt",
+          "source_range": [
+            458552,
+            458655
+          ]
+        },
+        {
+          "chunk_id": "chunk-0206",
+          "source_path": "intermediate/chunks/chunk-0206.txt",
+          "source_range": [
+            460355,
+            460423
+          ]
+        },
+        {
+          "chunk_id": "chunk-0206",
+          "source_path": "intermediate/chunks/chunk-0206.txt",
+          "source_range": [
+            460426,
+            460514
+          ]
+        },
+        {
+          "chunk_id": "chunk-0206",
+          "source_path": "intermediate/chunks/chunk-0206.txt",
+          "source_range": [
+            460517,
+            460623
+          ]
+        },
+        {
+          "chunk_id": "chunk-0206",
+          "source_path": "intermediate/chunks/chunk-0206.txt",
+          "source_range": [
+            460657,
+            460708
+          ]
+        },
+        {
+          "chunk_id": "chunk-0213",
+          "source_path": "intermediate/chunks/chunk-0213.txt",
+          "source_range": [
+            483228,
+            483287
+          ]
+        }
+      ],
+      "confidence": "INFERRED"
+    },
+    {
+      "content": "保命手段有明确代价：多层防护可用于承受敌方攻势，罗烟步用于避开致命风刃，符宝可因持久战耗尽报废，阵法也可被作为困敌逃命的一次性损失。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0170:016",
+        "evidence:chunk-0170:018",
+        "evidence:chunk-0172:014",
+        "evidence:chunk-0172:015",
+        "evidence:chunk-0172:016",
+        "evidence:chunk-0172:017",
+        "evidence:chunk-0173:001",
+        "evidence:chunk-0173:002",
+        "evidence:chunk-0401:017"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0170",
+          "source_path": "intermediate/chunks/chunk-0170.txt",
+          "source_range": [
+            364997,
+            365008
+          ]
+        },
+        {
+          "chunk_id": "chunk-0170",
+          "source_path": "intermediate/chunks/chunk-0170.txt",
+          "source_range": [
+            365245,
+            365259
+          ]
+        },
+        {
+          "chunk_id": "chunk-0170",
+          "source_path": "intermediate/chunks/chunk-0170.txt",
+          "source_range": [
+            365346,
+            365360
+          ]
+        },
+        {
+          "chunk_id": "chunk-0170",
+          "source_path": "intermediate/chunks/chunk-0170.txt",
+          "source_range": [
+            365407,
+            365449
+          ]
+        },
+        {
+          "chunk_id": "chunk-0172",
+          "source_path": "intermediate/chunks/chunk-0172.txt",
+          "source_range": [
+            370428,
+            370466
+          ]
+        },
+        {
+          "chunk_id": "chunk-0172",
+          "source_path": "intermediate/chunks/chunk-0172.txt",
+          "source_range": [
+            370548,
+            370591
+          ]
+        },
+        {
+          "chunk_id": "chunk-0172",
+          "source_path": "intermediate/chunks/chunk-0172.txt",
+          "source_range": [
+            370695,
+            370736
+          ]
+        },
+        {
+          "chunk_id": "chunk-0172",
+          "source_path": "intermediate/chunks/chunk-0172.txt",
+          "source_range": [
+            370837,
+            370889
+          ]
+        },
+        {
+          "chunk_id": "chunk-0173",
+          "source_path": "intermediate/chunks/chunk-0173.txt",
+          "source_range": [
+            370918,
+            371044
+          ]
+        },
+        {
+          "chunk_id": "chunk-0173",
+          "source_path": "intermediate/chunks/chunk-0173.txt",
+          "source_range": [
+            371076,
+            371232
+          ]
+        },
+        {
+          "chunk_id": "chunk-0401",
+          "source_path": "intermediate/chunks/chunk-0401.txt",
+          "source_range": [
+            1030688,
+            1030751
+          ]
+        }
+      ],
+      "confidence": "INFERRED"
+    }
+  ],
+  "pending_verifications": [
+    {
+      "content": "本记录优先抽取了 supports_templates 直接标注为“战斗与保命机制”的高置信样本；全书其他高阶元婴、残魂、元婴出窍、传送类保命链仍需后续 batch 或复核继续补全样本面。",
+      "category": "待核验",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "not_found_items": [
+    {
+      "content": "所选证据未给出古长老战后韩立具体疗伤时间、法力余量或后续修复法器过程；只可确定其损失多件法器并夺得储物袋、黄色钵形法宝后离开。",
+      "category": "未见可靠证据",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "所选证据未说明韩立舍弃颠倒五行阵后的重建成本、灵石消耗或修复时间。",
+      "category": "未见可靠证据",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "evidence_citations": [
+    "evidence:chunk-0170:016",
+    "evidence:chunk-0170:018",
+    "evidence:chunk-0172:014",
+    "evidence:chunk-0172:015",
+    "evidence:chunk-0172:016",
+    "evidence:chunk-0172:017",
+    "evidence:chunk-0173:001",
+    "evidence:chunk-0173:002",
+    "evidence:chunk-0192:005",
+    "evidence:chunk-0192:006",
+    "evidence:chunk-0193:012",
+    "evidence:chunk-0193:013",
+    "evidence:chunk-0193:014",
+    "evidence:chunk-0206:004",
+    "evidence:chunk-0206:005",
+    "evidence:chunk-0206:006",
+    "evidence:chunk-0206:016",
+    "evidence:chunk-0206:017",
+    "evidence:chunk-0206:018",
+    "evidence:chunk-0206:019",
+    "evidence:chunk-0213:009",
+    "evidence:chunk-0387:013",
+    "evidence:chunk-0387:014",
+    "evidence:chunk-0388:001",
+    "evidence:chunk-0388:004",
+    "evidence:chunk-0388:005",
+    "evidence:chunk-0388:006",
+    "evidence:chunk-0388:007",
+    "evidence:chunk-0388:008",
+    "evidence:chunk-0388:011",
+    "evidence:chunk-0388:012",
+    "evidence:chunk-0388:013",
+    "evidence:chunk-0388:014",
+    "evidence:chunk-0388:015",
+    "evidence:chunk-0389:001",
+    "evidence:chunk-0389:002",
+    "evidence:chunk-0389:003",
+    "evidence:chunk-0389:004",
+    "evidence:chunk-0389:006",
+    "evidence:chunk-0389:007",
+    "evidence:chunk-0401:017"
+  ],
+  "document_sections": [
+    {
+      "heading": "案例 1：筑基韩立借神风舟、法器消耗和碧水青甲阵围杀结丹古长老",
+      "markdown": "**行动链：**\n\n1. 青算子先察觉危险，脸色煞白后退并化青虹亡命飞遁；韩立看到后不再停留，放出神风舟，拉曲魂登上法器，向无名小岛方向急遁。[evidence:chunk-0387:013][evidence:chunk-0387:014]\n2. 韩立以筑基后期修为驱动神风舟，速度极快，迅速抵达无名小岛附近；这一步解决的是短程脱离战场，但没有彻底摆脱古长老。[evidence:chunk-0388:001]\n3. 古长老追至后催动脚下圆形法宝护身，放出月牙光刃群攻击韩立和曲魂；韩立以龟壳法器、青凝镜迎击，青凝镜被毁，龟壳法器只争取片刻就被斩碎。[evidence:chunk-0388:004][evidence:chunk-0388:005][evidence:chunk-0388:006][evidence:chunk-0388:007]\n4. 韩立继续放出乌龙夺和五把白色飞刃形成刃幕，但这些顶阶法器也被光刃毁去；曲魂以血色红光化赤红光蛟，配合傀儡士兵光矢，才让战局短暂僵持。[evidence:chunk-0388:007][evidence:chunk-0388:008]\n5. 韩立把古长老引入自己布下的碧水青甲阵。阵内景象化为无边碧海并产生巨大压力，韩立则因掌握阵法能轻松出阵。[evidence:chunk-0388:011][evidence:chunk-0388:012]\n6. 古长老在阵中狂攻禁制并连续破坏数层。韩立判断若直接逃跑，会因法宝和法器飞行速度差再次被追上，于是借禁制掩护回阵靠近古长老。[evidence:chunk-0388:013][evidence:chunk-0388:014]\n7. 韩立用主阵旗加大阵中压力，曲魂以血色光柱近距离命中古长老；韩立再以诡异遁术现身、飞针围攻和银色巨剑斩击，最终击溃护体黄光并斩首。[evidence:chunk-0388:015][evidence:chunk-0389:002][evidence:chunk-0389:003][evidence:chunk-0389:004][evidence:chunk-0389:006]\n8. 战后韩立取走古长老储物袋，曲魂捡起黄色钵形法宝，二人立即乘神方舟离开。明确损失包括青凝镜、龟壳法器、乌龙夺和五把白色飞刃；明确收益包括储物袋与黄色钵形法宝。[evidence:chunk-0388:006][evidence:chunk-0388:007][evidence:chunk-0389:007]",
+      "evidence_ids": [
+        "evidence:chunk-0387:013",
+        "evidence:chunk-0387:014",
+        "evidence:chunk-0388:001",
+        "evidence:chunk-0388:004",
+        "evidence:chunk-0388:005",
+        "evidence:chunk-0388:006",
+        "evidence:chunk-0388:007",
+        "evidence:chunk-0388:008",
+        "evidence:chunk-0388:011",
+        "evidence:chunk-0388:012",
+        "evidence:chunk-0388:013",
+        "evidence:chunk-0388:014",
+        "evidence:chunk-0388:015",
+        "evidence:chunk-0389:001",
+        "evidence:chunk-0389:002",
+        "evidence:chunk-0389:003",
+        "evidence:chunk-0389:004",
+        "evidence:chunk-0389:006",
+        "evidence:chunk-0389:007"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 2：血色试炼中的符宝压制、法宝损毁与夺宝",
+      "markdown": "**行动链：**\n\n1. 封岳因韩立挑衅暴怒，驱使小刀符宝化黄虹斩向韩立头颅；韩立祭出飞天盾，在两丈外暂时挡住黄芒，避免被符宝一击斩杀。[evidence:chunk-0192:005][evidence:chunk-0192:006]\n2. 韩立没有只靠硬防，转而动用最大杀手锏天雷子，并用一连串虚假掩饰行动诱导命中；天雷子爆发银白光团后，封岳身体崩溃化为飞灰。[evidence:chunk-0193:012][evidence:chunk-0193:013][evidence:chunk-0193:014]\n3. 另一处血色试炼战斗中，韩立仓促放出蓝色飞刀和金色飞钹攻击赤脚大汉，但对方银盘状巨剑远距摄取两件上品法器并绞碎，随后又开始逐一摄毁金刃，直接把韩立的远程法器消耗转化为损失。[evidence:chunk-0206:004][evidence:chunk-0206:005][evidence:chunk-0206:006]\n4. 韩立把胜负条件改为距离：当双方距离进入十丈内且对方未施防护术时，韩立身形消失并贴近大汉背后，用丝线斩首；赤脚大汉实力不弱于封岳，但因疏忽让韩立欺近而死。[evidence:chunk-0206:016][evidence:chunk-0206:017][evidence:chunk-0206:018][evidence:chunk-0206:019]\n5. 秘境夺宝片段中，韩立隐身突袭灵兽山弟子，重新现身时手上多出储物袋，附近树上落下一具无头尸体。此处明确“击杀-取储物袋”的夺宝结果，但原文证据未展开该储物袋内资源明细。[evidence:chunk-0213:009]",
+      "evidence_ids": [
+        "evidence:chunk-0192:005",
+        "evidence:chunk-0192:006",
+        "evidence:chunk-0193:012",
+        "evidence:chunk-0193:013",
+        "evidence:chunk-0193:014",
+        "evidence:chunk-0206:004",
+        "evidence:chunk-0206:005",
+        "evidence:chunk-0206:006",
+        "evidence:chunk-0206:016",
+        "evidence:chunk-0206:017",
+        "evidence:chunk-0206:018",
+        "evidence:chunk-0206:019",
+        "evidence:chunk-0213:009"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 3：保命手段触发后的后续代价",
+      "markdown": "**行动链：**\n\n1. 韩立先放大精钢巨环，连同玄铁飞天盾和原有蓝色光罩形成三层防御，用多层防护承受敌方攻势。[evidence:chunk-0170:016][evidence:chunk-0170:018]\n2. 面对可能把无防护状态下的自己一斩两截的风刃，韩立将罗烟步发挥到极限，在小范围内左拐右转并幻化出数个幻影；风刃失控斜飞入土后，陆师兄已被巨剑斩成两半。[evidence:chunk-0172:014][evidence:chunk-0172:015][evidence:chunk-0172:016][evidence:chunk-0172:017]\n3. 战后巨剑符宝飞回并还原成符箓，却在韩立接取前自燃成灰；韩立确认此符宝因耗时太久的拉锯战耗尽威能而彻底报废。代价是失去珍贵符宝，补偿是青蛟旗和两颗筑基丹等战利品。[evidence:chunk-0173:001][evidence:chunk-0173:002]\n4. 外星海诱妖阶段，韩立曾因不慎引来七级妖兽，被迫舍弃最厉害的颠倒五行阵暂困妖兽，自己和曲魂逃走。这里的保命手段不是无损逃脱，而是以整套阵法作为困敌和脱身代价。[evidence:chunk-0401:017]",
+      "evidence_ids": [
+        "evidence:chunk-0170:016",
+        "evidence:chunk-0170:018",
+        "evidence:chunk-0172:014",
+        "evidence:chunk-0172:015",
+        "evidence:chunk-0172:016",
+        "evidence:chunk-0172:017",
+        "evidence:chunk-0173:001",
+        "evidence:chunk-0173:002",
+        "evidence:chunk-0401:017"
+      ],
+      "requirement_ids": [
+        "event_conflict_combat_opportunity"
+      ],
+      "confidence": "EXTRACTED"
+    }
+  ],
+  "gap_items": [
+    {
+      "template_name": "战斗与保命机制",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "status": "needs_review",
+      "evidence_ids": [],
+      "notes": [
+        "本次记录覆盖战斗行动链、损耗、夺宝和保命代价，但尚未系统覆盖全书所有境界、妖兽、元婴/残魂逃逸与传送保命样本。"
+      ]
+    }
+  ],
+  "render_target": "drafts",
+  "overwrite_policy": "draft",
+  "producer": {
+    "agent_role": "stage2-template-document-agent",
+    "batch_id": "template-batch-0019-0ca55b9f1803",
+    "model_or_agent_identity": "Codex stage2 template extraction agent",
+    "generated_at": "2026-06-24T00:00:00+08:00"
+  }
+}

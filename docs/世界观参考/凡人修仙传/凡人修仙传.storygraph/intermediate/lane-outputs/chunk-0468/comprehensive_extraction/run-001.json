@@ -1,0 +1,2255 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0468:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0468",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-24T01:08:51+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0468:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立操控噬金虫穿越黑沙漠，判断战况和资源损耗，并在元瑶求救后决定出手相救。",
+      "evidence_ids": [
+        "evidence:chunk-0468:001",
+        "evidence:chunk-0468:008",
+        "evidence:chunk-0468:017",
+        "evidence:chunk-0468:018"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1219709,
+        1219792
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1219709,
+          1219792
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0468:beast:001",
+      "node_type": "beast",
+      "label": "噬金虫",
+      "aliases": [
+        "噬金虫群",
+        "金银色虫云"
+      ],
+      "fact_summary": "噬金虫由韩立从灵兽袋放出，不惧并吞食铁火蚁黑火，在多次虫群战中压制和吞噬铁火蚁，但也出现大量损耗。",
+      "evidence_ids": [
+        "evidence:chunk-0468:001",
+        "evidence:chunk-0468:003",
+        "evidence:chunk-0468:004",
+        "evidence:chunk-0468:010",
+        "evidence:chunk-0468:018"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1219709,
+        1219792
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1219709,
+          1219792
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0468:beast:002",
+      "node_type": "beast",
+      "label": "铁火蚁",
+      "aliases": [
+        "铁火蚁群",
+        "黑色蚁群",
+        "飞蚁"
+      ],
+      "fact_summary": "铁火蚁在本 chunk 中多次与噬金虫交战，能喷吐幽暗火焰、聚成箭矢或长剑，并围攻元瑶护体光团。",
+      "evidence_ids": [
+        "evidence:chunk-0468:002",
+        "evidence:chunk-0468:005",
+        "evidence:chunk-0468:011",
+        "evidence:chunk-0468:014",
+        "evidence:chunk-0468:018"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1219967,
+        1220027
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1219967,
+          1220027
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0468:location:001",
+      "node_type": "location",
+      "label": "黑沙漠",
+      "aliases": [
+        "沙漠",
+        "黑色沙漠"
+      ],
+      "fact_summary": "黑沙漠中铁火蚁群密集，韩立几乎每走一段距离就遇到一群铁火蚁。",
+      "evidence_ids": [
+        "evidence:chunk-0468:008",
+        "evidence:chunk-0468:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1220585,
+        1220612
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1220585,
+          1220612
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0468:tool:001",
+      "node_type": "tool",
+      "label": "灵兽袋",
+      "aliases": [],
+      "fact_summary": "灵兽袋由韩立祭出并打开，用于放出大量噬金虫。",
+      "evidence_ids": [
+        "evidence:chunk-0468:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1219709,
+        1219792
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1219709,
+          1219792
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0468:artifact:001",
+      "node_type": "artifact",
+      "label": "寒冰珠",
+      "aliases": [],
+      "fact_summary": "韩立向寒冰珠喷出精气，使阴寒之气大盛后继续穿越黑沙漠。",
+      "evidence_ids": [
+        "evidence:chunk-0468:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1221148,
+        1221204
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1221148,
+          1221204
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0468:character:002",
+      "node_type": "character",
+      "label": "元瑶",
+      "aliases": [
+        "女修"
+      ],
+      "fact_summary": "元瑶在淡蓝色光团中被铁火蚁围攻，向韩立求救；韩立认为她是半个熟人并出手相救，随后元瑶致谢。",
+      "evidence_ids": [
+        "evidence:chunk-0468:016",
+        "evidence:chunk-0468:017",
+        "evidence:chunk-0468:018",
+        "evidence:chunk-0468:019"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1222020,
+        1222070
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1222020,
+          1222070
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0468:001",
+      "edge_type": "released_by",
+      "source": "node:chunk-0468:beast:001",
+      "target": "node:chunk-0468:character:001",
+      "fact_summary": "韩立打开灵兽袋放出大量噬金虫。",
+      "evidence_ids": [
+        "evidence:chunk-0468:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1219709,
+        1219792
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1219709,
+          1219792
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0468:002",
+      "edge_type": "contained_in",
+      "source": "node:chunk-0468:beast:001",
+      "target": "node:chunk-0468:tool:001",
+      "fact_summary": "噬金虫从韩立祭出的灵兽袋中涌出。",
+      "evidence_ids": [
+        "evidence:chunk-0468:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        1219709,
+        1219792
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1219709,
+          1219792
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0468:003",
+      "edge_type": "defeats",
+      "source": "node:chunk-0468:beast:001",
+      "target": "node:chunk-0468:beast:002",
+      "fact_summary": "噬金虫在首次试战中压制铁火蚁，并在后续战斗中多次吞噬铁火蚁。",
+      "evidence_ids": [
+        "evidence:chunk-0468:004",
+        "evidence:chunk-0468:006",
+        "evidence:chunk-0468:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1220116,
+        1220217
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1220116,
+          1220217
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0468:004",
+      "edge_type": "located_in",
+      "source": "node:chunk-0468:beast:002",
+      "target": "node:chunk-0468:location:001",
+      "fact_summary": "黑沙漠中铁火蚁群密集，韩立几乎每段距离都会碰见一群。",
+      "evidence_ids": [
+        "evidence:chunk-0468:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1220901,
+        1220968
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1220901,
+          1220968
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0468:005",
+      "edge_type": "uses_item",
+      "source": "node:chunk-0468:character:001",
+      "target": "node:chunk-0468:artifact:001",
+      "fact_summary": "韩立向寒冰珠喷精气，增强阴寒之气后继续上路。",
+      "evidence_ids": [
+        "evidence:chunk-0468:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1221148,
+        1221204
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1221148,
+          1221204
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0468:006",
+      "edge_type": "rescues",
+      "source": "node:chunk-0468:character:001",
+      "target": "node:chunk-0468:character:002",
+      "fact_summary": "元瑶求救后，韩立放出噬金虫全歼围攻元瑶的铁火蚁群。",
+      "evidence_ids": [
+        "evidence:chunk-0468:016",
+        "evidence:chunk-0468:018",
+        "evidence:chunk-0468:019"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1222020,
+        1222344
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1222020,
+          1222344
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0468:007",
+      "edge_type": "attacks",
+      "source": "node:chunk-0468:beast:002",
+      "target": "node:chunk-0468:character:002",
+      "fact_summary": "近万只铁火蚁围攻元瑶所在的淡蓝色光团，使其苦苦支撑。",
+      "evidence_ids": [
+        "evidence:chunk-0468:014",
+        "evidence:chunk-0468:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1221402,
+        1221469
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1221402,
+          1221469
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0468:008",
+      "edge_type": "acquainted_with",
+      "source": "node:chunk-0468:character:001",
+      "target": "node:chunk-0468:character:002",
+      "fact_summary": "韩立听出元瑶后，认为对方算半个熟人，并因原本有事找她而决定相救。",
+      "evidence_ids": [
+        "evidence:chunk-0468:016",
+        "evidence:chunk-0468:017"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1222020,
+        1222232
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1222020,
+          1222232
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0468:001",
+      "event_type": "battle_event",
+      "label": "韩立放出噬金虫试战铁火蚁",
+      "fact_summary": "韩立打开灵兽袋放出噬金虫；铁火蚁喷出幽暗火焰，噬金虫吞食黑火后与蚁群交战并迅速占上风。",
+      "participants": [
+        "node:chunk-0468:character:001",
+        "node:chunk-0468:beast:001",
+        "node:chunk-0468:beast:002",
+        "node:chunk-0468:tool:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0468:001",
+        "evidence:chunk-0468:002",
+        "evidence:chunk-0468:003",
+        "evidence:chunk-0468:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1219709,
+        1220217
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1219709,
+          1220217
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0468:002",
+      "event_type": "battle_resolution",
+      "label": "铁火蚁箭矢被噬金虫消灭",
+      "fact_summary": "残余铁火蚁聚为乌黑箭矢试图逃走，最终被噬金虫群困住并消灭。",
+      "participants": [
+        "node:chunk-0468:beast:001",
+        "node:chunk-0468:beast:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0468:005",
+        "evidence:chunk-0468:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1220235,
+        1220435
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1220235,
+          1220435
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0468:003",
+      "event_type": "tactical_assessment",
+      "label": "韩立确认噬金虫可助过黑沙漠",
+      "fact_summary": "首次试战后噬金虫损失数百余只，韩立判断噬金虫略强且凭其通过黑沙漠不成问题。",
+      "participants": [
+        "node:chunk-0468:character:001",
+        "node:chunk-0468:beast:001",
+        "node:chunk-0468:beast:002",
+        "node:chunk-0468:location:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0468:007",
+        "evidence:chunk-0468:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1220483,
+        1220612
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1220483,
+          1220612
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0468:004",
+      "event_type": "large_scale_battle",
+      "label": "黑沙漠大规模虫群战",
+      "fact_summary": "韩立进入沙漠后遭遇最大虫群战，十几万噬金虫和铁火蚁厮杀；一日内噬金虫损失近万只，超大铁火蚁群最终败退。",
+      "participants": [
+        "node:chunk-0468:character:001",
+        "node:chunk-0468:beast:001",
+        "node:chunk-0468:beast:002",
+        "node:chunk-0468:location:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0468:009",
+        "evidence:chunk-0468:010",
+        "evidence:chunk-0468:011",
+        "evidence:chunk-0468:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1220782,
+        1221145
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1220782,
+          1221145
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0468:005",
+      "event_type": "travel_event",
+      "label": "韩立用寒冰珠继续上路",
+      "fact_summary": "超大虫群战后，韩立未追击逃走的铁火蚁，而是催动寒冰珠增强阴寒之气继续上路。",
+      "participants": [
+        "node:chunk-0468:character:001",
+        "node:chunk-0468:artifact:001",
+        "node:chunk-0468:beast:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0468:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1221148,
+        1221204
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1221148,
+          1221204
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0468:006",
+      "event_type": "encounter_event",
+      "label": "韩立发现元瑶被铁火蚁围攻",
+      "fact_summary": "韩立在沙丘方向发现近万只铁火蚁围攻淡蓝色光团，光团内的人影苦苦支撑，并用碧绿色弹丸击散部分铁火蚁黑剑。",
+      "participants": [
+        "node:chunk-0468:character:001",
+        "node:chunk-0468:character:002",
+        "node:chunk-0468:beast:002",
+        "node:chunk-0468:location:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0468:014",
+        "evidence:chunk-0468:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1221402,
+        1221636
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1221402,
+          1221636
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0468:007",
+      "event_type": "rescue_decision",
+      "label": "元瑶求救后韩立决定相救",
+      "fact_summary": "元瑶认出韩立并求救；韩立认为她是半个熟人且自己原本有事找她，于是决定出手。",
+      "participants": [
+        "node:chunk-0468:character:001",
+        "node:chunk-0468:character:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0468:016",
+        "evidence:chunk-0468:017"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1222020,
+        1222232
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1222020,
+          1222232
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0468:008",
+      "event_type": "rescue_event",
+      "label": "韩立以噬金虫救下元瑶",
+      "fact_summary": "韩立放出噬金虫，以千余只噬金虫代价全歼围攻元瑶的铁火蚁群；元瑶随后向韩立致谢。",
+      "participants": [
+        "node:chunk-0468:character:001",
+        "node:chunk-0468:character:002",
+        "node:chunk-0468:beast:001",
+        "node:chunk-0468:beast:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0468:018",
+        "evidence:chunk-0468:019"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1222269,
+        1222575
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1222269,
+          1222575
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0468:001",
+      "chunk_id": "chunk-0468",
+      "source_range": [
+        1219709,
+        1219792
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1219709,
+          1219792
+        ]
+      },
+      "excerpt": "韩立神色凝重的两手一挥，数只灵兽袋从他身上腾空飞起，漂浮在半空中。然后他双手一掐法诀，袋口同时大开，无数的噬金虫群狂涌而出，化为了金银色的云霞盘旋在了上空，灿烂异常。",
+      "fact_summary": "韩立开启数只灵兽袋，放出大量噬金虫。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0468:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0468:002",
+      "chunk_id": "chunk-0468",
+      "source_range": [
+        1219967,
+        1220027
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1219967,
+          1220027
+        ]
+      },
+      "excerpt": "大片的幽暗火焰从蚁群中喷射而出，毫不客气的将噬金虫狂卷在了其内。显然蚁群也知道噬金虫的可怕，抢先使用出了它们的驱火天赋。",
+      "fact_summary": "铁火蚁向噬金虫喷出幽暗火焰，先使用驱火天赋。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0468:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0468:003",
+      "chunk_id": "chunk-0468",
+      "source_range": [
+        1220069,
+        1220113
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1220069,
+          1220113
+        ]
+      },
+      "excerpt": "可噬金虫们在黑色火焰中若无其事，反而瞬间将这些黑火吞食的干净，然后嗡鸣着冲了冲向了蚁群。",
+      "fact_summary": "噬金虫不惧铁火蚁黑火，并将黑火吞食干净后冲向蚁群。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0468:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0468:004",
+      "chunk_id": "chunk-0468",
+      "source_range": [
+        1220116,
+        1220217
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1220116,
+          1220217
+        ]
+      },
+      "excerpt": "两股不同颜色的洪流狠狠撞击到了一起，接着交织撕咬到了一块儿，并发出了刺耳的尖鸣声大批的虫尸从天上接二连三的掉落了下来，其中黑色的占了大多数，而金银色的极其稀少。\n　　噬金虫群在接触的瞬间，就大占了上风。",
+      "fact_summary": "噬金虫与铁火蚁交战后，铁火蚁尸体占多数，噬金虫迅速占上风。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0468:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0468:005",
+      "chunk_id": "chunk-0468",
+      "source_range": [
+        1220235,
+        1220302
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1220235,
+          1220302
+        ]
+      },
+      "excerpt": "铁火蚁也察觉到了不妙，剩下的残余发出微弱的鸣声后，忽然聚集到了一起化为了一根乌黑的箭矢，接着飞也似的冲出噬金虫群的拦截，就要逃之夭夭。",
+      "fact_summary": "铁火蚁残余聚成乌黑箭矢试图冲出噬金虫拦截逃走。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0468:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0468:006",
+      "chunk_id": "chunk-0468",
+      "source_range": [
+        1220362,
+        1220435
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1220362,
+          1220435
+        ]
+      },
+      "excerpt": "这略一耽搁的时间，噬金虫群蜂拥而上，一下将箭矢死死的困在了其中。转眼间，黑色淹没在了金银色的海洋之中，等虫群徐徐散开之时，箭矢早已消失的无影无踪。",
+      "fact_summary": "铁火蚁箭矢被噬金虫群困住并消灭。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0468:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0468:007",
+      "chunk_id": "chunk-0468",
+      "source_range": [
+        1220483,
+        1220553
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1220483,
+          1220553
+        ]
+      },
+      "excerpt": "死掉的噬金虫不多，只有数百余只左右，这点损失他还不放进眼内。看来噬金虫果然比铁火蚁厉害那么一点，并且噬金虫的数量再争斗中也起了决定性的作用。",
+      "fact_summary": "首次试战后噬金虫仅损失数百余只，韩立判断噬金虫略强且数量起决定作用。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0468:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0468:008",
+      "chunk_id": "chunk-0468",
+      "source_range": [
+        1220585,
+        1220612
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1220585,
+          1220612
+        ]
+      },
+      "excerpt": "韩立露出了轻松之色，看来凭着噬金虫过黑沙漠不成问题了。",
+      "fact_summary": "韩立判断凭噬金虫通过黑沙漠不成问题。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0468:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0468:009",
+      "chunk_id": "chunk-0468",
+      "source_range": [
+        1220782,
+        1220838
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1220782,
+          1220838
+        ]
+      },
+      "excerpt": "天上正演绎着自韩立进入沙漠以来最大的虫群之战，多达十几万的噬金虫和铁火蚁在前方不远处的低空处，交互拼命的撕咬着。",
+      "fact_summary": "韩立进入沙漠以来最大的虫群之战爆发，十几万噬金虫和铁火蚁在低空厮杀。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0468:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0468:010",
+      "chunk_id": "chunk-0468",
+      "source_range": [
+        1220901,
+        1220968
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1220901,
+          1220968
+        ]
+      },
+      "excerpt": "虽然只是短短的一日光景，他损失的噬金虫数量就高达了近万只，他几乎每走过一段距离，就必定碰见一群铁火蚁，其数目从两三千到万余只并不固定。",
+      "fact_summary": "一日内韩立噬金虫损失近万只，且几乎每段距离都会遇到一群铁火蚁。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0468:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0468:011",
+      "chunk_id": "chunk-0468",
+      "source_range": [
+        1220971,
+        1221029
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1220971,
+          1221029
+        ]
+      },
+      "excerpt": "而这次碰见的超大规模“铁火蚁”群，更是有五六万只左右的数量。估计此战过去后，他的噬金虫最起码又要伤亡七八千只的样子。",
+      "fact_summary": "韩立遇到五六万只左右的超大规模铁火蚁群，估计噬金虫还会伤亡七八千只。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0468:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0468:012",
+      "chunk_id": "chunk-0468",
+      "source_range": [
+        1221082,
+        1221145
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1221082,
+          1221145
+        ]
+      },
+      "excerpt": "再过了一盏茶的时间后，黑色的蚁群终于败退了，除了残余的数千只突围远遁外，其它的飞蚁都变成了噬金虫腹中的美餐，被吞噬的一干二净。",
+      "fact_summary": "超大规模铁火蚁群最终败退，除数千只逃走外，其余被噬金虫吞噬。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0468:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0468:013",
+      "chunk_id": "chunk-0468",
+      "source_range": [
+        1221148,
+        1221204
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1221148,
+          1221204
+        ]
+      },
+      "excerpt": "韩立懒得多费什么手脚去追逃匿的铁火蚁，而是往头上的寒冰珠喷了一口精气，让阴寒之气大盛一下，精神一振的继续上路了。",
+      "fact_summary": "韩立没有追击逃走的铁火蚁，而是向寒冰珠喷精气增强阴寒之气后继续上路。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0468:013"
+    },
+    {
+      "evidence_id": "evidence:chunk-0468:014",
+      "chunk_id": "chunk-0468",
+      "source_range": [
+        1221402,
+        1221469
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1221402,
+          1221469
+        ]
+      },
+      "excerpt": "这群飞蚁数量不多，但也有近万只的样子。它们正疯狂进攻着一个淡蓝色光团，光团摇摇欲坠，闪烁不定，还有人影在其中闪动，一副苦苦支撑的样子。",
+      "fact_summary": "韩立发现近万只铁火蚁正在攻击一个淡蓝色光团，光团中有人影苦苦支撑。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0468:014"
+    },
+    {
+      "evidence_id": "evidence:chunk-0468:015",
+      "chunk_id": "chunk-0468",
+      "source_range": [
+        1221532,
+        1221636
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1221532,
+          1221636
+        ]
+      },
+      "excerpt": "在韩立以为此人必死的情况下，却从光团中飞射出一颗不起眼的碧绿色弹丸。此弹丸一击中黑剑，就“扑哧”一声化为了一朵拳头大小的深绿色火花，汹汹燃烧起来。长剑被此火包裹的部分迅速溃散开来，近百只铁火蚁纷纷从跌落下来。",
+      "fact_summary": "光团中飞出的碧绿色弹丸化为深绿色火花，使铁火蚁化成的黑剑局部溃散并击落近百只铁火蚁。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0468:015"
+    },
+    {
+      "evidence_id": "evidence:chunk-0468:016",
+      "chunk_id": "chunk-0468",
+      "source_range": [
+        1222020,
+        1222070
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1222020,
+          1222070
+        ]
+      },
+      "excerpt": "“韩道友，且慢走！我是元瑶，麻烦道友出手相救，小女子一定事后重谢！”元瑶的声音充满了焦虑和惊惶之意。",
+      "fact_summary": "光团中的元瑶认出韩立并向他求救，承诺事后重谢。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0468:016"
+    },
+    {
+      "evidence_id": "evidence:chunk-0468:017",
+      "chunk_id": "chunk-0468",
+      "source_range": [
+        1222164,
+        1222232
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1222164,
+          1222232
+        ]
+      },
+      "excerpt": "既然对方算是半个熟人，韩立倒也不会冷血到真的见死不救的地步。况且他前段时间思量过后，原本就有意偷偷找此女有事的，现在倒也正好一举两得了。",
+      "fact_summary": "韩立认为元瑶算半个熟人，且自己原本有意找她，因此决定相救。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0468:017"
+    },
+    {
+      "evidence_id": "evidence:chunk-0468:018",
+      "chunk_id": "chunk-0468",
+      "source_range": [
+        1222269,
+        1222344
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1222269,
+          1222344
+        ]
+      },
+      "excerpt": "无数的噬金虫蜂拥而出，当着元瑶的面上演了一幕虫群大战的好戏！\n　　光团中的女修看的目瞪口呆！噬金虫仅仅付出了千余只的代价，这群铁火蚁群就被轻易的全歼了",
+      "fact_summary": "韩立放出噬金虫救援元瑶，以千余只噬金虫代价全歼围攻元瑶的铁火蚁群。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0468:018"
+    },
+    {
+      "evidence_id": "evidence:chunk-0468:019",
+      "chunk_id": "chunk-0468",
+      "source_range": [
+        1222533,
+        1222575
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1222533,
+          1222575
+        ]
+      },
+      "excerpt": "“多谢韩道友出手相救，元瑶实在感激不尽！”元瑶冲韩立笑盈盈的施了一礼后，娇声的说道。",
+      "fact_summary": "元瑶撤去护体光团后向韩立行礼致谢。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0468:019"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "妖兽分析",
+      "requirement_id": "creature_deviant_practice_ecology",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "妖兽与修士关系分析",
+      "requirement_id": "creature_deviant_practice_ecology",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "战斗与保命机制",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "冲突事件分析",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "动态事件与机会点",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "相遇剧情与对话设计",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "角色AI行为参考",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "秘境遗迹与机缘",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "世界观设定",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "法宝分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "物资产出与消耗",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0468:001",
+      "kind": "item_identity_missing",
+      "fact_summary": "碧绿色弹丸能化为深绿色火花并伤到铁火蚁，但本 chunk 未给出专属名称、来源、品阶或剩余数量。",
+      "evidence_ids": [
+        "evidence:chunk-0468:015"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        1221532,
+        1221636
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1221532,
+          1221636
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0468:002",
+      "kind": "route_progress_estimate",
+      "fact_summary": "韩立估计自己已到沙漠中心地段，但这是角色判断，当前 chunk 未提供客观地图或距离闭合。",
+      "evidence_ids": [
+        "evidence:chunk-0468:010",
+        "evidence:chunk-0468:013"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        1220901,
+        1221204
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1220901,
+          1221204
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0468:003",
+      "kind": "relationship_motive_partial",
+      "fact_summary": "韩立称元瑶是半个熟人并原本有意找她有事，但具体所为何事在本 chunk 未明示。",
+      "evidence_ids": [
+        "evidence:chunk-0468:017"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        1222164,
+        1222232
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1222164,
+          1222232
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0468:001",
+      "candidate": "碧绿色弹丸",
+      "reason": "该物品当前没有专属名称，只能作为关键未命名物品记录在不确定项中，不硬造具名法宝节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        1221532,
+        1221636
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1221532,
+          1221636
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0468:002",
+      "candidate": "淡蓝色光团",
+      "reason": "淡蓝色光团是护体状态或防护表现，当前未给出术法/法宝专名，不单独建节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        1221402,
+        1221469
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1221402,
+          1221469
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0468:003",
+      "candidate": "黑袍和紧身衣衫",
+      "reason": "衣物只用于外貌描写，没有物品功能、归属变化或资源流转，不进入物品节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        1222533,
+        1222575
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0468",
+        "source_path": "intermediate/chunks/chunk-0468.txt",
+        "source_range": [
+          1222533,
+          1222575
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

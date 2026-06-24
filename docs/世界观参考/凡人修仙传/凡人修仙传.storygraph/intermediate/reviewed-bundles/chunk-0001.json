@@ -1,0 +1,1867 @@
+{
+  "chunk_id": "chunk-0001",
+  "source_range": [
+    0,
+    355
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "task_packet_id": "chunk-0001:comprehensive_extraction:attempt-001",
+      "chunk_id": "chunk-0001",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "produced_at": "2026-06-23T13:58:09+08:00",
+      "extracted_nodes": [
+        {
+          "id": "node:chunk-0001:character:001",
+          "node_type": "character",
+          "label": "韩立",
+          "aliases": [
+            "韩老魔"
+          ],
+          "fact_summary": "韩立被简介明示为普通山村穷小子，后文同一简介将其今日称为韩老魔。",
+          "evidence_ids": [
+            "evidence:chunk-0001:001",
+            "evidence:chunk-0001:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            22,
+            74
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              22,
+              74
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0001:faction:001",
+          "node_type": "faction",
+          "label": "江湖小门派",
+          "aliases": [],
+          "fact_summary": "简介明示韩立走出山野后跨入一个江湖小门派，但未给出门派名称。",
+          "evidence_ids": [
+            "evidence:chunk-0001:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            22,
+            74
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              22,
+              74
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0001:character:002",
+          "node_type": "character",
+          "label": "一名长老",
+          "aliases": [],
+          "fact_summary": "简介明示韩立成为一名长老的记名弟子，但该长老姓名和所属未在本 chunk 明示。",
+          "evidence_ids": [
+            "evidence:chunk-0001:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            22,
+            74
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              22,
+              74
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0001:location:001",
+          "node_type": "location",
+          "label": "修仙界",
+          "aliases": [],
+          "fact_summary": "简介明示韩立冲出江湖后进入修仙界。",
+          "evidence_ids": [
+            "evidence:chunk-0001:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            111,
+            139
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              111,
+              139
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0001:location:002",
+          "node_type": "location",
+          "label": "修真界",
+          "aliases": [],
+          "fact_summary": "简介明示韩立在残酷的修真界生存下来并抓住机会提升实力。",
+          "evidence_ids": [
+            "evidence:chunk-0001:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            189,
+            270
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              189,
+              270
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0001:artifact:001",
+          "node_type": "artifact",
+          "label": "小绿瓶",
+          "aliases": [],
+          "fact_summary": "简介明示一个神奇的小绿瓶让韩立拥有一丝变强机会，并可通过发掘其潜力辅助提升实力。",
+          "evidence_ids": [
+            "evidence:chunk-0001:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            189,
+            270
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              189,
+              270
+            ]
+          }
+        }
+      ],
+      "extracted_edges": [
+        {
+          "id": "edge:chunk-0001:001",
+          "edge_type": "entered_faction",
+          "source": "node:chunk-0001:character:001",
+          "target": "node:chunk-0001:faction:001",
+          "fact_summary": "韩立在叔叔引荐下走出山野，跨入一个江湖小门派。",
+          "evidence_ids": [
+            "evidence:chunk-0001:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            22,
+            74
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              22,
+              74
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0001:002",
+          "edge_type": "nominal_disciple_of",
+          "source": "node:chunk-0001:character:001",
+          "target": "node:chunk-0001:character:002",
+          "fact_summary": "韩立成为一名长老的记名弟子。",
+          "evidence_ids": [
+            "evidence:chunk-0001:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            22,
+            74
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              22,
+              74
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0001:003",
+          "edge_type": "entered_location",
+          "source": "node:chunk-0001:character:001",
+          "target": "node:chunk-0001:location:001",
+          "fact_summary": "韩立破解门派覆灭之噩和自身困局后，冲出江湖进入修仙界。",
+          "evidence_ids": [
+            "evidence:chunk-0001:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            111,
+            139
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              111,
+              139
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0001:004",
+          "edge_type": "provides_opportunity_to",
+          "source": "node:chunk-0001:artifact:001",
+          "target": "node:chunk-0001:character:001",
+          "fact_summary": "小绿瓶让韩立拥有一丝变强机会。",
+          "evidence_ids": [
+            "evidence:chunk-0001:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            189,
+            270
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              189,
+              270
+            ]
+          }
+        }
+      ],
+      "extracted_events": [
+        {
+          "id": "event:chunk-0001:001",
+          "event_type": "entry_event",
+          "label": "韩立进入江湖小门派",
+          "fact_summary": "韩立作为普通山村穷小子，在叔叔引荐下走出山野，跨入一个江湖小门派，并成为一名长老的记名弟子。",
+          "participants": [
+            "node:chunk-0001:character:001",
+            "node:chunk-0001:faction:001",
+            "node:chunk-0001:character:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0001:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            22,
+            74
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              22,
+              74
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0001:002",
+          "event_type": "cultivation_onset_event",
+          "label": "阴谋促使韩立开始修仙",
+          "fact_summary": "一个阴谋让韩立懵懵懂懂地开始修仙，仙路由此出现在他脚下。",
+          "participants": [
+            "node:chunk-0001:character:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0001:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            75,
+            110
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              75,
+              110
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0001:003",
+          "event_type": "transition_event",
+          "label": "韩立冲出江湖进入修仙界",
+          "fact_summary": "韩立破解门派覆灭之噩和自身困局后，冲出江湖进入修仙界。",
+          "participants": [
+            "node:chunk-0001:character:001",
+            "node:chunk-0001:location:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0001:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            111,
+            139
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              111,
+              139
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0001:004",
+          "event_type": "opportunity_event",
+          "label": "小绿瓶带来变强机会",
+          "fact_summary": "神奇的小绿瓶让韩立拥有一丝变强机会；韩立通过发掘其潜力、结合自身努力和谨慎，在修真界生存并提升实力。",
+          "participants": [
+            "node:chunk-0001:character:001",
+            "node:chunk-0001:artifact:001",
+            "node:chunk-0001:location:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0001:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            189,
+            270
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              189,
+              270
+            ]
+          }
+        }
+      ],
+      "extracted_evidence": [
+        {
+          "evidence_id": "evidence:chunk-0001:001",
+          "chunk_id": "chunk-0001",
+          "source_range": [
+            22,
+            74
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              22,
+              74
+            ]
+          },
+          "excerpt": "一个普通的山村穷小子，韩立，在自己叔叔的引荐下，走出山野，跨入了一个江湖小门派，成为了一名长老的记名弟子",
+          "fact_summary": "韩立是普通山村穷小子，在叔叔引荐下进入江湖小门派，并成为一名长老的记名弟子。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0001:001"
+        },
+        {
+          "evidence_id": "evidence:chunk-0001:002",
+          "chunk_id": "chunk-0001",
+          "source_range": [
+            75,
+            110
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              75,
+              110
+            ]
+          },
+          "excerpt": "一个阴谋，让他懵懵懂懂的开始修仙，从此，飘渺无踪的仙路出现在了他的脚下",
+          "fact_summary": "一个阴谋促使韩立开始修仙，仙路由此出现。",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0001:002"
+        },
+        {
+          "evidence_id": "evidence:chunk-0001:003",
+          "chunk_id": "chunk-0001",
+          "source_range": [
+            111,
+            139
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              111,
+              139
+            ]
+          },
+          "excerpt": "破解门派覆灭之噩，破解自身的困局，他冲出江湖，进入修仙界",
+          "fact_summary": "韩立破解门派覆灭之噩和自身困局，冲出江湖进入修仙界。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0001:003"
+        },
+        {
+          "evidence_id": "evidence:chunk-0001:004",
+          "chunk_id": "chunk-0001",
+          "source_range": [
+            168,
+            185
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              168,
+              185
+            ]
+          },
+          "excerpt": "以平庸的资质，进入到修仙强者的行列",
+          "fact_summary": "简介提出韩立资质平庸但可能进入修仙强者行列。",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "灵根体质血脉",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0001:004"
+        },
+        {
+          "evidence_id": "evidence:chunk-0001:005",
+          "chunk_id": "chunk-0001",
+          "source_range": [
+            189,
+            270
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              189,
+              270
+            ]
+          },
+          "excerpt": "一个神奇的小绿瓶，让他拥有了一丝变强的机会，通过不断发掘它的潜力，再加上自身努力，以及天性的谨慎，他战战兢兢的在残酷的修真界生存下来，抓住每一次机会提升自己的实力",
+          "fact_summary": "小绿瓶给韩立带来变强机会；韩立通过发掘其潜力、努力和谨慎，在修真界生存并提升实力。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0001:005"
+        },
+        {
+          "evidence_id": "evidence:chunk-0001:006",
+          "chunk_id": "chunk-0001",
+          "source_range": [
+            296,
+            343
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              296,
+              343
+            ]
+          },
+          "excerpt": "这个普通的小子却如同宝剑出鞘，和仙宗仙师并列于山海内外！曾经的山野穷小子，今日纵横三界的韩老魔",
+          "fact_summary": "简介将这个普通的小子、曾经的山野穷小子与今日纵横三界的韩老魔对照描述。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0001:006"
+        }
+      ],
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "uncertainties": [
+        {
+          "id": "uncertainty:chunk-0001:001",
+          "kind": "identity_missing",
+          "fact_summary": "江湖小门派和一名长老在本 chunk 中未给出具体名称，后续不得用外部知识补全。",
+          "evidence_ids": [
+            "evidence:chunk-0001:001"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            22,
+            74
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              22,
+              74
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0001:002",
+          "kind": "mechanism_missing",
+          "fact_summary": "简介只说小绿瓶神奇并有潜力，未明示其具体品阶、机制、来源或限制。",
+          "evidence_ids": [
+            "evidence:chunk-0001:005"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            189,
+            270
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              189,
+              270
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0001:003",
+          "kind": "possible_synonym_not_merged",
+          "fact_summary": "修仙界与修真界可能指向相近世界范围，但本 chunk 未明示二者为同一实体，因此未合并别名。",
+          "evidence_ids": [
+            "evidence:chunk-0001:003",
+            "evidence:chunk-0001:005"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            111,
+            270
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              111,
+              270
+            ]
+          }
+        }
+      ],
+      "rejected_candidates": [
+        {
+          "id": "rejected:chunk-0001:001",
+          "candidate": "叔叔",
+          "reason": "仅以亲属引荐者出现，姓名、后续关系强度和独立剧情功能未在本 chunk 闭合；不单独建角色节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            22,
+            74
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              22,
+              74
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0001:002",
+          "candidate": "平庸的资质",
+          "reason": "当前 node_type 本体没有属性类节点；该信息仅保留为 evidence/模板弱支撑，不临时发明 node_type。",
+          "confidence": "EXTRACTED",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "灵根体质血脉",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            168,
+            185
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              168,
+              185
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0001:003",
+          "candidate": "仙宗仙师",
+          "reason": "泛指群体或称谓，未给出具体势力、角色或事件参与信息；不建节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            312,
+            316
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0001",
+            "source_path": "intermediate/chunks/chunk-0001.txt",
+            "source_range": [
+              312,
+              316
+            ]
+          }
+        }
+      ],
+      "structured_failures": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0001/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "id": "node:chunk-0001:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [
+        "韩老魔"
+      ],
+      "fact_summary": "韩立被简介明示为普通山村穷小子，后文同一简介将其今日称为韩老魔。",
+      "evidence_ids": [
+        "evidence:chunk-0001:001",
+        "evidence:chunk-0001:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        22,
+        74
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0001",
+        "source_path": "intermediate/chunks/chunk-0001.txt",
+        "source_range": [
+          22,
+          74
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0001:faction:001",
+      "node_type": "faction",
+      "label": "江湖小门派",
+      "aliases": [],
+      "fact_summary": "简介明示韩立走出山野后跨入一个江湖小门派，但未给出门派名称。",
+      "evidence_ids": [
+        "evidence:chunk-0001:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        22,
+        74
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0001",
+        "source_path": "intermediate/chunks/chunk-0001.txt",
+        "source_range": [
+          22,
+          74
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0001:character:002",
+      "node_type": "character",
+      "label": "一名长老",
+      "aliases": [],
+      "fact_summary": "简介明示韩立成为一名长老的记名弟子，但该长老姓名和所属未在本 chunk 明示。",
+      "evidence_ids": [
+        "evidence:chunk-0001:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        22,
+        74
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0001",
+        "source_path": "intermediate/chunks/chunk-0001.txt",
+        "source_range": [
+          22,
+          74
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0001:location:001",
+      "node_type": "location",
+      "label": "修仙界",
+      "aliases": [],
+      "fact_summary": "简介明示韩立冲出江湖后进入修仙界。",
+      "evidence_ids": [
+        "evidence:chunk-0001:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        111,
+        139
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0001",
+        "source_path": "intermediate/chunks/chunk-0001.txt",
+        "source_range": [
+          111,
+          139
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0001:location:002",
+      "node_type": "location",
+      "label": "修真界",
+      "aliases": [],
+      "fact_summary": "简介明示韩立在残酷的修真界生存下来并抓住机会提升实力。",
+      "evidence_ids": [
+        "evidence:chunk-0001:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        189,
+        270
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0001",
+        "source_path": "intermediate/chunks/chunk-0001.txt",
+        "source_range": [
+          189,
+          270
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0001:artifact:001",
+      "node_type": "artifact",
+      "label": "小绿瓶",
+      "aliases": [],
+      "fact_summary": "简介明示一个神奇的小绿瓶让韩立拥有一丝变强机会，并可通过发掘其潜力辅助提升实力。",
+      "evidence_ids": [
+        "evidence:chunk-0001:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        189,
+        270
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0001",
+        "source_path": "intermediate/chunks/chunk-0001.txt",
+        "source_range": [
+          189,
+          270
+        ]
+      }
+    }
+  ],
+  "normalized_edges": [
+    {
+      "id": "edge:chunk-0001:001",
+      "edge_type": "entered_faction",
+      "source": "node:chunk-0001:character:001",
+      "target": "node:chunk-0001:faction:001",
+      "fact_summary": "韩立在叔叔引荐下走出山野，跨入一个江湖小门派。",
+      "evidence_ids": [
+        "evidence:chunk-0001:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        22,
+        74
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0001",
+        "source_path": "intermediate/chunks/chunk-0001.txt",
+        "source_range": [
+          22,
+          74
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0001:002",
+      "edge_type": "nominal_disciple_of",
+      "source": "node:chunk-0001:character:001",
+      "target": "node:chunk-0001:character:002",
+      "fact_summary": "韩立成为一名长老的记名弟子。",
+      "evidence_ids": [
+        "evidence:chunk-0001:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        22,
+        74
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0001",
+        "source_path": "intermediate/chunks/chunk-0001.txt",
+        "source_range": [
+          22,
+          74
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0001:003",
+      "edge_type": "entered_location",
+      "source": "node:chunk-0001:character:001",
+      "target": "node:chunk-0001:location:001",
+      "fact_summary": "韩立破解门派覆灭之噩和自身困局后，冲出江湖进入修仙界。",
+      "evidence_ids": [
+        "evidence:chunk-0001:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        111,
+        139
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0001",
+        "source_path": "intermediate/chunks/chunk-0001.txt",
+        "source_range": [
+          111,
+          139
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0001:004",
+      "edge_type": "provides_opportunity_to",
+      "source": "node:chunk-0001:artifact:001",
+      "target": "node:chunk-0001:character:001",
+      "fact_summary": "小绿瓶让韩立拥有一丝变强机会。",
+      "evidence_ids": [
+        "evidence:chunk-0001:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        189,
+        270
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0001",
+        "source_path": "intermediate/chunks/chunk-0001.txt",
+        "source_range": [
+          189,
+          270
+        ]
+      }
+    }
+  ],
+  "normalized_events": [
+    {
+      "id": "event:chunk-0001:001",
+      "event_type": "entry_event",
+      "label": "韩立进入江湖小门派",
+      "fact_summary": "韩立作为普通山村穷小子，在叔叔引荐下走出山野，跨入一个江湖小门派，并成为一名长老的记名弟子。",
+      "participants": [
+        "node:chunk-0001:character:001",
+        "node:chunk-0001:faction:001",
+        "node:chunk-0001:character:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0001:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        22,
+        74
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0001",
+        "source_path": "intermediate/chunks/chunk-0001.txt",
+        "source_range": [
+          22,
+          74
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0001:002",
+      "event_type": "cultivation_onset_event",
+      "label": "阴谋促使韩立开始修仙",
+      "fact_summary": "一个阴谋让韩立懵懵懂懂地开始修仙，仙路由此出现在他脚下。",
+      "participants": [
+        "node:chunk-0001:character:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0001:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        75,
+        110
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0001",
+        "source_path": "intermediate/chunks/chunk-0001.txt",
+        "source_range": [
+          75,
+          110
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0001:003",
+      "event_type": "transition_event",
+      "label": "韩立冲出江湖进入修仙界",
+      "fact_summary": "韩立破解门派覆灭之噩和自身困局后，冲出江湖进入修仙界。",
+      "participants": [
+        "node:chunk-0001:character:001",
+        "node:chunk-0001:location:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0001:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        111,
+        139
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0001",
+        "source_path": "intermediate/chunks/chunk-0001.txt",
+        "source_range": [
+          111,
+          139
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0001:004",
+      "event_type": "opportunity_event",
+      "label": "小绿瓶带来变强机会",
+      "fact_summary": "神奇的小绿瓶让韩立拥有一丝变强机会；韩立通过发掘其潜力、结合自身努力和谨慎，在修真界生存并提升实力。",
+      "participants": [
+        "node:chunk-0001:character:001",
+        "node:chunk-0001:artifact:001",
+        "node:chunk-0001:location:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0001:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        189,
+        270
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0001",
+        "source_path": "intermediate/chunks/chunk-0001.txt",
+        "source_range": [
+          189,
+          270
+        ]
+      }
+    }
+  ],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0001:001",
+      "chunk_id": "chunk-0001",
+      "source_range": [
+        22,
+        74
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0001",
+        "source_path": "intermediate/chunks/chunk-0001.txt",
+        "source_range": [
+          22,
+          74
+        ]
+      },
+      "excerpt": "一个普通的山村穷小子，韩立，在自己叔叔的引荐下，走出山野，跨入了一个江湖小门派，成为了一名长老的记名弟子",
+      "fact_summary": "韩立是普通山村穷小子，在叔叔引荐下进入江湖小门派，并成为一名长老的记名弟子。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0001:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0001:002",
+      "chunk_id": "chunk-0001",
+      "source_range": [
+        75,
+        110
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0001",
+        "source_path": "intermediate/chunks/chunk-0001.txt",
+        "source_range": [
+          75,
+          110
+        ]
+      },
+      "excerpt": "一个阴谋，让他懵懵懂懂的开始修仙，从此，飘渺无踪的仙路出现在了他的脚下",
+      "fact_summary": "一个阴谋促使韩立开始修仙，仙路由此出现。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0001:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0001:003",
+      "chunk_id": "chunk-0001",
+      "source_range": [
+        111,
+        139
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0001",
+        "source_path": "intermediate/chunks/chunk-0001.txt",
+        "source_range": [
+          111,
+          139
+        ]
+      },
+      "excerpt": "破解门派覆灭之噩，破解自身的困局，他冲出江湖，进入修仙界",
+      "fact_summary": "韩立破解门派覆灭之噩和自身困局，冲出江湖进入修仙界。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0001:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0001:004",
+      "chunk_id": "chunk-0001",
+      "source_range": [
+        168,
+        185
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0001",
+        "source_path": "intermediate/chunks/chunk-0001.txt",
+        "source_range": [
+          168,
+          185
+        ]
+      },
+      "excerpt": "以平庸的资质，进入到修仙强者的行列",
+      "fact_summary": "简介提出韩立资质平庸但可能进入修仙强者行列。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "灵根体质血脉",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0001:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0001:005",
+      "chunk_id": "chunk-0001",
+      "source_range": [
+        189,
+        270
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0001",
+        "source_path": "intermediate/chunks/chunk-0001.txt",
+        "source_range": [
+          189,
+          270
+        ]
+      },
+      "excerpt": "一个神奇的小绿瓶，让他拥有了一丝变强的机会，通过不断发掘它的潜力，再加上自身努力，以及天性的谨慎，他战战兢兢的在残酷的修真界生存下来，抓住每一次机会提升自己的实力",
+      "fact_summary": "小绿瓶给韩立带来变强机会；韩立通过发掘其潜力、努力和谨慎，在修真界生存并提升实力。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0001:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0001:006",
+      "chunk_id": "chunk-0001",
+      "source_range": [
+        296,
+        343
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0001",
+        "source_path": "intermediate/chunks/chunk-0001.txt",
+        "source_range": [
+          296,
+          343
+        ]
+      },
+      "excerpt": "这个普通的小子却如同宝剑出鞘，和仙宗仙师并列于山海内外！曾经的山野穷小子，今日纵横三界的韩老魔",
+      "fact_summary": "简介将这个普通的小子、曾经的山野穷小子与今日纵横三界的韩老魔对照描述。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0001:006"
+    }
+  ]
+}

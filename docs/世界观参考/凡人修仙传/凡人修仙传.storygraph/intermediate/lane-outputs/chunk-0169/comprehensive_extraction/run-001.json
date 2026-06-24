@@ -1,0 +1,1478 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0169:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0169",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T00:00:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0169:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立旁观陆师兄谋害陈师妹，先因无关自身而不愿救人，随后因两枚筑基丹动心并准备寻找破绽出手；被偷袭时用水罩符护身。",
+      "evidence_ids": [
+        "evidence:chunk-0169:003",
+        "evidence:chunk-0169:009",
+        "evidence:chunk-0169:011",
+        "evidence:chunk-0169:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        360982,
+        362765
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          360982,
+          362765
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0169:character:002",
+      "node_type": "character",
+      "label": "陆师兄",
+      "aliases": [
+        "陆某"
+      ],
+      "fact_summary": "陆师兄夺取陈师妹携带的筑基丹，说明自己为转投董妮子并求红拂师叔祖收徒而断绝旧情，又因忌惮陈家报复决定让陈师妹消失；他还以假装宽衣诱使旁观者露出破绽并暗中偷袭韩立。",
+      "evidence_ids": [
+        "evidence:chunk-0169:001",
+        "evidence:chunk-0169:004",
+        "evidence:chunk-0169:005",
+        "evidence:chunk-0169:006",
+        "evidence:chunk-0169:011",
+        "evidence:chunk-0169:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        360448,
+        362955
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          360448,
+          362955
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0169:character:003",
+      "node_type": "character",
+      "label": "陈师妹",
+      "aliases": [
+        "师妹"
+      ],
+      "fact_summary": "陈师妹被陆师兄用风缚之术束缚，携带未用筑基丹，并因陈家家主独生女身份被陆师兄视为潜在报复威胁。",
+      "evidence_ids": [
+        "evidence:chunk-0169:006",
+        "evidence:chunk-0169:007",
+        "evidence:chunk-0169:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        361355,
+        361733
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          361355,
+          361733
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0169:character:004",
+      "node_type": "character",
+      "label": "董妮子",
+      "aliases": [],
+      "fact_summary": "董妮子被陆师兄转述为要求陆师兄与陈师妹断绝关系，并在陆师兄筑基后与其双修的人。",
+      "evidence_ids": [
+        "evidence:chunk-0169:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        361172,
+        361194
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          361172,
+          361194
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0169:character:005",
+      "node_type": "character",
+      "label": "红拂师叔祖",
+      "aliases": [],
+      "fact_summary": "红拂师叔祖被陆师兄称作门内的姑祖婆；陆师兄希望借董妮子求她收自己入门并传授大神通。",
+      "evidence_ids": [
+        "evidence:chunk-0169:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        361195,
+        361222
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          361195,
+          361222
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0169:faction:001",
+      "node_type": "faction",
+      "label": "陈家",
+      "aliases": [],
+      "fact_summary": "陈家是陈师妹背后的家族力量；陆师兄担心陈师妹借助陈家报复自己。",
+      "evidence_ids": [
+        "evidence:chunk-0169:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        361454,
+        361505
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          361454,
+          361505
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0169:pill:001",
+      "node_type": "pill",
+      "label": "筑基丹",
+      "aliases": [],
+      "fact_summary": "筑基丹在本 chunk 中被陆师兄和陈师妹各保留一枚，陆师兄认为两枚可提高筑基把握，韩立也因两枚筑基丹产生夺取念头。",
+      "evidence_ids": [
+        "evidence:chunk-0169:008",
+        "evidence:chunk-0169:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        361716,
+        362018
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          361716,
+          362018
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0169:pill:002",
+      "node_type": "pill",
+      "label": "合欢丹",
+      "aliases": [],
+      "fact_summary": "合欢丹在本 chunk 中开始对陈师妹起作用，使其出现迷醉和身体异常反应。",
+      "evidence_ids": [
+        "evidence:chunk-0169:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        362237,
+        362246
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          362237,
+          362246
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0169:technique:001",
+      "node_type": "technique",
+      "label": "敛气术",
+      "aliases": [],
+      "fact_summary": "敛气术是韩立新学不久并在旁观陆师兄时悄悄施展的隐匿气息术法。",
+      "evidence_ids": [
+        "evidence:chunk-0169:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        360982,
+        361000
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          360982,
+          361000
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0169:technique:002",
+      "node_type": "technique",
+      "label": "风缚之术",
+      "aliases": [],
+      "fact_summary": "风缚之术被陆师兄用于束缚陈师妹全身，使其无法动弹和开口。",
+      "evidence_ids": [
+        "evidence:chunk-0169:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        361355,
+        361379
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          361355,
+          361379
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0169:inscription:001",
+      "node_type": "inscription",
+      "label": "水罩符",
+      "aliases": [
+        "水罩"
+      ],
+      "fact_summary": "水罩符被韩立扣在掌中并在遭到无声偷袭时拍到身上，形成蓝色光罩挡住青色绳索状攻击。",
+      "evidence_ids": [
+        "evidence:chunk-0169:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        362736,
+        362765
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          362736,
+          362765
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0169:001",
+      "edge_type": "betrays_and_threatens",
+      "source": "node:chunk-0169:character:002",
+      "target": "node:chunk-0169:character:003",
+      "fact_summary": "陆师兄背叛陈师妹，因担心她借陈家报复和散播丑事而决定让她从世间消失。",
+      "evidence_ids": [
+        "evidence:chunk-0169:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        361454,
+        361505
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          361454,
+          361505
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0169:002",
+      "edge_type": "uses_technique_on",
+      "source": "node:chunk-0169:character:002",
+      "target": "node:chunk-0169:technique:002",
+      "fact_summary": "陆师兄用风缚之术控制陈师妹，使她无法行动。",
+      "evidence_ids": [
+        "evidence:chunk-0169:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        361355,
+        361379
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          361355,
+          361379
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0169:003",
+      "edge_type": "carries_resource",
+      "source": "node:chunk-0169:character:003",
+      "target": "node:chunk-0169:pill:001",
+      "fact_summary": "陈师妹和陆师兄一样保留着未使用的筑基丹。",
+      "evidence_ids": [
+        "evidence:chunk-0169:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        361716,
+        361733
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          361716,
+          361733
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0169:004",
+      "edge_type": "seeks_resource",
+      "source": "node:chunk-0169:character:001",
+      "target": "node:chunk-0169:pill:001",
+      "fact_summary": "韩立因两枚筑基丹出现而动心，准备观察陆师兄破绽并伺机诛杀夺丹。",
+      "evidence_ids": [
+        "evidence:chunk-0169:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        361996,
+        362018
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          361996,
+          362018
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0169:005",
+      "edge_type": "plans_dual_cultivation_with",
+      "source": "node:chunk-0169:character:002",
+      "target": "node:chunk-0169:character:004",
+      "fact_summary": "陆师兄称自己若与陈师妹断绝关系并筑基后转而与董妮子双修，就能获得被红拂师叔祖收徒的机会。",
+      "evidence_ids": [
+        "evidence:chunk-0169:004",
+        "evidence:chunk-0169:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        361172,
+        361222
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          361172,
+          361222
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0169:006",
+      "edge_type": "uses_inscription_for_defense",
+      "source": "node:chunk-0169:character:001",
+      "target": "node:chunk-0169:inscription:001",
+      "fact_summary": "韩立在发现无声偷袭后立即使用水罩符形成蓝色光罩防御。",
+      "evidence_ids": [
+        "evidence:chunk-0169:011",
+        "evidence:chunk-0169:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        362673,
+        362765
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          362673,
+          362765
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0169:001",
+      "event_type": "resource_discovery_event",
+      "label": "陆师兄搜得陈师妹携带木盒",
+      "fact_summary": "陆师兄从陈师妹物品中翻出红色小木盒；后文表明双方各有未用筑基丹，韩立也确认出现两枚筑基丹。",
+      "participants": [
+        "node:chunk-0169:character:002",
+        "node:chunk-0169:character:003",
+        "node:chunk-0169:pill:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0169:001",
+        "evidence:chunk-0169:008",
+        "evidence:chunk-0169:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        360448,
+        362018
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          360448,
+          362018
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0169:002",
+      "event_type": "betrayal_confession_event",
+      "label": "陆师兄吐露背叛陈师妹动机",
+      "fact_summary": "陆师兄说明自己为了与董妮子双修、求红拂师叔祖收徒并避免陈家报复，决定牺牲陈师妹。",
+      "participants": [
+        "node:chunk-0169:character:002",
+        "node:chunk-0169:character:003",
+        "node:chunk-0169:character:004",
+        "node:chunk-0169:character:005",
+        "node:chunk-0169:faction:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0169:004",
+        "evidence:chunk-0169:005",
+        "evidence:chunk-0169:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        361172,
+        361505
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          361172,
+          361505
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0169:003",
+      "event_type": "restraint_and_drugging_event",
+      "label": "陈师妹被束缚并受合欢丹影响",
+      "fact_summary": "陈师妹被风缚之术束缚无法动弹，随后合欢丹发作，处于被陆师兄摆布的危险状态。",
+      "participants": [
+        "node:chunk-0169:character:002",
+        "node:chunk-0169:character:003",
+        "node:chunk-0169:technique:002",
+        "node:chunk-0169:pill:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0169:007",
+        "evidence:chunk-0169:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        361355,
+        362246
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          361355,
+          362246
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0169:004",
+      "event_type": "opportunity_decision_event",
+      "label": "韩立因两枚筑基丹改变旁观策略",
+      "fact_summary": "韩立原本准备用敛气术隐藏旁观，发现两枚筑基丹后转为密切观察陆师兄，准备在对方露出破绽时出手夺丹。",
+      "participants": [
+        "node:chunk-0169:character:001",
+        "node:chunk-0169:character:002",
+        "node:chunk-0169:pill:001",
+        "node:chunk-0169:technique:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0169:003",
+        "evidence:chunk-0169:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        360982,
+        362018
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          360982,
+          362018
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0169:005",
+      "event_type": "ambush_detection_event",
+      "label": "韩立挡下陆师兄暗中偷袭",
+      "fact_summary": "韩立发现左侧有物无声飞来，立即以水罩符形成蓝色光罩，挡住青色绳索状攻击；陆师兄随后召回绳索并要求韩立现身。",
+      "participants": [
+        "node:chunk-0169:character:001",
+        "node:chunk-0169:character:002",
+        "node:chunk-0169:inscription:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0169:011",
+        "evidence:chunk-0169:012",
+        "evidence:chunk-0169:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        362673,
+        362955
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          362673,
+          362955
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0169:001",
+      "chunk_id": "chunk-0169",
+      "source_range": [
+        360448,
+        360473
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          360448,
+          360473
+        ]
+      },
+      "excerpt": "陆师兄欣喜若狂从那堆东西里，翻出了个红色的小木盒。",
+      "fact_summary": "陆师兄从陈师妹相关物品中翻出红色小木盒。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "requirement_status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0169:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0169:002",
+      "chunk_id": "chunk-0169",
+      "source_range": [
+        360582,
+        360616
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          360582,
+          360616
+        ]
+      },
+      "excerpt": "对方风属性法术的威力，他可亲眼看见过，不论是攻击还是防御都是犀利无比",
+      "fact_summary": "韩立判断陆师兄风属性法术攻防都很强。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0169:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0169:003",
+      "chunk_id": "chunk-0169",
+      "source_range": [
+        360982,
+        361000
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          360982,
+          361000
+        ]
+      },
+      "excerpt": "韩立把新学到不久的敛气术悄悄施展出来",
+      "fact_summary": "韩立施展新学不久的敛气术隐藏自身。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0169:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0169:004",
+      "chunk_id": "chunk-0169",
+      "source_range": [
+        361172,
+        361194
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          361172,
+          361194
+        ]
+      },
+      "excerpt": "只要我和你彻底断绝了关系，转而筑基后和她双修",
+      "fact_summary": "陆师兄称自己要与陈师妹断绝关系，筑基后转而与董妮子双修。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0169:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0169:005",
+      "chunk_id": "chunk-0169",
+      "source_range": [
+        361195,
+        361222
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          361195,
+          361222
+        ]
+      },
+      "excerpt": "她就会求门内的那位姑祖婆——红拂师叔祖，亲自收我入门下",
+      "fact_summary": "陆师兄希望通过董妮子求红拂师叔祖收自己入门下。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0169:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0169:006",
+      "chunk_id": "chunk-0169",
+      "source_range": [
+        361454,
+        361505
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          361454,
+          361505
+        ]
+      },
+      "excerpt": "师妹不是陈家家主的独生女，其实放师妹一马也未尝不可。我实在害怕师妹由爱转恨，会借助陈家的力量来报复为兄",
+      "fact_summary": "陆师兄说明陈师妹是陈家家主独生女，并担心她借陈家力量报复。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0169:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0169:007",
+      "chunk_id": "chunk-0169",
+      "source_range": [
+        361355,
+        361379
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          361355,
+          361379
+        ]
+      },
+      "excerpt": "这位薄情郎早已用“风缚之术”，将她全身给束缚住了",
+      "fact_summary": "陈师妹已被风缚之术束缚全身。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0169:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0169:008",
+      "chunk_id": "chunk-0169",
+      "source_range": [
+        361716,
+        361733
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          361716,
+          361733
+        ]
+      },
+      "excerpt": "师妹竟和我一样，都还留有筑基丹未用",
+      "fact_summary": "陈师妹和陆师兄都保留着未用筑基丹。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0169:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0169:009",
+      "chunk_id": "chunk-0169",
+      "source_range": [
+        361996,
+        362018
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          361996,
+          362018
+        ]
+      },
+      "excerpt": "眼前有“筑基丹”出现，而且还一下子出现了两枚",
+      "fact_summary": "韩立确认眼前出现两枚筑基丹，并因此动心。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0169:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0169:010",
+      "chunk_id": "chunk-0169",
+      "source_range": [
+        362237,
+        362246
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          362237,
+          362246
+        ]
+      },
+      "excerpt": "看来合欢丹起作用了",
+      "fact_summary": "陆师兄判断合欢丹开始起作用。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0169:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0169:011",
+      "chunk_id": "chunk-0169",
+      "source_range": [
+        362673,
+        362697
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          362673,
+          362697
+        ]
+      },
+      "excerpt": "韩立就突然感到左侧有某件东西正无声无息的向他飞来",
+      "fact_summary": "韩立发现左侧有物无声飞向自己。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0169:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0169:012",
+      "chunk_id": "chunk-0169",
+      "source_range": [
+        362736,
+        362765
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          362736,
+          362765
+        ]
+      },
+      "excerpt": "急忙把符箓往身上一拍，一层蓝汪汪的光罩马上把他包裹在了其内",
+      "fact_summary": "韩立拍下符箓后形成蓝色光罩护身。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0169:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0169:013",
+      "chunk_id": "chunk-0169",
+      "source_range": [
+        362943,
+        362955
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          362943,
+          362955
+        ]
+      },
+      "excerpt": "那青色绳索就飞回到了手上",
+      "fact_summary": "陆师兄召回青色绳索状攻击物。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0169:013"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "冲突事件分析",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "丹药分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "功法术法神通",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0169:001",
+      "kind": "faction_identity_missing",
+      "fact_summary": "陆师兄只说红拂师叔祖是“门内”的姑祖婆，本 chunk 未明示门派名称，不能回填具体宗门。",
+      "evidence_ids": [
+        "evidence:chunk-0169:005"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        361195,
+        361222
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          361195,
+          361222
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0169:002",
+      "kind": "unnamed_attack_object",
+      "fact_summary": "袭向韩立并被陆师兄召回的是青色绳索状东西，但本 chunk 未给出专名或明确器物类型，因此不建法器节点。",
+      "evidence_ids": [
+        "evidence:chunk-0169:011",
+        "evidence:chunk-0169:013"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        362673,
+        362955
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          362673,
+          362955
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0169:001",
+      "candidate": "红色小木盒",
+      "reason": "红色小木盒只作为筑基丹容器出现，当前 chunk 未给出专名、法器属性或独立功能，不作为具名器物节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        360448,
+        360473
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          360448,
+          360473
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0169:002",
+      "candidate": "青色瓷瓶",
+      "reason": "青色瓷瓶只作为陆师兄取出的容器被提及，没有名称、法器性质或独立剧情功能。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        361996,
+        362018
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0169",
+        "source_path": "intermediate/chunks/chunk-0169.txt",
+        "source_range": [
+          361996,
+          362018
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

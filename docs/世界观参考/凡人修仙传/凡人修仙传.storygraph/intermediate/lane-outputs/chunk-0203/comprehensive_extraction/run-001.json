@@ -1,0 +1,3242 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0203:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0203",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T14:30:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0203:character:001",
+      "node_type": "character",
+      "label": "中年道士",
+      "aliases": [
+        "道士",
+        "贫道"
+      ],
+      "fact_summary": "中年道士认出落尘珠来历，劝李施主不要杀持落尘珠青年。",
+      "evidence_ids": [
+        "evidence:chunk-0203:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        449795,
+        450190
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          449795,
+          450190
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:character:002",
+      "node_type": "character",
+      "label": "李施主",
+      "aliases": [
+        "青衫老者",
+        "老者"
+      ],
+      "fact_summary": "李施主起初对持落尘珠青年的法器动心，后接受道士提醒并采走紫猴花。",
+      "evidence_ids": [
+        "evidence:chunk-0203:001",
+        "evidence:chunk-0203:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        449837,
+        450298
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          449837,
+          450298
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:character:003",
+      "node_type": "character",
+      "label": "持落尘珠青年",
+      "aliases": [
+        "这人",
+        "那青年",
+        "小家伙"
+      ],
+      "fact_summary": "当前 chunk 只明示该青年持有落尘珠，并与马云龙大有关系；姓名未明。",
+      "evidence_ids": [
+        "evidence:chunk-0203:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        449795,
+        450190
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          449795,
+          450190
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:faction:001",
+      "node_type": "faction",
+      "label": "天阙堡",
+      "aliases": [],
+      "fact_summary": "天阙堡是马云龙所属或关联势力，马云龙被称为百余年来最有希望踏入结丹期者。",
+      "evidence_ids": [
+        "evidence:chunk-0203:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450002,
+        450096
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450002,
+          450096
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:character:004",
+      "node_type": "character",
+      "label": "马云龙",
+      "aliases": [],
+      "fact_summary": "马云龙与天阙堡相关，被称为百余年来最有希望踏入结丹期的人；落尘珠是其成名法器。",
+      "evidence_ids": [
+        "evidence:chunk-0203:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450002,
+        450190
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450002,
+          450190
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:realm:001",
+      "node_type": "realm",
+      "label": "结丹期",
+      "aliases": [],
+      "fact_summary": "结丹期作为马云龙有望踏入的境界被提及。",
+      "evidence_ids": [
+        "evidence:chunk-0203:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450048,
+        450096
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450048,
+          450096
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:tool:001",
+      "node_type": "tool",
+      "label": "落尘珠",
+      "aliases": [],
+      "fact_summary": "落尘珠被道士认作马云龙的成名法器，当前由一名青年托在手中。",
+      "evidence_ids": [
+        "evidence:chunk-0203:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450097,
+        450190
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450097,
+          450190
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:material:001",
+      "node_type": "material",
+      "label": "紫猴花",
+      "aliases": [],
+      "fact_summary": "中年道士与李施主各采得一株紫猴花后分道扬镳。",
+      "evidence_ids": [
+        "evidence:chunk-0203:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450260,
+        450298
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450260,
+          450298
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:facility:001",
+      "node_type": "facility",
+      "label": "环形山山脊石屋",
+      "aliases": [
+        "石屋"
+      ],
+      "fact_summary": "环形山某座山脊的石屋旁发生四人争斗，石屋内有灵草。",
+      "evidence_ids": [
+        "evidence:chunk-0203:003",
+        "evidence:chunk-0203:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450353,
+        450389
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450353,
+          450389
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:faction:002",
+      "node_type": "faction",
+      "label": "黄枫谷",
+      "aliases": [],
+      "fact_summary": "黄枫谷弟子中年男子和年轻女子在石屋旁与钟吾、化刀坞青年争斗。",
+      "evidence_ids": [
+        "evidence:chunk-0203:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450390,
+        450415
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450390,
+          450415
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:faction:003",
+      "node_type": "faction",
+      "label": "陈氏家族",
+      "aliases": [
+        "陈家"
+      ],
+      "fact_summary": "陈氏家族是黄枫谷中年男子和陈师妹出身的家族，化刀坞青年称中年男子为陈氏家族大公子。",
+      "evidence_ids": [
+        "evidence:chunk-0203:005",
+        "evidence:chunk-0203:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        451191,
+        451291
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          451191,
+          451291
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:character:005",
+      "node_type": "character",
+      "label": "陈氏家族大公子",
+      "aliases": [
+        "姓陈的",
+        "陈兄",
+        "黄枫谷中年男子",
+        "陈某",
+        "大哥"
+      ],
+      "fact_summary": "陈氏家族大公子是黄枫谷弟子、陈师妹的大哥，凭金书银笔压制对手但选择放钟吾二人离开。",
+      "evidence_ids": [
+        "evidence:chunk-0203:003",
+        "evidence:chunk-0203:005",
+        "evidence:chunk-0203:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        451104,
+        451291
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          451104,
+          451291
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:character:006",
+      "node_type": "character",
+      "label": "陈师妹",
+      "aliases": [
+        "七妹",
+        "貌美的年轻女子",
+        "黄枫谷女子"
+      ],
+      "fact_summary": "陈师妹是陈氏家族大公子的七妹和黄枫谷弟子；她曾遭陆家小子谋害，被神秘救人者救下但失去筑基丹。",
+      "evidence_ids": [
+        "evidence:chunk-0203:003",
+        "evidence:chunk-0203:006",
+        "evidence:chunk-0203:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "记忆情绪与执念",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        451991,
+        452126
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          451991,
+          452126
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:tool:002",
+      "node_type": "tool",
+      "label": "金书银笔",
+      "aliases": [
+        "金书",
+        "银笔",
+        "巨笔"
+      ],
+      "fact_summary": "陈氏家族大公子使用金书银笔压制钟吾和化刀坞青年，但他认为敌人若逃走仍难以击杀。",
+      "evidence_ids": [
+        "evidence:chunk-0203:003",
+        "evidence:chunk-0203:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450416,
+        450487
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450416,
+          450487
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:character:007",
+      "node_type": "character",
+      "label": "钟吾",
+      "aliases": [
+        "灵兽山钟吾",
+        "丑陋汉子",
+        "丑汉钟吾"
+      ],
+      "fact_summary": "钟吾是灵兽山弟子，曾与韩立交换资料，在石屋争斗中驱使飞蛇和巨型黄蜂，随后认输离开。",
+      "evidence_ids": [
+        "evidence:chunk-0203:004",
+        "evidence:chunk-0203:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450626,
+        450696
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450626,
+          450696
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:faction:004",
+      "node_type": "faction",
+      "label": "灵兽山",
+      "aliases": [],
+      "fact_summary": "灵兽山是钟吾所属门派。",
+      "evidence_ids": [
+        "evidence:chunk-0203:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450626,
+        450696
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450626,
+          450696
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:beast:001",
+      "node_type": "beast",
+      "label": "飞蛇和巨型黄蜂",
+      "aliases": [
+        "飞蛇",
+        "蜂群",
+        "巨型黄蜂"
+      ],
+      "fact_summary": "钟吾在争斗中驱使飞蛇和巨型黄蜂阻挡黄枫谷男子攻势，认输后将其唤回。",
+      "evidence_ids": [
+        "evidence:chunk-0203:004",
+        "evidence:chunk-0203:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450626,
+        450696
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450626,
+          450696
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:faction:005",
+      "node_type": "faction",
+      "label": "化刀坞",
+      "aliases": [],
+      "fact_summary": "化刀坞是阴柔俊美青年所属或疑似所属门派。",
+      "evidence_ids": [
+        "evidence:chunk-0203:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450697,
+        450734
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450697,
+          450734
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:character:008",
+      "node_type": "character",
+      "label": "化刀坞青年",
+      "aliases": [
+        "青衣男青年",
+        "阴柔俊美的男青年",
+        "化刀坞的青年"
+      ],
+      "fact_summary": "化刀坞青年使用红色飞刀法器，被黄枫谷男子压制后先开口认输，并称赞陈氏家族大公子。",
+      "evidence_ids": [
+        "evidence:chunk-0203:004",
+        "evidence:chunk-0203:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450697,
+        451291
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450697,
+          451291
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:weapon:001",
+      "node_type": "weapon",
+      "label": "红色飞刀法器",
+      "aliases": [
+        "红色飞刀"
+      ],
+      "fact_summary": "化刀坞青年操纵两道红色飞刀，防御黄枫谷男子的银符攻击。",
+      "evidence_ids": [
+        "evidence:chunk-0203:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450735,
+        450820
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450735,
+          450820
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:character:009",
+      "node_type": "character",
+      "label": "陆家小子",
+      "aliases": [
+        "陆家那小子"
+      ],
+      "fact_summary": "陆家小子曾谋害陈师妹，之后未再露面；陈氏大公子推测他可能被救人者杀掉。",
+      "evidence_ids": [
+        "evidence:chunk-0203:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        451724,
+        451990
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          451724,
+          451990
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:character:010",
+      "node_type": "character",
+      "label": "救下陈师妹之人",
+      "aliases": [
+        "救你之人",
+        "那个家伙",
+        "本门外过路的修仙者"
+      ],
+      "fact_summary": "当前 chunk 只明示此人救下陈师妹、可能杀掉陆家小子，并拿走陈师妹的筑基丹；身份未定。",
+      "evidence_ids": [
+        "evidence:chunk-0203:007",
+        "evidence:chunk-0203:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "记忆情绪与执念",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        451724,
+        452126
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          451724,
+          452126
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:tool:003",
+      "node_type": "tool",
+      "label": "青蛟旗",
+      "aliases": [],
+      "fact_summary": "青蛟旗是陆家小子的顶级法器，被陈氏大公子作为判断救人者实力不弱的依据。",
+      "evidence_ids": [
+        "evidence:chunk-0203:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        451724,
+        451990
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          451724,
+          451990
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:pill:001",
+      "node_type": "pill",
+      "label": "筑基丹",
+      "aliases": [],
+      "fact_summary": "陈师妹称救她之人拿了她的筑基丹后离开。",
+      "evidence_ids": [
+        "evidence:chunk-0203:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        451991,
+        452126
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          451991,
+          452126
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:character:011",
+      "node_type": "character",
+      "label": "绿衣少女",
+      "aliases": [],
+      "fact_summary": "绿衣少女在密林内指挥白色小雕，与双头怪蛇艰难搏斗。",
+      "evidence_ids": [
+        "evidence:chunk-0203:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        452526,
+        452627
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          452526,
+          452627
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:beast:002",
+      "node_type": "beast",
+      "label": "白色小雕",
+      "aliases": [
+        "小雕"
+      ],
+      "fact_summary": "白色小雕受绿衣少女指挥，与双头怪蛇搏斗。",
+      "evidence_ids": [
+        "evidence:chunk-0203:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        452526,
+        452627
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          452526,
+          452627
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:beast:003",
+      "node_type": "beast",
+      "label": "双头怪蛇",
+      "aliases": [],
+      "fact_summary": "双头怪蛇在火红色大树前与绿衣少女及白色小雕搏斗。",
+      "evidence_ids": [
+        "evidence:chunk-0203:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        452526,
+        452627
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          452526,
+          452627
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:material:002",
+      "node_type": "material",
+      "label": "火红色大树与红色果子",
+      "aliases": [
+        "火红色大树",
+        "红色果子"
+      ],
+      "fact_summary": "双头怪蛇身后有一颗通体火红色大树，枝头结着数枚拳头大小红色果子；具体灵材名未明。",
+      "evidence_ids": [
+        "evidence:chunk-0203:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        452526,
+        452627
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          452526,
+          452627
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:faction:006",
+      "node_type": "faction",
+      "label": "掩月宗",
+      "aliases": [],
+      "fact_summary": "禁地内活下来的掩月宗弟子十五六人左右，在地下山洞中跟随精灵一样的少女行进。",
+      "evidence_ids": [
+        "evidence:chunk-0203:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        452633,
+        452724
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          452633,
+          452724
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0203:character:012",
+      "node_type": "character",
+      "label": "精灵一样的少女",
+      "aliases": [],
+      "fact_summary": "精灵一样的少女走在掩月宗幸存弟子队伍最前方，曾远远见过韩立一面。",
+      "evidence_ids": [
+        "evidence:chunk-0203:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        452633,
+        452724
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          452633,
+          452724
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0203:001",
+      "edge_type": "warns_against_killing",
+      "source": "node:chunk-0203:character:001",
+      "target": "node:chunk-0203:character:002",
+      "fact_summary": "中年道士警告李施主不要杀持落尘珠青年。",
+      "evidence_ids": [
+        "evidence:chunk-0203:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        449795,
+        450190
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          449795,
+          450190
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0203:002",
+      "edge_type": "associated_with",
+      "source": "node:chunk-0203:character:003",
+      "target": "node:chunk-0203:character:004",
+      "fact_summary": "持落尘珠青年被中年道士判断和马云龙大有关系。",
+      "evidence_ids": [
+        "evidence:chunk-0203:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450002,
+        450190
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450002,
+          450190
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0203:003",
+      "edge_type": "famous_tool_of",
+      "source": "node:chunk-0203:tool:001",
+      "target": "node:chunk-0203:character:004",
+      "fact_summary": "落尘珠被说成马云龙的成名法器。",
+      "evidence_ids": [
+        "evidence:chunk-0203:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450097,
+        450190
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450097,
+          450190
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0203:004",
+      "edge_type": "held_by",
+      "source": "node:chunk-0203:tool:001",
+      "target": "node:chunk-0203:character:003",
+      "fact_summary": "当前 chunk 明示持落尘珠青年手中托着落尘珠。",
+      "evidence_ids": [
+        "evidence:chunk-0203:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450097,
+        450190
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450097,
+          450190
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0203:005",
+      "edge_type": "member_of",
+      "source": "node:chunk-0203:character:005",
+      "target": "node:chunk-0203:faction:002",
+      "fact_summary": "陈氏家族大公子是黄枫谷弟子。",
+      "evidence_ids": [
+        "evidence:chunk-0203:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450390,
+        450487
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450390,
+          450487
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0203:006",
+      "edge_type": "sibling_of",
+      "source": "node:chunk-0203:character:005",
+      "target": "node:chunk-0203:character:006",
+      "fact_summary": "陈氏家族大公子称陈师妹为七妹，陈师妹称其为大哥。",
+      "evidence_ids": [
+        "evidence:chunk-0203:005",
+        "evidence:chunk-0203:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        451104,
+        451410
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          451104,
+          451410
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0203:007",
+      "edge_type": "member_of",
+      "source": "node:chunk-0203:character:007",
+      "target": "node:chunk-0203:faction:004",
+      "fact_summary": "钟吾被明示为灵兽山钟吾。",
+      "evidence_ids": [
+        "evidence:chunk-0203:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450626,
+        450696
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450626,
+          450696
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0203:008",
+      "edge_type": "commands_beasts",
+      "source": "node:chunk-0203:character:007",
+      "target": "node:chunk-0203:beast:001",
+      "fact_summary": "钟吾驱使飞蛇和巨型黄蜂作战，认输后唤回它们。",
+      "evidence_ids": [
+        "evidence:chunk-0203:004",
+        "evidence:chunk-0203:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450626,
+        450939
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450626,
+          450939
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0203:009",
+      "edge_type": "member_of",
+      "source": "node:chunk-0203:character:008",
+      "target": "node:chunk-0203:faction:005",
+      "fact_summary": "青衣男青年被判断应是化刀坞弟子，后文称其为化刀坞青年。",
+      "evidence_ids": [
+        "evidence:chunk-0203:004",
+        "evidence:chunk-0203:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450697,
+        450883
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450697,
+          450883
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0203:010",
+      "edge_type": "uses_tool",
+      "source": "node:chunk-0203:character:005",
+      "target": "node:chunk-0203:tool:002",
+      "fact_summary": "陈氏家族大公子依仗金书银笔威力压制钟吾和化刀坞青年。",
+      "evidence_ids": [
+        "evidence:chunk-0203:003",
+        "evidence:chunk-0203:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450416,
+        451664
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450416,
+          451664
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0203:011",
+      "edge_type": "harmed",
+      "source": "node:chunk-0203:character:009",
+      "target": "node:chunk-0203:character:006",
+      "fact_summary": "陈氏大公子明说陆家小子曾谋害七妹。",
+      "evidence_ids": [
+        "evidence:chunk-0203:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        451724,
+        451990
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          451724,
+          451990
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0203:012",
+      "edge_type": "rescued",
+      "source": "node:chunk-0203:character:010",
+      "target": "node:chunk-0203:character:006",
+      "fact_summary": "救人者从陆家小子手中救下陈师妹。",
+      "evidence_ids": [
+        "evidence:chunk-0203:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        451724,
+        451990
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          451724,
+          451990
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0203:013",
+      "edge_type": "owned_tool",
+      "source": "node:chunk-0203:character:009",
+      "target": "node:chunk-0203:tool:003",
+      "fact_summary": "陆家小子拥有顶级法器青蛟旗。",
+      "evidence_ids": [
+        "evidence:chunk-0203:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        451724,
+        451990
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          451724,
+          451990
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0203:014",
+      "edge_type": "took_resource",
+      "source": "node:chunk-0203:character:010",
+      "target": "node:chunk-0203:pill:001",
+      "fact_summary": "陈师妹称救她之人拿走了她的筑基丹。",
+      "evidence_ids": [
+        "evidence:chunk-0203:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        451991,
+        452126
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          451991,
+          452126
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0203:015",
+      "edge_type": "commands_beast",
+      "source": "node:chunk-0203:character:011",
+      "target": "node:chunk-0203:beast:002",
+      "fact_summary": "绿衣少女指挥白色小雕与双头怪蛇搏斗。",
+      "evidence_ids": [
+        "evidence:chunk-0203:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        452526,
+        452627
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          452526,
+          452627
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0203:016",
+      "edge_type": "guards_or_blocks_resource",
+      "source": "node:chunk-0203:beast:003",
+      "target": "node:chunk-0203:material:002",
+      "fact_summary": "双头怪蛇位于火红色大树和红色果子前方，当前 chunk 未明示其守护关系但空间上阻挡绿衣少女。",
+      "evidence_ids": [
+        "evidence:chunk-0203:009"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        452526,
+        452627
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          452526,
+          452627
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0203:017",
+      "edge_type": "leads_group",
+      "source": "node:chunk-0203:character:012",
+      "target": "node:chunk-0203:faction:006",
+      "fact_summary": "精灵一样的少女走在掩月宗幸存弟子队伍最前方。",
+      "evidence_ids": [
+        "evidence:chunk-0203:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        452633,
+        452724
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          452633,
+          452724
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0203:001",
+      "event_type": "warning_event",
+      "label": "中年道士劝阻李施主杀持落尘珠青年",
+      "fact_summary": "中年道士因落尘珠和马云龙关系，劝李施主不要杀持落尘珠青年。",
+      "participants": [
+        "node:chunk-0203:character:001",
+        "node:chunk-0203:character:002",
+        "node:chunk-0203:character:003",
+        "node:chunk-0203:character:004",
+        "node:chunk-0203:tool:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0203:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        449795,
+        450190
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          449795,
+          450190
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0203:002",
+      "event_type": "resource_acquisition_event",
+      "label": "中年道士与李施主分采紫猴花",
+      "fact_summary": "中年道士和李施主各得一株紫猴花后分道扬镳。",
+      "participants": [
+        "node:chunk-0203:character:001",
+        "node:chunk-0203:character:002",
+        "node:chunk-0203:material:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0203:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450191,
+        450298
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450191,
+          450298
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0203:003",
+      "event_type": "combat_event",
+      "label": "石屋旁四人法器争斗",
+      "fact_summary": "黄枫谷陈氏兄妹在环形山石屋旁与钟吾、化刀坞青年争斗，并凭金书银笔压制对方。",
+      "participants": [
+        "node:chunk-0203:character:005",
+        "node:chunk-0203:character:006",
+        "node:chunk-0203:character:007",
+        "node:chunk-0203:character:008",
+        "node:chunk-0203:facility:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0203:003",
+        "evidence:chunk-0203:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450353,
+        450820
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450353,
+          450820
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0203:004",
+      "event_type": "surrender_event",
+      "label": "化刀坞青年与钟吾认输离开石屋",
+      "fact_summary": "化刀坞青年认输并承认石屋灵草归陈氏兄妹，钟吾默认，陈氏大公子放二人离开。",
+      "participants": [
+        "node:chunk-0203:character:005",
+        "node:chunk-0203:character:006",
+        "node:chunk-0203:character:007",
+        "node:chunk-0203:character:008",
+        "node:chunk-0203:facility:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0203:005",
+        "evidence:chunk-0203:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        450821,
+        451723
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450821,
+          451723
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0203:005",
+      "event_type": "backstory_discussion_event",
+      "label": "陈氏兄妹谈陆家小子与救人者",
+      "fact_summary": "陈氏大公子与陈师妹谈到陆家小子谋害她、救人者身份未明、青蛟旗和筑基丹等往事。",
+      "participants": [
+        "node:chunk-0203:character:005",
+        "node:chunk-0203:character:006",
+        "node:chunk-0203:character:009",
+        "node:chunk-0203:character:010",
+        "node:chunk-0203:tool:003",
+        "node:chunk-0203:pill:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0203:007",
+        "evidence:chunk-0203:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "记忆情绪与执念",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        451724,
+        452327
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          451724,
+          452327
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0203:006",
+      "event_type": "combat_event",
+      "label": "绿衣少女指挥白色小雕战双头怪蛇",
+      "fact_summary": "绿衣少女在密林内指挥白色小雕，与双头怪蛇围绕火红色大树和红果位置艰难搏斗。",
+      "participants": [
+        "node:chunk-0203:character:011",
+        "node:chunk-0203:beast:002",
+        "node:chunk-0203:beast:003",
+        "node:chunk-0203:material:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0203:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        452526,
+        452627
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          452526,
+          452627
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0203:007",
+      "event_type": "movement_event",
+      "label": "掩月宗幸存弟子地下山洞行进",
+      "fact_summary": "十五六名掩月宗幸存弟子在狭长地下山洞中悄然行进，由精灵一样的少女走在最前方。",
+      "participants": [
+        "node:chunk-0203:faction:006",
+        "node:chunk-0203:character:012"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0203:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        452633,
+        452724
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          452633,
+          452724
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0203:001",
+      "chunk_id": "chunk-0203",
+      "source_range": [
+        449795,
+        450190
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          449795,
+          450190
+        ]
+      },
+      "excerpt": "“李施主是不是看贫道放此人离去，有些奇怪？”中年道士沉默了片刻后，突然开口道。\n　　“呵呵！是有那么一点。这小家伙的法器不错啊，我看了都有些动心了！”老者倒也并不掩饰自己的心思，直接了当的说道。\n　　“那施主趁早打消此主意的好，这人可杀不得的！”道士皱了一下眉，略带警告的说道。\n　　青衫老者闻言，脸上闪过一丝诧异神色，但并未开口问什么。他知道，既然话已说到这里了，以对方的为人，后面肯定会给自己解释清楚的。\n　　果然，道士木然的继续说道：“这人和天阙堡的马云龙，大有关系，还是不要轻易招惹的好！”。\n　　老者一听动容了起来，不禁惊讶道：“就是那个天阙堡，百年余年来，最有希望踏入结丹期的马云龙？”\n　　道士苦笑了一声，叹息道：“不是这人，还能是谁？我曾经见过此人数面。那青年手中托着的落尘珠，就是那人的成名法器，这绝对错不了！所以这个青年肯定和马云龙大有关系，还是不要动这青年的好！”",
+      "fact_summary": "中年道士劝李施主不要杀离去之人，并解释此人托着马云龙成名法器落尘珠，和天阙堡马云龙大有关系。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0203:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0203:002",
+      "chunk_id": "chunk-0203",
+      "source_range": [
+        450191,
+        450298
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450191,
+          450298
+        ]
+      },
+      "excerpt": "“不错，多亏道友提醒！否则，我真要犯下大错！咳，还是及早把灵药采走。别再来了什么不速之客！”老者终于从惊讶中恢复了常态，立即提议道。\n　　道士自然欣然同意，然后二人一左一右各得一株“紫猴花”后，立即分道扬镳了。",
+      "fact_summary": "李施主接受提醒后提议赶快采走灵药，中年道士同意，二人各得一株紫猴花后分道扬镳。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0203:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0203:003",
+      "chunk_id": "chunk-0203",
+      "source_range": [
+        450353,
+        450601
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450353,
+          450601
+        ]
+      },
+      "excerpt": "环形山某座山脊的石屋旁，四个人分为了两派，驱使着各种法器正在争斗着。\n　　其中一男一女二人身穿黄色服饰。是黄枫谷的弟子。\n　　男的四十许岁一脸书卷之气，手中持有一杆银光闪闪的巨笔和一本金光灿灿的金书，一挥一展之间，漫天地银符金光，把对面二人杀的汗流浃背，脸色发青。\n　　貌美的年轻女子虽然也指挥着一蓝一黄两件飞剑法器在一旁协助，但明眼人一眼就可以看出，此女的实力别说和她同伴相比。就是和对面两名对手一比较，那也是天差地别，根本就没起什么牵制作用。反而时不时的需要那名厉害之极的同伴去相救几次！",
+      "fact_summary": "环形山山脊石屋旁，黄枫谷一男一女弟子与对手争斗；中年男子持巨笔和金书，年轻女子以蓝黄飞剑协助但实力较弱。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0203:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0203:004",
+      "chunk_id": "chunk-0203",
+      "source_range": [
+        450626,
+        450820
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450626,
+          450820
+        ]
+      },
+      "excerpt": "一个头顶绿色光罩，驱使着一条碗口粗飞蛇和一大群巨型黄蜂，疯狂阻挡黄枫谷男子成片金光进攻地丑陋汉子，竟是那位和韩立交换过资料的灵兽山钟吾。\n　　另一位则是名相貌阴柔俊美的男青年。观其一身的青衣，应该是化刀坞的弟子。\n　　在他身前飞舞的两道红色飞刀，光芒四射，一看就知不是凡品法器。而这本应该是进攻性法器的飞刀，现如今却在其身前化为了两个车轮大小的光幕。吃力的挡着如同繁星一样的点点银符。",
+      "fact_summary": "黄枫谷二人的对手是灵兽山钟吾和一名化刀坞青年；钟吾驱使飞蛇和巨型黄蜂，化刀坞青年使用红色飞刀法器抵挡银符。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0203:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0203:005",
+      "chunk_id": "chunk-0203",
+      "source_range": [
+        450821,
+        451343
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450821,
+          451343
+        ]
+      },
+      "excerpt": "“住手，不打了，我二人认输！姓陈的，算你狠，这石屋内的灵草归你们了！”实在支撑不下去地化刀坞青年，终于先开口服软了起来。\n　　一旁的丑汉钟吾听了，除了微带不甘之色外，并没有出言阻止。算是默认了男青年的言语，并将飞蛇和蜂群唤回了身边。\n　　“哼！你们说认输就认输，哪有这么便宜的事！”那名实力最弱的黄枫谷女子，一撩起额前的长发不甘心的说道。刚才她一直被直接忽视了，不由得憋了一肚子的闷气，语气大为不善起来。\n　　“你想怎样，难道还想斩尽杀绝？就怕你们还没这个本事！”化刀坞的男子一听，恼怒的尖叫道，竟如同女子受惊的声音一样。让其余三人，不由得起了一身的鸡皮疙瘩。\n　　“当然不会了。我七妹只是说些气话而已！两位尽管走就是了，陈某决不会为难的！”那黄枫谷中年男子微皱下眉头，立即用眼神制止了女子下面不善的言语，然后神色平和对钟吾等人说道。\n　　“嘿嘿！陈兄真不亏为陈氏家族的大公子，气度就是和某些小丫头不一样，那我等就告辞了！”化刀坞的青年忽然平静了下来，声音也恢复成了正常男子之声，一下子就显得如同翩翩美公子一样，其前后变化让人大感诧异！\n　　说完这话，青年与钟吾二人，再恋恋不舍的望了一眼那石屋，就心痛的离开了此地，消失在山石后不见了踪影。",
+      "fact_summary": "化刀坞青年服软认输，称石屋灵草归姓陈的二人；钟吾默认并收回飞蛇蜂群，陈氏大公子放二人离开。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0203:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0203:006",
+      "chunk_id": "chunk-0203",
+      "source_range": [
+        451344,
+        451723
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          451344,
+          451723
+        ]
+      },
+      "excerpt": "“大哥，为什么不杀了那两人，只要再努把劲儿，马上就可以灭掉他们了！”貌美的女子在目送二人离去后，终于忍不住转头，向中年男子问道。\n　　“七妹，我发现自从出那事之后，你就变得有些偏激了！动不动就要取人性命，你知道那二人是何人吗？他们出身的家族可都是颇有名气的大家族，虽然还远不及我们燕、陈等超级家族，但也不能等闲小视。还是不要轻易结仇的好！”\n　　“况且就是真要杀他们，也多半不会成功！要知道，虽然依仗金书银笔的威力，看似已将他二人压的岌岌可危了！但是实际上，这是在他二人不起逃离念头的情况下才能如此的。若是真要痛下杀手，他们又不是笨蛋，当然会撒腿就跑，如此一来我金书银笔的威力就是再大，也不可能拿他们二人怎么样！只是徒然惹下仇家而已！”\n　　黄枫谷中年人先是用宠溺的口气，略微责备一下年轻女子，接着又仔细的讲解了一番不肯下杀手的原因，着让那女子恍然大悟！",
+      "fact_summary": "陈师妹质问大哥为何不杀钟吾与化刀坞青年；陈氏大公子说明二人家族有名、轻易结仇不智，并解释即使用金书银笔也难以真正击杀逃跑之敌。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0203:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0203:007",
+      "chunk_id": "chunk-0203",
+      "source_range": [
+        451724,
+        452126
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          451724,
+          452126
+        ]
+      },
+      "excerpt": "“对了，七妹！陆家那小子自从谋害你后，就再也没在其他地方露过面，看来真是被救你之人给杀掉了。倘若果真如此，算是这小子走运，否则定要让他生不如死，让其知道敢对我们陈家人下毒手的可怕。倒是那救你之人的身份，很耐人寻味啊！我花了大量的力气，查找了那几日不在本谷的弟子，结果并没有发现能对陆家小子构成威胁的人外出过。要知道，那混蛋的法力虽然不值一提，但他的那杆青蛟旗却真是件不错的顶级法器！能从他手中把你给救下，就说明此人的实力应该不弱才对，难道真的是本门外过路的修仙者不成？”女子的大哥忽然换了一副爱怜的语气，对他嘴中的“七妹”说道。\n　　原来这位“七妹”就是已变得冷若冰霜的“陈师妹”，只是在这个是他大哥的中年人面前，显然又恢复了她的几分本性，因此一听此言后，立即脸上羞红的撒娇道：“呸！提那个家伙干吗？救就救吧！还把人家一人抛在了荒郊野外，自己却拿了人家的筑基丹溜之大吉，我看十有八九也不是什么好人！”",
+      "fact_summary": "陈氏大公子提到陆家小子谋害七妹后失踪，推测可能被救她之人杀掉；陆家小子有青蛟旗，救人者实力不弱；陈师妹抱怨救人者拿走她的筑基丹。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "记忆情绪与执念",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0203:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0203:008",
+      "chunk_id": "chunk-0203",
+      "source_range": [
+        452145,
+        452327
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          452145,
+          452327
+        ]
+      },
+      "excerpt": "其实最让她如此羞怒的倒不是此事，而是一想起此人，就让她回想起了神志不清、浑身发烫赤裸的那个难堪之夜。\n　　而那双曾把其全身上下都肆意抚摸过的粗糙双手，和对方身上那股浓浓的男子气息，更是至今还让她铭记在心。\n　　只是羞恼之余，陈师妹尽量不愿去想此事，而把他们深埋了在内心的深处。如今听自己的大哥这么一提，不禁又涌上了心头，让陷入了沉思中的她，脸上一阵的红白交替！",
+      "fact_summary": "陈师妹回想神志不清、衣衫失控的难堪之夜，以及救人者给她留下的身体接触记忆，因此羞恼并不愿细想。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "记忆情绪与执念",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0203:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0203:009",
+      "chunk_id": "chunk-0203",
+      "source_range": [
+        452526,
+        452627
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          452526,
+          452627
+        ]
+      },
+      "excerpt": "某处密林内，一位身穿绿衣的少女，紧咬着双唇，指挥着一头白色的小雕，正艰难的与一只双头怪蛇搏斗着，看情形竟是一时间难分上下，而在怪蛇的身后则有一颗通体火红色的大树，其枝头上结着数枚拳头大小的红色果子。",
+      "fact_summary": "某处密林内，绿衣少女指挥白色小雕，与一只双头怪蛇艰难搏斗；怪蛇身后有火红色大树和红色果子。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0203:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0203:010",
+      "chunk_id": "chunk-0203",
+      "source_range": [
+        452633,
+        452724
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          452633,
+          452724
+        ]
+      },
+      "excerpt": "一个狭长的地下山洞内，悄然无声的走着一行白衣男女，看人数约有十五六人左右，竟是所有禁地内活下来的掩月宗弟子都在了此地，而走在最前面的，就是曾远远见过韩立一面的那位精灵一样的少女！",
+      "fact_summary": "狭长地下山洞内，十五六名白衣男女悄然行进，都是禁地内活下来的掩月宗弟子，最前方是曾远远见过韩立的精灵一样的少女。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0203:010"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "势力设定",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "建筑设施与场所功能",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "境界提升与功法分析",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "冲突事件分析",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "战斗与保命机制",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "法宝分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "丹药分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "材料分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "妖兽分析",
+      "requirement_id": "creature_deviant_practice_ecology",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "妖兽与修士关系分析",
+      "requirement_id": "creature_deviant_practice_ecology",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0203:001",
+      "kind": "identity_missing",
+      "fact_summary": "持落尘珠青年在当前 chunk 未明示姓名，不能回填为已知主角或其他人物。",
+      "evidence_ids": [
+        "evidence:chunk-0203:001"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        449795,
+        450190
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          449795,
+          450190
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0203:002",
+      "kind": "inferred_outcome",
+      "fact_summary": "陆家小子是否确实被救人者杀死只是陈氏大公子的推测，当前 chunk 未给出直接证据。",
+      "evidence_ids": [
+        "evidence:chunk-0203:007"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        451724,
+        451990
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          451724,
+          451990
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0203:003",
+      "kind": "identity_missing",
+      "fact_summary": "救下陈师妹之人的身份未明，当前 chunk 只给出可能是本门外过路修仙者的猜测。",
+      "evidence_ids": [
+        "evidence:chunk-0203:007"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        451724,
+        452126
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          451724,
+          452126
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0203:004",
+      "kind": "resource_name_missing",
+      "fact_summary": "火红色大树和红色果子未给出专属灵材名称，暂按场景资源保守记录。",
+      "evidence_ids": [
+        "evidence:chunk-0203:009"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        452526,
+        452627
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          452526,
+          452627
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0203:001",
+      "candidate": "不速之客",
+      "reason": "只是李施主担心之后有人来争灵药的泛称，当前 chunk 无具体身份和行动，不建节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        450191,
+        450259
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          450191,
+          450259
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0203:002",
+      "candidate": "燕家",
+      "reason": "仅在“燕、陈等超级家族”中作为对比出现，当前 chunk 无独立行动、关系或资源流转，不单独建势力节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        451411,
+        451516
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          451411,
+          451516
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0203:003",
+      "candidate": "白衣男女十五六人",
+      "reason": "这是掩月宗幸存弟子的群体背景描述，已由掩月宗与精灵少女节点覆盖，不另建角色节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        452633,
+        452724
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0203",
+        "source_path": "intermediate/chunks/chunk-0203.txt",
+        "source_range": [
+          452633,
+          452724
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

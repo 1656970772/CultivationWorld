@@ -1,0 +1,1592 @@
+{
+  "schema": "stage2-extraction-record.v1",
+  "template_name": "灵根体质血脉",
+  "template_file": "灵根体质血脉模板.md",
+  "source_graph": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.storygraph/graphify-out/graph.json",
+  "source_novel": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+  "output_language": "zh-CN",
+  "stage2_policy": {
+    "stage2_categories": {
+      "facts": "原作事实",
+      "judgments": "我的判断",
+      "pending_verifications": "待核验",
+      "not_found_items": "未见可靠证据"
+    },
+    "stage2_output_policy": {
+      "default_dir": "drafts",
+      "allow_overwrite_existing_docs": false,
+      "existing_document_action": "write_versioned_draft",
+      "allowed_policies": [
+        "draft",
+        "backup-and-overwrite",
+        "merge"
+      ],
+      "draft_action": "write_draft"
+    },
+    "stage2_render_policy": {
+      "citation_format": "[{evidence_id}]",
+      "draft_entry_policy": {
+        "source_sections": [
+          "facts"
+        ],
+        "field_aliases": {
+          "name": [
+            "name",
+            "title",
+            "item_name",
+            "entity_name",
+            "名称"
+          ],
+          "classification": [
+            "classification",
+            "type",
+            "category_label",
+            "类别",
+            "分类"
+          ],
+          "usage": [
+            "usage",
+            "purpose",
+            "effect",
+            "effects",
+            "用途",
+            "功效"
+          ],
+          "formula": [
+            "formula",
+            "materials",
+            "ingredients",
+            "components",
+            "recipe",
+            "方方",
+            "材料",
+            "成分"
+          ],
+          "source_excerpt": [
+            "source_excerpt",
+            "original_excerpt",
+            "quote",
+            "原文摘录"
+          ],
+          "review_status": [
+            "review_status",
+            "verification_status",
+            "审核状态"
+          ]
+        },
+        "fallback_name": "未命名条目",
+        "kept_fields": [
+          "name",
+          "classification",
+          "usage",
+          "formula",
+          "source_range",
+          "source_excerpt",
+          "evidence_ids",
+          "confidence",
+          "review_status"
+        ]
+      },
+      "final_entry_policy": {
+        "allowed_confidence": [
+          "EXTRACTED"
+        ],
+        "min_evidence_count": 1,
+        "require_explicit_name": true,
+        "require_source_excerpt": true,
+        "required_any_fields": [
+          "usage",
+          "formula"
+        ],
+        "unstable_name_prefixes": [
+          "未名",
+          "未命名",
+          "未知",
+          "不明"
+        ],
+        "unstable_name_contains": [
+          "某种",
+          "某类"
+        ],
+        "composite_name_markers": [
+          "与",
+          "或",
+          "/",
+          "、"
+        ],
+        "review_only_statuses": [
+          "needs_review",
+          "pending_review",
+          "rejected",
+          "ambiguous"
+        ],
+        "allow_missing_review_status": true
+      },
+      "dedupe_policy": {
+        "key_fields": [
+          "name",
+          "classification"
+        ],
+        "merge_text_fields": [
+          "usage",
+          "formula",
+          "source_excerpt"
+        ],
+        "confidence_strategy": "most_conservative",
+        "review_status_strategy": "review_only_wins"
+      },
+      "final_template_policy": {
+        "case_section_names": [
+          "案例",
+          "典型案例",
+          "案例清单",
+          "示例"
+        ],
+        "excluded_section_names": [
+          "待复核",
+          "缺口",
+          "资料来源",
+          "说明"
+        ],
+        "fallback_to_first_non_root_heading": true
+      }
+    }
+  },
+  "coverage_scope": {
+    "scope": "whole_novel",
+    "stage1_chunk_ledger": "coverage/chunk-ledger.json",
+    "chunk_ranges": [
+      {
+        "chunk_id": "chunk-0032",
+        "source_ranges": [
+          [
+            61728,
+            61802
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0058",
+        "source_ranges": [
+          [
+            112344,
+            112393
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0061",
+        "source_ranges": [
+          [
+            119286,
+            119366
+          ],
+          [
+            120518,
+            120606
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0119",
+        "source_ranges": [
+          [
+            232888,
+            233039
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0130",
+        "source_ranges": [
+          [
+            258372,
+            260238
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0147",
+        "source_ranges": [
+          [
+            303227,
+            303255
+          ],
+          [
+            303691,
+            303839
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0148",
+        "source_ranges": [
+          [
+            305019,
+            305026
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0149",
+        "source_ranges": [
+          [
+            307104,
+            307361
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0153",
+        "source_ranges": [
+          [
+            319878,
+            319908
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0155",
+        "source_ranges": [
+          [
+            324318,
+            324863
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0160",
+        "source_ranges": [
+          [
+            337025,
+            338143
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0174",
+        "source_ranges": [
+          [
+            374650,
+            374800
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0176",
+        "source_ranges": [
+          [
+            378956,
+            379215
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0239",
+        "source_ranges": [
+          [
+            559793,
+            559841
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0243",
+        "source_ranges": [
+          [
+            571540,
+            571776
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0249",
+        "source_ranges": [
+          [
+            590719,
+            590901
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0256",
+        "source_ranges": [
+          [
+            610922,
+            611176
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0260",
+        "source_ranges": [
+          [
+            621030,
+            621263
+          ],
+          [
+            623421,
+            623919
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0293",
+        "source_ranges": [
+          [
+            719249,
+            719859
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0294",
+        "source_ranges": [
+          [
+            722255,
+            722302
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0300",
+        "source_ranges": [
+          [
+            741948,
+            742207
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0341",
+        "source_ranges": [
+          [
+            860611,
+            861155
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0356",
+        "source_ranges": [
+          [
+            902507,
+            902543
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0443",
+        "source_ranges": [
+          [
+            1150939,
+            1151283
+          ]
+        ]
+      }
+    ],
+    "ledger_path": "coverage/template-run-ledger.json"
+  },
+  "fulfilled_sections": [
+    {
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_kind": "section",
+      "status": "covered",
+      "heading": "灵根篇",
+      "linked_node_ids": [
+        "node:chunk-0130:rule:003",
+        "node:chunk-0130:rule:004",
+        "node:chunk-0130:rule:005",
+        "node:chunk-0130:rule:006",
+        "node:chunk-0130:rule:007"
+      ],
+      "linked_edge_ids": [],
+      "linked_event_ids": [
+        "event:chunk-0130:005",
+        "event:chunk-0130:006"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0130:009",
+        "evidence:chunk-0130:010",
+        "evidence:chunk-0130:011",
+        "evidence:chunk-0130:012"
+      ],
+      "notes": []
+    },
+    {
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_kind": "section",
+      "status": "covered",
+      "heading": "体质篇",
+      "linked_node_ids": [
+        "node:chunk-0155:rule:002",
+        "node:chunk-0174:rule:001",
+        "node:chunk-0356:rule:001"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0155:013",
+        "edge:chunk-0174:009"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0174:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0155:019",
+        "evidence:chunk-0174:004",
+        "evidence:chunk-0356:004"
+      ],
+      "notes": []
+    },
+    {
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_kind": "section",
+      "status": "covered",
+      "heading": "血脉篇",
+      "linked_node_ids": [
+        "node:chunk-0130:rule:012",
+        "node:chunk-0155:faction:002",
+        "node:chunk-0260:cultivation_method:001"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0130:030",
+        "edge:chunk-0260:002",
+        "edge:chunk-0260:003"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0130:007",
+        "event:chunk-0260:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0130:014",
+        "evidence:chunk-0130:015",
+        "evidence:chunk-0155:019",
+        "evidence:chunk-0260:001",
+        "evidence:chunk-0260:002",
+        "evidence:chunk-0260:003"
+      ],
+      "notes": []
+    },
+    {
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_kind": "section",
+      "status": "needs_review",
+      "heading": "神魂与天赋篇",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [
+        "event:chunk-0341:005"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0293:005",
+        "evidence:chunk-0341:012",
+        "evidence:chunk-0341:013",
+        "evidence:chunk-0341:014",
+        "evidence:chunk-0341:015"
+      ],
+      "notes": [
+        "当前证据更偏灵根判断规律、曲魂灵根属性推断和神智异常，不足以扩写为稳定的神魂天赋规则。"
+      ]
+    },
+    {
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_kind": "section",
+      "status": "not_found_in_source",
+      "heading": "种族天赋篇",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [],
+      "notes": [
+        "本批命中的目标模板证据中未见妖族、灵族、异族天赋的稳定案例。"
+      ]
+    }
+  ],
+  "fulfilled_fields": [
+    {
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_kind": "field",
+      "status": "covered",
+      "heading": "类型/获得方式/影响方向/风险代价",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0032:008",
+        "evidence:chunk-0058:005",
+        "evidence:chunk-0061:010",
+        "evidence:chunk-0061:018",
+        "evidence:chunk-0130:009",
+        "evidence:chunk-0130:010",
+        "evidence:chunk-0130:011",
+        "evidence:chunk-0130:012",
+        "evidence:chunk-0130:014",
+        "evidence:chunk-0147:010",
+        "evidence:chunk-0147:011",
+        "evidence:chunk-0147:012",
+        "evidence:chunk-0155:019",
+        "evidence:chunk-0174:004",
+        "evidence:chunk-0260:002",
+        "evidence:chunk-0260:003",
+        "evidence:chunk-0356:004"
+      ],
+      "notes": []
+    }
+  ],
+  "fulfilled_tables": [],
+  "fulfilled_cards": [],
+  "fulfilled_cases": [
+    {
+      "case_id": "case-01",
+      "name": "灵根",
+      "classification": "修仙资格条件",
+      "requirement_id": "cultivation_system_method_progression",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0130:009",
+        "evidence:chunk-0061:010",
+        "evidence:chunk-0256:006"
+      ],
+      "notes": [
+        "无灵根无法感应灵气、修炼法力或法术；有灵根者稀少且难以筛选。"
+      ]
+    },
+    {
+      "case_id": "case-02",
+      "name": "天根/天灵根",
+      "classification": "单属性灵根；绝顶资质",
+      "requirement_id": "cultivation_system_method_progression",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0130:011",
+        "evidence:chunk-0155:020",
+        "evidence:chunk-0249:012"
+      ],
+      "notes": [
+        "修炼速度极快，筑基顶峰结丹无瓶颈；会引发门派争抢和同辈比较。"
+      ]
+    },
+    {
+      "case_id": "case-03",
+      "name": "伪灵根/四属性灵根",
+      "classification": "多属性灵根；低资质案例",
+      "requirement_id": "cultivation_system_method_progression",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0130:010",
+        "evidence:chunk-0147:011",
+        "evidence:chunk-0147:012",
+        "evidence:chunk-0148:011",
+        "evidence:chunk-0243:002",
+        "evidence:chunk-0243:003"
+      ],
+      "notes": [
+        "韩立为四属性缺金伪灵根，筑基希望低、师承评价受限，但后续已筑基，功法选择更麻烦。"
+      ]
+    },
+    {
+      "case_id": "case-04",
+      "name": "异灵根/变异灵根",
+      "classification": "雷、冰、暗、风等变异属性",
+      "requirement_id": "cultivation_system_method_progression",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0130:012",
+        "evidence:chunk-0147:010",
+        "evidence:chunk-0155:016",
+        "evidence:chunk-0160:007",
+        "evidence:chunk-0160:008",
+        "evidence:chunk-0443:014"
+      ],
+      "notes": [
+        "变异灵根修炼速度不逊天根，适配功法后战力强；异灵根在黄枫谷可优先筑基。"
+      ]
+    },
+    {
+      "case_id": "case-05",
+      "name": "玄阴之眼",
+      "classification": "先天特殊体质；王家直系血脉案例",
+      "requirement_id": "cultivation_system_method_progression",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0155:019"
+      ],
+      "notes": [
+        "王姓童子天生玄阴之眼，可修炼失传数百年的叱目神光并克制阴魂鬼怪。"
+      ]
+    },
+    {
+      "case_id": "case-06",
+      "name": "元阳/元阴之体",
+      "classification": "影响筑基概率的身体状态",
+      "requirement_id": "cultivation_system_method_progression",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0174:004"
+      ],
+      "notes": [
+        "韩立因元阳、元阴之体提高筑基成功率的说法而保留元阳。"
+      ]
+    },
+    {
+      "case_id": "case-07",
+      "name": "龙吟之质",
+      "classification": "危险体质；寿元经脉代价",
+      "requirement_id": "cultivation_system_method_progression",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0356:004"
+      ],
+      "notes": [
+        "辛如音称自己为龙吟之质，强行修真会导致寿命和经脉渐渐错位萎缩。"
+      ]
+    },
+    {
+      "case_id": "case-08",
+      "name": "灵根血脉继承/修真家族",
+      "classification": "血脉继承规则；家族形成机制",
+      "requirement_id": "cultivation_system_method_progression",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0130:014",
+        "evidence:chunk-0130:015"
+      ],
+      "notes": [
+        "父母有灵根会提高子女有灵根概率，灵根血脉传承的人家逐渐形成修真家族。"
+      ]
+    },
+    {
+      "case_id": "case-09",
+      "name": "血灵大法适配体质",
+      "classification": "魔功双修条件；天灵根与暗灵根适配",
+      "requirement_id": "cultivation_system_method_progression",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0260:001",
+        "evidence:chunk-0260:002",
+        "evidence:chunk-0260:003"
+      ],
+      "notes": [
+        "血灵大法需男女双修防反噬，灵根资质决定层数；燕如焉天灵根和少门主暗灵根都被称为最佳体质。"
+      ]
+    }
+  ],
+  "facts": [
+    {
+      "content": "长春功要求年少起修且必须具有灵根体质，墨居仁此前找过数百名孩子都无法修炼。",
+      "name": "长春功灵根体质要求",
+      "classification": "灵根/功法适配条件",
+      "usage": "说明早期文本中灵根作为功法入门条件出现，但墨居仁本人不知灵根含义。",
+      "source_range": [
+        61728,
+        61802
+      ],
+      "source_excerpt": "这口诀不但要求年少之人从头开始修炼，还要求修炼者必须具有‘灵根’体质",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0032:008"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0032:008",
+          "chunk_id": "chunk-0032",
+          "source_path": "intermediate/chunks/chunk-0032.txt",
+          "source_range": [
+            61728,
+            61802
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "needs_review"
+    },
+    {
+      "content": "无灵根者无法感应灵气、修炼法力或法术；墨大夫和墨彩环的相关场景都印证了此限制。",
+      "name": "无灵根修炼限制",
+      "classification": "灵根/修仙资格",
+      "usage": "用于灵根篇总规则和无灵根失败案例。",
+      "source_range": [
+        119286,
+        119366
+      ],
+      "source_excerpt": "没有灵根的人，是无法修炼出法力的",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0061:010",
+        "evidence:chunk-0130:009",
+        "evidence:chunk-0256:006"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0061:010",
+          "chunk_id": "chunk-0061",
+          "source_range": [
+            119286,
+            119366
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0130:009",
+          "chunk_id": "chunk-0130",
+          "source_range": [
+            258372,
+            258607
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0256:006",
+          "chunk_id": "chunk-0256",
+          "source_range": [
+            610922,
+            611176
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "灵根按金、木、水、火、土等五行属性区分；四五种属性混杂为伪灵根，修炼慢且多无望筑基；两三种属性为真灵根，修炼较快。",
+      "name": "伪灵根与真灵根",
+      "classification": "灵根/多属性分类",
+      "usage": "用于伪灵根/多灵根案例，并解释韩立资质劣势。",
+      "source_range": [
+        258663,
+        258852
+      ],
+      "source_excerpt": "具有五种、甚至四种属性的灵根，也被修仙界称为“伪灵根”",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0130:010"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0130:010",
+          "chunk_id": "chunk-0130",
+          "source_range": [
+            258663,
+            258852
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "天根是单一属性灵根，修炼速度为普通灵根二至三倍，且筑基顶峰进入结丹无瓶颈，会被修仙门派疯狂争抢。",
+      "name": "天根/天灵根",
+      "classification": "灵根/单属性绝顶资质",
+      "usage": "用于天灵根案例、门派资源倾斜和争抢风险。",
+      "source_range": [
+        258855,
+        259202
+      ],
+      "source_excerpt": "至于只有一种属性的单一灵根，则被修仙界称为“天根”",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0130:011",
+        "evidence:chunk-0155:020",
+        "evidence:chunk-0249:012"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0130:011",
+          "chunk_id": "chunk-0130",
+          "source_range": [
+            258855,
+            259202
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0155:020",
+          "chunk_id": "chunk-0155",
+          "source_range": [
+            324825,
+            324863
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0249:012",
+          "chunk_id": "chunk-0249",
+          "source_range": [
+            590719,
+            590901
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "变异灵根由二三种五行属性异变升华而成，包括雷、冰、暗、风等；修炼速度不逊天根，若有适配功法通常战力很强。",
+      "name": "变异灵根/异灵根",
+      "classification": "灵根/变异属性",
+      "usage": "用于雷灵根、风灵根、冰属性异灵根和异灵根优先筑基规则。",
+      "source_range": [
+        259205,
+        259520
+      ],
+      "source_excerpt": "所谓的“变异灵根”，指的是二种或三种五行属性混在一起，被异变和升华的灵根",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0130:012",
+        "evidence:chunk-0147:010",
+        "evidence:chunk-0155:016",
+        "evidence:chunk-0160:007",
+        "evidence:chunk-0443:014"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0130:012",
+          "chunk_id": "chunk-0130",
+          "source_range": [
+            259205,
+            259520
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0147:010",
+          "chunk_id": "chunk-0147",
+          "source_range": [
+            303227,
+            303255
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0155:016",
+          "chunk_id": "chunk-0155",
+          "source_range": [
+            324318,
+            324367
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0160:007",
+          "chunk_id": "chunk-0160",
+          "source_range": [
+            337386,
+            337479
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0443:014",
+          "chunk_id": "chunk-0443",
+          "source_range": [
+            1151262,
+            1151283
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "韩立被判定为四属性缺金伪灵根，筑基希望低；筑基后李化元确认其四属性灵根会使功法选修麻烦。",
+      "name": "韩立四属性伪灵根",
+      "classification": "灵根/伪灵根案例",
+      "usage": "用于主角低资质、资源依赖和功法选择限制案例。",
+      "source_range": [
+        303691,
+        303839
+      ],
+      "source_excerpt": "灵根属性四属性缺金，属于伪灵根",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0147:011",
+        "evidence:chunk-0147:012",
+        "evidence:chunk-0148:011",
+        "evidence:chunk-0149:004",
+        "evidence:chunk-0149:005",
+        "evidence:chunk-0153:011",
+        "evidence:chunk-0243:002",
+        "evidence:chunk-0243:003"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0147:011",
+          "chunk_id": "chunk-0147",
+          "source_range": [
+            303691,
+            303734
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0147:012",
+          "chunk_id": "chunk-0147",
+          "source_range": [
+            303741,
+            303839
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0243:002",
+          "chunk_id": "chunk-0243",
+          "source_range": [
+            571540,
+            571641
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "王师叔曾复测韩立属性，仍确认没有猜测中的灵根变异；这说明韩立修炼速度异常不能直接归因于灵根变异。",
+      "name": "韩立无灵根变异复测",
+      "classification": "灵根/待复核边界",
+      "usage": "用于避免把韩立后续进展误写成灵根变异。",
+      "source_range": [
+        378956,
+        379215
+      ],
+      "source_excerpt": "结果，还是和以前的结论一样，并没有产生什么猜测中的灵根变异",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0176:017"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0176:017",
+          "chunk_id": "chunk-0176",
+          "source_range": [
+            378956,
+            379215
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "needs_review"
+    },
+    {
+      "content": "王姓童子是王家直系血脉，天生玄阴之眼，可修炼失传数百年的叱目神光，并克制阴魂鬼怪。",
+      "name": "玄阴之眼",
+      "classification": "体质/特殊眼体",
+      "usage": "用于特殊体质和家族血脉案例。",
+      "source_range": [
+        324614,
+        324699
+      ],
+      "source_excerpt": "他不但是修仙大族王家的直系血脉，而且还是天生的“玄阴之眼”",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0155:019"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0155:019",
+          "chunk_id": "chunk-0155",
+          "source_range": [
+            324614,
+            324699
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "韩立相信元阳、元阴之体的男女筑基成功概率更高，因此选择保留元阳以服务筑基目标。",
+      "name": "元阳元阴之体",
+      "classification": "体质/筑基概率影响",
+      "usage": "用于身体状态影响突破概率案例。",
+      "source_range": [
+        374650,
+        374800
+      ],
+      "source_excerpt": "元阳、元阴之体的男女，其筑基成功的概率能够更大上一些",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0174:004"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0174:004",
+          "chunk_id": "chunk-0174",
+          "source_range": [
+            374650,
+            374800
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "辛如音称自己是龙吟之质，男体错生女儿身，强行修真会造成寿命和经脉渐渐错位萎缩。",
+      "name": "龙吟之质",
+      "classification": "体质/危险体质",
+      "usage": "用于危险体质、修炼代价和寿元经脉风险案例。",
+      "source_range": [
+        902507,
+        902543
+      ],
+      "source_excerpt": "我的体质是龙吟之质，男体错生女儿身",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0356:004"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0356:004",
+          "chunk_id": "chunk-0356",
+          "source_range": [
+            902507,
+            902543
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "灵根更容易在相同血脉中继承；门派曾让弟子在世俗成家，再从家眷中挑选有灵根小孩，最终形成修真家族。",
+      "name": "灵根血脉继承",
+      "classification": "血脉/家族继承机制",
+      "usage": "用于血脉篇和修真家族形成机制。",
+      "source_range": [
+        259812,
+        260238
+      ],
+      "source_excerpt": "男女二人果有一个是具有灵根，那么他们生的小孩，则有四分之一的机会，也会有灵根",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0130:014",
+        "evidence:chunk-0130:015"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0130:014",
+          "chunk_id": "chunk-0130",
+          "source_range": [
+            259812,
+            260058
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0130:015",
+          "chunk_id": "chunk-0130",
+          "source_range": [
+            260091,
+            260238
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "血灵大法被称为万灵真经第一魔功，因过于霸道需男女双修防反噬，灵根资质决定可修炼层数。",
+      "name": "血灵大法",
+      "classification": "血脉/魔功适配体质",
+      "usage": "用于血脉篇中魔功、双修体质与反噬风险案例。",
+      "source_range": [
+        621030,
+        621164
+      ],
+      "source_excerpt": "为了防止反噬，修炼其法必须一男一女共同双修才行，而灵根资质对其能修炼至几层，则是至关重要的",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0260:001",
+        "evidence:chunk-0260:002"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0260:001",
+          "chunk_id": "chunk-0260",
+          "source_range": [
+            621030,
+            621109
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0260:002",
+          "chunk_id": "chunk-0260",
+          "source_range": [
+            621111,
+            621164
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "燕如焉的天灵根和鬼灵门少门主的暗灵根都被燕家老祖称为修炼血灵大法的最佳体质。",
+      "name": "燕如焉与鬼灵门少门主",
+      "classification": "血脉/灵根适配与联姻控制",
+      "usage": "用于天灵根、暗灵根、双修对象和生死咒风险案例。",
+      "source_range": [
+        621204,
+        623919
+      ],
+      "source_excerpt": "如焉的天灵根，绝对是对方梦寐以求的最佳双修对象，而这鬼灵门的少门主也是极其罕见的暗灵根",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0260:003",
+        "evidence:chunk-0260:014",
+        "evidence:chunk-0260:017"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0260:003",
+          "chunk_id": "chunk-0260",
+          "source_range": [
+            621204,
+            621263
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0260:014",
+          "chunk_id": "chunk-0260",
+          "source_range": [
+            623421,
+            623477
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0260:017",
+          "chunk_id": "chunk-0260",
+          "source_range": [
+            623867,
+            623919
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "韩立说明灵根与相貌、才智能力无关，也没有规律可寻；童景被吴仙师判定具有仙缘。",
+      "name": "灵根检测与外貌才智无关",
+      "classification": "灵根/检测规律",
+      "usage": "用于获得方式和检测发现案例。",
+      "source_range": [
+        719249,
+        719859
+      ],
+      "source_excerpt": "一个人是否拥有灵根，可不是看男女是否长的英俊潇洒、耐看漂亮，甚至和人的才智能力也一点关系都没有",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0293:003",
+        "evidence:chunk-0293:005",
+        "evidence:chunk-0294:004"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0293:003",
+          "chunk_id": "chunk-0293",
+          "source_range": [
+            719249,
+            719266
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0293:005",
+          "chunk_id": "chunk-0293",
+          "source_range": [
+            719801,
+            719859
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0294:004",
+          "chunk_id": "chunk-0294",
+          "source_range": [
+            722255,
+            722302
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "韩立检查少女灵根后确认她是双灵根，资质很好，但明确表示自己不收徒弟。",
+      "name": "双灵根少女",
+      "classification": "灵根/双灵根案例",
+      "usage": "用于多属性灵根中较好资质和师承机会边界。",
+      "source_range": [
+        741948,
+        742207
+      ],
+      "source_excerpt": "双灵根啊，的确是很好的资质了",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0300:011",
+        "evidence:chunk-0300:012",
+        "evidence:chunk-0300:013"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0300:011",
+          "chunk_id": "chunk-0300",
+          "source_range": [
+            741948,
+            741962
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0300:012",
+          "chunk_id": "chunk-0300",
+          "source_range": [
+            742107,
+            742121
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0300:013",
+          "chunk_id": "chunk-0300",
+          "source_range": [
+            742196,
+            742207
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "曲魂能够炼气并出现灵气波动，韩立由此推断不能修炼长春功只说明没有木属性灵根，不代表没有其他属性灵根；曲魂之后又表现出疑似神智。",
+      "name": "曲魂灵根属性与神智异常",
+      "classification": "灵根/神智待复核案例",
+      "usage": "用于神魂与天赋篇的待核验边界，不能直接写成稳定神魂天赋。",
+      "source_range": [
+        860611,
+        861155
+      ],
+      "source_excerpt": "不能修炼长春功，这可不代表张铁就没有灵根啊，只是说明他没有木属性灵根而已",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0341:012",
+        "evidence:chunk-0341:013",
+        "evidence:chunk-0341:014",
+        "evidence:chunk-0341:015"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0341:012",
+          "chunk_id": "chunk-0341",
+          "source_range": [
+            860611,
+            860661
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0341:013",
+          "chunk_id": "chunk-0341",
+          "source_range": [
+            860690,
+            860739
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0341:014",
+          "chunk_id": "chunk-0341",
+          "source_range": [
+            860742,
+            860855
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0341:015",
+          "chunk_id": "chunk-0341",
+          "source_range": [
+            861099,
+            861155
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "needs_review"
+    }
+  ],
+  "judgments": [
+    {
+      "content": "本模板在当前 graph 中的可靠主体是灵根分类、低资质/高资质案例、特殊体质和灵根血脉继承；真灵血脉、神兽血脉、古族/魔族血脉与种族天赋缺少同等强度证据。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0130:009",
+        "evidence:chunk-0130:010",
+        "evidence:chunk-0130:011",
+        "evidence:chunk-0130:012",
+        "evidence:chunk-0130:014",
+        "evidence:chunk-0155:019",
+        "evidence:chunk-0260:003"
+      ],
+      "source_locations": [],
+      "confidence": "INFERRED"
+    },
+    {
+      "content": "韩立的修炼进展不应归因于灵根变异；证据显示他仍是伪灵根/四属性灵根，后续成就应在丹药、机缘、功法等其他模板中继续闭合。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0147:011",
+        "evidence:chunk-0176:017",
+        "evidence:chunk-0243:002",
+        "evidence:chunk-0243:003"
+      ],
+      "source_locations": [],
+      "confidence": "INFERRED"
+    }
+  ],
+  "pending_verifications": [
+    {
+      "content": "墨居仁早期称韩立身怀灵根、余子童称韩立天生灵根资质过人，但这些说法与后续韩立伪灵根检测结果存在视角差异，应以具体阶段分别标注。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0058:005",
+        "evidence:chunk-0061:018",
+        "evidence:chunk-0147:011",
+        "evidence:chunk-0148:011"
+      ],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "曲魂表现出炼气期灵气波动和疑似神智，但当前证据更适合作为灵根属性推断与神智异常记录，不足以定性为神魂天赋或种族天赋。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0341:012",
+        "evidence:chunk-0341:013",
+        "evidence:chunk-0341:014",
+        "evidence:chunk-0341:015"
+      ],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "not_found_items": [
+    {
+      "content": "当前目标模板命中证据中未见可作为真灵血脉、神兽血脉、返祖血脉或高阶妖族血脉的可靠案例。",
+      "category": "未见可靠证据",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "当前目标模板命中证据中未见妖族、灵族、异族等种族天赋的稳定案例；不应凭模板参考范围补写。",
+      "category": "未见可靠证据",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "document_sections": [
+    {
+      "heading": "案例 1：天灵根",
+      "markdown": "类型：灵根 / 天灵根（天根）。\n\n获得方式：先天出生具备，通常通过宗门或家族检测发现；掩月宗新收弟子中发现天灵根小姑娘，燕家也有天灵根小姑娘回家参加夺宝大会。\n\n影响方向：单一属性灵根修炼速度为普通灵根二至三倍，筑基顶峰结丹无瓶颈；门派会疯狂争抢，视作预定结丹期高手。\n\n风险代价：会被宗门、家族或联姻安排高度关注；燕如焉的天灵根还被血灵大法场景视为最佳双修对象之一。",
+      "evidence_ids": [
+        "evidence:chunk-0130:011",
+        "evidence:chunk-0155:020",
+        "evidence:chunk-0249:012",
+        "evidence:chunk-0260:003"
+      ],
+      "requirement_ids": [
+        "cultivation_system_method_progression"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 2：伪灵根 / 多灵根",
+      "markdown": "类型：灵根 / 伪灵根或多属性灵根。\n\n获得方式：先天出生具备，检测后被判定为多属性混杂。韩立被判为四属性缺金伪灵根，后由李化元确认除金属性外其他属性功法都可修炼。\n\n影响方向：四五种属性混杂者修炼效果差，多数只能在炼气五行基本功法三四层停滞，一生无望筑基；韩立即使有筑基丹也被认为成功概率极低，筑基后功法选择仍更麻烦。\n\n风险代价：资源和机缘依赖更高，师承评价受损；吴师兄明确因韩立资质太差、伪灵根之身而不愿收入门下。",
+      "evidence_ids": [
+        "evidence:chunk-0130:010",
+        "evidence:chunk-0147:011",
+        "evidence:chunk-0147:012",
+        "evidence:chunk-0148:011",
+        "evidence:chunk-0149:004",
+        "evidence:chunk-0153:011",
+        "evidence:chunk-0243:002",
+        "evidence:chunk-0243:003"
+      ],
+      "requirement_ids": [
+        "cultivation_system_method_progression"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 3：异灵根 / 变异灵根",
+      "markdown": "类型：灵根 / 变异灵根、异灵根。\n\n获得方式：由二三种五行属性异变升华而成，例子包括雷灵根、冰灵根、暗灵根和风灵根。\n\n影响方向：修炼速度不逊天根，若有属性适配功法，多半是了不起的高手；黄枫谷门规明确天根和异灵根者优先筑基。雷灵根同胞兄弟因雷灵根受到高层关注，掌心雷表现出强破坏力；玉真人为冰属性异灵根并修冰系功法。\n\n风险代价：异灵根仍不等于完全无瓶颈，异灵根者遇到修炼瓶颈也需服丹药冲关；同类天才之间也会引发比较和挑衅。",
+      "evidence_ids": [
+        "evidence:chunk-0130:012",
+        "evidence:chunk-0147:010",
+        "evidence:chunk-0155:016",
+        "evidence:chunk-0155:017",
+        "evidence:chunk-0160:007",
+        "evidence:chunk-0160:008",
+        "evidence:chunk-0160:012",
+        "evidence:chunk-0239:005",
+        "evidence:chunk-0443:014"
+      ],
+      "requirement_ids": [
+        "cultivation_system_method_progression"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 4：灵根检测与普通人筛选",
+      "markdown": "类型：灵根 / 检测发现。\n\n获得方式：由修仙者或门派检测发现；有灵根者在普通人中极少且分布松散。童景被吴仙师验出有仙缘，可以收录门下；其他晚辈未查出灵根则仍为普通凡人。\n\n影响方向：灵根与相貌、才智能力无关，没有固定规律可寻；检测结果直接决定是否可入门。\n\n风险代价：没有灵根者不能修炼法术，墨彩环求问后只能接受韩立无能为力的事实。",
+      "evidence_ids": [
+        "evidence:chunk-0130:009",
+        "evidence:chunk-0293:003",
+        "evidence:chunk-0293:005",
+        "evidence:chunk-0294:004",
+        "evidence:chunk-0256:006"
+      ],
+      "requirement_ids": [
+        "cultivation_system_method_progression"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 5：玄阴之眼",
+      "markdown": "类型：体质 / 特殊眼体。\n\n获得方式：先天拥有；王姓童子为修仙大族王家直系血脉，天生玄阴之眼。\n\n影响方向：可修炼失传数百年的叱目神光，并可克制阴魂鬼怪。\n\n风险代价：原文在该证据段未说明体质反噬、寿元代价或被觊觎后果。",
+      "evidence_ids": [
+        "evidence:chunk-0155:019"
+      ],
+      "requirement_ids": [
+        "cultivation_system_method_progression"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 6：元阳 / 元阴之体",
+      "markdown": "类型：体质 / 元阳、元阴之体。\n\n获得方式：身体状态；原文未说明能否后天获得。\n\n影响方向：韩立听说元阳、元阴之体的男女筑基成功概率更高，因此克制欲望、保留元阳。\n\n风险代价：证据只说明韩立为筑基取舍情欲，没有说明该体质存在反噬、伤身或其他长期代价。",
+      "evidence_ids": [
+        "evidence:chunk-0174:004"
+      ],
+      "requirement_ids": [
+        "cultivation_system_method_progression"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 7：龙吟之质",
+      "markdown": "类型：体质 / 危险体质。\n\n获得方式：辛如音自述为龙吟之质，男体错生女儿身；具体成因原文未说明。\n\n影响方向：可修真，但属于强行修真状态。\n\n风险代价：寿命和经脉会渐渐错位萎缩，是明确的修炼代价。",
+      "evidence_ids": [
+        "evidence:chunk-0356:004"
+      ],
+      "requirement_ids": [
+        "cultivation_system_method_progression"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 8：灵根血脉继承与修真家族",
+      "markdown": "类型：血脉 / 灵根血脉继承。\n\n获得方式：父母有灵根会提高子女出现灵根的机会；父母都有灵根时后代出现灵根概率更高，甚至全为灵根拥有者也不稀奇。\n\n影响方向：门派从弟子家眷中挑选有灵根小孩，真灵根比率提高；灵根血脉传承人家逐渐形成修真家族，成为门派外围门户。\n\n风险代价：当前证据未说明血脉冲突、返祖失败或族内斗争，只说明家族化带来的资源和组织形态。",
+      "evidence_ids": [
+        "evidence:chunk-0130:014",
+        "evidence:chunk-0130:015"
+      ],
+      "requirement_ids": [
+        "cultivation_system_method_progression"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 9：血灵大法适配体质",
+      "markdown": "类型：血脉 / 魔功适配体质；天灵根与暗灵根双修组合。\n\n获得方式：燕如焉先天具备天灵根，鬼灵门少门主具备罕见暗灵根；原文未说明二者灵根来源是否可后天获得。\n\n影响方向：血灵大法过于霸道，需一男一女双修防反噬；灵根资质决定能修炼至几层，燕如焉和少门主都被视为最佳体质。\n\n风险代价：血灵大法本身有反噬风险；燕家还以生死咒和阵法约束鬼灵门来客，说明这种体质适配牵涉联姻、控制与势力风险。",
+      "evidence_ids": [
+        "evidence:chunk-0260:001",
+        "evidence:chunk-0260:002",
+        "evidence:chunk-0260:003",
+        "evidence:chunk-0260:014",
+        "evidence:chunk-0260:017"
+      ],
+      "requirement_ids": [
+        "cultivation_system_method_progression"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 10：神魂与天赋篇",
+      "markdown": "类型：神智异常 / 待复核天赋，不宜直接定性为神魂天赋。\n\n获得方式：曲魂能够炼气并出现炼气期五六层灵气波动，韩立推断不能修炼长春功只说明没有木属性灵根，不代表没有其他属性灵根；随后曲魂表现出像有神智的样子。\n\n影响方向：该证据可用于记录灵根属性推断和神智异常，但不足以证明神识强大、悟性异常或稳定神魂天赋。\n\n风险代价：原文未说明神魂反噬、搜魂风险或天赋成长路线。",
+      "evidence_ids": [
+        "evidence:chunk-0341:012",
+        "evidence:chunk-0341:013",
+        "evidence:chunk-0341:014",
+        "evidence:chunk-0341:015"
+      ],
+      "requirement_ids": [
+        "cultivation_system_method_progression"
+      ],
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "heading": "案例 11：妖族 / 灵族 / 异族天赋",
+      "markdown": "类型：种族天赋 / 妖族、灵族、异族天赋。\n\n获得方式：当前目标模板命中证据未提供可靠案例。\n\n影响方向：原文未说明。\n\n风险代价：原文未说明。",
+      "evidence_ids": [],
+      "requirement_ids": [
+        "cultivation_system_method_progression"
+      ],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "evidence_citations": [
+    "evidence:chunk-0032:008",
+    "evidence:chunk-0058:005",
+    "evidence:chunk-0061:010",
+    "evidence:chunk-0061:018",
+    "evidence:chunk-0119:004",
+    "evidence:chunk-0130:009",
+    "evidence:chunk-0130:010",
+    "evidence:chunk-0130:011",
+    "evidence:chunk-0130:012",
+    "evidence:chunk-0130:013",
+    "evidence:chunk-0130:014",
+    "evidence:chunk-0130:015",
+    "evidence:chunk-0147:010",
+    "evidence:chunk-0147:011",
+    "evidence:chunk-0147:012",
+    "evidence:chunk-0148:011",
+    "evidence:chunk-0149:004",
+    "evidence:chunk-0149:005",
+    "evidence:chunk-0153:011",
+    "evidence:chunk-0155:016",
+    "evidence:chunk-0155:017",
+    "evidence:chunk-0155:018",
+    "evidence:chunk-0155:019",
+    "evidence:chunk-0155:020",
+    "evidence:chunk-0160:004",
+    "evidence:chunk-0160:007",
+    "evidence:chunk-0160:008",
+    "evidence:chunk-0160:012",
+    "evidence:chunk-0174:004",
+    "evidence:chunk-0176:017",
+    "evidence:chunk-0239:005",
+    "evidence:chunk-0243:002",
+    "evidence:chunk-0243:003",
+    "evidence:chunk-0249:012",
+    "evidence:chunk-0256:006",
+    "evidence:chunk-0260:001",
+    "evidence:chunk-0260:002",
+    "evidence:chunk-0260:003",
+    "evidence:chunk-0260:014",
+    "evidence:chunk-0260:017",
+    "evidence:chunk-0293:003",
+    "evidence:chunk-0293:005",
+    "evidence:chunk-0294:004",
+    "evidence:chunk-0300:011",
+    "evidence:chunk-0300:012",
+    "evidence:chunk-0300:013",
+    "evidence:chunk-0341:012",
+    "evidence:chunk-0341:013",
+    "evidence:chunk-0341:014",
+    "evidence:chunk-0341:015",
+    "evidence:chunk-0356:004",
+    "evidence:chunk-0443:014"
+  ],
+  "gap_items": [
+    {
+      "template_name": "灵根体质血脉",
+      "requirement_id": "cultivation_system_method_progression",
+      "status": "not_found_in_source",
+      "content": "真灵血脉、神兽血脉、古族/王族/魔族血脉、妖族/灵族/异族天赋在当前目标模板证据中未见可靠案例。",
+      "evidence_ids": [],
+      "notes": [
+        "王家直系血脉与灵根血脉继承可作为家族血脉案例，但不能扩写为高阶真灵/神兽/魔族血脉。"
+      ]
+    }
+  ],
+  "render_target": "drafts",
+  "overwrite_policy": "draft"
+}

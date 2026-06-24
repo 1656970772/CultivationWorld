@@ -1,0 +1,65 @@
+{
+  "run_id": "run-001",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "chunk_id": "chunk-0035",
+  "extracted_nodes": [
+    {
+      "node_id": "node-chunk0035-001",
+      "node_type": "event",
+      "label": "第四卷：神之遗骨",
+      "aliases": [],
+      "description": "第四卷的卷名标记，提示本卷围绕「神之遗骨」展开。",
+      "category_id": "cat_loc_002",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0035",
+        "source_range": [
+          207003,
+          207013
+        ]
+      },
+      "provenance": "chunk-0035:0-8"
+    }
+  ],
+  "extracted_edges": [],
+  "extracted_events": [],
+  "extracted_evidence": [
+    {
+      "evidence_id": "ev-chunk0035-001",
+      "source_location": {
+        "chunk_id": "chunk-0035",
+        "source_range": [
+          0,
+          8
+        ]
+      },
+      "fact_summary": "第四卷标题为「神之遗骨」，标志着故事进入以古神遗骨为核心线索的新阶段。",
+      "category_id": "cat_loc_002",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "provenance": "chunk-0035:0-8",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "cat_loc_002"
+        }
+      ],
+      "source_range": [
+        207003,
+        207013
+      ]
+    }
+  ],
+  "uncertainties": [
+    "chunk-0035 仅含卷名「第四卷 神之遗骨」，无叙述正文。该卷名的具体叙事作用需后续 chunk 确认。"
+  ],
+  "task_packet_id": "chunk-0035:comprehensive_extraction:attempt-001",
+  "produced_at": "2026-06-23T18:00:00Z",
+  "supports_templates": [],
+  "structured_failures": [],
+  "rejected_candidates": []
+}

@@ -1,0 +1,2156 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0261:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0261",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T20:45:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0261:character:001",
+      "node_type": "character",
+      "label": "燕家老祖",
+      "aliases": [],
+      "fact_summary": "燕家老祖代表燕家与王蝉谈判，承认归附鬼灵门、拒绝主动加害受邀修士但同意聚集七派修士。",
+      "evidence_ids": [
+        "evidence:chunk-0261:001",
+        "evidence:chunk-0261:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624124,
+        624194
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624124,
+          624194
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0261:faction:001",
+      "node_type": "faction",
+      "label": "燕家",
+      "aliases": [],
+      "fact_summary": "燕家已答应归附鬼灵门，并计划在六宗进攻越国前撤离，迁移时会放弃外围族人和无修为普通人。",
+      "evidence_ids": [
+        "evidence:chunk-0261:001",
+        "evidence:chunk-0261:003",
+        "evidence:chunk-0261:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624124,
+        624194
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624124,
+          624194
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0261:faction:002",
+      "node_type": "faction",
+      "label": "鬼灵门",
+      "aliases": [],
+      "fact_summary": "鬼灵门接纳燕家归附，王蝉代表其提出用阴火大阵血祭堡中修士。",
+      "evidence_ids": [
+        "evidence:chunk-0261:001",
+        "evidence:chunk-0261:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "邪修分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624917,
+        625060
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624917,
+          625060
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0261:character:002",
+      "node_type": "character",
+      "label": "王蝉",
+      "aliases": [
+        "鬼灵门少主",
+        "少门主"
+      ],
+      "fact_summary": "王蝉是鬼灵门少主，与燕如嫣互下生死咒并定下婚约，提出血祭筑基计划。",
+      "evidence_ids": [
+        "evidence:chunk-0261:002",
+        "evidence:chunk-0261:006",
+        "evidence:chunk-0261:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "邪修分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624197,
+        624276
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624197,
+          624276
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0261:character:003",
+      "node_type": "character",
+      "label": "燕如嫣",
+      "aliases": [
+        "如嫣小姐",
+        "如焉小姐",
+        "嫣儿"
+      ],
+      "fact_summary": "燕如嫣与王蝉互下生死咒并成为婚约对象，王蝉计划以修士魂魄助她筑基并修炼血灵大法。",
+      "evidence_ids": [
+        "evidence:chunk-0261:002",
+        "evidence:chunk-0261:006",
+        "evidence:chunk-0261:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624197,
+        624276
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624197,
+          624276
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0261:character:004",
+      "node_type": "character",
+      "label": "玄夜先生",
+      "aliases": [
+        "儒生",
+        "百密无漏玄夜先生"
+      ],
+      "fact_summary": "玄夜先生代表燕家发言，说明迁移取舍，并反对燕家加害所有受邀修士。",
+      "evidence_ids": [
+        "evidence:chunk-0261:004",
+        "evidence:chunk-0261:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624492,
+        624599
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624492,
+          624599
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0261:faction:003",
+      "node_type": "faction",
+      "label": "六宗",
+      "aliases": [],
+      "fact_summary": "王蝉透露六宗五天后将正式进攻越国。",
+      "evidence_ids": [
+        "evidence:chunk-0261:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624405,
+        624489
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624405,
+          624489
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0261:faction:004",
+      "node_type": "faction",
+      "label": "七派",
+      "aliases": [],
+      "fact_summary": "堡中二百多名筑基修士中有不少七派中坚弟子，燕家老祖愿聚集七派修士交由鬼灵门处置。",
+      "evidence_ids": [
+        "evidence:chunk-0261:005",
+        "evidence:chunk-0261:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624764,
+        624855
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624764,
+          624855
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0261:location:001",
+      "node_type": "location",
+      "label": "越国",
+      "aliases": [],
+      "fact_summary": "王蝉称六宗五天后将正式进攻越国。",
+      "evidence_ids": [
+        "evidence:chunk-0261:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624405,
+        624489
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624405,
+          624489
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0261:realm:001",
+      "node_type": "realm",
+      "label": "筑基期",
+      "aliases": [],
+      "fact_summary": "当前情节多次提到堡中二百多名筑基修士、七派筑基期弟子及用其魂魄助燕如嫣筑基。",
+      "evidence_ids": [
+        "evidence:chunk-0261:005",
+        "evidence:chunk-0261:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624764,
+        624855
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624764,
+          624855
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0261:cultivation_method:001",
+      "node_type": "cultivation_method",
+      "label": "血灵大法",
+      "aliases": [],
+      "fact_summary": "血灵大法需要修士魂魄血祭才能顺利开始修炼，王蝉认为大量筑基修士魂魄可助燕如嫣修成第一层。",
+      "evidence_ids": [
+        "evidence:chunk-0261:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "邪修分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624917,
+        625060
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624917,
+          625060
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0261:formation:001",
+      "node_type": "formation",
+      "label": "阴火大阵",
+      "aliases": [],
+      "fact_summary": "阴火大阵被王蝉称为鬼灵门手段，可炼化修士肉身并留下魂魄。",
+      "evidence_ids": [
+        "evidence:chunk-0261:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "邪修分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624917,
+        625060
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624917,
+          625060
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0261:technique:001",
+      "node_type": "technique",
+      "label": "生死咒",
+      "aliases": [],
+      "fact_summary": "王蝉称自己与燕如嫣互下生死咒，并因此算作定下婚约。",
+      "evidence_ids": [
+        "evidence:chunk-0261:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624197,
+        624276
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624197,
+          624276
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0261:character:005",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立在返回客栈近路时撞见董萱儿、燕雨、丰师兄与艳丽男修士的对峙，因红拂师伯嘱托而难以置身事外。",
+      "evidence_ids": [
+        "evidence:chunk-0261:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        626164,
+        626262
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          626164,
+          626262
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0261:character:006",
+      "node_type": "character",
+      "label": "燕雨",
+      "aliases": [],
+      "fact_summary": "燕雨与丰师兄一起陪董萱儿外出，后在小巷堵住艳丽男子要求留下董萱儿。",
+      "evidence_ids": [
+        "evidence:chunk-0261:010",
+        "evidence:chunk-0261:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        626164,
+        626262
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          626164,
+          626262
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0261:character:007",
+      "node_type": "character",
+      "label": "丰师兄",
+      "aliases": [],
+      "fact_summary": "丰师兄与燕雨一起陪董萱儿外出，后在小巷堵住艳丽男子要求留下董萱儿。",
+      "evidence_ids": [
+        "evidence:chunk-0261:010",
+        "evidence:chunk-0261:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        626164,
+        626262
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          626164,
+          626262
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0261:character:008",
+      "node_type": "character",
+      "label": "董萱儿",
+      "aliases": [],
+      "fact_summary": "董萱儿在见到艳丽男子后表现异常主动，并半躺在对方怀中，引发燕雨、丰师兄与对方对峙。",
+      "evidence_ids": [
+        "evidence:chunk-0261:010",
+        "evidence:chunk-0261:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        626164,
+        626262
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          626164,
+          626262
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0261:character:009",
+      "node_type": "character",
+      "label": "艳丽男子",
+      "aliases": [
+        "陌生人",
+        "身穿紫衣的男修士"
+      ],
+      "fact_summary": "艳丽男子在店中遇到董萱儿后接纳她的纠缠并想带走她，随后在小巷被燕雨和丰师兄堵住。",
+      "evidence_ids": [
+        "evidence:chunk-0261:010",
+        "evidence:chunk-0261:012",
+        "evidence:chunk-0261:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        626164,
+        626262
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          626164,
+          626262
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0261:location:002",
+      "node_type": "location",
+      "label": "小巷子",
+      "aliases": [
+        "偏僻的小巷子"
+      ],
+      "fact_summary": "韩立在偏僻小巷撞见燕雨、丰师兄、董萱儿和艳丽男子的对峙。",
+      "evidence_ids": [
+        "evidence:chunk-0261:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        627060,
+        627176
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          627060,
+          627176
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0261:001",
+      "edge_type": "pledged_allegiance",
+      "source": "node:chunk-0261:faction:001",
+      "target": "node:chunk-0261:faction:002",
+      "fact_summary": "燕家已经答应归附鬼灵门。",
+      "evidence_ids": [
+        "evidence:chunk-0261:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624124,
+        624194
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624124,
+          624194
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0261:002",
+      "edge_type": "marriage_contract",
+      "source": "node:chunk-0261:character:002",
+      "target": "node:chunk-0261:character:003",
+      "fact_summary": "王蝉与燕如嫣互下生死咒并定下婚约。",
+      "evidence_ids": [
+        "evidence:chunk-0261:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624197,
+        624276
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624197,
+          624276
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0261:003",
+      "edge_type": "uses_technique",
+      "source": "node:chunk-0261:character:002",
+      "target": "node:chunk-0261:technique:001",
+      "fact_summary": "王蝉称自己与燕如嫣互下生死咒。",
+      "evidence_ids": [
+        "evidence:chunk-0261:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624197,
+        624276
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624197,
+          624276
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0261:004",
+      "edge_type": "uses_technique",
+      "source": "node:chunk-0261:character:003",
+      "target": "node:chunk-0261:technique:001",
+      "fact_summary": "燕如嫣与王蝉互下生死咒。",
+      "evidence_ids": [
+        "evidence:chunk-0261:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624197,
+        624276
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624197,
+          624276
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0261:005",
+      "edge_type": "plans_attack",
+      "source": "node:chunk-0261:faction:003",
+      "target": "node:chunk-0261:location:001",
+      "fact_summary": "六宗五天后将正式进攻越国。",
+      "evidence_ids": [
+        "evidence:chunk-0261:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "长程因果链",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624405,
+        624489
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624405,
+          624489
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0261:006",
+      "edge_type": "cultivates_with_sacrifice",
+      "source": "node:chunk-0261:cultivation_method:001",
+      "target": "node:chunk-0261:realm:001",
+      "fact_summary": "血灵大法在当前说明中以筑基修士魂魄血祭作为修炼和助筑基资源。",
+      "evidence_ids": [
+        "evidence:chunk-0261:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "邪修分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624917,
+        625060
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624917,
+          625060
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0261:007",
+      "edge_type": "formation_method_for_sacrifice",
+      "source": "node:chunk-0261:formation:001",
+      "target": "node:chunk-0261:cultivation_method:001",
+      "fact_summary": "王蝉提出用阴火大阵炼化修士肉身并留下魂魄，用于血灵大法修炼。",
+      "evidence_ids": [
+        "evidence:chunk-0261:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "邪修分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624917,
+        625060
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624917,
+          625060
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0261:008",
+      "edge_type": "blocks_removal",
+      "source": "node:chunk-0261:character:006",
+      "target": "node:chunk-0261:character:009",
+      "fact_summary": "燕雨与丰师兄把艳丽男子堵在小巷，要求留下董萱儿。",
+      "evidence_ids": [
+        "evidence:chunk-0261:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        627060,
+        627176
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          627060,
+          627176
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0261:009",
+      "edge_type": "blocks_removal",
+      "source": "node:chunk-0261:character:007",
+      "target": "node:chunk-0261:character:009",
+      "fact_summary": "丰师兄与燕雨把艳丽男子堵在小巷，要求留下董萱儿。",
+      "evidence_ids": [
+        "evidence:chunk-0261:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        627060,
+        627176
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          627060,
+          627176
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0261:001",
+      "event_type": "alliance_negotiation",
+      "label": "燕家归附鬼灵门谈判",
+      "participants": [
+        "node:chunk-0261:character:001",
+        "node:chunk-0261:character:002",
+        "node:chunk-0261:faction:001",
+        "node:chunk-0261:faction:002"
+      ],
+      "fact_summary": "燕家老祖确认燕家已答应归附鬼灵门，王蝉以婚约和归附关系要求燕家履约。",
+      "evidence_ids": [
+        "evidence:chunk-0261:001",
+        "evidence:chunk-0261:002",
+        "evidence:chunk-0261:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624124,
+        624194
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624124,
+          624194
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0261:002",
+      "event_type": "evacuation_decision",
+      "label": "燕家迁移取舍",
+      "participants": [
+        "node:chunk-0261:character:004",
+        "node:chunk-0261:faction:001"
+      ],
+      "fact_summary": "儒生说明燕家会放弃血缘太远的外围族人与没有法力的普通人，以便现实地迁移。",
+      "evidence_ids": [
+        "evidence:chunk-0261:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624492,
+        624599
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624492,
+          624599
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0261:003",
+      "event_type": "deviant_cultivation_proposal",
+      "label": "王蝉提出血祭堡中修士",
+      "participants": [
+        "node:chunk-0261:character:002",
+        "node:chunk-0261:character:003",
+        "node:chunk-0261:faction:002",
+        "node:chunk-0261:formation:001",
+        "node:chunk-0261:cultivation_method:001",
+        "node:chunk-0261:realm:001"
+      ],
+      "fact_summary": "王蝉提出用鬼灵门阴火大阵炼化堡中修士肉身，留下魂魄给燕如嫣血祭筑基并修炼血灵大法。",
+      "evidence_ids": [
+        "evidence:chunk-0261:005",
+        "evidence:chunk-0261:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "邪修分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        624917,
+        625060
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624917,
+          625060
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0261:004",
+      "event_type": "compromise_decision",
+      "label": "燕家拒绝主动害受邀修士但交出七派修士",
+      "participants": [
+        "node:chunk-0261:character:001",
+        "node:chunk-0261:character:004",
+        "node:chunk-0261:character:002",
+        "node:chunk-0261:faction:001",
+        "node:chunk-0261:faction:004"
+      ],
+      "fact_summary": "儒生反对燕家伤害所有受邀修士，燕家老祖随后拒绝主动对堡中受邀修士出手，但答应把七派修士聚在一处交由鬼灵门处理。",
+      "evidence_ids": [
+        "evidence:chunk-0261:007",
+        "evidence:chunk-0261:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        625249,
+        625363
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          625249,
+          625363
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0261:005",
+      "event_type": "bride_price_agreement",
+      "label": "王蝉以修士魂魄作聘礼",
+      "participants": [
+        "node:chunk-0261:character:002",
+        "node:chunk-0261:character:003",
+        "node:chunk-0261:faction:002"
+      ],
+      "fact_summary": "王蝉同意鬼灵门承担恶名，并把修士魂魄作为给燕如嫣的聘礼。",
+      "evidence_ids": [
+        "evidence:chunk-0261:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "邪修分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        625799,
+        625848
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          625799,
+          625848
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0261:006",
+      "event_type": "alley_encounter",
+      "label": "韩立撞见小巷对峙",
+      "participants": [
+        "node:chunk-0261:character:005",
+        "node:chunk-0261:character:006",
+        "node:chunk-0261:character:007",
+        "node:chunk-0261:character:008",
+        "node:chunk-0261:character:009",
+        "node:chunk-0261:location:002"
+      ],
+      "fact_summary": "韩立返回客栈途中撞见燕雨、丰师兄、董萱儿与艳丽男子在偏僻小巷对峙。",
+      "evidence_ids": [
+        "evidence:chunk-0261:010",
+        "evidence:chunk-0261:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        626164,
+        626262
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          626164,
+          626262
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0261:007",
+      "event_type": "abduction_risk",
+      "label": "董萱儿被艳丽男子带走风险",
+      "participants": [
+        "node:chunk-0261:character:006",
+        "node:chunk-0261:character:007",
+        "node:chunk-0261:character:008",
+        "node:chunk-0261:character:009"
+      ],
+      "fact_summary": "董萱儿在店中见艳丽男子后异常主动纠缠，对方准备带走她，燕雨和丰师兄因此在小巷阻拦。",
+      "evidence_ids": [
+        "evidence:chunk-0261:011",
+        "evidence:chunk-0261:012",
+        "evidence:chunk-0261:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        626956,
+        627057
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          626956,
+          627057
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0261:001",
+      "chunk_id": "chunk-0261",
+      "source_range": [
+        624124,
+        624194
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624124,
+          624194
+        ]
+      },
+      "excerpt": "“既然我们燕家已经答应了归附贵门，少门主还有什么指教吗？”燕家老祖这次开口明显比上次温和多了，显然是忌讳到了燕家以后就是鬼灵门一份子的事情。",
+      "fact_summary": "燕家老祖确认燕家已答应归附鬼灵门，态度因将成鬼灵门一员而温和。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0261:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0261:002",
+      "chunk_id": "chunk-0261",
+      "source_range": [
+        624197,
+        624276
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624197,
+          624276
+        ]
+      },
+      "excerpt": "“燕前辈何必如此见外，既然我和如嫣小姐互下了生死咒，这也算是定下婚约了！燕前辈以后就称呼在下王蝉即可，不必叫什么少门主！”王蝉轻施一礼后，尽显优雅之风的说道。",
+      "fact_summary": "王蝉说明自己与燕如嫣互下生死咒并定下婚约。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0261:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0261:003",
+      "chunk_id": "chunk-0261",
+      "source_range": [
+        624405,
+        624489
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624405,
+          624489
+        ]
+      },
+      "excerpt": "“其实王蝉这次叫如焉小姐带在下，再和老祖见上一面，是想问一下老祖是准备如何履行约定，毕竟五天后我们六宗就将正式进攻越国了，到时燕家若不及时撤离此地，恐怕就有些麻烦了。”",
+      "fact_summary": "王蝉催问燕家履约和撤离安排，并透露六宗五天后将进攻越国。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "长程因果链",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0261:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0261:004",
+      "chunk_id": "chunk-0261",
+      "source_range": [
+        624492,
+        624599
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624492,
+          624599
+        ]
+      },
+      "excerpt": "“这点请少门主放心，我们燕家虽然看起来族人似乎不少，但实际上有些血缘太远的外围族人，和没有法力在身的普通人，我们就会放弃掉的，毕竟将所有族人都一口气转移走，实在有些不现实！这点燕家还是很清楚的！”这次儒生抢先说道。",
+      "fact_summary": "儒生表示燕家迁移时会放弃外围族人和无修为普通人。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0261:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0261:005",
+      "chunk_id": "chunk-0261",
+      "source_range": [
+        624764,
+        624855
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624764,
+          624855
+        ]
+      },
+      "excerpt": "“晚辈找老祖可不仅为了此事，而是想知道燕家是打算如何处置现在堡中的二百多名筑基修士啊。他们可有不少是七派的中坚弟子！而燕家又必须在两天内立即迁走，到时被这些人撞见了恐怕大大不妥吧！”",
+      "fact_summary": "王蝉指出堡中二百多名筑基修士中有不少七派中坚弟子，燕家两天内迁走会被撞见。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0261:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0261:006",
+      "chunk_id": "chunk-0261",
+      "source_range": [
+        624917,
+        625060
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          624917,
+          625060
+        ]
+      },
+      "excerpt": "“这样吧，修炼血灵大法需要修士的魂魄进行血祭，才能顺利开始修炼。倒不如把堡内的这些修士，全部用我鬼灵门的阴火大阵把他们的肉身炼化，只留下魂魄好给如嫣妹子进行筑基如何？这么多筑基修士的凝厚魂魄，想必一定能让小姐把血灵大法第一层轻易地修炼成。”鬼灵门少主轻描淡写的提出了一个歹毒无比的建议。",
+      "fact_summary": "王蝉提出用鬼灵门阴火大阵炼化堡中修士肉身、留下魂魄供燕如嫣血祭筑基并修成血灵大法第一层。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "邪修分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0261:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0261:007",
+      "chunk_id": "chunk-0261",
+      "source_range": [
+        625087,
+        625190
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          625087,
+          625190
+        ]
+      },
+      "excerpt": "“不行，七派的人也就算了！其他各国的修士，可是接了我们给嫣儿挑选双修道侣的邀请，才会这么多人汇集在此地的。我们燕家绝不能做出这种触犯众怒的事情！”儒生心惊之后，急忙开口说道，生怕燕家老祖真地答应对方的建议。",
+      "fact_summary": "儒生反对对所有受邀修士下手，强调其他各国修士是应燕家挑选双修道侣邀请而来。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0261:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0261:008",
+      "chunk_id": "chunk-0261",
+      "source_range": [
+        625249,
+        625363
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          625249,
+          625363
+        ]
+      },
+      "excerpt": "“少门主出的可真是好主意啊！我们如果真这样做了，恐怕天下虽大，但再也无我们燕家容身之地了，燕家是不会对堡内受邀修士主动出手的。但是七派的修士我可以派人将他们聚集在一处，至于如何处置他们以及能否拿下这么多人，就全看贵门的能耐了。”",
+      "fact_summary": "燕家老祖拒绝燕家主动加害受邀修士，但同意聚集七派修士让鬼灵门处理。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "长程因果链",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0261:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0261:009",
+      "chunk_id": "chunk-0261",
+      "source_range": [
+        625799,
+        625848
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          625799,
+          625848
+        ]
+      },
+      "excerpt": "“既然老祖如此一说，那我们鬼灵门就来当这次恶人好了。这些修士的魂魄就当是王蝉给如焉小姐的聘礼吧！”",
+      "fact_summary": "王蝉同意由鬼灵门承担恶名，并把七派修士魂魄当作给燕如嫣的聘礼。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "邪修分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0261:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0261:010",
+      "chunk_id": "chunk-0261",
+      "source_range": [
+        626164,
+        626262
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          626164,
+          626262
+        ]
+      },
+      "excerpt": "韩立现在感到头痛，而且非常的头痛。\n　　而这一切，都源自面前正对峙着三位熟人和一位陌生人。\n　　熟人就是燕雨和丰师兄，还有几乎半躺在另一位陌生人怀内的董萱儿。而陌生人，则是一位长的艳丽无比的男子。",
+      "fact_summary": "韩立在小巷撞见燕雨、丰师兄、董萱儿与一名艳丽男修士对峙，董萱儿半躺在对方怀中。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0261:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0261:011",
+      "chunk_id": "chunk-0261",
+      "source_range": [
+        626904,
+        626953
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          626904,
+          626953
+        ]
+      },
+      "excerpt": "据这二位讲，他们今日下午正陪董萱儿去几家有名的店铺买些原料和符箓时，谁知在一家店中正好碰上了这人。",
+      "fact_summary": "燕雨和丰师兄说明他们陪董萱儿买原料和符箓时在店中遇到艳丽男子。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0261:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0261:012",
+      "chunk_id": "chunk-0261",
+      "source_range": [
+        626956,
+        627057
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          626956,
+          627057
+        ]
+      },
+      "excerpt": "结果董萱儿一见此人，立刻如同犯了花痴一样，竟主动纠缠上对方，甚至动作越来越过火，直看的这两位也是同样的火气大升。最让他们差点吐血的是，这人见董萱儿缠上来，竟也毫不客气的马上就接纳了，甚至要把董萱儿带走。",
+      "fact_summary": "董萱儿见到艳丽男子后异常主动纠缠，对方接纳并准备带走她。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0261:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0261:013",
+      "chunk_id": "chunk-0261",
+      "source_range": [
+        627060,
+        627176
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          627060,
+          627176
+        ]
+      },
+      "excerpt": "如此一来，这两位怎么会同意，就在这条小巷中将这男子堵住，让其把董萱儿给留下。\n　　可这男子冷笑一声后，说只要董萱儿自己愿意他绝不会阻拦分毫，这话一下将这二位可怜兮兮的撩在这里了。因为怎么看董萱儿的神情，都是其主动对这男子投怀送抱的。",
+      "fact_summary": "燕雨和丰师兄在小巷堵住艳丽男子要求留下董萱儿，但男子以董萱儿自愿为由反制。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0261:013"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "势力设定",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "冲突事件分析",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "功法术法神通",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "邪修分析",
+      "requirement_id": "creature_deviant_practice_ecology",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "阵法师",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "建筑设施与场所功能",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "description": "鬼灵门少主已自称王蝉，当前 chunk 可将二者归一；但“如焉小姐”疑似“如嫣小姐”的文本异写，按原文别名保留。",
+      "source_range": [
+        625799,
+        625848
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          625799,
+          625848
+        ]
+      }
+    },
+    {
+      "description": "艳丽男子在 chunk-0261 尚未明示迷魂法或姓名，只能按“艳丽男子/陌生人”抽取，具体身份和术法需等待后续 chunk 证据。",
+      "source_range": [
+        626164,
+        626262
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0261",
+        "source_path": "intermediate/chunks/chunk-0261.txt",
+        "source_range": [
+          626164,
+          626262
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "candidate": "把“艳丽男子”直接标为田某或迷魂术使用者",
+      "reason": "chunk-0261 尚未明示姓名和术法，避免用后文回填。"
+    },
+    {
+      "candidate": "抽取普通外围族人与无修为普通人为独立人物节点",
+      "reason": "仅作为迁移取舍群体背景，没有独立剧情行动。"
+    }
+  ],
+  "structured_failures": []
+}

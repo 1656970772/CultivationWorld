@@ -1,0 +1,2740 @@
+{
+  "schema": "stage2-extraction-record.v1",
+  "batch_id": "template-batch-0021-4ebed39e9ef1",
+  "template_name": "散修生存方式",
+  "template_file": "散修生存方式模板.md",
+  "template_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\模板\\散修生存方式模板.md",
+  "template_sha256": "003e6e19a5c95df4aba3e108db067e7ea36eb8e1f0b45475ed829b1c61fc7b15",
+  "source_graph": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\graphify-out\\graph.json",
+  "source_novel": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+  "output_language": "zh-CN",
+  "stage2_policy": {
+    "stage2_categories": {
+      "facts": "原作事实",
+      "judgments": "我的判断",
+      "pending_verifications": "待核验",
+      "not_found_items": "未见可靠证据"
+    },
+    "stage2_output_policy": {
+      "default_dir": "drafts",
+      "allow_overwrite_existing_docs": false,
+      "existing_document_action": "write_versioned_draft",
+      "allowed_policies": [
+        "draft",
+        "backup-and-overwrite",
+        "merge"
+      ],
+      "draft_action": "write_draft"
+    },
+    "stage2_render_policy": {
+      "citation_format": "[{evidence_id}]",
+      "draft_entry_policy": {
+        "source_sections": [
+          "facts"
+        ],
+        "field_aliases": {
+          "name": [
+            "name",
+            "title",
+            "item_name",
+            "entity_name",
+            "名称"
+          ],
+          "classification": [
+            "classification",
+            "type",
+            "category_label",
+            "类别",
+            "分类"
+          ],
+          "usage": [
+            "usage",
+            "purpose",
+            "effect",
+            "effects",
+            "用途",
+            "功效"
+          ],
+          "formula": [
+            "formula",
+            "materials",
+            "ingredients",
+            "components",
+            "recipe",
+            "方方",
+            "材料",
+            "成分"
+          ],
+          "source_excerpt": [
+            "source_excerpt",
+            "original_excerpt",
+            "quote",
+            "原文摘录"
+          ],
+          "review_status": [
+            "review_status",
+            "verification_status",
+            "审核状态"
+          ]
+        },
+        "fallback_name": "未命名条目",
+        "kept_fields": [
+          "name",
+          "classification",
+          "usage",
+          "formula",
+          "source_range",
+          "source_excerpt",
+          "evidence_ids",
+          "confidence",
+          "review_status"
+        ]
+      },
+      "final_entry_policy": {
+        "allowed_confidence": [
+          "EXTRACTED"
+        ],
+        "min_evidence_count": 1,
+        "require_explicit_name": true,
+        "require_source_excerpt": true,
+        "required_any_fields": [
+          "usage",
+          "formula"
+        ],
+        "unstable_name_prefixes": [
+          "未名",
+          "未命名",
+          "未知",
+          "不明"
+        ],
+        "unstable_name_contains": [
+          "某种",
+          "某类"
+        ],
+        "composite_name_markers": [
+          "与",
+          "或",
+          "/",
+          "、"
+        ],
+        "review_only_statuses": [
+          "needs_review",
+          "pending_review",
+          "rejected",
+          "ambiguous"
+        ],
+        "allow_missing_review_status": true
+      },
+      "dedupe_policy": {
+        "key_fields": [
+          "name",
+          "classification"
+        ],
+        "merge_text_fields": [
+          "usage",
+          "formula",
+          "source_excerpt"
+        ],
+        "confidence_strategy": "most_conservative",
+        "review_status_strategy": "review_only_wins"
+      },
+      "final_template_policy": {
+        "case_section_names": [
+          "案例",
+          "典型案例",
+          "案例清单",
+          "示例"
+        ],
+        "excluded_section_names": [
+          "待复核",
+          "缺口",
+          "资料来源",
+          "说明"
+        ],
+        "fallback_to_first_non_root_heading": true
+      }
+    }
+  },
+  "coverage_scope": {
+    "scope": "whole_novel",
+    "stage1_chunk_ledger": "coverage/chunk-ledger.json",
+    "chunk_ranges": [
+      {
+        "chunk_id": "chunk-0131",
+        "source_range": [
+          260622,
+          260825
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0131:001"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0131",
+        "source_range": [
+          260828,
+          260925
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0131:002"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0131",
+        "source_range": [
+          261007,
+          261260
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0131:003"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0133",
+        "source_range": [
+          265794,
+          265939
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0133:002"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0133",
+        "source_range": [
+          265966,
+          266099
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0133:003"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0133",
+        "source_range": [
+          266135,
+          266244
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0133:004"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0133",
+        "source_range": [
+          266621,
+          266740
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0133:006"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0133",
+        "source_range": [
+          266765,
+          266907
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0133:007"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0133",
+        "source_range": [
+          267461,
+          267667
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0133:009"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0136",
+        "source_range": [
+          275274,
+          275704
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0136:005"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0136",
+        "source_range": [
+          275717,
+          276086
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0136:006"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0138",
+        "source_range": [
+          280838,
+          280895
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0138:014"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0142",
+        "source_range": [
+          289856,
+          290129
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0142:004"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0143",
+        "source_range": [
+          291633,
+          291878
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0143:001"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0143",
+        "source_range": [
+          292074,
+          292803
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0143:003"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0145",
+        "source_range": [
+          296325,
+          296528
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0145:003"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0146",
+        "source_range": [
+          301058,
+          301237
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0146:010"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0165",
+        "source_range": [
+          349803,
+          349860
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0165:002"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0165",
+        "source_range": [
+          350014,
+          350097
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0165:005"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0207",
+        "source_range": [
+          463548,
+          463579
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0207:016"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0254",
+        "source_range": [
+          604333,
+          604401
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0254:007"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0288",
+        "source_range": [
+          705481,
+          705521
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0288:006"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0288",
+        "source_range": [
+          706632,
+          706665
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0288:015"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0298",
+        "source_range": [
+          733482,
+          733536
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0298:002"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0298",
+        "source_range": [
+          734010,
+          734081
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0298:003"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0370",
+        "source_range": [
+          940852,
+          940930
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0370:008"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0370",
+        "source_range": [
+          942331,
+          942411
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0370:016"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0370",
+        "source_range": [
+          942411,
+          942471
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0370:017"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0371",
+        "source_range": [
+          944656,
+          944870
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0371:007"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0372",
+        "source_range": [
+          946907,
+          947033
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0372:006"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0372",
+        "source_range": [
+          947194,
+          947330
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0372:007"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0375",
+        "source_range": [
+          955815,
+          955877
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0375:008"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0375",
+        "source_range": [
+          955979,
+          956020
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0375:010"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0375",
+        "source_range": [
+          956253,
+          956325
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0375:011"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0376",
+        "source_range": [
+          956779,
+          956876
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0376:001"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0390",
+        "source_range": [
+          998445,
+          998556
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0390:011"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0390",
+        "source_range": [
+          998699,
+          998839
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0390:013"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0390",
+        "source_range": [
+          998871,
+          998965
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0390:014"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0390",
+        "source_range": [
+          999020,
+          999124
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0390:015"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0391",
+        "source_range": [
+          1000435,
+          1000547
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0391:005"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0427",
+        "source_range": [
+          1103660,
+          1103705
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0427:008"
+        ]
+      }
+    ],
+    "ledger_path": "coverage/template-run-ledger.json"
+  },
+  "fulfilled_sections": [
+    {
+      "requirement_id": "faction_society_economy_task",
+      "requirement_kind": "template_section",
+      "status": "covered",
+      "linked_node_ids": [
+        "node:chunk-0131:faction:001",
+        "node:chunk-0131:faction:002",
+        "node:chunk-0131:realm:001",
+        "node:chunk-0131:character:001",
+        "node:chunk-0131:character:002",
+        "node:chunk-0131:faction:003",
+        "node:chunk-0131:faction:004",
+        "node:chunk-0133:character:002",
+        "node:chunk-0133:faction:001",
+        "node:chunk-0133:faction:002",
+        "node:chunk-0133:character:007",
+        "node:chunk-0133:character:008",
+        "node:chunk-0133:character:001",
+        "node:chunk-0133:faction:003",
+        "node:chunk-0133:cultivation_method:001",
+        "node:chunk-0133:facility:001",
+        "node:chunk-0133:inscription:001",
+        "node:chunk-0136:character:001",
+        "node:chunk-0136:character:003",
+        "node:chunk-0136:character:004",
+        "node:chunk-0136:character:006",
+        "node:chunk-0136:character:007",
+        "node:chunk-0136:event:011",
+        "node:chunk-0136:character:008",
+        "node:chunk-0136:event:012",
+        "node:chunk-0136:faction:013",
+        "node:chunk-0138:character:001",
+        "node:chunk-0138:character:006",
+        "node:chunk-0138:faction:001",
+        "node:chunk-0138:faction:002",
+        "node:chunk-0142:character:001",
+        "node:chunk-0142:facility:001",
+        "node:chunk-0142:beast:002",
+        "node:chunk-0142:material:002",
+        "node:chunk-0142:beast:003",
+        "node:chunk-0142:material:003",
+        "node:chunk-0143:character:002",
+        "node:chunk-0143:character:003",
+        "node:chunk-0143:faction:004",
+        "node:chunk-0143:tool:007",
+        "node:chunk-0143:artifact:008",
+        "node:chunk-0143:realm:010",
+        "node:chunk-0143:character:006",
+        "node:chunk-0143:realm:012",
+        "node:chunk-0145:character:001",
+        "node:chunk-0145:event:004",
+        "node:chunk-0145:character:007",
+        "node:chunk-0145:character:008",
+        "node:chunk-0145:character:009",
+        "node:chunk-0146:character:001",
+        "node:chunk-0146:material:011",
+        "node:chunk-0165:faction:001",
+        "node:chunk-0165:facility:001",
+        "node:chunk-0207:character:003",
+        "node:chunk-0254:character:001",
+        "node:chunk-0254:facility:001",
+        "node:chunk-0288:faction:001",
+        "node:chunk-0288:character:003",
+        "node:chunk-0288:character:006",
+        "node:chunk-0298:character:002",
+        "node:chunk-0298:realm:002",
+        "node:chunk-0298:cultivation_method:001",
+        "node:chunk-0370:character:003",
+        "node:chunk-0370:character:004",
+        "node:chunk-0370:location:001",
+        "node:chunk-0370:rule:001",
+        "node:chunk-0371:character:003",
+        "node:chunk-0372:character:003",
+        "node:chunk-0372:faction:001",
+        "node:chunk-0372:rule:002",
+        "node:chunk-0372:character:002",
+        "node:chunk-0372:rule:001",
+        "node:chunk-0372:event:001",
+        "node:chunk-0375:character:001",
+        "node:chunk-0375:character:003",
+        "node:chunk-0375:faction:001",
+        "node:chunk-0375:tool:001",
+        "node:chunk-0375:character:005",
+        "node:chunk-0375:character:006",
+        "node:chunk-0375:facility:002",
+        "node:chunk-0375:location:001",
+        "node:chunk-0375:rule:001",
+        "node:chunk-0376:character:002",
+        "node:chunk-0376:faction:001",
+        "node:chunk-0390:location:010",
+        "node:chunk-0390:beast:011",
+        "node:chunk-0390:faction:014",
+        "node:chunk-0390:location:013",
+        "node:chunk-0391:location:001",
+        "node:chunk-0427:character:003"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0131:005",
+        "edge:chunk-0131:001",
+        "edge:chunk-0131:002",
+        "edge:chunk-0131:003",
+        "edge:chunk-0131:004",
+        "edge:chunk-0133:001",
+        "edge:chunk-0133:004",
+        "edge:chunk-0133:002",
+        "edge:chunk-0133:003",
+        "edge:chunk-0133:011",
+        "edge:chunk-0133:012",
+        "edge:chunk-0133:013",
+        "edge:chunk-0136:009",
+        "edge:chunk-0136:010",
+        "edge:chunk-0136:011",
+        "edge:chunk-0136:012",
+        "edge:chunk-0138:010",
+        "edge:chunk-0143:001",
+        "edge:chunk-0143:002",
+        "edge:chunk-0143:003",
+        "edge:chunk-0143:005",
+        "edge:chunk-0143:006",
+        "edge:chunk-0145:003",
+        "edge:chunk-0146:007",
+        "edge:chunk-0165:001",
+        "edge:chunk-0207:006",
+        "edge:chunk-0254:006",
+        "edge:chunk-0288:004",
+        "edge:chunk-0298:003",
+        "edge:chunk-0298:009",
+        "edge:chunk-0298:004",
+        "edge:chunk-0370:001",
+        "edge:chunk-0370:002",
+        "edge:chunk-0370:003",
+        "edge:chunk-0370:004",
+        "edge:chunk-0370:011",
+        "edge:chunk-0371:005",
+        "edge:chunk-0372:004",
+        "edge:chunk-0372:005",
+        "edge:chunk-0372:006",
+        "edge:chunk-0375:004",
+        "edge:chunk-0375:005",
+        "edge:chunk-0375:007",
+        "edge:chunk-0375:008",
+        "edge:chunk-0376:001",
+        "edge:chunk-0390:007",
+        "edge:chunk-0390:010",
+        "edge:chunk-0390:011"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0131:002",
+        "event:chunk-0131:001",
+        "event:chunk-0133:001",
+        "event:chunk-0133:002",
+        "event:chunk-0133:003",
+        "event:chunk-0133:004",
+        "event:chunk-0136:004",
+        "event:chunk-0136:005",
+        "event:chunk-0142:003",
+        "event:chunk-0143:001",
+        "event:chunk-0143:002",
+        "event:chunk-0145:003",
+        "event:chunk-0146:008",
+        "event:chunk-0165:001",
+        "event:chunk-0207:008",
+        "event:chunk-0254:003",
+        "event:chunk-0288:002",
+        "event:chunk-0298:002",
+        "event:chunk-0370:003",
+        "event:chunk-0370:006",
+        "event:chunk-0371:003",
+        "event:chunk-0372:005",
+        "event:chunk-0372:006",
+        "event:chunk-0375:005",
+        "event:chunk-0375:006",
+        "event:chunk-0376:001",
+        "event:chunk-0390:004",
+        "event:chunk-0390:005",
+        "event:chunk-0427:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0131:001",
+        "evidence:chunk-0131:002",
+        "evidence:chunk-0131:003",
+        "evidence:chunk-0133:002",
+        "evidence:chunk-0133:003",
+        "evidence:chunk-0133:004",
+        "evidence:chunk-0133:006",
+        "evidence:chunk-0133:007",
+        "evidence:chunk-0133:009",
+        "evidence:chunk-0136:005",
+        "evidence:chunk-0136:006",
+        "evidence:chunk-0138:014",
+        "evidence:chunk-0142:004",
+        "evidence:chunk-0143:001",
+        "evidence:chunk-0143:003",
+        "evidence:chunk-0145:003",
+        "evidence:chunk-0146:010",
+        "evidence:chunk-0165:002",
+        "evidence:chunk-0165:005",
+        "evidence:chunk-0207:016",
+        "evidence:chunk-0254:007",
+        "evidence:chunk-0288:006",
+        "evidence:chunk-0288:015",
+        "evidence:chunk-0298:002",
+        "evidence:chunk-0298:003",
+        "evidence:chunk-0370:008",
+        "evidence:chunk-0370:016",
+        "evidence:chunk-0370:017",
+        "evidence:chunk-0371:007",
+        "evidence:chunk-0372:006",
+        "evidence:chunk-0372:007",
+        "evidence:chunk-0375:008",
+        "evidence:chunk-0375:010",
+        "evidence:chunk-0375:011",
+        "evidence:chunk-0376:001",
+        "evidence:chunk-0390:011",
+        "evidence:chunk-0390:013",
+        "evidence:chunk-0390:014",
+        "evidence:chunk-0390:015",
+        "evidence:chunk-0391:005",
+        "evidence:chunk-0427:008"
+      ],
+      "notes": [
+        "已按模板标题生成完整 document_sections，证据均来自 supports_templates.template_name == 散修生存方式 的 Stage1 证据。"
+      ]
+    }
+  ],
+  "fulfilled_fields": [
+    {
+      "requirement_id": "faction_society_economy_task",
+      "requirement_kind": "template_section",
+      "status": "covered",
+      "linked_node_ids": [
+        "node:chunk-0131:faction:001",
+        "node:chunk-0131:faction:002",
+        "node:chunk-0131:realm:001",
+        "node:chunk-0131:character:001",
+        "node:chunk-0131:character:002",
+        "node:chunk-0131:faction:003",
+        "node:chunk-0131:faction:004",
+        "node:chunk-0133:character:002",
+        "node:chunk-0133:faction:001",
+        "node:chunk-0133:faction:002",
+        "node:chunk-0133:character:007",
+        "node:chunk-0133:character:008",
+        "node:chunk-0133:character:001",
+        "node:chunk-0133:faction:003",
+        "node:chunk-0133:cultivation_method:001",
+        "node:chunk-0133:facility:001",
+        "node:chunk-0133:inscription:001",
+        "node:chunk-0136:character:001",
+        "node:chunk-0136:character:003",
+        "node:chunk-0136:character:004",
+        "node:chunk-0136:character:006",
+        "node:chunk-0136:character:007",
+        "node:chunk-0136:event:011",
+        "node:chunk-0136:character:008",
+        "node:chunk-0136:event:012",
+        "node:chunk-0136:faction:013",
+        "node:chunk-0138:character:001",
+        "node:chunk-0138:character:006",
+        "node:chunk-0138:faction:001",
+        "node:chunk-0138:faction:002",
+        "node:chunk-0142:character:001",
+        "node:chunk-0142:facility:001",
+        "node:chunk-0142:beast:002",
+        "node:chunk-0142:material:002",
+        "node:chunk-0142:beast:003",
+        "node:chunk-0142:material:003",
+        "node:chunk-0143:character:002",
+        "node:chunk-0143:character:003",
+        "node:chunk-0143:faction:004",
+        "node:chunk-0143:tool:007",
+        "node:chunk-0143:artifact:008",
+        "node:chunk-0143:realm:010",
+        "node:chunk-0143:character:006",
+        "node:chunk-0143:realm:012",
+        "node:chunk-0145:character:001",
+        "node:chunk-0145:event:004",
+        "node:chunk-0145:character:007",
+        "node:chunk-0145:character:008",
+        "node:chunk-0145:character:009",
+        "node:chunk-0146:character:001",
+        "node:chunk-0146:material:011",
+        "node:chunk-0165:faction:001",
+        "node:chunk-0165:facility:001",
+        "node:chunk-0207:character:003",
+        "node:chunk-0254:character:001",
+        "node:chunk-0254:facility:001",
+        "node:chunk-0288:faction:001",
+        "node:chunk-0288:character:003",
+        "node:chunk-0288:character:006",
+        "node:chunk-0298:character:002",
+        "node:chunk-0298:realm:002",
+        "node:chunk-0298:cultivation_method:001",
+        "node:chunk-0370:character:003",
+        "node:chunk-0370:character:004",
+        "node:chunk-0370:location:001",
+        "node:chunk-0370:rule:001",
+        "node:chunk-0371:character:003",
+        "node:chunk-0372:character:003",
+        "node:chunk-0372:faction:001",
+        "node:chunk-0372:rule:002",
+        "node:chunk-0372:character:002",
+        "node:chunk-0372:rule:001",
+        "node:chunk-0372:event:001",
+        "node:chunk-0375:character:001",
+        "node:chunk-0375:character:003",
+        "node:chunk-0375:faction:001",
+        "node:chunk-0375:tool:001",
+        "node:chunk-0375:character:005",
+        "node:chunk-0375:character:006",
+        "node:chunk-0375:facility:002",
+        "node:chunk-0375:location:001",
+        "node:chunk-0375:rule:001",
+        "node:chunk-0376:character:002",
+        "node:chunk-0376:faction:001",
+        "node:chunk-0390:location:010",
+        "node:chunk-0390:beast:011",
+        "node:chunk-0390:faction:014",
+        "node:chunk-0390:location:013",
+        "node:chunk-0391:location:001",
+        "node:chunk-0427:character:003"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0131:005",
+        "edge:chunk-0131:001",
+        "edge:chunk-0131:002",
+        "edge:chunk-0131:003",
+        "edge:chunk-0131:004",
+        "edge:chunk-0133:001",
+        "edge:chunk-0133:004",
+        "edge:chunk-0133:002",
+        "edge:chunk-0133:003",
+        "edge:chunk-0133:011",
+        "edge:chunk-0133:012",
+        "edge:chunk-0133:013",
+        "edge:chunk-0136:009",
+        "edge:chunk-0136:010",
+        "edge:chunk-0136:011",
+        "edge:chunk-0136:012",
+        "edge:chunk-0138:010",
+        "edge:chunk-0143:001",
+        "edge:chunk-0143:002",
+        "edge:chunk-0143:003",
+        "edge:chunk-0143:005",
+        "edge:chunk-0143:006",
+        "edge:chunk-0145:003",
+        "edge:chunk-0146:007",
+        "edge:chunk-0165:001",
+        "edge:chunk-0207:006",
+        "edge:chunk-0254:006",
+        "edge:chunk-0288:004",
+        "edge:chunk-0298:003",
+        "edge:chunk-0298:009",
+        "edge:chunk-0298:004",
+        "edge:chunk-0370:001",
+        "edge:chunk-0370:002",
+        "edge:chunk-0370:003",
+        "edge:chunk-0370:004",
+        "edge:chunk-0370:011",
+        "edge:chunk-0371:005",
+        "edge:chunk-0372:004",
+        "edge:chunk-0372:005",
+        "edge:chunk-0372:006",
+        "edge:chunk-0375:004",
+        "edge:chunk-0375:005",
+        "edge:chunk-0375:007",
+        "edge:chunk-0375:008",
+        "edge:chunk-0376:001",
+        "edge:chunk-0390:007",
+        "edge:chunk-0390:010",
+        "edge:chunk-0390:011"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0131:002",
+        "event:chunk-0131:001",
+        "event:chunk-0133:001",
+        "event:chunk-0133:002",
+        "event:chunk-0133:003",
+        "event:chunk-0133:004",
+        "event:chunk-0136:004",
+        "event:chunk-0136:005",
+        "event:chunk-0142:003",
+        "event:chunk-0143:001",
+        "event:chunk-0143:002",
+        "event:chunk-0145:003",
+        "event:chunk-0146:008",
+        "event:chunk-0165:001",
+        "event:chunk-0207:008",
+        "event:chunk-0254:003",
+        "event:chunk-0288:002",
+        "event:chunk-0298:002",
+        "event:chunk-0370:003",
+        "event:chunk-0370:006",
+        "event:chunk-0371:003",
+        "event:chunk-0372:005",
+        "event:chunk-0372:006",
+        "event:chunk-0375:005",
+        "event:chunk-0375:006",
+        "event:chunk-0376:001",
+        "event:chunk-0390:004",
+        "event:chunk-0390:005",
+        "event:chunk-0427:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0131:001",
+        "evidence:chunk-0131:002",
+        "evidence:chunk-0131:003",
+        "evidence:chunk-0133:002",
+        "evidence:chunk-0133:003",
+        "evidence:chunk-0133:004",
+        "evidence:chunk-0133:006",
+        "evidence:chunk-0133:007",
+        "evidence:chunk-0133:009",
+        "evidence:chunk-0136:005",
+        "evidence:chunk-0136:006",
+        "evidence:chunk-0138:014",
+        "evidence:chunk-0142:004",
+        "evidence:chunk-0143:001",
+        "evidence:chunk-0143:003",
+        "evidence:chunk-0145:003",
+        "evidence:chunk-0146:010",
+        "evidence:chunk-0165:002",
+        "evidence:chunk-0165:005",
+        "evidence:chunk-0207:016",
+        "evidence:chunk-0254:007",
+        "evidence:chunk-0288:006",
+        "evidence:chunk-0288:015",
+        "evidence:chunk-0298:002",
+        "evidence:chunk-0298:003",
+        "evidence:chunk-0370:008",
+        "evidence:chunk-0370:016",
+        "evidence:chunk-0370:017",
+        "evidence:chunk-0371:007",
+        "evidence:chunk-0372:006",
+        "evidence:chunk-0372:007",
+        "evidence:chunk-0375:008",
+        "evidence:chunk-0375:010",
+        "evidence:chunk-0375:011",
+        "evidence:chunk-0376:001",
+        "evidence:chunk-0390:011",
+        "evidence:chunk-0390:013",
+        "evidence:chunk-0390:014",
+        "evidence:chunk-0390:015",
+        "evidence:chunk-0391:005",
+        "evidence:chunk-0427:008"
+      ],
+      "notes": [
+        "覆盖散修来源、谋生策略、资源获取、庇护关系、风险来源、社会流动路径及制度势力互动。"
+      ]
+    }
+  ],
+  "fulfilled_tables": [],
+  "fulfilled_cards": [],
+  "fulfilled_cases": [
+    {
+      "case_name": "案例 1：低阶散修日常谋生",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0131:001",
+        "evidence:chunk-0138:014",
+        "evidence:chunk-0142:004",
+        "evidence:chunk-0143:003",
+        "evidence:chunk-0427:008"
+      ],
+      "requirement_ids": [
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "case_name": "案例 2：猎妖 / 采药 / 挖矿型散修",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0390:011",
+        "evidence:chunk-0390:013",
+        "evidence:chunk-0391:005",
+        "evidence:chunk-0207:016"
+      ],
+      "requirement_ids": [
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "case_name": "案例 3：坊市交易 / 倒卖 / 情报型散修",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0136:005",
+        "evidence:chunk-0165:002",
+        "evidence:chunk-0165:005",
+        "evidence:chunk-0207:016",
+        "evidence:chunk-0254:007"
+      ],
+      "requirement_ids": [
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "case_name": "案例 4：临时队伍 / 秘境探险散修",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0133:002",
+        "evidence:chunk-0133:003",
+        "evidence:chunk-0133:004",
+        "evidence:chunk-0133:006",
+        "evidence:chunk-0136:006",
+        "evidence:chunk-0145:003",
+        "evidence:chunk-0146:010"
+      ],
+      "requirement_ids": [
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "case_name": "案例 5：客卿 / 依附商会或宗门的散修",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0370:008",
+        "evidence:chunk-0370:016",
+        "evidence:chunk-0370:017",
+        "evidence:chunk-0371:007",
+        "evidence:chunk-0372:006",
+        "evidence:chunk-0372:007",
+        "evidence:chunk-0375:008",
+        "evidence:chunk-0375:010",
+        "evidence:chunk-0375:011",
+        "evidence:chunk-0376:001"
+      ],
+      "requirement_ids": [
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "case_name": "案例 6：隐居高人 / 老散修",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0298:002",
+        "evidence:chunk-0298:003",
+        "evidence:chunk-0390:014",
+        "evidence:chunk-0390:015"
+      ],
+      "requirement_ids": [
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "case_name": "案例 7：失败散修",
+      "status": "covered",
+      "evidence_ids": [
+        "evidence:chunk-0288:006",
+        "evidence:chunk-0288:015",
+        "evidence:chunk-0136:006",
+        "evidence:chunk-0146:010"
+      ],
+      "requirement_ids": [
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    }
+  ],
+  "facts": [
+    {
+      "name": "低阶散修基础生态",
+      "classification": "低阶散修日常谋生",
+      "usage": "散修多来自破落修真家族、偶得功法的普通人或传承将断的小门户；多数停留炼气期，社会评价低于修仙家族，生存起点弱。韩立坦承自行修行后被识别为散修，说明身份可通过出身和依附关系判断。",
+      "formula": "身份来源：无门派/家族稳定依附；资源状态：炼气期、缺钱少物；风险：被修仙家族轻视或排斥；可用路径：寻找不歧视散修的家族或门派机会。",
+      "content": "低阶散修基础生态：散修多来自破落修真家族、偶得功法的普通人或传承将断的小门户；多数停留炼气期，社会评价低于修仙家族，生存起点弱。韩立坦承自行修行后被识别为散修，说明身份可通过出身和依附关系判断。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0131:001",
+        "evidence:chunk-0131:002",
+        "evidence:chunk-0131:003"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0131:001",
+          "chunk_id": "chunk-0131",
+          "chapter_hint": null,
+          "source_range": [
+            260622,
+            260825
+          ],
+          "source_path": "intermediate/chunks/chunk-0131.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0131:002",
+          "chunk_id": "chunk-0131",
+          "chapter_hint": null,
+          "source_range": [
+            260828,
+            260925
+          ],
+          "source_path": "intermediate/chunks/chunk-0131.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0131:003",
+          "chunk_id": "chunk-0131",
+          "chapter_hint": null,
+          "source_range": [
+            261007,
+            261260
+          ],
+          "source_path": "intermediate/chunks/chunk-0131.txt"
+        }
+      ],
+      "source_range": [
+        {
+          "chunk_id": "chunk-0131",
+          "source_range": [
+            260622,
+            260825
+          ]
+        },
+        {
+          "chunk_id": "chunk-0131",
+          "source_range": [
+            260828,
+            260925
+          ]
+        },
+        {
+          "chunk_id": "chunk-0131",
+          "source_range": [
+            261007,
+            261260
+          ]
+        }
+      ],
+      "source_excerpt": "韩立在和少年刚才的闲谈时已知，修仙界除了各修仙门户和修真家族外，还有不少的散修存在。\n　　所谓的散修，其中大部分人要么是破落修真家族的后代，要么是像韩立这样无意中得了某些修仙的功法，自行进入修仙界的普通人，还有的则是些已快断绝传承的小门户传人等来历的人。这些散修的修为大都不高，一般都只能在炼气期徘徊，所以散修一向不大被修仙家族的人所看重，颇有些瞧不起的意思，就如同世俗间的富户看不上穷困潦倒的破落户一样。\n“在下可不是某家族的人，而是一直自行修行的！”韩立想了一下后，还决定说实话。毕竟冒充其他家族的人，太容易被揭穿了。\n　　“阁下是散修啊！”少年有些意外，不过脸上倒没有任何歧视神情，反而有些惊喜。\n“他们是他们，不要把我们万家和其他修仙家族混为一谈？我们家族的人可一向都和散修们交好的！”少年把嘴一撇，骄傲的回答道。看来很为自己家族的做法自豪！\n　　“我们万家的祖先，原先也是一名散修，但后来侥幸进了修仙派，成了巨剑门的正式弟子，这才有了我们万家。所以我们万家族规里，就一直都有不准歧视散修的祖训。”少年笑嘻嘻的说道。\n　　“其实不止我们万家，还有其他一些家族的祖先也是散修，所以他们对散修也没有什么恶感，只是这些家族在所有修仙家族里占的比例太少了些，这才有修仙家族歧视散修的说法。”少年摇头晃脑的说道。",
+      "linked_node_ids": [
+        "node:chunk-0131:faction:001",
+        "node:chunk-0131:faction:002",
+        "node:chunk-0131:realm:001",
+        "node:chunk-0131:character:001",
+        "node:chunk-0131:character:002",
+        "node:chunk-0131:faction:003",
+        "node:chunk-0131:faction:004"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0131:005",
+        "edge:chunk-0131:001",
+        "edge:chunk-0131:002",
+        "edge:chunk-0131:003",
+        "edge:chunk-0131:004"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0131:002",
+        "event:chunk-0131:001"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "太南小会散修临时团体",
+      "classification": "临时队伍 / 秘境探险散修",
+      "usage": "落单散修在交易会中会被主动拉入临时小团体。团体用途是相互照应、避免修仙家族欺辱，并在外部纠纷时由临时领头人出面；成员平时仍可自由行动。韩立加入前先询问身份和义务，体现散修入伙的谨慎筛选。",
+      "formula": "成员：松纹/青纹道士等赴会散修；准入：承认散修身份并接受临时照应关系；义务：外部争端统一行动；收益：落脚处、禁法钥匙、交易会惯例信息、身份掩护。",
+      "content": "太南小会散修临时团体：落单散修在交易会中会被主动拉入临时小团体。团体用途是相互照应、避免修仙家族欺辱，并在外部纠纷时由临时领头人出面；成员平时仍可自由行动。韩立加入前先询问身份和义务，体现散修入伙的谨慎筛选。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0133:002",
+        "evidence:chunk-0133:003",
+        "evidence:chunk-0133:004",
+        "evidence:chunk-0133:006",
+        "evidence:chunk-0133:007",
+        "evidence:chunk-0133:009"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0133:002",
+          "chunk_id": "chunk-0133",
+          "chapter_hint": "第一百三十章 入伙",
+          "source_range": [
+            265794,
+            265939
+          ],
+          "source_path": "intermediate/chunks/chunk-0133.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0133:003",
+          "chunk_id": "chunk-0133",
+          "chapter_hint": "第一百三十章 入伙",
+          "source_range": [
+            265966,
+            266099
+          ],
+          "source_path": "intermediate/chunks/chunk-0133.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0133:004",
+          "chunk_id": "chunk-0133",
+          "chapter_hint": "第一百三十章 入伙",
+          "source_range": [
+            266135,
+            266244
+          ],
+          "source_path": "intermediate/chunks/chunk-0133.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0133:006",
+          "chunk_id": "chunk-0133",
+          "chapter_hint": "第一百三十章 入伙",
+          "source_range": [
+            266621,
+            266740
+          ],
+          "source_path": "intermediate/chunks/chunk-0133.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0133:007",
+          "chunk_id": "chunk-0133",
+          "chapter_hint": "第一百三十章 入伙",
+          "source_range": [
+            266765,
+            266907
+          ],
+          "source_path": "intermediate/chunks/chunk-0133.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0133:009",
+          "chunk_id": "chunk-0133",
+          "chapter_hint": "第一百三十章 入伙",
+          "source_range": [
+            267461,
+            267667
+          ],
+          "source_path": "intermediate/chunks/chunk-0133.txt"
+        }
+      ],
+      "source_range": [
+        {
+          "chunk_id": "chunk-0133",
+          "source_range": [
+            265794,
+            265939
+          ]
+        },
+        {
+          "chunk_id": "chunk-0133",
+          "source_range": [
+            265966,
+            266099
+          ]
+        },
+        {
+          "chunk_id": "chunk-0133",
+          "source_range": [
+            266135,
+            266244
+          ]
+        },
+        {
+          "chunk_id": "chunk-0133",
+          "source_range": [
+            266621,
+            266740
+          ]
+        },
+        {
+          "chunk_id": "chunk-0133",
+          "source_range": [
+            266765,
+            266907
+          ]
+        },
+        {
+          "chunk_id": "chunk-0133",
+          "source_range": [
+            267461,
+            267667
+          ]
+        }
+      ],
+      "source_excerpt": "松纹道士和胡萍姑说明散修结伴是为了在太南小会上互相照应，避免独行散修被修仙家族欺辱。\n韩立理解散修自动聚合成临时小团体以自保，也认为这个团体可为自己提供掩护。\n韩立承认自己是散修，但要求对方先介绍身份并说明加入后的义务。\n松纹道士自称卧牛山青牛观挂单道士、道号松纹，是小团体发起人和临时领头人，只在处理外部纠纷时领头说话。\n韩立判断小团体成员法力大多有长春功七八层水准，松纹道士更强，随后以散修身份暂时加入。\n韩立选择独自闲逛后，松纹道士向他讲述太南小会忌讳和惯例，并给他一张可破开小楼禁法的符作为落脚钥匙。",
+      "linked_node_ids": [
+        "node:chunk-0133:character:002",
+        "node:chunk-0133:faction:001",
+        "node:chunk-0133:faction:002",
+        "node:chunk-0133:character:007",
+        "node:chunk-0133:character:008",
+        "node:chunk-0133:character:001",
+        "node:chunk-0133:faction:003",
+        "node:chunk-0133:cultivation_method:001",
+        "node:chunk-0133:facility:001",
+        "node:chunk-0133:inscription:001"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0133:001",
+        "edge:chunk-0133:004",
+        "edge:chunk-0133:002",
+        "edge:chunk-0133:003",
+        "edge:chunk-0133:011",
+        "edge:chunk-0133:012",
+        "edge:chunk-0133:013"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0133:001",
+        "event:chunk-0133:002",
+        "event:chunk-0133:003",
+        "event:chunk-0133:004"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "散修摆摊出货与会后结伴",
+      "classification": "坊市交易 / 倒卖 / 情报型散修",
+      "usage": "太南会过半后，散修团体商量集中摆摊出货，目标是换取灵石和其他物品；会后因有散修失踪传闻，青纹建议结伴前往天雾台升仙大会。",
+      "formula": "流程：攒货赴会，择时摆摊，换灵石或物品，会后结伴转场；风险：交易会结束后的失踪与伏击；应对：暂缓离开、多人同行。",
+      "content": "散修摆摊出货与会后结伴：太南会过半后，散修团体商量集中摆摊出货，目标是换取灵石和其他物品；会后因有散修失踪传闻，青纹建议结伴前往天雾台升仙大会。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0136:005",
+        "evidence:chunk-0136:006"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0136:005",
+          "chunk_id": "chunk-0136",
+          "chapter_hint": null,
+          "source_range": [
+            275274,
+            275704
+          ],
+          "source_path": "intermediate/chunks/chunk-0136.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0136:006",
+          "chunk_id": "chunk-0136",
+          "chapter_hint": null,
+          "source_range": [
+            275717,
+            276086
+          ],
+          "source_path": "intermediate/chunks/chunk-0136.txt"
+        }
+      ],
+      "source_range": [
+        {
+          "chunk_id": "chunk-0136",
+          "source_range": [
+            275274,
+            275704
+          ]
+        },
+        {
+          "chunk_id": "chunk-0136",
+          "source_range": [
+            275717,
+            276086
+          ]
+        }
+      ],
+      "source_excerpt": "　　“呵呵！黄兄还是急性子啊！好吧，贫道说下把几位叫来这里的原因。”青纹把拂尘一甩，不带丝毫烟火的说道。\n　　“太南会已过了一半的时间，还有十几日就要结束，大家是不是也该出手了？如果要摆摊的话，最好还是一齐行动的好，因此我找大伙商量一下。至于苦桑大师，他带来的东西已经全部换了出去，所以不必再参加商议了！”\n　　“这样啊，的确是该把东西出手了，换些灵石还能买些其他东西！”顿时，屋内的人窃窃私语起来。\n　　经过一番七嘴八舌的议论后，这些人纷纷表示明日一齐摆卖东西，除了韩立之外。\n　　“韩兄不愿一块行动吗？”吴九指有些愕然的问道。\n　　其他人也都疑惑的看向韩立。\n　　“在下带的东西本来就少，又碰巧昨晚正好碰几个合适的买主，就全都换了出去！所以就不打算跟几位一齐行动了。”韩立神情自若的淡淡解释道。\n　　“这样啊！那的确不需和我们一齐受罪了！韩兄弟还真是走运，刚来就把东西全出手了。”胡萍姑有些羡慕的说道。\n　　其他人，也都露出了“你这家伙真走运！”的神情。\n\n　　青纹道士见事情商议完毕，就高兴的站起身来说道：“那大伙儿今晚好好休息一晚，明日打起精神来，希望都有个好收获！”\n　　几人一听，也都站了起来，含笑准备离开。\n　　就在这时，青纹道士似乎想起了什么，忽然神情郑重的对众人人说道。\n　　“对了，等太南会结束后，大家可别慌着离开！我听说近几次太南会结束后，有些和我们一样的散修，在会后都莫名其妙的失踪了。大家还是小心点的好！想来几位都不会错过天雾台升仙大会！大伙儿正好结伴而行，这样就安全多了！”\n　　听闻道士所说散修失踪的言语，在场的人中黑木兄弟和胡萍姑夫妇闻言变色，吴九指和那个红莲散人却一脸茫然，而胖子黄孝天却冷哼了一声，但神情也阴沉起来。\n　　“对，青纹道长的话，我们兄弟赞同，还是结伴而行的好。”\n　　“我们夫妇也不反对！”\n　　黑木兄弟和胡萍姑夫妇都连声赞同，看来对此事大为忌讳。\n",
+      "linked_node_ids": [
+        "node:chunk-0136:character:001",
+        "node:chunk-0136:character:003",
+        "node:chunk-0136:character:004",
+        "node:chunk-0136:character:006",
+        "node:chunk-0136:character:007",
+        "node:chunk-0136:event:011",
+        "node:chunk-0136:character:008",
+        "node:chunk-0136:event:012",
+        "node:chunk-0136:faction:013"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0136:009",
+        "edge:chunk-0136:010",
+        "edge:chunk-0136:011",
+        "edge:chunk-0136:012"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0136:004",
+        "event:chunk-0136:005"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "升仙大会中的散修弱势",
+      "classification": "低阶散修日常谋生",
+      "usage": "散修缺钱少物，面对修仙家族长期培养、全副武装的竞争者时，夺取升仙会擂台名额和筑基丹资格的机会较低。韩立在太南会末期也因无灵石、丹药少，只能听摊位评论增长见识。",
+      "formula": "竞争场：升仙大会/交易会；短板：灵石、丹药、装备、家族培养；替代收益：通过旁听评论、观察交易补充修仙界常识。",
+      "content": "升仙大会中的散修弱势：散修缺钱少物，面对修仙家族长期培养、全副武装的竞争者时，夺取升仙会擂台名额和筑基丹资格的机会较低。韩立在太南会末期也因无灵石、丹药少，只能听摊位评论增长见识。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0138:014",
+        "evidence:chunk-0142:004"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0138:014",
+          "chunk_id": "chunk-0138",
+          "chapter_hint": null,
+          "source_range": [
+            280838,
+            280895
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0142:004",
+          "chunk_id": "chunk-0142",
+          "chapter_hint": "第一百三十九章 法宝残片",
+          "source_range": [
+            289856,
+            290129
+          ],
+          "source_path": "intermediate/chunks/chunk-0142.txt"
+        }
+      ],
+      "source_range": [
+        {
+          "chunk_id": "chunk-0138",
+          "source_range": [
+            280838,
+            280895
+          ]
+        },
+        {
+          "chunk_id": "chunk-0142",
+          "source_range": [
+            289856,
+            290129
+          ]
+        }
+      ],
+      "source_excerpt": "一边是修仙家族精心培养和全副武装的大高手，另一边是我们这些缺钱少物的散修之人，你们觉得我们散修，能有几人夺檑成功？",
+      "linked_node_ids": [
+        "node:chunk-0138:character:001",
+        "node:chunk-0138:character:006",
+        "node:chunk-0138:faction:001",
+        "node:chunk-0138:faction:002",
+        "node:chunk-0142:character:001",
+        "node:chunk-0142:facility:001",
+        "node:chunk-0142:beast:002",
+        "node:chunk-0142:material:002",
+        "node:chunk-0142:beast:003",
+        "node:chunk-0142:material:003"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0138:010"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0142:003"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "低阶散修交易贫困样本",
+      "classification": "坊市交易 / 倒卖 / 情报型散修",
+      "usage": "交易现场中，家族弟子相对富足，小散修即使参与竞价也可能只有两块灵石；十层高手也会因灵石耗尽而进退两难。",
+      "formula": "价格锚点：低阶修士十来块灵石已算不错；小散修一年辛苦可只余两块灵石；强者若无灵石也难以换取合用法器。",
+      "content": "低阶散修交易贫困样本：交易现场中，家族弟子相对富足，小散修即使参与竞价也可能只有两块灵石；十层高手也会因灵石耗尽而进退两难。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0143:001",
+        "evidence:chunk-0143:003"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0143:001",
+          "chunk_id": "chunk-0143",
+          "chapter_hint": null,
+          "source_range": [
+            291633,
+            291878
+          ],
+          "source_path": "intermediate/chunks/chunk-0143.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0143:003",
+          "chunk_id": "chunk-0143",
+          "chapter_hint": null,
+          "source_range": [
+            292074,
+            292803
+          ],
+          "source_path": "intermediate/chunks/chunk-0143.txt"
+        }
+      ],
+      "source_range": [
+        {
+          "chunk_id": "chunk-0143",
+          "source_range": [
+            291633,
+            291878
+          ]
+        },
+        {
+          "chunk_id": "chunk-0143",
+          "source_range": [
+            292074,
+            292803
+          ]
+        }
+      ],
+      "source_excerpt": "“干吗？你还想强买强卖不成！我们叶家的人可不是好欺负的！”摊主把眼一翻，毫不客气的说。\n　　“哼！叶家好了不起！”黑汉虽然嘴上没服软，但还是把拳头松开了，显然对叶家大为忌惮。\n　　汉子对摊主用叶家来压自己，心里恼怒异常。他身为十层高手，本是被他人恭维惯了的，现在受此难堪，按本意早就想拂袖而去，但心里又着实舍不得那“回风钵”。要知道此法器和他的功法极为相配，若是能换下来，绝对能让他的实力大增不少。但此时他身上除了这法宝残片外，其它物品都有用处，灵石也在数天前就全部花完，让他如今进退两难。\n“十二块，卖吗？”\n　　“我出十三？”\n　　……\n　　四周观看的修仙者对这法宝残片心动的有很多。即使这东西拿回去用不上，但留着慢慢研究也好啊！说不定能让他们参悟出什么来呢！\n　　就这样，一会儿价格就抬到了二十，出价的人是一个憨乎乎的圆脸青年。\n　　在这么高的价格面前，其他人都不再出声了，他们都觉得此价钱就已很高了，如果再高些的话，那就有些太败家了！毕竟他们这些低阶修仙者身上，能有十来块灵石，就已算不错了。而刚才喊价的人，也是各家族的弟子居多，只有他们才会稍富足一些！\n　　“二十？”黑汉神色一动，这个价钱已经触及他的底线了！如果他再稍微搭配一件其他的物件，也许就可以从摊主那里换来“回风钵”。\n　　“你愿意出二十块灵石？”汉子冲着圆脸青年，和颜悦色道。\n　　而圆脸青年不知为何，脸上一会儿红，一会儿白，极为的慌乱。\n　　“我……没……有这么多灵石！”一句结结巴巴的话，从忐忑不安的圆脸青年口中蹦了出来，让围观的人全部为之愕然。\n　　“没有！那你刚才喊什么？莫非存心戏耍我！”黑汉子闻言大怒，原本就一肚子的怒气，立即爆发了出来，从身上窜出的强大气势把青年压的死死的！\n　　“我只是看人家喊价觉得好玩！自己就顺口多了这么一嘴！请兄台见谅！”圆脸青年急忙为自己开脱。他已满头大汗，黄豆大的汗珠不停的滚落下来。他区区一个五层修仙者，如何能抵抗的了这种灵压！\n　　“刚才喊十九块的是哪位啊？我愿意白送一块灵石，让阁下买下此物！”青年急中生智，连忙喊道。\n　　可惜，四周静悄悄的，无人接口。看来那位也已经反悔不想要了！\n　　“那喊十八块的兄台呢！”青年看着黑汉越来越不善的面孔，几乎要哭出来了。他只是个区区小散修，身上也只有两块灵石而已，这还是辛苦了一整年才换来的。",
+      "linked_node_ids": [
+        "node:chunk-0143:character:002",
+        "node:chunk-0143:character:003",
+        "node:chunk-0143:faction:004",
+        "node:chunk-0143:tool:007",
+        "node:chunk-0143:artifact:008",
+        "node:chunk-0143:realm:010",
+        "node:chunk-0143:character:006",
+        "node:chunk-0143:realm:012"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0143:001",
+        "edge:chunk-0143:002",
+        "edge:chunk-0143:003",
+        "edge:chunk-0143:005",
+        "edge:chunk-0143:006"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0143:001",
+        "event:chunk-0143:002"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "黄枫谷坊市租营与摆摊保护",
+      "classification": "坊市交易 / 倒卖 / 情报型散修",
+      "usage": "黄枫谷坊市中，房屋一部分由黄枫谷弟子看管，另一大半租给修仙家族和散修经营；外来修仙者缴纳一块低阶灵石即可摆摊一整天并获得黄枫谷弟子保护。",
+      "formula": "场所：黄枫谷坊市；成本：一块低阶灵石/天；权益：摆摊、不受干扰、受管理弟子保护；经营者：修仙家族、散修、黄枫谷弟子。",
+      "content": "黄枫谷坊市租营与摆摊保护：黄枫谷坊市中，房屋一部分由黄枫谷弟子看管，另一大半租给修仙家族和散修经营；外来修仙者缴纳一块低阶灵石即可摆摊一整天并获得黄枫谷弟子保护。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0165:002",
+        "evidence:chunk-0165:005"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0165:002",
+          "chunk_id": "chunk-0165",
+          "chapter_hint": null,
+          "source_range": [
+            349803,
+            349860
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0165:005",
+          "chunk_id": "chunk-0165",
+          "chapter_hint": null,
+          "source_range": [
+            350014,
+            350097
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "source_range": [
+        {
+          "chunk_id": "chunk-0165",
+          "source_range": [
+            349803,
+            349860
+          ]
+        },
+        {
+          "chunk_id": "chunk-0165",
+          "source_range": [
+            350014,
+            350097
+          ]
+        }
+      ],
+      "source_excerpt": "这些都是黄枫谷的产业，但只有一小半还是由黄枫谷弟子亲自看管着，另一大半则租给了常年在此做生意的修仙家族和散修之人。\n只要上交给管理此处的黄枫谷弟子一块低阶灵石，外来之人就可在两侧空地处摆摊一整天而不受任何干扰，甚至在摆摊期间还会受到这些弟子的保护，不用害怕有仇家会趁此机会对你报复。",
+      "linked_node_ids": [
+        "node:chunk-0165:faction:001",
+        "node:chunk-0165:facility:001"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0165:001"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0165:001"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "独行散修拒绝同行后的风险",
+      "classification": "临时队伍 / 秘境探险散修",
+      "usage": "韩立拒绝青纹等人同行后独自离谷，随后遭遇袭击并搜得灵石、符箓和法器；他怀疑袭击可能与此前散修失踪有关，只能迅速离开。",
+      "formula": "选择：拒绝临时团体同行；后果：被伏击、无法留下审问活口；收益：反向缴获五十块低阶灵石及符箓法器；风险控制：不久留，吃丹药继续上路。",
+      "content": "独行散修拒绝同行后的风险：韩立拒绝青纹等人同行后独自离谷，随后遭遇袭击并搜得灵石、符箓和法器；他怀疑袭击可能与此前散修失踪有关，只能迅速离开。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0145:003",
+        "evidence:chunk-0146:010"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0145:003",
+          "chunk_id": "chunk-0145",
+          "chapter_hint": null,
+          "source_range": [
+            296325,
+            296528
+          ],
+          "source_path": "intermediate/chunks/chunk-0145.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0146:010",
+          "chunk_id": "chunk-0146",
+          "chapter_hint": null,
+          "source_range": [
+            301058,
+            301237
+          ],
+          "source_path": "intermediate/chunks/chunk-0146.txt"
+        }
+      ],
+      "source_range": [
+        {
+          "chunk_id": "chunk-0145",
+          "source_range": [
+            296325,
+            296528
+          ]
+        },
+        {
+          "chunk_id": "chunk-0146",
+          "source_range": [
+            301058,
+            301237
+          ]
+        }
+      ],
+      "source_excerpt": "　　顿时，剩下的修仙者或三五成群，或孤雁单飞都飘然而去。而这时，青纹道士和其他几人却找上了韩立，并再次邀请韩立同行。\n　　韩立沉默了一会儿后，还是摇头拒绝了青纹等人的邀请，惹得吴九指和墨氏兄弟对韩立大为不满，就是青纹道士的脸色也有些难看。\n　　“既然韩兄不愿与我等同行，青纹也不好勉强。兄台自己路上多保重吧！”最后，青纹叹了口气，略带惋惜语气的说道。\n　　然后，他拍了拍韩立的肩膀，就与其他几人离开了山谷。\n　　既然活口没有了，那只有搜搜这二人的身了，看看能找到什么有用的线索。\n　　等韩立不客气的把两人身上的东西搜刮一空后，相关的东西没找到，倒是发了一大笔横财！因为二人身上的低阶灵石竟有五十块之多，更别说还一些符箓和法器了！\n　　虽然韩立对莫名其妙的被人偷袭，有些纳闷。也不知以前的散修失踪是否和这二人有关，但也不敢在此久待下去，稍微吃了些丹药后，就继续上路了。",
+      "linked_node_ids": [
+        "node:chunk-0145:character:001",
+        "node:chunk-0145:event:004",
+        "node:chunk-0145:character:007",
+        "node:chunk-0145:character:008",
+        "node:chunk-0145:character:009",
+        "node:chunk-0146:character:001",
+        "node:chunk-0146:material:011"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0145:003",
+        "edge:chunk-0146:007"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0145:003",
+        "event:chunk-0146:008"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "情报与小团体社交谋生",
+      "classification": "坊市交易 / 倒卖 / 情报型散修",
+      "usage": "散修获取资源不只靠直接采集，也会交换情报和进入修士聚集场所。韩立剩余灵药地点来自钟吾资料；在燕翎堡时，他判断茶楼是修士常去之处，可能碰见修士并加入小团体交流。",
+      "formula": "资源入口：资料交换、茶楼社交、修士小团体；用途：获得灵药地点、修仙界消息、临时关系网。",
+      "content": "情报与小团体社交谋生：散修获取资源不只靠直接采集，也会交换情报和进入修士聚集场所。韩立剩余灵药地点来自钟吾资料；在燕翎堡时，他判断茶楼是修士常去之处，可能碰见修士并加入小团体交流。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0207:016",
+        "evidence:chunk-0254:007"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0207:016",
+          "chunk_id": "chunk-0207",
+          "chapter_hint": null,
+          "source_range": [
+            463548,
+            463579
+          ],
+          "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0254:007",
+          "chunk_id": "chunk-0254",
+          "chapter_hint": null,
+          "source_range": [
+            604333,
+            604401
+          ],
+          "source_path": "intermediate/chunks/chunk-0254.txt"
+        }
+      ],
+      "source_range": [
+        {
+          "chunk_id": "chunk-0207",
+          "source_range": [
+            463548,
+            463579
+          ]
+        },
+        {
+          "chunk_id": "chunk-0254",
+          "source_range": [
+            604333,
+            604401
+          ]
+        }
+      ],
+      "source_excerpt": "剩下能找到的，都是从丑汉钟吾那里换来的资料，并且还有数处之多！\n因为按照韩立的了解，修士们大多都对好茶非常的喜爱。茶楼几乎都是所有修士必去的场所。韩立觉得那里也许能和其他修士碰上头，加入一些小团体中。",
+      "linked_node_ids": [
+        "node:chunk-0207:character:003",
+        "node:chunk-0254:character:001",
+        "node:chunk-0254:facility:001"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0207:006",
+        "edge:chunk-0254:006"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0207:008",
+        "event:chunk-0254:003"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "受制散修队伍的失败状态",
+      "classification": "失败散修",
+      "usage": "蒙山五友被他人控制后只能走一步算一步，并寄望利用缓冲时间寻找脱身办法，表现出弱小散修队伍被强者裹挟后的被动状态。",
+      "formula": "状态：性命受制；行动空间：短期缓冲时间；目标：寻找两全其美的脱身办法；风险：被迫协助陷害其他修士。",
+      "content": "受制散修队伍的失败状态：蒙山五友被他人控制后只能走一步算一步，并寄望利用缓冲时间寻找脱身办法，表现出弱小散修队伍被强者裹挟后的被动状态。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0288:006",
+        "evidence:chunk-0288:015"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0288:006",
+          "chunk_id": "chunk-0288",
+          "chapter_hint": null,
+          "source_range": [
+            705481,
+            705521
+          ],
+          "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0288:015",
+          "chunk_id": "chunk-0288",
+          "chapter_hint": null,
+          "source_range": [
+            706632,
+            706665
+          ],
+          "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt"
+        }
+      ],
+      "source_range": [
+        {
+          "chunk_id": "chunk-0288",
+          "source_range": [
+            705481,
+            705521
+          ]
+        },
+        {
+          "chunk_id": "chunk-0288",
+          "source_range": [
+            706632,
+            706665
+          ]
+        }
+      ],
+      "source_excerpt": "大家还是吃些东西吧，既然小命已然落入了别人手中，我们蒙山五友只能走一步算一步了！\n好在缓冲时间够长，希望到时我们蒙山五友，能想出两全其美脱身之策来！",
+      "linked_node_ids": [
+        "node:chunk-0288:faction:001",
+        "node:chunk-0288:character:003",
+        "node:chunk-0288:character:006"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0288:004"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0288:002"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "白发老道式老散修",
+      "classification": "隐居高人 / 老散修",
+      "usage": "白发老道年轻时偶得《烈阳诀》入道，但因资质差且无人指点，年纪很大仍只练到炼气期六层，难以接触高阶修士。",
+      "formula": "来源：临死修仙者遗留功法；瓶颈：资质差、缺乏师承指点；长期状态：炼气六层徘徊；模板判断：韩立判断其十有八九是散修需保留 needs_review。",
+      "content": "白发老道式老散修：白发老道年轻时偶得《烈阳诀》入道，但因资质差且无人指点，年纪很大仍只练到炼气期六层，难以接触高阶修士。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0298:002",
+        "evidence:chunk-0298:003"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0298:002",
+          "chunk_id": "chunk-0298",
+          "chapter_hint": null,
+          "source_range": [
+            733482,
+            733536
+          ],
+          "source_path": "intermediate/chunks/chunk-0298.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0298:003",
+          "chunk_id": "chunk-0298",
+          "chapter_hint": null,
+          "source_range": [
+            734010,
+            734081
+          ],
+          "source_path": "intermediate/chunks/chunk-0298.txt"
+        }
+      ],
+      "source_range": [
+        {
+          "chunk_id": "chunk-0298",
+          "source_range": [
+            733482,
+            733536
+          ]
+        },
+        {
+          "chunk_id": "chunk-0298",
+          "source_range": [
+            734010,
+            734081
+          ]
+        }
+      ],
+      "source_excerpt": "这位白发老道如此大的年纪，还在炼气期六层徘徊，十有八九是散修和资质太差了，所以一直无法接触到法力高深的修士。\n晚辈就是年轻时，从一位临死的修仙者身上无意中得到了一本《烈阳诀》，这才进入的修仙界。只是可惜资质太差，再加上无人指点，只勉强练成了第六层而已。",
+      "linked_node_ids": [
+        "node:chunk-0298:character:002",
+        "node:chunk-0298:realm:002",
+        "node:chunk-0298:cultivation_method:001"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0298:003",
+        "edge:chunk-0298:009",
+        "edge:chunk-0298:004"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0298:002"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "needs_review"
+    },
+    {
+      "name": "顾家聘用与魁星岛定居路径",
+      "classification": "客卿 / 依附商会或宗门的散修",
+      "usage": "乱星海中凡人商户可聘请修仙者解决资格争夺。顾家邀请韩立去魁星岛并愿意供应修行费用；若韩立替顾家取得行商资格，顾家承诺灵石报酬、定居担保和三年三成利润。",
+      "formula": "雇主：顾东主/顾家；任务：争取大岛行商资格；报酬：灵石、定居担保、三年三成利润；制度收益：永久居住资格、任职资格、参加灵地争夺大会资格。",
+      "content": "顾家聘用与魁星岛定居路径：乱星海中凡人商户可聘请修仙者解决资格争夺。顾家邀请韩立去魁星岛并愿意供应修行费用；若韩立替顾家取得行商资格，顾家承诺灵石报酬、定居担保和三年三成利润。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0370:008",
+        "evidence:chunk-0371:007",
+        "evidence:chunk-0372:006",
+        "evidence:chunk-0372:007",
+        "evidence:chunk-0375:008",
+        "evidence:chunk-0375:010"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0370:008",
+          "chunk_id": "chunk-0370",
+          "chapter_hint": null,
+          "source_range": [
+            940852,
+            940930
+          ],
+          "source_path": "intermediate/chunks/chunk-0370.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0371:007",
+          "chunk_id": "chunk-0371",
+          "chapter_hint": null,
+          "source_range": [
+            944656,
+            944870
+          ],
+          "source_path": "intermediate/chunks/chunk-0371.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0372:006",
+          "chunk_id": "chunk-0372",
+          "chapter_hint": null,
+          "source_range": [
+            946907,
+            947033
+          ],
+          "source_path": "intermediate/chunks/chunk-0372.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0372:007",
+          "chunk_id": "chunk-0372",
+          "chapter_hint": null,
+          "source_range": [
+            947194,
+            947330
+          ],
+          "source_path": "intermediate/chunks/chunk-0372.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0375:008",
+          "chunk_id": "chunk-0375",
+          "chapter_hint": null,
+          "source_range": [
+            955815,
+            955877
+          ],
+          "source_path": "intermediate/chunks/chunk-0375.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0375:010",
+          "chunk_id": "chunk-0375",
+          "chapter_hint": null,
+          "source_range": [
+            955979,
+            956020
+          ],
+          "source_path": "intermediate/chunks/chunk-0375.txt"
+        }
+      ],
+      "source_range": [
+        {
+          "chunk_id": "chunk-0370",
+          "source_range": [
+            940852,
+            940930
+          ]
+        },
+        {
+          "chunk_id": "chunk-0371",
+          "source_range": [
+            944656,
+            944870
+          ]
+        },
+        {
+          "chunk_id": "chunk-0372",
+          "source_range": [
+            946907,
+            947033
+          ]
+        },
+        {
+          "chunk_id": "chunk-0372",
+          "source_range": [
+            947194,
+            947330
+          ]
+        },
+        {
+          "chunk_id": "chunk-0375",
+          "source_range": [
+            955815,
+            955877
+          ]
+        },
+        {
+          "chunk_id": "chunk-0375",
+          "source_range": [
+            955979,
+            956020
+          ]
+        }
+      ],
+      "source_excerpt": "老者自然明白韩立的用意。急忙上前给韩立解说道：“仙师大人，这位顾先生是此船的东主，他打算邀请仙师去他居住的魁星岛居住，他愿意供应仙师修行的一切费用和开销。”\n心高气傲，愿意接受凡人聘用的修仙者原本就少的可怜，而且大多都是和这些凡人有些或远或近的关系，才会出手相帮的。\n　　而其他原本可以出手的少数仙师，又都碍于和这十名仙师或多或少的认识，也不好意思出手挑战。所以顾东主短时间内，根本在魁星岛找不到愿意出手的修仙者。\n　　无奈之下，他只好借着送货的机会回到原来出生的岛上，想请岛上一位有点远亲关系的修仙者出手相助。可没想到，这位仙师刚刚出门远游去了。\n　　这下子，顾东主真的傻眼了。\n　　\n顾家都愿意付一大笔灵石当做报酬。而仙师若真的替顾家争到了大岛的行商资格。顾东主甚至愿意替仙师这个岛外人，做魁星岛定居的担保人。让仙师可以成为魁星岛的正式居民。最重要的是，无论仙师以后是否在魁星岛担任职务，顾家今后三年内愿意将交易的三成利润，奉献给仙师。\n一种是只是临时在岛上住下的仙师，他们不会在岛上担任职务，一般住了数年，就会根据喜好决定去留的。另一种则是有当地的大户人家做保人，就可以办理永久居住岛上的手续。这种仙师不但每年缴纳的灵石比前一种少的多，而且只有他们才有资格担任岛上的职务，并可参加岛上十年一次的灵地争夺大会。\n如此一来，老者当场宣布，只有韩立一人替顾家取得了大岛行商的资格。然后老者将一块蓝色玉简交予了韩立，说将其交予了顾家人就可了。\n“韩仙师，顾某感激之言就不多说了。您尽管放心，顾家许诺的条件绝对会给仙师办到的。”",
+      "linked_node_ids": [
+        "node:chunk-0370:character:003",
+        "node:chunk-0370:character:004",
+        "node:chunk-0370:location:001",
+        "node:chunk-0371:character:003",
+        "node:chunk-0372:character:003",
+        "node:chunk-0372:faction:001",
+        "node:chunk-0372:rule:002",
+        "node:chunk-0372:character:002",
+        "node:chunk-0372:rule:001",
+        "node:chunk-0372:event:001",
+        "node:chunk-0375:character:001",
+        "node:chunk-0375:character:003",
+        "node:chunk-0375:faction:001",
+        "node:chunk-0375:tool:001",
+        "node:chunk-0375:character:005",
+        "node:chunk-0375:character:006"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0370:001",
+        "edge:chunk-0370:002",
+        "edge:chunk-0370:003",
+        "edge:chunk-0370:004",
+        "edge:chunk-0371:005",
+        "edge:chunk-0372:004",
+        "edge:chunk-0372:005",
+        "edge:chunk-0372:006",
+        "edge:chunk-0375:004",
+        "edge:chunk-0375:005",
+        "edge:chunk-0375:007"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0370:003",
+        "event:chunk-0371:003",
+        "event:chunk-0372:005",
+        "event:chunk-0372:006",
+        "event:chunk-0375:005"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "岛屿任职供养制度",
+      "classification": "客卿 / 依附商会或宗门的散修",
+      "usage": "魁星岛制度中，定居且担任职务的仙师可由岛主每年发放灵石，但需听从岛主吩咐；只居住不任职者没有灵石供应，还要缴纳灵石。韩立办理永久居住后可确定修炼地，挑战修士则多为大户高价聘来的护卫队临时打手。",
+      "formula": "路径一：定居任职，领取灵石但受岛主调度；路径二：只居住，缴费换取停留；路径三：被大户高价聘为临时打手，凭战斗经验执行争夺任务。",
+      "content": "岛屿任职供养制度：魁星岛制度中，定居且担任职务的仙师可由岛主每年发放灵石，但需听从岛主吩咐；只居住不任职者没有灵石供应，还要缴纳灵石。韩立办理永久居住后可确定修炼地，挑战修士则多为大户高价聘来的护卫队临时打手。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0370:016",
+        "evidence:chunk-0370:017",
+        "evidence:chunk-0375:011",
+        "evidence:chunk-0376:001"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0370:016",
+          "chunk_id": "chunk-0370",
+          "chapter_hint": null,
+          "source_range": [
+            942331,
+            942411
+          ],
+          "source_path": "intermediate/chunks/chunk-0370.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0370:017",
+          "chunk_id": "chunk-0370",
+          "chapter_hint": null,
+          "source_range": [
+            942411,
+            942471
+          ],
+          "source_path": "intermediate/chunks/chunk-0370.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0375:011",
+          "chunk_id": "chunk-0375",
+          "chapter_hint": null,
+          "source_range": [
+            956253,
+            956325
+          ],
+          "source_path": "intermediate/chunks/chunk-0375.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0376:001",
+          "chunk_id": "chunk-0376",
+          "chapter_hint": null,
+          "source_range": [
+            956779,
+            956876
+          ],
+          "source_path": "intermediate/chunks/chunk-0376.txt"
+        }
+      ],
+      "source_range": [
+        {
+          "chunk_id": "chunk-0370",
+          "source_range": [
+            942331,
+            942411
+          ]
+        },
+        {
+          "chunk_id": "chunk-0370",
+          "source_range": [
+            942411,
+            942471
+          ]
+        },
+        {
+          "chunk_id": "chunk-0375",
+          "source_range": [
+            956253,
+            956325
+          ]
+        },
+        {
+          "chunk_id": "chunk-0376",
+          "source_range": [
+            956779,
+            956876
+          ]
+        }
+      ],
+      "source_excerpt": "每个岛上都会有一个法力最高的仙师担任岛主，负责守护岛屿。其他仙师若是肯在岛上定居并担任一定的职务，则由岛主每年发放一定的灵石供其修炼，但从此就要听从岛主的吩咐。\n当然若是既要居住在岛上，但又不愿担任岛上职务的，则不但没有灵石供应，反而每年要缴纳一定的灵石给岛主，这样也可留在岛上的。\n这次他是来通知韩立，可以去仙山上的登仙阁，办理魁星岛永久居住的资格，顺便还要给韩立确定下来修炼之地。毕竟每一个在岛上修仙者，都可以拥有自己洞府。\n韩道友你们挑战的十名修士，其实都是那些大户从本岛护卫队中高价聘来的临时打手。他们每个人虽然修为不高，但因为经常出海搏杀妖兽，还和他岛修士争斗切磋，所以论对敌的经验和手段，可比普通的修士强太多了。",
+      "linked_node_ids": [
+        "node:chunk-0370:rule:001",
+        "node:chunk-0375:character:006",
+        "node:chunk-0375:facility:002",
+        "node:chunk-0375:location:001",
+        "node:chunk-0375:rule:001",
+        "node:chunk-0376:character:002",
+        "node:chunk-0376:faction:001"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0370:011",
+        "edge:chunk-0375:008",
+        "edge:chunk-0376:001"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0370:006",
+        "event:chunk-0375:006",
+        "event:chunk-0376:001"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "海猿岛猎妖与低阶修士经济链",
+      "classification": "猎妖 / 采药 / 挖矿型散修",
+      "usage": "海猿岛没有岛主、低阶修士可随意进出。海猿虽属妖兽，但五六层炼气期修士即可捕获，因此形成外来小船雇佣低阶修士捕捉、商家低价收购活海猿、海船集中运走的产业链。",
+      "formula": "资源对象：海猿；执行者：低阶修士/散修；收购者：小商家和船队；收益：灵石；场所条件：自由进出、低阶修士聚集、法阵和店面长期存在。",
+      "content": "海猿岛猎妖与低阶修士经济链：海猿岛没有岛主、低阶修士可随意进出。海猿虽属妖兽，但五六层炼气期修士即可捕获，因此形成外来小船雇佣低阶修士捕捉、商家低价收购活海猿、海船集中运走的产业链。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0390:011",
+        "evidence:chunk-0390:013",
+        "evidence:chunk-0391:005"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0390:011",
+          "chunk_id": "chunk-0390",
+          "chapter_hint": null,
+          "source_range": [
+            998445,
+            998556
+          ],
+          "source_path": "intermediate/chunks/chunk-0390.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0390:013",
+          "chunk_id": "chunk-0390",
+          "chapter_hint": null,
+          "source_range": [
+            998699,
+            998839
+          ],
+          "source_path": "intermediate/chunks/chunk-0390.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0391:005",
+          "chunk_id": "chunk-0391",
+          "chapter_hint": null,
+          "source_range": [
+            1000435,
+            1000547
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "source_range": [
+        {
+          "chunk_id": "chunk-0390",
+          "source_range": [
+            998445,
+            998556
+          ]
+        },
+        {
+          "chunk_id": "chunk-0390",
+          "source_range": [
+            998699,
+            998839
+          ]
+        },
+        {
+          "chunk_id": "chunk-0391",
+          "source_range": [
+            1000435,
+            1000547
+          ]
+        }
+      ],
+      "source_excerpt": "此岛远比不上魁星岛那么庞大，但也比一般的小岛大的多，勉强能挤进中型岛屿之列。这就是韩立长途跋涉的目的地“海猿岛”。\n　　岛上除了少量的凡人外，大都是一些没有筑基的低阶修仙者，更没有什么岛主之说，完全是个随意进出的自由之地。\n而“海猿”虽然名列妖兽，但实际上一个五六层的炼气期修士，就能轻易的击败并捕获，所以年年都有一些各地的小船到此停靠，雇佣低阶修士抓铺一些并加以贩卖。\n　　有些小商家干脆合资在此岛设下了法阵，并建立了长期的店面，常年累月的低价收购活的“海猿”，等某段时间海船来了后，再大量的一次运走。\n四年后的一日，海猿岛仍是那么混乱，码头和岛上仅有的一座城市正处于微微的兴奋之中。因为，此时正是众多海猿露出海面进行交配的季节，众多的低阶修士匆匆忙忙地进出此岛，众修士固然是灵石挣得眉开眼笑，那些商家也是满脸喜色的收购个不停。",
+      "linked_node_ids": [
+        "node:chunk-0390:location:010",
+        "node:chunk-0390:beast:011",
+        "node:chunk-0390:faction:014",
+        "node:chunk-0391:location:001"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0390:007",
+        "edge:chunk-0390:010"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0390:004",
+        "event:chunk-0390:005"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "海猿岛隐居修炼与结丹藏身",
+      "classification": "隐居高人 / 老散修",
+      "usage": "海猿岛因灵脉质量一般但范围大，吸引散修长住；大势力不重视此地，使其成为自由放纵的低阶修士天下，也适合韩立藏身结丹。",
+      "formula": "选址逻辑：灵气质量不高但覆盖广、低阶修士可修炼、大势力忽视、强者多为过客；风险：结丹动静会吸引低阶修士靠近。",
+      "content": "海猿岛隐居修炼与结丹藏身：海猿岛因灵脉质量一般但范围大，吸引散修长住；大势力不重视此地，使其成为自由放纵的低阶修士天下，也适合韩立藏身结丹。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0390:014",
+        "evidence:chunk-0390:015"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0390:014",
+          "chunk_id": "chunk-0390",
+          "chapter_hint": null,
+          "source_range": [
+            998871,
+            998965
+          ],
+          "source_path": "intermediate/chunks/chunk-0390.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0390:015",
+          "chunk_id": "chunk-0390",
+          "chapter_hint": null,
+          "source_range": [
+            999020,
+            999124
+          ],
+          "source_path": "intermediate/chunks/chunk-0390.txt"
+        }
+      ],
+      "source_range": [
+        {
+          "chunk_id": "chunk-0390",
+          "source_range": [
+            998871,
+            998965
+          ]
+        },
+        {
+          "chunk_id": "chunk-0390",
+          "source_range": [
+            999020,
+            999124
+          ]
+        }
+      ],
+      "source_excerpt": "但其他的散修在法阵建立后，迅速来此地长住起来，完全是因为“海猿岛”竟有一条马马虎虎的庞大灵脉。虽然灵脉的质量实在不怎么样，但胜在此灵脉够大过广，几乎在此岛的任何地方都可以让低阶修仙者修炼。\n灵气如此稀薄，和区区一点海猿特产的偏僻岛屿，当然不放进那些大势力的眼内，完全是一个自由放纵的低阶修士天下。虽然偶尔会有筑基期或结丹期修士到此岛，但大都只是路过此地的过客。\n　　正好是韩立藏身和结丹的绝佳之地！",
+      "linked_node_ids": [
+        "node:chunk-0390:location:010",
+        "node:chunk-0390:location:013"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0390:011",
+        "edge:chunk-0390:007"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0390:004"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "散修自由与贫困的自我认知",
+      "classification": "低阶散修日常谋生",
+      "usage": "胡月概括散修不愿受拘束，因此较逍遥自在，但与同阶修士相比更穷困；遇到机会难得时会选择冒险一搏。",
+      "formula": "价值取向：自由、不受拘束；代价：穷困、资源短缺；行动倾向：机会稀缺时愿意冒险。",
+      "content": "散修自由与贫困的自我认知：胡月概括散修不愿受拘束，因此较逍遥自在，但与同阶修士相比更穷困；遇到机会难得时会选择冒险一搏。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0427:008"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0427:008",
+          "chunk_id": "chunk-0427",
+          "chapter_hint": null,
+          "source_range": [
+            1103660,
+            1103705
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "source_range": [
+        {
+          "chunk_id": "chunk-0427",
+          "source_range": [
+            1103660,
+            1103705
+          ]
+        }
+      ],
+      "source_excerpt": "我们散修因为不愿意受别人拘束，所以虽然过的比较逍遥自在，但和其他同阶修士比起来可穷困的多了",
+      "linked_node_ids": [
+        "node:chunk-0427:character:003"
+      ],
+      "linked_edge_ids": [],
+      "linked_event_ids": [
+        "event:chunk-0427:001"
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    }
+  ],
+  "judgments": [
+    {
+      "content": "散修生存方式的核心张力是自由与供养之间的交换：不愿受拘束者更自由但更穷，接受家族、坊市、岛主或商户制度者能换取灵石、保护、定居和修炼地，但会承担费用、任务或听命义务。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0370:016",
+        "evidence:chunk-0370:017",
+        "evidence:chunk-0372:006",
+        "evidence:chunk-0372:007",
+        "evidence:chunk-0427:008"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0370:016",
+          "chunk_id": "chunk-0370",
+          "chapter_hint": null,
+          "source_range": [
+            942331,
+            942411
+          ],
+          "source_path": "intermediate/chunks/chunk-0370.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0370:017",
+          "chunk_id": "chunk-0370",
+          "chapter_hint": null,
+          "source_range": [
+            942411,
+            942471
+          ],
+          "source_path": "intermediate/chunks/chunk-0370.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0372:006",
+          "chunk_id": "chunk-0372",
+          "chapter_hint": null,
+          "source_range": [
+            946907,
+            947033
+          ],
+          "source_path": "intermediate/chunks/chunk-0372.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0372:007",
+          "chunk_id": "chunk-0372",
+          "chapter_hint": null,
+          "source_range": [
+            947194,
+            947330
+          ],
+          "source_path": "intermediate/chunks/chunk-0372.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0427:008",
+          "chunk_id": "chunk-0427",
+          "chapter_hint": null,
+          "source_range": [
+            1103660,
+            1103705
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "INFERRED",
+      "review_status": "evidence_backed_judgment"
+    },
+    {
+      "content": "散修临时结伴不是稳定组织化，而是围绕交易会、升仙大会和路途风险形成的短期安全机制；一旦进入日常交易或个人判断场景，成员仍保持较高自主性。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0133:002",
+        "evidence:chunk-0133:006",
+        "evidence:chunk-0136:006",
+        "evidence:chunk-0145:003"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0133:002",
+          "chunk_id": "chunk-0133",
+          "chapter_hint": "第一百三十章 入伙",
+          "source_range": [
+            265794,
+            265939
+          ],
+          "source_path": "intermediate/chunks/chunk-0133.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0133:006",
+          "chunk_id": "chunk-0133",
+          "chapter_hint": "第一百三十章 入伙",
+          "source_range": [
+            266621,
+            266740
+          ],
+          "source_path": "intermediate/chunks/chunk-0133.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0136:006",
+          "chunk_id": "chunk-0136",
+          "chapter_hint": null,
+          "source_range": [
+            275717,
+            276086
+          ],
+          "source_path": "intermediate/chunks/chunk-0136.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0145:003",
+          "chunk_id": "chunk-0145",
+          "chapter_hint": null,
+          "source_range": [
+            296325,
+            296528
+          ],
+          "source_path": "intermediate/chunks/chunk-0145.txt"
+        }
+      ],
+      "confidence": "INFERRED",
+      "review_status": "evidence_backed_judgment"
+    }
+  ],
+  "pending_verifications": [
+    {
+      "content": "白发老道“十有八九是散修”来自韩立判断，事实层可写为视角性判断，不宜改写为全知定论。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0298:002"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0298:002",
+          "chunk_id": "chunk-0298",
+          "chapter_hint": null,
+          "source_range": [
+            733482,
+            733536
+          ],
+          "source_path": "intermediate/chunks/chunk-0298.txt"
+        }
+      ],
+      "confidence": "AMBIGUOUS",
+      "review_status": "needs_review"
+    }
+  ],
+  "not_found_items": [
+    {
+      "content": "本批直接支持“散修生存方式”的证据中未见明确“挖矿型散修”完整案例；可保留为模板缺口，不应用海猿猎妖或灵药情报硬替。",
+      "category": "未见可靠证据",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS",
+      "review_status": "not_found_in_selected_evidence"
+    }
+  ],
+  "document_sections": [
+    {
+      "heading": "完整散修生存案例",
+      "markdown": "散修生存不是单一职业，而是一组围绕“缺少稳定制度供养”展开的策略组合：低阶散修通常出身破落、偶得功法或小门户传承，资源少、境界低，常被修仙家族轻视；他们会在交易会、坊市、茶楼、岛屿、商户任务和低阶资源产地之间移动，用临时结伴、摆摊交易、情报交换、受雇任务、猎妖采集或隐居修炼来换取灵石、保护和修炼空间。",
+      "evidence_ids": [
+        "evidence:chunk-0131:001",
+        "evidence:chunk-0131:003",
+        "evidence:chunk-0136:005",
+        "evidence:chunk-0165:005",
+        "evidence:chunk-0372:006",
+        "evidence:chunk-0390:013",
+        "evidence:chunk-0427:008"
+      ],
+      "requirement_ids": [
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 1：低阶散修日常谋生",
+      "markdown": "低阶散修的日常底色是“自由但穷”。他们多在炼气期徘徊，缺少家族培养、丹药和装备，在升仙会等竞争场景中明显弱于家族精心培养的修士。韩立在太南会末期因无灵石、丹药寥寥，只能顺着摊位听评论长见识；圆脸小散修一年辛苦也只有两块灵石，说明低阶散修现金流极弱。",
+      "evidence_ids": [
+        "evidence:chunk-0131:001",
+        "evidence:chunk-0138:014",
+        "evidence:chunk-0142:004",
+        "evidence:chunk-0143:003",
+        "evidence:chunk-0427:008"
+      ],
+      "requirement_ids": [
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 2：猎妖 / 采药 / 挖矿型散修",
+      "markdown": "可直接落地的猎妖型案例是海猿岛：五六层炼气期修士即可捕获海猿，各地小船雇佣低阶修士捕捉，小商家低价收购活海猿并等海船集中运走。采药型证据较少，但韩立确有通过钟吾资料寻找数处灵药地点的情报链；挖矿型散修在本批直接证据中未见可靠案例，应留作缺口。",
+      "evidence_ids": [
+        "evidence:chunk-0390:011",
+        "evidence:chunk-0390:013",
+        "evidence:chunk-0391:005",
+        "evidence:chunk-0207:016"
+      ],
+      "requirement_ids": [
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 3：坊市交易 / 倒卖 / 情报型散修",
+      "markdown": "散修可依托交易会和坊市谋生。太南会中散修团体会集中摆摊出货，目标是换取灵石和其他物品；黄枫谷坊市则提供制度化摊位，外来修仙者缴一块低阶灵石即可摆摊一整天，并获得黄枫谷弟子保护。情报型路径包括交换灵药地点资料、去茶楼寻找修士和小团体。",
+      "evidence_ids": [
+        "evidence:chunk-0136:005",
+        "evidence:chunk-0165:002",
+        "evidence:chunk-0165:005",
+        "evidence:chunk-0207:016",
+        "evidence:chunk-0254:007"
+      ],
+      "requirement_ids": [
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 4：临时队伍 / 秘境探险散修",
+      "markdown": "太南小会的散修小团体是典型临时队伍：松纹/青纹道士等人邀请落单散修，目的在于互相照应，防止被修仙家族欺辱；领头人只在外部纠纷时出面，成员平时仍可自由行动。会后因散修失踪传闻，结伴前往天雾台升仙大会成为降低风险的策略；韩立拒绝同行后遭遇伏击，强化了独行风险。",
+      "evidence_ids": [
+        "evidence:chunk-0133:002",
+        "evidence:chunk-0133:003",
+        "evidence:chunk-0133:004",
+        "evidence:chunk-0133:006",
+        "evidence:chunk-0136:006",
+        "evidence:chunk-0145:003",
+        "evidence:chunk-0146:010"
+      ],
+      "requirement_ids": [
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 5：客卿 / 依附商会或宗门的散修",
+      "markdown": "乱星海提供制度化依附路径：凡人商户顾家因缺少愿意出手的修仙者，聘请韩立争取大岛行商资格，并承诺灵石、定居担保和三年三成利润。魁星岛还区分临时居住与大户担保永久居住，后者可任职并参加灵地争夺；定居任职者可得岛主灵石供养，但需听命，体现“供养换约束”。",
+      "evidence_ids": [
+        "evidence:chunk-0370:008",
+        "evidence:chunk-0370:016",
+        "evidence:chunk-0370:017",
+        "evidence:chunk-0371:007",
+        "evidence:chunk-0372:006",
+        "evidence:chunk-0372:007",
+        "evidence:chunk-0375:008",
+        "evidence:chunk-0375:010",
+        "evidence:chunk-0375:011",
+        "evidence:chunk-0376:001"
+      ],
+      "requirement_ids": [
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 6：隐居高人 / 老散修",
+      "markdown": "老散修可分两种：一种是白发老道式失败老散修，年轻偶得功法入道，却因资质差、无人指点，年老仍卡在炼气六层；另一种是韩立选择海猿岛式隐居，利用灵脉质量一般但范围大、大势力忽视、低阶修士自由聚集的环境藏身修炼。前者需标记部分判断来自韩立视角，后者证据较直接。",
+      "evidence_ids": [
+        "evidence:chunk-0298:002",
+        "evidence:chunk-0298:003",
+        "evidence:chunk-0390:014",
+        "evidence:chunk-0390:015"
+      ],
+      "requirement_ids": [
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 7：失败散修",
+      "markdown": "失败散修的表现包括资源匮乏、被强者压制、被迫卷入危险任务或人身受制。蒙山五友性命落入他人手中，只能走一步算一步并寻找脱身办法，是小队被强者控制后的失败状态；太南会后散修失踪和韩立被伏击，也说明低阶散修在离开交易保护区后容易成为劫掠目标。",
+      "evidence_ids": [
+        "evidence:chunk-0288:006",
+        "evidence:chunk-0288:015",
+        "evidence:chunk-0136:006",
+        "evidence:chunk-0146:010"
+      ],
+      "requirement_ids": [
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    }
+  ],
+  "evidence_citations": [
+    "evidence:chunk-0131:001",
+    "evidence:chunk-0131:002",
+    "evidence:chunk-0131:003",
+    "evidence:chunk-0133:002",
+    "evidence:chunk-0133:003",
+    "evidence:chunk-0133:004",
+    "evidence:chunk-0133:006",
+    "evidence:chunk-0133:007",
+    "evidence:chunk-0133:009",
+    "evidence:chunk-0136:005",
+    "evidence:chunk-0136:006",
+    "evidence:chunk-0138:014",
+    "evidence:chunk-0142:004",
+    "evidence:chunk-0143:001",
+    "evidence:chunk-0143:003",
+    "evidence:chunk-0145:003",
+    "evidence:chunk-0146:010",
+    "evidence:chunk-0165:002",
+    "evidence:chunk-0165:005",
+    "evidence:chunk-0207:016",
+    "evidence:chunk-0254:007",
+    "evidence:chunk-0288:006",
+    "evidence:chunk-0288:015",
+    "evidence:chunk-0298:002",
+    "evidence:chunk-0298:003",
+    "evidence:chunk-0370:008",
+    "evidence:chunk-0370:016",
+    "evidence:chunk-0370:017",
+    "evidence:chunk-0371:007",
+    "evidence:chunk-0372:006",
+    "evidence:chunk-0372:007",
+    "evidence:chunk-0375:008",
+    "evidence:chunk-0375:010",
+    "evidence:chunk-0375:011",
+    "evidence:chunk-0376:001",
+    "evidence:chunk-0390:011",
+    "evidence:chunk-0390:013",
+    "evidence:chunk-0390:014",
+    "evidence:chunk-0390:015",
+    "evidence:chunk-0391:005",
+    "evidence:chunk-0427:008"
+  ],
+  "gap_items": [
+    {
+      "template_name": "散修生存方式",
+      "requirement_id": "faction_society_economy_task",
+      "status": "partial_gap",
+      "gap": "未见明确挖矿型散修案例；老散修身份有一条为角色视角判断，需在正式文档中保守表述。",
+      "evidence_ids": [
+        "evidence:chunk-0298:002"
+      ]
+    }
+  ],
+  "render_target": "drafts",
+  "overwrite_policy": "draft",
+  "provenance": {
+    "producer": "stage2-template-document-agent",
+    "task_packet": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\intermediate\\stage2\\task-packets\\template-batch-0021-4ebed39e9ef1.json",
+    "graph_dir": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph",
+    "selection_rule": "prioritized supports_templates[].template_name == 散修生存方式 across nodes/events/evidence",
+    "generated_at": "2026-06-23T18:31:34.274Z"
+  }
+}

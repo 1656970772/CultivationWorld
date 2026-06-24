@@ -1,0 +1,2287 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0212:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0212",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T00:00:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0212:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立在本 chunk 中醒来后承诺保密，询问墨蛟圆球来历，接受女子取走金箱，并采集数十株灵药准备出禁地上交。",
+      "evidence_ids": [
+        "evidence:chunk-0212:001",
+        "evidence:chunk-0212:003",
+        "evidence:chunk-0212:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        478792,
+        478849
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          478792,
+          478849
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0212:character:002",
+      "node_type": "character",
+      "label": "绝色女子",
+      "aliases": [
+        "女子",
+        "佳人",
+        "大美女"
+      ],
+      "fact_summary": "绝色女子在本 chunk 中要求韩立保密，解释墨蛟淫囊袋与素女轮回功，取走金色宝箱，并说明离开绝地需要二人合力。",
+      "evidence_ids": [
+        "evidence:chunk-0212:002",
+        "evidence:chunk-0212:006",
+        "evidence:chunk-0212:007",
+        "evidence:chunk-0212:013",
+        "evidence:chunk-0212:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        479893,
+        479950
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          479893,
+          479950
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0212:beast:001",
+      "node_type": "beast",
+      "label": "墨蛟",
+      "aliases": [],
+      "fact_summary": "墨蛟在本 chunk 中被说明是少见雄蛟，其淫囊袋含催情雾气并导致韩立与女子昏迷数个时辰。",
+      "evidence_ids": [
+        "evidence:chunk-0212:006",
+        "evidence:chunk-0212:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        480531,
+        480598
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          480531,
+          480598
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0212:material:001",
+      "node_type": "material",
+      "label": "墨蛟淫囊袋",
+      "aliases": [
+        "囊袋",
+        "那个"
+      ],
+      "fact_summary": "墨蛟淫囊袋被女子解释为红色圆球真实来源，内含接触雌性会喷发的催情雾气。",
+      "evidence_ids": [
+        "evidence:chunk-0212:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        480531,
+        480598
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          480531,
+          480598
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0212:material:002",
+      "node_type": "material",
+      "label": "催情雾气",
+      "aliases": [
+        "墨蛟的催情气体"
+      ],
+      "fact_summary": "催情雾气来自墨蛟淫囊袋，接触雌性会喷发，迷药成分较少但令二人昏迷五六个时辰。",
+      "evidence_ids": [
+        "evidence:chunk-0212:006",
+        "evidence:chunk-0212:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        480531,
+        480598
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          480531,
+          480598
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0212:cultivation_method:001",
+      "node_type": "cultivation_method",
+      "label": "素女轮回功",
+      "aliases": [],
+      "fact_summary": "素女轮回功是女子修炼的独门功法，可春颜永驻并周期轮回；本次事件使功法暂时破损并损失五六年法力。",
+      "evidence_ids": [
+        "evidence:chunk-0212:007",
+        "evidence:chunk-0212:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        480693,
+        480791
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          480693,
+          480791
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0212:realm:001",
+      "node_type": "realm",
+      "label": "结丹期",
+      "aliases": [],
+      "fact_summary": "女子在叙述中被明示为结丹期修士。",
+      "evidence_ids": [
+        "evidence:chunk-0212:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        480156,
+        480240
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          480156,
+          480240
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0212:faction:001",
+      "node_type": "faction",
+      "label": "黄枫谷",
+      "aliases": [],
+      "fact_summary": "女子内心确认韩立是黄枫谷的弟子。",
+      "evidence_ids": [
+        "evidence:chunk-0212:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        480982,
+        481024
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          480982,
+          481024
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0212:tool:001",
+      "node_type": "tool",
+      "label": "金色宝箱",
+      "aliases": [
+        "金箱"
+      ],
+      "fact_summary": "金色宝箱位于白玉亭，被绝色女子在离开前顺利收入储物袋。",
+      "evidence_ids": [
+        "evidence:chunk-0212:012",
+        "evidence:chunk-0212:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        481325,
+        481350
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          481325,
+          481350
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0212:facility:001",
+      "node_type": "facility",
+      "label": "白玉亭",
+      "aliases": [],
+      "fact_summary": "白玉亭是金色宝箱所在位置，女子飞向此处取走金箱。",
+      "evidence_ids": [
+        "evidence:chunk-0212:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        481434,
+        481487
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          481434,
+          481487
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0212:tool:002",
+      "node_type": "tool",
+      "label": "储物袋",
+      "aliases": [],
+      "fact_summary": "女子用储物袋收纳金箱。",
+      "evidence_ids": [
+        "evidence:chunk-0212:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        481434,
+        481487
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          481434,
+          481487
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0212:material:003",
+      "node_type": "material",
+      "label": "灵药",
+      "aliases": [],
+      "fact_summary": "地下绝地中有数十株灵药；女子不需要并允许韩立采走，韩立担心出禁地后上交本门灵药不足而收取。",
+      "evidence_ids": [
+        "evidence:chunk-0212:014",
+        "evidence:chunk-0212:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        481525,
+        481545
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          481525,
+          481545
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0212:location:001",
+      "node_type": "location",
+      "label": "绝地",
+      "aliases": [
+        "禁地",
+        "这里"
+      ],
+      "fact_summary": "该地下场景被女子称为不好出去的绝地，破禁离开需要韩立与女子合力，缺一人无法生离。",
+      "evidence_ids": [
+        "evidence:chunk-0212:011",
+        "evidence:chunk-0212:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        481275,
+        481308
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          481275,
+          481308
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0212:formation:001",
+      "node_type": "formation",
+      "label": "离开此地的禁制",
+      "aliases": [
+        "破禁"
+      ],
+      "fact_summary": "当前 chunk 明示离开这里需要破禁，且必须韩立与女子二人合力；禁制具体结构未说明。",
+      "evidence_ids": [
+        "evidence:chunk-0212:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        481567,
+        481722
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          481567,
+          481722
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0212:001",
+      "edge_type": "threatens",
+      "source": "node:chunk-0212:character:002",
+      "target": "node:chunk-0212:character:001",
+      "fact_summary": "绝色女子威胁韩立不得让第三人知道当天发生的事。",
+      "evidence_ids": [
+        "evidence:chunk-0212:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        479983,
+        480063
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          479983,
+          480063
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0212:002",
+      "edge_type": "has_relationship_state",
+      "source": "node:chunk-0212:character:001",
+      "target": "node:chunk-0212:character:002",
+      "fact_summary": "二人发生亲密关系后，女子要求视作错误和梦，韩立则产生一定好感但仍保持防备。",
+      "evidence_ids": [
+        "evidence:chunk-0212:002",
+        "evidence:chunk-0212:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        479893,
+        479950
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          479893,
+          479950
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0212:003",
+      "edge_type": "component_of",
+      "source": "node:chunk-0212:material:001",
+      "target": "node:chunk-0212:beast:001",
+      "fact_summary": "女子说明淫囊袋来自少见雄蛟墨蛟。",
+      "evidence_ids": [
+        "evidence:chunk-0212:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        480531,
+        480598
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          480531,
+          480598
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0212:004",
+      "edge_type": "contains_material",
+      "source": "node:chunk-0212:material:001",
+      "target": "node:chunk-0212:material:002",
+      "fact_summary": "墨蛟淫囊袋中含催情雾气。",
+      "evidence_ids": [
+        "evidence:chunk-0212:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        480531,
+        480598
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          480531,
+          480598
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0212:005",
+      "edge_type": "practices",
+      "source": "node:chunk-0212:character:002",
+      "target": "node:chunk-0212:cultivation_method:001",
+      "fact_summary": "女子自述修炼独门功法素女轮回功。",
+      "evidence_ids": [
+        "evidence:chunk-0212:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        480693,
+        480791
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          480693,
+          480791
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0212:006",
+      "edge_type": "member_of",
+      "source": "node:chunk-0212:character:001",
+      "target": "node:chunk-0212:faction:001",
+      "fact_summary": "女子内心确认韩立是黄枫谷弟子。",
+      "evidence_ids": [
+        "evidence:chunk-0212:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        480982,
+        481024
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          480982,
+          481024
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0212:007",
+      "edge_type": "stored_in",
+      "source": "node:chunk-0212:tool:001",
+      "target": "node:chunk-0212:tool:002",
+      "fact_summary": "女子将金色宝箱收入储物袋。",
+      "evidence_ids": [
+        "evidence:chunk-0212:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        481434,
+        481487
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          481434,
+          481487
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0212:008",
+      "edge_type": "located_at",
+      "source": "node:chunk-0212:tool:001",
+      "target": "node:chunk-0212:facility:001",
+      "fact_summary": "金色宝箱在白玉亭处，被女子飞去取走。",
+      "evidence_ids": [
+        "evidence:chunk-0212:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        481434,
+        481487
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          481434,
+          481487
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0212:009",
+      "edge_type": "allocated_to",
+      "source": "node:chunk-0212:material:003",
+      "target": "node:chunk-0212:character:001",
+      "fact_summary": "女子允许韩立采走灵药，韩立随后收起数十株。",
+      "evidence_ids": [
+        "evidence:chunk-0212:014",
+        "evidence:chunk-0212:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        481525,
+        481545
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          481525,
+          481545
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0212:010",
+      "edge_type": "requires_cooperation",
+      "source": "node:chunk-0212:formation:001",
+      "target": "node:chunk-0212:character:001",
+      "fact_summary": "破禁离开需要韩立参与，缺一人无法生离。",
+      "evidence_ids": [
+        "evidence:chunk-0212:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        481567,
+        481722
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          481567,
+          481722
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0212:011",
+      "edge_type": "requires_cooperation",
+      "source": "node:chunk-0212:formation:001",
+      "target": "node:chunk-0212:character:002",
+      "fact_summary": "破禁离开需要女子参与，缺一人无法生离。",
+      "evidence_ids": [
+        "evidence:chunk-0212:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        481567,
+        481722
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          481567,
+          481722
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0212:001",
+      "event_type": "relationship_event",
+      "label": "韩立与绝色女子醒后约定保密",
+      "fact_summary": "韩立与女子醒来后，女子把二人之间发生的事定义为错误并要求保密，韩立承诺守口如瓶。",
+      "participants": [
+        "node:chunk-0212:character:001",
+        "node:chunk-0212:character:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0212:001",
+        "evidence:chunk-0212:002",
+        "evidence:chunk-0212:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        479893,
+        479950
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          479893,
+          479950
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0212:002",
+      "event_type": "explanation_event",
+      "label": "女子解释墨蛟淫囊袋",
+      "fact_summary": "韩立询问红色圆球来历后，女子解释那是少见雄蛟的淫囊袋，含催情雾气，二人只昏迷五六个时辰。",
+      "participants": [
+        "node:chunk-0212:character:001",
+        "node:chunk-0212:character:002",
+        "node:chunk-0212:beast:001",
+        "node:chunk-0212:material:001",
+        "node:chunk-0212:material:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0212:006",
+        "evidence:chunk-0212:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        480531,
+        480598
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          480531,
+          480598
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0212:003",
+      "event_type": "explanation_event",
+      "label": "女子说明素女轮回功受损",
+      "fact_summary": "女子说明自己修炼素女轮回功，功法轮回会使人变幼；此次事件使功法暂时破损、外貌变大并损失五六年法力。",
+      "participants": [
+        "node:chunk-0212:character:002",
+        "node:chunk-0212:cultivation_method:001",
+        "node:chunk-0212:realm:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0212:004",
+        "evidence:chunk-0212:007",
+        "evidence:chunk-0212:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        480693,
+        480791
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          480693,
+          480791
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0212:004",
+      "event_type": "resource_event",
+      "label": "女子取走金色宝箱",
+      "fact_summary": "女子在离开前声明要取走金色宝箱，随后飞向白玉亭并将金箱收入储物袋。",
+      "participants": [
+        "node:chunk-0212:character:002",
+        "node:chunk-0212:character:001",
+        "node:chunk-0212:tool:001",
+        "node:chunk-0212:facility:001",
+        "node:chunk-0212:tool:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0212:012",
+        "evidence:chunk-0212:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        481434,
+        481487
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          481434,
+          481487
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0212:005",
+      "event_type": "resource_event",
+      "label": "韩立采走数十株灵药",
+      "fact_summary": "女子表示不需要灵药并允许韩立采走；韩立因担心出禁地后上交本门灵药不足，收起数十株灵药。",
+      "participants": [
+        "node:chunk-0212:character:002",
+        "node:chunk-0212:character:001",
+        "node:chunk-0212:material:003",
+        "node:chunk-0212:location:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0212:014",
+        "evidence:chunk-0212:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        481567,
+        481722
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          481567,
+          481722
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0212:006",
+      "event_type": "escape_planning_event",
+      "label": "二人准备合力破禁离开",
+      "fact_summary": "女子判断绝地不好出去，并在韩立采药后说明破禁离开必须二人合力，缺一人无法生离。",
+      "participants": [
+        "node:chunk-0212:character:002",
+        "node:chunk-0212:character:001",
+        "node:chunk-0212:location:001",
+        "node:chunk-0212:formation:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0212:011",
+        "evidence:chunk-0212:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        481567,
+        481722
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          481567,
+          481722
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0212:001",
+      "chunk_id": "chunk-0212",
+      "source_range": [
+        478792,
+        478849
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          478792,
+          478849
+        ]
+      },
+      "excerpt": "韩立不知过了多久，终于从艳梦中苏醒了过来。\n　　可当他一睁眼时，看到的就是一张艳丽无匹的娇容和一双冰寒似雪的双眸。",
+      "fact_summary": "韩立从艳梦中醒来，看到一名艳丽女子以冰寒目光面对自己。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0212:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0212:002",
+      "chunk_id": "chunk-0212",
+      "source_range": [
+        479893,
+        479950
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          479893,
+          479950
+        ]
+      },
+      "excerpt": "“我是什么人，想必你也很清楚！我们之间发生的事，只是一场错误而已！就当作一场梦罢了！”女子轻挽下秀发，淡淡的说道。",
+      "fact_summary": "女子要求把二人之间发生的事视为错误和梦，不建立公开关系。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0212:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0212:003",
+      "chunk_id": "chunk-0212",
+      "source_range": [
+        479983,
+        480063
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          479983,
+          480063
+        ]
+      },
+      "excerpt": "“今天发生的事，如果让第三个人知道，我就杀了你！”绝色女子忽然又冷言道。\n　　“我会守口如瓶，若是外面有流言传出，你尽管杀我就是了！”韩立淡笑了一下，柔声说道。",
+      "fact_summary": "女子威胁韩立不得外泄，韩立承诺守口如瓶并承担流言后果。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0212:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0212:004",
+      "chunk_id": "chunk-0212",
+      "source_range": [
+        480156,
+        480240
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          480156,
+          480240
+        ]
+      },
+      "excerpt": "女子虽然是结丹期修士，但是她从小就一直在修行中度过，对这男女之事，实在和普通的少女没什么两样，所以虽然下意识的逼韩立不得外泄此事，但内心还是心烦意乱，不知如何面对此事。",
+      "fact_summary": "女子虽是结丹期修士，但因长期修行而不知如何面对男女之事，内心心烦意乱。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0212:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0212:005",
+      "chunk_id": "chunk-0212",
+      "source_range": [
+        480359,
+        480424
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          480359,
+          480424
+        ]
+      },
+      "excerpt": "不过不管怎样，韩立已看出女子总算没有产生杀人灭口的歹毒念头，这让他松了一口气，对这位和自己有了夫妻之实的大美女，滋生了不少的好感。",
+      "fact_summary": "韩立判断女子没有杀人灭口念头，因此松了一口气并对她产生好感。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0212:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0212:006",
+      "chunk_id": "chunk-0212",
+      "source_range": [
+        480531,
+        480598
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          480531,
+          480598
+        ]
+      },
+      "excerpt": "那个是墨蛟的淫囊袋，没想到这畜生竟是个很少见的雄蛟，而我一时疏忽竟然忘了此事！这个囊袋中都是催情雾气，一接触任何雌性都会立即喷发出来。",
+      "fact_summary": "女子解释红色圆球实际是墨蛟淫囊袋，内含催情雾气，接触雌性会喷发。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0212:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0212:007",
+      "chunk_id": "chunk-0212",
+      "source_range": [
+        480693,
+        480791
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          480693,
+          480791
+        ]
+      },
+      "excerpt": "我练的是独门功法素女轮回功。此功法虽然奇妙，并且能让人春颜永驻，但每隔数十年此功法就会轮回一次。法力轮回了，人自然就变回了年幼时的模样。但我和你出了那样的事后，功法暂时被破掉了一些，人就变大了点！",
+      "fact_summary": "女子解释自己修炼素女轮回功；该功法可春颜永驻、每隔数十年轮回，法力轮回会使人变幼，而这次事件使功法暂时破掉一些并令外貌变大。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0212:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0212:008",
+      "chunk_id": "chunk-0212",
+      "source_range": [
+        480855,
+        480896
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          480855,
+          480896
+        ]
+      },
+      "excerpt": "我的功法已经大成，即使破了处女之身，也只是损失五六年的法力而已，对我来说不算什么！",
+      "fact_summary": "女子说明素女轮回功已大成，本次破身只损失五六年法力。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0212:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0212:009",
+      "chunk_id": "chunk-0212",
+      "source_range": [
+        480982,
+        481024
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          480982,
+          481024
+        ]
+      },
+      "excerpt": "她刚才又偷偷打量了对方几眼，再次确定这位黄枫谷的弟子，无论相貌还是资质都实在普通之极",
+      "fact_summary": "女子内心确认韩立是黄枫谷弟子，并评价其相貌资质普通。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0212:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0212:010",
+      "chunk_id": "chunk-0212",
+      "source_range": [
+        481230,
+        481270
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          481230,
+          481270
+        ]
+      },
+      "excerpt": "不会过这么久。这墨蛟的催情气体，所含的迷药成分很少！我们顶多昏迷过去五六个时辰。",
+      "fact_summary": "女子判断墨蛟催情气体迷药成分少，二人最多昏迷五六个时辰。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0212:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0212:011",
+      "chunk_id": "chunk-0212",
+      "source_range": [
+        481275,
+        481308
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          481275,
+          481308
+        ]
+      },
+      "excerpt": "但是如果要出去的话，我们也要马上准备了，这绝地也不是那么好出去的。",
+      "fact_summary": "女子指出若要出去需马上准备，因为这个绝地不好离开。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0212:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0212:012",
+      "chunk_id": "chunk-0212",
+      "source_range": [
+        481325,
+        481350
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          481325,
+          481350
+        ]
+      },
+      "excerpt": "不过，在这之前，这金色宝箱我取走，你没什么意见吧！",
+      "fact_summary": "女子提出在离开前要取走金色宝箱。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0212:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0212:013",
+      "chunk_id": "chunk-0212",
+      "source_range": [
+        481434,
+        481487
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          481434,
+          481487
+        ]
+      },
+      "excerpt": "女子见韩立一句不吭，冷笑了一下，便纵身飞向了白玉亭，结果非常顺利的将金箱收进了储物袋，然后飞回了韩立身边。",
+      "fact_summary": "女子见韩立不反对，飞向白玉亭并顺利将金箱收入储物袋。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0212:013"
+    },
+    {
+      "evidence_id": "evidence:chunk-0212:014",
+      "chunk_id": "chunk-0212",
+      "source_range": [
+        481525,
+        481545
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          481525,
+          481545
+        ]
+      },
+      "excerpt": "我根本不需要，你若是喜欢，都采走就是了！",
+      "fact_summary": "女子表示自己不需要那些灵药，允许韩立都采走。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0212:014"
+    },
+    {
+      "evidence_id": "evidence:chunk-0212:015",
+      "chunk_id": "chunk-0212",
+      "source_range": [
+        481567,
+        481722
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          481567,
+          481722
+        ]
+      },
+      "excerpt": "韩立听了此话，心里大喜，他正为自己出了禁地后，没有多少能上交本门的灵药，怕引起他人的怀疑而发愁呢！就毫不客气的立即飞奔了过去，转眼间就将数十株灵药收了起来。\n　　女子站在原地冷眼观看韩立的行动，一言不发。等韩立采药回来后，才缓缓肃然道：“要破禁离开这里了，这件事必须我们二人合力才行，缺一人都无法生离此地……”",
+      "fact_summary": "韩立因担心禁地后上交灵药不足而收起数十株灵药；女子随后说明破禁离开必须二人合力，缺一人无法生离。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0212:015"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "相遇剧情与对话设计",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "功法术法神通",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "境界提升与功法分析",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "妖兽分析",
+      "requirement_id": "creature_deviant_practice_ecology",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "材料分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "法宝分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "秘境遗迹与机缘",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "建筑设施与场所功能",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "势力设定",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "动态事件与机会点",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0212:001",
+      "kind": "identity_missing",
+      "fact_summary": "绝色女子在当前 chunk 未给出姓名，只能按当前称呼记录，不应回填后文真实姓名。",
+      "evidence_ids": [
+        "evidence:chunk-0212:002",
+        "evidence:chunk-0212:007"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        479893,
+        479950
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          479893,
+          479950
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0212:002",
+      "kind": "place_identity_uncertain",
+      "fact_summary": "当前 chunk 称此处为绝地、禁地和这里，但未给出正式地点名称或禁制结构。",
+      "evidence_ids": [
+        "evidence:chunk-0212:011",
+        "evidence:chunk-0212:015"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        481275,
+        481308
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          481275,
+          481308
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0212:003",
+      "kind": "faction_reference_partial",
+      "fact_summary": "韩立被女子确认为黄枫谷弟子，但“本门”在采药语境中未直接点名为黄枫谷，不能把上交对象强行补全为黄枫谷以外的具体组织结构。",
+      "evidence_ids": [
+        "evidence:chunk-0212:009",
+        "evidence:chunk-0212:015"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        480982,
+        481024
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          480982,
+          481024
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0212:001",
+      "candidate": "给绝色女子补全姓名",
+      "reason": "当前 chunk 仅使用女子、佳人等称呼，没有明示姓名；按质量规则不得用外部知识补全。",
+      "evidence_ids": [
+        "evidence:chunk-0212:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        479893,
+        479950
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0212",
+        "source_path": "intermediate/chunks/chunk-0212.txt",
+        "source_range": [
+          479893,
+          479950
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

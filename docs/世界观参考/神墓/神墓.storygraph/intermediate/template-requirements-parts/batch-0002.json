@@ -1,0 +1,476 @@
+{
+  "producer": "template-requirements-analysis-agent",
+  "templates": [
+    {
+      "template_name": "人物关系与事件分析",
+      "template_file": "人物关系与事件分析模板.md",
+      "required_fields": [
+        "关系变化链",
+        "初始关系",
+        "变化节点（触发事件）",
+        "关系变化方向",
+        "是否公开",
+        "是否对称",
+        "关系终态",
+        "后续关系后果"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "关系变化链卡片"
+      ],
+      "required_case_patterns": [
+        "一对一关系变化链（如：师徒反目、道侣结成、血亲恩仇）",
+        "多人关系链（如：主角-师傅-同门好友、主角-道侣-对方宗门）",
+        "势力间关系变化链（同盟→背叛→敌对、附庸→吞并、联姻→世仇）",
+        "人妖/异族关系链（灵宠契约、坐骑驯化、跨族道侣、族群庇护）",
+        "个人关系扩展到势力关系链",
+        "公开↔秘密关系转换链",
+        "关系断裂/死亡终止链"
+      ],
+      "required_evidence_fields": [
+        "关系建立事件原文依据",
+        "关系变化触发事件原文依据",
+        "关系终态原文依据",
+        "是否公开/对称的原文支撑"
+      ],
+      "graph_node_mapping": [
+        "character",
+        "faction",
+        "beast",
+        "realm",
+        "location"
+      ],
+      "graph_event_mapping": [
+        "relationship_formation_event",
+        "relationship_change_event",
+        "relationship_termination_event",
+        "betrayal_event",
+        "alliance_event",
+        "marriage_event",
+        "apprenticeship_event",
+        "rescue_event",
+        "gift_event",
+        "transmission_event",
+        "revenge_event",
+        "humiliation_event",
+        "killing_event",
+        "joint_exploration_event",
+        "war_event",
+        "bounty_event",
+        "escort_event",
+        "treasure_seizure_event",
+        "secret_sharing_event"
+      ],
+      "graph_relation_mapping": [
+        "master_disciple",
+        "dao_companion",
+        "blood_kin",
+        "same_sect",
+        "friend",
+        "ally",
+        "rival",
+        "nemesis",
+        "benefactor",
+        "enemy",
+        "master_servant",
+        "superior_subordinate",
+        "creditor_debtor",
+        "savior_saved",
+        "bestower_recipient",
+        "spirit_pet_owner",
+        "mount_owner",
+        "contract_beast_owner",
+        "beast_tribe_enmity",
+        "cross_species_dao_companion",
+        "tribe_protector",
+        "vassal_suzerain",
+        "trade_partner",
+        "generational_enmity",
+        "marriage_alliance",
+        "co_belligerent",
+        "infiltrator",
+        "swallowed",
+        "surrendered",
+        "sect_protector",
+        "sect_implicated"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": ["covered", "needs_review", "not_found_in_source"]
+      }
+    },
+    {
+      "template_name": "信息传播与情报",
+      "template_file": "信息传播与情报模板.md",
+      "required_fields": [
+        "信息类型",
+        "信息来源",
+        "传播渠道",
+        "知晓范围",
+        "可信度与误差",
+        "角色反应",
+        "后续影响"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "情报传播案例卡片"
+      ],
+      "required_case_patterns": [
+        "秘境开启消息传播链",
+        "宝物或身家暴露信息链",
+        "通缉令/悬赏消息扩散链",
+        "假消息与误判设局链",
+        "身份伪装信息差链",
+        "迟到/被截断消息链",
+        "封锁消息与信息不对称链",
+        "情报贩/商会信息交易链"
+      ],
+      "required_evidence_fields": [
+        "信息来源的原文依据",
+        "传播渠道的原文依据",
+        "知晓范围的原文依据（谁知道、谁不知道、谁只知道一部分、谁误判）",
+        "可信度状态的原文依据",
+        "角色反应行为的原文依据",
+        "后续影响的原文依据"
+      ],
+      "graph_node_mapping": [
+        "character",
+        "faction",
+        "location",
+        "event",
+        "facility",
+        "secret_realm",
+        "opportunity"
+      ],
+      "graph_event_mapping": [
+        "information_origin_event",
+        "information_dissemination_event",
+        "information_interception_event",
+        "disinformation_plant_event",
+        "bounty_issuance_event",
+        "treasure_exposure_event",
+        "secret_realm_opening_event",
+        "identity_exposure_event",
+        "auction_announcement_event",
+        "rumor_spread_event",
+        "intelligence_trade_event"
+      ],
+      "graph_relation_mapping": [
+        "knows_about",
+        "informs",
+        "deceives",
+        "hides_from",
+        "overhears",
+        "scouts",
+        "divines_about",
+        "tracks",
+        "soul_searches",
+        "interrogates",
+        "spreads_to",
+        "blocks_information_from",
+        "misjudges",
+        "witnesses"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": ["covered", "needs_review", "not_found_in_source"]
+      }
+    },
+    {
+      "template_name": "修炼流派",
+      "template_file": "修炼流派模板.md",
+      "required_fields": [
+        "流派名称与类型",
+        "核心目标与价值取向",
+        "代表角色",
+        "适用境界",
+        "形成条件",
+        "资源偏好",
+        "资源获取方式",
+        "风险偏好",
+        "典型行动链",
+        "突破瓶颈方式",
+        "社交策略",
+        "优势",
+        "代价与限制",
+        "变成邪修的原因",
+        "失败后果",
+        "成功样本",
+        "失败样本",
+        "后续影响"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "修炼流派卡片"
+      ],
+      "required_case_patterns": [
+        "谨慎长生流/苟道修炼路线",
+        "夺宝冒险流/机缘争夺路线",
+        "宗门权力流/职位资源路线",
+        "传承护道流/师承守护路线",
+        "职业副业流（炼丹资源流/炼器谋生流/阵法破禁流/御兽资源流）",
+        "邪道速成流/掠夺修炼路线/血修吞噬流",
+        "复仇执念流/仇怨驱动修炼路线",
+        "守护亲友流/情义驱动修炼路线"
+      ],
+      "required_evidence_fields": [
+        "流派形成的原文事件依据",
+        "代表角色行为模式的原文依据",
+        "资源偏好的原文依据",
+        "风险偏好的原文依据",
+        "典型行动链的原文案例支撑",
+        "转向邪修原因的原文因果链",
+        "成功/失败样本的原文支撑"
+      ],
+      "graph_node_mapping": [
+        "character",
+        "faction",
+        "realm",
+        "cultivation_method",
+        "technique",
+        "pill",
+        "medicine",
+        "material",
+        "artifact",
+        "weapon",
+        "formation",
+        "beast",
+        "secret_realm",
+        "opportunity"
+      ],
+      "graph_event_mapping": [
+        "cultivation_breakthrough_event",
+        "resource_acquisition_event",
+        "treasure_seizure_event",
+        "betrayal_event",
+        "revenge_event",
+        "faction_join_event",
+        "faction_defection_event",
+        "master_disciple_formation_event",
+        "secret_realm_exploration_event",
+        "turn_to_evil_event",
+        "death_event",
+        "blood_sacrifice_event",
+        "auction_event",
+        "trade_event"
+      ],
+      "graph_relation_mapping": [
+        "follows_cultivation_path",
+        "belongs_to_faction",
+        "cultivates_method",
+        "masters_technique",
+        "prefers_resource_type",
+        "has_risk_profile",
+        "breaks_through_via",
+        "turned_evil_due_to",
+        "protects",
+        "seeks_revenge_against",
+        "inherits_from",
+        "teaches_to"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": ["covered", "needs_review", "not_found_in_source"]
+      }
+    },
+    {
+      "template_name": "冲突事件分析",
+      "template_file": "冲突事件分析模板.md",
+      "required_fields": [
+        "冲突类型",
+        "触发原因",
+        "参与者与旁观者",
+        "因果阶段（预兆、信息扩散、试探与控制、爆发与升级、结算与撤退、余波）",
+        "关系与资源变化",
+        "消息传播与通缉后果",
+        "整个流程",
+        "后续影响"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "冲突事件链卡片"
+      ],
+      "required_case_patterns": [
+        "资源冲突/夺宝事件链",
+        "个人冲突/师徒控制/生存压力事件链",
+        "秘境冲突事件链",
+        "宗门战争/势力对抗事件链",
+        "正邪冲突事件链",
+        "复仇事件链",
+        "内部斗争/权力争夺事件链",
+        "通缉追杀事件链",
+        "误判引发冲突事件链",
+        "偶遇后长期牵连关系事件链",
+        "逃亡追杀事件链"
+      ],
+      "required_evidence_fields": [
+        "冲突类型的原文依据",
+        "触发原因的原文因果链",
+        "参与者与旁观者身份的原文支撑",
+        "各因果阶段的原文依据",
+        "关系变化的原文依据",
+        "资源变化的原文依据",
+        "消息传播与通缉的原文依据",
+        "后续影响的原文依据"
+      ],
+      "graph_node_mapping": [
+        "character",
+        "faction",
+        "location",
+        "facility",
+        "secret_realm",
+        "event",
+        "conflict",
+        "opportunity",
+        "artifact",
+        "weapon",
+        "pill",
+        "medicine",
+        "material",
+        "technique",
+        "cultivation_method",
+        "beast",
+        "realm"
+      ],
+      "graph_event_mapping": [
+        "conflict_event",
+        "resource_dispute_event",
+        "killing_event",
+        "treasure_seizure_event",
+        "ambush_event",
+        "war_event",
+        "duel_event",
+        "bounty_hunt_event",
+        "escape_event",
+        "betrayal_event",
+        "revenge_event",
+        "power_struggle_event",
+        "sect_war_event",
+        "secret_realm_conflict_event",
+        "misjudgment_conflict_event",
+        "identity_exposure_event",
+        "master_disciple_conflict_event"
+      ],
+      "graph_relation_mapping": [
+        "participates_in_conflict",
+        "opposes_in_conflict",
+        "allies_in_conflict",
+        "observes_conflict",
+        "triggers_conflict",
+        "escalates_conflict",
+        "resolves_conflict",
+        "suffers_in_conflict",
+        "benefits_from_conflict",
+        "is_collateral_in_conflict",
+        "issues_bounty_against",
+        "hunts_target",
+        "flees_from",
+        "betrays_in_conflict",
+        "seeks_revenge_in_conflict"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": ["covered", "needs_review", "not_found_in_source"]
+      }
+    },
+    {
+      "template_name": "功法术法神通",
+      "template_file": "功法术法神通模板.md",
+      "required_fields": [
+        "名称",
+        "类别",
+        "属性分类",
+        "稀有度",
+        "功效",
+        "特殊功效",
+        "用途",
+        "修炼前置条件",
+        "总层数/阶段",
+        "每层效果",
+        "载体/传承方式",
+        "来源",
+        "限制/副作用",
+        "适用境界"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "功法术法神通卡片"
+      ],
+      "required_case_patterns": [
+        "修炼心法（基础吐纳法、宗门核心心法等）",
+        "攻击术法（各属性攻击、剑诀、刀法等）",
+        "防御术法（护体、护盾、结界等）",
+        "身法遁术（飞行、瞬移、遁地等）",
+        "神识秘术（探查、攻击、搜魂等）",
+        "炼体法（金刚不坏、肉身成圣等）",
+        "御兽术（契约、驯化、控制等）",
+        "傀儡术（机关操控、尸傀、远程等）",
+        "控虫术（虫群、毒虫等）",
+        "毒功（用毒、炼毒、抗毒等）",
+        "采补术（炉鼎、阴阳等）",
+        "夺舍法（神魂转移、借体重生等）",
+        "封印法（禁制、镇压、封印等）",
+        "禁术（逆天七魔刀等禁忌秘术）",
+        "占卜推演法（天机、预言等）"
+      ],
+      "required_evidence_fields": [
+        "功法名称的原文依据",
+        "类别与属性的原文依据",
+        "稀有度的原文描述依据",
+        "功效与特殊功效的原文依据",
+        "修炼前置条件的原文依据",
+        "层数/阶段与每层效果的原文依据",
+        "载体/传承方式的原文依据",
+        "来源的原文依据",
+        "限制/副作用的原文依据",
+        "适用境界的原文依据"
+      ],
+      "graph_node_mapping": [
+        "technique",
+        "cultivation_method",
+        "realm",
+        "character",
+        "faction",
+        "artifact",
+        "pill",
+        "medicine",
+        "material",
+        "formula",
+        "weapon",
+        "formation",
+        "inscription",
+        "beast",
+        "location",
+        "secret_realm"
+      ],
+      "graph_event_mapping": [
+        "technique_acquisition_event",
+        "technique_transmission_event",
+        "technique_creation_event",
+        "technique_cultivation_event",
+        "technique_breakthrough_event",
+        "technique_backlash_event",
+        "forbidden_technique_usage_event",
+        "body_possession_event",
+        "sealing_event",
+        "divination_event"
+      ],
+      "graph_relation_mapping": [
+        "cultivates_technique",
+        "creates_technique",
+        "inherits_technique_from",
+        "teaches_technique_to",
+        "requires_material_for_technique",
+        "requires_artifact_for_technique",
+        "requires_pill_for_technique",
+        "requires_realm_for_technique",
+        "technique_derives_from_method",
+        "technique_counters_technique",
+        "technique_combines_with_technique",
+        "technique_sealed_by",
+        "technique_stored_in",
+        "technique_obtained_from"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": ["covered", "needs_review", "not_found_in_source"]
+      }
+    }
+  ],
+  "template_count": 5
+}

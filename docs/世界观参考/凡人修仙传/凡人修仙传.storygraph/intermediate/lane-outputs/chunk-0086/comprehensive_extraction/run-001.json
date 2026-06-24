@@ -1,0 +1,2562 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0086:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0086",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T14:45:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0086:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立使用罗烟步和御风诀杀敌，随后与厉飞雨混入攻山人群，并判断应进入主殿会合后撤离。",
+      "evidence_ids": [
+        "evidence:chunk-0086:001",
+        "evidence:chunk-0086:003",
+        "evidence:chunk-0086:007",
+        "evidence:chunk-0086:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        168264,
+        169272
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168264,
+          169272
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0086:character:002",
+      "node_type": "character",
+      "label": "厉飞雨",
+      "aliases": [],
+      "fact_summary": "厉飞雨误判韩立实力来自眨眼剑法，因担心张袖儿而打晕王门主亲信胖子，并与韩立混入落日峰。",
+      "evidence_ids": [
+        "evidence:chunk-0086:002",
+        "evidence:chunk-0086:006",
+        "evidence:chunk-0086:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        168344,
+        169083
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168344,
+          169083
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0086:technique:001",
+      "node_type": "technique",
+      "label": "罗烟步",
+      "aliases": [],
+      "fact_summary": "罗烟步被韩立用于短瞬间杀光断水门弟子。",
+      "evidence_ids": [
+        "evidence:chunk-0086:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        168264,
+        168305
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168264,
+          168305
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0086:technique:002",
+      "node_type": "technique",
+      "label": "御风诀",
+      "aliases": [],
+      "fact_summary": "御风诀被韩立与罗烟步同时使用，用于迅速杀光敌人。",
+      "evidence_ids": [
+        "evidence:chunk-0086:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        168264,
+        168305
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168264,
+          168305
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0086:technique:003",
+      "node_type": "technique",
+      "label": "眨眼剑法",
+      "aliases": [],
+      "fact_summary": "厉飞雨误以为韩立惊人身手全因修炼眨眼剑法而来。",
+      "evidence_ids": [
+        "evidence:chunk-0086:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        168344,
+        168378
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168344,
+          168378
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0086:character:003",
+      "node_type": "character",
+      "label": "马荣",
+      "aliases": [],
+      "fact_summary": "马荣在李长老住处向韩立和厉飞雨传达李长老与张袖儿已上落日峰的消息。",
+      "evidence_ids": [
+        "evidence:chunk-0086:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        168638,
+        168683
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168638,
+          168683
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0086:character:004",
+      "node_type": "character",
+      "label": "李长老",
+      "aliases": [],
+      "fact_summary": "李长老已上落日峰，该消息由马荣告知韩立和厉飞雨。",
+      "evidence_ids": [
+        "evidence:chunk-0086:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        168638,
+        168683
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168638,
+          168683
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0086:character:005",
+      "node_type": "character",
+      "label": "张袖儿",
+      "aliases": [],
+      "fact_summary": "张袖儿已上落日峰；厉飞雨担心她的安危并因此打晕阻拦者。",
+      "evidence_ids": [
+        "evidence:chunk-0086:004",
+        "evidence:chunk-0086:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        168638,
+        168928
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168638,
+          168928
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0086:character:006",
+      "node_type": "character",
+      "label": "王门主的亲信胖子",
+      "aliases": [
+        "胖子"
+      ],
+      "fact_summary": "王门主的亲信胖子用令牌和门规威胁韩立、厉飞雨留下，随后被厉飞雨打晕。",
+      "evidence_ids": [
+        "evidence:chunk-0086:005",
+        "evidence:chunk-0086:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        168811,
+        168928
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168811,
+          168928
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0086:faction:001",
+      "node_type": "faction",
+      "label": "断水门",
+      "aliases": [],
+      "fact_summary": "断水门弟子被韩立和厉飞雨打晕并被换走衣服，用于混入攻山人群。",
+      "evidence_ids": [
+        "evidence:chunk-0086:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        169022,
+        169083
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169022,
+          169083
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0086:location:001",
+      "node_type": "location",
+      "label": "落日峰",
+      "aliases": [],
+      "fact_summary": "韩立和厉飞雨混入攻山人群来到落日峰；随后山峰发生剧烈颤动。",
+      "evidence_ids": [
+        "evidence:chunk-0086:007",
+        "evidence:chunk-0086:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        169022,
+        169464
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169022,
+          169464
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0086:character:007",
+      "node_type": "character",
+      "label": "曲魂",
+      "aliases": [],
+      "fact_summary": "曲魂因身形过于引人注意，被安排留在山下隐秘处。",
+      "evidence_ids": [
+        "evidence:chunk-0086:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        169101,
+        169134
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169101,
+          169134
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0086:facility:001",
+      "node_type": "facility",
+      "label": "主殿",
+      "aliases": [],
+      "fact_summary": "韩立提出最重要的是进入主殿与张袖儿会合，再悄悄下山。",
+      "evidence_ids": [
+        "evidence:chunk-0086:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        169201,
+        169272
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169201,
+          169272
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0086:facility:002",
+      "node_type": "facility",
+      "label": "石殿",
+      "aliases": [],
+      "fact_summary": "众人关注的石殿在机关演示后消失，只留下数亩大小的大洞。",
+      "evidence_ids": [
+        "evidence:chunk-0086:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        169975,
+        170016
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169975,
+          170016
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0086:location:002",
+      "node_type": "location",
+      "label": "惊人大洞",
+      "aliases": [],
+      "fact_summary": "石殿消失后，原地留下数亩大小、深不可测的惊人大洞。",
+      "evidence_ids": [
+        "evidence:chunk-0086:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        169975,
+        170016
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169975,
+          170016
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0086:character:008",
+      "node_type": "character",
+      "label": "贾天龙",
+      "aliases": [],
+      "fact_summary": "贾天龙见机关演示与己方恐慌后，判断无法全歼七玄门，转而向王绝楚谈条件。",
+      "evidence_ids": [
+        "evidence:chunk-0086:013",
+        "evidence:chunk-0086:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        170225,
+        170320
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          170225,
+          170320
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0086:character:009",
+      "node_type": "character",
+      "label": "王绝楚",
+      "aliases": [],
+      "fact_summary": "王绝楚的机关演示使贾天龙转入谈判；本 chunk 中贾天龙向他询问条件。",
+      "evidence_ids": [
+        "evidence:chunk-0086:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        170268,
+        170320
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          170268,
+          170320
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0086:faction:002",
+      "node_type": "faction",
+      "label": "七玄门",
+      "aliases": [],
+      "fact_summary": "贾天龙意识到当晚一举全歼七玄门的目的无法完成。",
+      "evidence_ids": [
+        "evidence:chunk-0086:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        170225,
+        170265
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          170225,
+          170265
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0086:faction:003",
+      "node_type": "faction",
+      "label": "野狼帮",
+      "aliases": [],
+      "fact_summary": "文本显示野狼帮人员处在落日峰对峙现场，但本 chunk 对其组织结构未展开。",
+      "evidence_ids": [
+        "evidence:chunk-0086:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        170225,
+        170265
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          170225,
+          170265
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0086:001",
+      "edge_type": "uses_technique",
+      "source": "node:chunk-0086:character:001",
+      "target": "node:chunk-0086:technique:001",
+      "fact_summary": "韩立使用罗烟步杀光敌人。",
+      "evidence_ids": [
+        "evidence:chunk-0086:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        168264,
+        168305
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168264,
+          168305
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0086:002",
+      "edge_type": "uses_technique",
+      "source": "node:chunk-0086:character:001",
+      "target": "node:chunk-0086:technique:002",
+      "fact_summary": "韩立使用御风诀杀光敌人。",
+      "evidence_ids": [
+        "evidence:chunk-0086:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        168264,
+        168305
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168264,
+          168305
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0086:003",
+      "edge_type": "mistakenly_attributes_ability_to",
+      "source": "node:chunk-0086:character:002",
+      "target": "node:chunk-0086:technique:003",
+      "fact_summary": "厉飞雨误以为韩立惊人身手全由眨眼剑法造成。",
+      "evidence_ids": [
+        "evidence:chunk-0086:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        168344,
+        168378
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168344,
+          168378
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0086:004",
+      "edge_type": "informs",
+      "source": "node:chunk-0086:character:003",
+      "target": "node:chunk-0086:character:001",
+      "fact_summary": "马荣向韩立传达李长老和张袖儿已上落日峰的消息。",
+      "evidence_ids": [
+        "evidence:chunk-0086:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        168638,
+        168683
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168638,
+          168683
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0086:005",
+      "edge_type": "informs",
+      "source": "node:chunk-0086:character:003",
+      "target": "node:chunk-0086:character:002",
+      "fact_summary": "马荣向厉飞雨传达李长老和张袖儿已上落日峰的消息。",
+      "evidence_ids": [
+        "evidence:chunk-0086:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        168638,
+        168683
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168638,
+          168683
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0086:006",
+      "edge_type": "cares_about_safety_of",
+      "source": "node:chunk-0086:character:002",
+      "target": "node:chunk-0086:character:005",
+      "fact_summary": "厉飞雨一心挂念张袖儿安危，因而无视门规并打晕阻拦者。",
+      "evidence_ids": [
+        "evidence:chunk-0086:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        168871,
+        168928
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168871,
+          168928
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0086:007",
+      "edge_type": "knocks_out",
+      "source": "node:chunk-0086:character:002",
+      "target": "node:chunk-0086:character:006",
+      "fact_summary": "厉飞雨一掌把王门主亲信胖子打晕。",
+      "evidence_ids": [
+        "evidence:chunk-0086:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        168871,
+        168928
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168871,
+          168928
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0086:008",
+      "edge_type": "disguised_with_faction_clothing",
+      "source": "node:chunk-0086:character:001",
+      "target": "node:chunk-0086:faction:001",
+      "fact_summary": "韩立打晕断水门弟子并换上其衣服混入攻山人群。",
+      "evidence_ids": [
+        "evidence:chunk-0086:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        169022,
+        169083
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169022,
+          169083
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0086:009",
+      "edge_type": "disguised_with_faction_clothing",
+      "source": "node:chunk-0086:character:002",
+      "target": "node:chunk-0086:faction:001",
+      "fact_summary": "厉飞雨打晕断水门弟子并换上其衣服混入攻山人群。",
+      "evidence_ids": [
+        "evidence:chunk-0086:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        169022,
+        169083
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169022,
+          169083
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0086:010",
+      "edge_type": "stays_hidden_at",
+      "source": "node:chunk-0086:character:007",
+      "target": "node:chunk-0086:location:001",
+      "fact_summary": "曲魂因身形显眼被安排在落日峰山下隐秘处。",
+      "evidence_ids": [
+        "evidence:chunk-0086:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        169101,
+        169134
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169101,
+          169134
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0086:011",
+      "edge_type": "plans_to_enter",
+      "source": "node:chunk-0086:character:001",
+      "target": "node:chunk-0086:facility:001",
+      "fact_summary": "韩立计划尽快进入主殿与张袖儿会合后撤离。",
+      "evidence_ids": [
+        "evidence:chunk-0086:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        169201,
+        169272
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169201,
+          169272
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0086:012",
+      "edge_type": "collapses_into",
+      "source": "node:chunk-0086:facility:002",
+      "target": "node:chunk-0086:location:002",
+      "fact_summary": "机关演示后石殿消失，原地留下数亩大小深洞。",
+      "evidence_ids": [
+        "evidence:chunk-0086:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        169975,
+        170016
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169975,
+          170016
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0086:013",
+      "edge_type": "failed_to_annihilate",
+      "source": "node:chunk-0086:character:008",
+      "target": "node:chunk-0086:faction:002",
+      "fact_summary": "贾天龙意识到当晚全歼七玄门的目的无法完成。",
+      "evidence_ids": [
+        "evidence:chunk-0086:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        170225,
+        170265
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          170225,
+          170265
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0086:014",
+      "edge_type": "negotiates_with",
+      "source": "node:chunk-0086:character:008",
+      "target": "node:chunk-0086:character:009",
+      "fact_summary": "贾天龙向王绝楚表示可以提出条件，但要求不要太过分。",
+      "evidence_ids": [
+        "evidence:chunk-0086:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        170268,
+        170320
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          170268,
+          170320
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0086:001",
+      "event_type": "battle_event",
+      "label": "韩立使用罗烟步和御风诀杀敌",
+      "fact_summary": "韩立为防断水门弟子逃走惊敌，使用罗烟步和御风诀在短瞬间杀光敌人。",
+      "participants": [
+        "node:chunk-0086:character:001",
+        "node:chunk-0086:technique:001",
+        "node:chunk-0086:technique:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0086:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        168264,
+        168305
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168264,
+          168305
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0086:002",
+      "event_type": "misjudgment_event",
+      "label": "厉飞雨误判韩立身手来源",
+      "fact_summary": "厉飞雨以为韩立惊人身手全是修炼眨眼剑法所致，并产生改修念头。",
+      "participants": [
+        "node:chunk-0086:character:002",
+        "node:chunk-0086:character:001",
+        "node:chunk-0086:technique:003"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0086:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        168344,
+        168378
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168344,
+          168378
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0086:003",
+      "event_type": "information_event",
+      "label": "马荣告知落日峰消息",
+      "fact_summary": "韩立和厉飞雨在李长老住处见到马荣，并得知李长老和张袖儿已上落日峰。",
+      "participants": [
+        "node:chunk-0086:character:001",
+        "node:chunk-0086:character:002",
+        "node:chunk-0086:character:003",
+        "node:chunk-0086:character:004",
+        "node:chunk-0086:character:005",
+        "node:chunk-0086:location:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0086:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        168638,
+        168683
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168638,
+          168683
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0086:004",
+      "event_type": "conflict_event",
+      "label": "厉飞雨打晕王门主亲信胖子",
+      "fact_summary": "王门主亲信胖子以令牌和门规威胁二人留下，厉飞雨因挂念张袖儿安危将其打晕。",
+      "participants": [
+        "node:chunk-0086:character:002",
+        "node:chunk-0086:character:006",
+        "node:chunk-0086:character:005"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0086:005",
+        "evidence:chunk-0086:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        168811,
+        168928
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168811,
+          168928
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0086:005",
+      "event_type": "infiltration_event",
+      "label": "韩立和厉飞雨换装混入落日峰",
+      "fact_summary": "韩立和厉飞雨打晕两名断水门弟子、换上衣服，趁夜乱混进攻山人群来到落日峰，曲魂留在山下隐秘处。",
+      "participants": [
+        "node:chunk-0086:character:001",
+        "node:chunk-0086:character:002",
+        "node:chunk-0086:faction:001",
+        "node:chunk-0086:location:001",
+        "node:chunk-0086:character:007"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0086:007",
+        "evidence:chunk-0086:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        169022,
+        169134
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169022,
+          169134
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0086:006",
+      "event_type": "decision_event",
+      "label": "韩立提出进主殿会合后撤离",
+      "fact_summary": "韩立认为陷阱真假都不重要，优先进入主殿与张袖儿会合，再悄悄下山。",
+      "participants": [
+        "node:chunk-0086:character:001",
+        "node:chunk-0086:character:002",
+        "node:chunk-0086:character:005",
+        "node:chunk-0086:facility:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0086:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        169201,
+        169272
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169201,
+          169272
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0086:007",
+      "event_type": "mechanism_demonstration_event",
+      "label": "落日峰地动与石殿塌陷",
+      "fact_summary": "落日峰地面剧烈颤动、山石滚落并传来倒塌声，随后石殿消失并留下深不可测的大洞。",
+      "participants": [
+        "node:chunk-0086:location:001",
+        "node:chunk-0086:facility:002",
+        "node:chunk-0086:location:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0086:010",
+        "evidence:chunk-0086:011",
+        "evidence:chunk-0086:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界状态与灾变",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        169390,
+        170016
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169390,
+          170016
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0086:008",
+      "event_type": "turning_point_event",
+      "label": "贾天龙放弃当晚全歼七玄门",
+      "fact_summary": "机关演示后贾天龙判断当晚全歼七玄门已无法完成，只能先撤退再从长计议。",
+      "participants": [
+        "node:chunk-0086:character:008",
+        "node:chunk-0086:faction:002",
+        "node:chunk-0086:location:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0086:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        170225,
+        170265
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          170225,
+          170265
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0086:009",
+      "event_type": "negotiation_event",
+      "label": "贾天龙要求王绝楚提出条件",
+      "fact_summary": "贾天龙向王绝楚表示可以提出条件，同时强调局面只是平手。",
+      "participants": [
+        "node:chunk-0086:character:008",
+        "node:chunk-0086:character:009"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0086:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        170268,
+        170320
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          170268,
+          170320
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0086:001",
+      "chunk_id": "chunk-0086",
+      "source_range": [
+        168264,
+        168305
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168264,
+          168305
+        ]
+      },
+      "excerpt": "韩立不得不亲自出手，同时使用了罗烟步和御风诀，轻而易举的在短短瞬间就杀光了所有敌人",
+      "fact_summary": "韩立为防断水门弟子逃走惊敌，使用罗烟步和御风诀迅速杀光敌人。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0086:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0086:002",
+      "chunk_id": "chunk-0086",
+      "source_range": [
+        168344,
+        168378
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168344,
+          168378
+        ]
+      },
+      "excerpt": "醒过神来的厉飞雨，以为韩立能有如此惊人的身手，全是修炼眨眼剑法所致。",
+      "fact_summary": "厉飞雨误以为韩立惊人身手全由修炼眨眼剑法所致。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0086:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0086:003",
+      "chunk_id": "chunk-0086",
+      "source_range": [
+        168515,
+        168561
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168515,
+          168561
+        ]
+      },
+      "excerpt": "韩立则懒得理会这已变得酸气冲天的好友，而开始对路上所遇到的敌人痛下杀手，不再掩饰自己的实力。",
+      "fact_summary": "韩立不理会厉飞雨的酸意，在路上对敌人痛下杀手，不再掩饰实力。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0086:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0086:004",
+      "chunk_id": "chunk-0086",
+      "source_range": [
+        168638,
+        168683
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168638,
+          168683
+        ]
+      },
+      "excerpt": "二人轻松的到了李长老的住处，见到了马荣，并从他那里得知了李长老和张袖儿已经上落日峰的消息。",
+      "fact_summary": "韩立和厉飞雨到李长老住处见到马荣，并得知李长老和张袖儿已上落日峰。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0086:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0086:005",
+      "chunk_id": "chunk-0086",
+      "source_range": [
+        168811,
+        168868
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168811,
+          168868
+        ]
+      },
+      "excerpt": "那个王门主的亲信，令人厌恶的胖子，竟然在二人想离开之时，又拿出令牌来，以命令的口吻威胁二人留下，否则要以门规处理。",
+      "fact_summary": "王门主亲信胖子拿令牌威胁韩立和厉飞雨留下，否则按门规处理。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0086:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0086:006",
+      "chunk_id": "chunk-0086",
+      "source_range": [
+        168871,
+        168928
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168871,
+          168928
+        ]
+      },
+      "excerpt": "厉飞雨现在心急如焚，一心只挂念张袖儿的安危，那还顾得上什么门规不门规，伸手一掌就把这个啰哩啰嗦的胖子给打晕在了地上",
+      "fact_summary": "厉飞雨因挂念张袖儿安危，无视门规并一掌打晕胖子。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0086:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0086:007",
+      "chunk_id": "chunk-0086",
+      "source_range": [
+        169022,
+        169083
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169022,
+          169083
+        ]
+      },
+      "excerpt": "他们打晕了两名断水门的弟子，换上了他们的衣服，然后趁着天黑人乱之际，偷偷混在了攻山的人群中，随着人流就轻易的来到了落日峰上",
+      "fact_summary": "韩立和厉飞雨打晕两名断水门弟子、换上衣服，并趁乱混入攻山人群来到落日峰。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0086:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0086:008",
+      "chunk_id": "chunk-0086",
+      "source_range": [
+        169101,
+        169134
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169101,
+          169134
+        ]
+      },
+      "excerpt": "至于曲魂，因为身形过于引人注意，而被找了一处隐秘之处，留在了山下。",
+      "fact_summary": "曲魂因身形过于引人注意，被安排留在山下隐秘处。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0086:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0086:009",
+      "chunk_id": "chunk-0086",
+      "source_range": [
+        169201,
+        169272
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169201,
+          169272
+        ]
+      },
+      "excerpt": "“不要管这话是真还是假的，现在我们最重要的是快点进到主殿内，去和你的小情人会和，然后再悄悄的溜下山去。要知道，不论真假，留在此地都太危险了！”",
+      "fact_summary": "韩立判断落日峰陷阱真假不重要，优先进入主殿与张袖儿会合并悄悄下山。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0086:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0086:010",
+      "chunk_id": "chunk-0086",
+      "source_range": [
+        169390,
+        169464
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169390,
+          169464
+        ]
+      },
+      "excerpt": "脚底下的地面突然开始颤动起来，起初还是很轻微，但接着就剧烈起来，有许多的人都站立不住，纷纷跌倒在了地上，还有不少山石也随着山峰的颤动而滚落下了山峰。",
+      "fact_summary": "落日峰地面由轻微到剧烈颤动，众人跌倒且山石滚落。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界状态与灾变",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0086:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0086:011",
+      "chunk_id": "chunk-0086",
+      "source_range": [
+        169587,
+        169623
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169587,
+          169623
+        ]
+      },
+      "excerpt": "“轰隆隆！”一阵巨大的倒塌之声传了过来，地面也猛得更加剧烈的摇晃了一阵。",
+      "fact_summary": "巨大倒塌声传来，地面更加剧烈摇晃，使众人以为山峰开始崩溃。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界状态与灾变",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0086:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0086:012",
+      "chunk_id": "chunk-0086",
+      "source_range": [
+        169975,
+        170016
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169975,
+          170016
+        ]
+      },
+      "excerpt": "原来那座被人所关注的石殿，已消失得无影无踪，只在原地留下了一个数亩大小的惊人大洞。",
+      "fact_summary": "被关注的石殿消失，原地留下数亩大小、深不可测的大洞。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0086:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0086:013",
+      "chunk_id": "chunk-0086",
+      "source_range": [
+        170225,
+        170265
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          170225,
+          170265
+        ]
+      },
+      "excerpt": "今晚上想要一举全歼七玄门的目的，是无法完成了。看来只有先撤退，然后再从长计议了。",
+      "fact_summary": "贾天龙意识到当晚全歼七玄门的目的无法完成，只能先撤退再从长计议。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0086:013"
+    },
+    {
+      "evidence_id": "evidence:chunk-0086:014",
+      "chunk_id": "chunk-0086",
+      "source_range": [
+        170268,
+        170320
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          170268,
+          170320
+        ]
+      },
+      "excerpt": "“你有什么条件，可以提了。不过你也应该心里有数，即使这样，在场面上我们也只不过平手而已，不要太过分了！”",
+      "fact_summary": "贾天龙向王绝楚表示可提出条件，但强调局面只是平手，不要太过分。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0086:014"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "功法术法神通",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "战斗与保命机制",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "信息传播与情报",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "冲突事件分析",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "角色AI行为参考",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "建筑设施与场所功能",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0086:001",
+      "kind": "limited_perspective_misjudgment",
+      "fact_summary": "厉飞雨认为韩立身手全因眨眼剑法，但文本只说明这是厉飞雨的认知，不可写成客观机制。",
+      "evidence_ids": [
+        "evidence:chunk-0086:002"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        168344,
+        168378
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168344,
+          168378
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0086:002",
+      "kind": "faction_identity_boundary",
+      "fact_summary": "韩立和厉飞雨换上断水门弟子衣服混入攻山人群，本 chunk 不支持把二人写成断水门成员。",
+      "evidence_ids": [
+        "evidence:chunk-0086:007"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        169022,
+        169083
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169022,
+          169083
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0086:003",
+      "kind": "mechanism_scope_missing",
+      "fact_summary": "石殿塌陷与大洞证明王绝楚的机关威慑有效，但本 chunk 未说明二号机关的完整结构、触发链或是否真能塌掉整座落日峰。",
+      "evidence_ids": [
+        "evidence:chunk-0086:010",
+        "evidence:chunk-0086:011",
+        "evidence:chunk-0086:012"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        169390,
+        170016
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169390,
+          170016
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0086:001",
+      "candidate": "两名断水门弟子",
+      "reason": "这两人只作为被打晕换装的无名对象出现，没有独立决策或后续关系，使用断水门势力节点和潜入事件覆盖。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        169022,
+        169083
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169022,
+          169083
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0086:002",
+      "candidate": "令牌",
+      "reason": "令牌只作为胖子威胁二人留下的普通凭据出现，未给出专属名称、功能规则或归属变化，暂不建 tool 节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        168811,
+        168868
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          168811,
+          168868
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0086:003",
+      "candidate": "冒失鬼",
+      "reason": "惊慌人群中喊叫者没有姓名和独立剧情功能，其喊话作为恐慌场景细节保留，不建角色节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        169390,
+        169623
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0086",
+        "source_path": "intermediate/chunks/chunk-0086.txt",
+        "source_range": [
+          169390,
+          169623
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

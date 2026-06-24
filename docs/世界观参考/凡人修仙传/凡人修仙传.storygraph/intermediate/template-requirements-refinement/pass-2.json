@@ -1,0 +1,481 @@
+{
+  "schema_version": "storygraph.template-requirements-summary.v1",
+  "summary_passes": 3,
+  "source_template_count": 37,
+  "categories": [
+    {
+      "category_id": "character_relationship_perspective",
+      "category_name": "角色关系与叙事视角",
+      "purpose": "统一角色个体、关系网络、相遇对话、修炼历程、情绪记忆、行为模式和有限视角类模板的需求，要求所有角色判断由可定位事件、行动或叙事证据支撑。",
+      "required_extraction_targets": [
+        "抽取角色名称、别名、身份、境界、所属势力、活动地域、阶段状态和角色定位，并区分原文确认、角色认知和待复核推断。",
+        "抽取性格倾向、行为偏好、修炼阶段、记忆执念、情绪变化和 AI 行为参考点，并绑定触发事件、行动选择、代价和结果。",
+        "抽取师徒、亲友、交易、敌对、背叛、救援、追随、合作、相遇、对话等关系，并记录关系开始、变化、破裂或延续节点。",
+        "抽取有限视角、信息缺口、误判、旁人评价、传闻、台词和叙事日志的证据边界，避免把视角性判断直接写成客观事实。"
+      ],
+      "evidence_requirements": [
+        "每项角色判断必须有 source_range、chapter_hint、原文摘录或 evidence_id；证据需说明行动、动机、风险、代价、结果中哪些部分被原文直接支持。",
+        "性格变化、关系变化、修炼历程和情绪执念必须包含触发事件、变化前后差异、后续行为和后果；链条缺环时标为 needs_review。",
+        "台词、外貌、传闻和旁人评价只能作为辅助证据；没有行动事件或叙事确认时不得单独判定性格、忠诚、动机或关系性质。",
+        "身份、境界、内心动机、时间顺序、地点、结局或关系强度未被原文说明时标为 not_found_in_source，不用模板示例补齐。"
+      ],
+      "graph_mapping_summary": {
+        "primary_nodes": [
+          "Character",
+          "Faction",
+          "Location",
+          "Trait",
+          "Attribute",
+          "RelationshipState",
+          "Memory",
+          "NarrativePerspective"
+        ],
+        "primary_events": [
+          "DecisionEvent",
+          "EncounterEvent",
+          "DialogueEvent",
+          "TrainingEvent",
+          "ConflictEvent",
+          "ChangeEvent",
+          "RevelationEvent",
+          "ConsequenceEvent"
+        ],
+        "primary_relations": [
+          "Character HAS_TRAIT Trait",
+          "Character PARTICIPATED_IN Event",
+          "Character MEMBER_OF Faction",
+          "Character RELATION_CHANGED_WITH Character",
+          "Event CAUSED ChangeEvent",
+          "Event REVEALS NarrativePerspective"
+        ],
+        "mapping_notes": "以 Character、RelationshipState、Event 和 Evidence 闭合角色类内容；主观判断必须通过 supports_templates、confidence、verification_status 和 requirement_status 表示证据强度。"
+      },
+      "template_coverage": [
+        "NPC性格与代表事件",
+        "人物关系与事件分析",
+        "有限视角与叙事日志",
+        "相遇剧情与对话设计",
+        "角色AI行为参考",
+        "角色修炼历程",
+        "记忆情绪与执念"
+      ]
+    },
+    {
+      "category_id": "world_region_state_place",
+      "category_name": "世界区域、状态与场所",
+      "purpose": "统一世界结构、区域风貌、长期状态变化、灾变、建筑设施、秘境遗迹、机会空间和信息传播环境类模板的需求，强调空间层级、状态链和功能证据。",
+      "required_extraction_targets": [
+        "抽取界面层级、大区域、地点、相邻关系、连接方式、地形地貌、生态、人文、修仙痕迹、视觉关键词和区域功能。",
+        "抽取长期世界状态或灾变的起点、影响范围、扩散、应对、升级、压制、消退、恶化和后续影响。",
+        "抽取建筑设施、宗门山门、洞府、坊市、港口、遗迹、封印、秘境入口等场所的功能、权限、资源、风险和使用限制。",
+        "抽取情报来源、传播路径、封锁、误传、验证方式、信息差和信息流对行动、局势或场所使用的影响。"
+      ],
+      "evidence_requirements": [
+        "区域和场所条目至少需要名称、上级区域或位置证据、环境或功能证据，以及 source_range 或 evidence_id。",
+        "世界状态与灾变必须有持续影响证据；只有单场事件、短期战斗或临时场景时不得归入长期状态。",
+        "秘境遗迹、建筑设施和信息传播条目需记录进入或触发条件、使用限制、收益风险、相关角色或势力，以及结果证据。",
+        "方位、持续时间、建筑样式、生态细节、人员伤亡、价格变化、传播链或恢复结果缺证时标为 not_found_in_source。"
+      ],
+      "graph_mapping_summary": {
+        "primary_nodes": [
+          "World",
+          "Realm",
+          "Region",
+          "Location",
+          "Structure",
+          "WorldState",
+          "EnvironmentFeature",
+          "InformationItem",
+          "Resource"
+        ],
+        "primary_events": [
+          "DiscoveryEvent",
+          "TravelEvent",
+          "StateOnsetEvent",
+          "EscalationEvent",
+          "ResponseEvent",
+          "ResolutionEvent",
+          "AftermathEvent",
+          "InformationSpreadEvent"
+        ],
+        "primary_relations": [
+          "Region PART_OF Realm",
+          "Region CONNECTED_TO Region",
+          "Structure LOCATED_IN Location",
+          "WorldState AFFECTS Location",
+          "InformationItem SPREAD_THROUGH Faction",
+          "Event CHANGES WorldState"
+        ],
+        "mapping_notes": "世界与场所内容按空间层级、状态变化链、设施功能链和信息流拆分；静态设定不得被剧情复述替代，状态变化必须落到 Event 与 WorldState 的可证关系。"
+      },
+      "template_coverage": [
+        "世界状态与灾变",
+        "世界观设定",
+        "信息传播与情报",
+        "建筑设施与场所功能",
+        "秘境遗迹与机缘"
+      ]
+    },
+    {
+      "category_id": "faction_society_economy_task",
+      "category_name": "势力社会、经济与任务",
+      "purpose": "统一势力结构、宗门任务、散修生存、坊市拍卖、物资产出消耗等社会运行类模板的需求，强调制度主体、资源流和任务结果闭合。",
+      "required_extraction_targets": [
+        "抽取宗门、家族、坊市、商会、王朝、散修群体等组织的名称、层级、地域、职能、资源、制度和对外关系。",
+        "抽取任务发布、接取、权限、目标、约束、奖励、惩罚、风险、执行流程和任务结果对角色或势力的影响。",
+        "抽取交易、拍卖、坊市规则、货币或等价物、价格波动、供需关系、物资流向、消耗场景和回收损耗。",
+        "抽取散修生存策略、资源获取、庇护关系、风险来源、社会流动路径和与制度势力的互动方式。"
+      ],
+      "evidence_requirements": [
+        "势力与经济条目需保留组织主体、地点、制度或交易规则、参与者、资源对象和 source_range。",
+        "任务体系需记录发布者、执行者、任务目标、准入条件、执行约束、奖励惩罚、结果和后续影响证据。",
+        "物资产出消耗需区分来源、加工、交易、消耗、回收或损耗；价格、数量、稀有度、产能不得用常识补写。",
+        "制度权限、价格区间、产出规模、交易规则或散修路径只有间接证据时标为 needs_review；无证时标为 not_found_in_source。"
+      ],
+      "graph_mapping_summary": {
+        "primary_nodes": [
+          "Faction",
+          "Organization",
+          "Market",
+          "Task",
+          "Resource",
+          "Item",
+          "Currency",
+          "Role",
+          "Location"
+        ],
+        "primary_events": [
+          "TaskIssuedEvent",
+          "TaskAcceptedEvent",
+          "TaskResolvedEvent",
+          "TradeEvent",
+          "AuctionEvent",
+          "ProductionEvent",
+          "ConsumptionEvent",
+          "PromotionEvent"
+        ],
+        "primary_relations": [
+          "Faction CONTROLS Location",
+          "Character MEMBER_OF Faction",
+          "Task ISSUED_BY Faction",
+          "Resource PRODUCED_IN Location",
+          "Item TRADED_AT Market",
+          "Event CHANGES Faction"
+        ],
+        "mapping_notes": "社会系统内容以制度主体、任务流、交易流和资源流组织；每条制度或经济判断必须能回连到规则说明或具体事件证据。"
+      },
+      "template_coverage": [
+        "势力设定",
+        "宗门任务体系",
+        "拍卖坊市与交易",
+        "散修生存方式",
+        "物资产出与消耗"
+      ]
+    },
+    {
+      "category_id": "cultivation_system_method_progression",
+      "category_name": "修炼体系、术法与成长",
+      "purpose": "统一境界提升、修炼流派、功法术法神通、灵根体质血脉、夺舍等修炼机制类模板的需求，强调机制、条件、效果、代价和案例事件分层。",
+      "required_extraction_targets": [
+        "抽取境界层级、突破条件、瓶颈、资源需求、风险代价、失败后果和阶段能力变化。",
+        "抽取功法、术法、神通、流派、传承、修炼路线、适配条件、限制、副作用、克制关系和实战表现。",
+        "抽取灵根、体质、血脉、资质、异变及其对修炼、战斗、寿命、身份或资源选择的影响。",
+        "抽取夺舍、元神、肉身、记忆、反噬、目标条件、限制边界和由此引发的角色或势力后果。"
+      ],
+      "evidence_requirements": [
+        "修炼规则必须来自原文明确说明或可定位事件证据，不能用泛化修仙常识补齐层级、资源或成功率。",
+        "突破、功法和神通条目需保留使用者、条件、资源、过程、效果、限制、代价、结果和 source_range。",
+        "灵根体质血脉与夺舍信息需区分原文确认、角色认知、传闻推断和待复核判断；边界不清时标为 needs_review。",
+        "条件、效果边界、失败后果、适配对象、机制原因或克制关系无证时标为 not_found_in_source。"
+      ],
+      "graph_mapping_summary": {
+        "primary_nodes": [
+          "CultivationRealm",
+          "CultivationMethod",
+          "Technique",
+          "Ability",
+          "Lineage",
+          "Constitution",
+          "SoulState",
+          "Resource",
+          "Character"
+        ],
+        "primary_events": [
+          "BreakthroughEvent",
+          "TrainingEvent",
+          "TechniqueUseEvent",
+          "InheritanceEvent",
+          "FailureEvent",
+          "PossessionEvent",
+          "TransformationEvent"
+        ],
+        "primary_relations": [
+          "Character PRACTICES CultivationMethod",
+          "Technique REQUIRES Resource",
+          "Character HAS_CONSTITUTION Constitution",
+          "BreakthroughEvent CHANGES CultivationRealm",
+          "Ability COUNTERS Ability",
+          "PossessionEvent AFFECTS Character"
+        ],
+        "mapping_notes": "修炼体系内容按规则节点、案例事件和角色状态变化分别建模；机制性结论须通过 evidence_id、confidence、verification_status 与 supports_templates 标注来源强度。"
+      },
+      "template_coverage": [
+        "修炼流派",
+        "功法术法神通",
+        "境界提升与功法分析",
+        "夺舍设定分析",
+        "灵根体质血脉"
+      ]
+    },
+    {
+      "category_id": "event_conflict_combat_opportunity",
+      "category_name": "事件因果、冲突与机会",
+      "purpose": "统一长程因果、冲突事件、动态机会点、战斗保命机制等事件链类模板的需求，强调时序、因果、参与者、资源和后果的证据闭合。",
+      "required_extraction_targets": [
+        "抽取事件参与者、时间顺序、地点、目标、触发因素、行动选择、冲突升级、转折、结局和后续影响。",
+        "抽取长程因果链中的伏笔、信息差、资源争夺、旧怨、制度压力、偶发机会、地点转移和后续偿付关系。",
+        "抽取战斗策略、保命手段、逃遁、反制、消耗、伤亡、胜负条件、战利品、风险代价和后续追索。",
+        "抽取动态机会点的出现条件、窗口期、进入门槛、竞争者、收益、失败路径、错过点和复用限制。"
+      ],
+      "evidence_requirements": [
+        "因果链必须保留 cause、effect、intermediate_event、source_range 和证据强度；仅时间相邻或同场出现不得自动视为因果。",
+        "冲突和战斗条目需记录双方目标、实力差或资源差、关键动作、资源使用、伤亡损耗、胜负结果和后果证据。",
+        "机会点需有触发条件、参与主体、窗口或门槛、收益风险和阶段性结果；缺少关键环节时标为 needs_review。",
+        "动机、隐性布局、战斗数值、伤亡数量、长期影响或资源流转无原文证据时标为 not_found_in_source。"
+      ],
+      "graph_mapping_summary": {
+        "primary_nodes": [
+          "Event",
+          "Conflict",
+          "Opportunity",
+          "Strategy",
+          "Condition",
+          "Item",
+          "Resource",
+          "Character",
+          "Faction",
+          "Location"
+        ],
+        "primary_events": [
+          "CauseEvent",
+          "ConflictEvent",
+          "BattleEvent",
+          "EscapeEvent",
+          "OpportunityEvent",
+          "DecisionEvent",
+          "ConsequenceEvent",
+          "AftermathEvent"
+        ],
+        "primary_relations": [
+          "Event CAUSED Event",
+          "Character PARTICIPATED_IN Event",
+          "Event OCCURRED_AT Location",
+          "Strategy USED_IN BattleEvent",
+          "Opportunity REQUIRES Condition",
+          "ConflictEvent CHANGES RelationshipState"
+        ],
+        "mapping_notes": "事件类内容按时序层、因果层和后果层拆分；因果边、机会条件和战斗机制都必须带 evidence_id、confidence 与 provenance。"
+      },
+      "template_coverage": [
+        "事件因果链（长程因果图）",
+        "冲突事件分析",
+        "动态事件与机会点",
+        "战斗与保命机制"
+      ]
+    },
+    {
+      "category_id": "resource_item_craft_profession",
+      "category_name": "资源器物、技艺与职业",
+      "purpose": "统一丹药、材料、武器、法宝和炼丹、炼器、符箓、阵法职业类模板的需求，强调对象生命周期、职业流程和效果证据闭合。",
+      "required_extraction_targets": [
+        "抽取丹药、材料、武器、法宝、符箓、阵法等对象的名称、类别、来源、品质、用途、限制、代价、副作用和归属变化。",
+        "抽取炼丹师、炼器师、符师、阵法师等职业角色的职业身份、技艺表现、代表作品、流程、资源需求、失败风险和社会关系。",
+        "抽取炼制、修复、升级、交易、夺取、消耗、损毁、封印、布阵、破阵和使用效果等对象生命周期事件。",
+        "抽取材料与成品、职业与作品、器物与战斗/修炼/交易事件之间的支撑关系和证据状态。"
+      ],
+      "evidence_requirements": [
+        "物品条目需保留名称、类别、拥有者或使用者、来源、用途、效果、限制和 source_range；未出现名称时不得替模板补造通用名。",
+        "技艺职业条目需记录角色身份、技艺表现、作品案例、流程证据、资源消耗和结果；称号或旁人评价不足以单独判定能力。",
+        "丹药、法宝、阵法、符箓等效果需关联具体使用事件或原文说明；数值、品阶、配方、成功率不明时标为 not_found_in_source。",
+        "归属变化、炼制失败、材料来源、消耗去向、职业收益或限制后果只有弱证据时标为 needs_review。"
+      ],
+      "graph_mapping_summary": {
+        "primary_nodes": [
+          "Item",
+          "Artifact",
+          "Weapon",
+          "Pill",
+          "Material",
+          "Talisman",
+          "Formation",
+          "Craft",
+          "Profession",
+          "Character",
+          "Resource"
+        ],
+        "primary_events": [
+          "CraftingEvent",
+          "RefiningEvent",
+          "AlchemyEvent",
+          "FormationSetupEvent",
+          "ItemUseEvent",
+          "TradeEvent",
+          "OwnershipChangeEvent",
+          "DestructionEvent"
+        ],
+        "primary_relations": [
+          "Item MADE_FROM Material",
+          "Character CRAFTED Item",
+          "Item USED_IN Event",
+          "Item OWNED_BY Character",
+          "Formation PROTECTS Location",
+          "Pill AFFECTS Character",
+          "Profession SPECIALIZES_IN Craft"
+        ],
+        "mapping_notes": "资源器物内容按对象、材料、职业、流程、效果和归属变化建模；效果与价值判断必须落到说明证据或使用事件。"
+      },
+      "template_coverage": [
+        "丹药分析",
+        "材料分析",
+        "武器分析",
+        "法宝分析",
+        "炼丹师",
+        "炼器师",
+        "符师",
+        "阵法师"
+      ]
+    },
+    {
+      "category_id": "creature_deviant_practice_ecology",
+      "category_name": "妖兽生态与邪修异法",
+      "purpose": "统一妖兽个体/族群、妖兽与修士关系、邪修行为和异类修炼风险类模板的需求，区分物种生态、个体互动和禁忌行为。",
+      "required_extraction_targets": [
+        "抽取妖兽、灵兽、灵虫、妖修、族群或异类存在的名称、种类、等阶、地域、习性、能力、资源价值和生态关系。",
+        "抽取妖兽与修士之间的猎杀、驯养、契约、合作、寄生、吞噬、交易、敌对、共生和关系变化。",
+        "抽取邪修或禁忌修炼的主体身份、手段、资源来源、目标、受害者、收益、风险、反噬、追剿和社会后果。",
+        "抽取妖兽生态、邪修事件或异类修炼对角色、势力、资源、区域状态和后续冲突的影响。"
+      ],
+      "evidence_requirements": [
+        "妖兽和邪修条目需保留主体名称或类别、活动地域、能力或手段、参与事件、结果和 source_range。",
+        "关系类条目需说明互动类型、控制或合作条件、收益、风险、关系变化和相关证据，不能只列双方名称。",
+        "邪修判断必须由行为、功法、资源消耗、受害结果或叙事确认支撑；不能仅凭敌对身份、阵营标签或传闻定性。",
+        "等阶、习性、契约规则、禁术机制、受害规模、反噬规律和长期影响无证时标为 not_found_in_source。"
+      ],
+      "graph_mapping_summary": {
+        "primary_nodes": [
+          "Species",
+          "CreatureGroup",
+          "Creature",
+          "DemonicCultivator",
+          "Technique",
+          "Resource",
+          "Location",
+          "Character",
+          "Faction"
+        ],
+        "primary_events": [
+          "EncounterEvent",
+          "HuntEvent",
+          "TamingEvent",
+          "ContractEvent",
+          "PredationEvent",
+          "CultivationAbuseEvent",
+          "PurgeEvent",
+          "TransformationEvent"
+        ],
+        "primary_relations": [
+          "Creature BELONGS_TO Species",
+          "Species DISTRIBUTED_IN Location",
+          "Character CONTRACTED Creature",
+          "Creature DROPS Resource",
+          "DemonicCultivator USES Technique",
+          "Event AFFECTS Species"
+        ],
+        "mapping_notes": "妖兽与邪修内容分别落到物种/个体、互动关系和禁忌修炼事件；定性、等阶和社会后果必须通过 evidence_id 与 requirement_status 标注。"
+      },
+      "template_coverage": [
+        "妖兽与修士关系分析",
+        "妖兽分析",
+        "邪修分析"
+      ]
+    }
+  ],
+  "global_rules": {
+    "requirement_statuses": [
+      "covered",
+      "needs_review",
+      "not_found_in_source"
+    ],
+    "status_definitions": {
+      "covered": "字段、事件、关系或映射目标存在明确 source_range、chapter_hint、原文摘录或 evidence_id，且抽取内容未超出原文证据。",
+      "needs_review": "存在部分证据、间接证据或上下文疑似支持，但关键链条、边界、因果关系、字段闭合或模板归属仍需后续 agent 复核。",
+      "not_found_in_source": "模板需要的字段、关系、数值、规则或机制在原文中没有可靠依据，应保留未说明状态，不用常识、模板示例或外部设定补写。"
+    },
+    "evidence_policy": [
+      "所有 Stage 1 抽取目标必须引用 source_range、chapter_hint、原文摘录或 evidence_id，并在 canonical graph 中通过 evidence_index 闭合。",
+      "同一条目可支持多个模板，但 supports_templates 中需保留模板名、需求类别、requirement_status、confidence 和 verification_status。",
+      "事实、角色判断、制度规则、机制解释、因果关系、叙事传闻和角色误判应分层记录，不得把推断直接写成确认事实。",
+      "本 pass-2 只归纳模板需求、证据要求和图谱映射，不加入小说具体事实、案例名称、剧情结论或外部设定。"
+    ],
+    "graph_mapping_policy": [
+      "优先复用 Character、Faction、Location、Region、Event、Resource、Item、Technique、WorldState 等稳定节点类型；新增类型需由模板需求明确驱动。",
+      "事件链必须保留参与者、地点、时间顺序、触发、行动、结果和后续影响；因果边必须带 evidence_id、confidence 与 provenance。",
+      "关系映射应落到可查询的 edge、event 或 hyperedge，避免仅保留自然语言摘要；每条关系需能回连到证据或标注缺口状态。",
+      "模板缺口、弱证据、冲突证据和边界不清项进入 needs_review 或 not_found_in_source，不在 refinement 阶段扩写为事实。"
+    ],
+    "dedupe_policy": [
+      "同一模板只归入一个主覆盖类别；跨类别复用的抽取对象通过 supports_templates 表达，不重复创建需求类别。",
+      "重复证据规则合并为全局 evidence_policy；类别内只保留该类特有的最低证据门槛。",
+      "同名或近义图谱映射优先统一到稳定节点、事件和关系类型，保留模板术语作为标签或 supports_templates 元数据。"
+    ]
+  },
+  "refinement_notes": [
+    "pass-2 在 pass-1 的 7 个类别基础上完成去重，统一 category_id 命名为单数下划线风格，并收紧 category_name。",
+    "本轮将重复的 source_range、evidence_id、未说明字段和弱证据要求上移到 global_rules，类别内只保留更具体的证据门槛。",
+    "本轮收紧 graph_mapping_summary：每类均保留 primary_nodes、primary_events、primary_relations 和 mapping_notes，强调 evidence、provenance、confidence、verification_status 与 supports_templates 闭合。",
+    "本轮未加入小说具体事实、人物案例、地名案例、物品案例或剧情结论；source_coverage.template_names 保持 task packet 原始顺序并覆盖全部 37 个模板。",
+    "pass-3 可在此基础上做最终措辞压缩和正式 requirements/template-requirements.json 准入确认。"
+  ],
+  "source_coverage": {
+    "covered_template_count": 37,
+    "template_names": [
+      "NPC性格与代表事件",
+      "世界状态与灾变",
+      "世界观设定",
+      "丹药分析",
+      "事件因果链（长程因果图）",
+      "人物关系与事件分析",
+      "信息传播与情报",
+      "修炼流派",
+      "冲突事件分析",
+      "功法术法神通",
+      "动态事件与机会点",
+      "势力设定",
+      "境界提升与功法分析",
+      "夺舍设定分析",
+      "妖兽与修士关系分析",
+      "妖兽分析",
+      "宗门任务体系",
+      "建筑设施与场所功能",
+      "战斗与保命机制",
+      "拍卖坊市与交易",
+      "散修生存方式",
+      "有限视角与叙事日志",
+      "材料分析",
+      "武器分析",
+      "法宝分析",
+      "灵根体质血脉",
+      "炼丹师",
+      "炼器师",
+      "物资产出与消耗",
+      "相遇剧情与对话设计",
+      "秘境遗迹与机缘",
+      "符师",
+      "角色AI行为参考",
+      "角色修炼历程",
+      "记忆情绪与执念",
+      "邪修分析",
+      "阵法师"
+    ]
+  }
+}

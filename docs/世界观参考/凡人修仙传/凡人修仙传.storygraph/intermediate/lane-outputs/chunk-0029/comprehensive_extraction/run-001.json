@@ -1,0 +1,2394 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0029:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0029",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T14:30:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0029:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立在本 chunk 中计划并执行用小瓶、绿液和配方催生药材、配制药物，同时对墨大夫保持戒备。",
+      "evidence_ids": [
+        "evidence:chunk-0029:001",
+        "evidence:chunk-0029:002",
+        "evidence:chunk-0029:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        54055,
+        54148
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54055,
+          54148
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0029:character:002",
+      "node_type": "character",
+      "label": "墨大夫",
+      "aliases": [],
+      "fact_summary": "墨大夫离山寻找药材，曾掌握珍稀配方并教给韩立；韩立认为他精明小心且可能有不利企图。",
+      "evidence_ids": [
+        "evidence:chunk-0029:002",
+        "evidence:chunk-0029:004",
+        "evidence:chunk-0029:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        54568,
+        54693
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54568,
+          54693
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0029:location:001",
+      "node_type": "location",
+      "label": "神手谷",
+      "aliases": [],
+      "fact_summary": "神手谷在墨大夫回山前只有韩立一人，外人平时不会贸然闯入。",
+      "evidence_ids": [
+        "evidence:chunk-0029:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        54055,
+        54148
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54055,
+          54148
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0029:faction:001",
+      "node_type": "faction",
+      "label": "七玄门",
+      "aliases": [],
+      "fact_summary": "韩立估计墨大夫再有六七个月会回到七玄门；韩立也担心七玄门其他人撞破瓶子秘密。",
+      "evidence_ids": [
+        "evidence:chunk-0029:002",
+        "evidence:chunk-0029:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        54292,
+        54397
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54292,
+          54397
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0029:artifact:001",
+      "node_type": "artifact",
+      "label": "小瓶",
+      "aliases": [
+        "瓶子",
+        "小瓶子"
+      ],
+      "fact_summary": "小瓶是韩立在神手谷暂时安全使用且需要保密、之后准备收起不再轻易动用的瓶子；本 chunk 未明示正式名称。",
+      "evidence_ids": [
+        "evidence:chunk-0029:001",
+        "evidence:chunk-0029:006",
+        "evidence:chunk-0029:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        54055,
+        54148
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54055,
+          54148
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0029:material:001",
+      "node_type": "material",
+      "label": "绿液",
+      "aliases": [],
+      "fact_summary": "绿液被韩立用来催生草药和珍贵药材，韩立强调不能盲目浪费。",
+      "evidence_ids": [
+        "evidence:chunk-0029:002",
+        "evidence:chunk-0029:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        54292,
+        54397
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54292,
+          54397
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0029:cultivation_method:001",
+      "node_type": "cultivation_method",
+      "label": "口诀",
+      "aliases": [],
+      "fact_summary": "墨大夫在修炼口诀上为韩立创造条件，本 chunk 未明示口诀正式名称。",
+      "evidence_ids": [
+        "evidence:chunk-0029:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        55048,
+        55144
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          55048,
+          55144
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0029:pill:001",
+      "node_type": "pill",
+      "label": "黄龙丹",
+      "aliases": [],
+      "fact_summary": "黄龙丹是韩立配出的稀世之药之一，对练功帮助最大，有增加功力、脱胎换骨的妙用。",
+      "evidence_ids": [
+        "evidence:chunk-0029:011",
+        "evidence:chunk-0029:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        55976,
+        56029
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          55976,
+          56029
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0029:pill:002",
+      "node_type": "pill",
+      "label": "清灵散",
+      "aliases": [],
+      "fact_summary": "清灵散是韩立配出的稀世之药之一，是能解天下千百种剧毒的解毒圣药。",
+      "evidence_ids": [
+        "evidence:chunk-0029:011",
+        "evidence:chunk-0029:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        55976,
+        56029
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          55976,
+          56029
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0029:pill:003",
+      "node_type": "pill",
+      "label": "金髓丸",
+      "aliases": [],
+      "fact_summary": "金髓丸是韩立配出的稀世之药之一，对练功帮助最大，有增加功力、脱胎换骨的妙用。",
+      "evidence_ids": [
+        "evidence:chunk-0029:011",
+        "evidence:chunk-0029:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        55976,
+        56029
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          55976,
+          56029
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0029:pill:004",
+      "node_type": "pill",
+      "label": "养精丹",
+      "aliases": [],
+      "fact_summary": "养精丹是韩立配出的稀世之药之一，对内外伤有奇效，可减轻伤势并保住性命。",
+      "evidence_ids": [
+        "evidence:chunk-0029:011",
+        "evidence:chunk-0029:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        55976,
+        56029
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          55976,
+          56029
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0029:001",
+      "edge_type": "temporarily_uses_at",
+      "source": "node:chunk-0029:character:001",
+      "target": "node:chunk-0029:artifact:001",
+      "fact_summary": "韩立认为墨大夫回山前可在神手谷暂时安全使用小瓶。",
+      "evidence_ids": [
+        "evidence:chunk-0029:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        54055,
+        54148
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54055,
+          54148
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0029:002",
+      "edge_type": "located_in_context",
+      "source": "node:chunk-0029:artifact:001",
+      "target": "node:chunk-0029:location:001",
+      "fact_summary": "小瓶在本 chunk 的安全使用环境是只有韩立一人的神手谷。",
+      "evidence_ids": [
+        "evidence:chunk-0029:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        54055,
+        54148
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54055,
+          54148
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0029:003",
+      "edge_type": "plans_to_use",
+      "source": "node:chunk-0029:character:001",
+      "target": "node:chunk-0029:material:001",
+      "fact_summary": "韩立计划用绿液按珍稀配方催生对自己有用的草药。",
+      "evidence_ids": [
+        "evidence:chunk-0029:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        54292,
+        54397
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54292,
+          54397
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0029:004",
+      "edge_type": "taught_formula_knowledge_to",
+      "source": "node:chunk-0029:character:002",
+      "target": "node:chunk-0029:character:001",
+      "fact_summary": "韩立学习医术时，墨大夫曾详细告诉他稀有配方。",
+      "evidence_ids": [
+        "evidence:chunk-0029:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        54568,
+        54693
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54568,
+          54693
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0029:005",
+      "edge_type": "conceals_secret_from",
+      "source": "node:chunk-0029:character:001",
+      "target": "node:chunk-0029:character:002",
+      "fact_summary": "韩立不打算把瓶子的秘密告诉墨大夫。",
+      "evidence_ids": [
+        "evidence:chunk-0029:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        54839,
+        54911
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54839,
+          54911
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0029:006",
+      "edge_type": "suspects_hidden_intent",
+      "source": "node:chunk-0029:character:001",
+      "target": "node:chunk-0029:character:002",
+      "fact_summary": "韩立因墨大夫奇特目光怀疑其隐瞒对自己不利的秘密。",
+      "evidence_ids": [
+        "evidence:chunk-0029:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "记忆情绪与执念",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        54952,
+        55016
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54952,
+          55016
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0029:007",
+      "edge_type": "assists_cultivation_method",
+      "source": "node:chunk-0029:character:002",
+      "target": "node:chunk-0029:cultivation_method:001",
+      "fact_summary": "墨大夫在修炼口诀上为韩立创造各种最好的条件。",
+      "evidence_ids": [
+        "evidence:chunk-0029:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        55048,
+        55144
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          55048,
+          55144
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0029:008",
+      "edge_type": "associated_with_faction",
+      "source": "node:chunk-0029:character:002",
+      "target": "node:chunk-0029:faction:001",
+      "fact_summary": "韩立估计墨大夫再有六七个月回到七玄门。",
+      "evidence_ids": [
+        "evidence:chunk-0029:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        54292,
+        54397
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54292,
+          54397
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0029:009",
+      "edge_type": "produces_material_effect",
+      "source": "node:chunk-0029:material:001",
+      "target": "node:chunk-0029:pill:001",
+      "fact_summary": "绿液催生的珍贵药材被韩立用于按配方调配包括黄龙丹在内的珍稀药物。",
+      "evidence_ids": [
+        "evidence:chunk-0029:010",
+        "evidence:chunk-0029:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        55768,
+        55855
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          55768,
+          55855
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0029:010",
+      "edge_type": "produces_material_effect",
+      "source": "node:chunk-0029:material:001",
+      "target": "node:chunk-0029:pill:003",
+      "fact_summary": "绿液催生的珍贵药材被韩立用于按配方调配包括金髓丸在内的珍稀药物。",
+      "evidence_ids": [
+        "evidence:chunk-0029:010",
+        "evidence:chunk-0029:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        55768,
+        55855
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          55768,
+          55855
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0029:011",
+      "edge_type": "crafted_by",
+      "source": "node:chunk-0029:pill:001",
+      "target": "node:chunk-0029:character:001",
+      "fact_summary": "黄龙丹是韩立用催生药材按配方调配出的稀世之药。",
+      "evidence_ids": [
+        "evidence:chunk-0029:010",
+        "evidence:chunk-0029:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼丹师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        55976,
+        56029
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          55976,
+          56029
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0029:012",
+      "edge_type": "crafted_by",
+      "source": "node:chunk-0029:pill:002",
+      "target": "node:chunk-0029:character:001",
+      "fact_summary": "清灵散是韩立用催生药材按配方调配出的稀世之药。",
+      "evidence_ids": [
+        "evidence:chunk-0029:010",
+        "evidence:chunk-0029:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼丹师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        55976,
+        56029
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          55976,
+          56029
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0029:013",
+      "edge_type": "crafted_by",
+      "source": "node:chunk-0029:pill:003",
+      "target": "node:chunk-0029:character:001",
+      "fact_summary": "金髓丸是韩立用催生药材按配方调配出的稀世之药。",
+      "evidence_ids": [
+        "evidence:chunk-0029:010",
+        "evidence:chunk-0029:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼丹师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        55976,
+        56029
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          55976,
+          56029
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0029:014",
+      "edge_type": "crafted_by",
+      "source": "node:chunk-0029:pill:004",
+      "target": "node:chunk-0029:character:001",
+      "fact_summary": "养精丹是韩立用催生药材按配方调配出的稀世之药。",
+      "evidence_ids": [
+        "evidence:chunk-0029:010",
+        "evidence:chunk-0029:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼丹师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        55976,
+        56029
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          55976,
+          56029
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0029:015",
+      "edge_type": "benefits_cultivation_of",
+      "source": "node:chunk-0029:pill:001",
+      "target": "node:chunk-0029:character:001",
+      "fact_summary": "黄龙丹对韩立练功帮助最大，有增加功力、脱胎换骨的妙用。",
+      "evidence_ids": [
+        "evidence:chunk-0029:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        56095,
+        56242
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          56095,
+          56242
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0029:016",
+      "edge_type": "benefits_cultivation_of",
+      "source": "node:chunk-0029:pill:003",
+      "target": "node:chunk-0029:character:001",
+      "fact_summary": "金髓丸对韩立练功帮助最大，有增加功力、脱胎换骨的妙用。",
+      "evidence_ids": [
+        "evidence:chunk-0029:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        56095,
+        56242
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          56095,
+          56242
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0029:001",
+      "event_type": "opportunity_use_event",
+      "label": "韩立判断可安全使用小瓶",
+      "fact_summary": "韩立判断墨大夫回山前神手谷无人打扰，可以放心大胆使用小瓶。",
+      "participants": [
+        "node:chunk-0029:character:001",
+        "node:chunk-0029:artifact:001",
+        "node:chunk-0029:location:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0029:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        54055,
+        54148
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54055,
+          54148
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0029:002",
+      "event_type": "planning_event",
+      "label": "韩立计划用绿液按配方催生药材",
+      "fact_summary": "韩立估计墨大夫回七玄门尚需六七个月，于是计划用绿液按珍稀配方催生有用草药。",
+      "participants": [
+        "node:chunk-0029:character:001",
+        "node:chunk-0029:character:002",
+        "node:chunk-0029:faction:001",
+        "node:chunk-0029:material:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0029:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        54292,
+        54397
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54292,
+          54397
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0029:003",
+      "event_type": "knowledge_transfer_event",
+      "label": "墨大夫曾告知韩立稀有配方",
+      "fact_summary": "韩立学习医术时曾记下不少稀有配方，墨大夫在他询问时详细告知。",
+      "participants": [
+        "node:chunk-0029:character:001",
+        "node:chunk-0029:character:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0029:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        54568,
+        54693
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54568,
+          54693
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0029:004",
+      "event_type": "decision_event",
+      "label": "韩立决定在墨大夫回来前配好药并收起瓶子",
+      "fact_summary": "韩立决定赶在墨大夫回来前配好药物，并把瓶子束之高阁，不在山上轻易使用。",
+      "participants": [
+        "node:chunk-0029:character:001",
+        "node:chunk-0029:character:002",
+        "node:chunk-0029:artifact:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0029:005",
+        "evidence:chunk-0029:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        54726,
+        54836
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54726,
+          54836
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0029:005",
+      "event_type": "relationship_tension_event",
+      "label": "韩立加深对墨大夫的戒备",
+      "fact_summary": "韩立认为墨大夫可能隐瞒对自己不利的秘密，即使日常照顾修炼也与自己存在师徒隔膜。",
+      "participants": [
+        "node:chunk-0029:character:001",
+        "node:chunk-0029:character:002",
+        "node:chunk-0029:cultivation_method:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0029:007",
+        "evidence:chunk-0029:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "记忆情绪与执念",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        54952,
+        55016
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54952,
+          55016
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0029:006",
+      "event_type": "crafting_event",
+      "label": "韩立催生药材并调配珍稀药物",
+      "fact_summary": "韩立数月内用瓶中绿液催生大批珍贵药材，按配方调配不少珍稀药物，期间发生多次失败。",
+      "participants": [
+        "node:chunk-0029:character:001",
+        "node:chunk-0029:artifact:001",
+        "node:chunk-0029:material:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0029:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼丹师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        55768,
+        55855
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          55768,
+          55855
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0029:007",
+      "event_type": "item_production_event",
+      "label": "四种稀世之药配成",
+      "fact_summary": "黄龙丹、清灵散、金髓丸、养精丹被装在十几个小瓶内摆在韩立面前。",
+      "participants": [
+        "node:chunk-0029:character:001",
+        "node:chunk-0029:pill:001",
+        "node:chunk-0029:pill:002",
+        "node:chunk-0029:pill:003",
+        "node:chunk-0029:pill:004"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0029:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        55976,
+        56029
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          55976,
+          56029
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0029:001",
+      "chunk_id": "chunk-0029",
+      "source_range": [
+        54055,
+        54148
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54055,
+          54148
+        ]
+      },
+      "excerpt": "在墨大夫回到山上之前，韩立知道在神手谷使用这瓶子暂时是安全的，因为整个山谷就只有他一个人，平时也没有外人会贸然闯入谷内，这就保证了在这段时期内不会出现任何的意外，可以放心大胆的使用小瓶。",
+      "fact_summary": "韩立认为墨大夫回山前神手谷无人打扰，可以暂时安全使用小瓶。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0029:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0029:002",
+      "chunk_id": "chunk-0029",
+      "source_range": [
+        54292,
+        54397
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54292,
+          54397
+        ]
+      },
+      "excerpt": "现在离墨大夫下山已经过了近半年，估计他再有六七个月就该回到七玄门了。在他回来之前的这些日子里，韩立只有尽可能的多催生一些对自己有用的草药，要有计划的按照他知道的几个珍稀配方来获取药材，不能盲目的乱浪费这些绿液。",
+      "fact_summary": "韩立估算墨大夫还需六七个月回七玄门，并计划用绿液按珍稀配方催生有用草药。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0029:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0029:003",
+      "chunk_id": "chunk-0029",
+      "source_range": [
+        54400,
+        54488
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54400,
+          54488
+        ]
+      },
+      "excerpt": "韩立即将要去制作的这些有助于增长功力、突破瓶颈的药物，都是墨大夫以前想要配制，但是又凑不齐所需药材的极品圣药，每种放到市面上都是可让普通人家倾家荡产、江湖人拼命争夺的难得宝物。",
+      "fact_summary": "韩立要制作的药物有助增长功力、突破瓶颈，原是墨大夫想配却缺药材的极品圣药。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0029:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0029:004",
+      "chunk_id": "chunk-0029",
+      "source_range": [
+        54568,
+        54693
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54568,
+          54693
+        ]
+      },
+      "excerpt": "韩立以前在墨大夫那里学习医术的时候，对这些稀有配方大感兴趣，他虽然从没奢望过自己能够配制这些珍贵之极的药物，但也把这些配方给记下了不少。墨大夫对他学习这些配方的十足劲头也抱着无所谓的态度，只要韩立问起，他就会详详细细的告诉韩立，没有丝毫想隐瞒的样子。",
+      "fact_summary": "韩立曾在墨大夫处学习医术并记下不少稀有配方，墨大夫曾详细告知。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0029:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0029:005",
+      "chunk_id": "chunk-0029",
+      "source_range": [
+        54726,
+        54836
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54726,
+          54836
+        ]
+      },
+      "excerpt": "如今这些配方可成了韩立的心头肉，他老老实实的按着上面所需要的各种年份的药材去催生草药，不敢有半点的放松，要知道留给他的时间并不多了，他必须赶在墨大夫回来之前把这些药物配好，然后就把瓶子束之高阁，绝不轻易的在山上再次使用。",
+      "fact_summary": "韩立按配方所需年份催生草药，要求赶在墨大夫回来前配好药并收起瓶子。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0029:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0029:006",
+      "chunk_id": "chunk-0029",
+      "source_range": [
+        54839,
+        54911
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54839,
+          54911
+        ]
+      },
+      "excerpt": "韩立可没有丝毫的信心能在墨大夫面前使用小瓶子而不漏出马脚来，他心里很清楚墨大夫是一个多么精明小心的人，他可没有一点把瓶子的秘密告诉墨大夫的念头。",
+      "fact_summary": "韩立认为墨大夫精明小心，绝不打算让墨大夫知道瓶子的秘密。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0029:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0029:007",
+      "chunk_id": "chunk-0029",
+      "source_range": [
+        54952,
+        55016
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54952,
+          55016
+        ]
+      },
+      "excerpt": "墨大夫经常用某种奇特的目光看着他，这让韩立总觉得对方有什么对自己不利的秘密在隐瞒着，特别在最近一两年，韩立的这种感觉就更强烈了。",
+      "fact_summary": "韩立因墨大夫奇特目光而怀疑对方隐瞒对自己不利的秘密。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "记忆情绪与执念",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0029:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0029:008",
+      "chunk_id": "chunk-0029",
+      "source_range": [
+        55048,
+        55144
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          55048,
+          55144
+        ]
+      },
+      "excerpt": "墨大夫在日常生活中对他其实非常不错，既没有拳打脚踢，也没有破口大骂过，在修炼口诀上更是不遗余力的帮他创造各种最好的条件，但师徒之间似乎有那么一层隔膜存在着，总是有一种尴尬的气氛在他们中间飘荡。",
+      "fact_summary": "墨大夫日常待韩立不错并帮助修炼口诀，但师徒间存在隔膜。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0029:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0029:009",
+      "chunk_id": "chunk-0029",
+      "source_range": [
+        55615,
+        55709
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          55615,
+          55709
+        ]
+      },
+      "excerpt": "瓶子绝不能在墨大夫回来后再使用，这是一定的。要知道世上没有不透风的墙，即使他侥幸没有被墨大夫给发现，也可能被七玄门的其他人给撞破秘密，最保险的还是把它给收起来，当作从没发生过这种事情一样。",
+      "fact_summary": "韩立决定墨大夫回来后绝不再使用瓶子，并担心墨大夫或七玄门其他人撞破秘密。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0029:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0029:010",
+      "chunk_id": "chunk-0029",
+      "source_range": [
+        55768,
+        55855
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          55768,
+          55855
+        ]
+      },
+      "excerpt": "在接下来的数月里，韩立偷偷的用瓶子中的绿液，催生了大批的珍贵药材。他用这些药材，按照配方调配了不少的珍稀药物，但在配制过程中也发生了不少次的失败，每次的失败都让韩立肉疼了好久",
+      "fact_summary": "韩立数月内用瓶中绿液催生大批珍贵药材，并按配方调配珍稀药物，但经历多次失败。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼丹师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0029:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0029:011",
+      "chunk_id": "chunk-0029",
+      "source_range": [
+        55976,
+        56029
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          55976,
+          56029
+        ]
+      },
+      "excerpt": "“黄龙丹”“清灵散”“金髓丸”“养精丹”这些外面难得一见的稀世之药全都放在十几个小瓶内，一一摆在了韩立面前",
+      "fact_summary": "黄龙丹、清灵散、金髓丸、养精丹这些稀世之药被装在十几个小瓶内摆在韩立面前。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0029:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0029:012",
+      "chunk_id": "chunk-0029",
+      "source_range": [
+        56095,
+        56242
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          56095,
+          56242
+        ]
+      },
+      "excerpt": "在这些药里面，“黄龙丹”和“金髓丸”对他练功帮助最大，都有增加功力、脱胎换骨的妙用，而“清灵散”则是世间少有的解毒圣药，能解天下千百种剧毒，最后的“养精丹”是一种对内外伤都有奇效的灵药，不论是受了多严重的内外伤，只要吃了这药一颗，即使不能起死回生使伤势立刻痊愈，也可让伤势大为减轻，可保住性命。",
+      "fact_summary": "黄龙丹和金髓丸可助练功、增加功力并脱胎换骨；清灵散能解千百种剧毒；养精丹可减轻严重内外伤并保命。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0029:012"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "角色修炼历程",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "角色AI行为参考",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "记忆情绪与执念",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "建筑设施与场所功能",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "势力设定",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "功法术法神通",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "境界提升与功法分析",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "事件因果链（长程因果图）",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "动态事件与机会点",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "丹药分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "材料分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "物资产出与消耗",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "炼丹师",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "needs_review",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review"
+    },
+    {
+      "template_name": "法宝分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0029:001",
+      "kind": "artifact_identity_missing",
+      "fact_summary": "本 chunk 只称该器物为小瓶、瓶子或小瓶子，未明示更正式名称、品阶、来源或完整机制。",
+      "evidence_ids": [
+        "evidence:chunk-0029:001",
+        "evidence:chunk-0029:006"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        54055,
+        54148
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54055,
+          54148
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0029:002",
+      "kind": "formula_details_missing",
+      "fact_summary": "本 chunk 只说韩立知道几个珍稀配方和所需年份药材，未明示配方名称、具体材料列表、比例或成功率。",
+      "evidence_ids": [
+        "evidence:chunk-0029:002",
+        "evidence:chunk-0029:005"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        54292,
+        54397
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54292,
+          54397
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0029:003",
+      "kind": "motivation_unconfirmed",
+      "fact_summary": "韩立怀疑墨大夫有对自己不利的秘密，但原文在本 chunk 未客观确认墨大夫确有恶意企图。",
+      "evidence_ids": [
+        "evidence:chunk-0029:007",
+        "evidence:chunk-0029:008"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        54952,
+        55016
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54952,
+          55016
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0029:004",
+      "kind": "craft_profession_boundary",
+      "fact_summary": "韩立按配方调配药物并有失败，但本 chunk 未给出炼丹师身份或稳定职业评价，因此炼丹师模板仅 needs_review。",
+      "evidence_ids": [
+        "evidence:chunk-0029:010"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "炼丹师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        55768,
+        55855
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          55768,
+          55855
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0029:001",
+      "candidate": "深山老林",
+      "reason": "只是韩立推测墨大夫可能去寻找药材的泛指偏僻区域，未形成具名地点节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        54195,
+        54244
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54195,
+          54244
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0029:002",
+      "candidate": "普通人家、江湖人",
+      "reason": "仅用于说明极品圣药市面价值和争夺程度，没有独立剧情行为或具体身份。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        54454,
+        54478
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54454,
+          54478
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0029:003",
+      "candidate": "珍稀配方",
+      "reason": "原文未给出具体配方名称或单一配方边界，避免把多个未命名配方硬造为具名 formula 节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        54278,
+        54361
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0029",
+        "source_path": "intermediate/chunks/chunk-0029.txt",
+        "source_range": [
+          54278,
+          54361
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

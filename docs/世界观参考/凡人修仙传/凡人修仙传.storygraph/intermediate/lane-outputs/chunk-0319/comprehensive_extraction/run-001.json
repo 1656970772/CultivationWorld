@@ -1,0 +1,2095 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0319:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0319",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T23:30:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0319:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立夜入皇宫布置改进颠倒五行阵作为保命后手，随后在秦宅隐瞒此事，并被陈巧倩追问血色试炼和太岳山脉旧事。",
+      "evidence_ids": [
+        "evidence:chunk-0319:001",
+        "evidence:chunk-0319:004",
+        "evidence:chunk-0319:007",
+        "evidence:chunk-0319:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        794936,
+        797816
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          794936,
+          797816
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0319:faction:001",
+      "node_type": "faction",
+      "label": "黑煞教",
+      "aliases": [],
+      "fact_summary": "黑煞教控制整座皇宫，但岗哨主要集中在黑煞教主闭关的冷宫处，其余区域松懈。",
+      "evidence_ids": [
+        "evidence:chunk-0319:003",
+        "evidence:chunk-0319:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "邪修分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        795267,
+        795891
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795267,
+          795891
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0319:location:001",
+      "node_type": "location",
+      "label": "皇宫",
+      "aliases": [
+        "皇城"
+      ],
+      "fact_summary": "皇宫/皇城是黑煞教控制并布置岗哨的区域，韩立夜间御器潜入并选择偏僻竹林布阵。",
+      "evidence_ids": [
+        "evidence:chunk-0319:001",
+        "evidence:chunk-0319:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        794936,
+        795416
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          794936,
+          795416
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0319:facility:001",
+      "node_type": "facility",
+      "label": "御花园竹林",
+      "aliases": [
+        "竹林"
+      ],
+      "fact_summary": "御花园中一处长满青竹且近乎被遗忘的竹林，被韩立选作布置颠倒五行阵的隐蔽地点。",
+      "evidence_ids": [
+        "evidence:chunk-0319:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        795507,
+        795636
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795507,
+          795636
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0319:facility:002",
+      "node_type": "facility",
+      "label": "冷宫",
+      "aliases": [],
+      "fact_summary": "冷宫是黑煞教主闭关所在，四大血侍在此处设置密集岗哨。",
+      "evidence_ids": [
+        "evidence:chunk-0319:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        795796,
+        795891
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795796,
+          795891
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0319:tool:001",
+      "node_type": "tool",
+      "label": "神风舟",
+      "aliases": [],
+      "fact_summary": "神风舟被韩立用于夜入皇城和布阵后返回秦宅。",
+      "evidence_ids": [
+        "evidence:chunk-0319:001",
+        "evidence:chunk-0319:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        794936,
+        795793
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          794936,
+          795793
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0319:cultivation_method:001",
+      "node_type": "cultivation_method",
+      "label": "无名敛气口诀",
+      "aliases": [],
+      "fact_summary": "韩立凭大成的无名敛气口诀收敛自身气息，认为黑煞教岗哨无法发现他。",
+      "evidence_ids": [
+        "evidence:chunk-0319:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        795267,
+        795416
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795267,
+          795416
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0319:formation:001",
+      "node_type": "formation",
+      "label": "改进颠倒五行阵",
+      "aliases": [
+        "颠倒五行阵"
+      ],
+      "fact_summary": "改进颠倒五行阵由齐云霄赠予韩立，韩立在皇宫竹林布置一部分，视其为对付黑煞教主的保命后手和杀手锏。",
+      "evidence_ids": [
+        "evidence:chunk-0319:004",
+        "evidence:chunk-0319:005",
+        "evidence:chunk-0319:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        795507,
+        796079
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795507,
+          796079
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0319:character:002",
+      "node_type": "character",
+      "label": "齐云霄",
+      "aliases": [],
+      "fact_summary": "齐云霄是改进颠倒五行阵阵旗阵盘的赠予者，本 chunk 未显示其出场。",
+      "evidence_ids": [
+        "evidence:chunk-0319:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        795507,
+        795636
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795507,
+          795636
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0319:faction:002",
+      "node_type": "faction",
+      "label": "四大血侍",
+      "aliases": [],
+      "fact_summary": "四大血侍受黑煞教主吩咐，在冷宫周边设置密集岗哨。",
+      "evidence_ids": [
+        "evidence:chunk-0319:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "邪修分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        795796,
+        795891
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795796,
+          795891
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0319:faction:003",
+      "node_type": "faction",
+      "label": "黄枫谷同门",
+      "aliases": [
+        "黄枫谷众修士"
+      ],
+      "fact_summary": "刘靖等黄枫谷同门聚在秦宅议论即将与黑煞教开战，大部分缺乏与筑基期修士交手的经验。",
+      "evidence_ids": [
+        "evidence:chunk-0319:007",
+        "evidence:chunk-0319:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        795935,
+        796288
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795935,
+          796288
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0319:character:003",
+      "node_type": "character",
+      "label": "刘靖",
+      "aliases": [],
+      "fact_summary": "刘靖作为黄枫谷同门之一参与议论大战，并在陈巧倩邀请韩立后开玩笑催韩立出去。",
+      "evidence_ids": [
+        "evidence:chunk-0319:008",
+        "evidence:chunk-0319:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        796082,
+        796836
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          796082,
+          796836
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0319:character:004",
+      "node_type": "character",
+      "label": "陈巧倩",
+      "aliases": [
+        "陈师姐",
+        "陈师妹"
+      ],
+      "fact_summary": "陈巧倩主动邀请韩立到花园谈话，质疑他血色试炼中隐藏实力，并追问七八年前太岳山脉东侧旧事。",
+      "evidence_ids": [
+        "evidence:chunk-0319:009",
+        "evidence:chunk-0319:010",
+        "evidence:chunk-0319:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        796364,
+        797816
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          796364,
+          797816
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0319:location:002",
+      "node_type": "location",
+      "label": "太岳山脉东侧",
+      "aliases": [],
+      "fact_summary": "太岳山脉东侧是陈巧倩追问韩立七八年前是否遭遇事情的地点线索。",
+      "evidence_ids": [
+        "evidence:chunk-0319:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        797518,
+        797816
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          797518,
+          797816
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0319:001",
+      "edge_type": "uses_tool",
+      "source": "node:chunk-0319:character:001",
+      "target": "node:chunk-0319:tool:001",
+      "fact_summary": "韩立乘神风舟夜入皇城，并在布阵后御器离开。",
+      "evidence_ids": [
+        "evidence:chunk-0319:001",
+        "evidence:chunk-0319:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        794936,
+        795793
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          794936,
+          795793
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0319:002",
+      "edge_type": "controls_location",
+      "source": "node:chunk-0319:faction:001",
+      "target": "node:chunk-0319:location:001",
+      "fact_summary": "黑煞教控制整座皇宫，但眼线并非遍布所有地方。",
+      "evidence_ids": [
+        "evidence:chunk-0319:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        795267,
+        795416
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795267,
+          795416
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0319:003",
+      "edge_type": "uses_cultivation_method",
+      "source": "node:chunk-0319:character:001",
+      "target": "node:chunk-0319:cultivation_method:001",
+      "fact_summary": "韩立凭大成无名敛气口诀避开黑煞教岗哨侦察。",
+      "evidence_ids": [
+        "evidence:chunk-0319:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        795267,
+        795416
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795267,
+          795416
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0319:004",
+      "edge_type": "deploys_formation_at",
+      "source": "node:chunk-0319:character:001",
+      "target": "node:chunk-0319:facility:001",
+      "fact_summary": "韩立在御花园竹林释放隔音结界并布置改进颠倒五行阵。",
+      "evidence_ids": [
+        "evidence:chunk-0319:004",
+        "evidence:chunk-0319:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        795507,
+        795793
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795507,
+          795793
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0319:005",
+      "edge_type": "formation_provided_by",
+      "source": "node:chunk-0319:formation:001",
+      "target": "node:chunk-0319:character:002",
+      "fact_summary": "改进颠倒五行阵由齐云霄送予韩立。",
+      "evidence_ids": [
+        "evidence:chunk-0319:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        795507,
+        795636
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795507,
+          795636
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0319:006",
+      "edge_type": "guards_location",
+      "source": "node:chunk-0319:faction:002",
+      "target": "node:chunk-0319:facility:002",
+      "fact_summary": "四大血侍奉黑煞教主之命在冷宫处设置密集岗哨。",
+      "evidence_ids": [
+        "evidence:chunk-0319:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        795796,
+        795891
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795796,
+          795891
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0319:007",
+      "edge_type": "questions_about_past",
+      "source": "node:chunk-0319:character:004",
+      "target": "node:chunk-0319:character:001",
+      "fact_summary": "陈巧倩先质疑韩立血色试炼隐藏实力，又追问七八年前太岳山脉东侧旧事。",
+      "evidence_ids": [
+        "evidence:chunk-0319:010",
+        "evidence:chunk-0319:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        797032,
+        797816
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          797032,
+          797816
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0319:001",
+      "event_type": "infiltration_event",
+      "label": "韩立夜入皇宫",
+      "fact_summary": "韩立夜深独自御器前往皇城，乘神风舟越过皇城大门，并无视七派禁令。",
+      "participants": [
+        "node:chunk-0319:character:001",
+        "node:chunk-0319:location:001",
+        "node:chunk-0319:tool:001",
+        "node:chunk-0319:faction:003"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0319:001",
+        "evidence:chunk-0319:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        794936,
+        795129
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          794936,
+          795129
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0319:002",
+      "event_type": "formation_setup_event",
+      "label": "韩立布置改进颠倒五行阵",
+      "fact_summary": "韩立在竹林释放隔音结界，取出齐云霄赠予的改进颠倒五行阵，并用两个时辰布置一小部分作为对付黑煞教主的后手。",
+      "participants": [
+        "node:chunk-0319:character:001",
+        "node:chunk-0319:facility:001",
+        "node:chunk-0319:formation:001",
+        "node:chunk-0319:character:002",
+        "node:chunk-0319:faction:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0319:004",
+        "evidence:chunk-0319:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        795507,
+        795793
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795507,
+          795793
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0319:003",
+      "event_type": "guard_distribution_event",
+      "label": "黑煞教岗哨集中冷宫",
+      "fact_summary": "四大血侍在黑煞教主闭关冷宫处设置密集岗哨，导致皇宫其他地方松懈，帮助韩立顺利进出。",
+      "participants": [
+        "node:chunk-0319:faction:001",
+        "node:chunk-0319:faction:002",
+        "node:chunk-0319:facility:002",
+        "node:chunk-0319:character:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0319:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        795796,
+        795891
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795796,
+          795891
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0319:004",
+      "event_type": "secret_keeping_event",
+      "label": "韩立隐瞒颠倒五行阵后手",
+      "fact_summary": "韩立早晨回秦宅后照常谈笑议战，未向黄枫谷同门提及颠倒五行阵，并将其视作保命杀手锏。",
+      "participants": [
+        "node:chunk-0319:character:001",
+        "node:chunk-0319:faction:003",
+        "node:chunk-0319:formation:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0319:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        795935,
+        796079
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795935,
+          796079
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0319:005",
+      "event_type": "past_question_event",
+      "label": "陈巧倩追问血色试炼和太岳旧事",
+      "fact_summary": "陈巧倩质疑韩立当年血色试炼中隐藏实力，又追问其七八年前是否到太岳山脉东侧遭遇事情。",
+      "participants": [
+        "node:chunk-0319:character:004",
+        "node:chunk-0319:character:001",
+        "node:chunk-0319:location:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0319:010",
+        "evidence:chunk-0319:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        797032,
+        797816
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          797032,
+          797816
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0319:001",
+      "chunk_id": "chunk-0319",
+      "source_range": [
+        794936,
+        795029
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          794936,
+          795029
+        ]
+      },
+      "excerpt": "到了晚上夜深人静的时候，韩立悄悄的溜出屋子，没有和任何人打招呼，人就独自往皇城方向御器飞去。\n　　韩立站在神风舟上，望着眼前漆黑的庞然大物——巨大的皇城大门，微微一笑，人就直接飞掠而过。",
+      "fact_summary": "韩立夜深独自御器前往皇城，并乘神风舟飞掠皇城大门。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0319:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0319:002",
+      "chunk_id": "chunk-0319",
+      "source_range": [
+        795032,
+        795129
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795032,
+          795129
+        ]
+      },
+      "excerpt": "对韩立来说，什么七派的禁令，不准任何弟子踏入皇城的说法，他根本没有当成一回事。只有对他有利的条例他才会遵守，否则凭一句空话就想限制他的手脚，这简直是荒唐之极！\n　　他可从来不是一个唯唯诺从之辈。",
+      "fact_summary": "韩立无视七派不准弟子踏入皇城的禁令，只愿遵守对自己有利的条例。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0319:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0319:003",
+      "chunk_id": "chunk-0319",
+      "source_range": [
+        795267,
+        795416
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795267,
+          795416
+        ]
+      },
+      "excerpt": "韩立很清楚，虽然黑煞教的人控制了整座皇宫，但是不可能在所有地方都安排下眼线。而且即使有这么多岗哨，他凭着大成的无名敛气口诀，也不惧黑煞教的人能够发现他。\n　　更何况他从那小王爷的口中，早就将黑煞教平常的岗哨布置情况摸得一清二楚。即使现在有了改动，只要不乱闯一些戒备森严的要害之地，韩立倒也放心的很！",
+      "fact_summary": "韩立判断黑煞教虽控制皇宫但不可能处处布眼线，并凭大成无名敛气口诀和小王爷口供掌握岗哨布置。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0319:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0319:004",
+      "chunk_id": "chunk-0319",
+      "source_range": [
+        795507,
+        795636
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795507,
+          795636
+        ]
+      },
+      "excerpt": "他手指掐诀，释放了一片隔音结界，将整片竹林笼罩其内，然后才神色郑重的从储物袋中取出了一叠阵旗和阵盘出来，正是那齐云霄送予他的改进“颠倒五行阵”。\n　　“有了这颠倒五行阵。想必那黑煞教主即使再厉害，也能立于不败之地了吧！”韩立望着手里这套法器，嘴里喃喃自语道。",
+      "fact_summary": "韩立在竹林释放隔音结界，取出齐云霄赠送的阵旗阵盘，准备布置改进颠倒五行阵作为对抗黑煞教主的后手。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0319:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0319:005",
+      "chunk_id": "chunk-0319",
+      "source_range": [
+        795663,
+        795793
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795663,
+          795793
+        ]
+      },
+      "excerpt": "两个时辰后，韩立一脸疲惫之色的缓缓走了出来。因为时间较紧只能布置完了一小部分，但这也应该足够了。韩立观察下四周，还是无人到此过的样子，这才放心的收起隔音界将神风舟放出，御器而走。\n　　韩立孤身一人深入皇宫内布置大阵的过程。悄然无声，没有惊动任何一名黑煞教之人。",
+      "fact_summary": "韩立用两个时辰布置部分颠倒五行阵，随后乘神风舟离开，未惊动黑煞教之人。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0319:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0319:006",
+      "chunk_id": "chunk-0319",
+      "source_range": [
+        795796,
+        795891
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795796,
+          795891
+        ]
+      },
+      "excerpt": "那四大血侍在黑煞教主地吩咐下，虽然警惕非常。但就像韩立所想的那样，他们只是在黑煞教主闭关的冷宫处，设下了密密麻麻的岗哨。其余的地方，反而比以往更松懈了许多。这也是韩立如此顺利进出的原因之一。",
+      "fact_summary": "四大血侍奉黑煞教主之命只在其闭关冷宫处密布岗哨，其余地方较松懈，成为韩立顺利进出的原因。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0319:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0319:007",
+      "chunk_id": "chunk-0319",
+      "source_range": [
+        795935,
+        796079
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795935,
+          796079
+        ]
+      },
+      "excerpt": "等到了早上，他再若无其事的走出屋门。和其他人一样都聚在了一间大厅内，如常的说话谈笑，议论即将发生的大战，丝毫没提起“颠倒五行阵”的事情。\n　　在韩立心里，这样的保命后手，自然知道的人越少越好了。\n　　若是用不上此阵就能大胜的话，那就更让他欣喜了，这套“颠倒五行阵”，仍可以成为他的杀手锏。",
+      "fact_summary": "韩立回秦宅后照常谈笑议论大战，未提颠倒五行阵，并把该阵视为知道的人越少越好的保命杀手锏。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0319:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0319:008",
+      "chunk_id": "chunk-0319",
+      "source_range": [
+        796082,
+        796288
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          796082,
+          796288
+        ]
+      },
+      "excerpt": "刘靖等黄枫谷同门，当然不知韩立所想，但一说到晚上的大战时，人人都露出了跃跃欲试的表情，面带几分兴奋之色。\n　　在他们中除了刘靖等少数两三人外，大部分人都没有和筑基期修士交手的经验，这也是韩立不太看好此次行动的主要原因。\n　　韩立一向认为，没有经历过血腥洗礼的修士，即使修为再高，在面对经验丰富的对手时，肯定会吃大亏的。弄不好就因此丢了性命，也不是稀奇之事。所以他看着这些人说笑的样子，眼中却偶尔露出了古怪的神情。",
+      "fact_summary": "刘靖等黄枫谷同门谈起大战兴奋，但除少数人外大多缺乏与筑基期修士交手经验，韩立因而不看好此次行动。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0319:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0319:009",
+      "chunk_id": "chunk-0319",
+      "source_range": [
+        796364,
+        796836
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          796364,
+          796836
+        ]
+      },
+      "excerpt": "“韩师弟，能不能陪我走一下。”原本正和钟卫娘说笑的陈巧倩，在刚才扫过韩立面孔时，不知为何突然开口邀请道。\n　　这一句话，不光韩立愕然了起来，其他几名陈巧倩的同门，更是张嘴结舌的模样。\n　　他们都用不可思议的目光，望着韩立和一向对男修士冷若冰霜的小师妹。\n　　看到韩立仿佛有些呆傻的样子，钟卫娘却眼珠一转不知想到了什么。她突然附耳到陈巧倩的耳边，小声嘀咕了几句。\n　　顿时这位“陈师妹”脸上绯红一片，狠狠的白了她一眼后，才大方的先走出了大厅，一副静等韩立跟来的样子。\n　　“小师弟，还愣着干什么！有陈师妹这样的佳人在外面等着，你还犹豫什么劲儿。”刘靖笑着了走过来，轻拍了下韩立的肩头，开玩笑似的说道。\n　　韩立使劲的揉了揉鼻子，想苦笑一下，但不知为何却笑不出来。只好干笑了几声后，在那些男修士羡慕的眼神中还是跟了出去。\n　　若是再迟疑下去，岂不显得他太心虚了！他可不认为有什么好怕对方的。\n　　走到了厅外，陈巧倩正楚楚动人的望着花园方向有些出神，听到韩立走出来的脚步声后，就头也不回的冷冷说道：“陪我到花园里走下吧，我有几件事情想请教一下师弟。”",
+      "fact_summary": "陈巧倩当众邀请韩立私下走走，并要求韩立到花园回答几件事情。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0319:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0319:010",
+      "chunk_id": "chunk-0319",
+      "source_range": [
+        797032,
+        797266
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          797032,
+          797266
+        ]
+      },
+      "excerpt": "“没想到，当年我和大哥都看走了眼，一直认为阁下能够从血色试炼中夺魁而出，只是运气好点罢了。没想到韩师弟当年竟是扮猪吃老虎的好手，不但将我们兄妹两人骗过，就是当时在场的那么多高人，恐怕同样蒙在了鼓里。”韩立正想入非非之际，陈巧倩背对着他淡淡的说道。\n　　这话韩立早有几分预料，没有表现出什么意外之色，而是挠了挠自己的脑勺后，轻笑着说道：“陈师姐说笑了，什么扮猪吃老虎，小弟当时的确是走了大运，才能侥幸过关的！”\n　　韩立说此话时，脸上丝毫异状都没有，仿佛真是这么一回事。",
+      "fact_summary": "陈巧倩质疑韩立当年在血色试炼中扮猪吃虎，韩立则以侥幸过关回应。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0319:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0319:011",
+      "chunk_id": "chunk-0319",
+      "source_range": [
+        797518,
+        797816
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          797518,
+          797816
+        ]
+      },
+      "excerpt": "“七八年前，你有没有到太岳山脉的东侧遭遇到什么事情吗？”陈巧倩问出此话时，脸颊上升起了一丝红晕，整个人略带些羞意，然后其神情紧张的等着韩立的回复。\n　　“七八年前……”韩立低头沉思了起来，似乎在回想什么，实际上韩立心里却再打鼓。\n　　“怎么这么多年过去了，这位还没有熄了寻找自己的念头，而且看其神情的羞涩样子，难道还真对救她之人动情了不成！”韩立大感不解的想道。\n　　这倒不是韩立不解风情，而是他从未生过和此女结成双修伴侣的念头。\n　　不知为何，韩立虽然对这陈巧倩有些正常的男女想法，但是一旦涉及到感情问题时，韩立就自动将其排除在外。也许当年对方和那“陆师兄”亲热的一幕，让他至今无法接受此女吧！",
+      "fact_summary": "陈巧倩追问韩立七八年前是否在太岳山脉东侧遭遇事情，韩立心中意识到她可能仍在寻找当年救她之人。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0319:011"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "角色AI行为参考",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "相遇剧情与对话设计",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "有限视角与叙事日志",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "世界观设定",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "建筑设施与场所功能",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "信息传播与情报",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "势力设定",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "功法术法神通",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "法宝分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "战斗与保命机制",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "事件因果链（长程因果图）",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "邪修分析",
+      "requirement_id": "creature_deviant_practice_ecology",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0319:001",
+      "kind": "taiyue_rescuer_identity_unconfirmed",
+      "fact_summary": "陈巧倩显然在追查七八年前太岳山脉东侧救她之人，韩立心中也意识到这一点，但本 chunk 尚未由客观叙事确认韩立就是该救援者。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        797518,
+        797816
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          797518,
+          797816
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0319:002",
+      "kind": "formation_effectiveness_unverified",
+      "fact_summary": "韩立认为布置部分颠倒五行阵后或许足以对付黑煞教主并立于不败，但这只是战前判断，当前 chunk 尚未实战验证。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        795507,
+        796079
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795507,
+          796079
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0319:001",
+      "candidate": "七派具体门派列表",
+      "reason": "本 chunk 只写“七派的禁令”，未列出具体门派名称；不从背景知识补齐门派列表。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "not_found_in_source",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected"
+        }
+      ],
+      "source_range": [
+        795032,
+        795129
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795032,
+          795129
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0319:002",
+      "candidate": "黑煞教主当前实力结论",
+      "reason": "原文只写韩立估计颠倒五行阵也许能对付黑煞教主，没有展示黑煞教主实力或实战结果；不抽成已验证战力结论。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "邪修分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "not_found_in_source",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "not_found_in_source",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected"
+        }
+      ],
+      "source_range": [
+        795507,
+        795636
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0319",
+        "source_path": "intermediate/chunks/chunk-0319.txt",
+        "source_range": [
+          795507,
+          795636
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

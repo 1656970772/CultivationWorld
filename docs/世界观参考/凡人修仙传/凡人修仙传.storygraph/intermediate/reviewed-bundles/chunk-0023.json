@@ -1,0 +1,3653 @@
+{
+  "chunk_id": "chunk-0023",
+  "source_range": [
+    40944,
+    43105
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "task_packet_id": "chunk-0023:comprehensive_extraction:attempt-001",
+      "chunk_id": "chunk-0023",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "produced_at": "2026-06-23T00:00:00+08:00",
+      "extracted_nodes": [
+        {
+          "id": "node:chunk-0023:character:001",
+          "node_type": "character",
+          "label": "韩立",
+          "aliases": [],
+          "fact_summary": "韩立救治厉飞雨，遭其拔刀威胁后以救命、保密毒誓和暗藏铁筒化解危机；此事让他形成以后无利不起早、不轻易救人的行为倾向，并约厉飞雨到神手谷取止痛成药。",
+          "evidence_ids": [
+            "evidence:chunk-0023:001",
+            "evidence:chunk-0023:005",
+            "evidence:chunk-0023:006",
+            "evidence:chunk-0023:007",
+            "evidence:chunk-0023:008",
+            "evidence:chunk-0023:009",
+            "evidence:chunk-0023:012",
+            "evidence:chunk-0023:013"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            41038,
+            43102
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41038,
+              43102
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0023:character:002",
+          "node_type": "character",
+          "label": "厉飞雨",
+          "aliases": [
+            "厉师兄"
+          ],
+          "fact_summary": "厉飞雨在当前 chunk 先以“厉师兄”出现，服药熬过痛苦后拔刀威胁韩立；韩立发誓保密后，他说出姓名并承诺欠韩立大人情，随后因抽髓丸痛苦接受次日取药约定。",
+          "evidence_ids": [
+            "evidence:chunk-0023:002",
+            "evidence:chunk-0023:003",
+            "evidence:chunk-0023:004",
+            "evidence:chunk-0023:010",
+            "evidence:chunk-0023:011",
+            "evidence:chunk-0023:012",
+            "evidence:chunk-0023:013"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            41096,
+            43102
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41096,
+              43102
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0023:pill:001",
+          "node_type": "pill",
+          "label": "抽髓丸",
+          "aliases": [],
+          "fact_summary": "抽髓丸在当前 chunk 明示为厉飞雨服用后会产生痛苦的丹丸，痛苦折磨使厉飞雨听到可减轻痛苦时大喜。",
+          "evidence_ids": [
+            "evidence:chunk-0023:012"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            42638,
+            42808
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42638,
+              42808
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0023:weapon:001",
+          "node_type": "weapon",
+          "label": "长刀",
+          "aliases": [],
+          "fact_summary": "长刀由厉飞雨拔出并架在韩立脖子上，后来在韩立发毒誓后被收回刀鞘。",
+          "evidence_ids": [
+            "evidence:chunk-0023:004",
+            "evidence:chunk-0023:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "武器分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            41402,
+            42077
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41402,
+              42077
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0023:tool:001",
+          "node_type": "tool",
+          "label": "铁筒",
+          "aliases": [],
+          "fact_summary": "铁筒缩在韩立袖口里，被韩立视作唯一护身手段；在厉飞雨同意毒誓后，韩立将手指从铁筒上挪开。",
+          "evidence_ids": [
+            "evidence:chunk-0023:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            41911,
+            42077
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41911,
+              42077
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0023:location:001",
+          "node_type": "location",
+          "label": "神手谷",
+          "aliases": [],
+          "fact_summary": "韩立说明需要回神手谷配药，并约厉飞雨明天午时在神手谷门口等候。",
+          "evidence_ids": [
+            "evidence:chunk-0023:013"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            42847,
+            43102
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42847,
+              43102
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0023:character:003",
+          "node_type": "character",
+          "label": "墨大夫",
+          "aliases": [],
+          "fact_summary": "墨大夫当前不在家；韩立说明自己是墨大夫的亲传弟子，并因此不好让外人随便进神手谷。",
+          "evidence_ids": [
+            "evidence:chunk-0023:013"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            42847,
+            43102
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42847,
+              43102
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0023:character:004",
+          "node_type": "character",
+          "label": "张铁",
+          "aliases": [],
+          "fact_summary": "张铁在当前 chunk 作为韩立止痛药方的原始研究对象出现；韩立称该药方是空闲时专门替张铁研究出来的。",
+          "evidence_ids": [
+            "evidence:chunk-0023:012"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            42638,
+            42808
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42638,
+              42808
+            ]
+          }
+        }
+      ],
+      "extracted_edges": [
+        {
+          "id": "edge:chunk-0023:001",
+          "edge_type": "treats",
+          "source": "node:chunk-0023:character:001",
+          "target": "node:chunk-0023:character:002",
+          "fact_summary": "韩立给厉飞雨喂下药丸并拔去银针，帮助其熬过痛苦阶段。",
+          "evidence_ids": [
+            "evidence:chunk-0023:001",
+            "evidence:chunk-0023:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            41038,
+            41330
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41038,
+              41330
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0023:002",
+          "edge_type": "threatens",
+          "source": "node:chunk-0023:character:002",
+          "target": "node:chunk-0023:character:001",
+          "fact_summary": "厉飞雨恢复后以长刀架住韩立脖子，逼问不杀他的理由。",
+          "evidence_ids": [
+            "evidence:chunk-0023:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            41402,
+            41503
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41402,
+              41503
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0023:003",
+          "edge_type": "uses_weapon",
+          "source": "node:chunk-0023:character:002",
+          "target": "node:chunk-0023:weapon:001",
+          "fact_summary": "厉飞雨拔出身边长刀并将刀刃架在韩立脖子上。",
+          "evidence_ids": [
+            "evidence:chunk-0023:004",
+            "evidence:chunk-0023:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "武器分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            41402,
+            42077
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41402,
+              42077
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0023:004",
+          "edge_type": "swears_secrecy_to",
+          "source": "node:chunk-0023:character:001",
+          "target": "node:chunk-0023:character:002",
+          "fact_summary": "韩立向厉飞雨提出并郑重发毒誓，承诺不外泄其隐私。",
+          "evidence_ids": [
+            "evidence:chunk-0023:006",
+            "evidence:chunk-0023:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            41788,
+            42077
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41788,
+              42077
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0023:005",
+          "edge_type": "promises_favor_to",
+          "source": "node:chunk-0023:character:002",
+          "target": "node:chunk-0023:character:001",
+          "fact_summary": "厉飞雨因韩立救命和保密承诺欠其大人情，并答应力所能及时帮忙。",
+          "evidence_ids": [
+            "evidence:chunk-0023:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            42348,
+            42481
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42348,
+              42481
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0023:006",
+          "edge_type": "suffers_from_pill",
+          "source": "node:chunk-0023:character:002",
+          "target": "node:chunk-0023:pill:001",
+          "fact_summary": "厉飞雨服用抽髓丸后受到痛苦折磨。",
+          "evidence_ids": [
+            "evidence:chunk-0023:012"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            42638,
+            42808
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42638,
+              42808
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0023:007",
+          "edge_type": "offers_pain_relief_to",
+          "source": "node:chunk-0023:character:001",
+          "target": "node:chunk-0023:character:002",
+          "fact_summary": "韩立表示能减轻厉飞雨因抽髓丸产生的痛苦，并约其次日到神手谷门口取药。",
+          "evidence_ids": [
+            "evidence:chunk-0023:012",
+            "evidence:chunk-0023:013"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            42638,
+            43102
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42638,
+              43102
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0023:008",
+          "edge_type": "disciple_of",
+          "source": "node:chunk-0023:character:001",
+          "target": "node:chunk-0023:character:003",
+          "fact_summary": "韩立向厉飞雨说明自己是墨大夫的亲传弟子。",
+          "evidence_ids": [
+            "evidence:chunk-0023:013"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            42847,
+            43102
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42847,
+              43102
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0023:009",
+          "edge_type": "keeps_defensive_tool",
+          "source": "node:chunk-0023:character:001",
+          "target": "node:chunk-0023:tool:001",
+          "fact_summary": "韩立在判断厉飞雨可能恩将仇报时，手指曾暗扣袖口里的铁筒作为护身手段。",
+          "evidence_ids": [
+            "evidence:chunk-0023:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            41911,
+            42077
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41911,
+              42077
+            ]
+          }
+        }
+      ],
+      "extracted_events": [
+        {
+          "id": "event:chunk-0023:001",
+          "event_type": "treatment_event",
+          "label": "韩立救治厉飞雨",
+          "fact_summary": "韩立喂厉飞雨服下药丸、拔出银针，随后观察其熬过药力发作带来的剧烈痛苦。",
+          "participants": [
+            "node:chunk-0023:character:001",
+            "node:chunk-0023:character:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0023:001",
+            "evidence:chunk-0023:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            41038,
+            41330
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41038,
+              41330
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0023:002",
+          "event_type": "recovery_event",
+          "label": "厉飞雨运功恢复元气",
+          "fact_summary": "厉飞雨熬过痛苦后盘膝打坐调息、运功恢复元气，韩立在旁等待。",
+          "participants": [
+            "node:chunk-0023:character:001",
+            "node:chunk-0023:character:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0023:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            41333,
+            41399
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41333,
+              41399
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0023:003",
+          "event_type": "conflict_event",
+          "label": "厉飞雨拔刀威胁韩立",
+          "fact_summary": "厉飞雨恢复后拔出长刀架在韩立脖子上，要求韩立给出不杀他的理由。",
+          "participants": [
+            "node:chunk-0023:character:001",
+            "node:chunk-0023:character:002",
+            "node:chunk-0023:weapon:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0023:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            41402,
+            41503
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41402,
+              41503
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0023:004",
+          "event_type": "oath_resolution_event",
+          "label": "韩立发毒誓化解杀机",
+          "fact_summary": "韩立冷静提出发毒誓保密并暗中保留铁筒护身；发誓后厉飞雨收刀入鞘。",
+          "participants": [
+            "node:chunk-0023:character:001",
+            "node:chunk-0023:character:002",
+            "node:chunk-0023:weapon:001",
+            "node:chunk-0023:tool:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0023:006",
+            "evidence:chunk-0023:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            41788,
+            42077
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41788,
+              42077
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0023:005",
+          "event_type": "character_change_event",
+          "label": "韩立形成不轻易救人的教训",
+          "fact_summary": "韩立在险境后决定以后没有足够好处和把握不再出手救人，叙事确认这导致其以后无利不起早。",
+          "participants": [
+            "node:chunk-0023:character:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0023:008",
+            "evidence:chunk-0023:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "记忆情绪与执念",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            42144,
+            42345
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42144,
+              42345
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0023:006",
+          "event_type": "favor_promise_event",
+          "label": "厉飞雨表明身份并承诺人情",
+          "fact_summary": "厉飞雨说出姓名，因韩立救命和保密而承诺欠下大人情，可在能力范围内帮韩立。",
+          "participants": [
+            "node:chunk-0023:character:001",
+            "node:chunk-0023:character:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0023:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            42348,
+            42481
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42348,
+              42481
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0023:007",
+          "event_type": "medicine_arrangement_event",
+          "label": "韩立约厉飞雨取止痛成药",
+          "fact_summary": "韩立说明可回神手谷配出成药，并约厉飞雨明天午时到神手谷门口等候取药。",
+          "participants": [
+            "node:chunk-0023:character:001",
+            "node:chunk-0023:character:002",
+            "node:chunk-0023:location:001",
+            "node:chunk-0023:character:003"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0023:012",
+            "evidence:chunk-0023:013"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            42638,
+            43102
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42638,
+              43102
+            ]
+          }
+        }
+      ],
+      "extracted_evidence": [
+        {
+          "evidence_id": "evidence:chunk-0023:001",
+          "chunk_id": "chunk-0023",
+          "source_range": [
+            41038,
+            41093
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41038,
+              41093
+            ]
+          },
+          "excerpt": "韩立没再说什么，把药丸塞到了他的嘴里，看着他就着吐沫干咽了下去，这才轻轻地把他身上插着的银针一根根的拔了下来。",
+          "fact_summary": "韩立把药丸喂给厉师兄并拔下其身上的银针。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0023:001"
+        },
+        {
+          "evidence_id": "evidence:chunk-0023:002",
+          "chunk_id": "chunk-0023",
+          "source_range": [
+            41096,
+            41330
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41096,
+              41330
+            ]
+          },
+          "excerpt": "当取下所有的银针后，药丸的药力开始发作起来，厉师兄苍白的脸色升起了几丝不正常的红晕，整个面颊渐渐都变成了血红色，这时他的身子又抽动起来，手脚开始了颤抖，口中发出了一阵阵低沉的呻吟声。\n　　可以看出他不想在韩立面前出丑，已尽量压低了自己的声音，但是这种非人的痛苦还是让他吼出了声。\n　　厉师兄的吼声越来越大，身子抖动得也更加厉害，过了好长时间，他的吼声才开始慢慢得低了下去，直到吼叫声完全消失。他的脸色开始恢复了正常的光彩，身子也停止了抽动，看来他已熬过了最痛苦的阶段。",
+          "fact_summary": "药丸药力发作后，厉师兄经历剧烈痛苦并最终熬过最痛阶段。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0023:002"
+        },
+        {
+          "evidence_id": "evidence:chunk-0023:003",
+          "chunk_id": "chunk-0023",
+          "source_range": [
+            41333,
+            41399
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41333,
+              41399
+            ]
+          },
+          "excerpt": "厉师兄缓缓的坐直了身子，双脚盘膝，再次闭起双目，原地不动的打坐调息起来，韩立则找块干净的山石，随意的坐在了一旁，看着他运功恢复元气。",
+          "fact_summary": "厉师兄熬过痛苦后打坐调息、运功恢复元气，韩立在旁观察。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0023:003"
+        },
+        {
+          "evidence_id": "evidence:chunk-0023:004",
+          "chunk_id": "chunk-0023",
+          "source_range": [
+            41402,
+            41503
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41402,
+              41503
+            ]
+          },
+          "excerpt": "过了一顿饭的功夫，正盘坐着的厉师兄猛然睁开双目，一把拔出身边放着的长刀跳了起来，手臂用力一挥，只见刀芒一闪，明晃晃的刀刃已架在了韩立的脖子上。\n　　“给我一个不杀你的理由！”厉师兄眼放寒光，充满了杀机。",
+          "fact_summary": "厉师兄恢复后拔出长刀架在韩立脖子上，以杀机逼问不杀理由。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0023:004"
+        },
+        {
+          "evidence_id": "evidence:chunk-0023:005",
+          "chunk_id": "chunk-0023",
+          "source_range": [
+            41506,
+            41708
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41506,
+              41708
+            ]
+          },
+          "excerpt": "“我刚才救了你一命，算不算是一个理由？”韩立脸色不变，只是眉梢微微的跳动了一下，不仔细观察根本发现不了。\n　　厉师兄面容稍缓了一下，但仍用双目恶狠狠地盯着韩立。\n　　“我在救你之前就已知道，你很可能会为了保守秘密，而杀我灭口，只不过没想到，你会动手的这么快。”韩立终于苦笑了一下，脸上有了几分的自嘲之色。\n　　“咳！即使知道救了你其实是在跟自己找麻烦，但我既然学了医术，就不能见死不救。”韩立叹了一口气。",
+          "fact_summary": "韩立以救命之恩回应威胁，并说明自己预料到对方可能为保密灭口但仍因医术而救人。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0023:005"
+        },
+        {
+          "evidence_id": "evidence:chunk-0023:006",
+          "chunk_id": "chunk-0023",
+          "source_range": [
+            41788,
+            41908
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41788,
+              41908
+            ]
+          },
+          "excerpt": "“你不用担心我会把你的隐私告诉别人，你一看就知道我不是一个多嘴的人，实在不放心的话，我可以发个毒誓，你应该能看出来我不会什么武功，你要是发现我违背了誓言，你可以轻易的斩杀我。”韩立冷静的提出了建议。\n　　“你发毒誓吧。”厉师兄说话倒也干脆。",
+          "fact_summary": "韩立提出发毒誓保密以解除厉师兄疑虑，厉师兄同意。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0023:006"
+        },
+        {
+          "evidence_id": "evidence:chunk-0023:007",
+          "chunk_id": "chunk-0023",
+          "source_range": [
+            41911,
+            42077
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41911,
+              42077
+            ]
+          },
+          "excerpt": "不过韩立这才把心全放了下来，虽然他在救治厉师兄之前就已观察过此人的面相，觉得他不是一个忘恩负义、狠毒残忍之人，但这并不能完全作准，万一他是个恩将仇报的小人，自己也只有动用唯一的护身手段了。\n　　韩立想到这里，把自己的手指悄悄地从一个缩在袖口里的铁筒上挪了开。\n　　在韩立郑重的发了一个毒誓后，厉师兄终于把长刀收了回来，并插回了刀鞘。",
+          "fact_summary": "韩立暗中保留铁筒作为唯一护身手段；发毒誓后，厉师兄收回长刀。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0023:007"
+        },
+        {
+          "evidence_id": "evidence:chunk-0023:008",
+          "chunk_id": "chunk-0023",
+          "source_range": [
+            42144,
+            42271
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42144,
+              42271
+            ]
+          },
+          "excerpt": "“这次可真够险啊！自己还是考虑的不够周全，一定要吸取这次的教训，说什么也不再做这种吃力不讨好的乌龙事，别人要死要活是他们自己的事情，关自己鸟事。”韩立有些后怕的想。\n　　“没有足够的好处和十全的把握，下次自己决不再出手救人。”他在心里恶狠狠地下定了决心。",
+          "fact_summary": "韩立因险遭灭口而后怕，决定以后没有足够好处和把握不再出手救人。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "记忆情绪与执念",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0023:008"
+        },
+        {
+          "evidence_id": "evidence:chunk-0023:009",
+          "chunk_id": "chunk-0023",
+          "source_range": [
+            42274,
+            42345
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42274,
+              42345
+            ]
+          },
+          "excerpt": "韩立首次出手救人的不良后果，直接导致了他以后无利不起早的恶习，原本还有些淳朴的本性也彻底被抛弃了，虽然没变成什么恶人，但也离忠厚善良差了老远。",
+          "fact_summary": "叙事确认韩立首次救人的不良后果直接促成其以后无利不起早的行为倾向。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "NPC性格与代表事件",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0023:009"
+        },
+        {
+          "evidence_id": "evidence:chunk-0023:010",
+          "chunk_id": "chunk-0023",
+          "source_range": [
+            42348,
+            42481
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42348,
+              42481
+            ]
+          },
+          "excerpt": "“阁下救了我的性命，又答应替在下保守秘密，我厉飞雨欠你一个大人情。只要我没死，你有什么事情需要我帮忙，尽管来找我，只要我能做到的，我一定帮你。”厉师兄已全恢复了在山崖下的神采，把被韩立搜出来放在地上的杂物都收回了身上，才来到他面前诚恳的说出了自己的名字并作出了承诺。",
+          "fact_summary": "厉师兄说出自己名为厉飞雨，因韩立救命并保密而承诺欠其大人情并可帮忙。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0023:010"
+        },
+        {
+          "evidence_id": "evidence:chunk-0023:011",
+          "chunk_id": "chunk-0023",
+          "source_range": [
+            42484,
+            42614
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42484,
+              42614
+            ]
+          },
+          "excerpt": "“我恐怕不会有事麻烦你，倒是你自己麻烦不少吧？”韩立微微一笑，反问了他一句。\n　　“你怎么知道？”厉飞雨一愣，有些惊讶。\n　　“是个人都能猜得出来，你一个普通的护法弟子，却压在了一大批堂主、长老甚至门主的爱徒之上，怎么会有你好日子过！”韩立一针见血的指了出来。",
+          "fact_summary": "韩立判断厉飞雨作为普通护法弟子压过堂主、长老和门主爱徒，会引来麻烦。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "信息传播与情报",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0023:011"
+        },
+        {
+          "evidence_id": "evidence:chunk-0023:012",
+          "chunk_id": "chunk-0023",
+          "source_range": [
+            42638,
+            42808
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42638,
+              42808
+            ]
+          },
+          "excerpt": "“你的事情我不想管，也管不了，倒是对你服用抽髓丸产生的痛苦，我能帮你减轻一二。”\n　　“真的吗？”厉飞雨精神一震，面容上的阴沉不知飞到哪里去了，满脸的喜色，看来抽髓丸的痛苦折磨的他不轻。\n　　“我没事骗你干吗。”韩立白了厉飞雨一眼，他当然有这种减轻人痛苦的药方，这还是他空闲时，专门替张铁研究出来的，能大幅度降低人体对痛苦的知觉，非常有效。",
+          "fact_summary": "韩立指出厉飞雨服用抽髓丸产生痛苦，并表示能用自己为张铁研究的药方减轻痛苦知觉。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "炼丹师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0023:012"
+        },
+        {
+          "evidence_id": "evidence:chunk-0023:013",
+          "chunk_id": "chunk-0023",
+          "source_range": [
+            42847,
+            43102
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42847,
+              43102
+            ]
+          },
+          "excerpt": "“你用这种眼神看我干吗，我现在又没这种药，要回神手谷去配出来，才有成药。”\n　　厉飞雨一听，有些不好意思，自己刚刚还拿刀威胁对方，现在又要求人家配药。\n　　“明天午时，你来神手谷门口等我，我把药配好后就给你送去，现在墨大夫不在家，我不好让外人随便进谷。”韩立缓缓的说道。\n　　“行，我准时到，真是谢谢兄弟了。”厉飞雨赶紧答应，生怕他再反悔。\n　　“我叫韩立，是墨大夫的亲传弟子，你武功这么高，叫我韩师弟就行了。”韩立听他连“兄弟”这么亲热的词都说出口了，连忙把自己的名字告诉了他，省得他再说些更肉麻的称谓出来。",
+          "fact_summary": "韩立约厉飞雨次日午时到神手谷门口取配好的成药，并说明自己是墨大夫亲传弟子。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0023:013"
+        }
+      ],
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_range": [
+            41038,
+            43102
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41038,
+              43102
+            ]
+          }
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_range": [
+            41506,
+            42345
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41506,
+              42345
+            ]
+          }
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_range": [
+            42348,
+            43102
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42348,
+              43102
+            ]
+          }
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_range": [
+            41402,
+            42077
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41402,
+              42077
+            ]
+          }
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_range": [
+            41402,
+            42077
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41402,
+              42077
+            ]
+          }
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "source_range": [
+            41038,
+            43102
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41038,
+              43102
+            ]
+          }
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_range": [
+            42847,
+            43102
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42847,
+              43102
+            ]
+          }
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_range": [
+            41402,
+            42077
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41402,
+              42077
+            ]
+          }
+        }
+      ],
+      "uncertainties": [
+        {
+          "id": "uncertainty:chunk-0023:001",
+          "kind": "generic_medicine_identity_missing",
+          "fact_summary": "韩立最初喂给厉飞雨的“药丸”未给出正式名称、成分或是否与后续止痛药有关，因此不作为具名丹药节点。",
+          "evidence_ids": [
+            "evidence:chunk-0023:001",
+            "evidence:chunk-0023:002"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            41038,
+            41330
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41038,
+              41330
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0023:002",
+          "kind": "pill_reason_missing",
+          "fact_summary": "当前 chunk 明示厉飞雨服用抽髓丸并承受痛苦，但没有说明服用原因、抽髓丸完整效果、代价边界或来源。",
+          "evidence_ids": [
+            "evidence:chunk-0023:012"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            },
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            42638,
+            42808
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42638,
+              42808
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0023:003",
+          "kind": "defensive_tool_mechanism_missing",
+          "fact_summary": "铁筒被韩立视为唯一护身手段，但当前 chunk 未说明其名称、结构、使用方式或实际效果。",
+          "evidence_ids": [
+            "evidence:chunk-0023:007"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            41911,
+            42077
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41911,
+              42077
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0023:004",
+          "kind": "faction_conflict_details_missing",
+          "fact_summary": "韩立只概括厉飞雨压过堂主、长老和门主爱徒会有麻烦，当前 chunk 未明示具体门派结构、敌对人物姓名或后续冲突。",
+          "evidence_ids": [
+            "evidence:chunk-0023:011"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            },
+            {
+              "template_name": "信息传播与情报",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            42484,
+            42614
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42484,
+              42614
+            ]
+          }
+        }
+      ],
+      "rejected_candidates": [
+        {
+          "id": "rejected:chunk-0023:001",
+          "candidate": "银针",
+          "reason": "银针只是韩立救治厉飞雨时拔下的普通医用器具，当前未给出名称、特殊功能或独立后续后果。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            41038,
+            41093
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41038,
+              41093
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0023:002",
+          "candidate": "堂主、长老、门主的爱徒",
+          "reason": "当前只作为厉飞雨潜在麻烦的泛称群体出现，未给出具体姓名、势力关系或可闭合行动。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            42484,
+            42614
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42484,
+              42614
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0023:003",
+          "candidate": "山石",
+          "reason": "山石只是韩立旁坐观察时的场景物，不具备独立剧情功能。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            41333,
+            41399
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              41333,
+              41399
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0023:004",
+          "candidate": "成药",
+          "reason": "当前 chunk 尚未配出成药，只作为韩立次日配药承诺出现；不在本 chunk 将其建成已存在物品节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            42847,
+            43102
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0023",
+            "source_path": "intermediate/chunks/chunk-0023.txt",
+            "source_range": [
+              42847,
+              43102
+            ]
+          }
+        }
+      ],
+      "structured_failures": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0023/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "id": "node:chunk-0023:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立救治厉飞雨，遭其拔刀威胁后以救命、保密毒誓和暗藏铁筒化解危机；此事让他形成以后无利不起早、不轻易救人的行为倾向，并约厉飞雨到神手谷取止痛成药。",
+      "evidence_ids": [
+        "evidence:chunk-0023:001",
+        "evidence:chunk-0023:005",
+        "evidence:chunk-0023:006",
+        "evidence:chunk-0023:007",
+        "evidence:chunk-0023:008",
+        "evidence:chunk-0023:009",
+        "evidence:chunk-0023:012",
+        "evidence:chunk-0023:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        41038,
+        43102
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          41038,
+          43102
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0023:character:002",
+      "node_type": "character",
+      "label": "厉飞雨",
+      "aliases": [
+        "厉师兄"
+      ],
+      "fact_summary": "厉飞雨在当前 chunk 先以“厉师兄”出现，服药熬过痛苦后拔刀威胁韩立；韩立发誓保密后，他说出姓名并承诺欠韩立大人情，随后因抽髓丸痛苦接受次日取药约定。",
+      "evidence_ids": [
+        "evidence:chunk-0023:002",
+        "evidence:chunk-0023:003",
+        "evidence:chunk-0023:004",
+        "evidence:chunk-0023:010",
+        "evidence:chunk-0023:011",
+        "evidence:chunk-0023:012",
+        "evidence:chunk-0023:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        41096,
+        43102
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          41096,
+          43102
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0023:pill:001",
+      "node_type": "pill",
+      "label": "抽髓丸",
+      "aliases": [],
+      "fact_summary": "抽髓丸在当前 chunk 明示为厉飞雨服用后会产生痛苦的丹丸，痛苦折磨使厉飞雨听到可减轻痛苦时大喜。",
+      "evidence_ids": [
+        "evidence:chunk-0023:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        42638,
+        42808
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          42638,
+          42808
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0023:weapon:001",
+      "node_type": "weapon",
+      "label": "长刀",
+      "aliases": [],
+      "fact_summary": "长刀由厉飞雨拔出并架在韩立脖子上，后来在韩立发毒誓后被收回刀鞘。",
+      "evidence_ids": [
+        "evidence:chunk-0023:004",
+        "evidence:chunk-0023:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        41402,
+        42077
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          41402,
+          42077
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0023:tool:001",
+      "node_type": "tool",
+      "label": "铁筒",
+      "aliases": [],
+      "fact_summary": "铁筒缩在韩立袖口里，被韩立视作唯一护身手段；在厉飞雨同意毒誓后，韩立将手指从铁筒上挪开。",
+      "evidence_ids": [
+        "evidence:chunk-0023:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        41911,
+        42077
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          41911,
+          42077
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0023:location:001",
+      "node_type": "location",
+      "label": "神手谷",
+      "aliases": [],
+      "fact_summary": "韩立说明需要回神手谷配药，并约厉飞雨明天午时在神手谷门口等候。",
+      "evidence_ids": [
+        "evidence:chunk-0023:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        42847,
+        43102
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          42847,
+          43102
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0023:character:003",
+      "node_type": "character",
+      "label": "墨大夫",
+      "aliases": [],
+      "fact_summary": "墨大夫当前不在家；韩立说明自己是墨大夫的亲传弟子，并因此不好让外人随便进神手谷。",
+      "evidence_ids": [
+        "evidence:chunk-0023:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        42847,
+        43102
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          42847,
+          43102
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0023:character:004",
+      "node_type": "character",
+      "label": "张铁",
+      "aliases": [],
+      "fact_summary": "张铁在当前 chunk 作为韩立止痛药方的原始研究对象出现；韩立称该药方是空闲时专门替张铁研究出来的。",
+      "evidence_ids": [
+        "evidence:chunk-0023:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        42638,
+        42808
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          42638,
+          42808
+        ]
+      }
+    }
+  ],
+  "normalized_edges": [
+    {
+      "id": "edge:chunk-0023:001",
+      "edge_type": "treats",
+      "source": "node:chunk-0023:character:001",
+      "target": "node:chunk-0023:character:002",
+      "fact_summary": "韩立给厉飞雨喂下药丸并拔去银针，帮助其熬过痛苦阶段。",
+      "evidence_ids": [
+        "evidence:chunk-0023:001",
+        "evidence:chunk-0023:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        41038,
+        41330
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          41038,
+          41330
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0023:002",
+      "edge_type": "threatens",
+      "source": "node:chunk-0023:character:002",
+      "target": "node:chunk-0023:character:001",
+      "fact_summary": "厉飞雨恢复后以长刀架住韩立脖子，逼问不杀他的理由。",
+      "evidence_ids": [
+        "evidence:chunk-0023:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        41402,
+        41503
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          41402,
+          41503
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0023:003",
+      "edge_type": "uses_weapon",
+      "source": "node:chunk-0023:character:002",
+      "target": "node:chunk-0023:weapon:001",
+      "fact_summary": "厉飞雨拔出身边长刀并将刀刃架在韩立脖子上。",
+      "evidence_ids": [
+        "evidence:chunk-0023:004",
+        "evidence:chunk-0023:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        41402,
+        42077
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          41402,
+          42077
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0023:004",
+      "edge_type": "swears_secrecy_to",
+      "source": "node:chunk-0023:character:001",
+      "target": "node:chunk-0023:character:002",
+      "fact_summary": "韩立向厉飞雨提出并郑重发毒誓，承诺不外泄其隐私。",
+      "evidence_ids": [
+        "evidence:chunk-0023:006",
+        "evidence:chunk-0023:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        41788,
+        42077
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          41788,
+          42077
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0023:005",
+      "edge_type": "promises_favor_to",
+      "source": "node:chunk-0023:character:002",
+      "target": "node:chunk-0023:character:001",
+      "fact_summary": "厉飞雨因韩立救命和保密承诺欠其大人情，并答应力所能及时帮忙。",
+      "evidence_ids": [
+        "evidence:chunk-0023:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        42348,
+        42481
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          42348,
+          42481
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0023:006",
+      "edge_type": "suffers_from_pill",
+      "source": "node:chunk-0023:character:002",
+      "target": "node:chunk-0023:pill:001",
+      "fact_summary": "厉飞雨服用抽髓丸后受到痛苦折磨。",
+      "evidence_ids": [
+        "evidence:chunk-0023:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        42638,
+        42808
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          42638,
+          42808
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0023:007",
+      "edge_type": "offers_pain_relief_to",
+      "source": "node:chunk-0023:character:001",
+      "target": "node:chunk-0023:character:002",
+      "fact_summary": "韩立表示能减轻厉飞雨因抽髓丸产生的痛苦，并约其次日到神手谷门口取药。",
+      "evidence_ids": [
+        "evidence:chunk-0023:012",
+        "evidence:chunk-0023:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        42638,
+        43102
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          42638,
+          43102
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0023:008",
+      "edge_type": "disciple_of",
+      "source": "node:chunk-0023:character:001",
+      "target": "node:chunk-0023:character:003",
+      "fact_summary": "韩立向厉飞雨说明自己是墨大夫的亲传弟子。",
+      "evidence_ids": [
+        "evidence:chunk-0023:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        42847,
+        43102
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          42847,
+          43102
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0023:009",
+      "edge_type": "keeps_defensive_tool",
+      "source": "node:chunk-0023:character:001",
+      "target": "node:chunk-0023:tool:001",
+      "fact_summary": "韩立在判断厉飞雨可能恩将仇报时，手指曾暗扣袖口里的铁筒作为护身手段。",
+      "evidence_ids": [
+        "evidence:chunk-0023:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        41911,
+        42077
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          41911,
+          42077
+        ]
+      }
+    }
+  ],
+  "normalized_events": [
+    {
+      "id": "event:chunk-0023:001",
+      "event_type": "treatment_event",
+      "label": "韩立救治厉飞雨",
+      "fact_summary": "韩立喂厉飞雨服下药丸、拔出银针，随后观察其熬过药力发作带来的剧烈痛苦。",
+      "participants": [
+        "node:chunk-0023:character:001",
+        "node:chunk-0023:character:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0023:001",
+        "evidence:chunk-0023:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        41038,
+        41330
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          41038,
+          41330
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0023:002",
+      "event_type": "recovery_event",
+      "label": "厉飞雨运功恢复元气",
+      "fact_summary": "厉飞雨熬过痛苦后盘膝打坐调息、运功恢复元气，韩立在旁等待。",
+      "participants": [
+        "node:chunk-0023:character:001",
+        "node:chunk-0023:character:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0023:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        41333,
+        41399
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          41333,
+          41399
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0023:003",
+      "event_type": "conflict_event",
+      "label": "厉飞雨拔刀威胁韩立",
+      "fact_summary": "厉飞雨恢复后拔出长刀架在韩立脖子上，要求韩立给出不杀他的理由。",
+      "participants": [
+        "node:chunk-0023:character:001",
+        "node:chunk-0023:character:002",
+        "node:chunk-0023:weapon:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0023:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        41402,
+        41503
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          41402,
+          41503
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0023:004",
+      "event_type": "oath_resolution_event",
+      "label": "韩立发毒誓化解杀机",
+      "fact_summary": "韩立冷静提出发毒誓保密并暗中保留铁筒护身；发誓后厉飞雨收刀入鞘。",
+      "participants": [
+        "node:chunk-0023:character:001",
+        "node:chunk-0023:character:002",
+        "node:chunk-0023:weapon:001",
+        "node:chunk-0023:tool:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0023:006",
+        "evidence:chunk-0023:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        41788,
+        42077
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          41788,
+          42077
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0023:005",
+      "event_type": "character_change_event",
+      "label": "韩立形成不轻易救人的教训",
+      "fact_summary": "韩立在险境后决定以后没有足够好处和把握不再出手救人，叙事确认这导致其以后无利不起早。",
+      "participants": [
+        "node:chunk-0023:character:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0023:008",
+        "evidence:chunk-0023:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "记忆情绪与执念",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        42144,
+        42345
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          42144,
+          42345
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0023:006",
+      "event_type": "favor_promise_event",
+      "label": "厉飞雨表明身份并承诺人情",
+      "fact_summary": "厉飞雨说出姓名，因韩立救命和保密而承诺欠下大人情，可在能力范围内帮韩立。",
+      "participants": [
+        "node:chunk-0023:character:001",
+        "node:chunk-0023:character:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0023:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        42348,
+        42481
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          42348,
+          42481
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0023:007",
+      "event_type": "medicine_arrangement_event",
+      "label": "韩立约厉飞雨取止痛成药",
+      "fact_summary": "韩立说明可回神手谷配出成药，并约厉飞雨明天午时到神手谷门口等候取药。",
+      "participants": [
+        "node:chunk-0023:character:001",
+        "node:chunk-0023:character:002",
+        "node:chunk-0023:location:001",
+        "node:chunk-0023:character:003"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0023:012",
+        "evidence:chunk-0023:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        42638,
+        43102
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          42638,
+          43102
+        ]
+      }
+    }
+  ],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0023:001",
+      "chunk_id": "chunk-0023",
+      "source_range": [
+        41038,
+        41093
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          41038,
+          41093
+        ]
+      },
+      "excerpt": "韩立没再说什么，把药丸塞到了他的嘴里，看着他就着吐沫干咽了下去，这才轻轻地把他身上插着的银针一根根的拔了下来。",
+      "fact_summary": "韩立把药丸喂给厉师兄并拔下其身上的银针。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0023:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0023:002",
+      "chunk_id": "chunk-0023",
+      "source_range": [
+        41096,
+        41330
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          41096,
+          41330
+        ]
+      },
+      "excerpt": "当取下所有的银针后，药丸的药力开始发作起来，厉师兄苍白的脸色升起了几丝不正常的红晕，整个面颊渐渐都变成了血红色，这时他的身子又抽动起来，手脚开始了颤抖，口中发出了一阵阵低沉的呻吟声。\n　　可以看出他不想在韩立面前出丑，已尽量压低了自己的声音，但是这种非人的痛苦还是让他吼出了声。\n　　厉师兄的吼声越来越大，身子抖动得也更加厉害，过了好长时间，他的吼声才开始慢慢得低了下去，直到吼叫声完全消失。他的脸色开始恢复了正常的光彩，身子也停止了抽动，看来他已熬过了最痛苦的阶段。",
+      "fact_summary": "药丸药力发作后，厉师兄经历剧烈痛苦并最终熬过最痛阶段。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0023:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0023:003",
+      "chunk_id": "chunk-0023",
+      "source_range": [
+        41333,
+        41399
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          41333,
+          41399
+        ]
+      },
+      "excerpt": "厉师兄缓缓的坐直了身子，双脚盘膝，再次闭起双目，原地不动的打坐调息起来，韩立则找块干净的山石，随意的坐在了一旁，看着他运功恢复元气。",
+      "fact_summary": "厉师兄熬过痛苦后打坐调息、运功恢复元气，韩立在旁观察。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0023:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0023:004",
+      "chunk_id": "chunk-0023",
+      "source_range": [
+        41402,
+        41503
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          41402,
+          41503
+        ]
+      },
+      "excerpt": "过了一顿饭的功夫，正盘坐着的厉师兄猛然睁开双目，一把拔出身边放着的长刀跳了起来，手臂用力一挥，只见刀芒一闪，明晃晃的刀刃已架在了韩立的脖子上。\n　　“给我一个不杀你的理由！”厉师兄眼放寒光，充满了杀机。",
+      "fact_summary": "厉师兄恢复后拔出长刀架在韩立脖子上，以杀机逼问不杀理由。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0023:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0023:005",
+      "chunk_id": "chunk-0023",
+      "source_range": [
+        41506,
+        41708
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          41506,
+          41708
+        ]
+      },
+      "excerpt": "“我刚才救了你一命，算不算是一个理由？”韩立脸色不变，只是眉梢微微的跳动了一下，不仔细观察根本发现不了。\n　　厉师兄面容稍缓了一下，但仍用双目恶狠狠地盯着韩立。\n　　“我在救你之前就已知道，你很可能会为了保守秘密，而杀我灭口，只不过没想到，你会动手的这么快。”韩立终于苦笑了一下，脸上有了几分的自嘲之色。\n　　“咳！即使知道救了你其实是在跟自己找麻烦，但我既然学了医术，就不能见死不救。”韩立叹了一口气。",
+      "fact_summary": "韩立以救命之恩回应威胁，并说明自己预料到对方可能为保密灭口但仍因医术而救人。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0023:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0023:006",
+      "chunk_id": "chunk-0023",
+      "source_range": [
+        41788,
+        41908
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          41788,
+          41908
+        ]
+      },
+      "excerpt": "“你不用担心我会把你的隐私告诉别人，你一看就知道我不是一个多嘴的人，实在不放心的话，我可以发个毒誓，你应该能看出来我不会什么武功，你要是发现我违背了誓言，你可以轻易的斩杀我。”韩立冷静的提出了建议。\n　　“你发毒誓吧。”厉师兄说话倒也干脆。",
+      "fact_summary": "韩立提出发毒誓保密以解除厉师兄疑虑，厉师兄同意。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0023:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0023:007",
+      "chunk_id": "chunk-0023",
+      "source_range": [
+        41911,
+        42077
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          41911,
+          42077
+        ]
+      },
+      "excerpt": "不过韩立这才把心全放了下来，虽然他在救治厉师兄之前就已观察过此人的面相，觉得他不是一个忘恩负义、狠毒残忍之人，但这并不能完全作准，万一他是个恩将仇报的小人，自己也只有动用唯一的护身手段了。\n　　韩立想到这里，把自己的手指悄悄地从一个缩在袖口里的铁筒上挪了开。\n　　在韩立郑重的发了一个毒誓后，厉师兄终于把长刀收了回来，并插回了刀鞘。",
+      "fact_summary": "韩立暗中保留铁筒作为唯一护身手段；发毒誓后，厉师兄收回长刀。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0023:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0023:008",
+      "chunk_id": "chunk-0023",
+      "source_range": [
+        42144,
+        42271
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          42144,
+          42271
+        ]
+      },
+      "excerpt": "“这次可真够险啊！自己还是考虑的不够周全，一定要吸取这次的教训，说什么也不再做这种吃力不讨好的乌龙事，别人要死要活是他们自己的事情，关自己鸟事。”韩立有些后怕的想。\n　　“没有足够的好处和十全的把握，下次自己决不再出手救人。”他在心里恶狠狠地下定了决心。",
+      "fact_summary": "韩立因险遭灭口而后怕，决定以后没有足够好处和把握不再出手救人。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "记忆情绪与执念",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0023:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0023:009",
+      "chunk_id": "chunk-0023",
+      "source_range": [
+        42274,
+        42345
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          42274,
+          42345
+        ]
+      },
+      "excerpt": "韩立首次出手救人的不良后果，直接导致了他以后无利不起早的恶习，原本还有些淳朴的本性也彻底被抛弃了，虽然没变成什么恶人，但也离忠厚善良差了老远。",
+      "fact_summary": "叙事确认韩立首次救人的不良后果直接促成其以后无利不起早的行为倾向。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0023:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0023:010",
+      "chunk_id": "chunk-0023",
+      "source_range": [
+        42348,
+        42481
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          42348,
+          42481
+        ]
+      },
+      "excerpt": "“阁下救了我的性命，又答应替在下保守秘密，我厉飞雨欠你一个大人情。只要我没死，你有什么事情需要我帮忙，尽管来找我，只要我能做到的，我一定帮你。”厉师兄已全恢复了在山崖下的神采，把被韩立搜出来放在地上的杂物都收回了身上，才来到他面前诚恳的说出了自己的名字并作出了承诺。",
+      "fact_summary": "厉师兄说出自己名为厉飞雨，因韩立救命并保密而承诺欠其大人情并可帮忙。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0023:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0023:011",
+      "chunk_id": "chunk-0023",
+      "source_range": [
+        42484,
+        42614
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          42484,
+          42614
+        ]
+      },
+      "excerpt": "“我恐怕不会有事麻烦你，倒是你自己麻烦不少吧？”韩立微微一笑，反问了他一句。\n　　“你怎么知道？”厉飞雨一愣，有些惊讶。\n　　“是个人都能猜得出来，你一个普通的护法弟子，却压在了一大批堂主、长老甚至门主的爱徒之上，怎么会有你好日子过！”韩立一针见血的指了出来。",
+      "fact_summary": "韩立判断厉飞雨作为普通护法弟子压过堂主、长老和门主爱徒，会引来麻烦。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0023:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0023:012",
+      "chunk_id": "chunk-0023",
+      "source_range": [
+        42638,
+        42808
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          42638,
+          42808
+        ]
+      },
+      "excerpt": "“你的事情我不想管，也管不了，倒是对你服用抽髓丸产生的痛苦，我能帮你减轻一二。”\n　　“真的吗？”厉飞雨精神一震，面容上的阴沉不知飞到哪里去了，满脸的喜色，看来抽髓丸的痛苦折磨的他不轻。\n　　“我没事骗你干吗。”韩立白了厉飞雨一眼，他当然有这种减轻人痛苦的药方，这还是他空闲时，专门替张铁研究出来的，能大幅度降低人体对痛苦的知觉，非常有效。",
+      "fact_summary": "韩立指出厉飞雨服用抽髓丸产生痛苦，并表示能用自己为张铁研究的药方减轻痛苦知觉。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼丹师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0023:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0023:013",
+      "chunk_id": "chunk-0023",
+      "source_range": [
+        42847,
+        43102
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0023",
+        "source_path": "intermediate/chunks/chunk-0023.txt",
+        "source_range": [
+          42847,
+          43102
+        ]
+      },
+      "excerpt": "“你用这种眼神看我干吗，我现在又没这种药，要回神手谷去配出来，才有成药。”\n　　厉飞雨一听，有些不好意思，自己刚刚还拿刀威胁对方，现在又要求人家配药。\n　　“明天午时，你来神手谷门口等我，我把药配好后就给你送去，现在墨大夫不在家，我不好让外人随便进谷。”韩立缓缓的说道。\n　　“行，我准时到，真是谢谢兄弟了。”厉飞雨赶紧答应，生怕他再反悔。\n　　“我叫韩立，是墨大夫的亲传弟子，你武功这么高，叫我韩师弟就行了。”韩立听他连“兄弟”这么亲热的词都说出口了，连忙把自己的名字告诉了他，省得他再说些更肉麻的称谓出来。",
+      "fact_summary": "韩立约厉飞雨次日午时到神手谷门口取配好的成药，并说明自己是墨大夫亲传弟子。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0023:013"
+    }
+  ]
+}

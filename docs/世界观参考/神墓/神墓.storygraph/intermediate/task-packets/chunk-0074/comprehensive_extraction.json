@@ -1,0 +1,61 @@
+{
+  "task_packet_id": "chunk-0074:comprehensive_extraction:attempt-001",
+  "stage": "stage1",
+  "chunk_id": "chunk-0074",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\神墓\\神墓.txt",
+  "source_range": [
+    388042,
+    392749
+  ],
+  "chapter_hint": "第十四章 爱你一万年",
+  "chunk_text_path": "intermediate/chunks/chunk-0074.txt",
+  "relevant_template_requirements": {
+    "path": "requirements/template-requirements.json"
+  },
+  "lane_contract": {
+    "lane_id": "comprehensive_extraction",
+    "agent_role": "comprehensive-stage1-extraction-agent",
+    "required": true,
+    "schema": "lane-output.schema.json",
+    "status_enum_ref": "status_enums.lane_output_statuses",
+    "extraction_scope": [
+      "nodes",
+      "edges",
+      "events",
+      "evidence",
+      "supports_templates",
+      "uncertainties",
+      "rejected_candidates",
+      "structured_failures"
+    ]
+  },
+  "allowed_output_schema": "lane-output.schema.json",
+  "required_evidence_policy": null,
+  "attempt": 1,
+  "agent_selector": {
+    "stage": "stage1",
+    "lane_id": "comprehensive_extraction",
+    "required_schema": "lane-output.schema.json",
+    "preferred_agents": null
+  },
+  "selected_agent_info": null,
+  "stage1_output_contract": {
+    "required_collections": [
+      "extracted_nodes",
+      "extracted_edges",
+      "extracted_events",
+      "extracted_evidence",
+      "supports_templates",
+      "uncertainties",
+      "rejected_candidates",
+      "structured_failures"
+    ],
+    "summary": "single-pass comprehensive Stage 1 extraction for the assigned chunk"
+  },
+  "extraction_quality_rules": {
+    "path": "references/stage1-extraction-agent-quality-rules.md"
+  },
+  "task_packet_path": "intermediate/task-packets/chunk-0074/comprehensive_extraction.json"
+}

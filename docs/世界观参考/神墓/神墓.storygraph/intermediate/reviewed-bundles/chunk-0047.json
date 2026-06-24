@@ -1,0 +1,145 @@
+{
+  "chunk_id": "chunk-0047",
+  "source_range": [
+    268957,
+    268967
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "chunk_id": "chunk-0047",
+      "extracted_nodes": [
+        {
+          "id": "n-ch47-001",
+          "node_type": "facility",
+          "label": "白骨魔殿",
+          "aliases": [],
+          "description": "第五卷标题所示，具体性质、位置、外观在本chunk未明示。",
+          "evidence": [
+            "e-ch47-001"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "chunk_only",
+          "source_location": {
+            "source_range": [
+              268957,
+              268967
+            ]
+          }
+        }
+      ],
+      "extracted_edges": [],
+      "extracted_events": [],
+      "extracted_evidence": [
+        {
+          "id": "e-ch47-001",
+          "evidence_type": "name_mention",
+          "content": "第五卷 白骨魔殿",
+          "source_location": {
+            "chunk_id": "chunk-0047",
+            "source_range": [
+              0,
+              12
+            ]
+          },
+          "fact_summary": "本chunk为第五卷卷名页，卷名为「白骨魔殿」。",
+          "confidence": "EXTRACTED",
+          "verification_status": "chunk_only",
+          "source_range": [
+            268957,
+            268967
+          ]
+        }
+      ],
+      "uncertainties": [
+        {
+          "id": "u-ch47-001",
+          "node_or_edge_id": "n-ch47-001",
+          "description": "「白骨魔殿」仅有卷名出现，本chunk未提供任何外观、位置、功能、所属势力等描述，是否为建筑物/宫殿/秘境均待后续chunk确认。",
+          "confidence": "AMBIGUOUS"
+        }
+      ],
+      "rejected_candidates": [],
+      "supports_templates": [
+        {
+          "node_id": "n-ch47-001",
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "cat_loc_002",
+          "relevance": "若后续chunk确认白骨魔殿为建筑/设施，则覆盖该模板。当前仅提供名称。"
+        }
+      ],
+      "task_packet_id": "chunk-0047:comprehensive_extraction:attempt-001",
+      "produced_at": "2026-06-23T18:00:00Z",
+      "structured_failures": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0047/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "id": "n-ch47-001",
+      "node_type": "facility",
+      "label": "白骨魔殿",
+      "aliases": [],
+      "description": "第五卷标题所示，具体性质、位置、外观在本chunk未明示。",
+      "evidence": [
+        "e-ch47-001"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "chunk_only",
+      "source_location": {
+        "source_range": [
+          268957,
+          268967
+        ]
+      },
+      "evidence_ids": [
+        "evidence:e-ch47-001"
+      ],
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0047"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "normalized_edges": [],
+  "normalized_events": [],
+  "normalized_evidence": [
+    {
+      "id": "e-ch47-001",
+      "evidence_type": "name_mention",
+      "content": "第五卷 白骨魔殿",
+      "source_location": {
+        "chunk_id": "chunk-0047",
+        "source_range": [
+          0,
+          12
+        ]
+      },
+      "fact_summary": "本chunk为第五卷卷名页，卷名为「白骨魔殿」。",
+      "confidence": "EXTRACTED",
+      "verification_status": "chunk_only",
+      "source_range": [
+        268957,
+        268967
+      ],
+      "evidence_id": "evidence:"
+    }
+  ]
+}

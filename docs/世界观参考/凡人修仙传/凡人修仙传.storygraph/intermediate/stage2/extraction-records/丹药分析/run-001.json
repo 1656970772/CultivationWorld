@@ -1,0 +1,1996 @@
+{
+  "schema": "stage2-extraction-record.v1",
+  "template_name": "丹药分析",
+  "template_file": "丹药分析模板.md",
+  "template_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\模板\\丹药分析模板.md",
+  "template_sha256": "2a00f01c2a000800df3f7b7e164e50890812e153b25ca8b727c7e69ec78e62fa",
+  "source_graph": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\graphify-out\\graph.json",
+  "source_novel": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+  "output_language": "zh-CN",
+  "stage2_policy": {
+    "stage2_categories": {
+      "facts": "原作事实",
+      "judgments": "我的判断",
+      "pending_verifications": "待核验",
+      "not_found_items": "未见可靠证据"
+    },
+    "stage2_output_policy": {
+      "default_dir": "drafts",
+      "allow_overwrite_existing_docs": false,
+      "existing_document_action": "write_versioned_draft",
+      "allowed_policies": [
+        "draft",
+        "backup-and-overwrite",
+        "merge"
+      ],
+      "draft_action": "write_draft"
+    },
+    "stage2_render_policy": {
+      "citation_format": "[{evidence_id}]",
+      "draft_entry_policy": {
+        "source_sections": [
+          "facts"
+        ],
+        "field_aliases": {
+          "name": [
+            "name",
+            "title",
+            "item_name",
+            "entity_name",
+            "名称"
+          ],
+          "classification": [
+            "classification",
+            "type",
+            "category_label",
+            "类别",
+            "分类"
+          ],
+          "usage": [
+            "usage",
+            "purpose",
+            "effect",
+            "effects",
+            "用途",
+            "功效"
+          ],
+          "formula": [
+            "formula",
+            "materials",
+            "ingredients",
+            "components",
+            "recipe",
+            "方方",
+            "材料",
+            "成分"
+          ],
+          "source_excerpt": [
+            "source_excerpt",
+            "original_excerpt",
+            "quote",
+            "原文摘录"
+          ],
+          "review_status": [
+            "review_status",
+            "verification_status",
+            "审核状态"
+          ]
+        },
+        "fallback_name": "未命名条目",
+        "kept_fields": [
+          "name",
+          "classification",
+          "usage",
+          "formula",
+          "source_range",
+          "source_excerpt",
+          "evidence_ids",
+          "confidence",
+          "review_status"
+        ]
+      },
+      "final_entry_policy": {
+        "allowed_confidence": [
+          "EXTRACTED"
+        ],
+        "min_evidence_count": 1,
+        "require_explicit_name": true,
+        "require_source_excerpt": true,
+        "required_any_fields": [
+          "usage",
+          "formula"
+        ],
+        "unstable_name_prefixes": [
+          "未名",
+          "未命名",
+          "未知",
+          "不明"
+        ],
+        "unstable_name_contains": [
+          "某种",
+          "某类"
+        ],
+        "composite_name_markers": [
+          "与",
+          "或",
+          "/",
+          "、"
+        ],
+        "review_only_statuses": [
+          "needs_review",
+          "pending_review",
+          "rejected",
+          "ambiguous"
+        ],
+        "allow_missing_review_status": true
+      },
+      "dedupe_policy": {
+        "key_fields": [
+          "name",
+          "classification"
+        ],
+        "merge_text_fields": [
+          "usage",
+          "formula",
+          "source_excerpt"
+        ],
+        "confidence_strategy": "most_conservative",
+        "review_status_strategy": "review_only_wins"
+      },
+      "final_template_policy": {
+        "case_section_names": [
+          "案例",
+          "典型案例",
+          "案例清单",
+          "示例"
+        ],
+        "excluded_section_names": [
+          "待复核",
+          "缺口",
+          "资料来源",
+          "说明"
+        ],
+        "fallback_to_first_non_root_heading": true
+      }
+    }
+  },
+  "coverage_scope": {
+    "scope": "whole_novel",
+    "stage1_chunk_ledger": "coverage/chunk-ledger.json",
+    "chunk_ranges": [
+      {
+        "chunk_id": "chunk-0022",
+        "source_range": [
+          39847,
+          40386
+        ]
+      },
+      {
+        "chunk_id": "chunk-0029",
+        "source_range": [
+          55976,
+          56242
+        ]
+      },
+      {
+        "chunk_id": "chunk-0033",
+        "source_range": [
+          63754,
+          63975
+        ]
+      },
+      {
+        "chunk_id": "chunk-0034",
+        "source_range": [
+          65548,
+          65695
+        ]
+      },
+      {
+        "chunk_id": "chunk-0068",
+        "source_range": [
+          134688,
+          134743
+        ]
+      },
+      {
+        "chunk_id": "chunk-0137",
+        "source_range": [
+          276953,
+          277334
+        ]
+      },
+      {
+        "chunk_id": "chunk-0158",
+        "source_range": [
+          331822,
+          332337
+        ]
+      },
+      {
+        "chunk_id": "chunk-0218",
+        "source_range": [
+          499558,
+          499685
+        ]
+      },
+      {
+        "chunk_id": "chunk-0219",
+        "source_range": [
+          500652,
+          500927
+        ]
+      },
+      {
+        "chunk_id": "chunk-0220",
+        "source_range": [
+          503237,
+          504785
+        ]
+      },
+      {
+        "chunk_id": "chunk-0240",
+        "source_range": [
+          563976,
+          564218
+        ]
+      },
+      {
+        "chunk_id": "chunk-0247",
+        "source_range": [
+          583522,
+          584557
+        ]
+      },
+      {
+        "chunk_id": "chunk-0276",
+        "source_range": [
+          671428,
+          671510
+        ]
+      },
+      {
+        "chunk_id": "chunk-0334",
+        "source_range": [
+          838713,
+          840691
+        ]
+      },
+      {
+        "chunk_id": "chunk-0360",
+        "source_range": [
+          913492,
+          913811
+        ]
+      },
+      {
+        "chunk_id": "chunk-0381",
+        "source_range": [
+          972777,
+          974218
+        ]
+      },
+      {
+        "chunk_id": "chunk-0382",
+        "source_range": [
+          974919,
+          976937
+        ]
+      },
+      {
+        "chunk_id": "chunk-0390",
+        "source_range": [
+          997229,
+          997927
+        ]
+      },
+      {
+        "chunk_id": "chunk-0397",
+        "source_range": [
+          1018227,
+          1018554
+        ]
+      }
+    ],
+    "ledger_path": "coverage/template-run-ledger.json"
+  },
+  "fulfilled_sections": [
+    {
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_kind": "summary_category",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0022:006",
+        "evidence:chunk-0022:007",
+        "evidence:chunk-0022:008",
+        "evidence:chunk-0029:011",
+        "evidence:chunk-0029:012",
+        "evidence:chunk-0247:010",
+        "evidence:chunk-0034:007",
+        "evidence:chunk-0068:019",
+        "evidence:chunk-0033:007",
+        "evidence:chunk-0137:004",
+        "evidence:chunk-0137:005",
+        "evidence:chunk-0137:006",
+        "evidence:chunk-0137:007",
+        "evidence:chunk-0218:014",
+        "evidence:chunk-0219:005",
+        "evidence:chunk-0219:006",
+        "evidence:chunk-0220:005",
+        "evidence:chunk-0220:007",
+        "evidence:chunk-0220:008",
+        "evidence:chunk-0220:011",
+        "evidence:chunk-0240:009",
+        "evidence:chunk-0240:010",
+        "evidence:chunk-0240:011",
+        "evidence:chunk-0247:007",
+        "evidence:chunk-0247:008",
+        "evidence:chunk-0247:013",
+        "evidence:chunk-0247:011",
+        "evidence:chunk-0276:021",
+        "evidence:chunk-0276:022",
+        "evidence:chunk-0158:011",
+        "evidence:chunk-0158:012",
+        "evidence:chunk-0158:015",
+        "evidence:chunk-0360:001",
+        "evidence:chunk-0360:002",
+        "evidence:chunk-0360:003",
+        "evidence:chunk-0360:004",
+        "evidence:chunk-0334:001",
+        "evidence:chunk-0334:002",
+        "evidence:chunk-0334:006",
+        "evidence:chunk-0334:007",
+        "evidence:chunk-0334:010",
+        "evidence:chunk-0334:011",
+        "evidence:chunk-0334:012",
+        "evidence:chunk-0334:013",
+        "evidence:chunk-0334:014",
+        "evidence:chunk-0381:008",
+        "evidence:chunk-0381:013",
+        "evidence:chunk-0381:014",
+        "evidence:chunk-0382:008",
+        "evidence:chunk-0390:003",
+        "evidence:chunk-0390:004",
+        "evidence:chunk-0382:004",
+        "evidence:chunk-0390:007",
+        "evidence:chunk-0382:010",
+        "evidence:chunk-0397:008",
+        "evidence:chunk-0397:009",
+        "evidence:chunk-0382:011",
+        "evidence:chunk-0382:012",
+        "evidence:chunk-0382:013",
+        "evidence:chunk-0382:014"
+      ],
+      "notes": [
+        "覆盖丹药名称、类别、用途/效果、限制/副作用、材料或配方线索、炼制/交易/使用事件。",
+        "配方、品阶、成功率等未由证据明确给出的内容已放入 not_found_items 或 pending_verifications。"
+      ]
+    }
+  ],
+  "fulfilled_fields": [
+    {
+      "requirement_id": "required_extraction_targets",
+      "requirement_kind": "task_packet_requirement",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0022:006",
+        "evidence:chunk-0022:007",
+        "evidence:chunk-0022:008",
+        "evidence:chunk-0029:011",
+        "evidence:chunk-0029:012",
+        "evidence:chunk-0247:010",
+        "evidence:chunk-0034:007",
+        "evidence:chunk-0068:019",
+        "evidence:chunk-0033:007",
+        "evidence:chunk-0137:004",
+        "evidence:chunk-0137:005",
+        "evidence:chunk-0137:006",
+        "evidence:chunk-0137:007",
+        "evidence:chunk-0218:014",
+        "evidence:chunk-0219:005",
+        "evidence:chunk-0219:006",
+        "evidence:chunk-0220:005",
+        "evidence:chunk-0220:007",
+        "evidence:chunk-0220:008",
+        "evidence:chunk-0220:011",
+        "evidence:chunk-0240:009",
+        "evidence:chunk-0240:010",
+        "evidence:chunk-0240:011",
+        "evidence:chunk-0247:007",
+        "evidence:chunk-0247:008",
+        "evidence:chunk-0247:013",
+        "evidence:chunk-0247:011",
+        "evidence:chunk-0276:021",
+        "evidence:chunk-0276:022",
+        "evidence:chunk-0158:011",
+        "evidence:chunk-0158:012",
+        "evidence:chunk-0158:015",
+        "evidence:chunk-0360:001",
+        "evidence:chunk-0360:002",
+        "evidence:chunk-0360:003",
+        "evidence:chunk-0360:004",
+        "evidence:chunk-0334:001",
+        "evidence:chunk-0334:002",
+        "evidence:chunk-0334:006",
+        "evidence:chunk-0334:007",
+        "evidence:chunk-0334:010",
+        "evidence:chunk-0334:011",
+        "evidence:chunk-0334:012",
+        "evidence:chunk-0334:013",
+        "evidence:chunk-0334:014",
+        "evidence:chunk-0381:008",
+        "evidence:chunk-0381:013",
+        "evidence:chunk-0381:014",
+        "evidence:chunk-0382:008",
+        "evidence:chunk-0390:003",
+        "evidence:chunk-0390:004",
+        "evidence:chunk-0382:004",
+        "evidence:chunk-0390:007",
+        "evidence:chunk-0382:010",
+        "evidence:chunk-0397:008",
+        "evidence:chunk-0397:009",
+        "evidence:chunk-0382:011",
+        "evidence:chunk-0382:012",
+        "evidence:chunk-0382:013",
+        "evidence:chunk-0382:014"
+      ],
+      "notes": [
+        "覆盖丹药名称、类别、用途/效果、限制/副作用、材料或配方线索、炼制/交易/使用事件。",
+        "配方、品阶、成功率等未由证据明确给出的内容已放入 not_found_items 或 pending_verifications。"
+      ]
+    },
+    {
+      "requirement_id": "evidence_requirements",
+      "requirement_kind": "task_packet_requirement",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0022:006",
+        "evidence:chunk-0022:007",
+        "evidence:chunk-0022:008",
+        "evidence:chunk-0029:011",
+        "evidence:chunk-0029:012",
+        "evidence:chunk-0247:010",
+        "evidence:chunk-0034:007",
+        "evidence:chunk-0068:019",
+        "evidence:chunk-0033:007",
+        "evidence:chunk-0137:004",
+        "evidence:chunk-0137:005",
+        "evidence:chunk-0137:006",
+        "evidence:chunk-0137:007",
+        "evidence:chunk-0218:014",
+        "evidence:chunk-0219:005",
+        "evidence:chunk-0219:006",
+        "evidence:chunk-0220:005",
+        "evidence:chunk-0220:007",
+        "evidence:chunk-0220:008",
+        "evidence:chunk-0220:011",
+        "evidence:chunk-0240:009",
+        "evidence:chunk-0240:010",
+        "evidence:chunk-0240:011",
+        "evidence:chunk-0247:007",
+        "evidence:chunk-0247:008",
+        "evidence:chunk-0247:013",
+        "evidence:chunk-0247:011",
+        "evidence:chunk-0276:021",
+        "evidence:chunk-0276:022",
+        "evidence:chunk-0158:011",
+        "evidence:chunk-0158:012",
+        "evidence:chunk-0158:015",
+        "evidence:chunk-0360:001",
+        "evidence:chunk-0360:002",
+        "evidence:chunk-0360:003",
+        "evidence:chunk-0360:004",
+        "evidence:chunk-0334:001",
+        "evidence:chunk-0334:002",
+        "evidence:chunk-0334:006",
+        "evidence:chunk-0334:007",
+        "evidence:chunk-0334:010",
+        "evidence:chunk-0334:011",
+        "evidence:chunk-0334:012",
+        "evidence:chunk-0334:013",
+        "evidence:chunk-0334:014",
+        "evidence:chunk-0381:008",
+        "evidence:chunk-0381:013",
+        "evidence:chunk-0381:014",
+        "evidence:chunk-0382:008",
+        "evidence:chunk-0390:003",
+        "evidence:chunk-0390:004",
+        "evidence:chunk-0382:004",
+        "evidence:chunk-0390:007",
+        "evidence:chunk-0382:010",
+        "evidence:chunk-0397:008",
+        "evidence:chunk-0397:009",
+        "evidence:chunk-0382:011",
+        "evidence:chunk-0382:012",
+        "evidence:chunk-0382:013",
+        "evidence:chunk-0382:014"
+      ],
+      "notes": [
+        "覆盖丹药名称、类别、用途/效果、限制/副作用、材料或配方线索、炼制/交易/使用事件。",
+        "配方、品阶、成功率等未由证据明确给出的内容已放入 not_found_items 或 pending_verifications。"
+      ]
+    }
+  ],
+  "fulfilled_tables": [
+    {
+      "requirement_id": "丹药总表",
+      "requirement_kind": "template_heading",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0022:006",
+        "evidence:chunk-0022:007",
+        "evidence:chunk-0022:008",
+        "evidence:chunk-0029:011",
+        "evidence:chunk-0029:012",
+        "evidence:chunk-0247:010",
+        "evidence:chunk-0034:007",
+        "evidence:chunk-0068:019",
+        "evidence:chunk-0033:007",
+        "evidence:chunk-0137:004",
+        "evidence:chunk-0137:005",
+        "evidence:chunk-0137:006",
+        "evidence:chunk-0137:007",
+        "evidence:chunk-0218:014",
+        "evidence:chunk-0219:005",
+        "evidence:chunk-0219:006",
+        "evidence:chunk-0220:005",
+        "evidence:chunk-0220:007",
+        "evidence:chunk-0220:008",
+        "evidence:chunk-0220:011",
+        "evidence:chunk-0240:009",
+        "evidence:chunk-0240:010",
+        "evidence:chunk-0240:011",
+        "evidence:chunk-0247:007",
+        "evidence:chunk-0247:008",
+        "evidence:chunk-0247:013",
+        "evidence:chunk-0247:011",
+        "evidence:chunk-0276:021",
+        "evidence:chunk-0276:022",
+        "evidence:chunk-0158:011",
+        "evidence:chunk-0158:012",
+        "evidence:chunk-0158:015",
+        "evidence:chunk-0360:001",
+        "evidence:chunk-0360:002",
+        "evidence:chunk-0360:003",
+        "evidence:chunk-0360:004",
+        "evidence:chunk-0334:001",
+        "evidence:chunk-0334:002",
+        "evidence:chunk-0334:006",
+        "evidence:chunk-0334:007",
+        "evidence:chunk-0334:010",
+        "evidence:chunk-0334:011",
+        "evidence:chunk-0334:012",
+        "evidence:chunk-0334:013",
+        "evidence:chunk-0334:014",
+        "evidence:chunk-0381:008",
+        "evidence:chunk-0381:013",
+        "evidence:chunk-0381:014",
+        "evidence:chunk-0382:008",
+        "evidence:chunk-0390:003",
+        "evidence:chunk-0390:004",
+        "evidence:chunk-0382:004",
+        "evidence:chunk-0390:007",
+        "evidence:chunk-0382:010",
+        "evidence:chunk-0397:008",
+        "evidence:chunk-0397:009",
+        "evidence:chunk-0382:011",
+        "evidence:chunk-0382:012",
+        "evidence:chunk-0382:013",
+        "evidence:chunk-0382:014"
+      ],
+      "notes": [
+        "覆盖丹药名称、类别、用途/效果、限制/副作用、材料或配方线索、炼制/交易/使用事件。",
+        "配方、品阶、成功率等未由证据明确给出的内容已放入 not_found_items 或 pending_verifications。"
+      ]
+    }
+  ],
+  "fulfilled_cards": [],
+  "fulfilled_cases": [],
+  "facts": [
+    {
+      "name": "抽髓丸",
+      "classification": "透支潜力类丹药/邪性药丸",
+      "usage": "服用后可大幅透支身体潜力，以后续寿命换取当前能力；一经服下需周期性复服，停服轻则瘫痪、重则丧命，即使按时服药也会在首次用药十年内因透支生命而死。",
+      "formula": "由合兰、蝎尾花、百年蓝蚁卵等二十三种罕见物品炼成；外表粉红，带奇异腥臭。",
+      "source_range": [
+        39847,
+        40386
+      ],
+      "source_excerpt": "韩立把瓶盖打开，出人意料，没有什么药香味飘出来，反而一股浓浓的腥臭从瓶中扑面而来。 韩立一闻到这气味，脸色一下变得很难看，小心的从里面倒出一颗粉红色药丸出来，这药丸粉嘟嘟的如此好看，却散发着这么难闻的气味，真令人难以置信。 “是这药丸吗？”韩立的脸色恢复了平静。 厉师兄这时急得说不出话来，只能眨眨眼皮。 / “抽髓丸，由合兰、蝎尾花、百年蓝蚁卵……等二十三种罕见的物品炼成，药成后外表呈粉红色，有奇异腥臭之味，服用之后可大幅透支身体潜力，...",
+      "review_status": "verified",
+      "content": "抽髓丸：服用后可大幅透支身体潜力，以后续寿命换取当前能力；一经服下需周期性复服，停服轻则瘫痪、重则丧命，即使按时服药也会在首次用药十年内因透支生命而死。；材料/配方：由合兰、蝎尾花、百年蓝蚁卵等二十三种罕见物品炼成；外表粉红，带奇异腥臭。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0022:006",
+        "evidence:chunk-0022:007",
+        "evidence:chunk-0022:008"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0022",
+          "source_path": "intermediate/chunks/chunk-0022.txt",
+          "source_range": [
+            39847,
+            40008
+          ]
+        },
+        {
+          "chunk_id": "chunk-0022",
+          "source_path": "intermediate/chunks/chunk-0022.txt",
+          "source_range": [
+            40008,
+            40181
+          ]
+        },
+        {
+          "chunk_id": "chunk-0022",
+          "source_path": "intermediate/chunks/chunk-0022.txt",
+          "source_range": [
+            40181,
+            40386
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "notes": []
+    },
+    {
+      "name": "黄龙丹",
+      "classification": "增进功力类稀世丹药",
+      "usage": "对韩立练功帮助很大，具增加功力、脱胎换骨之效；后续证据显示长期服用同类丹药会出现失效经验。",
+      "formula": "未见可靠配方。",
+      "source_range": [
+        55976,
+        583960
+      ],
+      "source_excerpt": "“黄龙丹”“清灵散”“金髓丸”“养精丹”这些外面难得一见的稀世之药全都放在十几个小瓶内，一一摆在了韩立面前 / 在这些药里面，“黄龙丹”和“金髓丸”对他练功帮助最大，都有增加功力、脱胎换骨的妙用，而“清灵散”则是世间少有的解毒圣药，能解天下千百种剧毒，最后的“养精丹”是一种对内外伤都有奇效的灵药，不论是受了多严重的内外伤，只要吃了这药一颗，即使不能起死回生使伤势立刻痊愈，也可让伤势大为减轻，可保住性命。 / 从第二年开始，服用炼气散下去...",
+      "review_status": "verified",
+      "content": "黄龙丹：对韩立练功帮助很大，具增加功力、脱胎换骨之效；后续证据显示长期服用同类丹药会出现失效经验。；材料/配方：未见可靠配方。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0029:011",
+        "evidence:chunk-0029:012",
+        "evidence:chunk-0247:010"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0029",
+          "source_path": "intermediate/chunks/chunk-0029.txt",
+          "source_range": [
+            55976,
+            56029
+          ]
+        },
+        {
+          "chunk_id": "chunk-0029",
+          "source_path": "intermediate/chunks/chunk-0029.txt",
+          "source_range": [
+            56095,
+            56242
+          ]
+        },
+        {
+          "chunk_id": "chunk-0247",
+          "source_path": "intermediate/chunks/chunk-0247.txt",
+          "source_range": [
+            583859,
+            583960
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "notes": []
+    },
+    {
+      "name": "金髓丸",
+      "classification": "增进功力类稀世丹药",
+      "usage": "与黄龙丹并列，对韩立练功帮助最大，可增加功力、脱胎换骨；后续被韩立用于类比炼气散失效。",
+      "formula": "未见可靠配方。",
+      "source_range": [
+        55976,
+        583960
+      ],
+      "source_excerpt": "“黄龙丹”“清灵散”“金髓丸”“养精丹”这些外面难得一见的稀世之药全都放在十几个小瓶内，一一摆在了韩立面前 / 在这些药里面，“黄龙丹”和“金髓丸”对他练功帮助最大，都有增加功力、脱胎换骨的妙用，而“清灵散”则是世间少有的解毒圣药，能解天下千百种剧毒，最后的“养精丹”是一种对内外伤都有奇效的灵药，不论是受了多严重的内外伤，只要吃了这药一颗，即使不能起死回生使伤势立刻痊愈，也可让伤势大为减轻，可保住性命。 / 从第二年开始，服用炼气散下去...",
+      "review_status": "verified",
+      "content": "金髓丸：与黄龙丹并列，对韩立练功帮助最大，可增加功力、脱胎换骨；后续被韩立用于类比炼气散失效。；材料/配方：未见可靠配方。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0029:011",
+        "evidence:chunk-0029:012",
+        "evidence:chunk-0247:010"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0029",
+          "source_path": "intermediate/chunks/chunk-0029.txt",
+          "source_range": [
+            55976,
+            56029
+          ]
+        },
+        {
+          "chunk_id": "chunk-0029",
+          "source_path": "intermediate/chunks/chunk-0029.txt",
+          "source_range": [
+            56095,
+            56242
+          ]
+        },
+        {
+          "chunk_id": "chunk-0247",
+          "source_path": "intermediate/chunks/chunk-0247.txt",
+          "source_range": [
+            583859,
+            583960
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "notes": []
+    },
+    {
+      "name": "清灵散",
+      "classification": "解毒类丹药",
+      "usage": "被称为世间少有的解毒圣药，可解天下千百种剧毒；但对尸虫丸/丹田阴寒潜伏物无效，显示其解毒范围存在边界。",
+      "formula": "未见可靠配方。",
+      "source_range": [
+        55976,
+        134743
+      ],
+      "source_excerpt": "“黄龙丹”“清灵散”“金髓丸”“养精丹”这些外面难得一见的稀世之药全都放在十几个小瓶内，一一摆在了韩立面前 / 在这些药里面，“黄龙丹”和“金髓丸”对他练功帮助最大，都有增加功力、脱胎换骨的妙用，而“清灵散”则是世间少有的解毒圣药，能解天下千百种剧毒，最后的“养精丹”是一种对内外伤都有奇效的灵药，不论是受了多严重的内外伤，只要吃了这药一颗，即使不能起死回生使伤势立刻痊愈，也可让伤势大为减轻，可保住性命。 / 猛然间韩立想起了什么，他用手...",
+      "review_status": "verified",
+      "content": "清灵散：被称为世间少有的解毒圣药，可解天下千百种剧毒；但对尸虫丸/丹田阴寒潜伏物无效，显示其解毒范围存在边界。；材料/配方：未见可靠配方。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0029:011",
+        "evidence:chunk-0029:012",
+        "evidence:chunk-0034:007",
+        "evidence:chunk-0068:019"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0029",
+          "source_path": "intermediate/chunks/chunk-0029.txt",
+          "source_range": [
+            55976,
+            56029
+          ]
+        },
+        {
+          "chunk_id": "chunk-0029",
+          "source_path": "intermediate/chunks/chunk-0029.txt",
+          "source_range": [
+            56095,
+            56242
+          ]
+        },
+        {
+          "chunk_id": "chunk-0034",
+          "source_path": "intermediate/chunks/chunk-0034.txt",
+          "source_range": [
+            65548,
+            65695
+          ]
+        },
+        {
+          "chunk_id": "chunk-0068",
+          "source_path": "intermediate/chunks/chunk-0068.txt",
+          "source_range": [
+            134688,
+            134743
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "notes": []
+    },
+    {
+      "name": "养精丹",
+      "classification": "疗伤保命类灵药",
+      "usage": "对内外伤有奇效，严重内外伤服一颗即使不能起死回生，也可大幅减轻伤势并保住性命。",
+      "formula": "未见可靠配方。",
+      "source_range": [
+        55976,
+        56242
+      ],
+      "source_excerpt": "“黄龙丹”“清灵散”“金髓丸”“养精丹”这些外面难得一见的稀世之药全都放在十几个小瓶内，一一摆在了韩立面前 / 在这些药里面，“黄龙丹”和“金髓丸”对他练功帮助最大，都有增加功力、脱胎换骨的妙用，而“清灵散”则是世间少有的解毒圣药，能解天下千百种剧毒，最后的“养精丹”是一种对内外伤都有奇效的灵药，不论是受了多严重的内外伤，只要吃了这药一颗，即使不能起死回生使伤势立刻痊愈，也可让伤势大为减轻，可保住性命。",
+      "review_status": "verified",
+      "content": "养精丹：对内外伤有奇效，严重内外伤服一颗即使不能起死回生，也可大幅减轻伤势并保住性命。；材料/配方：未见可靠配方。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0029:011",
+        "evidence:chunk-0029:012"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0029",
+          "source_path": "intermediate/chunks/chunk-0029.txt",
+          "source_range": [
+            55976,
+            56029
+          ]
+        },
+        {
+          "chunk_id": "chunk-0029",
+          "source_path": "intermediate/chunks/chunk-0029.txt",
+          "source_range": [
+            56095,
+            56242
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "notes": []
+    },
+    {
+      "name": "尸虫丸",
+      "classification": "虫卵秘法/控制与威胁类药物",
+      "usage": "实为秘法泡制虫卵，服后潜伏一年；一年后需特制解药，否则虫卵孵化吞食内脏，使人痛苦死亡。清灵散对其无效。",
+      "formula": "墨大夫称其“不真是一种药物”，而是某种秘法泡制出的虫卵；特制解药未见配方。",
+      "source_range": [
+        63754,
+        134743
+      ],
+      "source_excerpt": "“呵呵，这药叫‘尸虫丸’，不真是一种药物，而是某种秘法泡制出的虫卵，你吃下后，它会在你体内潜伏一年，你放心，在这一年内绝对是安全的，不会影响到你做其他事情。在一年后，你只要服下特制的解药，它就会自动消融掉，不会有任何隐患留下。但如果一年后，没有解药服下。嘿嘿！虫卵就会吸够养分，孵化出壳，并把人身体内的大大小小内脏，给活生生的吃个干净，让人在痛不欲生中，哀嚎个三天三夜，才慢慢死去。”墨大夫若无其事的说着这药丸的厉害之处，暗地里在警告着韩立...",
+      "review_status": "verified",
+      "content": "尸虫丸：实为秘法泡制虫卵，服后潜伏一年；一年后需特制解药，否则虫卵孵化吞食内脏，使人痛苦死亡。清灵散对其无效。；材料/配方：墨大夫称其“不真是一种药物”，而是某种秘法泡制出的虫卵；特制解药未见配方。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0033:007",
+        "evidence:chunk-0034:007",
+        "evidence:chunk-0068:019"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0033",
+          "source_path": "intermediate/chunks/chunk-0033.txt",
+          "source_range": [
+            63754,
+            63975
+          ]
+        },
+        {
+          "chunk_id": "chunk-0034",
+          "source_path": "intermediate/chunks/chunk-0034.txt",
+          "source_range": [
+            65548,
+            65695
+          ]
+        },
+        {
+          "chunk_id": "chunk-0068",
+          "source_path": "intermediate/chunks/chunk-0068.txt",
+          "source_range": [
+            134688,
+            134743
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "notes": []
+    },
+    {
+      "name": "筑基丹",
+      "classification": "突破筑基境界核心灵药",
+      "usage": "炼气期修仙者要突破筑基，除基础功法达七层外，还需服用大门派炼制的筑基丹；服后可洗髓易筋、改善体质并提供残余药力，韩立连续服用多枚后推进真元向液态转化。",
+      "formula": "原料极难寻觅，越国修仙门派联手也约十年才有望出炉数鼎、千余颗；韩立炼制时将数十种灵药粉末投入银丝鼎，半年后得二十几颗蓝灿灿筑基丹。",
+      "source_range": [
+        276953,
+        504785
+      ],
+      "source_excerpt": "所有修炼气期的修仙者如果想要进入筑基期，成为真正修仙界的一员，除了要把基础功法练到七层之后，还必须要服用只有大门派才可炼制成的灵药“筑基丹”，才有望突破境界瓶颈，筑基成功。 / 这就造就了筑基丹“升仙丸”的美名，这让那些修仙者为之疯狂。 / 因为筑基丹的原料实在极为难觅，即使整个越国修仙门派共同联手，出物出力，也要每隔十年，才有望出炉那么几鼎丹药，区区千余颗而已。 / 这样一来，一方面是筑基丹极为缺少，都被大门派给把持住了，另一方面，需...",
+      "review_status": "verified",
+      "content": "筑基丹：炼气期修仙者要突破筑基，除基础功法达七层外，还需服用大门派炼制的筑基丹；服后可洗髓易筋、改善体质并提供残余药力，韩立连续服用多枚后推进真元向液态转化。；材料/配方：原料极难寻觅，越国修仙门派联手也约十年才有望出炉数鼎、千余颗；韩立炼制时将数十种灵药粉末投入银丝鼎，半年后得二十几颗蓝灿灿筑基丹。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0137:004",
+        "evidence:chunk-0137:005",
+        "evidence:chunk-0137:006",
+        "evidence:chunk-0137:007",
+        "evidence:chunk-0218:014",
+        "evidence:chunk-0219:005",
+        "evidence:chunk-0219:006",
+        "evidence:chunk-0220:005",
+        "evidence:chunk-0220:007",
+        "evidence:chunk-0220:008",
+        "evidence:chunk-0220:011"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0137",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            276953,
+            277039
+          ]
+        },
+        {
+          "chunk_id": "chunk-0137",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            277042,
+            277071
+          ]
+        },
+        {
+          "chunk_id": "chunk-0137",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            277094,
+            277156
+          ]
+        },
+        {
+          "chunk_id": "chunk-0137",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            277269,
+            277334
+          ]
+        },
+        {
+          "chunk_id": "chunk-0218",
+          "source_path": "intermediate/chunks/chunk-0218.txt",
+          "source_range": [
+            499558,
+            499685
+          ]
+        },
+        {
+          "chunk_id": "chunk-0219",
+          "source_path": "intermediate/chunks/chunk-0219.txt",
+          "source_range": [
+            500652,
+            500846
+          ]
+        },
+        {
+          "chunk_id": "chunk-0219",
+          "source_path": "intermediate/chunks/chunk-0219.txt",
+          "source_range": [
+            500849,
+            500927
+          ]
+        },
+        {
+          "chunk_id": "chunk-0220",
+          "source_path": "intermediate/chunks/chunk-0220.txt",
+          "source_range": [
+            503237,
+            503304
+          ]
+        },
+        {
+          "chunk_id": "chunk-0220",
+          "source_path": "intermediate/chunks/chunk-0220.txt",
+          "source_range": [
+            503573,
+            503767
+          ]
+        },
+        {
+          "chunk_id": "chunk-0220",
+          "source_path": "intermediate/chunks/chunk-0220.txt",
+          "source_range": [
+            503820,
+            503931
+          ]
+        },
+        {
+          "chunk_id": "chunk-0220",
+          "source_path": "intermediate/chunks/chunk-0220.txt",
+          "source_range": [
+            504485,
+            504785
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "notes": []
+    },
+    {
+      "name": "炼气散",
+      "classification": "筑基期修炼辅助丹药",
+      "usage": "韩立服用后灵气爆裂，第一年法力突飞猛进；每六七日服一包可暂时抵消青元剑诀法力回落缺陷；第二年后效果递减，第四年完全失效。",
+      "formula": "丹方来自雷万鹤交付的玉简；具体原料未见可靠摘录。",
+      "source_range": [
+        563976,
+        584557
+      ],
+      "source_excerpt": "这是丹方目录，你挑两个吧！里面全都是丹药性能和所需用的原料。 / 就这个聚灵丹还有炼气散吧！ / 就立即从储物袋中摸出了另外两个玉简，抛了过去。 / 韩立炼出炼气散后服用时，就重新体验到了筑基时的那种灵气爆裂的感觉。让他惊骇的马上打坐炼化起来，不敢有丝毫地怠慢。 如此惊人的效果，自然让他头一年里法力突飞猛进，远远超出了预料之外。 / 青元剑诀，虽然的确像别人说的那样，会出现每隔几日法力就回落一部分地古怪现象。但是在他每隔六七日就一包炼气...",
+      "review_status": "verified",
+      "content": "炼气散：韩立服用后灵气爆裂，第一年法力突飞猛进；每六七日服一包可暂时抵消青元剑诀法力回落缺陷；第二年后效果递减，第四年完全失效。；材料/配方：丹方来自雷万鹤交付的玉简；具体原料未见可靠摘录。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0240:009",
+        "evidence:chunk-0240:010",
+        "evidence:chunk-0240:011",
+        "evidence:chunk-0247:007",
+        "evidence:chunk-0247:008",
+        "evidence:chunk-0247:010",
+        "evidence:chunk-0247:013"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0240",
+          "chapter_hint": "第二百三十六章 古方",
+          "source_path": "intermediate/chunks/chunk-0240.txt",
+          "source_range": [
+            563976,
+            564006
+          ]
+        },
+        {
+          "chunk_id": "chunk-0240",
+          "chapter_hint": "第二百三十六章 古方",
+          "source_path": "intermediate/chunks/chunk-0240.txt",
+          "source_range": [
+            564129,
+            564142
+          ]
+        },
+        {
+          "chunk_id": "chunk-0240",
+          "chapter_hint": "第二百三十六章 古方",
+          "source_path": "intermediate/chunks/chunk-0240.txt",
+          "source_range": [
+            564195,
+            564218
+          ]
+        },
+        {
+          "chunk_id": "chunk-0247",
+          "source_path": "intermediate/chunks/chunk-0247.txt",
+          "source_range": [
+            583522,
+            583614
+          ]
+        },
+        {
+          "chunk_id": "chunk-0247",
+          "source_path": "intermediate/chunks/chunk-0247.txt",
+          "source_range": [
+            583713,
+            583784
+          ]
+        },
+        {
+          "chunk_id": "chunk-0247",
+          "source_path": "intermediate/chunks/chunk-0247.txt",
+          "source_range": [
+            583859,
+            583960
+          ]
+        },
+        {
+          "chunk_id": "chunk-0247",
+          "source_path": "intermediate/chunks/chunk-0247.txt",
+          "source_range": [
+            584486,
+            584557
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "notes": []
+    },
+    {
+      "name": "炼气散抗药性判断",
+      "classification": "药效衰减/待复核机制",
+      "usage": "韩立以医术推测，频繁服用药力过大的炼气散可能导致身体产生抗药性，使丹药逐渐失效；该判断来自角色推测，未被直接验证。",
+      "formula": "未见独立验证机制或药理解释。",
+      "source_range": [
+        584145,
+        584237
+      ],
+      "source_excerpt": "经过百般琢磨，韩立还用自己以前所学地医术，做出了一个不知是否正确的结论。他可能因服用这种药力过大的炼气散太过频繁的缘故，终让其身体产生了一定的抗药性，所以这种丹药慢慢的对他失去了效用。",
+      "review_status": "needs_review",
+      "content": "炼气散抗药性判断：韩立以医术推测，频繁服用药力过大的炼气散可能导致身体产生抗药性，使丹药逐渐失效；该判断来自角色推测，未被直接验证。；材料/配方：未见独立验证机制或药理解释。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0247:011"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0247",
+          "source_path": "intermediate/chunks/chunk-0247.txt",
+          "source_range": [
+            584145,
+            584237
+          ]
+        }
+      ],
+      "confidence": "AMBIGUOUS",
+      "notes": [
+        "角色自我推测，作为机制线索保留，不作为已验证规则。"
+      ]
+    },
+    {
+      "name": "聚灵丹",
+      "classification": "筑基期修炼辅助丹药/古方丹药",
+      "usage": "韩立从丹方目录中选定聚灵丹；后续在交易所凑齐所缺药材，预计催生后可让法力再次突飞猛进。",
+      "formula": "丹方来自雷万鹤玉简；所缺药材可在交易所凑齐并经韩立催生，具体药材名未见可靠证据。",
+      "source_range": [
+        563976,
+        671510
+      ],
+      "source_excerpt": "这是丹方目录，你挑两个吧！里面全都是丹药性能和所需用的原料。 / 就这个聚灵丹还有炼气散吧！ / 就立即从储物袋中摸出了另外两个玉简，抛了过去。 / 聚灵丹所缺的药材，轻而易举的就在交易所内凑齐了，只要回去催生一下，马上就可让他的法力再次突飞猛进了。 / 他只花了近千灵石就买到了梦寐以求的两张古方",
+      "review_status": "verified",
+      "content": "聚灵丹：韩立从丹方目录中选定聚灵丹；后续在交易所凑齐所缺药材，预计催生后可让法力再次突飞猛进。；材料/配方：丹方来自雷万鹤玉简；所缺药材可在交易所凑齐并经韩立催生，具体药材名未见可靠证据。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0240:009",
+        "evidence:chunk-0240:010",
+        "evidence:chunk-0240:011",
+        "evidence:chunk-0276:021",
+        "evidence:chunk-0276:022"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0240",
+          "chapter_hint": "第二百三十六章 古方",
+          "source_path": "intermediate/chunks/chunk-0240.txt",
+          "source_range": [
+            563976,
+            564006
+          ]
+        },
+        {
+          "chunk_id": "chunk-0240",
+          "chapter_hint": "第二百三十六章 古方",
+          "source_path": "intermediate/chunks/chunk-0240.txt",
+          "source_range": [
+            564129,
+            564142
+          ]
+        },
+        {
+          "chunk_id": "chunk-0240",
+          "chapter_hint": "第二百三十六章 古方",
+          "source_path": "intermediate/chunks/chunk-0240.txt",
+          "source_range": [
+            564195,
+            564218
+          ]
+        },
+        {
+          "chunk_id": "chunk-0276",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            671428,
+            671478
+          ]
+        },
+        {
+          "chunk_id": "chunk-0276",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            671489,
+            671510
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "notes": []
+    },
+    {
+      "name": "定颜丹",
+      "classification": "驻颜类丹药/交易筹码",
+      "usage": "功效是青春永驻、容貌长存；韩立判断不需先天真火即可调配；后以两颗含千年灵药成分的定颜丹加一千灵石换得丹方和法器。",
+      "formula": "红色玉筒记录定颜丹；两颗交易用定颜丹含千年灵药成分，完整配方未见可靠摘录。",
+      "source_range": [
+        331822,
+        913811
+      ],
+      "source_excerpt": "“定颜丹”，韩立心神刚进入其内，这三个字眼就出现在脑海之中。 / 能使青春永驻、容貌长存 / 这个定颜丹并不需要所谓的先天真火，如今的他就可以调配而成。 / 现在韩立的储物袋中，那套“红线遁光针”和记有丹方的玉简都老实的呆在其内。 / 另拿出了两颗包含了千年灵药成份的“定颜丹”，交予了少女。 / 确认这两颗丹药的确是“定颜丹”，而且也真有驻颜之奇效后，少女当即紧张之极的将五层的蓝夫人叫了上来。 / 韩立以两颗定颜丹外加一千颗灵石的代价，...",
+      "review_status": "verified",
+      "content": "定颜丹：功效是青春永驻、容貌长存；韩立判断不需先天真火即可调配；后以两颗含千年灵药成分的定颜丹加一千灵石换得丹方和法器。；材料/配方：红色玉筒记录定颜丹；两颗交易用定颜丹含千年灵药成分，完整配方未见可靠摘录。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0158:011",
+        "evidence:chunk-0158:012",
+        "evidence:chunk-0158:015",
+        "evidence:chunk-0360:001",
+        "evidence:chunk-0360:002",
+        "evidence:chunk-0360:003",
+        "evidence:chunk-0360:004"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0158",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            331822,
+            331852
+          ]
+        },
+        {
+          "chunk_id": "chunk-0158",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            331951,
+            331962
+          ]
+        },
+        {
+          "chunk_id": "chunk-0158",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            332308,
+            332337
+          ]
+        },
+        {
+          "chunk_id": "chunk-0360",
+          "source_path": "intermediate/chunks/chunk-0360.txt",
+          "source_range": [
+            913492,
+            913528
+          ]
+        },
+        {
+          "chunk_id": "chunk-0360",
+          "source_path": "intermediate/chunks/chunk-0360.txt",
+          "source_range": [
+            913571,
+            913599
+          ]
+        },
+        {
+          "chunk_id": "chunk-0360",
+          "source_path": "intermediate/chunks/chunk-0360.txt",
+          "source_range": [
+            913720,
+            913769
+          ]
+        },
+        {
+          "chunk_id": "chunk-0360",
+          "source_path": "intermediate/chunks/chunk-0360.txt",
+          "source_range": [
+            913783,
+            913811
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "notes": []
+    },
+    {
+      "name": "血凝五行丹",
+      "classification": "煞妖诀凝丹产物/结丹相关高风险丹物",
+      "usage": "韩立取得五颗后确认其中有巨大灵力；玉简说明此丹是修炼煞妖诀者体内凝练、类似妖兽内丹之物，可使血侍变身煞妖并不服筑基丹入筑基。筑基后期修士按煞丹术服下有三分之一机会结成伪金丹“煞丹”，但会锁死修为并侵蚀神智，韩立因此放弃直接使用。",
+      "formula": "由煞妖诀修士体内凝练而成；并非普通炉炼丹方。",
+      "source_range": [
+        838713,
+        840691
+      ],
+      "source_excerpt": "韩立从这些东西中，一眼就瞅见那五颗“血凝五行丹”，心中大喜。当即从兽傀儡口中，先将它们拿到了手上，细细检查了一遍。 从丹药中所含的巨大灵力，韩立确认了丹药不假，这才放心从储物袋中取出一个精致的玉匣，将五颗丹丸小心的收起。 / 虽然韩立不知道这“血凝五行丹”的具体功效，但见那越皇如此着紧此物，就可知那馨王府小王爷说的对结丹有用的话语，多半应是真有其事，心里兴奋之极。 / 其中几种让韩立一看大喜，不但解除了他一些百思不解的疑惑，更是提到了“...",
+      "review_status": "verified",
+      "content": "血凝五行丹：韩立取得五颗后确认其中有巨大灵力；玉简说明此丹是修炼煞妖诀者体内凝练、类似妖兽内丹之物，可使血侍变身煞妖并不服筑基丹入筑基。筑基后期修士按煞丹术服下有三分之一机会结成伪金丹“煞丹”，但会锁死修为并侵蚀神智，韩立因此放弃直接使用。；材料/配方：由煞妖诀修士体内凝练而成；并非普通炉炼丹方。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0334:001",
+        "evidence:chunk-0334:002",
+        "evidence:chunk-0334:006",
+        "evidence:chunk-0334:007",
+        "evidence:chunk-0334:010",
+        "evidence:chunk-0334:011",
+        "evidence:chunk-0334:012",
+        "evidence:chunk-0334:013",
+        "evidence:chunk-0334:014"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0334",
+          "source_path": "intermediate/chunks/chunk-0334.txt",
+          "source_range": [
+            838713,
+            838825
+          ]
+        },
+        {
+          "chunk_id": "chunk-0334",
+          "source_path": "intermediate/chunks/chunk-0334.txt",
+          "source_range": [
+            838828,
+            838898
+          ]
+        },
+        {
+          "chunk_id": "chunk-0334",
+          "source_path": "intermediate/chunks/chunk-0334.txt",
+          "source_range": [
+            839485,
+            839531
+          ]
+        },
+        {
+          "chunk_id": "chunk-0334",
+          "source_path": "intermediate/chunks/chunk-0334.txt",
+          "source_range": [
+            839548,
+            839658
+          ]
+        },
+        {
+          "chunk_id": "chunk-0334",
+          "source_path": "intermediate/chunks/chunk-0334.txt",
+          "source_range": [
+            839837,
+            839938
+          ]
+        },
+        {
+          "chunk_id": "chunk-0334",
+          "source_path": "intermediate/chunks/chunk-0334.txt",
+          "source_range": [
+            839941,
+            839987
+          ]
+        },
+        {
+          "chunk_id": "chunk-0334",
+          "source_path": "intermediate/chunks/chunk-0334.txt",
+          "source_range": [
+            840094,
+            840168
+          ]
+        },
+        {
+          "chunk_id": "chunk-0334",
+          "source_path": "intermediate/chunks/chunk-0334.txt",
+          "source_range": [
+            840492,
+            840596
+          ]
+        },
+        {
+          "chunk_id": "chunk-0334",
+          "source_path": "intermediate/chunks/chunk-0334.txt",
+          "source_range": [
+            840652,
+            840691
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "notes": []
+    },
+    {
+      "name": "雪灵水与天火液",
+      "classification": "辅助结丹灵物",
+      "usage": "修士结丹时必须服用的两种灵物；不服也可尝试结丹，但成功率据说远低于百分之一。两者能显著提高结丹希望，重复服用无效，过量或多服辅助灵药可能起反效果。",
+      "formula": "雪灵水呈奇寒清水样液体，天火液呈炙热猩红液体；二者存于土属性深海极玉玉匣。",
+      "source_range": [
+        972777,
+        997466
+      ],
+      "source_excerpt": "没想到，道友竟然到了假丹的境界，真是可喜可贺啊！在下此间掌柜曹禄，预祝道友能早日金丹大成！” 他说这番话时神色肃然郑重，让韩立不禁一怔！ 但心念转动极快的他，马上就明白对方所说的假丹境界，应该是指曲魂修为到了筑基期顶峰的事情，就令曲魂起身顺水推舟的说道：“道友说笑了，金丹大成哪是这么容易的事情？但在下此次前来，的确是想为了冲刺结丹而做准备的。但曲某初到天都街，实在不知何处才能买到结丹所须的‘雪灵水’和‘天火液’，还望曹道友能指点一二！”...",
+      "review_status": "verified",
+      "content": "雪灵水与天火液：修士结丹时必须服用的两种灵物；不服也可尝试结丹，但成功率据说远低于百分之一。两者能显著提高结丹希望，重复服用无效，过量或多服辅助灵药可能起反效果。；材料/配方：雪灵水呈奇寒清水样液体，天火液呈炙热猩红液体；二者存于土属性深海极玉玉匣。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0381:008",
+        "evidence:chunk-0381:013",
+        "evidence:chunk-0381:014",
+        "evidence:chunk-0382:008",
+        "evidence:chunk-0390:003",
+        "evidence:chunk-0390:004"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0381",
+          "source_path": "intermediate/chunks/chunk-0381.txt",
+          "source_range": [
+            972777,
+            973037
+          ]
+        },
+        {
+          "chunk_id": "chunk-0381",
+          "source_path": "intermediate/chunks/chunk-0381.txt",
+          "source_range": [
+            973886,
+            974112
+          ]
+        },
+        {
+          "chunk_id": "chunk-0381",
+          "source_path": "intermediate/chunks/chunk-0381.txt",
+          "source_range": [
+            974153,
+            974218
+          ]
+        },
+        {
+          "chunk_id": "chunk-0382",
+          "source_path": "intermediate/chunks/chunk-0382.txt",
+          "source_range": [
+            975655,
+            975781
+          ]
+        },
+        {
+          "chunk_id": "chunk-0390",
+          "source_path": "intermediate/chunks/chunk-0390.txt",
+          "source_range": [
+            997229,
+            997334
+          ]
+        },
+        {
+          "chunk_id": "chunk-0390",
+          "source_path": "intermediate/chunks/chunk-0390.txt",
+          "source_range": [
+            997337,
+            997466
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "notes": []
+    },
+    {
+      "name": "降尘丹",
+      "classification": "辅助结丹丹药/任务报酬",
+      "usage": "六连殿以降尘丹作为任务报酬，每位出手修士可得一颗；该丹对结丹大有助益，可一定几率增加结丹成功率。韩立判断五粒降尘丹是乱星海修士结丹所需辅助药物，但成功率提升有限。",
+      "formula": "未见可靠配方。",
+      "source_range": [
+        974919,
+        997927
+      ],
+      "source_excerpt": "因为事情成功后。我们六连殿所付的报酬，就是一颗降尘丹，此丹可是对结丹大有助益的，能有一定几率增加结丹的成功啊！”虬须大汉哈哈一笑的说道。 “降尘丹？”曲魂微微一怔的喃喃道。 “是啊，这次我们六连殿需要假丹境界的修士六名。现在已经找到了五名，如今就差一位了。道友若是肯去是再好不过了。而每位出手的修士，本店都会赠送一颗降尘丹的。 / 而他得到的五粒降尘丹，就应该是乱星海修士结丹时所需要的一种辅助药物，所以才会如此稀有难得！ 但也不是说，这些...",
+      "review_status": "verified",
+      "content": "降尘丹：六连殿以降尘丹作为任务报酬，每位出手修士可得一颗；该丹对结丹大有助益，可一定几率增加结丹成功率。韩立判断五粒降尘丹是乱星海修士结丹所需辅助药物，但成功率提升有限。；材料/配方：未见可靠配方。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0382:004",
+        "evidence:chunk-0390:007"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0382",
+          "source_path": "intermediate/chunks/chunk-0382.txt",
+          "source_range": [
+            974919,
+            975086
+          ]
+        },
+        {
+          "chunk_id": "chunk-0390",
+          "source_path": "intermediate/chunks/chunk-0390.txt",
+          "source_range": [
+            997790,
+            997927
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "notes": []
+    },
+    {
+      "name": "饲灵丸",
+      "classification": "灵兽/奇虫饲养丹药",
+      "usage": "韩立需要炼制饲灵丸来正式调教两只白蜘蛛；炼成后喂给噬金虫和血玉蜘蛛，确认对奇虫升阶有效，但血玉蜘蛛增益明显，噬金虫因数量多分食后增益微弱。",
+      "formula": "需炼制饲灵丸的药材种子；完整药材清单未见可靠证据。",
+      "source_range": [
+        976012,
+        1018554
+      ],
+      "source_excerpt": "另外，他还需要炼制“饲灵丸”的一些药材种子，回去好炼制出一批丹药出来，好正式调教下两只白蜘蛛。 / 无奈之下，韩立终于催熟了足够的灵草，开始炼制那“饲灵丸”了。 以前，光顾了给自己炼制增进法力的丹药，从未来得及炼制此丹药，现在正好一试。 没几日，头一炉饲灵丸炼制成功了。韩立立刻让“噬金虫”和两只“血玉蜘蛛”分食了一部分，结果，饲灵丸的效果让韩立半喜半忧！ 喜得是，提升妖兽等阶的丹药果然对这些奇虫同样有效。忧的是，这药丸喂食“噬金虫”和“...",
+      "review_status": "verified",
+      "content": "饲灵丸：韩立需要炼制饲灵丸来正式调教两只白蜘蛛；炼成后喂给噬金虫和血玉蜘蛛，确认对奇虫升阶有效，但血玉蜘蛛增益明显，噬金虫因数量多分食后增益微弱。；材料/配方：需炼制饲灵丸的药材种子；完整药材清单未见可靠证据。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0382:010",
+        "evidence:chunk-0397:008",
+        "evidence:chunk-0397:009"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0382",
+          "source_path": "intermediate/chunks/chunk-0382.txt",
+          "source_range": [
+            976012,
+            976059
+          ]
+        },
+        {
+          "chunk_id": "chunk-0397",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            1018227,
+            1018421
+          ]
+        },
+        {
+          "chunk_id": "chunk-0397",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            1018424,
+            1018554
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "notes": []
+    },
+    {
+      "name": "乱星海丹方体系",
+      "classification": "区域丹道规则/丹方材料机制",
+      "usage": "乱星海筑基期及高阶丹方大量以妖兽内丹为主原料，灵草转为辅助材料且可替换；韩立判断其丹道路线与天南不同，是把海中妖兽当作灵药使用。",
+      "formula": "高阶丹药主原料常为各阶妖兽内丹，稀有丹药甚至需六七级妖兽内丹；灵草多为辅助材料。",
+      "source_range": [
+        976278,
+        976937
+      ],
+      "source_excerpt": "当他让曲魂留在外面，自己进入一家丹药店铺张口问此地可有筑基期的丹方卖时，那店铺的伙计竟然一把就丢给他数十张各种类型的丹方 / 这些丹方，先不论所炼出的丹药珍贵有用与否，所需要的主原料竟然不是灵草之类的药材，而是各种等阶的妖兽内丹，特别是几种罕见的稀有丹药，甚至需要六七级左右的妖兽内丹才可炼制出来。 虽然这些丹药，同样还需要数百年的一些灵草才能炼制。但在这些丹方中，这些灵草彻底成了辅助的材料，完全可以用其他的灵药代替。 / 最后实在有些忍...",
+      "review_status": "verified",
+      "content": "乱星海丹方体系：乱星海筑基期及高阶丹方大量以妖兽内丹为主原料，灵草转为辅助材料且可替换；韩立判断其丹道路线与天南不同，是把海中妖兽当作灵药使用。；材料/配方：高阶丹药主原料常为各阶妖兽内丹，稀有丹药甚至需六七级妖兽内丹；灵草多为辅助材料。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0382:011",
+        "evidence:chunk-0382:012",
+        "evidence:chunk-0382:013",
+        "evidence:chunk-0382:014"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0382",
+          "source_path": "intermediate/chunks/chunk-0382.txt",
+          "source_range": [
+            976278,
+            976338
+          ]
+        },
+        {
+          "chunk_id": "chunk-0382",
+          "source_path": "intermediate/chunks/chunk-0382.txt",
+          "source_range": [
+            976389,
+            976538
+          ]
+        },
+        {
+          "chunk_id": "chunk-0382",
+          "source_path": "intermediate/chunks/chunk-0382.txt",
+          "source_range": [
+            976670,
+            976766
+          ]
+        },
+        {
+          "chunk_id": "chunk-0382",
+          "source_path": "intermediate/chunks/chunk-0382.txt",
+          "source_range": [
+            976798,
+            976937
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "notes": []
+    }
+  ],
+  "judgments": [
+    {
+      "content": "《凡人修仙传》中的丹药系统并非单纯增益道具，而是把境界突破、资源稀缺、区域材料生态和代价机制绑定在一起：筑基丹、雪灵水/天火液、降尘丹等负责突破概率，抽髓丸、尸虫丸、血凝五行丹体现高风险代价，炼气散、饲灵丸体现持续使用中的适配与衰减。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0137:004",
+        "evidence:chunk-0220:011",
+        "evidence:chunk-0334:010",
+        "evidence:chunk-0334:013",
+        "evidence:chunk-0382:012",
+        "evidence:chunk-0390:003",
+        "evidence:chunk-0397:008"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0137",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            276953,
+            277039
+          ]
+        },
+        {
+          "chunk_id": "chunk-0220",
+          "source_path": "intermediate/chunks/chunk-0220.txt",
+          "source_range": [
+            504485,
+            504785
+          ]
+        },
+        {
+          "chunk_id": "chunk-0334",
+          "source_path": "intermediate/chunks/chunk-0334.txt",
+          "source_range": [
+            839837,
+            839938
+          ]
+        },
+        {
+          "chunk_id": "chunk-0334",
+          "source_path": "intermediate/chunks/chunk-0334.txt",
+          "source_range": [
+            840492,
+            840596
+          ]
+        },
+        {
+          "chunk_id": "chunk-0382",
+          "source_path": "intermediate/chunks/chunk-0382.txt",
+          "source_range": [
+            976389,
+            976538
+          ]
+        },
+        {
+          "chunk_id": "chunk-0390",
+          "source_path": "intermediate/chunks/chunk-0390.txt",
+          "source_range": [
+            997229,
+            997334
+          ]
+        },
+        {
+          "chunk_id": "chunk-0397",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            1018227,
+            1018421
+          ]
+        }
+      ],
+      "confidence": "INFERRED"
+    },
+    {
+      "content": "丹药效果常需要通过具体服用或交易事件验证：清灵散虽号称解毒圣药，但对尸虫丸无效；炼气散初期强效、后期失效；定颜丹因驻颜效果成为高价值交易筹码。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0034:007",
+        "evidence:chunk-0247:007",
+        "evidence:chunk-0247:010",
+        "evidence:chunk-0360:003",
+        "evidence:chunk-0360:004"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0034",
+          "source_path": "intermediate/chunks/chunk-0034.txt",
+          "source_range": [
+            65548,
+            65695
+          ]
+        },
+        {
+          "chunk_id": "chunk-0247",
+          "source_path": "intermediate/chunks/chunk-0247.txt",
+          "source_range": [
+            583522,
+            583614
+          ]
+        },
+        {
+          "chunk_id": "chunk-0247",
+          "source_path": "intermediate/chunks/chunk-0247.txt",
+          "source_range": [
+            583859,
+            583960
+          ]
+        },
+        {
+          "chunk_id": "chunk-0360",
+          "source_path": "intermediate/chunks/chunk-0360.txt",
+          "source_range": [
+            913720,
+            913769
+          ]
+        },
+        {
+          "chunk_id": "chunk-0360",
+          "source_path": "intermediate/chunks/chunk-0360.txt",
+          "source_range": [
+            913783,
+            913811
+          ]
+        }
+      ],
+      "confidence": "INFERRED"
+    }
+  ],
+  "pending_verifications": [
+    {
+      "content": "炼气散失效是否确定由“抗药性”导致仍待核验；现有证据只是韩立基于医术做出的自我推测。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0247:011"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0247",
+          "source_path": "intermediate/chunks/chunk-0247.txt",
+          "source_range": [
+            584145,
+            584237
+          ]
+        }
+      ],
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "血凝五行丹是否可稳定用于“身外化身”路径待核验；现有证据包含韩立对越皇培养血侍目的的推测，相关条目在 graph 中也存在 needs_review 标记。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0334:015",
+        "evidence:chunk-0334:016"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0334",
+          "source_path": "intermediate/chunks/chunk-0334.txt",
+          "source_range": [
+            840808,
+            840856
+          ]
+        },
+        {
+          "chunk_id": "chunk-0334",
+          "source_path": "intermediate/chunks/chunk-0334.txt",
+          "source_range": [
+            841037,
+            841160
+          ]
+        }
+      ],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "not_found_items": [
+    {
+      "content": "多数丹药未见完整配方或材料清单：黄龙丹、金髓丸、清灵散、养精丹、降尘丹、饲灵丸等仅有用途或部分材料线索，不应补造完整丹方。",
+      "category": "未见可靠证据",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "多数丹药未见明确品阶、标准售价、炼制成功率或普适副作用；只有筑基丹稀缺产量、血凝五行丹煞丹三分之一机会、结丹灵物成功率边界等少数项有明确证据。",
+      "category": "未见可靠证据",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "document_sections": [
+    {
+      "heading": "丹药总表",
+      "markdown": "| 名称 | 分类 | 主要用途/效果 | 材料或配方证据 | 证据 |\n| --- | --- | --- | --- | --- |\n| 抽髓丸 | 透支潜力类丹药/邪性药丸 | 服用后可大幅透支身体潜力，以后续寿命换取当前能力；一经服下需周期性复服，停服轻则瘫痪、重则丧命，即使按时服药也会在首次用药十年内因透支生命而死。 | 由合兰、蝎尾花、百年蓝蚁卵等二十三种罕见物品炼成；外表粉红，带奇异腥臭。 | evidence:chunk-0022:006, evidence:chunk-0022:007, evidence:chunk-0022:008 |\n| 黄龙丹 | 增进功力类稀世丹药 | 对韩立练功帮助很大，具增加功力、脱胎换骨之效；后续证据显示长期服用同类丹药会出现失效经验。 | 未见可靠配方。 | evidence:chunk-0029:011, evidence:chunk-0029:012, evidence:chunk-0247:010 |\n| 金髓丸 | 增进功力类稀世丹药 | 与黄龙丹并列，对韩立练功帮助最大，可增加功力、脱胎换骨；后续被韩立用于类比炼气散失效。 | 未见可靠配方。 | evidence:chunk-0029:011, evidence:chunk-0029:012, evidence:chunk-0247:010 |\n| 清灵散 | 解毒类丹药 | 被称为世间少有的解毒圣药，可解天下千百种剧毒；但对尸虫丸/丹田阴寒潜伏物无效，显示其解毒范围存在边界。 | 未见可靠配方。 | evidence:chunk-0029:011, evidence:chunk-0029:012, evidence:chunk-0034:007, evidence:chunk-0068:019 |\n| 养精丹 | 疗伤保命类灵药 | 对内外伤有奇效，严重内外伤服一颗即使不能起死回生，也可大幅减轻伤势并保住性命。 | 未见可靠配方。 | evidence:chunk-0029:011, evidence:chunk-0029:012 |\n| 尸虫丸 | 虫卵秘法/控制与威胁类药物 | 实为秘法泡制虫卵，服后潜伏一年；一年后需特制解药，否则虫卵孵化吞食内脏，使人痛苦死亡。清灵散对其无效。 | 墨大夫称其“不真是一种药物”，而是某种秘法泡制出的虫卵；特制解药未见配方。 | evidence:chunk-0033:007, evidence:chunk-0034:007, evidence:chunk-0068:019 |\n| 筑基丹 | 突破筑基境界核心灵药 | 炼气期修仙者要突破筑基，除基础功法达七层外，还需服用大门派炼制的筑基丹；服后可洗髓易筋、改善体质并提供残余药力，韩立连续服用多枚后推进真元向液态转化。 | 原料极难寻觅，越国修仙门派联手也约十年才有望出炉数鼎、千余颗；韩立炼制时将数十种灵药粉末投入银丝鼎，半年后得二十几颗蓝灿灿筑基丹。 | evidence:chunk-0137:004, evidence:chunk-0137:005, evidence:chunk-0137:006, evidence:chunk-0137:007, evidence:chunk-0218:014, evidence:chunk-0219:005, evidence:chunk-0219:006, evidence:chunk-0220:005, evidence:chunk-0220:007, evidence:chunk-0220:008, evidence:chunk-0220:011 |\n| 炼气散 | 筑基期修炼辅助丹药 | 韩立服用后灵气爆裂，第一年法力突飞猛进；每六七日服一包可暂时抵消青元剑诀法力回落缺陷；第二年后效果递减，第四年完全失效。 | 丹方来自雷万鹤交付的玉简；具体原料未见可靠摘录。 | evidence:chunk-0240:009, evidence:chunk-0240:010, evidence:chunk-0240:011, evidence:chunk-0247:007, evidence:chunk-0247:008, evidence:chunk-0247:010, evidence:chunk-0247:013 |\n| 聚灵丹 | 筑基期修炼辅助丹药/古方丹药 | 韩立从丹方目录中选定聚灵丹；后续在交易所凑齐所缺药材，预计催生后可让法力再次突飞猛进。 | 丹方来自雷万鹤玉简；所缺药材可在交易所凑齐并经韩立催生，具体药材名未见可靠证据。 | evidence:chunk-0240:009, evidence:chunk-0240:010, evidence:chunk-0240:011, evidence:chunk-0276:021, evidence:chunk-0276:022 |\n| 定颜丹 | 驻颜类丹药/交易筹码 | 功效是青春永驻、容貌长存；韩立判断不需先天真火即可调配；后以两颗含千年灵药成分的定颜丹加一千灵石换得丹方和法器。 | 红色玉筒记录定颜丹；两颗交易用定颜丹含千年灵药成分，完整配方未见可靠摘录。 | evidence:chunk-0158:011, evidence:chunk-0158:012, evidence:chunk-0158:015, evidence:chunk-0360:001, evidence:chunk-0360:002, evidence:chunk-0360:003, evidence:chunk-0360:004 |\n| 血凝五行丹 | 煞妖诀凝丹产物/结丹相关高风险丹物 | 韩立取得五颗后确认其中有巨大灵力；玉简说明此丹是修炼煞妖诀者体内凝练、类似妖兽内丹之物，可使血侍变身煞妖并不服筑基丹入筑基。筑基后期修士按煞丹术服下有三分之一机会结成伪金丹“煞丹”，但会锁死修为并侵蚀神智，韩立因此放弃直接使用。 | 由煞妖诀修士体内凝练而成；并非普通炉炼丹方。 | evidence:chunk-0334:001, evidence:chunk-0334:002, evidence:chunk-0334:006, evidence:chunk-0334:007, evidence:chunk-0334:010, evidence:chunk-0334:011, evidence:chunk-0334:012, evidence:chunk-0334:013, evidence:chunk-0334:014 |\n| 雪灵水与天火液 | 辅助结丹灵物 | 修士结丹时必须服用的两种灵物；不服也可尝试结丹，但成功率据说远低于百分之一。两者能显著提高结丹希望，重复服用无效，过量或多服辅助灵药可能起反效果。 | 雪灵水呈奇寒清水样液体，天火液呈炙热猩红液体；二者存于土属性深海极玉玉匣。 | evidence:chunk-0381:008, evidence:chunk-0381:013, evidence:chunk-0381:014, evidence:chunk-0382:008, evidence:chunk-0390:003, evidence:chunk-0390:004 |\n| 降尘丹 | 辅助结丹丹药/任务报酬 | 六连殿以降尘丹作为任务报酬，每位出手修士可得一颗；该丹对结丹大有助益，可一定几率增加结丹成功率。韩立判断五粒降尘丹是乱星海修士结丹所需辅助药物，但成功率提升有限。 | 未见可靠配方。 | evidence:chunk-0382:004, evidence:chunk-0390:007 |\n| 饲灵丸 | 灵兽/奇虫饲养丹药 | 韩立需要炼制饲灵丸来正式调教两只白蜘蛛；炼成后喂给噬金虫和血玉蜘蛛，确认对奇虫升阶有效，但血玉蜘蛛增益明显，噬金虫因数量多分食后增益微弱。 | 需炼制饲灵丸的药材种子；完整药材清单未见可靠证据。 | evidence:chunk-0382:010, evidence:chunk-0397:008, evidence:chunk-0397:009 |\n| 乱星海丹方体系 | 区域丹道规则/丹方材料机制 | 乱星海筑基期及高阶丹方大量以妖兽内丹为主原料，灵草转为辅助材料且可替换；韩立判断其丹道路线与天南不同，是把海中妖兽当作灵药使用。 | 高阶丹药主原料常为各阶妖兽内丹，稀有丹药甚至需六七级妖兽内丹；灵草多为辅助材料。 | evidence:chunk-0382:011, evidence:chunk-0382:012, evidence:chunk-0382:013, evidence:chunk-0382:014 |",
+      "evidence_ids": [
+        "evidence:chunk-0022:006",
+        "evidence:chunk-0022:007",
+        "evidence:chunk-0022:008",
+        "evidence:chunk-0029:011",
+        "evidence:chunk-0029:012",
+        "evidence:chunk-0247:010",
+        "evidence:chunk-0029:011",
+        "evidence:chunk-0029:012",
+        "evidence:chunk-0247:010",
+        "evidence:chunk-0029:011",
+        "evidence:chunk-0029:012",
+        "evidence:chunk-0034:007",
+        "evidence:chunk-0068:019",
+        "evidence:chunk-0029:011",
+        "evidence:chunk-0029:012",
+        "evidence:chunk-0033:007",
+        "evidence:chunk-0034:007",
+        "evidence:chunk-0068:019",
+        "evidence:chunk-0137:004",
+        "evidence:chunk-0137:005",
+        "evidence:chunk-0137:006",
+        "evidence:chunk-0137:007",
+        "evidence:chunk-0218:014",
+        "evidence:chunk-0219:005",
+        "evidence:chunk-0219:006",
+        "evidence:chunk-0220:005",
+        "evidence:chunk-0220:007",
+        "evidence:chunk-0220:008",
+        "evidence:chunk-0220:011",
+        "evidence:chunk-0240:009",
+        "evidence:chunk-0240:010",
+        "evidence:chunk-0240:011",
+        "evidence:chunk-0247:007",
+        "evidence:chunk-0247:008",
+        "evidence:chunk-0247:010",
+        "evidence:chunk-0247:013",
+        "evidence:chunk-0240:009",
+        "evidence:chunk-0240:010",
+        "evidence:chunk-0240:011",
+        "evidence:chunk-0276:021",
+        "evidence:chunk-0276:022",
+        "evidence:chunk-0158:011",
+        "evidence:chunk-0158:012",
+        "evidence:chunk-0158:015",
+        "evidence:chunk-0360:001",
+        "evidence:chunk-0360:002",
+        "evidence:chunk-0360:003",
+        "evidence:chunk-0360:004",
+        "evidence:chunk-0334:001",
+        "evidence:chunk-0334:002",
+        "evidence:chunk-0334:006",
+        "evidence:chunk-0334:007",
+        "evidence:chunk-0334:010",
+        "evidence:chunk-0334:011",
+        "evidence:chunk-0334:012",
+        "evidence:chunk-0334:013",
+        "evidence:chunk-0334:014",
+        "evidence:chunk-0381:008",
+        "evidence:chunk-0381:013",
+        "evidence:chunk-0381:014",
+        "evidence:chunk-0382:008",
+        "evidence:chunk-0390:003",
+        "evidence:chunk-0390:004",
+        "evidence:chunk-0382:004",
+        "evidence:chunk-0390:007",
+        "evidence:chunk-0382:010",
+        "evidence:chunk-0397:008",
+        "evidence:chunk-0397:009",
+        "evidence:chunk-0382:011",
+        "evidence:chunk-0382:012",
+        "evidence:chunk-0382:013",
+        "evidence:chunk-0382:014"
+      ],
+      "requirement_ids": [
+        "required_extraction_targets",
+        "evidence_requirements",
+        "丹药总表"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "关键机制与代价",
+      "markdown": "- 突破类丹药/灵物与稀缺资源绑定：筑基丹由大门派把持，雪灵水、天火液和降尘丹则进入结丹准备链条。\n- 高收益丹药通常伴随代价或边界：抽髓丸以寿命透支换能力，尸虫丸需要特制解药，血凝五行丹可导向煞丹但锁死修为并侵蚀神智。\n- 持续修炼类丹药存在适配问题：炼气散早期强效，后期失效；饲灵丸对不同奇虫/灵兽效果差异明显。",
+      "evidence_ids": [
+        "evidence:chunk-0137:006",
+        "evidence:chunk-0220:011",
+        "evidence:chunk-0022:008",
+        "evidence:chunk-0033:007",
+        "evidence:chunk-0334:012",
+        "evidence:chunk-0334:013",
+        "evidence:chunk-0247:010",
+        "evidence:chunk-0397:009"
+      ],
+      "requirement_ids": [
+        "required_extraction_targets",
+        "evidence_requirements"
+      ],
+      "confidence": "INFERRED"
+    },
+    {
+      "heading": "待核验与缺口",
+      "markdown": "- 炼气散抗药性目前只是韩立推测，不能写成已验证药理规则。\n- 血凝五行丹用于身外化身路径带有韩立推断成分，需要后续证据复核。\n- 多数丹药没有完整配方、品阶、标准价格和炼制成功率；缺失项应保留为未见可靠证据。",
+      "evidence_ids": [
+        "evidence:chunk-0247:011",
+        "evidence:chunk-0334:015",
+        "evidence:chunk-0334:016"
+      ],
+      "requirement_ids": [
+        "evidence_requirements"
+      ],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "evidence_citations": [
+    "evidence:chunk-0022:006",
+    "evidence:chunk-0022:007",
+    "evidence:chunk-0022:008",
+    "evidence:chunk-0029:011",
+    "evidence:chunk-0029:012",
+    "evidence:chunk-0247:010",
+    "evidence:chunk-0034:007",
+    "evidence:chunk-0068:019",
+    "evidence:chunk-0033:007",
+    "evidence:chunk-0137:004",
+    "evidence:chunk-0137:005",
+    "evidence:chunk-0137:006",
+    "evidence:chunk-0137:007",
+    "evidence:chunk-0218:014",
+    "evidence:chunk-0219:005",
+    "evidence:chunk-0219:006",
+    "evidence:chunk-0220:005",
+    "evidence:chunk-0220:007",
+    "evidence:chunk-0220:008",
+    "evidence:chunk-0220:011",
+    "evidence:chunk-0240:009",
+    "evidence:chunk-0240:010",
+    "evidence:chunk-0240:011",
+    "evidence:chunk-0247:007",
+    "evidence:chunk-0247:008",
+    "evidence:chunk-0247:013",
+    "evidence:chunk-0247:011",
+    "evidence:chunk-0276:021",
+    "evidence:chunk-0276:022",
+    "evidence:chunk-0158:011",
+    "evidence:chunk-0158:012",
+    "evidence:chunk-0158:015",
+    "evidence:chunk-0360:001",
+    "evidence:chunk-0360:002",
+    "evidence:chunk-0360:003",
+    "evidence:chunk-0360:004",
+    "evidence:chunk-0334:001",
+    "evidence:chunk-0334:002",
+    "evidence:chunk-0334:006",
+    "evidence:chunk-0334:007",
+    "evidence:chunk-0334:010",
+    "evidence:chunk-0334:011",
+    "evidence:chunk-0334:012",
+    "evidence:chunk-0334:013",
+    "evidence:chunk-0334:014",
+    "evidence:chunk-0381:008",
+    "evidence:chunk-0381:013",
+    "evidence:chunk-0381:014",
+    "evidence:chunk-0382:008",
+    "evidence:chunk-0390:003",
+    "evidence:chunk-0390:004",
+    "evidence:chunk-0382:004",
+    "evidence:chunk-0390:007",
+    "evidence:chunk-0382:010",
+    "evidence:chunk-0397:008",
+    "evidence:chunk-0397:009",
+    "evidence:chunk-0382:011",
+    "evidence:chunk-0382:012",
+    "evidence:chunk-0382:013",
+    "evidence:chunk-0382:014"
+  ],
+  "gap_items": [
+    {
+      "requirement_id": "complete_formula",
+      "status": "not_found_in_source",
+      "evidence_ids": [],
+      "notes": [
+        "多种丹药仅给出功效或少量材料，完整配方不可补造。"
+      ]
+    },
+    {
+      "requirement_id": "pill_grade_and_price",
+      "status": "not_found_in_source",
+      "evidence_ids": [],
+      "notes": [
+        "仅定颜丹交易、筑基丹分配/稀缺、古方购买等少数经济线索可证。"
+      ]
+    },
+    {
+      "requirement_id": "炼气散抗药性机制",
+      "status": "needs_review",
+      "evidence_ids": [
+        "evidence:chunk-0247:011"
+      ],
+      "notes": [
+        "角色推测，非旁白确认。"
+      ]
+    }
+  ],
+  "render_target": "drafts",
+  "overwrite_policy": "draft",
+  "metadata": {
+    "batch_id": "template-batch-0004-50b9c8614562",
+    "agent_role": "stage2-template-document-agent",
+    "task_packet": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\intermediate\\stage2\\task-packets\\template-batch-0004-50b9c8614562.json",
+    "evidence_index": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\coverage\\evidence-index.json",
+    "selection_note": "优先使用 supports_templates.template_name == 丹药分析 的节点、事件和证据；未明确证实的配方、品阶、成功率放入 pending/not_found。"
+  }
+}

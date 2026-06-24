@@ -1,0 +1,440 @@
+{
+  "producer": "template-requirements-analysis-agent:batch-0007",
+  "template_count": 5,
+  "templates": [
+    {
+      "template_name": "秘境遗迹与机缘",
+      "template_file": "秘境遗迹与机缘模板.md",
+      "required_fields": [
+        "名称",
+        "类型",
+        "稀有度",
+        "入口/位置",
+        "开启条件",
+        "进入限制",
+        "场景环境描述",
+        "场景布局描述",
+        "内部规则",
+        "危险",
+        "机缘/产出",
+        "争夺机制",
+        "关闭/刷新规则",
+        "限制/失败后果",
+        "适用境界"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "秘境遗迹与机缘卡片",
+        "宗门试炼地卡片",
+        "上古遗迹卡片",
+        "古修洞府卡片",
+        "洞天小世界卡片",
+        "传承地或试炼地卡片",
+        "禁地或古战场卡片",
+        "资源秘境或天地异象机缘卡片"
+      ],
+      "required_case_patterns": [
+        "每个由原文明确支撑的秘境、遗迹、洞府、洞天、小世界、传承地、试炼地、禁地、宝藏地或机缘事件应尽量独立成卡",
+        "卡片需按开启方式、进入条件、内部规则、危险类型、机缘产出和适用境界形成完整描述",
+        "秘境内部产出的材料、丹药、功法、法宝、妖兽等只记录为机缘/产出并可交叉引用，不展开其本体体系",
+        "需要区分一次性机缘、周期开放区域、宗门掌控试炼地、传说遗迹、限时入口和特殊异象事件",
+        "入口、开启条件、布局、规则、刷新或失败后果无可靠依据时不得补造，标为原文未说明"
+      ],
+      "required_evidence_fields": [
+        "秘境或机缘名称及别名",
+        "秘境类型、稀有度或原文描述层级",
+        "入口位置、地理区域、传送点、令牌钥匙或异象出现地证据",
+        "开启时间、钥匙令牌、阵法、境界、名额、身份或特殊事件证据",
+        "进入限制、离开方式、关闭周期、刷新规则或一次性状态证据",
+        "内部环境、空间规则、区域布局、禁制机关、妖兽或危险证据",
+        "机缘产出、争夺机制、失败后果和适用境界证据",
+        "source_range、chunk_id、章节提示、原文摘录或 evidence_id",
+        "缺失字段需保留 not_found_in_source 或原文未说明状态"
+      ],
+      "graph_node_mapping": [
+        "Location 或 SecretRealm 节点承载秘境、遗迹、洞府、洞天、小世界、禁地和入口位置",
+        "Opportunity 节点承载天地异象、传承考验、宝藏线索、限时机缘等事件型机会",
+        "Resource 节点承载灵药、矿材、丹药、功法、法宝、传承、灵脉、妖兽等产出对象",
+        "Faction 节点承载掌控、看守、争夺或分配名额的宗门、家族、势力",
+        "Character 节点承载进入者、发现者、守关者、争夺者和受益者",
+        "Rule 或 Constraint 节点承载境界限制、人数限制、禁飞禁法、随机传送、时间限制等内部规则"
+      ],
+      "graph_event_mapping": [
+        "DiscoveryEvent 记录秘境发现、入口出现、线索获得或异象显现",
+        "OpeningEvent 记录秘境开启、令牌激活、阵法传送、名额发放或入口关闭",
+        "ExplorationEvent 记录探索路线、区域推进、破禁、试炼、采集和传承接受过程",
+        "ConflictEvent 记录宗门争夺、名额竞争、杀人夺宝、守关战斗和团队翻脸",
+        "RewardEvent 记录机缘获得、资源采集、传承成功、资格取得或境界突破机会",
+        "FailureEvent 记录死亡、失踪、被困、重伤、传承失败、入口消失或空间崩塌"
+      ],
+      "graph_relation_mapping": [
+        "Character ENTERED SecretRealm 或 Location 记录进入者和进入条件",
+        "SecretRealm LOCATED_IN Location 记录入口、区域和空间归属",
+        "SecretRealm PRODUCES Resource 或 Opportunity YIELDS Resource 记录机缘产出",
+        "Faction CONTROLS SecretRealm 或 CONTESTS SecretRealm 记录掌控和争夺关系",
+        "Event OCCURS_IN SecretRealm 或 Location 记录发现、开启、探索、争夺和关闭事件",
+        "SecretRealm HAS_RULE Rule 或 HAS_CONSTRAINT Constraint 记录内部规则与进入限制",
+        "Character OBTAINED Resource FROM Event 记录收益归属和证据闭合"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": [
+          "covered",
+          "needs_review",
+          "not_found_in_source"
+        ],
+        "covered": "秘境或机缘名称、类型、进入或触发方式、内部风险、产出和事件证据均有 source_range 或 evidence_id 支撑。",
+        "needs_review": "只有传闻、线索、模板示例式描述或缺少进入条件、内部规则、产出、结局中的关键证据时需复核。",
+        "not_found_in_source": "原文未说明入口、布局、规则、刷新、境界限制、产出数值或失败后果时标注未说明，不补造体系。",
+        "coverage_notes": [
+          "优先覆盖有明确入口、规则、产出、危险和争夺过程的秘境机缘样本。",
+          "不得把普通地点、单次战斗或无持续规则的背景场景误写为秘境遗迹。"
+        ]
+      }
+    },
+    {
+      "template_name": "符师",
+      "template_file": "符师模板.md",
+      "required_fields": [
+        "职业定位",
+        "职业分支",
+        "处理对象",
+        "输入资源",
+        "符方/符文传承来源",
+        "工具/设施",
+        "制符环境",
+        "操作者门槛",
+        "制符流程",
+        "符文绘制/注灵方式",
+        "载体差异",
+        "不同境界的操作手法和特殊手段",
+        "特殊手段与代表案例",
+        "成符结果",
+        "产出/效果",
+        "保存/携带/激活",
+        "时间成本",
+        "限制/失败后果",
+        "收益方式",
+        "来源/场景",
+        "适用境界"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "符师职业分析",
+        "职业分支案例",
+        "制符流程案例",
+        "符文绘制或注灵方式案例",
+        "载体差异案例",
+        "特殊手段与代表案例",
+        "符箓保存携带激活案例",
+        "失败反噬或限制案例"
+      ],
+      "required_case_patterns": [
+        "围绕符师职业如何运转形成从传承、材料、工具、环境、绘制、注灵、封存、保存、激活、售卖到成长的闭环",
+        "样本需覆盖多境界、多身份、多地域、多势力、多场景和多结局，不只记录主角或成功案例",
+        "独立符箓、符宝、符牌、纸符、玉符、传讯符、遁符、防御符、攻击符、封印符等可携带可预制术式载体优先纳入",
+        "炼丹丹纹、炼器铭文、阵法符文节点等底层应用应转交对应模板，本模板只记录独立制符和用符职业体系",
+        "特殊案例需写清使用者、场景、前置条件、过程、效果、代价、限制和职业参考点"
+      ],
+      "required_evidence_fields": [
+        "符师、制符者、符宝炼制者或相关职业身份证据",
+        "符方、符文传承、符纸、符墨、符笔、兽血、灵材、精血、魂魄、灵石等输入资源证据",
+        "工具设施、制符环境、符房、静室、坊市符铺或宗门符房证据",
+        "绘制、注灵、封存、保存、携带、激活、出售或交换流程证据",
+        "符箓载体、用途、威力边界、使用次数、保存时间、激活条件和适用境界证据",
+        "失败、反噬、误触、符毁、材料报废、法力耗尽或信誉损失证据",
+        "职业收益、宗门贡献、坊市交易、战斗准备、传讯网络或任务后勤价值证据",
+        "source_range、chunk_id、章节提示、原文摘录或 evidence_id",
+        "缺失字段需保留 not_found_in_source 或原文未说明状态"
+      ],
+      "graph_node_mapping": [
+        "Profession 节点承载符师、制符学徒、符宝炼制者、传讯符制作者等职业分支",
+        "Character 节点承载制符者、用符者、买卖双方、师承传承者和失败者",
+        "Item 节点承载符箓、符宝、符牌、符纸、符墨、符笔、令符和保存容器",
+        "Resource 或 Material 节点承载兽血、灵材粉末、精血、魂魄、灵石、灵砂、玉石等输入",
+        "Technique 或 Recipe 节点承载符方、符文传承、激活口诀、绘制法和注灵法",
+        "Location 或 Facility 节点承载符房、静室、洞府、坊市符铺、宗门符房和交易场景"
+      ],
+      "graph_event_mapping": [
+        "LearningEvent 记录获得符方、符文传承、师承、购买、拓印或自创过程",
+        "CraftingEvent 记录备料、绘符、注灵、封存、检验、成符或废符过程",
+        "UseEvent 记录战斗、逃亡、传讯、封印、治疗、隐匿、定位或召唤等激活使用",
+        "TradeEvent 记录符箓出售、代制、交换符方、拍卖、宗门兑换和任务奖励",
+        "FailureEvent 记录制符失败、符路断裂、反噬、误触、保存失败或激活失败",
+        "GrowthEvent 记录符师职业成长、境界对应手法变化和特殊手段出现"
+      ],
+      "graph_relation_mapping": [
+        "Character HAS_PROFESSION Profession 记录职业身份和水平证据",
+        "Character LEARNED Technique 或 Recipe 记录符方和符文传承来源",
+        "CraftingEvent CONSUMES Resource 或 Material 并 PRODUCES Item 记录输入输出闭合",
+        "Item HAS_EFFECT Technique 或 Effect 记录符箓用途、激活条件和适用境界",
+        "Character USES Item IN Event 记录具体用符场景、效果、代价和限制",
+        "Character TRADES Item WITH Character 或 Faction 记录收益方式和流通场景",
+        "CraftingEvent OCCURS_IN Location 或 Facility 记录制符环境和工具设施"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": [
+          "covered",
+          "needs_review",
+          "not_found_in_source"
+        ],
+        "covered": "职业身份或制符/用符案例具备输入资源、流程环节、载体效果、代价限制和 source_range 或 evidence_id。",
+        "needs_review": "仅出现符箓名称或使用效果，缺少职业、流程、传承、材料、保存、交易或失败信息时需复核归类。",
+        "not_found_in_source": "原文未说明职业等级、成功率、耗时、价格、材料数量、载体差异或境界梯度时标注未说明。",
+        "coverage_notes": [
+          "本模板关注职业和流程闭环，不把所有符箓条目强行展开成物品百科。",
+          "不得将炼丹、炼器、阵法中的符文应用误归为独立符师职业。"
+        ]
+      }
+    },
+    {
+      "template_name": "角色AI行为参考",
+      "template_file": "角色AI行为参考模板.md",
+      "required_fields": [
+        "行为决策链",
+        "已知信息",
+        "自身状态",
+        "目标",
+        "正面因素",
+        "反面因素",
+        "行动选择",
+        "打断或撤退条件",
+        "成功或失败后的目标变化",
+        "后续行为"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "完整角色行为决策链案例",
+        "谨慎求生型参与高风险事件案例",
+        "赌命夺宝型抢夺宝物案例",
+        "宗门忠诚型执行任务案例",
+        "复仇追杀型行为链案例",
+        "商人套利或散修游击型行为链案例",
+        "邪修掠夺或权力争夺型行为链案例"
+      ],
+      "required_case_patterns": [
+        "每个案例只写行为决策链，不写总览、证据段、抽象规则表或项目映射表",
+        "决策链需按原文先后顺序记录角色每次选择的已知信息、自身状态、目标、正面因素、反面因素和行动",
+        "每个决策节点都必须有正面因素和反面因素，因素内容应简洁且有原文依据",
+        "需记录什么条件会打断、撤退、改目标、求援、观望、隐藏身份或放弃目标",
+        "不得把主角策略推广为所有 NPC 默认行为，需覆盖多境界、多身份、多势力、多场景和多结局样本"
+      ],
+      "required_evidence_fields": [
+        "角色名称、身份、境界、势力、地域和当前状态证据",
+        "角色当时掌握的信息来源、可信度和信息缺口证据",
+        "目标、收益、资源诱因、关系压力、风险压力和打断条件证据",
+        "每个行动选择的正面因素和反面因素证据",
+        "准备、打探、购买、组队、赶路、潜伏、参与、观望、偷袭、战斗、撤退、求援、放弃或改目标证据",
+        "成功、失败、撤退或事件结束后的目标变化和后续状态证据",
+        "source_range、chunk_id、章节提示、原文摘录或 evidence_id",
+        "缺失字段需保留 not_found_in_source 或原文未说明状态"
+      ],
+      "graph_node_mapping": [
+        "Character 节点承载决策主体、身份、境界、势力、状态和行为原型证据",
+        "Goal 节点承载突破资源、复仇、救援、夺宝、保命、报恩、权力、交易等目标",
+        "Information 节点承载目击、传闻、公告、情报、敌我位置、宝物价值等已知信息",
+        "Resource 或 Item 节点承载丹药、法宝、符箓、灵石、贡献、传承和突破资源",
+        "Relationship 节点承载师徒、同门、恩怨、仇敌、宗门命令、家族牵连等关系因素",
+        "Location 或 Situation 节点承载事件现场、秘境、战场、坊市、宗门任务和逃亡场景"
+      ],
+      "graph_event_mapping": [
+        "DecisionEvent 记录每个决策节点的目标、信息、状态、正反因素和行动选择",
+        "PreparationEvent 记录补给、购买、组队、打探、隐藏身份和路线选择",
+        "EngagementEvent 记录参与事件、探索、战斗、偷袭、救援、交易或争夺行动",
+        "InterruptionEvent 记录强敌出现、保命物耗尽、身份暴露、同伴遇险、窗口关闭或收益风险逆转",
+        "RetreatEvent 记录撤退、放弃目标、改目标、求援、逃亡和闭关消化",
+        "OutcomeEvent 记录成功、失败、资源获得、代价损失、关系变化和目标更新"
+      ],
+      "graph_relation_mapping": [
+        "Character HAS_GOAL Goal 记录当前目标和目标变化",
+        "Character KNOWS Information 记录已知信息和信息来源",
+        "DecisionEvent EVALUATES PositiveFactor 与 NegativeFactor 记录正反因素",
+        "DecisionEvent LEADS_TO Event 记录行动选择和后续事件",
+        "Event CHANGES Goal 或 CharacterState 记录成功失败后的目标、状态和策略变化",
+        "Relationship INFLUENCES DecisionEvent 记录师徒、同门、仇怨、报恩、宗门命令等关系驱动",
+        "Resource MOTIVATES DecisionEvent 或 CONSUMED_IN Event 记录收益诱因和代价"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": [
+          "covered",
+          "needs_review",
+          "not_found_in_source"
+        ],
+        "covered": "决策链节点具有角色状态、已知信息、目标、正反因素、行动选择、打断条件或后续变化的原文证据。",
+        "needs_review": "只有行动结果但缺少当时信息、状态、目标或正反因素，或因素明显依赖推测时需复核。",
+        "not_found_in_source": "原文未说明动机、情报来源、资源余量、撤退条件、目标变化或后续影响时标注未说明。",
+        "coverage_notes": [
+          "行为链按原文顺序组织，避免抽象成通用 AI 规则表。",
+          "优先选择能体现取舍、打断、撤退、改目标和失败后调整的样本。"
+        ]
+      }
+    },
+    {
+      "template_name": "角色修炼历程",
+      "template_file": "角色修炼历程模板.md",
+      "required_fields": [
+        "行动链",
+        "角色当前境界或状态",
+        "时间",
+        "地点",
+        "获得",
+        "消耗",
+        "提升",
+        "修炼或闭关时长",
+        "功法或法宝状态",
+        "资源来源",
+        "事件参与",
+        "奖励或战利品",
+        "突破结果",
+        "后续用途"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "完整角色修炼行动链案例",
+        "主角按境界分段修炼行动链",
+        "宗门弟子阶段成长案例",
+        "散修靠坊市与秘境资源冲击瓶颈案例",
+        "配角修炼行动链案例",
+        "反派、宗门天才、妖修或其他路径补充样本"
+      ],
+      "required_case_patterns": [
+        "每个案例只写修炼行动链，不写总览、证据段、节奏抽象表或额外字段表",
+        "主角修炼经历必须尽量完整并按境界分段，境界段内记录完整行动链而非只挑名场面",
+        "配角、NPC、反派、宗门天才、散修、妖修等若有完整链应完整写，只有片段时才写典型片段",
+        "行动链每个小事件尽量写清时间、获得、消耗、提升、资源名称、数量、时长、功法层数、法宝状态或突破结果",
+        "原文未明确获得、消耗、提升、时间或结果时可以只写事件本身，不补造数值和突破结果"
+      ],
+      "required_evidence_fields": [
+        "角色名称、身份、势力、境界起点和阶段状态证据",
+        "闭关、赶路、任务、交易、炼丹、炼器、修炼、学习功法、参加事件等行动证据",
+        "资源获得、消耗、奖励、战利品、材料、丹药、功法、法宝、灵石或贡献证据",
+        "修炼时长、闭关地点、突破前后境界、功法层数、法宝状态和伤势恢复证据",
+        "事件名次、奖励资格、关系提升、战斗经验或后续用途证据",
+        "突破成功、失败、继续卡瓶颈、重伤恢复或资源耗尽证据",
+        "source_range、chunk_id、章节提示、原文摘录或 evidence_id",
+        "缺失字段需保留 not_found_in_source 或原文未说明状态"
+      ],
+      "graph_node_mapping": [
+        "Character 节点承载修炼主体、身份、境界、势力和阶段状态",
+        "CultivationStage 节点承载炼气、筑基、金丹、元婴等作品境界或阶段",
+        "Technique 节点承载功法、术法、神通、层数和学习状态",
+        "Resource 或 Item 节点承载丹药、材料、灵石、贡献、法宝、奖励和战利品",
+        "Location 或 Facility 节点承载闭关室、洞府、坊市、秘境、宗门、任务地点",
+        "Bottleneck 或 Condition 节点承载瓶颈、伤势、心魔、资源缺口和突破条件"
+      ],
+      "graph_event_mapping": [
+        "TrainingEvent 记录修炼、闭关、炼化、学习功法、疗伤和功法层数变化",
+        "AcquisitionEvent 记录兑换、购买、拍卖、采集、战利品、奖励和传承获得",
+        "ConsumptionEvent 记录丹药、灵石、材料、贡献、符箓、法宝耐久和时间消耗",
+        "QuestEvent 或 ConflictEvent 记录宗门任务、大比、护送、秘境、战斗和截杀等成长事件",
+        "BreakthroughEvent 记录突破尝试、成功、失败、卡瓶颈、重伤恢复和境界变化",
+        "FollowupEvent 记录资源用于炼器、炼丹、突破准备、交易或下一段修炼链"
+      ],
+      "graph_relation_mapping": [
+        "Character AT_STAGE CultivationStage 记录阶段起点、终点和变化证据",
+        "Character PRACTICES Technique 记录功法学习、层数、转修或神通掌握",
+        "Event GRANTS Resource 或 Item 记录获得来源",
+        "TrainingEvent CONSUMES Resource 或 Item 记录消耗和闭关成本",
+        "BreakthroughEvent CHANGES CharacterStage 记录突破前后境界",
+        "Character PARTICIPATED_IN Event 记录修炼链中的任务、比赛、秘境和冲突",
+        "Resource USED_FOR Event 记录材料、丹药、奖励或战利品的后续用途"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": [
+          "covered",
+          "needs_review",
+          "not_found_in_source"
+        ],
+        "covered": "行动链节点具备角色阶段、事件顺序、获得或消耗或提升、结果和 source_range 或 evidence_id。",
+        "needs_review": "只有境界变化结论但缺少过程、资源、时长、事件或证据链，或主角境界段不完整时需复核。",
+        "not_found_in_source": "原文未说明时长、数量、地点、功法层数、资源消耗、奖励或突破结果时标注未说明。",
+        "coverage_notes": [
+          "主角必须按境界分段优先覆盖完整链。",
+          "配角样本用于补足不同身份、资源路径、失败路径和成长模式。"
+        ]
+      }
+    },
+    {
+      "template_name": "记忆情绪与执念",
+      "template_file": "记忆情绪与执念模板.md",
+      "required_fields": [
+        "记忆类型",
+        "触发事件",
+        "相关角色",
+        "形成记忆",
+        "情绪变化",
+        "执念/目标",
+        "触发条件",
+        "行为后果",
+        "变化机制",
+        "消退或转化条件",
+        "长期影响"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "完整记忆执念案例",
+        "救命之恩转化为报恩和守护案例",
+        "背叛或羞辱引发长期戒备案例",
+        "击杀亲友或救援失败引发复仇案例",
+        "夺宝、传承、突破或失败形成执念案例",
+        "被控制、被夺舍威胁或被通缉形成求生执念案例",
+        "宗门、家族、师徒、道侣或势力牵连形成长期目标案例"
+      ],
+      "required_case_patterns": [
+        "每个案例需形成完整事件记忆、情绪反应、执念目标、后续行为链条",
+        "只记录小说中出现过或明确支撑的角色心理链，不把读者感受、旁白气氛或单次心理描写直接当长期执念",
+        "每部作品至少挑选二十个有代表性的完整记忆执念案例，样本需覆盖 NPC、配角、反派、宗门成员、散修、妖兽、势力首领和家族成员",
+        "事件类型需覆盖救命、赠宝、背叛、羞辱、击杀亲友、夺宝、失败、突破、传功、通缉、宗门覆灭、被控制、误会、赦免等可证实链条",
+        "若案例重点实际是人物关系、冲突过程或修炼历程，应交叉转入对应模板，不在本模板扩写"
+      ],
+      "required_evidence_fields": [
+        "记忆主体、相关角色、关系类型、身份、境界、势力和场景证据",
+        "触发事件的起因、过程、结果、损失、施恩、伤害或羞辱证据",
+        "角色形成记忆的原文心理、言行、承诺、誓言、追忆或后续复现证据",
+        "情绪变化、恐惧、愤怒、感激、羞耻、悔恨、怨恨、心魔、释然等证据",
+        "执念或目标的原文依据，包括复仇、长生、变强、守护、报恩、传承、夺权、避世、求道等",
+        "触发条件、行为后果、变化机制、消退或转化条件、长期影响证据",
+        "source_range、chunk_id、章节提示、原文摘录或 evidence_id",
+        "缺失字段需保留 not_found_in_source 或原文未说明状态"
+      ],
+      "graph_node_mapping": [
+        "Character 节点承载记忆主体、施恩者、加害者、受害者、见证者和牵连者",
+        "Memory 节点承载事件记忆、心理印记、誓言、亏欠、仇怨和戒备",
+        "Emotion 节点承载恐惧、愤怒、感激、羞耻、悔恨、怨恨、敬畏、释然等情绪状态",
+        "Obsession 或 Goal 节点承载复仇、长生、变强、守护、报恩、传承、避世、求道等长期目标",
+        "Relationship 节点承载师徒、亲友、同门、仇敌、恩义、道侣、家族和势力牵连",
+        "Location 或 Faction 节点承载触发事件发生地、宗门、家族、族群和阵营背景"
+      ],
+      "graph_event_mapping": [
+        "TriggerEvent 记录救命、赠宝、背叛、羞辱、击杀亲友、夺宝、失败、传功、通缉、被控制等触发事件",
+        "MemoryFormationEvent 记录角色形成记忆、誓言、戒备、亏欠、仇怨或心理转折",
+        "EmotionalShiftEvent 记录情绪从恐惧、疑惑、感激、悲痛、愤怒到长期状态的变化",
+        "ObsessionActionEvent 记录追杀、求援、护徒、报恩、闭关、夺宝、叛逃、隐居、调查等后续行为",
+        "TransformationEvent 记录执念淡化、叠加、转化、满足、继承、反转、升级或落空",
+        "AftermathEvent 记录长期影响、关系固化、行为习惯、心魔、守护目标或人生目标变化"
+      ],
+      "graph_relation_mapping": [
+        "Character EXPERIENCED TriggerEvent 记录事件亲历或见证",
+        "TriggerEvent FORMED Memory 或 CAUSED EmotionalShiftEvent 记录记忆和情绪来源",
+        "Memory EVOKES Emotion 并 DRIVES Obsession 或 Goal 记录记忆到目标的因果链",
+        "Obsession MOTIVATES Event 记录复仇、报恩、守护、求道、避世、调查等后续行为",
+        "Relationship MODIFIES Memory 或 Obsession 记录师徒、恩义、仇怨、亲友、宗门立场对执念的影响",
+        "TransformationEvent CHANGES Obsession 或 Emotion 记录消退、转化、升级和反转条件",
+        "Event HAS_LONG_TERM_IMPACT_ON Character 记录长期性格、行为和目标影响"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": [
+          "covered",
+          "needs_review",
+          "not_found_in_source"
+        ],
+        "covered": "案例具备触发事件、相关角色、形成记忆、情绪变化、执念目标、后续行为和 source_range 或 evidence_id。",
+        "needs_review": "只有单次心理描写、读者推断或事件结果，缺少长期目标、后续行为、变化机制或情绪证据时需复核。",
+        "not_found_in_source": "原文未说明情绪、执念、消退条件、转化条件或长期影响时标注未说明，不补造心理链。",
+        "coverage_notes": [
+          "优先收录因果链完整且能解释后续行动的记忆执念案例。",
+          "不得把模板示例或外部常识当作本作品事实。"
+        ]
+      }
+    }
+  ]
+}

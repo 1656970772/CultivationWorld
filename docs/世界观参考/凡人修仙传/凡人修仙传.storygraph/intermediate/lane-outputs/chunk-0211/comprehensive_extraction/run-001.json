@@ -1,0 +1,2462 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0211:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0211",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T00:00:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0211:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立在本 chunk 中驱使金光砖符宝击杀墨蛟，随后取得墨蛟躯体并用银色巨剑处理战利品。",
+      "evidence_ids": [
+        "evidence:chunk-0211:001",
+        "evidence:chunk-0211:009",
+        "evidence:chunk-0211:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        475676,
+        475765
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          475676,
+          475765
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0211:character:002",
+      "node_type": "character",
+      "label": "少女",
+      "aliases": [],
+      "fact_summary": "少女在本 chunk 中用朱雀环困住墨蛟、用黄色珠子打断紫液、收取墨蛟元神，并鉴定银剑与墨蛟材料。",
+      "evidence_ids": [
+        "evidence:chunk-0211:003",
+        "evidence:chunk-0211:005",
+        "evidence:chunk-0211:009",
+        "evidence:chunk-0211:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        475873,
+        475959
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          475873,
+          475959
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0211:beast:001",
+      "node_type": "beast",
+      "label": "墨蛟",
+      "aliases": [],
+      "fact_summary": "墨蛟在本 chunk 中被朱雀环困住，喷出紫色丹液抵抗金砖，最终被重创、摄走元神并被分割材料。",
+      "evidence_ids": [
+        "evidence:chunk-0211:003",
+        "evidence:chunk-0211:004",
+        "evidence:chunk-0211:007",
+        "evidence:chunk-0211:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        475873,
+        475959
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          475873,
+          475959
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0211:artifact:001",
+      "node_type": "artifact",
+      "label": "金光砖符宝",
+      "aliases": [
+        "金色长砖",
+        "金砖",
+        "符宝"
+      ],
+      "fact_summary": "金光砖符宝在韩立驱使下显出金色长砖实体，可破妖兽防御，但消耗韩立大量法力。",
+      "evidence_ids": [
+        "evidence:chunk-0211:001",
+        "evidence:chunk-0211:002",
+        "evidence:chunk-0211:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        475676,
+        475765
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          475676,
+          475765
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0211:artifact:002",
+      "node_type": "artifact",
+      "label": "朱雀环",
+      "aliases": [
+        "圆环"
+      ],
+      "fact_summary": "朱雀环由少女操控，用于圈禁墨蛟；墨蛟挣脱时会令朱雀环颤抖，少女后来将其收回体内。",
+      "evidence_ids": [
+        "evidence:chunk-0211:003",
+        "evidence:chunk-0211:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        475873,
+        475959
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          475873,
+          475959
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0211:material:001",
+      "node_type": "material",
+      "label": "紫色丹液",
+      "aliases": [
+        "紫液",
+        "残余的丹液"
+      ],
+      "fact_summary": "墨蛟可喷出紫色丹液抵住金砖，其残余丹液可作为炼制某些珍贵丹药的必备材料。",
+      "evidence_ids": [
+        "evidence:chunk-0211:004",
+        "evidence:chunk-0211:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        475962,
+        476118
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          475962,
+          476118
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0211:tool:001",
+      "node_type": "tool",
+      "label": "黄色珠子",
+      "aliases": [],
+      "fact_summary": "少女取出黄色珠子砸向墨蛟，珠子爆裂成黄雾并打断墨蛟喷射紫液；具体名称和来源未明。",
+      "evidence_ids": [
+        "evidence:chunk-0211:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        476156,
+        476273
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          476156,
+          476273
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0211:tool:002",
+      "node_type": "tool",
+      "label": "水晶小瓶",
+      "aliases": [],
+      "fact_summary": "少女用水晶小瓶放出黑气并摄取墨蛟体内绿色小蛟，韩立判断其收走的是墨蛟元神。",
+      "evidence_ids": [
+        "evidence:chunk-0211:008",
+        "evidence:chunk-0211:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        476512,
+        476660
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          476512,
+          476660
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0211:material:002",
+      "node_type": "material",
+      "label": "墨蛟元神",
+      "aliases": [
+        "绿色小蛟"
+      ],
+      "fact_summary": "墨蛟元神被少女以水晶小瓶收走，韩立不知其用途但判断价值不菲。",
+      "evidence_ids": [
+        "evidence:chunk-0211:008",
+        "evidence:chunk-0211:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        476743,
+        476923
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          476743,
+          476923
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0211:weapon:001",
+      "node_type": "weapon",
+      "label": "银色巨剑法器",
+      "aliases": [
+        "银剑",
+        "这把剑"
+      ],
+      "fact_summary": "银色巨剑法器原属赤脚汉，韩立不能驱动，但可手持斩入墨蛟躯体三寸并破防。",
+      "evidence_ids": [
+        "evidence:chunk-0211:010",
+        "evidence:chunk-0211:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        477008,
+        477114
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          477008,
+          477114
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0211:material:003",
+      "node_type": "material",
+      "label": "银精",
+      "aliases": [],
+      "fact_summary": "银精是祭炼法宝时才用到的珍贵法宝原料，需结丹期以上修士真火从大量纯银中提炼，银剑和朱雀环内都含有银精。",
+      "evidence_ids": [
+        "evidence:chunk-0211:012",
+        "evidence:chunk-0211:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        477618,
+        477675
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          477618,
+          477675
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0211:technique:001",
+      "node_type": "technique",
+      "label": "心炼之法",
+      "aliases": [],
+      "fact_summary": "心炼之法被少女称为邪门祭炼方法，会导致银剑原主人之外的人无法使用，除非回炉重炼。",
+      "evidence_ids": [
+        "evidence:chunk-0211:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        477932,
+        477993
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          477932,
+          477993
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0211:material:004",
+      "node_type": "material",
+      "label": "墨蛟躯体材料",
+      "aliases": [
+        "蛟皮",
+        "尖角和爪子",
+        "残余的丹液"
+      ],
+      "fact_summary": "少女说明二阶墨蛟全身是宝贵材料：蛟皮、尖角爪子、残余丹液分别对应护甲、顶级法器和珍贵丹药用途。",
+      "evidence_ids": [
+        "evidence:chunk-0211:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        478076,
+        478248
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          478076,
+          478248
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0211:material:005",
+      "node_type": "material",
+      "label": "蛟丹",
+      "aliases": [],
+      "fact_summary": "少女说明三阶墨蛟头颅内才可能有蛟丹，蛟丹可用于炼药炼器并会吸引结丹修士争夺。",
+      "evidence_ids": [
+        "evidence:chunk-0211:016",
+        "evidence:chunk-0211:018"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        478307,
+        478360
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          478307,
+          478360
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0211:material:006",
+      "node_type": "material",
+      "label": "红色圆球",
+      "aliases": [],
+      "fact_summary": "韩立从墨蛟腹部取出红色圆球；少女判断它不应是蛟丹，随后圆球爆裂并喷出粉红烟雾。",
+      "evidence_ids": [
+        "evidence:chunk-0211:017",
+        "evidence:chunk-0211:018",
+        "evidence:chunk-0211:019"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        478390,
+        478433
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          478390,
+          478433
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0211:realm:001",
+      "node_type": "realm",
+      "label": "结丹期",
+      "aliases": [],
+      "fact_summary": "少女说明银精需结丹期以上修士真火提炼，蛟丹也会吸引众多结丹修士。",
+      "evidence_ids": [
+        "evidence:chunk-0211:013",
+        "evidence:chunk-0211:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        477727,
+        477778
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          477727,
+          477778
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0211:001",
+      "edge_type": "uses",
+      "source": "node:chunk-0211:character:001",
+      "target": "node:chunk-0211:artifact:001",
+      "fact_summary": "韩立驱使金光砖符宝显形并攻击墨蛟。",
+      "evidence_ids": [
+        "evidence:chunk-0211:001",
+        "evidence:chunk-0211:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        475676,
+        475765
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          475676,
+          475765
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0211:002",
+      "edge_type": "restrains",
+      "source": "node:chunk-0211:artifact:002",
+      "target": "node:chunk-0211:beast:001",
+      "fact_summary": "朱雀环用于圈禁墨蛟，但在墨蛟挣脱时开始颤抖。",
+      "evidence_ids": [
+        "evidence:chunk-0211:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        475873,
+        475959
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          475873,
+          475959
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0211:003",
+      "edge_type": "counters",
+      "source": "node:chunk-0211:material:001",
+      "target": "node:chunk-0211:artifact:001",
+      "fact_summary": "墨蛟喷出的紫色丹液顶住下落金砖，使其暂时无法落下。",
+      "evidence_ids": [
+        "evidence:chunk-0211:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        475962,
+        476118
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          475962,
+          476118
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0211:004",
+      "edge_type": "interrupts",
+      "source": "node:chunk-0211:tool:001",
+      "target": "node:chunk-0211:material:001",
+      "fact_summary": "黄色珠子爆裂成黄雾后，墨蛟停止喷射紫液。",
+      "evidence_ids": [
+        "evidence:chunk-0211:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        476156,
+        476273
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          476156,
+          476273
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0211:005",
+      "edge_type": "captures",
+      "source": "node:chunk-0211:tool:002",
+      "target": "node:chunk-0211:material:002",
+      "fact_summary": "水晶小瓶放出黑气，将墨蛟元神摄入瓶中。",
+      "evidence_ids": [
+        "evidence:chunk-0211:008",
+        "evidence:chunk-0211:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        476512,
+        476660
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          476512,
+          476660
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0211:006",
+      "edge_type": "allocated_to",
+      "source": "node:chunk-0211:material:002",
+      "target": "node:chunk-0211:character:002",
+      "fact_summary": "少女收走墨蛟元神。",
+      "evidence_ids": [
+        "evidence:chunk-0211:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        476743,
+        476923
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          476743,
+          476923
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0211:007",
+      "edge_type": "allocated_to",
+      "source": "node:chunk-0211:material:004",
+      "target": "node:chunk-0211:character:001",
+      "fact_summary": "少女把墨蛟躯体留给韩立作为合力杀蛟后的分配。",
+      "evidence_ids": [
+        "evidence:chunk-0211:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        476743,
+        476923
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          476743,
+          476923
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0211:008",
+      "edge_type": "contains_material",
+      "source": "node:chunk-0211:weapon:001",
+      "target": "node:chunk-0211:material:003",
+      "fact_summary": "少女鉴定银剑中掺入大量银精。",
+      "evidence_ids": [
+        "evidence:chunk-0211:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        477618,
+        477675
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          477618,
+          477675
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0211:009",
+      "edge_type": "restricts_use",
+      "source": "node:chunk-0211:technique:001",
+      "target": "node:chunk-0211:weapon:001",
+      "fact_summary": "银剑被原主人用心炼之法祭炼，外人无法使用，除非回炉重炼。",
+      "evidence_ids": [
+        "evidence:chunk-0211:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        477932,
+        477993
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          477932,
+          477993
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0211:010",
+      "edge_type": "possible_component_of",
+      "source": "node:chunk-0211:material:005",
+      "target": "node:chunk-0211:beast:001",
+      "fact_summary": "少女说明三阶墨蛟头颅内才可能产生蛟丹，并指出当前二阶墨蛟不应有蛟丹。",
+      "evidence_ids": [
+        "evidence:chunk-0211:016",
+        "evidence:chunk-0211:018"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        478307,
+        478360
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          478307,
+          478360
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0211:001",
+      "event_type": "combat_event",
+      "label": "韩立以金光砖符宝重创墨蛟",
+      "fact_summary": "韩立激活金光砖符宝，墨蛟以紫色丹液抵挡，少女用黄色珠子打断紫液后，金砖砸中蛟首并使墨蛟奄奄一息。",
+      "participants": [
+        "node:chunk-0211:character:001",
+        "node:chunk-0211:character:002",
+        "node:chunk-0211:beast:001",
+        "node:chunk-0211:artifact:001",
+        "node:chunk-0211:tool:001",
+        "node:chunk-0211:material:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0211:001",
+        "evidence:chunk-0211:004",
+        "evidence:chunk-0211:005",
+        "evidence:chunk-0211:006",
+        "evidence:chunk-0211:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        475962,
+        476118
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          475962,
+          476118
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0211:002",
+      "event_type": "resource_event",
+      "label": "少女收走墨蛟元神并分配躯体",
+      "fact_summary": "少女用水晶小瓶摄出墨蛟元神并收走，随后将墨蛟躯体留给韩立，理由是二人合力杀死墨蛟。",
+      "participants": [
+        "node:chunk-0211:character:002",
+        "node:chunk-0211:character:001",
+        "node:chunk-0211:beast:001",
+        "node:chunk-0211:tool:002",
+        "node:chunk-0211:material:002",
+        "node:chunk-0211:material:004"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0211:008",
+        "evidence:chunk-0211:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        476743,
+        476923
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          476743,
+          476923
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0211:003",
+      "event_type": "appraisal_event",
+      "label": "少女鉴定银色巨剑法器",
+      "fact_summary": "少女查看韩立的银色巨剑，指出其含大量银精、质地近普通法宝，并解释心炼之法导致外人无法驱使。",
+      "participants": [
+        "node:chunk-0211:character:002",
+        "node:chunk-0211:character:001",
+        "node:chunk-0211:weapon:001",
+        "node:chunk-0211:material:003",
+        "node:chunk-0211:technique:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0211:011",
+        "evidence:chunk-0211:012",
+        "evidence:chunk-0211:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        477618,
+        477675
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          477618,
+          477675
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0211:004",
+      "event_type": "harvest_event",
+      "label": "韩立剖开墨蛟并发现红色圆球",
+      "fact_summary": "韩立用银剑剖开墨蛟并取得材料信息，随后从腹部取出红色圆球；少女判断红球不像蛟丹，红球最终爆裂出粉红烟雾。",
+      "participants": [
+        "node:chunk-0211:character:001",
+        "node:chunk-0211:character:002",
+        "node:chunk-0211:beast:001",
+        "node:chunk-0211:weapon:001",
+        "node:chunk-0211:material:006",
+        "node:chunk-0211:material:005"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0211:015",
+        "evidence:chunk-0211:017",
+        "evidence:chunk-0211:018",
+        "evidence:chunk-0211:019"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        478076,
+        478248
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          478076,
+          478248
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0211:001",
+      "chunk_id": "chunk-0211",
+      "source_range": [
+        475676,
+        475765
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          475676,
+          475765
+        ]
+      },
+      "excerpt": "金光砖符宝在韩立的驱使下，片刻后显出了法宝实体，金色长砖漂浮到了半空中，光芒四射。\n　　而韩立体内的灵力就如同泛滥的河水一样，源源不绝的灌入此砖内，不久法力的三分之一就被吸走了。",
+      "fact_summary": "韩立驱使金光砖符宝显出金色长砖实体，并持续灌入灵力，短时间被吸走约三分之一法力。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0211:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0211:002",
+      "chunk_id": "chunk-0211",
+      "source_range": [
+        475791,
+        475870
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          475791,
+          475870
+        ]
+      },
+      "excerpt": "少女一边全力圈禁着墨蛟，一边注视着韩立的一举一动，当看见那浮现出的金砖时，原本还有些七上八下的心总算放下了，知道韩立没有说谎，此符宝的确可以破得了妖兽的防御。",
+      "fact_summary": "少女以当前观察确认韩立的符宝确能破开妖兽防御。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0211:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0211:003",
+      "chunk_id": "chunk-0211",
+      "source_range": [
+        475873,
+        475959
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          475873,
+          475959
+        ]
+      },
+      "excerpt": "墨蛟似乎也察觉到了事情的不妙，两只爪子死死抓住圆环的两侧，挣脱得越发的厉害，竟让少女的朱雀环隐隐颤抖了起来！让少女脸色一变，急忙冲韩立高呼道：“快点，它马上就要跑出来了！”",
+      "fact_summary": "墨蛟试图挣脱朱雀环，少女判断它马上要脱困并催促韩立。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0211:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0211:004",
+      "chunk_id": "chunk-0211",
+      "source_range": [
+        475962,
+        476118
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          475962,
+          476118
+        ]
+      },
+      "excerpt": "韩立闻言，不敢迟疑，用手一指头顶符宝，顿时金砖“嗖”的一下，向墨蛟飞过去，并在半路上突然巨大化了起来，变得如同一座小山一样，狠狠的向墨蛟拍了下去。\n　　还在挣扎中的墨蛟，知道大势不妙，但它两只绿眼突然凶光一闪，一张口，那让韩立大为忌惮的紫色丹液，就再次喷了出来，正好顶住了正在下落的金砖，竟让其一时半刻无法落下。",
+      "fact_summary": "韩立驱使巨大化金砖砸向墨蛟，墨蛟喷出紫色丹液抵住下落金砖。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0211:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0211:005",
+      "chunk_id": "chunk-0211",
+      "source_range": [
+        476156,
+        476273
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          476156,
+          476273
+        ]
+      },
+      "excerpt": "少女却一咬杏唇，从怀内取出了一件黄色的珠子。一扬手就砸向了还和金砖僵持着的妖兽。\n　　“砰”的一声轻响，珠子一碰触墨蛟的头部。立即爆裂了开来，顿时一片不大的黄雾立即笼罩住了蛟首，让墨蛟惊慌的低吼了起来。自然，原本喷射的紫液就停了下来。",
+      "fact_summary": "少女投出黄色珠子，珠子爆裂成黄雾笼罩蛟首，迫使墨蛟停止喷射紫液。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0211:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0211:006",
+      "chunk_id": "chunk-0211",
+      "source_range": [
+        476276,
+        476316
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          476276,
+          476316
+        ]
+      },
+      "excerpt": "没有了紫液的抵挡，光芒被消弱了一些的金砖当即落下，正好结结实实地砸在了蛟首之上。",
+      "fact_summary": "紫液停止后，金砖落下并砸中墨蛟头部。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0211:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0211:007",
+      "chunk_id": "chunk-0211",
+      "source_range": [
+        476401,
+        476480
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          476401,
+          476480
+        ]
+      },
+      "excerpt": "而半空中，只剩下了奄奄一息的妖兽。\n　　此时墨蛟的头部，已经半边被拍的稀烂，一只蛟目完全爆裂出了眼眶，不知击飞到哪里。另一目虽然还在，但也不停的往外渗着血水。",
+      "fact_summary": "金砖重击后，墨蛟仅剩奄奄一息，头部和双目受到严重破坏。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0211:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0211:008",
+      "chunk_id": "chunk-0211",
+      "source_range": [
+        476512,
+        476660
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          476512,
+          476660
+        ]
+      },
+      "excerpt": "少女见此，心中大喜，急忙从储物袋中摸出一个水晶小瓶，接着对着小瓶念念有词，然后一指墨蛟，结果从瓶口内飞射出了几股细细的黑气，阴森森地缠绕到了墨蛟身体上。\n　　不大一会儿后，一个看起来和墨蛟形态完全无二绿色小蛟，被黑气硬生生的从墨蛟体内摄了出来，虽然其张牙舞爪地拼命挣扎着，但还是被渐渐拉进了小瓶。",
+      "fact_summary": "少女用水晶小瓶放出黑气，从墨蛟体内摄出绿色小蛟并收入瓶中。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0211:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0211:009",
+      "chunk_id": "chunk-0211",
+      "source_range": [
+        476743,
+        476923
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          476743,
+          476923
+        ]
+      },
+      "excerpt": "而韩立见了少女的一番举动，立即明白对方是将此蛟的元神收走了。虽然不知道这墨蛟元神到底是何用途，但见此女兴高采烈的样子，就知道绝对价值不菲。\n　　这时，少女一伸手，将朱雀环收回了体内，墨蛟的尸体立即从半空中跌落了下来，正好掉在了韩立的眼前。\n　　“既然我收走了此蛟的元神，那它的躯体就留给你吧，毕竟是我二人合力杀死的！”少女飞身落在了韩立的身边，大大方方的说道。",
+      "fact_summary": "韩立判断少女收走墨蛟元神，少女随后将朱雀环收回，并把墨蛟躯体分给韩立。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0211:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0211:010",
+      "chunk_id": "chunk-0211",
+      "source_range": [
+        477008,
+        477114
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          477008,
+          477114
+        ]
+      },
+      "excerpt": "韩立想到这里，手中寒光一闪，一把银色的巨剑出现在了手中，正是当初赤脚汉那把厉害之极的法器。\n　　韩立一言不发的把巨剑使劲往下一斩，“扑哧”一声，这银剑竟然没入了墨蛟躯体三寸，虽然斩进的不多，但总算是破了此蛟的防御",
+      "fact_summary": "韩立取出赤脚汉旧有的银色巨剑法器，斩入墨蛟躯体三寸并破开防御。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0211:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0211:011",
+      "chunk_id": "chunk-0211",
+      "source_range": [
+        477346,
+        477392
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          477346,
+          477392
+        ]
+      },
+      "excerpt": "这把剑的确有些问题，我得手之后不知为何，竟无法驱动此剑，否则刚才对墨蛟时，也不用如此的狼狈！",
+      "fact_summary": "韩立说明自己得手后无法驱动银剑，否则对付墨蛟时不会如此狼狈。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0211:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0211:012",
+      "chunk_id": "chunk-0211",
+      "source_range": [
+        477618,
+        477675
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          477618,
+          477675
+        ]
+      },
+      "excerpt": "这银剑之所以如此锋利，只是在剑中参进了祭炼法宝时才用到的银精而已，而且份量还不少，足以让此物的质地直赶普通法宝了！",
+      "fact_summary": "少女鉴定银剑锋利是因为剑中掺入大量银精，质地接近普通法宝。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0211:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0211:013",
+      "chunk_id": "chunk-0211",
+      "source_range": [
+        477727,
+        477778
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          477727,
+          477778
+        ]
+      },
+      "excerpt": "只有结丹期以上修士的真火，才能从大量纯银中提炼出来的法宝原料，非常的珍贵。我的朱雀环内也含有这种东西。",
+      "fact_summary": "少女解释银精需结丹期以上修士真火从大量纯银中提炼，且朱雀环也含有银精。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0211:013"
+    },
+    {
+      "evidence_id": "evidence:chunk-0211:014",
+      "chunk_id": "chunk-0211",
+      "source_range": [
+        477932,
+        477993
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          477932,
+          477993
+        ]
+      },
+      "excerpt": "此剑的原主人，用心炼之法祭炼过了，这种方法极为邪门，外人当然无法使用了！除非将此剑回炉重炼，否则对他人来讲，只能是个废物！",
+      "fact_summary": "少女解释银剑经原主人心炼之法祭炼，外人无法使用，除非回炉重炼。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0211:014"
+    },
+    {
+      "evidence_id": "evidence:chunk-0211:015",
+      "chunk_id": "chunk-0211",
+      "source_range": [
+        478076,
+        478248
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          478076,
+          478248
+        ]
+      },
+      "excerpt": "接着毫不客气的挥动银剑，对准蛟身就是一阵的猛砍，转眼间就把墨蛟开膛破肚了。\n　　少女见韩立如此粗鲁不堪屠夫模样，不禁皱了下眉头，向后退了几步，拉开和韩立的距离。随后，却又清冷的说道：“这墨蛟虽然只是刚进化到第二阶，但是其一身都是宝贵材料！蛟皮可炼制上好的护甲，尖角和爪子是炼制顶级法器的最佳原料，其残余的丹液，也是炼制某些珍贵丹药的必备之物！”",
+      "fact_summary": "韩立用银剑剖开墨蛟，少女说明二阶墨蛟全身是材料，蛟皮、尖角爪子和残余丹液分别可用于护甲、顶级法器和珍贵丹药。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0211:015"
+    },
+    {
+      "evidence_id": "evidence:chunk-0211:016",
+      "chunk_id": "chunk-0211",
+      "source_range": [
+        478307,
+        478360
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          478307,
+          478360
+        ]
+      },
+      "excerpt": "若是此蛟进化到了第三阶，那其头颅内的蛟丹，绝对会让众多结丹修士争破了头，不管是炼药还是炼器，都是极为有用！",
+      "fact_summary": "少女说明若墨蛟进化到第三阶，头颅内蛟丹会对结丹修士极具吸引力，并可用于炼药或炼器。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0211:016"
+    },
+    {
+      "evidence_id": "evidence:chunk-0211:017",
+      "chunk_id": "chunk-0211",
+      "source_range": [
+        478390,
+        478433
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          478390,
+          478433
+        ]
+      },
+      "excerpt": "韩立突然从墨蛟的腹部，掏出了一个拳头大小的红色圆球，捧着它，对一脸惊讶之色的少女说道。",
+      "fact_summary": "韩立从墨蛟腹部掏出拳头大小的红色圆球，少女对此惊讶。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0211:017"
+    },
+    {
+      "evidence_id": "evidence:chunk-0211:018",
+      "chunk_id": "chunk-0211",
+      "source_range": [
+        478495,
+        478555
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          478495,
+          478555
+        ]
+      },
+      "excerpt": "这墨蛟明明才进化到第二阶，不可能产生蛟丹的，而且墨蛟是水属性的恶蛟，内丹应该是蓝色的才对！让我摸摸，看看到底怎么回事？”",
+      "fact_summary": "少女判断二阶墨蛟不应产生蛟丹，且水属性墨蛟内丹应为蓝色，红色圆球身份可疑。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0211:018"
+    },
+    {
+      "evidence_id": "evidence:chunk-0211:019",
+      "chunk_id": "chunk-0211",
+      "source_range": [
+        478596,
+        478648
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          478596,
+          478648
+        ]
+      },
+      "excerpt": "可就在这时，“噗”的一下，圆球竟无故自行爆裂了开来，一大片粉红色烟雾，立即将少女与韩立一齐笼罩在了其中。",
+      "fact_summary": "红色圆球在少女触摸时自行爆裂，粉红色烟雾笼罩少女与韩立。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0211:019"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "战斗与保命机制",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "动态事件与机会点",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "法宝分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "武器分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "材料分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "妖兽分析",
+      "requirement_id": "creature_deviant_practice_ecology",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "功法术法神通",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "境界提升与功法分析",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0211:001",
+      "kind": "identity_missing",
+      "fact_summary": "少女在当前 chunk 未给出姓名，只能按“少女”称呼记录，不应回填后文身份。",
+      "evidence_ids": [
+        "evidence:chunk-0211:003",
+        "evidence:chunk-0211:009"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        475873,
+        475959
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          475873,
+          475959
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0211:002",
+      "kind": "item_identity_uncertain",
+      "fact_summary": "黄色珠子只有外观和一次性效果，当前 chunk 未给出名称、来源或完整机制。",
+      "evidence_ids": [
+        "evidence:chunk-0211:005"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        476156,
+        476273
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          476156,
+          476273
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0211:003",
+      "kind": "object_identity_uncertain",
+      "fact_summary": "红色圆球在当前 chunk 被少女否定为普通蛟丹的可能，但其真实名称和性质要到后续文本确认。",
+      "evidence_ids": [
+        "evidence:chunk-0211:017",
+        "evidence:chunk-0211:018",
+        "evidence:chunk-0211:019"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        478390,
+        478433
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          478390,
+          478433
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0211:001",
+      "candidate": "将红色圆球确认为蛟丹",
+      "reason": "当前 chunk 中少女明确指出二阶墨蛟不可能产生蛟丹，且水属性内丹应为蓝色；只能记录疑似与否定依据。",
+      "evidence_ids": [
+        "evidence:chunk-0211:018"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        478495,
+        478555
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0211",
+        "source_path": "intermediate/chunks/chunk-0211.txt",
+        "source_range": [
+          478495,
+          478555
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

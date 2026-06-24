@@ -1,0 +1,5160 @@
+{
+  "chunk_id": "chunk-0093",
+  "source_range": [
+    182105,
+    184294
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "task_packet_id": "chunk-0093:comprehensive_extraction:attempt-001",
+      "chunk_id": "chunk-0093",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "produced_at": "2026-06-23T16:47:49+08:00",
+      "extracted_nodes": [
+        {
+          "id": "node:chunk-0093:character:001",
+          "node_type": "character",
+          "label": "金光上人",
+          "aliases": [
+            "侏儒"
+          ],
+          "fact_summary": "金光上人驱动灰芒对战七玄门高手，先以灰芒攻击二人，后用小计斩杀儒生并准备继续杀灰衣人与七玄门剩余人；当灰光被夺后，他心中认出对方是修仙者并脸色苍白。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:001",
+            "evidence:chunk-0093:003",
+            "evidence:chunk-0093:014",
+            "evidence:chunk-0093:015",
+            "evidence:chunk-0093:016",
+            "evidence:chunk-0093:018"
+          ],
+          "source_range": [
+            182138,
+            184291
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182138,
+              184291
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0093:faction:002",
+          "node_type": "faction",
+          "label": "七玄门",
+          "aliases": [],
+          "fact_summary": "七玄门一方派出王绝楚剩下的两名师叔对抗金光上人；灰衣人击落灰芒后七玄门众人惊喜，但金光上人随后打算杀光七玄门剩余人。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:001",
+            "evidence:chunk-0093:013",
+            "evidence:chunk-0093:016"
+          ],
+          "source_range": [
+            182138,
+            184114
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182138,
+              184114
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0093:character:003",
+          "node_type": "character",
+          "label": "王绝楚",
+          "aliases": [
+            "王门主"
+          ],
+          "fact_summary": "王绝楚是七玄门门主，本想阻止两名师叔莽撞出战，随后判断他们是唯一可能威胁金光上人的人，决定让他们一决胜负。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:001",
+            "evidence:chunk-0093:002"
+          ],
+          "source_range": [
+            182138,
+            182396
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182138,
+              182396
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0093:character:004",
+          "node_type": "character",
+          "label": "儒生",
+          "aliases": [],
+          "fact_summary": "儒生是王绝楚剩下的两名师叔之一，为魁梧汉子复仇而出战；他用银针和多种暗器阻挡灰芒、攻击金罩，随后误判时机飞向金光上人，被灰光斩首。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:001",
+            "evidence:chunk-0093:004",
+            "evidence:chunk-0093:006",
+            "evidence:chunk-0093:013",
+            "evidence:chunk-0093:014"
+          ],
+          "source_range": [
+            182138,
+            183925
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182138,
+              183925
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0093:character:005",
+          "node_type": "character",
+          "label": "灰衣人",
+          "aliases": [],
+          "fact_summary": "灰衣人是王绝楚剩下的两名师叔之一，拔出宝剑施展剑芒迎击灰芒，击落灰芒但自身吐血萎靡、长剑断裂；之后提醒儒生快闪，并成为金光上人下一目标。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:001",
+            "evidence:chunk-0093:008",
+            "evidence:chunk-0093:011",
+            "evidence:chunk-0093:012",
+            "evidence:chunk-0093:014",
+            "evidence:chunk-0093:015"
+          ],
+          "source_range": [
+            182138,
+            183994
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182138,
+              183994
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0093:character:006",
+          "node_type": "character",
+          "label": "魁梧汉子",
+          "aliases": [],
+          "fact_summary": "魁梧汉子的死让儒生和灰衣人悲痛并痛恨金光上人，成为两人冲出复仇的直接动因。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:001"
+          ],
+          "source_range": [
+            182138,
+            182264
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182138,
+              182264
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0093:character:007",
+          "node_type": "character",
+          "label": "韩立",
+          "aliases": [],
+          "fact_summary": "韩立在本 chunk 中心有所图，并凭长春功赋予的超级眼力看清儒生射出的银线其实是连成直线的银针，对这种手段很感兴趣。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "有限视角与叙事日志",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:005"
+          ],
+          "source_range": [
+            182562,
+            182662
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182562,
+              182662
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0093:character:008",
+          "node_type": "character",
+          "label": "贾天龙",
+          "aliases": [],
+          "fact_summary": "贾天龙看到灰衣人使出剑芒后后怕，意识到若未请来金光上人，灰衣人一人可能杀光己方。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:010",
+            "evidence:chunk-0093:013"
+          ],
+          "source_range": [
+            183236,
+            183806
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              183236,
+              183806
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0093:character:009",
+          "node_type": "character",
+          "label": "长相普通的青年",
+          "aliases": [
+            "十七八岁的青年"
+          ],
+          "fact_summary": "一名长相普通、十七八岁的青年在众人躲避灰芒时原地不动，以强大灵力夺走灰光控制权，并让灰光落在手上；本 chunk 未直接点明其姓名。",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:016",
+            "evidence:chunk-0093:017",
+            "evidence:chunk-0093:018"
+          ],
+          "source_range": [
+            183997,
+            184291
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              183997,
+              184291
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0093:artifact:010",
+          "node_type": "artifact",
+          "label": "灰芒",
+          "aliases": [
+            "灰光",
+            "疑似飞剑的灰光",
+            "飞来飞去的东西"
+          ],
+          "fact_summary": "灰芒由金光上人驱动，能化为长虹攻击、顶住暗器、斩杀儒生；被灰衣人剑芒击落后仍光华未失、灵性十足，后被对面青年以强大灵力夺走控制权。",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:003",
+            "evidence:chunk-0093:004",
+            "evidence:chunk-0093:011",
+            "evidence:chunk-0093:012",
+            "evidence:chunk-0093:014",
+            "evidence:chunk-0093:016",
+            "evidence:chunk-0093:017"
+          ],
+          "source_range": [
+            182399,
+            184261
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182399,
+              184261
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0093:weapon:011",
+          "node_type": "weapon",
+          "label": "银针",
+          "aliases": [
+            "银线"
+          ],
+          "fact_summary": "儒生从袖口射出的银线实际是数十根连成一条直线的银针，迎击灰芒但作用有限。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "武器分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:004",
+            "evidence:chunk-0093:005"
+          ],
+          "source_range": [
+            182461,
+            182662
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182461,
+              182662
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0093:weapon:012",
+          "node_type": "weapon",
+          "label": "各式暗器",
+          "aliases": [
+            "飞刀",
+            "菩提子",
+            "铁莲子",
+            "金钱镖",
+            "寒芒"
+          ],
+          "fact_summary": "儒生旋身迸射出的寒芒包含飞刀、菩提子、铁莲子、金钱镖等暗器，一路顶住灰芒，一路打在金罩上。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "武器分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:006",
+            "evidence:chunk-0093:007"
+          ],
+          "source_range": [
+            182665,
+            182921
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182665,
+              182921
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0093:technique:013",
+          "node_type": "technique",
+          "label": "剑芒",
+          "aliases": [
+            "白芒"
+          ],
+          "fact_summary": "剑芒是灰衣人宝剑剑尖冒出的二寸多长白芒，被围观者称为使剑者梦寐以求的无上剑技、江湖神话；灰衣人用它劈落灰芒。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:008",
+            "evidence:chunk-0093:009",
+            "evidence:chunk-0093:011",
+            "evidence:chunk-0093:012"
+          ],
+          "source_range": [
+            183000,
+            183686
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              183000,
+              183686
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0093:weapon:014",
+          "node_type": "weapon",
+          "label": "宝剑",
+          "aliases": [
+            "长剑"
+          ],
+          "fact_summary": "灰衣人拔出背后宝剑施展剑芒迎击灰芒，交击后长剑前端三寸剑尖不翼而飞，变成铁片。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "武器分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:008",
+            "evidence:chunk-0093:012"
+          ],
+          "source_range": [
+            183000,
+            183686
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              183000,
+              183686
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0093:artifact:015",
+          "node_type": "artifact",
+          "label": "金罩",
+          "aliases": [],
+          "fact_summary": "金罩承受儒生射来的暗器，暗器打在其上后叮当作响并完整反弹；本 chunk 未说明金罩来源和持续限制。",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:006",
+            "evidence:chunk-0093:007"
+          ],
+          "source_range": [
+            182665,
+            182921
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182665,
+              182921
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0093:cultivation_method:016",
+          "node_type": "cultivation_method",
+          "label": "长春功",
+          "aliases": [],
+          "fact_summary": "长春功在本 chunk 中赋予韩立超级眼力，使他看清其他人看不清的银线本体。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "有限视角与叙事日志",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:005"
+          ],
+          "source_range": [
+            182562,
+            182662
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182562,
+              182662
+            ]
+          }
+        }
+      ],
+      "extracted_edges": [
+        {
+          "id": "edge:chunk-0093:001",
+          "edge_type": "leads",
+          "source": "node:chunk-0093:character:003",
+          "target": "node:chunk-0093:faction:002",
+          "fact_summary": "王绝楚以七玄门门主身份判断是否阻止两名师叔出战。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:002"
+          ],
+          "source_range": [
+            182267,
+            182396
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182267,
+              182396
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0093:002",
+          "edge_type": "member_or_elder_of",
+          "source": "node:chunk-0093:character:004",
+          "target": "node:chunk-0093:faction:002",
+          "fact_summary": "儒生是王绝楚剩下的两名师叔之一，代表七玄门出战。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:001"
+          ],
+          "source_range": [
+            182138,
+            182264
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182138,
+              182264
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0093:003",
+          "edge_type": "member_or_elder_of",
+          "source": "node:chunk-0093:character:005",
+          "target": "node:chunk-0093:faction:002",
+          "fact_summary": "灰衣人是王绝楚剩下的两名师叔之一，代表七玄门出战。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:001",
+            "evidence:chunk-0093:008"
+          ],
+          "source_range": [
+            182138,
+            183085
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182138,
+              183085
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0093:004",
+          "edge_type": "drives",
+          "source": "node:chunk-0093:character:001",
+          "target": "node:chunk-0093:artifact:010",
+          "fact_summary": "金光上人驱动灰光攻击儒生和灰衣人，并再次指挥灰芒杀向灰衣人。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:003",
+            "evidence:chunk-0093:015"
+          ],
+          "source_range": [
+            182399,
+            183994
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182399,
+              183994
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0093:005",
+          "edge_type": "uses_weapon_against",
+          "source": "node:chunk-0093:character:004",
+          "target": "node:chunk-0093:artifact:010",
+          "fact_summary": "儒生用银针和大量暗器阻挡灰芒。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "武器分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:004",
+            "evidence:chunk-0093:006"
+          ],
+          "source_range": [
+            182461,
+            182811
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182461,
+              182811
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0093:006",
+          "edge_type": "uses_technique_against",
+          "source": "node:chunk-0093:character:005",
+          "target": "node:chunk-0093:artifact:010",
+          "fact_summary": "灰衣人以剑芒劈中灰芒并将其击落。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:011",
+            "evidence:chunk-0093:012"
+          ],
+          "source_range": [
+            183413,
+            183686
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              183413,
+              183686
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0093:007",
+          "edge_type": "kills",
+          "source": "node:chunk-0093:artifact:010",
+          "target": "node:chunk-0093:character:004",
+          "fact_summary": "灰光从儒生脖颈处飞过，将儒生斩首杀死。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:014"
+          ],
+          "source_range": [
+            183809,
+            183925
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              183809,
+              183925
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0093:008",
+          "edge_type": "seizes_control_of",
+          "source": "node:chunk-0093:character:009",
+          "target": "node:chunk-0093:artifact:010",
+          "fact_summary": "长相普通的青年以强大灵力切断金光上人与灰光的联系并夺走控制权，使灰光落到自己手上。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:016",
+            "evidence:chunk-0093:017"
+          ],
+          "source_range": [
+            183997,
+            184261
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              183997,
+              184261
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0093:009",
+          "edge_type": "observes_with_method",
+          "source": "node:chunk-0093:character:007",
+          "target": "node:chunk-0093:cultivation_method:016",
+          "fact_summary": "韩立凭长春功带来的超级眼力看清银线是银针。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "有限视角与叙事日志",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:005"
+          ],
+          "source_range": [
+            182562,
+            182662
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182562,
+              182662
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0093:010",
+          "edge_type": "fears_combatant",
+          "source": "node:chunk-0093:character:008",
+          "target": "node:chunk-0093:character:005",
+          "fact_summary": "贾天龙看到灰衣人能施展剑芒后后怕，认为灰衣人一人可能杀光己方。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:010"
+          ],
+          "source_range": [
+            183236,
+            183378
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              183236,
+              183378
+            ]
+          }
+        }
+      ],
+      "extracted_events": [
+        {
+          "id": "event:chunk-0093:001",
+          "event_type": "revenge_charge_event",
+          "label": "七玄门两名师叔冲出复仇",
+          "fact_summary": "王绝楚剩下的儒生与灰衣人为魁梧汉子之死冲出七玄门人群，打算杀金光上人复仇。",
+          "participants": [
+            "node:chunk-0093:character:004",
+            "node:chunk-0093:character:005",
+            "node:chunk-0093:character:006",
+            "node:chunk-0093:character:001",
+            "node:chunk-0093:faction:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:001"
+          ],
+          "source_range": [
+            182138,
+            182264
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182138,
+              182264
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0093:002",
+          "event_type": "strategic_nonintervention_event",
+          "label": "王绝楚放任师叔决胜",
+          "fact_summary": "王绝楚虽想阻止两名师叔，但判断二人是唯一可能威胁金光上人的人，决定让他们趁复仇执念一决胜负。",
+          "participants": [
+            "node:chunk-0093:character:003",
+            "node:chunk-0093:character:004",
+            "node:chunk-0093:character:005",
+            "node:chunk-0093:character:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:002"
+          ],
+          "source_range": [
+            182267,
+            182396
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182267,
+              182396
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0093:003",
+          "event_type": "artifact_combat_event",
+          "label": "儒生暗器与灰衣人剑芒合战灰芒",
+          "fact_summary": "儒生先以银针和大量暗器阻挡灰芒，灰衣人随后以剑芒劈落灰芒，但自身吐血且宝剑断裂。",
+          "participants": [
+            "node:chunk-0093:character:004",
+            "node:chunk-0093:character:005",
+            "node:chunk-0093:character:001",
+            "node:chunk-0093:artifact:010",
+            "node:chunk-0093:weapon:011",
+            "node:chunk-0093:weapon:012",
+            "node:chunk-0093:technique:013",
+            "node:chunk-0093:weapon:014"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "武器分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:004",
+            "evidence:chunk-0093:006",
+            "evidence:chunk-0093:011",
+            "evidence:chunk-0093:012"
+          ],
+          "source_range": [
+            182461,
+            183686
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182461,
+              183686
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0093:004",
+          "event_type": "counterkill_event",
+          "label": "金光上人小计斩杀儒生",
+          "fact_summary": "灰芒落地后仍灵性十足，金光上人趁儒生飞向自己时操控灰光从其颈部飞过，将儒生斩首。",
+          "participants": [
+            "node:chunk-0093:character:001",
+            "node:chunk-0093:artifact:010",
+            "node:chunk-0093:character:004",
+            "node:chunk-0093:character:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:012",
+            "evidence:chunk-0093:014",
+            "evidence:chunk-0093:015"
+          ],
+          "source_range": [
+            183532,
+            183994
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              183532,
+              183994
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0093:005",
+          "event_type": "control_seizure_event",
+          "label": "长相普通青年夺走灰芒",
+          "fact_summary": "金光上人准备继续杀灰衣人与七玄门剩余人时，对面人群中的长相普通青年出声，以强大灵力夺走灰光控制权并让灰光落到手上，使金光上人意识到对方是修仙者。",
+          "participants": [
+            "node:chunk-0093:character:009",
+            "node:chunk-0093:character:001",
+            "node:chunk-0093:artifact:010",
+            "node:chunk-0093:character:005",
+            "node:chunk-0093:faction:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:016",
+            "evidence:chunk-0093:017",
+            "evidence:chunk-0093:018"
+          ],
+          "source_range": [
+            183997,
+            184291
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              183997,
+              184291
+            ]
+          }
+        }
+      ],
+      "extracted_evidence": [
+        {
+          "evidence_id": "evidence:chunk-0093:001",
+          "chunk_id": "chunk-0093",
+          "source_range": [
+            182138,
+            182264
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182138,
+              182264
+            ]
+          },
+          "excerpt": "从七玄门这边又飞身跳出二人，他们跃出人群后二话不说，风驰电掣般的直奔侏儒冲来，正是王绝楚剩下的另两名师叔。\n　　这二人满脸悲痛之色，显然对魁梧汉子的死，难过之极。因而对金光上人痛恨不已，也不理会侏儒是什么剑仙之流，一心只想杀掉对方，替那位汉子报仇雪恨。",
+          "fact_summary": "王绝楚剩下的两名师叔从七玄门人群中冲出，因魁梧汉子之死悲痛并想杀金光上人复仇。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0093:001"
+        },
+        {
+          "evidence_id": "evidence:chunk-0093:002",
+          "chunk_id": "chunk-0093",
+          "source_range": [
+            182267,
+            182396
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182267,
+              182396
+            ]
+          },
+          "excerpt": "王门主本来想阻止二人的莽撞行为，但后来一想，这会妖法的侏儒总是要面对的，而他这两位师叔又是唯一有可能对其造成威胁的人。与其现在阻止，还不如趁着师叔们满怀报仇执念的时候，让他们就此一决胜负。\n　　想到这里，王绝楚本来想唤其回来的话语，又从嗓子处咽回到了肚子里。",
+          "fact_summary": "王绝楚本想阻止两名师叔，但判断他们是唯一可能威胁金光上人的人，于是决定让他们带着报仇执念决胜。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0093:002"
+        },
+        {
+          "evidence_id": "evidence:chunk-0093:003",
+          "chunk_id": "chunk-0093",
+          "source_range": [
+            182399,
+            182458
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182399,
+              182458
+            ]
+          },
+          "excerpt": "金光上人经历了不久前的教训后，这次可没敢小视对方。他驱动着灰光，冲着二人一指，那灰芒就立即化为一道长虹，直奔对面飞去。",
+          "fact_summary": "金光上人不再轻敌，驱动灰光化为长虹攻击两名师叔。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0093:003"
+        },
+        {
+          "evidence_id": "evidence:chunk-0093:004",
+          "chunk_id": "chunk-0093",
+          "source_range": [
+            182461,
+            182559
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182461,
+              182559
+            ]
+          },
+          "excerpt": "对面二人中的儒生，眼见疑似飞剑的灰光飞了过来。他把眉尖一挑，一扬手，一道细细的银线从其袖口射了出去，迎头碰上了灰芒，把那灰光打得顿了一下，但随即灰芒仍若无其事的冲了过来，看来那银线没起什么大作用。",
+          "fact_summary": "儒生面对疑似飞剑的灰光，从袖口射出银线迎击，只让灰芒稍顿而未真正挡住。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "武器分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0093:004"
+        },
+        {
+          "evidence_id": "evidence:chunk-0093:005",
+          "chunk_id": "chunk-0093",
+          "source_range": [
+            182562,
+            182662
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182562,
+              182662
+            ]
+          },
+          "excerpt": "别人没有看清那银线是什么，可韩立凭借着长春功赋予的超级眼力，可瞅得一清二楚。那分明是数十根连成一条直线的银针，也不知儒生是用什么手段，竟能把如此轻飘的细针，用这么强劲的手法激射出去，这令韩立大感兴趣。",
+          "fact_summary": "韩立凭长春功赋予的超级眼力看清银线是数十根银针，并对儒生的强劲激射手段感兴趣。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "武器分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "有限视角与叙事日志",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0093:005"
+        },
+        {
+          "evidence_id": "evidence:chunk-0093:006",
+          "chunk_id": "chunk-0093",
+          "source_range": [
+            182665,
+            182811
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182665,
+              182811
+            ]
+          },
+          "excerpt": "儒生见银线没起作用，也没有惊慌。他把身子一躬，突然如同陀螺般的原地打起转来，紧接着从转动的身影中迸射出无数或大、或小的寒芒。这些寒芒兵分两路，一路化为一道银流直接和灰光撞击到了一起，发出了啪啦啪啦的激撞之声，把灰芒顶在了半空中下来不得，另一路则直奔侏儒飞来，打在金罩之上，叮叮当当的甚为壮观。",
+          "fact_summary": "儒生旋身射出大量寒芒，一路顶住灰光，另一路攻击金光上人的金罩。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "武器分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0093:006"
+        },
+        {
+          "evidence_id": "evidence:chunk-0093:007",
+          "chunk_id": "chunk-0093",
+          "source_range": [
+            182814,
+            182921
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182814,
+              182921
+            ]
+          },
+          "excerpt": "与灰芒对射的寒流，不停的掉下些残渣碎屑，但因为残缺不全，已看不出原本的面目。但打在金罩上被反弹回来的寒芒则完整无损，都是一些飞刀、菩提子、铁莲子、金钱镖等各式各样的暗器，五花八门，甚至还有一些叫不出名称的陌生东西。",
+          "fact_summary": "与灰芒对射的寒流被损毁，打在金罩上的寒芒则显出飞刀、菩提子、铁莲子、金钱镖等多种暗器。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "武器分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0093:007"
+        },
+        {
+          "evidence_id": "evidence:chunk-0093:008",
+          "chunk_id": "chunk-0093",
+          "source_range": [
+            183000,
+            183085
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              183000,
+              183085
+            ]
+          },
+          "excerpt": "这时人们才发现，原本和儒生一起奔出的灰衣人，不知何时拔出了背后宝剑，正一步一个脚印的向灰光走去，而他所持的宝剑剑尖之上，竟冒出了二寸多长的白芒，那白芒伸缩不定，寒气逼人。",
+          "fact_summary": "灰衣人拔出背后宝剑走向灰光，剑尖冒出二寸多长、伸缩不定且寒气逼人的白芒。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "武器分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0093:008"
+        },
+        {
+          "evidence_id": "evidence:chunk-0093:009",
+          "chunk_id": "chunk-0093",
+          "source_range": [
+            183088,
+            183233
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              183088,
+              183233
+            ]
+          },
+          "excerpt": "“剑芒”，不知是谁，首先喊出了这令所有使剑之人，都梦寐以求的无上剑技名称。\n　　轰的一下，场内场外一片沸腾！\n　　如果说飞剑只是传闻中的传说，那么剑芒则是江湖中的神话，是所有使剑者的向往。\n　　现在不但飞剑和剑芒接连出现，而且还要马上展开对决，这怎能不让在场的人热血沸腾，大有不枉此生之感！",
+          "fact_summary": "围观者认出灰衣人施展的是剑芒，叙述说明剑芒是使剑者梦寐以求的无上剑技、江湖神话。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "信息传播与情报",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0093:009"
+        },
+        {
+          "evidence_id": "evidence:chunk-0093:010",
+          "chunk_id": "chunk-0093",
+          "source_range": [
+            183236,
+            183378
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              183236,
+              183378
+            ]
+          },
+          "excerpt": "贾天龙此时不但没有沸腾，反而感到凉气直冒，冷汗直流。他如今才知道，什么叫做后知后觉，后怕不已！\n　　他以前虽然知道，七玄门隐藏着三大高手。但万万没有想到，这高手会高到能使出剑芒的程度。他此次若没有请来金光上人这位修仙者出手，恐怕光是这位能使出剑芒的灰衣人一人，就能杀光他这边的所有人。",
+          "fact_summary": "贾天龙因灰衣人能使出剑芒而后怕，意识到若没有请金光上人出手，灰衣人一人就可能杀光己方。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0093:010"
+        },
+        {
+          "evidence_id": "evidence:chunk-0093:011",
+          "chunk_id": "chunk-0093",
+          "source_range": [
+            183413,
+            183529
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              183413,
+              183529
+            ]
+          },
+          "excerpt": "这时也不知是儒生故意的，还是其身上暗器真的已发射一空，儒生的身形突然停止了转动，那顶着灰芒的银流也中断了下来，没有阻力的灰芒自然毫不客气的向灰衣人头顶落下。\n　　灰衣人双手持剑，面无惧色的腾空跃起。他挥舞着剑芒，冲着灰光狠狠的劈下。",
+          "fact_summary": "儒生停止发射暗器后，灰芒落向灰衣人；灰衣人无惧跃起，用剑芒狠狠劈向灰光。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0093:011"
+        },
+        {
+          "evidence_id": "evidence:chunk-0093:012",
+          "chunk_id": "chunk-0093",
+          "source_range": [
+            183532,
+            183686
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              183532,
+              183686
+            ]
+          },
+          "excerpt": "“当”的一声清响，灰衣人从半空中跌落到了地面上，并且站立不稳一连倒退了好几步，随后一张嘴，一口鲜血喷了出来，神色变得萎靡不振。而手中的长剑，前端的三寸长剑尖不翼而飞，已变成了铁片。\n　　灰芒挨了这一击，也如同中弹的飞鸟一样，从空中落到了尘埃。但即使这样，灰芒还是光华未失，仍在地上跳动伸缩不已，显得灵性十足。",
+          "fact_summary": "灰衣人用剑芒击落灰芒，但自己吐血萎靡且长剑前端断裂；灰芒虽坠地仍光华未失、灵性十足。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "武器分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0093:012"
+        },
+        {
+          "evidence_id": "evidence:chunk-0093:013",
+          "chunk_id": "chunk-0093",
+          "source_range": [
+            183689,
+            183806
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              183689,
+              183806
+            ]
+          },
+          "excerpt": "看到这一幕，贾天龙这边和七玄门的人，同时惊呼了起来。不过七玄门的人，惊呼中充满了喜悦，而贾天龙这边则充满了担心。\n　　儒生也是大喜，他看了看委顿的灰衣人，又瞅了眼侏儒，稍微犹豫了下后，还是身子一飘，朝侏儒飞去，他准备先解决掉大敌再说。",
+          "fact_summary": "灰芒被击落后双方反应相反，儒生大喜并决定先飞向金光上人以解决大敌。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0093:013"
+        },
+        {
+          "evidence_id": "evidence:chunk-0093:014",
+          "chunk_id": "chunk-0093",
+          "source_range": [
+            183809,
+            183925
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              183809,
+              183925
+            ]
+          },
+          "excerpt": "没等儒生飘出去几步，身后突然传来了灰衣人的大叫“快闪”。\n　　儒生心里一惊，想有所行动，却感到脖颈处一凉，灰光从眼前飞过，然后看到一个无头的躯体向前奔跑了几步，随后倒在了地上，那背影看起来好生的熟悉。儒生刚想到这，就彻底失去了知觉。",
+          "fact_summary": "灰衣人喊儒生快闪，但灰光从儒生脖颈处飞过，将其斩首杀死。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0093:014"
+        },
+        {
+          "evidence_id": "evidence:chunk-0093:015",
+          "chunk_id": "chunk-0093",
+          "source_range": [
+            183928,
+            183994
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              183928,
+              183994
+            ]
+          },
+          "excerpt": "金光上人此时傲气十足，他指挥着再次从地上一跃而起的灰芒，向着三大高手中唯一残活的灰衣人飞去。他为自己略施小计，就干掉儒生而得意洋洋。",
+          "fact_summary": "金光上人得意于用小计杀死儒生，并指挥重新跃起的灰芒飞向唯一残活的灰衣人。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0093:015"
+        },
+        {
+          "evidence_id": "evidence:chunk-0093:016",
+          "chunk_id": "chunk-0093",
+          "source_range": [
+            183997,
+            184114
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              183997,
+              184114
+            ]
+          },
+          "excerpt": "他正考虑等结果了灰衣人后就马上杀光七玄门剩余人时，忽听到对面人群中传来了一句话：“你这个飞来飞去的东西，我很喜欢。送给我耍耍，如何？”\n　　话音未落，他就感到一股强大的灵力附到了灰光之上，硬生生切断了他与此物的联系，夺走了它的控制权。",
+          "fact_summary": "金光上人正打算杀死灰衣人与七玄门剩余人时，对面人群中有人出声并以强大灵力切断他与灰光的联系，夺走控制权。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0093:016"
+        },
+        {
+          "evidence_id": "evidence:chunk-0093:017",
+          "chunk_id": "chunk-0093",
+          "source_range": [
+            184117,
+            184261
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              184117,
+              184261
+            ]
+          },
+          "excerpt": "而原本飞向灰衣人的灰芒也在空中一转弯，歪歪扭扭的斜飞向了对面的人群中。\n　　灰芒所到之处，人人惊慌失措，四处躲避，只有一个长相普通，看年纪只有十七八岁的青年原地没动，这青年冲着金光上人笑了一下，露出跟他黝黑色皮肤完全相反的洁白牙齿，接着他冲着那道灰光一指，灰光就老老实实的落在了他的手上。",
+          "fact_summary": "灰芒改向飞入对面人群，众人躲避，只有一名长相普通的十七八岁青年原地不动并一指使灰光落到手上。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0093:017"
+        },
+        {
+          "evidence_id": "evidence:chunk-0093:018",
+          "chunk_id": "chunk-0093",
+          "source_range": [
+            184264,
+            184291
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              184264,
+              184291
+            ]
+          },
+          "excerpt": "“修仙者！”侏儒心里一寒，脸色唰的一下，变得苍白无比。",
+          "fact_summary": "金光上人看到灰光被夺后心中认定对方是修仙者，并脸色苍白。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "有限视角与叙事日志",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0093:018"
+        }
+      ],
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "uncertainties": [
+        {
+          "id": "uncertainty:chunk-0093:001",
+          "kind": "unrevealed_actor_identity",
+          "fact_summary": "夺走灰芒者在本 chunk 只被称为长相普通、十七八岁的青年；虽然同 chunk 早前出现韩立观察战局，但原文没有在该段直接点明青年姓名，故不把姓名写成已验证事实。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            },
+            {
+              "template_name": "有限视角与叙事日志",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:016",
+            "evidence:chunk-0093:017"
+          ],
+          "source_range": [
+            183997,
+            184261
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              183997,
+              184261
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0093:002",
+          "kind": "artifact_form_unrevealed",
+          "fact_summary": "灰芒在本 chunk 中表现为疑似飞剑的灰光和金光上人的宝贝，但真实形态、名称、炼制来源和完整操控规则尚未揭示。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:003",
+            "evidence:chunk-0093:004",
+            "evidence:chunk-0093:012",
+            "evidence:chunk-0093:016"
+          ],
+          "source_range": [
+            182399,
+            184114
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182399,
+              184114
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0093:003",
+          "kind": "martial_method_unexplained",
+          "fact_summary": "儒生如何把轻飘银针以强劲手法连成银线激射出去没有说明，韩立只是观察到现象并感兴趣。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "武器分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:005"
+          ],
+          "source_range": [
+            182562,
+            182662
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182562,
+              182662
+            ]
+          }
+        }
+      ],
+      "rejected_candidates": [
+        {
+          "id": "rejected:chunk-0093:001",
+          "candidate": "围观人群",
+          "reason": "场内场外人群只承担震惊和气氛反应，未形成可追踪个体、势力决策或资源流转；不单独建节点。",
+          "confidence": "EXTRACTED",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:009",
+            "evidence:chunk-0093:017"
+          ],
+          "source_range": [
+            183088,
+            184261
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              183088,
+              184261
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0093:002",
+          "candidate": "叫不出名称的陌生暗器",
+          "reason": "原文只说还有一些叫不出名称的陌生东西，缺少专属名称和后续功能；已由“各式暗器”节点合并承载。",
+          "confidence": "EXTRACTED",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "武器分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:007"
+          ],
+          "source_range": [
+            182814,
+            182921
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182814,
+              182921
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0093:003",
+          "candidate": "飞剑",
+          "reason": "本 chunk 仅称灰光“疑似飞剑”或用传闻类对比，未确认其就是飞剑；不另建飞剑节点。",
+          "confidence": "EXTRACTED",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0093:004",
+            "evidence:chunk-0093:009"
+          ],
+          "source_range": [
+            182461,
+            183233
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0093",
+            "source_path": "intermediate/chunks/chunk-0093.txt",
+            "source_range": [
+              182461,
+              183233
+            ]
+          }
+        }
+      ],
+      "structured_failures": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0093/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "id": "node:chunk-0093:character:001",
+      "node_type": "character",
+      "label": "金光上人",
+      "aliases": [
+        "侏儒"
+      ],
+      "fact_summary": "金光上人驱动灰芒对战七玄门高手，先以灰芒攻击二人，后用小计斩杀儒生并准备继续杀灰衣人与七玄门剩余人；当灰光被夺后，他心中认出对方是修仙者并脸色苍白。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:001",
+        "evidence:chunk-0093:003",
+        "evidence:chunk-0093:014",
+        "evidence:chunk-0093:015",
+        "evidence:chunk-0093:016",
+        "evidence:chunk-0093:018"
+      ],
+      "source_range": [
+        182138,
+        184291
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182138,
+          184291
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0093:faction:002",
+      "node_type": "faction",
+      "label": "七玄门",
+      "aliases": [],
+      "fact_summary": "七玄门一方派出王绝楚剩下的两名师叔对抗金光上人；灰衣人击落灰芒后七玄门众人惊喜，但金光上人随后打算杀光七玄门剩余人。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:001",
+        "evidence:chunk-0093:013",
+        "evidence:chunk-0093:016"
+      ],
+      "source_range": [
+        182138,
+        184114
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182138,
+          184114
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0093:character:003",
+      "node_type": "character",
+      "label": "王绝楚",
+      "aliases": [
+        "王门主"
+      ],
+      "fact_summary": "王绝楚是七玄门门主，本想阻止两名师叔莽撞出战，随后判断他们是唯一可能威胁金光上人的人，决定让他们一决胜负。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:001",
+        "evidence:chunk-0093:002"
+      ],
+      "source_range": [
+        182138,
+        182396
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182138,
+          182396
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0093:character:004",
+      "node_type": "character",
+      "label": "儒生",
+      "aliases": [],
+      "fact_summary": "儒生是王绝楚剩下的两名师叔之一，为魁梧汉子复仇而出战；他用银针和多种暗器阻挡灰芒、攻击金罩，随后误判时机飞向金光上人，被灰光斩首。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:001",
+        "evidence:chunk-0093:004",
+        "evidence:chunk-0093:006",
+        "evidence:chunk-0093:013",
+        "evidence:chunk-0093:014"
+      ],
+      "source_range": [
+        182138,
+        183925
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182138,
+          183925
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0093:character:005",
+      "node_type": "character",
+      "label": "灰衣人",
+      "aliases": [],
+      "fact_summary": "灰衣人是王绝楚剩下的两名师叔之一，拔出宝剑施展剑芒迎击灰芒，击落灰芒但自身吐血萎靡、长剑断裂；之后提醒儒生快闪，并成为金光上人下一目标。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:001",
+        "evidence:chunk-0093:008",
+        "evidence:chunk-0093:011",
+        "evidence:chunk-0093:012",
+        "evidence:chunk-0093:014",
+        "evidence:chunk-0093:015"
+      ],
+      "source_range": [
+        182138,
+        183994
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182138,
+          183994
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0093:character:006",
+      "node_type": "character",
+      "label": "魁梧汉子",
+      "aliases": [],
+      "fact_summary": "魁梧汉子的死让儒生和灰衣人悲痛并痛恨金光上人，成为两人冲出复仇的直接动因。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:001"
+      ],
+      "source_range": [
+        182138,
+        182264
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182138,
+          182264
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0093:character:007",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立在本 chunk 中心有所图，并凭长春功赋予的超级眼力看清儒生射出的银线其实是连成直线的银针，对这种手段很感兴趣。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:005"
+      ],
+      "source_range": [
+        182562,
+        182662
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182562,
+          182662
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0093:character:008",
+      "node_type": "character",
+      "label": "贾天龙",
+      "aliases": [],
+      "fact_summary": "贾天龙看到灰衣人使出剑芒后后怕，意识到若未请来金光上人，灰衣人一人可能杀光己方。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:010",
+        "evidence:chunk-0093:013"
+      ],
+      "source_range": [
+        183236,
+        183806
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          183236,
+          183806
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0093:character:009",
+      "node_type": "character",
+      "label": "长相普通的青年",
+      "aliases": [
+        "十七八岁的青年"
+      ],
+      "fact_summary": "一名长相普通、十七八岁的青年在众人躲避灰芒时原地不动，以强大灵力夺走灰光控制权，并让灰光落在手上；本 chunk 未直接点明其姓名。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:016",
+        "evidence:chunk-0093:017",
+        "evidence:chunk-0093:018"
+      ],
+      "source_range": [
+        183997,
+        184291
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          183997,
+          184291
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0093:artifact:010",
+      "node_type": "artifact",
+      "label": "灰芒",
+      "aliases": [
+        "灰光",
+        "疑似飞剑的灰光",
+        "飞来飞去的东西"
+      ],
+      "fact_summary": "灰芒由金光上人驱动，能化为长虹攻击、顶住暗器、斩杀儒生；被灰衣人剑芒击落后仍光华未失、灵性十足，后被对面青年以强大灵力夺走控制权。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:003",
+        "evidence:chunk-0093:004",
+        "evidence:chunk-0093:011",
+        "evidence:chunk-0093:012",
+        "evidence:chunk-0093:014",
+        "evidence:chunk-0093:016",
+        "evidence:chunk-0093:017"
+      ],
+      "source_range": [
+        182399,
+        184261
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182399,
+          184261
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0093:weapon:011",
+      "node_type": "weapon",
+      "label": "银针",
+      "aliases": [
+        "银线"
+      ],
+      "fact_summary": "儒生从袖口射出的银线实际是数十根连成一条直线的银针，迎击灰芒但作用有限。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:004",
+        "evidence:chunk-0093:005"
+      ],
+      "source_range": [
+        182461,
+        182662
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182461,
+          182662
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0093:weapon:012",
+      "node_type": "weapon",
+      "label": "各式暗器",
+      "aliases": [
+        "飞刀",
+        "菩提子",
+        "铁莲子",
+        "金钱镖",
+        "寒芒"
+      ],
+      "fact_summary": "儒生旋身迸射出的寒芒包含飞刀、菩提子、铁莲子、金钱镖等暗器，一路顶住灰芒，一路打在金罩上。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:006",
+        "evidence:chunk-0093:007"
+      ],
+      "source_range": [
+        182665,
+        182921
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182665,
+          182921
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0093:technique:013",
+      "node_type": "technique",
+      "label": "剑芒",
+      "aliases": [
+        "白芒"
+      ],
+      "fact_summary": "剑芒是灰衣人宝剑剑尖冒出的二寸多长白芒，被围观者称为使剑者梦寐以求的无上剑技、江湖神话；灰衣人用它劈落灰芒。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:008",
+        "evidence:chunk-0093:009",
+        "evidence:chunk-0093:011",
+        "evidence:chunk-0093:012"
+      ],
+      "source_range": [
+        183000,
+        183686
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          183000,
+          183686
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0093:weapon:014",
+      "node_type": "weapon",
+      "label": "宝剑",
+      "aliases": [
+        "长剑"
+      ],
+      "fact_summary": "灰衣人拔出背后宝剑施展剑芒迎击灰芒，交击后长剑前端三寸剑尖不翼而飞，变成铁片。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:008",
+        "evidence:chunk-0093:012"
+      ],
+      "source_range": [
+        183000,
+        183686
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          183000,
+          183686
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0093:artifact:015",
+      "node_type": "artifact",
+      "label": "金罩",
+      "aliases": [],
+      "fact_summary": "金罩承受儒生射来的暗器，暗器打在其上后叮当作响并完整反弹；本 chunk 未说明金罩来源和持续限制。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:006",
+        "evidence:chunk-0093:007"
+      ],
+      "source_range": [
+        182665,
+        182921
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182665,
+          182921
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0093:cultivation_method:016",
+      "node_type": "cultivation_method",
+      "label": "长春功",
+      "aliases": [],
+      "fact_summary": "长春功在本 chunk 中赋予韩立超级眼力，使他看清其他人看不清的银线本体。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:005"
+      ],
+      "source_range": [
+        182562,
+        182662
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182562,
+          182662
+        ]
+      }
+    }
+  ],
+  "normalized_edges": [
+    {
+      "id": "edge:chunk-0093:001",
+      "edge_type": "leads",
+      "source": "node:chunk-0093:character:003",
+      "target": "node:chunk-0093:faction:002",
+      "fact_summary": "王绝楚以七玄门门主身份判断是否阻止两名师叔出战。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:002"
+      ],
+      "source_range": [
+        182267,
+        182396
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182267,
+          182396
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0093:002",
+      "edge_type": "member_or_elder_of",
+      "source": "node:chunk-0093:character:004",
+      "target": "node:chunk-0093:faction:002",
+      "fact_summary": "儒生是王绝楚剩下的两名师叔之一，代表七玄门出战。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:001"
+      ],
+      "source_range": [
+        182138,
+        182264
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182138,
+          182264
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0093:003",
+      "edge_type": "member_or_elder_of",
+      "source": "node:chunk-0093:character:005",
+      "target": "node:chunk-0093:faction:002",
+      "fact_summary": "灰衣人是王绝楚剩下的两名师叔之一，代表七玄门出战。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:001",
+        "evidence:chunk-0093:008"
+      ],
+      "source_range": [
+        182138,
+        183085
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182138,
+          183085
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0093:004",
+      "edge_type": "drives",
+      "source": "node:chunk-0093:character:001",
+      "target": "node:chunk-0093:artifact:010",
+      "fact_summary": "金光上人驱动灰光攻击儒生和灰衣人，并再次指挥灰芒杀向灰衣人。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:003",
+        "evidence:chunk-0093:015"
+      ],
+      "source_range": [
+        182399,
+        183994
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182399,
+          183994
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0093:005",
+      "edge_type": "uses_weapon_against",
+      "source": "node:chunk-0093:character:004",
+      "target": "node:chunk-0093:artifact:010",
+      "fact_summary": "儒生用银针和大量暗器阻挡灰芒。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:004",
+        "evidence:chunk-0093:006"
+      ],
+      "source_range": [
+        182461,
+        182811
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182461,
+          182811
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0093:006",
+      "edge_type": "uses_technique_against",
+      "source": "node:chunk-0093:character:005",
+      "target": "node:chunk-0093:artifact:010",
+      "fact_summary": "灰衣人以剑芒劈中灰芒并将其击落。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:011",
+        "evidence:chunk-0093:012"
+      ],
+      "source_range": [
+        183413,
+        183686
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          183413,
+          183686
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0093:007",
+      "edge_type": "kills",
+      "source": "node:chunk-0093:artifact:010",
+      "target": "node:chunk-0093:character:004",
+      "fact_summary": "灰光从儒生脖颈处飞过，将儒生斩首杀死。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:014"
+      ],
+      "source_range": [
+        183809,
+        183925
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          183809,
+          183925
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0093:008",
+      "edge_type": "seizes_control_of",
+      "source": "node:chunk-0093:character:009",
+      "target": "node:chunk-0093:artifact:010",
+      "fact_summary": "长相普通的青年以强大灵力切断金光上人与灰光的联系并夺走控制权，使灰光落到自己手上。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:016",
+        "evidence:chunk-0093:017"
+      ],
+      "source_range": [
+        183997,
+        184261
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          183997,
+          184261
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0093:009",
+      "edge_type": "observes_with_method",
+      "source": "node:chunk-0093:character:007",
+      "target": "node:chunk-0093:cultivation_method:016",
+      "fact_summary": "韩立凭长春功带来的超级眼力看清银线是银针。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:005"
+      ],
+      "source_range": [
+        182562,
+        182662
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182562,
+          182662
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0093:010",
+      "edge_type": "fears_combatant",
+      "source": "node:chunk-0093:character:008",
+      "target": "node:chunk-0093:character:005",
+      "fact_summary": "贾天龙看到灰衣人能施展剑芒后后怕，认为灰衣人一人可能杀光己方。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:010"
+      ],
+      "source_range": [
+        183236,
+        183378
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          183236,
+          183378
+        ]
+      }
+    }
+  ],
+  "normalized_events": [
+    {
+      "id": "event:chunk-0093:001",
+      "event_type": "revenge_charge_event",
+      "label": "七玄门两名师叔冲出复仇",
+      "fact_summary": "王绝楚剩下的儒生与灰衣人为魁梧汉子之死冲出七玄门人群，打算杀金光上人复仇。",
+      "participants": [
+        "node:chunk-0093:character:004",
+        "node:chunk-0093:character:005",
+        "node:chunk-0093:character:006",
+        "node:chunk-0093:character:001",
+        "node:chunk-0093:faction:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:001"
+      ],
+      "source_range": [
+        182138,
+        182264
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182138,
+          182264
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0093:002",
+      "event_type": "strategic_nonintervention_event",
+      "label": "王绝楚放任师叔决胜",
+      "fact_summary": "王绝楚虽想阻止两名师叔，但判断二人是唯一可能威胁金光上人的人，决定让他们趁复仇执念一决胜负。",
+      "participants": [
+        "node:chunk-0093:character:003",
+        "node:chunk-0093:character:004",
+        "node:chunk-0093:character:005",
+        "node:chunk-0093:character:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:002"
+      ],
+      "source_range": [
+        182267,
+        182396
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182267,
+          182396
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0093:003",
+      "event_type": "artifact_combat_event",
+      "label": "儒生暗器与灰衣人剑芒合战灰芒",
+      "fact_summary": "儒生先以银针和大量暗器阻挡灰芒，灰衣人随后以剑芒劈落灰芒，但自身吐血且宝剑断裂。",
+      "participants": [
+        "node:chunk-0093:character:004",
+        "node:chunk-0093:character:005",
+        "node:chunk-0093:character:001",
+        "node:chunk-0093:artifact:010",
+        "node:chunk-0093:weapon:011",
+        "node:chunk-0093:weapon:012",
+        "node:chunk-0093:technique:013",
+        "node:chunk-0093:weapon:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:004",
+        "evidence:chunk-0093:006",
+        "evidence:chunk-0093:011",
+        "evidence:chunk-0093:012"
+      ],
+      "source_range": [
+        182461,
+        183686
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182461,
+          183686
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0093:004",
+      "event_type": "counterkill_event",
+      "label": "金光上人小计斩杀儒生",
+      "fact_summary": "灰芒落地后仍灵性十足，金光上人趁儒生飞向自己时操控灰光从其颈部飞过，将儒生斩首。",
+      "participants": [
+        "node:chunk-0093:character:001",
+        "node:chunk-0093:artifact:010",
+        "node:chunk-0093:character:004",
+        "node:chunk-0093:character:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:012",
+        "evidence:chunk-0093:014",
+        "evidence:chunk-0093:015"
+      ],
+      "source_range": [
+        183532,
+        183994
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          183532,
+          183994
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0093:005",
+      "event_type": "control_seizure_event",
+      "label": "长相普通青年夺走灰芒",
+      "fact_summary": "金光上人准备继续杀灰衣人与七玄门剩余人时，对面人群中的长相普通青年出声，以强大灵力夺走灰光控制权并让灰光落到手上，使金光上人意识到对方是修仙者。",
+      "participants": [
+        "node:chunk-0093:character:009",
+        "node:chunk-0093:character:001",
+        "node:chunk-0093:artifact:010",
+        "node:chunk-0093:character:005",
+        "node:chunk-0093:faction:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0093:016",
+        "evidence:chunk-0093:017",
+        "evidence:chunk-0093:018"
+      ],
+      "source_range": [
+        183997,
+        184291
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          183997,
+          184291
+        ]
+      }
+    }
+  ],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0093:001",
+      "chunk_id": "chunk-0093",
+      "source_range": [
+        182138,
+        182264
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182138,
+          182264
+        ]
+      },
+      "excerpt": "从七玄门这边又飞身跳出二人，他们跃出人群后二话不说，风驰电掣般的直奔侏儒冲来，正是王绝楚剩下的另两名师叔。\n　　这二人满脸悲痛之色，显然对魁梧汉子的死，难过之极。因而对金光上人痛恨不已，也不理会侏儒是什么剑仙之流，一心只想杀掉对方，替那位汉子报仇雪恨。",
+      "fact_summary": "王绝楚剩下的两名师叔从七玄门人群中冲出，因魁梧汉子之死悲痛并想杀金光上人复仇。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0093:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0093:002",
+      "chunk_id": "chunk-0093",
+      "source_range": [
+        182267,
+        182396
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182267,
+          182396
+        ]
+      },
+      "excerpt": "王门主本来想阻止二人的莽撞行为，但后来一想，这会妖法的侏儒总是要面对的，而他这两位师叔又是唯一有可能对其造成威胁的人。与其现在阻止，还不如趁着师叔们满怀报仇执念的时候，让他们就此一决胜负。\n　　想到这里，王绝楚本来想唤其回来的话语，又从嗓子处咽回到了肚子里。",
+      "fact_summary": "王绝楚本想阻止两名师叔，但判断他们是唯一可能威胁金光上人的人，于是决定让他们带着报仇执念决胜。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0093:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0093:003",
+      "chunk_id": "chunk-0093",
+      "source_range": [
+        182399,
+        182458
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182399,
+          182458
+        ]
+      },
+      "excerpt": "金光上人经历了不久前的教训后，这次可没敢小视对方。他驱动着灰光，冲着二人一指，那灰芒就立即化为一道长虹，直奔对面飞去。",
+      "fact_summary": "金光上人不再轻敌，驱动灰光化为长虹攻击两名师叔。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0093:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0093:004",
+      "chunk_id": "chunk-0093",
+      "source_range": [
+        182461,
+        182559
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182461,
+          182559
+        ]
+      },
+      "excerpt": "对面二人中的儒生，眼见疑似飞剑的灰光飞了过来。他把眉尖一挑，一扬手，一道细细的银线从其袖口射了出去，迎头碰上了灰芒，把那灰光打得顿了一下，但随即灰芒仍若无其事的冲了过来，看来那银线没起什么大作用。",
+      "fact_summary": "儒生面对疑似飞剑的灰光，从袖口射出银线迎击，只让灰芒稍顿而未真正挡住。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0093:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0093:005",
+      "chunk_id": "chunk-0093",
+      "source_range": [
+        182562,
+        182662
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182562,
+          182662
+        ]
+      },
+      "excerpt": "别人没有看清那银线是什么，可韩立凭借着长春功赋予的超级眼力，可瞅得一清二楚。那分明是数十根连成一条直线的银针，也不知儒生是用什么手段，竟能把如此轻飘的细针，用这么强劲的手法激射出去，这令韩立大感兴趣。",
+      "fact_summary": "韩立凭长春功赋予的超级眼力看清银线是数十根银针，并对儒生的强劲激射手段感兴趣。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0093:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0093:006",
+      "chunk_id": "chunk-0093",
+      "source_range": [
+        182665,
+        182811
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182665,
+          182811
+        ]
+      },
+      "excerpt": "儒生见银线没起作用，也没有惊慌。他把身子一躬，突然如同陀螺般的原地打起转来，紧接着从转动的身影中迸射出无数或大、或小的寒芒。这些寒芒兵分两路，一路化为一道银流直接和灰光撞击到了一起，发出了啪啦啪啦的激撞之声，把灰芒顶在了半空中下来不得，另一路则直奔侏儒飞来，打在金罩之上，叮叮当当的甚为壮观。",
+      "fact_summary": "儒生旋身射出大量寒芒，一路顶住灰光，另一路攻击金光上人的金罩。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0093:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0093:007",
+      "chunk_id": "chunk-0093",
+      "source_range": [
+        182814,
+        182921
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          182814,
+          182921
+        ]
+      },
+      "excerpt": "与灰芒对射的寒流，不停的掉下些残渣碎屑，但因为残缺不全，已看不出原本的面目。但打在金罩上被反弹回来的寒芒则完整无损，都是一些飞刀、菩提子、铁莲子、金钱镖等各式各样的暗器，五花八门，甚至还有一些叫不出名称的陌生东西。",
+      "fact_summary": "与灰芒对射的寒流被损毁，打在金罩上的寒芒则显出飞刀、菩提子、铁莲子、金钱镖等多种暗器。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0093:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0093:008",
+      "chunk_id": "chunk-0093",
+      "source_range": [
+        183000,
+        183085
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          183000,
+          183085
+        ]
+      },
+      "excerpt": "这时人们才发现，原本和儒生一起奔出的灰衣人，不知何时拔出了背后宝剑，正一步一个脚印的向灰光走去，而他所持的宝剑剑尖之上，竟冒出了二寸多长的白芒，那白芒伸缩不定，寒气逼人。",
+      "fact_summary": "灰衣人拔出背后宝剑走向灰光，剑尖冒出二寸多长、伸缩不定且寒气逼人的白芒。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0093:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0093:009",
+      "chunk_id": "chunk-0093",
+      "source_range": [
+        183088,
+        183233
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          183088,
+          183233
+        ]
+      },
+      "excerpt": "“剑芒”，不知是谁，首先喊出了这令所有使剑之人，都梦寐以求的无上剑技名称。\n　　轰的一下，场内场外一片沸腾！\n　　如果说飞剑只是传闻中的传说，那么剑芒则是江湖中的神话，是所有使剑者的向往。\n　　现在不但飞剑和剑芒接连出现，而且还要马上展开对决，这怎能不让在场的人热血沸腾，大有不枉此生之感！",
+      "fact_summary": "围观者认出灰衣人施展的是剑芒，叙述说明剑芒是使剑者梦寐以求的无上剑技、江湖神话。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0093:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0093:010",
+      "chunk_id": "chunk-0093",
+      "source_range": [
+        183236,
+        183378
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          183236,
+          183378
+        ]
+      },
+      "excerpt": "贾天龙此时不但没有沸腾，反而感到凉气直冒，冷汗直流。他如今才知道，什么叫做后知后觉，后怕不已！\n　　他以前虽然知道，七玄门隐藏着三大高手。但万万没有想到，这高手会高到能使出剑芒的程度。他此次若没有请来金光上人这位修仙者出手，恐怕光是这位能使出剑芒的灰衣人一人，就能杀光他这边的所有人。",
+      "fact_summary": "贾天龙因灰衣人能使出剑芒而后怕，意识到若没有请金光上人出手，灰衣人一人就可能杀光己方。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0093:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0093:011",
+      "chunk_id": "chunk-0093",
+      "source_range": [
+        183413,
+        183529
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          183413,
+          183529
+        ]
+      },
+      "excerpt": "这时也不知是儒生故意的，还是其身上暗器真的已发射一空，儒生的身形突然停止了转动，那顶着灰芒的银流也中断了下来，没有阻力的灰芒自然毫不客气的向灰衣人头顶落下。\n　　灰衣人双手持剑，面无惧色的腾空跃起。他挥舞着剑芒，冲着灰光狠狠的劈下。",
+      "fact_summary": "儒生停止发射暗器后，灰芒落向灰衣人；灰衣人无惧跃起，用剑芒狠狠劈向灰光。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0093:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0093:012",
+      "chunk_id": "chunk-0093",
+      "source_range": [
+        183532,
+        183686
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          183532,
+          183686
+        ]
+      },
+      "excerpt": "“当”的一声清响，灰衣人从半空中跌落到了地面上，并且站立不稳一连倒退了好几步，随后一张嘴，一口鲜血喷了出来，神色变得萎靡不振。而手中的长剑，前端的三寸长剑尖不翼而飞，已变成了铁片。\n　　灰芒挨了这一击，也如同中弹的飞鸟一样，从空中落到了尘埃。但即使这样，灰芒还是光华未失，仍在地上跳动伸缩不已，显得灵性十足。",
+      "fact_summary": "灰衣人用剑芒击落灰芒，但自己吐血萎靡且长剑前端断裂；灰芒虽坠地仍光华未失、灵性十足。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0093:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0093:013",
+      "chunk_id": "chunk-0093",
+      "source_range": [
+        183689,
+        183806
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          183689,
+          183806
+        ]
+      },
+      "excerpt": "看到这一幕，贾天龙这边和七玄门的人，同时惊呼了起来。不过七玄门的人，惊呼中充满了喜悦，而贾天龙这边则充满了担心。\n　　儒生也是大喜，他看了看委顿的灰衣人，又瞅了眼侏儒，稍微犹豫了下后，还是身子一飘，朝侏儒飞去，他准备先解决掉大敌再说。",
+      "fact_summary": "灰芒被击落后双方反应相反，儒生大喜并决定先飞向金光上人以解决大敌。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0093:013"
+    },
+    {
+      "evidence_id": "evidence:chunk-0093:014",
+      "chunk_id": "chunk-0093",
+      "source_range": [
+        183809,
+        183925
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          183809,
+          183925
+        ]
+      },
+      "excerpt": "没等儒生飘出去几步，身后突然传来了灰衣人的大叫“快闪”。\n　　儒生心里一惊，想有所行动，却感到脖颈处一凉，灰光从眼前飞过，然后看到一个无头的躯体向前奔跑了几步，随后倒在了地上，那背影看起来好生的熟悉。儒生刚想到这，就彻底失去了知觉。",
+      "fact_summary": "灰衣人喊儒生快闪，但灰光从儒生脖颈处飞过，将其斩首杀死。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0093:014"
+    },
+    {
+      "evidence_id": "evidence:chunk-0093:015",
+      "chunk_id": "chunk-0093",
+      "source_range": [
+        183928,
+        183994
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          183928,
+          183994
+        ]
+      },
+      "excerpt": "金光上人此时傲气十足，他指挥着再次从地上一跃而起的灰芒，向着三大高手中唯一残活的灰衣人飞去。他为自己略施小计，就干掉儒生而得意洋洋。",
+      "fact_summary": "金光上人得意于用小计杀死儒生，并指挥重新跃起的灰芒飞向唯一残活的灰衣人。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0093:015"
+    },
+    {
+      "evidence_id": "evidence:chunk-0093:016",
+      "chunk_id": "chunk-0093",
+      "source_range": [
+        183997,
+        184114
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          183997,
+          184114
+        ]
+      },
+      "excerpt": "他正考虑等结果了灰衣人后就马上杀光七玄门剩余人时，忽听到对面人群中传来了一句话：“你这个飞来飞去的东西，我很喜欢。送给我耍耍，如何？”\n　　话音未落，他就感到一股强大的灵力附到了灰光之上，硬生生切断了他与此物的联系，夺走了它的控制权。",
+      "fact_summary": "金光上人正打算杀死灰衣人与七玄门剩余人时，对面人群中有人出声并以强大灵力切断他与灰光的联系，夺走控制权。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0093:016"
+    },
+    {
+      "evidence_id": "evidence:chunk-0093:017",
+      "chunk_id": "chunk-0093",
+      "source_range": [
+        184117,
+        184261
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          184117,
+          184261
+        ]
+      },
+      "excerpt": "而原本飞向灰衣人的灰芒也在空中一转弯，歪歪扭扭的斜飞向了对面的人群中。\n　　灰芒所到之处，人人惊慌失措，四处躲避，只有一个长相普通，看年纪只有十七八岁的青年原地没动，这青年冲着金光上人笑了一下，露出跟他黝黑色皮肤完全相反的洁白牙齿，接着他冲着那道灰光一指，灰光就老老实实的落在了他的手上。",
+      "fact_summary": "灰芒改向飞入对面人群，众人躲避，只有一名长相普通的十七八岁青年原地不动并一指使灰光落到手上。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0093:017"
+    },
+    {
+      "evidence_id": "evidence:chunk-0093:018",
+      "chunk_id": "chunk-0093",
+      "source_range": [
+        184264,
+        184291
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0093",
+        "source_path": "intermediate/chunks/chunk-0093.txt",
+        "source_range": [
+          184264,
+          184291
+        ]
+      },
+      "excerpt": "“修仙者！”侏儒心里一寒，脸色唰的一下，变得苍白无比。",
+      "fact_summary": "金光上人看到灰光被夺后心中认定对方是修仙者，并脸色苍白。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0093:018"
+    }
+  ]
+}

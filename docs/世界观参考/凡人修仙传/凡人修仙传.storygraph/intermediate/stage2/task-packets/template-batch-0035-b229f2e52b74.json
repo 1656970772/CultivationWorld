@@ -1,0 +1,207 @@
+{
+  "batch_id": "template-batch-0035-b229f2e52b74",
+  "grouping_strategy": "by_template_document",
+  "category_id": "character_relationship_perspective",
+  "category_name": "角色关系与叙事视角",
+  "requirement_categories": [
+    {
+      "category_id": "character_relationship_perspective",
+      "category_name": "角色关系与叙事视角"
+    }
+  ],
+  "agent_role": "stage2-template-document-agent",
+  "status": "pending",
+  "templates": [
+    {
+      "template_name": "记忆情绪与执念",
+      "template_file": "记忆情绪与执念模板.md",
+      "template_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\模板\\记忆情绪与执念模板.md",
+      "template_sha256": "bab7849cee0d7458ddc1b1ca3449190b6acc78e6b4e58dcb5f78e41ea24775a4",
+      "template_headings": [
+        "前置声明",
+        "参考范围（不局限于以下类别）",
+        "完整记忆执念案例",
+        "案例 1：韩立与墨大夫形成的戒备和求生执念",
+        "案例 2：亲友死亡引发的复仇执念",
+        "案例 3：救命之恩转化为报恩和守护"
+      ]
+    }
+  ],
+  "requirements": {
+    "required_extraction_targets": [
+      "抽取角色名称、别名、身份、境界、所属势力、活动地域、阶段状态和角色定位，并区分原文确认、角色认知和待复核推断。",
+      "抽取性格倾向、行为偏好、修炼阶段、记忆执念、情绪变化和 AI 行为参考点，并绑定触发事件、行动选择、代价和结果。",
+      "抽取师徒、亲友、交易、敌对、背叛、救援、追随、合作、相遇、对话等关系，并记录关系开始、变化、破裂或延续节点。",
+      "抽取有限视角、信息缺口、误判、旁人评价、传闻、台词和叙事日志的证据边界，避免把视角性判断直接写成客观事实。"
+    ],
+    "evidence_requirements": [
+      "每项角色判断必须有 source_range、chapter_hint、原文摘录或 evidence_id；证据需说明行动、动机、风险、代价、结果中哪些部分被原文直接支持。",
+      "性格变化、关系变化、修炼历程和情绪执念必须包含触发事件、变化前后差异、后续行为和后果；链条缺环时标为 needs_review。",
+      "台词、外貌、传闻和旁人评价只能作为辅助证据；没有行动事件或叙事确认时不得单独判定性格、忠诚、动机或关系性质。",
+      "身份、境界、内心动机、时间顺序、地点、结局或关系强度未被原文说明时标为 not_found_in_source，不用模板示例补齐。"
+    ]
+  },
+  "evidence_ids": [],
+  "expected_output_rel_paths": [
+    "intermediate/stage2/extraction-records/记忆情绪与执念/run-001.json"
+  ],
+  "expected_output_paths": [
+    "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\intermediate\\stage2\\extraction-records\\记忆情绪与执念\\run-001.json"
+  ],
+  "agent_selector": {
+    "stage": "stage2",
+    "lane_id": "template_document",
+    "required_schema": "stage2-task-packet.v1",
+    "preferred_agents": null
+  },
+  "selected_agent_info": null,
+  "schema": "stage2-task-packet.v1",
+  "overwrite_policy": "draft",
+  "stage2_policy": {
+    "stage2_categories": {
+      "facts": "原作事实",
+      "judgments": "我的判断",
+      "pending_verifications": "待核验",
+      "not_found_items": "未见可靠证据"
+    },
+    "stage2_output_policy": {
+      "default_dir": "drafts",
+      "allow_overwrite_existing_docs": false,
+      "existing_document_action": "write_versioned_draft",
+      "allowed_policies": [
+        "draft",
+        "backup-and-overwrite",
+        "merge"
+      ],
+      "draft_action": "write_draft"
+    },
+    "stage2_render_policy": {
+      "citation_format": "[{evidence_id}]",
+      "draft_entry_policy": {
+        "source_sections": [
+          "facts"
+        ],
+        "field_aliases": {
+          "name": [
+            "name",
+            "title",
+            "item_name",
+            "entity_name",
+            "名称"
+          ],
+          "classification": [
+            "classification",
+            "type",
+            "category_label",
+            "类别",
+            "分类"
+          ],
+          "usage": [
+            "usage",
+            "purpose",
+            "effect",
+            "effects",
+            "用途",
+            "功效"
+          ],
+          "formula": [
+            "formula",
+            "materials",
+            "ingredients",
+            "components",
+            "recipe",
+            "方方",
+            "材料",
+            "成分"
+          ],
+          "source_excerpt": [
+            "source_excerpt",
+            "original_excerpt",
+            "quote",
+            "原文摘录"
+          ],
+          "review_status": [
+            "review_status",
+            "verification_status",
+            "审核状态"
+          ]
+        },
+        "fallback_name": "未命名条目",
+        "kept_fields": [
+          "name",
+          "classification",
+          "usage",
+          "formula",
+          "source_range",
+          "source_excerpt",
+          "evidence_ids",
+          "confidence",
+          "review_status"
+        ]
+      },
+      "final_entry_policy": {
+        "allowed_confidence": [
+          "EXTRACTED"
+        ],
+        "min_evidence_count": 1,
+        "require_explicit_name": true,
+        "require_source_excerpt": true,
+        "required_any_fields": [
+          "usage",
+          "formula"
+        ],
+        "unstable_name_prefixes": [
+          "未名",
+          "未命名",
+          "未知",
+          "不明"
+        ],
+        "unstable_name_contains": [
+          "某种",
+          "某类"
+        ],
+        "composite_name_markers": [
+          "与",
+          "或",
+          "/",
+          "、"
+        ],
+        "review_only_statuses": [
+          "needs_review",
+          "pending_review",
+          "rejected",
+          "ambiguous"
+        ],
+        "allow_missing_review_status": true
+      },
+      "dedupe_policy": {
+        "key_fields": [
+          "name",
+          "classification"
+        ],
+        "merge_text_fields": [
+          "usage",
+          "formula",
+          "source_excerpt"
+        ],
+        "confidence_strategy": "most_conservative",
+        "review_status_strategy": "review_only_wins"
+      },
+      "final_template_policy": {
+        "case_section_names": [
+          "案例",
+          "典型案例",
+          "案例清单",
+          "示例"
+        ],
+        "excluded_section_names": [
+          "待复核",
+          "缺口",
+          "资料来源",
+          "说明"
+        ],
+        "fallback_to_first_non_root_heading": true
+      }
+    }
+  }
+}

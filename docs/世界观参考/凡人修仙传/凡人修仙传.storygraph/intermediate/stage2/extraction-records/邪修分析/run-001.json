@@ -1,0 +1,1594 @@
+{
+  "schema": "stage2-extraction-record.v1",
+  "template_name": "邪修分析",
+  "template_file": "邪修分析模板.md",
+  "source_graph": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\graphify-out\\graph.json",
+  "source_novel": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+  "output_language": "zh-CN",
+  "stage2_policy": {
+    "stage2_categories": {
+      "facts": "原作事实",
+      "judgments": "我的判断",
+      "pending_verifications": "待核验",
+      "not_found_items": "未见可靠证据"
+    },
+    "stage2_output_policy": {
+      "default_dir": "drafts",
+      "allow_overwrite_existing_docs": false,
+      "existing_document_action": "write_versioned_draft",
+      "allowed_policies": [
+        "draft",
+        "backup-and-overwrite",
+        "merge"
+      ],
+      "draft_action": "write_draft"
+    },
+    "stage2_render_policy": {
+      "citation_format": "[{evidence_id}]",
+      "draft_entry_policy": {
+        "source_sections": [
+          "facts"
+        ],
+        "field_aliases": {
+          "name": [
+            "name",
+            "title",
+            "item_name",
+            "entity_name",
+            "名称"
+          ],
+          "classification": [
+            "classification",
+            "type",
+            "category_label",
+            "类别",
+            "分类"
+          ],
+          "usage": [
+            "usage",
+            "purpose",
+            "effect",
+            "effects",
+            "用途",
+            "功效"
+          ],
+          "formula": [
+            "formula",
+            "materials",
+            "ingredients",
+            "components",
+            "recipe",
+            "方方",
+            "材料",
+            "成分"
+          ],
+          "source_excerpt": [
+            "source_excerpt",
+            "original_excerpt",
+            "quote",
+            "原文摘录"
+          ],
+          "review_status": [
+            "review_status",
+            "verification_status",
+            "审核状态"
+          ]
+        },
+        "fallback_name": "未命名条目",
+        "kept_fields": [
+          "name",
+          "classification",
+          "usage",
+          "formula",
+          "source_range",
+          "source_excerpt",
+          "evidence_ids",
+          "confidence",
+          "review_status"
+        ]
+      },
+      "final_entry_policy": {
+        "allowed_confidence": [
+          "EXTRACTED"
+        ],
+        "min_evidence_count": 1,
+        "require_explicit_name": true,
+        "require_source_excerpt": true,
+        "required_any_fields": [
+          "usage",
+          "formula"
+        ],
+        "unstable_name_prefixes": [
+          "未名",
+          "未命名",
+          "未知",
+          "不明"
+        ],
+        "unstable_name_contains": [
+          "某种",
+          "某类"
+        ],
+        "composite_name_markers": [
+          "与",
+          "或",
+          "/",
+          "、"
+        ],
+        "review_only_statuses": [
+          "needs_review",
+          "pending_review",
+          "rejected",
+          "ambiguous"
+        ],
+        "allow_missing_review_status": true
+      },
+      "dedupe_policy": {
+        "key_fields": [
+          "name",
+          "classification"
+        ],
+        "merge_text_fields": [
+          "usage",
+          "formula",
+          "source_excerpt"
+        ],
+        "confidence_strategy": "most_conservative",
+        "review_status_strategy": "review_only_wins"
+      },
+      "final_template_policy": {
+        "case_section_names": [
+          "案例",
+          "典型案例",
+          "案例清单",
+          "示例"
+        ],
+        "excluded_section_names": [
+          "待复核",
+          "缺口",
+          "资料来源",
+          "说明"
+        ],
+        "fallback_to_first_non_root_heading": true
+      }
+    }
+  },
+  "coverage_scope": {
+    "scope": "whole_novel",
+    "stage1_chunk_ledger": "coverage/chunk-ledger.json",
+    "chunk_ranges": [
+      {
+        "chunk_id": "chunk-0022",
+        "ranges": [
+          {
+            "source_range": [
+              39847,
+              40386
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0022:006",
+              "evidence:chunk-0022:007",
+              "evidence:chunk-0022:008"
+            ]
+          }
+        ]
+      },
+      {
+        "chunk_id": "chunk-0033",
+        "ranges": [
+          {
+            "source_range": [
+              63400,
+              63975
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0033:005",
+              "evidence:chunk-0033:007"
+            ]
+          }
+        ]
+      },
+      {
+        "chunk_id": "chunk-0054",
+        "ranges": [
+          {
+            "source_range": [
+              104530,
+              105598
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0054:006",
+              "evidence:chunk-0054:012",
+              "evidence:chunk-0054:013"
+            ]
+          }
+        ]
+      },
+      {
+        "chunk_id": "chunk-0055",
+        "ranges": [
+          {
+            "source_range": [
+              106087,
+              106339
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0055:004",
+              "evidence:chunk-0055:005",
+              "evidence:chunk-0055:006"
+            ]
+          }
+        ]
+      },
+      {
+        "chunk_id": "chunk-0060",
+        "ranges": [
+          {
+            "source_range": [
+              117684,
+              117924
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0060:011"
+            ]
+          }
+        ]
+      },
+      {
+        "chunk_id": "chunk-0061",
+        "ranges": [
+          {
+            "source_range": [
+              118054,
+              119138
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0061:001",
+              "evidence:chunk-0061:006"
+            ]
+          }
+        ]
+      },
+      {
+        "chunk_id": "chunk-0064",
+        "ranges": [
+          {
+            "source_range": [
+              126462,
+              126571
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0064:011",
+              "evidence:chunk-0064:012"
+            ]
+          }
+        ]
+      },
+      {
+        "chunk_id": "chunk-0066",
+        "ranges": [
+          {
+            "source_range": [
+              128854,
+              129237
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0066:002",
+              "evidence:chunk-0066:004",
+              "evidence:chunk-0066:008",
+              "evidence:chunk-0066:009"
+            ]
+          }
+        ]
+      },
+      {
+        "chunk_id": "chunk-0261",
+        "ranges": [
+          {
+            "source_range": [
+              624917,
+              625848
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0261:006",
+              "evidence:chunk-0261:009"
+            ]
+          }
+        ]
+      },
+      {
+        "chunk_id": "chunk-0264",
+        "ranges": [
+          {
+            "source_range": [
+              634881,
+              635844
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0264:015",
+              "evidence:chunk-0264:020"
+            ]
+          }
+        ]
+      },
+      {
+        "chunk_id": "chunk-0265",
+        "ranges": [
+          {
+            "source_range": [
+              636595,
+              638714
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0265:005",
+              "evidence:chunk-0265:010",
+              "evidence:chunk-0265:013",
+              "evidence:chunk-0265:016"
+            ]
+          }
+        ]
+      },
+      {
+        "chunk_id": "chunk-0363",
+        "ranges": [
+          {
+            "source_range": [
+              924607,
+              924702
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0363:020",
+              "evidence:chunk-0363:021"
+            ]
+          }
+        ]
+      },
+      {
+        "chunk_id": "chunk-0262",
+        "ranges": [
+          {
+            "source_range": [
+              628873,
+              629004
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0262:012"
+            ]
+          }
+        ]
+      },
+      {
+        "chunk_id": "chunk-0328",
+        "ranges": [
+          {
+            "source_range": [
+              823233,
+              823267
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0328:012"
+            ]
+          }
+        ]
+      },
+      {
+        "chunk_id": "chunk-0334",
+        "ranges": [
+          {
+            "source_range": [
+              839299,
+              841160
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0334:005",
+              "evidence:chunk-0334:016"
+            ]
+          }
+        ]
+      },
+      {
+        "chunk_id": "chunk-0335",
+        "ranges": [
+          {
+            "source_range": [
+              842458,
+              842498
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0335:008"
+            ]
+          }
+        ]
+      },
+      {
+        "chunk_id": "chunk-0341",
+        "ranges": [
+          {
+            "source_range": [
+              859396,
+              859754
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0341:003",
+              "evidence:chunk-0341:004",
+              "evidence:chunk-0341:005"
+            ]
+          }
+        ]
+      },
+      {
+        "chunk_id": "chunk-0342",
+        "ranges": [
+          {
+            "source_range": [
+              862979,
+              864436
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0342:011",
+              "evidence:chunk-0342:013",
+              "evidence:chunk-0342:014",
+              "evidence:chunk-0342:019"
+            ]
+          }
+        ]
+      },
+      {
+        "chunk_id": "chunk-0346",
+        "ranges": [
+          {
+            "source_range": [
+              874128,
+              876402
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0346:005",
+              "evidence:chunk-0346:006",
+              "evidence:chunk-0346:020",
+              "evidence:chunk-0346:022"
+            ]
+          }
+        ]
+      },
+      {
+        "chunk_id": "chunk-0379",
+        "ranges": [
+          {
+            "source_range": [
+              967562,
+              967832
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0379:015"
+            ]
+          }
+        ]
+      },
+      {
+        "chunk_id": "chunk-0387",
+        "ranges": [
+          {
+            "source_range": [
+              988408,
+              991282
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0387:001",
+              "evidence:chunk-0387:002",
+              "evidence:chunk-0387:007",
+              "evidence:chunk-0387:016"
+            ]
+          }
+        ]
+      },
+      {
+        "chunk_id": "chunk-0431",
+        "ranges": [
+          {
+            "source_range": [
+              1115468,
+              1117414
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0431:008",
+              "evidence:chunk-0431:027"
+            ]
+          }
+        ]
+      },
+      {
+        "chunk_id": "chunk-0438",
+        "ranges": [
+          {
+            "source_range": [
+              1135671,
+              1135748
+            ],
+            "evidence_ids": [
+              "evidence:chunk-0438:004"
+            ]
+          }
+        ]
+      }
+    ],
+    "ledger_path": "coverage/template-run-ledger.json"
+  },
+  "fulfilled_sections": [
+    {
+      "requirement_id": "creature_deviant_practice_ecology.required_extraction_targets[2]",
+      "requirement_kind": "template_requirement",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0022:006",
+        "evidence:chunk-0022:007",
+        "evidence:chunk-0022:008",
+        "evidence:chunk-0033:005",
+        "evidence:chunk-0033:007",
+        "evidence:chunk-0054:006",
+        "evidence:chunk-0054:012",
+        "evidence:chunk-0054:013",
+        "evidence:chunk-0055:004",
+        "evidence:chunk-0055:005",
+        "evidence:chunk-0055:006",
+        "evidence:chunk-0060:011",
+        "evidence:chunk-0061:001",
+        "evidence:chunk-0061:006",
+        "evidence:chunk-0064:011",
+        "evidence:chunk-0064:012",
+        "evidence:chunk-0066:002",
+        "evidence:chunk-0066:004",
+        "evidence:chunk-0066:008",
+        "evidence:chunk-0066:009",
+        "evidence:chunk-0261:006",
+        "evidence:chunk-0261:009",
+        "evidence:chunk-0264:015",
+        "evidence:chunk-0264:020",
+        "evidence:chunk-0265:005",
+        "evidence:chunk-0265:010",
+        "evidence:chunk-0265:013",
+        "evidence:chunk-0265:016",
+        "evidence:chunk-0363:020",
+        "evidence:chunk-0363:021",
+        "evidence:chunk-0262:012",
+        "evidence:chunk-0328:012",
+        "evidence:chunk-0334:005",
+        "evidence:chunk-0334:016",
+        "evidence:chunk-0335:008",
+        "evidence:chunk-0341:003",
+        "evidence:chunk-0341:004",
+        "evidence:chunk-0341:005",
+        "evidence:chunk-0342:011",
+        "evidence:chunk-0342:013",
+        "evidence:chunk-0342:014",
+        "evidence:chunk-0342:019",
+        "evidence:chunk-0346:005",
+        "evidence:chunk-0346:006",
+        "evidence:chunk-0346:020",
+        "evidence:chunk-0346:022",
+        "evidence:chunk-0379:015",
+        "evidence:chunk-0387:001",
+        "evidence:chunk-0387:002",
+        "evidence:chunk-0387:007",
+        "evidence:chunk-0387:016",
+        "evidence:chunk-0431:008",
+        "evidence:chunk-0431:027",
+        "evidence:chunk-0438:004",
+        "evidence:chunk-0315:003",
+        "evidence:chunk-0315:004",
+        "evidence:chunk-0315:005",
+        "evidence:chunk-0315:006",
+        "evidence:chunk-0315:007"
+      ],
+      "notes": [
+        "覆盖邪修主体、手段、资源来源、目标、受害者、收益、风险、反噬、追剿或社会后果。"
+      ]
+    },
+    {
+      "requirement_id": "creature_deviant_practice_ecology.required_extraction_targets[3]",
+      "requirement_kind": "template_requirement",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0261:006",
+        "evidence:chunk-0335:008",
+        "evidence:chunk-0438:004"
+      ],
+      "notes": [
+        "覆盖邪修事件对角色、势力、资源和后续冲突的影响。"
+      ]
+    }
+  ],
+  "fulfilled_fields": [
+    {
+      "requirement_id": "creature_deviant_practice_ecology.evidence_requirements[2]",
+      "requirement_kind": "template_requirement",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0022:006",
+        "evidence:chunk-0022:007",
+        "evidence:chunk-0022:008",
+        "evidence:chunk-0033:005",
+        "evidence:chunk-0033:007",
+        "evidence:chunk-0054:006",
+        "evidence:chunk-0054:012",
+        "evidence:chunk-0054:013",
+        "evidence:chunk-0055:004",
+        "evidence:chunk-0055:005",
+        "evidence:chunk-0055:006",
+        "evidence:chunk-0060:011",
+        "evidence:chunk-0061:001",
+        "evidence:chunk-0061:006",
+        "evidence:chunk-0064:011",
+        "evidence:chunk-0064:012",
+        "evidence:chunk-0066:002",
+        "evidence:chunk-0066:004",
+        "evidence:chunk-0066:008",
+        "evidence:chunk-0066:009",
+        "evidence:chunk-0261:006",
+        "evidence:chunk-0261:009",
+        "evidence:chunk-0264:015",
+        "evidence:chunk-0264:020",
+        "evidence:chunk-0265:005",
+        "evidence:chunk-0265:010",
+        "evidence:chunk-0265:013",
+        "evidence:chunk-0265:016",
+        "evidence:chunk-0363:020",
+        "evidence:chunk-0363:021",
+        "evidence:chunk-0262:012",
+        "evidence:chunk-0328:012",
+        "evidence:chunk-0334:005",
+        "evidence:chunk-0334:016",
+        "evidence:chunk-0335:008",
+        "evidence:chunk-0341:003",
+        "evidence:chunk-0341:004",
+        "evidence:chunk-0341:005",
+        "evidence:chunk-0342:011",
+        "evidence:chunk-0342:013",
+        "evidence:chunk-0342:014",
+        "evidence:chunk-0342:019",
+        "evidence:chunk-0346:005",
+        "evidence:chunk-0346:006",
+        "evidence:chunk-0346:020",
+        "evidence:chunk-0346:022",
+        "evidence:chunk-0379:015",
+        "evidence:chunk-0387:001",
+        "evidence:chunk-0387:002",
+        "evidence:chunk-0387:007",
+        "evidence:chunk-0387:016",
+        "evidence:chunk-0431:008",
+        "evidence:chunk-0431:027",
+        "evidence:chunk-0438:004",
+        "evidence:chunk-0315:003",
+        "evidence:chunk-0315:004",
+        "evidence:chunk-0315:005",
+        "evidence:chunk-0315:006",
+        "evidence:chunk-0315:007"
+      ],
+      "notes": [
+        "每个事实条目均保留主体、类型、手段/材料、source_range 和 evidence_ids。"
+      ]
+    }
+  ],
+  "fulfilled_tables": [],
+  "fulfilled_cards": [],
+  "fulfilled_cases": [
+    {
+      "requirement_id": "邪修分析.case.炉鼎采补",
+      "requirement_kind": "template_requirement",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0363:020",
+        "evidence:chunk-0363:021",
+        "evidence:chunk-0262:012"
+      ],
+      "notes": []
+    },
+    {
+      "requirement_id": "邪修分析.case.血魂尸鬼",
+      "requirement_kind": "template_requirement",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0054:013",
+        "evidence:chunk-0060:011",
+        "evidence:chunk-0066:004",
+        "evidence:chunk-0438:004"
+      ],
+      "notes": []
+    },
+    {
+      "requirement_id": "邪修分析.case.毒蛊邪丹邪器",
+      "requirement_kind": "template_requirement",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0022:007",
+        "evidence:chunk-0033:007",
+        "evidence:chunk-0341:004",
+        "evidence:chunk-0342:013"
+      ],
+      "notes": []
+    },
+    {
+      "requirement_id": "邪修分析.case.夺舍吞噬献祭",
+      "requirement_kind": "template_requirement",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0261:006",
+        "evidence:chunk-0346:005",
+        "evidence:chunk-0431:027",
+        "evidence:chunk-0335:008"
+      ],
+      "notes": []
+    },
+    {
+      "requirement_id": "邪修分析.case.魔功速成资源链",
+      "requirement_kind": "template_requirement",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0265:010",
+        "evidence:chunk-0379:015",
+        "evidence:chunk-0387:007",
+        "evidence:chunk-0341:005"
+      ],
+      "notes": []
+    }
+  ],
+  "facts": [
+    {
+      "content": "抽髓丸属于以寿元换取即时战力的邪丹案例，核心邪性不在单次药效，而在依赖、痛苦和必死寿命代价。",
+      "category": "原作事实",
+      "name": "抽髓丸",
+      "classification": "邪丹 / 透支寿元型禁药",
+      "usage": "以服药者未来寿命和身体潜力换取当前能力提升，并形成周期性复服依赖；停服轻则瘫痪、重则死亡，按时服药也会在首次服药后十年内因透支生命而死。",
+      "formula": "合兰、蝎尾花、百年蓝蚁卵等二十三种罕见物品；药成粉红色，有奇异腥臭味。",
+      "source_excerpt": "韩立说明抽髓丸由合兰、蝎尾花、百年蓝蚁卵等物炼成，可透支身体潜力和寿命；服后需周期性复服，否则瘫痪或丧命。",
+      "evidence_ids": [
+        "evidence:chunk-0022:006",
+        "evidence:chunk-0022:007",
+        "evidence:chunk-0022:008"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0022",
+          "source_range": [
+            39847,
+            40386
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "尸虫丸是以寄生死亡威胁达成胁迫控制的邪修工具，受害者、时间规则、解药条件和死亡方式均有明确证据。",
+      "category": "原作事实",
+      "name": "尸虫丸",
+      "classification": "虫卵秘法 / 控制型邪药",
+      "usage": "墨大夫逼韩立吞下，用一年潜伏期和特制解药控制韩立；一年后无解药则虫卵孵化，吞食内脏致死。",
+      "formula": "秘法泡制出的虫卵；具体药材未见可靠证据。",
+      "source_excerpt": "墨大夫说明尸虫丸不是普通药物，而是秘法泡制虫卵，潜伏一年后若无解药会孵化并吞食内脏。",
+      "evidence_ids": [
+        "evidence:chunk-0033:005",
+        "evidence:chunk-0033:007"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0033",
+          "source_range": [
+            63400,
+            63975
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "七鬼噬魂大法体现早期邪术的仪式性和反噬性：施术者已受鬼雾侵蚀，借鬼头怪刃吞噬黑线，既像压制邪祟，也像以邪制邪。",
+      "category": "原作事实",
+      "name": "墨大夫 / 七鬼噬魂大法",
+      "classification": "噬魂鬼术 / 反噬型邪法",
+      "usage": "墨大夫在自插七把鬼头怪刃、结手势念词后发动七鬼噬魂大法，试图处理脸上鬼雾；鬼头吞吃从鬼雾卷出的黑线。",
+      "formula": "七把带鬼头怪刃、手诀、咒语、鬼雾黑线；完整功法传承和代价未完全闭合。",
+      "source_excerpt": "墨大夫插满七把怪刃，结莲花状手势念词，黑雾浓重时喊出“七鬼噬魂大法”，随后鬼头吞吃鬼雾黑线。",
+      "evidence_ids": [
+        "evidence:chunk-0054:006",
+        "evidence:chunk-0054:012",
+        "evidence:chunk-0054:013",
+        "evidence:chunk-0055:004",
+        "evidence:chunk-0055:005",
+        "evidence:chunk-0055:006"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0054",
+          "source_range": [
+            104530,
+            105598
+          ]
+        },
+        {
+          "chunk_id": "chunk-0055",
+          "source_range": [
+            106087,
+            106339
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "血箭阴魂咒将“伤敌”和“元神求生”绑定在一起，制造施咒者、宿主身体和寄居元神三方互相牵制的邪术后果。",
+      "category": "原作事实",
+      "name": "血箭阴魂咒 / 余子童元神",
+      "classification": "血咒 / 元神寄生型邪术",
+      "usage": "余子童重伤中毒、被墨大夫搜刮时，把全身精血化为血咒喷到墨大夫头上，并元神出窍钻入墨大夫体内；后续表现为墨大夫急速衰老、身体可能因血咒崩溃。",
+      "formula": "全身精血化为血咒，元神出窍寄入他人体内；完整咒法步骤未完全说明。",
+      "source_excerpt": "余子童施出血箭阴魂咒后元神出窍钻入墨大夫体内；阴魂咒使墨大夫几乎一日衰老一年。",
+      "evidence_ids": [
+        "evidence:chunk-0060:011",
+        "evidence:chunk-0061:001",
+        "evidence:chunk-0061:006"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0060",
+          "source_range": [
+            117684,
+            117924
+          ]
+        },
+        {
+          "chunk_id": "chunk-0061",
+          "source_range": [
+            118054,
+            119138
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "曲魂案例把“受害者被剥夺魂魄”和“尸体成为战斗资源”直接连在一起，是炼尸类邪修对角色命运和后续战力结构的典型影响。",
+      "category": "原作事实",
+      "name": "曲魂 / 铁奴炼尸",
+      "classification": "炼尸术 / 尸人控制",
+      "usage": "墨大夫结合象甲功和余子童提供的炼尸术，把张铁炼成魂魄全失、可俯首听命的强横尸人；遗书另附控制、呼唤方法。",
+      "formula": "象甲功躯体基础、炼尸术、失魂尸体；具体炼制材料和完整流程未见可靠证据。",
+      "source_excerpt": "叙事说明墨大夫结合象甲功和炼尸术炼制强横尸人；铁奴无魂无魄，只是行尸走肉。",
+      "evidence_ids": [
+        "evidence:chunk-0064:011",
+        "evidence:chunk-0064:012",
+        "evidence:chunk-0066:002",
+        "evidence:chunk-0066:004",
+        "evidence:chunk-0066:008",
+        "evidence:chunk-0066:009"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0064",
+          "source_range": [
+            126462,
+            126571
+          ]
+        },
+        {
+          "chunk_id": "chunk-0066",
+          "source_range": [
+            128854,
+            129237
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "鬼灵门血祭计划把修士群体转化为魂魄资源，兼具婚盟筹码、门派恶名承担和邪功速成三重功能。",
+      "category": "原作事实",
+      "name": "鬼灵门 / 王蝉血祭计划",
+      "classification": "血祭筑基 / 魂魄资源化",
+      "usage": "王蝉提出用鬼灵门阴火大阵炼化燕翎堡中修士肉身、留下魂魄，供燕如嫣血祭筑基并修成血灵大法第一层；还表示鬼灵门承担恶名，魂魄作为聘礼。",
+      "formula": "阴火大阵、堡中修士肉身、筑基修士魂魄、血灵大法第一层；阵法完整布置未详。",
+      "source_excerpt": "王蝉轻描淡写提出炼化堡内修士肉身、留下魂魄给燕如嫣血祭筑基，并把修士魂魄当聘礼。",
+      "evidence_ids": [
+        "evidence:chunk-0261:006",
+        "evidence:chunk-0261:009"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0261",
+          "source_range": [
+            624917,
+            625848
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "血灵大法不只是血祭入门功法，在斗法层面表现为遁速、围困、再生消耗和抽魂威胁的组合体系。",
+      "category": "原作事实",
+      "name": "王蝉 / 血灵大法实战",
+      "classification": "血修魔功 / 血云血鬼体系",
+      "usage": "王蝉以血灵大法血遁追击韩立，用血云围困神风舟，并催生血鬼持续消耗对手；他还威胁抽出韩立魂魄。",
+      "formula": "血色遁术、血云、血鬼、骷髅头法器；血鬼可被斩杀后从血云中再生。",
+      "source_excerpt": "王蝉威胁抽魂，施展血灵大法追击；血鬼不是轻易能打发的手段，并从血云中持续生出。",
+      "evidence_ids": [
+        "evidence:chunk-0264:015",
+        "evidence:chunk-0264:020",
+        "evidence:chunk-0265:005",
+        "evidence:chunk-0265:010",
+        "evidence:chunk-0265:013",
+        "evidence:chunk-0265:016"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0264",
+          "source_range": [
+            634881,
+            635844
+          ]
+        },
+        {
+          "chunk_id": "chunk-0265",
+          "source_range": [
+            636595,
+            638714
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "玄月吸阴功是炉鼎/采补型邪修案例，邪性来自强行吸纳他人元阴并把高阶女修当作突破资源。",
+      "category": "原作事实",
+      "name": "田公子 / 玄月吸阴功",
+      "classification": "采补 / 炉鼎型邪术",
+      "usage": "合欢宗玄月吸阴功可通过双修强行吸纳女子部分元阴；王蝉判断田公子追逐南宫前辈，是想借其结丹期修为突破筑基中期瓶颈。",
+      "formula": "双修术、女子元阴、结丹期修为差；完整采补仪式和长期损害未在所引证据中展开。",
+      "source_excerpt": "王蝉说玄月吸阴功能通过双修强行吸纳女子元阴，并指出田公子想借南宫前辈突破瓶颈。",
+      "evidence_ids": [
+        "evidence:chunk-0363:020",
+        "evidence:chunk-0363:021"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0363",
+          "source_range": [
+            924607,
+            924702
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "田某迷魂控制虽未直接等同玄月吸阴功，但与合欢宗采补叙事互为外围：先夺心神，再把受害者置于无法反抗的位置。",
+      "category": "原作事实",
+      "name": "董萱儿被田某迷魂",
+      "classification": "迷魂控制 / 采补外围手段",
+      "usage": "董萱儿与艳丽男子对视后心神受制，只想讨好对方、无法反抗，呈现人格服从和行动自由被剥夺。",
+      "formula": "眼神对视触发的迷魂之法；具体功法名称、施术代价未见可靠证据。",
+      "source_excerpt": "董萱儿说自己与对方眼睛一对视后，只想讨好他、愿为他做任何事，心里兴不起反抗之意。",
+      "evidence_ids": [
+        "evidence:chunk-0262:012"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0262",
+          "source_range": [
+            628873,
+            629004
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "黑煞教/越皇案例体现邪修组织化：以宫廷权力、血侍培养和血祭牺牲构成资源供应链，而非单个散修行凶。",
+      "category": "原作事实",
+      "name": "黑煞教 / 越皇血炼体系",
+      "classification": "血祭魔功 / 血侍与身外化身",
+      "usage": "黑煞教主创立黑煞教并控制皇宫；越皇及黑煞教体系涉及血祭、四大血侍、血凝五行丹和血炼神光，武炫在密室中被血祭吸尽精血而亡。",
+      "formula": "血祭、血凝五行丹、煞妖诀、血炼神光、血侍；完整炼制链条需结合更多证据复核。",
+      "source_excerpt": "武炫尸体在黑煞教主密室被发现，不久前被血祭吸尽精血；韩立推测越皇培养四大血侍凝练血凝五行丹。",
+      "evidence_ids": [
+        "evidence:chunk-0328:012",
+        "evidence:chunk-0334:005",
+        "evidence:chunk-0334:016",
+        "evidence:chunk-0335:008"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0328",
+          "source_range": [
+            823233,
+            823267
+          ]
+        },
+        {
+          "chunk_id": "chunk-0334",
+          "source_range": [
+            839299,
+            841160
+          ]
+        },
+        {
+          "chunk_id": "chunk-0335",
+          "source_range": [
+            842458,
+            842498
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "钻心虫是邪虫类资源的明确案例，价值在于隐蔽、延迟、可伪装病死，并且来源指向魔道弟子战利品链条。",
+      "category": "原作事实",
+      "name": "钻心虫",
+      "classification": "邪虫 / 暗杀与伪装死亡",
+      "usage": "钻心虫可被暗中打入人体，沿血脉向心脏蠕动，一两年后造成心痛、失眠并最终像正常心肌绞痛一样死亡；韩立从被击杀的魔道弟子处获得。",
+      "formula": "纤细如毫毛的诡异虫子，靠神识感应；入体路径为肌肤进入血脉。",
+      "source_excerpt": "钻心虫纤细难见，入体后沿血脉向心脏蠕动，一两年后造成心痛失眠直至死亡，外观近似正常病死。",
+      "evidence_ids": [
+        "evidence:chunk-0341:003",
+        "evidence:chunk-0341:004",
+        "evidence:chunk-0341:005"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0341",
+          "source_range": [
+            859396,
+            859754
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "炼魂术在此处主要以修仙界传闻和受害者恐惧呈现，适合作为“可用但需标注传闻来源”的魂修禁术资料。",
+      "category": "原作事实",
+      "name": "炼魂术 / 聚魂钵误认",
+      "classification": "魂修禁术 / 恐吓性传闻",
+      "usage": "炼魂术传闻可抽出元神魂魄并折磨，需与施术者元神相连的魂器配合；曲魂误把聚魂钵当作魂器并畏惧韩立施术。",
+      "formula": "魂器、元神魂魄、直接刺激灵魂的法术；韩立实际未被证实会炼魂术。",
+      "source_excerpt": "传闻炼魂术可抽出元神魂魄折磨，修士元神越强痛苦越强；施术者通常需修炼与自身元神相连的魂器。",
+      "evidence_ids": [
+        "evidence:chunk-0342:011",
+        "evidence:chunk-0342:013",
+        "evidence:chunk-0342:014",
+        "evidence:chunk-0342:019"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0342",
+          "source_range": [
+            862979,
+            864436
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "御灵宗修士案例表现夺舍/占据类邪修的战术价值：借既有尸身与熟人信任设伏，并突破普通禁制预期。",
+      "category": "原作事实",
+      "name": "御灵宗修士占据曲魂躯体",
+      "classification": "夺舍 / 占据尸身与设伏",
+      "usage": "韩立认定危局源自占据曲魂躯体的御灵宗修士；对方利用信简设下山洞圈套，在定神符未摘下时仍能行动并吐出绿光抵挡乌龙夺。",
+      "formula": "占据曲魂躯体、山洞信简诱饵、定神符下行动、绿光防御；完整夺舍机制未在本证据组中说明。",
+      "source_excerpt": "韩立想到罪魁祸首是占据曲魂躯体的御灵宗修士，并判断所谓信简在山洞内是对方设下的圈套。",
+      "evidence_ids": [
+        "evidence:chunk-0346:005",
+        "evidence:chunk-0346:006",
+        "evidence:chunk-0346:020",
+        "evidence:chunk-0346:022"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0346",
+          "source_range": [
+            874128,
+            876402
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "血炼神光是魔功被重新配置到尸身/分身资源上的案例，显示邪功可从敌方体系流入主角资源库，但存在功法后继缺口。",
+      "category": "原作事实",
+      "name": "血炼神光",
+      "classification": "魔功速成 / 分身载体功法",
+      "usage": "韩立从玉简中挑出越皇修炼过的魔功血炼神光，准备让融合身体后的曲魂筑基后修炼；该功法被关联到越皇强大战力和曲魂作为分尸的修炼上限。",
+      "formula": "灰白之气玉简、血炼神光法诀、曲魂分尸载体；结丹后无后继法诀。",
+      "source_excerpt": "韩立挑出越皇修炼的魔功血炼神光让曲魂筑基后修炼，并指出此功法没有结丹后继法诀。",
+      "evidence_ids": [
+        "evidence:chunk-0379:015"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0379",
+          "source_range": [
+            967562,
+            967832
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "乌丑案例强调魔道势力背景带来的威慑：邪修行为不只靠功法，也靠极阴老祖等上层关系和灭口惯例。",
+      "category": "原作事实",
+      "name": "乌丑 / 玄阴功与献元神威胁",
+      "classification": "魔功势力 / 元神献祭威胁",
+      "usage": "乌丑修炼乱星海顶尖魔功玄阴功，背后有极阴老祖；他因旁人听到不该听的话而准备灭口，并宣称要把众人元神献给自己。",
+      "formula": "玄阴功、玄阴魔气、黑色阴风、元神献祭威胁；具体献祭用途未见可靠证据。",
+      "source_excerpt": "乌丑被指出修炼顶尖魔功玄阴功，并放出黑色阴风，声称要把众人的元神献给本少主。",
+      "evidence_ids": [
+        "evidence:chunk-0387:001",
+        "evidence:chunk-0387:002",
+        "evidence:chunk-0387:007",
+        "evidence:chunk-0387:016"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0387",
+          "source_range": [
+            988408,
+            991282
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "玄骨/绿影线把夺舍、妖鬼化和师徒仇怨连在一起，是更高阶邪修生态中“失去轮回也要保留报复能力”的典型。",
+      "category": "原作事实",
+      "name": "绿影 / 玄骨占据曲魂",
+      "classification": "妖鬼之道 / 躯体夺取",
+      "usage": "绿影对韩立躯体感兴趣，后占据曲魂并露出鲜红眼珠；后续证据显示玄骨当年被极阴祖师所害，转修妖鬼之道，连轮回之路也被堵死。",
+      "formula": "妖鬼之道、占据躯体、曲魂载体；玄魂炼妖等完整机制需另证。",
+      "source_excerpt": "绿影表示对韩立躯体感兴趣；被绿影占据后的曲魂睁开鲜红眼珠；玄骨被害后转修妖鬼之道。",
+      "evidence_ids": [
+        "evidence:chunk-0431:008",
+        "evidence:chunk-0431:027",
+        "evidence:chunk-0438:004"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0431",
+          "source_range": [
+            1115468,
+            1117414
+          ]
+        },
+        {
+          "chunk_id": "chunk-0438",
+          "source_range": [
+            1135671,
+            1135748
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    }
+  ],
+  "judgments": [
+    {
+      "content": "“邪修”在本批资料中不宜按阵营一刀切，而应按行为闭合判断：强行采补、抽魂血祭、炼尸夺舍、以寿元或魂魄作资源、以寄生或禁制胁迫他人，才是可落入模板正文的核心判据。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0261:006",
+        "evidence:chunk-0363:020",
+        "evidence:chunk-0066:004",
+        "evidence:chunk-0033:007"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0261",
+          "source_range": [
+            624917,
+            625060
+          ]
+        },
+        {
+          "chunk_id": "chunk-0363",
+          "source_range": [
+            924607,
+            924657
+          ]
+        },
+        {
+          "chunk_id": "chunk-0066",
+          "source_range": [
+            128990,
+            129099
+          ]
+        },
+        {
+          "chunk_id": "chunk-0033",
+          "source_range": [
+            63754,
+            63975
+          ]
+        }
+      ],
+      "confidence": "INFERRED"
+    },
+    {
+      "content": "组织化邪修比单体邪术更适合形成世界观长期冲突：鬼灵门把血祭转成婚盟和门派收益，黑煞教把血祭、血侍和皇宫控制绑定，极阴老祖/乌丑线则提供高阶魔道威慑。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0261:009",
+        "evidence:chunk-0335:008",
+        "evidence:chunk-0387:007"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0261",
+          "source_range": [
+            625799,
+            625848
+          ]
+        },
+        {
+          "chunk_id": "chunk-0335",
+          "source_range": [
+            842458,
+            842498
+          ]
+        },
+        {
+          "chunk_id": "chunk-0387",
+          "source_range": [
+            989509,
+            989651
+          ]
+        }
+      ],
+      "confidence": "INFERRED"
+    }
+  ],
+  "pending_verifications": [
+    {
+      "content": "黑煞教/越皇的血凝五行丹、煞妖诀、血炼神光和身外化身之间关系已有多个节点支撑，但完整炼制流程、受害规模和每种材料来源仍需在正式渲染前二次核验。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0334:005",
+        "evidence:chunk-0334:016",
+        "evidence:chunk-0335:008"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0334",
+          "source_range": [
+            839299,
+            841160
+          ]
+        },
+        {
+          "chunk_id": "chunk-0335",
+          "source_range": [
+            842458,
+            842498
+          ]
+        }
+      ],
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "七鬼噬魂大法的完整目标存在解释空间：证据显示墨大夫以鬼头怪刃吞吃鬼雾黑线，但它究竟是解除反噬、反制余子童，还是直接攻击韩立，需结合相邻章节复核。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0054:012",
+        "evidence:chunk-0054:013",
+        "evidence:chunk-0055:006"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0054",
+          "source_range": [
+            105379,
+            105598
+          ]
+        },
+        {
+          "chunk_id": "chunk-0055",
+          "source_range": [
+            106269,
+            106339
+          ]
+        }
+      ],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "not_found_items": [
+    {
+      "content": "未见可靠证据完整说明尸虫丸的具体药材、炼制地点和解药配方；当前只能确认其为秘法泡制虫卵及一年潜伏规则。",
+      "category": "未见可靠证据",
+      "evidence_ids": [
+        "evidence:chunk-0033:007"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0033",
+          "source_range": [
+            63754,
+            63975
+          ]
+        }
+      ],
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "未见可靠证据说明玄月吸阴功在所引场景中已经完成施术或造成具体长期损害；当前只能抽取其“可强行吸纳女子元阴”和田公子意图。",
+      "category": "未见可靠证据",
+      "evidence_ids": [
+        "evidence:chunk-0363:020",
+        "evidence:chunk-0363:021"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0363",
+          "source_range": [
+            924607,
+            924702
+          ]
+        }
+      ],
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "未见可靠证据把所有魔道修士都直接定性为邪修；例如“修炼魔功”本身应与具体受害、血祭、采补、夺舍或胁迫行为区分。",
+      "category": "未见可靠证据",
+      "evidence_ids": [
+        "evidence:chunk-0387:007"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0387",
+          "source_range": [
+            989509,
+            989651
+          ]
+        }
+      ],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "document_sections": [
+    {
+      "heading": "完整邪修案例",
+      "markdown": "本批证据显示，《凡人修仙传》前中段邪修材料可分为五类：以抽髓丸、尸虫丸、钻心虫为代表的邪丹邪虫；以七鬼噬魂大法、血箭阴魂咒、炼魂术为代表的魂魄禁术；以曲魂、御灵宗修士、玄骨绿影为代表的炼尸与夺舍；以鬼灵门、黑煞教、越皇为代表的组织化血祭；以及以田公子玄月吸阴功、乌丑玄阴功为代表的采补和魔功势力。进入正式正文时，应优先保留主体、手段、受害者、资源收益、代价/反噬和后续影响均闭合的案例。",
+      "evidence_ids": [
+        "evidence:chunk-0022:007",
+        "evidence:chunk-0033:007",
+        "evidence:chunk-0261:006",
+        "evidence:chunk-0363:020",
+        "evidence:chunk-0438:004"
+      ],
+      "requirement_ids": [
+        "creature_deviant_practice_ecology.required_extraction_targets[2]",
+        "creature_deviant_practice_ecology.required_extraction_targets[3]",
+        "creature_deviant_practice_ecology.evidence_requirements[2]"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 1：炉鼎 / 采补型修士",
+      "markdown": "田公子/合欢宗线可作为炉鼎采补样本：玄月吸阴功被王蝉说明为通过双修强行吸纳女子部分元阴，田公子追逐南宫前辈的目标被判断为借结丹期修为突破筑基中期瓶颈。董萱儿与艳丽男子对视后心神受制、无法反抗，说明采补型邪修常伴随迷魂控制等前置剥夺意志手段。",
+      "evidence_ids": [
+        "evidence:chunk-0363:020",
+        "evidence:chunk-0363:021",
+        "evidence:chunk-0262:012"
+      ],
+      "requirement_ids": [
+        "creature_deviant_practice_ecology.required_extraction_targets[2]",
+        "creature_deviant_practice_ecology.evidence_requirements[2]"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 2：血修 / 魂修 / 尸修 / 鬼修",
+      "markdown": "血魂尸鬼类证据最密集。墨大夫的七鬼噬魂大法以鬼头怪刃、手诀咒语和鬼雾黑线构成仪式；余子童的血箭阴魂咒将全身精血、血咒和元神寄入墨大夫身体连在一起，并造成急速衰老等反噬；曲魂则由张铁被劫持后经象甲功和炼尸术改造成无魂尸人。玄骨/绿影后续又把妖鬼之道、占据曲魂和失去轮回的代价连接起来。",
+      "evidence_ids": [
+        "evidence:chunk-0054:013",
+        "evidence:chunk-0055:006",
+        "evidence:chunk-0060:011",
+        "evidence:chunk-0061:001",
+        "evidence:chunk-0066:004",
+        "evidence:chunk-0431:027",
+        "evidence:chunk-0438:004"
+      ],
+      "requirement_ids": [
+        "creature_deviant_practice_ecology.required_extraction_targets[2]",
+        "creature_deviant_practice_ecology.required_extraction_targets[3]",
+        "creature_deviant_practice_ecology.evidence_requirements[2]"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 3：毒修 / 蛊修 / 邪丹邪器",
+      "markdown": "抽髓丸、尸虫丸和钻心虫分别覆盖邪丹、寄生虫卵和邪虫暗杀。抽髓丸以寿命换即时能力并制造复服依赖；尸虫丸以一年潜伏和特制解药控制韩立；钻心虫可沿血脉向心脏移动，延迟造成近似正常病死的结果。炼魂术和聚魂钵证据则应谨慎处理：此处主要是修仙界传闻和曲魂误认，不宜断言韩立实际掌握炼魂术。",
+      "evidence_ids": [
+        "evidence:chunk-0022:007",
+        "evidence:chunk-0022:008",
+        "evidence:chunk-0033:007",
+        "evidence:chunk-0341:004",
+        "evidence:chunk-0341:005",
+        "evidence:chunk-0342:013",
+        "evidence:chunk-0342:014"
+      ],
+      "requirement_ids": [
+        "creature_deviant_practice_ecology.required_extraction_targets[2]",
+        "creature_deviant_practice_ecology.evidence_requirements[2]",
+        "creature_deviant_practice_ecology.evidence_requirements[3]"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 4：夺舍 / 吞噬 / 献祭型修士",
+      "markdown": "鬼灵门血祭计划最符合“献祭型”邪修：王蝉提出用阴火大阵炼化堡中修士肉身、留下魂魄供燕如嫣血祭筑基，并把七派修士魂魄作为聘礼。夺舍/占据线则包括御灵宗修士占据曲魂躯体设伏，以及玄骨绿影对躯体的兴趣和占据曲魂后的表现。黑煞教/越皇体系进一步显示血祭可以组织化，武炫在密室中被血祭吸尽精血。",
+      "evidence_ids": [
+        "evidence:chunk-0261:006",
+        "evidence:chunk-0261:009",
+        "evidence:chunk-0346:005",
+        "evidence:chunk-0346:006",
+        "evidence:chunk-0431:008",
+        "evidence:chunk-0431:027",
+        "evidence:chunk-0335:008"
+      ],
+      "requirement_ids": [
+        "creature_deviant_practice_ecology.required_extraction_targets[2]",
+        "creature_deviant_practice_ecology.required_extraction_targets[3]",
+        "creature_deviant_practice_ecology.evidence_requirements[2]"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 5：魔功速成 / 掠夺洞府 / 黑市赃物链条",
+      "markdown": "魔功速成和资源流转主要体现在血灵大法、血炼神光、玄阴功和邪物战利品。血灵大法需要魂魄血祭才能顺利开始修炼，实战中又能形成血云、血鬼和高速追击；血炼神光由越皇体系流入韩立手中，被配置给曲魂筑基后修炼；乌丑修炼玄阴功并以极阴老祖背景威慑他人；钻心虫则明示来自被击杀的魔道弟子，属于邪物战利品进入他人手中的小型链条。",
+      "evidence_ids": [
+        "evidence:chunk-0261:006",
+        "evidence:chunk-0265:010",
+        "evidence:chunk-0379:015",
+        "evidence:chunk-0387:007",
+        "evidence:chunk-0387:016",
+        "evidence:chunk-0341:005"
+      ],
+      "requirement_ids": [
+        "creature_deviant_practice_ecology.required_extraction_targets[2]",
+        "creature_deviant_practice_ecology.required_extraction_targets[3]",
+        "creature_deviant_practice_ecology.evidence_requirements[2]"
+      ],
+      "confidence": "EXTRACTED"
+    }
+  ],
+  "evidence_citations": [
+    "evidence:chunk-0022:006",
+    "evidence:chunk-0022:007",
+    "evidence:chunk-0022:008",
+    "evidence:chunk-0033:005",
+    "evidence:chunk-0033:007",
+    "evidence:chunk-0054:006",
+    "evidence:chunk-0054:012",
+    "evidence:chunk-0054:013",
+    "evidence:chunk-0055:004",
+    "evidence:chunk-0055:005",
+    "evidence:chunk-0055:006",
+    "evidence:chunk-0060:011",
+    "evidence:chunk-0061:001",
+    "evidence:chunk-0061:006",
+    "evidence:chunk-0064:011",
+    "evidence:chunk-0064:012",
+    "evidence:chunk-0066:002",
+    "evidence:chunk-0066:004",
+    "evidence:chunk-0066:008",
+    "evidence:chunk-0066:009",
+    "evidence:chunk-0261:006",
+    "evidence:chunk-0261:009",
+    "evidence:chunk-0264:015",
+    "evidence:chunk-0264:020",
+    "evidence:chunk-0265:005",
+    "evidence:chunk-0265:010",
+    "evidence:chunk-0265:013",
+    "evidence:chunk-0265:016",
+    "evidence:chunk-0363:020",
+    "evidence:chunk-0363:021",
+    "evidence:chunk-0262:012",
+    "evidence:chunk-0328:012",
+    "evidence:chunk-0334:005",
+    "evidence:chunk-0334:016",
+    "evidence:chunk-0335:008",
+    "evidence:chunk-0341:003",
+    "evidence:chunk-0341:004",
+    "evidence:chunk-0341:005",
+    "evidence:chunk-0342:011",
+    "evidence:chunk-0342:013",
+    "evidence:chunk-0342:014",
+    "evidence:chunk-0342:019",
+    "evidence:chunk-0346:005",
+    "evidence:chunk-0346:006",
+    "evidence:chunk-0346:020",
+    "evidence:chunk-0346:022",
+    "evidence:chunk-0379:015",
+    "evidence:chunk-0387:001",
+    "evidence:chunk-0387:002",
+    "evidence:chunk-0387:007",
+    "evidence:chunk-0387:016",
+    "evidence:chunk-0431:008",
+    "evidence:chunk-0431:027",
+    "evidence:chunk-0438:004",
+    "evidence:chunk-0315:003",
+    "evidence:chunk-0315:004",
+    "evidence:chunk-0315:005",
+    "evidence:chunk-0315:006",
+    "evidence:chunk-0315:007"
+  ],
+  "gap_items": [
+    {
+      "requirement_id": "creature_deviant_practice_ecology.evidence_requirements[3]",
+      "status": "partially_covered",
+      "content": "等阶、完整反噬规律、禁术完整机制、受害规模和长期社会影响并非每个案例都闭合；已在 pending_verifications 和 not_found_items 中标注。",
+      "evidence_ids": [
+        "evidence:chunk-0033:007",
+        "evidence:chunk-0363:020",
+        "evidence:chunk-0334:016"
+      ]
+    }
+  ],
+  "render_target": "drafts",
+  "overwrite_policy": "draft",
+  "artifact_paths": {
+    "template_run_ledger": "coverage/template-run-ledger.json",
+    "template_evidence_usage": "coverage/template-evidence-usage.json",
+    "template_gap_report": "coverage/template-gap-report.md"
+  },
+  "record_metadata": {
+    "batch_id": "template-batch-0036-dd9a705eb405",
+    "agent_role": "stage2-template-document-agent",
+    "category_id": "creature_deviant_practice_ecology",
+    "category_name": "妖兽生态与邪修异法",
+    "template_sha256": "b950c9fa8187c59632da39dffe80d88020dd098699995c6fec40722d5be52480",
+    "extraction_basis": "优先筛选 supports_templates[].template_name == \"邪修分析\" 的 graph nodes/events/evidence，并按 task packet requirements 归并。"
+  }
+}

@@ -1,0 +1,4360 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0394:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0394",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T20:00:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0394:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立因通缉离开西南海域，采购乱星海资料后决定前往天星城，并在长途飞行中尝试修炼大衍诀。",
+      "evidence_ids": [
+        "evidence:chunk-0394:001",
+        "evidence:chunk-0394:005",
+        "evidence:chunk-0394:021",
+        "evidence:chunk-0394:023"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1008413,
+        1010876
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008413,
+          1010876
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:character:002",
+      "node_type": "character",
+      "label": "曲魂",
+      "aliases": [],
+      "fact_summary": "曲魂用秘术为韩立和自己遮掩相貌，辅助二人避开通缉风险。",
+      "evidence_ids": [
+        "evidence:chunk-0394:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1008594,
+        1008625
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008594,
+          1008625
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:location:001",
+      "node_type": "location",
+      "label": "乱星海",
+      "aliases": [],
+      "fact_summary": "乱星海是韩立当前所处海域体系，包含内星海、外星海等区域，由星宫管辖。",
+      "evidence_ids": [
+        "evidence:chunk-0394:006",
+        "evidence:chunk-0394:007",
+        "evidence:chunk-0394:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1008868,
+        1009252
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008868,
+          1009252
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:location:002",
+      "node_type": "location",
+      "label": "西南海域",
+      "aliases": [],
+      "fact_summary": "西南海域因韩立被通缉而不能继续停留，也是他原有海域图覆盖的区域。",
+      "evidence_ids": [
+        "evidence:chunk-0394:002",
+        "evidence:chunk-0394:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1008470,
+        1008586
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008470,
+          1008586
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:facility:001",
+      "node_type": "facility",
+      "label": "小坊市",
+      "aliases": [],
+      "fact_summary": "位于西南海域与其他海域交界小岛上的兴旺坊市，韩立在此补充原料并购买典籍、海域图。",
+      "evidence_ids": [
+        "evidence:chunk-0394:003",
+        "evidence:chunk-0394:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1008547,
+        1008734
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008547,
+          1008734
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:tool:001",
+      "node_type": "tool",
+      "label": "海域图",
+      "aliases": [],
+      "fact_summary": "海域图是韩立离开西南海域、前往乱星海其他地方所需的信息载体；他在坊市购买了相关海域图。",
+      "evidence_ids": [
+        "evidence:chunk-0394:002",
+        "evidence:chunk-0394:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1008470,
+        1008734
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008470,
+          1008734
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:location:003",
+      "node_type": "location",
+      "label": "内星海",
+      "aliases": [],
+      "fact_summary": "乱星海已被探明的海域称为内星海，由先辈铲除妖兽后开拓形成。",
+      "evidence_ids": [
+        "evidence:chunk-0394:007",
+        "evidence:chunk-0394:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1008969,
+        1009223
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008969,
+          1009223
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:location:004",
+      "node_type": "location",
+      "label": "外星海",
+      "aliases": [
+        "妖海"
+      ],
+      "fact_summary": "外星海是乱星海未探明的外围海域，又称妖海，有大量强大妖兽。",
+      "evidence_ids": [
+        "evidence:chunk-0394:007",
+        "evidence:chunk-0394:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1008969,
+        1009095
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008969,
+          1009095
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:beast:001",
+      "node_type": "beast",
+      "label": "强大妖兽",
+      "aliases": [],
+      "fact_summary": "外星海中存活许多强大妖兽，据说可与元婴期修士抗衡；内星海的形成也与先辈铲除强大妖兽有关。",
+      "evidence_ids": [
+        "evidence:chunk-0394:008",
+        "evidence:chunk-0394:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009040,
+        1009223
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009040,
+          1009223
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:faction:001",
+      "node_type": "faction",
+      "label": "星宫",
+      "aliases": [],
+      "fact_summary": "星宫是管辖整个乱星海的庞大势力，并设天星城、外二十四星岛和内十二星岛等治理结构。",
+      "evidence_ids": [
+        "evidence:chunk-0394:010",
+        "evidence:chunk-0394:013",
+        "evidence:chunk-0394:017"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009226,
+        1010093
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009226,
+          1010093
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:faction:002",
+      "node_type": "faction",
+      "label": "天星宫",
+      "aliases": [],
+      "fact_summary": "天星宫被叙述为建设天星城并在城内建有通往外星海传送阵的势力称呼；是否与星宫完全同指需后续复核。",
+      "evidence_ids": [
+        "evidence:chunk-0394:011",
+        "evidence:chunk-0394:018"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009351,
+        1010280
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009351,
+          1010280
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:location:005",
+      "node_type": "location",
+      "label": "天星城",
+      "aliases": [],
+      "fact_summary": "天星城是内星海中部巨岛上的超级城市，由天星双圣统治，是韩立决定前往的目标地。",
+      "evidence_ids": [
+        "evidence:chunk-0394:011",
+        "evidence:chunk-0394:021",
+        "evidence:chunk-0394:025"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009351,
+        1011150
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009351,
+          1011150
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:character:003",
+      "node_type": "character",
+      "label": "天星双圣",
+      "aliases": [
+        "二位圣主"
+      ],
+      "fact_summary": "天星双圣是天星城两位城主，统治星宫组织，被传言为元婴后期或化神境界。",
+      "evidence_ids": [
+        "evidence:chunk-0394:011",
+        "evidence:chunk-0394:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009351,
+        1009499
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009351,
+          1009499
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:realm:001",
+      "node_type": "realm",
+      "label": "元婴后期",
+      "aliases": [],
+      "fact_summary": "乱星海修士传言天星双圣可能是元婴后期修士。",
+      "evidence_ids": [
+        "evidence:chunk-0394:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009470,
+        1009499
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009470,
+          1009499
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:realm:002",
+      "node_type": "realm",
+      "label": "化神境界",
+      "aliases": [],
+      "fact_summary": "乱星海修士传言天星双圣可能是化神境界天人。",
+      "evidence_ids": [
+        "evidence:chunk-0394:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009470,
+        1009499
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009470,
+          1009499
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:location:006",
+      "node_type": "location",
+      "label": "外二十四星岛",
+      "aliases": [],
+      "fact_summary": "星宫在内星海外围八个区域设立的直辖分岛合称外二十四星岛，其岛主通过百年挑战选拔产生。",
+      "evidence_ids": [
+        "evidence:chunk-0394:013",
+        "evidence:chunk-0394:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009541,
+        1009809
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009541,
+          1009809
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:location:007",
+      "node_type": "location",
+      "label": "内十二星岛",
+      "aliases": [],
+      "fact_summary": "星宫在内星海中部四个区域设立的直辖分岛合称内十二星岛。",
+      "evidence_ids": [
+        "evidence:chunk-0394:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009541,
+        1009608
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009541,
+          1009608
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:location:008",
+      "node_type": "location",
+      "label": "魁星岛",
+      "aliases": [],
+      "fact_summary": "魁星岛是韩立曾待过的星宫下辖外岛。",
+      "evidence_ids": [
+        "evidence:chunk-0394:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009625,
+        1009651
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009625,
+          1009651
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:event:001",
+      "node_type": "event",
+      "label": "摘星大会",
+      "aliases": [],
+      "fact_summary": "摘星大会是每百年在天星城举行的外岛之主挑战选拔大会。",
+      "evidence_ids": [
+        "evidence:chunk-0394:015",
+        "evidence:chunk-0394:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009778,
+        1009873
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009778,
+          1009873
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:formation:001",
+      "node_type": "formation",
+      "label": "传送阵",
+      "aliases": [],
+      "fact_summary": "天星宫在天星城建有可直通外星海妖兽岛的传送阵，使用者需缴纳大笔灵石。",
+      "evidence_ids": [
+        "evidence:chunk-0394:018",
+        "evidence:chunk-0394:019"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010261,
+        1010324
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010261,
+          1010324
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:location:009",
+      "node_type": "location",
+      "label": "妖兽岛",
+      "aliases": [],
+      "fact_summary": "妖兽岛是外星海中由前人开辟、有灵气、可通过传送阵抵达并猎杀妖兽的岛屿。",
+      "evidence_ids": [
+        "evidence:chunk-0394:019",
+        "evidence:chunk-0394:020"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010283,
+        1010387
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010283,
+          1010387
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:material:001",
+      "node_type": "material",
+      "label": "妖丹",
+      "aliases": [],
+      "fact_summary": "妖丹是修士斩杀妖兽后夺取并带回天星城换卖灵石的资源。",
+      "evidence_ids": [
+        "evidence:chunk-0394:020"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010352,
+        1010387
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010352,
+          1010387
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:material:002",
+      "node_type": "material",
+      "label": "灵石",
+      "aliases": [],
+      "fact_summary": "灵石用于天星城长住缴纳、传送阵费用，也可由妖丹换卖获得。",
+      "evidence_ids": [
+        "evidence:chunk-0394:017",
+        "evidence:chunk-0394:019",
+        "evidence:chunk-0394:020"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010049,
+        1010387
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010049,
+          1010387
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:cultivation_method:001",
+      "node_type": "cultivation_method",
+      "label": "大衍诀",
+      "aliases": [],
+      "fact_summary": "韩立在长途御器飞行中尝试并逐渐做到一边飞行一边修炼大衍诀。",
+      "evidence_ids": [
+        "evidence:chunk-0394:023",
+        "evidence:chunk-0394:024"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010848,
+        1011069
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010848,
+          1011069
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:faction:003",
+      "node_type": "faction",
+      "label": "夜龙岛",
+      "aliases": [],
+      "fact_summary": "夜龙岛被列为乱星海除星宫外的其他大小势力之一。",
+      "evidence_ids": [
+        "evidence:chunk-0394:022"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010625,
+        1010672
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010625,
+          1010672
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:faction:004",
+      "node_type": "faction",
+      "label": "四大商盟",
+      "aliases": [],
+      "fact_summary": "四大商盟被列为乱星海除星宫外的其他大小势力之一。",
+      "evidence_ids": [
+        "evidence:chunk-0394:022"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010625,
+        1010672
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010625,
+          1010672
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:faction:005",
+      "node_type": "faction",
+      "label": "魅魔宗",
+      "aliases": [],
+      "fact_summary": "魅魔宗被列为乱星海除星宫外的其他大小势力之一。",
+      "evidence_ids": [
+        "evidence:chunk-0394:022"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010625,
+        1010672
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010625,
+          1010672
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:faction:006",
+      "node_type": "faction",
+      "label": "三仙门",
+      "aliases": [],
+      "fact_summary": "三仙门被列为乱星海除星宫外的其他大小势力之一。",
+      "evidence_ids": [
+        "evidence:chunk-0394:022"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010625,
+        1010672
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010625,
+          1010672
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:faction:007",
+      "node_type": "faction",
+      "label": "极阴岛",
+      "aliases": [],
+      "fact_summary": "极阴岛被列为乱星海除星宫外的其他大小势力之一。",
+      "evidence_ids": [
+        "evidence:chunk-0394:022"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010625,
+        1010672
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010625,
+          1010672
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0394:faction:008",
+      "node_type": "faction",
+      "label": "六连殿",
+      "aliases": [],
+      "fact_summary": "六连殿被列为乱星海除星宫外的其他大小势力之一。",
+      "evidence_ids": [
+        "evidence:chunk-0394:022"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010625,
+        1010672
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010625,
+          1010672
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0394:001",
+      "edge_type": "travels_with",
+      "source": "node:chunk-0394:character:001",
+      "target": "node:chunk-0394:character:002",
+      "fact_summary": "韩立与曲魂一起离开西南海域，曲魂还用秘术遮掩二人相貌。",
+      "evidence_ids": [
+        "evidence:chunk-0394:001",
+        "evidence:chunk-0394:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1008413,
+        1008625
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008413,
+          1008625
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:002",
+      "edge_type": "avoids",
+      "source": "node:chunk-0394:character:001",
+      "target": "node:chunk-0394:location:002",
+      "fact_summary": "韩立因通缉认为西南海域不能再待，转向东北方向离开。",
+      "evidence_ids": [
+        "evidence:chunk-0394:001",
+        "evidence:chunk-0394:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1008413,
+        1008519
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008413,
+          1008519
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:003",
+      "edge_type": "located_at_boundary_of",
+      "source": "node:chunk-0394:facility:001",
+      "target": "node:chunk-0394:location:002",
+      "fact_summary": "小坊市所在小岛处于西南海域和其他海域交界处。",
+      "evidence_ids": [
+        "evidence:chunk-0394:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1008547,
+        1008586
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008547,
+          1008586
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:004",
+      "edge_type": "purchases",
+      "source": "node:chunk-0394:character:001",
+      "target": "node:chunk-0394:tool:001",
+      "fact_summary": "韩立在坊市购买介绍乱星海情况的典籍和海域图。",
+      "evidence_ids": [
+        "evidence:chunk-0394:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1008684,
+        1008734
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008684,
+          1008734
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:005",
+      "edge_type": "part_of",
+      "source": "node:chunk-0394:location:003",
+      "target": "node:chunk-0394:location:001",
+      "fact_summary": "内星海是乱星海已探明的海域部分。",
+      "evidence_ids": [
+        "evidence:chunk-0394:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1008969,
+        1009008
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008969,
+          1009008
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:006",
+      "edge_type": "part_of",
+      "source": "node:chunk-0394:location:004",
+      "target": "node:chunk-0394:location:001",
+      "fact_summary": "外星海是乱星海尚未探明的外围海域。",
+      "evidence_ids": [
+        "evidence:chunk-0394:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1008969,
+        1009008
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008969,
+          1009008
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:007",
+      "edge_type": "inhabits",
+      "source": "node:chunk-0394:beast:001",
+      "target": "node:chunk-0394:location:004",
+      "fact_summary": "强大妖兽生活在外星海。",
+      "evidence_ids": [
+        "evidence:chunk-0394:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009040,
+        1009095
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009040,
+          1009095
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:008",
+      "edge_type": "governs",
+      "source": "node:chunk-0394:faction:001",
+      "target": "node:chunk-0394:location:001",
+      "fact_summary": "星宫管辖整个乱星海。",
+      "evidence_ids": [
+        "evidence:chunk-0394:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009226,
+        1009252
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009226,
+          1009252
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:009",
+      "edge_type": "rules_from",
+      "source": "node:chunk-0394:faction:001",
+      "target": "node:chunk-0394:location:005",
+      "fact_summary": "天星双圣在天星城统治星宫组织，天星城也是星宫治理结构核心。",
+      "evidence_ids": [
+        "evidence:chunk-0394:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009351,
+        1009413
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009351,
+          1009413
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:010",
+      "edge_type": "ruled_by",
+      "source": "node:chunk-0394:faction:001",
+      "target": "node:chunk-0394:character:003",
+      "fact_summary": "天星双圣两位城主统治星宫组织。",
+      "evidence_ids": [
+        "evidence:chunk-0394:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009351,
+        1009413
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009351,
+          1009413
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:011",
+      "edge_type": "possibly_has_realm",
+      "source": "node:chunk-0394:character:003",
+      "target": "node:chunk-0394:realm:001",
+      "fact_summary": "传言天星双圣可能是元婴后期修士。",
+      "evidence_ids": [
+        "evidence:chunk-0394:012"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009470,
+        1009499
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009470,
+          1009499
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:012",
+      "edge_type": "possibly_has_realm",
+      "source": "node:chunk-0394:character:003",
+      "target": "node:chunk-0394:realm:002",
+      "fact_summary": "传言天星双圣可能是化神境界天人。",
+      "evidence_ids": [
+        "evidence:chunk-0394:012"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009470,
+        1009499
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009470,
+          1009499
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:013",
+      "edge_type": "administers",
+      "source": "node:chunk-0394:faction:001",
+      "target": "node:chunk-0394:location:006",
+      "fact_summary": "星宫设立外二十四星岛作为直辖分岛。",
+      "evidence_ids": [
+        "evidence:chunk-0394:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009541,
+        1009608
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009541,
+          1009608
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:014",
+      "edge_type": "administers",
+      "source": "node:chunk-0394:faction:001",
+      "target": "node:chunk-0394:location:007",
+      "fact_summary": "星宫设立内十二星岛作为直辖分岛。",
+      "evidence_ids": [
+        "evidence:chunk-0394:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009541,
+        1009608
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009541,
+          1009608
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:015",
+      "edge_type": "administers",
+      "source": "node:chunk-0394:faction:001",
+      "target": "node:chunk-0394:location:008",
+      "fact_summary": "魁星岛是星宫下辖的一处外岛。",
+      "evidence_ids": [
+        "evidence:chunk-0394:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009625,
+        1009651
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009625,
+          1009651
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:016",
+      "edge_type": "selects_ruler_for",
+      "source": "node:chunk-0394:event:001",
+      "target": "node:chunk-0394:location:006",
+      "fact_summary": "摘星大会通过公开挑战选拔外二十四星岛岛主。",
+      "evidence_ids": [
+        "evidence:chunk-0394:015",
+        "evidence:chunk-0394:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009778,
+        1009873
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009778,
+          1009873
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:017",
+      "edge_type": "has_rule",
+      "source": "node:chunk-0394:location:005",
+      "target": "node:chunk-0394:material:002",
+      "fact_summary": "天星城长住者每月要缴纳一定灵石，且城内不准打斗。",
+      "evidence_ids": [
+        "evidence:chunk-0394:017"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010049,
+        1010093
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010049,
+          1010093
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:018",
+      "edge_type": "contains",
+      "source": "node:chunk-0394:location:005",
+      "target": "node:chunk-0394:formation:001",
+      "fact_summary": "天星城内建有通往外星海的传送阵。",
+      "evidence_ids": [
+        "evidence:chunk-0394:018"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010261,
+        1010280
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010261,
+          1010280
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:019",
+      "edge_type": "connects_to",
+      "source": "node:chunk-0394:formation:001",
+      "target": "node:chunk-0394:location:004",
+      "fact_summary": "天星城传送阵可直接通往外星海。",
+      "evidence_ids": [
+        "evidence:chunk-0394:018",
+        "evidence:chunk-0394:019"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010261,
+        1010324
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010261,
+          1010324
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:020",
+      "edge_type": "connects_to",
+      "source": "node:chunk-0394:formation:001",
+      "target": "node:chunk-0394:location:009",
+      "fact_summary": "缴纳大笔灵石后可通过传送阵前往外星海妖兽岛。",
+      "evidence_ids": [
+        "evidence:chunk-0394:019"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010283,
+        1010324
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010283,
+          1010324
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:021",
+      "edge_type": "yields",
+      "source": "node:chunk-0394:beast:001",
+      "target": "node:chunk-0394:material:001",
+      "fact_summary": "修士斩杀妖兽后可夺取妖丹。",
+      "evidence_ids": [
+        "evidence:chunk-0394:020"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010352,
+        1010387
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010352,
+          1010387
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:022",
+      "edge_type": "traded_for",
+      "source": "node:chunk-0394:material:001",
+      "target": "node:chunk-0394:material:002",
+      "fact_summary": "妖丹可带回天星城换卖灵石。",
+      "evidence_ids": [
+        "evidence:chunk-0394:020"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010352,
+        1010387
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010352,
+          1010387
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:023",
+      "edge_type": "decides_destination",
+      "source": "node:chunk-0394:character:001",
+      "target": "node:chunk-0394:location:005",
+      "fact_summary": "韩立因天星城安全环境和传送阵猎妖取丹机会，决定前往天星城。",
+      "evidence_ids": [
+        "evidence:chunk-0394:021"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010529,
+        1010553
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010529,
+          1010553
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0394:024",
+      "edge_type": "practices",
+      "source": "node:chunk-0394:character:001",
+      "target": "node:chunk-0394:cultivation_method:001",
+      "fact_summary": "韩立在长途御器飞行中尝试并最终勉强做到同时修炼大衍诀。",
+      "evidence_ids": [
+        "evidence:chunk-0394:023",
+        "evidence:chunk-0394:024"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010848,
+        1011069
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010848,
+          1011069
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0394:001",
+      "event_type": "flight_after_wanted",
+      "label": "韩立远离西南海域",
+      "fact_summary": "韩立因被通缉和谨慎考虑，日夜不停向东北飞行，准备离开不能再待的西南海域。",
+      "participants": [
+        "node:chunk-0394:character:001",
+        "node:chunk-0394:location:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0394:001",
+        "evidence:chunk-0394:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1008413,
+        1008519
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008413,
+          1008519
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0394:002",
+      "event_type": "market_resupply",
+      "label": "韩立在边界坊市补给并买资料",
+      "fact_summary": "韩立在西南海域交界处小坊市中补充原料，购买乱星海典籍和海域图，并通过阅读了解乱星海。",
+      "participants": [
+        "node:chunk-0394:character:001",
+        "node:chunk-0394:facility:001",
+        "node:chunk-0394:tool:001",
+        "node:chunk-0394:location:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0394:003",
+        "evidence:chunk-0394:005",
+        "evidence:chunk-0394:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1008547,
+        1008897
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008547,
+          1008897
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0394:003",
+      "event_type": "disguise_precaution",
+      "label": "韩立曲魂遮掩形貌",
+      "fact_summary": "韩立出于小心，让曲魂用秘术遮掩二人相貌，并戴斗篷防止修士神识窥探。",
+      "participants": [
+        "node:chunk-0394:character:001",
+        "node:chunk-0394:character:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0394:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1008594,
+        1008625
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008594,
+          1008625
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0394:004",
+      "event_type": "world_lore_inner_outer_seas",
+      "label": "韩立获知乱星海内外海划分",
+      "fact_summary": "韩立从典籍中了解乱星海已探明海域称内星海，未探明外围海域称外星海或妖海，外星海有强大妖兽。",
+      "participants": [
+        "node:chunk-0394:character:001",
+        "node:chunk-0394:location:001",
+        "node:chunk-0394:location:003",
+        "node:chunk-0394:location:004",
+        "node:chunk-0394:beast:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0394:006",
+        "evidence:chunk-0394:007",
+        "evidence:chunk-0394:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1008868,
+        1009095
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008868,
+          1009095
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0394:005",
+      "event_type": "star_palace_governance_explained",
+      "label": "星宫治理乱星海结构被说明",
+      "fact_summary": "典籍说明乱星海由星宫管辖，天星城为核心，天星双圣统治星宫，并设外二十四星岛、内十二星岛等分岛。",
+      "participants": [
+        "node:chunk-0394:faction:001",
+        "node:chunk-0394:location:001",
+        "node:chunk-0394:location:005",
+        "node:chunk-0394:character:003",
+        "node:chunk-0394:location:006",
+        "node:chunk-0394:location:007"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0394:010",
+        "evidence:chunk-0394:011",
+        "evidence:chunk-0394:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009226,
+        1009608
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009226,
+          1009608
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0394:006",
+      "event_type": "zhai_xing_selection",
+      "label": "摘星大会选拔外岛岛主",
+      "fact_summary": "外二十四星岛每百年在天星城公开挑战选拔岛主，选拔大会称摘星大会。",
+      "participants": [
+        "node:chunk-0394:event:001",
+        "node:chunk-0394:location:005",
+        "node:chunk-0394:location:006"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0394:015",
+        "evidence:chunk-0394:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1009778,
+        1009873
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009778,
+          1009873
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0394:007",
+      "event_type": "heavenstar_city_trade_rule",
+      "label": "天星城自由规则与商业环境",
+      "fact_summary": "天星城不准城内打斗，长住者每月缴灵石，星宫通常不干涉，因此商家在城内设门面并经营拍卖收购。",
+      "participants": [
+        "node:chunk-0394:location:005",
+        "node:chunk-0394:faction:001",
+        "node:chunk-0394:material:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0394:017"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "散修生存方式",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010049,
+        1010093
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010049,
+          1010093
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0394:008",
+      "event_type": "outer_sea_hunt_economy",
+      "label": "传送阵支撑外星海猎妖取丹",
+      "fact_summary": "修士缴纳灵石后通过天星城传送阵前往妖兽岛，在附近海面斩杀妖兽、夺取妖丹并回天星城换卖灵石。",
+      "participants": [
+        "node:chunk-0394:formation:001",
+        "node:chunk-0394:location:005",
+        "node:chunk-0394:location:004",
+        "node:chunk-0394:location:009",
+        "node:chunk-0394:beast:001",
+        "node:chunk-0394:material:001",
+        "node:chunk-0394:material:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0394:018",
+        "evidence:chunk-0394:019",
+        "evidence:chunk-0394:020"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010261,
+        1010387
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010261,
+          1010387
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0394:009",
+      "event_type": "destination_decision",
+      "label": "韩立决定前往天星城",
+      "fact_summary": "韩立看中天星城的安全环境和可杀妖取丹的传送阵，决定前往天星城。",
+      "participants": [
+        "node:chunk-0394:character:001",
+        "node:chunk-0394:location:005",
+        "node:chunk-0394:formation:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0394:021"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010529,
+        1010553
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010529,
+          1010553
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0394:010",
+      "event_type": "dayan_jue_training_while_flying",
+      "label": "韩立赶路时修炼大衍诀",
+      "fact_summary": "韩立在数月长途跋涉中一边御器飞行一边尝试修炼大衍诀，经过多次试验后勉强做到一心二用。",
+      "participants": [
+        "node:chunk-0394:character:001",
+        "node:chunk-0394:cultivation_method:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0394:023",
+        "evidence:chunk-0394:024"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1010848,
+        1011069
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010848,
+          1011069
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0394:011",
+      "event_type": "approaches_heavenstar_giant_island",
+      "label": "韩立接近天星城巨岛",
+      "fact_summary": "韩立判断自己已到天星城所在巨岛附近，并在前方看见巨大黑点。",
+      "participants": [
+        "node:chunk-0394:character:001",
+        "node:chunk-0394:location:005"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0394:025",
+        "evidence:chunk-0394:026"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        1011132,
+        1011208
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1011132,
+          1011208
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0394:001",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1008413,
+        1008460
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008413,
+          1008460
+        ]
+      },
+      "excerpt": "韩立自然不知道，原本可能到来的一场危机就这样化解了。但出于小心，他仍日夜不停的向东北方向飞去。",
+      "fact_summary": "韩立不知道追击危机已解除，仍因谨慎日夜向东北方向飞行。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:002",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1008470,
+        1008519
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008470,
+          1008519
+        ]
+      },
+      "excerpt": "西南海域是不能再待了，但若去其他地方，就必须有整个乱星海的海域图才可，但韩立身上只有西南的海域图。",
+      "fact_summary": "韩立因通缉不能留在西南海域，若去其他区域需要整个乱星海海域图。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:003",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1008547,
+        1008586
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008547,
+          1008586
+        ]
+      },
+      "excerpt": "此岛虽然不大，但因为处于西南海域和其他海域的交界处，倒也有个非常兴旺的小坊市。",
+      "fact_summary": "韩立停留的小岛位于西南海域与其他海域交界处，有兴旺小坊市。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:004",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1008594,
+        1008625
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008594,
+          1008625
+        ]
+      },
+      "excerpt": "韩立让曲魂用某种秘术同时遮掩住了二人的相貌，再分别戴上个斗篷。",
+      "fact_summary": "韩立让曲魂用秘术遮掩二人相貌，并戴斗篷防止被神识窥探。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:005",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1008684,
+        1008734
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008684,
+          1008734
+        ]
+      },
+      "excerpt": "韩立在岛上的坊市中补充了一大堆原料之类的东西，并购买了许多介绍乱星海诸多方面情况的典籍和相关的海域图",
+      "fact_summary": "韩立在坊市补充原料，并购买介绍乱星海情况的典籍和海域图。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:006",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1008868,
+        1008897
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008868,
+          1008897
+        ]
+      },
+      "excerpt": "经过一番细看后，韩立终于对整个乱星海的情况有了大概的了解。",
+      "fact_summary": "韩立阅读玉简后对整个乱星海形成大概了解。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:007",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1008969,
+        1009008
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008969,
+          1009008
+        ]
+      },
+      "excerpt": "已被探明的海域，通常会被称为“内星海”，尚未探明的外围海域则就是“外星海了”。",
+      "fact_summary": "乱星海已探明海域称内星海，未探明外围海域称外星海。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:008",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1009040,
+        1009095
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009040,
+          1009095
+        ]
+      },
+      "excerpt": "“外星海”则有个更恐怖的名称“妖海”，因为在那里有许多不可思议的强大妖兽存活着，据说力敌元婴期的修士都不落下风",
+      "fact_summary": "外星海又称妖海，那里有许多能与元婴期修士抗衡的强大妖兽。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:009",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1009191,
+        1009223
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009191,
+          1009223
+        ]
+      },
+      "excerpt": "乱星海的诸多先辈才一一铲除掉强大的妖兽，开拓出了如今的内星海域。",
+      "fact_summary": "乱星海先辈铲除强大妖兽，开拓出如今的内星海域。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:010",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1009226,
+        1009252
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009226,
+          1009252
+        ]
+      },
+      "excerpt": "现如今，整个乱星海都由一个叫“星宫”的庞大势力管辖着",
+      "fact_summary": "整个乱星海现由星宫这一庞大势力管辖。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:011",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1009351,
+        1009413
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009351,
+          1009413
+        ]
+      },
+      "excerpt": "如今的天星宫，将内星海中部的一个巨岛建成了一座超级城市“天星城”，其中有号称“天星双圣”的两位城主，统治着整个“星宫”组织。",
+      "fact_summary": "天星宫在内星海中部巨岛建成天星城，天星双圣两位城主统治星宫组织。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:012",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1009470,
+        1009499
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009470,
+          1009499
+        ]
+      },
+      "excerpt": "这二位圣主不是元婴后期的修士，就是传说中的化神境界的天人。",
+      "fact_summary": "乱星海修士传言天星双圣可能是元婴后期修士或化神境界天人。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:013",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1009541,
+        1009608
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009541,
+          1009608
+        ]
+      },
+      "excerpt": "“星宫”除了“天星城”外，还在内星海外围的八个区域和中部的四个区域，各取三个最大的岛屿，设立了直辖的分岛。号称外二十四星岛、内十二星岛",
+      "fact_summary": "星宫在天星城外设外二十四星岛和内十二星岛作为直辖分岛。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:013"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:014",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1009625,
+        1009651
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009625,
+          1009651
+        ]
+      },
+      "excerpt": "韩立所待过的魁星岛，就是这个“星宫”下辖的一处外岛。",
+      "fact_summary": "魁星岛是星宫下辖的一处外岛。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:014"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:015",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1009778,
+        1009809
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009778,
+          1009809
+        ]
+      },
+      "excerpt": "每百年在“天星城”对外公开进行挑战选拔，最后的胜者自动成为岛主",
+      "fact_summary": "外二十四星岛岛主每百年在天星城公开挑战选拔，胜者自动成为岛主。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:015"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:016",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1009828,
+        1009873
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009828,
+          1009873
+        ]
+      },
+      "excerpt": "每百年在“天星城”举行的选拔外岛之主的大会被众多想要一越跃龙门的修士，称之为“摘星大会”。",
+      "fact_summary": "选拔外岛之主的百年大会被称为摘星大会，吸引修士聚集。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:016"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:017",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1010049,
+        1010093
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010049,
+          1010093
+        ]
+      },
+      "excerpt": "除了不准在城内打斗和长住的人每月要缴纳一定的灵石外，“星宫”的人不会干涉此城的任何事情。",
+      "fact_summary": "天星城规则是不得城内打斗，长住者每月缴灵石，星宫通常不干涉城中事务。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "散修生存方式",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:017"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:018",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1010261,
+        1010280
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010261,
+          1010280
+        ]
+      },
+      "excerpt": "天星宫竟然建有直接通往外星海的传送阵。",
+      "fact_summary": "天星宫在天星城内建有直通外星海的传送阵。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:018"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:019",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1010283,
+        1010324
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010283,
+          1010324
+        ]
+      },
+      "excerpt": "只要有人肯交大笔的灵石，就可通过传送阵，传送至外星海的数十个大小不一的“妖兽岛”去",
+      "fact_summary": "修士缴纳大笔灵石后可通过传送阵前往外星海数十个妖兽岛。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:019"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:020",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1010352,
+        1010387
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010352,
+          1010387
+        ]
+      },
+      "excerpt": "修士们就可在附近的海面斩杀各类的妖兽，夺取妖丹再拿回天星城换卖灵石了。",
+      "fact_summary": "修士在妖兽岛附近海面斩杀妖兽，取妖丹回天星城换卖灵石。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:020"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:021",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1010529,
+        1010553
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010529,
+          1010553
+        ]
+      },
+      "excerpt": "韩立几乎想都不用想，当即就决定到“天星城”去了。",
+      "fact_summary": "韩立因天星城安全环境和猎妖取丹传送阵而决定前往天星城。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:021"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:022",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1010625,
+        1010672
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010625,
+          1010672
+        ]
+      },
+      "excerpt": "夜龙岛”“四大商盟”“魅魔宗”“三仙门”等等，当然“极阴岛”“六连殿”也算是两股不小的势力了。",
+      "fact_summary": "乱星海除星宫外还有夜龙岛、四大商盟、魅魔宗、三仙门、极阴岛、六连殿等势力。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:022"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:023",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1010848,
+        1010876
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1010848,
+          1010876
+        ]
+      },
+      "excerpt": "韩立就在一边御器飞行，一边倚仗神识强大尝试着修炼大衍诀。",
+      "fact_summary": "韩立在长途飞行中倚仗神识强大，尝试一边御器一边修炼大衍诀。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:023"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:024",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1011039,
+        1011069
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1011039,
+          1011069
+        ]
+      },
+      "excerpt": "终于可以勉强的做到一边御器飞行，一边不动神色的修炼大衍诀了。",
+      "fact_summary": "韩立经过多次试验后，勉强做到一边御器飞行一边修炼大衍诀。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:024"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:025",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1011132,
+        1011150
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1011132,
+          1011150
+        ]
+      },
+      "excerpt": "应该已经到了天星城所在的巨岛附近才对",
+      "fact_summary": "韩立根据半个月前经过的荒岛判断，自己应已到天星城所在巨岛附近。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:025"
+    },
+    {
+      "evidence_id": "evidence:chunk-0394:026",
+      "chunk_id": "chunk-0394",
+      "source_range": [
+        1011187,
+        1011208
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1011187,
+          1011208
+        ]
+      },
+      "excerpt": "前面模模糊糊的，似乎出现了一个巨大的黑点。",
+      "fact_summary": "韩立前方模糊出现巨大黑点，疑似天星城所在巨岛。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0394:026"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "世界观设定",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "势力设定",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "建筑设施与场所功能",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "拍卖坊市与交易",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "妖兽分析",
+      "requirement_id": "creature_deviant_practice_ecology",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "妖兽与修士关系分析",
+      "requirement_id": "creature_deviant_practice_ecology",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "功法术法神通",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "角色修炼历程",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "动态事件与机会点",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "材料分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "阵法师",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0394:001",
+      "kind": "possible_alias_not_merged",
+      "fact_summary": "本 chunk 同时出现“星宫”和“天星宫”；语境高度相关，但未明示二者为同一名称，因此分别建节点并标记待复核。",
+      "evidence_ids": [
+        "evidence:chunk-0394:010",
+        "evidence:chunk-0394:011",
+        "evidence:chunk-0394:018"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        1009226,
+        1010280
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009226,
+          1010280
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0394:002",
+      "kind": "realm_from_rumor",
+      "fact_summary": "天星双圣为元婴后期或化神境界只来自乱星海修士传言，不可当作已确认境界。",
+      "evidence_ids": [
+        "evidence:chunk-0394:012"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        1009470,
+        1009499
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1009470,
+          1009499
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0394:003",
+      "kind": "distant_landmark_uncertain",
+      "fact_summary": "韩立前方出现的巨大黑点疑似天星城所在巨岛，但本 chunk 尚未明确确认其身份。",
+      "evidence_ids": [
+        "evidence:chunk-0394:025",
+        "evidence:chunk-0394:026"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        1011132,
+        1011208
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1011132,
+          1011208
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0394:001",
+      "candidate": "坊市诸多小商铺店主",
+      "reason": "店主只承担交易背景反应，没有姓名、独立决策或后续关系，不单独建角色节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        1008684,
+        1008734
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008684,
+          1008734
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0394:002",
+      "candidate": "斗篷",
+      "reason": "斗篷只是伪装辅助用品且未具名，已在伪装事件中保留，不单独建物品节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        1008594,
+        1008625
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008594,
+          1008625
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0394:003",
+      "candidate": "典籍和玉简",
+      "reason": "典籍、玉简是信息载体的泛称；当前重点信息已落到乱星海设定与海域图，不硬造多个通用物品节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        1008684,
+        1008897
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0394",
+        "source_path": "intermediate/chunks/chunk-0394.txt",
+        "source_range": [
+          1008684,
+          1008897
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

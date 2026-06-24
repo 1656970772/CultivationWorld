@@ -1,0 +1,1952 @@
+{
+  "schema": "stage2-extraction-record.v1",
+  "template_name": "角色AI行为参考",
+  "template_file": "角色AI行为参考模板.md",
+  "source_graph": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.storygraph/graphify-out/graph.json",
+  "source_novel": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+  "output_language": "zh-CN",
+  "stage2_policy": {
+    "stage2_categories": {
+      "facts": "原作事实",
+      "judgments": "我的判断",
+      "pending_verifications": "待核验",
+      "not_found_items": "未见可靠证据"
+    },
+    "stage2_output_policy": {
+      "default_dir": "drafts",
+      "allow_overwrite_existing_docs": false,
+      "existing_document_action": "write_versioned_draft",
+      "allowed_policies": [
+        "draft",
+        "backup-and-overwrite",
+        "merge"
+      ],
+      "draft_action": "write_draft"
+    },
+    "stage2_render_policy": {
+      "citation_format": "[{evidence_id}]",
+      "draft_entry_policy": {
+        "source_sections": [
+          "facts"
+        ],
+        "field_aliases": {
+          "name": [
+            "name",
+            "title",
+            "item_name",
+            "entity_name",
+            "名称"
+          ],
+          "classification": [
+            "classification",
+            "type",
+            "category_label",
+            "类别",
+            "分类"
+          ],
+          "usage": [
+            "usage",
+            "purpose",
+            "effect",
+            "effects",
+            "用途",
+            "功效"
+          ],
+          "formula": [
+            "formula",
+            "materials",
+            "ingredients",
+            "components",
+            "recipe",
+            "方方",
+            "材料",
+            "成分"
+          ],
+          "source_excerpt": [
+            "source_excerpt",
+            "original_excerpt",
+            "quote",
+            "原文摘录"
+          ],
+          "review_status": [
+            "review_status",
+            "verification_status",
+            "审核状态"
+          ]
+        },
+        "fallback_name": "未命名条目",
+        "kept_fields": [
+          "name",
+          "classification",
+          "usage",
+          "formula",
+          "source_range",
+          "source_excerpt",
+          "evidence_ids",
+          "confidence",
+          "review_status"
+        ]
+      },
+      "final_entry_policy": {
+        "allowed_confidence": [
+          "EXTRACTED"
+        ],
+        "min_evidence_count": 1,
+        "require_explicit_name": true,
+        "require_source_excerpt": true,
+        "required_any_fields": [
+          "usage",
+          "formula"
+        ],
+        "unstable_name_prefixes": [
+          "未名",
+          "未命名",
+          "未知",
+          "不明"
+        ],
+        "unstable_name_contains": [
+          "某种",
+          "某类"
+        ],
+        "composite_name_markers": [
+          "与",
+          "或",
+          "/",
+          "、"
+        ],
+        "review_only_statuses": [
+          "needs_review",
+          "pending_review",
+          "rejected",
+          "ambiguous"
+        ],
+        "allow_missing_review_status": true
+      },
+      "dedupe_policy": {
+        "key_fields": [
+          "name",
+          "classification"
+        ],
+        "merge_text_fields": [
+          "usage",
+          "formula",
+          "source_excerpt"
+        ],
+        "confidence_strategy": "most_conservative",
+        "review_status_strategy": "review_only_wins"
+      },
+      "final_template_policy": {
+        "case_section_names": [
+          "案例",
+          "典型案例",
+          "案例清单",
+          "示例"
+        ],
+        "excluded_section_names": [
+          "待复核",
+          "缺口",
+          "资料来源",
+          "说明"
+        ],
+        "fallback_to_first_non_root_heading": true
+      }
+    }
+  },
+  "coverage_scope": {
+    "scope": "whole_novel",
+    "stage1_chunk_ledger": "coverage/chunk-ledger.json",
+    "chunk_ranges": [
+      {
+        "chunk_id": "chunk-0001",
+        "source_ranges": [
+          [
+            189,
+            270
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0003",
+        "source_ranges": [
+          [
+            1034,
+            1257
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0009",
+        "source_ranges": [
+          [
+            14288,
+            14442
+          ],
+          [
+            15166,
+            15272
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0014",
+        "source_ranges": [
+          [
+            23626,
+            23848
+          ],
+          [
+            24590,
+            24674
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0015",
+        "source_ranges": [
+          [
+            26562,
+            26647
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0023",
+        "source_ranges": [
+          [
+            41506,
+            41708
+          ],
+          [
+            42144,
+            42271
+          ],
+          [
+            42274,
+            42345
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0024",
+        "source_ranges": [
+          [
+            43508,
+            43621
+          ],
+          [
+            43857,
+            43930
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0027",
+        "source_ranges": [
+          [
+            50267,
+            50372
+          ],
+          [
+            50575,
+            50801
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0028",
+        "source_ranges": [
+          [
+            53622,
+            53806
+          ],
+          [
+            53809,
+            53899
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0029",
+        "source_ranges": [
+          [
+            54839,
+            54911
+          ],
+          [
+            55615,
+            55709
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0030",
+        "source_ranges": [
+          [
+            58081,
+            58172
+          ],
+          [
+            58281,
+            58358
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0033",
+        "source_ranges": [
+          [
+            64262,
+            64359
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0034",
+        "source_ranges": [
+          [
+            64818,
+            64977
+          ],
+          [
+            66135,
+            66202
+          ],
+          [
+            66230,
+            66286
+          ],
+          [
+            66390,
+            66447
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0040",
+        "source_ranges": [
+          [
+            76079,
+            76146
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0041",
+        "source_ranges": [
+          [
+            78642,
+            78753
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0042",
+        "source_ranges": [
+          [
+            80851,
+            80979
+          ],
+          [
+            80982,
+            81172
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0045",
+        "source_ranges": [
+          [
+            87809,
+            87890
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0046",
+        "source_ranges": [
+          [
+            88366,
+            88437
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0049",
+        "source_ranges": [
+          [
+            94334,
+            94756
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0050",
+        "source_ranges": [
+          [
+            97137,
+            97457
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0052",
+        "source_ranges": [
+          [
+            99713,
+            99851
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0053",
+        "source_ranges": [
+          [
+            103046,
+            103205
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0054",
+        "source_ranges": [
+          [
+            103668,
+            103835
+          ],
+          [
+            104392,
+            104527
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0076",
+        "source_ranges": [
+          [
+            149994,
+            150187
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0079",
+        "source_ranges": [
+          [
+            156115,
+            156201
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0080",
+        "source_ranges": [
+          [
+            156834,
+            156983
+          ],
+          [
+            156984,
+            157111
+          ],
+          [
+            157885,
+            157975
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0278",
+        "source_ranges": [
+          [
+            674808,
+            674892
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0353",
+        "source_ranges": [
+          [
+            895243,
+            895363
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0364",
+        "source_ranges": [
+          [
+            925139,
+            925165
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0377",
+        "source_ranges": [
+          [
+            961840,
+            961947
+          ]
+        ]
+      }
+    ],
+    "ledger_path": "coverage/template-run-ledger.json"
+  },
+  "fulfilled_sections": [
+    {
+      "requirement_id": "character_relationship_perspective",
+      "requirement_kind": "section",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0014:001",
+        "evidence:chunk-0014:006",
+        "evidence:chunk-0015:006",
+        "evidence:chunk-0027:003",
+        "evidence:chunk-0027:005",
+        "evidence:chunk-0028:011",
+        "evidence:chunk-0028:012",
+        "evidence:chunk-0029:006",
+        "evidence:chunk-0029:009",
+        "evidence:chunk-0030:011",
+        "evidence:chunk-0030:012",
+        "evidence:chunk-0377:009"
+      ],
+      "notes": [
+        "覆盖谨慎求生型：信息不明时先测试、隔离、隐瞒，目标随证据升级为长期保密修炼。"
+      ]
+    },
+    {
+      "requirement_id": "character_relationship_perspective",
+      "requirement_kind": "section",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0023:005",
+        "evidence:chunk-0023:008",
+        "evidence:chunk-0023:009",
+        "evidence:chunk-0024:004",
+        "evidence:chunk-0024:006",
+        "evidence:chunk-0076:008",
+        "evidence:chunk-0080:003"
+      ],
+      "notes": [
+        "覆盖关系与人情链：救人、风险教训、人情维护、密友隐私边界。"
+      ]
+    },
+    {
+      "requirement_id": "character_relationship_perspective",
+      "requirement_kind": "section",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0033:009",
+        "evidence:chunk-0034:002",
+        "evidence:chunk-0034:010",
+        "evidence:chunk-0034:011",
+        "evidence:chunk-0034:012",
+        "evidence:chunk-0040:003",
+        "evidence:chunk-0041:006",
+        "evidence:chunk-0042:007",
+        "evidence:chunk-0042:008",
+        "evidence:chunk-0045:013",
+        "evidence:chunk-0046:005",
+        "evidence:chunk-0049:003",
+        "evidence:chunk-0050:005",
+        "evidence:chunk-0052:001",
+        "evidence:chunk-0053:011",
+        "evidence:chunk-0054:001",
+        "evidence:chunk-0054:005"
+      ],
+      "notes": [
+        "覆盖高压自保链：威胁、复盘、准备、设局、临场调整和视角边界。"
+      ]
+    },
+    {
+      "requirement_id": "character_relationship_perspective",
+      "requirement_kind": "section",
+      "status": "needs_review",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0079:012",
+        "evidence:chunk-0080:004",
+        "evidence:chunk-0080:009",
+        "evidence:chunk-0278:005",
+        "evidence:chunk-0353:010",
+        "evidence:chunk-0364:004"
+      ],
+      "notes": [
+        "覆盖关系牵连下的例外行动；部分战术后续和南宫婉完整救援链需要后续证据扩展。"
+      ]
+    }
+  ],
+  "fulfilled_fields": [
+    {
+      "requirement_id": "character_relationship_perspective",
+      "requirement_kind": "field",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0003:003",
+        "evidence:chunk-0009:0007",
+        "evidence:chunk-0033:009"
+      ],
+      "notes": [
+        "角色名称、身份动机、亲属牵连和阶段压力可由证据支撑。"
+      ]
+    },
+    {
+      "requirement_id": "character_relationship_perspective",
+      "requirement_kind": "field",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0028:011",
+        "evidence:chunk-0028:012",
+        "evidence:chunk-0034:010",
+        "evidence:chunk-0034:011"
+      ],
+      "notes": [
+        "行为偏好、风险压力、行动选择和打断条件可由证据支撑。"
+      ]
+    },
+    {
+      "requirement_id": "character_relationship_perspective",
+      "requirement_kind": "field",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0024:004",
+        "evidence:chunk-0076:008",
+        "evidence:chunk-0080:003",
+        "evidence:chunk-0364:004"
+      ],
+      "notes": [
+        "关系因素及其对行动选择的影响可由证据支撑。"
+      ]
+    }
+  ],
+  "fulfilled_tables": [],
+  "fulfilled_cards": [],
+  "fulfilled_cases": [
+    {
+      "requirement_id": "character_relationship_perspective",
+      "requirement_kind": "case",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0014:001",
+        "evidence:chunk-0014:006",
+        "evidence:chunk-0015:006",
+        "evidence:chunk-0027:003",
+        "evidence:chunk-0027:005",
+        "evidence:chunk-0028:011",
+        "evidence:chunk-0028:012",
+        "evidence:chunk-0029:006",
+        "evidence:chunk-0029:009",
+        "evidence:chunk-0030:011",
+        "evidence:chunk-0030:012",
+        "evidence:chunk-0377:009"
+      ],
+      "notes": [
+        "案例 1：韩立谨慎处理小瓶与修炼暴露风险"
+      ]
+    },
+    {
+      "requirement_id": "character_relationship_perspective",
+      "requirement_kind": "case",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0023:005",
+        "evidence:chunk-0023:008",
+        "evidence:chunk-0023:009",
+        "evidence:chunk-0024:004",
+        "evidence:chunk-0024:006",
+        "evidence:chunk-0076:008",
+        "evidence:chunk-0080:003"
+      ],
+      "notes": [
+        "案例 2：韩立从救厉飞雨到人情筹码的关系决策"
+      ]
+    },
+    {
+      "requirement_id": "character_relationship_perspective",
+      "requirement_kind": "case",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0033:009",
+        "evidence:chunk-0034:002",
+        "evidence:chunk-0034:010",
+        "evidence:chunk-0034:011",
+        "evidence:chunk-0034:012",
+        "evidence:chunk-0040:003",
+        "evidence:chunk-0041:006",
+        "evidence:chunk-0042:007",
+        "evidence:chunk-0042:008",
+        "evidence:chunk-0045:013",
+        "evidence:chunk-0046:005",
+        "evidence:chunk-0049:003",
+        "evidence:chunk-0050:005",
+        "evidence:chunk-0052:001",
+        "evidence:chunk-0053:011",
+        "evidence:chunk-0054:001",
+        "evidence:chunk-0054:005"
+      ],
+      "notes": [
+        "案例 3：韩立在墨大夫威胁下的自保反制链"
+      ]
+    },
+    {
+      "requirement_id": "character_relationship_perspective",
+      "requirement_kind": "case",
+      "status": "needs_review",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0079:012",
+        "evidence:chunk-0080:004",
+        "evidence:chunk-0080:009",
+        "evidence:chunk-0278:005",
+        "evidence:chunk-0353:010",
+        "evidence:chunk-0364:004"
+      ],
+      "notes": [
+        "案例 4：韩立在关系牵连中的例外性救援与撤离选择"
+      ]
+    }
+  ],
+  "facts": [
+    {
+      "name": "韩立早期外出与改变命运动机",
+      "classification": "角色动机",
+      "content": "韩立外貌普通、内心早熟，向往外面的富饶繁华；知道内外门待遇差异和寄钱改善家人生活后，放弃混成外门弟子回家的念头，并把时间用于修炼。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0003:003",
+        "evidence:chunk-0009:0007",
+        "evidence:chunk-0009:0013"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0003:003",
+          "chunk_id": "chunk-0003",
+          "chapter_hint": "第一章 山边小村",
+          "source_range": [
+            1034,
+            1257
+          ],
+          "source_path": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0009:0007",
+          "chunk_id": "chunk-0009",
+          "chapter_hint": "第七章 修炼难",
+          "source_range": [
+            14288,
+            14442
+          ],
+          "source_path": null
+        },
+        {
+          "evidence_id": "evidence:chunk-0009:0013",
+          "chunk_id": "chunk-0009",
+          "chapter_hint": "第七章 修炼难",
+          "source_range": [
+            15166,
+            15272
+          ],
+          "source_path": null
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "usage": "韩立外貌普通、内心早熟，向往外面的富饶繁华；知道内外门待遇差异和寄钱改善家人生活后，放弃混成外门弟子回家的念头，并把时间用于修炼。",
+      "formula": "已知信息：内外门待遇差异；正面因素：改善家人生活、提升身份；反面因素：修炼艰难、睡眠不足。"
+    },
+    {
+      "name": "韩立小瓶开封选择",
+      "classification": "谨慎求生型",
+      "content": "韩立再三思量后选择用工具砸开小瓶，但对破坏瓶体不情愿，体现收益验证和资源完整性之间的权衡。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0014:001"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0014:001",
+          "chunk_id": "chunk-0014",
+          "chapter_hint": "第十二章 砸瓶子",
+          "source_range": [
+            23626,
+            23848
+          ],
+          "source_path": "intermediate/chunks/chunk-0014.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "usage": "韩立再三思量后选择用工具砸开小瓶，但对破坏瓶体不情愿，体现收益验证和资源完整性之间的权衡。",
+      "formula": "正面因素：方法直接；反面因素：瓶体可能不可逆损坏。"
+    },
+    {
+      "name": "韩立收藏小瓶并禁止外露",
+      "classification": "宝物保密",
+      "content": "确认小瓶非同寻常后，韩立判断它可能是他人遗失之物，决定好好收藏，不让外人看见。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0014:006"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0014:006",
+          "chunk_id": "chunk-0014",
+          "chapter_hint": "第十二章 砸瓶子",
+          "source_range": [
+            24590,
+            24674
+          ],
+          "source_path": "intermediate/chunks/chunk-0014.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "usage": "确认小瓶非同寻常后，韩立判断它可能是他人遗失之物，决定好好收藏，不让外人看见。",
+      "formula": "正面因素：保住高价值资源；反面因素：失主或旁人发现带来风险。"
+    },
+    {
+      "name": "韩立面对异象先退避再观察",
+      "classification": "风险试探",
+      "content": "小瓶出现异象时，韩立先甩开瓶子并躲到一边，确认暂时无危险后才靠近观察。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0015:006"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0015:006",
+          "chunk_id": "chunk-0015",
+          "chapter_hint": null,
+          "source_range": [
+            26562,
+            26647
+          ],
+          "source_path": "intermediate/chunks/chunk-0015.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "usage": "小瓶出现异象时，韩立先甩开瓶子并躲到一边，确认暂时无危险后才靠近观察。",
+      "formula": "打断条件：未知异象触发时先远离；恢复条件：暂未发现危险再接近。"
+    },
+    {
+      "name": "韩立催生药草后先试毒",
+      "classification": "风险试探",
+      "content": "韩立担心吸收奇怪液体后的药草可能有药性或变异风险，因此买兔观察并喂药试毒。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0027:003",
+        "evidence:chunk-0027:005"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0027:003",
+          "chunk_id": "chunk-0027",
+          "chapter_hint": null,
+          "source_range": [
+            50267,
+            50372
+          ],
+          "source_path": "intermediate/chunks/chunk-0027.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0027:005",
+          "chunk_id": "chunk-0027",
+          "chapter_hint": null,
+          "source_range": [
+            50575,
+            50801
+          ],
+          "source_path": "intermediate/chunks/chunk-0027.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "usage": "韩立担心吸收奇怪液体后的药草可能有药性或变异风险，因此买兔观察并喂药试毒。",
+      "formula": "正面因素：验证药草可用性；反面因素：兔子爆裂先例提示风险。"
+    },
+    {
+      "name": "韩立小瓶暴露风险判断",
+      "classification": "怀璧其罪",
+      "content": "韩立从书中例子判断小瓶是无价之宝，若被外人或门主知晓会有致命夺宝风险，因此决定绝不透露并小心使用。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0028:011",
+        "evidence:chunk-0028:012"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0028:011",
+          "chunk_id": "chunk-0028",
+          "chapter_hint": null,
+          "source_range": [
+            53622,
+            53806
+          ],
+          "source_path": "intermediate/chunks/chunk-0028.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0028:012",
+          "chunk_id": "chunk-0028",
+          "chapter_hint": null,
+          "source_range": [
+            53809,
+            53899
+          ],
+          "source_path": "intermediate/chunks/chunk-0028.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "usage": "韩立从书中例子判断小瓶是无价之宝，若被外人或门主知晓会有致命夺宝风险，因此决定绝不透露并小心使用。",
+      "formula": "正面因素：长期收益极高；反面因素：秘密暴露即可能死亡。"
+    },
+    {
+      "name": "韩立对墨大夫隐瞒瓶子和修炼进度",
+      "classification": "隐瞒与伪装",
+      "content": "韩立认为墨大夫精明小心，不打算告诉其小瓶秘密；墨大夫回来后停止使用瓶子，并谎称修炼无大变化，靠控制真气强度瞒过察看。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0029:006",
+        "evidence:chunk-0029:009",
+        "evidence:chunk-0030:011",
+        "evidence:chunk-0030:012"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0029:006",
+          "chunk_id": "chunk-0029",
+          "chapter_hint": null,
+          "source_range": [
+            54839,
+            54911
+          ],
+          "source_path": "intermediate/chunks/chunk-0029.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0029:009",
+          "chunk_id": "chunk-0029",
+          "chapter_hint": null,
+          "source_range": [
+            55615,
+            55709
+          ],
+          "source_path": "intermediate/chunks/chunk-0029.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0030:011",
+          "chunk_id": "chunk-0030",
+          "chapter_hint": null,
+          "source_range": [
+            58081,
+            58172
+          ],
+          "source_path": "intermediate/chunks/chunk-0030.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0030:012",
+          "chunk_id": "chunk-0030",
+          "chapter_hint": null,
+          "source_range": [
+            58281,
+            58358
+          ],
+          "source_path": "intermediate/chunks/chunk-0030.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "usage": "韩立认为墨大夫精明小心，不打算告诉其小瓶秘密；墨大夫回来后停止使用瓶子，并谎称修炼无大变化，靠控制真气强度瞒过察看。",
+      "formula": "行动选择：停用、守口、伪装进度；打断条件：墨大夫回归或可能撞破秘密。"
+    },
+    {
+      "name": "韩立救厉飞雨后的风险教训",
+      "classification": "救援代价",
+      "content": "韩立救厉飞雨前已预料对方可能为保密灭口；险遭灭口后，决定以后没有足够好处和把握不再出手救人。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0023:005",
+        "evidence:chunk-0023:008",
+        "evidence:chunk-0023:009"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0023:005",
+          "chunk_id": "chunk-0023",
+          "chapter_hint": null,
+          "source_range": [
+            41506,
+            41708
+          ],
+          "source_path": "intermediate/chunks/chunk-0023.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0023:008",
+          "chunk_id": "chunk-0023",
+          "chapter_hint": null,
+          "source_range": [
+            42144,
+            42271
+          ],
+          "source_path": "intermediate/chunks/chunk-0023.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0023:009",
+          "chunk_id": "chunk-0023",
+          "chapter_hint": null,
+          "source_range": [
+            42274,
+            42345
+          ],
+          "source_path": "intermediate/chunks/chunk-0023.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "usage": "韩立救厉飞雨前已预料对方可能为保密灭口；险遭灭口后，决定以后没有足够好处和把握不再出手救人。",
+      "formula": "目标变化：从可救则救转为收益、把握、后果三项评估。"
+    },
+    {
+      "name": "韩立把厉飞雨关系转化为长期人情",
+      "classification": "人情交易",
+      "content": "韩立决定继续帮助厉飞雨以加深人情，看重对方武功提升后的帮助价值，并只配一年成药，让厉飞雨每年来取药以记住人情。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0024:004",
+        "evidence:chunk-0024:006"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0024:004",
+          "chunk_id": "chunk-0024",
+          "chapter_hint": null,
+          "source_range": [
+            43508,
+            43621
+          ],
+          "source_path": "intermediate/chunks/chunk-0024.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0024:006",
+          "chunk_id": "chunk-0024",
+          "chapter_hint": null,
+          "source_range": [
+            43857,
+            43930
+          ],
+          "source_path": "intermediate/chunks/chunk-0024.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "usage": "韩立决定继续帮助厉飞雨以加深人情，看重对方武功提升后的帮助价值，并只配一年成药，让厉飞雨每年来取药以记住人情。",
+      "formula": "正面因素：长期关系资本；反面因素：持续投入和秘密牵连。"
+    },
+    {
+      "name": "韩立偏向好友并尊重隐私",
+      "classification": "密友关系",
+      "content": "面对厉飞雨感情选择，韩立因亲疏关系选择偏向好友；厉飞雨见到曲魂不追问，韩立认为互相尊重隐私是二人成为密友的原因。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0076:008",
+        "evidence:chunk-0080:003"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0076:008",
+          "chunk_id": "chunk-0076",
+          "chapter_hint": null,
+          "source_range": [
+            149994,
+            150187
+          ],
+          "source_path": "intermediate/chunks/chunk-0076.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0080:003",
+          "chunk_id": "chunk-0080",
+          "chapter_hint": null,
+          "source_range": [
+            156834,
+            156983
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "usage": "面对厉飞雨感情选择，韩立因亲疏关系选择偏向好友；厉飞雨见到曲魂不追问，韩立认为互相尊重隐私是二人成为密友的原因。",
+      "formula": "关系因素：亲疏远近、隐私边界；打断条件：强行追问核心秘密。"
+    },
+    {
+      "name": "韩立在亲人被威胁后暂时屈服",
+      "classification": "威胁下隐忍",
+      "content": "墨大夫以亲人威胁后，韩立咬牙承诺一年内练至第四层，在赤裸威胁下暂时屈服。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0033:009"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0033:009",
+          "chunk_id": "chunk-0033",
+          "chapter_hint": null,
+          "source_range": [
+            64262,
+            64359
+          ],
+          "source_path": "intermediate/chunks/chunk-0033.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "usage": "墨大夫以亲人威胁后，韩立咬牙承诺一年内练至第四层，在赤裸威胁下暂时屈服。",
+      "formula": "正面因素：保护亲人并争取时间；反面因素：被对方掌控。"
+    },
+    {
+      "name": "韩立复盘失败并转向增强筹码",
+      "classification": "自保反制",
+      "content": "韩立复盘与墨大夫冲突，认识到自己毫无反击之力，随后否定把命运寄托于他人慈悲，决定多方面增强实力和筹码。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0034:002",
+        "evidence:chunk-0034:010",
+        "evidence:chunk-0034:011",
+        "evidence:chunk-0034:012"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0034:002",
+          "chunk_id": "chunk-0034",
+          "chapter_hint": null,
+          "source_range": [
+            64818,
+            64977
+          ],
+          "source_path": "intermediate/chunks/chunk-0034.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0034:010",
+          "chunk_id": "chunk-0034",
+          "chapter_hint": null,
+          "source_range": [
+            66135,
+            66202
+          ],
+          "source_path": "intermediate/chunks/chunk-0034.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0034:011",
+          "chunk_id": "chunk-0034",
+          "chapter_hint": null,
+          "source_range": [
+            66230,
+            66286
+          ],
+          "source_path": "intermediate/chunks/chunk-0034.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0034:012",
+          "chunk_id": "chunk-0034",
+          "chapter_hint": null,
+          "source_range": [
+            66390,
+            66447
+          ],
+          "source_path": "intermediate/chunks/chunk-0034.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "usage": "韩立复盘与墨大夫冲突，认识到自己毫无反击之力，随后否定把命运寄托于他人慈悲，决定多方面增强实力和筹码。",
+      "formula": "目标变化：从周旋拖延转为主动自保和筹码建设。"
+    },
+    {
+      "name": "韩立后天培养警惕习性并选择实用保命技能",
+      "classification": "保命训练",
+      "content": "韩立后天培养不明环境保持耳聪目明的谨慎习性；对眨眼剑谱只看重能否保命，并选择记忆秘籍而非誊抄以避免泄密。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0040:003",
+        "evidence:chunk-0041:006",
+        "evidence:chunk-0042:007",
+        "evidence:chunk-0042:008"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0040:003",
+          "chunk_id": "chunk-0040",
+          "chapter_hint": null,
+          "source_range": [
+            76079,
+            76146
+          ],
+          "source_path": "intermediate/chunks/chunk-0040.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0041:006",
+          "chunk_id": "chunk-0041",
+          "chapter_hint": null,
+          "source_range": [
+            78642,
+            78753
+          ],
+          "source_path": "intermediate/chunks/chunk-0041.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0042:007",
+          "chunk_id": "chunk-0042",
+          "chapter_hint": null,
+          "source_range": [
+            80851,
+            80979
+          ],
+          "source_path": "intermediate/chunks/chunk-0042.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0042:008",
+          "chunk_id": "chunk-0042",
+          "chapter_hint": null,
+          "source_range": [
+            80982,
+            81172
+          ],
+          "source_path": "intermediate/chunks/chunk-0042.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "usage": "韩立后天培养不明环境保持耳聪目明的谨慎习性；对眨眼剑谱只看重能否保命，并选择记忆秘籍而非誊抄以避免泄密。",
+      "formula": "正面因素：提高生存率、减少证据；反面因素：高强度记忆和长期隐瞒成本。"
+    },
+    {
+      "name": "韩立摊牌前规划并设置开门条件",
+      "classification": "预案与打断条件",
+      "content": "韩立在见墨大夫前规划细微环节和危险应对方案；进屋后阻止关门，把关门视为瓮中捉鳖的危险信号。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0045:013",
+        "evidence:chunk-0046:005"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0045:013",
+          "chunk_id": "chunk-0045",
+          "chapter_hint": null,
+          "source_range": [
+            87809,
+            87890
+          ],
+          "source_path": "intermediate/chunks/chunk-0045.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0046:005",
+          "chunk_id": "chunk-0046",
+          "chapter_hint": null,
+          "source_range": [
+            88366,
+            88437
+          ],
+          "source_path": "intermediate/chunks/chunk-0046.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "usage": "韩立在见墨大夫前规划细微环节和危险应对方案；进屋后阻止关门，把关门视为瓮中捉鳖的危险信号。",
+      "formula": "打断条件：门被关闭则停止谈判；正面因素：保留退路和环境工具。"
+    },
+    {
+      "name": "韩立利用言语、环境和对手顾忌反制墨大夫",
+      "classification": "临场反制",
+      "content": "韩立表面镇定并用讥讽言语反击，后以短剑诈语诱导墨大夫迟滞；墨大夫后来意识到韩立早把不关门设计为阳光反射连环套伏笔；韩立还推断对方关键处手下留情另有顾忌，并利用这一点求生。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0049:003",
+        "evidence:chunk-0050:005",
+        "evidence:chunk-0052:001",
+        "evidence:chunk-0053:011"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0049:003",
+          "chunk_id": "chunk-0049",
+          "chapter_hint": null,
+          "source_range": [
+            94334,
+            94756
+          ],
+          "source_path": "intermediate/chunks/chunk-0049.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0050:005",
+          "chunk_id": "chunk-0050",
+          "chapter_hint": null,
+          "source_range": [
+            97137,
+            97457
+          ],
+          "source_path": "intermediate/chunks/chunk-0050.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0052:001",
+          "chunk_id": "chunk-0052",
+          "chapter_hint": null,
+          "source_range": [
+            99713,
+            99851
+          ],
+          "source_path": "intermediate/chunks/chunk-0052.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0053:011",
+          "chunk_id": "chunk-0053",
+          "chapter_hint": null,
+          "source_range": [
+            103046,
+            103205
+          ],
+          "source_path": "intermediate/chunks/chunk-0053.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "usage": "韩立表面镇定并用讥讽言语反击，后以短剑诈语诱导墨大夫迟滞；墨大夫后来意识到韩立早把不关门设计为阳光反射连环套伏笔；韩立还推断对方关键处手下留情另有顾忌，并利用这一点求生。",
+      "formula": "正面因素：心理扰动、环境反射、对方限制；反面因素：实力差巨大，判断错误会致命。"
+    },
+    {
+      "name": "韩立刀刃前的恐惧和侥幸边界",
+      "classification": "有限视角边界",
+      "content": "墨大夫怪刃逼近时，韩立判断对方不会立刻取命而保持沉默；叙事随后揭示他其实也有求饶念头，只是靠侥幸和脸皮薄硬撑过去。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0054:001",
+        "evidence:chunk-0054:005"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0054:001",
+          "chunk_id": "chunk-0054",
+          "chapter_hint": null,
+          "source_range": [
+            103668,
+            103835
+          ],
+          "source_path": "intermediate/chunks/chunk-0054.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0054:005",
+          "chunk_id": "chunk-0054",
+          "chapter_hint": null,
+          "source_range": [
+            104392,
+            104527
+          ],
+          "source_path": "intermediate/chunks/chunk-0054.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "usage": "墨大夫怪刃逼近时，韩立判断对方不会立刻取命而保持沉默；叙事随后揭示他其实也有求饶念头，只是靠侥幸和脸皮薄硬撑过去。",
+      "formula": "边界：不能简化成纯粹胆色；应记录恐惧、求生、侥幸和表面镇定并存。"
+    },
+    {
+      "name": "韩立在野狼帮危局中先汇合再决策",
+      "classification": "理智支援",
+      "content": "韩立决定先集合厉飞雨手下并与张袖儿、李长老会合，弄清具体情况后再决定下一步；随后在谷口发现多人接近，阻止厉飞雨继续前进。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0079:012",
+        "evidence:chunk-0080:004"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0079:012",
+          "chunk_id": "chunk-0079",
+          "chapter_hint": null,
+          "source_range": [
+            156115,
+            156201
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0080:004",
+          "chunk_id": "chunk-0080",
+          "chapter_hint": null,
+          "source_range": [
+            156984,
+            157111
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "usage": "韩立决定先集合厉飞雨手下并与张袖儿、李长老会合，弄清具体情况后再决定下一步；随后在谷口发现多人接近，阻止厉飞雨继续前进。",
+      "formula": "正面因素：信息更完整、队伍可整合；反面因素：延迟可能错过窗口。"
+    },
+    {
+      "name": "韩立对南宫婉关系采取谨慎承认和危险中救援",
+      "classification": "关系驱动例外",
+      "content": "韩立在师长面前掂量后承认与南宫婉有一面之缘；后续即使危险，也不能坐视南宫婉遇害。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0278:005",
+        "evidence:chunk-0364:004"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0278:005",
+          "chunk_id": "chunk-0278",
+          "chapter_hint": null,
+          "source_range": [
+            674808,
+            674892
+          ],
+          "source_path": "intermediate/chunks/chunk-0278.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0364:004",
+          "chunk_id": "chunk-0364",
+          "chapter_hint": null,
+          "source_range": [
+            925139,
+            925165
+          ],
+          "source_path": "intermediate/chunks/chunk-0364.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "usage": "韩立在师长面前掂量后承认与南宫婉有一面之缘；后续即使危险，也不能坐视南宫婉遇害。",
+      "formula": "正面因素：特殊关系牵连；反面因素：出手危险。"
+    },
+    {
+      "name": "韩立脱离黄枫谷逃亡主队另寻修炼地",
+      "classification": "独立求生",
+      "content": "韩立判断去集合地或追黄枫谷主队可能自投落网，并想另寻他地修炼；后续选择小寰岛也与守住小瓶秘密、培育灵药有关。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0353:010",
+        "evidence:chunk-0377:009"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0353:010",
+          "chunk_id": "chunk-0353",
+          "chapter_hint": null,
+          "source_range": [
+            895243,
+            895363
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0377:009",
+          "chunk_id": "chunk-0377",
+          "chapter_hint": null,
+          "source_range": [
+            961840,
+            961947
+          ],
+          "source_path": "intermediate/chunks/chunk-0377.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "usage": "韩立判断去集合地或追黄枫谷主队可能自投落网，并想另寻他地修炼；后续选择小寰岛也与守住小瓶秘密、培育灵药有关。",
+      "formula": "正面因素：规避追杀、保守秘密；反面因素：脱离宗门集体支持。"
+    }
+  ],
+  "judgments": [
+    {
+      "content": "韩立的核心行为原型不是单纯胆大或单纯善良，而是“低信息环境下先保命、再试探、再把收益转化为长期筹码”。该判断由小瓶试验、人情药物、墨大夫反制等多段证据共同支持。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0027:003",
+        "evidence:chunk-0024:004",
+        "evidence:chunk-0034:011",
+        "evidence:chunk-0045:013"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0027:003",
+          "chunk_id": "chunk-0027",
+          "chapter_hint": null,
+          "source_range": [
+            50267,
+            50372
+          ],
+          "source_path": "intermediate/chunks/chunk-0027.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0024:004",
+          "chunk_id": "chunk-0024",
+          "chapter_hint": null,
+          "source_range": [
+            43508,
+            43621
+          ],
+          "source_path": "intermediate/chunks/chunk-0024.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0034:011",
+          "chunk_id": "chunk-0034",
+          "chapter_hint": null,
+          "source_range": [
+            66230,
+            66286
+          ],
+          "source_path": "intermediate/chunks/chunk-0034.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0045:013",
+          "chunk_id": "chunk-0045",
+          "chapter_hint": null,
+          "source_range": [
+            87809,
+            87890
+          ],
+          "source_path": "intermediate/chunks/chunk-0045.txt"
+        }
+      ],
+      "confidence": "INFERRED",
+      "review_status": "needs_review"
+    },
+    {
+      "content": "韩立对关系的处理具有亲疏权重：厉飞雨、南宫婉等特殊关系能改变他的默认风险阈值，但不会取消信息评估和退路意识。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0076:008",
+        "evidence:chunk-0080:003",
+        "evidence:chunk-0278:005",
+        "evidence:chunk-0364:004"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0076:008",
+          "chunk_id": "chunk-0076",
+          "chapter_hint": null,
+          "source_range": [
+            149994,
+            150187
+          ],
+          "source_path": "intermediate/chunks/chunk-0076.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0080:003",
+          "chunk_id": "chunk-0080",
+          "chapter_hint": null,
+          "source_range": [
+            156834,
+            156983
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0278:005",
+          "chunk_id": "chunk-0278",
+          "chapter_hint": null,
+          "source_range": [
+            674808,
+            674892
+          ],
+          "source_path": "intermediate/chunks/chunk-0278.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0364:004",
+          "chunk_id": "chunk-0364",
+          "chapter_hint": null,
+          "source_range": [
+            925139,
+            925165
+          ],
+          "source_path": "intermediate/chunks/chunk-0364.txt"
+        }
+      ],
+      "confidence": "INFERRED",
+      "review_status": "needs_review"
+    },
+    {
+      "content": "墨大夫压力线适合作为 AI 行为中的“失败复盘驱动策略升级”样本：韩立不是一次变强，而是在暴露差距后把警惕、技能、环境、话术和筹码都纳入求生链。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0034:002",
+        "evidence:chunk-0040:003",
+        "evidence:chunk-0042:007",
+        "evidence:chunk-0052:001"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0034:002",
+          "chunk_id": "chunk-0034",
+          "chapter_hint": null,
+          "source_range": [
+            64818,
+            64977
+          ],
+          "source_path": "intermediate/chunks/chunk-0034.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0040:003",
+          "chunk_id": "chunk-0040",
+          "chapter_hint": null,
+          "source_range": [
+            76079,
+            76146
+          ],
+          "source_path": "intermediate/chunks/chunk-0040.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0042:007",
+          "chunk_id": "chunk-0042",
+          "chapter_hint": null,
+          "source_range": [
+            80851,
+            80979
+          ],
+          "source_path": "intermediate/chunks/chunk-0042.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0052:001",
+          "chunk_id": "chunk-0052",
+          "chapter_hint": null,
+          "source_range": [
+            99713,
+            99851
+          ],
+          "source_path": "intermediate/chunks/chunk-0052.txt"
+        }
+      ],
+      "confidence": "INFERRED",
+      "review_status": "needs_review"
+    },
+    {
+      "content": "刀刃前不求饶一段必须保留有限视角边界；表面胆色背后包含恐惧、侥幸和面子因素，不能被抽象成稳定无畏人格。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0054:001",
+        "evidence:chunk-0054:005"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0054:001",
+          "chunk_id": "chunk-0054",
+          "chapter_hint": null,
+          "source_range": [
+            103668,
+            103835
+          ],
+          "source_path": "intermediate/chunks/chunk-0054.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0054:005",
+          "chunk_id": "chunk-0054",
+          "chapter_hint": null,
+          "source_range": [
+            104392,
+            104527
+          ],
+          "source_path": "intermediate/chunks/chunk-0054.txt"
+        }
+      ],
+      "confidence": "INFERRED",
+      "review_status": "needs_review"
+    }
+  ],
+  "pending_verifications": [
+    {
+      "content": "“野狼帮危局中韩立为何不采纳暂避锋芒”只在当前证据中显示选择结果，完整战术收益和后续战果需结合 chunk-0080 之后证据复核。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0080:009"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0080:009",
+          "chunk_id": "chunk-0080",
+          "chapter_hint": null,
+          "source_range": [
+            157885,
+            157975
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "AMBIGUOUS",
+      "review_status": "needs_review"
+    },
+    {
+      "content": "南宫婉救援链目前只引用到关系承认和不能坐视遇害两个节点，完整的战斗准备、资源消耗、结果和后续关系变化需后续模板或增量证据补足。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0278:005",
+        "evidence:chunk-0364:004"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0278:005",
+          "chunk_id": "chunk-0278",
+          "chapter_hint": null,
+          "source_range": [
+            674808,
+            674892
+          ],
+          "source_path": "intermediate/chunks/chunk-0278.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0364:004",
+          "chunk_id": "chunk-0364",
+          "chapter_hint": null,
+          "source_range": [
+            925139,
+            925165
+          ],
+          "source_path": "intermediate/chunks/chunk-0364.txt"
+        }
+      ],
+      "confidence": "AMBIGUOUS",
+      "review_status": "needs_review"
+    },
+    {
+      "content": "小寰岛选择与小瓶保密、孤岛培育灵药的长期策略有关，但当前记录未展开岛上经营过程，若正式文档需要多地域样本，应补充后续岛屿证据。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0377:009"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0377:009",
+          "chunk_id": "chunk-0377",
+          "chapter_hint": null,
+          "source_range": [
+            961840,
+            961947
+          ],
+          "source_path": "intermediate/chunks/chunk-0377.txt"
+        }
+      ],
+      "confidence": "AMBIGUOUS",
+      "review_status": "needs_review"
+    }
+  ],
+  "not_found_items": [
+    {
+      "content": "当前直接筛选到的“角色AI行为参考”证据中，未形成可闭合的“宗门忠诚型执行救援任务”完整案例；不应按模板示例补写宗门命令、奖励惩罚或疗伤回宗链。",
+      "category": "未见可靠证据",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS",
+      "review_status": "not_found_in_source"
+    },
+    {
+      "content": "当前记录未找到足够证据支持具体数值化 Utility 权重、GOAP 参数、AI 状态机配置或项目规则参数；模板要求只写行为决策链，因此不扩写技术映射表。",
+      "category": "未见可靠证据",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS",
+      "review_status": "not_found_in_source"
+    },
+    {
+      "content": "多数证据未提供韩立当时精确境界、法力余量、丹药数量或法宝耐久等数值，正式正文应写“原文未说明”或省略，不用常识补齐。",
+      "category": "未见可靠证据",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS",
+      "review_status": "not_found_in_source"
+    }
+  ],
+  "evidence_citations": [
+    "evidence:chunk-0001:005",
+    "evidence:chunk-0003:003",
+    "evidence:chunk-0009:0007",
+    "evidence:chunk-0009:0013",
+    "evidence:chunk-0014:001",
+    "evidence:chunk-0014:006",
+    "evidence:chunk-0015:006",
+    "evidence:chunk-0023:005",
+    "evidence:chunk-0023:008",
+    "evidence:chunk-0023:009",
+    "evidence:chunk-0024:004",
+    "evidence:chunk-0024:006",
+    "evidence:chunk-0027:003",
+    "evidence:chunk-0027:005",
+    "evidence:chunk-0028:011",
+    "evidence:chunk-0028:012",
+    "evidence:chunk-0029:006",
+    "evidence:chunk-0029:009",
+    "evidence:chunk-0030:011",
+    "evidence:chunk-0030:012",
+    "evidence:chunk-0033:009",
+    "evidence:chunk-0034:002",
+    "evidence:chunk-0034:010",
+    "evidence:chunk-0034:011",
+    "evidence:chunk-0034:012",
+    "evidence:chunk-0040:003",
+    "evidence:chunk-0041:006",
+    "evidence:chunk-0042:007",
+    "evidence:chunk-0042:008",
+    "evidence:chunk-0045:013",
+    "evidence:chunk-0046:005",
+    "evidence:chunk-0049:003",
+    "evidence:chunk-0050:005",
+    "evidence:chunk-0052:001",
+    "evidence:chunk-0053:011",
+    "evidence:chunk-0054:001",
+    "evidence:chunk-0054:005",
+    "evidence:chunk-0076:008",
+    "evidence:chunk-0079:012",
+    "evidence:chunk-0080:003",
+    "evidence:chunk-0080:004",
+    "evidence:chunk-0080:009",
+    "evidence:chunk-0278:005",
+    "evidence:chunk-0353:010",
+    "evidence:chunk-0364:004",
+    "evidence:chunk-0377:009"
+  ],
+  "document_sections": [
+    {
+      "heading": "案例 1：韩立谨慎处理小瓶与修炼暴露风险",
+      "markdown": "**行为决策链：**\n\n1. 韩立反复权衡后决定用工具打开小瓶。正面因素：直接、简单、可能确认瓶内秘密；反面因素：瓶子奇特漂亮，破坏后不可恢复。行动选择：在不情愿中尝试暴力开瓶。\n2. 确认小瓶非同寻常后，韩立判断它可能是他人遗失之物。正面因素：宝物价值高，值得保留；反面因素：失主或外人可能搜寻，一旦被看见就有失去或惹祸风险。行动选择：收藏并避免外人看见。\n3. 小瓶出现异象时，韩立先退避观察，确认暂时无危险后才靠近。正面因素：可继续验证能力；反面因素：未知异象可能伤身。打断条件：出现即时危险时先拉开距离。\n4. 催生药草后，韩立不直接服用，而是担心药性变异，买兔试药。正面因素：可验证药效和风险；反面因素：试验耗时，且前一只兔子的爆裂结果提示风险。行动选择：用外部样本观察后再决定。\n5. 韩立判断小瓶若暴露会引来杀人夺宝，因此不告诉任何人；面对精明的墨大夫，更选择停用、隐瞒，并把修炼进度控制成较低强度。正面因素：守住核心资源，维持安全；反面因素：隐瞒需要持续消耗注意力，修炼异常难以解释。打断条件：墨大夫回归或有人可能撞破秘密时停止使用。\n6. 后续选择小寰岛时，叙事说明动机仍是守住小瓶秘密并在孤岛培育灵药。目标变化：从“确认小瓶”升级为“长期围绕秘密建立修炼环境”。",
+      "evidence_ids": [
+        "evidence:chunk-0014:001",
+        "evidence:chunk-0014:006",
+        "evidence:chunk-0015:006",
+        "evidence:chunk-0027:003",
+        "evidence:chunk-0027:005",
+        "evidence:chunk-0028:011",
+        "evidence:chunk-0028:012",
+        "evidence:chunk-0029:006",
+        "evidence:chunk-0029:009",
+        "evidence:chunk-0030:011",
+        "evidence:chunk-0030:012",
+        "evidence:chunk-0377:009"
+      ],
+      "requirement_ids": [
+        "character_relationship_perspective"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 2：韩立从救厉飞雨到人情筹码的关系决策",
+      "markdown": "**行为决策链：**\n\n1. 韩立救下厉飞雨时，已预料对方可能为了保密杀人灭口，但仍因自己会医术而出手。正面因素：可救人，也可能形成关系资本；反面因素：对方秘密危险，救人后可能被灭口。行动选择：先救人，再以救命之恩回应威胁。\n2. 险遭灭口后，韩立明确形成教训：没有足够好处和把握，不再轻易救人。正面因素：减少无收益风险；反面因素：会牺牲原本较淳朴的助人倾向。目标变化：从本能施救转向收益、把握、后果三项评估。\n3. 判断厉飞雨并非真正下杀手后，韩立继续帮他配药。正面因素：加深人情，未来难以拒绝请求；厉飞雨武功越高，对自己越有帮助。反面因素：继续投入药物和时间，也会维持双方秘密牵连。行动选择：给足一年药量，但让对方以后每年来取药，以免人情淡化。\n4. 对厉飞雨感情选择，韩立承认自己不能完全判断对错，但因亲疏关系选择偏向好友。正面因素：维护密友关系；反面因素：该选择未必符合旁观者的客观判断。行动选择：装聋作哑，不主动拆穿或阻止。\n5. 厉飞雨看见曲魂却不追问，韩立认为互相尊重隐私是二人成为密友的原因。打断条件：若对方强行追问核心秘密，关系信任会下降。",
+      "evidence_ids": [
+        "evidence:chunk-0023:005",
+        "evidence:chunk-0023:008",
+        "evidence:chunk-0023:009",
+        "evidence:chunk-0024:004",
+        "evidence:chunk-0024:006",
+        "evidence:chunk-0076:008",
+        "evidence:chunk-0080:003"
+      ],
+      "requirement_ids": [
+        "character_relationship_perspective"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 3：韩立在墨大夫威胁下的自保反制链",
+      "markdown": "**行为决策链：**\n\n1. 墨大夫以亲人威胁时，韩立暂时屈服并承诺一年内练至第四层。正面因素：保住父母安全，争取时间；反面因素：被对方掌控，目标和期限被迫接受。行动选择：口头服从但保留痛恨与警惕。\n2. 冲突后韩立复盘失败，确认小聪明和五毒水不足以抗衡墨大夫。正面因素：失败暴露真实差距；反面因素：自身几乎无反击能力。目标变化：从周旋拖延转为系统增强实力和筹码。\n3. 韩立否定把命运交给墨大夫慈悲，决定多方面加强实力以震慑对方。正面因素：主动权回到自己手中；反面因素：准备期短，失败代价是生命和家人。行动选择：形成“命运只能掌握在自己手中”的核心驱动。\n4. 他后天培养不明环境中保持耳聪目明的习性，并在眨眼剑谱、秘籍记忆和保密上采取实用优先策略。正面因素：提升保命概率，不留下誊抄证据；反面因素：需要高强度记忆和长期隐瞒。行动选择：只关心能否保命，来历、名声等低收益信息降权。\n5. 摊牌前，韩立提前在脑中规划每个细微环节；进屋时阻止关门，把门视作撤退和反制条件。正面因素：开放空间、阳光和退路都可服务陷阱；反面因素：对手经验、实力仍占优。打断条件：关门即视为瓮中捉鳖，谈判中止。\n6. 战斗中，韩立表面镇定、用言语讥讽和短剑诈语诱导墨大夫迟滞；墨大夫后来意识到韩立不关门是阳光反射连环套的伏笔。正面因素：可用心理和环境补足实力差；反面因素：若对方不受影响，韩立仍处绝对下风。\n7. 当威胁失效后，韩立推断墨大夫关键处手下留情另有顾忌，转而利用这一点讨价还价。正面因素：发现对方限制条件；反面因素：该判断仍可能错误。行动选择：从硬拼切换为信息压迫和交易求生。\n8. 刀刃逼近时，韩立没有立刻求饶，事后叙事揭示其中也有侥幸和脸皮薄因素。边界：不能把这一节点简单写成纯粹无畏，应记录恐惧、求生、侥幸和表面镇定并存。",
+      "evidence_ids": [
+        "evidence:chunk-0033:009",
+        "evidence:chunk-0034:002",
+        "evidence:chunk-0034:010",
+        "evidence:chunk-0034:011",
+        "evidence:chunk-0034:012",
+        "evidence:chunk-0040:003",
+        "evidence:chunk-0041:006",
+        "evidence:chunk-0042:007",
+        "evidence:chunk-0042:008",
+        "evidence:chunk-0045:013",
+        "evidence:chunk-0046:005",
+        "evidence:chunk-0049:003",
+        "evidence:chunk-0050:005",
+        "evidence:chunk-0052:001",
+        "evidence:chunk-0053:011",
+        "evidence:chunk-0054:001",
+        "evidence:chunk-0054:005"
+      ],
+      "requirement_ids": [
+        "character_relationship_perspective"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 4：韩立在关系牵连中的例外性救援与撤离选择",
+      "markdown": "**行为决策链：**\n\n1. 野狼帮危局中，韩立没有盲目前冲，而是决定先去李长老住处集合厉飞雨手下，并与张袖儿、李长老会合，等弄清局势后再决定下一步。正面因素：信息更完整，队伍能汇合；反面因素：延迟可能错过窗口。行动选择：先整合信息和人员。\n2. 到谷口附近时，韩立发现有人接近，立即扣住厉飞雨肩头阻止前进。正面因素：提前发现敌情，避免直接撞上；反面因素：厉飞雨心急，行动会被迫放慢。打断条件：未知敌人接近时暂停原路线。\n3. 敌人逼近时，厉飞雨提出暂避锋芒，但韩立没有采用。正面因素：可能抓住当前局势主动权；反面因素：敌人数量和实力仍有不确定性。边界：证据只说明韩立未采用躲避方案，具体完整战术链需结合后续证据复核。\n4. 南宫婉相关线中，韩立先在师长面前掂量后承认与南宫婉有一面之缘；后续又在危险中决定不能坐视南宫婉遇害。正面因素：关系牵连强，救援对象特殊；反面因素：出手危险。行动选择：在特定关系压力下突破一贯谨慎。\n5. 黄枫谷逃亡阶段，韩立不去集合地或追主队，判断可能自投落网，并想另寻修炼地。正面因素：规避魔道追杀和宗门队伍风险；反面因素：脱离宗门集体支持。目标变化：从跟随势力转向独立求生和修炼。",
+      "evidence_ids": [
+        "evidence:chunk-0079:012",
+        "evidence:chunk-0080:004",
+        "evidence:chunk-0080:009",
+        "evidence:chunk-0278:005",
+        "evidence:chunk-0353:010",
+        "evidence:chunk-0364:004"
+      ],
+      "requirement_ids": [
+        "character_relationship_perspective"
+      ],
+      "confidence": "EXTRACTED"
+    }
+  ],
+  "gap_items": [
+    {
+      "requirement_id": "character_relationship_perspective",
+      "status": "needs_review",
+      "evidence_ids": [
+        "evidence:chunk-0080:009"
+      ],
+      "notes": [
+        "野狼帮小树林遭遇后续战术链未在本 batch 中完全展开。"
+      ]
+    },
+    {
+      "requirement_id": "character_relationship_perspective",
+      "status": "not_found_in_source",
+      "evidence_ids": [],
+      "notes": [
+        "未形成宗门忠诚型救援任务的完整闭合案例。"
+      ]
+    }
+  ],
+  "render_target": "drafts",
+  "overwrite_policy": "draft",
+  "producer": {
+    "agent_role": "stage2-template-document-agent",
+    "batch_id": "template-batch-0033-b4493ab5a588",
+    "model_or_agent_identity": "codex-stage2-template-document-agent",
+    "generated_at": "2026-06-23T18:53:24.832Z"
+  }
+}

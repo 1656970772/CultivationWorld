@@ -1,0 +1,509 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0057:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0057",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T18:00:00Z",
+  "extracted_nodes": [
+    {
+      "id": "n-ch0057-001",
+      "node_type": "character",
+      "label": "辰南",
+      "aliases": [
+        "败类"
+      ],
+      "properties": {
+        "role": "主角",
+        "current_action": "被露丝色诱招募，委托佣兵调查仁剑"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0057",
+        "source_range": [
+          315111,
+          315211
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0057-001"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0057"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "n-ch0057-002",
+      "node_type": "character",
+      "label": "露丝",
+      "aliases": [],
+      "properties": {
+        "role": "性感美女，为某势力在神风学院网罗人才",
+        "personality": "妩媚、善于利用色诱",
+        "action": "招募辰南加入其组织未果"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0057",
+        "source_range": [
+          315111,
+          315211
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0057-002"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0057"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "n-ch0057-003",
+      "node_type": "character",
+      "label": "李老哥",
+      "aliases": [
+        "李前辈"
+      ],
+      "properties": {
+        "role": "经验丰富的老佣兵，佣兵界重量级人物",
+        "age": "五十多岁",
+        "experience": "干佣兵三十年",
+        "action": "免费为辰南调查仁剑"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0057",
+        "source_range": [
+          315111,
+          315211
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0057-003"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0057"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "n-ch0057-004",
+      "node_type": "facility",
+      "label": "佣兵工会",
+      "aliases": [],
+      "properties": {
+        "location": "罪恶之城（自由之城）",
+        "function": "每天接受大量任务供佣兵认领",
+        "note": "罪恶之城位于东西大陆之间，是重要枢纽城市，佣兵行业兴盛"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0057",
+        "source_range": [
+          315111,
+          315211
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0057-004"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "cat_loc_002"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0057"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "n-ch0057-005",
+      "node_type": "character",
+      "label": "仁剑",
+      "aliases": [],
+      "properties": {
+        "role": "拜月国三皇子，神风学院修道系学生",
+        "action": "派人刺杀辰南"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0057",
+        "source_range": [
+          315111,
+          315211
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0057-005"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0057"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "e-ch0057-001",
+      "source": "n-ch0057-002",
+      "target": "n-ch0057-001",
+      "edge_type": "recruits_from",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0057",
+        "source_range": [
+          315111,
+          315211
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0057-002"
+      ],
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0057"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "e-ch0057-002",
+      "source": "n-ch0057-001",
+      "target": "n-ch0057-003",
+      "edge_type": "trades_with",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0057",
+        "source_range": [
+          315111,
+          315211
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0057-003"
+      ],
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0057"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "e-ch0057-003",
+      "source": "n-ch0057-005",
+      "target": "n-ch0057-001",
+      "edge_type": "enemy_of",
+      "confidence": "INFERRED",
+      "verification_status": "needs_review",
+      "source_location": {
+        "chunk_id": "chunk-0057",
+        "source_range": [
+          315111,
+          315211
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0057-005"
+      ],
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0057"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "evt-ch0057-001",
+      "event_type": "event",
+      "label": "露丝色诱招募辰南加入其组织",
+      "participants": [
+        "n-ch0057-001",
+        "n-ch0057-002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0057",
+        "source_range": [
+          315111,
+          315211
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0057-001",
+        "evidence:ev-ch0057-002"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0057"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "evt-ch0057-002",
+      "event_type": "event",
+      "label": "辰南委托李老哥调查仁剑",
+      "participants": [
+        "n-ch0057-001",
+        "n-ch0057-003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0057",
+        "source_range": [
+          315111,
+          315211
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0057-003"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0057"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:ev-ch0057-001",
+      "source_location": {
+        "chunk_id": "chunk-0057",
+        "source_range": [
+          2,
+          44
+        ]
+      },
+      "source_range": [
+        315111,
+        315611
+      ],
+      "fact_summary": "露丝到客栈找辰南，希望通过提供权势、金钱、美女招募他加入某组织；辰南拒绝表示不加入任何势力",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0057"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "evidence_id": "evidence:ev-ch0057-002",
+      "source_location": {
+        "chunk_id": "chunk-0057",
+        "source_range": [
+          56,
+          76
+        ]
+      },
+      "source_range": [
+        315111,
+        315611
+      ],
+      "fact_summary": "露丝脱鞋露脚、慵懒斜躺，以娇躯曲线、玉腿玉足色诱辰南加入组织，辰南不为所动",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0057"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "evidence_id": "evidence:ev-ch0057-003",
+      "source_location": {
+        "chunk_id": "chunk-0057",
+        "source_range": [
+          92,
+          162
+        ]
+      },
+      "source_range": [
+        315111,
+        315611
+      ],
+      "fact_summary": "辰南到佣兵工会门口遇到五十多岁老佣兵李老哥，请他调查仁剑动态；李老哥免费接任务，两人以兄弟相交",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0057"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "evidence_id": "evidence:ev-ch0057-004",
+      "source_location": {
+        "chunk_id": "chunk-0057",
+        "source_range": [
+          92,
+          104
+        ]
+      },
+      "source_range": [
+        315111,
+        315611
+      ],
+      "fact_summary": "罪恶之城（自由之城）位于东西大陆之间，是大陆最重要枢纽城市之一；城内佣兵工会每天接受大量任务，佣兵行业在此兴盛",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0057"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "evidence_id": "evidence:ev-ch0057-005",
+      "source_location": {
+        "chunk_id": "chunk-0057",
+        "source_range": [
+          80,
+          92
+        ]
+      },
+      "source_range": [
+        315111,
+        315611
+      ],
+      "fact_summary": "露丝暗示拜月国一位皇子和两男一女走的很近；辰南推断前日刺杀他的两男一女为仁剑所派",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0057"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "uncertainties": [
+    {
+      "uncertainty_id": "unc-ch0057-001",
+      "description": "露丝背后势力具体身份未明示（可能是某一国家如拜月国或其它），类似楚国奇士府",
+      "related_nodes": [
+        "n-ch0057-002"
+      ],
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "uncertainty_id": "unc-ch0057-002",
+      "description": "李老哥在佣兵界的具体身份和地位未明示",
+      "related_nodes": [
+        "n-ch0057-003"
+      ],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "rejected_candidates": [],
+  "structured_failures": [],
+  "supports_templates": []
+}

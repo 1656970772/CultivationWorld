@@ -1,0 +1,2506 @@
+{
+  "chunk_id": "chunk-0021",
+  "source_range": [
+    37063,
+    38692
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "task_packet_id": "chunk-0021:comprehensive_extraction:attempt-001",
+      "chunk_id": "chunk-0021",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "produced_at": "2026-06-23T14:28:40+08:00",
+      "extracted_nodes": [
+        {
+          "id": "node:chunk-0021:character:001",
+          "node_type": "character",
+          "label": "韩立",
+          "aliases": [],
+          "fact_summary": "韩立向小算盘出示腰牌以证明身份，并继续追问山上变化的缘由。",
+          "evidence_ids": [
+            "evidence:chunk-0021:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            37140,
+            37249
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37140,
+              37249
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0021:character:002",
+          "node_type": "character",
+          "label": "金冬宝",
+          "aliases": [
+            "小算盘"
+          ],
+          "fact_summary": "小算盘在韩立询问名讳时自称金冬宝，并表示韩立可以继续叫他小算盘。",
+          "evidence_ids": [
+            "evidence:chunk-0021:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            38471,
+            38585
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              38471,
+              38585
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0021:faction:001",
+          "node_type": "faction",
+          "label": "七玄门",
+          "aliases": [],
+          "fact_summary": "七玄门近年与野狼帮冲突加剧，并因伤亡与历练需要调整内门弟子安排和门规。",
+          "evidence_ids": [
+            "evidence:chunk-0021:002",
+            "evidence:chunk-0021:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "宗门任务体系",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            37340,
+            37881
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37340,
+              37881
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0021:faction:002",
+          "node_type": "faction",
+          "label": "野狼帮",
+          "aliases": [],
+          "fact_summary": "野狼帮与七玄门为几块富裕城镇发生多次冲突，其帮众按训练马贼的一套训练，拼杀凶悍。",
+          "evidence_ids": [
+            "evidence:chunk-0021:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            37340,
+            37598
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37340,
+              37598
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0021:location:001",
+          "node_type": "location",
+          "label": "几块富裕城镇",
+          "aliases": [],
+          "fact_summary": "七玄门与野狼帮为几块说不清归属的富裕城镇发生多次争斗，但城镇名称未在本 chunk 明示。",
+          "evidence_ids": [
+            "evidence:chunk-0021:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            37340,
+            37598
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37340,
+              37598
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0021:rule:001",
+          "node_type": "rule",
+          "label": "出师后先下山历练再授实职的门规",
+          "aliases": [],
+          "fact_summary": "七玄门将弟子出师后先下山历练、回来后再授予门内实职的策略正式纳入门规。",
+          "evidence_ids": [
+            "evidence:chunk-0021:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "宗门任务体系",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            37670,
+            37805
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37670,
+              37805
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0021:character:003",
+          "node_type": "character",
+          "label": "赵子灵",
+          "aliases": [],
+          "fact_summary": "赵子灵在与厉师兄交手时被震飞软剑，随后承认自己甘拜下风。",
+          "evidence_ids": [
+            "evidence:chunk-0021:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            37913,
+            38073
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37913,
+              38073
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0021:character:004",
+          "node_type": "character",
+          "label": "厉师兄",
+          "aliases": [],
+          "fact_summary": "厉师兄以连环刀势击败赵子灵，随后因急事离开场地并进入山崖旁松林。",
+          "evidence_ids": [
+            "evidence:chunk-0021:004",
+            "evidence:chunk-0021:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "NPC性格与代表事件",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            37913,
+            38293
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37913,
+              38293
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0021:location:002",
+          "node_type": "location",
+          "label": "山崖旁的松林",
+          "aliases": [
+            "旁边的松林"
+          ],
+          "fact_summary": "厉师兄离场后消失在山崖旁的松林里，韩立随后也走进旁边的松林。",
+          "evidence_ids": [
+            "evidence:chunk-0021:005",
+            "evidence:chunk-0021:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            38255,
+            38650
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              38255,
+              38650
+            ]
+          }
+        }
+      ],
+      "extracted_edges": [
+        {
+          "id": "edge:chunk-0021:001",
+          "edge_type": "identity_verified_by_badge",
+          "source": "node:chunk-0021:character:001",
+          "target": "node:chunk-0021:character:002",
+          "fact_summary": "韩立向小算盘递出腰牌，小算盘看出腰牌是真的后赔笑并愿意回答问题。",
+          "evidence_ids": [
+            "evidence:chunk-0021:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            37140,
+            37249
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37140,
+              37249
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0021:002",
+          "edge_type": "conflict_with",
+          "source": "node:chunk-0021:faction:001",
+          "target": "node:chunk-0021:faction:002",
+          "fact_summary": "七玄门和野狼帮为几块富裕城镇冲突加剧，打了多次仗且双方损失不少人手。",
+          "evidence_ids": [
+            "evidence:chunk-0021:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            37340,
+            37598
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37340,
+              37598
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0021:003",
+          "edge_type": "contested_location",
+          "source": "node:chunk-0021:faction:001",
+          "target": "node:chunk-0021:location:001",
+          "fact_summary": "七玄门为几块富裕城镇与野狼帮争斗，并认为这几块地盘绝不能失。",
+          "evidence_ids": [
+            "evidence:chunk-0021:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            37340,
+            37598
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37340,
+              37598
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0021:004",
+          "edge_type": "adopted_rule",
+          "source": "node:chunk-0021:faction:001",
+          "target": "node:chunk-0021:rule:001",
+          "fact_summary": "七玄门将先历练再授实职的策略正式纳入门规。",
+          "evidence_ids": [
+            "evidence:chunk-0021:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "宗门任务体系",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            37670,
+            37805
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37670,
+              37805
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0021:005",
+          "edge_type": "defeated_in_sparring",
+          "source": "node:chunk-0021:character:004",
+          "target": "node:chunk-0021:character:003",
+          "fact_summary": "厉师兄以迅猛连环刀势迫使赵子灵软剑脱手，赵子灵认输。",
+          "evidence_ids": [
+            "evidence:chunk-0021:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            37913,
+            38073
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37913,
+              38073
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0021:006",
+          "edge_type": "moved_to",
+          "source": "node:chunk-0021:character:004",
+          "target": "node:chunk-0021:location:002",
+          "fact_summary": "厉师兄称有急事要办，离开场地后消失在山崖旁的松林里。",
+          "evidence_ids": [
+            "evidence:chunk-0021:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            38221,
+            38293
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              38221,
+              38293
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0021:007",
+          "edge_type": "offered_free_treatment_to",
+          "source": "node:chunk-0021:character:001",
+          "target": "node:chunk-0021:character:002",
+          "fact_summary": "韩立对金冬宝表示以后生病受伤可以找他免费医治。",
+          "evidence_ids": [
+            "evidence:chunk-0021:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            38585,
+            38650
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              38585,
+              38650
+            ]
+          }
+        }
+      ],
+      "extracted_events": [
+        {
+          "id": "event:chunk-0021:001",
+          "event_type": "information_event",
+          "label": "小算盘告知七玄门近年变化",
+          "fact_summary": "小算盘向韩立说明七玄门与野狼帮冲突加剧、内门弟子被派出拼斗或历练，并解释山上人员减少的缘由。",
+          "participants": [
+            "node:chunk-0021:character:001",
+            "node:chunk-0021:character:002",
+            "node:chunk-0021:faction:001",
+            "node:chunk-0021:faction:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0021:002",
+            "evidence:chunk-0021:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "信息传播与情报",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            37291,
+            37881
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37291,
+              37881
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0021:002",
+          "event_type": "conflict_event",
+          "label": "七玄门与野狼帮争夺富裕城镇",
+          "fact_summary": "七玄门和野狼帮为几块富裕城镇打了十几仗，双方损失人手，七玄门派出大部分内门弟子参战。",
+          "participants": [
+            "node:chunk-0021:faction:001",
+            "node:chunk-0021:faction:002",
+            "node:chunk-0021:location:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0021:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            37340,
+            37598
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37340,
+              37598
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0021:003",
+          "event_type": "policy_change_event",
+          "label": "七玄门正式纳入弟子历练门规",
+          "fact_summary": "七玄门几位门主改变策略，让内门弟子先执行不太重要的任务并外出历练，随后将出师后下山历练再授实职纳入门规。",
+          "participants": [
+            "node:chunk-0021:faction:001",
+            "node:chunk-0021:rule:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0021:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "宗门任务体系",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            37670,
+            37805
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37670,
+              37805
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0021:004",
+          "event_type": "combat_event",
+          "label": "厉师兄击败赵子灵",
+          "fact_summary": "赵子灵被厉师兄连环刀势震飞软剑并震伤虎口，随后承认甘拜下风。",
+          "participants": [
+            "node:chunk-0021:character:004",
+            "node:chunk-0021:character:003"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0021:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            37913,
+            38073
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37913,
+              38073
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0021:005",
+          "event_type": "departure_event",
+          "label": "厉师兄因急事离场",
+          "fact_summary": "厉师兄在比武后脸色一变，称自己有急事要办，随后施展轻功离场并进入山崖旁松林。",
+          "participants": [
+            "node:chunk-0021:character:004",
+            "node:chunk-0021:location:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0021:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            38166,
+            38293
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              38166,
+              38293
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0021:006",
+          "event_type": "relationship_event",
+          "label": "金冬宝告知姓名并获韩立医治承诺",
+          "fact_summary": "金冬宝告知韩立自己的姓名和小算盘别称，韩立随后承诺他以后生病受伤可以免费找自己医治。",
+          "participants": [
+            "node:chunk-0021:character:001",
+            "node:chunk-0021:character:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0021:006",
+            "evidence:chunk-0021:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            38471,
+            38650
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              38471,
+              38650
+            ]
+          }
+        }
+      ],
+      "extracted_evidence": [
+        {
+          "evidence_id": "evidence:chunk-0021:001",
+          "chunk_id": "chunk-0021",
+          "source_range": [
+            37140,
+            37249
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37140,
+              37249
+            ]
+          },
+          "excerpt": "韩立听了二话不说，从身上利索的摸出了一个腰牌，伸手递给了小算盘。\n　　“韩师兄，你这是干吗？我还能信不过你吗！我一见你就觉得很面善，肯定以前早就见过了，呵呵！”他用眼角迅速地瞥了一眼腰牌，见是真的，忙赔起了笑脸。",
+          "fact_summary": "韩立出示腰牌，小算盘看到腰牌为真后赔笑，并愿意继续回答问题。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0021:001"
+        },
+        {
+          "evidence_id": "evidence:chunk-0021:002",
+          "chunk_id": "chunk-0021",
+          "source_range": [
+            37340,
+            37598
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37340,
+              37598
+            ]
+          },
+          "excerpt": "原来这几年，七玄门和野狼帮的冲突更加厉害，双方为了几块说不清归属的富裕城镇打了大大小小的十几仗，都损失了不少的人手。因为野狼帮的帮众都是用训练马贼的一套训练出来的，一个个厮杀起来全不要命，见到血后就更加疯狂，而七玄门的弟子虽然武艺较高但没有那股狠劲，在拼杀中缩手缩脚，这样一来双方死伤更多的往往是后者。一连几场下来，七玄门的几位大人物再也坐不住了，把本门的大部分内门弟子全都派了出去，去参加双方接下来的一连串拼斗，一方面这几块地盘绝不能失，另一方面让弟子们也都见见江湖的残酷性，去磨练一番，长长实际的战斗经验。",
+          "fact_summary": "七玄门和野狼帮为归属不清的富裕城镇冲突加剧，双方多次交战并损失人手，七玄门派出大部分内门弟子参战和磨练。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0021:002"
+        },
+        {
+          "evidence_id": "evidence:chunk-0021:003",
+          "chunk_id": "chunk-0021",
+          "source_range": [
+            37670,
+            37881
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37670,
+              37881
+            ]
+          },
+          "excerpt": "再后来几位门主又改变了策略，让内门弟子先去执行一些不太重要的任务，去其他地方历练一番，有了一定的江湖经验后，再去参加和野狼帮的拼杀，这样一来伤亡果然减少了许多。于是这种策略就在这两年被正式纳入了门规，要求所有弟子出师后都必须先下山历练一番，回来后才能授予门内实职。\n　　就这样，山上年纪大些的师兄几乎都被派到了山下，现在要么正在和野狼帮纠缠，要么去参加历练了，山中除了必要的守山弟子外，就只剩这些还未出师的年幼弟子。",
+          "fact_summary": "七玄门改变策略并正式建立出师后先下山历练再授实职的门规，山上成年师兄多已下山参战或历练。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "宗门任务体系",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0021:003"
+        },
+        {
+          "evidence_id": "evidence:chunk-0021:004",
+          "chunk_id": "chunk-0021",
+          "source_range": [
+            37913,
+            38073
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37913,
+              38073
+            ]
+          },
+          "excerpt": "“当！”一声巨响，一把软剑飞到了半空中。\n　　赵子灵左手按着右手被震伤的虎口，脸色发白的倒退了几步，大口大口的喘着粗气。\n　　他刚才在厉师兄迅猛的连环刀势下，躲避不及，被迫用手中的软剑去招架，结果被刀上传过来的一股巨力，给震飞了手中的兵器。\n　　“厉师兄，果然厉害，小弟甘拜下风。”赵子灵勉强的带着微笑，施了一礼。",
+          "fact_summary": "厉师兄以连环刀势击退赵子灵并震飞其软剑，赵子灵承认败北。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0021:004"
+        },
+        {
+          "evidence_id": "evidence:chunk-0021:005",
+          "chunk_id": "chunk-0021",
+          "source_range": [
+            38166,
+            38293
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              38166,
+              38293
+            ]
+          },
+          "excerpt": "厉师兄把长刀收了起来，脸上起了几丝淡淡的红晕，刚想说些什么。突然他脸色一变，皱起了眉头，似乎想起了什么。\n　　他一抱拳，酷酷的说道：\n　　“在下还有些急事要办，先告辞了。”\n　　一转身，轻轻地飘出了场外，露了一手俊俏的轻功，消失在了山崖旁的松林里。",
+          "fact_summary": "厉师兄比武后神色变化，称有急事，随后离场并消失在山崖旁松林。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0021:005"
+        },
+        {
+          "evidence_id": "evidence:chunk-0021:006",
+          "chunk_id": "chunk-0021",
+          "source_range": [
+            38471,
+            38585
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              38471,
+              38585
+            ]
+          },
+          "excerpt": "“这位师弟，我到现在还不知道你叫什么名字？”韩立看了一眼站在一旁的小算盘，突然问起了他的名讳。\n　　“我叫金冬宝，不过韩师兄叫我小算盘就行了。”小算盘听到韩立问起他的名字，立刻兴奋起来，看来认为自己是靠上了眼前的这颗大树。",
+          "fact_summary": "小算盘向韩立说明自己名叫金冬宝，也可继续被称作小算盘。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0021:006"
+        },
+        {
+          "evidence_id": "evidence:chunk-0021:007",
+          "chunk_id": "chunk-0021",
+          "source_range": [
+            38585,
+            38650
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              38585,
+              38650
+            ]
+          },
+          "excerpt": "“以后生病受伤，找我就行了，我给你免费医治。”韩立拍了拍他的肩膀，望了望场中又起了争执的人群，便头也不回的走进了旁边的松林。",
+          "fact_summary": "韩立承诺金冬宝以后生病受伤可以找自己免费医治，并走进旁边松林。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0021:007"
+        }
+      ],
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "uncertainties": [
+        {
+          "id": "uncertainty:chunk-0021:001",
+          "kind": "identity_missing",
+          "fact_summary": "厉师兄在本 chunk 只以称谓出现，真实姓名、所属层级和急事原因未明示。",
+          "evidence_ids": [
+            "evidence:chunk-0021:005"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "NPC性格与代表事件",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            38166,
+            38293
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              38166,
+              38293
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0021:002",
+          "kind": "location_name_missing",
+          "fact_summary": "七玄门与野狼帮争夺的富裕城镇只以复数泛称出现，具体城镇名称和归属边界未明示。",
+          "evidence_ids": [
+            "evidence:chunk-0021:002"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            37340,
+            37598
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37340,
+              37598
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0021:003",
+          "kind": "unnamed_method",
+          "fact_summary": "韩立提到自己修练那套口诀可能让心态变老，但本 chunk 未给出口诀名称、类别或机制，因此未建功法节点。",
+          "evidence_ids": [],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            38393,
+            38471
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              38393,
+              38471
+            ]
+          }
+        }
+      ],
+      "rejected_candidates": [
+        {
+          "id": "rejected:chunk-0021:001",
+          "candidate": "软剑",
+          "reason": "软剑在本 chunk 中是未具名武器，只作为赵子灵比武中被震飞的道具出现；不单独建武器节点。",
+          "confidence": "EXTRACTED",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "武器分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "not_found_in_source",
+              "confidence": "EXTRACTED",
+              "verification_status": "rejected"
+            }
+          ],
+          "source_range": [
+            37913,
+            38036
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37913,
+              38036
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0021:002",
+          "candidate": "长刀",
+          "reason": "长刀在本 chunk 中没有专属名称、来源、归属变化或特殊效果，只作厉师兄比武道具，不单独建武器节点。",
+          "confidence": "EXTRACTED",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "武器分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "not_found_in_source",
+              "confidence": "EXTRACTED",
+              "verification_status": "rejected"
+            }
+          ],
+          "source_range": [
+            37976,
+            38221
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              37976,
+              38221
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0021:003",
+          "candidate": "围观叫嚷的弟子",
+          "reason": "围观人群只承担气氛烘托和称赞厉师兄的背景功能，无姓名、决策、资源流转或独立后果，不建角色节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            38073,
+            38135
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0021",
+            "source_path": "intermediate/chunks/chunk-0021.txt",
+            "source_range": [
+              38073,
+              38135
+            ]
+          }
+        }
+      ],
+      "structured_failures": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0021/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "id": "node:chunk-0021:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立向小算盘出示腰牌以证明身份，并继续追问山上变化的缘由。",
+      "evidence_ids": [
+        "evidence:chunk-0021:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        37140,
+        37249
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          37140,
+          37249
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0021:character:002",
+      "node_type": "character",
+      "label": "金冬宝",
+      "aliases": [
+        "小算盘"
+      ],
+      "fact_summary": "小算盘在韩立询问名讳时自称金冬宝，并表示韩立可以继续叫他小算盘。",
+      "evidence_ids": [
+        "evidence:chunk-0021:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        38471,
+        38585
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          38471,
+          38585
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0021:faction:001",
+      "node_type": "faction",
+      "label": "七玄门",
+      "aliases": [],
+      "fact_summary": "七玄门近年与野狼帮冲突加剧，并因伤亡与历练需要调整内门弟子安排和门规。",
+      "evidence_ids": [
+        "evidence:chunk-0021:002",
+        "evidence:chunk-0021:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        37340,
+        37881
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          37340,
+          37881
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0021:faction:002",
+      "node_type": "faction",
+      "label": "野狼帮",
+      "aliases": [],
+      "fact_summary": "野狼帮与七玄门为几块富裕城镇发生多次冲突，其帮众按训练马贼的一套训练，拼杀凶悍。",
+      "evidence_ids": [
+        "evidence:chunk-0021:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        37340,
+        37598
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          37340,
+          37598
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0021:location:001",
+      "node_type": "location",
+      "label": "几块富裕城镇",
+      "aliases": [],
+      "fact_summary": "七玄门与野狼帮为几块说不清归属的富裕城镇发生多次争斗，但城镇名称未在本 chunk 明示。",
+      "evidence_ids": [
+        "evidence:chunk-0021:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        37340,
+        37598
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          37340,
+          37598
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0021:rule:001",
+      "node_type": "rule",
+      "label": "出师后先下山历练再授实职的门规",
+      "aliases": [],
+      "fact_summary": "七玄门将弟子出师后先下山历练、回来后再授予门内实职的策略正式纳入门规。",
+      "evidence_ids": [
+        "evidence:chunk-0021:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        37670,
+        37805
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          37670,
+          37805
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0021:character:003",
+      "node_type": "character",
+      "label": "赵子灵",
+      "aliases": [],
+      "fact_summary": "赵子灵在与厉师兄交手时被震飞软剑，随后承认自己甘拜下风。",
+      "evidence_ids": [
+        "evidence:chunk-0021:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        37913,
+        38073
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          37913,
+          38073
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0021:character:004",
+      "node_type": "character",
+      "label": "厉师兄",
+      "aliases": [],
+      "fact_summary": "厉师兄以连环刀势击败赵子灵，随后因急事离开场地并进入山崖旁松林。",
+      "evidence_ids": [
+        "evidence:chunk-0021:004",
+        "evidence:chunk-0021:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        37913,
+        38293
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          37913,
+          38293
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0021:location:002",
+      "node_type": "location",
+      "label": "山崖旁的松林",
+      "aliases": [
+        "旁边的松林"
+      ],
+      "fact_summary": "厉师兄离场后消失在山崖旁的松林里，韩立随后也走进旁边的松林。",
+      "evidence_ids": [
+        "evidence:chunk-0021:005",
+        "evidence:chunk-0021:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        38255,
+        38650
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          38255,
+          38650
+        ]
+      }
+    }
+  ],
+  "normalized_edges": [
+    {
+      "id": "edge:chunk-0021:001",
+      "edge_type": "identity_verified_by_badge",
+      "source": "node:chunk-0021:character:001",
+      "target": "node:chunk-0021:character:002",
+      "fact_summary": "韩立向小算盘递出腰牌，小算盘看出腰牌是真的后赔笑并愿意回答问题。",
+      "evidence_ids": [
+        "evidence:chunk-0021:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        37140,
+        37249
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          37140,
+          37249
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0021:002",
+      "edge_type": "conflict_with",
+      "source": "node:chunk-0021:faction:001",
+      "target": "node:chunk-0021:faction:002",
+      "fact_summary": "七玄门和野狼帮为几块富裕城镇冲突加剧，打了多次仗且双方损失不少人手。",
+      "evidence_ids": [
+        "evidence:chunk-0021:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        37340,
+        37598
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          37340,
+          37598
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0021:003",
+      "edge_type": "contested_location",
+      "source": "node:chunk-0021:faction:001",
+      "target": "node:chunk-0021:location:001",
+      "fact_summary": "七玄门为几块富裕城镇与野狼帮争斗，并认为这几块地盘绝不能失。",
+      "evidence_ids": [
+        "evidence:chunk-0021:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        37340,
+        37598
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          37340,
+          37598
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0021:004",
+      "edge_type": "adopted_rule",
+      "source": "node:chunk-0021:faction:001",
+      "target": "node:chunk-0021:rule:001",
+      "fact_summary": "七玄门将先历练再授实职的策略正式纳入门规。",
+      "evidence_ids": [
+        "evidence:chunk-0021:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        37670,
+        37805
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          37670,
+          37805
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0021:005",
+      "edge_type": "defeated_in_sparring",
+      "source": "node:chunk-0021:character:004",
+      "target": "node:chunk-0021:character:003",
+      "fact_summary": "厉师兄以迅猛连环刀势迫使赵子灵软剑脱手，赵子灵认输。",
+      "evidence_ids": [
+        "evidence:chunk-0021:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        37913,
+        38073
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          37913,
+          38073
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0021:006",
+      "edge_type": "moved_to",
+      "source": "node:chunk-0021:character:004",
+      "target": "node:chunk-0021:location:002",
+      "fact_summary": "厉师兄称有急事要办，离开场地后消失在山崖旁的松林里。",
+      "evidence_ids": [
+        "evidence:chunk-0021:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        38221,
+        38293
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          38221,
+          38293
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0021:007",
+      "edge_type": "offered_free_treatment_to",
+      "source": "node:chunk-0021:character:001",
+      "target": "node:chunk-0021:character:002",
+      "fact_summary": "韩立对金冬宝表示以后生病受伤可以找他免费医治。",
+      "evidence_ids": [
+        "evidence:chunk-0021:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        38585,
+        38650
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          38585,
+          38650
+        ]
+      }
+    }
+  ],
+  "normalized_events": [
+    {
+      "id": "event:chunk-0021:001",
+      "event_type": "information_event",
+      "label": "小算盘告知七玄门近年变化",
+      "fact_summary": "小算盘向韩立说明七玄门与野狼帮冲突加剧、内门弟子被派出拼斗或历练，并解释山上人员减少的缘由。",
+      "participants": [
+        "node:chunk-0021:character:001",
+        "node:chunk-0021:character:002",
+        "node:chunk-0021:faction:001",
+        "node:chunk-0021:faction:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0021:002",
+        "evidence:chunk-0021:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        37291,
+        37881
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          37291,
+          37881
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0021:002",
+      "event_type": "conflict_event",
+      "label": "七玄门与野狼帮争夺富裕城镇",
+      "fact_summary": "七玄门和野狼帮为几块富裕城镇打了十几仗，双方损失人手，七玄门派出大部分内门弟子参战。",
+      "participants": [
+        "node:chunk-0021:faction:001",
+        "node:chunk-0021:faction:002",
+        "node:chunk-0021:location:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0021:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        37340,
+        37598
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          37340,
+          37598
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0021:003",
+      "event_type": "policy_change_event",
+      "label": "七玄门正式纳入弟子历练门规",
+      "fact_summary": "七玄门几位门主改变策略，让内门弟子先执行不太重要的任务并外出历练，随后将出师后下山历练再授实职纳入门规。",
+      "participants": [
+        "node:chunk-0021:faction:001",
+        "node:chunk-0021:rule:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0021:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        37670,
+        37805
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          37670,
+          37805
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0021:004",
+      "event_type": "combat_event",
+      "label": "厉师兄击败赵子灵",
+      "fact_summary": "赵子灵被厉师兄连环刀势震飞软剑并震伤虎口，随后承认甘拜下风。",
+      "participants": [
+        "node:chunk-0021:character:004",
+        "node:chunk-0021:character:003"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0021:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        37913,
+        38073
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          37913,
+          38073
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0021:005",
+      "event_type": "departure_event",
+      "label": "厉师兄因急事离场",
+      "fact_summary": "厉师兄在比武后脸色一变，称自己有急事要办，随后施展轻功离场并进入山崖旁松林。",
+      "participants": [
+        "node:chunk-0021:character:004",
+        "node:chunk-0021:location:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0021:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        38166,
+        38293
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          38166,
+          38293
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0021:006",
+      "event_type": "relationship_event",
+      "label": "金冬宝告知姓名并获韩立医治承诺",
+      "fact_summary": "金冬宝告知韩立自己的姓名和小算盘别称，韩立随后承诺他以后生病受伤可以免费找自己医治。",
+      "participants": [
+        "node:chunk-0021:character:001",
+        "node:chunk-0021:character:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0021:006",
+        "evidence:chunk-0021:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        38471,
+        38650
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          38471,
+          38650
+        ]
+      }
+    }
+  ],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0021:001",
+      "chunk_id": "chunk-0021",
+      "source_range": [
+        37140,
+        37249
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          37140,
+          37249
+        ]
+      },
+      "excerpt": "韩立听了二话不说，从身上利索的摸出了一个腰牌，伸手递给了小算盘。\n　　“韩师兄，你这是干吗？我还能信不过你吗！我一见你就觉得很面善，肯定以前早就见过了，呵呵！”他用眼角迅速地瞥了一眼腰牌，见是真的，忙赔起了笑脸。",
+      "fact_summary": "韩立出示腰牌，小算盘看到腰牌为真后赔笑，并愿意继续回答问题。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0021:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0021:002",
+      "chunk_id": "chunk-0021",
+      "source_range": [
+        37340,
+        37598
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          37340,
+          37598
+        ]
+      },
+      "excerpt": "原来这几年，七玄门和野狼帮的冲突更加厉害，双方为了几块说不清归属的富裕城镇打了大大小小的十几仗，都损失了不少的人手。因为野狼帮的帮众都是用训练马贼的一套训练出来的，一个个厮杀起来全不要命，见到血后就更加疯狂，而七玄门的弟子虽然武艺较高但没有那股狠劲，在拼杀中缩手缩脚，这样一来双方死伤更多的往往是后者。一连几场下来，七玄门的几位大人物再也坐不住了，把本门的大部分内门弟子全都派了出去，去参加双方接下来的一连串拼斗，一方面这几块地盘绝不能失，另一方面让弟子们也都见见江湖的残酷性，去磨练一番，长长实际的战斗经验。",
+      "fact_summary": "七玄门和野狼帮为归属不清的富裕城镇冲突加剧，双方多次交战并损失人手，七玄门派出大部分内门弟子参战和磨练。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0021:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0021:003",
+      "chunk_id": "chunk-0021",
+      "source_range": [
+        37670,
+        37881
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          37670,
+          37881
+        ]
+      },
+      "excerpt": "再后来几位门主又改变了策略，让内门弟子先去执行一些不太重要的任务，去其他地方历练一番，有了一定的江湖经验后，再去参加和野狼帮的拼杀，这样一来伤亡果然减少了许多。于是这种策略就在这两年被正式纳入了门规，要求所有弟子出师后都必须先下山历练一番，回来后才能授予门内实职。\n　　就这样，山上年纪大些的师兄几乎都被派到了山下，现在要么正在和野狼帮纠缠，要么去参加历练了，山中除了必要的守山弟子外，就只剩这些还未出师的年幼弟子。",
+      "fact_summary": "七玄门改变策略并正式建立出师后先下山历练再授实职的门规，山上成年师兄多已下山参战或历练。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0021:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0021:004",
+      "chunk_id": "chunk-0021",
+      "source_range": [
+        37913,
+        38073
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          37913,
+          38073
+        ]
+      },
+      "excerpt": "“当！”一声巨响，一把软剑飞到了半空中。\n　　赵子灵左手按着右手被震伤的虎口，脸色发白的倒退了几步，大口大口的喘着粗气。\n　　他刚才在厉师兄迅猛的连环刀势下，躲避不及，被迫用手中的软剑去招架，结果被刀上传过来的一股巨力，给震飞了手中的兵器。\n　　“厉师兄，果然厉害，小弟甘拜下风。”赵子灵勉强的带着微笑，施了一礼。",
+      "fact_summary": "厉师兄以连环刀势击退赵子灵并震飞其软剑，赵子灵承认败北。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0021:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0021:005",
+      "chunk_id": "chunk-0021",
+      "source_range": [
+        38166,
+        38293
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          38166,
+          38293
+        ]
+      },
+      "excerpt": "厉师兄把长刀收了起来，脸上起了几丝淡淡的红晕，刚想说些什么。突然他脸色一变，皱起了眉头，似乎想起了什么。\n　　他一抱拳，酷酷的说道：\n　　“在下还有些急事要办，先告辞了。”\n　　一转身，轻轻地飘出了场外，露了一手俊俏的轻功，消失在了山崖旁的松林里。",
+      "fact_summary": "厉师兄比武后神色变化，称有急事，随后离场并消失在山崖旁松林。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0021:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0021:006",
+      "chunk_id": "chunk-0021",
+      "source_range": [
+        38471,
+        38585
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          38471,
+          38585
+        ]
+      },
+      "excerpt": "“这位师弟，我到现在还不知道你叫什么名字？”韩立看了一眼站在一旁的小算盘，突然问起了他的名讳。\n　　“我叫金冬宝，不过韩师兄叫我小算盘就行了。”小算盘听到韩立问起他的名字，立刻兴奋起来，看来认为自己是靠上了眼前的这颗大树。",
+      "fact_summary": "小算盘向韩立说明自己名叫金冬宝，也可继续被称作小算盘。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0021:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0021:007",
+      "chunk_id": "chunk-0021",
+      "source_range": [
+        38585,
+        38650
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0021",
+        "source_path": "intermediate/chunks/chunk-0021.txt",
+        "source_range": [
+          38585,
+          38650
+        ]
+      },
+      "excerpt": "“以后生病受伤，找我就行了，我给你免费医治。”韩立拍了拍他的肩膀，望了望场中又起了争执的人群，便头也不回的走进了旁边的松林。",
+      "fact_summary": "韩立承诺金冬宝以后生病受伤可以找自己免费医治，并走进旁边松林。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0021:007"
+    }
+  ]
+}

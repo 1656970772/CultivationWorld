@@ -1,0 +1,2493 @@
+{
+  "schema": "stage2-extraction-record.v1",
+  "template_name": "功法术法神通",
+  "template_file": "功法术法神通模板.md",
+  "template_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\模板\\功法术法神通模板.md",
+  "template_sha256": "ce0ebdb65baad15773b93a87e929e59514aa89bdd40bcc3cabe73203700421c8",
+  "source_graph": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\graphify-out\\graph.json",
+  "source_novel": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+  "output_language": "zh-CN",
+  "stage2_policy": {
+    "stage2_categories": {
+      "facts": "原作事实",
+      "judgments": "我的判断",
+      "pending_verifications": "待核验",
+      "not_found_items": "未见可靠证据"
+    },
+    "stage2_output_policy": {
+      "default_dir": "drafts",
+      "allow_overwrite_existing_docs": false,
+      "existing_document_action": "write_versioned_draft",
+      "allowed_policies": [
+        "draft",
+        "backup-and-overwrite",
+        "merge"
+      ],
+      "draft_action": "write_draft"
+    },
+    "stage2_render_policy": {
+      "citation_format": "[{evidence_id}]",
+      "draft_entry_policy": {
+        "source_sections": [
+          "facts"
+        ],
+        "field_aliases": {
+          "name": [
+            "name",
+            "title",
+            "item_name",
+            "entity_name",
+            "名称"
+          ],
+          "classification": [
+            "classification",
+            "type",
+            "category_label",
+            "类别",
+            "分类"
+          ],
+          "usage": [
+            "usage",
+            "purpose",
+            "effect",
+            "effects",
+            "用途",
+            "功效"
+          ],
+          "formula": [
+            "formula",
+            "materials",
+            "ingredients",
+            "components",
+            "recipe",
+            "方方",
+            "材料",
+            "成分"
+          ],
+          "source_excerpt": [
+            "source_excerpt",
+            "original_excerpt",
+            "quote",
+            "原文摘录"
+          ],
+          "review_status": [
+            "review_status",
+            "verification_status",
+            "审核状态"
+          ]
+        },
+        "fallback_name": "未命名条目",
+        "kept_fields": [
+          "name",
+          "classification",
+          "usage",
+          "formula",
+          "source_range",
+          "source_excerpt",
+          "evidence_ids",
+          "confidence",
+          "review_status"
+        ]
+      },
+      "final_entry_policy": {
+        "allowed_confidence": [
+          "EXTRACTED"
+        ],
+        "min_evidence_count": 1,
+        "require_explicit_name": true,
+        "require_source_excerpt": true,
+        "required_any_fields": [
+          "usage",
+          "formula"
+        ],
+        "unstable_name_prefixes": [
+          "未名",
+          "未命名",
+          "未知",
+          "不明"
+        ],
+        "unstable_name_contains": [
+          "某种",
+          "某类"
+        ],
+        "composite_name_markers": [
+          "与",
+          "或",
+          "/",
+          "、"
+        ],
+        "review_only_statuses": [
+          "needs_review",
+          "pending_review",
+          "rejected",
+          "ambiguous"
+        ],
+        "allow_missing_review_status": true
+      },
+      "dedupe_policy": {
+        "key_fields": [
+          "name",
+          "classification"
+        ],
+        "merge_text_fields": [
+          "usage",
+          "formula",
+          "source_excerpt"
+        ],
+        "confidence_strategy": "most_conservative",
+        "review_status_strategy": "review_only_wins"
+      },
+      "final_template_policy": {
+        "case_section_names": [
+          "案例",
+          "典型案例",
+          "案例清单",
+          "示例"
+        ],
+        "excluded_section_names": [
+          "待复核",
+          "缺口",
+          "资料来源",
+          "说明"
+        ],
+        "fallback_to_first_non_root_heading": true
+      }
+    }
+  },
+  "coverage_scope": {
+    "scope": "whole_novel",
+    "stage1_chunk_ledger": "coverage/chunk-ledger.json",
+    "chunk_ranges": [
+      {
+        "chunk_id": "chunk-0008",
+        "source_range": [
+          12320,
+          13062
+        ]
+      },
+      {
+        "chunk_id": "chunk-0011",
+        "source_range": [
+          18759,
+          19389
+        ]
+      },
+      {
+        "chunk_id": "chunk-0032",
+        "source_range": [
+          61589,
+          61802
+        ]
+      },
+      {
+        "chunk_id": "chunk-0036",
+        "source_range": [
+          69876,
+          70147
+        ]
+      },
+      {
+        "chunk_id": "chunk-0039",
+        "source_range": [
+          75392,
+          75432
+        ]
+      },
+      {
+        "chunk_id": "chunk-0069",
+        "source_range": [
+          134775,
+          136411
+        ]
+      },
+      {
+        "chunk_id": "chunk-0077",
+        "source_range": [
+          151327,
+          151556
+        ]
+      },
+      {
+        "chunk_id": "chunk-0119",
+        "source_range": [
+          232888,
+          233039
+        ]
+      },
+      {
+        "chunk_id": "chunk-0134",
+        "source_range": [
+          268822,
+          269066
+        ]
+      },
+      {
+        "chunk_id": "chunk-0157",
+        "source_range": [
+          328817,
+          328852
+        ]
+      },
+      {
+        "chunk_id": "chunk-0158",
+        "source_range": [
+          331366,
+          331498
+        ]
+      },
+      {
+        "chunk_id": "chunk-0160",
+        "source_range": [
+          337025,
+          337637
+        ]
+      },
+      {
+        "chunk_id": "chunk-0164",
+        "source_range": [
+          348306,
+          348421
+        ]
+      },
+      {
+        "chunk_id": "chunk-0165",
+        "source_range": [
+          349923,
+          349977
+        ]
+      },
+      {
+        "chunk_id": "chunk-0166",
+        "source_range": [
+          352507,
+          352548
+        ]
+      },
+      {
+        "chunk_id": "chunk-0167",
+        "source_range": [
+          356511,
+          356645
+        ]
+      },
+      {
+        "chunk_id": "chunk-0217",
+        "source_range": [
+          495534,
+          495601
+        ]
+      },
+      {
+        "chunk_id": "chunk-0220",
+        "source_range": [
+          505079,
+          505475
+        ]
+      },
+      {
+        "chunk_id": "chunk-0222",
+        "source_range": [
+          508822,
+          508890
+        ]
+      },
+      {
+        "chunk_id": "chunk-0234",
+        "source_range": [
+          545070,
+          545222
+        ]
+      },
+      {
+        "chunk_id": "chunk-0236",
+        "source_range": [
+          550969,
+          551258
+        ]
+      },
+      {
+        "chunk_id": "chunk-0245",
+        "source_range": [
+          578014,
+          579397
+        ]
+      },
+      {
+        "chunk_id": "chunk-0269",
+        "source_range": [
+          648124,
+          648339
+        ]
+      },
+      {
+        "chunk_id": "chunk-0316",
+        "source_range": [
+          786992,
+          787031
+        ]
+      },
+      {
+        "chunk_id": "chunk-0334",
+        "source_range": [
+          839299,
+          840856
+        ]
+      },
+      {
+        "chunk_id": "chunk-0341",
+        "source_range": [
+          860742,
+          860855
+        ]
+      },
+      {
+        "chunk_id": "chunk-0342",
+        "source_range": [
+          861849,
+          863471
+        ]
+      },
+      {
+        "chunk_id": "chunk-0378",
+        "source_range": [
+          964171,
+          964211
+        ]
+      },
+      {
+        "chunk_id": "chunk-0379",
+        "source_range": [
+          966954,
+          967016
+        ]
+      },
+      {
+        "chunk_id": "chunk-0387",
+        "source_range": [
+          988933,
+          989040
+        ]
+      },
+      {
+        "chunk_id": "chunk-0404",
+        "source_range": [
+          1037993,
+          1038052
+        ]
+      },
+      {
+        "chunk_id": "chunk-0413",
+        "source_range": [
+          1065872,
+          1065890
+        ]
+      },
+      {
+        "chunk_id": "chunk-0414",
+        "source_range": [
+          1066111,
+          1066251
+        ]
+      },
+      {
+        "chunk_id": "chunk-0431",
+        "source_range": [
+          1116449,
+          1116891
+        ]
+      },
+      {
+        "chunk_id": "chunk-0432",
+        "source_range": [
+          1117802,
+          1119496
+        ]
+      },
+      {
+        "chunk_id": "chunk-0433",
+        "source_range": [
+          1120798,
+          1121071
+        ]
+      },
+      {
+        "chunk_id": "chunk-0449",
+        "source_range": [
+          1166223,
+          1166261
+        ]
+      },
+      {
+        "chunk_id": "chunk-0470",
+        "source_range": [
+          1228040,
+          1228074
+        ]
+      }
+    ],
+    "ledger_path": "coverage/template-run-ledger.json"
+  },
+  "fulfilled_sections": [
+    {
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_kind": "summary_category",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0008:006",
+        "evidence:chunk-0008:007",
+        "evidence:chunk-0008:009",
+        "evidence:chunk-0032:007",
+        "evidence:chunk-0032:008",
+        "evidence:chunk-0036:008",
+        "evidence:chunk-0011:013",
+        "evidence:chunk-0011:014",
+        "evidence:chunk-0011:015",
+        "evidence:chunk-0011:018",
+        "evidence:chunk-0039:007",
+        "evidence:chunk-0119:004",
+        "evidence:chunk-0341:014",
+        "evidence:chunk-0160:004",
+        "evidence:chunk-0160:008",
+        "evidence:chunk-0158:004",
+        "evidence:chunk-0158:005",
+        "evidence:chunk-0158:006",
+        "evidence:chunk-0157:006",
+        "evidence:chunk-0157:007",
+        "evidence:chunk-0165:004",
+        "evidence:chunk-0166:001",
+        "evidence:chunk-0167:007",
+        "evidence:chunk-0432:022",
+        "evidence:chunk-0217:010",
+        "evidence:chunk-0220:013",
+        "evidence:chunk-0222:001",
+        "evidence:chunk-0245:006",
+        "evidence:chunk-0245:007",
+        "evidence:chunk-0245:008",
+        "evidence:chunk-0245:009",
+        "evidence:chunk-0245:010",
+        "evidence:chunk-0245:011",
+        "evidence:chunk-0245:012",
+        "evidence:chunk-0069:001",
+        "evidence:chunk-0069:007",
+        "evidence:chunk-0069:010",
+        "evidence:chunk-0164:010",
+        "evidence:chunk-0077:004",
+        "evidence:chunk-0077:005",
+        "evidence:chunk-0134:005",
+        "evidence:chunk-0234:006",
+        "evidence:chunk-0234:007",
+        "evidence:chunk-0236:005",
+        "evidence:chunk-0236:006",
+        "evidence:chunk-0269:002",
+        "evidence:chunk-0269:003",
+        "evidence:chunk-0316:008",
+        "evidence:chunk-0404:013",
+        "evidence:chunk-0342:012",
+        "evidence:chunk-0342:013",
+        "evidence:chunk-0342:003",
+        "evidence:chunk-0334:015",
+        "evidence:chunk-0378:014",
+        "evidence:chunk-0379:011",
+        "evidence:chunk-0432:004",
+        "evidence:chunk-0432:012",
+        "evidence:chunk-0334:005",
+        "evidence:chunk-0387:005",
+        "evidence:chunk-0431:015",
+        "evidence:chunk-0432:019",
+        "evidence:chunk-0431:019",
+        "evidence:chunk-0433:003",
+        "evidence:chunk-0449:005",
+        "evidence:chunk-0413:015",
+        "evidence:chunk-0414:001",
+        "evidence:chunk-0414:003",
+        "evidence:chunk-0470:028"
+      ],
+      "notes": [
+        "优先使用 supports_templates[].template_name == 功法术法神通 的图谱条目：nodes=917, edges=585, events=413。",
+        "记录按模板需求归并代表性功法、术法、神通、资质规则、夺舍元神与限制代价；未把缺证字段补写为事实。"
+      ]
+    }
+  ],
+  "fulfilled_fields": [
+    {
+      "requirement_id": "required_extraction_targets",
+      "requirement_kind": "task_packet_requirement",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0008:006",
+        "evidence:chunk-0008:007",
+        "evidence:chunk-0008:009",
+        "evidence:chunk-0032:007",
+        "evidence:chunk-0032:008",
+        "evidence:chunk-0036:008",
+        "evidence:chunk-0011:013",
+        "evidence:chunk-0011:014",
+        "evidence:chunk-0011:015",
+        "evidence:chunk-0011:018",
+        "evidence:chunk-0039:007",
+        "evidence:chunk-0119:004",
+        "evidence:chunk-0341:014",
+        "evidence:chunk-0160:004",
+        "evidence:chunk-0160:008",
+        "evidence:chunk-0158:004",
+        "evidence:chunk-0158:005",
+        "evidence:chunk-0158:006",
+        "evidence:chunk-0157:006",
+        "evidence:chunk-0157:007",
+        "evidence:chunk-0165:004",
+        "evidence:chunk-0166:001",
+        "evidence:chunk-0167:007",
+        "evidence:chunk-0432:022",
+        "evidence:chunk-0217:010",
+        "evidence:chunk-0220:013",
+        "evidence:chunk-0222:001",
+        "evidence:chunk-0245:006",
+        "evidence:chunk-0245:007",
+        "evidence:chunk-0245:008",
+        "evidence:chunk-0245:009",
+        "evidence:chunk-0245:010",
+        "evidence:chunk-0245:011",
+        "evidence:chunk-0245:012",
+        "evidence:chunk-0069:001",
+        "evidence:chunk-0069:007",
+        "evidence:chunk-0069:010",
+        "evidence:chunk-0164:010",
+        "evidence:chunk-0077:004",
+        "evidence:chunk-0077:005",
+        "evidence:chunk-0134:005",
+        "evidence:chunk-0234:006",
+        "evidence:chunk-0234:007",
+        "evidence:chunk-0236:005",
+        "evidence:chunk-0236:006",
+        "evidence:chunk-0269:002",
+        "evidence:chunk-0269:003",
+        "evidence:chunk-0316:008",
+        "evidence:chunk-0404:013",
+        "evidence:chunk-0342:012",
+        "evidence:chunk-0342:013",
+        "evidence:chunk-0342:003",
+        "evidence:chunk-0334:015",
+        "evidence:chunk-0378:014",
+        "evidence:chunk-0379:011",
+        "evidence:chunk-0432:004",
+        "evidence:chunk-0432:012",
+        "evidence:chunk-0334:005",
+        "evidence:chunk-0387:005",
+        "evidence:chunk-0431:015",
+        "evidence:chunk-0432:019",
+        "evidence:chunk-0431:019",
+        "evidence:chunk-0433:003",
+        "evidence:chunk-0449:005",
+        "evidence:chunk-0413:015",
+        "evidence:chunk-0414:001",
+        "evidence:chunk-0414:003",
+        "evidence:chunk-0470:028"
+      ],
+      "notes": [
+        "优先使用 supports_templates[].template_name == 功法术法神通 的图谱条目：nodes=917, edges=585, events=413。",
+        "记录按模板需求归并代表性功法、术法、神通、资质规则、夺舍元神与限制代价；未把缺证字段补写为事实。"
+      ]
+    },
+    {
+      "requirement_id": "evidence_requirements",
+      "requirement_kind": "task_packet_requirement",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0008:006",
+        "evidence:chunk-0008:007",
+        "evidence:chunk-0008:009",
+        "evidence:chunk-0032:007",
+        "evidence:chunk-0032:008",
+        "evidence:chunk-0036:008",
+        "evidence:chunk-0011:013",
+        "evidence:chunk-0011:014",
+        "evidence:chunk-0011:015",
+        "evidence:chunk-0011:018",
+        "evidence:chunk-0039:007",
+        "evidence:chunk-0119:004",
+        "evidence:chunk-0341:014",
+        "evidence:chunk-0160:004",
+        "evidence:chunk-0160:008",
+        "evidence:chunk-0158:004",
+        "evidence:chunk-0158:005",
+        "evidence:chunk-0158:006",
+        "evidence:chunk-0157:006",
+        "evidence:chunk-0157:007",
+        "evidence:chunk-0165:004",
+        "evidence:chunk-0166:001",
+        "evidence:chunk-0167:007",
+        "evidence:chunk-0432:022",
+        "evidence:chunk-0217:010",
+        "evidence:chunk-0220:013",
+        "evidence:chunk-0222:001",
+        "evidence:chunk-0245:006",
+        "evidence:chunk-0245:007",
+        "evidence:chunk-0245:008",
+        "evidence:chunk-0245:009",
+        "evidence:chunk-0245:010",
+        "evidence:chunk-0245:011",
+        "evidence:chunk-0245:012",
+        "evidence:chunk-0069:001",
+        "evidence:chunk-0069:007",
+        "evidence:chunk-0069:010",
+        "evidence:chunk-0164:010",
+        "evidence:chunk-0077:004",
+        "evidence:chunk-0077:005",
+        "evidence:chunk-0134:005",
+        "evidence:chunk-0234:006",
+        "evidence:chunk-0234:007",
+        "evidence:chunk-0236:005",
+        "evidence:chunk-0236:006",
+        "evidence:chunk-0269:002",
+        "evidence:chunk-0269:003",
+        "evidence:chunk-0316:008",
+        "evidence:chunk-0404:013",
+        "evidence:chunk-0342:012",
+        "evidence:chunk-0342:013",
+        "evidence:chunk-0342:003",
+        "evidence:chunk-0334:015",
+        "evidence:chunk-0378:014",
+        "evidence:chunk-0379:011",
+        "evidence:chunk-0432:004",
+        "evidence:chunk-0432:012",
+        "evidence:chunk-0334:005",
+        "evidence:chunk-0387:005",
+        "evidence:chunk-0431:015",
+        "evidence:chunk-0432:019",
+        "evidence:chunk-0431:019",
+        "evidence:chunk-0433:003",
+        "evidence:chunk-0449:005",
+        "evidence:chunk-0413:015",
+        "evidence:chunk-0414:001",
+        "evidence:chunk-0414:003",
+        "evidence:chunk-0470:028"
+      ],
+      "notes": [
+        "事实条目均携带 evidence_ids；待核验和未见可靠证据与原作确认事实分区存放。"
+      ]
+    }
+  ],
+  "fulfilled_tables": [],
+  "fulfilled_cards": [
+    {
+      "requirement_id": "功法术法神通卡片",
+      "requirement_kind": "template_heading",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0008:006",
+        "evidence:chunk-0008:007",
+        "evidence:chunk-0008:009",
+        "evidence:chunk-0032:007",
+        "evidence:chunk-0032:008",
+        "evidence:chunk-0036:008",
+        "evidence:chunk-0011:013",
+        "evidence:chunk-0011:014",
+        "evidence:chunk-0011:015",
+        "evidence:chunk-0011:018",
+        "evidence:chunk-0039:007",
+        "evidence:chunk-0119:004",
+        "evidence:chunk-0341:014",
+        "evidence:chunk-0160:004",
+        "evidence:chunk-0160:008",
+        "evidence:chunk-0158:004",
+        "evidence:chunk-0158:005",
+        "evidence:chunk-0158:006",
+        "evidence:chunk-0157:006",
+        "evidence:chunk-0157:007",
+        "evidence:chunk-0165:004",
+        "evidence:chunk-0166:001",
+        "evidence:chunk-0167:007",
+        "evidence:chunk-0432:022",
+        "evidence:chunk-0217:010",
+        "evidence:chunk-0220:013",
+        "evidence:chunk-0222:001",
+        "evidence:chunk-0245:006",
+        "evidence:chunk-0245:007",
+        "evidence:chunk-0245:008",
+        "evidence:chunk-0245:009",
+        "evidence:chunk-0245:010",
+        "evidence:chunk-0245:011",
+        "evidence:chunk-0245:012",
+        "evidence:chunk-0069:001",
+        "evidence:chunk-0069:007",
+        "evidence:chunk-0069:010",
+        "evidence:chunk-0164:010",
+        "evidence:chunk-0077:004",
+        "evidence:chunk-0077:005",
+        "evidence:chunk-0134:005",
+        "evidence:chunk-0234:006",
+        "evidence:chunk-0234:007",
+        "evidence:chunk-0236:005",
+        "evidence:chunk-0236:006",
+        "evidence:chunk-0269:002",
+        "evidence:chunk-0269:003",
+        "evidence:chunk-0316:008",
+        "evidence:chunk-0404:013",
+        "evidence:chunk-0342:012",
+        "evidence:chunk-0342:013",
+        "evidence:chunk-0342:003",
+        "evidence:chunk-0334:015",
+        "evidence:chunk-0378:014",
+        "evidence:chunk-0379:011",
+        "evidence:chunk-0432:004",
+        "evidence:chunk-0432:012",
+        "evidence:chunk-0334:005",
+        "evidence:chunk-0387:005",
+        "evidence:chunk-0431:015",
+        "evidence:chunk-0432:019",
+        "evidence:chunk-0431:019",
+        "evidence:chunk-0433:003",
+        "evidence:chunk-0449:005",
+        "evidence:chunk-0413:015",
+        "evidence:chunk-0414:001",
+        "evidence:chunk-0414:003",
+        "evidence:chunk-0470:028"
+      ],
+      "notes": [
+        "优先使用 supports_templates[].template_name == 功法术法神通 的图谱条目：nodes=917, edges=585, events=413。",
+        "记录按模板需求归并代表性功法、术法、神通、资质规则、夺舍元神与限制代价；未把缺证字段补写为事实。"
+      ]
+    }
+  ],
+  "fulfilled_cases": [],
+  "facts": [
+    {
+      "name": "无名口诀/长春功",
+      "classification": "修身功法/修仙入门功法",
+      "usage": "最初被墨大夫以修身养性、强身健体名义传授；后确认韩立所修即长春功，并能以长春气刺激秘穴。",
+      "formula": "要求年少起修，且墨居仁称需灵根体质；不得外传，半年考查不合格会被逐到外门。",
+      "source_range": {
+        "chunk_id": "chunk-0008",
+        "source_range": [
+          12986,
+          13062
+        ]
+      },
+      "source_excerpt": "墨大夫开始传授他们二人一套无名口诀，练习这套口决占用了他们大部分的时间，墨大夫并严令二人不得把口诀外传他人，如果泄露出去就要把他二人严加惩戒并踢出师门。",
+      "content": "无名口诀/长春功：最初被墨大夫以修身养性、强身健体名义传授；后确认韩立所修即长春功，并能以长春气刺激秘穴。；条件/限制/代价：要求年少起修，且墨居仁称需灵根体质；不得外传，半年考查不合格会被逐到外门。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0008:006",
+        "evidence:chunk-0008:007",
+        "evidence:chunk-0008:009",
+        "evidence:chunk-0032:007",
+        "evidence:chunk-0032:008"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0008",
+          "source_range": [
+            12320,
+            12360
+          ],
+          "chapter_hint": "第六章 无名口诀",
+          "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt"
+        },
+        {
+          "chunk_id": "chunk-0008",
+          "source_range": [
+            12394,
+            12433
+          ],
+          "chapter_hint": "第六章 无名口诀",
+          "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt"
+        },
+        {
+          "chunk_id": "chunk-0008",
+          "source_range": [
+            12986,
+            13062
+          ],
+          "chapter_hint": "第六章 无名口诀",
+          "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt"
+        },
+        {
+          "chunk_id": "chunk-0032",
+          "source_path": "intermediate/chunks/chunk-0032.txt",
+          "source_range": [
+            61589,
+            61651
+          ]
+        },
+        {
+          "chunk_id": "chunk-0032",
+          "source_path": "intermediate/chunks/chunk-0032.txt",
+          "source_range": [
+            61728,
+            61802
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": [
+        "灵根要求来自墨居仁认知，图谱 verification_status 为 needs_review。"
+      ]
+    },
+    {
+      "name": "长春功第五层",
+      "classification": "功法阶段能力",
+      "usage": "韩立练至第五层后获得过目不忘能力；可把武功完整记下并在脑海中反复推演。",
+      "formula": "韩立依仗黄龙丹、金髓丸冲破第四层；后续第六层仍预期消耗洗髓灵药。",
+      "source_range": {
+        "chunk_id": "chunk-0036",
+        "source_range": [
+          69876,
+          70147
+        ]
+      },
+      "source_excerpt": "这是韩立长春功练至第五层，新得到的能力——过目不忘。\n　　他凭借这个优势，可把任何武功用脑子凭空完整记下，再在脑海中来回播放无数次，加以锤炼升华，这也是厉飞雨以为他是个天才的原因。\n　　在两个月以前，韩立依仗着两种圣药的效力，硬生生的把长春功冲破了第四层境界，达到了第五层。\n　　“黄龙丹”和“金髓丸”的药效如此之大，远远超出了韩立的估计之外，他还是小瞧了那几张配方的莫大威力，这些配制的药丸还真是无价之宝。\n　　不过两种洗髓的灵药，也用去了一小半，剩下的应该勉强够自己练成第六层的长春功，真有些期待，第六层的长春功会给自己带来什么样的意外。",
+      "content": "长春功第五层：韩立练至第五层后获得过目不忘能力；可把武功完整记下并在脑海中反复推演。；条件/限制/代价：韩立依仗黄龙丹、金髓丸冲破第四层；后续第六层仍预期消耗洗髓灵药。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0036:008"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0036",
+          "source_path": "intermediate/chunks/chunk-0036.txt",
+          "source_range": [
+            69876,
+            70147
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "象甲功",
+      "classification": "炼体武功",
+      "usage": "张铁所练的少见实用武功，分九层。",
+      "formula": "前三层较易；第四层起极难并有痛苦折磨；突破第六至第七层后较顺，但每月仍有剧痛；除创功者外无人练到第九层。",
+      "source_range": {
+        "chunk_id": "chunk-0011",
+        "source_range": [
+          18929,
+          19001
+        ]
+      },
+      "source_excerpt": "而这门武功共分为九层，前三层很好练，和普通武功难易程度没有什么区别。到第四层开始，就突然变得艰难起来，并且要承受着许多令人难以想象的痛苦与折磨。",
+      "content": "象甲功：张铁所练的少见实用武功，分九层。；条件/限制/代价：前三层较易；第四层起极难并有痛苦折磨；突破第六至第七层后较顺，但每月仍有剧痛；除创功者外无人练到第九层。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0011:013",
+        "evidence:chunk-0011:014",
+        "evidence:chunk-0011:015",
+        "evidence:chunk-0011:018"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0011",
+          "source_range": [
+            18759,
+            18867
+          ],
+          "chapter_hint": "第九章 象甲功"
+        },
+        {
+          "chunk_id": "chunk-0011",
+          "source_range": [
+            18929,
+            19001
+          ],
+          "chapter_hint": "第九章 象甲功"
+        },
+        {
+          "chunk_id": "chunk-0011",
+          "source_range": [
+            19067,
+            19126
+          ],
+          "chapter_hint": "第九章 象甲功"
+        },
+        {
+          "chunk_id": "chunk-0011",
+          "source_range": [
+            19306,
+            19389
+          ],
+          "chapter_hint": "第九章 象甲功"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "眨眼剑法/眨眼剑谱",
+      "classification": "凡俗剑法",
+      "usage": "以修习条件苛刻著称，图谱中作为武学/技法支撑模板。",
+      "formula": "三不能练：真气略有小成者不能练，无大毅力者不能练，无天赋者不能练。",
+      "source_range": {
+        "chunk_id": "chunk-0039",
+        "source_range": [
+          75392,
+          75432
+        ]
+      },
+      "source_excerpt": "“这种剑法有三不能练，真气略有小成者不能练；无大毅力者不能练；无天赋者不能练。”",
+      "content": "眨眼剑法/眨眼剑谱：以修习条件苛刻著称，图谱中作为武学/技法支撑模板。；条件/限制/代价：三不能练：真气略有小成者不能练，无大毅力者不能练，无天赋者不能练。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0039:007"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0039",
+          "source_path": "intermediate/chunks/chunk-0039.txt",
+          "source_range": [
+            75392,
+            75432
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "灵根限制",
+      "classification": "资质规则",
+      "usage": "灵根决定能否修炼相应修仙功法；墨大夫因无灵根而无法真正踏入修仙。",
+      "formula": "不能修炼长春功不等于完全无灵根，韩立后来推断只能说明没有木属性灵根，可能仍有其他属性灵根。",
+      "source_range": {
+        "chunk_id": "chunk-0341",
+        "source_range": [
+          860742,
+          860855
+        ]
+      },
+      "source_excerpt": "韩立记得很清楚，当初的张铁可是根本无法修炼“长春功”的，应该没有灵根才是。\n　　“等等！不能修炼长春功，这可不代表张铁就没有灵根啊，只是说明他没有木属性灵根而已。难道曲魂竟然具有其他属性的灵根不成？”韩立有些恍然大悟的回想道。",
+      "content": "灵根限制：灵根决定能否修炼相应修仙功法；墨大夫因无灵根而无法真正踏入修仙。；条件/限制/代价：不能修炼长春功不等于完全无灵根，韩立后来推断只能说明没有木属性灵根，可能仍有其他属性灵根。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0119:004",
+        "evidence:chunk-0341:014",
+        "evidence:chunk-0032:008"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0119",
+          "source_path": "intermediate/chunks/chunk-0119.txt",
+          "source_range": [
+            232888,
+            233039
+          ]
+        },
+        {
+          "chunk_id": "chunk-0341",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            860742,
+            860855
+          ]
+        },
+        {
+          "chunk_id": "chunk-0032",
+          "source_path": "intermediate/chunks/chunk-0032.txt",
+          "source_range": [
+            61728,
+            61802
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "雷灵根/风灵根",
+      "classification": "异灵根/特殊资质",
+      "usage": "雷灵根慕容兄弟被称为天才并受关注；风灵根角色以自身资质和雷灵根作比较。",
+      "formula": "现有证据只给出角色评价与争斗语境，未给出完整修炼加成、寿命或资源选择规则。",
+      "source_range": {
+        "chunk_id": "chunk-0160",
+        "source_range": [
+          337025,
+          337081
+        ]
+      },
+      "source_excerpt": "“才进门的那对雷灵根的天才兄弟，不就是姓慕容吗！再加上刚才的巨响，难道真是他们这对备受瞩目的兄弟在此展露身手？”",
+      "content": "雷灵根/风灵根：雷灵根慕容兄弟被称为天才并受关注；风灵根角色以自身资质和雷灵根作比较。；条件/限制/代价：现有证据只给出角色评价与争斗语境，未给出完整修炼加成、寿命或资源选择规则。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0160:004",
+        "evidence:chunk-0160:008"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0160",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            337025,
+            337081
+          ]
+        },
+        {
+          "chunk_id": "chunk-0160",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            337607,
+            337637
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "炼气期与先天真火限制",
+      "classification": "境界能力边界",
+      "usage": "炼气期韩立不能施展先天真火；先天真火是筑基期修士才可具有的道家罡火。",
+      "formula": "只有筑基以后才能用出；到结丹期后先天真火会化为三味之火。",
+      "source_range": {
+        "chunk_id": "chunk-0158",
+        "source_range": [
+          331462,
+          331498
+        ]
+      },
+      "source_excerpt": "这种先天真火，让炼气期的韩立如何能施出来啊！只有筑基以后他，才可以用出。",
+      "content": "炼气期与先天真火限制：炼气期韩立不能施展先天真火；先天真火是筑基期修士才可具有的道家罡火。；条件/限制/代价：只有筑基以后才能用出；到结丹期后先天真火会化为三味之火。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0158:004",
+        "evidence:chunk-0158:005",
+        "evidence:chunk-0158:006"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0158",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            331366,
+            331385
+          ]
+        },
+        {
+          "chunk_id": "chunk-0158",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            331424,
+            331458
+          ]
+        },
+        {
+          "chunk_id": "chunk-0158",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            331462,
+            331498
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "筑基期",
+      "classification": "修炼境界",
+      "usage": "筑基期高手可作为坊市秩序力量，也能炼制法器；天眼术对某些筑基高手看不出深浅。",
+      "formula": "现有证据支撑能力表现和社会职能，未给出通用突破公式。",
+      "source_range": {
+        "chunk_id": "chunk-0157",
+        "source_range": [
+          328840,
+          328852
+        ]
+      },
+      "source_excerpt": "老者又是一位筑基期的高手",
+      "content": "筑基期：筑基期高手可作为坊市秩序力量，也能炼制法器；天眼术对某些筑基高手看不出深浅。；条件/限制/代价：现有证据支撑能力表现和社会职能，未给出通用突破公式。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0157:006",
+        "evidence:chunk-0157:007",
+        "evidence:chunk-0165:004",
+        "evidence:chunk-0166:001"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0157",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            328817,
+            328836
+          ]
+        },
+        {
+          "chunk_id": "chunk-0157",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            328840,
+            328852
+          ]
+        },
+        {
+          "chunk_id": "chunk-0165",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            349923,
+            349977
+          ]
+        },
+        {
+          "chunk_id": "chunk-0166",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            352507,
+            352548
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "结丹期与符宝",
+      "classification": "修炼境界/制符规则",
+      "usage": "结丹期以上修士可把法宝部分威力封入特制符纸，制成兼具符箓和法宝特性的符宝。",
+      "formula": "符宝是让其他修仙者暂时使出法宝威能的伪法宝；证据未给出制作成功率。",
+      "source_range": {
+        "chunk_id": "chunk-0167",
+        "source_range": [
+          356511,
+          356645
+        ]
+      },
+      "source_excerpt": "“符宝”此物还真是大有来历，竟是结丹期以上修士才可制作的一种奇特物品。\n　　它是炼出法宝的高阶修士，把法宝的部分威力封入到特制符纸中，让其他修仙者也可暂时使出法宝威能的一种特制符箓，使其同时具有符箓和法宝的双重特性，被知晓其存在的修仙者戏称为“伪法宝”，深受他们追捧。",
+      "content": "结丹期与符宝：结丹期以上修士可把法宝部分威力封入特制符纸，制成兼具符箓和法宝特性的符宝。；条件/限制/代价：符宝是让其他修仙者暂时使出法宝威能的伪法宝；证据未给出制作成功率。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0167:007"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0167",
+          "source_path": "intermediate/chunks/chunk-0167.txt",
+          "source_range": [
+            356511,
+            356645
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "元婴期玄魂炼妖大法",
+      "classification": "高阶密功/元神附体",
+      "usage": "玄魂炼妖大法被称为元婴期修士才有资格修炼的密功，可用玄魂之身附体。",
+      "formula": "修成者称可不再受夺舍限制；证据来自角色自述，具体普适边界需复核。",
+      "source_range": {
+        "chunk_id": "chunk-0432",
+        "source_range": [
+          1119422,
+          1119496
+        ]
+      },
+      "source_excerpt": "玄魂炼妖大法了。这可是元婴期的修士才有资格修炼的密功，只要修炼了它，我就不再受夺舍的限制，可以随意的用玄魂之身附在他人身上了。如今我玄魂凝骨之术已成",
+      "content": "元婴期玄魂炼妖大法：玄魂炼妖大法被称为元婴期修士才有资格修炼的密功，可用玄魂之身附体。；条件/限制/代价：修成者称可不再受夺舍限制；证据来自角色自述，具体普适边界需复核。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0432:022"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0432",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            1119422,
+            1119496
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "青元剑诀",
+      "classification": "筑基期以上剑修功法",
+      "usage": "韩立筑基后因残余筑基丹药性危险，被迫运功吸纳，选择手头唯一的筑基期以上功法青元剑诀。",
+      "formula": "黄枫谷筑基期弟子多练两三层但少有人深修三层以上；第四层起吐纳会出现散功。后由金页补全第一至十三层，可修至化神期。",
+      "source_range": {
+        "chunk_id": "chunk-0220",
+        "source_range": [
+          505079,
+          505475
+        ]
+      },
+      "source_excerpt": "原来他虽然筑基成功了，可身上八颗筑基丹的残余药性，可一点都没减轻过，仍一点不少的充斥着其全身，非常危险！\n　　如今的情况，他必须马上运功，将这些药力立即吸纳才行。否则，随时都有再爆发的可能。\n　　虽然韩立想明白了解决危机的办法，但是整个人仍然却暗暗叫苦不迭，无法高兴起来。\n　　因为韩立身上除了那本《青元剑诀》外，哪有什么筑基期以上的功法！而这本剑诀，只要看那位新拜的师傅，就这么随便的扔给了自己，就可知此功法的垃圾了！\n　　并且，韩立当初也翻过几回此书，并向他人打听过了一二。\n　　这剑诀的确普通的很，黄枫谷筑基期的弟子，几乎人人都炼了两三层在身，但从来没人继续深修过三层以上。具体的原因，韩立倒还没怎么问清楚，但此剑诀的差劲，由此可见了！\n　　可如今的情况，韩立就是不想修炼，也只有硬着头皮上了。\n　　无奈之下的韩立，只好将《青元剑诀》取出，平摊在自己身前的地上，然后盘膝照书修炼了起来。",
+      "content": "青元剑诀：韩立筑基后因残余筑基丹药性危险，被迫运功吸纳，选择手头唯一的筑基期以上功法青元剑诀。；条件/限制/代价：黄枫谷筑基期弟子多练两三层但少有人深修三层以上；第四层起吐纳会出现散功。后由金页补全第一至十三层，可修至化神期。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0217:010",
+        "evidence:chunk-0220:013",
+        "evidence:chunk-0222:001",
+        "evidence:chunk-0245:006"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0217",
+          "source_path": "intermediate/chunks/chunk-0217.txt",
+          "source_range": [
+            495534,
+            495601
+          ]
+        },
+        {
+          "chunk_id": "chunk-0220",
+          "source_path": "intermediate/chunks/chunk-0220.txt",
+          "source_range": [
+            505079,
+            505475
+          ]
+        },
+        {
+          "chunk_id": "chunk-0222",
+          "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+          "source_range": [
+            508822,
+            508890
+          ]
+        },
+        {
+          "chunk_id": "chunk-0245",
+          "source_path": "intermediate/chunks/chunk-0245.txt",
+          "source_range": [
+            578014,
+            578135
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "三转重元功",
+      "classification": "辅助突破功法",
+      "usage": "作为青元剑诀附带辅助功法，可回避结丹期瓶颈并压缩重修出的法力真元。",
+      "formula": "必须先修青元剑诀，并在剑诀六层时三次散功重修；即使完全做到也只有一半立即结丹几率，且耗时数倍。",
+      "source_range": {
+        "chunk_id": "chunk-0245",
+        "source_range": [
+          578878,
+          578997
+        ]
+      },
+      "source_excerpt": "修炼这功法的人，当然先要修炼青元剑诀，因为此功法原本就是为了辅助青元剑诀才创立的。虽然青元剑诀非常的难练，但这还不是重点，让韩立脸色难看的是，这功法竟然如同它的名字一样，要求修炼的人必须在青元剑诀六层时，分别把剑诀散功一次，重新再来修炼。",
+      "content": "三转重元功：作为青元剑诀附带辅助功法，可回避结丹期瓶颈并压缩重修出的法力真元。；条件/限制/代价：必须先修青元剑诀，并在剑诀六层时三次散功重修；即使完全做到也只有一半立即结丹几率，且耗时数倍。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0245:007",
+        "evidence:chunk-0245:008",
+        "evidence:chunk-0245:009",
+        "evidence:chunk-0245:010",
+        "evidence:chunk-0245:011",
+        "evidence:chunk-0245:012"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0245",
+          "source_path": "intermediate/chunks/chunk-0245.txt",
+          "source_range": [
+            578173,
+            578350
+          ]
+        },
+        {
+          "chunk_id": "chunk-0245",
+          "source_path": "intermediate/chunks/chunk-0245.txt",
+          "source_range": [
+            578667,
+            578766
+          ]
+        },
+        {
+          "chunk_id": "chunk-0245",
+          "source_path": "intermediate/chunks/chunk-0245.txt",
+          "source_range": [
+            578878,
+            578997
+          ]
+        },
+        {
+          "chunk_id": "chunk-0245",
+          "source_path": "intermediate/chunks/chunk-0245.txt",
+          "source_range": [
+            579000,
+            579090
+          ]
+        },
+        {
+          "chunk_id": "chunk-0245",
+          "source_path": "intermediate/chunks/chunk-0245.txt",
+          "source_range": [
+            579093,
+            579153
+          ]
+        },
+        {
+          "chunk_id": "chunk-0245",
+          "source_path": "intermediate/chunks/chunk-0245.txt",
+          "source_range": [
+            579242,
+            579397
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "火弹术",
+      "classification": "基础法术",
+      "usage": "韩立可在指尖附近凝成带高温的小火球；经苦练后火弹术小成。",
+      "formula": "与天眼术同列秘籍末页法术；定神符、御风诀、控物术一度未摸到门槛。",
+      "source_range": {
+        "chunk_id": "chunk-0069",
+        "source_range": [
+          134775,
+          134935
+        ]
+      },
+      "source_excerpt": "半晌未动的韩立，忽然间抬起了右手，直直竖起了一根手指，显得让人有些莫名其妙。\n　　但不久，在韩立竖起指尖半寸高的地方，突然发生了一丝空间波动，凭空出现了几点火花，火花刚一现身，立刻就“嗞啦”一声，在空间扭曲中无端的变成了核桃般大小的红色火球，这火球虽然不大，但一股炎热的高温，紧随着小火球的出现，而弥漫到了整间屋子之中。",
+      "content": "火弹术：韩立可在指尖附近凝成带高温的小火球；经苦练后火弹术小成。；条件/限制/代价：与天眼术同列秘籍末页法术；定神符、御风诀、控物术一度未摸到门槛。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0069:001",
+        "evidence:chunk-0069:007",
+        "evidence:chunk-0069:010"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0069",
+          "source_path": "intermediate/chunks/chunk-0069.txt",
+          "source_range": [
+            134775,
+            134935
+          ]
+        },
+        {
+          "chunk_id": "chunk-0069",
+          "source_path": "intermediate/chunks/chunk-0069.txt",
+          "source_range": [
+            135692,
+            135768
+          ]
+        },
+        {
+          "chunk_id": "chunk-0069",
+          "source_path": "intermediate/chunks/chunk-0069.txt",
+          "source_range": [
+            136351,
+            136411
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "天眼术",
+      "classification": "探查法术",
+      "usage": "秘籍末页所列法术之一，韩立长时间苦练后小成；可用于观察修士深浅。",
+      "formula": "对许姓筑基期老者无效果，看不出深浅；可被敛气术针对。",
+      "source_range": {
+        "chunk_id": "chunk-0157",
+        "source_range": [
+          328817,
+          328836
+        ]
+      },
+      "source_excerpt": "天眼术对此老并无效果，看不出对方的深浅",
+      "content": "天眼术：秘籍末页所列法术之一，韩立长时间苦练后小成；可用于观察修士深浅。；条件/限制/代价：对许姓筑基期老者无效果，看不出深浅；可被敛气术针对。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0069:007",
+        "evidence:chunk-0069:010",
+        "evidence:chunk-0157:006",
+        "evidence:chunk-0164:010"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0069",
+          "source_path": "intermediate/chunks/chunk-0069.txt",
+          "source_range": [
+            135692,
+            135768
+          ]
+        },
+        {
+          "chunk_id": "chunk-0069",
+          "source_path": "intermediate/chunks/chunk-0069.txt",
+          "source_range": [
+            136351,
+            136411
+          ]
+        },
+        {
+          "chunk_id": "chunk-0157",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            328817,
+            328836
+          ]
+        },
+        {
+          "chunk_id": "chunk-0164",
+          "source_path": "intermediate/chunks/chunk-0164.txt",
+          "source_range": [
+            348306,
+            348421
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "驱物术/控物术",
+      "classification": "御物法术",
+      "usage": "秘籍末页列有控物术，后续韩立以驱物术尝试驱使器物。",
+      "formula": "家具、刀剑等凡俗常见物以及引魂钟、银刃等试验对象均未成功，显示施法对象或条件有限制。",
+      "source_range": {
+        "chunk_id": "chunk-0077",
+        "source_range": [
+          151327,
+          151407
+        ]
+      },
+      "source_excerpt": "至于“驱物术”也是同样道理。韩立以前认为，“驱物术”随便找个东西就可以当作靶子来施法，所以掐诀念咒驱使的对象都是家具或者刀剑之类的常见之物，当然没有丝毫的效果。",
+      "content": "驱物术/控物术：秘籍末页列有控物术，后续韩立以驱物术尝试驱使器物。；条件/限制/代价：家具、刀剑等凡俗常见物以及引魂钟、银刃等试验对象均未成功，显示施法对象或条件有限制。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0069:007",
+        "evidence:chunk-0077:004",
+        "evidence:chunk-0077:005"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0069",
+          "source_path": "intermediate/chunks/chunk-0069.txt",
+          "source_range": [
+            135692,
+            135768
+          ]
+        },
+        {
+          "chunk_id": "chunk-0077",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            151327,
+            151407
+          ]
+        },
+        {
+          "chunk_id": "chunk-0077",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            151466,
+            151556
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "敛气术",
+      "classification": "辅助隐匿法术",
+      "usage": "中阶辅助法术，可对抗天眼术，收敛自身灵气并隐匿藏身。",
+      "formula": "须不被肉眼看见；对筑基期以上修士无用。",
+      "source_range": {
+        "chunk_id": "chunk-0164",
+        "source_range": [
+          348306,
+          348421
+        ]
+      },
+      "source_excerpt": "韩立从吴风处选中敛气术；敛气术可对抗天眼术、收敛灵气隐匿藏身，但对筑基期以上修士无用。",
+      "content": "敛气术：中阶辅助法术，可对抗天眼术，收敛自身灵气并隐匿藏身。；条件/限制/代价：须不被肉眼看见；对筑基期以上修士无用。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0164:010"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0164",
+          "source_path": "intermediate/chunks/chunk-0164.txt",
+          "source_range": [
+            348306,
+            348421
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "定神术/定神符",
+      "classification": "符箓/定神类法术",
+      "usage": "韩立认为初级下阶符纸足够施展定神术；早期秘籍末页列有定神符。",
+      "formula": "证据只说明所需符纸级别和法术名，未给出完整施法过程与效果边界。",
+      "source_range": {
+        "chunk_id": "chunk-0134",
+        "source_range": [
+          268822,
+          269066
+        ]
+      },
+      "source_excerpt": "韩立没有灵石和可交换物品，逛摊时最需要空白符纸，并认为初级下阶符纸足够施展定神术。",
+      "content": "定神术/定神符：韩立认为初级下阶符纸足够施展定神术；早期秘籍末页列有定神符。；条件/限制/代价：证据只说明所需符纸级别和法术名，未给出完整施法过程与效果边界。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0069:007",
+        "evidence:chunk-0134:005"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0069",
+          "source_path": "intermediate/chunks/chunk-0069.txt",
+          "source_range": [
+            135692,
+            135768
+          ]
+        },
+        {
+          "chunk_id": "chunk-0134",
+          "chapter_hint": "第一百三十一章 灵石与灵符",
+          "source_range": [
+            268822,
+            269066
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "大衍诀",
+      "classification": "神识与分神秘术/傀儡必修功法",
+      "usage": "千竹教开派祖师独创秘术，专门强大神识、修炼分神，也是操纵众多傀儡的必修功法。",
+      "formula": "普通教徒只修第一层简化版；修到第三层后可设想同时控制数百机关傀儡。",
+      "source_range": {
+        "chunk_id": "chunk-0236",
+        "source_range": [
+          550969,
+          551053
+        ]
+      },
+      "source_excerpt": "这大衍诀乃是本教开派祖师独创的秘术，乃是专门强大神识，和修炼分神之术的秘法。也是我们千竹教使用傀儡的必修功法。只有修炼了此术，才可以让神识附在众多傀儡上。操纵他们自如！",
+      "content": "大衍诀：千竹教开派祖师独创秘术，专门强大神识、修炼分神，也是操纵众多傀儡的必修功法。；条件/限制/代价：普通教徒只修第一层简化版；修到第三层后可设想同时控制数百机关傀儡。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0234:006",
+        "evidence:chunk-0234:007",
+        "evidence:chunk-0236:005",
+        "evidence:chunk-0236:006",
+        "evidence:chunk-0269:002"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0234",
+          "source_path": "intermediate/chunks/chunk-0234.txt",
+          "source_range": [
+            545070,
+            545141
+          ]
+        },
+        {
+          "chunk_id": "chunk-0234",
+          "source_path": "intermediate/chunks/chunk-0234.txt",
+          "source_range": [
+            545195,
+            545222
+          ]
+        },
+        {
+          "chunk_id": "chunk-0236",
+          "source_path": "intermediate/chunks/chunk-0236.txt",
+          "source_range": [
+            550969,
+            551053
+          ]
+        },
+        {
+          "chunk_id": "chunk-0236",
+          "source_path": "intermediate/chunks/chunk-0236.txt",
+          "source_range": [
+            551187,
+            551258
+          ]
+        },
+        {
+          "chunk_id": "chunk-0269",
+          "source_path": "intermediate/chunks/chunk-0269.txt",
+          "source_range": [
+            648124,
+            648167
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "傀儡术/傀儡真经",
+      "classification": "机关傀儡术",
+      "usage": "千竹教傀儡术可操纵玩偶/机关傀儡；三级傀儡全力一击相当于筑基中期修士。",
+      "formula": "二级傀儡需上阶法器材料，更高阶至少顶阶法器材料；三级傀儡材料更昂贵并出现多种形态。",
+      "source_range": {
+        "chunk_id": "chunk-0404",
+        "source_range": [
+          1037993,
+          1038052
+        ]
+      },
+      "source_excerpt": "三级傀儡按照傀儡真经上所说，其全力一击已相当于筑基中期的修士，炼制的材料也越发昂贵起来，并且出现了数种不同形态的傀儡。",
+      "content": "傀儡术/傀儡真经：千竹教傀儡术可操纵玩偶/机关傀儡；三级傀儡全力一击相当于筑基中期修士。；条件/限制/代价：二级傀儡需上阶法器材料，更高阶至少顶阶法器材料；三级傀儡材料更昂贵并出现多种形态。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0269:003",
+        "evidence:chunk-0316:008",
+        "evidence:chunk-0404:013"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0269",
+          "source_path": "intermediate/chunks/chunk-0269.txt",
+          "source_range": [
+            648293,
+            648339
+          ]
+        },
+        {
+          "chunk_id": "chunk-0316",
+          "source_path": "intermediate/chunks/chunk-0316.txt",
+          "source_range": [
+            786992,
+            787031
+          ]
+        },
+        {
+          "chunk_id": "chunk-0404",
+          "chapter_hint": "第三百九十九章 妙音门",
+          "source_path": "intermediate/chunks/chunk-0404.txt",
+          "source_range": [
+            1037993,
+            1038052
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "炼魂术",
+      "classification": "元神/魂魄折磨秘术",
+      "usage": "传闻可抽出人的元神魂魄并以专门法术折磨，直接刺激灵魂痛苦。",
+      "formula": "修士元神越强痛苦越强；证据为传闻性质，但角色反应极度恐惧。",
+      "source_range": {
+        "chunk_id": "chunk-0342",
+        "source_range": [
+          863372,
+          863471
+        ]
+      },
+      "source_excerpt": "听说修习此术者，可以将人的元神魂魄抽出，用专门的法术加以折磨。据说那种直接刺激灵魂痛苦，即使意志再坚强的人也绝承受不了一时半刻的。而且修士的元神越强大，所受的痛苦就越强烈，实在让所有修士都谈之色变。",
+      "content": "炼魂术：传闻可抽出人的元神魂魄并以专门法术折磨，直接刺激灵魂痛苦。；条件/限制/代价：修士元神越强痛苦越强；证据为传闻性质，但角色反应极度恐惧。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0342:012",
+        "evidence:chunk-0342:013"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0342",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            863207,
+            863255
+          ]
+        },
+        {
+          "chunk_id": "chunk-0342",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            863372,
+            863471
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "夺舍凡人限制",
+      "classification": "夺舍规则",
+      "usage": "韩立明确提出修仙者不能夺舍凡人的疑问，用以追问曲魂身体被侵占的来历。",
+      "formula": "现有证据为角色认知/质询，未给出完整例外条件。",
+      "source_range": {
+        "chunk_id": "chunk-0342",
+        "source_range": [
+          861849,
+          861938
+        ]
+      },
+      "source_excerpt": "“你知道就好！不想吃苦头的话，就将你的来历好好交代一下。我倒很好奇，你怎么可以侵占此身体的，修仙者不是不能夺舍凡人吗？”韩立神色平静的说道，声音平淡之极，仿佛则正和好友聊天一样。",
+      "content": "夺舍凡人限制：韩立明确提出修仙者不能夺舍凡人的疑问，用以追问曲魂身体被侵占的来历。；条件/限制/代价：现有证据为角色认知/质询，未给出完整例外条件。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0342:003"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0342",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            861849,
+            861938
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "身外化身",
+      "classification": "分身秘术",
+      "usage": "韩立关注的顶阶魔道秘术，灰白玉简中也记载身外化身术；韩立说明自己的分身之法来自玉简。",
+      "formula": "祭炼分身过程有失败与功法反噬风险；本次成功但效果尚未知。",
+      "source_range": {
+        "chunk_id": "chunk-0379",
+        "source_range": [
+          966954,
+          967016
+        ]
+      },
+      "source_excerpt": "这次的祭炼分身，终于在苦苦煎熬下成功了，虽然还不知道效果如何，但最起码没出现祭炼失败，功法反噬的现象，这让韩立大松了一口气。",
+      "content": "身外化身：韩立关注的顶阶魔道秘术，灰白玉简中也记载身外化身术；韩立说明自己的分身之法来自玉简。；条件/限制/代价：祭炼分身过程有失败与功法反噬风险；本次成功但效果尚未知。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0334:015",
+        "evidence:chunk-0378:014",
+        "evidence:chunk-0379:011",
+        "evidence:chunk-0432:004",
+        "evidence:chunk-0432:012"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0334",
+          "source_path": "intermediate/chunks/chunk-0334.txt",
+          "source_range": [
+            840808,
+            840856
+          ]
+        },
+        {
+          "chunk_id": "chunk-0378",
+          "source_path": "intermediate/chunks/chunk-0378.txt",
+          "source_range": [
+            964171,
+            964211
+          ]
+        },
+        {
+          "chunk_id": "chunk-0379",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            966954,
+            967016
+          ]
+        },
+        {
+          "chunk_id": "chunk-0432",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            1117802,
+            1117812
+          ]
+        },
+        {
+          "chunk_id": "chunk-0432",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            1118513,
+            1118530
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "玄阴经与黑煞/极阴功法群",
+      "classification": "魔道功法体系",
+      "usage": "黑煞修罗功、煞妖诀、血炼神光等均在玉简中提到玄阴经；韩立后续以气息联想到血炼神光和玄阴经。",
+      "formula": "玄阴魔气、血炼神光、玄阴经的机制关联在部分证据中仍是韩立狐疑推断。",
+      "source_range": {
+        "chunk_id": "chunk-0334",
+        "source_range": [
+          839299,
+          839416
+        ]
+      },
+      "source_excerpt": "其内记载的果然有黑煞教一干人等的功法，比如那小王子修炼的是“黑煞修罗功”，四大血侍修炼的叫“煞妖诀”，而越皇修炼的则是“血炼神光”等等。\n　　但让韩立吃惊的是，这些人的功法竟然全都提到了一本叫做“玄阴经”的东西，这让韩立大为好奇起来！",
+      "content": "玄阴经与黑煞/极阴功法群：黑煞修罗功、煞妖诀、血炼神光等均在玉简中提到玄阴经；韩立后续以气息联想到血炼神光和玄阴经。；条件/限制/代价：玄阴魔气、血炼神光、玄阴经的机制关联在部分证据中仍是韩立狐疑推断。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0334:005",
+        "evidence:chunk-0387:005",
+        "evidence:chunk-0431:015",
+        "evidence:chunk-0432:019"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0334",
+          "source_path": "intermediate/chunks/chunk-0334.txt",
+          "source_range": [
+            839299,
+            839416
+          ]
+        },
+        {
+          "chunk_id": "chunk-0387",
+          "source_path": "intermediate/chunks/chunk-0387.txt",
+          "source_range": [
+            988933,
+            989040
+          ]
+        },
+        {
+          "chunk_id": "chunk-0431",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            1116449,
+            1116471
+          ]
+        },
+        {
+          "chunk_id": "chunk-0432",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            1119020,
+            1119048
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "辟邪神雷",
+      "classification": "雷法/法宝附带神通",
+      "usage": "金雷竹飞剑可放出淡金色辟邪神雷，曾以电弧击灭绿色光团。",
+      "formula": "辟邪神雷可被特定手段对付；青竹蜂云剑积攒的电弧一次消耗后需要长时间修养。",
+      "source_range": {
+        "chunk_id": "chunk-0431",
+        "source_range": [
+          1116857,
+          1116891
+        ]
+      },
+      "source_excerpt": "淡金色的“辟邪神雷”，一个拳头大小的绿色光团在电弧之下化为了的乌有。",
+      "content": "辟邪神雷：金雷竹飞剑可放出淡金色辟邪神雷，曾以电弧击灭绿色光团。；条件/限制/代价：辟邪神雷可被特定手段对付；青竹蜂云剑积攒的电弧一次消耗后需要长时间修养。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0431:019",
+        "evidence:chunk-0433:003",
+        "evidence:chunk-0449:005"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0431",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            1116857,
+            1116891
+          ]
+        },
+        {
+          "chunk_id": "chunk-0433",
+          "source_path": "intermediate/chunks/chunk-0433.txt",
+          "source_range": [
+            1120798,
+            1121071
+          ]
+        },
+        {
+          "chunk_id": "chunk-0449",
+          "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+          "source_range": [
+            1166223,
+            1166261
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    },
+    {
+      "name": "元磁神光",
+      "classification": "高阶神光功法",
+      "usage": "乱星海流传多年；天星双圣因修炼元磁神光，每年只有固定几日能离开天星城半月。",
+      "formula": "存在克尽天下五行的传说/质疑；另有角色称强者面对圣主元磁神光也要退避。",
+      "source_range": {
+        "chunk_id": "chunk-0414",
+        "source_range": [
+          1066111,
+          1066129
+        ]
+      },
+      "source_excerpt": "元磁神光的功法在乱星海流传了多少年了",
+      "content": "元磁神光：乱星海流传多年；天星双圣因修炼元磁神光，每年只有固定几日能离开天星城半月。；条件/限制/代价：存在克尽天下五行的传说/质疑；另有角色称强者面对圣主元磁神光也要退避。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0413:015",
+        "evidence:chunk-0414:001",
+        "evidence:chunk-0414:003",
+        "evidence:chunk-0470:028"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0413",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            1065872,
+            1065890
+          ]
+        },
+        {
+          "chunk_id": "chunk-0414",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            1066111,
+            1066129
+          ]
+        },
+        {
+          "chunk_id": "chunk-0414",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            1066232,
+            1066251
+          ]
+        },
+        {
+          "chunk_id": "chunk-0470",
+          "source_path": "intermediate/chunks/chunk-0470.txt",
+          "source_range": [
+            1228040,
+            1228074
+          ]
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified",
+      "notes": []
+    }
+  ],
+  "judgments": [
+    {
+      "content": "本模板最稳妥的组织方式是按“功法体系、境界/资质规则、基础法术、傀儡神识、元神夺舍、魔道/雷法/神光”分组，而不是按出现顺序罗列全部 1915 个支撑条目。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0236:005",
+        "evidence:chunk-0245:006",
+        "evidence:chunk-0342:003",
+        "evidence:chunk-0334:005"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0236",
+          "source_path": "intermediate/chunks/chunk-0236.txt",
+          "source_range": [
+            550969,
+            551053
+          ]
+        },
+        {
+          "chunk_id": "chunk-0245",
+          "source_path": "intermediate/chunks/chunk-0245.txt",
+          "source_range": [
+            578014,
+            578135
+          ]
+        },
+        {
+          "chunk_id": "chunk-0342",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            861849,
+            861938
+          ]
+        },
+        {
+          "chunk_id": "chunk-0334",
+          "source_path": "intermediate/chunks/chunk-0334.txt",
+          "source_range": [
+            839299,
+            839416
+          ]
+        }
+      ],
+      "confidence": "INFERRED"
+    },
+    {
+      "content": "青元剑诀与三转重元功应作为同一卡片组处理：前者提供主功法层级，后者提供结丹瓶颈规避机制和代价。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0245:006",
+        "evidence:chunk-0245:007",
+        "evidence:chunk-0245:009",
+        "evidence:chunk-0245:010"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0245",
+          "source_path": "intermediate/chunks/chunk-0245.txt",
+          "source_range": [
+            578014,
+            578135
+          ]
+        },
+        {
+          "chunk_id": "chunk-0245",
+          "source_path": "intermediate/chunks/chunk-0245.txt",
+          "source_range": [
+            578173,
+            578350
+          ]
+        },
+        {
+          "chunk_id": "chunk-0245",
+          "source_path": "intermediate/chunks/chunk-0245.txt",
+          "source_range": [
+            578878,
+            578997
+          ]
+        },
+        {
+          "chunk_id": "chunk-0245",
+          "source_path": "intermediate/chunks/chunk-0245.txt",
+          "source_range": [
+            579000,
+            579090
+          ]
+        }
+      ],
+      "confidence": "INFERRED"
+    }
+  ],
+  "pending_verifications": [
+    {
+      "content": "长春功“必须具有灵根体质”的规则来自墨居仁说明，图谱证据已标 needs_review；后续应与修仙界正式灵根规则交叉核验。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0032:008",
+        "evidence:chunk-0341:014"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0032",
+          "source_path": "intermediate/chunks/chunk-0032.txt",
+          "source_range": [
+            61728,
+            61802
+          ]
+        },
+        {
+          "chunk_id": "chunk-0341",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            860742,
+            860855
+          ]
+        }
+      ],
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "元磁神光“克尽天下五行”的说法在证据中同时存在质疑和威慑性评价，应保留为待核验机制，不写成无条件定律。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0414:003",
+        "evidence:chunk-0470:028"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0414",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            1066232,
+            1066251
+          ]
+        },
+        {
+          "chunk_id": "chunk-0470",
+          "source_path": "intermediate/chunks/chunk-0470.txt",
+          "source_range": [
+            1228040,
+            1228074
+          ]
+        }
+      ],
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "玄阴经、玄阴魔气与血炼神光之间有角色联想和同源线索，但机制关系仍不宜合并为确定体系。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0334:005",
+        "evidence:chunk-0387:005"
+      ],
+      "source_locations": [
+        {
+          "chunk_id": "chunk-0334",
+          "source_path": "intermediate/chunks/chunk-0334.txt",
+          "source_range": [
+            839299,
+            839416
+          ]
+        },
+        {
+          "chunk_id": "chunk-0387",
+          "source_path": "intermediate/chunks/chunk-0387.txt",
+          "source_range": [
+            988933,
+            989040
+          ]
+        }
+      ],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "not_found_items": [
+    {
+      "content": "当前支撑证据未提供多数功法、术法的完整口诀原文、逐层修炼表、通用成功率或统一资源清单；这些字段不应由修仙常识补齐。",
+      "category": "未见可靠证据",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "content": "未在本次精选证据中确认独立“御兽诀”卡片；可写入傀儡术、大衍诀，但不要把御兽、傀儡、驱物混写为同一流派。",
+      "category": "未见可靠证据",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "document_sections": [
+    {
+      "heading": "功法术法神通总览",
+      "markdown": "本批图谱中明确支撑“功法术法神通”的条目覆盖入门功法、炼体武功、基础法术、境界能力、资质规则、神识傀儡、元神夺舍、魔道秘术和高阶神光。可确认的写法应以原文证据为边界：例如无名口诀/长春功、象甲功、青元剑诀/三转重元功、大衍诀/傀儡术、身外化身、辟邪神雷、元磁神光都有可定位证据；完整口诀、统一成功率和全套资源表缺证时应留白。",
+      "evidence_ids": [
+        "evidence:chunk-0008:009",
+        "evidence:chunk-0011:014",
+        "evidence:chunk-0032:008",
+        "evidence:chunk-0245:006",
+        "evidence:chunk-0236:005",
+        "evidence:chunk-0342:003",
+        "evidence:chunk-0431:019"
+      ],
+      "requirement_ids": [
+        "cultivation_system_method_progression",
+        "required_extraction_targets",
+        "evidence_requirements"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "入门功法与凡俗武学",
+      "markdown": "长春功最初以无名口诀形式传授，表层功效是修身养性、强身健体，但后续被用于长春气运功刺激秘穴；修炼要求涉及年少起修与灵根体质。象甲功则是张铁路线的炼体武功，共九层，第四层起痛苦陡增，突破第六至第七层后才转顺。眨眼剑法的限制更偏武学资质：真气略有小成者、无大毅力者、无天赋者均不能练。",
+      "evidence_ids": [
+        "evidence:chunk-0008:006",
+        "evidence:chunk-0008:009",
+        "evidence:chunk-0032:007",
+        "evidence:chunk-0032:008",
+        "evidence:chunk-0011:014",
+        "evidence:chunk-0011:015",
+        "evidence:chunk-0039:007"
+      ],
+      "requirement_ids": [
+        "cultivation_system_method_progression",
+        "required_extraction_targets"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "境界、突破与资源代价",
+      "markdown": "境界能力有清晰边界：炼气期韩立不能用先天真火，筑基后才可施展，结丹期后先天真火会化为三味之火；结丹期以上修士可制作符宝。青元剑诀的资料链最完整：韩立筑基后因药性危机修炼青元剑诀，第四层起出现散功，金页后来补出第一至十三层全套法诀，可修至化神期。三转重元功作为辅助功法，通过三次散功重修、压缩法力真元来提高结丹机会，但即使完全达成也只有一半立即结丹几率，并需数倍光阴。",
+      "evidence_ids": [
+        "evidence:chunk-0158:004",
+        "evidence:chunk-0158:005",
+        "evidence:chunk-0158:006",
+        "evidence:chunk-0167:007",
+        "evidence:chunk-0220:013",
+        "evidence:chunk-0222:001",
+        "evidence:chunk-0245:006",
+        "evidence:chunk-0245:008",
+        "evidence:chunk-0245:009",
+        "evidence:chunk-0245:010",
+        "evidence:chunk-0245:012"
+      ],
+      "requirement_ids": [
+        "cultivation_system_method_progression",
+        "required_extraction_targets",
+        "evidence_requirements"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "基础法术与实战边界",
+      "markdown": "早期基础法术包括火弹术、定神符、御风诀、控物术、天眼术。韩立在火弹术和天眼术上小成，但御风诀、控物术等一度无效；驱物术不能随便驱使家具、刀剑或墨大夫遗物。敛气术可对抗天眼术、收敛灵气隐匿，但对筑基期以上修士无用。",
+      "evidence_ids": [
+        "evidence:chunk-0069:001",
+        "evidence:chunk-0069:007",
+        "evidence:chunk-0069:010",
+        "evidence:chunk-0077:004",
+        "evidence:chunk-0077:005",
+        "evidence:chunk-0157:006",
+        "evidence:chunk-0164:010"
+      ],
+      "requirement_ids": [
+        "cultivation_system_method_progression",
+        "required_extraction_targets"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "灵根资质规则",
+      "markdown": "灵根不是泛化标签，而是具体影响功法适配：墨大夫因无灵根而无法修仙；长春功要求灵根体质的说法来自墨居仁，且后来韩立进一步区分“不能修炼长春功”只说明没有木属性灵根，不等于没有其他属性灵根。雷灵根、风灵根在证据中作为天才/威力比较出现，但缺少完整属性加成规则。",
+      "evidence_ids": [
+        "evidence:chunk-0119:004",
+        "evidence:chunk-0032:008",
+        "evidence:chunk-0341:014",
+        "evidence:chunk-0160:004",
+        "evidence:chunk-0160:008"
+      ],
+      "requirement_ids": [
+        "cultivation_system_method_progression",
+        "required_extraction_targets",
+        "evidence_requirements"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "神识、傀儡与机关路线",
+      "markdown": "大衍诀是千竹教核心传承，专门强大神识、修炼分神，并且是操纵众多傀儡的必修功法；普通教徒只修第一层简化版。傀儡术路线对材料和神识都有要求：大衍诀第三层可设想同时控制数百机关傀儡，二级傀儡需上阶法器材料，更高阶至少顶阶法器材料，三级傀儡全力一击相当于筑基中期修士。",
+      "evidence_ids": [
+        "evidence:chunk-0236:005",
+        "evidence:chunk-0236:006",
+        "evidence:chunk-0269:002",
+        "evidence:chunk-0269:003",
+        "evidence:chunk-0316:008",
+        "evidence:chunk-0404:013"
+      ],
+      "requirement_ids": [
+        "cultivation_system_method_progression",
+        "required_extraction_targets"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "元神、夺舍与分身",
+      "markdown": "夺舍边界在曲魂线被明确提出：韩立以“修仙者不是不能夺舍凡人吗”质询对方。炼魂术可作为元神魂魄层面的威慑性秘术，传闻能抽出元神魂魄折磨。身外化身则是韩立长期关注的顶阶魔道秘术，玉简中记载分身法，祭炼分身存在失败和功法反噬风险。元婴期玄魂炼妖大法进一步把玄魂附体与摆脱夺舍限制联系起来，但该条来自角色自述，应保留复核。",
+      "evidence_ids": [
+        "evidence:chunk-0342:003",
+        "evidence:chunk-0342:012",
+        "evidence:chunk-0342:013",
+        "evidence:chunk-0334:015",
+        "evidence:chunk-0378:014",
+        "evidence:chunk-0379:011",
+        "evidence:chunk-0432:004",
+        "evidence:chunk-0432:012",
+        "evidence:chunk-0432:022"
+      ],
+      "requirement_ids": [
+        "cultivation_system_method_progression",
+        "required_extraction_targets",
+        "evidence_requirements"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "魔道、雷法与高阶神光",
+      "markdown": "黑煞修罗功、煞妖诀、血炼神光等魔道功法在玉简中共同指向玄阴经，但玄阴魔气与血炼神光/玄阴经的机制关联仍主要是韩立狐疑。辟邪神雷依附金雷竹飞剑表现为淡金电弧，可击灭绿色光团，但会被特定手段克制并有积攒消耗。元磁神光在乱星海长期流传，兼具强大威慑与“克尽五行”传说，但证据中也出现质疑。",
+      "evidence_ids": [
+        "evidence:chunk-0334:005",
+        "evidence:chunk-0387:005",
+        "evidence:chunk-0431:015",
+        "evidence:chunk-0432:019",
+        "evidence:chunk-0431:019",
+        "evidence:chunk-0433:003",
+        "evidence:chunk-0449:005",
+        "evidence:chunk-0413:015",
+        "evidence:chunk-0414:001",
+        "evidence:chunk-0414:003",
+        "evidence:chunk-0470:028"
+      ],
+      "requirement_ids": [
+        "cultivation_system_method_progression",
+        "required_extraction_targets",
+        "evidence_requirements"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "待核验与缺口",
+      "markdown": "待核验重点包括：长春功灵根要求的正式规则归属、元磁神光是否真正克尽五行、玄阴经与血炼神光/玄阴魔气的机制同源性。缺口包括多数功法的完整口诀、逐层修炼表、普适资源需求、突破成功率、失败后果与克制关系；这些内容不能用通用修仙常识补写。",
+      "evidence_ids": [
+        "evidence:chunk-0032:008",
+        "evidence:chunk-0341:014",
+        "evidence:chunk-0414:003",
+        "evidence:chunk-0470:028",
+        "evidence:chunk-0334:005",
+        "evidence:chunk-0387:005"
+      ],
+      "requirement_ids": [
+        "cultivation_system_method_progression",
+        "evidence_requirements"
+      ],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "evidence_citations": [
+    "evidence:chunk-0008:006",
+    "evidence:chunk-0008:007",
+    "evidence:chunk-0008:009",
+    "evidence:chunk-0032:007",
+    "evidence:chunk-0032:008",
+    "evidence:chunk-0036:008",
+    "evidence:chunk-0011:013",
+    "evidence:chunk-0011:014",
+    "evidence:chunk-0011:015",
+    "evidence:chunk-0011:018",
+    "evidence:chunk-0039:007",
+    "evidence:chunk-0119:004",
+    "evidence:chunk-0341:014",
+    "evidence:chunk-0160:004",
+    "evidence:chunk-0160:008",
+    "evidence:chunk-0158:004",
+    "evidence:chunk-0158:005",
+    "evidence:chunk-0158:006",
+    "evidence:chunk-0157:006",
+    "evidence:chunk-0157:007",
+    "evidence:chunk-0165:004",
+    "evidence:chunk-0166:001",
+    "evidence:chunk-0167:007",
+    "evidence:chunk-0432:022",
+    "evidence:chunk-0217:010",
+    "evidence:chunk-0220:013",
+    "evidence:chunk-0222:001",
+    "evidence:chunk-0245:006",
+    "evidence:chunk-0245:007",
+    "evidence:chunk-0245:008",
+    "evidence:chunk-0245:009",
+    "evidence:chunk-0245:010",
+    "evidence:chunk-0245:011",
+    "evidence:chunk-0245:012",
+    "evidence:chunk-0069:001",
+    "evidence:chunk-0069:007",
+    "evidence:chunk-0069:010",
+    "evidence:chunk-0164:010",
+    "evidence:chunk-0077:004",
+    "evidence:chunk-0077:005",
+    "evidence:chunk-0134:005",
+    "evidence:chunk-0234:006",
+    "evidence:chunk-0234:007",
+    "evidence:chunk-0236:005",
+    "evidence:chunk-0236:006",
+    "evidence:chunk-0269:002",
+    "evidence:chunk-0269:003",
+    "evidence:chunk-0316:008",
+    "evidence:chunk-0404:013",
+    "evidence:chunk-0342:012",
+    "evidence:chunk-0342:013",
+    "evidence:chunk-0342:003",
+    "evidence:chunk-0334:015",
+    "evidence:chunk-0378:014",
+    "evidence:chunk-0379:011",
+    "evidence:chunk-0432:004",
+    "evidence:chunk-0432:012",
+    "evidence:chunk-0334:005",
+    "evidence:chunk-0387:005",
+    "evidence:chunk-0431:015",
+    "evidence:chunk-0432:019",
+    "evidence:chunk-0431:019",
+    "evidence:chunk-0433:003",
+    "evidence:chunk-0449:005",
+    "evidence:chunk-0413:015",
+    "evidence:chunk-0414:001",
+    "evidence:chunk-0414:003",
+    "evidence:chunk-0470:028"
+  ],
+  "gap_items": [
+    {
+      "requirement_id": "complete_formula_and_success_rate",
+      "status": "not_found_in_source",
+      "notes": [
+        "多数功法/术法没有完整口诀、逐层资源表或成功率证据。"
+      ],
+      "evidence_ids": []
+    },
+    {
+      "requirement_id": "unverified_mechanism_links",
+      "status": "needs_review",
+      "notes": [
+        "元磁神光克五行、玄阴经与血炼神光同源、长春功灵根要求需与后续正式设定复核。"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0414:003",
+        "evidence:chunk-0387:005",
+        "evidence:chunk-0032:008"
+      ]
+    }
+  ],
+  "render_target": "drafts",
+  "overwrite_policy": "draft",
+  "agent_notes": {
+    "batch_id": "template-batch-0010-ccf556357e76",
+    "selection_rule": "从 graph/evidence-index 中优先选取 supports_templates[].template_name == '功法术法神通' 的节点、事件、边及其 evidence_ids。",
+    "matched_support_counts": {
+      "nodes": 917,
+      "edges": 585,
+      "events": 413
+    },
+    "selected_evidence_count": 68
+  }
+}

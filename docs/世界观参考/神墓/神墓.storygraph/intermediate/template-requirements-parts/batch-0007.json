@@ -1,0 +1,321 @@
+{
+  "producer": "template-requirements-analysis-agent",
+  "templates": [
+    {
+      "template_name": "秘境遗迹与机缘",
+      "template_file": "秘境遗迹与机缘模板.md",
+      "required_fields": [],
+      "required_tables": [],
+      "required_cards": [],
+      "required_case_patterns": [],
+      "required_evidence_fields": [],
+      "graph_node_mapping": [
+        "secret_realm",
+        "location",
+        "opportunity",
+        "event",
+        "facility",
+        "rule",
+        "material",
+        "pill",
+        "medicine",
+        "cultivation_method",
+        "technique",
+        "artifact",
+        "weapon",
+        "formation",
+        "beast",
+        "character",
+        "faction",
+        "conflict"
+      ],
+      "graph_event_mapping": [
+        "secret_realm_opening — 秘境开启事件(含开启条件、天地异象、入口出现)",
+        "secret_realm_closing — 秘境关闭/崩塌事件",
+        "opportunity_event — 机缘事件(传承考验、宝物出世、灵脉发现)",
+        "heaven_earth_phenomenon — 天地异象事件(预示秘境/宝物/机缘出现)",
+        "secret_realm_exploration — 秘境探索事件(进入→探索→遭遇危险→获取机缘→撤离)",
+        "secret_realm_competition — 秘境争夺事件(势力/个人间的名额竞争、杀人夺宝)",
+        "inheritance_trial — 传承考验事件(守关者、试炼规则、成功/失败结果)",
+        "secret_realm_collapse — 秘境崩塌/毁灭事件"
+      ],
+      "graph_relation_mapping": [
+        "located_in(secret_realm→location) — 秘境入口/位置所在的地理区域",
+        "contains(secret_realm→facility) — 秘境内部包含的宫殿、塔楼、洞府、阵眼等建筑设施",
+        "contains(secret_realm→material) — 秘境产出的灵草、矿材、妖兽材料等",
+        "contains(secret_realm→pill) — 秘境中的丹药产出",
+        "contains(secret_realm→cultivation_method) — 秘境中的功法传承",
+        "contains(secret_realm→technique) — 秘境中的神通术法传承",
+        "contains(secret_realm→artifact) — 秘境中的法宝产出",
+        "contains(secret_realm→formation) — 秘境内部的阵法、禁制",
+        "contains(secret_realm→beast) — 秘境中的妖兽、守护兽",
+        "controlled_by(secret_realm→faction) — 秘境由哪个势力掌控",
+        "rewards(secret_realm→opportunity) — 秘境产出的机缘类型",
+        "restricts(rule→character) — 秘境规则对进入者的限制(境界/人数/年龄/血脉)",
+        "enters(character→secret_realm) — 角色进入秘境",
+        "competes_for(faction→secret_realm) — 势力争夺秘境控制权",
+        "competes_for(character→opportunity) — 角色争夺秘境中的机缘",
+        "guards(beast→facility) — 妖兽守护秘境中的特定设施",
+        "triggers(event→secret_realm) — 天地异象/事件触发秘境开启",
+        "opens_via(secret_realm→artifact/formation) — 通过令牌/钥匙/阵法开启秘境",
+        "conflicts_in(conflict→secret_realm) — 秘境中发生的争夺冲突",
+        "leads_to(opportunity→pill/material/technique/artifact) — 机缘指向的具体产出"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": [
+          "covered",
+          "needs_review",
+          "not_found_in_source"
+        ]
+      }
+    },
+    {
+      "template_name": "符师",
+      "template_file": "符师模板.md",
+      "required_fields": [],
+      "required_tables": [],
+      "required_cards": [],
+      "required_case_patterns": [],
+      "required_evidence_fields": [],
+      "graph_node_mapping": [
+        "character",
+        "inscription",
+        "technique",
+        "material",
+        "tool",
+        "facility",
+        "formula",
+        "location",
+        "faction",
+        "cultivation_method",
+        "realm"
+      ],
+      "graph_event_mapping": [
+        "crafting_event — 制符事件(选符纸→调符墨→绘符文→注灵→封存→检验→保存)",
+        "talisman_activation — 符箓激活使用事件(战斗/遁逃/传讯/封印/防御)",
+        "talisman_trade — 符箓交易事件(坊市出售/拍卖/宗门兑换/代制委托)",
+        "crafting_failure — 制符失败事件(符纸损毁/符路断裂/符力反噬/材料报废)",
+        "talisman_inheritance — 符方/符文传承获取事件(宗门传承/遗迹残符/古符拓印)",
+        "special_talisman_event — 特殊制符或用符事件(虚空画符/血符/魂符/符宝炼制/临战成符)"
+      ],
+      "graph_relation_mapping": [
+        "practices(character→technique) — 角色从事制符技艺(含职业分支:符师/符宝炼制者/血符师/魂符师/符阵师)",
+        "produces(character→inscription) — 符师产出符箓/符宝/符牌/令符",
+        "uses_tool(character→tool) — 符师使用符笔/符刀/符桌/制符台",
+        "crafted_in(character→facility) — 符师在符房/静室/宗门符房/坊市符铺中制符",
+        "consumes(inscription→material) — 符箓消耗符纸/符墨/兽血/灵砂/玉石等材料",
+        "follows(inscription→formula) — 符箓按照符方/符文传承制作",
+        "belongs_to(character→faction) — 符师所属势力(宗门符房供奉/散修)",
+        "taught_by(character→character) — 符师之间的师承关系",
+        "located_at(facility→location) — 制符设施所在地",
+        "sells(character→inscription) — 符师出售符箓",
+        "activates(character→inscription) — 使用者激活符箓(口诀/法力/神识触发)",
+        "requires_realm(inscription→realm) — 符箓使用所需境界门槛",
+        "derived_from(formula→cultivation_method) — 符方来源于功法传承",
+        "combined_with(inscription→formation) — 符阵结合(符箓与阵法配合)",
+        "refines(character→material) — 符师处理制符材料(调符墨/处理兽血)",
+        "fails_in(character→inscription) — 制符失败:废符/半成符/符路残缺"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": [
+          "covered",
+          "needs_review",
+          "not_found_in_source"
+        ]
+      }
+    },
+    {
+      "template_name": "角色AI行为参考",
+      "template_file": "角色AI行为参考模板.md",
+      "required_fields": [],
+      "required_tables": [],
+      "required_cards": [],
+      "required_case_patterns": [],
+      "required_evidence_fields": [],
+      "graph_node_mapping": [
+        "character",
+        "event",
+        "conflict",
+        "opportunity",
+        "location",
+        "faction",
+        "realm",
+        "artifact",
+        "technique",
+        "pill",
+        "material",
+        "secret_realm",
+        "beast"
+      ],
+      "graph_event_mapping": [
+        "decision_event — 单次行为决策事件(含正面因素/反面因素/行动选择/打断条件)",
+        "behavior_chain — 完整行为决策链(多步决策序列:信息获取→评估→准备→行动→结果→后续目标)",
+        "interruption_event — 打断事件(强敌出现/濒死/保命物耗尽/窗口关闭/身份暴露)",
+        "risk_evaluation — 风险评估事件(角色对比收益与风险后做出的选择)",
+        "opportunity_response — 机会响应事件(听到机缘消息后的全链条反应)"
+      ],
+      "graph_relation_mapping": [
+        "decides(character→action_target) — 角色做出的行为选择(打探/准备/购买/组队/赶路/隐藏/参与/观望/偷袭/正面战斗/撤退/求援/放弃/闭关/追杀)",
+        "evaluates(character→opportunity) — 角色评估机缘的收益与风险",
+        "perceives(character→event) — 角色感知/得知事件信息(目击/传闻/宗门公告/情报买卖)",
+        "knows_about(character→information) — 角色已知信息范围(敌我境界/宝物价值/退路/事件窗口)",
+        "conflicts_with(character→character) — 角色间的冲突对抗",
+        "belongs_to(character→faction) — 角色所属势力(影响忠诚型/命令型决策)",
+        "located_at(character→location) — 角色当前位置(影响行动可达性)",
+        "prepares(character→pill/artifact/material) — 角色行动前的准备(购买丹药/符箓/法宝)",
+        "retreats_from(character→location/conflict) — 角色撤退决策(逃离追杀/放弃目标)",
+        "teams_up_with(character→character) — 角色临时结伴/组队",
+        "lurks_near(character→location/event) — 角色潜伏观望",
+        "ambushes(character→character) — 角色偷袭/伏击",
+        "pursues(character→character) — 角色追杀目标",
+        "calls_for_help(character→character/faction) — 角色求援",
+        "sacrifices(character→artifact/pill/technique) — 角色消耗保命底牌(逃生符/疗伤丹/秘法)",
+        "interrupted_by(decision_chain→event) — 决策链被打断的条件(濒死/强敌/保命物耗尽/窗口关闭)",
+        "has_state(character→realm) — 角色当前境界状态(影响行为阈值)",
+        "desires(character→opportunity/artifact/technique/realm) — 角色目标/动机驱动"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": [
+          "covered",
+          "needs_review",
+          "not_found_in_source"
+        ]
+      }
+    },
+    {
+      "template_name": "角色修炼历程",
+      "template_file": "角色修炼历程模板.md",
+      "required_fields": [],
+      "required_tables": [],
+      "required_cards": [],
+      "required_case_patterns": [],
+      "required_evidence_fields": [],
+      "graph_node_mapping": [
+        "character",
+        "realm",
+        "cultivation_method",
+        "technique",
+        "pill",
+        "medicine",
+        "material",
+        "artifact",
+        "weapon",
+        "tool",
+        "location",
+        "facility",
+        "faction",
+        "event",
+        "opportunity",
+        "conflict",
+        "formula",
+        "beast",
+        "secret_realm"
+      ],
+      "graph_event_mapping": [
+        "cultivation_action_chain — 完整修炼行动链(按境界分段:炼气期/筑基期/结丹期/元婴期每条链)",
+        "breakthrough — 境界突破事件(含突破条件/消耗资源/闭关时长/成功或失败结果)",
+        "closed_door_cultivation — 闭关修炼事件(时长/消耗丹药灵石/功法提升/修为变化)",
+        "resource_acquisition — 资源获取事件(宗门兑换/拍卖/秘境所得/杀敌战利品/任务奖励)",
+        "resource_consumption — 资源消耗事件(修炼消耗/炼丹消耗/炼器消耗/战斗消耗)",
+        "tournament_participation — 大比/比试参与事件(参赛→比试→名次→奖励)",
+        "mission_execution — 任务执行事件(接取→途中遭遇→完成→结算)",
+        "refinement_event — 炼制事件(请人炼制或自行炼制法宝/丹药)",
+        "market_visit — 坊市/拍卖行访问事件(购买/出售/情报获取)",
+        "combat_encounter — 途中遭遇战(妖兽袭击/散修截杀/同门求援)",
+        "cultivation_bottleneck — 修炼瓶颈事件(卡境界/缺少资源/突破失败)"
+      ],
+      "graph_relation_mapping": [
+        "achieves_realm(character→realm) — 角色突破达到某境界(含突破成功/失败)",
+        "starts_at(character→realm) — 角色行动链起点的当前境界",
+        "cultivates(character→cultivation_method) — 角色修炼某功法(含层数提升)",
+        "learns(character→technique) — 角色学会某术法神通",
+        "consumes(character→pill/medicine) — 角色服用丹药/药剂",
+        "consumes(character→material) — 角色消耗修炼材料",
+        "acquires(character→artifact) — 角色获得法宝",
+        "acquires(character→weapon) — 角色获得武器",
+        "refines(character→artifact/weapon/pill) — 角色炼制法宝/武器/丹药(或请人炼制)",
+        "visits(character→location) — 角色前往某地点(坊市/秘境/宗门/洞府)",
+        "uses_facility(character→facility) — 角色使用修炼设施(闭关室/修炼塔/灵脉洞府)",
+        "participates_in(character→event) — 角色参加事件(宗门大比/任务/拍卖/切磋)",
+        "encounters(character→opportunity) — 角色遇到机缘",
+        "belongs_to(character→faction) — 角色所属势力",
+        "trades_with(character→character/faction) — 角色交易(拍卖/坊市购买/宗门兑换)",
+        "hunts(character→beast) — 角色猎杀妖兽获取材料",
+        "enters(character→secret_realm) — 角色进入秘境探索",
+        "rewarded_by(character→faction) — 角色获得宗门/势力奖励",
+        "flees_from(character→conflict) — 角色从冲突中逃亡",
+        "protects(character→character) — 角色护送/救援同伴",
+        "obtains_rank(character→event) — 角色在比赛/大比中获得名次"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": [
+          "covered",
+          "needs_review",
+          "not_found_in_source"
+        ]
+      }
+    },
+    {
+      "template_name": "记忆情绪与执念",
+      "template_file": "记忆情绪与执念模板.md",
+      "required_fields": [],
+      "required_tables": [],
+      "required_cards": [],
+      "required_case_patterns": [],
+      "required_evidence_fields": [],
+      "graph_node_mapping": [
+        "character",
+        "event",
+        "conflict",
+        "location",
+        "faction",
+        "realm",
+        "opportunity",
+        "artifact",
+        "technique",
+        "cultivation_method",
+        "secret_realm",
+        "beast"
+      ],
+      "graph_event_mapping": [
+        "memory_forming_event — 记忆形成事件(救命/背叛/羞辱/击杀亲友/夺宝/突破/传功/宗门覆灭/被逐/被退婚)",
+        "emotional_response_event — 情绪反应事件(愤怒/恐惧/感激/羞耻/悲痛/悔恨/嫉妒/执着/心魔)",
+        "obsession_driven_action — 执念驱动的后续行为事件(追杀/求援/闭关/收徒/挑战/投靠/叛逃/黑化/复仇/隐居)",
+        "memory_reinforcement — 记忆强化事件(新仇叠加/重复羞辱/再次相遇触发旧忆)",
+        "obsession_transformation — 执念转化事件(报恩→守护, 复仇→空虚/悔恨, 失败→心魔, 被救赎→释然)",
+        "obsession_resolution — 执念消解事件(复仇完成/误会解除/真相揭露/目标死亡/亲友复活/恩情偿还)",
+        "witness_event — 亲眼见证事件(强者陨落/天灾/兽潮/亲友死亡/宗门覆灭)",
+        "betrayal_event — 背叛事件(被同伴抛弃/被师门牺牲/被爱侣牵连/被诬陷)",
+        "redemption_event — 被救赎事件(被放过一命/被赦免/被宽恕)"
+      ],
+      "graph_relation_mapping": [
+        "remembers(character→event) — 角色对某事件的深刻记忆",
+        "obsesses_over(character→character) — 角色的执念指向某人物(复仇对象/报恩对象/守护对象)",
+        "obsesses_over(character→goal_abstract) — 角色的抽象执念目标(长生/变强/夺权/复活/避世/求道/堕魔)",
+        "triggered_by(memory/obsession→event) — 记忆/执念由某事件触发形成",
+        "directed_at(emotion→character/faction) — 情绪指向对象(愤怒→仇敌/感激→恩人/怨恨→背叛者)",
+        "causes(obsession→conflict) — 执念引发冲突(复仇追杀/夺宝争斗)",
+        "causes(obsession→event) — 执念驱动后续事件(闭关变强/投靠势力/叛逃/献祭)",
+        "related_to(memory→character) — 记忆中涉及的相关角色(死者/加害者/施恩者/见证者)",
+        "witnessed(character→event) — 角色亲眼见证某事件(强者陨落/天灾/亲友死亡)",
+        "benefited_from(character→character) — 角色受恩于某人(救命/赠宝/放过/传功/庇护)",
+        "betrayed_by(character→character) — 角色被某人背叛",
+        "killed_relation(character→character) — 击杀关系(亲友被某人杀害)",
+        "belongs_to(character→faction) — 角色所属势力(宗门覆灭/被逐出宗门记忆)",
+        "has_state_at(character→realm) — 事件发生时角色的境界状态",
+        "occurred_at(event→location) — 记忆事件发生的地点",
+        "reinforced_by(memory→event) — 后续事件强化原有记忆/情绪",
+        "transformed_into(memory_old→obsession_new) — 记忆/执念的转化(复仇→守护, 失败→心魔, 报恩→追随)",
+        "faded_by(memory→event) — 记忆/执念消退或转化条件(复仇完成/真相揭露/误会解除/目标死亡)"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": [
+          "covered",
+          "needs_review",
+          "not_found_in_source"
+        ]
+      }
+    }
+  ],
+  "template_count": 5
+}

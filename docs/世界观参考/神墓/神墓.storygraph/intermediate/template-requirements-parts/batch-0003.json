@@ -1,0 +1,475 @@
+{
+  "producer": "template-requirements-analysis-agent",
+  "templates": [
+    {
+      "template_name": "动态事件与机会点",
+      "template_file": "动态事件与机会点模板.md",
+      "required_fields": [
+        "事件名称",
+        "事件类型",
+        "时间窗口/事件阶段",
+        "预兆描述",
+        "消息来源",
+        "知晓范围",
+        "参与条件（境界限制、令牌要求、队伍要求、身份限制、灵石准备等）",
+        "准备行为（购买丹药、符箓、修复法宝、组队、赶路、隐藏身份等）",
+        "消耗资源",
+        "收益（物品、功法、材料、声望、人情、情报等）",
+        "风险与失败后果（死亡、重伤、被追杀、错过窗口、资源不足等）",
+        "余波影响",
+        "地点",
+        "主办方/发现者",
+        "参与人数或境界限制",
+        "事件开启/关闭时间",
+        "持续时间"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "事件行动链卡片（预兆→消息传播→参与条件明确→准备→开启→参与/争夺→结算→关闭/过期→余波）"
+      ],
+      "required_case_patterns": [
+        "秘境开启与多人争夺案例",
+        "拍卖会引发准备、竞价和截杀案例",
+        "强者洞府消息扩散形成机会点案例"
+      ],
+      "required_evidence_fields": [
+        "时间",
+        "地点",
+        "消息来源与可信度",
+        "参与条件原文依据",
+        "消耗与收益原文依据",
+        "风险与失败后果原文依据",
+        "余波原文依据"
+      ],
+      "graph_node_mapping": [
+        "event",
+        "opportunity",
+        "character",
+        "location",
+        "faction",
+        "secret_realm",
+        "artifact",
+        "technique",
+        "cultivation_method",
+        "pill",
+        "medicine",
+        "material",
+        "beast",
+        "conflict"
+      ],
+      "graph_event_mapping": [
+        "secret_realm_opening（秘境开启事件）",
+        "auction_event（拍卖会事件）",
+        "treasure_emergence（宝物出世事件）",
+        "expert_cave_discovery（强者洞府发现事件）",
+        "beast_tide（兽潮事件）",
+        "tournament（宗门大比事件）",
+        "bounty_announcement（通缉悬赏事件）",
+        "ascension_channel（飞升通道事件）",
+        "herb_maturation（灵药成熟事件）",
+        "mine_discovery（矿脉发现事件）",
+        "relic_opening（遗迹开放事件）",
+        "message_spread（消息传播事件）",
+        "preparation_phase（准备阶段事件）",
+        "aftermath_phase（余波阶段事件）"
+      ],
+      "graph_relation_mapping": [
+        "discovers → character 发现 event/opportunity/secret_realm",
+        "participates_in → character 参与 event",
+        "misses → character 错过 event",
+        "spreads_news → character/faction 传播 event 消息",
+        "hosts → faction 主办 event",
+        "located_at → event 发生于 location",
+        "produces_reward → event/opportunity 产出 artifact/pill/material/technique",
+        "ambushes → character 截杀 character（在 event 中）",
+        "dies_in → character 死于 event",
+        "prepares_for → character 为 event 做准备",
+        "blocks → character/faction 封锁 event/secret_realm 入口",
+        "claims_token → character 获取进入 event 的令牌/凭证",
+        "triggers_next → event 触发下一轮 event",
+        "price_change → event 导致 material/pill 价格变化"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": ["covered", "needs_review", "not_found_in_source"]
+      }
+    },
+    {
+      "template_name": "势力设定",
+      "template_file": "势力设定模板.md",
+      "required_fields": [
+        "势力名称",
+        "势力类型（正道宗门/魔道宗门/修仙家族/商会/妖族族群等）",
+        "势力定位（综合宗门/剑修宗门/炼丹宗门/商业组织等）",
+        "核心区域（山门主峰、内门区域、外门区域、修炼密室/聚灵阵、秘境/禁地、悟道石/传承碑/祖师殿、藏经阁、丹堂/器堂/符堂/阵堂/任务堂、药园/矿脉/灵兽园、分峰/支脉）",
+        "各区域功能描述、进入要求、身份限制、人数限制、消耗、产出",
+        "组织结构（掌门/宗主、太上长老/长老、堂主/执事/护法、真传/核心/内门/外门/杂役弟子、客卿/供奉/附庸）",
+        "各职位人数、职责、权力范围、境界、代表人物",
+        "制度规则（收徒、晋升、考核、贡献、月俸、任务、奖惩、禁令、闭关资格、秘境名额、继任、联姻、盟约）",
+        "资源基础（灵脉、矿脉、药园、丹药库存、法宝库、功法传承、秘境、坊市、附庸势力、凡俗人口、情报网）",
+        "特色体系（宗门大比、试炼塔、悟道石、剑冢、丹炉地火、炼器火脉、护宗大阵等）",
+        "对外关系（敌对、同盟、附庸、贸易、世仇、联姻、互相忌惮、共同抗敌、暗中合作）",
+        "势力历史（创建来源、祖师或开创者、传承变迁、迁徙、鼎盛时期、衰落原因、分裂、覆灭、重建、掌门更替、关键历史事件）"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "势力百科卡片（类型→定位→核心区域→组织结构→制度规则→资源基础→特色体系→对外关系→势力历史）"
+      ],
+      "required_case_patterns": [
+        "综合型修仙宗门案例",
+        "修仙家族案例",
+        "商会/拍卖行/坊市势力案例",
+        "妖族/异族势力案例"
+      ],
+      "required_evidence_fields": [
+        "势力名称原文依据",
+        "区域功能与进入条件原文依据",
+        "组织结构与人数原文依据",
+        "制度规则原文依据",
+        "资源基础原文依据",
+        "特色体系原文依据",
+        "对外关系原文依据",
+        "势力历史原文依据"
+      ],
+      "graph_node_mapping": [
+        "faction",
+        "location",
+        "facility",
+        "character",
+        "secret_realm",
+        "cultivation_method",
+        "technique",
+        "artifact",
+        "weapon",
+        "tool",
+        "pill",
+        "medicine",
+        "material",
+        "beast",
+        "formation",
+        "rule",
+        "opportunity"
+      ],
+      "graph_event_mapping": [
+        "faction_founding（势力创建事件）",
+        "faction_split（势力分裂事件）",
+        "faction_merger（势力合并事件）",
+        "faction_decline（势力衰落事件）",
+        "faction_war（势力战争事件）",
+        "leadership_change（掌门/族长更替事件）",
+        "resource_discovery（资源发现事件）",
+        "alliance_formation（联盟缔结事件）"
+      ],
+      "graph_relation_mapping": [
+        "belongs_to → character 属于 faction",
+        "leads → character 领导 faction",
+        "founded_by → faction 由 character 创建",
+        "located_at → faction 位于 location",
+        "contains_facility → faction/location 包含 facility",
+        "owns → faction 拥有 artifact/secret_realm/material/mine/beast",
+        "ally_of → faction 与 faction 同盟",
+        "enemy_of → faction 与 faction 敌对",
+        "vassal_of → faction 附庸于 faction",
+        "trades_with → faction 与 faction 贸易",
+        "marriage_alliance → faction 与 faction 联姻",
+        "controls_area → faction 控制 location",
+        "recruits_from → faction 从 character 群体收徒",
+        "promotes → faction/character 晋升 character",
+        "exiles → faction 放逐 character",
+        "protects → faction 保护 location/character",
+        "competes_for → faction 争夺 secret_realm/resource",
+        "guards → beast/character 守护 facility/location（护山兽/守卫）",
+        "manages → character 管理 facility（堂主/执事）",
+        "supplies → faction 供应 material/pill/artifact 给 faction"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": ["covered", "needs_review", "not_found_in_source"]
+      }
+    },
+    {
+      "template_name": "境界提升与功法分析",
+      "template_file": "境界提升与功法分析模板.md",
+      "required_fields": [
+        "境界层级（大境界、小境界、圆满、巅峰、半步、伪境）",
+        "提升阶段（初入、稳固、积累、瓶颈、圆满、冲关、突破成功/失败、跌境、重修）",
+        "突破方式（自然积累、丹药辅助、强行冲关、天劫突破、心境突破、神识突破、肉身突破、血脉觉醒、秘境机缘、外力灌顶、师长护法、夺舍重修、转世恢复）",
+        "每种突破方式的触发条件",
+        "每种突破方式所需资源（丹药、灵石、灵脉、天材地宝、妖兽材料、护法资源）",
+        "每种突破方式所需环境（洞府、灵脉、宗门修炼室、秘境、天劫场地、禁地）",
+        "每种突破方式的成功变化（寿元增加、战力提升、神识增强、肉身增强、法力质量变化、根基稳固程度、后遗症、身份地位变化、可参与事件变化）",
+        "每种突破方式的失败后果（经脉受损、重伤、跌境、死亡、心魔、天劫失败、寿元损耗、资源耗尽、神魂受创）",
+        "妖兽阶位提升（成长期/临界期/进阶期/化形前后）",
+        "妖兽突破方式（血脉成长进阶、天劫或外部压力进阶）"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "境界突破卡片（境界层级→提升阶段→突破方式N→条件→资源→环境→成功变化→失败后果）"
+      ],
+      "required_case_patterns": [
+        "炼气期→筑基期（丹药辅助筑基 / 无丹药强行筑基）",
+        "筑基期→结丹期（常规积累突破 / 特殊资源突破 / 高风险突破）",
+        "结丹期→元婴期（闭关冲击元婴 / 特殊机缘辅助元婴）",
+        "妖兽阶位→更高阶位/化形（血脉成长进阶 / 天劫或外部压力进阶）"
+      ],
+      "required_evidence_fields": [
+        "境界层级原文依据",
+        "突破方式原文依据",
+        "条件与资源原文依据",
+        "环境要求原文依据",
+        "成功变化原文依据",
+        "失败后果原文依据"
+      ],
+      "graph_node_mapping": [
+        "realm",
+        "cultivation_method",
+        "technique",
+        "pill",
+        "medicine",
+        "material",
+        "character",
+        "location",
+        "facility",
+        "beast",
+        "secret_realm",
+        "opportunity"
+      ],
+      "graph_event_mapping": [
+        "breakthrough_attempt（突破尝试事件）",
+        "breakthrough_success（突破成功事件）",
+        "breakthrough_failure（突破失败事件）",
+        "tribulation（天劫事件）",
+        "bloodline_awakening（血脉觉醒事件）",
+        "beast_evolution（妖兽进阶事件）",
+        "beast_transformation（妖兽化形事件）",
+        "realm_regression（跌境事件）",
+        "realm_recovery（境界恢复事件）"
+      ],
+      "graph_relation_mapping": [
+        "advances_from → realm 从 realm 晋升（大境界关系）",
+        "contains_substage → realm 包含小阶段",
+        "breaks_through → character/beast 突破到 realm",
+        "fails_breakthrough → character 突破 realm 失败",
+        "regresses_from → character 从 realm 跌境",
+        "cultivates → character 修炼 cultivation_method",
+        "requires_for_breakthrough → realm 突破需要 pill/medicine/material",
+        "consumes_in_breakthrough → character 突破中消耗 pill/material",
+        "breakthrough_location → character 在 location 突破",
+        "guards_during_breakthrough → character 为 character 护法",
+        "enables_breakthrough → opportunity/secret_realm 促成 realm 突破",
+        "triggers_tribulation → realm 触发天劫",
+        "survives_tribulation → character 渡过天劫",
+        "perishes_in_tribulation → character 死于天劫",
+        "bloodline_awakens → character/beast 血脉觉醒到 realm",
+        "evolves_to → beast 进化到更高阶位",
+        "transforms_into → beast 化形为 character"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": ["covered", "needs_review", "not_found_in_source"]
+      }
+    },
+    {
+      "template_name": "夺舍设定分析",
+      "template_file": "夺舍设定分析模板.md",
+      "required_fields": [
+        "机制名称与类型（夺舍/附身/残魂寄宿/器灵附体/转世/重生/复活/身外化身/傀儡身体/血脉重塑/借尸还魂）",
+        "发起者（身份、修为、神魂状态、是否濒死/残魂/被封印、是否有同伙或护法）",
+        "目标（资质、境界、肉身状态、神魂状态、与发起者关系、被选中原因）",
+        "发起原因（延寿、复活、逃避死亡、重获肉身、夺取资质、继承身份、躲避追杀、突破瓶颈、复仇、完成执念）",
+        "前置条件（境界差、神魂强度、目标虚弱状态、信任关系、昏迷/被困、特定体质/血脉/灵根、时间/地点要求）",
+        "媒介条件（法宝、阵法、丹药、禁术、魂牌、血契、寄魂物、祭坛、秘境环境）",
+        "接管方式（详细流程：接触→进入→压制→抢夺→融合记忆→稳定期→遮掩痕迹→被打断后果）",
+        "目标反抗（神魂反击、护身宝物、血脉排异、外力救援、意志抵抗、同归于尽、逃出部分神魂）",
+        "成功结果（完全接管/修为保留/寿元重置/能否使用目标资质血脉身份法宝关系网）",
+        "失败后果（反噬、魂灭、神魂受创、疯癫、身体崩坏、目标死亡、双方同损、身份暴露、被围剿）",
+        "身份处理（伪装成目标继续生活/改名换身份/暴露给亲友师门家族敌人）",
+        "记忆与人格变化（继承目标记忆/人格混合/记忆缺失/性情变化/执念残留/目标意识复苏）",
+        "关系后果（师徒背叛/亲友复仇/宗门清查/家族继承争议/仇怨延续/通缉追杀/势力重新站队）",
+        "弱点（怕神魂攻击/镇魂法器/护体禁制/血脉排异/肉身不合/目标意志强/时机被打断/真名或旧身份暴露）",
+        "结局或后续影响"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "夺舍案例卡片（类型→发起者→目标→原因→前置条件→媒介→接管流程→反抗→成功/失败→身份处理→记忆人格→关系后果→弱点→结局）"
+      ],
+      "required_case_patterns": [
+        "高阶修士夺舍低阶修士案例",
+        "残魂寄宿/器灵附体案例",
+        "转世/重生/复活案例",
+        "身外化身/傀儡身体/替身身体案例",
+        "血脉重塑/肉身改造/借尸还魂案例"
+      ],
+      "required_evidence_fields": [
+        "发起者身份与状态原文依据",
+        "目标信息原文依据",
+        "前置条件原文依据",
+        "媒介条件原文依据",
+        "接管方式详细流程原文依据",
+        "目标反抗原文依据",
+        "成功/失败结果原文依据",
+        "身份处理原文依据",
+        "记忆人格变化原文依据",
+        "关系后果原文依据",
+        "弱点原文依据"
+      ],
+      "graph_node_mapping": [
+        "character",
+        "technique",
+        "artifact",
+        "formation",
+        "pill",
+        "medicine",
+        "cultivation_method",
+        "realm",
+        "location",
+        "facility",
+        "event"
+      ],
+      "graph_event_mapping": [
+        "possession_attempt（夺舍尝试事件）",
+        "possession_success（夺舍成功事件）",
+        "possession_failure（夺舍失败事件）",
+        "soul_hosting（残魂寄宿事件）",
+        "spirit_attachment（器灵附体事件）",
+        "reincarnation（转世事件）",
+        "resurrection（复活事件）",
+        "avatar_creation（身外化身创建事件）",
+        "puppet_body_creation（傀儡身体炼制事件）",
+        "bloodline_remolding（血脉重塑事件）",
+        "corpse_possession（借尸还魂事件）",
+        "identity_exposure（身份暴露事件）",
+        "possession_hunt（夺舍者追猎事件）"
+      ],
+      "graph_relation_mapping": [
+        "possesses → character 夺舍 character",
+        "resists_possession → character 抵抗被 character 夺舍",
+        "hosts_soul → character/artifact 寄宿 character 残魂",
+        "attaches_to → character（器灵）附体于 character",
+        "reincarnates_as → character 转世为 character",
+        "resurrects → character 复活为 character/new_body",
+        "creates_avatar → character 创建身外化身",
+        "crafts_puppet → character 炼制傀儡身体",
+        "remolds_body → character 重塑肉身",
+        "uses_medium → character 使用 artifact/formation/pill 作为夺舍媒介",
+        "weakens_target → character 削弱目标 character（夺舍前）",
+        "infiltrates_mind → character 进入目标 character 识海",
+        "suppresses_soul → character 压制目标 character 神魂",
+        "merges_memory → character 融合目标 character 记忆",
+        "disguises_as → character 伪装成 character（夺舍后）",
+        "hunts_possessor → character/faction 追猎夺舍者 character",
+        "exposes_identity → character 揭露 character 真实身份",
+        "personality_mix → character 人格混合（夺舍/寄宿后的双方人格影响）",
+        "betrays_master → character（被夺舍者）背叛原师门/家族",
+        "inherits_identity → character 继承 character 身份/关系网"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": ["covered", "needs_review", "not_found_in_source"]
+      }
+    },
+    {
+      "template_name": "妖兽与修士关系分析",
+      "template_file": "妖兽与修士关系分析模板.md",
+      "required_fields": [
+        "关系名称",
+        "关系类型（猎杀/被猎杀/守药冲突/领地冲突/驯化/契约/灵宠/坐骑/护山兽/交易/供奉/复仇/共同守护/妖族建势力/兽潮/领地战争/化形交往/黑市交易）",
+        "参与方（修士、队伍、宗门、商会、妖兽、妖兽族群、中间人）",
+        "主动方",
+        "被动方",
+        "触发原因（资源争夺、修炼材料、妖丹、灵药、矿脉、秘境、兽潮、幼兽、血脉、仇怨、护族、宗门任务、商会收购）",
+        "发生地点",
+        "互动流程（详细步骤）",
+        "资源流向（妖兽产出、战利品、灵石、材料、丹药流向）",
+        "关系变化（仇怨形成/族群迁徙/灵智提升/化形后关系改变/契约反噬）",
+        "风险与代价（受伤、死亡、材料被抢、族群报复、契约反噬、饲养成本）",
+        "升级条件（从普通猎妖升级为兽潮/宗门围剿/族群复仇/资源点争夺）",
+        "结束方式",
+        "后续影响",
+        "与妖兽分析的关联"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "人妖互动关系卡片（关系名→类型→参与方→主动/被动→原因→地点→流程→资源流向→关系变化→风险→升级→结束→后续影响）"
+      ],
+      "required_case_patterns": [
+        "修士猎妖与资源回收案例",
+        "妖兽守药/守矿/守巢冲突案例",
+        "灵宠/坐骑/契约兽关系案例",
+        "宗门豢养/护山兽/灵兽园案例",
+        "妖兽复仇/兽潮/领地战争案例",
+        "化形妖修/妖族势力与人族关系案例",
+        "黑市/商会/坊市中的妖兽交易案例"
+      ],
+      "required_evidence_fields": [
+        "参与方原文依据",
+        "触发原因原文依据",
+        "互动流程原文依据",
+        "资源流向原文依据",
+        "关系变化原文依据",
+        "风险与代价原文依据",
+        "升级条件原文依据",
+        "后续影响原文依据"
+      ],
+      "graph_node_mapping": [
+        "beast",
+        "character",
+        "faction",
+        "location",
+        "material",
+        "pill",
+        "medicine",
+        "artifact",
+        "weapon",
+        "technique",
+        "facility",
+        "conflict",
+        "event",
+        "opportunity",
+        "secret_realm"
+      ],
+      "graph_event_mapping": [
+        "beast_hunt（猎妖事件）",
+        "resource_conflict（资源冲突事件）",
+        "beast_tide（兽潮事件）",
+        "beast_contract（妖兽契约事件）",
+        "beast_taming（妖兽驯化事件）",
+        "beast_vengeance（妖兽复仇事件）",
+        "beast_trade（妖兽交易事件）",
+        "beast_guard_assignment（护山兽/守药兽任命事件）",
+        "territorial_war（领地战争事件）",
+        "beast_transformation（妖兽化形事件）",
+        "herd_migration（族群迁徙事件）",
+        "beast_rampage（妖兽失控/暴走事件）",
+        "contract_betrayal（契约反噬事件）"
+      ],
+      "graph_relation_mapping": [
+        "hunts → character 猎杀 beast",
+        "hunted_by → character 被 beast 猎杀",
+        "contracts_with → character 与 beast 签订契约",
+        "tames → character 驯化 beast",
+        "rides → character 骑乘 beast（坐骑关系）",
+        "guards_resource → beast 守护 material/location（守药/守矿/守巢）",
+        "protects_faction → beast 守护 faction（护山兽）",
+        "attacks → beast 攻击 character/faction/location",
+        "stalemates → beast 与 character 互相忌惮",
+        "trades_beast → character/faction 交易 beast（妖兽买卖）",
+        "breeds → faction 培育 beast（灵兽园饲养）",
+        "feeds → character 喂养 beast（灵宠饲养投入）",
+        "produces_material → beast 产出 material（妖丹/皮骨/精血）",
+        "belongs_to_herd → beast 属于 beast 族群",
+        "leads_herd → beast 统领 beast 族群（妖王）",
+        "transforms_into → beast 化形为 character（化形妖修）",
+        "ally_with → beast/faction 与 character/faction 结盟（人妖联盟）",
+        "wars_against → beast/faction 与 faction 战争（人妖战争）",
+        "flees_from → beast/character 逃离 character/beast",
+        "encroaches_territory → character 侵入 beast 领地",
+        "defends_territory → beast 守卫领地抵御 character",
+        "sells_to → character 出售 beast 材料给 faction（商会交易）",
+        "buys_from → character 从 faction 购买 beast/材料",
+        "smuggles → character 黑市交易 beast/材料",
+        "escalates_to → conflict（猎妖/冲突）升级为 beast_tide/war"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": ["covered", "needs_review", "not_found_in_source"]
+      }
+    }
+  ],
+  "template_count": 5
+}

@@ -1,0 +1,2446 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0146:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0146",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T23:35:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0146:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立在肩腿受伤、被两名追击者围攻的情况下，判断敌人依赖法术和法器，先用金刚符防御，再以流沙困敌、符宝反杀二人并搜获战利品后继续上路。",
+      "evidence_ids": [
+        "evidence:chunk-0146:001",
+        "evidence:chunk-0146:002",
+        "evidence:chunk-0146:004",
+        "evidence:chunk-0146:005",
+        "evidence:chunk-0146:006",
+        "evidence:chunk-0146:007",
+        "evidence:chunk-0146:008",
+        "evidence:chunk-0146:009",
+        "evidence:chunk-0146:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        298694,
+        301237
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          298694,
+          301237
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0146:character:002",
+      "node_type": "character",
+      "label": "土中大汉",
+      "aliases": [
+        "大汉",
+        "刚才藏在土里的大汉"
+      ],
+      "fact_summary": "土中大汉是追赶韩立的二人组之一，使用黑气长刀/黑索和土甲术近身压制韩立，后被韩立以符宝剑光斩首。",
+      "evidence_ids": [
+        "evidence:chunk-0146:001",
+        "evidence:chunk-0146:002",
+        "evidence:chunk-0146:003",
+        "evidence:chunk-0146:006",
+        "evidence:chunk-0146:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        298694,
+        300766
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          298694,
+          300766
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0146:character:003",
+      "node_type": "character",
+      "label": "黄衣人",
+      "aliases": [],
+      "fact_summary": "黄衣人是追赶韩立的二人组之一，持青黑色葫芦法器放出黑色圆球攻击韩立，见大汉被杀后用符箓逃遁，最终被韩立符宝灰光贯穿并摔死。",
+      "evidence_ids": [
+        "evidence:chunk-0146:001",
+        "evidence:chunk-0146:002",
+        "evidence:chunk-0146:004",
+        "evidence:chunk-0146:007",
+        "evidence:chunk-0146:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        298694,
+        301057
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          298694,
+          301057
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0146:tool:004",
+      "node_type": "tool",
+      "label": "黑气萦绕的长刀",
+      "aliases": [
+        "长刀",
+        "黑索",
+        "伸缩自如的黑索"
+      ],
+      "fact_summary": "黑气萦绕的长刀在大汉手中化为伸缩自如的黑索，用来追缠并试图锁住韩立。",
+      "evidence_ids": [
+        "evidence:chunk-0146:002",
+        "evidence:chunk-0146:003",
+        "evidence:chunk-0146:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        298794,
+        299955
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          298794,
+          299955
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0146:technique:005",
+      "node_type": "technique",
+      "label": "土甲术",
+      "aliases": [
+        "护体术"
+      ],
+      "fact_summary": "土甲术是大汉全身护体黄光的明确名称，能让其承受韩立火弹术连击并恢复正常。",
+      "evidence_ids": [
+        "evidence:chunk-0146:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        299134,
+        299479
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          299134,
+          299479
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0146:technique:006",
+      "node_type": "technique",
+      "label": "火弹术",
+      "aliases": [],
+      "fact_summary": "火弹术在本段作为韩立连环火球攻击大汉的手段，但未能破开大汉土甲术护体。",
+      "evidence_ids": [
+        "evidence:chunk-0146:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        299134,
+        299479
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          299134,
+          299479
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0146:tool:007",
+      "node_type": "tool",
+      "label": "青黑色葫芦法器",
+      "aliases": [
+        "青黑的葫芦",
+        "葫芦法器"
+      ],
+      "fact_summary": "青黑色葫芦法器由黄衣人操控，先隐射青光，后喷出七八个黑色圆球攻击韩立金罩。",
+      "evidence_ids": [
+        "evidence:chunk-0146:002",
+        "evidence:chunk-0146:004",
+        "evidence:chunk-0146:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        298794,
+        300566
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          298794,
+          300566
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0146:inscription:008",
+      "node_type": "inscription",
+      "label": "金刚符",
+      "aliases": [
+        "符箓",
+        "符术"
+      ],
+      "fact_summary": "金刚符是韩立从金光上人处得到的符箓/符术，口诀来自苦桑和尚；激发后形成金罩防住黑索和黑色圆球，但会使韩立身法变慢。",
+      "evidence_ids": [
+        "evidence:chunk-0146:004",
+        "evidence:chunk-0146:005",
+        "evidence:chunk-0146:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        299576,
+        300566
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          299576,
+          300566
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0146:character:009",
+      "node_type": "character",
+      "label": "苦桑和尚",
+      "aliases": [
+        "苦桑"
+      ],
+      "fact_summary": "苦桑和尚在当前 chunk 中作为金刚符口诀来源被提及，说明韩立此前已从其口中得知口诀。",
+      "evidence_ids": [
+        "evidence:chunk-0146:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        299576,
+        299755
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          299576,
+          299755
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0146:inscription:010",
+      "node_type": "inscription",
+      "label": "符宝",
+      "aliases": [
+        "灰光",
+        "灰濛濛的剑光",
+        "灰芒"
+      ],
+      "fact_summary": "符宝从韩立木匣内化作丈许灰光/灰濛濛剑光，劈开葫芦喷出的黑色圆球，并先后斩杀大汉和黄衣人。",
+      "evidence_ids": [
+        "evidence:chunk-0146:007",
+        "evidence:chunk-0146:008",
+        "evidence:chunk-0146:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        300160,
+        301057
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          300160,
+          301057
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0146:material:011",
+      "node_type": "material",
+      "label": "低阶灵石",
+      "aliases": [
+        "五十块低阶灵石"
+      ],
+      "fact_summary": "低阶灵石是韩立搜刮两名袭击者后获得的主要战利品，共五十块。",
+      "evidence_ids": [
+        "evidence:chunk-0146:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        301058,
+        301237
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          301058,
+          301237
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0146:001",
+      "edge_type": "attacks_with",
+      "source": "node:chunk-0146:character:002",
+      "target": "node:chunk-0146:tool:004",
+      "fact_summary": "土中大汉以黑气长刀化成的黑索追缠韩立，试图锁住其真身。",
+      "evidence_ids": [
+        "evidence:chunk-0146:002",
+        "evidence:chunk-0146:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        298794,
+        299479
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          298794,
+          299479
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0146:002",
+      "edge_type": "protected_by",
+      "source": "node:chunk-0146:character:002",
+      "target": "node:chunk-0146:technique:005",
+      "fact_summary": "大汉依仗土甲术护身，使韩立连环火弹术无法破防。",
+      "evidence_ids": [
+        "evidence:chunk-0146:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        299134,
+        299479
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          299134,
+          299479
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0146:003",
+      "edge_type": "attacks_with",
+      "source": "node:chunk-0146:character:003",
+      "target": "node:chunk-0146:tool:007",
+      "fact_summary": "黄衣人以青黑色葫芦法器喷出黑色圆球攻击韩立金罩。",
+      "evidence_ids": [
+        "evidence:chunk-0146:004",
+        "evidence:chunk-0146:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        299576,
+        300566
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          299576,
+          300566
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0146:004",
+      "edge_type": "uses_defense",
+      "source": "node:chunk-0146:character:001",
+      "target": "node:chunk-0146:inscription:008",
+      "fact_summary": "韩立激发金刚符形成金罩，挡住黑索缠绕和圆球攻击。",
+      "evidence_ids": [
+        "evidence:chunk-0146:005",
+        "evidence:chunk-0146:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        299756,
+        300566
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          299756,
+          300566
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0146:005",
+      "edge_type": "learned_incantation_from",
+      "source": "node:chunk-0146:character:001",
+      "target": "node:chunk-0146:character:009",
+      "fact_summary": "韩立早已从苦桑和尚口中得知金刚符口诀。",
+      "evidence_ids": [
+        "evidence:chunk-0146:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        299576,
+        299755
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          299576,
+          299755
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0146:006",
+      "edge_type": "uses_to_kill",
+      "source": "node:chunk-0146:character:001",
+      "target": "node:chunk-0146:inscription:010",
+      "fact_summary": "韩立激发符宝灰光，破除圆球攻势并杀死大汉和黄衣人。",
+      "evidence_ids": [
+        "evidence:chunk-0146:007",
+        "evidence:chunk-0146:008",
+        "evidence:chunk-0146:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        300160,
+        301057
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          300160,
+          301057
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0146:007",
+      "edge_type": "loots",
+      "source": "node:chunk-0146:character:001",
+      "target": "node:chunk-0146:material:011",
+      "fact_summary": "韩立搜刮二人尸身后获得五十块低阶灵石。",
+      "evidence_ids": [
+        "evidence:chunk-0146:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        301058,
+        301237
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          301058,
+          301237
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0146:001",
+      "event_type": "ambush_context",
+      "label": "追赶二人组策划偷袭韩立",
+      "participants": [
+        "node:chunk-0146:character:001",
+        "node:chunk-0146:character:002",
+        "node:chunk-0146:character:003"
+      ],
+      "fact_summary": "大汉和黄衣人是一路追赶韩立的二人组，因担心韩立再次上路而恢复少许法力后偷摸过来策划偷袭。",
+      "evidence_ids": [
+        "evidence:chunk-0146:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "散修生存方式",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        298694,
+        298793
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          298694,
+          298793
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0146:002",
+      "event_type": "combat_exchange",
+      "label": "大汉黑索追缠与黄衣人葫芦蓄势",
+      "participants": [
+        "node:chunk-0146:character:001",
+        "node:chunk-0146:character:002",
+        "node:chunk-0146:character:003",
+        "node:chunk-0146:tool:004",
+        "node:chunk-0146:tool:007"
+      ],
+      "fact_summary": "大汉以黑气长刀/黑索追缠韩立，黄衣人取出青黑色葫芦准备施法，韩立判断二人组合威胁。",
+      "evidence_ids": [
+        "evidence:chunk-0146:002",
+        "evidence:chunk-0146:003",
+        "evidence:chunk-0146:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        298794,
+        299755
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          298794,
+          299755
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0146:003",
+      "event_type": "defensive_gamble",
+      "label": "韩立启用金刚符挡住黑索",
+      "participants": [
+        "node:chunk-0146:character:001",
+        "node:chunk-0146:inscription:008",
+        "node:chunk-0146:tool:004"
+      ],
+      "fact_summary": "韩立在危急中使用金刚符，虽然身法变慢被黑索缠上，但金罩挡住法器，证实其冒险成功。",
+      "evidence_ids": [
+        "evidence:chunk-0146:004",
+        "evidence:chunk-0146:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        299576,
+        299955
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          299576,
+          299955
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0146:004",
+      "event_type": "battlefield_control",
+      "label": "韩立以流沙困住大汉",
+      "participants": [
+        "node:chunk-0146:character:001",
+        "node:chunk-0146:character:002"
+      ],
+      "fact_summary": "韩立不让大汉近身，按地念咒使大汉脚下化为流沙，令其双足深陷。",
+      "evidence_ids": [
+        "evidence:chunk-0146:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        299956,
+        300159
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          299956,
+          300159
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0146:005",
+      "event_type": "artifact_activation",
+      "label": "韩立激发符宝破除葫芦圆球",
+      "participants": [
+        "node:chunk-0146:character:001",
+        "node:chunk-0146:character:003",
+        "node:chunk-0146:tool:007",
+        "node:chunk-0146:inscription:008",
+        "node:chunk-0146:inscription:010"
+      ],
+      "fact_summary": "黄衣人以葫芦喷出黑色圆球猛攻金罩，韩立激发木匣内符宝灰光，将圆球全数劈开。",
+      "evidence_ids": [
+        "evidence:chunk-0146:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        300160,
+        300566
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          300160,
+          300566
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0146:006",
+      "event_type": "kill_event",
+      "label": "韩立以符宝斩杀土中大汉",
+      "participants": [
+        "node:chunk-0146:character:001",
+        "node:chunk-0146:character:002",
+        "node:chunk-0146:inscription:010",
+        "node:chunk-0146:technique:005"
+      ],
+      "fact_summary": "大汉见符宝剑光后逃跑，韩立指挥剑光追上并斩首，土甲护体无效。",
+      "evidence_ids": [
+        "evidence:chunk-0146:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        300567,
+        300766
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          300567,
+          300766
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0146:007",
+      "event_type": "kill_event",
+      "label": "韩立以符宝追杀黄衣人",
+      "participants": [
+        "node:chunk-0146:character:001",
+        "node:chunk-0146:character:003",
+        "node:chunk-0146:inscription:010"
+      ],
+      "fact_summary": "黄衣人用符箓生出黄色巨翅逃跑，韩立全力催动符宝灰光贯穿其前胸，黄衣人坠落摔死，韩立未能抓到活口。",
+      "evidence_ids": [
+        "evidence:chunk-0146:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        300767,
+        301057
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          300767,
+          301057
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0146:008",
+      "event_type": "loot_and_departure",
+      "label": "韩立搜身获低阶灵石后继续上路",
+      "participants": [
+        "node:chunk-0146:character:001",
+        "node:chunk-0146:character:002",
+        "node:chunk-0146:character:003",
+        "node:chunk-0146:material:011"
+      ],
+      "fact_summary": "韩立搜刮两名袭击者未找到线索，但获得五十块低阶灵石及一些符箓法器；他怀疑此事可能与散修失踪有关，吃丹药后继续上路。",
+      "evidence_ids": [
+        "evidence:chunk-0146:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "散修生存方式",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        301058,
+        301237
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          301058,
+          301237
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0146:001",
+      "chunk_id": "chunk-0146",
+      "source_range": [
+        298694,
+        298793
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          298694,
+          298793
+        ]
+      },
+      "excerpt": "第一百四十三章 斩杀\n　　新从土里钻出的大汉和一开始的那名黄衣人，就是一直在后面追赶韩立的二人组。\n　　他们追上来后，生怕韩立再次上路远行，稍微恢复了些法力后，马上偷偷的摸了过来，策划了这次的偷袭。",
+      "fact_summary": "土中钻出的大汉和黄衣人是一路追赶韩立的二人组；他们担心韩立再次远行，稍恢复法力后便偷偷摸近策划偷袭。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0146:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0146:002",
+      "chunk_id": "chunk-0146",
+      "source_range": [
+        298794,
+        299052
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          298794,
+          299052
+        ]
+      },
+      "excerpt": "　　这时，韩立觉得受伤的大腿，火辣辣的痛，看来刚才一番举动，让那里的伤口又严重了一些。\n　　不过，现在不是考虑这些问题的时候！因为那个刚才藏在土里的大汉，从背后抽出了一把黑气萦绕的长刀，恶狠狠的向韩立扑了过来。\n　　韩立看了对方的身形，虽然速度很快，但动作生硬，很明显这人只是依仗着法术加持的而已。心里不由的轻松了些，要知道单论身形的诡异灵动，韩立自问对方拍马也追不上自己！\n　　想到这里，韩立不再理睬眼前气势汹汹大汉，而把注意力放到了黄衣人身上，因为这人取出了一个青黑色的葫芦，正把葫芦口对着自己，似乎又要做法了！",
+      "fact_summary": "韩立大腿伤势加重；土中大汉抽出黑气长刀扑来但身法生硬，韩立判断其依靠法术加持，并把注意力转向取出青黑色葫芦的黄衣人。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0146:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0146:003",
+      "chunk_id": "chunk-0146",
+      "source_range": [
+        299134,
+        299479
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          299134,
+          299479
+        ]
+      },
+      "excerpt": "　　“小子，你上当了！”大汉突然狂笑道。\n　　手里的长刀黑光一闪，化为了一道长长的黑索，如同长蛇一般，紧跟着韩立的身形缠绕过来，大有把韩立不锁住而不罢休之势！\n　　韩立吃了一惊，身形立即模糊诡异起来，一会儿左，一会儿右，一会儿前，一会儿后，仿佛同时有数个韩立，在围着大汉团团打转。\n　　大汉见此，开始吓了一大跳，但随即就依仗全身有“土甲术”护身，便不予理会。而是继续催动着伸缩自如的黑索，拼命追逐着韩立的真身。\n　　“砰砰！砰砰！”韩立从大汉的身边一掠而过。但在这一瞬间，他就把双手扣着的火球，连环激射到大汉身上，打得他身上的黄光一阵的晃倒，但可惜立即就恢复了正常。\n　　“大爷身上的护体术，小小的火弹术岂能破得了！”大汉一脸的猖狂，手上法诀的捏掐却更加迅速，对黑索的驱动丝毫没有放松下来。",
+      "fact_summary": "大汉的黑气长刀化为黑索追缠韩立；韩立以诡异身法躲避并用火球连击，但大汉依仗土甲术/护体术承受火弹术，继续催动黑索。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0146:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0146:004",
+      "chunk_id": "chunk-0146",
+      "source_range": [
+        299576,
+        299755
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          299576,
+          299755
+        ]
+      },
+      "excerpt": "　　他百忙中偷看了黄衣人一眼，就见对方神情肃然，手中的葫芦法器也开始从葫芦嘴中往外隐射出青光，不知要有何物即将从里面出来？\n　　“不行，再这样下去，自己肯定小命不保！不冒些风险是不行了！”韩立眼看情况危急，暗自想道。\n　　于是，在高速飞驰中的韩立，取出了那张从金光上人得到的金刚符，这金刚符也是一种符术，其口诀韩立早已从苦桑和尚口中得知，如今总算派上了用场。",
+      "fact_summary": "黄衣人的葫芦法器隐射青光，韩立判断局面危急，冒险取出从金光上人处得来的金刚符；金刚符口诀此前从苦桑和尚口中得知。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0146:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0146:005",
+      "chunk_id": "chunk-0146",
+      "source_range": [
+        299756,
+        299955
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          299756,
+          299955
+        ]
+      },
+      "excerpt": "　　韩立低声念几句咒决，因为在晃动中，所以听起来有些含糊不清，但那符箓上金色漆字却亮了起来。等到金字全亮之时，韩立把那符箓往身上猛然一拍，顿时身上金光大放，一层金罩蓦然出现了，但他的身形也突兀的慢了下来，被后面赶上的黑索缠了个正着。\n　　使用金刚符会使身法变慢，韩立早已试过了，心知肚明。等看到黑索虽然缠身数圈，但全都被挡在金光之外时，心里就更不慌了！知道自己赌对了，金罩果然能防住对方法器的进攻。",
+      "fact_summary": "韩立念咒激发金刚符，金罩出现但身形变慢，黑索缠上却被挡在金光之外；韩立确认金罩能挡住对方法器。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0146:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0146:006",
+      "chunk_id": "chunk-0146",
+      "source_range": [
+        299956,
+        300159
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          299956,
+          300159
+        ]
+      },
+      "excerpt": "　　而大汉见此却低吼一声，迈着大步，紧握双拳再次冲了上来，手上的黄光耀眼刺目，近似实质一样，也不知又加持了什么功法。\n　　经过上次的教训，韩立不会让大汉近再次身了。他突然蹲了下来，双手按在地上，随后一阵低沉的咒语声，从韩立口中发出，接着两手竟也微泛出黄光。\n　　大汉见此，微微一惊，急忙想停下脚步，但已迟了。其足下的地面，全部化为了软绵棉的流沙，让他双足深陷进去，一直深埋至大腿根部，整个人一阵的手忙脚乱。",
+      "fact_summary": "大汉再次冲向韩立，韩立吸取上次教训蹲下按地念咒，使大汉脚下地面化为流沙，将其双足陷至大腿根部。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0146:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0146:007",
+      "chunk_id": "chunk-0146",
+      "source_range": [
+        300160,
+        300566
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          300160,
+          300566
+        ]
+      },
+      "excerpt": "　　“打！”一道尖锐的呵斥声传进了韩立的耳里。\n　　韩立心里一沉，向黄衣人望去。\n　　只见，从那青黑的葫芦嘴里，一连喷出七八个黑糊糊的圆球，有鸡蛋那么大小，直奔韩立飞驰而来。\n　　韩立脸色很难看，但双手黄光猛然一散，接着起手往怀内一阵乱摸，掏出了个木匣。\n　　而这时，几颗圆球已到了跟前，狠狠的砸在了韩立的光罩上，打的金罩不停的变形波动，似乎随时都有可能破裂掉。\n　　见此危机韩立没有理会，人却盘膝坐下，把木匣横放在膝上，掐起了咒决。\n　　怦怦！怦怦！怦怦！那些圆球的攻势更猛了，在金罩外的攻击一刻也没有停下，让韩立身上的金光渐渐黯然了下来，看来罩破人亡就在眼前。\n　　这时，韩立大吼了一声：“起”\n　　随着此声发出，从韩立木匣内飞射出了一道丈许长的灰光，这光芒如蛟龙出水一样，围着四周就转了那么一圈，那些圆球就如同遇到克星一样，全都被一一劈分为二，跌落到了尘埃。\n　　“符宝！”黄衣人如同见了鬼一样的大叫起来。",
+      "fact_summary": "黄衣人操控青黑葫芦喷出七八个黑色圆球猛攻金罩；韩立取出木匣并激发其中丈许灰光，将圆球全数劈开，黄衣人惊呼这是符宝。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0146:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0146:008",
+      "chunk_id": "chunk-0146",
+      "source_range": [
+        300567,
+        300766
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          300567,
+          300766
+        ]
+      },
+      "excerpt": "　　韩立一听，心里一动。不过也顾不得多想，因为较近的那名大汉，已经脱困而出了，不过这人见到韩立的那灰濛濛的剑光后，脸色变得煞白煞白的！不但没有向韩立这边冲过来，反而扭头狂奔。\n　　但这时杀心已起的韩立，怎么肯放此人离开。他把手冲着大汉一指，那剑光立即尾随激射出去，眨眼间就到了大汉的身后。\n　　围着大汉的脖颈一绕，那大汉的头颅就轻易的滚落到了地上，其身上的护体黄光如同不存在一样，丝毫作用也没起到。",
+      "fact_summary": "大汉脱困后见灰濛濛剑光而逃，韩立杀心已起，指挥剑光追上并绕过大汉脖颈，将其斩首，护体黄光不起作用。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0146:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0146:009",
+      "chunk_id": "chunk-0146",
+      "source_range": [
+        300767,
+        301057
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          300767,
+          301057
+        ]
+      },
+      "excerpt": "　　黄衣人见此情景，那还敢再停留片刻，从身上掏出了一道符箓往身上一拍，接着就长出一对黄色的巨大翅膀，轻轻一扇，人就腾空而起，往远处飞去。\n　　而韩立则指挥着剑光追了过来，紧跟着黄衣人身后不放，黄衣人越飞越快，灰光竟一时追他不上。\n　　韩立有些着急，心里一发狠，全身法力毫无保留的都用了出来，那灰芒顿时如同吃了大补药一样，骤然加速起来，一下从黄衣人的前胸穿过，给他来了个透心凉。\n　　黄衣人惨叫一声，从半空中跌落了下来。\n　　韩立大喜，召回了灰光，人飞奔了过去，想抓一个活口，好好拷问一番。\n　　可惜等韩立赶到掉落地点时，黄衣人已死的不能再死了，竟被活活的摔死的！这让韩立郁闷不已！",
+      "fact_summary": "黄衣人见大汉被杀后拍符箓生出黄色巨翅逃遁；韩立全力催动灰光加速贯穿黄衣人前胸，黄衣人坠落摔死，韩立想抓活口拷问未成。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0146:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0146:010",
+      "chunk_id": "chunk-0146",
+      "source_range": [
+        301058,
+        301237
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          301058,
+          301237
+        ]
+      },
+      "excerpt": "　　既然活口没有了，那只有搜搜这二人的身了，看看能找到什么有用的线索。\n　　等韩立不客气的把两人身上的东西搜刮一空后，相关的东西没找到，倒是发了一大笔横财！因为二人身上的低阶灵石竟有五十块之多，更别说还一些符箓和法器了！\n　　虽然韩立对莫名其妙的被人偷袭，有些纳闷。也不知以前的散修失踪是否和这二人有关，但也不敢在此久待下去，稍微吃了些丹药后，就继续上路了。",
+      "fact_summary": "韩立没能得到活口，只能搜身找线索；未找到相关线索，却从二人身上获得五十块低阶灵石以及一些符箓和法器，并在怀疑其与散修失踪有关后吃丹药继续上路。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "散修生存方式",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0146:010"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "角色AI行为参考",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "冲突事件分析",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "战斗与保命机制",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "物资产出与消耗",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "NPC性格与代表事件",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "法宝分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "武器分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "功法术法神通",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "符师",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "材料分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "拍卖坊市与交易",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "事件因果链（长程因果图）",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "散修生存方式",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0146:001",
+      "kind": "black_blade_artifact_name_unknown",
+      "fact_summary": "当前 chunk 只描述大汉的黑气长刀会化为黑索，未说明该法器正式名称、品阶、来源或完整限制。",
+      "evidence_ids": [
+        "evidence:chunk-0146:002",
+        "evidence:chunk-0146:003",
+        "evidence:chunk-0146:005"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        298794,
+        299955
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          298794,
+          299955
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0146:002",
+      "kind": "gourd_projectile_mechanism_unknown",
+      "fact_summary": "青黑色葫芦法器喷出的黑糊糊圆球名称、材质、品阶和攻击机制当前未说明，只能确认其能攻击金罩并被符宝灰光劈开。",
+      "evidence_ids": [
+        "evidence:chunk-0146:004",
+        "evidence:chunk-0146:007"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        299576,
+        300566
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          299576,
+          300566
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0146:003",
+      "kind": "quicksand_spell_name_unknown",
+      "fact_summary": "韩立使地面化为流沙困住大汉，但当前 chunk 未给出该法术名称、传承或与土属性法术的明确归属。",
+      "evidence_ids": [
+        "evidence:chunk-0146:006"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        299956,
+        300159
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          299956,
+          300159
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0146:004",
+      "kind": "ambushers_link_to_missing_loose_cultivators_unconfirmed",
+      "fact_summary": "韩立只怀疑自己被偷袭是否与以前散修失踪有关，当前 chunk 未证实二人就是散修失踪案凶手或背后势力。",
+      "evidence_ids": [
+        "evidence:chunk-0146:010"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "散修生存方式",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        301058,
+        301237
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          301058,
+          301237
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0146:001",
+      "candidate": "黄色巨大翅膀符箓",
+      "reason": "黄衣人逃跑时使用的一道符箓没有名称、来源或归属信息；其效果已在事件中记录，不强行建具名 inscription 节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        300767,
+        301057
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          300767,
+          301057
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0146:002",
+      "candidate": "一些符箓和法器",
+      "reason": "韩立搜身获得的一些符箓和法器未列明名称、数量或效果；只作为战利品概括记录，不逐一造节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        301058,
+        301237
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          301058,
+          301237
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0146:003",
+      "candidate": "丹药",
+      "reason": "韩立离开前只泛称吃了些丹药，当前 chunk 未给出丹药名称、数量或具体药效，不建 pill 节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        301058,
+        301237
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0146",
+        "source_path": "intermediate/chunks/chunk-0146.txt",
+        "source_range": [
+          301058,
+          301237
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

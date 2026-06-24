@@ -1,0 +1,1504 @@
+{
+  "chunk_id": "chunk-0052",
+  "source_range": [
+    290137,
+    295359
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "task_packet_id": "chunk-0052:comprehensive_extraction:attempt-001",
+      "chunk_id": "chunk-0052",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "produced_at": "2026-06-23T18:00:00Z",
+      "extracted_nodes": [
+        {
+          "id": "n-ch0052-001",
+          "node_type": "character",
+          "label": "辰南",
+          "aliases": [
+            "混帐小子"
+          ],
+          "properties": {
+            "role": "主角，被迫成为神风学院临时学生",
+            "realm": "武者三阶初级阶段",
+            "current_action": "被副院长安排参加仙武学院友谊热身赛"
+          },
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              290137,
+              290237
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0052-001"
+          ],
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "cat_chr_001"
+            }
+          ],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "id": "n-ch0052-002",
+          "node_type": "character",
+          "label": "副院长",
+          "aliases": [
+            "死老头子",
+            "奸诈的老头子"
+          ],
+          "properties": {
+            "role": "神风学院副院长",
+            "personality": "奸诈卑鄙，以龙啸事件要挟辰南为其效力",
+            "action": "安排辰南以东方武系学生身份参加仙武学院友谊热身赛"
+          },
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              290137,
+              290237
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0052-001"
+          ],
+          "supports_templates": [
+            {
+              "template_name": "NPC性格与代表事件",
+              "requirement_id": "cat_chr_001"
+            }
+          ],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "id": "n-ch0052-003",
+          "node_type": "faction",
+          "label": "神风学院",
+          "aliases": [],
+          "properties": {
+            "faction_type": "学院",
+            "description": "四大学院之一，修炼法门最为精全；位于罪恶之城；拥有东方武系等多个系",
+            "note": "今年为四大学院三年交流赛主办方"
+          },
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              290137,
+              290237
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0052-003"
+          ],
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "cat_fac_006"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "cat_loc_002"
+            }
+          ],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "id": "n-ch0052-004",
+          "node_type": "faction",
+          "label": "仙武学院",
+          "aliases": [],
+          "properties": {
+            "faction_type": "学院",
+            "description": "创建于七百年前，由隐修绝世高手创建；名震大陆，与神风、战神、幻魔并驾齐驱",
+            "location": "东大陆",
+            "note": "本次友谊热身赛主办方"
+          },
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              290137,
+              290237
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0052-004"
+          ],
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "cat_fac_006"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "cat_loc_002"
+            }
+          ],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "id": "n-ch0052-005",
+          "node_type": "faction",
+          "label": "战神学院",
+          "aliases": [],
+          "properties": {
+            "faction_type": "学院",
+            "description": "西方最负盛名的武学院，具有千年历史",
+            "location": "西大陆"
+          },
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              290137,
+              290237
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0052-004"
+          ],
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "cat_fac_006"
+            }
+          ],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "id": "n-ch0052-006",
+          "node_type": "faction",
+          "label": "幻魔学院",
+          "aliases": [],
+          "properties": {
+            "faction_type": "学院",
+            "description": "西方最负盛名的魔法学院，具有千年历史",
+            "location": "西大陆"
+          },
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              290137,
+              290237
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0052-004"
+          ],
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "cat_fac_006"
+            }
+          ],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "id": "n-ch0052-007",
+          "node_type": "event",
+          "label": "四大学院三年交流赛",
+          "aliases": [],
+          "properties": {
+            "description": "四大学院每三年共同交流一次，实为学生强者间的大对抗；今年神风学院为主办方，三个月后举行",
+            "related": "友谊热身赛为赛前试探性比试"
+          },
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              290137,
+              290237
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0052-005"
+          ],
+          "supports_templates": [
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "cat_chr_001"
+            }
+          ],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "id": "n-ch0052-008",
+          "node_type": "character",
+          "label": "东方老人",
+          "aliases": [
+            "东方老小子"
+          ],
+          "properties": {
+            "role": "神风学院中护短的老人，曾目睹副院长被圣龙教训",
+            "note": "与副院长熟悉"
+          },
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              290137,
+              290237
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0052-006"
+          ],
+          "supports_templates": [
+            {
+              "template_name": "NPC性格与代表事件",
+              "requirement_id": "cat_chr_001"
+            }
+          ],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        }
+      ],
+      "extracted_edges": [
+        {
+          "id": "e-ch0052-001",
+          "source": "n-ch0052-001",
+          "target": "n-ch0052-002",
+          "edge_type": "interacts_with",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              290137,
+              290237
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0052-001"
+          ],
+          "supports_templates": [],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "id": "e-ch0052-002",
+          "source": "n-ch0052-001",
+          "target": "n-ch0052-003",
+          "edge_type": "belongs_to",
+          "confidence": "INFERRED",
+          "verification_status": "needs_review",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              290137,
+              290237
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0052-002"
+          ],
+          "supports_templates": [],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "id": "e-ch0052-003",
+          "source": "n-ch0052-002",
+          "target": "n-ch0052-003",
+          "edge_type": "manages",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              290137,
+              290237
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0052-003"
+          ],
+          "supports_templates": [],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "id": "e-ch0052-004",
+          "source": "n-ch0052-003",
+          "target": "n-ch0052-004",
+          "edge_type": "ally_of",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              290137,
+              290237
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0052-005"
+          ],
+          "supports_templates": [],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "id": "e-ch0052-005",
+          "source": "n-ch0052-003",
+          "target": "n-ch0052-005",
+          "edge_type": "ally_of",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              290137,
+              290237
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0052-005"
+          ],
+          "supports_templates": [],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "id": "e-ch0052-006",
+          "source": "n-ch0052-003",
+          "target": "n-ch0052-006",
+          "edge_type": "ally_of",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              290137,
+              290237
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0052-005"
+          ],
+          "supports_templates": [],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "id": "e-ch0052-007",
+          "source": "n-ch0052-008",
+          "target": "n-ch0052-002",
+          "edge_type": "interacts_with",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              290137,
+              290237
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0052-006"
+          ],
+          "supports_templates": [],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        }
+      ],
+      "extracted_events": [
+        {
+          "id": "evt-ch0052-001",
+          "event_type": "event",
+          "label": "副院长逼迫辰南为神风学院效力",
+          "participants": [
+            "n-ch0052-001",
+            "n-ch0052-002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              290137,
+              290237
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0052-001",
+            "evidence:ev-ch0052-002"
+          ],
+          "supports_templates": [
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "cat_chr_001"
+            }
+          ],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "id": "evt-ch0052-002",
+          "event_type": "event",
+          "label": "辰南被安排以东方武系学生身份参加仙武学院友谊热身赛",
+          "participants": [
+            "n-ch0052-001",
+            "n-ch0052-002",
+            "n-ch0052-003",
+            "n-ch0052-004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              290137,
+              290237
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0052-002"
+          ],
+          "supports_templates": [
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "cat_chr_001"
+            }
+          ],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        }
+      ],
+      "extracted_evidence": [
+        {
+          "evidence_id": "evidence:ev-ch0052-001",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              42,
+              70
+            ]
+          },
+          "source_range": [
+            290137,
+            290637
+          ],
+          "fact_summary": "副院长确认辰南是搅闹龙场之人，以数十龙骑士追杀相威胁；辰南妥协答应为神风学院做两件事",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "evidence_id": "evidence:ev-ch0052-002",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              122,
+              152
+            ]
+          },
+          "source_range": [
+            290137,
+            290637
+          ],
+          "fact_summary": "副院长安排辰南以东方武系学生身份参加仙武学院友谊热身赛；辰南实力达武者三阶初级阶段；赛后即开除学籍",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "evidence_id": "evidence:ev-ch0052-003",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              56,
+              68
+            ]
+          },
+          "source_range": [
+            290137,
+            290637
+          ],
+          "fact_summary": "圣龙艾米是被神风学院前辈用参芝仙草从十万大山引诱来的；因吃仙草上瘾赖着不走，半年吃掉学院千年积攒的大半灵芝仙参",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "evidence_id": "evidence:ev-ch0052-004",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              96,
+              110
+            ]
+          },
+          "source_range": [
+            290137,
+            290637
+          ],
+          "fact_summary": "天元大陆东西方修炼体系：西大陆以斗气和魔法为主，东大陆以武学和道术为主；西大陆斗气学院多如星辰，魔法学院少但有名",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "evidence_id": "evidence:ev-ch0052-005",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              102,
+              120
+            ]
+          },
+          "source_range": [
+            290137,
+            290637
+          ],
+          "fact_summary": "战神学院和幻魔学院为西方最负盛名的两所学院；仙武学院创建于七百年前由隐修绝世高手创建；四大学院每三年交流一次，实为学生强者对抗；今年神风学院为主办方，三个月后举行",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        },
+        {
+          "evidence_id": "evidence:ev-ch0052-006",
+          "source_location": {
+            "chunk_id": "chunk-0052",
+            "source_range": [
+              152,
+              170
+            ]
+          },
+          "source_range": [
+            290137,
+            290637
+          ],
+          "fact_summary": "东方老人在旁偷看副院长被圣龙教训的全过程，院中几个老家伙也目睹了；副院长得知后大怒",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0052"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        }
+      ],
+      "uncertainties": [],
+      "rejected_candidates": [],
+      "structured_failures": [],
+      "supports_templates": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0052/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "id": "n-ch0052-001",
+      "node_type": "character",
+      "label": "辰南",
+      "aliases": [
+        "混帐小子"
+      ],
+      "properties": {
+        "role": "主角，被迫成为神风学院临时学生",
+        "realm": "武者三阶初级阶段",
+        "current_action": "被副院长安排参加仙武学院友谊热身赛"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          290137,
+          290237
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0052-001"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "n-ch0052-002",
+      "node_type": "character",
+      "label": "副院长",
+      "aliases": [
+        "死老头子",
+        "奸诈的老头子"
+      ],
+      "properties": {
+        "role": "神风学院副院长",
+        "personality": "奸诈卑鄙，以龙啸事件要挟辰南为其效力",
+        "action": "安排辰南以东方武系学生身份参加仙武学院友谊热身赛"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          290137,
+          290237
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0052-001"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "n-ch0052-003",
+      "node_type": "faction",
+      "label": "神风学院",
+      "aliases": [],
+      "properties": {
+        "faction_type": "学院",
+        "description": "四大学院之一，修炼法门最为精全；位于罪恶之城；拥有东方武系等多个系",
+        "note": "今年为四大学院三年交流赛主办方"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          290137,
+          290237
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0052-003"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "cat_fac_006"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "cat_loc_002"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "n-ch0052-004",
+      "node_type": "faction",
+      "label": "仙武学院",
+      "aliases": [],
+      "properties": {
+        "faction_type": "学院",
+        "description": "创建于七百年前，由隐修绝世高手创建；名震大陆，与神风、战神、幻魔并驾齐驱",
+        "location": "东大陆",
+        "note": "本次友谊热身赛主办方"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          290137,
+          290237
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0052-004"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "cat_fac_006"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "cat_loc_002"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "n-ch0052-005",
+      "node_type": "faction",
+      "label": "战神学院",
+      "aliases": [],
+      "properties": {
+        "faction_type": "学院",
+        "description": "西方最负盛名的武学院，具有千年历史",
+        "location": "西大陆"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          290137,
+          290237
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0052-004"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "cat_fac_006"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "n-ch0052-006",
+      "node_type": "faction",
+      "label": "幻魔学院",
+      "aliases": [],
+      "properties": {
+        "faction_type": "学院",
+        "description": "西方最负盛名的魔法学院，具有千年历史",
+        "location": "西大陆"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          290137,
+          290237
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0052-004"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "cat_fac_006"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "n-ch0052-007",
+      "node_type": "event",
+      "label": "四大学院三年交流赛",
+      "aliases": [],
+      "properties": {
+        "description": "四大学院每三年共同交流一次，实为学生强者间的大对抗；今年神风学院为主办方，三个月后举行",
+        "related": "友谊热身赛为赛前试探性比试"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          290137,
+          290237
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0052-005"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "n-ch0052-008",
+      "node_type": "character",
+      "label": "东方老人",
+      "aliases": [
+        "东方老小子"
+      ],
+      "properties": {
+        "role": "神风学院中护短的老人，曾目睹副院长被圣龙教训",
+        "note": "与副院长熟悉"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          290137,
+          290237
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0052-006"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "normalized_edges": [
+    {
+      "id": "e-ch0052-001",
+      "source": "n-ch0052-001",
+      "target": "n-ch0052-002",
+      "edge_type": "interacts_with",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          290137,
+          290237
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0052-001"
+      ],
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "e-ch0052-002",
+      "source": "n-ch0052-001",
+      "target": "n-ch0052-003",
+      "edge_type": "belongs_to",
+      "confidence": "INFERRED",
+      "verification_status": "needs_review",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          290137,
+          290237
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0052-002"
+      ],
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "e-ch0052-003",
+      "source": "n-ch0052-002",
+      "target": "n-ch0052-003",
+      "edge_type": "manages",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          290137,
+          290237
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0052-003"
+      ],
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "e-ch0052-004",
+      "source": "n-ch0052-003",
+      "target": "n-ch0052-004",
+      "edge_type": "ally_of",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          290137,
+          290237
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0052-005"
+      ],
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "e-ch0052-005",
+      "source": "n-ch0052-003",
+      "target": "n-ch0052-005",
+      "edge_type": "ally_of",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          290137,
+          290237
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0052-005"
+      ],
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "e-ch0052-006",
+      "source": "n-ch0052-003",
+      "target": "n-ch0052-006",
+      "edge_type": "ally_of",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          290137,
+          290237
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0052-005"
+      ],
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "e-ch0052-007",
+      "source": "n-ch0052-008",
+      "target": "n-ch0052-002",
+      "edge_type": "interacts_with",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          290137,
+          290237
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0052-006"
+      ],
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "normalized_events": [
+    {
+      "id": "evt-ch0052-001",
+      "event_type": "event",
+      "label": "副院长逼迫辰南为神风学院效力",
+      "participants": [
+        "n-ch0052-001",
+        "n-ch0052-002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          290137,
+          290237
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0052-001",
+        "evidence:ev-ch0052-002"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "evt-ch0052-002",
+      "event_type": "event",
+      "label": "辰南被安排以东方武系学生身份参加仙武学院友谊热身赛",
+      "participants": [
+        "n-ch0052-001",
+        "n-ch0052-002",
+        "n-ch0052-003",
+        "n-ch0052-004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          290137,
+          290237
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0052-002"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:ev-ch0052-001",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          42,
+          70
+        ]
+      },
+      "source_range": [
+        290137,
+        290637
+      ],
+      "fact_summary": "副院长确认辰南是搅闹龙场之人，以数十龙骑士追杀相威胁；辰南妥协答应为神风学院做两件事",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "evidence_id": "evidence:ev-ch0052-002",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          122,
+          152
+        ]
+      },
+      "source_range": [
+        290137,
+        290637
+      ],
+      "fact_summary": "副院长安排辰南以东方武系学生身份参加仙武学院友谊热身赛；辰南实力达武者三阶初级阶段；赛后即开除学籍",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "evidence_id": "evidence:ev-ch0052-003",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          56,
+          68
+        ]
+      },
+      "source_range": [
+        290137,
+        290637
+      ],
+      "fact_summary": "圣龙艾米是被神风学院前辈用参芝仙草从十万大山引诱来的；因吃仙草上瘾赖着不走，半年吃掉学院千年积攒的大半灵芝仙参",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "evidence_id": "evidence:ev-ch0052-004",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          96,
+          110
+        ]
+      },
+      "source_range": [
+        290137,
+        290637
+      ],
+      "fact_summary": "天元大陆东西方修炼体系：西大陆以斗气和魔法为主，东大陆以武学和道术为主；西大陆斗气学院多如星辰，魔法学院少但有名",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "evidence_id": "evidence:ev-ch0052-005",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          102,
+          120
+        ]
+      },
+      "source_range": [
+        290137,
+        290637
+      ],
+      "fact_summary": "战神学院和幻魔学院为西方最负盛名的两所学院；仙武学院创建于七百年前由隐修绝世高手创建；四大学院每三年交流一次，实为学生强者对抗；今年神风学院为主办方，三个月后举行",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "evidence_id": "evidence:ev-ch0052-006",
+      "source_location": {
+        "chunk_id": "chunk-0052",
+        "source_range": [
+          152,
+          170
+        ]
+      },
+      "source_range": [
+        290137,
+        290637
+      ],
+      "fact_summary": "东方老人在旁偷看副院长被圣龙教训的全过程，院中几个老家伙也目睹了；副院长得知后大怒",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0052"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ]
+}

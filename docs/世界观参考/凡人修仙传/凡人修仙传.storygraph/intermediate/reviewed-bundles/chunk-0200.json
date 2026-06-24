@@ -1,0 +1,5845 @@
+{
+  "chunk_id": "chunk-0200",
+  "source_range": [
+    440796,
+    443764
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "task_packet_id": "chunk-0200:comprehensive_extraction:attempt-001",
+      "chunk_id": "chunk-0200",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "produced_at": "2026-06-23T19:08:52+08:00",
+      "extracted_nodes": [
+        {
+          "id": "node:chunk-0200:character:001",
+          "node_type": "character",
+          "label": "韩立",
+          "aliases": [],
+          "fact_summary": "韩立在观察其他修士后潜入环形山，击杀推山兽、避开飞翎孔雀，并以采集灵药幼苗再用神秘小瓶催熟作为禁地行动计划。",
+          "evidence_ids": [
+            "evidence:chunk-0200:002",
+            "evidence:chunk-0200:012",
+            "evidence:chunk-0200:014",
+            "evidence:chunk-0200:018",
+            "evidence:chunk-0200:019",
+            "evidence:chunk-0200:021"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            440885,
+            443695
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              440885,
+              443695
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:character:002",
+          "node_type": "character",
+          "label": "钟吾",
+          "aliases": [
+            "丑汉钟吾"
+          ],
+          "fact_summary": "钟吾在韩立进入山林后出现在通道前，冷笑后放出十几个黄点飞进山林，随后跟着过去。",
+          "evidence_ids": [
+            "evidence:chunk-0200:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            440956,
+            441047
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              440956,
+              441047
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:location:001",
+          "node_type": "location",
+          "label": "环形山",
+          "aliases": [
+            "山林",
+            "大山"
+          ],
+          "fact_summary": "韩立和其他修士从不同地点切入环形山山林，山中妖兽密集，外围以下阶妖兽为主，深入后可能有中阶上阶妖兽。",
+          "evidence_ids": [
+            "evidence:chunk-0200:001",
+            "evidence:chunk-0200:002",
+            "evidence:chunk-0200:015"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "秘境遗迹与机缘",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            440819,
+            443008
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              440819,
+              443008
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:location:002",
+          "node_type": "location",
+          "label": "破禁入口处",
+          "aliases": [],
+          "fact_summary": "禁地之外的破禁入口处聚集七大派留守之人，李师祖也在其内。",
+          "evidence_ids": [
+            "evidence:chunk-0200:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            441050,
+            441096
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              441050,
+              441096
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:faction:001",
+          "node_type": "faction",
+          "label": "七大派",
+          "aliases": [],
+          "fact_summary": "七大派留守之人在禁地外破禁入口处忧心观望禁地方向。",
+          "evidence_ids": [
+            "evidence:chunk-0200:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            441050,
+            441096
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              441050,
+              441096
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:character:003",
+          "node_type": "character",
+          "label": "李师祖",
+          "aliases": [
+            "李某"
+          ],
+          "fact_summary": "李师祖是黄枫谷结丹期修士，在禁地外参与赌局，并自称黄枫谷派出炼气期实力前三的顶尖弟子。",
+          "evidence_ids": [
+            "evidence:chunk-0200:004",
+            "evidence:chunk-0200:007",
+            "evidence:chunk-0200:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            441050,
+            442265
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              441050,
+              442265
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:faction:002",
+          "node_type": "faction",
+          "label": "黄枫谷",
+          "aliases": [],
+          "fact_summary": "黄枫谷由李师祖代表参与赌局，且本次将号称炼气期实力前三的顶尖弟子都派入禁地。",
+          "evidence_ids": [
+            "evidence:chunk-0200:007",
+            "evidence:chunk-0200:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "宗门任务体系",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            441769,
+            442265
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              441769,
+              442265
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:character:004",
+          "node_type": "character",
+          "label": "浮云子",
+          "aliases": [
+            "道士",
+            "清虚谷的结丹期道士"
+          ],
+          "fact_summary": "浮云子是清虚谷/清虚门一方的结丹期道士，担心赌输血线蛟内丹，并向李师祖探问黄枫谷弟子实力。",
+          "evidence_ids": [
+            "evidence:chunk-0200:005",
+            "evidence:chunk-0200:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            441255,
+            442185
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              441255,
+              442185
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:faction:003",
+          "node_type": "faction",
+          "label": "清虚门",
+          "aliases": [
+            "清虚谷"
+          ],
+          "fact_summary": "清虚门/清虚谷由浮云子代表参与赌局，浮云子称对清虚门进入禁地弟子还有信心。",
+          "evidence_ids": [
+            "evidence:chunk-0200:005",
+            "evidence:chunk-0200:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            441255,
+            442185
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              441255,
+              442185
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:material:001",
+          "node_type": "material",
+          "label": "血线蛟内丹",
+          "aliases": [],
+          "fact_summary": "血线蛟内丹是浮云子几乎花光全部身家才得来的赌注，若输掉会令其极度心痛。",
+          "evidence_ids": [
+            "evidence:chunk-0200:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            441255,
+            441296
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              441255,
+              441296
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:faction:004",
+          "node_type": "faction",
+          "label": "掩月宗",
+          "aliases": [],
+          "fact_summary": "掩月宗由霓裳仙子带队，且其派出的弟子年轻并成男女一对对，引起李师祖和浮云子的疑虑。",
+          "evidence_ids": [
+            "evidence:chunk-0200:006",
+            "evidence:chunk-0200:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "宗门任务体系",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            441299,
+            441867
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              441299,
+              441867
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:character:005",
+          "node_type": "character",
+          "label": "霓裳仙子",
+          "aliases": [
+            "掩月宗的带队少妇"
+          ],
+          "fact_summary": "霓裳仙子是掩月宗带队少妇，在七派弟子进入禁地后神情自若、谈笑风生，似乎对掩月宗弟子很有信心。",
+          "evidence_ids": [
+            "evidence:chunk-0200:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            441299,
+            441335
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              441299,
+              441335
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:character:006",
+          "node_type": "character",
+          "label": "穹老怪",
+          "aliases": [],
+          "fact_summary": "穹老怪插手赌局，且浮云子联想到他打赌时胸有成竹，认为赌注可能落入对方手中。",
+          "evidence_ids": [
+            "evidence:chunk-0200:005",
+            "evidence:chunk-0200:022"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            441255,
+            442185
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              441255,
+              442185
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:beast:001",
+          "node_type": "beast",
+          "label": "推山兽",
+          "aliases": [
+            "推山猪",
+            "棕色的巨型野猪"
+          ],
+          "fact_summary": "推山兽是环形山常见下阶妖兽之一，皮糙肉厚、力气大，天生会石肤术，但智力极低并被韩立用丝线法器切开击杀。",
+          "evidence_ids": [
+            "evidence:chunk-0200:011",
+            "evidence:chunk-0200:012"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            442323,
+            442689
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              442323,
+              442689
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:technique:001",
+          "node_type": "technique",
+          "label": "石肤术",
+          "aliases": [],
+          "fact_summary": "石肤术是推山兽天生会的能力，发动后其全身挂上一层岩石状护甲。",
+          "evidence_ids": [
+            "evidence:chunk-0200:011"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            442413,
+            442494
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              442413,
+              442494
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:tool:001",
+          "node_type": "tool",
+          "label": "丝线法器",
+          "aliases": [
+            "无形的丝线"
+          ],
+          "fact_summary": "韩立用丝线法器将推山猪从鼻尖到尾部整齐切成两半，随后收起无形丝线离开。",
+          "evidence_ids": [
+            "evidence:chunk-0200:012"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            442617,
+            442689
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              442617,
+              442689
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:beast:002",
+          "node_type": "beast",
+          "label": "飞翎孔雀",
+          "aliases": [],
+          "fact_summary": "飞翎孔雀是中阶鸟类妖兽，其五彩长翎能脱离身体自动追击伤人和防御，但速度不快，被韩立以身法甩脱。",
+          "evidence_ids": [
+            "evidence:chunk-0200:014"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            442832,
+            442895
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              442832,
+              442895
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:location:003",
+          "node_type": "location",
+          "label": "隐蔽山洞",
+          "aliases": [
+            "紫猴花隐蔽山洞"
+          ],
+          "fact_summary": "韩立飞奔的目标是一处常产紫猴花的隐蔽山洞，资料称此处百余年前被采摘过，现在应多为未成熟幼苗。",
+          "evidence_ids": [
+            "evidence:chunk-0200:016"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "秘境遗迹与机缘",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            443227,
+            443254
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              443227,
+              443254
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:material:002",
+          "node_type": "material",
+          "label": "紫猴花",
+          "aliases": [],
+          "fact_summary": "紫猴花常产于韩立正赶往的隐蔽山洞；韩立目标是采摘包括紫猴花在内的未成熟灵药幼苗。",
+          "evidence_ids": [
+            "evidence:chunk-0200:016",
+            "evidence:chunk-0200:018"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            443227,
+            443453
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              443227,
+              443453
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:material:003",
+          "node_type": "material",
+          "label": "灵药幼苗",
+          "aliases": [
+            "未成熟的灵药幼苗",
+            "幼苗"
+          ],
+          "fact_summary": "韩立把目标放在旁人不会采摘的未成熟灵药幼苗上，计划采回后用神秘小瓶的绿夜催生。",
+          "evidence_ids": [
+            "evidence:chunk-0200:017",
+            "evidence:chunk-0200:018",
+            "evidence:chunk-0200:019"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            443357,
+            443559
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              443357,
+              443559
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:artifact:001",
+          "node_type": "artifact",
+          "label": "神秘小瓶",
+          "aliases": [],
+          "fact_summary": "神秘小瓶可提供用于催生灵药幼苗的绿夜，使采回幼苗和直接采摘成熟灵药效果相近。",
+          "evidence_ids": [
+            "evidence:chunk-0200:019"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            443505,
+            443559
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              443505,
+              443559
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:medicine:001",
+          "node_type": "medicine",
+          "label": "神秘小瓶的绿夜",
+          "aliases": [],
+          "fact_summary": "神秘小瓶的绿夜可催生灵药幼苗，使幼苗相当于成熟灵药；当前文本写作“绿夜”，未确认是否为“绿液”。",
+          "evidence_ids": [
+            "evidence:chunk-0200:019"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            443505,
+            443559
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              443505,
+              443559
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:pill:001",
+          "node_type": "pill",
+          "label": "筑基丹",
+          "aliases": [],
+          "fact_summary": "灵药幼苗所对应的灵药可作为筑基丹主药，四五百年份即可入药。",
+          "evidence_ids": [
+            "evidence:chunk-0200:020"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            443621,
+            443656
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              443621,
+              443656
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0200:rule:001",
+          "node_type": "rule",
+          "label": "灵药幼苗保存与催熟窗口",
+          "aliases": [],
+          "fact_summary": "马师伯曾说这些幼苗在禁地外保存时间不长，只能活一两年；韩立认为这些时间足够用神秘小瓶催熟数轮。",
+          "evidence_ids": [
+            "evidence:chunk-0200:019",
+            "evidence:chunk-0200:023"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            443505,
+            443656
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              443505,
+              443656
+            ]
+          }
+        }
+      ],
+      "extracted_edges": [
+        {
+          "id": "edge:chunk-0200:001",
+          "edge_type": "entered_location",
+          "source": "node:chunk-0200:character:001",
+          "target": "node:chunk-0200:location:001",
+          "fact_summary": "韩立等到无人再出现后整理物品，选择未有人进入的方向潜入环形山山林。",
+          "evidence_ids": [
+            "evidence:chunk-0200:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "秘境遗迹与机缘",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            440885,
+            440953
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              440885,
+              440953
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0200:002",
+          "edge_type": "followed_into_location",
+          "source": "node:chunk-0200:character:002",
+          "target": "node:chunk-0200:location:001",
+          "fact_summary": "钟吾在韩立进入山林后放出十几个黄点进入山林，并跟着过去。",
+          "evidence_ids": [
+            "evidence:chunk-0200:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            440956,
+            441047
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              440956,
+              441047
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0200:003",
+          "edge_type": "member_or_representative_of",
+          "source": "node:chunk-0200:character:003",
+          "target": "node:chunk-0200:faction:002",
+          "fact_summary": "李师祖以黄枫谷一方身份在禁地外参与赌局，并称本谷派出顶尖弟子。",
+          "evidence_ids": [
+            "evidence:chunk-0200:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            442212,
+            442265
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              442212,
+              442265
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0200:004",
+          "edge_type": "member_or_representative_of",
+          "source": "node:chunk-0200:character:004",
+          "target": "node:chunk-0200:faction:003",
+          "fact_summary": "浮云子代表清虚门/清虚谷一方，对本门进入禁地弟子有信心。",
+          "evidence_ids": [
+            "evidence:chunk-0200:005",
+            "evidence:chunk-0200:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            441255,
+            442185
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              441255,
+              442185
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0200:005",
+          "edge_type": "member_or_representative_of",
+          "source": "node:chunk-0200:character:005",
+          "target": "node:chunk-0200:faction:004",
+          "fact_summary": "霓裳仙子是掩月宗带队少妇。",
+          "evidence_ids": [
+            "evidence:chunk-0200:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            441299,
+            441335
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              441299,
+              441335
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0200:006",
+          "edge_type": "competition_against",
+          "source": "node:chunk-0200:faction:002",
+          "target": "node:chunk-0200:faction:004",
+          "fact_summary": "李师祖认为浮云子期盼黄枫谷和清虚门联手胜过掩月宗。",
+          "evidence_ids": [
+            "evidence:chunk-0200:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            442148,
+            442185
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              442148,
+              442185
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0200:007",
+          "edge_type": "competition_against",
+          "source": "node:chunk-0200:faction:003",
+          "target": "node:chunk-0200:faction:004",
+          "fact_summary": "李师祖认为浮云子期盼清虚门与黄枫谷联手胜过掩月宗，再由清虚门压过黄枫谷。",
+          "evidence_ids": [
+            "evidence:chunk-0200:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            442148,
+            442185
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              442148,
+              442185
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0200:008",
+          "edge_type": "uses_technique",
+          "source": "node:chunk-0200:beast:001",
+          "target": "node:chunk-0200:technique:001",
+          "fact_summary": "推山兽天生会石肤术，发动后全身出现岩石状护甲。",
+          "evidence_ids": [
+            "evidence:chunk-0200:011"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            442413,
+            442494
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              442413,
+              442494
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0200:009",
+          "edge_type": "killed_with",
+          "source": "node:chunk-0200:character:001",
+          "target": "node:chunk-0200:tool:001",
+          "fact_summary": "韩立用丝线法器将推山猪彻底切开。",
+          "evidence_ids": [
+            "evidence:chunk-0200:012"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            442617,
+            442689
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              442617,
+              442689
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0200:010",
+          "edge_type": "material_found_at",
+          "source": "node:chunk-0200:material:002",
+          "target": "node:chunk-0200:location:003",
+          "fact_summary": "韩立正赶往的隐蔽山洞常产紫猴花。",
+          "evidence_ids": [
+            "evidence:chunk-0200:016"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            443227,
+            443254
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              443227,
+              443254
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0200:011",
+          "edge_type": "used_to_catalyze",
+          "source": "node:chunk-0200:medicine:001",
+          "target": "node:chunk-0200:material:003",
+          "fact_summary": "神秘小瓶的绿夜可催生采回的灵药幼苗。",
+          "evidence_ids": [
+            "evidence:chunk-0200:019"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            443505,
+            443559
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              443505,
+              443559
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0200:012",
+          "edge_type": "produces_or_contains",
+          "source": "node:chunk-0200:artifact:001",
+          "target": "node:chunk-0200:medicine:001",
+          "fact_summary": "神秘小瓶关联可催生幼苗的绿夜。",
+          "evidence_ids": [
+            "evidence:chunk-0200:019"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            443505,
+            443559
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              443505,
+              443559
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0200:013",
+          "edge_type": "ingredient_for",
+          "source": "node:chunk-0200:material:003",
+          "target": "node:chunk-0200:pill:001",
+          "fact_summary": "这些灵药幼苗对应的灵药是筑基丹主药，四五百年份即可入药。",
+          "evidence_ids": [
+            "evidence:chunk-0200:020"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            443621,
+            443656
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              443621,
+              443656
+            ]
+          }
+        }
+      ],
+      "extracted_events": [
+        {
+          "id": "event:chunk-0200:001",
+          "event_type": "entry_event",
+          "label": "韩立潜入环形山",
+          "fact_summary": "蓝衣青年、须发老者和青衣少妇先后进入山林后，韩立又等近一刻钟，确认无人再出现，整理物品并选择无人进入的方向潜入环形山。",
+          "participants": [
+            "node:chunk-0200:character:001",
+            "node:chunk-0200:location:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0200:001",
+            "evidence:chunk-0200:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "秘境遗迹与机缘",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            440819,
+            440953
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              440819,
+              440953
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0200:002",
+          "event_type": "pursuit_setup_event",
+          "label": "钟吾放出黄点跟进山林",
+          "fact_summary": "韩立刚进入山林不久，钟吾出现在通道前，冷笑后放出十几个黄点飞进山林，随后自己也跟着过去。",
+          "participants": [
+            "node:chunk-0200:character:002",
+            "node:chunk-0200:location:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0200:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            440956,
+            441047
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              440956,
+              441047
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0200:003",
+          "event_type": "wager_tension_event",
+          "label": "禁地外结丹修士因赌局互探虚实",
+          "fact_summary": "禁地外七大派留守者观望禁地方向，浮云子担心血线蛟内丹赌注输给穹老怪，并向李师祖打探黄枫谷弟子实力。",
+          "participants": [
+            "node:chunk-0200:character:003",
+            "node:chunk-0200:character:004",
+            "node:chunk-0200:character:006",
+            "node:chunk-0200:material:001",
+            "node:chunk-0200:location:002",
+            "node:chunk-0200:faction:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0200:004",
+            "evidence:chunk-0200:005",
+            "evidence:chunk-0200:008",
+            "evidence:chunk-0200:022"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            441050,
+            442185
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              441050,
+              442185
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0200:004",
+          "event_type": "faction_strategy_reveal_event",
+          "label": "李师祖透露黄枫谷派出炼气期顶尖弟子",
+          "fact_summary": "李师祖暗自认为黄枫谷派出了号称炼气期实力前三的顶尖弟子，因此他才敢参与赌局。",
+          "participants": [
+            "node:chunk-0200:character:003",
+            "node:chunk-0200:faction:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0200:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "宗门任务体系",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            442212,
+            442265
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              442212,
+              442265
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0200:005",
+          "event_type": "combat_event",
+          "label": "韩立击杀推山兽",
+          "fact_summary": "韩立在环形山被推山兽堵路；推山兽发动石肤术冲来后，被韩立用丝线法器从鼻尖到尾部切成两半。",
+          "participants": [
+            "node:chunk-0200:character:001",
+            "node:chunk-0200:beast:001",
+            "node:chunk-0200:technique:001",
+            "node:chunk-0200:tool:001",
+            "node:chunk-0200:location:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0200:011",
+            "evidence:chunk-0200:012"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "妖兽与修士关系分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            442323,
+            442689
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              442323,
+              442689
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0200:006",
+          "event_type": "avoidance_event",
+          "label": "韩立避开飞翎孔雀",
+          "fact_summary": "韩立数个时辰内遭遇四只妖兽，其中三只下阶妖兽被击杀，中阶飞翎孔雀因长翎追击防御能力令韩立头痛，他利用身法将其甩脱。",
+          "participants": [
+            "node:chunk-0200:character:001",
+            "node:chunk-0200:beast:002",
+            "node:chunk-0200:location:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0200:014",
+            "evidence:chunk-0200:015"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "妖兽与修士关系分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            442832,
+            443008
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              442832,
+              443008
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0200:007",
+          "event_type": "resource_plan_event",
+          "label": "韩立制定采集幼苗并催熟的计划",
+          "fact_summary": "韩立前往常产紫猴花的隐蔽山洞，计划专取旁人不会碰的未成熟灵药幼苗，采回后用神秘小瓶绿夜催生，以避免与各派高手争夺成熟灵药并尽量多跑几处。",
+          "participants": [
+            "node:chunk-0200:character:001",
+            "node:chunk-0200:location:003",
+            "node:chunk-0200:material:002",
+            "node:chunk-0200:material:003",
+            "node:chunk-0200:artifact:001",
+            "node:chunk-0200:medicine:001",
+            "node:chunk-0200:pill:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0200:016",
+            "evidence:chunk-0200:017",
+            "evidence:chunk-0200:018",
+            "evidence:chunk-0200:019",
+            "evidence:chunk-0200:020",
+            "evidence:chunk-0200:021",
+            "evidence:chunk-0200:023"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            443227,
+            443695
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              443227,
+              443695
+            ]
+          }
+        }
+      ],
+      "extracted_evidence": [
+        {
+          "evidence_id": "evidence:chunk-0200:001",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            440819,
+            440882
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              440819,
+              440882
+            ]
+          },
+          "excerpt": "一个神情冷漠的蓝衣青年、一位须发老者、一名青衣的艳丽少妇，先后走了出来。他们非常有默契的选择了不同的地点，切入了前面的山林中。",
+          "fact_summary": "三名未明身份的修士先后选择不同地点切入山林。",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "秘境遗迹与机缘",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0200:001"
+        },
+        {
+          "evidence_id": "evidence:chunk-0200:002",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            440885,
+            440953
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              440885,
+              440953
+            ]
+          },
+          "excerpt": "韩立又等了近一刻钟的时间，见再也没人出现，就最后整理了一下身上的物品，学着先前几人的样子，找了个还未曾有人进去过的方向，悄悄的潜了进去。",
+          "fact_summary": "韩立等待确认无人再出现后整理物品，选择未有人进入的方向潜入山林。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "秘境遗迹与机缘",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0200:002"
+        },
+        {
+          "evidence_id": "evidence:chunk-0200:003",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            440956,
+            441047
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              440956,
+              441047
+            ]
+          },
+          "excerpt": "韩立并不知道，在他刚进去没多久，昨日才见过的丑汉钟吾，就出现在了通道前。他望着黑乎乎的上山之路，“嘿嘿”冷笑了几声，就从身上放出了十几个黄点飞进了山林，然后人才不慌不忙的跟着过去了。",
+          "fact_summary": "钟吾在韩立进入山林后出现，放出十几个黄点飞进山林并跟随过去。",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0200:003"
+        },
+        {
+          "evidence_id": "evidence:chunk-0200:004",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            441050,
+            441096
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              441050,
+              441096
+            ]
+          },
+          "excerpt": "这时禁地之外，破禁入口处，七大派的留守之人有些忧心的望着禁地方向，韩立的那位李师祖就在其内。",
+          "fact_summary": "七大派留守之人在禁地外破禁入口处观望禁地方向，李师祖也在其中。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0200:004"
+        },
+        {
+          "evidence_id": "evidence:chunk-0200:005",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            441219,
+            441296
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              441219,
+              441296
+            ]
+          },
+          "excerpt": "这也难怪，那粒血线蛟内丹实在得来不易，是几乎花光了他全部身家才弄到手的。如果就这样轻易输给了别人，这道士就是心境素养再高，恐怕也要一连数年心痛的睡不着觉！",
+          "fact_summary": "浮云子担心输掉几乎花光身家得到的血线蛟内丹赌注。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0200:005"
+        },
+        {
+          "evidence_id": "evidence:chunk-0200:006",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            441299,
+            441335
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              441299,
+              441335
+            ]
+          },
+          "excerpt": "道士偷偷打量了一眼人群中唯一神情自若之人，那名掩月宗的带队少妇霓裳仙子。",
+          "fact_summary": "霓裳仙子是掩月宗带队少妇，在众人中神情自若。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0200:006"
+        },
+        {
+          "evidence_id": "evidence:chunk-0200:007",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            441769,
+            441867
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              441769,
+              441867
+            ]
+          },
+          "excerpt": "“这倒也是！李某也已觉察到不对劲了。以往几次，掩月宗何曾派出的弟子都是这么年轻，而且还是男女弟子一对对的！难道以为禁地之行，是小屁孩过家家不成？”李师祖沉着脸说道，看来他也对这次打赌一直放心不下。",
+          "fact_summary": "李师祖认为掩月宗这次派出的弟子年轻且男女成对，情况不对劲，也对赌局放心不下。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "有限视角与叙事日志",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0200:007"
+        },
+        {
+          "evidence_id": "evidence:chunk-0200:008",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            442148,
+            442185
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              442148,
+              442185
+            ]
+          },
+          "excerpt": "不就是期盼我们两家联手能胜过掩月宗，然后你们清虚门再力压我们黄枫谷一头嘛。",
+          "fact_summary": "李师祖揣测浮云子希望黄枫谷与清虚门联手胜过掩月宗，再由清虚门压过黄枫谷。",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "有限视角与叙事日志",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0200:008"
+        },
+        {
+          "evidence_id": "evidence:chunk-0200:009",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            442212,
+            442265
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              442212,
+              442265
+            ]
+          },
+          "excerpt": "但是这次，本谷可是连号称炼气期实力前三的顶尖弟子，全都一窝蜂的派了出去。否则，你以为我会和你们打这个赌吗？",
+          "fact_summary": "李师祖称黄枫谷本次派出号称炼气期实力前三的顶尖弟子，因此才敢参与赌局。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "宗门任务体系",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0200:009"
+        },
+        {
+          "evidence_id": "evidence:chunk-0200:010",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            442323,
+            442368
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              442323,
+              442368
+            ]
+          },
+          "excerpt": "韩立自然不知道，禁地外的两位结丹期修士的勾心斗角，他现在正被一头棕色的巨型野猪堵住了去路。",
+          "fact_summary": "韩立不知道禁地外两位结丹期修士的勾心斗角，此时被一头棕色巨型野猪堵路。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "有限视角与叙事日志",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0200:010"
+        },
+        {
+          "evidence_id": "evidence:chunk-0200:011",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            442413,
+            442494
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              442413,
+              442494
+            ]
+          },
+          "excerpt": "但韩立一见到此兽时，还是立即认出了这是环形山上最常见下阶妖兽之一“推山兽”，此妖兽除了皮糙肉厚，力气大点外，就只会一个天生的“石肤术”，而且智力极低，并不难对付！",
+          "fact_summary": "推山兽是环形山常见下阶妖兽，皮糙肉厚、力气大、会石肤术且智力低。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0200:011"
+        },
+        {
+          "evidence_id": "evidence:chunk-0200:012",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            442617,
+            442689
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              442617,
+              442689
+            ]
+          },
+          "excerpt": "“推山猪”继续冲出几丈后，才呼哧一下，从鼻尖到尾部整个身躯一下整齐的分为了两半，五颜六色的内脏流了一地都是。它竟被韩立用丝线法器，彻底的切开了！",
+          "fact_summary": "韩立用丝线法器将推山猪彻底切成两半。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0200:012"
+        },
+        {
+          "evidence_id": "evidence:chunk-0200:013",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            442735,
+            442783
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              442735,
+              442783
+            ]
+          },
+          "excerpt": "因为他知道，此妖兽尸体的血腥味，不久就会引来一大批嗅觉灵敏的其他妖兽，他还是趁早溜之大吉的为妙！",
+          "fact_summary": "韩立知道妖兽尸体血腥味会引来大量嗅觉灵敏的其他妖兽，因此立即离开。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "妖兽与修士关系分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0200:013"
+        },
+        {
+          "evidence_id": "evidence:chunk-0200:014",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            442832,
+            442895
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              442832,
+              442895
+            ]
+          },
+          "excerpt": "其中三只下阶的，韩立自然毫不客气的一举击杀。但那只中阶的飞翎孔雀，其五彩的长翎能脱离身体自动追击伤人和防御，这让韩立颇为头痛。",
+          "fact_summary": "韩立击杀三只下阶妖兽，但中阶飞翎孔雀凭五彩长翎的追击和防御能力令他头痛。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0200:014"
+        },
+        {
+          "evidence_id": "evidence:chunk-0200:015",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            442983,
+            443008
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              442983,
+              443008
+            ]
+          },
+          "excerpt": "现在，他总算是知道了，环形山的妖兽多到何种地步了。",
+          "fact_summary": "韩立认识到环形山妖兽数量极多。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0200:015"
+        },
+        {
+          "evidence_id": "evidence:chunk-0200:016",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            443227,
+            443254
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              443227,
+              443254
+            ]
+          },
+          "excerpt": "韩立现在飞奔的方向，就是一处常产“紫猴花”的隐蔽山洞。",
+          "fact_summary": "韩立赶往一处常产紫猴花的隐蔽山洞。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "秘境遗迹与机缘",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0200:016"
+        },
+        {
+          "evidence_id": "evidence:chunk-0200:017",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            443357,
+            443378
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              443357,
+              443378
+            ]
+          },
+          "excerpt": "韩立需要的，就是这些旁人不会碰一下的幼苗！",
+          "fact_summary": "韩立需要的是旁人不会采摘的灵药幼苗。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0200:017"
+        },
+        {
+          "evidence_id": "evidence:chunk-0200:018",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            443381,
+            443453
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              443381,
+              443453
+            ]
+          },
+          "excerpt": "他之所以甘冒奇险进入禁地，并那么肯定一定能在这么多“高手”中虎口夺食，获取“天地灵药”！其主要原因，就是一开始把目标放在了还未成熟的灵药幼苗上！",
+          "fact_summary": "韩立冒险进入禁地并有信心夺取灵药的关键，是从一开始就把目标放在未成熟灵药幼苗上。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0200:018"
+        },
+        {
+          "evidence_id": "evidence:chunk-0200:019",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            443505,
+            443559
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              443505,
+              443559
+            ]
+          },
+          "excerpt": "等到他把这些灵药幼苗采摘回去后，就可以用神秘小瓶的绿夜进行催生了。这样一来，和直接采摘成熟的灵药没什么两样。",
+          "fact_summary": "韩立计划采回灵药幼苗后，用神秘小瓶的绿夜催生，使其等同于成熟灵药。",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0200:019"
+        },
+        {
+          "evidence_id": "evidence:chunk-0200:020",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            443621,
+            443656
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              443621,
+              443656
+            ]
+          },
+          "excerpt": "做为筑基丹主药的它们，并不需要太长久的年份，区区四五百年就即可入药了。",
+          "fact_summary": "这些灵药作为筑基丹主药，四五百年份即可入药。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0200:020"
+        },
+        {
+          "evidence_id": "evidence:chunk-0200:021",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            443659,
+            443695
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              443659,
+              443695
+            ]
+          },
+          "excerpt": "现在唯一的麻烦，就是不知道剩下三天时间，还够不够他采摘到足够数量的灵药。",
+          "fact_summary": "韩立担心剩下三天是否足够采集足量灵药。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0200:021"
+        },
+        {
+          "evidence_id": "evidence:chunk-0200:022",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            441422,
+            441499
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              441422,
+              441499
+            ]
+          },
+          "excerpt": "道士越看此女笑吟吟地模样，就越发担心的厉害。再一联想到穹老怪打赌时胸有成竹的神情，他就感到自己的血线蛟内丹。似乎已飞离了自己的口袋，成了人家的囊中之物了！",
+          "fact_summary": "浮云子因霓裳仙子自若和穹老怪打赌时胸有成竹而担心血线蛟内丹输给对方。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0200:022"
+        },
+        {
+          "evidence_id": "evidence:chunk-0200:023",
+          "chunk_id": "chunk-0200",
+          "source_range": [
+            443562,
+            443656
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              443562,
+              443656
+            ]
+          },
+          "excerpt": "虽说听那马师伯讲，这些幼苗在禁地外能保存的时间并不太长，只能活个一两年的样子。但这些时间就已足够把它们催熟数轮了，毕竟做为筑基丹主药的它们，并不需要太长久的年份，区区四五百年就即可入药了。",
+          "fact_summary": "马师伯说幼苗在禁地外只能保存一两年，韩立认为足够催熟数轮；这些灵药作为筑基丹主药四五百年份即可入药。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0200:023"
+        }
+      ],
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "uncertainties": [
+        {
+          "id": "uncertainty:chunk-0200:001",
+          "kind": "unidentified_scouting_object",
+          "fact_summary": "钟吾放出的十几个黄点飞进山林，但当前 chunk 未明示它们是虫、法器、符箓还是其他手段，因此没有建具体物品或妖兽节点。",
+          "evidence_ids": [
+            "evidence:chunk-0200:003"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            440956,
+            441047
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              440956,
+              441047
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0200:002",
+          "kind": "textual_variant_or_alias",
+          "fact_summary": "当前 chunk 同时出现清虚谷的结丹期道士与清虚门进入禁地弟子，已保守归为清虚门并将清虚谷列为别名，但仍需后续确认门派称谓。",
+          "evidence_ids": [
+            "evidence:chunk-0200:005",
+            "evidence:chunk-0200:008"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            441255,
+            442185
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              441255,
+              442185
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0200:003",
+          "kind": "possible_ocr_or_wording_issue",
+          "fact_summary": "原文当前写作“神秘小瓶的绿夜”，语义上像液体但本 chunk 未提供校正依据，因此按原文建为“绿夜”并标记待复核。",
+          "evidence_ids": [
+            "evidence:chunk-0200:019"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            443505,
+            443559
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              443505,
+              443559
+            ]
+          }
+        }
+      ],
+      "rejected_candidates": [
+        {
+          "id": "rejected:chunk-0200:001",
+          "candidate": "蓝衣青年、须发老者、青衣少妇",
+          "reason": "三人只作为进山顺序和韩立观察对象出现，当前 chunk 未给出姓名、门派、资源流转或后续影响；不单独建角色节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            440819,
+            440882
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              440819,
+              440882
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0200:002",
+          "candidate": "天地灵药",
+          "reason": "当前 chunk 中“天地灵药”是韩立目标资源的泛称，未给出独立专属名称；具体可定位对象已用紫猴花和灵药幼苗表达。",
+          "confidence": "EXTRACTED",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            443381,
+            443453
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0200",
+            "source_path": "intermediate/chunks/chunk-0200.txt",
+            "source_range": [
+              443381,
+              443453
+            ]
+          }
+        }
+      ],
+      "structured_failures": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0200/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "id": "node:chunk-0200:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立在观察其他修士后潜入环形山，击杀推山兽、避开飞翎孔雀，并以采集灵药幼苗再用神秘小瓶催熟作为禁地行动计划。",
+      "evidence_ids": [
+        "evidence:chunk-0200:002",
+        "evidence:chunk-0200:012",
+        "evidence:chunk-0200:014",
+        "evidence:chunk-0200:018",
+        "evidence:chunk-0200:019",
+        "evidence:chunk-0200:021"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        440885,
+        443695
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          440885,
+          443695
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:character:002",
+      "node_type": "character",
+      "label": "钟吾",
+      "aliases": [
+        "丑汉钟吾"
+      ],
+      "fact_summary": "钟吾在韩立进入山林后出现在通道前，冷笑后放出十几个黄点飞进山林，随后跟着过去。",
+      "evidence_ids": [
+        "evidence:chunk-0200:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        440956,
+        441047
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          440956,
+          441047
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:location:001",
+      "node_type": "location",
+      "label": "环形山",
+      "aliases": [
+        "山林",
+        "大山"
+      ],
+      "fact_summary": "韩立和其他修士从不同地点切入环形山山林，山中妖兽密集，外围以下阶妖兽为主，深入后可能有中阶上阶妖兽。",
+      "evidence_ids": [
+        "evidence:chunk-0200:001",
+        "evidence:chunk-0200:002",
+        "evidence:chunk-0200:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        440819,
+        443008
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          440819,
+          443008
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:location:002",
+      "node_type": "location",
+      "label": "破禁入口处",
+      "aliases": [],
+      "fact_summary": "禁地之外的破禁入口处聚集七大派留守之人，李师祖也在其内。",
+      "evidence_ids": [
+        "evidence:chunk-0200:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        441050,
+        441096
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          441050,
+          441096
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:faction:001",
+      "node_type": "faction",
+      "label": "七大派",
+      "aliases": [],
+      "fact_summary": "七大派留守之人在禁地外破禁入口处忧心观望禁地方向。",
+      "evidence_ids": [
+        "evidence:chunk-0200:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        441050,
+        441096
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          441050,
+          441096
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:character:003",
+      "node_type": "character",
+      "label": "李师祖",
+      "aliases": [
+        "李某"
+      ],
+      "fact_summary": "李师祖是黄枫谷结丹期修士，在禁地外参与赌局，并自称黄枫谷派出炼气期实力前三的顶尖弟子。",
+      "evidence_ids": [
+        "evidence:chunk-0200:004",
+        "evidence:chunk-0200:007",
+        "evidence:chunk-0200:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        441050,
+        442265
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          441050,
+          442265
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:faction:002",
+      "node_type": "faction",
+      "label": "黄枫谷",
+      "aliases": [],
+      "fact_summary": "黄枫谷由李师祖代表参与赌局，且本次将号称炼气期实力前三的顶尖弟子都派入禁地。",
+      "evidence_ids": [
+        "evidence:chunk-0200:007",
+        "evidence:chunk-0200:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        441769,
+        442265
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          441769,
+          442265
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:character:004",
+      "node_type": "character",
+      "label": "浮云子",
+      "aliases": [
+        "道士",
+        "清虚谷的结丹期道士"
+      ],
+      "fact_summary": "浮云子是清虚谷/清虚门一方的结丹期道士，担心赌输血线蛟内丹，并向李师祖探问黄枫谷弟子实力。",
+      "evidence_ids": [
+        "evidence:chunk-0200:005",
+        "evidence:chunk-0200:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        441255,
+        442185
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          441255,
+          442185
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:faction:003",
+      "node_type": "faction",
+      "label": "清虚门",
+      "aliases": [
+        "清虚谷"
+      ],
+      "fact_summary": "清虚门/清虚谷由浮云子代表参与赌局，浮云子称对清虚门进入禁地弟子还有信心。",
+      "evidence_ids": [
+        "evidence:chunk-0200:005",
+        "evidence:chunk-0200:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        441255,
+        442185
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          441255,
+          442185
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:material:001",
+      "node_type": "material",
+      "label": "血线蛟内丹",
+      "aliases": [],
+      "fact_summary": "血线蛟内丹是浮云子几乎花光全部身家才得来的赌注，若输掉会令其极度心痛。",
+      "evidence_ids": [
+        "evidence:chunk-0200:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        441255,
+        441296
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          441255,
+          441296
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:faction:004",
+      "node_type": "faction",
+      "label": "掩月宗",
+      "aliases": [],
+      "fact_summary": "掩月宗由霓裳仙子带队，且其派出的弟子年轻并成男女一对对，引起李师祖和浮云子的疑虑。",
+      "evidence_ids": [
+        "evidence:chunk-0200:006",
+        "evidence:chunk-0200:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        441299,
+        441867
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          441299,
+          441867
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:character:005",
+      "node_type": "character",
+      "label": "霓裳仙子",
+      "aliases": [
+        "掩月宗的带队少妇"
+      ],
+      "fact_summary": "霓裳仙子是掩月宗带队少妇，在七派弟子进入禁地后神情自若、谈笑风生，似乎对掩月宗弟子很有信心。",
+      "evidence_ids": [
+        "evidence:chunk-0200:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        441299,
+        441335
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          441299,
+          441335
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:character:006",
+      "node_type": "character",
+      "label": "穹老怪",
+      "aliases": [],
+      "fact_summary": "穹老怪插手赌局，且浮云子联想到他打赌时胸有成竹，认为赌注可能落入对方手中。",
+      "evidence_ids": [
+        "evidence:chunk-0200:005",
+        "evidence:chunk-0200:022"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        441255,
+        442185
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          441255,
+          442185
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:beast:001",
+      "node_type": "beast",
+      "label": "推山兽",
+      "aliases": [
+        "推山猪",
+        "棕色的巨型野猪"
+      ],
+      "fact_summary": "推山兽是环形山常见下阶妖兽之一，皮糙肉厚、力气大，天生会石肤术，但智力极低并被韩立用丝线法器切开击杀。",
+      "evidence_ids": [
+        "evidence:chunk-0200:011",
+        "evidence:chunk-0200:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        442323,
+        442689
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          442323,
+          442689
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:technique:001",
+      "node_type": "technique",
+      "label": "石肤术",
+      "aliases": [],
+      "fact_summary": "石肤术是推山兽天生会的能力，发动后其全身挂上一层岩石状护甲。",
+      "evidence_ids": [
+        "evidence:chunk-0200:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        442413,
+        442494
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          442413,
+          442494
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:tool:001",
+      "node_type": "tool",
+      "label": "丝线法器",
+      "aliases": [
+        "无形的丝线"
+      ],
+      "fact_summary": "韩立用丝线法器将推山猪从鼻尖到尾部整齐切成两半，随后收起无形丝线离开。",
+      "evidence_ids": [
+        "evidence:chunk-0200:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        442617,
+        442689
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          442617,
+          442689
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:beast:002",
+      "node_type": "beast",
+      "label": "飞翎孔雀",
+      "aliases": [],
+      "fact_summary": "飞翎孔雀是中阶鸟类妖兽，其五彩长翎能脱离身体自动追击伤人和防御，但速度不快，被韩立以身法甩脱。",
+      "evidence_ids": [
+        "evidence:chunk-0200:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        442832,
+        442895
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          442832,
+          442895
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:location:003",
+      "node_type": "location",
+      "label": "隐蔽山洞",
+      "aliases": [
+        "紫猴花隐蔽山洞"
+      ],
+      "fact_summary": "韩立飞奔的目标是一处常产紫猴花的隐蔽山洞，资料称此处百余年前被采摘过，现在应多为未成熟幼苗。",
+      "evidence_ids": [
+        "evidence:chunk-0200:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        443227,
+        443254
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          443227,
+          443254
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:material:002",
+      "node_type": "material",
+      "label": "紫猴花",
+      "aliases": [],
+      "fact_summary": "紫猴花常产于韩立正赶往的隐蔽山洞；韩立目标是采摘包括紫猴花在内的未成熟灵药幼苗。",
+      "evidence_ids": [
+        "evidence:chunk-0200:016",
+        "evidence:chunk-0200:018"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        443227,
+        443453
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          443227,
+          443453
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:material:003",
+      "node_type": "material",
+      "label": "灵药幼苗",
+      "aliases": [
+        "未成熟的灵药幼苗",
+        "幼苗"
+      ],
+      "fact_summary": "韩立把目标放在旁人不会采摘的未成熟灵药幼苗上，计划采回后用神秘小瓶的绿夜催生。",
+      "evidence_ids": [
+        "evidence:chunk-0200:017",
+        "evidence:chunk-0200:018",
+        "evidence:chunk-0200:019"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        443357,
+        443559
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          443357,
+          443559
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:artifact:001",
+      "node_type": "artifact",
+      "label": "神秘小瓶",
+      "aliases": [],
+      "fact_summary": "神秘小瓶可提供用于催生灵药幼苗的绿夜，使采回幼苗和直接采摘成熟灵药效果相近。",
+      "evidence_ids": [
+        "evidence:chunk-0200:019"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        443505,
+        443559
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          443505,
+          443559
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:medicine:001",
+      "node_type": "medicine",
+      "label": "神秘小瓶的绿夜",
+      "aliases": [],
+      "fact_summary": "神秘小瓶的绿夜可催生灵药幼苗，使幼苗相当于成熟灵药；当前文本写作“绿夜”，未确认是否为“绿液”。",
+      "evidence_ids": [
+        "evidence:chunk-0200:019"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        443505,
+        443559
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          443505,
+          443559
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:pill:001",
+      "node_type": "pill",
+      "label": "筑基丹",
+      "aliases": [],
+      "fact_summary": "灵药幼苗所对应的灵药可作为筑基丹主药，四五百年份即可入药。",
+      "evidence_ids": [
+        "evidence:chunk-0200:020"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        443621,
+        443656
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          443621,
+          443656
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0200:rule:001",
+      "node_type": "rule",
+      "label": "灵药幼苗保存与催熟窗口",
+      "aliases": [],
+      "fact_summary": "马师伯曾说这些幼苗在禁地外保存时间不长，只能活一两年；韩立认为这些时间足够用神秘小瓶催熟数轮。",
+      "evidence_ids": [
+        "evidence:chunk-0200:019",
+        "evidence:chunk-0200:023"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        443505,
+        443656
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          443505,
+          443656
+        ]
+      }
+    }
+  ],
+  "normalized_edges": [
+    {
+      "id": "edge:chunk-0200:001",
+      "edge_type": "entered_location",
+      "source": "node:chunk-0200:character:001",
+      "target": "node:chunk-0200:location:001",
+      "fact_summary": "韩立等到无人再出现后整理物品，选择未有人进入的方向潜入环形山山林。",
+      "evidence_ids": [
+        "evidence:chunk-0200:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        440885,
+        440953
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          440885,
+          440953
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0200:002",
+      "edge_type": "followed_into_location",
+      "source": "node:chunk-0200:character:002",
+      "target": "node:chunk-0200:location:001",
+      "fact_summary": "钟吾在韩立进入山林后放出十几个黄点进入山林，并跟着过去。",
+      "evidence_ids": [
+        "evidence:chunk-0200:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        440956,
+        441047
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          440956,
+          441047
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0200:003",
+      "edge_type": "member_or_representative_of",
+      "source": "node:chunk-0200:character:003",
+      "target": "node:chunk-0200:faction:002",
+      "fact_summary": "李师祖以黄枫谷一方身份在禁地外参与赌局，并称本谷派出顶尖弟子。",
+      "evidence_ids": [
+        "evidence:chunk-0200:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        442212,
+        442265
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          442212,
+          442265
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0200:004",
+      "edge_type": "member_or_representative_of",
+      "source": "node:chunk-0200:character:004",
+      "target": "node:chunk-0200:faction:003",
+      "fact_summary": "浮云子代表清虚门/清虚谷一方，对本门进入禁地弟子有信心。",
+      "evidence_ids": [
+        "evidence:chunk-0200:005",
+        "evidence:chunk-0200:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        441255,
+        442185
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          441255,
+          442185
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0200:005",
+      "edge_type": "member_or_representative_of",
+      "source": "node:chunk-0200:character:005",
+      "target": "node:chunk-0200:faction:004",
+      "fact_summary": "霓裳仙子是掩月宗带队少妇。",
+      "evidence_ids": [
+        "evidence:chunk-0200:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        441299,
+        441335
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          441299,
+          441335
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0200:006",
+      "edge_type": "competition_against",
+      "source": "node:chunk-0200:faction:002",
+      "target": "node:chunk-0200:faction:004",
+      "fact_summary": "李师祖认为浮云子期盼黄枫谷和清虚门联手胜过掩月宗。",
+      "evidence_ids": [
+        "evidence:chunk-0200:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        442148,
+        442185
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          442148,
+          442185
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0200:007",
+      "edge_type": "competition_against",
+      "source": "node:chunk-0200:faction:003",
+      "target": "node:chunk-0200:faction:004",
+      "fact_summary": "李师祖认为浮云子期盼清虚门与黄枫谷联手胜过掩月宗，再由清虚门压过黄枫谷。",
+      "evidence_ids": [
+        "evidence:chunk-0200:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        442148,
+        442185
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          442148,
+          442185
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0200:008",
+      "edge_type": "uses_technique",
+      "source": "node:chunk-0200:beast:001",
+      "target": "node:chunk-0200:technique:001",
+      "fact_summary": "推山兽天生会石肤术，发动后全身出现岩石状护甲。",
+      "evidence_ids": [
+        "evidence:chunk-0200:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        442413,
+        442494
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          442413,
+          442494
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0200:009",
+      "edge_type": "killed_with",
+      "source": "node:chunk-0200:character:001",
+      "target": "node:chunk-0200:tool:001",
+      "fact_summary": "韩立用丝线法器将推山猪彻底切开。",
+      "evidence_ids": [
+        "evidence:chunk-0200:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        442617,
+        442689
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          442617,
+          442689
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0200:010",
+      "edge_type": "material_found_at",
+      "source": "node:chunk-0200:material:002",
+      "target": "node:chunk-0200:location:003",
+      "fact_summary": "韩立正赶往的隐蔽山洞常产紫猴花。",
+      "evidence_ids": [
+        "evidence:chunk-0200:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        443227,
+        443254
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          443227,
+          443254
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0200:011",
+      "edge_type": "used_to_catalyze",
+      "source": "node:chunk-0200:medicine:001",
+      "target": "node:chunk-0200:material:003",
+      "fact_summary": "神秘小瓶的绿夜可催生采回的灵药幼苗。",
+      "evidence_ids": [
+        "evidence:chunk-0200:019"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        443505,
+        443559
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          443505,
+          443559
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0200:012",
+      "edge_type": "produces_or_contains",
+      "source": "node:chunk-0200:artifact:001",
+      "target": "node:chunk-0200:medicine:001",
+      "fact_summary": "神秘小瓶关联可催生幼苗的绿夜。",
+      "evidence_ids": [
+        "evidence:chunk-0200:019"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        443505,
+        443559
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          443505,
+          443559
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0200:013",
+      "edge_type": "ingredient_for",
+      "source": "node:chunk-0200:material:003",
+      "target": "node:chunk-0200:pill:001",
+      "fact_summary": "这些灵药幼苗对应的灵药是筑基丹主药，四五百年份即可入药。",
+      "evidence_ids": [
+        "evidence:chunk-0200:020"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        443621,
+        443656
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          443621,
+          443656
+        ]
+      }
+    }
+  ],
+  "normalized_events": [
+    {
+      "id": "event:chunk-0200:001",
+      "event_type": "entry_event",
+      "label": "韩立潜入环形山",
+      "fact_summary": "蓝衣青年、须发老者和青衣少妇先后进入山林后，韩立又等近一刻钟，确认无人再出现，整理物品并选择无人进入的方向潜入环形山。",
+      "participants": [
+        "node:chunk-0200:character:001",
+        "node:chunk-0200:location:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0200:001",
+        "evidence:chunk-0200:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        440819,
+        440953
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          440819,
+          440953
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0200:002",
+      "event_type": "pursuit_setup_event",
+      "label": "钟吾放出黄点跟进山林",
+      "fact_summary": "韩立刚进入山林不久，钟吾出现在通道前，冷笑后放出十几个黄点飞进山林，随后自己也跟着过去。",
+      "participants": [
+        "node:chunk-0200:character:002",
+        "node:chunk-0200:location:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0200:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        440956,
+        441047
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          440956,
+          441047
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0200:003",
+      "event_type": "wager_tension_event",
+      "label": "禁地外结丹修士因赌局互探虚实",
+      "fact_summary": "禁地外七大派留守者观望禁地方向，浮云子担心血线蛟内丹赌注输给穹老怪，并向李师祖打探黄枫谷弟子实力。",
+      "participants": [
+        "node:chunk-0200:character:003",
+        "node:chunk-0200:character:004",
+        "node:chunk-0200:character:006",
+        "node:chunk-0200:material:001",
+        "node:chunk-0200:location:002",
+        "node:chunk-0200:faction:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0200:004",
+        "evidence:chunk-0200:005",
+        "evidence:chunk-0200:008",
+        "evidence:chunk-0200:022"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        441050,
+        442185
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          441050,
+          442185
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0200:004",
+      "event_type": "faction_strategy_reveal_event",
+      "label": "李师祖透露黄枫谷派出炼气期顶尖弟子",
+      "fact_summary": "李师祖暗自认为黄枫谷派出了号称炼气期实力前三的顶尖弟子，因此他才敢参与赌局。",
+      "participants": [
+        "node:chunk-0200:character:003",
+        "node:chunk-0200:faction:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0200:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        442212,
+        442265
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          442212,
+          442265
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0200:005",
+      "event_type": "combat_event",
+      "label": "韩立击杀推山兽",
+      "fact_summary": "韩立在环形山被推山兽堵路；推山兽发动石肤术冲来后，被韩立用丝线法器从鼻尖到尾部切成两半。",
+      "participants": [
+        "node:chunk-0200:character:001",
+        "node:chunk-0200:beast:001",
+        "node:chunk-0200:technique:001",
+        "node:chunk-0200:tool:001",
+        "node:chunk-0200:location:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0200:011",
+        "evidence:chunk-0200:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        442323,
+        442689
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          442323,
+          442689
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0200:006",
+      "event_type": "avoidance_event",
+      "label": "韩立避开飞翎孔雀",
+      "fact_summary": "韩立数个时辰内遭遇四只妖兽，其中三只下阶妖兽被击杀，中阶飞翎孔雀因长翎追击防御能力令韩立头痛，他利用身法将其甩脱。",
+      "participants": [
+        "node:chunk-0200:character:001",
+        "node:chunk-0200:beast:002",
+        "node:chunk-0200:location:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0200:014",
+        "evidence:chunk-0200:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        442832,
+        443008
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          442832,
+          443008
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0200:007",
+      "event_type": "resource_plan_event",
+      "label": "韩立制定采集幼苗并催熟的计划",
+      "fact_summary": "韩立前往常产紫猴花的隐蔽山洞，计划专取旁人不会碰的未成熟灵药幼苗，采回后用神秘小瓶绿夜催生，以避免与各派高手争夺成熟灵药并尽量多跑几处。",
+      "participants": [
+        "node:chunk-0200:character:001",
+        "node:chunk-0200:location:003",
+        "node:chunk-0200:material:002",
+        "node:chunk-0200:material:003",
+        "node:chunk-0200:artifact:001",
+        "node:chunk-0200:medicine:001",
+        "node:chunk-0200:pill:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0200:016",
+        "evidence:chunk-0200:017",
+        "evidence:chunk-0200:018",
+        "evidence:chunk-0200:019",
+        "evidence:chunk-0200:020",
+        "evidence:chunk-0200:021",
+        "evidence:chunk-0200:023"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        443227,
+        443695
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          443227,
+          443695
+        ]
+      }
+    }
+  ],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0200:001",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        440819,
+        440882
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          440819,
+          440882
+        ]
+      },
+      "excerpt": "一个神情冷漠的蓝衣青年、一位须发老者、一名青衣的艳丽少妇，先后走了出来。他们非常有默契的选择了不同的地点，切入了前面的山林中。",
+      "fact_summary": "三名未明身份的修士先后选择不同地点切入山林。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0200:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0200:002",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        440885,
+        440953
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          440885,
+          440953
+        ]
+      },
+      "excerpt": "韩立又等了近一刻钟的时间，见再也没人出现，就最后整理了一下身上的物品，学着先前几人的样子，找了个还未曾有人进去过的方向，悄悄的潜了进去。",
+      "fact_summary": "韩立等待确认无人再出现后整理物品，选择未有人进入的方向潜入山林。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0200:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0200:003",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        440956,
+        441047
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          440956,
+          441047
+        ]
+      },
+      "excerpt": "韩立并不知道，在他刚进去没多久，昨日才见过的丑汉钟吾，就出现在了通道前。他望着黑乎乎的上山之路，“嘿嘿”冷笑了几声，就从身上放出了十几个黄点飞进了山林，然后人才不慌不忙的跟着过去了。",
+      "fact_summary": "钟吾在韩立进入山林后出现，放出十几个黄点飞进山林并跟随过去。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0200:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0200:004",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        441050,
+        441096
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          441050,
+          441096
+        ]
+      },
+      "excerpt": "这时禁地之外，破禁入口处，七大派的留守之人有些忧心的望着禁地方向，韩立的那位李师祖就在其内。",
+      "fact_summary": "七大派留守之人在禁地外破禁入口处观望禁地方向，李师祖也在其中。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0200:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0200:005",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        441219,
+        441296
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          441219,
+          441296
+        ]
+      },
+      "excerpt": "这也难怪，那粒血线蛟内丹实在得来不易，是几乎花光了他全部身家才弄到手的。如果就这样轻易输给了别人，这道士就是心境素养再高，恐怕也要一连数年心痛的睡不着觉！",
+      "fact_summary": "浮云子担心输掉几乎花光身家得到的血线蛟内丹赌注。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0200:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0200:006",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        441299,
+        441335
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          441299,
+          441335
+        ]
+      },
+      "excerpt": "道士偷偷打量了一眼人群中唯一神情自若之人，那名掩月宗的带队少妇霓裳仙子。",
+      "fact_summary": "霓裳仙子是掩月宗带队少妇，在众人中神情自若。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0200:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0200:007",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        441769,
+        441867
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          441769,
+          441867
+        ]
+      },
+      "excerpt": "“这倒也是！李某也已觉察到不对劲了。以往几次，掩月宗何曾派出的弟子都是这么年轻，而且还是男女弟子一对对的！难道以为禁地之行，是小屁孩过家家不成？”李师祖沉着脸说道，看来他也对这次打赌一直放心不下。",
+      "fact_summary": "李师祖认为掩月宗这次派出的弟子年轻且男女成对，情况不对劲，也对赌局放心不下。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0200:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0200:008",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        442148,
+        442185
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          442148,
+          442185
+        ]
+      },
+      "excerpt": "不就是期盼我们两家联手能胜过掩月宗，然后你们清虚门再力压我们黄枫谷一头嘛。",
+      "fact_summary": "李师祖揣测浮云子希望黄枫谷与清虚门联手胜过掩月宗，再由清虚门压过黄枫谷。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0200:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0200:009",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        442212,
+        442265
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          442212,
+          442265
+        ]
+      },
+      "excerpt": "但是这次，本谷可是连号称炼气期实力前三的顶尖弟子，全都一窝蜂的派了出去。否则，你以为我会和你们打这个赌吗？",
+      "fact_summary": "李师祖称黄枫谷本次派出号称炼气期实力前三的顶尖弟子，因此才敢参与赌局。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0200:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0200:010",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        442323,
+        442368
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          442323,
+          442368
+        ]
+      },
+      "excerpt": "韩立自然不知道，禁地外的两位结丹期修士的勾心斗角，他现在正被一头棕色的巨型野猪堵住了去路。",
+      "fact_summary": "韩立不知道禁地外两位结丹期修士的勾心斗角，此时被一头棕色巨型野猪堵路。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0200:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0200:011",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        442413,
+        442494
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          442413,
+          442494
+        ]
+      },
+      "excerpt": "但韩立一见到此兽时，还是立即认出了这是环形山上最常见下阶妖兽之一“推山兽”，此妖兽除了皮糙肉厚，力气大点外，就只会一个天生的“石肤术”，而且智力极低，并不难对付！",
+      "fact_summary": "推山兽是环形山常见下阶妖兽，皮糙肉厚、力气大、会石肤术且智力低。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0200:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0200:012",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        442617,
+        442689
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          442617,
+          442689
+        ]
+      },
+      "excerpt": "“推山猪”继续冲出几丈后，才呼哧一下，从鼻尖到尾部整个身躯一下整齐的分为了两半，五颜六色的内脏流了一地都是。它竟被韩立用丝线法器，彻底的切开了！",
+      "fact_summary": "韩立用丝线法器将推山猪彻底切成两半。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0200:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0200:013",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        442735,
+        442783
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          442735,
+          442783
+        ]
+      },
+      "excerpt": "因为他知道，此妖兽尸体的血腥味，不久就会引来一大批嗅觉灵敏的其他妖兽，他还是趁早溜之大吉的为妙！",
+      "fact_summary": "韩立知道妖兽尸体血腥味会引来大量嗅觉灵敏的其他妖兽，因此立即离开。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0200:013"
+    },
+    {
+      "evidence_id": "evidence:chunk-0200:014",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        442832,
+        442895
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          442832,
+          442895
+        ]
+      },
+      "excerpt": "其中三只下阶的，韩立自然毫不客气的一举击杀。但那只中阶的飞翎孔雀，其五彩的长翎能脱离身体自动追击伤人和防御，这让韩立颇为头痛。",
+      "fact_summary": "韩立击杀三只下阶妖兽，但中阶飞翎孔雀凭五彩长翎的追击和防御能力令他头痛。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0200:014"
+    },
+    {
+      "evidence_id": "evidence:chunk-0200:015",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        442983,
+        443008
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          442983,
+          443008
+        ]
+      },
+      "excerpt": "现在，他总算是知道了，环形山的妖兽多到何种地步了。",
+      "fact_summary": "韩立认识到环形山妖兽数量极多。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0200:015"
+    },
+    {
+      "evidence_id": "evidence:chunk-0200:016",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        443227,
+        443254
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          443227,
+          443254
+        ]
+      },
+      "excerpt": "韩立现在飞奔的方向，就是一处常产“紫猴花”的隐蔽山洞。",
+      "fact_summary": "韩立赶往一处常产紫猴花的隐蔽山洞。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0200:016"
+    },
+    {
+      "evidence_id": "evidence:chunk-0200:017",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        443357,
+        443378
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          443357,
+          443378
+        ]
+      },
+      "excerpt": "韩立需要的，就是这些旁人不会碰一下的幼苗！",
+      "fact_summary": "韩立需要的是旁人不会采摘的灵药幼苗。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0200:017"
+    },
+    {
+      "evidence_id": "evidence:chunk-0200:018",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        443381,
+        443453
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          443381,
+          443453
+        ]
+      },
+      "excerpt": "他之所以甘冒奇险进入禁地，并那么肯定一定能在这么多“高手”中虎口夺食，获取“天地灵药”！其主要原因，就是一开始把目标放在了还未成熟的灵药幼苗上！",
+      "fact_summary": "韩立冒险进入禁地并有信心夺取灵药的关键，是从一开始就把目标放在未成熟灵药幼苗上。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0200:018"
+    },
+    {
+      "evidence_id": "evidence:chunk-0200:019",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        443505,
+        443559
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          443505,
+          443559
+        ]
+      },
+      "excerpt": "等到他把这些灵药幼苗采摘回去后，就可以用神秘小瓶的绿夜进行催生了。这样一来，和直接采摘成熟的灵药没什么两样。",
+      "fact_summary": "韩立计划采回灵药幼苗后，用神秘小瓶的绿夜催生，使其等同于成熟灵药。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0200:019"
+    },
+    {
+      "evidence_id": "evidence:chunk-0200:020",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        443621,
+        443656
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          443621,
+          443656
+        ]
+      },
+      "excerpt": "做为筑基丹主药的它们，并不需要太长久的年份，区区四五百年就即可入药了。",
+      "fact_summary": "这些灵药作为筑基丹主药，四五百年份即可入药。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0200:020"
+    },
+    {
+      "evidence_id": "evidence:chunk-0200:021",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        443659,
+        443695
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          443659,
+          443695
+        ]
+      },
+      "excerpt": "现在唯一的麻烦，就是不知道剩下三天时间，还够不够他采摘到足够数量的灵药。",
+      "fact_summary": "韩立担心剩下三天是否足够采集足量灵药。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0200:021"
+    },
+    {
+      "evidence_id": "evidence:chunk-0200:022",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        441422,
+        441499
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          441422,
+          441499
+        ]
+      },
+      "excerpt": "道士越看此女笑吟吟地模样，就越发担心的厉害。再一联想到穹老怪打赌时胸有成竹的神情，他就感到自己的血线蛟内丹。似乎已飞离了自己的口袋，成了人家的囊中之物了！",
+      "fact_summary": "浮云子因霓裳仙子自若和穹老怪打赌时胸有成竹而担心血线蛟内丹输给对方。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0200:022"
+    },
+    {
+      "evidence_id": "evidence:chunk-0200:023",
+      "chunk_id": "chunk-0200",
+      "source_range": [
+        443562,
+        443656
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0200",
+        "source_path": "intermediate/chunks/chunk-0200.txt",
+        "source_range": [
+          443562,
+          443656
+        ]
+      },
+      "excerpt": "虽说听那马师伯讲，这些幼苗在禁地外能保存的时间并不太长，只能活个一两年的样子。但这些时间就已足够把它们催熟数轮了，毕竟做为筑基丹主药的它们，并不需要太长久的年份，区区四五百年就即可入药了。",
+      "fact_summary": "马师伯说幼苗在禁地外只能保存一两年，韩立认为足够催熟数轮；这些灵药作为筑基丹主药四五百年份即可入药。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0200:023"
+    }
+  ]
+}

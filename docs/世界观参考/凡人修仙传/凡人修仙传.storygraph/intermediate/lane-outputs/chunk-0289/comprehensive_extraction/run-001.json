@@ -1,0 +1,1863 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0289:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0289",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T23:59:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0289:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立从修士失踪传闻中判断幕后风险过高，选择不介入；随后以秦家晚辈身份贴近秦言，夜间用神识监察秦府并暗定保护次序。",
+      "evidence_ids": [
+        "evidence:chunk-0289:003",
+        "evidence:chunk-0289:006",
+        "evidence:chunk-0289:008",
+        "evidence:chunk-0289:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        707075,
+        708852
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          707075,
+          708852
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0289:character:002",
+      "node_type": "character",
+      "label": "秦平",
+      "aliases": [],
+      "fact_summary": "秦平负责陪同韩立在越京用饭和游览，并用秦府腰牌为饭钱挂账。",
+      "evidence_ids": [
+        "evidence:chunk-0289:004",
+        "evidence:chunk-0289:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        707537,
+        707741
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          707537,
+          707741
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0289:tool:001",
+      "node_type": "tool",
+      "label": "秦府腰牌",
+      "aliases": [],
+      "fact_summary": "秦平用秦府腰牌作为酒楼饭钱月底结账的凭据，体现秦府少爷日常花销可报账。",
+      "evidence_ids": [
+        "evidence:chunk-0289:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        707537,
+        707583
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          707537,
+          707583
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0289:facility:001",
+      "node_type": "facility",
+      "label": "秦宅",
+      "aliases": [
+        "秦府"
+      ],
+      "fact_summary": "秦宅是韩立当前保护和监察的核心地点；秦言、秦家后辈及府内传言都围绕此处展开。",
+      "evidence_ids": [
+        "evidence:chunk-0289:006",
+        "evidence:chunk-0289:009",
+        "evidence:chunk-0289:010",
+        "evidence:chunk-0289:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        707953,
+        709311
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          707953,
+          709311
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0289:character:003",
+      "node_type": "character",
+      "label": "秦言",
+      "aliases": [
+        "秦家老爷",
+        "秦叔"
+      ],
+      "fact_summary": "秦言是韩立受托保护的对象，随后主动把韩立介绍给相熟之人，并收到馨王府宴请。",
+      "evidence_ids": [
+        "evidence:chunk-0289:006",
+        "evidence:chunk-0289:007",
+        "evidence:chunk-0289:008",
+        "evidence:chunk-0289:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        707953,
+        709053
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          707953,
+          709053
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0289:character:004",
+      "node_type": "character",
+      "label": "李化元",
+      "aliases": [],
+      "fact_summary": "李化元在韩立当前任务中作为交代对象出现，韩立认为秦言性命至少要保住以便回去交代。",
+      "evidence_ids": [
+        "evidence:chunk-0289:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        707953,
+        707999
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          707953,
+          707999
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0289:faction:001",
+      "node_type": "faction",
+      "label": "秦家子弟",
+      "aliases": [
+        "秦家小辈",
+        "秦家少爷和小姐们"
+      ],
+      "fact_summary": "部分秦家子弟因韩立受秦言抬爱和可随秦言外出而不满，但在秦言高压下不敢明面针对。",
+      "evidence_ids": [
+        "evidence:chunk-0289:009",
+        "evidence:chunk-0289:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        708421,
+        709311
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          708421,
+          709311
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0289:location:001",
+      "node_type": "location",
+      "label": "越京",
+      "aliases": [],
+      "fact_summary": "韩立在秦平陪同下乘马车游览越京重要地方，获得地形街区的初步印象；秦家社交和馨王名声也都发生在越京背景中。",
+      "evidence_ids": [
+        "evidence:chunk-0289:005",
+        "evidence:chunk-0289:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        707684,
+        709538
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          707684,
+          709538
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0289:faction:002",
+      "node_type": "faction",
+      "label": "七派",
+      "aliases": [],
+      "fact_summary": "七派正全力与魔道之人对抗，无暇处理修士失踪这类闲事，是韩立不报信的判断背景。",
+      "evidence_ids": [
+        "evidence:chunk-0289:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        707075,
+        707104
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          707075,
+          707104
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0289:faction:003",
+      "node_type": "faction",
+      "label": "魔道之人",
+      "aliases": [],
+      "fact_summary": "魔道之人是七派当前全力对抗的对象，也是秦家危机背景中韩立警惕的潜在威胁。",
+      "evidence_ids": [
+        "evidence:chunk-0289:003",
+        "evidence:chunk-0289:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        707075,
+        709311
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          707075,
+          709311
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0289:character:005",
+      "node_type": "character",
+      "label": "馨王",
+      "aliases": [],
+      "fact_summary": "馨王是当朝王爷、越国之主兄弟之一，向秦言下请帖并邀请秦家公子小姐赴宴。",
+      "evidence_ids": [
+        "evidence:chunk-0289:011",
+        "evidence:chunk-0289:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        709013,
+        709538
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          709013,
+          709538
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0289:001",
+      "edge_type": "chooses_not_to_intervene",
+      "source": "node:chunk-0289:character:001",
+      "target": "node:chunk-0289:faction:003",
+      "fact_summary": "韩立因修士失踪幕后风险和七派忙于对抗魔道，选择不介入相关黑手事件。",
+      "evidence_ids": [
+        "evidence:chunk-0289:001",
+        "evidence:chunk-0289:002",
+        "evidence:chunk-0289:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        706821,
+        707104
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          706821,
+          707104
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0289:002",
+      "edge_type": "uses_credit_token",
+      "source": "node:chunk-0289:character:002",
+      "target": "node:chunk-0289:tool:001",
+      "fact_summary": "秦平用秦府腰牌替韩立饭钱挂账，月底由掌柜到府结算。",
+      "evidence_ids": [
+        "evidence:chunk-0289:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        707537,
+        707583
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          707537,
+          707583
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0289:003",
+      "edge_type": "protective_assignment",
+      "source": "node:chunk-0289:character:001",
+      "target": "node:chunk-0289:character:003",
+      "fact_summary": "韩立把保住秦言性命视为秦宅危机中的最低目标。",
+      "evidence_ids": [
+        "evidence:chunk-0289:006",
+        "evidence:chunk-0289:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        707953,
+        708077
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          707953,
+          708077
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0289:004",
+      "edge_type": "accountability_to",
+      "source": "node:chunk-0289:character:001",
+      "target": "node:chunk-0289:character:004",
+      "fact_summary": "韩立保护秦言的动机之一是事后要向李化元交代。",
+      "evidence_ids": [
+        "evidence:chunk-0289:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        707953,
+        707999
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          707953,
+          707999
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0289:005",
+      "edge_type": "rumored_private_son_of",
+      "source": "node:chunk-0289:character:001",
+      "target": "node:chunk-0289:character:003",
+      "fact_summary": "秦宅内外传播韩立是秦家老爷私生子的流言，秦言默认不理会使其更可信。",
+      "evidence_ids": [
+        "evidence:chunk-0289:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        708421,
+        708467
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          708421,
+          708467
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0289:006",
+      "edge_type": "resents",
+      "source": "node:chunk-0289:faction:001",
+      "target": "node:chunk-0289:character:001",
+      "fact_summary": "部分秦家子弟因韩立待遇等同秦言儿女且常随秦言出入而不忿。",
+      "evidence_ids": [
+        "evidence:chunk-0289:009",
+        "evidence:chunk-0289:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        708421,
+        709311
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          708421,
+          709311
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0289:007",
+      "edge_type": "invites_to_banquet",
+      "source": "node:chunk-0289:character:005",
+      "target": "node:chunk-0289:character:003",
+      "fact_summary": "馨王向秦言下请帖，邀请秦言和秦家几位公子小姐赴宴。",
+      "evidence_ids": [
+        "evidence:chunk-0289:011",
+        "evidence:chunk-0289:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        709013,
+        709538
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          709013,
+          709538
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0289:001",
+      "event_type": "rumor_intelligence_assessed",
+      "label": "韩立听闻越国修士失踪并决定不介入",
+      "participants": [
+        "node:chunk-0289:character:001",
+        "node:chunk-0289:faction:002",
+        "node:chunk-0289:faction:003"
+      ],
+      "fact_summary": "韩立从几名修士谈话中获知越国修士失踪和幕后威胁，判断黑手狡猾且可能有高阶修士，最终收回神识不再理会。",
+      "evidence_ids": [
+        "evidence:chunk-0289:001",
+        "evidence:chunk-0289:002",
+        "evidence:chunk-0289:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        706821,
+        707104
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          706821,
+          707104
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0289:002",
+      "event_type": "meal_credit_recorded",
+      "label": "秦平用秦府腰牌为饭钱挂账",
+      "participants": [
+        "node:chunk-0289:character:002",
+        "node:chunk-0289:tool:001",
+        "node:chunk-0289:facility:001"
+      ],
+      "fact_summary": "秦平没有现银结账，而是压下秦府腰牌，让掌柜月底到府上结账。",
+      "evidence_ids": [
+        "evidence:chunk-0289:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        707537,
+        707583
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          707537,
+          707583
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0289:003",
+      "event_type": "city_orientation_tour",
+      "label": "韩立乘马车熟悉越京地形",
+      "participants": [
+        "node:chunk-0289:character:001",
+        "node:chunk-0289:character:002",
+        "node:chunk-0289:location:001"
+      ],
+      "fact_summary": "韩立在秦平建议下改乘二轮马车，绕行越京重要地方，获得地形和街区初步印象。",
+      "evidence_ids": [
+        "evidence:chunk-0289:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        707684,
+        707741
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          707684,
+          707741
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0289:004",
+      "event_type": "protective_cover_established",
+      "label": "韩立与秦言密谈后建立贴身陪护伪装",
+      "participants": [
+        "node:chunk-0289:character:001",
+        "node:chunk-0289:character:003",
+        "node:chunk-0289:facility:001"
+      ],
+      "fact_summary": "韩立思考秦宅安危后找秦言密室详谈，随后秦言对外把韩立介绍为长辈后人，使其能寸步不离随行。",
+      "evidence_ids": [
+        "evidence:chunk-0289:006",
+        "evidence:chunk-0289:007",
+        "evidence:chunk-0289:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        707953,
+        708137
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          707953,
+          708137
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0289:005",
+      "event_type": "private_son_rumor_spreads",
+      "label": "韩立秦家私生子流言扩散",
+      "participants": [
+        "node:chunk-0289:character:001",
+        "node:chunk-0289:character:003",
+        "node:chunk-0289:facility:001"
+      ],
+      "fact_summary": "韩立长期随秦言出入并享受秦家少爷待遇后，秦宅内外出现韩立是秦家老爷私生子的流言。",
+      "evidence_ids": [
+        "evidence:chunk-0289:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        708421,
+        708467
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          708421,
+          708467
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0289:006",
+      "event_type": "nightly_spiritual_surveillance",
+      "label": "韩立夜间用神识监察秦府",
+      "participants": [
+        "node:chunk-0289:character:001",
+        "node:chunk-0289:facility:001"
+      ],
+      "fact_summary": "韩立修炼时定时以神识笼罩秦府，发现府内不满和隐秘，并把暗中算计者的保护次序排到最后。",
+      "evidence_ids": [
+        "evidence:chunk-0289:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        708794,
+        708852
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          708794,
+          708852
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0289:007",
+      "event_type": "xinwang_banquet_invitation",
+      "label": "馨王府宴请秦家赴宴",
+      "participants": [
+        "node:chunk-0289:character:005",
+        "node:chunk-0289:character:003",
+        "node:chunk-0289:faction:001"
+      ],
+      "fact_summary": "馨王以爱妃病愈庆祝为名下请帖，秦言无奈带几名秦家晚辈一同前往。",
+      "evidence_ids": [
+        "evidence:chunk-0289:011",
+        "evidence:chunk-0289:012",
+        "evidence:chunk-0289:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        709013,
+        709311
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          709013,
+          709311
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0289:001",
+      "chunk_id": "chunk-0289",
+      "source_range": [
+        706821,
+        706852
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          706821,
+          706852
+        ]
+      },
+      "excerpt": "这几人说的竟是，最近一些年来，越国修仙界时常有修士失踪的事情。",
+      "fact_summary": "韩立听到几名修士谈论越国修仙界近年常有修士失踪。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0289:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0289:002",
+      "chunk_id": "chunk-0289",
+      "source_range": [
+        706855,
+        706907
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          706855,
+          706907
+        ]
+      },
+      "excerpt": "这几人好像被这些幕后之人抓住过，但被威胁后就放掉了。但听口气，他们已受制于人，并逼迫要做些害人之事才可。",
+      "fact_summary": "谈话中的几名修士疑似曾被幕后之人抓住、威胁后放回，并被迫为害。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0289:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0289:003",
+      "chunk_id": "chunk-0289",
+      "source_range": [
+        707075,
+        707104
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          707075,
+          707104
+        ]
+      },
+      "excerpt": "韩立心里有了决定，立刻将神识收了回来，不再理睬这群修士了。",
+      "fact_summary": "韩立判断此事风险过高，决定收回神识不再理会那群修士。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0289:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0289:004",
+      "chunk_id": "chunk-0289",
+      "source_range": [
+        707537,
+        707583
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          707537,
+          707583
+        ]
+      },
+      "excerpt": "少爷，我已经将腰牌压在那里了，叫那掌柜的月底去我们府上结账即可，这饭钱是不需要我们出现银的。",
+      "fact_summary": "秦平用秦府腰牌压账，让掌柜月底到秦府结饭钱。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0289:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0289:005",
+      "chunk_id": "chunk-0289",
+      "source_range": [
+        707684,
+        707741
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          707684,
+          707741
+        ]
+      },
+      "excerpt": "下午，韩立没有再继续再徒步而行。而是在秦平吸取教训的建议下叫了辆二轮马车，坐在车上在越京几处重要地方转了那么一圈。",
+      "fact_summary": "韩立采纳秦平建议乘马车游览越京几处重要地方，对京城地形和街区有初步印象。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0289:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0289:006",
+      "chunk_id": "chunk-0289",
+      "source_range": [
+        707953,
+        707999
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          707953,
+          707999
+        ]
+      },
+      "excerpt": "如何才能保证秦宅的安危。实在不行。秦言一人的性命最起码要保住，否则就不好回去和李化元交代了。",
+      "fact_summary": "韩立思考秦宅安危，最低目标是保住秦言性命以向李化元交代。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0289:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0289:007",
+      "chunk_id": "chunk-0289",
+      "source_range": [
+        708027,
+        708077
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          708027,
+          708077
+        ]
+      },
+      "excerpt": "晚上，韩立没有避讳任何人，直接找上了自己这位秦叔，并和其在密室内详谈了一会儿后，才兴高采烈的回去了。",
+      "fact_summary": "韩立当晚直接找秦言在密室详谈，随后确立后续随身陪护的安排。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0289:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0289:008",
+      "chunk_id": "chunk-0289",
+      "source_range": [
+        708102,
+        708137
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          708102,
+          708137
+        ]
+      },
+      "excerpt": "秦言身边多出了一位陌生青年出来，并且浑身的土气，实在不像是越京本地人。",
+      "fact_summary": "外人发现秦言身边多出一个土气陌生青年，韩立开始以秦家晚辈身份出入上层圈子。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0289:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0289:009",
+      "chunk_id": "chunk-0289",
+      "source_range": [
+        708421,
+        708467
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          708421,
+          708467
+        ]
+      },
+      "excerpt": "韩立是秦家老爷私生子的传言，很快就从秦宅传到了外面，弄得与秦家相识的世家，好一阵的风言风语！",
+      "fact_summary": "韩立被秦言频繁带在身边后，秦宅内外流传他是秦家老爷私生子的谣言。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0289:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0289:010",
+      "chunk_id": "chunk-0289",
+      "source_range": [
+        708794,
+        708852
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          708794,
+          708852
+        ]
+      },
+      "excerpt": "晚上韩立在屋内修炼功法时，都会按时的用神识将整个秦府笼罩其内，虽然每次时间无法持续太长，但也足以发现许多人的隐秘了！",
+      "fact_summary": "韩立夜间修炼时会用神识定时笼罩秦府，以监控府内隐秘情况。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0289:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0289:011",
+      "chunk_id": "chunk-0289",
+      "source_range": [
+        709013,
+        709053
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          709013,
+          709053
+        ]
+      },
+      "excerpt": "秦言再次外出赴宴，这次请他的人可是非同小可的人物，竟然是当朝的一位王爷下的请帖！",
+      "fact_summary": "秦言收到当朝王爷请帖并再次外出赴宴。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0289:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0289:012",
+      "chunk_id": "chunk-0289",
+      "source_range": [
+        709505,
+        709538
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          709505,
+          709538
+        ]
+      },
+      "excerpt": "“馨王”，这是发请帖的这位王爷的封号，也是当今越国之主的兄弟之一。",
+      "fact_summary": "发请帖的王爷封号为馨王，是当今越国之主的兄弟之一。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0289:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0289:013",
+      "chunk_id": "chunk-0289",
+      "source_range": [
+        709273,
+        709311
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          709273,
+          709311
+        ]
+      },
+      "excerpt": "要知道，秦言自从知道秦家身处危机之中，自然不肯让后辈们在这段时间出去鬼混了。",
+      "fact_summary": "秦言知道秦家处于危机后，在两个月内限制后辈外出。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0289:013"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "角色AI行为参考",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "信息传播与情报",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "建筑设施与场所功能",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "势力设定",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "物资产出与消耗",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "事件因果链（长程因果图）",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "冲突事件分析",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0289:001",
+      "kind": "unknown_missing_cultivator_backer",
+      "fact_summary": "当前 chunk 只称修士失踪背后有“幕后之人”或“黑手”，没有说明其姓名、势力、人数或是否确有结丹期修士，因此未建确定节点。",
+      "evidence_ids": [
+        "evidence:chunk-0289:001",
+        "evidence:chunk-0289:002"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "邪修分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        706821,
+        706907
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          706821,
+          706907
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0289:002",
+      "kind": "qin_family_juniors_specific_names_absent",
+      "fact_summary": "本 chunk 只泛称几位秦家公子小姐、秦家子弟，没有给出具体姓名；相关不满仅以群体方式记录。",
+      "evidence_ids": [
+        "evidence:chunk-0289:009",
+        "evidence:chunk-0289:013"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        708421,
+        709311
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          708421,
+          709311
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0289:003",
+      "kind": "xinwang_surface_reputation_unverified",
+      "fact_summary": "秦言说馨王生性豪爽、交友广、口碑不错，但韩立明确认为仍需亲眼确认；本 chunk 不把好名声当作客观品格结论。",
+      "evidence_ids": [
+        "evidence:chunk-0289:012"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        709505,
+        709538
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          709505,
+          709538
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0289:001",
+      "candidate": "将幕后黑手补写为具体魔道势力",
+      "reason": "当前 chunk 未说明失踪案幕后身份，只能记录为未知幕后之人或疑点，不能回填后文或常识。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        706821,
+        706907
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          706821,
+          706907
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0289:002",
+      "candidate": "为所有秦家少爷小姐逐一建人物节点",
+      "reason": "当前 chunk 未给出姓名，且多数只体现群体情绪和禁足背景，单独建节点会污染图谱。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        709273,
+        709311
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0289",
+        "source_path": "E:/AI_Projects/CultivationWorld/docs/世界观参考/凡人修仙传/凡人修仙传.txt",
+        "source_range": [
+          709273,
+          709311
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

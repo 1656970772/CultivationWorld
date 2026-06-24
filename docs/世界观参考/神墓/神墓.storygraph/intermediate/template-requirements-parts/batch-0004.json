@@ -1,0 +1,424 @@
+{
+  "producer": "template-requirements-analysis-agent",
+  "batch_id": "batch-0004",
+  "stage": "stage1",
+  "lane_id": "template_requirements",
+  "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\神墓\\神墓.txt",
+  "schema": "template-requirements.schema.json",
+  "templates": [
+    {
+      "template_name": "妖兽分析",
+      "template_file": "妖兽分析模板.md",
+      "required_fields": [
+        "名字和类型",
+        "等级或阶段",
+        "出现区域",
+        "栖息环境",
+        "习性与生态",
+        "行动模式",
+        "战斗能力",
+        "弱点",
+        "资源产出",
+        "资源用途",
+        "特殊用途",
+        "驯养或契约",
+        "与修士关系",
+        "族群或繁殖",
+        "化形或进阶",
+        "代表事件",
+        "结局或后续影响"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "妖兽卡"
+      ],
+      "required_case_patterns": [
+        "低阶可狩猎妖兽",
+        "守护资源型妖兽",
+        "灵虫/虫群/毒兽",
+        "可驯养灵兽/坐骑/护山兽",
+        "高阶化形妖兽/妖族个体",
+        "真灵/神兽/上古异兽"
+      ],
+      "required_evidence_fields": [
+        "名字和类型",
+        "等级或阶段",
+        "出现区域",
+        "战斗能力",
+        "弱点",
+        "资源产出",
+        "资源用途",
+        "特殊用途",
+        "驯养或契约",
+        "与修士关系",
+        "代表事件",
+        "结局或后续影响"
+      ],
+      "graph_node_mapping": [
+        "beast",
+        "character",
+        "conflict",
+        "event",
+        "facility",
+        "faction",
+        "location",
+        "material",
+        "realm",
+        "secret_realm",
+        "technique"
+      ],
+      "graph_event_mapping": [
+        "hunting_event",
+        "beast_tide_event",
+        "guardian_event",
+        "taming_event",
+        "transformation_event",
+        "resource_event"
+      ],
+      "graph_relation_mapping": [
+        "栖息于",
+        "产出",
+        "守护",
+        "驯养/契约",
+        "猎杀",
+        "属于/守护",
+        "拥有天赋神通",
+        "进阶/化形为",
+        "族群/繁殖",
+        "畏惧/被克制",
+        "畏惧"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": []
+      }
+    },
+    {
+      "template_name": "宗门任务体系",
+      "template_file": "宗门任务体系模板.md",
+      "required_fields": [
+        "任务名和类型",
+        "发布者",
+        "接取者",
+        "接取条件",
+        "任务来源",
+        "任务目标",
+        "行动流程",
+        "所需资源",
+        "成功奖励",
+        "奖励来源",
+        "失败后果",
+        "追责方式",
+        "对宗门的回流",
+        "相关人物关系",
+        "升级或连锁任务",
+        "结束方式",
+        "后续影响"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "宗门任务卡"
+      ],
+      "required_case_patterns": [
+        "日常杂务与资源维护任务",
+        "猎妖/清剿/战斗任务",
+        "护送/守矿/边境防御任务",
+        "秘境/遗迹/禁地探索任务",
+        "生产与上交任务",
+        "考核/晋升/宗门大比任务",
+        "外交/情报/卧底任务"
+      ],
+      "required_evidence_fields": [
+        "发布者",
+        "接取条件",
+        "任务来源",
+        "任务目标",
+        "成功奖励",
+        "奖励来源",
+        "失败后果",
+        "追责方式",
+        "接取者",
+        "升级或连锁任务"
+      ],
+      "graph_node_mapping": [
+        "artifact",
+        "beast",
+        "character",
+        "conflict",
+        "event",
+        "facility",
+        "faction",
+        "location",
+        "material",
+        "pill",
+        "secret_realm",
+        "technique"
+      ],
+      "graph_event_mapping": [
+        "mission_issue",
+        "mission_accept",
+        "mission_execute",
+        "mission_complete",
+        "mission_fail",
+        "mission_chain"
+      ],
+      "graph_relation_mapping": [
+        "发布",
+        "接取",
+        "隶属于",
+        "发生于",
+        "奖励",
+        "奖励",
+        "奖励",
+        "奖励",
+        "升级为",
+        "失败引发",
+        "反哺",
+        "向...汇报/追责"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": []
+      }
+    },
+    {
+      "template_name": "建筑设施与场所功能",
+      "template_file": "建筑设施与场所功能模板.md",
+      "required_fields": [
+        "设施名称和类型",
+        "所属地点或控制者",
+        "中立性",
+        "空间位置",
+        "外观与布局",
+        "主要功能",
+        "特殊用处",
+        "使用者",
+        "进入条件",
+        "使用流程",
+        "消耗",
+        "产出",
+        "限制与冷却",
+        "维护方式",
+        "守卫与管理",
+        "风险",
+        "相关事件",
+        "后续影响"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "设施场所卡"
+      ],
+      "required_case_patterns": [
+        "中立交通设施",
+        "公共服务设施",
+        "检测与登记设施",
+        "封印与镇压设施",
+        "独立功能地标",
+        "公共事件场所"
+      ],
+      "required_evidence_fields": [
+        "设施名称和类型",
+        "所属地点或控制者",
+        "中立性",
+        "主要功能",
+        "特殊用处",
+        "进入条件",
+        "消耗",
+        "风险",
+        "相关事件"
+      ],
+      "graph_node_mapping": [
+        "character",
+        "conflict",
+        "event",
+        "facility",
+        "faction",
+        "formation",
+        "inscription",
+        "location",
+        "rule",
+        "secret_realm",
+        "technique"
+      ],
+      "graph_event_mapping": [
+        "transport_event",
+        "healing_event",
+        "detection_event",
+        "seal_event",
+        "landmark_event",
+        "public_event"
+      ],
+      "graph_relation_mapping": [
+        "位于",
+        "由...控制/维护",
+        "配备阵法",
+        "铭刻碑文",
+        "使用",
+        "受...规则约束",
+        "连接/传送至",
+        "镇压/封印",
+        "发生事件"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": []
+      }
+    },
+    {
+      "template_name": "战斗与保命机制",
+      "template_file": "战斗与保命机制模板.md",
+      "required_fields": [
+        "战斗触发场景",
+        "双方境界状态",
+        "先手方",
+        "使用手段序列",
+        "防御/克制方式",
+        "伤害效果",
+        "消耗内容",
+        "获得或损失",
+        "境界与状态变化",
+        "保命手段",
+        "保命触发条件",
+        "保命消耗",
+        "敌方后续反应",
+        "逃脱后状态",
+        "后续恢复"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "战斗行动链卡"
+      ],
+      "required_case_patterns": [
+        "越级战斗后依靠遁术逃生",
+        "秘境混战中的法宝损毁与夺宝",
+        "保命手段触发后的后续代价"
+      ],
+      "required_evidence_fields": [
+        "使用手段序列中的每个手段",
+        "消耗内容",
+        "伤害或防御效果",
+        "保命触发条件",
+        "保命消耗",
+        "境界与状态变化"
+      ],
+      "graph_node_mapping": [
+        "artifact",
+        "beast",
+        "character",
+        "conflict",
+        "event",
+        "formation",
+        "location",
+        "medicine",
+        "pill",
+        "realm",
+        "secret_realm",
+        "technique",
+        "tool",
+        "weapon"
+      ],
+      "graph_event_mapping": [
+        "battle_start",
+        "attack_step",
+        "defend_step",
+        "survival_trigger",
+        "escape",
+        "post_battle"
+      ],
+      "graph_relation_mapping": [
+        "战斗",
+        "施展",
+        "驱使",
+        "使用",
+        "消耗",
+        "使用/消耗",
+        "驱使灵宠",
+        "造成伤害",
+        "损毁",
+        "发生于",
+        "依靠...保命",
+        "跌境至"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": []
+      }
+    },
+    {
+      "template_name": "拍卖坊市与交易",
+      "template_file": "拍卖坊市与交易模板.md",
+      "required_fields": [
+        "交易场景类型",
+        "主办或控制者",
+        "交易场所",
+        "准入流程",
+        "交易流程",
+        "交易物品",
+        "定价或竞价方式",
+        "信息传播",
+        "风险代价",
+        "后续影响"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "交易场景卡",
+        "单笔交易卡"
+      ],
+      "required_case_patterns": [
+        "普通拍卖会",
+        "特色拍卖会",
+        "高阶修士交换会",
+        "坊市与普通店铺交易",
+        "黑市交易",
+        "宗门兑换与内部交易"
+      ],
+      "required_evidence_fields": [
+        "交易场景类型",
+        "主办或控制者",
+        "准入流程",
+        "交易流程",
+        "定价或竞价方式",
+        "风险代价",
+        "后续影响"
+      ],
+      "graph_node_mapping": [
+        "artifact",
+        "beast",
+        "character",
+        "conflict",
+        "event",
+        "facility",
+        "faction",
+        "formula",
+        "location",
+        "material",
+        "pill",
+        "secret_realm",
+        "technique",
+        "tool"
+      ],
+      "graph_event_mapping": [
+        "auction_event",
+        "exchange_event",
+        "shop_trade_event",
+        "black_market_event",
+        "sect_exchange_event",
+        "post_trade_ambush"
+      ],
+      "graph_relation_mapping": [
+        "主办",
+        "位于",
+        "从...购买",
+        "竞价",
+        "购得",
+        "购得",
+        "购得",
+        "购得",
+        "购得灵兽",
+        "获得线索",
+        "引发",
+        "在...兑换"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": []
+      }
+    }
+  ],
+  "template_count": 5
+}

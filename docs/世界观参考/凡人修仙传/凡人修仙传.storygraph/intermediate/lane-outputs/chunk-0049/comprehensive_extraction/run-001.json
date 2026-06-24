@@ -1,0 +1,1157 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0049:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0049",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T00:00:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0049:character:001",
+      "node_type": "character",
+      "label": "墨大夫",
+      "aliases": [],
+      "fact_summary": "墨大夫在当前战斗中施展成名绝技魔银手，先以煞气逼退韩立，再用银色巨掌压制短剑并试图生擒韩立。",
+      "evidence_ids": [
+        "evidence:chunk-0049:001",
+        "evidence:chunk-0049:002",
+        "evidence:chunk-0049:004",
+        "evidence:chunk-0049:005",
+        "evidence:chunk-0049:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        93770,
+        95723
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          93770,
+          95723
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0049:character:002",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立面对魔银手先被气势逼退，随后以镇定言语反击、用短剑防守，短剑被弹飞后又以鬼魅身法从银幕下逃出。",
+      "evidence_ids": [
+        "evidence:chunk-0049:001",
+        "evidence:chunk-0049:003",
+        "evidence:chunk-0049:005",
+        "evidence:chunk-0049:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        93904,
+        95723
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          93904,
+          95723
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0049:technique:001",
+      "node_type": "technique",
+      "label": "魔银手",
+      "aliases": [],
+      "fact_summary": "魔银手被墨大夫称为成名绝技；施展时双臂膨胀并呈银白金属光泽，后续可硬接短剑并弹飞剑刃。",
+      "evidence_ids": [
+        "evidence:chunk-0049:001",
+        "evidence:chunk-0049:002",
+        "evidence:chunk-0049:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        93748,
+        95428
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          93748,
+          95428
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0049:technique:002",
+      "node_type": "technique",
+      "label": "罗烟步",
+      "aliases": [],
+      "fact_summary": "章节标题将罗烟步列为与魔银手相对的战斗手段；当前正文表现为韩立身形模糊成轻烟并从银幕下诡异渗透逃出。",
+      "evidence_ids": [
+        "evidence:chunk-0049:001",
+        "evidence:chunk-0049:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        93748,
+        95723
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          93748,
+          95723
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0049:weapon:001",
+      "node_type": "weapon",
+      "label": "短剑",
+      "aliases": [],
+      "fact_summary": "韩立持短剑迎击墨大夫，短剑被舞成银团防护上半身，但砍中银色巨掌后无效并被弹飞插入墙壁。",
+      "evidence_ids": [
+        "evidence:chunk-0049:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        94909,
+        95428
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          94909,
+          95428
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0049:facility:001",
+      "node_type": "facility",
+      "label": "小屋",
+      "aliases": [],
+      "fact_summary": "墨大夫爆发出的煞气充斥整个小屋；后续战斗在小屋内推进到屋角位置。",
+      "evidence_ids": [
+        "evidence:chunk-0049:001",
+        "evidence:chunk-0049:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        93835,
+        95723
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          93835,
+          95723
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0049:001",
+      "edge_type": "uses_technique",
+      "source": "node:chunk-0049:character:001",
+      "target": "node:chunk-0049:technique:001",
+      "fact_summary": "墨大夫施展成名绝技魔银手，借银化双手压制韩立。",
+      "evidence_ids": [
+        "evidence:chunk-0049:002",
+        "evidence:chunk-0049:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        94014,
+        95137
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          94014,
+          95137
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0049:002",
+      "edge_type": "uses_weapon",
+      "source": "node:chunk-0049:character:002",
+      "target": "node:chunk-0049:weapon:001",
+      "fact_summary": "韩立以短剑直刺要害并舞成银团防守，但短剑最终被墨大夫弹飞。",
+      "evidence_ids": [
+        "evidence:chunk-0049:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        95138,
+        95428
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          95138,
+          95428
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0049:003",
+      "edge_type": "uses_technique",
+      "source": "node:chunk-0049:character:002",
+      "target": "node:chunk-0049:technique:002",
+      "fact_summary": "韩立在深陷危境时以轻烟般身法从银幕下逃出。",
+      "evidence_ids": [
+        "evidence:chunk-0049:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        95477,
+        95723
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          95477,
+          95723
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0049:004",
+      "edge_type": "conflicts_with",
+      "source": "node:chunk-0049:character:001",
+      "target": "node:chunk-0049:character:002",
+      "fact_summary": "墨大夫与韩立在小屋内持续交手；墨大夫目标是依仗神功拿下韩立，韩立则以防守和身法求脱困。",
+      "evidence_ids": [
+        "evidence:chunk-0049:004",
+        "evidence:chunk-0049:005",
+        "evidence:chunk-0049:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        94757,
+        95723
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          94757,
+          95723
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0049:001",
+      "event_type": "technique_use",
+      "label": "墨大夫亮出魔银手并压制韩立",
+      "participants": [
+        "node:chunk-0049:character:001",
+        "node:chunk-0049:character:002",
+        "node:chunk-0049:technique:001"
+      ],
+      "fact_summary": "墨大夫说出魔银手并爆发煞气，随后展现双臂银化的成名绝技，使韩立意识到对方拿出真正绝招。",
+      "evidence_ids": [
+        "evidence:chunk-0049:001",
+        "evidence:chunk-0049:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        93748,
+        94333
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          93748,
+          94333
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0049:002",
+      "event_type": "battle_exchange",
+      "label": "墨大夫以银手破开韩立短剑防守",
+      "participants": [
+        "node:chunk-0049:character:001",
+        "node:chunk-0049:character:002",
+        "node:chunk-0049:technique:001",
+        "node:chunk-0049:weapon:001"
+      ],
+      "fact_summary": "墨大夫挥动银色巨掌直扑韩立，硬抢入剑光，韩立短剑砍中银掌无效并被弹飞。",
+      "evidence_ids": [
+        "evidence:chunk-0049:004",
+        "evidence:chunk-0049:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        94757,
+        95428
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          94757,
+          95428
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0049:003",
+      "event_type": "escape_event",
+      "label": "韩立以轻烟身法逃出银幕",
+      "participants": [
+        "node:chunk-0049:character:001",
+        "node:chunk-0049:character:002",
+        "node:chunk-0049:technique:002"
+      ],
+      "fact_summary": "墨大夫试图抓琵琶骨生擒韩立，韩立身形化作轻烟，从墨大夫双手形成的银幕下渗透逃出。",
+      "evidence_ids": [
+        "evidence:chunk-0049:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        95429,
+        95723
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          95429,
+          95723
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0049:001",
+      "chunk_id": "chunk-0049",
+      "excerpt": "第四十七章 魔银手对罗烟步\n　　“魔银手”\n　　这三个字从墨大夫口中缓缓吐出，这低沉的声音，仿佛是从天外悠悠传来，带有不可思议的魔力，令韩立也不禁怔了下，停住了向前的脚步。\n　　随着话音刚落，墨大夫身上猛然爆发了出来，一股冲天的煞气，这气势如同狂风骤雨一般，越刮越大，并且向四周不停的扩散开来，充斥着整个小屋。\n　　而正走过来的韩立，被这突如其来的狂暴气势迎面扑了个正着，给逼迫的一连倒退了好几步，才稳住身形站定了下来。\n　　韩立脸色不由得大变，心中一阵骇然，知道对方恐怕拿出了真正的绝招来对付自己，看来刚才那一剑给他的刺激不小。",
+      "fact_summary": "章节标题点出“魔银手对罗烟步”；墨大夫吐出“魔银手”后爆发煞气并逼退韩立，韩立意识到对方拿出真正绝招。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        93748,
+        94013
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          93748,
+          94013
+        ]
+      },
+      "id": "evidence:chunk-0049:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0049:002",
+      "chunk_id": "chunk-0049",
+      "excerpt": "　　“嘿嘿！小子，能见识到老夫的成名绝技魔银手，你也算是三生有幸。”\n　　墨大夫震耳欲聋的狂傲之声，在韩立耳边嗡嗡响起，不过幸亏没有蕴含内力，所以影响不算大，看来对方不屑用失败过的手法，再次拿来对付他，这让他安心不小。\n　　不过一连两次听到墨大夫傲然的提及“魔银手”这个名称，惹得韩立也不由的望向对方的双手。这一看让韩立眼中充满了震惊之色，原本紧闭的嘴唇不禁略微的张开。\n　　只见墨大夫双手，自手肘往上，原本枯瘦的手臂，一下子就像充足了气一样，凭空膨胀起来，比原来粗大了一圈还要多。更令人吃惊的是，原本干黄的皮肤，此刻变成了银白色，在阳光照耀之下，反射出冰冷的金属光泽，似乎坚不可摧，如同真银打造的一般。\n　　“这就是墨大夫真正的实力？”",
+      "fact_summary": "墨大夫称魔银手为成名绝技；韩立观察到墨大夫双臂膨胀、皮肤变成银白并反射金属光泽。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        94014,
+        94333
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          94014,
+          94333
+        ]
+      },
+      "id": "evidence:chunk-0049:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0049:003",
+      "chunk_id": "chunk-0049",
+      "excerpt": "　　看到这里，韩立的心沉了下去，抓着剑柄的那只单手，情不自禁的出了不少细细的冷汗，使手心变得潮湿无比，他毕竟和人交手的经验太少，仅凭对方气势的大变和双手的邪异，他就觉得似乎连喘息都沉重了不少。\n　　不过韩立表面上还是恢复了若无其事的模样，他平静的面容没有露出丝毫的心虚，似乎对墨大夫的傲然之色视若无睹。\n　　墨大夫有些不爽了，他虽然对韩立已刮目相看，但还是觉得对一名十几岁的少年使出压箱绝活，实在是有些大材小用，有杀鸡用牛刀的感觉，因此他更希望能看到韩立吓破胆、手足无措的模样，这才对得起他的一番发威。\n　　“你知不知道，你这种神情很让我讨厌，一个乳臭未干的小毛孩，偏偏整天装作一副胸有成竹、一切事情都在你掌握之中的模样。”墨大夫冷厉的说道，毫不掩饰对韩立的憎恶之情。\n　　“哦，是吗？能让我们墨老感到厌恶，那是我的荣幸。我想以后，自己一定会把这个优点继续发扬广大。”韩立也不再沉默不语，用讥讽的话语加以反击，希望能从言语上让对方露出些破绽来。",
+      "fact_summary": "韩立因墨大夫气势和双手异状感到沉重，但表面镇定并用讥讽言语反击，试图让墨大夫露出破绽。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        94334,
+        94756
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          94334,
+          94756
+        ]
+      },
+      "id": "evidence:chunk-0049:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0049:004",
+      "chunk_id": "chunk-0049",
+      "excerpt": "　　不过很显然，韩立的这个企图没能实现，墨大夫没再继续开口说话，而是双手“砰”的一下，对击了一掌，发出金属摩擦的噪音，让人心神无法安宁。\n　　随后他身形一晃，人已到了半空中，挥动起银色巨掌，整个人化作一股狂风，以泰山压顶之势，直向韩立扑来。\n　　看来他是不打算再磨蹭下去，而想依仗神功，一举将韩立拿下。\n　　韩立神色也凝重起来，全神贯注的盯着对方的来势，眼看对方已跃到了他的头顶，才把短剑举起，直插向对方的必救之所——咽喉。\n　　墨大夫见韩立如此托大，竟不回避自己的强硬攻势，心中不禁一喜，狞笑道：“去死吧！”\n　　然后就分出其中一只银手，赤裸裸的去抓韩立的短剑，另一只手则对准了肩头部位，猛劈了下去。\n　　不过他取向韩立肩头的那一掌，看起来气势汹汹，其实却只用了半成的功力，和他口中放出的狠话相比，一点也不相符，反而生怕重伤到了韩立，不知其中有什么奥妙所在。",
+      "fact_summary": "墨大夫双手对击后发动攻势，挥动银色巨掌直扑韩立，并以一只银手抓短剑、一只银手劈向肩头，但肩头一掌只用半成功力且生怕重伤韩立。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        94757,
+        95137
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          94757,
+          95137
+        ]
+      },
+      "id": "evidence:chunk-0049:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0049:005",
+      "chunk_id": "chunk-0049",
+      "excerpt": "　　韩立自然不知其中的虚实，但就是知道了真像，他也不会用自己的血肉之躯，去测试对方手掌的硬度，只见他握剑的手腕轻轻一抖，手中的短剑突然横了过来，并被舞成了一个车轮大小的银团，护住了自己的上半身。\n　　墨大夫嘴角露出嘲讽之色，但两只手掌的去势不变，硬生生的先后抢入到剑光之中，没有一点想要避开的念头。\n　　“铛”的一声脆响，韩立的短剑砍到银色巨掌之上，溅起了几丝火星，不但没伤到对方的皮毛，反被倒弹的老高。\n　　墨大夫趁此机会，把手掌一翻，伸出一根手指，在来不及缩回的剑刃上轻轻一弹，韩立就觉得虎口一热，手中之物就“嗖”的一下，斜飞了出去，一点留恋之意都没有，深深地插在了墙壁之上。",
+      "fact_summary": "韩立以短剑舞成银团护住上半身；短剑砍中银色巨掌后无法伤敌，又被墨大夫弹飞并插入墙壁。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        95138,
+        95428
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          95138,
+          95428
+        ]
+      },
+      "id": "evidence:chunk-0049:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0049:006",
+      "chunk_id": "chunk-0049",
+      "excerpt": "　　紧随其后的另一只银手，也忽然间改掌为爪，抓向韩立的琵琶骨，想封住他的行动能力，生擒下韩立。\n　　眼看形式急转直下，已深陷危境之中，韩立却没露出慌乱之意，他肩头微微一晃，整个人一下模糊起来，竟在墨大夫眼皮底下，幻化成了一缕轻烟，向着正前方直冲了过去。\n　　墨大夫见到这种鬼魅的身法，也吃惊不小，但他借着落下之势，把双手化成了一道厚厚的银幕，把轻烟全都笼罩在了其下，没有一丝放韩立离去的意思。\n　　可这烟尘实在邪门无比，它忽的一下往四下一兜，以一种难以想象的诡异角度，活生生的从银幕之下，渗透了出去，然后一个急转向，奔到了墨大夫左侧的屋角才停了下来，并逐渐清晰起来，露出了韩立的本来面目。",
+      "fact_summary": "墨大夫改掌为爪抓向韩立琵琶骨意图生擒；韩立身形模糊成轻烟，从墨大夫银幕下渗透逃出并停在屋角显形。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        95429,
+        95723
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          95429,
+          95723
+        ]
+      },
+      "id": "evidence:chunk-0049:006"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "功法术法神通",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_range": [
+        93748,
+        95723
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          93748,
+          95723
+        ]
+      }
+    },
+    {
+      "template_name": "冲突事件分析",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_range": [
+        94757,
+        95723
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          94757,
+          95723
+        ]
+      }
+    },
+    {
+      "template_name": "战斗与保命机制",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_range": [
+        94014,
+        95723
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          94014,
+          95723
+        ]
+      }
+    },
+    {
+      "template_name": "武器分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_range": [
+        94909,
+        95428
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          94909,
+          95428
+        ]
+      }
+    },
+    {
+      "template_name": "角色AI行为参考",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_range": [
+        94334,
+        94756
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          94334,
+          94756
+        ]
+      }
+    },
+    {
+      "template_name": "建筑设施与场所功能",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "needs_review",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_range": [
+        93835,
+        95723
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          93835,
+          95723
+        ]
+      }
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0049:001",
+      "kind": "mo_doctor_capture_motive_unclear",
+      "fact_summary": "墨大夫劈向韩立肩头的一掌只用半成功力且怕重伤韩立，但当前 chunk 未说明他必须生擒或保留韩立的真正原因。",
+      "evidence_ids": [
+        "evidence:chunk-0049:004"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        95059,
+        95137
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          95059,
+          95137
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0049:002",
+      "kind": "luoyan_step_naming_source_limited",
+      "fact_summary": "“罗烟步”名称在当前 chunk 主要来自章节标题，正文只描写韩立化作轻烟般逃出；功法正式来源、限制和完整机制未说明。",
+      "evidence_ids": [
+        "evidence:chunk-0049:001",
+        "evidence:chunk-0049:006"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        93748,
+        95723
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          93748,
+          95723
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0049:003",
+      "kind": "short_sword_origin_unknown",
+      "fact_summary": "短剑在当前 chunk 只有战斗用途，未说明名称、来源、材质或品阶。",
+      "evidence_ids": [
+        "evidence:chunk-0049:005"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        94909,
+        95428
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          94909,
+          95428
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0049:001",
+      "candidate": "咽喉、肩头、琵琶骨",
+      "reason": "这些是本场攻防瞄准的身体部位，不是独立世界观节点；相关战斗事实已保留在事件和证据中。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        94909,
+        95476
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          94909,
+          95476
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0049:002",
+      "candidate": "煞气",
+      "reason": "煞气在当前 chunk 是墨大夫施展魔银手时爆发的气势表现，没有被明示为独立功法、资源或实体。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        93835,
+        93958
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          93835,
+          93958
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0049:003",
+      "candidate": "银幕",
+      "reason": "银幕是墨大夫双手形成的攻防形态描写，不是独立阵法或器物节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        95556,
+        95625
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0049",
+        "source_path": "intermediate/chunks/chunk-0049.txt",
+        "source_range": [
+          95556,
+          95625
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

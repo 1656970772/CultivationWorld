@@ -1,0 +1,2831 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0259:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0259",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T20:40:18+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0259:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立在燕翎堡交易会中寻找炼丹药材和丹方，先换得聚灵丹所需药草，后以符箓与无游子交换饲灵丸丹方。",
+      "evidence_ids": [
+        "evidence:chunk-0259:004",
+        "evidence:chunk-0259:005",
+        "evidence:chunk-0259:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        618444,
+        619551
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618444,
+          619551
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:faction:001",
+      "node_type": "faction",
+      "label": "天阙堡",
+      "aliases": [],
+      "fact_summary": "天阙堡有一名方姓女子参加交易会，并拿出天华石交换。",
+      "evidence_ids": [
+        "evidence:chunk-0259:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        618263,
+        618328
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618263,
+          618328
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:character:002",
+      "node_type": "character",
+      "label": "方姓女子",
+      "aliases": [],
+      "fact_summary": "方姓女子属天阙堡，在交易会上拿出天华石交换；当前 chunk 未给出全名。",
+      "evidence_ids": [
+        "evidence:chunk-0259:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        618263,
+        618328
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618263,
+          618328
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:material:001",
+      "node_type": "material",
+      "label": "天华石",
+      "aliases": [],
+      "fact_summary": "天华石是可炼制土属性顶阶法器的材料，也可用于部分土属性法宝。",
+      "evidence_ids": [
+        "evidence:chunk-0259:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼器与职业技艺",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        618263,
+        618328
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618263,
+          618328
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:faction:002",
+      "node_type": "faction",
+      "label": "灵兽山",
+      "aliases": [],
+      "fact_summary": "一位新加入的灵兽山修士在交易会上拿出风啸鹰卵。",
+      "evidence_ids": [
+        "evidence:chunk-0259:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽生态与御兽",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        618331,
+        618392
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618331,
+          618392
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:beast:001",
+      "node_type": "beast",
+      "label": "风啸鹰",
+      "aliases": [
+        "一级上阶妖兽风啸鹰的卵"
+      ],
+      "fact_summary": "风啸鹰在当前 chunk 中以一级上阶妖兽卵出现，孵化后可辅助修士放哨和寻物。",
+      "evidence_ids": [
+        "evidence:chunk-0259:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽生态与御兽",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        618331,
+        618392
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618331,
+          618392
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:pill:001",
+      "node_type": "pill",
+      "label": "聚灵丹",
+      "aliases": [],
+      "fact_summary": "韩立在交易中找到一种炼制聚灵丹所需药草，显示聚灵丹需要特定药材。",
+      "evidence_ids": [
+        "evidence:chunk-0259:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "丹药与炼丹体系",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        618444,
+        618504
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618444,
+          618504
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:inscription:001",
+      "node_type": "inscription",
+      "label": "初级上阶符箓",
+      "aliases": [
+        "初上阶的符箓"
+      ],
+      "fact_summary": "初级上阶符箓被韩立作为交易筹码，用于交换炼丹药材和丹方。",
+      "evidence_ids": [
+        "evidence:chunk-0259:004",
+        "evidence:chunk-0259:005",
+        "evidence:chunk-0259:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "符箓禁制与阵法",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        618444,
+        619551
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618444,
+          619551
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:character:003",
+      "node_type": "character",
+      "label": "无游子",
+      "aliases": [],
+      "fact_summary": "无游子是有些冷僻的道士，拿出青色玉简中的丹方与韩立交换符箓。",
+      "evidence_ids": [
+        "evidence:chunk-0259:007",
+        "evidence:chunk-0259:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        618905,
+        619551
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618905,
+          619551
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:formula:001",
+      "node_type": "formula",
+      "label": "饲灵丸丹方",
+      "aliases": [
+        "饲灵丸古方"
+      ],
+      "fact_summary": "饲灵丸丹方是古修士专门用来饲养灵兽的古方，但炼制材料珍贵罕见。",
+      "evidence_ids": [
+        "evidence:chunk-0259:008",
+        "evidence:chunk-0259:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药与炼丹体系",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽生态与御兽",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        619072,
+        619299
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619072,
+          619299
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:pill:002",
+      "node_type": "pill",
+      "label": "饲灵丸",
+      "aliases": [],
+      "fact_summary": "饲灵丸是用于饲养灵兽的丹丸，大多数妖兽爱吃，久服可催进灵兽提升阶级。",
+      "evidence_ids": [
+        "evidence:chunk-0259:008",
+        "evidence:chunk-0259:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药与炼丹体系",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽生态与御兽",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        619072,
+        619299
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619072,
+          619299
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:pill:003",
+      "node_type": "pill",
+      "label": "炼气散",
+      "aliases": [],
+      "fact_summary": "炼气散在当前 chunk 中作为韩立炼制过、原料珍贵罕见程度可与饲灵丸对照的丹药出现。",
+      "evidence_ids": [
+        "evidence:chunk-0259:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "丹药与炼丹体系",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        619245,
+        619299
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619245,
+          619299
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:facility:001",
+      "node_type": "facility",
+      "label": "燕家飞云阁议事堂",
+      "aliases": [
+        "议事堂"
+      ],
+      "fact_summary": "燕家飞云阁议事堂正在召开秘密宗族大会。",
+      "evidence_ids": [
+        "evidence:chunk-0259:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        619722,
+        619813
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619722,
+          619813
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:faction:003",
+      "node_type": "faction",
+      "label": "燕家",
+      "aliases": [],
+      "fact_summary": "燕家在飞云阁议事堂召开宗族大会；燕家祖上出身鬼灵门，现面临鬼灵门回归条件和魔道入侵局势。",
+      "evidence_ids": [
+        "evidence:chunk-0259:011",
+        "evidence:chunk-0259:012",
+        "evidence:chunk-0259:013",
+        "evidence:chunk-0259:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        619722,
+        620261
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619722,
+          620261
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:character:004",
+      "node_type": "character",
+      "label": "燕家老祖",
+      "aliases": [],
+      "fact_summary": "燕家老祖主持秘密宗族大会，说明鬼灵门条件、燕家祖上来历和魔道六宗入侵消息。",
+      "evidence_ids": [
+        "evidence:chunk-0259:011",
+        "evidence:chunk-0259:012",
+        "evidence:chunk-0259:013",
+        "evidence:chunk-0259:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        619722,
+        620261
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619722,
+          620261
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:character:005",
+      "node_type": "character",
+      "label": "如焉",
+      "aliases": [
+        "焉儿"
+      ],
+      "fact_summary": "如焉在当前 chunk 中被称作焉儿和如焉侄女；鬼灵门要求她嫁给少门主并共修血灵大法。",
+      "evidence_ids": [
+        "evidence:chunk-0259:012",
+        "evidence:chunk-0259:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "灵根体质血脉",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        619842,
+        620972
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619842,
+          620972
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:faction:004",
+      "node_type": "faction",
+      "label": "鬼灵门",
+      "aliases": [],
+      "fact_summary": "鬼灵门提出让燕家回归，并与燕家祖上存在渊源；鬼灵门少主带来魔道六宗即将入侵越国的情报。",
+      "evidence_ids": [
+        "evidence:chunk-0259:012",
+        "evidence:chunk-0259:013",
+        "evidence:chunk-0259:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        619842,
+        620261
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619842,
+          620261
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:cultivation_method:001",
+      "node_type": "cultivation_method",
+      "label": "万灵真经",
+      "aliases": [],
+      "fact_summary": "鬼灵门提出愿将万灵真经副册借给燕家一览。",
+      "evidence_ids": [
+        "evidence:chunk-0259:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        619842,
+        619990
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619842,
+          619990
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:character:006",
+      "node_type": "character",
+      "label": "鬼灵门少门主",
+      "aliases": [
+        "鬼灵门的少主"
+      ],
+      "fact_summary": "鬼灵门少门主被要求与焉儿成婚共修血灵大法，并带来魔道六宗将入侵越国的消息；当前 chunk 未给出姓名。",
+      "evidence_ids": [
+        "evidence:chunk-0259:012",
+        "evidence:chunk-0259:014",
+        "evidence:chunk-0259:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        619842,
+        620972
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619842,
+          620972
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:cultivation_method:002",
+      "node_type": "cultivation_method",
+      "label": "血灵大法",
+      "aliases": [],
+      "fact_summary": "血灵大法在当前 chunk 中被列为鬼灵门少门主与焉儿共修的功法，玄夜追问其威力和双修影响。",
+      "evidence_ids": [
+        "evidence:chunk-0259:012",
+        "evidence:chunk-0259:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "灵根体质血脉",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        619842,
+        620972
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619842,
+          620972
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:location:001",
+      "node_type": "location",
+      "label": "越国",
+      "aliases": [],
+      "fact_summary": "燕家在越国建立基业，魔道六宗据称五天后将入侵越国。",
+      "evidence_ids": [
+        "evidence:chunk-0259:013",
+        "evidence:chunk-0259:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        620063,
+        620261
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          620063,
+          620261
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:faction:005",
+      "node_type": "faction",
+      "label": "魔道六宗",
+      "aliases": [
+        "天罗国魔道六宗"
+      ],
+      "fact_summary": "魔道六宗据称五天后将入侵越国，姜国和车骑国已被其攻陷。",
+      "evidence_ids": [
+        "evidence:chunk-0259:014",
+        "evidence:chunk-0259:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界状态与灾变",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        620174,
+        620972
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          620174,
+          620972
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:location:002",
+      "node_type": "location",
+      "label": "姜国",
+      "aliases": [],
+      "fact_summary": "姜国在半月前已陷落，相关宗派多数被灭或投降。",
+      "evidence_ids": [
+        "evidence:chunk-0259:014",
+        "evidence:chunk-0259:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界状态与灾变",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        620174,
+        620972
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          620174,
+          620972
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:location:003",
+      "node_type": "location",
+      "label": "车骑国",
+      "aliases": [],
+      "fact_summary": "车骑国在半月前已陷落，相关宗派多数被灭或投降。",
+      "evidence_ids": [
+        "evidence:chunk-0259:014",
+        "evidence:chunk-0259:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界状态与灾变",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        620174,
+        620972
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          620174,
+          620972
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:faction:006",
+      "node_type": "faction",
+      "label": "越国七派",
+      "aliases": [],
+      "fact_summary": "燕家老祖称需要考虑越国七派被灭后燕家的延续与生存，显示七派是燕家局势判断中的对象。",
+      "evidence_ids": [
+        "evidence:chunk-0259:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        620174,
+        620261
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          620174,
+          620261
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:character:007",
+      "node_type": "character",
+      "label": "玄夜",
+      "aliases": [],
+      "fact_summary": "玄夜被燕家老祖称为燕家的智囊，并被要求分析关乎燕家生死存亡的局势。",
+      "evidence_ids": [
+        "evidence:chunk-0259:015",
+        "evidence:chunk-0259:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        620661,
+        620972
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          620661,
+          620972
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0259:faction:007",
+      "node_type": "faction",
+      "label": "正道盟",
+      "aliases": [],
+      "fact_summary": "玄夜追问风都国正道盟当前动向，当前 chunk 未给出答案。",
+      "evidence_ids": [
+        "evidence:chunk-0259:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        620839,
+        620972
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          620839,
+          620972
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0259:001",
+      "edge_type": "offers_trade_item",
+      "source": "node:chunk-0259:character:002",
+      "target": "node:chunk-0259:material:001",
+      "fact_summary": "天阙堡方姓女子在交易会上拿出天华石交换。",
+      "evidence_ids": [
+        "evidence:chunk-0259:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        618263,
+        618328
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618263,
+          618328
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0259:002",
+      "edge_type": "offers_trade_item",
+      "source": "node:chunk-0259:faction:002",
+      "target": "node:chunk-0259:beast:001",
+      "fact_summary": "灵兽山修士拿出一级上阶妖兽风啸鹰的卵作为交易物。",
+      "evidence_ids": [
+        "evidence:chunk-0259:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽生态与御兽",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        618331,
+        618392
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618331,
+          618392
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0259:003",
+      "edge_type": "trades_for",
+      "source": "node:chunk-0259:character:001",
+      "target": "node:chunk-0259:pill:001",
+      "fact_summary": "韩立用初上阶符箓换到一种炼制聚灵丹所需药草。",
+      "evidence_ids": [
+        "evidence:chunk-0259:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药与炼丹体系",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        618444,
+        618504
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618444,
+          618504
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0259:004",
+      "edge_type": "trades_formula_to",
+      "source": "node:chunk-0259:character:003",
+      "target": "node:chunk-0259:character:001",
+      "fact_summary": "无游子将青色玉简中的丹方交给韩立，以换取符箓。",
+      "evidence_ids": [
+        "evidence:chunk-0259:007",
+        "evidence:chunk-0259:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        618905,
+        619551
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618905,
+          619551
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0259:005",
+      "edge_type": "records_recipe_for",
+      "source": "node:chunk-0259:formula:001",
+      "target": "node:chunk-0259:pill:002",
+      "fact_summary": "饲灵丸丹方记录了古修士饲养灵兽的饲灵丸。",
+      "evidence_ids": [
+        "evidence:chunk-0259:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药与炼丹体系",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        619072,
+        619160
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619072,
+          619160
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0259:006",
+      "edge_type": "offers_return_terms_to",
+      "source": "node:chunk-0259:faction:004",
+      "target": "node:chunk-0259:faction:003",
+      "fact_summary": "鬼灵门向燕家提出回归条件，包括功法副册、副门主职位与婚姻双修要求。",
+      "evidence_ids": [
+        "evidence:chunk-0259:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        619842,
+        619990
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619842,
+          619990
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0259:007",
+      "edge_type": "originated_from",
+      "source": "node:chunk-0259:faction:003",
+      "target": "node:chunk-0259:faction:004",
+      "fact_summary": "燕家祖上出身鬼灵门，后因不和来到越国建立基业。",
+      "evidence_ids": [
+        "evidence:chunk-0259:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        620063,
+        620126
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          620063,
+          620126
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0259:008",
+      "edge_type": "plans_invasion_of",
+      "source": "node:chunk-0259:faction:005",
+      "target": "node:chunk-0259:location:001",
+      "fact_summary": "情报称天罗国魔道六宗五天后将入侵越国。",
+      "evidence_ids": [
+        "evidence:chunk-0259:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界状态与灾变",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        620174,
+        620261
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          620174,
+          620261
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0259:009",
+      "edge_type": "strategic_advisor_of",
+      "source": "node:chunk-0259:character:007",
+      "target": "node:chunk-0259:faction:003",
+      "fact_summary": "燕家老祖称玄夜是燕家的智囊。",
+      "evidence_ids": [
+        "evidence:chunk-0259:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        620661,
+        620704
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          620661,
+          620704
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0259:001",
+      "event_type": "trade_event",
+      "label": "燕翎堡小型交易会开始",
+      "fact_summary": "屋内十几名各派修士在燕翎堡轮流说明所需物品和可交换物，进行小型交易会。",
+      "participants": [
+        "node:chunk-0259:character:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0259:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        618140,
+        618226
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618140,
+          618226
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0259:002",
+      "event_type": "trade_event",
+      "label": "韩立换得聚灵丹药草",
+      "fact_summary": "韩立在交易中以七八张初上阶符箓换得一种炼制聚灵丹所需药草。",
+      "participants": [
+        "node:chunk-0259:character:001",
+        "node:chunk-0259:pill:001",
+        "node:chunk-0259:inscription:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0259:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药与炼丹体系",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        618444,
+        618504
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618444,
+          618504
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0259:003",
+      "event_type": "trade_event",
+      "label": "韩立与无游子交换饲灵丸丹方",
+      "fact_summary": "无游子拿出青色玉简中的饲灵丸丹方，韩立用十张初级上阶符箓完成交换。",
+      "participants": [
+        "node:chunk-0259:character:001",
+        "node:chunk-0259:character:003",
+        "node:chunk-0259:formula:001",
+        "node:chunk-0259:inscription:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0259:007",
+        "evidence:chunk-0259:008",
+        "evidence:chunk-0259:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药与炼丹体系",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        618905,
+        619551
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618905,
+          619551
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0259:004",
+      "event_type": "council_event",
+      "label": "燕家召开秘密宗族大会",
+      "fact_summary": "燕家在飞云阁议事堂召开极秘密的宗族大会，由燕家老祖向掌权管事和长老说明局势。",
+      "participants": [
+        "node:chunk-0259:faction:003",
+        "node:chunk-0259:character:004",
+        "node:chunk-0259:facility:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0259:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        619722,
+        619813
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619722,
+          619813
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0259:005",
+      "event_type": "proposal_event",
+      "label": "鬼灵门向燕家提出回归条件",
+      "fact_summary": "鬼灵门以万灵真经副册和副门主职位为条件，要求焉儿嫁给少门主并共修血灵大法，未来子嗣继承两边门主或家主位置。",
+      "participants": [
+        "node:chunk-0259:faction:004",
+        "node:chunk-0259:faction:003",
+        "node:chunk-0259:character:005",
+        "node:chunk-0259:character:006",
+        "node:chunk-0259:cultivation_method:001",
+        "node:chunk-0259:cultivation_method:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0259:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        619842,
+        619990
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619842,
+          619990
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0259:006",
+      "event_type": "information_event",
+      "label": "魔道六宗入侵与两国陷落情报传入燕家",
+      "fact_summary": "鬼灵门少主带来魔道六宗即将入侵越国、姜国车骑国已经陷落的消息，引发燕家议论。",
+      "participants": [
+        "node:chunk-0259:character:006",
+        "node:chunk-0259:faction:005",
+        "node:chunk-0259:location:001",
+        "node:chunk-0259:location:002",
+        "node:chunk-0259:location:003",
+        "node:chunk-0259:faction:003"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0259:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        620174,
+        620261
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          620174,
+          620261
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0259:007",
+      "event_type": "inquiry_event",
+      "label": "玄夜提出局势关键问题",
+      "fact_summary": "玄夜在回答前先询问血灵大法、鬼灵门得知燕家来历、两国陷落情报与正道盟动向等关键问题。",
+      "participants": [
+        "node:chunk-0259:character:007",
+        "node:chunk-0259:character:004",
+        "node:chunk-0259:cultivation_method:002",
+        "node:chunk-0259:faction:004",
+        "node:chunk-0259:faction:005",
+        "node:chunk-0259:faction:007"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0259:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        620839,
+        620972
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          620839,
+          620972
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0259:001",
+      "chunk_id": "chunk-0259",
+      "source_range": [
+        618140,
+        618226
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618140,
+          618226
+        ]
+      },
+      "excerpt": "经过一上午新加入几人的热切讨论后，屋内的十几名各派修士，开始互相交换所需的物品了。每个人都轮流说出自己所需的物品和能够拿出来交换的东西，看看在场的其他修士是否有愿意交易的。",
+      "fact_summary": "燕翎堡屋内十几名各派修士举行小型交易会，轮流提出所需物品与可交换物。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0259:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0259:002",
+      "chunk_id": "chunk-0259",
+      "source_range": [
+        618263,
+        618328
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618263,
+          618328
+        ]
+      },
+      "excerpt": "天阙堡的方姓女子，拿出来交换的是一块天华石，这可是炼制土属性顶阶法器的最佳材料，就是一些要求不高的土属性法宝，也可以用到此种材料。",
+      "fact_summary": "天阙堡方姓女子拿出天华石交换；天华石可用于炼制土属性顶阶法器，也可用于部分土属性法宝。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼器与职业技艺",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0259:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0259:003",
+      "chunk_id": "chunk-0259",
+      "source_range": [
+        618331,
+        618392
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618331,
+          618392
+        ]
+      },
+      "excerpt": "另外一位新加入的灵兽山修士，则拿出了一枚一级上阶妖兽风啸鹰的卵，孵化后可是修士很不错的帮手，不论是放哨还是寻物都方便之极。",
+      "fact_summary": "灵兽山修士拿出一级上阶妖兽风啸鹰的卵，孵化后可辅助放哨和寻物。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽生态与御兽",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0259:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0259:004",
+      "chunk_id": "chunk-0259",
+      "source_range": [
+        618444,
+        618504
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618444,
+          618504
+        ]
+      },
+      "excerpt": "在其中，还真让韩立找到了一种炼制聚灵丹所需的药草，这可出乎了韩立的意外，让他兴奋的付出了七八张初上阶的符箓就换到了手中。",
+      "fact_summary": "韩立在交易中用七八张初上阶符箓换得一种炼制聚灵丹所需药草。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药与炼丹体系",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0259:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0259:005",
+      "chunk_id": "chunk-0259",
+      "source_range": [
+        618544,
+        618621
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618544,
+          618621
+        ]
+      },
+      "excerpt": "等轮到韩立说话时，韩立则毫不客气的提出自己有一些初级上阶的符箓可供交换，把自己还欠缺的另两种炼丹药材一一说了出来，最后犹豫了一下，还加上一句各种丹方也可。",
+      "fact_summary": "韩立轮到发言时提出用初级上阶符箓交换欠缺的炼丹药材，并表示各种丹方也可交换。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药与炼丹体系",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0259:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0259:006",
+      "chunk_id": "chunk-0259",
+      "source_range": [
+        618797,
+        618891
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618797,
+          618891
+        ]
+      },
+      "excerpt": "有个人却忽然意外的开口道：“什么丹方都收吗？我这里有张丹方，就是有些古怪了。你看看可以换多少符箓？”\n　　韩立听了，心里一喜，不加思索地张口就说道：“当然行，只要是丹方。在下就愿意交换。”",
+      "fact_summary": "有人提出有一张古怪丹方可换符箓，韩立当场表示只要是丹方就愿意交换。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药与炼丹体系",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0259:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0259:007",
+      "chunk_id": "chunk-0259",
+      "source_range": [
+        618905,
+        618969
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618905,
+          618969
+        ]
+      },
+      "excerpt": "说要有丹方的人，竟是无游子这位有些冷僻地道士。\n　　无游子听闻韩立所言后，脸上难得的露出一丝笑容，然后将一块青色玉简扔给了韩立。",
+      "fact_summary": "提出丹方交易者是冷僻道士无游子；他将一块青色玉简扔给韩立。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0259:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0259:008",
+      "chunk_id": "chunk-0259",
+      "source_range": [
+        619072,
+        619160
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619072,
+          619160
+        ]
+      },
+      "excerpt": "这竟也是一张古方，而且还是古修士专门用来饲养灵兽的“饲灵丸”，据丹方上讲这种丹丸不但大多数妖兽都极为爱吃。而且服用久了，竟还能有催进灵兽提升阶级奇效。绝对是培养灵兽的最佳丹药。",
+      "fact_summary": "青色玉简中丹方是古修士饲养灵兽的饲灵丸；大多数妖兽爱吃，长期服用可催进灵兽提升阶级。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药与炼丹体系",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽生态与御兽",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0259:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0259:009",
+      "chunk_id": "chunk-0259",
+      "source_range": [
+        619245,
+        619299
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619245,
+          619299
+        ]
+      },
+      "excerpt": "这“饲灵丸”炼制所需的材料对普通修士来说，实在太惊人了。几乎和韩立炼制的“炼气散”所需的原料一样的珍贵罕见。",
+      "fact_summary": "饲灵丸炼制材料对普通修士极其惊人，珍贵罕见程度接近韩立炼制炼气散所需原料。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药与炼丹体系",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0259:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0259:010",
+      "chunk_id": "chunk-0259",
+      "source_range": [
+        619517,
+        619551
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619517,
+          619551
+        ]
+      },
+      "excerpt": "韩立低头想了想，从储物袋中一连掏出了十张初级上阶的符箓，扔给了对方。",
+      "fact_summary": "韩立从储物袋中拿出十张初级上阶符箓交给无游子，完成丹方交易。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0259:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0259:011",
+      "chunk_id": "chunk-0259",
+      "source_range": [
+        619722,
+        619813
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619722,
+          619813
+        ]
+      },
+      "excerpt": "燕家飞云阁的议事堂内，正召开一场极其秘密的宗族大会。\n　　所有握有大权的管事和长老，都汇集在此分坐成两排，倾听着主座上的燕家老祖讲话。而在燕家老祖的身侧，则站着一位风华绝代的绝色女子",
+      "fact_summary": "燕家飞云阁议事堂召开秘密宗族大会，燕家管事长老听燕家老祖讲话，老祖身侧站着一位绝色女子。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0259:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0259:012",
+      "chunk_id": "chunk-0259",
+      "source_range": [
+        619842,
+        619990
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619842,
+          619990
+        ]
+      },
+      "excerpt": "鬼灵门这次提出的让燕家回归的条件，非常的优厚，不但提出了愿将《万灵真经》副册借与我们燕家一览，而且还愿将鬼灵门副门主之职由我们燕家人担任。而他们唯一的要求，就是我们必须将焉儿嫁于他们少门主，和他共修血灵大法，并且燕家的家主一职将来只能由他们少门主和焉儿的孩子来担任，当然鬼灵门门主一职也同样如此。",
+      "fact_summary": "鬼灵门提出让燕家回归的条件：借阅万灵真经副册、给燕家人副门主之职；要求焉儿嫁给少门主共修血灵大法，后代继承燕家家主与鬼灵门门主。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0259:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0259:013",
+      "chunk_id": "chunk-0259",
+      "source_range": [
+        620063,
+        620126
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          620063,
+          620126
+        ]
+      },
+      "excerpt": "我们燕家祖上其实也是鬼灵门出身的修士，只是当初和门内的修士不和，才来越国建立起这份基业的。算起来如今的鬼灵门门主还是我的师侄。",
+      "fact_summary": "燕家祖上出身鬼灵门，因与门内修士不和来到越国建立基业；燕家老祖称现任鬼灵门门主为师侄。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0259:013"
+    },
+    {
+      "evidence_id": "evidence:chunk-0259:014",
+      "chunk_id": "chunk-0259",
+      "source_range": [
+        620174,
+        620261
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          620174,
+          620261
+        ]
+      },
+      "excerpt": "鬼灵门的少主还带来了一个消息，天罗国魔道六宗，在五天后就将入侵越国了。而姜国和车骑国，在半月前就已陷落了，两国大部分的宗派被灭，一小部分则投降了过去，成了魔道六宗的附属门派。",
+      "fact_summary": "鬼灵门少主带来情报：天罗国魔道六宗五天后将入侵越国；姜国和车骑国半月前已陷落，多数宗派被灭，少数投降成为附属门派。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0259:014"
+    },
+    {
+      "evidence_id": "evidence:chunk-0259:015",
+      "chunk_id": "chunk-0259",
+      "source_range": [
+        620661,
+        620704
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          620661,
+          620704
+        ]
+      },
+      "excerpt": "玄夜，你怎么看此事？你是我们燕家的智囊，这可关系到燕家的生死存亡，还是尽心分析一下吧！",
+      "fact_summary": "燕家老祖点名玄夜分析局势，并称玄夜是燕家的智囊。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0259:015"
+    },
+    {
+      "evidence_id": "evidence:chunk-0259:016",
+      "chunk_id": "chunk-0259",
+      "source_range": [
+        620839,
+        620972
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          620839,
+          620972
+        ]
+      },
+      "excerpt": "这个血灵大法是否威力很大，如焉侄女的天灵根资质和对方少门主双修后，对这功法影响有多大？第二对方如何找到我们燕家来的，还知道我们祖上原先出自鬼灵门？最后，老祖宗得到的姜国和车骑国被魔道六宗所占领的事，是否完全从对方口中得知的？如果是真的，风都国的正道盟现在正忙什么事？",
+      "fact_summary": "玄夜提出三组关键问题：血灵大法与如焉天灵根和少门主双修的影响、鬼灵门如何得知燕家来历、姜国车骑国陷落情报是否可靠及正道盟动向。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0259:016"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "拍卖坊市与交易",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "丹药与炼丹体系",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "妖兽生态与御兽",
+      "requirement_id": "creature_deviant_practice_ecology",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "势力设定",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "事件因果链（长程因果图）",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "信息传播与情报",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "境界提升与功法分析",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0259:001",
+      "kind": "identity_missing",
+      "fact_summary": "无游子师兄“无子”只在旁闭目养神，当前 chunk 未显示其参与交易或决策，未建人物节点。",
+      "evidence_ids": [
+        "evidence:chunk-0259:007"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        618905,
+        618969
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618905,
+          618969
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0259:002",
+      "kind": "identity_missing",
+      "fact_summary": "当前 chunk 写“焉儿/如焉侄女”，未明示完整姓名；本输出未补写为后文姓名。",
+      "evidence_ids": [
+        "evidence:chunk-0259:012",
+        "evidence:chunk-0259:016"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        619842,
+        620972
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619842,
+          620972
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0259:003",
+      "kind": "mechanism_missing",
+      "fact_summary": "血灵大法在当前 chunk 只说明将由焉儿与少门主共修，具体功法威力和双修机制尚由玄夜提问，未在本 chunk 得到回答。",
+      "evidence_ids": [
+        "evidence:chunk-0259:012",
+        "evidence:chunk-0259:016"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        619842,
+        620972
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619842,
+          620972
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0259:004",
+      "kind": "source_reliability_pending",
+      "fact_summary": "姜国和车骑国陷落及魔道六宗将入侵越国的消息在本 chunk 来自鬼灵门少主，玄夜追问是否完全从对方口中得知，可靠性需后续确认。",
+      "evidence_ids": [
+        "evidence:chunk-0259:014",
+        "evidence:chunk-0259:016"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        620174,
+        620972
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          620174,
+          620972
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0259:001",
+      "candidate": "各派修士",
+      "reason": "交易会背景群体，未给出具体姓名、势力清单或独立决策，不建群体节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        618140,
+        618226
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618140,
+          618226
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0259:002",
+      "candidate": "聚灵丹所需药草",
+      "reason": "原文未给出药草专名，只能作为聚灵丹相关交易证据，不硬造具名材料节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "丹药与炼丹体系",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        618444,
+        618504
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          618444,
+          618504
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0259:003",
+      "candidate": "鬼灵门门主",
+      "reason": "当前 chunk 只在继承条件和师侄关系中提及，未直接参与本 chunk 事件，且姓名缺失，不单独建角色节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        619842,
+        619990
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0259",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          619842,
+          619990
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

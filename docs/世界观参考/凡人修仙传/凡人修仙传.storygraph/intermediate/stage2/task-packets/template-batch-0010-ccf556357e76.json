@@ -1,0 +1,212 @@
+{
+  "batch_id": "template-batch-0010-ccf556357e76",
+  "grouping_strategy": "by_template_document",
+  "category_id": "cultivation_system_method_progression",
+  "category_name": "修炼体系、术法与成长",
+  "requirement_categories": [
+    {
+      "category_id": "cultivation_system_method_progression",
+      "category_name": "修炼体系、术法与成长"
+    }
+  ],
+  "agent_role": "stage2-template-document-agent",
+  "status": "pending",
+  "templates": [
+    {
+      "template_name": "功法术法神通",
+      "template_file": "功法术法神通模板.md",
+      "template_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\模板\\功法术法神通模板.md",
+      "template_sha256": "ce0ebdb65baad15773b93a87e929e59514aa89bdd40bcc3cabe73203700421c8",
+      "template_headings": [
+        "适用范围",
+        "前置声明",
+        "必须写什么",
+        "推荐结构",
+        "《作品名》功法术法神通",
+        "前置声明",
+        "功法术法神通卡片",
+        "功法/术法/神通名称",
+        "基础吐纳法",
+        "御兽诀",
+        "傀儡术"
+      ]
+    }
+  ],
+  "requirements": {
+    "required_extraction_targets": [
+      "抽取境界层级、突破条件、瓶颈、资源需求、风险代价、失败后果和阶段能力变化。",
+      "抽取功法、术法、神通、流派、传承、修炼路线、适配条件、限制、副作用、克制关系和实战表现。",
+      "抽取灵根、体质、血脉、资质、异变及其对修炼、战斗、寿命、身份或资源选择的影响。",
+      "抽取夺舍、元神、肉身、记忆、反噬、目标条件、限制边界和由此引发的角色或势力后果。"
+    ],
+    "evidence_requirements": [
+      "修炼规则必须来自原文明确说明或可定位事件证据，不能用泛化修仙常识补齐层级、资源或成功率。",
+      "突破、功法和神通条目需保留使用者、条件、资源、过程、效果、限制、代价、结果和 source_range。",
+      "灵根体质血脉与夺舍信息需区分原文确认、角色认知、传闻推断和待复核判断；边界不清时标为 needs_review。",
+      "条件、效果边界、失败后果、适配对象、机制原因或克制关系无证时标为 not_found_in_source。"
+    ]
+  },
+  "evidence_ids": [],
+  "expected_output_rel_paths": [
+    "intermediate/stage2/extraction-records/功法术法神通/run-001.json"
+  ],
+  "expected_output_paths": [
+    "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\intermediate\\stage2\\extraction-records\\功法术法神通\\run-001.json"
+  ],
+  "agent_selector": {
+    "stage": "stage2",
+    "lane_id": "template_document",
+    "required_schema": "stage2-task-packet.v1",
+    "preferred_agents": null
+  },
+  "selected_agent_info": null,
+  "schema": "stage2-task-packet.v1",
+  "overwrite_policy": "draft",
+  "stage2_policy": {
+    "stage2_categories": {
+      "facts": "原作事实",
+      "judgments": "我的判断",
+      "pending_verifications": "待核验",
+      "not_found_items": "未见可靠证据"
+    },
+    "stage2_output_policy": {
+      "default_dir": "drafts",
+      "allow_overwrite_existing_docs": false,
+      "existing_document_action": "write_versioned_draft",
+      "allowed_policies": [
+        "draft",
+        "backup-and-overwrite",
+        "merge"
+      ],
+      "draft_action": "write_draft"
+    },
+    "stage2_render_policy": {
+      "citation_format": "[{evidence_id}]",
+      "draft_entry_policy": {
+        "source_sections": [
+          "facts"
+        ],
+        "field_aliases": {
+          "name": [
+            "name",
+            "title",
+            "item_name",
+            "entity_name",
+            "名称"
+          ],
+          "classification": [
+            "classification",
+            "type",
+            "category_label",
+            "类别",
+            "分类"
+          ],
+          "usage": [
+            "usage",
+            "purpose",
+            "effect",
+            "effects",
+            "用途",
+            "功效"
+          ],
+          "formula": [
+            "formula",
+            "materials",
+            "ingredients",
+            "components",
+            "recipe",
+            "方方",
+            "材料",
+            "成分"
+          ],
+          "source_excerpt": [
+            "source_excerpt",
+            "original_excerpt",
+            "quote",
+            "原文摘录"
+          ],
+          "review_status": [
+            "review_status",
+            "verification_status",
+            "审核状态"
+          ]
+        },
+        "fallback_name": "未命名条目",
+        "kept_fields": [
+          "name",
+          "classification",
+          "usage",
+          "formula",
+          "source_range",
+          "source_excerpt",
+          "evidence_ids",
+          "confidence",
+          "review_status"
+        ]
+      },
+      "final_entry_policy": {
+        "allowed_confidence": [
+          "EXTRACTED"
+        ],
+        "min_evidence_count": 1,
+        "require_explicit_name": true,
+        "require_source_excerpt": true,
+        "required_any_fields": [
+          "usage",
+          "formula"
+        ],
+        "unstable_name_prefixes": [
+          "未名",
+          "未命名",
+          "未知",
+          "不明"
+        ],
+        "unstable_name_contains": [
+          "某种",
+          "某类"
+        ],
+        "composite_name_markers": [
+          "与",
+          "或",
+          "/",
+          "、"
+        ],
+        "review_only_statuses": [
+          "needs_review",
+          "pending_review",
+          "rejected",
+          "ambiguous"
+        ],
+        "allow_missing_review_status": true
+      },
+      "dedupe_policy": {
+        "key_fields": [
+          "name",
+          "classification"
+        ],
+        "merge_text_fields": [
+          "usage",
+          "formula",
+          "source_excerpt"
+        ],
+        "confidence_strategy": "most_conservative",
+        "review_status_strategy": "review_only_wins"
+      },
+      "final_template_policy": {
+        "case_section_names": [
+          "案例",
+          "典型案例",
+          "案例清单",
+          "示例"
+        ],
+        "excluded_section_names": [
+          "待复核",
+          "缺口",
+          "资料来源",
+          "说明"
+        ],
+        "fallback_to_first_non_root_heading": true
+      }
+    }
+  }
+}

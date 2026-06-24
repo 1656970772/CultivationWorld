@@ -1,0 +1,3507 @@
+{
+  "chunk_id": "chunk-0111",
+  "source_range": [
+    216133,
+    218121
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "task_packet_id": "chunk-0111:comprehensive_extraction:attempt-001",
+      "chunk_id": "chunk-0111",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "produced_at": "2026-06-23T14:30:00+08:00",
+      "extracted_nodes": [
+        {
+          "id": "node:chunk-0111:character:001",
+          "node_type": "character",
+          "label": "韩立",
+          "aliases": [],
+          "fact_summary": "韩立夜入墨府，在后院分辨草药气味，避开明岗暗哨并偷听二层小楼内谈话。",
+          "evidence_ids": [
+            "evidence:chunk-0111:001",
+            "evidence:chunk-0111:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            216562,
+            216644
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              216562,
+              216644
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0111:faction:001",
+          "node_type": "faction",
+          "label": "墨府",
+          "aliases": [],
+          "fact_summary": "墨府在本 chunk 中既指韩立潜入的府邸，也指严氏等人所代表的家族/组织主体。",
+          "evidence_ids": [
+            "evidence:chunk-0111:001",
+            "evidence:chunk-0111:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            217097,
+            217157
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217097,
+              217157
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0111:facility:001",
+          "node_type": "facility",
+          "label": "墨府后院花园",
+          "aliases": [],
+          "fact_summary": "墨府后院是种有罕见花草和草药气味的花园，韩立据此推测府中有人继承墨大夫医术。",
+          "evidence_ids": [
+            "evidence:chunk-0111:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            216147,
+            216319
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              216147,
+              216319
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0111:facility:002",
+          "node_type": "facility",
+          "label": "二层小楼",
+          "aliases": [],
+          "fact_summary": "韩立选择警卫比其他地方更森严、附近有二三十人守卫的二层小楼作为查探目标。",
+          "evidence_ids": [
+            "evidence:chunk-0111:002",
+            "evidence:chunk-0111:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            216357,
+            216510
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              216357,
+              216510
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0111:faction:002",
+          "node_type": "faction",
+          "label": "惊蛟会",
+          "aliases": [],
+          "fact_summary": "惊蛟会在前几年分立和外部打压后变弱，暗舵力量成为其最大支柱。",
+          "evidence_ids": [
+            "evidence:chunk-0111:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            217200,
+            217308
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217200,
+              217308
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0111:faction:003",
+          "node_type": "faction",
+          "label": "暗舵",
+          "aliases": [],
+          "fact_summary": "暗舵按月向总舵解送银子，最近上缴银两较往年同期少了四分之一还多，并被称为惊蛟会最大支柱。",
+          "evidence_ids": [
+            "evidence:chunk-0111:004",
+            "evidence:chunk-0111:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            216735,
+            216850
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              216735,
+              216850
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0111:character:002",
+          "node_type": "character",
+          "label": "严氏",
+          "aliases": [],
+          "fact_summary": "韩立确认屋内女人是他要找的严氏；对话显示她是惊蛟会代理当家人，并在处理暗舵和吴姓冒牌货危机。",
+          "evidence_ids": [
+            "evidence:chunk-0111:006",
+            "evidence:chunk-0111:007",
+            "evidence:chunk-0111:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            217654,
+            217714
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217654,
+              217714
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0111:character:003",
+          "node_type": "character",
+          "label": "墨彩环",
+          "aliases": [],
+          "fact_summary": "韩立确认屋内女孩应是墨彩环；她与严氏对话时抱怨暗舵、五娘和吴姓冒牌货。",
+          "evidence_ids": [
+            "evidence:chunk-0111:006",
+            "evidence:chunk-0111:007",
+            "evidence:chunk-0111:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            217654,
+            217714
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217654,
+              217714
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0111:character:004",
+          "node_type": "character",
+          "label": "墨大夫",
+          "aliases": [],
+          "fact_summary": "墨大夫被韩立和墨府母女反复提及；韩立推测墨府有人继承其医术，并确认墨彩环是其与严氏所生。",
+          "evidence_ids": [
+            "evidence:chunk-0111:001",
+            "evidence:chunk-0111:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            217654,
+            217714
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217654,
+              217714
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0111:character:005",
+          "node_type": "character",
+          "label": "五娘",
+          "aliases": [],
+          "fact_summary": "五娘在当前 chunk 中被描述为独自掌管暗舵力量，且暗舵原本由墨大夫交给她。",
+          "evidence_ids": [
+            "evidence:chunk-0111:005",
+            "evidence:chunk-0111:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            217097,
+            217157
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217097,
+              217157
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0111:character:006",
+          "node_type": "character",
+          "label": "姓吴的冒牌货",
+          "aliases": [
+            "那个姓吴的",
+            "冒牌货"
+          ],
+          "fact_summary": "当前 chunk 只明示此人为姓吴的假货，名义上是未来姐夫，并以文武全才姿态接近墨彩环。",
+          "evidence_ids": [
+            "evidence:chunk-0111:008",
+            "evidence:chunk-0111:009",
+            "evidence:chunk-0111:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            217863,
+            217918
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217863,
+              217918
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0111:character:007",
+          "node_type": "character",
+          "label": "大姐",
+          "aliases": [],
+          "fact_summary": "墨彩环和严氏提到大姐被姓吴冒牌货纠缠，并为拖延对方而装作动心。",
+          "evidence_ids": [
+            "evidence:chunk-0111:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            217985,
+            218093
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217985,
+              218093
+            ]
+          }
+        }
+      ],
+      "extracted_edges": [
+        {
+          "id": "edge:chunk-0111:001",
+          "edge_type": "located_in",
+          "source": "node:chunk-0111:facility:001",
+          "target": "node:chunk-0111:faction:001",
+          "fact_summary": "墨府后院花园属于墨府场所范围。",
+          "evidence_ids": [
+            "evidence:chunk-0111:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            216147,
+            216319
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              216147,
+              216319
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0111:002",
+          "edge_type": "located_in",
+          "source": "node:chunk-0111:facility:002",
+          "target": "node:chunk-0111:faction:001",
+          "fact_summary": "二层小楼是墨府内被严密守卫的重要场所。",
+          "evidence_ids": [
+            "evidence:chunk-0111:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            216357,
+            216510
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              216357,
+              216510
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0111:003",
+          "edge_type": "infiltrated",
+          "source": "node:chunk-0111:character:001",
+          "target": "node:chunk-0111:facility:002",
+          "fact_summary": "韩立趁夜避开明岗暗哨，翻入二层小楼。",
+          "evidence_ids": [
+            "evidence:chunk-0111:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            216562,
+            216644
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              216562,
+              216644
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0111:004",
+          "edge_type": "financial_support_for",
+          "source": "node:chunk-0111:faction:003",
+          "target": "node:chunk-0111:faction:002",
+          "fact_summary": "暗舵按月解送银子，并被墨彩环称为惊蛟会最大支柱。",
+          "evidence_ids": [
+            "evidence:chunk-0111:004",
+            "evidence:chunk-0111:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            217200,
+            217308
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217200,
+              217308
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0111:005",
+          "edge_type": "controlled_by",
+          "source": "node:chunk-0111:faction:003",
+          "target": "node:chunk-0111:character:005",
+          "fact_summary": "暗舵力量一向由五娘独自掌管，墨府其他人插不上手。",
+          "evidence_ids": [
+            "evidence:chunk-0111:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            217097,
+            217157
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217097,
+              217157
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0111:006",
+          "edge_type": "acting_head_of",
+          "source": "node:chunk-0111:character:002",
+          "target": "node:chunk-0111:faction:002",
+          "fact_summary": "墨彩环称严氏是惊蛟会代理当家人。",
+          "evidence_ids": [
+            "evidence:chunk-0111:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            217200,
+            217308
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217200,
+              217308
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0111:007",
+          "edge_type": "child_of",
+          "source": "node:chunk-0111:character:003",
+          "target": "node:chunk-0111:character:004",
+          "fact_summary": "韩立判断墨彩环是严氏与墨大夫所生。",
+          "evidence_ids": [
+            "evidence:chunk-0111:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            217654,
+            217714
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217654,
+              217714
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0111:008",
+          "edge_type": "child_of",
+          "source": "node:chunk-0111:character:003",
+          "target": "node:chunk-0111:character:002",
+          "fact_summary": "韩立判断墨彩环是严氏与墨大夫所生。",
+          "evidence_ids": [
+            "evidence:chunk-0111:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            217654,
+            217714
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217654,
+              217714
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0111:009",
+          "edge_type": "nominal_future_in_law",
+          "source": "node:chunk-0111:character:006",
+          "target": "node:chunk-0111:character:007",
+          "fact_summary": "严氏称姓吴之人名义上是墨彩环未来姐夫，大姐正与其虚伪拖延。",
+          "evidence_ids": [
+            "evidence:chunk-0111:009",
+            "evidence:chunk-0111:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            217985,
+            218093
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217985,
+              218093
+            ]
+          }
+        }
+      ],
+      "extracted_events": [
+        {
+          "id": "event:chunk-0111:001",
+          "event_type": "discovery_event",
+          "label": "韩立发现墨府后院草药气味",
+          "fact_summary": "韩立在墨府后院花园分辨出熟悉药草之香，并推测墨府有人继承墨大夫医术。",
+          "participants": [
+            "node:chunk-0111:character:001",
+            "node:chunk-0111:facility:001",
+            "node:chunk-0111:character:004"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0111:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            216147,
+            216319
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              216147,
+              216319
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0111:002",
+          "event_type": "infiltration_event",
+          "label": "韩立夜入二层小楼",
+          "fact_summary": "韩立察觉墨府戒备严密，选择警卫更森严的二层小楼，趁夜避开守卫翻上二楼偷听。",
+          "participants": [
+            "node:chunk-0111:character:001",
+            "node:chunk-0111:faction:001",
+            "node:chunk-0111:facility:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0111:002",
+            "evidence:chunk-0111:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            216357,
+            216510
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              216357,
+              216510
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0111:003",
+          "event_type": "financial_report_event",
+          "label": "暗舵上缴银两减少",
+          "fact_summary": "屋内女子汇报长平镇、落谷镇、蓝月镇等秘舵上月解送银子，指出暗舵银两比往年同期少了四分之一还多。",
+          "participants": [
+            "node:chunk-0111:faction:003",
+            "node:chunk-0111:faction:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0111:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            216735,
+            216850
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              216735,
+              216850
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0111:004",
+          "event_type": "faction_crisis_discussion",
+          "label": "严氏与墨彩环讨论暗舵控制权",
+          "fact_summary": "严氏和墨彩环讨论五娘掌握暗舵、惊蛟会式微、严氏虽为代理当家人却缺乏插手暗舵的理由。",
+          "participants": [
+            "node:chunk-0111:character:002",
+            "node:chunk-0111:character:003",
+            "node:chunk-0111:character:005",
+            "node:chunk-0111:faction:003",
+            "node:chunk-0111:faction:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0111:005",
+            "evidence:chunk-0111:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            217200,
+            217308
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217200,
+              217308
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0111:005",
+          "event_type": "recognition_event",
+          "label": "韩立确认严氏和墨彩环身份",
+          "fact_summary": "韩立听完对话后确认屋内女人是严氏，女孩应是墨大夫与严氏之女墨彩环。",
+          "participants": [
+            "node:chunk-0111:character:001",
+            "node:chunk-0111:character:002",
+            "node:chunk-0111:character:003",
+            "node:chunk-0111:character:004"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0111:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            217654,
+            217714
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217654,
+              217714
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0111:006",
+          "event_type": "deception_delay_event",
+          "label": "墨府以大姐拖延吴姓冒牌货",
+          "fact_summary": "严氏要求墨彩环对姓吴之人客气，说明墨府知道其是假货但为争取时间，只能让大姐与其虚伪拖延，防止敌人强攻。",
+          "participants": [
+            "node:chunk-0111:character:002",
+            "node:chunk-0111:character:003",
+            "node:chunk-0111:character:006",
+            "node:chunk-0111:character:007",
+            "node:chunk-0111:faction:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0111:008",
+            "evidence:chunk-0111:009",
+            "evidence:chunk-0111:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            217985,
+            218093
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217985,
+              218093
+            ]
+          }
+        }
+      ],
+      "extracted_evidence": [
+        {
+          "evidence_id": "evidence:chunk-0111:001",
+          "chunk_id": "chunk-0111",
+          "source_range": [
+            216147,
+            216319
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              216147,
+              216319
+            ]
+          },
+          "excerpt": "墨府的后院是个不小的花园，里面种了许多罕见的花草，虽然因天色昏暗而看不清，但那浓浓的花香，还是直沁人心肺，让韩立不禁深吸了一口气。\n　　“咦！”韩立突然轻呼了一声，虽然这些花香浓郁扑鼻，但他还是分辨出了熟悉的药草之香。\n　　“有人在这里种植草药。”韩立轻笑了起来，这种熟悉之极的味道，让他对种植之人大感好奇，看来墨府里是有人继承了墨大夫的医术。",
+          "fact_summary": "墨府后院花园种有罕见花草并有草药气味，韩立推测墨府有人继承墨大夫医术。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0111:001"
+        },
+        {
+          "evidence_id": "evidence:chunk-0111:002",
+          "chunk_id": "chunk-0111",
+          "source_range": [
+            216357,
+            216510
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              216357,
+              216510
+            ]
+          },
+          "excerpt": "一路之上，韩立发现了数处掩藏很深的暗哨，若不是他识觉过人，还真不易发觉他们。看来墨府的戒备，严密的很。\n　　不过既然被他给识破了，那绕过这些岗哨对他来说，就是轻而易举的事。\n　　韩立在一幢二层的小楼前，停了下来。\n　　之所以会选上此处，他也只是发觉此楼的警卫要比其他地方森严的多，足有二三十人守卫在此附近。",
+          "fact_summary": "韩立发现墨府暗哨和戒备严密，并选择守卫更多的二层小楼作为查探目标。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0111:002"
+        },
+        {
+          "evidence_id": "evidence:chunk-0111:003",
+          "chunk_id": "chunk-0111",
+          "source_range": [
+            216562,
+            216644
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              216562,
+              216644
+            ]
+          },
+          "excerpt": "于是，他趁着夜色身形快如闪电，一晃之下，人就飞快的到了楼下，然后双脚一用力，轻巧的翻上了二楼，整个过程一瞬间就完成了，那些四周的明岗暗哨，丝毫未曾注意到韩立的入侵。",
+          "fact_summary": "韩立趁夜快速翻上二楼，明岗暗哨没有注意到他的入侵。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0111:003"
+        },
+        {
+          "evidence_id": "evidence:chunk-0111:004",
+          "chunk_id": "chunk-0111",
+          "source_range": [
+            216735,
+            216850
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              216735,
+              216850
+            ]
+          },
+          "excerpt": "“长平镇秘舵，解送来银子七千三百两。”\n　　“落谷镇秘舵，解送银子五千八百两。”\n　　“蓝月镇秘舵，解送银子一万五百两。”\n　　“五领镇……”\n　　……\n　　“这些就是上个月，暗舵们送来的银子，基本上比往年这时少了四分之一还多。”",
+          "fact_summary": "长平镇、落谷镇、蓝月镇等秘舵上月解送银子，暗舵收入较往年同期下降超过四分之一。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0111:004"
+        },
+        {
+          "evidence_id": "evidence:chunk-0111:005",
+          "chunk_id": "chunk-0111",
+          "source_range": [
+            217097,
+            217157
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217097,
+              217157
+            ]
+          },
+          "excerpt": "“我如今并没有很好的办法！要知道暗舵的力量，一向是由你五娘独自掌管的！墨府其他人根本插不上手去！”女人无可奈何的回答道。",
+          "fact_summary": "严氏说明暗舵力量一向由五娘独自掌管，墨府其他人难以插手。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0111:005"
+        },
+        {
+          "evidence_id": "evidence:chunk-0111:006",
+          "chunk_id": "chunk-0111",
+          "source_range": [
+            217200,
+            217308
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217200,
+              217308
+            ]
+          },
+          "excerpt": "“娘，难道真的让五娘一直霸占那些暗舵的力量吗？要知道，自从前几年马叔他们闹分立，再加上其他势力的打压后，暗舵的力量就已经成了我们惊蛟会最大的支柱了。娘你既然是惊蛟会的代理当家人，那这股最大的力量当然也应由你控制啊！”",
+          "fact_summary": "墨彩环认为五娘长期掌握暗舵不妥，并说明暗舵已是惊蛟会最大支柱，严氏是惊蛟会代理当家人。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0111:006"
+        },
+        {
+          "evidence_id": "evidence:chunk-0111:007",
+          "chunk_id": "chunk-0111",
+          "source_range": [
+            217654,
+            217714
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217654,
+              217714
+            ]
+          },
+          "excerpt": "韩立这时已经肯定，屋内的女人就是他要找的严氏，女孩则应是其与墨大夫所生的墨彩环，看来他真的很幸运，竟然一下就找对了地方。",
+          "fact_summary": "韩立确认屋内女人是严氏，女孩应是严氏与墨大夫所生的墨彩环。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0111:007"
+        },
+        {
+          "evidence_id": "evidence:chunk-0111:008",
+          "chunk_id": "chunk-0111",
+          "source_range": [
+            217755,
+            217817
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217755,
+              217817
+            ]
+          },
+          "excerpt": "“娘，那个冒牌货真讨厌！今天在后花园碰到我，竟然对我大献殷勤，极力卖弄他那几分文采，一副自认为文武全才的样子，真让人讨厌！”",
+          "fact_summary": "墨彩环抱怨某个冒牌货在后花园向她献殷勤并卖弄文采。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0111:008"
+        },
+        {
+          "evidence_id": "evidence:chunk-0111:009",
+          "chunk_id": "chunk-0111",
+          "source_range": [
+            217863,
+            217918
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217863,
+              217918
+            ]
+          },
+          "excerpt": "“你对那个姓吴的客气点，毕竟他现在名义上是你未来姐夫，别让他看出破绽来！”严氏闻言郑重了起来，有些严厉的说道。",
+          "fact_summary": "严氏要求墨彩环对姓吴之人客气，因为其名义上是未来姐夫，不能让他看出破绽。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0111:009"
+        },
+        {
+          "evidence_id": "evidence:chunk-0111:010",
+          "chunk_id": "chunk-0111",
+          "source_range": [
+            217985,
+            218093
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217985,
+              218093
+            ]
+          },
+          "excerpt": "“这也是没办法的事，虽然我们知道姓吴的是个假货，并且也已查明了他底细，但为了多争取些时间，也只有牺牲你大姐的名誉，和此人虚伪拖延了。毕竟敌人声势太大，如果知道不能巧取我们的话，恐怕会立即发动强攻，我们决没有胜算啊！”",
+          "fact_summary": "严氏说明墨府已知姓吴之人是假货且查明底细，但因敌人声势太大，只能让大姐与其虚伪拖延以争取时间。",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0111:010"
+        }
+      ],
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "uncertainties": [
+        {
+          "id": "uncertainty:chunk-0111:001",
+          "kind": "identity_missing",
+          "fact_summary": "当前 chunk 只说明墨府有人继承墨大夫医术，未明示种植草药者姓名、性别或与墨府的具体关系。",
+          "evidence_ids": [
+            "evidence:chunk-0111:001"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            216147,
+            216319
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              216147,
+              216319
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0111:002",
+          "kind": "identity_missing",
+          "fact_summary": "五娘在当前 chunk 中仅以称谓出现，未给出真实姓名、具体排行身份或暗舵完整管辖结构。",
+          "evidence_ids": [
+            "evidence:chunk-0111:005",
+            "evidence:chunk-0111:006"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            217097,
+            217157
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217097,
+              217157
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0111:003",
+          "kind": "identity_missing",
+          "fact_summary": "当前 chunk 只称敌对人物为姓吴的、冒牌货或假货，未明示全名、幕后势力和敌人具体身份。",
+          "evidence_ids": [
+            "evidence:chunk-0111:008",
+            "evidence:chunk-0111:010"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            217985,
+            218093
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217985,
+              218093
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0111:004",
+          "kind": "relationship_boundary_missing",
+          "fact_summary": "大姐在当前 chunk 未给出姓名，只能确认其为墨彩环口中的姐姐及被迫拖延姓吴冒牌货的人。",
+          "evidence_ids": [
+            "evidence:chunk-0111:010"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            217985,
+            218093
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217985,
+              218093
+            ]
+          }
+        }
+      ],
+      "rejected_candidates": [
+        {
+          "id": "rejected:chunk-0111:001",
+          "candidate": "明岗暗哨",
+          "reason": "只作为墨府戒备背景出现，没有姓名、独立决策或可追踪关系；不拆成角色节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            216357,
+            216510
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              216357,
+              216510
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0111:002",
+          "candidate": "长平镇秘舵、落谷镇秘舵、蓝月镇秘舵",
+          "reason": "这些秘舵仅作为银两汇报样例出现，当前 chunk 没有独立行动、负责人或后续关系；信息保留在暗舵证据中，不分别建节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            216735,
+            216850
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              216735,
+              216850
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0111:003",
+          "candidate": "马叔与其他势力",
+          "reason": "文本只回顾前几年分立和外部打压，未给出当前 chunk 内行动、地点或具体关系闭合；暂不建节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified"
+            }
+          ],
+          "source_range": [
+            217200,
+            217308
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0111",
+            "source_path": "intermediate/chunks/chunk-0111.txt",
+            "source_range": [
+              217200,
+              217308
+            ]
+          }
+        }
+      ],
+      "structured_failures": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0111/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "id": "node:chunk-0111:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立夜入墨府，在后院分辨草药气味，避开明岗暗哨并偷听二层小楼内谈话。",
+      "evidence_ids": [
+        "evidence:chunk-0111:001",
+        "evidence:chunk-0111:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        216562,
+        216644
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          216562,
+          216644
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0111:faction:001",
+      "node_type": "faction",
+      "label": "墨府",
+      "aliases": [],
+      "fact_summary": "墨府在本 chunk 中既指韩立潜入的府邸，也指严氏等人所代表的家族/组织主体。",
+      "evidence_ids": [
+        "evidence:chunk-0111:001",
+        "evidence:chunk-0111:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        217097,
+        217157
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217097,
+          217157
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0111:facility:001",
+      "node_type": "facility",
+      "label": "墨府后院花园",
+      "aliases": [],
+      "fact_summary": "墨府后院是种有罕见花草和草药气味的花园，韩立据此推测府中有人继承墨大夫医术。",
+      "evidence_ids": [
+        "evidence:chunk-0111:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        216147,
+        216319
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          216147,
+          216319
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0111:facility:002",
+      "node_type": "facility",
+      "label": "二层小楼",
+      "aliases": [],
+      "fact_summary": "韩立选择警卫比其他地方更森严、附近有二三十人守卫的二层小楼作为查探目标。",
+      "evidence_ids": [
+        "evidence:chunk-0111:002",
+        "evidence:chunk-0111:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        216357,
+        216510
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          216357,
+          216510
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0111:faction:002",
+      "node_type": "faction",
+      "label": "惊蛟会",
+      "aliases": [],
+      "fact_summary": "惊蛟会在前几年分立和外部打压后变弱，暗舵力量成为其最大支柱。",
+      "evidence_ids": [
+        "evidence:chunk-0111:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        217200,
+        217308
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217200,
+          217308
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0111:faction:003",
+      "node_type": "faction",
+      "label": "暗舵",
+      "aliases": [],
+      "fact_summary": "暗舵按月向总舵解送银子，最近上缴银两较往年同期少了四分之一还多，并被称为惊蛟会最大支柱。",
+      "evidence_ids": [
+        "evidence:chunk-0111:004",
+        "evidence:chunk-0111:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        216735,
+        216850
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          216735,
+          216850
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0111:character:002",
+      "node_type": "character",
+      "label": "严氏",
+      "aliases": [],
+      "fact_summary": "韩立确认屋内女人是他要找的严氏；对话显示她是惊蛟会代理当家人，并在处理暗舵和吴姓冒牌货危机。",
+      "evidence_ids": [
+        "evidence:chunk-0111:006",
+        "evidence:chunk-0111:007",
+        "evidence:chunk-0111:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        217654,
+        217714
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217654,
+          217714
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0111:character:003",
+      "node_type": "character",
+      "label": "墨彩环",
+      "aliases": [],
+      "fact_summary": "韩立确认屋内女孩应是墨彩环；她与严氏对话时抱怨暗舵、五娘和吴姓冒牌货。",
+      "evidence_ids": [
+        "evidence:chunk-0111:006",
+        "evidence:chunk-0111:007",
+        "evidence:chunk-0111:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        217654,
+        217714
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217654,
+          217714
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0111:character:004",
+      "node_type": "character",
+      "label": "墨大夫",
+      "aliases": [],
+      "fact_summary": "墨大夫被韩立和墨府母女反复提及；韩立推测墨府有人继承其医术，并确认墨彩环是其与严氏所生。",
+      "evidence_ids": [
+        "evidence:chunk-0111:001",
+        "evidence:chunk-0111:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        217654,
+        217714
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217654,
+          217714
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0111:character:005",
+      "node_type": "character",
+      "label": "五娘",
+      "aliases": [],
+      "fact_summary": "五娘在当前 chunk 中被描述为独自掌管暗舵力量，且暗舵原本由墨大夫交给她。",
+      "evidence_ids": [
+        "evidence:chunk-0111:005",
+        "evidence:chunk-0111:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        217097,
+        217157
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217097,
+          217157
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0111:character:006",
+      "node_type": "character",
+      "label": "姓吴的冒牌货",
+      "aliases": [
+        "那个姓吴的",
+        "冒牌货"
+      ],
+      "fact_summary": "当前 chunk 只明示此人为姓吴的假货，名义上是未来姐夫，并以文武全才姿态接近墨彩环。",
+      "evidence_ids": [
+        "evidence:chunk-0111:008",
+        "evidence:chunk-0111:009",
+        "evidence:chunk-0111:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        217863,
+        217918
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217863,
+          217918
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0111:character:007",
+      "node_type": "character",
+      "label": "大姐",
+      "aliases": [],
+      "fact_summary": "墨彩环和严氏提到大姐被姓吴冒牌货纠缠，并为拖延对方而装作动心。",
+      "evidence_ids": [
+        "evidence:chunk-0111:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        217985,
+        218093
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217985,
+          218093
+        ]
+      }
+    }
+  ],
+  "normalized_edges": [
+    {
+      "id": "edge:chunk-0111:001",
+      "edge_type": "located_in",
+      "source": "node:chunk-0111:facility:001",
+      "target": "node:chunk-0111:faction:001",
+      "fact_summary": "墨府后院花园属于墨府场所范围。",
+      "evidence_ids": [
+        "evidence:chunk-0111:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        216147,
+        216319
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          216147,
+          216319
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0111:002",
+      "edge_type": "located_in",
+      "source": "node:chunk-0111:facility:002",
+      "target": "node:chunk-0111:faction:001",
+      "fact_summary": "二层小楼是墨府内被严密守卫的重要场所。",
+      "evidence_ids": [
+        "evidence:chunk-0111:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        216357,
+        216510
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          216357,
+          216510
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0111:003",
+      "edge_type": "infiltrated",
+      "source": "node:chunk-0111:character:001",
+      "target": "node:chunk-0111:facility:002",
+      "fact_summary": "韩立趁夜避开明岗暗哨，翻入二层小楼。",
+      "evidence_ids": [
+        "evidence:chunk-0111:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        216562,
+        216644
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          216562,
+          216644
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0111:004",
+      "edge_type": "financial_support_for",
+      "source": "node:chunk-0111:faction:003",
+      "target": "node:chunk-0111:faction:002",
+      "fact_summary": "暗舵按月解送银子，并被墨彩环称为惊蛟会最大支柱。",
+      "evidence_ids": [
+        "evidence:chunk-0111:004",
+        "evidence:chunk-0111:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        217200,
+        217308
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217200,
+          217308
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0111:005",
+      "edge_type": "controlled_by",
+      "source": "node:chunk-0111:faction:003",
+      "target": "node:chunk-0111:character:005",
+      "fact_summary": "暗舵力量一向由五娘独自掌管，墨府其他人插不上手。",
+      "evidence_ids": [
+        "evidence:chunk-0111:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        217097,
+        217157
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217097,
+          217157
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0111:006",
+      "edge_type": "acting_head_of",
+      "source": "node:chunk-0111:character:002",
+      "target": "node:chunk-0111:faction:002",
+      "fact_summary": "墨彩环称严氏是惊蛟会代理当家人。",
+      "evidence_ids": [
+        "evidence:chunk-0111:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        217200,
+        217308
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217200,
+          217308
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0111:007",
+      "edge_type": "child_of",
+      "source": "node:chunk-0111:character:003",
+      "target": "node:chunk-0111:character:004",
+      "fact_summary": "韩立判断墨彩环是严氏与墨大夫所生。",
+      "evidence_ids": [
+        "evidence:chunk-0111:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        217654,
+        217714
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217654,
+          217714
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0111:008",
+      "edge_type": "child_of",
+      "source": "node:chunk-0111:character:003",
+      "target": "node:chunk-0111:character:002",
+      "fact_summary": "韩立判断墨彩环是严氏与墨大夫所生。",
+      "evidence_ids": [
+        "evidence:chunk-0111:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        217654,
+        217714
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217654,
+          217714
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0111:009",
+      "edge_type": "nominal_future_in_law",
+      "source": "node:chunk-0111:character:006",
+      "target": "node:chunk-0111:character:007",
+      "fact_summary": "严氏称姓吴之人名义上是墨彩环未来姐夫，大姐正与其虚伪拖延。",
+      "evidence_ids": [
+        "evidence:chunk-0111:009",
+        "evidence:chunk-0111:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        217985,
+        218093
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217985,
+          218093
+        ]
+      }
+    }
+  ],
+  "normalized_events": [
+    {
+      "id": "event:chunk-0111:001",
+      "event_type": "discovery_event",
+      "label": "韩立发现墨府后院草药气味",
+      "fact_summary": "韩立在墨府后院花园分辨出熟悉药草之香，并推测墨府有人继承墨大夫医术。",
+      "participants": [
+        "node:chunk-0111:character:001",
+        "node:chunk-0111:facility:001",
+        "node:chunk-0111:character:004"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0111:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        216147,
+        216319
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          216147,
+          216319
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0111:002",
+      "event_type": "infiltration_event",
+      "label": "韩立夜入二层小楼",
+      "fact_summary": "韩立察觉墨府戒备严密，选择警卫更森严的二层小楼，趁夜避开守卫翻上二楼偷听。",
+      "participants": [
+        "node:chunk-0111:character:001",
+        "node:chunk-0111:faction:001",
+        "node:chunk-0111:facility:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0111:002",
+        "evidence:chunk-0111:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        216357,
+        216510
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          216357,
+          216510
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0111:003",
+      "event_type": "financial_report_event",
+      "label": "暗舵上缴银两减少",
+      "fact_summary": "屋内女子汇报长平镇、落谷镇、蓝月镇等秘舵上月解送银子，指出暗舵银两比往年同期少了四分之一还多。",
+      "participants": [
+        "node:chunk-0111:faction:003",
+        "node:chunk-0111:faction:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0111:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        216735,
+        216850
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          216735,
+          216850
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0111:004",
+      "event_type": "faction_crisis_discussion",
+      "label": "严氏与墨彩环讨论暗舵控制权",
+      "fact_summary": "严氏和墨彩环讨论五娘掌握暗舵、惊蛟会式微、严氏虽为代理当家人却缺乏插手暗舵的理由。",
+      "participants": [
+        "node:chunk-0111:character:002",
+        "node:chunk-0111:character:003",
+        "node:chunk-0111:character:005",
+        "node:chunk-0111:faction:003",
+        "node:chunk-0111:faction:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0111:005",
+        "evidence:chunk-0111:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        217200,
+        217308
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217200,
+          217308
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0111:005",
+      "event_type": "recognition_event",
+      "label": "韩立确认严氏和墨彩环身份",
+      "fact_summary": "韩立听完对话后确认屋内女人是严氏，女孩应是墨大夫与严氏之女墨彩环。",
+      "participants": [
+        "node:chunk-0111:character:001",
+        "node:chunk-0111:character:002",
+        "node:chunk-0111:character:003",
+        "node:chunk-0111:character:004"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0111:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        217654,
+        217714
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217654,
+          217714
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0111:006",
+      "event_type": "deception_delay_event",
+      "label": "墨府以大姐拖延吴姓冒牌货",
+      "fact_summary": "严氏要求墨彩环对姓吴之人客气，说明墨府知道其是假货但为争取时间，只能让大姐与其虚伪拖延，防止敌人强攻。",
+      "participants": [
+        "node:chunk-0111:character:002",
+        "node:chunk-0111:character:003",
+        "node:chunk-0111:character:006",
+        "node:chunk-0111:character:007",
+        "node:chunk-0111:faction:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0111:008",
+        "evidence:chunk-0111:009",
+        "evidence:chunk-0111:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        217985,
+        218093
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217985,
+          218093
+        ]
+      }
+    }
+  ],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0111:001",
+      "chunk_id": "chunk-0111",
+      "source_range": [
+        216147,
+        216319
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          216147,
+          216319
+        ]
+      },
+      "excerpt": "墨府的后院是个不小的花园，里面种了许多罕见的花草，虽然因天色昏暗而看不清，但那浓浓的花香，还是直沁人心肺，让韩立不禁深吸了一口气。\n　　“咦！”韩立突然轻呼了一声，虽然这些花香浓郁扑鼻，但他还是分辨出了熟悉的药草之香。\n　　“有人在这里种植草药。”韩立轻笑了起来，这种熟悉之极的味道，让他对种植之人大感好奇，看来墨府里是有人继承了墨大夫的医术。",
+      "fact_summary": "墨府后院花园种有罕见花草并有草药气味，韩立推测墨府有人继承墨大夫医术。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0111:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0111:002",
+      "chunk_id": "chunk-0111",
+      "source_range": [
+        216357,
+        216510
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          216357,
+          216510
+        ]
+      },
+      "excerpt": "一路之上，韩立发现了数处掩藏很深的暗哨，若不是他识觉过人，还真不易发觉他们。看来墨府的戒备，严密的很。\n　　不过既然被他给识破了，那绕过这些岗哨对他来说，就是轻而易举的事。\n　　韩立在一幢二层的小楼前，停了下来。\n　　之所以会选上此处，他也只是发觉此楼的警卫要比其他地方森严的多，足有二三十人守卫在此附近。",
+      "fact_summary": "韩立发现墨府暗哨和戒备严密，并选择守卫更多的二层小楼作为查探目标。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0111:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0111:003",
+      "chunk_id": "chunk-0111",
+      "source_range": [
+        216562,
+        216644
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          216562,
+          216644
+        ]
+      },
+      "excerpt": "于是，他趁着夜色身形快如闪电，一晃之下，人就飞快的到了楼下，然后双脚一用力，轻巧的翻上了二楼，整个过程一瞬间就完成了，那些四周的明岗暗哨，丝毫未曾注意到韩立的入侵。",
+      "fact_summary": "韩立趁夜快速翻上二楼，明岗暗哨没有注意到他的入侵。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0111:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0111:004",
+      "chunk_id": "chunk-0111",
+      "source_range": [
+        216735,
+        216850
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          216735,
+          216850
+        ]
+      },
+      "excerpt": "“长平镇秘舵，解送来银子七千三百两。”\n　　“落谷镇秘舵，解送银子五千八百两。”\n　　“蓝月镇秘舵，解送银子一万五百两。”\n　　“五领镇……”\n　　……\n　　“这些就是上个月，暗舵们送来的银子，基本上比往年这时少了四分之一还多。”",
+      "fact_summary": "长平镇、落谷镇、蓝月镇等秘舵上月解送银子，暗舵收入较往年同期下降超过四分之一。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0111:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0111:005",
+      "chunk_id": "chunk-0111",
+      "source_range": [
+        217097,
+        217157
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217097,
+          217157
+        ]
+      },
+      "excerpt": "“我如今并没有很好的办法！要知道暗舵的力量，一向是由你五娘独自掌管的！墨府其他人根本插不上手去！”女人无可奈何的回答道。",
+      "fact_summary": "严氏说明暗舵力量一向由五娘独自掌管，墨府其他人难以插手。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0111:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0111:006",
+      "chunk_id": "chunk-0111",
+      "source_range": [
+        217200,
+        217308
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217200,
+          217308
+        ]
+      },
+      "excerpt": "“娘，难道真的让五娘一直霸占那些暗舵的力量吗？要知道，自从前几年马叔他们闹分立，再加上其他势力的打压后，暗舵的力量就已经成了我们惊蛟会最大的支柱了。娘你既然是惊蛟会的代理当家人，那这股最大的力量当然也应由你控制啊！”",
+      "fact_summary": "墨彩环认为五娘长期掌握暗舵不妥，并说明暗舵已是惊蛟会最大支柱，严氏是惊蛟会代理当家人。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0111:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0111:007",
+      "chunk_id": "chunk-0111",
+      "source_range": [
+        217654,
+        217714
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217654,
+          217714
+        ]
+      },
+      "excerpt": "韩立这时已经肯定，屋内的女人就是他要找的严氏，女孩则应是其与墨大夫所生的墨彩环，看来他真的很幸运，竟然一下就找对了地方。",
+      "fact_summary": "韩立确认屋内女人是严氏，女孩应是严氏与墨大夫所生的墨彩环。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0111:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0111:008",
+      "chunk_id": "chunk-0111",
+      "source_range": [
+        217755,
+        217817
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217755,
+          217817
+        ]
+      },
+      "excerpt": "“娘，那个冒牌货真讨厌！今天在后花园碰到我，竟然对我大献殷勤，极力卖弄他那几分文采，一副自认为文武全才的样子，真让人讨厌！”",
+      "fact_summary": "墨彩环抱怨某个冒牌货在后花园向她献殷勤并卖弄文采。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0111:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0111:009",
+      "chunk_id": "chunk-0111",
+      "source_range": [
+        217863,
+        217918
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217863,
+          217918
+        ]
+      },
+      "excerpt": "“你对那个姓吴的客气点，毕竟他现在名义上是你未来姐夫，别让他看出破绽来！”严氏闻言郑重了起来，有些严厉的说道。",
+      "fact_summary": "严氏要求墨彩环对姓吴之人客气，因为其名义上是未来姐夫，不能让他看出破绽。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0111:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0111:010",
+      "chunk_id": "chunk-0111",
+      "source_range": [
+        217985,
+        218093
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0111",
+        "source_path": "intermediate/chunks/chunk-0111.txt",
+        "source_range": [
+          217985,
+          218093
+        ]
+      },
+      "excerpt": "“这也是没办法的事，虽然我们知道姓吴的是个假货，并且也已查明了他底细，但为了多争取些时间，也只有牺牲你大姐的名誉，和此人虚伪拖延了。毕竟敌人声势太大，如果知道不能巧取我们的话，恐怕会立即发动强攻，我们决没有胜算啊！”",
+      "fact_summary": "严氏说明墨府已知姓吴之人是假货且查明底细，但因敌人声势太大，只能让大姐与其虚伪拖延以争取时间。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0111:010"
+    }
+  ]
+}

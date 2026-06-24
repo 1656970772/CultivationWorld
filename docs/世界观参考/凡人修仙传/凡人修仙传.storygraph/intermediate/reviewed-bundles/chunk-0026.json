@@ -1,0 +1,4789 @@
+{
+  "chunk_id": "chunk-0026",
+  "source_range": [
+    47404,
+    49623
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "task_packet_id": "chunk-0026:comprehensive_extraction:attempt-001",
+      "chunk_id": "chunk-0026",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "produced_at": "2026-06-23T00:00:00+08:00",
+      "extracted_nodes": [
+        {
+          "id": "node:chunk-0026:character:001",
+          "node_type": "character",
+          "label": "韩立",
+          "aliases": [],
+          "fact_summary": "韩立躲开兔子爆炸，给厉飞雨送秘药，清理试验现场并决定继续观察被稀释绿液打湿的药草，随后练功求突破但失败。",
+          "evidence_ids": [
+            "evidence:chunk-0026:001",
+            "evidence:chunk-0026:003",
+            "evidence:chunk-0026:005",
+            "evidence:chunk-0026:007",
+            "evidence:chunk-0026:011",
+            "evidence:chunk-0026:013",
+            "evidence:chunk-0026:016",
+            "evidence:chunk-0026:017"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            47414,
+            49620
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              47414,
+              49620
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0026:beast:001",
+          "node_type": "beast",
+          "label": "兔子",
+          "aliases": [
+            "两只兔子",
+            "灰毛野兔"
+          ],
+          "fact_summary": "两只兔子在本 chunk 继续膨胀并几乎同时爆炸，躯体被撑破、血肉横飞。",
+          "evidence_ids": [
+            "evidence:chunk-0026:001",
+            "evidence:chunk-0026:002",
+            "evidence:chunk-0026:003",
+            "evidence:chunk-0026:011"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            47414,
+            48992
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              47414,
+              48992
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0026:medicine:001",
+          "node_type": "medicine",
+          "label": "绿液",
+          "aliases": [
+            "稀释了的清水"
+          ],
+          "fact_summary": "绿液在试验结果中被韩立视作恐怖毒药；其稀释清水洒入药地后，韩立怀疑会让药草变毒。",
+          "evidence_ids": [
+            "evidence:chunk-0026:004",
+            "evidence:chunk-0026:012",
+            "evidence:chunk-0026:013"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            47804,
+            49292
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              47804,
+              49292
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0026:facility:001",
+          "node_type": "facility",
+          "label": "药园",
+          "aliases": [
+            "药田",
+            "药地"
+          ],
+          "fact_summary": "药园/药田是韩立处理兔子爆炸残骸和观察被稀释清水打湿药草的场所。",
+          "evidence_ids": [
+            "evidence:chunk-0026:001",
+            "evidence:chunk-0026:011",
+            "evidence:chunk-0026:012"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            47414,
+            49218
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              47414,
+              49218
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0026:material:001",
+          "node_type": "material",
+          "label": "被稀释清水打湿的几株药草",
+          "aliases": [
+            "药草",
+            "毒草"
+          ],
+          "fact_summary": "几株药草被稀释绿液清水打湿；韩立怀疑它们可能变毒，并决定观察几天再清除。",
+          "evidence_ids": [
+            "evidence:chunk-0026:012",
+            "evidence:chunk-0026:013"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            49058,
+            49292
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49058,
+              49292
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0026:character:002",
+          "node_type": "character",
+          "label": "厉飞雨",
+          "aliases": [
+            "厉师兄"
+          ],
+          "fact_summary": "厉飞雨在神手谷谷口焦急等待秘药，收到药包后欣喜感谢，并承认欠下韩立一份人情。",
+          "evidence_ids": [
+            "evidence:chunk-0026:005",
+            "evidence:chunk-0026:006",
+            "evidence:chunk-0026:007",
+            "evidence:chunk-0026:008",
+            "evidence:chunk-0026:009",
+            "evidence:chunk-0026:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            47982,
+            48903
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              47982,
+              48903
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0026:medicine:002",
+          "node_type": "medicine",
+          "label": "秘药",
+          "aliases": [
+            "药包",
+            "药粉",
+            "药物"
+          ],
+          "fact_summary": "韩立配好并交给厉飞雨的一年份秘药，每次吃抽髓丸前用凉开水冲服一勺药粉，可用于减轻痛苦但效果仍待实际验证。",
+          "evidence_ids": [
+            "evidence:chunk-0026:005",
+            "evidence:chunk-0026:007",
+            "evidence:chunk-0026:009",
+            "evidence:chunk-0026:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            47982,
+            48903
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              47982,
+              48903
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0026:pill:001",
+          "node_type": "pill",
+          "label": "抽髓丸",
+          "aliases": [],
+          "fact_summary": "抽髓丸在当前 chunk 被明确称为服用时痛苦极大；韩立交付的药粉需在每次吃抽髓丸前冲服以减轻痛苦。",
+          "evidence_ids": [
+            "evidence:chunk-0026:007",
+            "evidence:chunk-0026:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            48483,
+            48654
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48483,
+              48654
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0026:weapon:001",
+          "node_type": "weapon",
+          "label": "长刀",
+          "aliases": [],
+          "fact_summary": "厉飞雨在谷口等待时背着一把给韩立留下深刻印象的长刀；当前未说明品级、名称或用途。",
+          "evidence_ids": [
+            "evidence:chunk-0026:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "武器分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            48137,
+            48214
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48137,
+              48214
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0026:location:001",
+          "node_type": "location",
+          "label": "神手谷",
+          "aliases": [],
+          "fact_summary": "韩立带药物前往神手谷谷口与厉飞雨会面，之后返回谷内处理药园现场。",
+          "evidence_ids": [
+            "evidence:chunk-0026:005",
+            "evidence:chunk-0026:011"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            48032,
+            48992
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48032,
+              48992
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0026:location:002",
+          "node_type": "location",
+          "label": "神手谷谷口",
+          "aliases": [
+            "谷口",
+            "山谷出口处"
+          ],
+          "fact_summary": "神手谷谷口是韩立与厉飞雨午时交付秘药的会面地点。",
+          "evidence_ids": [
+            "evidence:chunk-0026:005",
+            "evidence:chunk-0026:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            48032,
+            48214
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48032,
+              48214
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0026:facility:002",
+          "node_type": "facility",
+          "label": "石室",
+          "aliases": [],
+          "fact_summary": "韩立处理完药草观察决定后去石室练功，希望在功力大进基础上突破。",
+          "evidence_ids": [
+            "evidence:chunk-0026:014"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            49293,
+            49348
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49293,
+              49348
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0026:cultivation_method:001",
+          "node_type": "cultivation_method",
+          "label": "口诀",
+          "aliases": [],
+          "fact_summary": "韩立修炼的口诀已成为本能反应和生活目标，但当前 chunk 未说明其正式名称或具体用途。",
+          "evidence_ids": [
+            "evidence:chunk-0026:014",
+            "evidence:chunk-0026:015",
+            "evidence:chunk-0026:016",
+            "evidence:chunk-0026:017"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            49293,
+            49620
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49293,
+              49620
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0026:realm:001",
+          "node_type": "realm",
+          "label": "口诀第三层",
+          "aliases": [],
+          "fact_summary": "韩立判断若不借助药物外力，自己可能永远停留在第三层。",
+          "evidence_ids": [
+            "evidence:chunk-0026:017"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            49527,
+            49572
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49527,
+              49572
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0026:realm:002",
+          "node_type": "realm",
+          "label": "口诀第四层",
+          "aliases": [],
+          "fact_summary": "韩立感觉距离第四层只差一点，但一下午苦练仍未突破。",
+          "evidence_ids": [
+            "evidence:chunk-0026:016"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            49443,
+            49526
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49443,
+              49526
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0026:character:003",
+          "node_type": "character",
+          "label": "墨大夫",
+          "aliases": [],
+          "fact_summary": "韩立期盼墨大夫早些回来，并希望他找到足够药材来帮助自己突破当前困境。",
+          "evidence_ids": [
+            "evidence:chunk-0026:017"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            49573,
+            49620
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49573,
+              49620
+            ]
+          }
+        }
+      ],
+      "extracted_edges": [
+        {
+          "id": "edge:chunk-0026:001",
+          "edge_type": "avoids_harm_from",
+          "source": "node:chunk-0026:character:001",
+          "target": "node:chunk-0026:beast:001",
+          "fact_summary": "韩立及时丢开瓷碗并跑远，避免被兔子爆炸波及。",
+          "evidence_ids": [
+            "evidence:chunk-0026:001",
+            "evidence:chunk-0026:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            47414,
+            47737
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              47414,
+              47737
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0026:002",
+          "edge_type": "causes_death",
+          "source": "node:chunk-0026:medicine:001",
+          "target": "node:chunk-0026:beast:001",
+          "fact_summary": "绿液试验最终导致两只兔子膨胀爆炸而死，韩立因结果将其视作恐怖毒药。",
+          "evidence_ids": [
+            "evidence:chunk-0026:002",
+            "evidence:chunk-0026:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            47518,
+            47938
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              47518,
+              47938
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0026:003",
+          "edge_type": "gives_medicine_to",
+          "source": "node:chunk-0026:character:001",
+          "target": "node:chunk-0026:character:002",
+          "fact_summary": "韩立把装有秘药的药包交给厉飞雨，并说明服用方法。",
+          "evidence_ids": [
+            "evidence:chunk-0026:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            48431,
+            48523
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48431,
+              48523
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0026:004",
+          "edge_type": "mitigates_pain_of",
+          "source": "node:chunk-0026:medicine:002",
+          "target": "node:chunk-0026:pill:001",
+          "fact_summary": "秘药被韩立说明为每次吃抽髓丸前冲服一勺，可减轻服丸痛苦。",
+          "evidence_ids": [
+            "evidence:chunk-0026:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            48483,
+            48523
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48483,
+              48523
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0026:005",
+          "edge_type": "owes_favor_to",
+          "source": "node:chunk-0026:character:002",
+          "target": "node:chunk-0026:character:001",
+          "fact_summary": "厉飞雨收到秘药后表示心领韩立心意，并欠下韩立一份大人情。",
+          "evidence_ids": [
+            "evidence:chunk-0026:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            48655,
+            48829
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48655,
+              48829
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0026:006",
+          "edge_type": "contaminates_uncertainly",
+          "source": "node:chunk-0026:medicine:001",
+          "target": "node:chunk-0026:material:001",
+          "fact_summary": "稀释绿液清水洒在药地并打湿几株药草，韩立担心药草可能变毒。",
+          "evidence_ids": [
+            "evidence:chunk-0026:012",
+            "evidence:chunk-0026:013"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            49058,
+            49292
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49058,
+              49292
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0026:007",
+          "edge_type": "practices",
+          "source": "node:chunk-0026:character:001",
+          "target": "node:chunk-0026:cultivation_method:001",
+          "fact_summary": "韩立去石室修炼口诀，希望突破更高层次，但一下午苦练没有寸进。",
+          "evidence_ids": [
+            "evidence:chunk-0026:014",
+            "evidence:chunk-0026:015",
+            "evidence:chunk-0026:016"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            49293,
+            49526
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49293,
+              49526
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0026:008",
+          "edge_type": "stuck_at_stage",
+          "source": "node:chunk-0026:character:001",
+          "target": "node:chunk-0026:realm:001",
+          "fact_summary": "韩立认为自己若不借助药物外力，可能永远停留在第三层。",
+          "evidence_ids": [
+            "evidence:chunk-0026:017"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            49527,
+            49572
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49527,
+              49572
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0026:009",
+          "edge_type": "seeks_breakthrough_to",
+          "source": "node:chunk-0026:character:001",
+          "target": "node:chunk-0026:realm:002",
+          "fact_summary": "韩立感觉距离第四层很近，但当前苦练仍无法突破。",
+          "evidence_ids": [
+            "evidence:chunk-0026:016"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            49443,
+            49526
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49443,
+              49526
+            ]
+          }
+        }
+      ],
+      "extracted_events": [
+        {
+          "id": "event:chunk-0026:001",
+          "event_type": "escape_event",
+          "label": "韩立躲开兔子爆炸",
+          "fact_summary": "韩立发现兔子继续膨胀后丢开瓷碗跑远，随后两只兔子爆炸，他避免被波及。",
+          "participants": [
+            "node:chunk-0026:character:001",
+            "node:chunk-0026:beast:001",
+            "node:chunk-0026:medicine:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0026:001",
+            "evidence:chunk-0026:002",
+            "evidence:chunk-0026:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            47414,
+            47737
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              47414,
+              47737
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0026:002",
+          "event_type": "medicine_effect_event",
+          "label": "绿液试验造成兔子爆裂死亡",
+          "fact_summary": "两只兔子在绿液试验后被撑破躯体，现场血肉横飞，韩立将绿液视为恐怖毒药。",
+          "participants": [
+            "node:chunk-0026:medicine:001",
+            "node:chunk-0026:beast:001",
+            "node:chunk-0026:character:001",
+            "node:chunk-0026:facility:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0026:002",
+            "evidence:chunk-0026:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            47518,
+            47938
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              47518,
+              47938
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0026:003",
+          "event_type": "medicine_delivery_event",
+          "label": "韩立向厉飞雨交付秘药",
+          "fact_summary": "韩立午时到神手谷谷口，将药包交给焦急等待的厉飞雨，并说明抽髓丸前冲服药粉可减轻痛苦。",
+          "participants": [
+            "node:chunk-0026:character:001",
+            "node:chunk-0026:character:002",
+            "node:chunk-0026:medicine:002",
+            "node:chunk-0026:pill:001",
+            "node:chunk-0026:location:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0026:005",
+            "evidence:chunk-0026:006",
+            "evidence:chunk-0026:007",
+            "evidence:chunk-0026:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            47982,
+            48654
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              47982,
+              48654
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0026:004",
+          "event_type": "relationship_change_event",
+          "label": "厉飞雨欠韩立人情",
+          "fact_summary": "韩立说明秘药只有一年份且药材用光；厉飞雨仍表示心领并欠下韩立一份大人情。",
+          "participants": [
+            "node:chunk-0026:character:001",
+            "node:chunk-0026:character:002",
+            "node:chunk-0026:medicine:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0026:009",
+            "evidence:chunk-0026:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            48655,
+            48903
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48655,
+              48903
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0026:005",
+          "event_type": "cleanup_event",
+          "label": "韩立清理药园爆炸现场",
+          "fact_summary": "韩立返回谷内后把兔子残骸、沾血泥土和碎碗扫入坑内，再把土坑推平。",
+          "participants": [
+            "node:chunk-0026:character:001",
+            "node:chunk-0026:beast:001",
+            "node:chunk-0026:facility:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0026:011"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            48904,
+            48992
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48904,
+              48992
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0026:006",
+          "event_type": "secondary_experiment_decision",
+          "label": "韩立决定观察被打湿药草",
+          "fact_summary": "韩立担心稀释绿液清水会让药草变毒，但决定先观察几天，把它当作又一次小试验。",
+          "participants": [
+            "node:chunk-0026:character:001",
+            "node:chunk-0026:medicine:001",
+            "node:chunk-0026:material:001",
+            "node:chunk-0026:facility:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0026:012",
+            "evidence:chunk-0026:013"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            49058,
+            49292
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49058,
+              49292
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0026:007",
+          "event_type": "training_failure_event",
+          "label": "韩立苦练仍未突破第四层",
+          "fact_summary": "韩立去石室修炼口诀，一下午专心苦练后仍无寸进，判断需要借助药物外力突破第三层困境。",
+          "participants": [
+            "node:chunk-0026:character:001",
+            "node:chunk-0026:cultivation_method:001",
+            "node:chunk-0026:realm:001",
+            "node:chunk-0026:realm:002",
+            "node:chunk-0026:facility:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0026:014",
+            "evidence:chunk-0026:015",
+            "evidence:chunk-0026:016",
+            "evidence:chunk-0026:017"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            49293,
+            49620
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49293,
+              49620
+            ]
+          }
+        }
+      ],
+      "extracted_evidence": [
+        {
+          "evidence_id": "evidence:chunk-0026:001",
+          "chunk_id": "chunk-0026",
+          "excerpt": "　　看着眼前的兔子还在不断的变大、继续膨胀着，韩立意识到了一丝不对劲，猛然间想起了什么，他突然把手里已被视为蛇蝎一样的瓷碗扔到了一边的药田地里，又转身撒腿跑了起来，一直跑到离兔子十几丈远的地方才停住了脚步。",
+          "fact_summary": "韩立看到兔子继续膨胀后意识到不对，把瓷碗扔到药田并跑到十几丈外。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            47414,
+            47517
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              47414,
+              47517
+            ]
+          },
+          "id": "evidence:chunk-0026:001"
+        },
+        {
+          "evidence_id": "evidence:chunk-0026:002",
+          "chunk_id": "chunk-0026",
+          "excerpt": "　　就在他想回头看去的时候，一前一后两声几乎同时响起的爆炸声传了过来，韩立激灵得打了个冷战，回过头一看，果然两只兔子分别已被撑破了躯体，被炸成了好几截，血肉横飞的散落在了地上。原本拴兔子的地方出现了两个坑，坑的周围到处是兔子散乱的残骸，鲜血和肉块洒满了一地，可说是惨不忍睹了。",
+          "fact_summary": "两只兔子几乎同时爆炸，被撑破躯体并血肉横飞，原地出现两个坑。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            47518,
+            47656
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              47518,
+              47656
+            ]
+          },
+          "id": "evidence:chunk-0026:002"
+        },
+        {
+          "evidence_id": "evidence:chunk-0026:003",
+          "chunk_id": "chunk-0026",
+          "excerpt": "　　韩立长出了一口气，一屁股坐在了地上，这次要不是他反应的够快，恐怕就要被兔子的爆炸波及到，虽说不一定会受到重伤，但被淋得一身的兔血和肉渣也不是一件舒服的事情。",
+          "fact_summary": "韩立因反应够快避免被兔子爆炸波及，随后坐在地上缓神。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            47657,
+            47737
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              47657,
+              47737
+            ]
+          },
+          "id": "evidence:chunk-0026:003"
+        },
+        {
+          "evidence_id": "evidence:chunk-0026:004",
+          "chunk_id": "chunk-0026",
+          "excerpt": "　　韩立本以为能从绿液中发现什么灵丹妙药，却没想到是这么一个恐怖的东西，毒药就毒药吧，却让兔子死得这么的悲惨！他现在说什么也不会碰这玩意了。太吓人了！韩立不是没有接触过致命的毒药，在墨大夫这几年的教导下，他见识过许许多多见血封喉的毒物，却没有一样能让人死得这么恐怖的。",
+          "fact_summary": "韩立认为绿液不是灵丹妙药而是恐怖毒药，且比他见过的见血封喉毒物更吓人。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            47804,
+            47938
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              47804,
+              47938
+            ]
+          },
+          "id": "evidence:chunk-0026:004"
+        },
+        {
+          "evidence_id": "evidence:chunk-0026:005",
+          "chunk_id": "chunk-0026",
+          "excerpt": "　　因为午时就要到了，他要把配好的秘药给厉师兄送过去。这里的一切后事，还是等他把药送完后再处理吧。\n　　抱着这种想法，韩立没在爆炸现场再多看一眼，把所有的麻烦都留到了以后，自己回到住处，休息了一下，就带着药物去神手谷的谷口了。",
+          "fact_summary": "韩立想到午时要把配好的秘药送给厉师兄，于是回住处休息后带药物去神手谷谷口。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            47982,
+            48095
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              47982,
+              48095
+            ]
+          },
+          "id": "evidence:chunk-0026:005"
+        },
+        {
+          "evidence_id": "evidence:chunk-0026:006",
+          "chunk_id": "chunk-0026",
+          "excerpt": "　　韩立很守时，到谷口的时候正好是午时时分，厉飞雨看起来却早已焦急的等在了那里。\n　　只有他独自一人待在山谷出口处，身上换了一件白色锦袍，背上却仍带着那把给韩立留下深刻印象的长刀。韩立到的时候，他正面带一丝急色，焦急的往山谷方向眺望着。\n　　等看到了韩立的到来，才收起了焦急的神情，嘴角微微翘了起来，脸上露出了笑容。",
+          "fact_summary": "韩立午时到谷口，厉飞雨早已焦急等待，并带着一把给韩立留下深刻印象的长刀。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "武器分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            48096,
+            48254
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48096,
+              48254
+            ]
+          },
+          "id": "evidence:chunk-0026:006"
+        },
+        {
+          "evidence_id": "evidence:chunk-0026:007",
+          "chunk_id": "chunk-0026",
+          "excerpt": "　　韩立没有回答厉师兄的提问，从容的一笑，从怀里慢慢的拿出一个巴掌大的药包来，一甩手把药扔给了厉飞雨。\n　　“每次吃抽髓丸前，先用凉开水冲服药包内的一勺药粉，就可以减轻你所受的痛苦。”",
+          "fact_summary": "韩立从怀里取出药包扔给厉飞雨，并说明每次吃抽髓丸前用凉开水冲服一勺药粉可减轻痛苦。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            48431,
+            48523
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48431,
+              48523
+            ]
+          },
+          "id": "evidence:chunk-0026:007"
+        },
+        {
+          "evidence_id": "evidence:chunk-0026:008",
+          "chunk_id": "chunk-0026",
+          "excerpt": "　　“谢谢韩师弟！谢谢韩师弟！”厉师兄欣喜若狂，只要能稍微减轻那么一点点的痛苦，对他来说都是莫大的福音，服用抽髓丸时的痛苦实在是让他不寒而栗。他以前也吃过许多的止痛药，但都没有什么作用，这位韩师弟既然知道抽髓丸的一切特征并也服用过，那说不定他这药还真的起作用。",
+          "fact_summary": "厉飞雨欣喜感谢，因为服用抽髓丸时痛苦极大；他相信韩立既知抽髓丸特征又服用过，药可能有效。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            48524,
+            48654
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48524,
+              48654
+            ]
+          },
+          "id": "evidence:chunk-0026:008"
+        },
+        {
+          "evidence_id": "evidence:chunk-0026:009",
+          "chunk_id": "chunk-0026",
+          "excerpt": "　　“你先别慌忙谢我，等这药真的有效再谢我也不迟。另外这只是一年份的药，我现在手头的药材都用光了，等我凑够了药材，再帮你多配几份。”韩立直言不讳的说。\n　　“没事的，这不是有一年份的用量吗，暂时足够用了。不管这药有没有效，韩师弟这份心意，我厉飞雨是心领了。”厉师兄拿到了想要的东西，神色又恢复了正常，也不再做作，很干脆的表示又欠下了韩立一份大人情。",
+          "fact_summary": "韩立说明秘药只有一年份且药材用光；厉飞雨表示暂时足够并欠下韩立一份大人情。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            48655,
+            48829
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48655,
+              48829
+            ]
+          },
+          "id": "evidence:chunk-0026:009"
+        },
+        {
+          "evidence_id": "evidence:chunk-0026:010",
+          "chunk_id": "chunk-0026",
+          "excerpt": "　　厉飞雨手中拿着秘药也想赶紧回去，去试试药的功效如何，也没再挽留韩立，两人互相辞别分手了。",
+          "fact_summary": "厉飞雨拿着秘药急于回去试药效，与韩立互相辞别。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            48857,
+            48903
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48857,
+              48903
+            ]
+          },
+          "id": "evidence:chunk-0026:010"
+        },
+        {
+          "evidence_id": "evidence:chunk-0026:011",
+          "chunk_id": "chunk-0026",
+          "excerpt": "　　返回谷内后，韩立先去药园里收拾了一番。把兔子的残骸、沾血的泥土，碎碗等统统的扫到了坑内，再把无端冒出来的两个土坑用泥土给推平，这样看起来这片地方就和做试验之前没什么两样了。",
+          "fact_summary": "韩立返回谷内后清理药园，把兔子残骸、沾血泥土和碎碗扫入坑内并推平土坑。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            48904,
+            48992
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48904,
+              48992
+            ]
+          },
+          "id": "evidence:chunk-0026:011"
+        },
+        {
+          "evidence_id": "evidence:chunk-0026:012",
+          "chunk_id": "chunk-0026",
+          "excerpt": "　　他记得很清楚，他把碗扔掉的时候，碗中稀释了的清水全都洒落在那一小块药地上，打湿了那里的几株药草，这让他不禁有些犹豫，不知道这些药草吸收了这些清水后是否也会变得有毒？而人如果再吃了这些有毒的药草是否也会出现和兔子一样的结局？自己是不是应该现在就把这些毒草给清除掉？这一连串的问题就这样在韩立的脑海里突如其来的冒了出来。",
+          "fact_summary": "韩立想到稀释清水曾洒在药地并打湿几株药草，担心药草可能变毒且食用者也会像兔子一样。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            49058,
+            49218
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49058,
+              49218
+            ]
+          },
+          "id": "evidence:chunk-0026:012"
+        },
+        {
+          "evidence_id": "evidence:chunk-0026:013",
+          "chunk_id": "chunk-0026",
+          "excerpt": "　　韩立思量了半天，还是决定等等再说，再观察它们一段时间，只当又做了一次小小的试验。如果在这几天内药草真变得有毒的话，自己再把它们给清除掉也不迟。",
+          "fact_summary": "韩立决定暂时观察这些药草几天，把它当作又一次小试验；若真变毒再清除。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            49219,
+            49292
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49219,
+              49292
+            ]
+          },
+          "id": "evidence:chunk-0026:013"
+        },
+        {
+          "evidence_id": "evidence:chunk-0026:014",
+          "chunk_id": "chunk-0026",
+          "excerpt": "　　拿定了主意后，他看看没有什么事情可以去做，就又去石室练功去了，他希望自己能够在功力大进的基础上再有所突破。",
+          "fact_summary": "韩立拿定主意后去石室练功，希望在功力大进基础上继续突破。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            49293,
+            49348
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49293,
+              49348
+            ]
+          },
+          "id": "evidence:chunk-0026:014"
+        },
+        {
+          "evidence_id": "evidence:chunk-0026:015",
+          "chunk_id": "chunk-0026",
+          "excerpt": "　　韩立现在早就不再管这口诀的具体用处了，他修炼这口诀已成了他的一种本能反应，如若不去修炼它，韩立都不知道自己待在山上要去做些什么，追求这口诀更高一层次的修炼，成了他目前生活的全部目标。",
+          "fact_summary": "韩立已不管口诀具体用处，修炼口诀成为本能反应，追求更高层次成了目前生活目标。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            49349,
+            49442
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49349,
+              49442
+            ]
+          },
+          "id": "evidence:chunk-0026:015"
+        },
+        {
+          "evidence_id": "evidence:chunk-0026:016",
+          "chunk_id": "chunk-0026",
+          "excerpt": "　　经过一个下午的专心修炼，韩立沮丧的发现，自己真的不是一个天才。虽然他自己也感觉到距离第四层只差那么一个手指就能够捅破掉，可仍未有丝毫的寸进，白白做了一下午的苦练。",
+          "fact_summary": "韩立一下午苦练后仍未突破，虽感觉距离第四层很近，却没有丝毫寸进。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            49443,
+            49526
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49443,
+              49526
+            ]
+          },
+          "id": "evidence:chunk-0026:016"
+        },
+        {
+          "evidence_id": "evidence:chunk-0026:017",
+          "chunk_id": "chunk-0026",
+          "excerpt": "　　看来自己不借助药物的外力是不行了，否则自己永远都有可能呆在第三层上面，无法再前进一步。\n　　韩立心里开始期盼着墨大夫能够早些回来，并能幸运的找到足够多的药材，来帮自己突破目前的困境。",
+          "fact_summary": "韩立判断不借助药物外力可能永远停在第三层，并期盼墨大夫带回足够药材帮他突破。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            49527,
+            49620
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49527,
+              49620
+            ]
+          },
+          "id": "evidence:chunk-0026:017"
+        }
+      ],
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_range": [
+            47414,
+            47737
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              47414,
+              47737
+            ]
+          }
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_range": [
+            47518,
+            47938
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              47518,
+              47938
+            ]
+          }
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "source_range": [
+            48431,
+            48654
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48431,
+              48654
+            ]
+          }
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "source_range": [
+            47804,
+            49292
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              47804,
+              49292
+            ]
+          }
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "source_range": [
+            49058,
+            49292
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49058,
+              49292
+            ]
+          }
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_range": [
+            48431,
+            48829
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48431,
+              48829
+            ]
+          }
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_range": [
+            49293,
+            49620
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49293,
+              49620
+            ]
+          }
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_range": [
+            49293,
+            49620
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49293,
+              49620
+            ]
+          }
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_range": [
+            48032,
+            49218
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48032,
+              49218
+            ]
+          }
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_range": [
+            48655,
+            48829
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48655,
+              48829
+            ]
+          }
+        }
+      ],
+      "uncertainties": [
+        {
+          "id": "uncertainty:chunk-0026:001",
+          "kind": "green_liquid_classification_unknown",
+          "fact_summary": "当前 chunk 明确绿液会导致兔子爆裂并可能污染药草，但其正式名称、来源、机制、是否属于丹药或材料仍未说明。",
+          "evidence_ids": [
+            "evidence:chunk-0026:004",
+            "evidence:chunk-0026:012",
+            "evidence:chunk-0026:013"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            47804,
+            49292
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              47804,
+              49292
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0026:002",
+          "kind": "medicine_effect_unverified",
+          "fact_summary": "韩立说明秘药可减轻抽髓丸痛苦，厉飞雨也只是推测可能有效；当前 chunk 尚未实际验证药效。",
+          "evidence_ids": [
+            "evidence:chunk-0026:007",
+            "evidence:chunk-0026:008",
+            "evidence:chunk-0026:010"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            48483,
+            48903
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48483,
+              48903
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0026:003",
+          "kind": "herb_toxicity_unverified",
+          "fact_summary": "被稀释清水打湿的药草是否会变毒、食用者是否会像兔子一样爆裂，当前只是韩立疑问和观察计划。",
+          "evidence_ids": [
+            "evidence:chunk-0026:012",
+            "evidence:chunk-0026:013"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            49058,
+            49292
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49058,
+              49292
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0026:004",
+          "kind": "method_name_missing",
+          "fact_summary": "韩立修炼的口诀在当前 chunk 未明示正式名称或具体用途；不回填前后文名称。",
+          "evidence_ids": [
+            "evidence:chunk-0026:015",
+            "evidence:chunk-0026:016"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            49349,
+            49526
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              49349,
+              49526
+            ]
+          }
+        }
+      ],
+      "rejected_candidates": [
+        {
+          "id": "rejected:chunk-0026:001",
+          "candidate": "瓷碗",
+          "reason": "瓷碗只是盛放和洒落稀释绿液的普通容器，虽参与现场但无名称、独立能力或长期归属，不建物品节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            47414,
+            47517
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              47414,
+              47517
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0026:002",
+          "candidate": "凉开水",
+          "reason": "凉开水只是秘药冲服方式中的普通辅料，不是具名丹药、材料或关键资源节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            48483,
+            48523
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48483,
+              48523
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0026:003",
+          "candidate": "药材",
+          "reason": "药材仅作为韩立配药已用光和希望墨大夫补足的泛指资源出现，当前未给出名称、来源或品类，不硬造节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            48655,
+            49620
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48655,
+              49620
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0026:004",
+          "candidate": "止痛药",
+          "reason": "止痛药只是厉飞雨过去服用过但无效的泛指药物，没有名称、来源或当前流转，不建具名节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            48524,
+            48654
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0026",
+            "source_path": "intermediate/chunks/chunk-0026.txt",
+            "source_range": [
+              48524,
+              48654
+            ]
+          }
+        }
+      ],
+      "structured_failures": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0026/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "id": "node:chunk-0026:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立躲开兔子爆炸，给厉飞雨送秘药，清理试验现场并决定继续观察被稀释绿液打湿的药草，随后练功求突破但失败。",
+      "evidence_ids": [
+        "evidence:chunk-0026:001",
+        "evidence:chunk-0026:003",
+        "evidence:chunk-0026:005",
+        "evidence:chunk-0026:007",
+        "evidence:chunk-0026:011",
+        "evidence:chunk-0026:013",
+        "evidence:chunk-0026:016",
+        "evidence:chunk-0026:017"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        47414,
+        49620
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          47414,
+          49620
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0026:beast:001",
+      "node_type": "beast",
+      "label": "兔子",
+      "aliases": [
+        "两只兔子",
+        "灰毛野兔"
+      ],
+      "fact_summary": "两只兔子在本 chunk 继续膨胀并几乎同时爆炸，躯体被撑破、血肉横飞。",
+      "evidence_ids": [
+        "evidence:chunk-0026:001",
+        "evidence:chunk-0026:002",
+        "evidence:chunk-0026:003",
+        "evidence:chunk-0026:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        47414,
+        48992
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          47414,
+          48992
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0026:medicine:001",
+      "node_type": "medicine",
+      "label": "绿液",
+      "aliases": [
+        "稀释了的清水"
+      ],
+      "fact_summary": "绿液在试验结果中被韩立视作恐怖毒药；其稀释清水洒入药地后，韩立怀疑会让药草变毒。",
+      "evidence_ids": [
+        "evidence:chunk-0026:004",
+        "evidence:chunk-0026:012",
+        "evidence:chunk-0026:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        47804,
+        49292
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          47804,
+          49292
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0026:facility:001",
+      "node_type": "facility",
+      "label": "药园",
+      "aliases": [
+        "药田",
+        "药地"
+      ],
+      "fact_summary": "药园/药田是韩立处理兔子爆炸残骸和观察被稀释清水打湿药草的场所。",
+      "evidence_ids": [
+        "evidence:chunk-0026:001",
+        "evidence:chunk-0026:011",
+        "evidence:chunk-0026:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        47414,
+        49218
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          47414,
+          49218
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0026:material:001",
+      "node_type": "material",
+      "label": "被稀释清水打湿的几株药草",
+      "aliases": [
+        "药草",
+        "毒草"
+      ],
+      "fact_summary": "几株药草被稀释绿液清水打湿；韩立怀疑它们可能变毒，并决定观察几天再清除。",
+      "evidence_ids": [
+        "evidence:chunk-0026:012",
+        "evidence:chunk-0026:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        49058,
+        49292
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          49058,
+          49292
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0026:character:002",
+      "node_type": "character",
+      "label": "厉飞雨",
+      "aliases": [
+        "厉师兄"
+      ],
+      "fact_summary": "厉飞雨在神手谷谷口焦急等待秘药，收到药包后欣喜感谢，并承认欠下韩立一份人情。",
+      "evidence_ids": [
+        "evidence:chunk-0026:005",
+        "evidence:chunk-0026:006",
+        "evidence:chunk-0026:007",
+        "evidence:chunk-0026:008",
+        "evidence:chunk-0026:009",
+        "evidence:chunk-0026:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        47982,
+        48903
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          47982,
+          48903
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0026:medicine:002",
+      "node_type": "medicine",
+      "label": "秘药",
+      "aliases": [
+        "药包",
+        "药粉",
+        "药物"
+      ],
+      "fact_summary": "韩立配好并交给厉飞雨的一年份秘药，每次吃抽髓丸前用凉开水冲服一勺药粉，可用于减轻痛苦但效果仍待实际验证。",
+      "evidence_ids": [
+        "evidence:chunk-0026:005",
+        "evidence:chunk-0026:007",
+        "evidence:chunk-0026:009",
+        "evidence:chunk-0026:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        47982,
+        48903
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          47982,
+          48903
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0026:pill:001",
+      "node_type": "pill",
+      "label": "抽髓丸",
+      "aliases": [],
+      "fact_summary": "抽髓丸在当前 chunk 被明确称为服用时痛苦极大；韩立交付的药粉需在每次吃抽髓丸前冲服以减轻痛苦。",
+      "evidence_ids": [
+        "evidence:chunk-0026:007",
+        "evidence:chunk-0026:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        48483,
+        48654
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          48483,
+          48654
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0026:weapon:001",
+      "node_type": "weapon",
+      "label": "长刀",
+      "aliases": [],
+      "fact_summary": "厉飞雨在谷口等待时背着一把给韩立留下深刻印象的长刀；当前未说明品级、名称或用途。",
+      "evidence_ids": [
+        "evidence:chunk-0026:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        48137,
+        48214
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          48137,
+          48214
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0026:location:001",
+      "node_type": "location",
+      "label": "神手谷",
+      "aliases": [],
+      "fact_summary": "韩立带药物前往神手谷谷口与厉飞雨会面，之后返回谷内处理药园现场。",
+      "evidence_ids": [
+        "evidence:chunk-0026:005",
+        "evidence:chunk-0026:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        48032,
+        48992
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          48032,
+          48992
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0026:location:002",
+      "node_type": "location",
+      "label": "神手谷谷口",
+      "aliases": [
+        "谷口",
+        "山谷出口处"
+      ],
+      "fact_summary": "神手谷谷口是韩立与厉飞雨午时交付秘药的会面地点。",
+      "evidence_ids": [
+        "evidence:chunk-0026:005",
+        "evidence:chunk-0026:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        48032,
+        48214
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          48032,
+          48214
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0026:facility:002",
+      "node_type": "facility",
+      "label": "石室",
+      "aliases": [],
+      "fact_summary": "韩立处理完药草观察决定后去石室练功，希望在功力大进基础上突破。",
+      "evidence_ids": [
+        "evidence:chunk-0026:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        49293,
+        49348
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          49293,
+          49348
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0026:cultivation_method:001",
+      "node_type": "cultivation_method",
+      "label": "口诀",
+      "aliases": [],
+      "fact_summary": "韩立修炼的口诀已成为本能反应和生活目标，但当前 chunk 未说明其正式名称或具体用途。",
+      "evidence_ids": [
+        "evidence:chunk-0026:014",
+        "evidence:chunk-0026:015",
+        "evidence:chunk-0026:016",
+        "evidence:chunk-0026:017"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        49293,
+        49620
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          49293,
+          49620
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0026:realm:001",
+      "node_type": "realm",
+      "label": "口诀第三层",
+      "aliases": [],
+      "fact_summary": "韩立判断若不借助药物外力，自己可能永远停留在第三层。",
+      "evidence_ids": [
+        "evidence:chunk-0026:017"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        49527,
+        49572
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          49527,
+          49572
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0026:realm:002",
+      "node_type": "realm",
+      "label": "口诀第四层",
+      "aliases": [],
+      "fact_summary": "韩立感觉距离第四层只差一点，但一下午苦练仍未突破。",
+      "evidence_ids": [
+        "evidence:chunk-0026:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        49443,
+        49526
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          49443,
+          49526
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0026:character:003",
+      "node_type": "character",
+      "label": "墨大夫",
+      "aliases": [],
+      "fact_summary": "韩立期盼墨大夫早些回来，并希望他找到足够药材来帮助自己突破当前困境。",
+      "evidence_ids": [
+        "evidence:chunk-0026:017"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        49573,
+        49620
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          49573,
+          49620
+        ]
+      }
+    }
+  ],
+  "normalized_edges": [
+    {
+      "id": "edge:chunk-0026:001",
+      "edge_type": "avoids_harm_from",
+      "source": "node:chunk-0026:character:001",
+      "target": "node:chunk-0026:beast:001",
+      "fact_summary": "韩立及时丢开瓷碗并跑远，避免被兔子爆炸波及。",
+      "evidence_ids": [
+        "evidence:chunk-0026:001",
+        "evidence:chunk-0026:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        47414,
+        47737
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          47414,
+          47737
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0026:002",
+      "edge_type": "causes_death",
+      "source": "node:chunk-0026:medicine:001",
+      "target": "node:chunk-0026:beast:001",
+      "fact_summary": "绿液试验最终导致两只兔子膨胀爆炸而死，韩立因结果将其视作恐怖毒药。",
+      "evidence_ids": [
+        "evidence:chunk-0026:002",
+        "evidence:chunk-0026:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        47518,
+        47938
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          47518,
+          47938
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0026:003",
+      "edge_type": "gives_medicine_to",
+      "source": "node:chunk-0026:character:001",
+      "target": "node:chunk-0026:character:002",
+      "fact_summary": "韩立把装有秘药的药包交给厉飞雨，并说明服用方法。",
+      "evidence_ids": [
+        "evidence:chunk-0026:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        48431,
+        48523
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          48431,
+          48523
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0026:004",
+      "edge_type": "mitigates_pain_of",
+      "source": "node:chunk-0026:medicine:002",
+      "target": "node:chunk-0026:pill:001",
+      "fact_summary": "秘药被韩立说明为每次吃抽髓丸前冲服一勺，可减轻服丸痛苦。",
+      "evidence_ids": [
+        "evidence:chunk-0026:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        48483,
+        48523
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          48483,
+          48523
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0026:005",
+      "edge_type": "owes_favor_to",
+      "source": "node:chunk-0026:character:002",
+      "target": "node:chunk-0026:character:001",
+      "fact_summary": "厉飞雨收到秘药后表示心领韩立心意，并欠下韩立一份大人情。",
+      "evidence_ids": [
+        "evidence:chunk-0026:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        48655,
+        48829
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          48655,
+          48829
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0026:006",
+      "edge_type": "contaminates_uncertainly",
+      "source": "node:chunk-0026:medicine:001",
+      "target": "node:chunk-0026:material:001",
+      "fact_summary": "稀释绿液清水洒在药地并打湿几株药草，韩立担心药草可能变毒。",
+      "evidence_ids": [
+        "evidence:chunk-0026:012",
+        "evidence:chunk-0026:013"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        49058,
+        49292
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          49058,
+          49292
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0026:007",
+      "edge_type": "practices",
+      "source": "node:chunk-0026:character:001",
+      "target": "node:chunk-0026:cultivation_method:001",
+      "fact_summary": "韩立去石室修炼口诀，希望突破更高层次，但一下午苦练没有寸进。",
+      "evidence_ids": [
+        "evidence:chunk-0026:014",
+        "evidence:chunk-0026:015",
+        "evidence:chunk-0026:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        49293,
+        49526
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          49293,
+          49526
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0026:008",
+      "edge_type": "stuck_at_stage",
+      "source": "node:chunk-0026:character:001",
+      "target": "node:chunk-0026:realm:001",
+      "fact_summary": "韩立认为自己若不借助药物外力，可能永远停留在第三层。",
+      "evidence_ids": [
+        "evidence:chunk-0026:017"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        49527,
+        49572
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          49527,
+          49572
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0026:009",
+      "edge_type": "seeks_breakthrough_to",
+      "source": "node:chunk-0026:character:001",
+      "target": "node:chunk-0026:realm:002",
+      "fact_summary": "韩立感觉距离第四层很近，但当前苦练仍无法突破。",
+      "evidence_ids": [
+        "evidence:chunk-0026:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        49443,
+        49526
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          49443,
+          49526
+        ]
+      }
+    }
+  ],
+  "normalized_events": [
+    {
+      "id": "event:chunk-0026:001",
+      "event_type": "escape_event",
+      "label": "韩立躲开兔子爆炸",
+      "fact_summary": "韩立发现兔子继续膨胀后丢开瓷碗跑远，随后两只兔子爆炸，他避免被波及。",
+      "participants": [
+        "node:chunk-0026:character:001",
+        "node:chunk-0026:beast:001",
+        "node:chunk-0026:medicine:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0026:001",
+        "evidence:chunk-0026:002",
+        "evidence:chunk-0026:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        47414,
+        47737
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          47414,
+          47737
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0026:002",
+      "event_type": "medicine_effect_event",
+      "label": "绿液试验造成兔子爆裂死亡",
+      "fact_summary": "两只兔子在绿液试验后被撑破躯体，现场血肉横飞，韩立将绿液视为恐怖毒药。",
+      "participants": [
+        "node:chunk-0026:medicine:001",
+        "node:chunk-0026:beast:001",
+        "node:chunk-0026:character:001",
+        "node:chunk-0026:facility:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0026:002",
+        "evidence:chunk-0026:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        47518,
+        47938
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          47518,
+          47938
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0026:003",
+      "event_type": "medicine_delivery_event",
+      "label": "韩立向厉飞雨交付秘药",
+      "fact_summary": "韩立午时到神手谷谷口，将药包交给焦急等待的厉飞雨，并说明抽髓丸前冲服药粉可减轻痛苦。",
+      "participants": [
+        "node:chunk-0026:character:001",
+        "node:chunk-0026:character:002",
+        "node:chunk-0026:medicine:002",
+        "node:chunk-0026:pill:001",
+        "node:chunk-0026:location:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0026:005",
+        "evidence:chunk-0026:006",
+        "evidence:chunk-0026:007",
+        "evidence:chunk-0026:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        47982,
+        48654
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          47982,
+          48654
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0026:004",
+      "event_type": "relationship_change_event",
+      "label": "厉飞雨欠韩立人情",
+      "fact_summary": "韩立说明秘药只有一年份且药材用光；厉飞雨仍表示心领并欠下韩立一份大人情。",
+      "participants": [
+        "node:chunk-0026:character:001",
+        "node:chunk-0026:character:002",
+        "node:chunk-0026:medicine:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0026:009",
+        "evidence:chunk-0026:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        48655,
+        48903
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          48655,
+          48903
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0026:005",
+      "event_type": "cleanup_event",
+      "label": "韩立清理药园爆炸现场",
+      "fact_summary": "韩立返回谷内后把兔子残骸、沾血泥土和碎碗扫入坑内，再把土坑推平。",
+      "participants": [
+        "node:chunk-0026:character:001",
+        "node:chunk-0026:beast:001",
+        "node:chunk-0026:facility:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0026:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        48904,
+        48992
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          48904,
+          48992
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0026:006",
+      "event_type": "secondary_experiment_decision",
+      "label": "韩立决定观察被打湿药草",
+      "fact_summary": "韩立担心稀释绿液清水会让药草变毒，但决定先观察几天，把它当作又一次小试验。",
+      "participants": [
+        "node:chunk-0026:character:001",
+        "node:chunk-0026:medicine:001",
+        "node:chunk-0026:material:001",
+        "node:chunk-0026:facility:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0026:012",
+        "evidence:chunk-0026:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        49058,
+        49292
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          49058,
+          49292
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0026:007",
+      "event_type": "training_failure_event",
+      "label": "韩立苦练仍未突破第四层",
+      "fact_summary": "韩立去石室修炼口诀，一下午专心苦练后仍无寸进，判断需要借助药物外力突破第三层困境。",
+      "participants": [
+        "node:chunk-0026:character:001",
+        "node:chunk-0026:cultivation_method:001",
+        "node:chunk-0026:realm:001",
+        "node:chunk-0026:realm:002",
+        "node:chunk-0026:facility:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0026:014",
+        "evidence:chunk-0026:015",
+        "evidence:chunk-0026:016",
+        "evidence:chunk-0026:017"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        49293,
+        49620
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          49293,
+          49620
+        ]
+      }
+    }
+  ],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0026:001",
+      "chunk_id": "chunk-0026",
+      "excerpt": "　　看着眼前的兔子还在不断的变大、继续膨胀着，韩立意识到了一丝不对劲，猛然间想起了什么，他突然把手里已被视为蛇蝎一样的瓷碗扔到了一边的药田地里，又转身撒腿跑了起来，一直跑到离兔子十几丈远的地方才停住了脚步。",
+      "fact_summary": "韩立看到兔子继续膨胀后意识到不对，把瓷碗扔到药田并跑到十几丈外。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        47414,
+        47517
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          47414,
+          47517
+        ]
+      },
+      "id": "evidence:chunk-0026:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0026:002",
+      "chunk_id": "chunk-0026",
+      "excerpt": "　　就在他想回头看去的时候，一前一后两声几乎同时响起的爆炸声传了过来，韩立激灵得打了个冷战，回过头一看，果然两只兔子分别已被撑破了躯体，被炸成了好几截，血肉横飞的散落在了地上。原本拴兔子的地方出现了两个坑，坑的周围到处是兔子散乱的残骸，鲜血和肉块洒满了一地，可说是惨不忍睹了。",
+      "fact_summary": "两只兔子几乎同时爆炸，被撑破躯体并血肉横飞，原地出现两个坑。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        47518,
+        47656
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          47518,
+          47656
+        ]
+      },
+      "id": "evidence:chunk-0026:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0026:003",
+      "chunk_id": "chunk-0026",
+      "excerpt": "　　韩立长出了一口气，一屁股坐在了地上，这次要不是他反应的够快，恐怕就要被兔子的爆炸波及到，虽说不一定会受到重伤，但被淋得一身的兔血和肉渣也不是一件舒服的事情。",
+      "fact_summary": "韩立因反应够快避免被兔子爆炸波及，随后坐在地上缓神。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        47657,
+        47737
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          47657,
+          47737
+        ]
+      },
+      "id": "evidence:chunk-0026:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0026:004",
+      "chunk_id": "chunk-0026",
+      "excerpt": "　　韩立本以为能从绿液中发现什么灵丹妙药，却没想到是这么一个恐怖的东西，毒药就毒药吧，却让兔子死得这么的悲惨！他现在说什么也不会碰这玩意了。太吓人了！韩立不是没有接触过致命的毒药，在墨大夫这几年的教导下，他见识过许许多多见血封喉的毒物，却没有一样能让人死得这么恐怖的。",
+      "fact_summary": "韩立认为绿液不是灵丹妙药而是恐怖毒药，且比他见过的见血封喉毒物更吓人。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        47804,
+        47938
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          47804,
+          47938
+        ]
+      },
+      "id": "evidence:chunk-0026:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0026:005",
+      "chunk_id": "chunk-0026",
+      "excerpt": "　　因为午时就要到了，他要把配好的秘药给厉师兄送过去。这里的一切后事，还是等他把药送完后再处理吧。\n　　抱着这种想法，韩立没在爆炸现场再多看一眼，把所有的麻烦都留到了以后，自己回到住处，休息了一下，就带着药物去神手谷的谷口了。",
+      "fact_summary": "韩立想到午时要把配好的秘药送给厉师兄，于是回住处休息后带药物去神手谷谷口。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        47982,
+        48095
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          47982,
+          48095
+        ]
+      },
+      "id": "evidence:chunk-0026:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0026:006",
+      "chunk_id": "chunk-0026",
+      "excerpt": "　　韩立很守时，到谷口的时候正好是午时时分，厉飞雨看起来却早已焦急的等在了那里。\n　　只有他独自一人待在山谷出口处，身上换了一件白色锦袍，背上却仍带着那把给韩立留下深刻印象的长刀。韩立到的时候，他正面带一丝急色，焦急的往山谷方向眺望着。\n　　等看到了韩立的到来，才收起了焦急的神情，嘴角微微翘了起来，脸上露出了笑容。",
+      "fact_summary": "韩立午时到谷口，厉飞雨早已焦急等待，并带着一把给韩立留下深刻印象的长刀。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        48096,
+        48254
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          48096,
+          48254
+        ]
+      },
+      "id": "evidence:chunk-0026:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0026:007",
+      "chunk_id": "chunk-0026",
+      "excerpt": "　　韩立没有回答厉师兄的提问，从容的一笑，从怀里慢慢的拿出一个巴掌大的药包来，一甩手把药扔给了厉飞雨。\n　　“每次吃抽髓丸前，先用凉开水冲服药包内的一勺药粉，就可以减轻你所受的痛苦。”",
+      "fact_summary": "韩立从怀里取出药包扔给厉飞雨，并说明每次吃抽髓丸前用凉开水冲服一勺药粉可减轻痛苦。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        48431,
+        48523
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          48431,
+          48523
+        ]
+      },
+      "id": "evidence:chunk-0026:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0026:008",
+      "chunk_id": "chunk-0026",
+      "excerpt": "　　“谢谢韩师弟！谢谢韩师弟！”厉师兄欣喜若狂，只要能稍微减轻那么一点点的痛苦，对他来说都是莫大的福音，服用抽髓丸时的痛苦实在是让他不寒而栗。他以前也吃过许多的止痛药，但都没有什么作用，这位韩师弟既然知道抽髓丸的一切特征并也服用过，那说不定他这药还真的起作用。",
+      "fact_summary": "厉飞雨欣喜感谢，因为服用抽髓丸时痛苦极大；他相信韩立既知抽髓丸特征又服用过，药可能有效。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        48524,
+        48654
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          48524,
+          48654
+        ]
+      },
+      "id": "evidence:chunk-0026:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0026:009",
+      "chunk_id": "chunk-0026",
+      "excerpt": "　　“你先别慌忙谢我，等这药真的有效再谢我也不迟。另外这只是一年份的药，我现在手头的药材都用光了，等我凑够了药材，再帮你多配几份。”韩立直言不讳的说。\n　　“没事的，这不是有一年份的用量吗，暂时足够用了。不管这药有没有效，韩师弟这份心意，我厉飞雨是心领了。”厉师兄拿到了想要的东西，神色又恢复了正常，也不再做作，很干脆的表示又欠下了韩立一份大人情。",
+      "fact_summary": "韩立说明秘药只有一年份且药材用光；厉飞雨表示暂时足够并欠下韩立一份大人情。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        48655,
+        48829
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          48655,
+          48829
+        ]
+      },
+      "id": "evidence:chunk-0026:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0026:010",
+      "chunk_id": "chunk-0026",
+      "excerpt": "　　厉飞雨手中拿着秘药也想赶紧回去，去试试药的功效如何，也没再挽留韩立，两人互相辞别分手了。",
+      "fact_summary": "厉飞雨拿着秘药急于回去试药效，与韩立互相辞别。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        48857,
+        48903
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          48857,
+          48903
+        ]
+      },
+      "id": "evidence:chunk-0026:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0026:011",
+      "chunk_id": "chunk-0026",
+      "excerpt": "　　返回谷内后，韩立先去药园里收拾了一番。把兔子的残骸、沾血的泥土，碎碗等统统的扫到了坑内，再把无端冒出来的两个土坑用泥土给推平，这样看起来这片地方就和做试验之前没什么两样了。",
+      "fact_summary": "韩立返回谷内后清理药园，把兔子残骸、沾血泥土和碎碗扫入坑内并推平土坑。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        48904,
+        48992
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          48904,
+          48992
+        ]
+      },
+      "id": "evidence:chunk-0026:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0026:012",
+      "chunk_id": "chunk-0026",
+      "excerpt": "　　他记得很清楚，他把碗扔掉的时候，碗中稀释了的清水全都洒落在那一小块药地上，打湿了那里的几株药草，这让他不禁有些犹豫，不知道这些药草吸收了这些清水后是否也会变得有毒？而人如果再吃了这些有毒的药草是否也会出现和兔子一样的结局？自己是不是应该现在就把这些毒草给清除掉？这一连串的问题就这样在韩立的脑海里突如其来的冒了出来。",
+      "fact_summary": "韩立想到稀释清水曾洒在药地并打湿几株药草，担心药草可能变毒且食用者也会像兔子一样。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        49058,
+        49218
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          49058,
+          49218
+        ]
+      },
+      "id": "evidence:chunk-0026:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0026:013",
+      "chunk_id": "chunk-0026",
+      "excerpt": "　　韩立思量了半天，还是决定等等再说，再观察它们一段时间，只当又做了一次小小的试验。如果在这几天内药草真变得有毒的话，自己再把它们给清除掉也不迟。",
+      "fact_summary": "韩立决定暂时观察这些药草几天，把它当作又一次小试验；若真变毒再清除。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        49219,
+        49292
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          49219,
+          49292
+        ]
+      },
+      "id": "evidence:chunk-0026:013"
+    },
+    {
+      "evidence_id": "evidence:chunk-0026:014",
+      "chunk_id": "chunk-0026",
+      "excerpt": "　　拿定了主意后，他看看没有什么事情可以去做，就又去石室练功去了，他希望自己能够在功力大进的基础上再有所突破。",
+      "fact_summary": "韩立拿定主意后去石室练功，希望在功力大进基础上继续突破。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        49293,
+        49348
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          49293,
+          49348
+        ]
+      },
+      "id": "evidence:chunk-0026:014"
+    },
+    {
+      "evidence_id": "evidence:chunk-0026:015",
+      "chunk_id": "chunk-0026",
+      "excerpt": "　　韩立现在早就不再管这口诀的具体用处了，他修炼这口诀已成了他的一种本能反应，如若不去修炼它，韩立都不知道自己待在山上要去做些什么，追求这口诀更高一层次的修炼，成了他目前生活的全部目标。",
+      "fact_summary": "韩立已不管口诀具体用处，修炼口诀成为本能反应，追求更高层次成了目前生活目标。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        49349,
+        49442
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          49349,
+          49442
+        ]
+      },
+      "id": "evidence:chunk-0026:015"
+    },
+    {
+      "evidence_id": "evidence:chunk-0026:016",
+      "chunk_id": "chunk-0026",
+      "excerpt": "　　经过一个下午的专心修炼，韩立沮丧的发现，自己真的不是一个天才。虽然他自己也感觉到距离第四层只差那么一个手指就能够捅破掉，可仍未有丝毫的寸进，白白做了一下午的苦练。",
+      "fact_summary": "韩立一下午苦练后仍未突破，虽感觉距离第四层很近，却没有丝毫寸进。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        49443,
+        49526
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          49443,
+          49526
+        ]
+      },
+      "id": "evidence:chunk-0026:016"
+    },
+    {
+      "evidence_id": "evidence:chunk-0026:017",
+      "chunk_id": "chunk-0026",
+      "excerpt": "　　看来自己不借助药物的外力是不行了，否则自己永远都有可能呆在第三层上面，无法再前进一步。\n　　韩立心里开始期盼着墨大夫能够早些回来，并能幸运的找到足够多的药材，来帮自己突破目前的困境。",
+      "fact_summary": "韩立判断不借助药物外力可能永远停在第三层，并期盼墨大夫带回足够药材帮他突破。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        49527,
+        49620
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0026",
+        "source_path": "intermediate/chunks/chunk-0026.txt",
+        "source_range": [
+          49527,
+          49620
+        ]
+      },
+      "id": "evidence:chunk-0026:017"
+    }
+  ]
+}

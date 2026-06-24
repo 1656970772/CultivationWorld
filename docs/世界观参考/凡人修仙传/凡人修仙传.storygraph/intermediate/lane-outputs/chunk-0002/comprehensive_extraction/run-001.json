@@ -1,0 +1,68 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0002:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0002",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T13:58:09+08:00",
+  "extracted_nodes": [],
+  "extracted_edges": [],
+  "extracted_events": [],
+  "extracted_evidence": [],
+  "supports_templates": [],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0002:001",
+      "kind": "no_extractable_content",
+      "fact_summary": "本 chunk 仅包含卷名“第一卷 七玄门风云”，没有足以闭合节点、边、事件或证据的正文事实。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "source_range": [
+        355,
+        364
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0002",
+        "source_path": "intermediate/chunks/chunk-0002.txt",
+        "source_range": [
+          355,
+          364
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0002:001",
+      "candidate": "七玄门",
+      "reason": "卷名中出现“七玄门风云”，但该 chunk 没有正文说明其组织属性、成员、地点、事件或关系；不从标题硬扩展为势力节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "not_found_in_source",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected"
+        }
+      ],
+      "source_range": [
+        355,
+        364
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0002",
+        "source_path": "intermediate/chunks/chunk-0002.txt",
+        "source_range": [
+          355,
+          364
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

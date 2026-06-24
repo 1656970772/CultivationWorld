@@ -1,0 +1,2050 @@
+{
+  "chunk_id": "chunk-0031",
+  "source_range": [
+    58361,
+    60252
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "task_packet_id": "chunk-0031:comprehensive_extraction:attempt-001",
+      "chunk_id": "chunk-0031",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "produced_at": "2026-06-23T14:41:10+08:00",
+      "extracted_nodes": [
+        {
+          "id": "node:chunk-0031:character:001",
+          "node_type": "character",
+          "label": "墨居仁",
+          "aliases": [
+            "墨大夫",
+            "墨老"
+          ],
+          "fact_summary": "本 chunk 中墨大夫后来自称墨居仁；他查探韩立真气、制住韩立，并挑明自己没有真把韩立当徒弟。",
+          "evidence_ids": [
+            "evidence:chunk-0031:001",
+            "evidence:chunk-0031:005",
+            "evidence:chunk-0031:007",
+            "evidence:chunk-0031:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            58373,
+            60238
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              58373,
+              60238
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0031:character:002",
+          "node_type": "character",
+          "label": "韩立",
+          "aliases": [],
+          "fact_summary": "韩立被墨居仁查探真气后察觉危险，试图握住袖中铁筒自保，但很快被墨居仁点穴制住。",
+          "evidence_ids": [
+            "evidence:chunk-0031:001",
+            "evidence:chunk-0031:004",
+            "evidence:chunk-0031:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            58373,
+            59344
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              58373,
+              59344
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0031:character:003",
+          "node_type": "character",
+          "label": "神秘人",
+          "aliases": [],
+          "fact_summary": "神秘人在本 chunk 中紧随墨大夫并站到椅背后不动，但身份和职责未明。",
+          "evidence_ids": [
+            "evidence:chunk-0031:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            58667,
+            58711
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              58667,
+              58711
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0031:tool:001",
+          "node_type": "tool",
+          "label": "铁筒",
+          "aliases": [],
+          "fact_summary": "韩立袖中藏有一只铁筒，危险时将手缩入袖口抓住它；之后墨居仁从他袖中搜出并拿在手里。",
+          "evidence_ids": [
+            "evidence:chunk-0031:004",
+            "evidence:chunk-0031:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            59091,
+            59657
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              59091,
+              59657
+            ]
+          }
+        }
+      ],
+      "extracted_edges": [
+        {
+          "id": "edge:chunk-0031:001",
+          "edge_type": "follows_or_guards",
+          "source": "node:chunk-0031:character:003",
+          "target": "node:chunk-0031:character:001",
+          "fact_summary": "神秘人紧随墨大夫，墨大夫坐下后站到椅背后不动。",
+          "evidence_ids": [
+            "evidence:chunk-0031:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            58667,
+            58711
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              58667,
+              58711
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0031:002",
+          "edge_type": "attempts_self_defense_with",
+          "source": "node:chunk-0031:character:002",
+          "target": "node:chunk-0031:tool:001",
+          "fact_summary": "韩立察觉危险后，把手缩到袖口里抓住铁筒以求自保。",
+          "evidence_ids": [
+            "evidence:chunk-0031:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            59091,
+            59170
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              59091,
+              59170
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0031:003",
+          "edge_type": "restrains_by_acupoint",
+          "source": "node:chunk-0031:character:001",
+          "target": "node:chunk-0031:character:002",
+          "fact_summary": "墨居仁迅速到韩立身边，点住韩立胸前穴道，使韩立动弹不得。",
+          "evidence_ids": [
+            "evidence:chunk-0031:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            59224,
+            59344
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              59224,
+              59344
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0031:004",
+          "edge_type": "seizes_tool_from",
+          "source": "node:chunk-0031:character:001",
+          "target": "node:chunk-0031:tool:001",
+          "fact_summary": "墨居仁不理会韩立的言语，从韩立袖中搜出铁筒并拿在手里。",
+          "evidence_ids": [
+            "evidence:chunk-0031:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            59625,
+            59657
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              59625,
+              59657
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0031:005",
+          "edge_type": "false_master_disciple_relation",
+          "source": "node:chunk-0031:character:001",
+          "target": "node:chunk-0031:character:002",
+          "fact_summary": "墨居仁明说韩立一直提防他、未真把他当师傅，而他也没真把韩立当徒弟。",
+          "evidence_ids": [
+            "evidence:chunk-0031:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "有限视角与叙事日志",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            60192,
+            60238
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              60192,
+              60238
+            ]
+          }
+        }
+      ],
+      "extracted_events": [
+        {
+          "id": "event:chunk-0031:001",
+          "event_type": "diagnostic_event",
+          "label": "墨居仁查探韩立真气",
+          "fact_summary": "墨居仁搭住韩立手腕，将心神集中到韩立体内真气强弱上，随后表现出不满意。",
+          "participants": [
+            "node:chunk-0031:character:001",
+            "node:chunk-0031:character:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0031:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            58373,
+            58438
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              58373,
+              58438
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0031:002",
+          "event_type": "defensive_decision_event",
+          "label": "韩立握住袖中铁筒",
+          "fact_summary": "韩立察觉屋内危险气息后后退半步，将手缩到袖口里抓住铁筒。",
+          "participants": [
+            "node:chunk-0031:character:002",
+            "node:chunk-0031:tool:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0031:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            59091,
+            59170
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              59091,
+              59170
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0031:003",
+          "event_type": "conflict_event",
+          "label": "墨居仁点穴制住韩立",
+          "fact_summary": "墨居仁诡异起身并瞬间到韩立身边，点住韩立胸前穴道，使韩立无法动弹。",
+          "participants": [
+            "node:chunk-0031:character:001",
+            "node:chunk-0031:character:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0031:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            59224,
+            59344
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              59224,
+              59344
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0031:004",
+          "event_type": "disarm_event",
+          "label": "墨居仁搜走韩立铁筒",
+          "fact_summary": "墨居仁不理会韩立恭维，从韩立袖中搜出铁筒并拿在手中，断掉韩立借话语或器物找机会的念头。",
+          "participants": [
+            "node:chunk-0031:character:001",
+            "node:chunk-0031:character:002",
+            "node:chunk-0031:tool:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0031:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            59625,
+            59657
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              59625,
+              59657
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0031:005",
+          "event_type": "revelation_event",
+          "label": "墨居仁挑明师徒关系虚假",
+          "fact_summary": "墨居仁明说韩立没有真把他当师傅，而他也没有真把韩立当徒弟，直接揭开两人名义师徒关系的虚假性。",
+          "participants": [
+            "node:chunk-0031:character:001",
+            "node:chunk-0031:character:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0031:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "有限视角与叙事日志",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            60192,
+            60238
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              60192,
+              60238
+            ]
+          }
+        }
+      ],
+      "extracted_evidence": [
+        {
+          "evidence_id": "evidence:chunk-0031:001",
+          "chunk_id": "chunk-0031",
+          "excerpt": "墨大夫面无表情，双目轻轻地半睁半闭，一只手牢牢地搭在韩立的手腕上。\n　　他全部的心神，都集中到了韩立体内的真气强弱上，半晌没说话。",
+          "fact_summary": "墨大夫搭住韩立手腕，专注查探韩立体内真气强弱。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            58373,
+            58438
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              58373,
+              58438
+            ]
+          },
+          "id": "evidence:chunk-0031:001"
+        },
+        {
+          "evidence_id": "evidence:chunk-0031:002",
+          "chunk_id": "chunk-0031",
+          "excerpt": "神秘人一直紧随着他身后寸步不离，在他坐下后就站到了椅子的背后，直直的戳立在那儿一动不动。",
+          "fact_summary": "神秘人紧随墨大夫并站在椅背后不动，身份未明。",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            58667,
+            58711
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              58667,
+              58711
+            ]
+          },
+          "id": "evidence:chunk-0031:002"
+        },
+        {
+          "evidence_id": "evidence:chunk-0031:003",
+          "chunk_id": "chunk-0031",
+          "excerpt": "墨大夫脸孔怎么一下子如此诡异，有些灰败的脸上隐隐地罩上了一层淡淡的黑气",
+          "fact_summary": "韩立看到墨大夫脸孔诡异，灰败脸上罩着淡淡黑气。",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "有限视角与叙事日志",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            58951,
+            58986
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              58951,
+              58986
+            ]
+          },
+          "id": "evidence:chunk-0031:003"
+        },
+        {
+          "evidence_id": "evidence:chunk-0031:004",
+          "chunk_id": "chunk-0031",
+          "excerpt": "韩立觉得情况有点不太对劲，几分不安的情绪绕上心头，一丝危险的气息也开始在屋内漫延着。\n　　他机警的、小心翼翼的往后退了半步，把手缩到袖口里抓住了那里的一只铁筒",
+          "fact_summary": "韩立察觉危险，后退半步并抓住袖中的铁筒。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            59091,
+            59170
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              59091,
+              59170
+            ]
+          },
+          "id": "evidence:chunk-0031:004"
+        },
+        {
+          "evidence_id": "evidence:chunk-0031:005",
+          "chunk_id": "chunk-0031",
+          "excerpt": "墨大夫身子动了，诡异的从半躺着变成了站立之势，阴阴一笑后再身形一晃，整个人仿佛幽灵一样的到了韩立身边，望着韩立“嘿嘿”冷笑着。\n　　韩立脸色大变，知道不妙，急忙想举起手臂，但身上一麻就动弹不得了，这时他才看到对方手指从自己胸前的穴道上拿开。",
+          "fact_summary": "墨大夫迅速移动到韩立身边并点住其穴道，使韩立动弹不得。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            59224,
+            59344
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              59224,
+              59344
+            ]
+          },
+          "id": "evidence:chunk-0031:005"
+        },
+        {
+          "evidence_id": "evidence:chunk-0031:006",
+          "chunk_id": "chunk-0031",
+          "excerpt": "墨大夫根本不与理会，伸手从他的袖子里把那只铁筒搜了出来，拿在手里",
+          "fact_summary": "墨大夫从韩立袖中搜出铁筒并拿在手里。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            59625,
+            59657
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              59625,
+              59657
+            ]
+          },
+          "id": "evidence:chunk-0031:006"
+        },
+        {
+          "evidence_id": "evidence:chunk-0031:007",
+          "chunk_id": "chunk-0031",
+          "excerpt": "“不愧是我墨居仁看中的人，现在还能面不改色、临危不乱，不枉我下了那么大的本钱在你身上。”",
+          "fact_summary": "墨大夫自称墨居仁，并称韩立是自己看中的人，认为自己在韩立身上下了本钱。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            59864,
+            59908
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              59864,
+              59908
+            ]
+          },
+          "id": "evidence:chunk-0031:007"
+        },
+        {
+          "evidence_id": "evidence:chunk-0031:008",
+          "chunk_id": "chunk-0031",
+          "excerpt": "“我知道你一直对我提防着，没真把我当成师傅来看待。不过这没关系，我也没真把你当成徒弟来看。”",
+          "fact_summary": "墨居仁挑明韩立未真把他当师傅，他也没真把韩立当徒弟。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "有限视角与叙事日志",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            60192,
+            60238
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              60192,
+              60238
+            ]
+          },
+          "id": "evidence:chunk-0031:008"
+        }
+      ],
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review"
+        }
+      ],
+      "uncertainties": [
+        {
+          "id": "uncertainty:chunk-0031:001",
+          "kind": "identity_missing",
+          "fact_summary": "神秘人紧随墨大夫，但本 chunk 未说明其姓名、身份、能力或与墨大夫的正式关系。",
+          "evidence_ids": [
+            "evidence:chunk-0031:002"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            58667,
+            58711
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              58667,
+              58711
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0031:002",
+          "kind": "phenomenon_not_classified",
+          "fact_summary": "墨大夫脸上的黑气仅以韩立视角出现，本 chunk 未说明其来源、功法属性或是否属于邪气。",
+          "evidence_ids": [
+            "evidence:chunk-0031:003"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "有限视角与叙事日志",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            },
+            {
+              "template_name": "邪修分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "not_found_in_source",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            58951,
+            58986
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              58951,
+              58986
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0031:003",
+          "kind": "item_function_missing",
+          "fact_summary": "铁筒在本 chunk 中是韩立试图自保的袖中器物，但未明示具体名称、用途、机制或是否为法器。",
+          "evidence_ids": [
+            "evidence:chunk-0031:004",
+            "evidence:chunk-0031:006"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            59091,
+            59657
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              59091,
+              59657
+            ]
+          }
+        }
+      ],
+      "rejected_candidates": [
+        {
+          "id": "rejected:chunk-0031:001",
+          "candidate": "黑气",
+          "reason": "黑气在本 chunk 只是韩立观察到的现象，未明示为功法、邪气、妖兽或可独立建模实体；保留为不确定性，不建节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "邪修分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "not_found_in_source",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "rejected"
+            }
+          ],
+          "source_range": [
+            58951,
+            58986
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              58951,
+              58986
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0031:002",
+          "candidate": "屋子",
+          "reason": "屋子只是本场对峙的普通场景称呼，没有独立名称、功能、权限或长期场所设定；不建 location/facility 节点。",
+          "confidence": "EXTRACTED",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "not_found_in_source",
+              "confidence": "EXTRACTED",
+              "verification_status": "rejected"
+            }
+          ],
+          "source_range": [
+            59091,
+            59131
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0031",
+            "source_path": "intermediate/chunks/chunk-0031.txt",
+            "source_range": [
+              59091,
+              59131
+            ]
+          }
+        }
+      ],
+      "structured_failures": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0031/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "id": "node:chunk-0031:character:001",
+      "node_type": "character",
+      "label": "墨居仁",
+      "aliases": [
+        "墨大夫",
+        "墨老"
+      ],
+      "fact_summary": "本 chunk 中墨大夫后来自称墨居仁；他查探韩立真气、制住韩立，并挑明自己没有真把韩立当徒弟。",
+      "evidence_ids": [
+        "evidence:chunk-0031:001",
+        "evidence:chunk-0031:005",
+        "evidence:chunk-0031:007",
+        "evidence:chunk-0031:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        58373,
+        60238
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0031",
+        "source_path": "intermediate/chunks/chunk-0031.txt",
+        "source_range": [
+          58373,
+          60238
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0031:character:002",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立被墨居仁查探真气后察觉危险，试图握住袖中铁筒自保，但很快被墨居仁点穴制住。",
+      "evidence_ids": [
+        "evidence:chunk-0031:001",
+        "evidence:chunk-0031:004",
+        "evidence:chunk-0031:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        58373,
+        59344
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0031",
+        "source_path": "intermediate/chunks/chunk-0031.txt",
+        "source_range": [
+          58373,
+          59344
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0031:character:003",
+      "node_type": "character",
+      "label": "神秘人",
+      "aliases": [],
+      "fact_summary": "神秘人在本 chunk 中紧随墨大夫并站到椅背后不动，但身份和职责未明。",
+      "evidence_ids": [
+        "evidence:chunk-0031:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        58667,
+        58711
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0031",
+        "source_path": "intermediate/chunks/chunk-0031.txt",
+        "source_range": [
+          58667,
+          58711
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0031:tool:001",
+      "node_type": "tool",
+      "label": "铁筒",
+      "aliases": [],
+      "fact_summary": "韩立袖中藏有一只铁筒，危险时将手缩入袖口抓住它；之后墨居仁从他袖中搜出并拿在手里。",
+      "evidence_ids": [
+        "evidence:chunk-0031:004",
+        "evidence:chunk-0031:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        59091,
+        59657
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0031",
+        "source_path": "intermediate/chunks/chunk-0031.txt",
+        "source_range": [
+          59091,
+          59657
+        ]
+      }
+    }
+  ],
+  "normalized_edges": [
+    {
+      "id": "edge:chunk-0031:001",
+      "edge_type": "follows_or_guards",
+      "source": "node:chunk-0031:character:003",
+      "target": "node:chunk-0031:character:001",
+      "fact_summary": "神秘人紧随墨大夫，墨大夫坐下后站到椅背后不动。",
+      "evidence_ids": [
+        "evidence:chunk-0031:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        58667,
+        58711
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0031",
+        "source_path": "intermediate/chunks/chunk-0031.txt",
+        "source_range": [
+          58667,
+          58711
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0031:002",
+      "edge_type": "attempts_self_defense_with",
+      "source": "node:chunk-0031:character:002",
+      "target": "node:chunk-0031:tool:001",
+      "fact_summary": "韩立察觉危险后，把手缩到袖口里抓住铁筒以求自保。",
+      "evidence_ids": [
+        "evidence:chunk-0031:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        59091,
+        59170
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0031",
+        "source_path": "intermediate/chunks/chunk-0031.txt",
+        "source_range": [
+          59091,
+          59170
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0031:003",
+      "edge_type": "restrains_by_acupoint",
+      "source": "node:chunk-0031:character:001",
+      "target": "node:chunk-0031:character:002",
+      "fact_summary": "墨居仁迅速到韩立身边，点住韩立胸前穴道，使韩立动弹不得。",
+      "evidence_ids": [
+        "evidence:chunk-0031:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        59224,
+        59344
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0031",
+        "source_path": "intermediate/chunks/chunk-0031.txt",
+        "source_range": [
+          59224,
+          59344
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0031:004",
+      "edge_type": "seizes_tool_from",
+      "source": "node:chunk-0031:character:001",
+      "target": "node:chunk-0031:tool:001",
+      "fact_summary": "墨居仁不理会韩立的言语，从韩立袖中搜出铁筒并拿在手里。",
+      "evidence_ids": [
+        "evidence:chunk-0031:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        59625,
+        59657
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0031",
+        "source_path": "intermediate/chunks/chunk-0031.txt",
+        "source_range": [
+          59625,
+          59657
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0031:005",
+      "edge_type": "false_master_disciple_relation",
+      "source": "node:chunk-0031:character:001",
+      "target": "node:chunk-0031:character:002",
+      "fact_summary": "墨居仁明说韩立一直提防他、未真把他当师傅，而他也没真把韩立当徒弟。",
+      "evidence_ids": [
+        "evidence:chunk-0031:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        60192,
+        60238
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0031",
+        "source_path": "intermediate/chunks/chunk-0031.txt",
+        "source_range": [
+          60192,
+          60238
+        ]
+      }
+    }
+  ],
+  "normalized_events": [
+    {
+      "id": "event:chunk-0031:001",
+      "event_type": "diagnostic_event",
+      "label": "墨居仁查探韩立真气",
+      "fact_summary": "墨居仁搭住韩立手腕，将心神集中到韩立体内真气强弱上，随后表现出不满意。",
+      "participants": [
+        "node:chunk-0031:character:001",
+        "node:chunk-0031:character:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0031:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        58373,
+        58438
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0031",
+        "source_path": "intermediate/chunks/chunk-0031.txt",
+        "source_range": [
+          58373,
+          58438
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0031:002",
+      "event_type": "defensive_decision_event",
+      "label": "韩立握住袖中铁筒",
+      "fact_summary": "韩立察觉屋内危险气息后后退半步，将手缩到袖口里抓住铁筒。",
+      "participants": [
+        "node:chunk-0031:character:002",
+        "node:chunk-0031:tool:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0031:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        59091,
+        59170
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0031",
+        "source_path": "intermediate/chunks/chunk-0031.txt",
+        "source_range": [
+          59091,
+          59170
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0031:003",
+      "event_type": "conflict_event",
+      "label": "墨居仁点穴制住韩立",
+      "fact_summary": "墨居仁诡异起身并瞬间到韩立身边，点住韩立胸前穴道，使韩立无法动弹。",
+      "participants": [
+        "node:chunk-0031:character:001",
+        "node:chunk-0031:character:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0031:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        59224,
+        59344
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0031",
+        "source_path": "intermediate/chunks/chunk-0031.txt",
+        "source_range": [
+          59224,
+          59344
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0031:004",
+      "event_type": "disarm_event",
+      "label": "墨居仁搜走韩立铁筒",
+      "fact_summary": "墨居仁不理会韩立恭维，从韩立袖中搜出铁筒并拿在手中，断掉韩立借话语或器物找机会的念头。",
+      "participants": [
+        "node:chunk-0031:character:001",
+        "node:chunk-0031:character:002",
+        "node:chunk-0031:tool:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0031:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        59625,
+        59657
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0031",
+        "source_path": "intermediate/chunks/chunk-0031.txt",
+        "source_range": [
+          59625,
+          59657
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0031:005",
+      "event_type": "revelation_event",
+      "label": "墨居仁挑明师徒关系虚假",
+      "fact_summary": "墨居仁明说韩立没有真把他当师傅，而他也没有真把韩立当徒弟，直接揭开两人名义师徒关系的虚假性。",
+      "participants": [
+        "node:chunk-0031:character:001",
+        "node:chunk-0031:character:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0031:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        60192,
+        60238
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0031",
+        "source_path": "intermediate/chunks/chunk-0031.txt",
+        "source_range": [
+          60192,
+          60238
+        ]
+      }
+    }
+  ],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0031:001",
+      "chunk_id": "chunk-0031",
+      "excerpt": "墨大夫面无表情，双目轻轻地半睁半闭，一只手牢牢地搭在韩立的手腕上。\n　　他全部的心神，都集中到了韩立体内的真气强弱上，半晌没说话。",
+      "fact_summary": "墨大夫搭住韩立手腕，专注查探韩立体内真气强弱。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        58373,
+        58438
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0031",
+        "source_path": "intermediate/chunks/chunk-0031.txt",
+        "source_range": [
+          58373,
+          58438
+        ]
+      },
+      "id": "evidence:chunk-0031:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0031:002",
+      "chunk_id": "chunk-0031",
+      "excerpt": "神秘人一直紧随着他身后寸步不离，在他坐下后就站到了椅子的背后，直直的戳立在那儿一动不动。",
+      "fact_summary": "神秘人紧随墨大夫并站在椅背后不动，身份未明。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        58667,
+        58711
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0031",
+        "source_path": "intermediate/chunks/chunk-0031.txt",
+        "source_range": [
+          58667,
+          58711
+        ]
+      },
+      "id": "evidence:chunk-0031:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0031:003",
+      "chunk_id": "chunk-0031",
+      "excerpt": "墨大夫脸孔怎么一下子如此诡异，有些灰败的脸上隐隐地罩上了一层淡淡的黑气",
+      "fact_summary": "韩立看到墨大夫脸孔诡异，灰败脸上罩着淡淡黑气。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        58951,
+        58986
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0031",
+        "source_path": "intermediate/chunks/chunk-0031.txt",
+        "source_range": [
+          58951,
+          58986
+        ]
+      },
+      "id": "evidence:chunk-0031:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0031:004",
+      "chunk_id": "chunk-0031",
+      "excerpt": "韩立觉得情况有点不太对劲，几分不安的情绪绕上心头，一丝危险的气息也开始在屋内漫延着。\n　　他机警的、小心翼翼的往后退了半步，把手缩到袖口里抓住了那里的一只铁筒",
+      "fact_summary": "韩立察觉危险，后退半步并抓住袖中的铁筒。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        59091,
+        59170
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0031",
+        "source_path": "intermediate/chunks/chunk-0031.txt",
+        "source_range": [
+          59091,
+          59170
+        ]
+      },
+      "id": "evidence:chunk-0031:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0031:005",
+      "chunk_id": "chunk-0031",
+      "excerpt": "墨大夫身子动了，诡异的从半躺着变成了站立之势，阴阴一笑后再身形一晃，整个人仿佛幽灵一样的到了韩立身边，望着韩立“嘿嘿”冷笑着。\n　　韩立脸色大变，知道不妙，急忙想举起手臂，但身上一麻就动弹不得了，这时他才看到对方手指从自己胸前的穴道上拿开。",
+      "fact_summary": "墨大夫迅速移动到韩立身边并点住其穴道，使韩立动弹不得。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        59224,
+        59344
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0031",
+        "source_path": "intermediate/chunks/chunk-0031.txt",
+        "source_range": [
+          59224,
+          59344
+        ]
+      },
+      "id": "evidence:chunk-0031:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0031:006",
+      "chunk_id": "chunk-0031",
+      "excerpt": "墨大夫根本不与理会，伸手从他的袖子里把那只铁筒搜了出来，拿在手里",
+      "fact_summary": "墨大夫从韩立袖中搜出铁筒并拿在手里。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        59625,
+        59657
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0031",
+        "source_path": "intermediate/chunks/chunk-0031.txt",
+        "source_range": [
+          59625,
+          59657
+        ]
+      },
+      "id": "evidence:chunk-0031:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0031:007",
+      "chunk_id": "chunk-0031",
+      "excerpt": "“不愧是我墨居仁看中的人，现在还能面不改色、临危不乱，不枉我下了那么大的本钱在你身上。”",
+      "fact_summary": "墨大夫自称墨居仁，并称韩立是自己看中的人，认为自己在韩立身上下了本钱。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        59864,
+        59908
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0031",
+        "source_path": "intermediate/chunks/chunk-0031.txt",
+        "source_range": [
+          59864,
+          59908
+        ]
+      },
+      "id": "evidence:chunk-0031:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0031:008",
+      "chunk_id": "chunk-0031",
+      "excerpt": "“我知道你一直对我提防着，没真把我当成师傅来看待。不过这没关系，我也没真把你当成徒弟来看。”",
+      "fact_summary": "墨居仁挑明韩立未真把他当师傅，他也没真把韩立当徒弟。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        60192,
+        60238
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0031",
+        "source_path": "intermediate/chunks/chunk-0031.txt",
+        "source_range": [
+          60192,
+          60238
+        ]
+      },
+      "id": "evidence:chunk-0031:008"
+    }
+  ]
+}

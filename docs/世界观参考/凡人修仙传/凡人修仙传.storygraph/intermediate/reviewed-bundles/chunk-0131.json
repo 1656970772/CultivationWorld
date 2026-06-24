@@ -1,0 +1,5527 @@
+{
+  "chunk_id": "chunk-0131",
+  "source_range": [
+    260561,
+    263184
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "task_packet_id": "chunk-0131:comprehensive_extraction:attempt-001",
+      "chunk_id": "chunk-0131",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "produced_at": "2026-06-23T21:10:00+08:00",
+      "extracted_nodes": [
+        {
+          "id": "node:chunk-0131:character:001",
+          "node_type": "character",
+          "label": "韩立",
+          "aliases": [],
+          "fact_summary": "韩立在太南谷入口向万小山坦承自己不是修仙家族子弟，而是自行修行的散修；他刚接触修仙界不久，缺少太南小会交易准备，进入太南谷后意识到修仙界危险而决定谨慎低调。",
+          "evidence_ids": [
+            "evidence:chunk-0131:002",
+            "evidence:chunk-0131:004",
+            "evidence:chunk-0131:007",
+            "evidence:chunk-0131:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "散修生存方式",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            260828,
+            263181
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              260828,
+              263181
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:character:002",
+          "node_type": "character",
+          "label": "万小山",
+          "aliases": [
+            "小山",
+            "少年"
+          ],
+          "fact_summary": "万小山是万家子弟，对散修韩立没有歧视，主动讲解万家祖训、修仙界常识、太南小会交易规则，并用通音符联系谷内开启阵法。",
+          "evidence_ids": [
+            "evidence:chunk-0131:002",
+            "evidence:chunk-0131:003",
+            "evidence:chunk-0131:004",
+            "evidence:chunk-0131:005",
+            "evidence:chunk-0131:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "NPC性格与代表事件",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "信息传播与情报",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            260828,
+            262738
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              260828,
+              262738
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:faction:001",
+          "node_type": "faction",
+          "label": "散修",
+          "aliases": [],
+          "fact_summary": "散修是修仙界中无固定修仙家族或大门户依附的修行群体，来源包括破落修真家族后代、偶得功法的普通人和传承将断小门户，修为多在炼气期徘徊并常受修仙家族轻视。",
+          "evidence_ids": [
+            "evidence:chunk-0131:001",
+            "evidence:chunk-0131:002",
+            "evidence:chunk-0131:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "散修生存方式",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            260622,
+            261260
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              260622,
+              261260
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:faction:002",
+          "node_type": "faction",
+          "label": "修仙家族",
+          "aliases": [
+            "修真家族"
+          ],
+          "fact_summary": "修仙家族是修仙界门户之外的重要修行势力类型，整体上常看轻散修，但也有部分家族因祖先出身散修而对散修没有恶感。",
+          "evidence_ids": [
+            "evidence:chunk-0131:001",
+            "evidence:chunk-0131:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "散修生存方式",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            260622,
+            261260
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              260622,
+              261260
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:faction:003",
+          "node_type": "faction",
+          "label": "万家",
+          "aliases": [],
+          "fact_summary": "万家是万小山所属修仙家族，其祖先原是散修，后来进入巨剑门成为正式弟子；万家族规保留不准歧视散修的祖训，并一向与散修交好。",
+          "evidence_ids": [
+            "evidence:chunk-0131:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "散修生存方式",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            261007,
+            261260
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261007,
+              261260
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:faction:004",
+          "node_type": "faction",
+          "label": "巨剑门",
+          "aliases": [],
+          "fact_summary": "巨剑门是万家祖先后来进入的修仙派，万家祖先成为其正式弟子后才有了万家。",
+          "evidence_ids": [
+            "evidence:chunk-0131:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            261007,
+            261260
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261007,
+              261260
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:realm:001",
+          "node_type": "realm",
+          "label": "炼气期",
+          "aliases": [],
+          "fact_summary": "当前叙事说明大多数散修修为不高，一般只能在炼气期徘徊。",
+          "evidence_ids": [
+            "evidence:chunk-0131:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "散修生存方式",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            260622,
+            260825
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              260622,
+              260825
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:location:001",
+          "node_type": "location",
+          "label": "太南谷",
+          "aliases": [],
+          "fact_summary": "太南谷是韩立和万小山进入的修仙者聚集山谷，入口被迷雾和阵法封锁，内部有中心楼阁、青砖广场和交易摊位，也是太南小会举办地。",
+          "evidence_ids": [
+            "evidence:chunk-0131:005",
+            "evidence:chunk-0131:007",
+            "evidence:chunk-0131:008",
+            "evidence:chunk-0131:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            261752,
+            263070
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261752,
+              263070
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:location:002",
+          "node_type": "location",
+          "label": "岚州",
+          "aliases": [],
+          "fact_summary": "岚州是太南小会服务的小辈修仙者区域范围，也是一个月后升仙大会开办的地区。",
+          "evidence_ids": [
+            "evidence:chunk-0131:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            262232,
+            262541
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              262232,
+              262541
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:facility:001",
+          "node_type": "facility",
+          "label": "太南谷中心楼阁",
+          "aliases": [
+            "宫殿式楼阁"
+          ],
+          "fact_summary": "太南谷中心处有一大片雕栏玉砌的宫殿式楼阁，有奇装异服者出入，楼阁前方是青砖广场。",
+          "evidence_ids": [
+            "evidence:chunk-0131:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            262771,
+            263070
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              262771,
+              263070
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:facility:002",
+          "node_type": "facility",
+          "label": "太南谷青砖广场",
+          "aliases": [
+            "青砖广场",
+            "广场"
+          ],
+          "fact_summary": "太南谷楼阁前有宽阔青砖广场，摊位围绕广场摆设，修仙者在摊前查看和低声询问，是太南小会交易场景。",
+          "evidence_ids": [
+            "evidence:chunk-0131:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            262771,
+            263070
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              262771,
+              263070
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:formation:001",
+          "node_type": "formation",
+          "label": "太南谷入口阵法",
+          "aliases": [
+            "迷雾阵法"
+          ],
+          "fact_summary": "太南谷入口以迷雾和阵法封锁，谷中之人收到通音符后会放开阵法，迷雾翻滚并分出可供二人并肩而行的小路。",
+          "evidence_ids": [
+            "evidence:chunk-0131:005",
+            "evidence:chunk-0131:008",
+            "evidence:chunk-0131:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "阵法师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            261752,
+            263070
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261752,
+              263070
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:event:001",
+          "node_type": "event",
+          "label": "太南小会",
+          "aliases": [],
+          "fact_summary": "太南小会是五年一次、专为岚州小辈开办的交易盛会，当前在太南谷举行；因一个月后的升仙大会也在岚州开办，顺便前来参加者更多。",
+          "evidence_ids": [
+            "evidence:chunk-0131:007",
+            "evidence:chunk-0131:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            262232,
+            263070
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              262232,
+              263070
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:event:002",
+          "node_type": "event",
+          "label": "升仙大会",
+          "aliases": [],
+          "fact_summary": "升仙大会将在一个月后于岚州开办，导致顺便来太南谷参加太南小会的人变多。",
+          "evidence_ids": [
+            "evidence:chunk-0131:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "信息传播与情报",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            262232,
+            262541
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              262232,
+              262541
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:inscription:001",
+          "node_type": "inscription",
+          "label": "通音符",
+          "aliases": [
+            "符纸"
+          ],
+          "fact_summary": "通音符由万小山取出并施法抛入空中，化作火光进入迷雾，用于传到谷内请求放开阵法接应。",
+          "evidence_ids": [
+            "evidence:chunk-0131:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "符师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "阵法师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            261752,
+            261920
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261752,
+              261920
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:inscription:002",
+          "node_type": "inscription",
+          "label": "初级下阶空白符纸",
+          "aliases": [],
+          "fact_summary": "初级下阶空白符纸是万小山带到太南谷用于太南小会交换的物品之一，数量为一打。",
+          "evidence_ids": [
+            "evidence:chunk-0131:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "符师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            261923,
+            262158
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261923,
+              262158
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:inscription:003",
+          "node_type": "inscription",
+          "label": "初级下阶隐身符",
+          "aliases": [
+            "隐身符"
+          ],
+          "fact_summary": "初级下阶隐身符是万小山带到太南谷用于太南小会交换的符箓之一，数量为两张。",
+          "evidence_ids": [
+            "evidence:chunk-0131:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "符师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            261923,
+            262158
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261923,
+              262158
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:inscription:004",
+          "node_type": "inscription",
+          "label": "遁地符",
+          "aliases": [
+            "初级下阶遁地符"
+          ],
+          "fact_summary": "遁地符是万小山带到太南谷用于太南小会交换的符箓之一，语境中与初级下阶隐身符并列且数量为两张。",
+          "evidence_ids": [
+            "evidence:chunk-0131:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "符师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            261923,
+            262158
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261923,
+              262158
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:inscription:005",
+          "node_type": "inscription",
+          "label": "初级中阶连珠雷符",
+          "aliases": [
+            "连珠雷符"
+          ],
+          "fact_summary": "初级中阶连珠雷符是万小山带到太南谷用于太南小会交换的符箓之一，数量为一张。",
+          "evidence_ids": [
+            "evidence:chunk-0131:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "符师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            261923,
+            262158
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261923,
+              262158
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:inscription:006",
+          "node_type": "inscription",
+          "label": "初级下阶冰弹符",
+          "aliases": [
+            "冰弹符"
+          ],
+          "fact_summary": "初级下阶冰弹符是万小山带到太南谷用于太南小会交换的符箓之一，数量为一打。",
+          "evidence_ids": [
+            "evidence:chunk-0131:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "符师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            261923,
+            262158
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261923,
+              262158
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:material:001",
+          "node_type": "material",
+          "label": "铁精",
+          "aliases": [],
+          "fact_summary": "铁精是万小山带到太南谷用于太南小会交换的材料之一，数量为一块。",
+          "evidence_ids": [
+            "evidence:chunk-0131:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            261923,
+            262158
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261923,
+              262158
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:material:002",
+          "node_type": "material",
+          "label": "初级朱砂",
+          "aliases": [
+            "朱砂"
+          ],
+          "fact_summary": "初级朱砂是万小山带到太南谷用于太南小会交换的材料之一，数量为一瓶。",
+          "evidence_ids": [
+            "evidence:chunk-0131:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "符师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            261923,
+            262158
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261923,
+              262158
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:beast:001",
+          "node_type": "beast",
+          "label": "三尾猫",
+          "aliases": [
+            "妖兽三尾猫"
+          ],
+          "fact_summary": "三尾猫在万小山的交易物清单中以妖兽身份出现，其胡须被作为一束可交换材料携带。",
+          "evidence_ids": [
+            "evidence:chunk-0131:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            261923,
+            262158
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261923,
+              262158
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0131:material:003",
+          "node_type": "material",
+          "label": "妖兽三尾猫的胡须",
+          "aliases": [
+            "三尾猫的胡须"
+          ],
+          "fact_summary": "妖兽三尾猫的胡须是万小山带到太南谷用于太南小会交换的材料之一，数量为一束。",
+          "evidence_ids": [
+            "evidence:chunk-0131:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            261923,
+            262158
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261923,
+              262158
+            ]
+          }
+        }
+      ],
+      "extracted_edges": [
+        {
+          "id": "edge:chunk-0131:001",
+          "edge_type": "identity_or_status",
+          "source": "node:chunk-0131:character:001",
+          "target": "node:chunk-0131:faction:001",
+          "fact_summary": "韩立在当前 chunk 明确以自行修行者身份承认为散修。",
+          "evidence_ids": [
+            "evidence:chunk-0131:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "散修生存方式",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            260828,
+            260925
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              260828,
+              260925
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0131:002",
+          "edge_type": "member_of",
+          "source": "node:chunk-0131:character:002",
+          "target": "node:chunk-0131:faction:003",
+          "fact_summary": "万小山自称“我们万家”，表明其为万家成员。",
+          "evidence_ids": [
+            "evidence:chunk-0131:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            261007,
+            261260
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261007,
+              261260
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0131:003",
+          "edge_type": "friendly_to",
+          "source": "node:chunk-0131:faction:003",
+          "target": "node:chunk-0131:faction:001",
+          "fact_summary": "万家族规有不准歧视散修的祖训，并一向与散修交好。",
+          "evidence_ids": [
+            "evidence:chunk-0131:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "散修生存方式",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            261007,
+            261260
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261007,
+              261260
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0131:004",
+          "edge_type": "origin_linked_to",
+          "source": "node:chunk-0131:faction:003",
+          "target": "node:chunk-0131:faction:004",
+          "fact_summary": "万家祖先原为散修，后进入巨剑门成为正式弟子，由此有了万家。",
+          "evidence_ids": [
+            "evidence:chunk-0131:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            261007,
+            261260
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261007,
+              261260
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0131:005",
+          "edge_type": "typical_realm",
+          "source": "node:chunk-0131:faction:001",
+          "target": "node:chunk-0131:realm:001",
+          "fact_summary": "叙事说明散修修为大都不高，一般只能在炼气期徘徊。",
+          "evidence_ids": [
+            "evidence:chunk-0131:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "散修生存方式",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            260622,
+            260825
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              260622,
+              260825
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0131:006",
+          "edge_type": "located_at",
+          "source": "node:chunk-0131:event:001",
+          "target": "node:chunk-0131:location:001",
+          "fact_summary": "太南小会在太南谷场景中举行，入谷后可见广场交易摊位。",
+          "evidence_ids": [
+            "evidence:chunk-0131:007",
+            "evidence:chunk-0131:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            262232,
+            263070
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              262232,
+              263070
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0131:007",
+          "edge_type": "region_scope",
+          "source": "node:chunk-0131:event:001",
+          "target": "node:chunk-0131:location:002",
+          "fact_summary": "太南小会被万小山说明为专为岚州小辈开办的交易盛会。",
+          "evidence_ids": [
+            "evidence:chunk-0131:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            262232,
+            262541
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              262232,
+              262541
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0131:008",
+          "edge_type": "increases_attendance_of",
+          "source": "node:chunk-0131:event:002",
+          "target": "node:chunk-0131:event:001",
+          "fact_summary": "一个月后的升仙大会也在岚州开办，使顺便参加太南小会的人更多。",
+          "evidence_ids": [
+            "evidence:chunk-0131:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            262232,
+            262541
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              262232,
+              262541
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0131:009",
+          "edge_type": "signals",
+          "source": "node:chunk-0131:inscription:001",
+          "target": "node:chunk-0131:formation:001",
+          "fact_summary": "通音符被万小山施放后传入迷雾，用于通知谷中之人放开阵法接应。",
+          "evidence_ids": [
+            "evidence:chunk-0131:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "符师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "阵法师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            261752,
+            261920
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261752,
+              261920
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0131:010",
+          "edge_type": "contains",
+          "source": "node:chunk-0131:location:001",
+          "target": "node:chunk-0131:facility:001",
+          "fact_summary": "太南谷中心处有宫殿式楼阁。",
+          "evidence_ids": [
+            "evidence:chunk-0131:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            262771,
+            263070
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              262771,
+              263070
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0131:011",
+          "edge_type": "contains",
+          "source": "node:chunk-0131:location:001",
+          "target": "node:chunk-0131:facility:002",
+          "fact_summary": "太南谷楼阁前有青砖广场和交易摊位。",
+          "evidence_ids": [
+            "evidence:chunk-0131:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            262771,
+            263070
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              262771,
+              263070
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0131:012",
+          "edge_type": "derived_from",
+          "source": "node:chunk-0131:material:003",
+          "target": "node:chunk-0131:beast:001",
+          "fact_summary": "妖兽三尾猫的胡须来自三尾猫这一妖兽。",
+          "evidence_ids": [
+            "evidence:chunk-0131:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            261923,
+            262158
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261923,
+              262158
+            ]
+          }
+        }
+      ],
+      "extracted_events": [
+        {
+          "id": "event:chunk-0131:001",
+          "event_type": "revelation_dialogue",
+          "label": "韩立向万小山坦白散修身份",
+          "participants": [
+            "node:chunk-0131:character:001",
+            "node:chunk-0131:character:002"
+          ],
+          "fact_summary": "韩立没有冒充修仙家族子弟，而是向万小山坦白自己自行修行、刚进入修仙界不久；万小山接受其散修身份并愿意继续交流。",
+          "evidence_ids": [
+            "evidence:chunk-0131:002",
+            "evidence:chunk-0131:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "散修生存方式",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            260828,
+            261653
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              260828,
+              261653
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0131:002",
+          "event_type": "information_explanation",
+          "label": "万小山讲解散修与万家祖训",
+          "participants": [
+            "node:chunk-0131:character:002",
+            "node:chunk-0131:character:001",
+            "node:chunk-0131:faction:003",
+            "node:chunk-0131:faction:001"
+          ],
+          "fact_summary": "万小山向韩立解释散修来源、修仙家族对散修的普遍轻视，以及万家因祖先散修经历而不歧视散修的族规。",
+          "evidence_ids": [
+            "evidence:chunk-0131:001",
+            "evidence:chunk-0131:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "信息传播与情报",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "散修生存方式",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            260622,
+            261260
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              260622,
+              261260
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0131:003",
+          "event_type": "item_use_event",
+          "label": "万小山使用通音符接引入谷",
+          "participants": [
+            "node:chunk-0131:character:002",
+            "node:chunk-0131:character:001",
+            "node:chunk-0131:inscription:001",
+            "node:chunk-0131:formation:001"
+          ],
+          "fact_summary": "万小山取出通音符施法，让其化为火光进入迷雾，等待谷内放开阵法接应二人。",
+          "evidence_ids": [
+            "evidence:chunk-0131:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "符师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "阵法师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            261752,
+            261920
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261752,
+              261920
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0131:004",
+          "event_type": "trade_preparation_dialogue",
+          "label": "万小山列举太南小会交换物",
+          "participants": [
+            "node:chunk-0131:character:002",
+            "node:chunk-0131:character:001",
+            "node:chunk-0131:event:001"
+          ],
+          "fact_summary": "万小山询问韩立带了哪些交换物，并列出自己准备的符箓、材料和妖兽材料，暴露韩立对太南小会准备不足。",
+          "evidence_ids": [
+            "evidence:chunk-0131:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "符师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            261923,
+            262158
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261923,
+              262158
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0131:005",
+          "event_type": "world_rule_explanation",
+          "label": "万小山说明太南小会与升仙大会关系",
+          "participants": [
+            "node:chunk-0131:character:002",
+            "node:chunk-0131:character:001",
+            "node:chunk-0131:event:001",
+            "node:chunk-0131:event:002"
+          ],
+          "fact_summary": "万小山说明太南小会五年一次、服务岚州小辈交易；因升仙大会一个月后也在岚州开办，顺路参加者更多。",
+          "evidence_ids": [
+            "evidence:chunk-0131:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "信息传播与情报",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            262232,
+            262541
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              262232,
+              262541
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0131:006",
+          "event_type": "travel_entry_event",
+          "label": "韩立和万小山进入太南谷",
+          "participants": [
+            "node:chunk-0131:character:001",
+            "node:chunk-0131:character:002",
+            "node:chunk-0131:location:001",
+            "node:chunk-0131:formation:001"
+          ],
+          "fact_summary": "太南谷入口迷雾分开小路后，万小山先进入，韩立端详后稳步进入，并在谷内见到楼阁、广场和交易摊位。",
+          "evidence_ids": [
+            "evidence:chunk-0131:008",
+            "evidence:chunk-0131:009",
+            "evidence:chunk-0131:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            262591,
+            263181
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              262591,
+              263181
+            ]
+          }
+        }
+      ],
+      "extracted_evidence": [
+        {
+          "evidence_id": "evidence:chunk-0131:001",
+          "chunk_id": "chunk-0131",
+          "source_range": [
+            260622,
+            260825
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              260622,
+              260825
+            ]
+          },
+          "excerpt": "韩立在和少年刚才的闲谈时已知，修仙界除了各修仙门户和修真家族外，还有不少的散修存在。\n　　所谓的散修，其中大部分人要么是破落修真家族的后代，要么是像韩立这样无意中得了某些修仙的功法，自行进入修仙界的普通人，还有的则是些已快断绝传承的小门户传人等来历的人。这些散修的修为大都不高，一般都只能在炼气期徘徊，所以散修一向不大被修仙家族的人所看重，颇有些瞧不起的意思，就如同世俗间的富户看不上穷困潦倒的破落户一样。",
+          "fact_summary": "叙事说明修仙界存在散修，散修多来自破落修真家族后代、偶得功法普通人或传承将断小门户，修为多在炼气期徘徊且常被修仙家族轻视。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "散修生存方式",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "境界提升与功法分析",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0131:001"
+        },
+        {
+          "evidence_id": "evidence:chunk-0131:002",
+          "chunk_id": "chunk-0131",
+          "source_range": [
+            260828,
+            260925
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              260828,
+              260925
+            ]
+          },
+          "excerpt": "“在下可不是某家族的人，而是一直自行修行的！”韩立想了一下后，还决定说实话。毕竟冒充其他家族的人，太容易被揭穿了。\n　　“阁下是散修啊！”少年有些意外，不过脸上倒没有任何歧视神情，反而有些惊喜。",
+          "fact_summary": "韩立向万小山坦言自己并非某修仙家族成员，而是自行修行；万小山得知其为散修后没有歧视，反而惊喜。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "散修生存方式",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0131:002"
+        },
+        {
+          "evidence_id": "evidence:chunk-0131:003",
+          "chunk_id": "chunk-0131",
+          "source_range": [
+            261007,
+            261260
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261007,
+              261260
+            ]
+          },
+          "excerpt": "“他们是他们，不要把我们万家和其他修仙家族混为一谈？我们家族的人可一向都和散修们交好的！”少年把嘴一撇，骄傲的回答道。看来很为自己家族的做法自豪！\n　　“我们万家的祖先，原先也是一名散修，但后来侥幸进了修仙派，成了巨剑门的正式弟子，这才有了我们万家。所以我们万家族规里，就一直都有不准歧视散修的祖训。”少年笑嘻嘻的说道。\n　　“其实不止我们万家，还有其他一些家族的祖先也是散修，所以他们对散修也没有什么恶感，只是这些家族在所有修仙家族里占的比例太少了些，这才有修仙家族歧视散修的说法。”少年摇头晃脑的说道。",
+          "fact_summary": "万小山说明万家一向与散修交好，祖先原是散修，后来进入巨剑门成为正式弟子，因此万家族规有不准歧视散修的祖训；部分修仙家族也因祖先散修而不厌恶散修。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "散修生存方式",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0131:003"
+        },
+        {
+          "evidence_id": "evidence:chunk-0131:004",
+          "chunk_id": "chunk-0131",
+          "source_range": [
+            261337,
+            261653
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261337,
+              261653
+            ]
+          },
+          "excerpt": "“不过兄台，你一路上问了这么多修仙界人人皆知的事，难道也是刚出山的新人？”少年眼珠一转，不知怎么忽然聪明了起来，有些恍然大悟的说道。\n　　韩立一听，脸上微微一笑，用手拍了拍少年的肩头，有些歉意的道：“在下不是存心欺瞒小兄弟，只是刚进入修仙界不久，有些顾虑吧了！”\n　　“没关系的，我不介意的！不过这位大哥，你的名字该告诉我了吧！还有以后直接叫我小山就行了。”万小山明显也是自来熟类型的人，满脸不在乎的说道。\n　　“呵呵！在下韩立，的确是刚接触修仙界不久，还望小山兄弟多照应一下！”韩立对万小山好感更盛，说话的口气，也随和多了。\n　　“没问题，韩大哥有什么不懂的尽管问，嘿嘿！没想到我万小山还有教导别人的时候？”万小山神气活现的讲道。",
+          "fact_summary": "万小山察觉韩立是刚接触修仙界的新人，韩立承认有顾虑并告知姓名；万小山也让韩立称自己小山，并愿意解答韩立问题。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "信息传播与情报",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0131:004"
+        },
+        {
+          "evidence_id": "evidence:chunk-0131:005",
+          "chunk_id": "chunk-0131",
+          "source_range": [
+            261752,
+            261920
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261752,
+              261920
+            ]
+          },
+          "excerpt": "少年在身上忙乎了半天，终于从怀内掏出了一张符纸来。\n　　他拿在手中比划了几下，嘴里还低声念叨了几句，然后把符纸往空中一抛，化为了一道火光冲进了迷雾，消失不见了。\n　　“韩大哥稍等一下，我这张通音符一会儿就会传到谷内，谷中之人自会放开阵法接应我们的。”少年见韩立瞧着那火光消失的方向有些出神，便解释道。\n　　“哦！”韩立点点头，表示理解。",
+          "fact_summary": "万小山取出符纸施法，将通音符化为火光送入迷雾，并说明谷中之人收到后会放开阵法接应二人。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "符师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "阵法师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0131:005"
+        },
+        {
+          "evidence_id": "evidence:chunk-0131:006",
+          "chunk_id": "chunk-0131",
+          "source_range": [
+            261923,
+            262158
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261923,
+              262158
+            ]
+          },
+          "excerpt": "“韩大哥这次来太南谷，想必身上带了不少交换的物品吧？能不能说说看，让小弟听听。别不好意思嘛，那小弟先开口说说自己的东西了！”\n　　“我带了初级下阶空白符纸一打、初级下阶隐身符、遁地符各两张、初级中阶连珠雷符一张、初级下阶冰弹符一打、铁精一块、初级朱砂一瓶、妖兽三尾猫的胡须一束、药草……”万小山根本没注意到已呆若木鸡的韩立，叽里呱啦的掰着手指，说出了一大堆东西来。\n　　“好了！该韩大哥说了，咦！大哥你的脸色怎么这么白，你……”少年眨了眨眼睛，有些不明白所以的望着韩立。",
+          "fact_summary": "万小山向韩立列出自己带来交换的初级符纸、隐身符、遁地符、连珠雷符、冰弹符、铁精、初级朱砂、妖兽三尾猫的胡须和药草等物，韩立因自己缺少准备而脸色难看。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "符师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "妖兽分析",
+              "requirement_id": "creature_deviant_practice_ecology",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0131:006"
+        },
+        {
+          "evidence_id": "evidence:chunk-0131:007",
+          "chunk_id": "chunk-0131",
+          "source_range": [
+            262232,
+            262541
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              262232,
+              262541
+            ]
+          },
+          "excerpt": "“不过既然这时来太南谷，那肯定是来参加太南小会的，谁又会不带东西啊？这可是五年一次，专为我们岚州小辈们开办的交易盛会！特别是这次的升仙大会，一个月后也在我们岚州开办，那顺便来此参加太南小会的人，就更多了。难道大哥不是闻名来参加太南小会的？”少年惊愕的说出了上面一通话来，用不信的目光望着韩立。\n　　韩立苦笑了起来。\n　　“小山兄弟，在下的确不知这里要开什么太南小会，只是无意得知此地有其他修仙者居住，所以想来结交一番而已，哪曾专门准备什么东西啊？”韩立两手一分，无奈的说道。\n　　“原来这样啊！那太可惜了，韩大哥只能浪费这次的良机了。要知道，弄到自己所缺物品材料的机会可并不多。”万小山一脸的惋惜之色，连声为韩立叹息。",
+          "fact_summary": "万小山说明太南小会五年一次，是专为岚州小辈开办的交易盛会；一个月后的升仙大会也在岚州开办，因此顺路参加者更多。韩立承认自己只是来结交修仙者，没有准备交易物。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "信息传播与情报",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0131:007"
+        },
+        {
+          "evidence_id": "evidence:chunk-0131:008",
+          "chunk_id": "chunk-0131",
+          "source_range": [
+            262591,
+            262738
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              262591,
+              262738
+            ]
+          },
+          "excerpt": "这时韩立二人前的浓雾突然间翻滚起来，然后像被人用刀劈开一样，分出了一条可供两人并肩而行的小路，小路的另一端一眼望不到尽头，似乎很遥远。\n　　“行了，我们走吧！”少年高兴的冲韩立拌了个鬼脸，就兴冲冲的先冲了进去，消失在了路上而韩立则冷漠的端详了小路一会儿，才迈步走了进去，走的稳稳当当，不慌不忙。",
+          "fact_summary": "韩立二人面前的迷雾翻滚并分出小路，万小山先冲入，韩立端详小路后稳当地进入。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "阵法师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0131:008"
+        },
+        {
+          "evidence_id": "evidence:chunk-0131:009",
+          "chunk_id": "chunk-0131",
+          "source_range": [
+            262771,
+            263070
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              262771,
+              263070
+            ]
+          },
+          "excerpt": "当韩立走出路口时，感到眼前忽然一亮，一个种满了奇花异草的绿色山谷出现在了眼前。山谷三面靠山，唯一的出口就是韩立进来被迷雾封锁的山坡。\n　　整个地方面积很大，足足占地上百亩还多，在中心处，有一大片雕栏玉砌的宫殿式楼阁，正有些奇装异服打扮的人出出进进。\n　　而在楼阁前面的空地上，则有一个很宽阔的青砖广场，里面有许多人像小商贩一样，围着广场的四周摆起了小货摊。在这些摊位的前面，时不时的会有一两人挤到跟前，看那么一两眼，或者低声问两句，但能当场成交的韩立并没有见到多少。\n　　见此情景，韩立不禁深吸了一口气。这就是修仙界了，这里的人应全都是修仙者，能一下子见到如此多的修仙之人，还是让韩立有些精神恍惚。",
+          "fact_summary": "韩立走出入口后见到太南谷：山谷三面靠山、入口山坡被迷雾封锁，中心有宫殿式楼阁，楼阁前青砖广场周围有小货摊和修仙者交易。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0131:009"
+        },
+        {
+          "evidence_id": "evidence:chunk-0131:010",
+          "chunk_id": "chunk-0131",
+          "source_range": [
+            263073,
+            263181
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              263073,
+              263181
+            ]
+          },
+          "excerpt": "韩立轻晃了下头，让自己清醒一些。他不断提醒着自己，他要进入的是一个以前无法想象的世界，在这里的人，谁都大有可能轻易的灭掉他，他一定要谨慎低调些才是。\n　　想到这里，韩立回头望了一眼已彻底消失的来路，抬腿向广场内走去。",
+          "fact_summary": "韩立提醒自己进入了以前无法想象的修仙世界，意识到这里的人可能轻易灭掉他，因此必须谨慎低调，并走向广场。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0131:010"
+        }
+      ],
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "散修生存方式",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "uncertainties": [
+        {
+          "id": "uncertainty:chunk-0131:001",
+          "kind": "taonan_valley_formation_name_and_mechanism_missing",
+          "fact_summary": "当前 chunk 明示太南谷入口有迷雾和阵法，通音符可通知谷内放开阵法，但未给出阵法正式名称、布阵者、禁制机制或出入权限细则。",
+          "evidence_ids": [
+            "evidence:chunk-0131:005",
+            "evidence:chunk-0131:008",
+            "evidence:chunk-0131:009"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "阵法师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            },
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            261752,
+            263070
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261752,
+              263070
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0131:002",
+          "kind": "han_li_trade_inventory_incomplete",
+          "fact_summary": "韩立自嘲“最起码不是还有两张符”，但当前 chunk 未说明这两张符的名称、品阶或用途，不能建具名符箓节点。",
+          "evidence_ids": [
+            "evidence:chunk-0131:007"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "符师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            262232,
+            262541
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              262232,
+              262541
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0131:003",
+          "kind": "taonan_fair_trade_rules_partial",
+          "fact_summary": "当前 chunk 明示太南小会五年一次、面向岚州小辈、用于交换所缺物品材料，但未说明摊位费用、准入审核、价格规则或主持势力。",
+          "evidence_ids": [
+            "evidence:chunk-0131:007",
+            "evidence:chunk-0131:009"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            262232,
+            263070
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              262232,
+              263070
+            ]
+          }
+        }
+      ],
+      "rejected_candidates": [
+        {
+          "id": "rejected:chunk-0131:001",
+          "candidate": "药草",
+          "reason": "万小山仅泛称“药草”，当前 chunk 未给出专属名称、种类或具体用途；按具名物品规则不建 material 节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            261923,
+            262158
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              261923,
+              262158
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0131:002",
+          "candidate": "韩立身上的两张符",
+          "reason": "叙事只以“两张符”泛指韩立可交换物，未说明名称或效果，不能硬造符箓实体。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "符师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            262232,
+            262541
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              262232,
+              262541
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0131:003",
+          "candidate": "普通摊主和看摊修仙者",
+          "reason": "广场摊主和路过询问者只构成交易背景，无姓名、独立决策或具体资源流转，不单独建角色节点。",
+          "confidence": "EXTRACTED",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            262771,
+            263070
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0131",
+            "source_path": "intermediate/chunks/chunk-0131.txt",
+            "source_range": [
+              262771,
+              263070
+            ]
+          }
+        }
+      ],
+      "structured_failures": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0131/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "id": "node:chunk-0131:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立在太南谷入口向万小山坦承自己不是修仙家族子弟，而是自行修行的散修；他刚接触修仙界不久，缺少太南小会交易准备，进入太南谷后意识到修仙界危险而决定谨慎低调。",
+      "evidence_ids": [
+        "evidence:chunk-0131:002",
+        "evidence:chunk-0131:004",
+        "evidence:chunk-0131:007",
+        "evidence:chunk-0131:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "散修生存方式",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        260828,
+        263181
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          260828,
+          263181
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:character:002",
+      "node_type": "character",
+      "label": "万小山",
+      "aliases": [
+        "小山",
+        "少年"
+      ],
+      "fact_summary": "万小山是万家子弟，对散修韩立没有歧视，主动讲解万家祖训、修仙界常识、太南小会交易规则，并用通音符联系谷内开启阵法。",
+      "evidence_ids": [
+        "evidence:chunk-0131:002",
+        "evidence:chunk-0131:003",
+        "evidence:chunk-0131:004",
+        "evidence:chunk-0131:005",
+        "evidence:chunk-0131:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        260828,
+        262738
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          260828,
+          262738
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:faction:001",
+      "node_type": "faction",
+      "label": "散修",
+      "aliases": [],
+      "fact_summary": "散修是修仙界中无固定修仙家族或大门户依附的修行群体，来源包括破落修真家族后代、偶得功法的普通人和传承将断小门户，修为多在炼气期徘徊并常受修仙家族轻视。",
+      "evidence_ids": [
+        "evidence:chunk-0131:001",
+        "evidence:chunk-0131:002",
+        "evidence:chunk-0131:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "散修生存方式",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        260622,
+        261260
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          260622,
+          261260
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:faction:002",
+      "node_type": "faction",
+      "label": "修仙家族",
+      "aliases": [
+        "修真家族"
+      ],
+      "fact_summary": "修仙家族是修仙界门户之外的重要修行势力类型，整体上常看轻散修，但也有部分家族因祖先出身散修而对散修没有恶感。",
+      "evidence_ids": [
+        "evidence:chunk-0131:001",
+        "evidence:chunk-0131:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "散修生存方式",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        260622,
+        261260
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          260622,
+          261260
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:faction:003",
+      "node_type": "faction",
+      "label": "万家",
+      "aliases": [],
+      "fact_summary": "万家是万小山所属修仙家族，其祖先原是散修，后来进入巨剑门成为正式弟子；万家族规保留不准歧视散修的祖训，并一向与散修交好。",
+      "evidence_ids": [
+        "evidence:chunk-0131:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "散修生存方式",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        261007,
+        261260
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261007,
+          261260
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:faction:004",
+      "node_type": "faction",
+      "label": "巨剑门",
+      "aliases": [],
+      "fact_summary": "巨剑门是万家祖先后来进入的修仙派，万家祖先成为其正式弟子后才有了万家。",
+      "evidence_ids": [
+        "evidence:chunk-0131:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        261007,
+        261260
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261007,
+          261260
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:realm:001",
+      "node_type": "realm",
+      "label": "炼气期",
+      "aliases": [],
+      "fact_summary": "当前叙事说明大多数散修修为不高，一般只能在炼气期徘徊。",
+      "evidence_ids": [
+        "evidence:chunk-0131:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "散修生存方式",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        260622,
+        260825
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          260622,
+          260825
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:location:001",
+      "node_type": "location",
+      "label": "太南谷",
+      "aliases": [],
+      "fact_summary": "太南谷是韩立和万小山进入的修仙者聚集山谷，入口被迷雾和阵法封锁，内部有中心楼阁、青砖广场和交易摊位，也是太南小会举办地。",
+      "evidence_ids": [
+        "evidence:chunk-0131:005",
+        "evidence:chunk-0131:007",
+        "evidence:chunk-0131:008",
+        "evidence:chunk-0131:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        261752,
+        263070
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261752,
+          263070
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:location:002",
+      "node_type": "location",
+      "label": "岚州",
+      "aliases": [],
+      "fact_summary": "岚州是太南小会服务的小辈修仙者区域范围，也是一个月后升仙大会开办的地区。",
+      "evidence_ids": [
+        "evidence:chunk-0131:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        262232,
+        262541
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          262232,
+          262541
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:facility:001",
+      "node_type": "facility",
+      "label": "太南谷中心楼阁",
+      "aliases": [
+        "宫殿式楼阁"
+      ],
+      "fact_summary": "太南谷中心处有一大片雕栏玉砌的宫殿式楼阁，有奇装异服者出入，楼阁前方是青砖广场。",
+      "evidence_ids": [
+        "evidence:chunk-0131:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        262771,
+        263070
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          262771,
+          263070
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:facility:002",
+      "node_type": "facility",
+      "label": "太南谷青砖广场",
+      "aliases": [
+        "青砖广场",
+        "广场"
+      ],
+      "fact_summary": "太南谷楼阁前有宽阔青砖广场，摊位围绕广场摆设，修仙者在摊前查看和低声询问，是太南小会交易场景。",
+      "evidence_ids": [
+        "evidence:chunk-0131:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        262771,
+        263070
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          262771,
+          263070
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:formation:001",
+      "node_type": "formation",
+      "label": "太南谷入口阵法",
+      "aliases": [
+        "迷雾阵法"
+      ],
+      "fact_summary": "太南谷入口以迷雾和阵法封锁，谷中之人收到通音符后会放开阵法，迷雾翻滚并分出可供二人并肩而行的小路。",
+      "evidence_ids": [
+        "evidence:chunk-0131:005",
+        "evidence:chunk-0131:008",
+        "evidence:chunk-0131:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        261752,
+        263070
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261752,
+          263070
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:event:001",
+      "node_type": "event",
+      "label": "太南小会",
+      "aliases": [],
+      "fact_summary": "太南小会是五年一次、专为岚州小辈开办的交易盛会，当前在太南谷举行；因一个月后的升仙大会也在岚州开办，顺便前来参加者更多。",
+      "evidence_ids": [
+        "evidence:chunk-0131:007",
+        "evidence:chunk-0131:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        262232,
+        263070
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          262232,
+          263070
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:event:002",
+      "node_type": "event",
+      "label": "升仙大会",
+      "aliases": [],
+      "fact_summary": "升仙大会将在一个月后于岚州开办，导致顺便来太南谷参加太南小会的人变多。",
+      "evidence_ids": [
+        "evidence:chunk-0131:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        262232,
+        262541
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          262232,
+          262541
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:inscription:001",
+      "node_type": "inscription",
+      "label": "通音符",
+      "aliases": [
+        "符纸"
+      ],
+      "fact_summary": "通音符由万小山取出并施法抛入空中，化作火光进入迷雾，用于传到谷内请求放开阵法接应。",
+      "evidence_ids": [
+        "evidence:chunk-0131:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        261752,
+        261920
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261752,
+          261920
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:inscription:002",
+      "node_type": "inscription",
+      "label": "初级下阶空白符纸",
+      "aliases": [],
+      "fact_summary": "初级下阶空白符纸是万小山带到太南谷用于太南小会交换的物品之一，数量为一打。",
+      "evidence_ids": [
+        "evidence:chunk-0131:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        261923,
+        262158
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261923,
+          262158
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:inscription:003",
+      "node_type": "inscription",
+      "label": "初级下阶隐身符",
+      "aliases": [
+        "隐身符"
+      ],
+      "fact_summary": "初级下阶隐身符是万小山带到太南谷用于太南小会交换的符箓之一，数量为两张。",
+      "evidence_ids": [
+        "evidence:chunk-0131:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        261923,
+        262158
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261923,
+          262158
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:inscription:004",
+      "node_type": "inscription",
+      "label": "遁地符",
+      "aliases": [
+        "初级下阶遁地符"
+      ],
+      "fact_summary": "遁地符是万小山带到太南谷用于太南小会交换的符箓之一，语境中与初级下阶隐身符并列且数量为两张。",
+      "evidence_ids": [
+        "evidence:chunk-0131:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        261923,
+        262158
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261923,
+          262158
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:inscription:005",
+      "node_type": "inscription",
+      "label": "初级中阶连珠雷符",
+      "aliases": [
+        "连珠雷符"
+      ],
+      "fact_summary": "初级中阶连珠雷符是万小山带到太南谷用于太南小会交换的符箓之一，数量为一张。",
+      "evidence_ids": [
+        "evidence:chunk-0131:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        261923,
+        262158
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261923,
+          262158
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:inscription:006",
+      "node_type": "inscription",
+      "label": "初级下阶冰弹符",
+      "aliases": [
+        "冰弹符"
+      ],
+      "fact_summary": "初级下阶冰弹符是万小山带到太南谷用于太南小会交换的符箓之一，数量为一打。",
+      "evidence_ids": [
+        "evidence:chunk-0131:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        261923,
+        262158
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261923,
+          262158
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:material:001",
+      "node_type": "material",
+      "label": "铁精",
+      "aliases": [],
+      "fact_summary": "铁精是万小山带到太南谷用于太南小会交换的材料之一，数量为一块。",
+      "evidence_ids": [
+        "evidence:chunk-0131:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        261923,
+        262158
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261923,
+          262158
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:material:002",
+      "node_type": "material",
+      "label": "初级朱砂",
+      "aliases": [
+        "朱砂"
+      ],
+      "fact_summary": "初级朱砂是万小山带到太南谷用于太南小会交换的材料之一，数量为一瓶。",
+      "evidence_ids": [
+        "evidence:chunk-0131:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        261923,
+        262158
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261923,
+          262158
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:beast:001",
+      "node_type": "beast",
+      "label": "三尾猫",
+      "aliases": [
+        "妖兽三尾猫"
+      ],
+      "fact_summary": "三尾猫在万小山的交易物清单中以妖兽身份出现，其胡须被作为一束可交换材料携带。",
+      "evidence_ids": [
+        "evidence:chunk-0131:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        261923,
+        262158
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261923,
+          262158
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0131:material:003",
+      "node_type": "material",
+      "label": "妖兽三尾猫的胡须",
+      "aliases": [
+        "三尾猫的胡须"
+      ],
+      "fact_summary": "妖兽三尾猫的胡须是万小山带到太南谷用于太南小会交换的材料之一，数量为一束。",
+      "evidence_ids": [
+        "evidence:chunk-0131:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        261923,
+        262158
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261923,
+          262158
+        ]
+      }
+    }
+  ],
+  "normalized_edges": [
+    {
+      "id": "edge:chunk-0131:001",
+      "edge_type": "identity_or_status",
+      "source": "node:chunk-0131:character:001",
+      "target": "node:chunk-0131:faction:001",
+      "fact_summary": "韩立在当前 chunk 明确以自行修行者身份承认为散修。",
+      "evidence_ids": [
+        "evidence:chunk-0131:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "散修生存方式",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        260828,
+        260925
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          260828,
+          260925
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0131:002",
+      "edge_type": "member_of",
+      "source": "node:chunk-0131:character:002",
+      "target": "node:chunk-0131:faction:003",
+      "fact_summary": "万小山自称“我们万家”，表明其为万家成员。",
+      "evidence_ids": [
+        "evidence:chunk-0131:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        261007,
+        261260
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261007,
+          261260
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0131:003",
+      "edge_type": "friendly_to",
+      "source": "node:chunk-0131:faction:003",
+      "target": "node:chunk-0131:faction:001",
+      "fact_summary": "万家族规有不准歧视散修的祖训，并一向与散修交好。",
+      "evidence_ids": [
+        "evidence:chunk-0131:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "散修生存方式",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        261007,
+        261260
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261007,
+          261260
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0131:004",
+      "edge_type": "origin_linked_to",
+      "source": "node:chunk-0131:faction:003",
+      "target": "node:chunk-0131:faction:004",
+      "fact_summary": "万家祖先原为散修，后进入巨剑门成为正式弟子，由此有了万家。",
+      "evidence_ids": [
+        "evidence:chunk-0131:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        261007,
+        261260
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261007,
+          261260
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0131:005",
+      "edge_type": "typical_realm",
+      "source": "node:chunk-0131:faction:001",
+      "target": "node:chunk-0131:realm:001",
+      "fact_summary": "叙事说明散修修为大都不高，一般只能在炼气期徘徊。",
+      "evidence_ids": [
+        "evidence:chunk-0131:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "散修生存方式",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        260622,
+        260825
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          260622,
+          260825
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0131:006",
+      "edge_type": "located_at",
+      "source": "node:chunk-0131:event:001",
+      "target": "node:chunk-0131:location:001",
+      "fact_summary": "太南小会在太南谷场景中举行，入谷后可见广场交易摊位。",
+      "evidence_ids": [
+        "evidence:chunk-0131:007",
+        "evidence:chunk-0131:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        262232,
+        263070
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          262232,
+          263070
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0131:007",
+      "edge_type": "region_scope",
+      "source": "node:chunk-0131:event:001",
+      "target": "node:chunk-0131:location:002",
+      "fact_summary": "太南小会被万小山说明为专为岚州小辈开办的交易盛会。",
+      "evidence_ids": [
+        "evidence:chunk-0131:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        262232,
+        262541
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          262232,
+          262541
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0131:008",
+      "edge_type": "increases_attendance_of",
+      "source": "node:chunk-0131:event:002",
+      "target": "node:chunk-0131:event:001",
+      "fact_summary": "一个月后的升仙大会也在岚州开办，使顺便参加太南小会的人更多。",
+      "evidence_ids": [
+        "evidence:chunk-0131:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        262232,
+        262541
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          262232,
+          262541
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0131:009",
+      "edge_type": "signals",
+      "source": "node:chunk-0131:inscription:001",
+      "target": "node:chunk-0131:formation:001",
+      "fact_summary": "通音符被万小山施放后传入迷雾，用于通知谷中之人放开阵法接应。",
+      "evidence_ids": [
+        "evidence:chunk-0131:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        261752,
+        261920
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261752,
+          261920
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0131:010",
+      "edge_type": "contains",
+      "source": "node:chunk-0131:location:001",
+      "target": "node:chunk-0131:facility:001",
+      "fact_summary": "太南谷中心处有宫殿式楼阁。",
+      "evidence_ids": [
+        "evidence:chunk-0131:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        262771,
+        263070
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          262771,
+          263070
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0131:011",
+      "edge_type": "contains",
+      "source": "node:chunk-0131:location:001",
+      "target": "node:chunk-0131:facility:002",
+      "fact_summary": "太南谷楼阁前有青砖广场和交易摊位。",
+      "evidence_ids": [
+        "evidence:chunk-0131:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        262771,
+        263070
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          262771,
+          263070
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0131:012",
+      "edge_type": "derived_from",
+      "source": "node:chunk-0131:material:003",
+      "target": "node:chunk-0131:beast:001",
+      "fact_summary": "妖兽三尾猫的胡须来自三尾猫这一妖兽。",
+      "evidence_ids": [
+        "evidence:chunk-0131:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        261923,
+        262158
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261923,
+          262158
+        ]
+      }
+    }
+  ],
+  "normalized_events": [
+    {
+      "id": "event:chunk-0131:001",
+      "event_type": "revelation_dialogue",
+      "label": "韩立向万小山坦白散修身份",
+      "participants": [
+        "node:chunk-0131:character:001",
+        "node:chunk-0131:character:002"
+      ],
+      "fact_summary": "韩立没有冒充修仙家族子弟，而是向万小山坦白自己自行修行、刚进入修仙界不久；万小山接受其散修身份并愿意继续交流。",
+      "evidence_ids": [
+        "evidence:chunk-0131:002",
+        "evidence:chunk-0131:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "散修生存方式",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        260828,
+        261653
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          260828,
+          261653
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0131:002",
+      "event_type": "information_explanation",
+      "label": "万小山讲解散修与万家祖训",
+      "participants": [
+        "node:chunk-0131:character:002",
+        "node:chunk-0131:character:001",
+        "node:chunk-0131:faction:003",
+        "node:chunk-0131:faction:001"
+      ],
+      "fact_summary": "万小山向韩立解释散修来源、修仙家族对散修的普遍轻视，以及万家因祖先散修经历而不歧视散修的族规。",
+      "evidence_ids": [
+        "evidence:chunk-0131:001",
+        "evidence:chunk-0131:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "散修生存方式",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        260622,
+        261260
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          260622,
+          261260
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0131:003",
+      "event_type": "item_use_event",
+      "label": "万小山使用通音符接引入谷",
+      "participants": [
+        "node:chunk-0131:character:002",
+        "node:chunk-0131:character:001",
+        "node:chunk-0131:inscription:001",
+        "node:chunk-0131:formation:001"
+      ],
+      "fact_summary": "万小山取出通音符施法，让其化为火光进入迷雾，等待谷内放开阵法接应二人。",
+      "evidence_ids": [
+        "evidence:chunk-0131:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        261752,
+        261920
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261752,
+          261920
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0131:004",
+      "event_type": "trade_preparation_dialogue",
+      "label": "万小山列举太南小会交换物",
+      "participants": [
+        "node:chunk-0131:character:002",
+        "node:chunk-0131:character:001",
+        "node:chunk-0131:event:001"
+      ],
+      "fact_summary": "万小山询问韩立带了哪些交换物，并列出自己准备的符箓、材料和妖兽材料，暴露韩立对太南小会准备不足。",
+      "evidence_ids": [
+        "evidence:chunk-0131:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        261923,
+        262158
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261923,
+          262158
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0131:005",
+      "event_type": "world_rule_explanation",
+      "label": "万小山说明太南小会与升仙大会关系",
+      "participants": [
+        "node:chunk-0131:character:002",
+        "node:chunk-0131:character:001",
+        "node:chunk-0131:event:001",
+        "node:chunk-0131:event:002"
+      ],
+      "fact_summary": "万小山说明太南小会五年一次、服务岚州小辈交易；因升仙大会一个月后也在岚州开办，顺路参加者更多。",
+      "evidence_ids": [
+        "evidence:chunk-0131:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        262232,
+        262541
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          262232,
+          262541
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0131:006",
+      "event_type": "travel_entry_event",
+      "label": "韩立和万小山进入太南谷",
+      "participants": [
+        "node:chunk-0131:character:001",
+        "node:chunk-0131:character:002",
+        "node:chunk-0131:location:001",
+        "node:chunk-0131:formation:001"
+      ],
+      "fact_summary": "太南谷入口迷雾分开小路后，万小山先进入，韩立端详后稳步进入，并在谷内见到楼阁、广场和交易摊位。",
+      "evidence_ids": [
+        "evidence:chunk-0131:008",
+        "evidence:chunk-0131:009",
+        "evidence:chunk-0131:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        262591,
+        263181
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          262591,
+          263181
+        ]
+      }
+    }
+  ],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0131:001",
+      "chunk_id": "chunk-0131",
+      "source_range": [
+        260622,
+        260825
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          260622,
+          260825
+        ]
+      },
+      "excerpt": "韩立在和少年刚才的闲谈时已知，修仙界除了各修仙门户和修真家族外，还有不少的散修存在。\n　　所谓的散修，其中大部分人要么是破落修真家族的后代，要么是像韩立这样无意中得了某些修仙的功法，自行进入修仙界的普通人，还有的则是些已快断绝传承的小门户传人等来历的人。这些散修的修为大都不高，一般都只能在炼气期徘徊，所以散修一向不大被修仙家族的人所看重，颇有些瞧不起的意思，就如同世俗间的富户看不上穷困潦倒的破落户一样。",
+      "fact_summary": "叙事说明修仙界存在散修，散修多来自破落修真家族后代、偶得功法普通人或传承将断小门户，修为多在炼气期徘徊且常被修仙家族轻视。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "散修生存方式",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0131:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0131:002",
+      "chunk_id": "chunk-0131",
+      "source_range": [
+        260828,
+        260925
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          260828,
+          260925
+        ]
+      },
+      "excerpt": "“在下可不是某家族的人，而是一直自行修行的！”韩立想了一下后，还决定说实话。毕竟冒充其他家族的人，太容易被揭穿了。\n　　“阁下是散修啊！”少年有些意外，不过脸上倒没有任何歧视神情，反而有些惊喜。",
+      "fact_summary": "韩立向万小山坦言自己并非某修仙家族成员，而是自行修行；万小山得知其为散修后没有歧视，反而惊喜。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "散修生存方式",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0131:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0131:003",
+      "chunk_id": "chunk-0131",
+      "source_range": [
+        261007,
+        261260
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261007,
+          261260
+        ]
+      },
+      "excerpt": "“他们是他们，不要把我们万家和其他修仙家族混为一谈？我们家族的人可一向都和散修们交好的！”少年把嘴一撇，骄傲的回答道。看来很为自己家族的做法自豪！\n　　“我们万家的祖先，原先也是一名散修，但后来侥幸进了修仙派，成了巨剑门的正式弟子，这才有了我们万家。所以我们万家族规里，就一直都有不准歧视散修的祖训。”少年笑嘻嘻的说道。\n　　“其实不止我们万家，还有其他一些家族的祖先也是散修，所以他们对散修也没有什么恶感，只是这些家族在所有修仙家族里占的比例太少了些，这才有修仙家族歧视散修的说法。”少年摇头晃脑的说道。",
+      "fact_summary": "万小山说明万家一向与散修交好，祖先原是散修，后来进入巨剑门成为正式弟子，因此万家族规有不准歧视散修的祖训；部分修仙家族也因祖先散修而不厌恶散修。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "散修生存方式",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0131:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0131:004",
+      "chunk_id": "chunk-0131",
+      "source_range": [
+        261337,
+        261653
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261337,
+          261653
+        ]
+      },
+      "excerpt": "“不过兄台，你一路上问了这么多修仙界人人皆知的事，难道也是刚出山的新人？”少年眼珠一转，不知怎么忽然聪明了起来，有些恍然大悟的说道。\n　　韩立一听，脸上微微一笑，用手拍了拍少年的肩头，有些歉意的道：“在下不是存心欺瞒小兄弟，只是刚进入修仙界不久，有些顾虑吧了！”\n　　“没关系的，我不介意的！不过这位大哥，你的名字该告诉我了吧！还有以后直接叫我小山就行了。”万小山明显也是自来熟类型的人，满脸不在乎的说道。\n　　“呵呵！在下韩立，的确是刚接触修仙界不久，还望小山兄弟多照应一下！”韩立对万小山好感更盛，说话的口气，也随和多了。\n　　“没问题，韩大哥有什么不懂的尽管问，嘿嘿！没想到我万小山还有教导别人的时候？”万小山神气活现的讲道。",
+      "fact_summary": "万小山察觉韩立是刚接触修仙界的新人，韩立承认有顾虑并告知姓名；万小山也让韩立称自己小山，并愿意解答韩立问题。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0131:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0131:005",
+      "chunk_id": "chunk-0131",
+      "source_range": [
+        261752,
+        261920
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261752,
+          261920
+        ]
+      },
+      "excerpt": "少年在身上忙乎了半天，终于从怀内掏出了一张符纸来。\n　　他拿在手中比划了几下，嘴里还低声念叨了几句，然后把符纸往空中一抛，化为了一道火光冲进了迷雾，消失不见了。\n　　“韩大哥稍等一下，我这张通音符一会儿就会传到谷内，谷中之人自会放开阵法接应我们的。”少年见韩立瞧着那火光消失的方向有些出神，便解释道。\n　　“哦！”韩立点点头，表示理解。",
+      "fact_summary": "万小山取出符纸施法，将通音符化为火光送入迷雾，并说明谷中之人收到后会放开阵法接应二人。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0131:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0131:006",
+      "chunk_id": "chunk-0131",
+      "source_range": [
+        261923,
+        262158
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          261923,
+          262158
+        ]
+      },
+      "excerpt": "“韩大哥这次来太南谷，想必身上带了不少交换的物品吧？能不能说说看，让小弟听听。别不好意思嘛，那小弟先开口说说自己的东西了！”\n　　“我带了初级下阶空白符纸一打、初级下阶隐身符、遁地符各两张、初级中阶连珠雷符一张、初级下阶冰弹符一打、铁精一块、初级朱砂一瓶、妖兽三尾猫的胡须一束、药草……”万小山根本没注意到已呆若木鸡的韩立，叽里呱啦的掰着手指，说出了一大堆东西来。\n　　“好了！该韩大哥说了，咦！大哥你的脸色怎么这么白，你……”少年眨了眨眼睛，有些不明白所以的望着韩立。",
+      "fact_summary": "万小山向韩立列出自己带来交换的初级符纸、隐身符、遁地符、连珠雷符、冰弹符、铁精、初级朱砂、妖兽三尾猫的胡须和药草等物，韩立因自己缺少准备而脸色难看。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "符师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0131:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0131:007",
+      "chunk_id": "chunk-0131",
+      "source_range": [
+        262232,
+        262541
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          262232,
+          262541
+        ]
+      },
+      "excerpt": "“不过既然这时来太南谷，那肯定是来参加太南小会的，谁又会不带东西啊？这可是五年一次，专为我们岚州小辈们开办的交易盛会！特别是这次的升仙大会，一个月后也在我们岚州开办，那顺便来此参加太南小会的人，就更多了。难道大哥不是闻名来参加太南小会的？”少年惊愕的说出了上面一通话来，用不信的目光望着韩立。\n　　韩立苦笑了起来。\n　　“小山兄弟，在下的确不知这里要开什么太南小会，只是无意得知此地有其他修仙者居住，所以想来结交一番而已，哪曾专门准备什么东西啊？”韩立两手一分，无奈的说道。\n　　“原来这样啊！那太可惜了，韩大哥只能浪费这次的良机了。要知道，弄到自己所缺物品材料的机会可并不多。”万小山一脸的惋惜之色，连声为韩立叹息。",
+      "fact_summary": "万小山说明太南小会五年一次，是专为岚州小辈开办的交易盛会；一个月后的升仙大会也在岚州开办，因此顺路参加者更多。韩立承认自己只是来结交修仙者，没有准备交易物。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0131:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0131:008",
+      "chunk_id": "chunk-0131",
+      "source_range": [
+        262591,
+        262738
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          262591,
+          262738
+        ]
+      },
+      "excerpt": "这时韩立二人前的浓雾突然间翻滚起来，然后像被人用刀劈开一样，分出了一条可供两人并肩而行的小路，小路的另一端一眼望不到尽头，似乎很遥远。\n　　“行了，我们走吧！”少年高兴的冲韩立拌了个鬼脸，就兴冲冲的先冲了进去，消失在了路上而韩立则冷漠的端详了小路一会儿，才迈步走了进去，走的稳稳当当，不慌不忙。",
+      "fact_summary": "韩立二人面前的迷雾翻滚并分出小路，万小山先冲入，韩立端详小路后稳当地进入。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0131:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0131:009",
+      "chunk_id": "chunk-0131",
+      "source_range": [
+        262771,
+        263070
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          262771,
+          263070
+        ]
+      },
+      "excerpt": "当韩立走出路口时，感到眼前忽然一亮，一个种满了奇花异草的绿色山谷出现在了眼前。山谷三面靠山，唯一的出口就是韩立进来被迷雾封锁的山坡。\n　　整个地方面积很大，足足占地上百亩还多，在中心处，有一大片雕栏玉砌的宫殿式楼阁，正有些奇装异服打扮的人出出进进。\n　　而在楼阁前面的空地上，则有一个很宽阔的青砖广场，里面有许多人像小商贩一样，围着广场的四周摆起了小货摊。在这些摊位的前面，时不时的会有一两人挤到跟前，看那么一两眼，或者低声问两句，但能当场成交的韩立并没有见到多少。\n　　见此情景，韩立不禁深吸了一口气。这就是修仙界了，这里的人应全都是修仙者，能一下子见到如此多的修仙之人，还是让韩立有些精神恍惚。",
+      "fact_summary": "韩立走出入口后见到太南谷：山谷三面靠山、入口山坡被迷雾封锁，中心有宫殿式楼阁，楼阁前青砖广场周围有小货摊和修仙者交易。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0131:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0131:010",
+      "chunk_id": "chunk-0131",
+      "source_range": [
+        263073,
+        263181
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0131",
+        "source_path": "intermediate/chunks/chunk-0131.txt",
+        "source_range": [
+          263073,
+          263181
+        ]
+      },
+      "excerpt": "韩立轻晃了下头，让自己清醒一些。他不断提醒着自己，他要进入的是一个以前无法想象的世界，在这里的人，谁都大有可能轻易的灭掉他，他一定要谨慎低调些才是。\n　　想到这里，韩立回头望了一眼已彻底消失的来路，抬腿向广场内走去。",
+      "fact_summary": "韩立提醒自己进入了以前无法想象的修仙世界，意识到这里的人可能轻易灭掉他，因此必须谨慎低调，并走向广场。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0131:010"
+    }
+  ]
+}

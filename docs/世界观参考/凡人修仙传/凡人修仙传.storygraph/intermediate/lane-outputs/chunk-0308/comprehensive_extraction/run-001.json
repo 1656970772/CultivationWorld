@@ -1,0 +1,1934 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0308:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0308",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T16:00:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0308:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立迅速夺下五妹手中的天雷子，禁锢她的真元，并收起隔音结界。",
+      "evidence_ids": [
+        "evidence:chunk-0308:006",
+        "evidence:chunk-0308:007",
+        "evidence:chunk-0308:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        764150,
+        764185
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          764150,
+          764185
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0308:character:002",
+      "node_type": "character",
+      "label": "五妹",
+      "aliases": [
+        "年轻女子"
+      ],
+      "fact_summary": "五妹承认两年前加入黑煞教，并把众人行踪告诉黑煞教。",
+      "evidence_ids": [
+        "evidence:chunk-0308:004",
+        "evidence:chunk-0308:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        763526,
+        763578
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          763526,
+          763578
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0308:faction:001",
+      "node_type": "faction",
+      "label": "黑煞教",
+      "aliases": [],
+      "fact_summary": "五妹承认加入黑煞教，并承认把众人行踪告诉黑煞教的人。",
+      "evidence_ids": [
+        "evidence:chunk-0308:004",
+        "evidence:chunk-0308:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        763526,
+        763578
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          763526,
+          763578
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0308:character:003",
+      "node_type": "character",
+      "label": "黑煞教教主",
+      "aliases": [
+        "教主",
+        "本教教主"
+      ],
+      "fact_summary": "五妹转述黑煞教教主可在功劳够大时不用筑基丹强行使人筑基的说法，并称其神通广大。",
+      "evidence_ids": [
+        "evidence:chunk-0308:003",
+        "evidence:chunk-0308:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        763321,
+        763385
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          763321,
+          763385
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0308:faction:002",
+      "node_type": "faction",
+      "label": "蒙山五友",
+      "aliases": [],
+      "fact_summary": "蒙山五友内部因五妹用天雷子威胁和承认出卖行踪而发生冲突。",
+      "evidence_ids": [
+        "evidence:chunk-0308:001",
+        "evidence:chunk-0308:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        763755,
+        763825
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          763755,
+          763825
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0308:character:004",
+      "node_type": "character",
+      "label": "黑脸老者",
+      "aliases": [],
+      "fact_summary": "黑脸老者决定先控制五妹，发现其逃走后命老二追赶。",
+      "evidence_ids": [
+        "evidence:chunk-0308:010",
+        "evidence:chunk-0308:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        764594,
+        764627
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          764594,
+          764627
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0308:character:005",
+      "node_type": "character",
+      "label": "老二",
+      "aliases": [],
+      "fact_summary": "黑脸老者命老二去追逃走的五妹。",
+      "evidence_ids": [
+        "evidence:chunk-0308:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        765174,
+        765203
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          765174,
+          765203
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0308:character:006",
+      "node_type": "character",
+      "label": "青年",
+      "aliases": [
+        "四弟"
+      ],
+      "fact_summary": "韩立把被制住的五妹扔给仍有些恍惚的青年。",
+      "evidence_ids": [
+        "evidence:chunk-0308:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        764417,
+        764438
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          764417,
+          764438
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0308:tool:001",
+      "node_type": "tool",
+      "label": "天雷子",
+      "aliases": [],
+      "fact_summary": "天雷子是五妹用来威胁众人的蓝色圆珠，也是众人为她买下防身的法器。",
+      "evidence_ids": [
+        "evidence:chunk-0308:001",
+        "evidence:chunk-0308:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        762803,
+        762875
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          762803,
+          762875
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0308:tool:002",
+      "node_type": "tool",
+      "label": "小匣子",
+      "aliases": [],
+      "fact_summary": "五妹被逼问时将手中的小匣子塞回身上，匣内内容在本 chunk 未明示。",
+      "evidence_ids": [
+        "evidence:chunk-0308:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        762803,
+        762875
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          762803,
+          762875
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0308:pill:001",
+      "node_type": "pill",
+      "label": "筑基丹",
+      "aliases": [],
+      "fact_summary": "五妹转述黑煞教称教主甚至可以不用筑基丹强行筑基成功。",
+      "evidence_ids": [
+        "evidence:chunk-0308:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        763321,
+        763385
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          763321,
+          763385
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0308:tool:003",
+      "node_type": "tool",
+      "label": "储物袋",
+      "aliases": [],
+      "fact_summary": "韩立夺下天雷子后随手将其扔进储物袋中。",
+      "evidence_ids": [
+        "evidence:chunk-0308:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        764150,
+        764185
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          764150,
+          764185
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0308:formation:001",
+      "node_type": "formation",
+      "label": "隔音结界",
+      "aliases": [],
+      "fact_summary": "韩立收起附近偷偷布下的隔音结界。",
+      "evidence_ids": [
+        "evidence:chunk-0308:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        764502,
+        764547
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          764502,
+          764547
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0308:001",
+      "edge_type": "member_of",
+      "source": "node:chunk-0308:character:002",
+      "target": "node:chunk-0308:faction:001",
+      "fact_summary": "五妹承认两年前外出时加入黑煞教。",
+      "evidence_ids": [
+        "evidence:chunk-0308:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        763526,
+        763578
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          763526,
+          763578
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0308:002",
+      "edge_type": "betrayed_whereabouts_to",
+      "source": "node:chunk-0308:character:002",
+      "target": "node:chunk-0308:faction:001",
+      "fact_summary": "五妹承认把大家的行踪告诉黑煞教的人。",
+      "evidence_ids": [
+        "evidence:chunk-0308:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        763755,
+        763825
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          763755,
+          763825
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0308:003",
+      "edge_type": "provided_defense_tool_to",
+      "source": "node:chunk-0308:faction:002",
+      "target": "node:chunk-0308:character:002",
+      "fact_summary": "蒙山五友曾因五妹修为低而凑灵石给她买下天雷子防身。",
+      "evidence_ids": [
+        "evidence:chunk-0308:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        763119,
+        763177
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          763119,
+          763177
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0308:004",
+      "edge_type": "confiscated",
+      "source": "node:chunk-0308:character:001",
+      "target": "node:chunk-0308:tool:001",
+      "fact_summary": "韩立强行夺下五妹手中的天雷子。",
+      "evidence_ids": [
+        "evidence:chunk-0308:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        764150,
+        764185
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          764150,
+          764185
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0308:005",
+      "edge_type": "stored_in",
+      "source": "node:chunk-0308:tool:001",
+      "target": "node:chunk-0308:tool:003",
+      "fact_summary": "韩立将夺下的天雷子扔进储物袋中。",
+      "evidence_ids": [
+        "evidence:chunk-0308:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        764150,
+        764185
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          764150,
+          764185
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0308:006",
+      "edge_type": "ordered_chase_by",
+      "source": "node:chunk-0308:character:004",
+      "target": "node:chunk-0308:character:005",
+      "fact_summary": "黑脸老者命老二立刻追赶逃走的五妹。",
+      "evidence_ids": [
+        "evidence:chunk-0308:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        765174,
+        765203
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          765174,
+          765203
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0308:001",
+      "event_type": "threat_event",
+      "label": "五妹以天雷子威胁离开",
+      "fact_summary": "五妹掏出天雷子威胁众人不要逼她，并要求离开。",
+      "participants": [
+        "node:chunk-0308:character:002",
+        "node:chunk-0308:tool:001",
+        "node:chunk-0308:faction:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0308:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        762803,
+        762875
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          762803,
+          762875
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0308:002",
+      "event_type": "betrayal_revelation_event",
+      "label": "五妹承认加入黑煞教并出卖行踪",
+      "fact_summary": "五妹承认两年前加入黑煞教，并承认把众人行踪告诉黑煞教的人。",
+      "participants": [
+        "node:chunk-0308:character:002",
+        "node:chunk-0308:faction:001",
+        "node:chunk-0308:faction:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0308:004",
+        "evidence:chunk-0308:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        763755,
+        763825
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          763755,
+          763825
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0308:003",
+      "event_type": "motivation_revelation_event",
+      "label": "五妹追求筑基机会",
+      "fact_summary": "五妹说自己一定要筑基成功，并相信黑煞教关于无需筑基丹强行筑基的承诺。",
+      "participants": [
+        "node:chunk-0308:character:002",
+        "node:chunk-0308:faction:001",
+        "node:chunk-0308:character:003",
+        "node:chunk-0308:pill:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0308:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        763321,
+        763385
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          763321,
+          763385
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0308:004",
+      "event_type": "disarm_and_restraint_event",
+      "label": "韩立夺下天雷子并禁锢五妹",
+      "fact_summary": "韩立夺下天雷子收入储物袋，随后点中五妹并禁锢真元，使其无法动用法力。",
+      "participants": [
+        "node:chunk-0308:character:001",
+        "node:chunk-0308:character:002",
+        "node:chunk-0308:tool:001",
+        "node:chunk-0308:tool:003"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0308:006",
+        "evidence:chunk-0308:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        764150,
+        764185
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          764150,
+          764185
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0308:005",
+      "event_type": "containment_decision_event",
+      "label": "黑脸老者决定暂控五妹",
+      "fact_summary": "韩立把五妹交给青年后，黑脸老者决定先将五妹带回屋内控制，等今晚行动结束后处置。",
+      "participants": [
+        "node:chunk-0308:character:001",
+        "node:chunk-0308:character:002",
+        "node:chunk-0308:character:004",
+        "node:chunk-0308:character:006"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0308:008",
+        "evidence:chunk-0308:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        764594,
+        764627
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          764594,
+          764627
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0308:006",
+      "event_type": "escape_and_chase_event",
+      "label": "五妹逃走后老二受命追赶",
+      "fact_summary": "五妹不见踪影后，黑脸老者命老二立刻追赶，并强调不能让她回黑煞教通风报信。",
+      "participants": [
+        "node:chunk-0308:character:002",
+        "node:chunk-0308:character:004",
+        "node:chunk-0308:character:005",
+        "node:chunk-0308:faction:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0308:011",
+        "evidence:chunk-0308:012",
+        "evidence:chunk-0308:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        765158,
+        765170
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          765158,
+          765170
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0308:007",
+      "event_type": "reaction_event",
+      "label": "韩立对五妹逃走反应平静",
+      "fact_summary": "韩立听说五妹逃出秦宅后不惊慌，表示若老二追不上就不用再追。",
+      "participants": [
+        "node:chunk-0308:character:001",
+        "node:chunk-0308:character:002",
+        "node:chunk-0308:character:005"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0308:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        765419,
+        765448
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          765419,
+          765448
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0308:001",
+      "chunk_id": "chunk-0308",
+      "source_range": [
+        762803,
+        762875
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          762803,
+          762875
+        ]
+      },
+      "excerpt": "突然把手中的小匣子往身上一塞，同时飞快的掏出了一个蓝色的圆珠，高举头顶的厉声说道：“你们不要逼我，这颗天雷子你们都是认识的，我只要求离开这里！”",
+      "fact_summary": "五妹把小匣子塞回身上，掏出蓝色圆珠天雷子威胁众人，要求离开。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0308:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0308:002",
+      "chunk_id": "chunk-0308",
+      "source_range": [
+        763119,
+        763177
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          763119,
+          763177
+        ]
+      },
+      "excerpt": "这件法器，可是我们几人当年见你修为太低，特意凑齐了灵石才给你买下防身用的。特别是四弟，几乎将自己所有的积蓄都拿了出来",
+      "fact_summary": "中年女子说明天雷子是众人因五妹修为低而凑灵石给她买下防身的法器，四弟出资最多。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0308:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0308:003",
+      "chunk_id": "chunk-0308",
+      "source_range": [
+        763321,
+        763385
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          763321,
+          763385
+        ]
+      },
+      "excerpt": "我是一定要筑基成功的！黑煞教的人说了，只要立下的功劳够大，教主甚至可以不用筑基丹，就可以让人强行筑基成功，而且还没有任何的风险。",
+      "fact_summary": "五妹称自己一定要筑基成功，并转述黑煞教承诺功劳够大可由教主不用筑基丹强行筑基且无风险。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0308:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0308:004",
+      "chunk_id": "chunk-0308",
+      "source_range": [
+        763526,
+        763578
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          763526,
+          763578
+        ]
+      },
+      "excerpt": "其实早在两年前的那一次外出，我就加入了黑煞教了。所以。本教教主的神通广大，你们这些外人根本就想象不到的！",
+      "fact_summary": "五妹承认两年前一次外出时已加入黑煞教，并称本教教主神通广大。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0308:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0308:005",
+      "chunk_id": "chunk-0308",
+      "source_range": [
+        763755,
+        763825
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          763755,
+          763825
+        ]
+      },
+      "excerpt": "不错，我是把大家的行踪告诉了黑煞教的人。但我的初衷也是好意。只是想让大家能一齐有筑基的机会。否则按照黑煞教的惯例，生擒的人十有八九都被血祭了",
+      "fact_summary": "五妹承认把众人行踪告诉黑煞教，并解释是想给大家筑基机会，否则按黑煞教惯例生擒者多会被血祭。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0308:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0308:006",
+      "chunk_id": "chunk-0308",
+      "source_range": [
+        764150,
+        764185
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          764150,
+          764185
+        ]
+      },
+      "excerpt": "韩立毫不客气的强行将天雷子，从对上手上拿了开来，并随手扔进了储物袋中。",
+      "fact_summary": "韩立从五妹手上强行拿走天雷子并收入储物袋。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0308:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0308:007",
+      "chunk_id": "chunk-0308",
+      "source_range": [
+        764352,
+        764386
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          764352,
+          764386
+        ]
+      },
+      "excerpt": "快如闪电的在女子的娇躯上点了几下，禁锢了其真元，让其无法再动用法力。",
+      "fact_summary": "韩立点中五妹并禁锢其真元，使她无法再动用法力。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0308:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0308:008",
+      "chunk_id": "chunk-0308",
+      "source_range": [
+        764417,
+        764438
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          764417,
+          764438
+        ]
+      },
+      "excerpt": "就把此女轻轻一甩，扔给了那还有些恍惚的青年",
+      "fact_summary": "韩立将被制住的五妹扔给仍有些恍惚的青年。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0308:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0308:009",
+      "chunk_id": "chunk-0308",
+      "source_range": [
+        764502,
+        764547
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          764502,
+          764547
+        ]
+      },
+      "excerpt": "凭空放出了几道黄色的法诀，将附近偷偷布下的隔音结界随意的收了起来，就缓缓消失在了黑暗之中。",
+      "fact_summary": "韩立收起附近偷偷布下的隔音结界后消失在黑暗中。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0308:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0308:010",
+      "chunk_id": "chunk-0308",
+      "source_range": [
+        764594,
+        764627
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          764594,
+          764627
+        ]
+      },
+      "excerpt": "先将五妹带回屋内控制起来再说，等我们今晚行动结束后，再来处置她吧。",
+      "fact_summary": "黑脸老者决定先把五妹带回屋内控制，等夜间行动结束后再处置。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0308:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0308:011",
+      "chunk_id": "chunk-0308",
+      "source_range": [
+        765158,
+        765170
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          765158,
+          765170
+        ]
+      },
+      "excerpt": "年轻女子早已不见了踪影。",
+      "fact_summary": "清音院内年轻女子已经不见踪影。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0308:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0308:012",
+      "chunk_id": "chunk-0308",
+      "source_range": [
+        765174,
+        765203
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          765174,
+          765203
+        ]
+      },
+      "excerpt": "老二，五妹身上还有前辈下的禁制，走不了多远，你马上快去追！",
+      "fact_summary": "黑脸老者判断五妹身上有韩立下的禁制、走不远，命老二立刻追赶。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0308:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0308:013",
+      "chunk_id": "chunk-0308",
+      "source_range": [
+        765223,
+        765244
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          765223,
+          765244
+        ]
+      },
+      "excerpt": "一定不能让五妹跑回去跟黑煞教的人通风报信。",
+      "fact_summary": "黑脸老者强调不能让五妹跑回黑煞教通风报信。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0308:013"
+    },
+    {
+      "evidence_id": "evidence:chunk-0308:014",
+      "chunk_id": "chunk-0308",
+      "source_range": [
+        765419,
+        765448
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          765419,
+          765448
+        ]
+      },
+      "excerpt": "没事，跑了就跑了吧！若是贵二弟，没追上的话，就不用再追了。",
+      "fact_summary": "韩立得知五妹逃出秦宅后并不惊慌，表示若老二追不上就不用再追。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0308:014"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "势力设定",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "事件因果链（长程因果图）",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "冲突事件分析",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "战斗与保命机制",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "信息传播与情报",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "境界提升与功法分析",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "丹药分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "法宝分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0308:001",
+      "kind": "black_cult_claim_unverified",
+      "fact_summary": "五妹转述黑煞教教主可不用筑基丹强行筑基且无风险；这只是她的说法，本 chunk 没有独立验证。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        763321,
+        763385
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          763321,
+          763385
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0308:002",
+      "kind": "box_contents_unknown",
+      "fact_summary": "五妹的小匣子被韩立取走，但本 chunk 没有明示匣内物品或用途。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        762803,
+        762875
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          762803,
+          762875
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0308:003",
+      "kind": "escape_mechanism_unspecified",
+      "fact_summary": "正文只写年轻女子不见踪影，没有明说她如何从青年处脱身或是否有人接应。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        765158,
+        765170
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          765158,
+          765170
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0308:001",
+      "candidate": "黑煞教强行筑基无风险是真实规则",
+      "reason": "该说法只由五妹转述黑煞教承诺，当前 chunk 没有客观证明，不能写成已验证修炼规则。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "not_found_in_source",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected"
+        }
+      ],
+      "source_range": [
+        763321,
+        763385
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          763321,
+          763385
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0308:002",
+      "candidate": "五妹被青年主动放走",
+      "reason": "当前 chunk 只显示年轻女子不见踪影，未直接说明青年主动放走她；只能记录逃脱结果与众人的担忧。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "not_found_in_source",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected"
+        }
+      ],
+      "source_range": [
+        765158,
+        765170
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0308",
+        "source_path": "intermediate/chunks/chunk-0308.txt",
+        "source_range": [
+          765158,
+          765170
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

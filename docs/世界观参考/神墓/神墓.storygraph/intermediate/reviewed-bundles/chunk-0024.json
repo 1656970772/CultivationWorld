@@ -1,0 +1,149 @@
+{
+  "chunk_id": "chunk-0024",
+  "source_range": [
+    140359,
+    140369
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "chunk_id": "chunk-0024",
+      "source_chapter": "第三卷 罪恶之城",
+      "extracted_nodes": [
+        {
+          "node_id": "n_0024_001",
+          "node_type": "location",
+          "label": "罪恶之城",
+          "aliases": [],
+          "properties": {
+            "region_name": "罪恶之城",
+            "region_positioning_type": "第三卷标题所示的目的地城市",
+            "settlement_type": "城市"
+          },
+          "evidence_refs": [
+            "ev_0024_001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "VERIFIED",
+          "source_location": {
+            "source_range": [
+              140359,
+              140369
+            ]
+          }
+        }
+      ],
+      "extracted_edges": [],
+      "extracted_events": [],
+      "extracted_evidence": [
+        {
+          "evidence_id": "ev_0024_001",
+          "source_range": [
+            140359,
+            140369
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0024",
+            "source_range": [
+              0,
+              25
+            ]
+          },
+          "fact_summary": "第三卷标题为「罪恶之城」，表明故事下一阶段将发生在此地",
+          "category_id": "cat_loc_002",
+          "confidence": "EXTRACTED",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "uncertainties": [
+        {
+          "uncertainty_id": "u_0024_001",
+          "description": "罪恶之城的具体地理位置、规模、势力归属等均未在本chunk明示，仅为卷标题。chunk-0023末尾辰南提到目的地为罪恶之城，两chunk可关联",
+          "related_node_ids": [
+            "n_0024_001"
+          ],
+          "confidence": "AMBIGUOUS"
+        },
+        {
+          "uncertainty_id": "u_0024_002",
+          "description": "source_range基于极短文本（仅'第三卷 罪恶之城'）估算",
+          "confidence": "AMBIGUOUS"
+        }
+      ],
+      "rejected_candidates": [],
+      "supports_templates": [],
+      "task_packet_id": "chunk-0024:comprehensive_extraction:attempt-001",
+      "produced_at": "2026-06-23T18:00:00Z",
+      "structured_failures": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0024/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "node_id": "n_0024_001",
+      "node_type": "location",
+      "label": "罪恶之城",
+      "aliases": [],
+      "properties": {
+        "region_name": "罪恶之城",
+        "region_positioning_type": "第三卷标题所示的目的地城市",
+        "settlement_type": "城市"
+      },
+      "evidence_refs": [
+        "ev_0024_001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "VERIFIED",
+      "source_location": {
+        "source_range": [
+          140359,
+          140369
+        ]
+      },
+      "id": "n_0024_001",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0024"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "normalized_edges": [],
+  "normalized_events": [],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:ev_0024_001",
+      "source_range": [
+        140359,
+        140369
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0024",
+        "source_range": [
+          0,
+          25
+        ]
+      },
+      "fact_summary": "第三卷标题为「罪恶之城」，表明故事下一阶段将发生在此地",
+      "category_id": "cat_loc_002",
+      "confidence": "EXTRACTED",
+      "verification_status": "VERIFIED"
+    }
+  ]
+}

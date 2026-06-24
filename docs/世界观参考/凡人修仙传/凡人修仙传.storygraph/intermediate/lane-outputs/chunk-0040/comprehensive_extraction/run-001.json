@@ -1,0 +1,2187 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0040:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0040",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T14:46:45+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0040:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立夜行密林时保持警惕，发现两人接近后藏入林中偷听，并在险情过后结合碎片谈话推断野狼帮奸细近期可能对七玄门不利，还认出其中一人的嗓音与山上大厨房管事相符。",
+      "evidence_ids": [
+        "evidence:chunk-0040:001",
+        "evidence:chunk-0040:005",
+        "evidence:chunk-0040:006",
+        "evidence:chunk-0040:013",
+        "evidence:chunk-0040:015",
+        "evidence:chunk-0040:017"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        75908,
+        77864
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          75908,
+          77864
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0040:location:001",
+      "node_type": "location",
+      "label": "彩霞山脉",
+      "aliases": [],
+      "fact_summary": "七玄门搬至彩霞山脉后，山林中大小动物已渐渐被清扫一空。",
+      "evidence_ids": [
+        "evidence:chunk-0040:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        76001,
+        76041
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76001,
+          76041
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0040:faction:001",
+      "node_type": "faction",
+      "label": "七玄门",
+      "aliases": [
+        "本门"
+      ],
+      "fact_summary": "七玄门已搬至彩霞山脉，并被叙述为野狼帮帮主贾天龙所在一方的本门大敌；韩立推断近期不利行动可能针对七玄门。",
+      "evidence_ids": [
+        "evidence:chunk-0040:002",
+        "evidence:chunk-0040:009",
+        "evidence:chunk-0040:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        76001,
+        77709
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76001,
+          77709
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0040:character:002",
+      "node_type": "character",
+      "label": "墨大夫",
+      "aliases": [],
+      "fact_summary": "韩立当前随时保持耳聪目明的谨慎习性，被叙述为上次从墨大夫手中脱身之后经过考虑而特意培养出来。",
+      "evidence_ids": [
+        "evidence:chunk-0040:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        76079,
+        76146
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76079,
+          76146
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0040:cultivation_method:001",
+      "node_type": "cultivation_method",
+      "label": "长春功",
+      "aliases": [],
+      "fact_summary": "韩立在两名疑似奸细远去后，用长春功确认数十丈内的确没有第二个人，才从树后爬起来。",
+      "evidence_ids": [
+        "evidence:chunk-0040:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        77480,
+        77512
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77480,
+          77512
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0040:location:002",
+      "node_type": "location",
+      "label": "密林山路",
+      "aliases": [
+        "黑乎乎的密林",
+        "山路"
+      ],
+      "fact_summary": "韩立夜间行走在黑乎乎的密林山路，随后在路旁密林和离小路十几丈远的大树后藏身，偷听两名可疑来人。",
+      "evidence_ids": [
+        "evidence:chunk-0040:001",
+        "evidence:chunk-0040:006",
+        "evidence:chunk-0040:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        75908,
+        76575
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          75908,
+          76575
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0040:faction:002",
+      "node_type": "faction",
+      "label": "野狼帮",
+      "aliases": [],
+      "fact_summary": "野狼帮被韩立从“帮主”称呼联想到，帮主是“金狼”贾天龙；韩立判断两名可疑人肯定是野狼帮派来的奸细。",
+      "evidence_ids": [
+        "evidence:chunk-0040:009",
+        "evidence:chunk-0040:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        76899,
+        77340
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76899,
+          77340
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0040:character:003",
+      "node_type": "character",
+      "label": "贾天龙",
+      "aliases": [
+        "金狼",
+        "野狼帮的帮主"
+      ],
+      "fact_summary": "贾天龙是野狼帮帮主，号称“金狼”，在七玄门弟子心目中是嗜血大魔头；厉飞雨所讲的实际情况称其瘦弱俊秀、三十出头，但动不动就杀人的铁血性格真实可怕。",
+      "evidence_ids": [
+        "evidence:chunk-0040:009",
+        "evidence:chunk-0040:010",
+        "evidence:chunk-0040:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        76899,
+        77136
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76899,
+          77136
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0040:character:004",
+      "node_type": "character",
+      "label": "两名疑似野狼帮奸细",
+      "aliases": [
+        "这二人",
+        "两个人"
+      ],
+      "fact_summary": "两名步伐很轻的人在夜间偏僻山路迎面走来并低声谈话；韩立判断他们是野狼帮派来的奸细，不会让第三人活着知道秘密。",
+      "evidence_ids": [
+        "evidence:chunk-0040:005",
+        "evidence:chunk-0040:008",
+        "evidence:chunk-0040:012",
+        "evidence:chunk-0040:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        76400,
+        77340
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76400,
+          77340
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0040:facility:001",
+      "node_type": "facility",
+      "label": "山上大厨房",
+      "aliases": [
+        "大厨房"
+      ],
+      "fact_summary": "韩立将交谈中某人的嗓音与山上大厨房那位不起眼的管事联系起来；该管事身份方便经常往返山上山下、传递消息而不引人注意。",
+      "evidence_ids": [
+        "evidence:chunk-0040:017",
+        "evidence:chunk-0040:019"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        77759,
+        77940
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77759,
+          77940
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0040:character:005",
+      "node_type": "character",
+      "label": "山上大厨房管事",
+      "aliases": [
+        "大厨房那位不起眼的管事",
+        "卖过兔子给韩立的人"
+      ],
+      "fact_summary": "韩立凭超常记忆把其中一名交谈者的嗓音和山上大厨房管事联系起来；此人曾卖过兔子给韩立，在韩立印象中爱占小便宜、留八字胡、一脸市侩，并疑似野狼帮奸细。",
+      "evidence_ids": [
+        "evidence:chunk-0040:017",
+        "evidence:chunk-0040:018",
+        "evidence:chunk-0040:019"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        77759,
+        77940
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77759,
+          77940
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0040:character:006",
+      "node_type": "character",
+      "label": "厉飞雨",
+      "aliases": [],
+      "fact_summary": "韩立关于贾天龙实际外貌和性格的信息被叙述为据厉飞雨所讲，与七玄门弟子传闻中的魔头形象相反但保留其杀人铁血性格。",
+      "evidence_ids": [
+        "evidence:chunk-0040:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        77047,
+        77136
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77047,
+          77136
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0040:001",
+      "edge_type": "relocated_to",
+      "source": "node:chunk-0040:faction:001",
+      "target": "node:chunk-0040:location:001",
+      "fact_summary": "七玄门已搬至彩霞山脉。",
+      "evidence_ids": [
+        "evidence:chunk-0040:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        76001,
+        76041
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76001,
+          76041
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0040:002",
+      "edge_type": "past_escape_shaped_behavior",
+      "source": "node:chunk-0040:character:002",
+      "target": "node:chunk-0040:character:001",
+      "fact_summary": "韩立在上次从墨大夫手中脱身后，特意培养出在不明环境下保持耳聪目明的谨慎习性。",
+      "evidence_ids": [
+        "evidence:chunk-0040:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        76079,
+        76146
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76079,
+          76146
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0040:003",
+      "edge_type": "leads_faction",
+      "source": "node:chunk-0040:character:003",
+      "target": "node:chunk-0040:faction:002",
+      "fact_summary": "贾天龙号称金狼，是野狼帮的帮主。",
+      "evidence_ids": [
+        "evidence:chunk-0040:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        76899,
+        76950
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76899,
+          76950
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0040:004",
+      "edge_type": "enemy_of",
+      "source": "node:chunk-0040:faction:002",
+      "target": "node:chunk-0040:faction:001",
+      "fact_summary": "贾天龙被称为本门大敌，当前语境中指野狼帮一方与七玄门敌对。",
+      "evidence_ids": [
+        "evidence:chunk-0040:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        76899,
+        76950
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76899,
+          76950
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0040:005",
+      "edge_type": "suspected_spies_of",
+      "source": "node:chunk-0040:character:004",
+      "target": "node:chunk-0040:faction:002",
+      "fact_summary": "韩立判断这两人肯定是野狼帮派来的奸细。",
+      "evidence_ids": [
+        "evidence:chunk-0040:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        77281,
+        77340
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77281,
+          77340
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0040:006",
+      "edge_type": "used_method_to_confirm_safety",
+      "source": "node:chunk-0040:character:001",
+      "target": "node:chunk-0040:cultivation_method:001",
+      "fact_summary": "韩立用长春功确认数十丈内没有第二个人后才爬起来。",
+      "evidence_ids": [
+        "evidence:chunk-0040:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        77480,
+        77512
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77480,
+          77512
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0040:007",
+      "edge_type": "recognized_voice_as",
+      "source": "node:chunk-0040:character:001",
+      "target": "node:chunk-0040:character:005",
+      "fact_summary": "韩立凭超常记忆把交谈中某人的嗓音和山上大厨房管事联系起来。",
+      "evidence_ids": [
+        "evidence:chunk-0040:016",
+        "evidence:chunk-0040:017"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        77740,
+        77816
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77740,
+          77816
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0040:008",
+      "edge_type": "works_at",
+      "source": "node:chunk-0040:character:005",
+      "target": "node:chunk-0040:facility:001",
+      "fact_summary": "被韩立认出的可疑人物是山上大厨房那位不起眼的管事。",
+      "evidence_ids": [
+        "evidence:chunk-0040:017"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        77759,
+        77816
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77759,
+          77816
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0040:009",
+      "edge_type": "suspected_spy_of",
+      "source": "node:chunk-0040:character:005",
+      "target": "node:chunk-0040:faction:002",
+      "fact_summary": "韩立认为山上大厨房管事会是野狼帮派来的奸细，并想到其身份便于往返山上山下传递消息。",
+      "evidence_ids": [
+        "evidence:chunk-0040:018",
+        "evidence:chunk-0040:019"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        77819,
+        77940
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77819,
+          77940
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0040:010",
+      "edge_type": "provided_information_about",
+      "source": "node:chunk-0040:character:006",
+      "target": "node:chunk-0040:character:003",
+      "fact_summary": "韩立关于贾天龙真实外貌、年龄和铁血性格的认识来自厉飞雨所讲。",
+      "evidence_ids": [
+        "evidence:chunk-0040:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        77047,
+        77136
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77047,
+          77136
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0040:001",
+      "event_type": "travel_event",
+      "label": "韩立警惕夜行密林",
+      "fact_summary": "韩立夜间行走在黑乎乎的密林里，警惕地张开触觉；这种习性来自他从墨大夫手中脱身后的后天培养。",
+      "participants": [
+        "node:chunk-0040:character:001",
+        "node:chunk-0040:location:002",
+        "node:chunk-0040:character:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0040:001",
+        "evidence:chunk-0040:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        75908,
+        76146
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          75908,
+          76146
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0040:002",
+      "event_type": "stealth_event",
+      "label": "韩立发现脚步并藏身",
+      "fact_summary": "韩立在山风过后察觉异常，听出两个人迎面走来，随即躲入路旁密林，并藏到离小路十几丈远的大树后。",
+      "participants": [
+        "node:chunk-0040:character:001",
+        "node:chunk-0040:character:004",
+        "node:chunk-0040:location:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0040:004",
+        "evidence:chunk-0040:005",
+        "evidence:chunk-0040:006",
+        "evidence:chunk-0040:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        76325,
+        76575
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76325,
+          76575
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0040:003",
+      "event_type": "information_gathering_event",
+      "label": "韩立偷听疑似奸细密谈",
+      "fact_summary": "韩立藏身后听到两名可疑人压低声音谈及下山安排、帮主、名单和下手等碎片信息，并判断二人是野狼帮派来的奸细。",
+      "participants": [
+        "node:chunk-0040:character:001",
+        "node:chunk-0040:character:004",
+        "node:chunk-0040:faction:002",
+        "node:chunk-0040:location:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0040:008",
+        "evidence:chunk-0040:012",
+        "evidence:chunk-0040:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        76770,
+        77340
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76770,
+          77340
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0040:004",
+      "event_type": "threat_assessment_event",
+      "label": "韩立推断七玄门近期将受威胁",
+      "fact_summary": "韩立在两人远去后，用长春功确认安全，并根据不完整谈话判断对方近期可能采取某种对七玄门不利的行动，且行动与某份名单有关。",
+      "participants": [
+        "node:chunk-0040:character:001",
+        "node:chunk-0040:cultivation_method:001",
+        "node:chunk-0040:faction:001",
+        "node:chunk-0040:character:004"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0040:014",
+        "evidence:chunk-0040:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        77480,
+        77709
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77480,
+          77709
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0040:005",
+      "event_type": "revelation_event",
+      "label": "韩立认出大厨房管事嗓音",
+      "fact_summary": "韩立凭超常记忆认出其中一名交谈者的嗓音与山上大厨房管事相符，并想到此人管事身份便于往返山上山下传递消息。",
+      "participants": [
+        "node:chunk-0040:character:001",
+        "node:chunk-0040:character:005",
+        "node:chunk-0040:facility:001",
+        "node:chunk-0040:faction:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0040:016",
+        "evidence:chunk-0040:017",
+        "evidence:chunk-0040:018",
+        "evidence:chunk-0040:019"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        77740,
+        77940
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77740,
+          77940
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0040:006",
+      "event_type": "information_contrast_event",
+      "label": "贾天龙传闻与厉飞雨说法形成反差",
+      "fact_summary": "七玄门弟子心目中的贾天龙是嗜血大魔头；厉飞雨所讲的实际情况则称其瘦弱俊秀、三十出头，但铁血杀人性格真实可怕。",
+      "participants": [
+        "node:chunk-0040:character:003",
+        "node:chunk-0040:character:006",
+        "node:chunk-0040:faction:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0040:010",
+        "evidence:chunk-0040:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        76953,
+        77136
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76953,
+          77136
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0040:001",
+      "chunk_id": "chunk-0040",
+      "source_range": [
+        75908,
+        75963
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          75908,
+          75963
+        ]
+      },
+      "excerpt": "走在黑乎乎的密林里，韩立警惕的张开自己的触觉，在普通人眼中已模糊不清的山路，对他而言，却犹如白昼一般清晰可见。",
+      "fact_summary": "韩立在黑暗密林山路中警惕张开触觉，并能清晰看见普通人眼中模糊不清的山路。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0040:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0040:002",
+      "chunk_id": "chunk-0040",
+      "source_range": [
+        76001,
+        76041
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76001,
+          76041
+        ]
+      },
+      "excerpt": "要知道，自从七玄门搬至了彩霞山脉，山林中本就不多的大小动物，早就被渐渐的清扫一空",
+      "fact_summary": "七玄门搬至彩霞山脉后，山林中大小动物已渐渐被清扫一空。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0040:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0040:003",
+      "chunk_id": "chunk-0040",
+      "source_range": [
+        76079,
+        76146
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76079,
+          76146
+        ]
+      },
+      "excerpt": "这种小心翼翼，在不明环境下，随时保持耳聪目明的习性，不是他天生具备的。而是上次从墨大夫手中脱身之后，经过再三考虑，特意后天培养出来的。",
+      "fact_summary": "韩立随时保持耳聪目明的谨慎习性，是上次从墨大夫手中脱身后后天培养出来的。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0040:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0040:004",
+      "chunk_id": "chunk-0040",
+      "source_range": [
+        76325,
+        76397
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76325,
+          76397
+        ]
+      },
+      "excerpt": "突然一阵猛烈的山风，迎面吹了过来。\n　　在山风过后，韩立猛然停下了自己的脚步，似乎发现了些什么异常，他皱了下眉头，然后歪起脖子，侧耳倾听了起来。",
+      "fact_summary": "山风过后韩立察觉异常，停步并侧耳倾听。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0040:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0040:005",
+      "chunk_id": "chunk-0040",
+      "source_range": [
+        76400,
+        76476
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76400,
+          76476
+        ]
+      },
+      "excerpt": "片刻后，韩立的神色慢慢的凝重起来，耳边传来了隐隐约约的脚步声，虽然脚步的主人步伐很轻，离韩立也很远，但的的确确是两个人正朝他迎面走来，而且离他越来越近。",
+      "fact_summary": "韩立听出有两个人步伐很轻地迎面走来且越来越近。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0040:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0040:006",
+      "chunk_id": "chunk-0040",
+      "source_range": [
+        76479,
+        76509
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76479,
+          76509
+        ]
+      },
+      "excerpt": "身子轻轻一闪，韩立灵猫般的躲进路旁的密林中，敏捷而悄然无声。",
+      "fact_summary": "韩立敏捷而悄无声息地躲进路旁密林。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0040:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0040:007",
+      "chunk_id": "chunk-0040",
+      "source_range": [
+        76512,
+        76575
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76512,
+          76575
+        ]
+      },
+      "excerpt": "在离小路十几丈远的一颗大树后，他的身影停了下来，整个身子屈卷成一小团，掩藏在了树干后，从树的正面望去，一丝韩立的身形都看不见。",
+      "fact_summary": "韩立藏在离小路十几丈远的大树后，身形从树正面完全看不见。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0040:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0040:008",
+      "chunk_id": "chunk-0040",
+      "source_range": [
+        76770,
+        76818
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76770,
+          76818
+        ]
+      },
+      "excerpt": "“……下山的……安排好……时间……人……帮主……”一阵阵压低嗓音的话语，断断续续的从远处传了过来",
+      "fact_summary": "韩立听到压低嗓音的断续话语，内容涉及下山、安排、时间、人和帮主。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0040:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0040:009",
+      "chunk_id": "chunk-0040",
+      "source_range": [
+        76899,
+        76950
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76899,
+          76950
+        ]
+      },
+      "excerpt": "能被称为帮主的，就只有野狼帮的帮主“金狼”贾天龙，这么一位本门的大敌，在此处被听到，实在有些耐人寻味。",
+      "fact_summary": "韩立由“帮主”联想到野狼帮帮主“金狼”贾天龙，并视其为本门大敌。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0040:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0040:010",
+      "chunk_id": "chunk-0040",
+      "source_range": [
+        76953,
+        76982
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76953,
+          76982
+        ]
+      },
+      "excerpt": "贾天龙此人，在七玄门弟子心目中，是个不折不扣的嗜血大魔头。",
+      "fact_summary": "贾天龙在七玄门弟子心目中是嗜血大魔头。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0040:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0040:011",
+      "chunk_id": "chunk-0040",
+      "source_range": [
+        77047,
+        77136
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77047,
+          77136
+        ]
+      },
+      "excerpt": "不过据厉飞雨所讲，实际情况并非如此。贾天龙此人，不但长的并不高大吓人，还很瘦弱俊秀，年龄也不大，才三十出头，正好和传闻中相反。但他动不动就杀人的铁血性格，却和传说中的一样真实可怕",
+      "fact_summary": "据厉飞雨所讲，贾天龙实际瘦弱俊秀、三十出头，与传闻相反，但动辄杀人的铁血性格真实可怕。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0040:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0040:012",
+      "chunk_id": "chunk-0040",
+      "source_range": [
+        77214,
+        77262
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77214,
+          77262
+        ]
+      },
+      "excerpt": "“……这一次……偷……名单要……下手的……”又一阵阵低语声，隐隐约约传了过来，比刚才要清晰了许多",
+      "fact_summary": "韩立又听到较清晰的低语碎片，涉及这一次、偷、名单和下手。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0040:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0040:013",
+      "chunk_id": "chunk-0040",
+      "source_range": [
+        77281,
+        77340
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77281,
+          77340
+        ]
+      },
+      "excerpt": "韩立不敢大声出气，知道自己如果被发觉了，只有死路一条，这二人肯定是野狼帮派来的奸细，绝不会让第三人活着知道他们的秘密。",
+      "fact_summary": "韩立认为如果被发现只有死路一条，并判断二人是野狼帮派来的奸细，不会让第三人活着知道秘密。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0040:013"
+    },
+    {
+      "evidence_id": "evidence:chunk-0040:014",
+      "chunk_id": "chunk-0040",
+      "source_range": [
+        77480,
+        77512
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77480,
+          77512
+        ]
+      },
+      "excerpt": "直到用长春功确定数十丈内的确没有第二个人以后，才缓缓的爬了起来。",
+      "fact_summary": "韩立用长春功确认数十丈内没有第二个人后才从树后爬起。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0040:014"
+    },
+    {
+      "evidence_id": "evidence:chunk-0040:015",
+      "chunk_id": "chunk-0040",
+      "source_range": [
+        77653,
+        77709
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77653,
+          77709
+        ]
+      },
+      "excerpt": "从他们不完整的交谈内容来判断，对方好像在近期内要采取某种对七玄门不利的行动，而这行动是和某份名单有着不小的关系。",
+      "fact_summary": "韩立根据不完整交谈判断，对方近期可能采取对七玄门不利的行动，且该行动与某份名单关系不小。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0040:015"
+    },
+    {
+      "evidence_id": "evidence:chunk-0040:016",
+      "chunk_id": "chunk-0040",
+      "source_range": [
+        77740,
+        77756
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77740,
+          77756
+        ]
+      },
+      "excerpt": "其中一人的嗓音，被他给认了出来。",
+      "fact_summary": "韩立认出其中一人的嗓音。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0040:016"
+    },
+    {
+      "evidence_id": "evidence:chunk-0040:017",
+      "chunk_id": "chunk-0040",
+      "source_range": [
+        77759,
+        77816
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77759,
+          77816
+        ]
+      },
+      "excerpt": "虽然只打过一两次交道，但凭借异于普通人的超常记忆，他还是把交谈中的某人，和山上大厨房那位不起眼的管事联系到了一起。",
+      "fact_summary": "韩立凭超常记忆把交谈中的某人与山上大厨房那位不起眼的管事联系起来。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0040:017"
+    },
+    {
+      "evidence_id": "evidence:chunk-0040:018",
+      "chunk_id": "chunk-0040",
+      "source_range": [
+        77819,
+        77864
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77819,
+          77864
+        ]
+      },
+      "excerpt": "这位卖过兔子给他，在他印象中爱占小便宜、留着八字胡、一脸市侩形象的人，会是野狼帮派来的奸细",
+      "fact_summary": "韩立想到这位曾卖兔子给他、爱占小便宜且留八字胡的大厨房管事，可能是野狼帮派来的奸细。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0040:018"
+    },
+    {
+      "evidence_id": "evidence:chunk-0040:019",
+      "chunk_id": "chunk-0040",
+      "source_range": [
+        77905,
+        77940
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77905,
+          77940
+        ]
+      },
+      "excerpt": "只有这样的身份，才能经常往返山上山下，传递消息时才不会引起他人的注意。",
+      "fact_summary": "韩立认为大厨房管事身份便于经常往返山上山下并传递消息而不引人注意。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0040:019"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "角色AI行为参考",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "信息传播与情报",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review"
+    },
+    {
+      "template_name": "冲突事件分析",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review"
+    },
+    {
+      "template_name": "势力设定",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "世界观设定",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "功法术法神通",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "战斗与保命机制",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review"
+    },
+    {
+      "template_name": "有限视角与叙事日志",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review"
+    },
+    {
+      "template_name": "建筑设施与场所功能",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0040:001",
+      "kind": "incomplete_overheard_information",
+      "fact_summary": "韩立偷听到的内容被风声切碎，只能确认出现下山、安排、帮主、名单、下手等片段，具体计划、时间、目标名单内容和执行人未明。",
+      "evidence_ids": [
+        "evidence:chunk-0040:008",
+        "evidence:chunk-0040:012",
+        "evidence:chunk-0040:015"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        76770,
+        77709
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76770,
+          77709
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0040:002",
+      "kind": "identity_needs_review",
+      "fact_summary": "韩立将其中一人的嗓音与山上大厨房管事联系起来，但本 chunk 没有直接露面确认；该管事是否确为奸细仍需后续复核。",
+      "evidence_ids": [
+        "evidence:chunk-0040:016",
+        "evidence:chunk-0040:017",
+        "evidence:chunk-0040:018"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        77740,
+        77864
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77740,
+          77864
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0040:003",
+      "kind": "perspective_vs_fact",
+      "fact_summary": "贾天龙的嗜血魔头形象来自七玄门弟子心目中的传闻，厉飞雨所讲又提供相反外貌信息；当前 chunk 应区分传闻、厉飞雨说法和客观事实。",
+      "evidence_ids": [
+        "evidence:chunk-0040:010",
+        "evidence:chunk-0040:011"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        76953,
+        77136
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76953,
+          77136
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0040:004",
+      "kind": "unnamed_participant",
+      "fact_summary": "两名疑似奸细中只有一人的嗓音被韩立疑似识别为大厨房管事，另一人的身份、职务和所属细节均未明。",
+      "evidence_ids": [
+        "evidence:chunk-0040:005",
+        "evidence:chunk-0040:017"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        76400,
+        77816
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76400,
+          77816
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0040:001",
+      "candidate": "某份名单",
+      "reason": "名单在本 chunk 中只作为不完整偷听信息出现，内容、持有人、形式和用途均未明；当前 node_type 本体没有文书/情报节点，故不硬造节点，保留在事件和 uncertainty 中。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        77653,
+        77709
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          77653,
+          77709
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0040:002",
+      "candidate": "山林里的野兽和毒蛇",
+      "reason": "仅用于说明韩立警惕对象不是野兽，以及七玄门迁入后动物被清扫；没有具体妖兽、资源或事件参与功能。",
+      "confidence": "EXTRACTED",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        76001,
+        76041
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76001,
+          76041
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0040:003",
+      "candidate": "七玄门弟子",
+      "reason": "只是传闻视角群体，用于说明他们心目中的贾天龙形象；本 chunk 未给出具体弟子行动或独立剧情功能。",
+      "confidence": "EXTRACTED",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        76953,
+        76982
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0040",
+        "source_path": "intermediate/chunks/chunk-0040.txt",
+        "source_range": [
+          76953,
+          76982
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

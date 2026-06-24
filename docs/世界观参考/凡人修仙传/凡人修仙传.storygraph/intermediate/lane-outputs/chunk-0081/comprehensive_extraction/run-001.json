@@ -1,0 +1,2047 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0081:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0081",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T23:20:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0081:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立镇定地让厉飞雨审问蓝衣执法，随后根据情报判断应先与厉飞雨关心的人会合，并建议避敌或灭口。",
+      "evidence_ids": [
+        "evidence:chunk-0081:003",
+        "evidence:chunk-0081:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        158654,
+        158752
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          158654,
+          158752
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0081:character:002",
+      "node_type": "character",
+      "label": "厉飞雨",
+      "aliases": [
+        "厉大堂主"
+      ],
+      "fact_summary": "厉飞雨起初警戒绿衣巨汉，随后审问蓝衣执法并带回两条战局消息。",
+      "evidence_ids": [
+        "evidence:chunk-0081:002",
+        "evidence:chunk-0081:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        158508,
+        158651
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          158508,
+          158651
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0081:character:003",
+      "node_type": "character",
+      "label": "绿衣巨汉",
+      "aliases": [
+        "巨汉"
+      ],
+      "fact_summary": "绿衣巨汉单手抓回昏迷的蓝衣汉子，满身血迹，随后无言站回韩立背后。当前 chunk 未明示其姓名。",
+      "evidence_ids": [
+        "evidence:chunk-0081:001",
+        "evidence:chunk-0081:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        158277,
+        158361
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          158277,
+          158361
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0081:character:004",
+      "node_type": "character",
+      "label": "蓝衣执法",
+      "aliases": [
+        "蓝衣汉子",
+        "蓝衣人"
+      ],
+      "fact_summary": "蓝衣执法被绿衣巨汉抓获，后被厉飞雨逼供并吐露野狼帮和多帮派攻山情报，随后被厉飞雨灭口。",
+      "evidence_ids": [
+        "evidence:chunk-0081:001",
+        "evidence:chunk-0081:003",
+        "evidence:chunk-0081:004",
+        "evidence:chunk-0081:005",
+        "evidence:chunk-0081:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        158277,
+        158361
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          158277,
+          158361
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0081:faction:005",
+      "node_type": "faction",
+      "label": "野狼帮",
+      "aliases": [],
+      "fact_summary": "野狼帮将其他山峰困住而主攻落日峰，且与铁枪会、断水门等数个中小帮派一同攻上山。",
+      "evidence_ids": [
+        "evidence:chunk-0081:005",
+        "evidence:chunk-0081:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        159064,
+        159166
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159064,
+          159166
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0081:location:006",
+      "node_type": "location",
+      "label": "落日峰",
+      "aliases": [],
+      "fact_summary": "落日峰是野狼帮集中主力进攻的山峰，已有数道关卡被打下。",
+      "evidence_ids": [
+        "evidence:chunk-0081:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        159064,
+        159166
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159064,
+          159166
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0081:faction:007",
+      "node_type": "faction",
+      "label": "铁枪会",
+      "aliases": [],
+      "fact_summary": "铁枪会被厉飞雨逼问出的坏消息列为此次攻上山的敌方中小帮派之一。",
+      "evidence_ids": [
+        "evidence:chunk-0081:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        159214,
+        159278
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159214,
+          159278
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0081:faction:008",
+      "node_type": "faction",
+      "label": "断水门",
+      "aliases": [],
+      "fact_summary": "断水门被厉飞雨逼问出的坏消息列为此次攻上山的敌方中小帮派之一。",
+      "evidence_ids": [
+        "evidence:chunk-0081:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        159214,
+        159278
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159214,
+          159278
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0081:faction:009",
+      "node_type": "faction",
+      "label": "七玄门",
+      "aliases": [
+        "本门"
+      ],
+      "fact_summary": "七玄门正遭野狼帮、铁枪会、断水门等势力攻山，李长老院中聚集了七玄门帮众家属与警戒青年。",
+      "evidence_ids": [
+        "evidence:chunk-0081:006",
+        "evidence:chunk-0081:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        159214,
+        159278
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159214,
+          159278
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0081:facility:010",
+      "node_type": "facility",
+      "label": "李长老的院子",
+      "aliases": [
+        "宅子客厅"
+      ],
+      "fact_summary": "李长老的院子位于离神手谷约数里处，院内聚集不会武功的家属和警戒青年，客厅内有人争论是否派人侦查。",
+      "evidence_ids": [
+        "evidence:chunk-0081:008",
+        "evidence:chunk-0081:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        159564,
+        159729
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159564,
+          159729
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0081:character:011",
+      "node_type": "character",
+      "label": "马荣",
+      "aliases": [
+        "李长老的爱徒马荣"
+      ],
+      "fact_summary": "马荣主张派人打探外部情况，却被持金色腰牌的胖子压下，只能拱手遵命。",
+      "evidence_ids": [
+        "evidence:chunk-0081:009",
+        "evidence:chunk-0081:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        159732,
+        159875
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159732,
+          159875
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0081:character:012",
+      "node_type": "character",
+      "label": "中年胖子",
+      "aliases": [
+        "胖子"
+      ],
+      "fact_summary": "中年胖子认为李宅防卫薄弱，坚决反对派人外出侦查，并用金色腰牌压制马荣。",
+      "evidence_ids": [
+        "evidence:chunk-0081:009",
+        "evidence:chunk-0081:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        159732,
+        159875
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159732,
+          159875
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0081:tool:013",
+      "node_type": "tool",
+      "label": "金色腰牌",
+      "aliases": [
+        "腰牌"
+      ],
+      "fact_summary": "中年胖子从怀中掏出金色腰牌并在马荣面前晃动，马荣随即表示不敢违命。",
+      "evidence_ids": [
+        "evidence:chunk-0081:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        159945,
+        160037
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159945,
+          160037
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0081:001",
+      "edge_type": "captures_and_delivers",
+      "source": "node:chunk-0081:character:003",
+      "target": "node:chunk-0081:character:004",
+      "fact_summary": "绿衣巨汉抓着昏迷的蓝衣汉子从树林中走出，并将其抛到韩立和厉飞雨面前。",
+      "evidence_ids": [
+        "evidence:chunk-0081:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        158277,
+        158361
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          158277,
+          158361
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0081:002",
+      "edge_type": "concealed_relationship_questioned",
+      "source": "node:chunk-0081:character:002",
+      "target": "node:chunk-0081:character:003",
+      "fact_summary": "厉飞雨因韩立身边出现绿衣巨汉而猜测韩立与巨汉的关系。",
+      "evidence_ids": [
+        "evidence:chunk-0081:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        158508,
+        158651
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          158508,
+          158651
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0081:003",
+      "edge_type": "delegates_interrogation",
+      "source": "node:chunk-0081:character:001",
+      "target": "node:chunk-0081:character:002",
+      "fact_summary": "韩立认为蓝衣执法知道不少消息，将拷问任务交给更在行的厉飞雨。",
+      "evidence_ids": [
+        "evidence:chunk-0081:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        158654,
+        158752
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          158654,
+          158752
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0081:004",
+      "edge_type": "interrogates_and_silences",
+      "source": "node:chunk-0081:character:002",
+      "target": "node:chunk-0081:character:004",
+      "fact_summary": "厉飞雨逼问蓝衣执法获得情报，并在韩立询问后承认已经灭口。",
+      "evidence_ids": [
+        "evidence:chunk-0081:004",
+        "evidence:chunk-0081:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        158835,
+        159022
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          158835,
+          159022
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0081:005",
+      "edge_type": "concentrates_attack_on",
+      "source": "node:chunk-0081:faction:005",
+      "target": "node:chunk-0081:location:006",
+      "fact_summary": "野狼帮困住其他山峰，将主力调到落日峰下猛攻并已打下数道关卡。",
+      "evidence_ids": [
+        "evidence:chunk-0081:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        159064,
+        159166
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159064,
+          159166
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0081:006",
+      "edge_type": "joins_attack_against",
+      "source": "node:chunk-0081:faction:007",
+      "target": "node:chunk-0081:faction:009",
+      "fact_summary": "铁枪会被列为此次攻上七玄门山门的敌方中小帮派之一。",
+      "evidence_ids": [
+        "evidence:chunk-0081:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        159214,
+        159278
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159214,
+          159278
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0081:007",
+      "edge_type": "joins_attack_against",
+      "source": "node:chunk-0081:faction:008",
+      "target": "node:chunk-0081:faction:009",
+      "fact_summary": "断水门被列为此次攻上七玄门山门的敌方中小帮派之一。",
+      "evidence_ids": [
+        "evidence:chunk-0081:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        159214,
+        159278
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159214,
+          159278
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0081:008",
+      "edge_type": "pressures_with_token",
+      "source": "node:chunk-0081:character:012",
+      "target": "node:chunk-0081:character:011",
+      "fact_summary": "中年胖子掏出金色腰牌在马荣面前晃动，令马荣不敢违抗。",
+      "evidence_ids": [
+        "evidence:chunk-0081:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        159945,
+        160037
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159945,
+          160037
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0081:009",
+      "edge_type": "uses_authority_token",
+      "source": "node:chunk-0081:character:012",
+      "target": "node:chunk-0081:tool:013",
+      "fact_summary": "中年胖子以金色腰牌作为压制马荣的凭据。",
+      "evidence_ids": [
+        "evidence:chunk-0081:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        159945,
+        160037
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159945,
+          160037
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0081:001",
+      "event_type": "capture_delivery_event",
+      "label": "绿衣巨汉抓回蓝衣执法",
+      "participants": [
+        "node:chunk-0081:character:003",
+        "node:chunk-0081:character:004",
+        "node:chunk-0081:character:002",
+        "node:chunk-0081:character:001"
+      ],
+      "fact_summary": "绿衣巨汉满身血迹地从树林中抓回昏迷蓝衣执法，厉飞雨受血腥气惊动而警戒。",
+      "evidence_ids": [
+        "evidence:chunk-0081:001",
+        "evidence:chunk-0081:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        158277,
+        158361
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          158277,
+          158361
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0081:002",
+      "event_type": "interrogation_event",
+      "label": "厉飞雨逼供蓝衣执法",
+      "participants": [
+        "node:chunk-0081:character:002",
+        "node:chunk-0081:character:004",
+        "node:chunk-0081:character:001"
+      ],
+      "fact_summary": "韩立把拷问交给厉飞雨，厉飞雨将蓝衣执法带入树林逼供，很快获取情报。",
+      "evidence_ids": [
+        "evidence:chunk-0081:003",
+        "evidence:chunk-0081:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        158654,
+        158752
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          158654,
+          158752
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0081:003",
+      "event_type": "intelligence_revelation_event",
+      "label": "逼供揭示多帮派攻山",
+      "participants": [
+        "node:chunk-0081:character:002",
+        "node:chunk-0081:faction:005",
+        "node:chunk-0081:faction:007",
+        "node:chunk-0081:faction:008",
+        "node:chunk-0081:faction:009",
+        "node:chunk-0081:location:006"
+      ],
+      "fact_summary": "厉飞雨转述蓝衣执法供词：野狼帮主攻落日峰，且铁枪会、断水门等中小帮派也参与攻山。",
+      "evidence_ids": [
+        "evidence:chunk-0081:005",
+        "evidence:chunk-0081:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        159064,
+        159166
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159064,
+          159166
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0081:004",
+      "event_type": "tactical_decision_event",
+      "label": "韩立决定会合并灭口目击者",
+      "participants": [
+        "node:chunk-0081:character:001",
+        "node:chunk-0081:character:002"
+      ],
+      "fact_summary": "韩立判断无需纠结敌人数量，应先会合厉飞雨牵挂的人与手下；若避不开敌人，就杀光发现他们的人。",
+      "evidence_ids": [
+        "evidence:chunk-0081:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        159306,
+        159531
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159306,
+          159531
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0081:005",
+      "event_type": "command_dispute_event",
+      "label": "李宅是否派人侦查的争执",
+      "participants": [
+        "node:chunk-0081:facility:010",
+        "node:chunk-0081:character:011",
+        "node:chunk-0081:character:012",
+        "node:chunk-0081:tool:013"
+      ],
+      "fact_summary": "李长老院内聚集家属和警戒青年，马荣主张派人侦查，胖子以防卫薄弱为由反对并用金色腰牌压制。",
+      "evidence_ids": [
+        "evidence:chunk-0081:008",
+        "evidence:chunk-0081:009",
+        "evidence:chunk-0081:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        159564,
+        159729
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159564,
+          159729
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0081:001",
+      "chunk_id": "chunk-0081",
+      "source_range": [
+        158277,
+        158361
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          158277,
+          158361
+        ]
+      },
+      "excerpt": "巨汉像提着一只小鸡一样，单手抓着一名人事不知的蓝衣汉子，从树林内稳稳的走了出来，他身上沾染了不少的血迹，这些星星点点的血斑和绿色的袍子在一起，显得如同桃花般的鲜艳夺目。",
+      "fact_summary": "绿衣巨汉抓着昏迷蓝衣汉子从树林中走出，身上沾血。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0081:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0081:002",
+      "chunk_id": "chunk-0081",
+      "source_range": [
+        158508,
+        158651
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          158508,
+          158651
+        ]
+      },
+      "excerpt": "厉飞雨这才长长出了一口气，把所摆的架势收了起来，他看了看地上的蓝衣人，瞅了瞅一直神情自若的韩立，忽然笑了。\n　　“我说你怎么这么镇定自如呢！原来藏了这么一位大高手在身边啊！干吗不早点告诉我？让我穷紧张了半天。”厉飞雨表面上说的很轻松，但心里却嘀咕起来，开始猜测韩立同这名绿衣巨汉的关系。",
+      "fact_summary": "厉飞雨收起戒备，猜测韩立与绿衣巨汉的关系。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0081:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0081:003",
+      "chunk_id": "chunk-0081",
+      "source_range": [
+        158654,
+        158752
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          158654,
+          158752
+        ]
+      },
+      "excerpt": "韩立看出了对方的心思，不过没有去解释的打算，他脸上露着似笑非笑的神情，慢悠悠的说道：“这名蓝衣执法应该知道不少的消息，我们俩谁去拷问？我觉得你这位厉大堂主该比我在行的多，能者多劳，就交给你了吧！”",
+      "fact_summary": "韩立判断蓝衣执法知道消息，把拷问交给厉飞雨。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0081:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0081:004",
+      "chunk_id": "chunk-0081",
+      "source_range": [
+        158835,
+        159022
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          158835,
+          159022
+        ]
+      },
+      "excerpt": "厉飞雨提起昏迷着的蓝衣人，轻飘飘的闪进了树林内，开始了他的逼供大业，而韩立则一屁股坐在身下的草地上，悠哉起来。\n　　不一会儿，厉飞雨一个人阴沉着脸，从林中走了出来。\n　　“怎么这么快？有什么有用的消息吗？”韩立没有站起身来，而是眉尖一挑，直接开口问道。\n　　“哼！是个贪生怕死的家伙，我还没怎么动手，就一五一十的全说了出来。至于消息有两个，一个好的一个坏的。你想先听那个？”",
+      "fact_summary": "厉飞雨将蓝衣人带入树林逼供，蓝衣人很快吐露两条消息。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0081:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0081:005",
+      "chunk_id": "chunk-0081",
+      "source_range": [
+        159064,
+        159166
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159064,
+          159166
+        ]
+      },
+      "excerpt": "“好消息就是，你把野狼帮的计划真猜对了。对方果然把其它山峰都只困住，并不主动攻打，而把主力全调到了落日峰下，正没命的进攻，听说已打下了数道关卡了。”这些话，厉飞雨说的很平淡，看来对高层的安危并不放在心上。",
+      "fact_summary": "逼供消息显示野狼帮困住其他山峰、主攻落日峰并攻下数道关卡。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0081:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0081:006",
+      "chunk_id": "chunk-0081",
+      "source_range": [
+        159214,
+        159278
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159214,
+          159278
+        ]
+      },
+      "excerpt": "“你这张乌鸦嘴说得倒满准的，坏消息就是这次攻上山的敌人除了野狼帮外，还有铁枪会、断水门等数个中小帮派，看来本门真是大难临头了。”",
+      "fact_summary": "坏消息显示铁枪会、断水门等数个中小帮派也参与攻山。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0081:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0081:007",
+      "chunk_id": "chunk-0081",
+      "source_range": [
+        159306,
+        159531
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159306,
+          159531
+        ]
+      },
+      "excerpt": "“别管进攻的人多少了，还是先和你的小情人与手下会和要紧，趁现在外面比较混乱，还是赶紧走吧！”韩立没有吃惊多久，马上作出了判断。\n　　厉飞雨连忙点头同意，这个建议正中他的下怀。\n　　“那个家伙，你怎么处理了？”韩立忽然问了一句。\n　　“灭口了，还能带着他不成？”厉飞雨满不在乎的说道。\n　　韩立听了微微一笑，单手一撑地，人就从草地上飘然而起。\n　　“走吧！尽量躲着点敌人。如果实在躲不掉，就把发现我们的人全杀光，不用手下留情，否则他们的人会越聚越多。”",
+      "fact_summary": "韩立建议先会合厉飞雨牵挂的人和手下，并下达避不开就杀光目击敌人的判断。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0081:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0081:008",
+      "chunk_id": "chunk-0081",
+      "source_range": [
+        159564,
+        159729
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159564,
+          159729
+        ]
+      },
+      "excerpt": "在离神手谷大约数里路远的地方——李长老的院子里，此刻挤满了密密麻麻的人群。在这些人有男有女，还有老有少，他们看起来丝毫武功不会，但都在低声议论着什么，并且人人面带忧虑之色。\n　　在院子的附近，有二十几名身穿黑衣、手拿刀剑的青年正警戒着四周，和院内手无寸铁的人一比，他们显得格外的醒目。\n　　在宅子的客厅内，则有两个人正争论着什么。",
+      "fact_summary": "李长老院中聚集不会武功的家属、黑衣警戒青年，客厅里有人争论。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0081:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0081:009",
+      "chunk_id": "chunk-0081",
+      "source_range": [
+        159732,
+        159875
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159732,
+          159875
+        ]
+      },
+      "excerpt": "“我不同意派人去外面，我们这里的防卫本来就不强，再派人到外面去，那不更薄弱了。不行，绝对不行！”一个大腹便便的中年胖子往外喷着口水，同时把头摇得跟拨浪鼓一样，在坚决反对着什么。\n　　“可我们不知道外面到底发生了什么事，不派人去打探一下，岂不是两眼一抹黑，一点情况也不知道，这太被动了。”",
+      "fact_summary": "中年胖子反对派人外出侦查，马荣认为不侦查会被动。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0081:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0081:010",
+      "chunk_id": "chunk-0081",
+      "source_range": [
+        159945,
+        160037
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159945,
+          160037
+        ]
+      },
+      "excerpt": "胖子眨巴几下小眼睛，突然从怀里掏出了一个金色的腰牌，在马荣面前晃了几下，然后满脸骄横之色。\n　　马荣望了眼面前的胖子，又看了看这面腰牌，叹了一口气，拱手一拜道：“不敢，在下紧遵上命。”",
+      "fact_summary": "中年胖子掏出金色腰牌，马荣看后叹气并表示遵命。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0081:010"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "角色AI行为参考",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "势力设定",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "宗门任务体系",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "信息传播与情报",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "世界观设定",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "建筑设施与场所功能",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "冲突事件分析",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "事件因果链（长程因果图）",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "战斗与保命机制",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0081:001",
+      "kind": "identity_not_named_in_chunk",
+      "fact_summary": "绿衣巨汉在当前 chunk 只以巨汉、绿衣巨汉等称谓出现，未明示姓名或与韩立的关系，因此不回填后文身份。",
+      "evidence_ids": [
+        "evidence:chunk-0081:001",
+        "evidence:chunk-0081:002"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        158508,
+        158651
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          158508,
+          158651
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0081:002",
+      "kind": "unnamed_allied_factions",
+      "fact_summary": "厉飞雨只说除野狼帮、铁枪会、断水门外还有数个中小帮派，当前 chunk 未列出全部帮派名称。",
+      "evidence_ids": [
+        "evidence:chunk-0081:006"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        159214,
+        159278
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159214,
+          159278
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0081:003",
+      "kind": "token_authority_scope_pending",
+      "fact_summary": "金色腰牌在本 chunk 中能压制马荣，但其具体来源和权限范围到本 chunk 结尾尚未说明。",
+      "evidence_ids": [
+        "evidence:chunk-0081:010"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        159945,
+        160037
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159945,
+          160037
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0081:001",
+      "candidate": "院内家属个体",
+      "reason": "院中男女老少只是无武功家属群体，当前 chunk 未给出姓名、独立决策或剧情功能，故不逐一建人物节点。",
+      "confidence": "EXTRACTED",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        159564,
+        159729
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159564,
+          159729
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0081:002",
+      "candidate": "二十几名黑衣青年个体",
+      "reason": "黑衣青年只承担李宅周边警戒背景，当前 chunk 未给出姓名或独立行动，保留为场所防卫证据而不逐一建节点。",
+      "confidence": "EXTRACTED",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        159564,
+        159729
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159564,
+          159729
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0081:003",
+      "candidate": "小情人和手下",
+      "reason": "韩立只用“小情人”和“手下”泛称厉飞雨要会合的人，当前 chunk 未明示姓名，不回填为具体角色。",
+      "confidence": "EXTRACTED",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        159306,
+        159531
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0081",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          159306,
+          159531
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

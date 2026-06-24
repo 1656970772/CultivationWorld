@@ -1,0 +1,1323 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0073:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0073",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T15:30:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0073:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立为李长老诊断混合毒，提出只能一试并使用清灵散相关药物治疗，同时因不愿暴露清灵散而保持低调。",
+      "evidence_ids": [
+        "evidence:chunk-0073:001",
+        "evidence:chunk-0073:002",
+        "evidence:chunk-0073:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        142631,
+        144216
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          142631,
+          144216
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0073:character:002",
+      "node_type": "character",
+      "label": "李长老",
+      "aliases": [],
+      "fact_summary": "李长老中混合毒处于昏迷救治状态，服下韩立配制的红色药水后黑气和毒斑开始减轻。",
+      "evidence_ids": [
+        "evidence:chunk-0073:002",
+        "evidence:chunk-0073:008",
+        "evidence:chunk-0073:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        143048,
+        144269
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          143048,
+          144269
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0073:pill:001",
+      "node_type": "pill",
+      "label": "清灵散",
+      "aliases": [],
+      "fact_summary": "清灵散被韩立作为解毒手段尝试；当前 chunk 明示韩立不愿透露其名字，并称这种解毒圣药可能带来麻烦。",
+      "evidence_ids": [
+        "evidence:chunk-0073:001",
+        "evidence:chunk-0073:009",
+        "evidence:chunk-0073:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        142631,
+        144475
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          142631,
+          144475
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0073:character:003",
+      "node_type": "character",
+      "label": "李氏",
+      "aliases": [],
+      "fact_summary": "李氏是李长老发妻，在得知五成把握和风险后决意让韩立救治，并亲自将红色药水灌给李长老。",
+      "evidence_ids": [
+        "evidence:chunk-0073:003",
+        "evidence:chunk-0073:004",
+        "evidence:chunk-0073:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        143256,
+        144110
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          143256,
+          144110
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0073:character:004",
+      "node_type": "character",
+      "label": "张袖儿",
+      "aliases": [],
+      "fact_summary": "张袖儿主动应声去找温开水，辅助李长老服药前的准备。",
+      "evidence_ids": [
+        "evidence:chunk-0073:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        143573,
+        143599
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          143573,
+          143599
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0073:character:005",
+      "node_type": "character",
+      "label": "厉飞雨",
+      "aliases": [],
+      "fact_summary": "厉飞雨跟随张袖儿出去，并小心端回白瓷碗，辅助药水准备。",
+      "evidence_ids": [
+        "evidence:chunk-0073:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        143726,
+        143749
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          143726,
+          143749
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0073:001",
+      "edge_type": "diagnoses_and_treats",
+      "source": "node:chunk-0073:character:001",
+      "target": "node:chunk-0073:character:002",
+      "fact_summary": "韩立诊断李长老所中为混合毒，并在说明风险后尝试救治。",
+      "evidence_ids": [
+        "evidence:chunk-0073:001",
+        "evidence:chunk-0073:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        142631,
+        143126
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          142631,
+          143126
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0073:002",
+      "edge_type": "authorizes_treatment_by",
+      "source": "node:chunk-0073:character:003",
+      "target": "node:chunk-0073:character:001",
+      "fact_summary": "李氏在得知韩立只有五成把握且救治有风险后，仍同意韩立救治李长老。",
+      "evidence_ids": [
+        "evidence:chunk-0073:003",
+        "evidence:chunk-0073:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        143256,
+        143366
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          143256,
+          143366
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0073:003",
+      "edge_type": "used_to_detoxify",
+      "source": "node:chunk-0073:pill:001",
+      "target": "node:chunk-0073:character:002",
+      "fact_summary": "清灵散相关药物被韩立用于李长老解毒，并使黑气和毒斑开始减轻。",
+      "evidence_ids": [
+        "evidence:chunk-0073:007",
+        "evidence:chunk-0073:008",
+        "evidence:chunk-0073:010",
+        "evidence:chunk-0073:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        143918,
+        144475
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          143918,
+          144475
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0073:004",
+      "edge_type": "conceals_item_identity",
+      "source": "node:chunk-0073:character:001",
+      "target": "node:chunk-0073:pill:001",
+      "fact_summary": "韩立刻意不让旁人知道清灵散的名字，以避免这种解毒圣药给自己带来麻烦。",
+      "evidence_ids": [
+        "evidence:chunk-0073:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        144140,
+        144216
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          144140,
+          144216
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0073:005",
+      "edge_type": "assists_treatment_preparation",
+      "source": "node:chunk-0073:character:005",
+      "target": "node:chunk-0073:character:001",
+      "fact_summary": "厉飞雨小心端回白瓷碗，配合韩立准备给李长老服药。",
+      "evidence_ids": [
+        "evidence:chunk-0073:006",
+        "evidence:chunk-0073:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        143726,
+        144017
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          143726,
+          144017
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0073:001",
+      "event_type": "diagnosis_event",
+      "label": "韩立判断李长老中混合毒",
+      "fact_summary": "韩立诊断李长老的毒类似缠香丝，是难以逐项拔除的混合毒，并决定尝试清灵散等手法。",
+      "participants": [
+        "node:chunk-0073:character:001",
+        "node:chunk-0073:character:002",
+        "node:chunk-0073:pill:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0073:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        142631,
+        142745
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          142631,
+          142745
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0073:002",
+      "event_type": "decision_event",
+      "label": "李氏同意韩立冒险救治",
+      "fact_summary": "李氏在韩立说明风险和五成把握后，决意让韩立救治李长老并承担可能不测的结果。",
+      "participants": [
+        "node:chunk-0073:character:003",
+        "node:chunk-0073:character:001",
+        "node:chunk-0073:character:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0073:003",
+        "evidence:chunk-0073:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        143256,
+        143366
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          143256,
+          143366
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0073:003",
+      "event_type": "item_use_event",
+      "label": "李长老服下红色解毒药水",
+      "fact_summary": "韩立将药丸融入水中，交由李氏一点点灌入李长老口内。",
+      "participants": [
+        "node:chunk-0073:character:001",
+        "node:chunk-0073:character:002",
+        "node:chunk-0073:character:003",
+        "node:chunk-0073:pill:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0073:005",
+        "evidence:chunk-0073:007",
+        "evidence:chunk-0073:008",
+        "evidence:chunk-0073:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        143513,
+        144216
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          143513,
+          144216
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0073:004",
+      "event_type": "recovery_change_event",
+      "label": "李长老毒象初步减轻",
+      "fact_summary": "李长老服药后一顿饭工夫，脸上黑气变淡，毒斑变浅缩小；韩立也惊讶清灵散有效。",
+      "participants": [
+        "node:chunk-0073:character:002",
+        "node:chunk-0073:character:001",
+        "node:chunk-0073:pill:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0073:010",
+        "evidence:chunk-0073:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        144219,
+        144475
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          144219,
+          144475
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "id": "evidence:chunk-0073:001",
+      "chunk_id": "chunk-0073",
+      "source_range": [
+        142631,
+        142745
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          142631,
+          142745
+        ]
+      },
+      "excerpt": "韩立紧锁着眉头一言不发，他刚刚已把完脉，看过舌苔和瞳孔，已初步判断出此毒和他用过的“缠香丝”一样，是一种混合毒，要想针对其中蕴含的各种毒性去一一拔除干净，韩立还没有这么大的本事，他也只有试试“清灵散”和其它几种歪门邪道的手法了。",
+      "fact_summary": "韩立诊断李长老所中之毒类似缠香丝，是混合毒；他认为无法逐项拔除，只能尝试清灵散和其他手法。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_id": "evidence:chunk-0073:001"
+    },
+    {
+      "id": "evidence:chunk-0073:002",
+      "chunk_id": "chunk-0073",
+      "source_range": [
+        143048,
+        143126
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          143048,
+          143126
+        ]
+      },
+      "excerpt": "“这毒是种混合之毒，解起来的确很麻烦，我不敢保证有十足把握解掉此毒，但可以一试。解毒的过程中要冒些危险，可能会危及李长老的性命，不知几位是否还要在下动手？”",
+      "fact_summary": "韩立向众人说明混合毒解起来麻烦，自己只能一试，且解毒过程可能危及李长老性命。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_id": "evidence:chunk-0073:002"
+    },
+    {
+      "id": "evidence:chunk-0073:003",
+      "chunk_id": "chunk-0073",
+      "source_range": [
+        143256,
+        143293
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          143256,
+          143293
+        ]
+      },
+      "excerpt": "“不知韩大夫对救回家夫有几成的把握？”\n　　“五成。”韩立毫不犹豫的说道。",
+      "fact_summary": "李氏询问韩立救回丈夫的把握，韩立回答为五成。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_id": "evidence:chunk-0073:003"
+    },
+    {
+      "id": "evidence:chunk-0073:004",
+      "chunk_id": "chunk-0073",
+      "source_range": [
+        143296,
+        143366
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          143296,
+          143366
+        ]
+      },
+      "excerpt": "“那好，韩神医尽管去救人。若是我夫君真有什么不测，我绝不会怨恨韩大夫你的，这也是天意如此。”李氏露出毅然的神色，出乎韩立意外的立刻下了决心。",
+      "fact_summary": "李氏在风险和五成把握下决意让韩立救治李长老，并表示若有不测也不怨韩立。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_id": "evidence:chunk-0073:004"
+    },
+    {
+      "id": "evidence:chunk-0073:005",
+      "chunk_id": "chunk-0073",
+      "source_range": [
+        143513,
+        143599
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          143513,
+          143599
+        ]
+      },
+      "excerpt": "韩立看了其他几人一眼，好像都没有反对李氏的决定，便从随身带的医药包里，取出了一个青瓷瓶，从里面倒出一颗红色的药丸。\n　　“谁去找碗温开水来，把此药融入水内，给李长老服下。”",
+      "fact_summary": "韩立在无人反对李氏决定后，从医药包青瓷瓶里倒出红色药丸，并要求用温水化开给李长老服下。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_id": "evidence:chunk-0073:005"
+    },
+    {
+      "id": "evidence:chunk-0073:006",
+      "chunk_id": "chunk-0073",
+      "source_range": [
+        143726,
+        143749
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          143726,
+          143749
+        ]
+      },
+      "excerpt": "厉飞雨则小心翼翼的端着一个白瓷碗，紧跟在其后。",
+      "fact_summary": "厉飞雨小心端着白瓷碗跟随张袖儿回来，参与取水准备。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_id": "evidence:chunk-0073:006"
+    },
+    {
+      "id": "evidence:chunk-0073:007",
+      "chunk_id": "chunk-0073",
+      "source_range": [
+        143918,
+        144017
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          143918,
+          144017
+        ]
+      },
+      "excerpt": "韩立扫视了一眼白碗点点头，然后单手接过白碗，把那颗药丸丢到了水内，整碗水眨眼间就化成了红红的颜色。\n　　“给李长老灌下即可，你们女人家比较心细，还是你来做的比较好。”韩立把手一伸，又把碗还给了对方。",
+      "fact_summary": "韩立将药丸投入水中使整碗水变红，然后把药水交给李氏，让她给李长老灌下。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_id": "evidence:chunk-0073:007"
+    },
+    {
+      "id": "evidence:chunk-0073:008",
+      "chunk_id": "chunk-0073",
+      "source_range": [
+        144080,
+        144110
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          144080,
+          144110
+        ]
+      },
+      "excerpt": "眼睁睁的看着李氏，把一大碗红色药水一点点的灌进了李长老的口内",
+      "fact_summary": "李氏将红色药水一点点灌入李长老口中。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_id": "evidence:chunk-0073:008"
+    },
+    {
+      "id": "evidence:chunk-0073:009",
+      "chunk_id": "chunk-0073",
+      "source_range": [
+        144140,
+        144216
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          144140,
+          144216
+        ]
+      },
+      "excerpt": "“我自制的一种解毒药，希望会有些效用。”韩立轻描淡写的说道。\n　　他不想让人知道“清灵散”的名字，谁知道这种解毒圣药会不会给他带来麻烦，还是低调点的好。",
+      "fact_summary": "韩立只称药物是自制解毒药，刻意不透露清灵散之名，以免这种解毒圣药给自己带来麻烦。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_id": "evidence:chunk-0073:009"
+    },
+    {
+      "id": "evidence:chunk-0073:010",
+      "chunk_id": "chunk-0073",
+      "source_range": [
+        144219,
+        144269
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          144219,
+          144269
+        ]
+      },
+      "excerpt": "灌下药后，大约一顿饭的功夫，李长老脸上的黑气开始渐渐的变淡了，身上毒斑也在由深变浅，并开始缩小起来。",
+      "fact_summary": "李长老服药后一顿饭工夫，脸上黑气变淡，毒斑由深变浅并开始缩小。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_id": "evidence:chunk-0073:010"
+    },
+    {
+      "id": "evidence:chunk-0073:011",
+      "chunk_id": "chunk-0073",
+      "source_range": [
+        144428,
+        144475
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          144428,
+          144475
+        ]
+      },
+      "excerpt": "“清灵散”竟会这么有效，还真出乎他意料之外，或许这种毒并没有想象中那么厉害，他不由的这样想道。",
+      "fact_summary": "韩立认为清灵散效果出乎意料，也猜测这种毒可能没有想象中厉害。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_id": "evidence:chunk-0073:011"
+    },
+    {
+      "id": "evidence:chunk-0073:012",
+      "chunk_id": "chunk-0073",
+      "source_range": [
+        144590,
+        144619
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          144590,
+          144619
+        ]
+      },
+      "excerpt": "怎么对自己就不行了呢？让他至今还在为身中阴毒之事上火犯愁。",
+      "fact_summary": "韩立由清灵散对李长老有效联想到自己身中阴毒且清灵散对自身无效，因此仍为此烦恼。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "evidence_id": "evidence:chunk-0073:012"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "角色AI行为参考",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "相遇剧情与对话设计",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "丹药分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "战斗与保命机制",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "事件因果链（长程因果图）",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "有限视角与叙事日志",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0073:001",
+      "kind": "poison_type_not_in_ontology",
+      "fact_summary": "缠香丝与李长老所中混合毒在本 chunk 只作为毒性参照和病因出现；当前 node_type 本体没有 poison 类型，因此未建毒物节点，组成和来源待复核。",
+      "evidence_ids": [
+        "evidence:chunk-0073:001"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        142631,
+        142745
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          142631,
+          142745
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0073:002",
+      "kind": "item_form_and_formula_missing",
+      "fact_summary": "当前 chunk 明示清灵散有效且韩立不愿透露其名，但未说明清灵散的配方、品阶、完整形态和为何对韩立自身阴毒无效。",
+      "evidence_ids": [
+        "evidence:chunk-0073:009",
+        "evidence:chunk-0073:011",
+        "evidence:chunk-0073:012"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        144140,
+        144619
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          144140,
+          144619
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0073:001",
+      "candidate": "青瓷瓶",
+      "reason": "青瓷瓶只是韩立取药的普通容器，未具名且无独立法器或剧情功能，不建 tool 节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        143513,
+        143570
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          143513,
+          143570
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0073:002",
+      "candidate": "白瓷碗",
+      "reason": "白瓷碗只是盛放药水的普通器皿，未具名且无后续功能，不建 tool 节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        143726,
+        144017
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          143726,
+          144017
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0073:003",
+      "candidate": "屋内众人",
+      "reason": "屋内众人只是集体反应和气氛背景，未构成可闭合的角色或势力节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        144219,
+        144269
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0073",
+        "source_path": "intermediate/chunks/chunk-0073.txt",
+        "source_range": [
+          144219,
+          144269
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

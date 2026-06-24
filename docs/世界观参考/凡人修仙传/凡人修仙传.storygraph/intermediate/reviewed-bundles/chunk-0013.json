@@ -1,0 +1,2022 @@
+{
+  "chunk_id": "chunk-0013",
+  "source_range": [
+    21638,
+    23626
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "task_packet_id": "chunk-0013:comprehensive_extraction:attempt-001",
+      "chunk_id": "chunk-0013",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "produced_at": "2026-06-23T14:14:39+08:00",
+      "extracted_nodes": [
+        {
+          "id": "node:chunk-0013:character:001",
+          "node_type": "character",
+          "label": "韩立",
+          "aliases": [],
+          "fact_summary": "韩立回到住所后处理脚伤，随后观察并尝试打开神秘瓶子。",
+          "evidence_ids": [
+            "evidence:chunk-0013:001",
+            "evidence:chunk-0013:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            21817,
+            21987
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              21817,
+              21987
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          }
+        },
+        {
+          "id": "node:chunk-0013:character:002",
+          "node_type": "character",
+          "label": "墨大夫",
+          "aliases": [],
+          "fact_summary": "墨大夫调制的外伤药被韩立用于处理脚伤。",
+          "evidence_ids": [
+            "evidence:chunk-0013:001",
+            "evidence:chunk-0013:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "炼丹师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            21848,
+            22028
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              21848,
+              22028
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          }
+        },
+        {
+          "id": "node:chunk-0013:character:003",
+          "node_type": "character",
+          "label": "张铁",
+          "aliases": [
+            "张哥"
+          ],
+          "fact_summary": "韩立计划让力气较大的张铁试着打开神秘瓶子。",
+          "evidence_ids": [
+            "evidence:chunk-0013:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            22892,
+            22988
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              22892,
+              22988
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          }
+        },
+        {
+          "id": "node:chunk-0013:medicine:001",
+          "node_type": "medicine",
+          "label": "墨大夫秘制的伤药",
+          "aliases": [
+            "外伤药",
+            "药粉"
+          ],
+          "fact_summary": "墨大夫秘制的伤药对淤血、青肿甚至流血有奇效，韩立把药粉倒在受伤脚趾后很快感到清凉并见效。",
+          "evidence_ids": [
+            "evidence:chunk-0013:001",
+            "evidence:chunk-0013:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            21848,
+            22028
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              21848,
+              22028
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          }
+        },
+        {
+          "id": "node:chunk-0013:cultivation_method:001",
+          "node_type": "cultivation_method",
+          "label": "象甲功",
+          "aliases": [],
+          "fact_summary": "韩立原本预备把外伤药留给张铁修炼象甲功负外伤时使用。",
+          "evidence_ids": [
+            "evidence:chunk-0013:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            21894,
+            21926
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              21894,
+              21926
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          }
+        },
+        {
+          "id": "node:chunk-0013:tool:001",
+          "node_type": "tool",
+          "label": "神秘瓶子",
+          "aliases": [
+            "瓶子",
+            "淡绿色瓶子"
+          ],
+          "fact_summary": "神秘瓶子体积不大、浅绿色、有墨绿色叶片状花纹，材质和密封方式都令韩立无法确认。",
+          "evidence_ids": [
+            "evidence:chunk-0013:003",
+            "evidence:chunk-0013:004",
+            "evidence:chunk-0013:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            22197,
+            22616
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              22197,
+              22616
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          }
+        },
+        {
+          "id": "node:chunk-0013:facility:001",
+          "node_type": "facility",
+          "label": "韩立的住所",
+          "aliases": [
+            "自己的住所"
+          ],
+          "fact_summary": "韩立回到自己的住所后检查并处理脚伤。",
+          "evidence_ids": [
+            "evidence:chunk-0013:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "建筑设施与场所功能",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            21679,
+            21847
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              21679,
+              21847
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          }
+        }
+      ],
+      "extracted_edges": [
+        {
+          "id": "edge:chunk-0013:001",
+          "edge_type": "prepared_by",
+          "source": "node:chunk-0013:medicine:001",
+          "target": "node:chunk-0013:character:002",
+          "fact_summary": "外伤药由墨大夫精心调制，并被叙述称为墨大夫秘制的伤药。",
+          "evidence_ids": [
+            "evidence:chunk-0013:001",
+            "evidence:chunk-0013:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "炼丹师",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            21848,
+            22028
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              21848,
+              22028
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          }
+        },
+        {
+          "id": "edge:chunk-0013:002",
+          "edge_type": "used_item",
+          "source": "node:chunk-0013:character:001",
+          "target": "node:chunk-0013:medicine:001",
+          "fact_summary": "韩立把墨大夫秘制伤药的药粉倒在受伤脚趾上，随后疼痛减轻。",
+          "evidence_ids": [
+            "evidence:chunk-0013:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            21988,
+            22092
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              21988,
+              22092
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          }
+        },
+        {
+          "id": "edge:chunk-0013:003",
+          "edge_type": "practices",
+          "source": "node:chunk-0013:character:003",
+          "target": "node:chunk-0013:cultivation_method:001",
+          "fact_summary": "韩立提到张铁修炼象甲功可能会负外伤。",
+          "evidence_ids": [
+            "evidence:chunk-0013:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            21894,
+            21926
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              21894,
+              21926
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          }
+        },
+        {
+          "id": "edge:chunk-0013:004",
+          "edge_type": "possesses",
+          "source": "node:chunk-0013:character:001",
+          "target": "node:chunk-0013:tool:001",
+          "fact_summary": "韩立从怀中摸出神秘瓶子并擦净观察，之后尝试打开它。",
+          "evidence_ids": [
+            "evidence:chunk-0013:003",
+            "evidence:chunk-0013:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            22135,
+            22616
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              22135,
+              22616
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          }
+        }
+      ],
+      "extracted_events": [
+        {
+          "id": "event:chunk-0013:001",
+          "event_type": "item_use_event",
+          "label": "韩立用墨大夫秘制伤药处理脚伤",
+          "fact_summary": "韩立回到住所后检查受伤脚趾，取出墨大夫调制的外伤药，将药粉倒在脚趾上并包扎，疼痛随后减轻。",
+          "participants": [
+            "node:chunk-0013:character:001",
+            "node:chunk-0013:medicine:001",
+            "node:chunk-0013:facility:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0013:001",
+            "evidence:chunk-0013:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            21679,
+            22092
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              21679,
+              22092
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          }
+        },
+        {
+          "id": "event:chunk-0013:002",
+          "event_type": "investigation_event",
+          "label": "韩立观察神秘瓶子",
+          "fact_summary": "韩立把神秘瓶子擦净后观察，确认其浅绿色外观、叶片状花纹、沉重份量和不明材质。",
+          "participants": [
+            "node:chunk-0013:character:001",
+            "node:chunk-0013:tool:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0013:003",
+            "evidence:chunk-0013:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            22135,
+            22562
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              22135,
+              22562
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          }
+        },
+        {
+          "id": "event:chunk-0013:003",
+          "event_type": "failed_open_attempt_event",
+          "label": "韩立拧不开神秘瓶子",
+          "fact_summary": "韩立试图拧开神秘瓶子的瓶盖，但瓶盖和瓶身如同通体铸成一般纹丝不动，十几次尝试仍未成功。",
+          "participants": [
+            "node:chunk-0013:character:001",
+            "node:chunk-0013:tool:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0013:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            22563,
+            22791
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              22563,
+              22791
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          }
+        },
+        {
+          "id": "event:chunk-0013:004",
+          "event_type": "decision_event",
+          "label": "韩立决定请张铁试开瓶子",
+          "fact_summary": "韩立因自己打不开瓶子，决定让力气比自己大得多的张铁试试看能否拧开。",
+          "participants": [
+            "node:chunk-0013:character:001",
+            "node:chunk-0013:character:003",
+            "node:chunk-0013:tool:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0013:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            22892,
+            22988
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              22892,
+              22988
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          }
+        }
+      ],
+      "extracted_evidence": [
+        {
+          "evidence_id": "evidence:chunk-0013:001",
+          "chunk_id": "chunk-0013",
+          "source_range": [
+            21817,
+            21987
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              21817,
+              21987
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          },
+          "excerpt": "韩立急忙把手伸向自己床上的木枕，从枕头下面掏出一个小药瓶出来，这是墨大夫精心调制的外伤药，对淤血、青肿，甚至流血都有奇效，这是他好不容易从墨大夫那讨来的，本准备给张铁修炼“象甲功”负了外伤时提前预备的，没想到自己倒先用上了。",
+          "fact_summary": "韩立取出墨大夫调制的外伤药；该药对淤血、青肿和流血有奇效，原本预备用于张铁修炼象甲功受伤。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0013:001"
+        },
+        {
+          "evidence_id": "evidence:chunk-0013:002",
+          "chunk_id": "chunk-0013",
+          "source_range": [
+            21988,
+            22092
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              21988,
+              22092
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          },
+          "excerpt": "一打开瓶盖，一股浓郁的药香味充满了整个屋子，轻轻地将药粉倒在隆起的脚趾上，一种清凉的感觉马上传了上来，真不愧是墨大夫秘制的伤药，马上就见效了。",
+          "fact_summary": "韩立把药粉倒在受伤脚趾上，墨大夫秘制伤药很快带来清凉感并见效。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "丹药分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0013:002"
+        },
+        {
+          "evidence_id": "evidence:chunk-0013:003",
+          "chunk_id": "chunk-0013",
+          "source_range": [
+            22135,
+            22311
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              22135,
+              22311
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          },
+          "excerpt": "现在是该处理那个神秘瓶子的时候了，那个造成自己重伤的元凶。韩立从怀中摸出那个瓶子，又找了块抹布把它擦得干干净净，这时瓶子的整个原貌才呈现在他的眼前。这个瓶子的体积不算大，用一只手掌就能把它全部握住，比自己的药瓶还要小上那么一分。瓶子通体都是一种淡淡的浅绿色，在瓶面上还印着几个墨绿色花纹，花纹呈叶片状，栩栩如生。",
+          "fact_summary": "韩立把神秘瓶子从怀中取出并擦净；瓶子小、浅绿色，带墨绿色叶片状花纹。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0013:003"
+        },
+        {
+          "evidence_id": "evidence:chunk-0013:004",
+          "chunk_id": "chunk-0013",
+          "source_range": [
+            22312,
+            22562
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              22312,
+              22562
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          },
+          "excerpt": "用手掂了掂它的份量很沉，可是此物明显不是韩立所知道的某种金属制成，更不是他所知的哪种瓷器。因为用手摸上去，没有普通金属的冰凉感觉，也没有一般瓷器那种表面光滑的纹理。韩立仔细观察了好一会儿，这才肯定，这个瓶子是由某种他所不知道的材质做成，这种淡绿色看起来也是一种天然色，是这种材质本身所有的一种颜色。",
+          "fact_summary": "瓶子份量很沉，韩立判断它不是自己所知金属或瓷器，而是未知材质，淡绿色像天然颜色。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0013:004"
+        },
+        {
+          "evidence_id": "evidence:chunk-0013:005",
+          "chunk_id": "chunk-0013",
+          "source_range": [
+            22563,
+            22791
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              22563,
+              22791
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          },
+          "excerpt": "瓶盖和瓶身如同通体铸成一般纹丝不动，盖子没有丝毫要被打开的样子。韩立吃了一惊，刚捡到瓶子时，自己就没能拧动。但当时挂念伤势，无暇使多大力气，也没放到心上去。本以为现在使出全身的力道，打开它，还不是轻而易举的事情。没成想，竟然还是不行。韩立又一连拧了十几下，觉得手臂都酸了，可还是没有成功的样子，便停了下来。",
+          "fact_summary": "韩立多次用力拧瓶盖仍未打开，瓶盖和瓶身像通体铸成一样纹丝不动。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0013:005"
+        },
+        {
+          "evidence_id": "evidence:chunk-0013:006",
+          "chunk_id": "chunk-0013",
+          "source_range": [
+            22892,
+            22988
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              22892,
+              22988
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          },
+          "excerpt": "终于决定，让力气比自己大得多的张铁，试试看能否拧开它。要知道现在的张铁，两只手各能提起数十斤的水桶，并能快步如飞的上下山。现在谷里的大水缸，都是他每天准时打满的。",
+          "fact_summary": "韩立决定让力气更大的张铁试着打开瓶子；张铁能双手各提数十斤水桶并快步上下山。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0013:006"
+        }
+      ],
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "evidence_ids": [
+            "evidence:chunk-0013:001",
+            "evidence:chunk-0013:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_range": [
+            21817,
+            22988
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              21817,
+              22988
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          }
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "evidence_ids": [
+            "evidence:chunk-0013:003",
+            "evidence:chunk-0013:004",
+            "evidence:chunk-0013:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "source_range": [
+            22135,
+            22791
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              22135,
+              22791
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          }
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "evidence_ids": [
+            "evidence:chunk-0013:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "source_range": [
+            21894,
+            21926
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              21894,
+              21926
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          }
+        }
+      ],
+      "uncertainties": [
+        {
+          "id": "uncertainty:chunk-0013:001",
+          "kind": "item_classification_uncertain",
+          "fact_summary": "当前 chunk 只明示神秘瓶子外观、材质异常和难以打开，未明示其为法宝、法器或具体用途，因此保守标为 tool 而不是 artifact。",
+          "evidence_ids": [
+            "evidence:chunk-0013:003",
+            "evidence:chunk-0013:004",
+            "evidence:chunk-0013:005"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            22135,
+            22791
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              22135,
+              22791
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0013:002",
+          "kind": "packet_range_mismatch",
+          "fact_summary": "chunk-0013.txt 的实际文本内容与 task packet 的 source_range 未完全对齐；为满足 packet 范围约束，靠近 chunk 文件末尾的部分未抽取。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [],
+          "source_range": [
+            21638,
+            23626
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/task-packets/chunk-0013/comprehensive_extraction.json",
+            "source_range": [
+              21638,
+              23626
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          }
+        }
+      ],
+      "rejected_candidates": [
+        {
+          "id": "rejected:chunk-0013:001",
+          "candidate": "神秘瓶子=法宝",
+          "reason": "当前 chunk 未明示神秘瓶子是法宝或具有法术功能，只能记录其外观、材质异常和难以打开。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "rejected"
+            }
+          ],
+          "source_range": [
+            22135,
+            22791
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              22135,
+              22791
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          }
+        },
+        {
+          "id": "rejected:chunk-0013:002",
+          "candidate": "过路的师兄",
+          "reason": "仅作为背景反应出现，没有姓名、决策、资源流转、冲突或后续影响，按路人规则不建节点。",
+          "confidence": "EXTRACTED",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            21648,
+            21728
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0013",
+            "source_path": "intermediate/chunks/chunk-0013.txt",
+            "source_range": [
+              21648,
+              21728
+            ],
+            "chapter_hint": "第十一章 瓶难开"
+          }
+        }
+      ],
+      "structured_failures": [
+        {
+          "code": "input_chunk_source_range_mismatch",
+          "message": "chunk-0013.txt 与 task packet source_range 存在错位；输出仅抽取数值上落在 packet 范围内的证据片段。",
+          "attempt": 1
+        }
+      ]
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0013/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "id": "node:chunk-0013:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立回到住所后处理脚伤，随后观察并尝试打开神秘瓶子。",
+      "evidence_ids": [
+        "evidence:chunk-0013:001",
+        "evidence:chunk-0013:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        21817,
+        21987
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0013",
+        "source_path": "intermediate/chunks/chunk-0013.txt",
+        "source_range": [
+          21817,
+          21987
+        ],
+        "chapter_hint": "第十一章 瓶难开"
+      }
+    },
+    {
+      "id": "node:chunk-0013:character:002",
+      "node_type": "character",
+      "label": "墨大夫",
+      "aliases": [],
+      "fact_summary": "墨大夫调制的外伤药被韩立用于处理脚伤。",
+      "evidence_ids": [
+        "evidence:chunk-0013:001",
+        "evidence:chunk-0013:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "炼丹师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        21848,
+        22028
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0013",
+        "source_path": "intermediate/chunks/chunk-0013.txt",
+        "source_range": [
+          21848,
+          22028
+        ],
+        "chapter_hint": "第十一章 瓶难开"
+      }
+    },
+    {
+      "id": "node:chunk-0013:character:003",
+      "node_type": "character",
+      "label": "张铁",
+      "aliases": [
+        "张哥"
+      ],
+      "fact_summary": "韩立计划让力气较大的张铁试着打开神秘瓶子。",
+      "evidence_ids": [
+        "evidence:chunk-0013:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        22892,
+        22988
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0013",
+        "source_path": "intermediate/chunks/chunk-0013.txt",
+        "source_range": [
+          22892,
+          22988
+        ],
+        "chapter_hint": "第十一章 瓶难开"
+      }
+    },
+    {
+      "id": "node:chunk-0013:medicine:001",
+      "node_type": "medicine",
+      "label": "墨大夫秘制的伤药",
+      "aliases": [
+        "外伤药",
+        "药粉"
+      ],
+      "fact_summary": "墨大夫秘制的伤药对淤血、青肿甚至流血有奇效，韩立把药粉倒在受伤脚趾后很快感到清凉并见效。",
+      "evidence_ids": [
+        "evidence:chunk-0013:001",
+        "evidence:chunk-0013:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        21848,
+        22028
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0013",
+        "source_path": "intermediate/chunks/chunk-0013.txt",
+        "source_range": [
+          21848,
+          22028
+        ],
+        "chapter_hint": "第十一章 瓶难开"
+      }
+    },
+    {
+      "id": "node:chunk-0013:cultivation_method:001",
+      "node_type": "cultivation_method",
+      "label": "象甲功",
+      "aliases": [],
+      "fact_summary": "韩立原本预备把外伤药留给张铁修炼象甲功负外伤时使用。",
+      "evidence_ids": [
+        "evidence:chunk-0013:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        21894,
+        21926
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0013",
+        "source_path": "intermediate/chunks/chunk-0013.txt",
+        "source_range": [
+          21894,
+          21926
+        ],
+        "chapter_hint": "第十一章 瓶难开"
+      }
+    },
+    {
+      "id": "node:chunk-0013:tool:001",
+      "node_type": "tool",
+      "label": "神秘瓶子",
+      "aliases": [
+        "瓶子",
+        "淡绿色瓶子"
+      ],
+      "fact_summary": "神秘瓶子体积不大、浅绿色、有墨绿色叶片状花纹，材质和密封方式都令韩立无法确认。",
+      "evidence_ids": [
+        "evidence:chunk-0013:003",
+        "evidence:chunk-0013:004",
+        "evidence:chunk-0013:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        22197,
+        22616
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0013",
+        "source_path": "intermediate/chunks/chunk-0013.txt",
+        "source_range": [
+          22197,
+          22616
+        ],
+        "chapter_hint": "第十一章 瓶难开"
+      }
+    },
+    {
+      "id": "node:chunk-0013:facility:001",
+      "node_type": "facility",
+      "label": "韩立的住所",
+      "aliases": [
+        "自己的住所"
+      ],
+      "fact_summary": "韩立回到自己的住所后检查并处理脚伤。",
+      "evidence_ids": [
+        "evidence:chunk-0013:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        21679,
+        21847
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0013",
+        "source_path": "intermediate/chunks/chunk-0013.txt",
+        "source_range": [
+          21679,
+          21847
+        ],
+        "chapter_hint": "第十一章 瓶难开"
+      }
+    }
+  ],
+  "normalized_edges": [
+    {
+      "id": "edge:chunk-0013:001",
+      "edge_type": "prepared_by",
+      "source": "node:chunk-0013:medicine:001",
+      "target": "node:chunk-0013:character:002",
+      "fact_summary": "外伤药由墨大夫精心调制，并被叙述称为墨大夫秘制的伤药。",
+      "evidence_ids": [
+        "evidence:chunk-0013:001",
+        "evidence:chunk-0013:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "炼丹师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        21848,
+        22028
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0013",
+        "source_path": "intermediate/chunks/chunk-0013.txt",
+        "source_range": [
+          21848,
+          22028
+        ],
+        "chapter_hint": "第十一章 瓶难开"
+      }
+    },
+    {
+      "id": "edge:chunk-0013:002",
+      "edge_type": "used_item",
+      "source": "node:chunk-0013:character:001",
+      "target": "node:chunk-0013:medicine:001",
+      "fact_summary": "韩立把墨大夫秘制伤药的药粉倒在受伤脚趾上，随后疼痛减轻。",
+      "evidence_ids": [
+        "evidence:chunk-0013:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        21988,
+        22092
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0013",
+        "source_path": "intermediate/chunks/chunk-0013.txt",
+        "source_range": [
+          21988,
+          22092
+        ],
+        "chapter_hint": "第十一章 瓶难开"
+      }
+    },
+    {
+      "id": "edge:chunk-0013:003",
+      "edge_type": "practices",
+      "source": "node:chunk-0013:character:003",
+      "target": "node:chunk-0013:cultivation_method:001",
+      "fact_summary": "韩立提到张铁修炼象甲功可能会负外伤。",
+      "evidence_ids": [
+        "evidence:chunk-0013:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        21894,
+        21926
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0013",
+        "source_path": "intermediate/chunks/chunk-0013.txt",
+        "source_range": [
+          21894,
+          21926
+        ],
+        "chapter_hint": "第十一章 瓶难开"
+      }
+    },
+    {
+      "id": "edge:chunk-0013:004",
+      "edge_type": "possesses",
+      "source": "node:chunk-0013:character:001",
+      "target": "node:chunk-0013:tool:001",
+      "fact_summary": "韩立从怀中摸出神秘瓶子并擦净观察，之后尝试打开它。",
+      "evidence_ids": [
+        "evidence:chunk-0013:003",
+        "evidence:chunk-0013:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        22135,
+        22616
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0013",
+        "source_path": "intermediate/chunks/chunk-0013.txt",
+        "source_range": [
+          22135,
+          22616
+        ],
+        "chapter_hint": "第十一章 瓶难开"
+      }
+    }
+  ],
+  "normalized_events": [
+    {
+      "id": "event:chunk-0013:001",
+      "event_type": "item_use_event",
+      "label": "韩立用墨大夫秘制伤药处理脚伤",
+      "fact_summary": "韩立回到住所后检查受伤脚趾，取出墨大夫调制的外伤药，将药粉倒在脚趾上并包扎，疼痛随后减轻。",
+      "participants": [
+        "node:chunk-0013:character:001",
+        "node:chunk-0013:medicine:001",
+        "node:chunk-0013:facility:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0013:001",
+        "evidence:chunk-0013:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        21679,
+        22092
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0013",
+        "source_path": "intermediate/chunks/chunk-0013.txt",
+        "source_range": [
+          21679,
+          22092
+        ],
+        "chapter_hint": "第十一章 瓶难开"
+      }
+    },
+    {
+      "id": "event:chunk-0013:002",
+      "event_type": "investigation_event",
+      "label": "韩立观察神秘瓶子",
+      "fact_summary": "韩立把神秘瓶子擦净后观察，确认其浅绿色外观、叶片状花纹、沉重份量和不明材质。",
+      "participants": [
+        "node:chunk-0013:character:001",
+        "node:chunk-0013:tool:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0013:003",
+        "evidence:chunk-0013:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        22135,
+        22562
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0013",
+        "source_path": "intermediate/chunks/chunk-0013.txt",
+        "source_range": [
+          22135,
+          22562
+        ],
+        "chapter_hint": "第十一章 瓶难开"
+      }
+    },
+    {
+      "id": "event:chunk-0013:003",
+      "event_type": "failed_open_attempt_event",
+      "label": "韩立拧不开神秘瓶子",
+      "fact_summary": "韩立试图拧开神秘瓶子的瓶盖，但瓶盖和瓶身如同通体铸成一般纹丝不动，十几次尝试仍未成功。",
+      "participants": [
+        "node:chunk-0013:character:001",
+        "node:chunk-0013:tool:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0013:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        22563,
+        22791
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0013",
+        "source_path": "intermediate/chunks/chunk-0013.txt",
+        "source_range": [
+          22563,
+          22791
+        ],
+        "chapter_hint": "第十一章 瓶难开"
+      }
+    },
+    {
+      "id": "event:chunk-0013:004",
+      "event_type": "decision_event",
+      "label": "韩立决定请张铁试开瓶子",
+      "fact_summary": "韩立因自己打不开瓶子，决定让力气比自己大得多的张铁试试看能否拧开。",
+      "participants": [
+        "node:chunk-0013:character:001",
+        "node:chunk-0013:character:003",
+        "node:chunk-0013:tool:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0013:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        22892,
+        22988
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0013",
+        "source_path": "intermediate/chunks/chunk-0013.txt",
+        "source_range": [
+          22892,
+          22988
+        ],
+        "chapter_hint": "第十一章 瓶难开"
+      }
+    }
+  ],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0013:001",
+      "chunk_id": "chunk-0013",
+      "source_range": [
+        21817,
+        21987
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0013",
+        "source_path": "intermediate/chunks/chunk-0013.txt",
+        "source_range": [
+          21817,
+          21987
+        ],
+        "chapter_hint": "第十一章 瓶难开"
+      },
+      "excerpt": "韩立急忙把手伸向自己床上的木枕，从枕头下面掏出一个小药瓶出来，这是墨大夫精心调制的外伤药，对淤血、青肿，甚至流血都有奇效，这是他好不容易从墨大夫那讨来的，本准备给张铁修炼“象甲功”负了外伤时提前预备的，没想到自己倒先用上了。",
+      "fact_summary": "韩立取出墨大夫调制的外伤药；该药对淤血、青肿和流血有奇效，原本预备用于张铁修炼象甲功受伤。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0013:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0013:002",
+      "chunk_id": "chunk-0013",
+      "source_range": [
+        21988,
+        22092
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0013",
+        "source_path": "intermediate/chunks/chunk-0013.txt",
+        "source_range": [
+          21988,
+          22092
+        ],
+        "chapter_hint": "第十一章 瓶难开"
+      },
+      "excerpt": "一打开瓶盖，一股浓郁的药香味充满了整个屋子，轻轻地将药粉倒在隆起的脚趾上，一种清凉的感觉马上传了上来，真不愧是墨大夫秘制的伤药，马上就见效了。",
+      "fact_summary": "韩立把药粉倒在受伤脚趾上，墨大夫秘制伤药很快带来清凉感并见效。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "丹药分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0013:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0013:003",
+      "chunk_id": "chunk-0013",
+      "source_range": [
+        22135,
+        22311
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0013",
+        "source_path": "intermediate/chunks/chunk-0013.txt",
+        "source_range": [
+          22135,
+          22311
+        ],
+        "chapter_hint": "第十一章 瓶难开"
+      },
+      "excerpt": "现在是该处理那个神秘瓶子的时候了，那个造成自己重伤的元凶。韩立从怀中摸出那个瓶子，又找了块抹布把它擦得干干净净，这时瓶子的整个原貌才呈现在他的眼前。这个瓶子的体积不算大，用一只手掌就能把它全部握住，比自己的药瓶还要小上那么一分。瓶子通体都是一种淡淡的浅绿色，在瓶面上还印着几个墨绿色花纹，花纹呈叶片状，栩栩如生。",
+      "fact_summary": "韩立把神秘瓶子从怀中取出并擦净；瓶子小、浅绿色，带墨绿色叶片状花纹。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0013:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0013:004",
+      "chunk_id": "chunk-0013",
+      "source_range": [
+        22312,
+        22562
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0013",
+        "source_path": "intermediate/chunks/chunk-0013.txt",
+        "source_range": [
+          22312,
+          22562
+        ],
+        "chapter_hint": "第十一章 瓶难开"
+      },
+      "excerpt": "用手掂了掂它的份量很沉，可是此物明显不是韩立所知道的某种金属制成，更不是他所知的哪种瓷器。因为用手摸上去，没有普通金属的冰凉感觉，也没有一般瓷器那种表面光滑的纹理。韩立仔细观察了好一会儿，这才肯定，这个瓶子是由某种他所不知道的材质做成，这种淡绿色看起来也是一种天然色，是这种材质本身所有的一种颜色。",
+      "fact_summary": "瓶子份量很沉，韩立判断它不是自己所知金属或瓷器，而是未知材质，淡绿色像天然颜色。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0013:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0013:005",
+      "chunk_id": "chunk-0013",
+      "source_range": [
+        22563,
+        22791
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0013",
+        "source_path": "intermediate/chunks/chunk-0013.txt",
+        "source_range": [
+          22563,
+          22791
+        ],
+        "chapter_hint": "第十一章 瓶难开"
+      },
+      "excerpt": "瓶盖和瓶身如同通体铸成一般纹丝不动，盖子没有丝毫要被打开的样子。韩立吃了一惊，刚捡到瓶子时，自己就没能拧动。但当时挂念伤势，无暇使多大力气，也没放到心上去。本以为现在使出全身的力道，打开它，还不是轻而易举的事情。没成想，竟然还是不行。韩立又一连拧了十几下，觉得手臂都酸了，可还是没有成功的样子，便停了下来。",
+      "fact_summary": "韩立多次用力拧瓶盖仍未打开，瓶盖和瓶身像通体铸成一样纹丝不动。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0013:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0013:006",
+      "chunk_id": "chunk-0013",
+      "source_range": [
+        22892,
+        22988
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0013",
+        "source_path": "intermediate/chunks/chunk-0013.txt",
+        "source_range": [
+          22892,
+          22988
+        ],
+        "chapter_hint": "第十一章 瓶难开"
+      },
+      "excerpt": "终于决定，让力气比自己大得多的张铁，试试看能否拧开它。要知道现在的张铁，两只手各能提起数十斤的水桶，并能快步如飞的上下山。现在谷里的大水缸，都是他每天准时打满的。",
+      "fact_summary": "韩立决定让力气更大的张铁试着打开瓶子；张铁能双手各提数十斤水桶并快步上下山。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0013:006"
+    }
+  ]
+}

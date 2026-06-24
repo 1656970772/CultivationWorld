@@ -1,0 +1,555 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0051:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0051",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T18:00:00Z",
+  "extracted_nodes": [
+    {
+      "id": "n-ch0051-001",
+      "node_type": "character",
+      "label": "辰南",
+      "aliases": [
+        "败类",
+        "小麻烦的哥哥"
+      ],
+      "properties": {
+        "role": "主角",
+        "current_action": "被副院长叫去神风学院，意外结识圣龙艾米"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0051",
+        "source_range": [
+          284623,
+          284723
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0051-001"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0051"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "n-ch0051-002",
+      "node_type": "beast",
+      "label": "圣龙艾米",
+      "aliases": [
+        "龙宝宝",
+        "艾米"
+      ],
+      "properties": {
+        "beast_type": "五阶圣龙",
+        "rank": "五阶圣兽",
+        "appearance": "灰褐色小龙，体型如龙宝宝",
+        "abilities": "体魄异常强横、龙语魔法、龙翼如神兵宝刃、速度惊人",
+        "personality": "好奇宝宝心性，贪吃仙草参芝，对辰南特别依恋",
+        "origin": "在十万大山中被神风学院前辈用参芝仙草引诱至罪恶之城"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0051",
+        "source_range": [
+          284623,
+          284723
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0051-002",
+        "evidence:ev-ch0051-004"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "cat_fac_006"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "cat_fac_006"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0051"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "n-ch0051-003",
+      "node_type": "character",
+      "label": "副院长",
+      "aliases": [
+        "死老头子",
+        "奸诈的老头子"
+      ],
+      "properties": {
+        "role": "神风学院副院长",
+        "realm": "四阶境界",
+        "personality": "奸诈卑鄙",
+        "current_action": "用龙啸事件威胁辰南"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0051",
+        "source_range": [
+          284623,
+          284723
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0051-001",
+        "evidence:ev-ch0051-003"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0051"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "n-ch0051-004",
+      "node_type": "location",
+      "label": "神风学院龙场",
+      "aliases": [],
+      "properties": {
+        "location_type": "龙栖息地",
+        "description": "矮山下有洞穴，数十头龙栖息于此"
+      },
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0051",
+        "source_range": [
+          284623,
+          284723
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0051-003"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "cat_loc_002"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0051"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "e-ch0051-001",
+      "source": "n-ch0051-001",
+      "target": "n-ch0051-002",
+      "edge_type": "interacts_with",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0051",
+        "source_range": [
+          284623,
+          284723
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0051-002"
+      ],
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0051"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "e-ch0051-002",
+      "source": "n-ch0051-001",
+      "target": "n-ch0051-003",
+      "edge_type": "interacts_with",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0051",
+        "source_range": [
+          284623,
+          284723
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0051-001"
+      ],
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0051"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "e-ch0051-003",
+      "source": "n-ch0051-002",
+      "target": "n-ch0051-003",
+      "edge_type": "attacks",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0051",
+        "source_range": [
+          284623,
+          284723
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0051-005"
+      ],
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0051"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "e-ch0051-004",
+      "source": "n-ch0051-002",
+      "target": "n-ch0051-004",
+      "edge_type": "located_at",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0051",
+        "source_range": [
+          284623,
+          284723
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0051-003"
+      ],
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0051"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "evt-ch0051-001",
+      "event_type": "event",
+      "label": "副院长以龙啸事件要挟辰南到神风学院",
+      "participants": [
+        "n-ch0051-001",
+        "n-ch0051-003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0051",
+        "source_range": [
+          284623,
+          284723
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0051-001"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0051"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "evt-ch0051-002",
+      "event_type": "event",
+      "label": "辰南结识圣龙艾米并获得其好感",
+      "participants": [
+        "n-ch0051-001",
+        "n-ch0051-002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0051",
+        "source_range": [
+          284623,
+          284723
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0051-002"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0051"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "id": "evt-ch0051-003",
+      "event_type": "conflict",
+      "label": "圣龙艾米替辰南教训副院长",
+      "participants": [
+        "n-ch0051-002",
+        "n-ch0051-003",
+        "n-ch0051-001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_location": {
+        "chunk_id": "chunk-0051",
+        "source_range": [
+          284623,
+          284723
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0051-005"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "cat_chr_001"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0051"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:ev-ch0051-001",
+      "source_location": {
+        "chunk_id": "chunk-0051",
+        "source_range": [
+          2,
+          70
+        ]
+      },
+      "source_range": [
+        284623,
+        285123
+      ],
+      "fact_summary": "副院长派人叫辰南去神风学院，威胁他已查出搅闹龙场之事，若不从将有杀人之祸；辰南骂副院长奸诈卑鄙",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0051"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "evidence_id": "evidence:ev-ch0051-002",
+      "source_location": {
+        "chunk_id": "chunk-0051",
+        "source_range": [
+          88,
+          140
+        ]
+      },
+      "source_range": [
+        284623,
+        285123
+      ],
+      "fact_summary": "辰南称圣龙艾米为龙宝宝，小龙对辰南异常友好亲昵，在他身上蹭来蹭去、微笑；副院长惊讶艾米从未对别人如此热情",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0051"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "evidence_id": "evidence:ev-ch0051-003",
+      "source_location": {
+        "chunk_id": "chunk-0051",
+        "source_range": [
+          98,
+          104
+        ]
+      },
+      "source_range": [
+        284623,
+        285123
+      ],
+      "fact_summary": "圣龙乃五阶圣兽，如凤毛麟角一般稀少，体魄异常强横，具有超强恐怖的破坏力，还会施展强大的龙语魔法",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0051"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "evidence_id": "evidence:ev-ch0051-004",
+      "source_location": {
+        "chunk_id": "chunk-0051",
+        "source_range": [
+          126,
+          136
+        ]
+      },
+      "source_range": [
+        284623,
+        285123
+      ],
+      "fact_summary": "圣龙艾米确认辰南就是投放辣椒粉之人成为'证龙'；消息传出后数十龙骑士将发难；圣龙通灵尽人皆知",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0051"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    },
+    {
+      "evidence_id": "evidence:ev-ch0051-005",
+      "source_location": {
+        "chunk_id": "chunk-0051",
+        "source_range": [
+          140,
+          216
+        ]
+      },
+      "source_range": [
+        284623,
+        285123
+      ],
+      "fact_summary": "小龙替辰南教训副院长：龙翼削断巨石、甩尾碎巨石、利爪抓碎岩石，最终抓住副院长甩撞山壁，又喷笔直闪电轰击地面；副院长四阶修为毫无还手之力，狼狈不堪",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0051"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "uncertainties": [
+    {
+      "uncertainty_id": "unc-ch0051-001",
+      "description": "圣龙艾米究竟是幼龙还是成年龙不明；院长也称其实力比成年圣龙还恐怖但心性像幼龙，主人也不了解",
+      "related_nodes": [
+        "n-ch0051-002"
+      ],
+      "confidence": "AMBIGUOUS"
+    },
+    {
+      "uncertainty_id": "unc-ch0051-002",
+      "description": "圣龙的主人（圣龙骑士）身份未明示，只知是一名前辈",
+      "related_nodes": [
+        "n-ch0051-002"
+      ],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "candidate_id": "rej-ch0051-001",
+      "type": "character",
+      "label": "青年男子（副院长使者）",
+      "reason": "仅传递消息的功能性角色，无剧情功能（Rule 2）"
+    }
+  ],
+  "structured_failures": [],
+  "supports_templates": []
+}

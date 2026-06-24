@@ -1,0 +1,3650 @@
+{
+  "schema": "stage2-extraction-record.v1",
+  "task_batch_id": "template-batch-0017-5ad68aa79f29",
+  "task_packet_id": "template-batch-0017-5ad68aa79f29",
+  "category_id": "faction_society_economy_task",
+  "category_name": "势力社会、经济与任务",
+  "template_name": "宗门任务体系",
+  "template_file": "宗门任务体系模板.md",
+  "template_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\模板\\宗门任务体系模板.md",
+  "template_sha256": "d4ab76cfd57455575585755a3b8553a9f70ba249e8d8594ec7482d941fce5cf5",
+  "source_graph": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\graphify-out\\graph.json",
+  "source_novel": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+  "output_language": "zh-CN",
+  "stage2_policy": {
+    "stage2_categories": {
+      "facts": "原作事实",
+      "judgments": "我的判断",
+      "pending_verifications": "待核验",
+      "not_found_items": "未见可靠证据"
+    },
+    "stage2_output_policy": {
+      "default_dir": "drafts",
+      "allow_overwrite_existing_docs": false,
+      "existing_document_action": "write_versioned_draft",
+      "allowed_policies": [
+        "draft",
+        "backup-and-overwrite",
+        "merge"
+      ],
+      "draft_action": "write_draft"
+    },
+    "stage2_render_policy": {
+      "citation_format": "[{evidence_id}]",
+      "draft_entry_policy": {
+        "source_sections": [
+          "facts"
+        ],
+        "field_aliases": {
+          "name": [
+            "name",
+            "title",
+            "item_name",
+            "entity_name",
+            "名称"
+          ],
+          "classification": [
+            "classification",
+            "type",
+            "category_label",
+            "类别",
+            "分类"
+          ],
+          "usage": [
+            "usage",
+            "purpose",
+            "effect",
+            "effects",
+            "用途",
+            "功效"
+          ],
+          "formula": [
+            "formula",
+            "materials",
+            "ingredients",
+            "components",
+            "recipe",
+            "方方",
+            "材料",
+            "成分"
+          ],
+          "source_excerpt": [
+            "source_excerpt",
+            "original_excerpt",
+            "quote",
+            "原文摘录"
+          ],
+          "review_status": [
+            "review_status",
+            "verification_status",
+            "审核状态"
+          ]
+        },
+        "fallback_name": "未命名条目",
+        "kept_fields": [
+          "name",
+          "classification",
+          "usage",
+          "formula",
+          "source_range",
+          "source_excerpt",
+          "evidence_ids",
+          "confidence",
+          "review_status"
+        ]
+      },
+      "final_entry_policy": {
+        "allowed_confidence": [
+          "EXTRACTED"
+        ],
+        "min_evidence_count": 1,
+        "require_explicit_name": true,
+        "require_source_excerpt": true,
+        "required_any_fields": [
+          "usage",
+          "formula"
+        ],
+        "unstable_name_prefixes": [
+          "未名",
+          "未命名",
+          "未知",
+          "不明"
+        ],
+        "unstable_name_contains": [
+          "某种",
+          "某类"
+        ],
+        "composite_name_markers": [
+          "与",
+          "或",
+          "/",
+          "、"
+        ],
+        "review_only_statuses": [
+          "needs_review",
+          "pending_review",
+          "rejected",
+          "ambiguous"
+        ],
+        "allow_missing_review_status": true
+      },
+      "dedupe_policy": {
+        "key_fields": [
+          "name",
+          "classification"
+        ],
+        "merge_text_fields": [
+          "usage",
+          "formula",
+          "source_excerpt"
+        ],
+        "confidence_strategy": "most_conservative",
+        "review_status_strategy": "review_only_wins"
+      },
+      "final_template_policy": {
+        "case_section_names": [
+          "案例",
+          "典型案例",
+          "案例清单",
+          "示例"
+        ],
+        "excluded_section_names": [
+          "待复核",
+          "缺口",
+          "资料来源",
+          "说明"
+        ],
+        "fallback_to_first_non_root_heading": true
+      }
+    }
+  },
+  "coverage_scope": {
+    "scope": "whole_novel",
+    "stage1_chunk_ledger": "coverage/chunk-ledger.json",
+    "chunk_ranges": [
+      {
+        "chunk_id": "chunk-0003",
+        "source_ranges": [
+          [
+            2056,
+            2213
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0005",
+        "source_ranges": [
+          [
+            6248,
+            6303
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0006",
+        "source_ranges": [
+          [
+            6707,
+            6721
+          ],
+          [
+            6731,
+            6793
+          ],
+          [
+            6793,
+            6836
+          ],
+          [
+            6995,
+            7023
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0007",
+        "source_ranges": [
+          [
+            10813,
+            10845
+          ],
+          [
+            11201,
+            11266
+          ],
+          [
+            9470,
+            9502
+          ],
+          [
+            9514,
+            9548
+          ],
+          [
+            9635,
+            9722
+          ],
+          [
+            9779,
+            9801
+          ],
+          [
+            9855,
+            9894
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0009",
+        "source_ranges": [
+          [
+            13972,
+            14073
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0019",
+        "source_ranges": [
+          [
+            33525,
+            33603
+          ],
+          [
+            33606,
+            33693
+          ],
+          [
+            33696,
+            33777
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0036",
+        "source_ranges": [
+          [
+            68903,
+            69120
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0045",
+        "source_ranges": [
+          [
+            85766,
+            85846
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0067",
+        "source_ranges": [
+          [
+            131353,
+            131398
+          ],
+          [
+            131707,
+            131763
+          ],
+          [
+            131980,
+            132035
+          ],
+          [
+            132059,
+            132082
+          ],
+          [
+            132446,
+            132501
+          ],
+          [
+            132523,
+            132549
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0068",
+        "source_ranges": [
+          [
+            132727,
+            132770
+          ],
+          [
+            133301,
+            133356
+          ],
+          [
+            134027,
+            134067
+          ],
+          [
+            134255,
+            134310
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0081",
+        "source_ranges": [
+          [
+            159732,
+            159875
+          ],
+          [
+            159945,
+            160037
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0082",
+        "source_ranges": [
+          [
+            160050,
+            160138
+          ],
+          [
+            160141,
+            160281
+          ],
+          [
+            160321,
+            160447
+          ],
+          [
+            160511,
+            160621
+          ],
+          [
+            160717,
+            160853
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0123",
+        "source_ranges": [
+          [
+            241291,
+            241531
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0127",
+        "source_ranges": [
+          [
+            251328,
+            251401
+          ],
+          [
+            251680,
+            251772
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0128",
+        "source_ranges": [
+          [
+            252927,
+            252988
+          ],
+          [
+            253691,
+            253775
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0149",
+        "source_ranges": [
+          [
+            308175,
+            308200
+          ],
+          [
+            308262,
+            308407
+          ],
+          [
+            308527,
+            308570
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0150",
+        "source_ranges": [
+          [
+            310804,
+            310901
+          ],
+          [
+            311019,
+            311120
+          ],
+          [
+            311136,
+            311247
+          ],
+          [
+            311315,
+            311436
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0152",
+        "source_ranges": [
+          [
+            316226,
+            316268
+          ],
+          [
+            316445,
+            316513
+          ],
+          [
+            316568,
+            316632
+          ],
+          [
+            316673,
+            316749
+          ],
+          [
+            316959,
+            317004
+          ],
+          [
+            317173,
+            317259
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0153",
+        "source_ranges": [
+          [
+            317348,
+            317374
+          ],
+          [
+            317558,
+            317631
+          ],
+          [
+            318299,
+            318378
+          ],
+          [
+            318469,
+            318501
+          ],
+          [
+            319441,
+            319507
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0154",
+        "source_ranges": [
+          [
+            320551,
+            320598
+          ],
+          [
+            321304,
+            321357
+          ],
+          [
+            321828,
+            321857
+          ],
+          [
+            321898,
+            321945
+          ],
+          [
+            322037,
+            322071
+          ],
+          [
+            322207,
+            322241
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0155",
+        "source_ranges": [
+          [
+            325263,
+            325304
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0163",
+        "source_ranges": [
+          [
+            345253,
+            345306
+          ],
+          [
+            345913,
+            345950
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0176",
+        "source_ranges": [
+          [
+            376929,
+            377078
+          ],
+          [
+            377694,
+            377806
+          ],
+          [
+            378703,
+            378843
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0180",
+        "source_ranges": [
+          [
+            388399,
+            388434
+          ],
+          [
+            389519,
+            389557
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0181",
+        "source_ranges": [
+          [
+            392048,
+            392130
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0185",
+        "source_ranges": [
+          [
+            400449,
+            400666
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0186",
+        "source_ranges": [
+          [
+            404967,
+            405160
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0200",
+        "source_ranges": [
+          [
+            442212,
+            442265
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0215",
+        "source_ranges": [
+          [
+            490294,
+            490403
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0216",
+        "source_ranges": [
+          [
+            492873,
+            493052
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0223",
+        "source_ranges": [
+          [
+            511871,
+            511940
+          ],
+          [
+            513384,
+            513453
+          ],
+          [
+            513490,
+            513577
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0263",
+        "source_ranges": [
+          [
+            631596,
+            631629
+          ],
+          [
+            631695,
+            631772
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0267",
+        "source_ranges": [
+          [
+            643399,
+            643468
+          ],
+          [
+            643876,
+            643948
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0275",
+        "source_ranges": [
+          [
+            666926,
+            666974
+          ],
+          [
+            667118,
+            667173
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0276",
+        "source_ranges": [
+          [
+            668832,
+            668870
+          ],
+          [
+            669053,
+            669074
+          ],
+          [
+            669471,
+            669516
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0277",
+        "source_ranges": [
+          [
+            673012,
+            673070
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0278",
+        "source_ranges": [
+          [
+            675450,
+            675474
+          ],
+          [
+            675561,
+            675604
+          ],
+          [
+            675644,
+            675753
+          ],
+          [
+            675797,
+            675863
+          ],
+          [
+            676017,
+            676159
+          ],
+          [
+            676195,
+            676330
+          ],
+          [
+            676385,
+            676510
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0285",
+        "source_ranges": [
+          [
+            696981,
+            697033
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0298",
+        "source_ranges": [
+          [
+            735545,
+            735611
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0305",
+        "source_ranges": [
+          [
+            754794,
+            754841
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0335",
+        "source_ranges": [
+          [
+            842824,
+            842912
+          ],
+          [
+            842978,
+            843065
+          ],
+          [
+            843098,
+            843178
+          ],
+          [
+            843402,
+            843460
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0373",
+        "source_ranges": [
+          [
+            950785,
+            950915
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0382",
+        "source_ranges": [
+          [
+            974651,
+            974704
+          ],
+          [
+            974919,
+            975086
+          ],
+          [
+            975224,
+            975277
+          ],
+          [
+            975410,
+            975468
+          ],
+          [
+            975545,
+            975581
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0383",
+        "source_ranges": [
+          [
+            977267,
+            977370
+          ],
+          [
+            979036,
+            979214
+          ],
+          [
+            979368,
+            979499
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0384",
+        "source_ranges": [
+          [
+            979902,
+            979959
+          ],
+          [
+            981563,
+            981788
+          ],
+          [
+            982042,
+            982169
+          ],
+          [
+            982336,
+            982466
+          ],
+          [
+            982593,
+            982771
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0385",
+        "source_ranges": [
+          [
+            982881,
+            982911
+          ],
+          [
+            983419,
+            983469
+          ],
+          [
+            983674,
+            983714
+          ],
+          [
+            984545,
+            984587
+          ],
+          [
+            984717,
+            984737
+          ],
+          [
+            985064,
+            985104
+          ],
+          [
+            985271,
+            985301
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0386",
+        "source_ranges": [
+          [
+            985593,
+            985694
+          ],
+          [
+            985981,
+            986016
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0387",
+        "source_ranges": [
+          [
+            990067,
+            990164
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0407",
+        "source_ranges": [
+          [
+            1046079,
+            1046094
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0435",
+        "source_ranges": [
+          [
+            1128490,
+            1128509
+          ],
+          [
+            1128515,
+            1128541
+          ],
+          [
+            1128602,
+            1128610
+          ]
+        ]
+      },
+      {
+        "chunk_id": "chunk-0436",
+        "source_ranges": [
+          [
+            1129142,
+            1129161
+          ],
+          [
+            1129162,
+            1129185
+          ]
+        ]
+      }
+    ],
+    "ledger_path": "coverage/template-run-ledger.json"
+  },
+  "fulfilled_sections": [
+    {
+      "requirement_id": "宗门任务体系.案例.01.日常杂务与资源维护任务",
+      "requirement_kind": "case_section",
+      "status": "covered",
+      "heading": "案例 1：黄枫谷百机堂杂务与百药园维护任务",
+      "evidence_ids": [
+        "evidence:chunk-0149:009",
+        "evidence:chunk-0149:010",
+        "evidence:chunk-0149:011",
+        "evidence:chunk-0152:010",
+        "evidence:chunk-0152:011",
+        "evidence:chunk-0152:012",
+        "evidence:chunk-0152:013",
+        "evidence:chunk-0152:014",
+        "evidence:chunk-0152:015",
+        "evidence:chunk-0153:001",
+        "evidence:chunk-0153:002",
+        "evidence:chunk-0153:004",
+        "evidence:chunk-0153:005",
+        "evidence:chunk-0153:009",
+        "evidence:chunk-0154:003",
+        "evidence:chunk-0154:006",
+        "evidence:chunk-0154:008",
+        "evidence:chunk-0154:009",
+        "evidence:chunk-0154:010",
+        "evidence:chunk-0154:011",
+        "evidence:chunk-0155:023"
+      ],
+      "notes": [],
+      "linked_node_ids": [
+        "node:chunk-0149:faction:001",
+        "node:chunk-0149:rule:001",
+        "node:chunk-0149:rule:002",
+        "node:chunk-0152:character:001",
+        "node:chunk-0152:character:004",
+        "node:chunk-0152:character:005",
+        "node:chunk-0152:facility:003",
+        "node:chunk-0152:faction:001",
+        "node:chunk-0152:material:001",
+        "node:chunk-0152:material:002",
+        "node:chunk-0152:material:003",
+        "node:chunk-0152:material:004",
+        "node:chunk-0152:rule:001",
+        "node:chunk-0153:character:002",
+        "node:chunk-0153:facility:001",
+        "node:chunk-0153:facility:002",
+        "node:chunk-0153:material:001",
+        "node:chunk-0154:character:002",
+        "node:chunk-0154:facility:001",
+        "node:chunk-0154:tool:001",
+        "node:chunk-0154:tool:002",
+        "node:chunk-0155:character:002"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0149:003",
+        "edge:chunk-0149:004",
+        "edge:chunk-0149:005",
+        "edge:chunk-0152:007",
+        "edge:chunk-0152:008",
+        "edge:chunk-0152:009",
+        "edge:chunk-0152:010",
+        "edge:chunk-0152:011",
+        "edge:chunk-0152:012",
+        "edge:chunk-0152:013",
+        "edge:chunk-0153:001",
+        "edge:chunk-0153:002",
+        "edge:chunk-0153:008",
+        "edge:chunk-0154:003",
+        "edge:chunk-0154:005",
+        "edge:chunk-0155:017"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0149:004",
+        "event:chunk-0152:005",
+        "event:chunk-0152:006",
+        "event:chunk-0152:007",
+        "event:chunk-0153:001",
+        "event:chunk-0153:002",
+        "event:chunk-0153:004",
+        "event:chunk-0154:001",
+        "event:chunk-0154:003",
+        "event:chunk-0154:004"
+      ]
+    },
+    {
+      "requirement_id": "宗门任务体系.案例.02.猎妖清剿战斗任务",
+      "requirement_kind": "case_section",
+      "status": "covered",
+      "heading": "案例 2：六连殿猎杀婴鲤兽任务",
+      "evidence_ids": [
+        "evidence:chunk-0382:003",
+        "evidence:chunk-0382:004",
+        "evidence:chunk-0382:005",
+        "evidence:chunk-0382:006",
+        "evidence:chunk-0382:007",
+        "evidence:chunk-0383:001",
+        "evidence:chunk-0383:006",
+        "evidence:chunk-0383:007",
+        "evidence:chunk-0384:001",
+        "evidence:chunk-0384:006",
+        "evidence:chunk-0384:008",
+        "evidence:chunk-0384:009",
+        "evidence:chunk-0384:010",
+        "evidence:chunk-0385:001",
+        "evidence:chunk-0385:003",
+        "evidence:chunk-0385:004",
+        "evidence:chunk-0385:010",
+        "evidence:chunk-0385:012",
+        "evidence:chunk-0385:016",
+        "evidence:chunk-0385:017",
+        "evidence:chunk-0386:001",
+        "evidence:chunk-0386:004",
+        "evidence:chunk-0387:010"
+      ],
+      "notes": [],
+      "linked_node_ids": [
+        "node:chunk-0382:beast:001",
+        "node:chunk-0382:faction:001",
+        "node:chunk-0382:formation:001",
+        "node:chunk-0382:realm:001",
+        "node:chunk-0382:realm:002",
+        "node:chunk-0383:character:001",
+        "node:chunk-0383:character:002",
+        "node:chunk-0383:character:005",
+        "node:chunk-0383:character:006",
+        "node:chunk-0383:facility:002",
+        "node:chunk-0383:faction:002",
+        "node:chunk-0383:pill:001",
+        "node:chunk-0384:beast:001",
+        "node:chunk-0384:character:001",
+        "node:chunk-0384:character:003",
+        "node:chunk-0384:character:009",
+        "node:chunk-0384:faction:001",
+        "node:chunk-0384:formation:001",
+        "node:chunk-0384:location:001",
+        "node:chunk-0385:character:002",
+        "node:chunk-0385:character:003",
+        "node:chunk-0385:character:005",
+        "node:chunk-0385:character:006",
+        "node:chunk-0385:faction:001",
+        "node:chunk-0385:formation:001",
+        "node:chunk-0385:pill:001",
+        "node:chunk-0386:character:001",
+        "node:chunk-0386:formation:001",
+        "node:chunk-0387:faction:001"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0382:003",
+        "edge:chunk-0382:004",
+        "edge:chunk-0382:006",
+        "edge:chunk-0382:008",
+        "edge:chunk-0383:002",
+        "edge:chunk-0383:004",
+        "edge:chunk-0384:002",
+        "edge:chunk-0384:006",
+        "edge:chunk-0385:001",
+        "edge:chunk-0385:002",
+        "edge:chunk-0385:003",
+        "edge:chunk-0387:008"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0382:002",
+        "event:chunk-0382:004",
+        "event:chunk-0383:001",
+        "event:chunk-0383:003",
+        "event:chunk-0383:004",
+        "event:chunk-0384:001",
+        "event:chunk-0384:002",
+        "event:chunk-0384:004",
+        "event:chunk-0384:005",
+        "event:chunk-0385:001",
+        "event:chunk-0385:002",
+        "event:chunk-0385:004"
+      ]
+    },
+    {
+      "requirement_id": "宗门任务体系.案例.03.护送守矿边境防御任务",
+      "requirement_kind": "case_section",
+      "status": "covered",
+      "heading": "案例 3：黄枫谷战争期守矿、押送与保护秦宅任务",
+      "evidence_ids": [
+        "evidence:chunk-0263:011",
+        "evidence:chunk-0263:012",
+        "evidence:chunk-0267:005",
+        "evidence:chunk-0267:006",
+        "evidence:chunk-0275:008",
+        "evidence:chunk-0275:009",
+        "evidence:chunk-0276:003",
+        "evidence:chunk-0276:006",
+        "evidence:chunk-0276:009",
+        "evidence:chunk-0277:011",
+        "evidence:chunk-0278:008",
+        "evidence:chunk-0278:009",
+        "evidence:chunk-0278:010",
+        "evidence:chunk-0278:011",
+        "evidence:chunk-0278:012",
+        "evidence:chunk-0278:013",
+        "evidence:chunk-0278:014",
+        "evidence:chunk-0285:009",
+        "evidence:chunk-0305:004",
+        "evidence:chunk-0335:009",
+        "evidence:chunk-0335:010",
+        "evidence:chunk-0335:011",
+        "evidence:chunk-0335:013"
+      ],
+      "notes": [],
+      "linked_node_ids": [
+        "node:chunk-0263:faction:002",
+        "node:chunk-0263:faction:003",
+        "node:chunk-0267:character:002",
+        "node:chunk-0267:faction:004",
+        "node:chunk-0267:location:001",
+        "node:chunk-0275:faction:002",
+        "node:chunk-0275:rule:001",
+        "node:chunk-0278:character:001",
+        "node:chunk-0278:character:003",
+        "node:chunk-0278:character:005",
+        "node:chunk-0278:faction:004",
+        "node:chunk-0305:faction:002",
+        "node:chunk-0335:character:004",
+        "node:chunk-0335:character:005",
+        "node:chunk-0335:facility:002",
+        "node:chunk-0335:faction:001"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0263:005",
+        "edge:chunk-0267:assigned_to_guard:004",
+        "edge:chunk-0275:009",
+        "edge:chunk-0276:008",
+        "edge:chunk-0278:004",
+        "edge:chunk-0278:005",
+        "edge:chunk-0285:005",
+        "edge:chunk-0305:003",
+        "edge:chunk-0335:006",
+        "edge:chunk-0335:008"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0263:003",
+        "event:chunk-0267:guard_assignment:004",
+        "event:chunk-0275:004",
+        "event:chunk-0276:004",
+        "event:chunk-0278:005",
+        "event:chunk-0278:008",
+        "event:chunk-0285:004",
+        "event:chunk-0335:005",
+        "event:chunk-0335:006",
+        "event:chunk-0335:007"
+      ]
+    },
+    {
+      "requirement_id": "宗门任务体系.案例.04.秘境遗迹禁地探索任务",
+      "requirement_kind": "case_section",
+      "status": "covered",
+      "heading": "案例 4：黄枫谷血色禁地采药试炼任务",
+      "evidence_ids": [
+        "evidence:chunk-0163:006",
+        "evidence:chunk-0163:010",
+        "evidence:chunk-0176:004",
+        "evidence:chunk-0176:010",
+        "evidence:chunk-0176:015",
+        "evidence:chunk-0180:009",
+        "evidence:chunk-0180:016",
+        "evidence:chunk-0181:012",
+        "evidence:chunk-0185:002",
+        "evidence:chunk-0186:009",
+        "evidence:chunk-0200:009",
+        "evidence:chunk-0215:010",
+        "evidence:chunk-0216:007"
+      ],
+      "notes": [],
+      "linked_node_ids": [
+        "node:chunk-0163:faction:001",
+        "node:chunk-0163:faction:002",
+        "node:chunk-0176:event:001",
+        "node:chunk-0176:faction:001",
+        "node:chunk-0180:faction:001",
+        "node:chunk-0180:faction:002",
+        "node:chunk-0181:character:003",
+        "node:chunk-0181:faction:005",
+        "node:chunk-0181:realm:002",
+        "node:chunk-0185:character:002",
+        "node:chunk-0185:character:003",
+        "node:chunk-0186:faction:003",
+        "node:chunk-0200:faction:002",
+        "node:chunk-0200:faction:004",
+        "node:chunk-0216:faction:004",
+        "node:chunk-0216:rule:009"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0163:006",
+        "edge:chunk-0163:007",
+        "edge:chunk-0176:016",
+        "edge:chunk-0180:011",
+        "edge:chunk-0180:012",
+        "edge:chunk-0181:009",
+        "edge:chunk-0216:004"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0163:003",
+        "event:chunk-0163:005",
+        "event:chunk-0176:001",
+        "event:chunk-0176:011",
+        "event:chunk-0180:002",
+        "event:chunk-0180:005",
+        "event:chunk-0181:005",
+        "event:chunk-0186:004",
+        "event:chunk-0200:004",
+        "event:chunk-0216:004"
+      ]
+    },
+    {
+      "requirement_id": "宗门任务体系.案例.05.生产与上交任务",
+      "requirement_kind": "case_section",
+      "status": "covered",
+      "heading": "案例 5：七玄门医务、炼药与黄枫谷药园上交任务",
+      "evidence_ids": [
+        "evidence:chunk-0007:012",
+        "evidence:chunk-0007:016",
+        "evidence:chunk-0067:005",
+        "evidence:chunk-0067:007",
+        "evidence:chunk-0067:010",
+        "evidence:chunk-0067:011",
+        "evidence:chunk-0067:013",
+        "evidence:chunk-0067:014",
+        "evidence:chunk-0068:001",
+        "evidence:chunk-0068:008",
+        "evidence:chunk-0068:012",
+        "evidence:chunk-0068:016",
+        "evidence:chunk-0153:001",
+        "evidence:chunk-0154:006",
+        "evidence:chunk-0154:009",
+        "evidence:chunk-0154:010"
+      ],
+      "notes": [],
+      "linked_node_ids": [
+        "node:chunk-0007:character:001",
+        "node:chunk-0007:character:002",
+        "node:chunk-0067:faction:001",
+        "node:chunk-0068:character:001",
+        "node:chunk-0153:facility:002",
+        "node:chunk-0153:material:001",
+        "node:chunk-0154:character:002",
+        "node:chunk-0154:facility:001"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0007:008",
+        "edge:chunk-0007:009",
+        "edge:chunk-0007:010",
+        "edge:chunk-0007:011",
+        "edge:chunk-0067:006",
+        "edge:chunk-0067:007",
+        "edge:chunk-0153:002"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0007:003",
+        "event:chunk-0007:004",
+        "event:chunk-0067:003",
+        "event:chunk-0067:004",
+        "event:chunk-0067:005",
+        "event:chunk-0067:006",
+        "event:chunk-0068:003",
+        "event:chunk-0068:005",
+        "event:chunk-0153:001",
+        "event:chunk-0154:003"
+      ]
+    },
+    {
+      "requirement_id": "宗门任务体系.案例.06.考核晋升宗门大比任务",
+      "requirement_kind": "case_section",
+      "status": "covered",
+      "heading": "案例 6：七玄门入门考核与黄枫谷筑基晋升登记",
+      "evidence_ids": [
+        "evidence:chunk-0003:008",
+        "evidence:chunk-0005:009",
+        "evidence:chunk-0006:001",
+        "evidence:chunk-0006:002",
+        "evidence:chunk-0006:003",
+        "evidence:chunk-0006:004",
+        "evidence:chunk-0007:002",
+        "evidence:chunk-0007:003",
+        "evidence:chunk-0007:004",
+        "evidence:chunk-0007:005",
+        "evidence:chunk-0007:006",
+        "evidence:chunk-0009:0004",
+        "evidence:chunk-0019:002",
+        "evidence:chunk-0019:003",
+        "evidence:chunk-0019:004",
+        "evidence:chunk-0150:016",
+        "evidence:chunk-0150:018",
+        "evidence:chunk-0150:019",
+        "evidence:chunk-0150:021",
+        "evidence:chunk-0223:001",
+        "evidence:chunk-0223:008",
+        "evidence:chunk-0223:009"
+      ],
+      "notes": [],
+      "linked_node_ids": [
+        "node:chunk-0003:faction:001",
+        "node:chunk-0005:character:004",
+        "node:chunk-0005:facility:002",
+        "node:chunk-0006:character:001",
+        "node:chunk-0006:faction:001",
+        "node:chunk-0006:location:001",
+        "node:chunk-0006:rule:001",
+        "node:chunk-0007:character:001",
+        "node:chunk-0007:character:002",
+        "node:chunk-0007:character:005",
+        "node:chunk-0019:faction:001",
+        "node:chunk-0019:rule:001",
+        "node:chunk-0150:faction:001",
+        "node:chunk-0150:rule:001",
+        "node:chunk-0150:rule:002",
+        "node:chunk-0150:rule:003",
+        "node:chunk-0150:rule:004",
+        "node:chunk-0223:character:002",
+        "node:chunk-0223:tool:002"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0003:005",
+        "edge:chunk-0005:007",
+        "edge:chunk-0006:001",
+        "edge:chunk-0006:002",
+        "edge:chunk-0006:003",
+        "edge:chunk-0006:006",
+        "edge:chunk-0007:003",
+        "edge:chunk-0007:004",
+        "edge:chunk-0007:005",
+        "edge:chunk-0150:008",
+        "edge:chunk-0150:009",
+        "edge:chunk-0150:010",
+        "edge:chunk-0150:011",
+        "edge:chunk-0223:006",
+        "edge:chunk-0223:007"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0003:004",
+        "event:chunk-0005:002",
+        "event:chunk-0006:001",
+        "event:chunk-0007:001",
+        "event:chunk-0009:0003",
+        "event:chunk-0019:002",
+        "event:chunk-0150:006",
+        "event:chunk-0150:007",
+        "event:chunk-0223:001",
+        "event:chunk-0223:004"
+      ]
+    },
+    {
+      "requirement_id": "宗门任务体系.案例.07.外交情报卧底任务",
+      "requirement_kind": "case_section",
+      "status": "covered",
+      "heading": "案例 7：情报、卧底、护送与组织控制类任务",
+      "evidence_ids": [
+        "evidence:chunk-0036:004",
+        "evidence:chunk-0045:001",
+        "evidence:chunk-0081:009",
+        "evidence:chunk-0081:010",
+        "evidence:chunk-0082:001",
+        "evidence:chunk-0082:002",
+        "evidence:chunk-0082:003",
+        "evidence:chunk-0082:005",
+        "evidence:chunk-0082:006",
+        "evidence:chunk-0123:008",
+        "evidence:chunk-0127:011",
+        "evidence:chunk-0127:013",
+        "evidence:chunk-0128:007",
+        "evidence:chunk-0128:011",
+        "evidence:chunk-0298:009",
+        "evidence:chunk-0435:016",
+        "evidence:chunk-0435:017",
+        "evidence:chunk-0435:018",
+        "evidence:chunk-0436:004",
+        "evidence:chunk-0436:005"
+      ],
+      "notes": [],
+      "linked_node_ids": [
+        "node:chunk-0036:faction:001",
+        "node:chunk-0045:character:003",
+        "node:chunk-0081:character:011",
+        "node:chunk-0081:character:012",
+        "node:chunk-0081:tool:013",
+        "node:chunk-0082:character:001",
+        "node:chunk-0082:character:002",
+        "node:chunk-0082:character:004",
+        "node:chunk-0082:character:006",
+        "node:chunk-0082:faction:007",
+        "node:chunk-0082:faction:008",
+        "node:chunk-0082:tool:003",
+        "node:chunk-0123:character:002",
+        "node:chunk-0127:character:001",
+        "node:chunk-0127:character:007",
+        "node:chunk-0127:character:008",
+        "node:chunk-0127:faction:001",
+        "node:chunk-0128:character:002",
+        "node:chunk-0128:character:003",
+        "node:chunk-0128:faction:001",
+        "node:chunk-0435:character:002",
+        "node:chunk-0435:faction:001",
+        "node:chunk-0435:faction:002",
+        "node:chunk-0436:character:002",
+        "node:chunk-0436:character:005",
+        "node:chunk-0436:character:006"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0081:008",
+        "edge:chunk-0081:009",
+        "edge:chunk-0082:001",
+        "edge:chunk-0082:002",
+        "edge:chunk-0082:003",
+        "edge:chunk-0082:005",
+        "edge:chunk-0082:006",
+        "edge:chunk-0123:010",
+        "edge:chunk-0127:004",
+        "edge:chunk-0127:005",
+        "edge:chunk-0128:005",
+        "edge:chunk-0128:008",
+        "edge:chunk-0298:010",
+        "edge:chunk-0436:004"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0045:001",
+        "event:chunk-0081:005",
+        "event:chunk-0082:001",
+        "event:chunk-0082:002",
+        "event:chunk-0082:003",
+        "event:chunk-0123:005",
+        "event:chunk-0127:003",
+        "event:chunk-0128:003",
+        "event:chunk-0128:004",
+        "event:chunk-0435:005",
+        "event:chunk-0436:002"
+      ]
+    }
+  ],
+  "fulfilled_fields": [
+    {
+      "requirement_id": "faction_society_economy_task.target.01.organizations",
+      "requirement_kind": "field",
+      "status": "covered",
+      "content": "抽取宗门、家族、坊市、商会、王朝、散修群体等组织的名称、层级、地域、职能、资源、制度和对外关系。",
+      "evidence_ids": [
+        "evidence:chunk-0003:008",
+        "evidence:chunk-0150:018",
+        "evidence:chunk-0150:021",
+        "evidence:chunk-0382:004",
+        "evidence:chunk-0435:017"
+      ],
+      "notes": [],
+      "linked_node_ids": [
+        "node:chunk-0003:faction:001",
+        "node:chunk-0150:faction:001",
+        "node:chunk-0150:rule:001",
+        "node:chunk-0150:rule:002",
+        "node:chunk-0150:rule:004",
+        "node:chunk-0382:faction:001",
+        "node:chunk-0382:realm:001",
+        "node:chunk-0435:faction:002"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0003:005",
+        "edge:chunk-0150:008",
+        "edge:chunk-0150:009",
+        "edge:chunk-0150:011",
+        "edge:chunk-0382:003",
+        "edge:chunk-0382:004"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0003:004",
+        "event:chunk-0150:007",
+        "event:chunk-0382:002",
+        "event:chunk-0435:005"
+      ]
+    },
+    {
+      "requirement_id": "faction_society_economy_task.target.02.task_flow",
+      "requirement_kind": "field",
+      "status": "covered",
+      "content": "抽取任务发布、接取、权限、目标、约束、奖励、惩罚、风险、执行流程和任务结果对角色或势力的影响。",
+      "evidence_ids": [
+        "evidence:chunk-0149:010",
+        "evidence:chunk-0153:002",
+        "evidence:chunk-0163:010",
+        "evidence:chunk-0275:009",
+        "evidence:chunk-0385:004"
+      ],
+      "notes": [],
+      "linked_node_ids": [
+        "node:chunk-0149:faction:001",
+        "node:chunk-0149:rule:001",
+        "node:chunk-0149:rule:002",
+        "node:chunk-0153:character:002",
+        "node:chunk-0163:faction:002",
+        "node:chunk-0275:faction:002",
+        "node:chunk-0275:rule:001",
+        "node:chunk-0385:character:003",
+        "node:chunk-0385:character:005",
+        "node:chunk-0385:faction:001",
+        "node:chunk-0385:pill:001"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0149:003",
+        "edge:chunk-0149:004",
+        "edge:chunk-0149:005",
+        "edge:chunk-0163:007",
+        "edge:chunk-0275:009",
+        "edge:chunk-0385:002"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0149:004",
+        "event:chunk-0153:001",
+        "event:chunk-0163:005",
+        "event:chunk-0385:002"
+      ]
+    },
+    {
+      "requirement_id": "faction_society_economy_task.target.03.trade_reward_resource",
+      "requirement_kind": "field",
+      "status": "covered",
+      "content": "抽取交易、拍卖、坊市规则、货币或等价物、价格波动、供需关系、物资流向、消耗场景和回收损耗。",
+      "evidence_ids": [
+        "evidence:chunk-0155:023",
+        "evidence:chunk-0382:003",
+        "evidence:chunk-0382:004",
+        "evidence:chunk-0385:004",
+        "evidence:chunk-0223:009"
+      ],
+      "notes": [],
+      "linked_node_ids": [
+        "node:chunk-0155:character:002",
+        "node:chunk-0223:character:002",
+        "node:chunk-0382:faction:001",
+        "node:chunk-0382:realm:001",
+        "node:chunk-0385:character:003",
+        "node:chunk-0385:character:005",
+        "node:chunk-0385:faction:001",
+        "node:chunk-0385:pill:001"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0155:017",
+        "edge:chunk-0223:007",
+        "edge:chunk-0382:003",
+        "edge:chunk-0382:004",
+        "edge:chunk-0385:002"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0223:004",
+        "event:chunk-0382:002",
+        "event:chunk-0385:002"
+      ]
+    },
+    {
+      "requirement_id": "faction_society_economy_task.target.04.loose_cultivator_and_affiliates",
+      "requirement_kind": "field",
+      "status": "covered",
+      "content": "抽取散修生存策略、资源获取、庇护关系、风险来源、社会流动路径和与制度势力的互动方式。",
+      "evidence_ids": [
+        "evidence:chunk-0123:008",
+        "evidence:chunk-0127:011",
+        "evidence:chunk-0373:012",
+        "evidence:chunk-0383:006",
+        "evidence:chunk-0407:007"
+      ],
+      "notes": [],
+      "linked_node_ids": [
+        "node:chunk-0123:character:002",
+        "node:chunk-0127:character:001",
+        "node:chunk-0127:character:007",
+        "node:chunk-0127:faction:001",
+        "node:chunk-0373:character:003",
+        "node:chunk-0383:character:001",
+        "node:chunk-0383:character:002",
+        "node:chunk-0383:faction:002",
+        "node:chunk-0407:character:002"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0123:010",
+        "edge:chunk-0127:004",
+        "edge:chunk-0373:010",
+        "edge:chunk-0383:002"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0123:005",
+        "event:chunk-0127:003",
+        "event:chunk-0373:006",
+        "event:chunk-0383:003",
+        "event:chunk-0407:002"
+      ]
+    }
+  ],
+  "fulfilled_tables": [],
+  "fulfilled_cards": [],
+  "fulfilled_cases": [
+    {
+      "requirement_id": "宗门任务体系.案例.01.日常杂务与资源维护任务",
+      "requirement_kind": "case_section",
+      "status": "covered",
+      "heading": "案例 1：黄枫谷百机堂杂务与百药园维护任务",
+      "evidence_ids": [
+        "evidence:chunk-0149:009",
+        "evidence:chunk-0149:010",
+        "evidence:chunk-0149:011",
+        "evidence:chunk-0152:010",
+        "evidence:chunk-0152:011",
+        "evidence:chunk-0152:012",
+        "evidence:chunk-0152:013",
+        "evidence:chunk-0152:014",
+        "evidence:chunk-0152:015",
+        "evidence:chunk-0153:001",
+        "evidence:chunk-0153:002",
+        "evidence:chunk-0153:004",
+        "evidence:chunk-0153:005",
+        "evidence:chunk-0153:009",
+        "evidence:chunk-0154:003",
+        "evidence:chunk-0154:006",
+        "evidence:chunk-0154:008",
+        "evidence:chunk-0154:009",
+        "evidence:chunk-0154:010",
+        "evidence:chunk-0154:011",
+        "evidence:chunk-0155:023"
+      ],
+      "notes": [],
+      "linked_node_ids": [
+        "node:chunk-0149:faction:001",
+        "node:chunk-0149:rule:001",
+        "node:chunk-0149:rule:002",
+        "node:chunk-0152:character:001",
+        "node:chunk-0152:character:004",
+        "node:chunk-0152:character:005",
+        "node:chunk-0152:facility:003",
+        "node:chunk-0152:faction:001",
+        "node:chunk-0152:material:001",
+        "node:chunk-0152:material:002",
+        "node:chunk-0152:material:003",
+        "node:chunk-0152:material:004",
+        "node:chunk-0152:rule:001",
+        "node:chunk-0153:character:002",
+        "node:chunk-0153:facility:001",
+        "node:chunk-0153:facility:002",
+        "node:chunk-0153:material:001",
+        "node:chunk-0154:character:002",
+        "node:chunk-0154:facility:001",
+        "node:chunk-0154:tool:001",
+        "node:chunk-0154:tool:002",
+        "node:chunk-0155:character:002"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0149:003",
+        "edge:chunk-0149:004",
+        "edge:chunk-0149:005",
+        "edge:chunk-0152:007",
+        "edge:chunk-0152:008",
+        "edge:chunk-0152:009",
+        "edge:chunk-0152:010",
+        "edge:chunk-0152:011",
+        "edge:chunk-0152:012",
+        "edge:chunk-0152:013",
+        "edge:chunk-0153:001",
+        "edge:chunk-0153:002",
+        "edge:chunk-0153:008",
+        "edge:chunk-0154:003",
+        "edge:chunk-0154:005",
+        "edge:chunk-0155:017"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0149:004",
+        "event:chunk-0152:005",
+        "event:chunk-0152:006",
+        "event:chunk-0152:007",
+        "event:chunk-0153:001",
+        "event:chunk-0153:002",
+        "event:chunk-0153:004",
+        "event:chunk-0154:001",
+        "event:chunk-0154:003",
+        "event:chunk-0154:004"
+      ]
+    },
+    {
+      "requirement_id": "宗门任务体系.案例.02.猎妖清剿战斗任务",
+      "requirement_kind": "case_section",
+      "status": "covered",
+      "heading": "案例 2：六连殿猎杀婴鲤兽任务",
+      "evidence_ids": [
+        "evidence:chunk-0382:003",
+        "evidence:chunk-0382:004",
+        "evidence:chunk-0382:005",
+        "evidence:chunk-0382:006",
+        "evidence:chunk-0382:007",
+        "evidence:chunk-0383:001",
+        "evidence:chunk-0383:006",
+        "evidence:chunk-0383:007",
+        "evidence:chunk-0384:001",
+        "evidence:chunk-0384:006",
+        "evidence:chunk-0384:008",
+        "evidence:chunk-0384:009",
+        "evidence:chunk-0384:010",
+        "evidence:chunk-0385:001",
+        "evidence:chunk-0385:003",
+        "evidence:chunk-0385:004",
+        "evidence:chunk-0385:010",
+        "evidence:chunk-0385:012",
+        "evidence:chunk-0385:016",
+        "evidence:chunk-0385:017",
+        "evidence:chunk-0386:001",
+        "evidence:chunk-0386:004",
+        "evidence:chunk-0387:010"
+      ],
+      "notes": [],
+      "linked_node_ids": [
+        "node:chunk-0382:beast:001",
+        "node:chunk-0382:faction:001",
+        "node:chunk-0382:formation:001",
+        "node:chunk-0382:realm:001",
+        "node:chunk-0382:realm:002",
+        "node:chunk-0383:character:001",
+        "node:chunk-0383:character:002",
+        "node:chunk-0383:character:005",
+        "node:chunk-0383:character:006",
+        "node:chunk-0383:facility:002",
+        "node:chunk-0383:faction:002",
+        "node:chunk-0383:pill:001",
+        "node:chunk-0384:beast:001",
+        "node:chunk-0384:character:001",
+        "node:chunk-0384:character:003",
+        "node:chunk-0384:character:009",
+        "node:chunk-0384:faction:001",
+        "node:chunk-0384:formation:001",
+        "node:chunk-0384:location:001",
+        "node:chunk-0385:character:002",
+        "node:chunk-0385:character:003",
+        "node:chunk-0385:character:005",
+        "node:chunk-0385:character:006",
+        "node:chunk-0385:faction:001",
+        "node:chunk-0385:formation:001",
+        "node:chunk-0385:pill:001",
+        "node:chunk-0386:character:001",
+        "node:chunk-0386:formation:001",
+        "node:chunk-0387:faction:001"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0382:003",
+        "edge:chunk-0382:004",
+        "edge:chunk-0382:006",
+        "edge:chunk-0382:008",
+        "edge:chunk-0383:002",
+        "edge:chunk-0383:004",
+        "edge:chunk-0384:002",
+        "edge:chunk-0384:006",
+        "edge:chunk-0385:001",
+        "edge:chunk-0385:002",
+        "edge:chunk-0385:003",
+        "edge:chunk-0387:008"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0382:002",
+        "event:chunk-0382:004",
+        "event:chunk-0383:001",
+        "event:chunk-0383:003",
+        "event:chunk-0383:004",
+        "event:chunk-0384:001",
+        "event:chunk-0384:002",
+        "event:chunk-0384:004",
+        "event:chunk-0384:005",
+        "event:chunk-0385:001",
+        "event:chunk-0385:002",
+        "event:chunk-0385:004"
+      ]
+    },
+    {
+      "requirement_id": "宗门任务体系.案例.03.护送守矿边境防御任务",
+      "requirement_kind": "case_section",
+      "status": "covered",
+      "heading": "案例 3：黄枫谷战争期守矿、押送与保护秦宅任务",
+      "evidence_ids": [
+        "evidence:chunk-0263:011",
+        "evidence:chunk-0263:012",
+        "evidence:chunk-0267:005",
+        "evidence:chunk-0267:006",
+        "evidence:chunk-0275:008",
+        "evidence:chunk-0275:009",
+        "evidence:chunk-0276:003",
+        "evidence:chunk-0276:006",
+        "evidence:chunk-0276:009",
+        "evidence:chunk-0277:011",
+        "evidence:chunk-0278:008",
+        "evidence:chunk-0278:009",
+        "evidence:chunk-0278:010",
+        "evidence:chunk-0278:011",
+        "evidence:chunk-0278:012",
+        "evidence:chunk-0278:013",
+        "evidence:chunk-0278:014",
+        "evidence:chunk-0285:009",
+        "evidence:chunk-0305:004",
+        "evidence:chunk-0335:009",
+        "evidence:chunk-0335:010",
+        "evidence:chunk-0335:011",
+        "evidence:chunk-0335:013"
+      ],
+      "notes": [],
+      "linked_node_ids": [
+        "node:chunk-0263:faction:002",
+        "node:chunk-0263:faction:003",
+        "node:chunk-0267:character:002",
+        "node:chunk-0267:faction:004",
+        "node:chunk-0267:location:001",
+        "node:chunk-0275:faction:002",
+        "node:chunk-0275:rule:001",
+        "node:chunk-0278:character:001",
+        "node:chunk-0278:character:003",
+        "node:chunk-0278:character:005",
+        "node:chunk-0278:faction:004",
+        "node:chunk-0305:faction:002",
+        "node:chunk-0335:character:004",
+        "node:chunk-0335:character:005",
+        "node:chunk-0335:facility:002",
+        "node:chunk-0335:faction:001"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0263:005",
+        "edge:chunk-0267:assigned_to_guard:004",
+        "edge:chunk-0275:009",
+        "edge:chunk-0276:008",
+        "edge:chunk-0278:004",
+        "edge:chunk-0278:005",
+        "edge:chunk-0285:005",
+        "edge:chunk-0305:003",
+        "edge:chunk-0335:006",
+        "edge:chunk-0335:008"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0263:003",
+        "event:chunk-0267:guard_assignment:004",
+        "event:chunk-0275:004",
+        "event:chunk-0276:004",
+        "event:chunk-0278:005",
+        "event:chunk-0278:008",
+        "event:chunk-0285:004",
+        "event:chunk-0335:005",
+        "event:chunk-0335:006",
+        "event:chunk-0335:007"
+      ]
+    },
+    {
+      "requirement_id": "宗门任务体系.案例.04.秘境遗迹禁地探索任务",
+      "requirement_kind": "case_section",
+      "status": "covered",
+      "heading": "案例 4：黄枫谷血色禁地采药试炼任务",
+      "evidence_ids": [
+        "evidence:chunk-0163:006",
+        "evidence:chunk-0163:010",
+        "evidence:chunk-0176:004",
+        "evidence:chunk-0176:010",
+        "evidence:chunk-0176:015",
+        "evidence:chunk-0180:009",
+        "evidence:chunk-0180:016",
+        "evidence:chunk-0181:012",
+        "evidence:chunk-0185:002",
+        "evidence:chunk-0186:009",
+        "evidence:chunk-0200:009",
+        "evidence:chunk-0215:010",
+        "evidence:chunk-0216:007"
+      ],
+      "notes": [],
+      "linked_node_ids": [
+        "node:chunk-0163:faction:001",
+        "node:chunk-0163:faction:002",
+        "node:chunk-0176:event:001",
+        "node:chunk-0176:faction:001",
+        "node:chunk-0180:faction:001",
+        "node:chunk-0180:faction:002",
+        "node:chunk-0181:character:003",
+        "node:chunk-0181:faction:005",
+        "node:chunk-0181:realm:002",
+        "node:chunk-0185:character:002",
+        "node:chunk-0185:character:003",
+        "node:chunk-0186:faction:003",
+        "node:chunk-0200:faction:002",
+        "node:chunk-0200:faction:004",
+        "node:chunk-0216:faction:004",
+        "node:chunk-0216:rule:009"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0163:006",
+        "edge:chunk-0163:007",
+        "edge:chunk-0176:016",
+        "edge:chunk-0180:011",
+        "edge:chunk-0180:012",
+        "edge:chunk-0181:009",
+        "edge:chunk-0216:004"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0163:003",
+        "event:chunk-0163:005",
+        "event:chunk-0176:001",
+        "event:chunk-0176:011",
+        "event:chunk-0180:002",
+        "event:chunk-0180:005",
+        "event:chunk-0181:005",
+        "event:chunk-0186:004",
+        "event:chunk-0200:004",
+        "event:chunk-0216:004"
+      ]
+    },
+    {
+      "requirement_id": "宗门任务体系.案例.05.生产与上交任务",
+      "requirement_kind": "case_section",
+      "status": "covered",
+      "heading": "案例 5：七玄门医务、炼药与黄枫谷药园上交任务",
+      "evidence_ids": [
+        "evidence:chunk-0007:012",
+        "evidence:chunk-0007:016",
+        "evidence:chunk-0067:005",
+        "evidence:chunk-0067:007",
+        "evidence:chunk-0067:010",
+        "evidence:chunk-0067:011",
+        "evidence:chunk-0067:013",
+        "evidence:chunk-0067:014",
+        "evidence:chunk-0068:001",
+        "evidence:chunk-0068:008",
+        "evidence:chunk-0068:012",
+        "evidence:chunk-0068:016",
+        "evidence:chunk-0153:001",
+        "evidence:chunk-0154:006",
+        "evidence:chunk-0154:009",
+        "evidence:chunk-0154:010"
+      ],
+      "notes": [],
+      "linked_node_ids": [
+        "node:chunk-0007:character:001",
+        "node:chunk-0007:character:002",
+        "node:chunk-0067:faction:001",
+        "node:chunk-0068:character:001",
+        "node:chunk-0153:facility:002",
+        "node:chunk-0153:material:001",
+        "node:chunk-0154:character:002",
+        "node:chunk-0154:facility:001"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0007:008",
+        "edge:chunk-0007:009",
+        "edge:chunk-0007:010",
+        "edge:chunk-0007:011",
+        "edge:chunk-0067:006",
+        "edge:chunk-0067:007",
+        "edge:chunk-0153:002"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0007:003",
+        "event:chunk-0007:004",
+        "event:chunk-0067:003",
+        "event:chunk-0067:004",
+        "event:chunk-0067:005",
+        "event:chunk-0067:006",
+        "event:chunk-0068:003",
+        "event:chunk-0068:005",
+        "event:chunk-0153:001",
+        "event:chunk-0154:003"
+      ]
+    },
+    {
+      "requirement_id": "宗门任务体系.案例.06.考核晋升宗门大比任务",
+      "requirement_kind": "case_section",
+      "status": "covered",
+      "heading": "案例 6：七玄门入门考核与黄枫谷筑基晋升登记",
+      "evidence_ids": [
+        "evidence:chunk-0003:008",
+        "evidence:chunk-0005:009",
+        "evidence:chunk-0006:001",
+        "evidence:chunk-0006:002",
+        "evidence:chunk-0006:003",
+        "evidence:chunk-0006:004",
+        "evidence:chunk-0007:002",
+        "evidence:chunk-0007:003",
+        "evidence:chunk-0007:004",
+        "evidence:chunk-0007:005",
+        "evidence:chunk-0007:006",
+        "evidence:chunk-0009:0004",
+        "evidence:chunk-0019:002",
+        "evidence:chunk-0019:003",
+        "evidence:chunk-0019:004",
+        "evidence:chunk-0150:016",
+        "evidence:chunk-0150:018",
+        "evidence:chunk-0150:019",
+        "evidence:chunk-0150:021",
+        "evidence:chunk-0223:001",
+        "evidence:chunk-0223:008",
+        "evidence:chunk-0223:009"
+      ],
+      "notes": [],
+      "linked_node_ids": [
+        "node:chunk-0003:faction:001",
+        "node:chunk-0005:character:004",
+        "node:chunk-0005:facility:002",
+        "node:chunk-0006:character:001",
+        "node:chunk-0006:faction:001",
+        "node:chunk-0006:location:001",
+        "node:chunk-0006:rule:001",
+        "node:chunk-0007:character:001",
+        "node:chunk-0007:character:002",
+        "node:chunk-0007:character:005",
+        "node:chunk-0019:faction:001",
+        "node:chunk-0019:rule:001",
+        "node:chunk-0150:faction:001",
+        "node:chunk-0150:rule:001",
+        "node:chunk-0150:rule:002",
+        "node:chunk-0150:rule:003",
+        "node:chunk-0150:rule:004",
+        "node:chunk-0223:character:002",
+        "node:chunk-0223:tool:002"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0003:005",
+        "edge:chunk-0005:007",
+        "edge:chunk-0006:001",
+        "edge:chunk-0006:002",
+        "edge:chunk-0006:003",
+        "edge:chunk-0006:006",
+        "edge:chunk-0007:003",
+        "edge:chunk-0007:004",
+        "edge:chunk-0007:005",
+        "edge:chunk-0150:008",
+        "edge:chunk-0150:009",
+        "edge:chunk-0150:010",
+        "edge:chunk-0150:011",
+        "edge:chunk-0223:006",
+        "edge:chunk-0223:007"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0003:004",
+        "event:chunk-0005:002",
+        "event:chunk-0006:001",
+        "event:chunk-0007:001",
+        "event:chunk-0009:0003",
+        "event:chunk-0019:002",
+        "event:chunk-0150:006",
+        "event:chunk-0150:007",
+        "event:chunk-0223:001",
+        "event:chunk-0223:004"
+      ]
+    },
+    {
+      "requirement_id": "宗门任务体系.案例.07.外交情报卧底任务",
+      "requirement_kind": "case_section",
+      "status": "covered",
+      "heading": "案例 7：情报、卧底、护送与组织控制类任务",
+      "evidence_ids": [
+        "evidence:chunk-0036:004",
+        "evidence:chunk-0045:001",
+        "evidence:chunk-0081:009",
+        "evidence:chunk-0081:010",
+        "evidence:chunk-0082:001",
+        "evidence:chunk-0082:002",
+        "evidence:chunk-0082:003",
+        "evidence:chunk-0082:005",
+        "evidence:chunk-0082:006",
+        "evidence:chunk-0123:008",
+        "evidence:chunk-0127:011",
+        "evidence:chunk-0127:013",
+        "evidence:chunk-0128:007",
+        "evidence:chunk-0128:011",
+        "evidence:chunk-0298:009",
+        "evidence:chunk-0435:016",
+        "evidence:chunk-0435:017",
+        "evidence:chunk-0435:018",
+        "evidence:chunk-0436:004",
+        "evidence:chunk-0436:005"
+      ],
+      "notes": [],
+      "linked_node_ids": [
+        "node:chunk-0036:faction:001",
+        "node:chunk-0045:character:003",
+        "node:chunk-0081:character:011",
+        "node:chunk-0081:character:012",
+        "node:chunk-0081:tool:013",
+        "node:chunk-0082:character:001",
+        "node:chunk-0082:character:002",
+        "node:chunk-0082:character:004",
+        "node:chunk-0082:character:006",
+        "node:chunk-0082:faction:007",
+        "node:chunk-0082:faction:008",
+        "node:chunk-0082:tool:003",
+        "node:chunk-0123:character:002",
+        "node:chunk-0127:character:001",
+        "node:chunk-0127:character:007",
+        "node:chunk-0127:character:008",
+        "node:chunk-0127:faction:001",
+        "node:chunk-0128:character:002",
+        "node:chunk-0128:character:003",
+        "node:chunk-0128:faction:001",
+        "node:chunk-0435:character:002",
+        "node:chunk-0435:faction:001",
+        "node:chunk-0435:faction:002",
+        "node:chunk-0436:character:002",
+        "node:chunk-0436:character:005",
+        "node:chunk-0436:character:006"
+      ],
+      "linked_edge_ids": [
+        "edge:chunk-0081:008",
+        "edge:chunk-0081:009",
+        "edge:chunk-0082:001",
+        "edge:chunk-0082:002",
+        "edge:chunk-0082:003",
+        "edge:chunk-0082:005",
+        "edge:chunk-0082:006",
+        "edge:chunk-0123:010",
+        "edge:chunk-0127:004",
+        "edge:chunk-0127:005",
+        "edge:chunk-0128:005",
+        "edge:chunk-0128:008",
+        "edge:chunk-0298:010",
+        "edge:chunk-0436:004"
+      ],
+      "linked_event_ids": [
+        "event:chunk-0045:001",
+        "event:chunk-0081:005",
+        "event:chunk-0082:001",
+        "event:chunk-0082:002",
+        "event:chunk-0082:003",
+        "event:chunk-0123:005",
+        "event:chunk-0127:003",
+        "event:chunk-0128:003",
+        "event:chunk-0128:004",
+        "event:chunk-0435:005",
+        "event:chunk-0436:002"
+      ]
+    }
+  ],
+  "facts": [
+    {
+      "content": "黄枫谷低级弟子每月必须完成交付工作，百机堂按分配或特许挑选安排杂务；韩立选择百药园后，任务条件包括维持药园规模、药草不夭折和每月上交草药。",
+      "category": "原作事实",
+      "name": "黄枫谷百药园维护",
+      "classification": "日常杂务 / 资源维护",
+      "usage": "维持药园、保活药草、按月上交草药，换取低阶灵石和岗位收益。",
+      "formula": "百机堂分配 -> 特许挑选 -> 办手续取玉牌 -> 入园交接 -> 维护药园 -> 上交草药 -> 领取灵石或被罚。",
+      "source_range": "chunk-0149:[308262, 308407]; chunk-0152:[316568, 316632]; chunk-0153:[317348, 317374]; chunk-0154:[321304, 321357]",
+      "source_excerpt": "黄枫谷低级弟子每月必须完成交付工作，工作包括监督挖矿、坊市执事、照看灵禽异兽、种植灵根奇药等；门内按完成情况发放低级灵石，叶姓老者负责分配此类工作。；于执事说明所有弟子领任务通常由分配决定，不准挑拣，除非证明有某方面专长。；竹简任务要求接管青石岭百药园一座，并每年上交规定数量的珍稀药材。；韩立复述药园任务条件：规模维持不变、药草不能夭折、每月需上交一定数量草药，并表示有信心。",
+      "evidence_ids": [
+        "evidence:chunk-0149:010",
+        "evidence:chunk-0152:012",
+        "evidence:chunk-0153:001",
+        "evidence:chunk-0154:006"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0149:010",
+          "chunk_id": "chunk-0149",
+          "source_range": [
+            308262,
+            308407
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0152:012",
+          "chunk_id": "chunk-0152",
+          "source_range": [
+            316568,
+            316632
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0153:001",
+          "chunk_id": "chunk-0153",
+          "source_range": [
+            317348,
+            317374
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0154:006",
+          "chunk_id": "chunk-0154",
+          "source_range": [
+            321304,
+            321357
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "百药园任务已挂单数年，多名弟子失败并被罚灵石；韩立接手后得到禁制令牌和培养心得，小老头后来把灵石奖励提高到每月五块。",
+      "category": "原作事实",
+      "name": "百药园失败惩罚与岗位奖励",
+      "classification": "日常杂务 / 奖惩",
+      "usage": "失败罚灵石，胜任者获得药园认可和提升后的月度灵石奖励。",
+      "formula": "高难度岗位 -> 前任失败罚灵石 -> 韩立接手 -> 管事认可 -> 奖励提高。",
+      "source_range": "chunk-0153:[317558, 317631]; chunk-0154:[321828, 321857]; chunk-0154:[321898, 321945]; chunk-0155:[325263, 325304]",
+      "source_excerpt": "于执事说明百药园任务已挂单数年，多名弟子失败并被罚灵石，是最难完成的工作之一。；马师伯认可韩立，把药园暂时交给韩立管理，并交给他此处禁制令牌。；马师伯提醒韩立阅读屋内往年培养草药心得体会，因为大多数药草韩立仍不熟悉。；小老头为留住韩立，逐渐把其灵石奖励从每月两块低阶灵石提高到每月五块。",
+      "evidence_ids": [
+        "evidence:chunk-0153:002",
+        "evidence:chunk-0154:008",
+        "evidence:chunk-0154:009",
+        "evidence:chunk-0155:023"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0153:002",
+          "chunk_id": "chunk-0153",
+          "source_range": [
+            317558,
+            317631
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0154:008",
+          "chunk_id": "chunk-0154",
+          "source_range": [
+            321828,
+            321857
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0154:009",
+          "chunk_id": "chunk-0154",
+          "source_range": [
+            321898,
+            321945
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0155:023",
+          "chunk_id": "chunk-0155",
+          "source_range": [
+            325263,
+            325304
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "六连殿邀请假丹境界外援主持六遁水波大阵，任务目标是协助两位结丹期客卿猎取婴鲤兽妖丹。",
+      "category": "原作事实",
+      "name": "六连殿猎杀婴鲤兽",
+      "classification": "猎妖 / 战斗任务",
+      "usage": "以降尘丹和灵石招募外援，组织阵法协同猎取高价值妖丹。",
+      "formula": "发现妖兽 -> 招募假丹外援 -> 阵法演练 -> 引兽入阵 -> 封锁阵门 -> 结丹修士取妖丹。",
+      "source_range": "chunk-0382:[974919, 975086]; chunk-0382:[975224, 975277]; chunk-0382:[975410, 975468]; chunk-0385:[982881, 982911]",
+      "source_excerpt": "六连殿许诺任务成功后给每位出手修士一颗可增加结丹成功几率的降尘丹，并称还差一名假丹境界修士。；曹禄说明六连殿发现一只六级妖兽，想取得妖丹，所以请外援除掉此獠。；六连殿计划由两位结丹期客卿长老出手，并布下六遁水波大阵，由六名假丹修士主持阵法。；冯三娘揭示六连殿此次要对付的目标是婴鲤兽，并以保密命令解释此前不透露详情。",
+      "evidence_ids": [
+        "evidence:chunk-0382:004",
+        "evidence:chunk-0382:005",
+        "evidence:chunk-0382:006",
+        "evidence:chunk-0385:001"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0382:004",
+          "chunk_id": "chunk-0382",
+          "source_range": [
+            974919,
+            975086
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0382:005",
+          "chunk_id": "chunk-0382",
+          "source_range": [
+            975224,
+            975277
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0382:006",
+          "chunk_id": "chunk-0382",
+          "source_range": [
+            975410,
+            975468
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0385:001",
+          "chunk_id": "chunk-0385",
+          "source_range": [
+            982881,
+            982911
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "六连殿任务报酬包括先期雪灵水、天火液，成功后每位出手修士一颗降尘丹，后续另加每人一千灵石作为保密补偿。",
+      "category": "原作事实",
+      "name": "六连殿任务报酬",
+      "classification": "猎妖 / 奖励与保密",
+      "usage": "用结丹辅助资源和灵石稳定外援，并补偿目标保密造成的不满。",
+      "formula": "先期心意 -> 成功报酬 -> 目标揭示 -> 保密补偿。",
+      "source_range": "chunk-0382:[974651, 974704]; chunk-0382:[974919, 975086]; chunk-0385:[983419, 983469]; chunk-0385:[983674, 983714]",
+      "source_excerpt": "曹禄承认需要曲魂出手相助，雪灵水和天火液只是六连殿先期心意，事成另有大礼。；六连殿许诺任务成功后给每位出手修士一颗可增加结丹成功几率的降尘丹，并称还差一名假丹境界修士。；冯三娘以降尘丹报酬贵重为由，反驳众修不应期待目标只是普通六级妖兽。；冯三娘追加承诺：成功后除降尘丹外，每人另得一千灵石作为保密补偿，众修怨气渐消。",
+      "evidence_ids": [
+        "evidence:chunk-0382:003",
+        "evidence:chunk-0382:004",
+        "evidence:chunk-0385:003",
+        "evidence:chunk-0385:004"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0382:003",
+          "chunk_id": "chunk-0382",
+          "source_range": [
+            974651,
+            974704
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0382:004",
+          "chunk_id": "chunk-0382",
+          "source_range": [
+            974919,
+            975086
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0385:003",
+          "chunk_id": "chunk-0385",
+          "source_range": [
+            983419,
+            983469
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0385:004",
+          "chunk_id": "chunk-0385",
+          "source_range": [
+            983674,
+            983714
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "七大派战争期发布征调令并严惩违抗；韩立执行过押送灵石到金鼓原、灵石矿警备和保护秦宅等防御任务。",
+      "category": "原作事实",
+      "name": "战争期守矿与保护任务链",
+      "classification": "护送 / 守矿 / 边境防御",
+      "usage": "通过强制征调和临时改派保护资源线、世俗供应和边境战力。",
+      "formula": "征调令 -> 分头出发 -> 守矿/押送 -> 回谷待命 -> 飞符集合 -> 保护秦宅 -> 手令召回边界。",
+      "source_range": "chunk-0263:[631695, 631772]; chunk-0267:[643399, 643468]; chunk-0276:[669471, 669516]; chunk-0278:[676385, 676510]; chunk-0275:[667118, 667173]",
+      "source_excerpt": "七大派共同向越国大小家族发布征调令，征调杰出弟子待命，并以执法队灭族作为违抗惩罚。；韩立从同行修士口中得知此行任务是加强一座储量较大的灵石矿警备，以防魔道小队偷袭。；韩立一年前奉命押送灵石到金鼓原后被留下，成为七派高级炮灰。；李化元将写信给该户当代家主说明韩立身份，又安排任务按外出执行计算，并给韩立装有详细资料的玉简，要求明早出发。",
+      "evidence_ids": [
+        "evidence:chunk-0263:012",
+        "evidence:chunk-0267:005",
+        "evidence:chunk-0276:009",
+        "evidence:chunk-0278:014",
+        "evidence:chunk-0275:009"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0263:012",
+          "chunk_id": "chunk-0263",
+          "source_range": [
+            631695,
+            631772
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0267:005",
+          "chunk_id": "chunk-0267",
+          "source_range": [
+            643399,
+            643468
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0276:009",
+          "chunk_id": "chunk-0276",
+          "source_range": [
+            669471,
+            669516
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0278:014",
+          "chunk_id": "chunk-0278",
+          "source_range": [
+            676385,
+            676510
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0275:009",
+          "chunk_id": "chunk-0275",
+          "source_range": [
+            667118,
+            667173
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "血色禁地采药试炼每五年由七大派派筑基期以下弟子进入，目标是采集筑基丹主药；报名者先得中阶灵石和灵器鼓励。",
+      "category": "原作事实",
+      "name": "血色禁地采药试炼",
+      "classification": "秘境 / 禁地探索",
+      "usage": "以禁地窗口换取筑基丹主药，并通过数量、质量和存活人数比较宗门成绩。",
+      "formula": "报名 -> 领取鼓励资源 -> 进入禁地 -> 采药争夺 -> 活着退出 -> 按数量质量存活结算。",
+      "source_range": "chunk-0163:[345253, 345306]; chunk-0163:[345913, 345950]; chunk-0176:[378703, 378843]; chunk-0180:[388399, 388434]",
+      "source_excerpt": "七大修仙派每五年派筑基期以下弟子入禁地采灵药，筑基丹主药是重点。；黄枫谷规定报名血禁试炼的弟子先得中阶灵石和灵器鼓励。；韩立不考虑五十年后试炼，因为过了筑基最佳年龄即使筑基也难在修仙路走远；他因此报名参加禁地采药团，负责报名者是王师叔。；李师祖确认赌局规则：先比采集灵药数量，再比质量，最后比活着走出禁地的人数。",
+      "evidence_ids": [
+        "evidence:chunk-0163:006",
+        "evidence:chunk-0163:010",
+        "evidence:chunk-0176:015",
+        "evidence:chunk-0180:009"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0163:006",
+          "chunk_id": "chunk-0163",
+          "source_range": [
+            345253,
+            345306
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0163:010",
+          "chunk_id": "chunk-0163",
+          "source_range": [
+            345913,
+            345950
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0176:015",
+          "chunk_id": "chunk-0176",
+          "source_range": [
+            378703,
+            378843
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0180:009",
+          "chunk_id": "chunk-0180",
+          "source_range": [
+            388399,
+            388434
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "李师祖承诺血色试炼获胜者重赏，贡献最大者筑基后可被收入门下；韩立后来因立功不小被打算收为记名弟子。",
+      "category": "原作事实",
+      "name": "血色试炼贡献奖励",
+      "classification": "秘境 / 奖励与师承",
+      "usage": "禁地成果可换取重赏、师承关注，但师傅可按不成文规矩抽取徒弟贡品一半。",
+      "formula": "采药贡献 -> 宗门/师祖认可 -> 收徒可能 -> 贡品回流师门。",
+      "source_range": "chunk-0181:[392048, 392130]; chunk-0215:[490294, 490403]; chunk-0216:[492873, 493052]",
+      "source_excerpt": "李师祖告诉黄枫谷弟子赌局很重要，承诺获胜者重赏，贡献最大者筑基后可被收入门下。；李师祖认可解释后表示韩立为本门立功不小，打算收其为记名弟子。；马师伯解释黄枫谷不成文规矩：师傅可抽取徒弟上交贡品一半作为谢师礼。",
+      "evidence_ids": [
+        "evidence:chunk-0181:012",
+        "evidence:chunk-0215:010",
+        "evidence:chunk-0216:007"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0181:012",
+          "chunk_id": "chunk-0181",
+          "source_range": [
+            392048,
+            392130
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0215:010",
+          "chunk_id": "chunk-0215",
+          "source_range": [
+            490294,
+            490403
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0216:007",
+          "chunk_id": "chunk-0216",
+          "source_range": [
+            492873,
+            493052
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "七玄门神手谷岗位由墨大夫指派记名弟子承担炼药、采药和医务相关职责；韩立通过给低级弟子治病测试，接手墨大夫工作并享受供奉标准月俸。",
+      "category": "原作事实",
+      "name": "神手谷医务与炼药岗位",
+      "classification": "生产 / 治疗任务",
+      "usage": "通过医务服务维持门内弟子治疗体系，并给予岗位待遇。",
+      "formula": "墨大夫指派 -> 神手谷居住 -> 医术测试 -> 治疗低级弟子 -> 副门主认可 -> 供奉标准月俸。",
+      "source_range": "chunk-0007:[10813, 10845]; chunk-0067:[131707, 131763]; chunk-0067:[131980, 132035]; chunk-0067:[132446, 132501]; chunk-0067:[132523, 132549]",
+      "source_excerpt": "墨大夫表示缺一名炼药弟子和一名采药弟子，并指走韩立、张铁两名记名弟子。；几位长老没有立刻让韩立接手墨大夫职责，而是先安排他给低级弟子治病以测试医术。；韩立为证明医术，在给众弟子看病时暗中使用每日催生的大量名贵药材。；马副门主表示愿让韩立接手墨大夫工作并享受原待遇，但因年龄太轻暂不给供奉称号。",
+      "evidence_ids": [
+        "evidence:chunk-0007:012",
+        "evidence:chunk-0067:007",
+        "evidence:chunk-0067:010",
+        "evidence:chunk-0067:013",
+        "evidence:chunk-0067:014"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0007:012",
+          "chunk_id": "chunk-0007",
+          "source_range": [
+            10813,
+            10845
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0067:007",
+          "chunk_id": "chunk-0067",
+          "source_range": [
+            131707,
+            131763
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0067:010",
+          "chunk_id": "chunk-0067",
+          "source_range": [
+            131980,
+            132035
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0067:013",
+          "chunk_id": "chunk-0067",
+          "source_range": [
+            132446,
+            132501
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0067:014",
+          "chunk_id": "chunk-0067",
+          "source_range": [
+            132523,
+            132549
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "七玄门孩童入门考核要求从竹林小路到炼骨崖，正午前到达才能成为正式弟子，表现突出但未按时者可为记名弟子。",
+      "category": "原作事实",
+      "name": "七玄门入门考核",
+      "classification": "考核 / 晋升任务",
+      "usage": "筛选内门、记名和遣返对象，决定后续训练路线。",
+      "formula": "外门举荐 -> 清客院等待 -> 炼骨崖测试 -> 正式/记名/遣返分流 -> 后续半年复核。",
+      "source_range": "chunk-0003:[2056, 2213]; chunk-0006:[6731, 6793]; chunk-0006:[6793, 6836]; chunk-0007:[9635, 9722]; chunk-0007:[9779, 9801]",
+      "source_excerpt": "七玄门是三叔工作酒楼所属江湖门派，分外门和内门；三叔成为外门弟子，可举荐7至12岁孩童参加内门弟子考验，下月测试开始。；从竹林小路可到七玄门炼骨崖，路线依次为竹林、岩壁、山崖，能到崖顶者才能进入七玄门。；正午前无法到达者不能成为正式弟子，但表现可圈可点者可被收为记名弟子。；韩立和张铁未按时到达崖顶但表现突出，被安排先在本门打根基，半年后考核，结果决定成为内门或外门弟子。",
+      "evidence_ids": [
+        "evidence:chunk-0003:008",
+        "evidence:chunk-0006:002",
+        "evidence:chunk-0006:003",
+        "evidence:chunk-0007:004",
+        "evidence:chunk-0007:005"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0003:008",
+          "chunk_id": "chunk-0003",
+          "source_range": [
+            2056,
+            2213
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0006:002",
+          "chunk_id": "chunk-0006",
+          "source_range": [
+            6731,
+            6793
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0006:003",
+          "chunk_id": "chunk-0006",
+          "source_range": [
+            6793,
+            6836
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0007:004",
+          "chunk_id": "chunk-0007",
+          "source_range": [
+            9635,
+            9722
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0007:005",
+          "chunk_id": "chunk-0007",
+          "source_range": [
+            9779,
+            9801
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "黄枫谷筑基成功弟子可登记为筑基弟子，选择灵气充足之地开辟洞府，不承担杂务，每年获得稀有材料和灵石资助；韩立登记时获三块中阶灵石和五杆小旗。",
+      "category": "原作事实",
+      "name": "黄枫谷筑基晋升登记",
+      "classification": "考核 / 晋升任务",
+      "usage": "筑基成功后身份转为洞府修士，杂务义务解除，仅保留大敌时出手义务。",
+      "formula": "筑基成功 -> 向掌门禀告 -> 玉牒登册 -> 发放灵石小旗 -> 开辟洞府 -> 脱离杂务。",
+      "source_range": "chunk-0150:[311315, 311436]; chunk-0223:[511871, 511940]; chunk-0223:[513384, 513453]; chunk-0223:[513490, 513577]",
+      "source_excerpt": "筑基成功弟子可在太岳山脉选择灵气充足之地开辟洞府，不承担杂务，每年获稀有材料和灵石资助；唯一义务是门派遇大敌时出手相助。；韩立向掌门钟灵道禀告自己几日前筑基成功，并请求授予开辟洞府的权利。；钟灵道用白色玉牒和金漆笔为韩立登册，使其正式登记为筑基弟子。；钟灵道给新筑基弟子韩立发放三块中阶灵石和五杆带白雾的小旗。",
+      "evidence_ids": [
+        "evidence:chunk-0150:021",
+        "evidence:chunk-0223:001",
+        "evidence:chunk-0223:008",
+        "evidence:chunk-0223:009"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0150:021",
+          "chunk_id": "chunk-0150",
+          "source_range": [
+            311315,
+            311436
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0223:001",
+          "chunk_id": "chunk-0223",
+          "source_range": [
+            511871,
+            511940
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0223:008",
+          "chunk_id": "chunk-0223",
+          "source_range": [
+            513384,
+            513453
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0223:009",
+          "chunk_id": "chunk-0223",
+          "source_range": [
+            513490,
+            513577
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "七玄门存在反卧底和令牌指挥任务：厉飞雨识破野狼帮卧底盗取历练名单，胖子凭王门主令牌暂时向长老以下弟子发号施令并夺取外刃堂指挥权。",
+      "category": "原作事实",
+      "name": "七玄门反卧底与令牌指挥",
+      "classification": "外交 / 情报 / 组织控制",
+      "usage": "通过反卧底保护弟子名单，通过门主令牌强制统一指挥。",
+      "formula": "敌方卧底盗名单 -> 识破生擒；门主令牌出示 -> 下级服从 -> 指挥权转移 -> 违令风险压制行动。",
+      "source_range": "chunk-0045:[85766, 85846]; chunk-0081:[159945, 160037]; chunk-0082:[160050, 160138]; chunk-0082:[160511, 160621]; chunk-0082:[160717, 160853]",
+      "source_excerpt": "厉师兄识破野狼帮两名卧底盗取下山弟子历练名单的阴谋，并与同门将其生擒。；中年胖子掏出金色腰牌，马荣看后叹气并表示遵命。；王门主令牌是贴身信物，可暂时向长老以下弟子发号施令；胖子是王门主贴身亲信和近亲。；马荣想派人侦查，胖子凭令牌夺走外刃堂指挥权并紧缩不动。",
+      "evidence_ids": [
+        "evidence:chunk-0045:001",
+        "evidence:chunk-0081:010",
+        "evidence:chunk-0082:001",
+        "evidence:chunk-0082:005",
+        "evidence:chunk-0082:006"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0045:001",
+          "chunk_id": "chunk-0045",
+          "source_range": [
+            85766,
+            85846
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0081:010",
+          "chunk_id": "chunk-0081",
+          "source_range": [
+            159945,
+            160037
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0082:001",
+          "chunk_id": "chunk-0082",
+          "source_range": [
+            160050,
+            160138
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0082:005",
+          "chunk_id": "chunk-0082",
+          "source_range": [
+            160511,
+            160621
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0082:006",
+          "chunk_id": "chunk-0082",
+          "source_range": [
+            160717,
+            160853
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "韩立通过四平帮执行情报和组织控制任务：要求孙二狗接管后送来见过男女神仙的人，要求席铁牛复述见闻，并以副帮主职位兑现承诺。",
+      "category": "原作事实",
+      "name": "四平帮情报问询任务",
+      "classification": "情报 / 附属势力控制",
+      "usage": "利用世俗帮会收集修仙线索，并用职位与更换帮主威慑保证执行。",
+      "formula": "控制帮主 -> 下令找人问话 -> 承诺副帮主 -> 兑现任命 -> 长期寄放曲魂形成控制。",
+      "source_range": "chunk-0123:[241291, 241531]; chunk-0127:[251328, 251401]; chunk-0127:[251680, 251772]; chunk-0128:[252927, 252988]; chunk-0128:[253691, 253775]",
+      "source_excerpt": "孙二狗表忠心；韩立命令他在接管四平帮后，将见到男女神仙的人毫发无损送来问话。；韩立声明不插手四平帮日常事务，但要求孙二狗用四平帮力量办妥自己交代的事，否则可再换帮主。；韩立要求席铁牛重讲见到男女神仙之事，并承诺若满意就让其成为孙二狗副手、四平帮副帮主。；韩立命令孙二狗让席铁牛担任四平帮副帮主，以兑现此前承诺。",
+      "evidence_ids": [
+        "evidence:chunk-0123:008",
+        "evidence:chunk-0127:011",
+        "evidence:chunk-0127:013",
+        "evidence:chunk-0128:007",
+        "evidence:chunk-0128:011"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0123:008",
+          "chunk_id": "chunk-0123",
+          "source_range": [
+            241291,
+            241531
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0127:011",
+          "chunk_id": "chunk-0127",
+          "source_range": [
+            251328,
+            251401
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0127:013",
+          "chunk_id": "chunk-0127",
+          "source_range": [
+            251680,
+            251772
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0128:007",
+          "chunk_id": "chunk-0128",
+          "source_range": [
+            252927,
+            252988
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0128:011",
+          "chunk_id": "chunk-0128",
+          "source_range": [
+            253691,
+            253775
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "content": "妙音门文思月被安排到毒龙会地盘护送珍贵货物，任务由其师父一位至亲吩咐，且本应保密的消息已被毒龙会得知。",
+      "category": "原作事实",
+      "name": "文思月危险护送任务",
+      "classification": "护送 / 派系压迫",
+      "usage": "内部亲缘和双修压力使成员被派往敌对地盘执行高风险护送。",
+      "formula": "拒绝双修 -> 师门至亲安排差事 -> 护送珍贵货物 -> 消息泄露 -> 风险升级。",
+      "source_range": "chunk-0435:[1128490, 1128509]; chunk-0435:[1128515, 1128541]; chunk-0435:[1128602, 1128610]; chunk-0436:[1129142, 1129161]; chunk-0436:[1129162, 1129185]",
+      "source_excerpt": "文思月被安排执行吃力且危险的任务。；文思月任务是在与妙音门不对头的毒龙会地盘护送珍贵货物。；本应保密的护送消息被毒龙会得知。；文思月说明这次差事由其师父的一位至亲吩咐。",
+      "evidence_ids": [
+        "evidence:chunk-0435:016",
+        "evidence:chunk-0435:017",
+        "evidence:chunk-0435:018",
+        "evidence:chunk-0436:004",
+        "evidence:chunk-0436:005"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0435:016",
+          "chunk_id": "chunk-0435",
+          "source_range": [
+            1128490,
+            1128509
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0435:017",
+          "chunk_id": "chunk-0435",
+          "source_range": [
+            1128515,
+            1128541
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0435:018",
+          "chunk_id": "chunk-0435",
+          "source_range": [
+            1128602,
+            1128610
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0436:004",
+          "chunk_id": "chunk-0436",
+          "source_range": [
+            1129142,
+            1129161
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0436:005",
+          "chunk_id": "chunk-0436",
+          "source_range": [
+            1129162,
+            1129185
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    }
+  ],
+  "judgments": [
+    {
+      "content": "凡人修仙传中的“宗门任务”不是统一面板式悬赏，而是由身份层级、管事权力、资源窗口和战争征调共同驱动；同一角色会在杂务、采药、守矿、护送、战斗和晋升之间被连续改派。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0149:010",
+        "evidence:chunk-0276:009",
+        "evidence:chunk-0278:014",
+        "evidence:chunk-0335:010"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0149:010",
+          "chunk_id": "chunk-0149",
+          "source_range": [
+            308262,
+            308407
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0276:009",
+          "chunk_id": "chunk-0276",
+          "source_range": [
+            669471,
+            669516
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0278:014",
+          "chunk_id": "chunk-0278",
+          "source_range": [
+            676385,
+            676510
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0335:010",
+          "chunk_id": "chunk-0335",
+          "source_range": [
+            842978,
+            843065
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "INFERRED",
+      "review_status": "verified"
+    },
+    {
+      "content": "奖励常与组织回流绑定：杂务回流药草和矿务，禁地回流筑基丹主药，猎妖回流妖丹，战时任务回流资源线和边界战力；但奖励分配也会被管事、师徒或保密需求二次截取。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0154:006",
+        "evidence:chunk-0163:006",
+        "evidence:chunk-0387:010",
+        "evidence:chunk-0216:007",
+        "evidence:chunk-0385:004"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0154:006",
+          "chunk_id": "chunk-0154",
+          "source_range": [
+            321304,
+            321357
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0163:006",
+          "chunk_id": "chunk-0163",
+          "source_range": [
+            345253,
+            345306
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0387:010",
+          "chunk_id": "chunk-0387",
+          "source_range": [
+            990067,
+            990164
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0216:007",
+          "chunk_id": "chunk-0216",
+          "source_range": [
+            492873,
+            493052
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0385:004",
+          "chunk_id": "chunk-0385",
+          "source_range": [
+            983674,
+            983714
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "INFERRED",
+      "review_status": "verified"
+    }
+  ],
+  "pending_verifications": [
+    {
+      "content": "黄枫谷低级弟子的具体月度基础灵石数额、不同杂务的贡献换算和百药园上交草药的精确数量，在已选证据中未完全闭合。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0149:010",
+        "evidence:chunk-0154:006",
+        "evidence:chunk-0155:023"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0149:010",
+          "chunk_id": "chunk-0149",
+          "source_range": [
+            308262,
+            308407
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0154:006",
+          "chunk_id": "chunk-0154",
+          "source_range": [
+            321304,
+            321357
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0155:023",
+          "chunk_id": "chunk-0155",
+          "source_range": [
+            325263,
+            325304
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "AMBIGUOUS",
+      "review_status": "needs_review"
+    },
+    {
+      "content": "血色禁地试炼的灵药上交比例、筑基丹最终分配标准和失败生还者惩罚，当前证据只覆盖报名鼓励、赌局规则和立功收徒，仍需更多章节核验。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0163:010",
+        "evidence:chunk-0180:009",
+        "evidence:chunk-0181:012",
+        "evidence:chunk-0215:010"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0163:010",
+          "chunk_id": "chunk-0163",
+          "source_range": [
+            345913,
+            345950
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0180:009",
+          "chunk_id": "chunk-0180",
+          "source_range": [
+            388399,
+            388434
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0181:012",
+          "chunk_id": "chunk-0181",
+          "source_range": [
+            392048,
+            392130
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0215:010",
+          "chunk_id": "chunk-0215",
+          "source_range": [
+            490294,
+            490403
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "AMBIGUOUS",
+      "review_status": "needs_review"
+    },
+    {
+      "content": "六连殿猎妖任务的失败赔偿、伤亡补偿、外援保密契约和妖兽材料分成，当前证据只明确降尘丹、一千灵石补偿及妖丹归属。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0382:004",
+        "evidence:chunk-0385:004",
+        "evidence:chunk-0387:010"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0382:004",
+          "chunk_id": "chunk-0382",
+          "source_range": [
+            974919,
+            975086
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0385:004",
+          "chunk_id": "chunk-0385",
+          "source_range": [
+            983674,
+            983714
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0387:010",
+          "chunk_id": "chunk-0387",
+          "source_range": [
+            990067,
+            990164
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "AMBIGUOUS",
+      "review_status": "needs_review"
+    }
+  ],
+  "not_found_items": [
+    {
+      "content": "未见可靠证据表明这些宗门任务使用类似大型网游的公开任务面板、统一贡献点商城或可自由刷新的任务清单；现有样本主要是管事分配、长老命令、制度考核和临时征调。",
+      "category": "未见可靠证据",
+      "evidence_ids": [
+        "evidence:chunk-0152:012",
+        "evidence:chunk-0275:009",
+        "evidence:chunk-0278:014"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0152:012",
+          "chunk_id": "chunk-0152",
+          "source_range": [
+            316568,
+            316632
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0275:009",
+          "chunk_id": "chunk-0275",
+          "source_range": [
+            667118,
+            667173
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        },
+        {
+          "evidence_id": "evidence:chunk-0278:014",
+          "chunk_id": "chunk-0278",
+          "source_range": [
+            676385,
+            676510
+          ],
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt"
+        }
+      ],
+      "confidence": "AMBIGUOUS",
+      "review_status": "not_found_in_source"
+    },
+    {
+      "content": "多数案例未见完整的任务殿账册、贡献点公式、失败赔偿数额、护送路线文书、阵法维护清单等行政细节；正文中均保留“原文未说明”。",
+      "category": "未见可靠证据",
+      "evidence_ids": [],
+      "source_locations": [],
+      "confidence": "AMBIGUOUS",
+      "review_status": "not_found_in_source"
+    }
+  ],
+  "document_sections": [
+    {
+      "heading": "案例 1：黄枫谷百机堂杂务与百药园维护任务",
+      "markdown": "任务名和类型：黄枫谷百机堂分配的低级弟子杂务，其中韩立选择青石岭百药园维护与珍稀药材上交任务。\n\n发布者：百机堂是杂务领取处，于执事负责接待，叶姓老者负责分配此类工作并声称百机堂由他说了算；百药园具体交接由马师伯完成。\n\n接取者：未服用筑基丹的黄枫谷低级弟子、执事弟子一类需要承担杂务者。韩立是新入门弟子，因叶姓老者允许，可在种植类工作中自选。\n\n接取条件：黄枫谷低级弟子每月必须完成交付工作；通常由宗门分配，不准挑拣，除非证明有某方面专长。新入门弟子可先熟悉一个月再领取工作。韩立获得叶姓老者特许，能随意挑选种植类工作，并通过手续取得代表接下工作的玉牌。是否需要贡献、押金、队伍人数或长期考核冷却期，原文未说明。\n\n任务来源：黄枫谷日常运转需要低级弟子监督挖矿、坊市执事、照看灵禽异兽、种植灵根奇药；百药园是马师伯私人药地，长期需要维持规模、保活药草并按月上交草药。\n\n任务目标：接管青石岭百药园一座，规模维持不变，药草不能夭折，每月需上交一定数量草药。竹简中还列有五花树、三百年火云参、月梅草、黄玉竹林等种植任务和部分上交要求。具体每种药草的月度数量、质量等级和验收标准，原文未说明。\n\n行动流程：弟子到百机堂领取或接受分配；韩立在叶姓老者授意下查看种植类竹简和前任自述，确认难度后仍选择百药园；叶师叔协助手续，于执事带韩立去金蚨岭百药园；韩立以玉牌触发禁制进入，马师伯交接禁制令牌并要求阅读屋内历年培养心得。\n\n所需资源：任务玉牌、百药园禁制令牌、药园、历年培养心得、种植知识和维持药草所需时间。药锄、具体药种培育工具、仓库登记文书和验收账册，原文未说明。\n\n成功奖励：黄枫谷低级弟子的杂务按完成情况发放低级灵石；百药园方面，马师伯说明韩立若能胜任绝不会亏待他，小老头后来为留住韩立将奖励逐渐从每月两块低阶灵石提高到每月五块。奖励来源主要是门内杂务发放和马师伯/药园岗位赏给。\n\n失败后果：百药园任务已挂单数年，多名弟子失败并被罚灵石，是最难完成的工作之一。具体罚款数额、是否扣贡献、是否取消岗位或另派危险任务，原文未说明。\n\n追责方式：由百机堂/于执事/叶姓老者办理任务手续，百药园由马师伯交接与认可；失败者被罚灵石，但具体登记和追责流程原文未说明。\n\n对宗门的回流：低级弟子用杂务维持矿务、坊市、灵兽、药草等基层运转；百药园维护稳定药材产出，并把规定药草回流给门内或药园主人。\n\n结束方式与后续影响：韩立成功接管药园并取得相对适合自己隐藏能力的长期岗位，获得灵石奖励和独立空间；任务没有以一次性交付结束，而是转成长周期维护与按月上交。",
+      "evidence_ids": [
+        "evidence:chunk-0149:009",
+        "evidence:chunk-0149:010",
+        "evidence:chunk-0149:011",
+        "evidence:chunk-0152:010",
+        "evidence:chunk-0152:011",
+        "evidence:chunk-0152:012",
+        "evidence:chunk-0152:013",
+        "evidence:chunk-0152:014",
+        "evidence:chunk-0152:015",
+        "evidence:chunk-0153:001",
+        "evidence:chunk-0153:002",
+        "evidence:chunk-0153:004",
+        "evidence:chunk-0153:005",
+        "evidence:chunk-0153:009",
+        "evidence:chunk-0154:003",
+        "evidence:chunk-0154:006",
+        "evidence:chunk-0154:008",
+        "evidence:chunk-0154:009",
+        "evidence:chunk-0154:010",
+        "evidence:chunk-0154:011",
+        "evidence:chunk-0155:023"
+      ],
+      "requirement_ids": [
+        "宗门任务体系.案例.01.日常杂务与资源维护任务",
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 2：六连殿猎杀婴鲤兽任务",
+      "markdown": "任务名和类型：六连殿外援猎妖任务，目标是猎杀或擒拿婴鲤兽并取得妖丹，属于高风险猎妖、阵法配合和保密任务。\n\n发布者：六连殿方面由曹禄出面邀请曲魂/韩立，冯三娘、苗长老、古长老等组织执行；六连殿客卿长老负责主攻与计划推进。\n\n接取者：六名假丹境界修士负责主持六遁水波大阵，两位结丹期客卿长老出手。韩立和曲魂以外援身份受邀。\n\n接取条件：六连殿还差一名假丹境界修士，因此要求参与者具备假丹或筑基后期级别战力并能主持阵法；任务事关重大，曲魂要求考虑两天。是否需要正式契约、押金、身份担保或宗门登记，原文未说明。\n\n任务来源：六连殿发现一只六级妖兽，实为婴鲤兽，意图取得妖丹；普通六级妖兽不足以解释如此谋划，说明目标价值高且需保密。\n\n任务目标：由两位结丹期客卿长老主攻，六名假丹修士主持六遁水波大阵，等婴鲤兽被引入大阵后立刻封锁阵门，顶住反扑，使苗长老和古长老用借来的异宝拿下此兽；妖丹是六连殿必得之物。其他妖兽材料如何分配，原文只见古长老与乌丑交涉，未见完整外援分配规则。\n\n行动流程：曹禄提出邀请并说明先期心意；韩立购买法术道书和《丹道评鉴》研究降尘丹后决定尝试；骆正载众人登船；众修在海船上多次演练六遁水波阵，一个月后抵达无名荒岛；苗长老确认阵法演练，古长老引兽，冯三娘揭示目标并下令封阵，众修挥舞阵旗隐匿行迹并承受反扑。\n\n所需资源：六遁水波大阵、蓝色阵旗、海船、两名结丹期客卿、六名假丹/筑基后期阵门修士、飞剑传书、借来的异宝和任务前情报。丹药、撤退路线和伤亡补偿，原文未说明。\n\n成功奖励：先期心意为雪灵水和天火液；任务成功后每位出手修士一颗增加结丹成功几率的降尘丹；冯三娘后续又追加每人一千灵石作为保密补偿。奖励来源为六连殿任务报酬与保密补偿。\n\n失败后果：婴鲤兽反扑风险高，阵法若失守可能导致参与者伤亡、目标逃脱或六连殿谋划暴露；具体扣罚、赔偿或追责制度，原文未说明。\n\n追责方式：任务由六连殿组织并保密，冯三娘以保密命令解释此前不透露详情；若泄密或失败如何追责，原文未说明。\n\n对组织的回流：六连殿以外包高阶战力和阵法协作换取婴鲤兽妖丹，同时以降尘丹和灵石稳定外援，体现商盟/组织用稀缺丹药采购危险战力。\n\n结束方式与后续影响：任务进入猎妖实战阶段，奖励被明示为丹药加灵石；韩立参与前通过丹药信息和六连殿名声判断收益风险，任务也帮助他在乱星海势力环境中立足。",
+      "evidence_ids": [
+        "evidence:chunk-0382:003",
+        "evidence:chunk-0382:004",
+        "evidence:chunk-0382:005",
+        "evidence:chunk-0382:006",
+        "evidence:chunk-0382:007",
+        "evidence:chunk-0383:001",
+        "evidence:chunk-0383:006",
+        "evidence:chunk-0383:007",
+        "evidence:chunk-0384:001",
+        "evidence:chunk-0384:006",
+        "evidence:chunk-0384:008",
+        "evidence:chunk-0384:009",
+        "evidence:chunk-0384:010",
+        "evidence:chunk-0385:001",
+        "evidence:chunk-0385:003",
+        "evidence:chunk-0385:004",
+        "evidence:chunk-0385:010",
+        "evidence:chunk-0385:012",
+        "evidence:chunk-0385:016",
+        "evidence:chunk-0385:017",
+        "evidence:chunk-0386:001",
+        "evidence:chunk-0386:004",
+        "evidence:chunk-0387:010"
+      ],
+      "requirement_ids": [
+        "宗门任务体系.案例.02.猎妖清剿战斗任务",
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 3：黄枫谷战争期守矿、押送与保护秦宅任务",
+      "markdown": "任务名和类型：战争期灵石矿警备、押送灵石到金鼓原、保护秦宅和边界营地集合，属于守矿、防御、护送/保护与战争动员任务链。\n\n发布者：七大派共同发布征调令；黄枫谷仓促组织修士出发；灵矿防守由宣乐布置；李化元另以私事形式交代韩立保护一户凡人后人；后期上令要求筑基期以上弟子赶往边界七派大营。\n\n接取者：越国大小家族杰出弟子、黄枫谷筑基期弟子、韩立等门内修士。韩立一年前奉命押送灵石到金鼓原后被留下，成为七派高级炮灰。\n\n接取条件：征调令面向越国大小家族杰出弟子；筑基期以上弟子在大战前须按手令限期到边界营地集合。保护秦宅任务由李化元按韩立战斗名声指定，认为韩立比宋蒙更合适。具体报名、拒绝流程、轮值时长、押送队伍人数和补给标准，原文未说明。\n\n任务来源：魔道压力下七大派连夜动员；灵石矿储量较大，需加强警备以防魔道小队偷袭；李化元曾受师兄恩情，要保护无灵根师兄后人在世俗界的安全富贵，且魔道六宗可能清洗七派暗中扶持的凡人来打击原料供应。\n\n任务目标：守矿任务是加强灵石矿警备并布置防守；押送任务是将灵石押送到金鼓原并留下待命；保护秦宅任务是担任保镖，保护曾救过李化元的师兄后人，韩立需记下秦家成员并处理门派事务，撑过一段时间后可请求援兵；边界任务则是在限定期限内到七派大营集合。\n\n行动流程：黄枫谷连夜组织修士分头出发；七大派发布征调令；韩立随队到灵矿，得知任务后由宣乐布防；返回谷后向轮值管事删减汇报并待命；飞符传音要求他到议事殿集合；李化元交付保护任务、信件和玉简资料，要求明早出发；后期手令召回在外执行任务的筑基弟子前往边界。\n\n所需资源：征调令、飞符传音、手令、李化元书信、详细资料玉简、灵矿防守部署、同行修士和可能的援兵。具体阵盘、驻守补给、传讯频率、交接文书和护送器具，原文未说明。\n\n成功奖励：守矿和押送任务的固定灵石、战功或贡献奖励原文未说明；保护秦宅按外出执行计算，说明可计入门派任务履历或待遇，但具体发放标准未说明。\n\n奖励来源：可能来自战争动员、宗门任务体系或李化元个人安排；原文只明示“按外出执行计算”，未明示具体库存或预算来源。\n\n失败后果：七派严惩临阵退缩或躲避征调的弟子，处罚可从灵石到废去法力；若保护任务失败，秦家可能被魔道低阶弟子清洗，世俗原料供应受损。具体守矿失守后的赔偿和带队者追责，原文未说明。\n\n追责方式：征调违抗可由七派执法队以灭族威慑附属家族，并对退缩弟子施以灵石处罚至废去法力。秦宅任务取消后，李化元玉简通知不用再保护，说明上级可变更任务目标。\n\n对宗门的回流：守矿保障灵石资源线，保护凡人后人稳定七派在世俗界的原料供应，边界集合则把分散筑基战力回收进大战体系。\n\n结束方式与后续影响：守矿后韩立回谷待命；保护秦宅因魔道计划取消而由李化元信简终止，韩立等需返回边界。任务链显示战争期宗门任务会频繁改派，并以征调和惩罚压过个人安排。",
+      "evidence_ids": [
+        "evidence:chunk-0263:011",
+        "evidence:chunk-0263:012",
+        "evidence:chunk-0267:005",
+        "evidence:chunk-0267:006",
+        "evidence:chunk-0275:008",
+        "evidence:chunk-0275:009",
+        "evidence:chunk-0276:003",
+        "evidence:chunk-0276:006",
+        "evidence:chunk-0276:009",
+        "evidence:chunk-0277:011",
+        "evidence:chunk-0278:008",
+        "evidence:chunk-0278:009",
+        "evidence:chunk-0278:010",
+        "evidence:chunk-0278:011",
+        "evidence:chunk-0278:012",
+        "evidence:chunk-0278:013",
+        "evidence:chunk-0278:014",
+        "evidence:chunk-0285:009",
+        "evidence:chunk-0305:004",
+        "evidence:chunk-0335:009",
+        "evidence:chunk-0335:010",
+        "evidence:chunk-0335:011",
+        "evidence:chunk-0335:013"
+      ],
+      "requirement_ids": [
+        "宗门任务体系.案例.03.护送守矿边境防御任务",
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 4：黄枫谷血色禁地采药试炼任务",
+      "markdown": "任务名和类型：血色禁地采药试炼，属于七大派定期开启的禁地探索、采集灵药和筑基资源竞争任务。\n\n发布者：七大修仙派共同派出筑基期以下弟子入禁地采灵药；黄枫谷内部由王师叔负责报名，李师祖负责带队和赌局压力传达。\n\n接取者：筑基期以下弟子，韩立所在一行黄衫之人即参加血色试炼的黄枫谷众弟子。\n\n接取条件：七大派每五年派筑基期以下弟子进入禁地，筑基丹主药是重点；黄枫谷规定报名者先得中阶灵石和灵器鼓励。韩立因五十年后已过筑基最佳年龄而主动报名。名额上限、队伍分配、身份限制和退出冷却，原文未说明。\n\n任务来源：禁地采药是七大派获取筑基丹主药的制度性入口；本轮后禁地将暂时封闭六十年且由七大派共同监督，任何人不得进入采药，因此窗口期尤其紧迫。\n\n任务目标：进入禁地采集灵药，重点是筑基丹主药；带队层面还卷入各派赌局，李师祖确认规则为先比采集灵药数量，再比质量，最后比活着走出禁地的人数。\n\n行动流程：弟子报名并领取中阶灵石、灵器鼓励；黄枫谷上层说明封闭禁地的背景；弟子进入禁地后各自或组队赶往中心区采药；不同门派弟子为抢先进入中心区摘取灵药发生团伙死斗；最终活着退出并按数量、质量和存活人数结算宗门成绩。\n\n所需资源：中阶灵石、灵器、筑基期以下战力、禁地入口资格、采药能力和保命手段。地图、传送令、采药工具、统一验收容器，原文未说明。\n\n成功奖励：报名者先得中阶灵石和灵器鼓励；李师祖承诺获胜者重赏，贡献最大者筑基后可被收入门下。韩立后来被认可为本门立功不小，李师祖打算收其为记名弟子。具体灵药兑换比例、筑基丹分配和重赏内容，原文未说明。\n\n奖励来源：报名鼓励来自黄枫谷；重赏和收徒来自李师祖/黄枫谷战果分配；筑基丹主药来自禁地采集成果。\n\n失败后果：禁地内存在门派死斗和高死亡风险，赌局还统计活着走出禁地的人数；未能采到足够灵药会影响宗门成绩。具体对失败但生还弟子的扣罚，原文未说明。\n\n追责方式：七大派共同监督禁地封闭；试炼成败通过灵药数量、质量和存活人数公开比较。对私吞灵药、杀同门或违规进入的追责细则，原文未说明。\n\n对宗门的回流：试炼把低阶弟子风险转化为筑基丹主药和宗门排名收益，同时筛选能在高压竞争中存活并立功的弟子。\n\n结束方式与后续影响：任务以禁地退出和成果比较结束；韩立因贡献获得李师祖关注，但师傅可抽取徒弟上交贡品一半作为谢师礼的不成文规矩，显示奖励回流也可能被师徒制度截取。",
+      "evidence_ids": [
+        "evidence:chunk-0163:006",
+        "evidence:chunk-0163:010",
+        "evidence:chunk-0176:004",
+        "evidence:chunk-0176:010",
+        "evidence:chunk-0176:015",
+        "evidence:chunk-0180:009",
+        "evidence:chunk-0180:016",
+        "evidence:chunk-0181:012",
+        "evidence:chunk-0185:002",
+        "evidence:chunk-0186:009",
+        "evidence:chunk-0200:009",
+        "evidence:chunk-0215:010",
+        "evidence:chunk-0216:007"
+      ],
+      "requirement_ids": [
+        "宗门任务体系.案例.04.秘境遗迹禁地探索任务",
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 5：七玄门医务、炼药与黄枫谷药园上交任务",
+      "markdown": "任务名和类型：七玄门神手谷炼药/采药弟子与医务岗位，兼及黄枫谷百药园培育和上交草药任务，属于生产、治疗、岗位接替和资源维护。\n\n发布者：七玄门中墨大夫表示缺一名炼药弟子和一名采药弟子，直接指走韩立、张铁两名记名弟子；后期几位长老和马副门主决定是否让韩立接手墨大夫职责。黄枫谷药园则由百机堂分配、马师伯交接。\n\n接取者：七玄门记名弟子韩立、张铁；后来韩立以继承墨大夫医术的身份接受低级弟子治疗测试。黄枫谷中则是接管百药园的低级弟子韩立。\n\n接取条件：七玄门一端，韩立和张铁未成为正式内门弟子，被墨大夫选为炼药/采药弟子并住在神手谷；接手医务需先给低级弟子治病测试医术。黄枫谷一端，接管百药园需办好手续、持玉牌进入禁制并接受药园条件。具体职业资格、材料权限、赔偿条款和保密约，原文未说明。\n\n任务来源：神手谷外人通常只有生病受伤才会来，墨大夫需要炼药和采药弟子，也需要继任者维持医疗功能；黄枫谷百药园需要保持药草不夭折并按月上交草药。\n\n任务目标：神手谷任务是学习或执行炼药、采药、看病疗伤，并在墨大夫离场后承担医务；韩立通过给低级弟子看病证明医术。百药园任务是维持规模、避免药草夭折、每月上交一定数量草药。具体炼制配方、治愈验收单、草药品质等级，原文未说明。\n\n行动流程：墨大夫指派韩立、张铁后带去神手谷居住；墨大夫死后，假书信声称韩立继承医术；长老们先安排韩立给低级弟子治病，韩立用催生名贵药材配药，使就医者几乎药到病除；马副门主认可其接手工作。黄枫谷药园则通过百机堂手续、玉牌入园、禁制令牌交接和阅读培养心得开始执行。\n\n所需资源：神手谷住所、药材、成药、医术、名贵药草、独居环境；药园任务需要玉牌、禁制令牌、药园、培养心得和培育知识。丹炉、药锄、账册和具体仓库流程，原文未说明。\n\n成功奖励：韩立接手墨大夫工作并享受原待遇，虽因年龄轻暂不给供奉称号，但每月实际俸禄按供奉标准发放；药园中马师伯承诺胜任不会亏待。奖励来源分别为七玄门供奉待遇/月俸体系和药园/马师伯私赏。\n\n失败后果：若韩立无法证明医术，就不能顺利接手墨大夫职责；百药园已有多名弟子失败并被罚灵石。具体医务失败追责、误诊赔偿和药草损失赔偿数额，原文未说明。\n\n追责方式：七玄门由几位长老和马副门主先测试再决定；百药园失败者被罚灵石。是否记录职业信誉或禁接生产任务，原文未说明。\n\n对宗门的回流：医务任务维持门内弟子治疗能力，药园任务提供草药产出；韩立也把少量成药给求医者，大部分自用推动修炼，显示岗位资源可能被个人截留或再分配。\n\n结束方式与后续影响：韩立因治愈护法和舞岩稳住神手谷招牌，获得供奉标准俸禄与独居空间；生产岗位成为他隐藏小瓶、培元练气和长期积累资源的基础。",
+      "evidence_ids": [
+        "evidence:chunk-0007:012",
+        "evidence:chunk-0007:016",
+        "evidence:chunk-0067:005",
+        "evidence:chunk-0067:007",
+        "evidence:chunk-0067:010",
+        "evidence:chunk-0067:011",
+        "evidence:chunk-0067:013",
+        "evidence:chunk-0067:014",
+        "evidence:chunk-0068:001",
+        "evidence:chunk-0068:008",
+        "evidence:chunk-0068:012",
+        "evidence:chunk-0068:016",
+        "evidence:chunk-0153:001",
+        "evidence:chunk-0154:006",
+        "evidence:chunk-0154:009",
+        "evidence:chunk-0154:010"
+      ],
+      "requirement_ids": [
+        "宗门任务体系.案例.05.生产与上交任务",
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 6：七玄门入门考核与黄枫谷筑基晋升登记",
+      "markdown": "任务名和类型：七玄门孩童入门考核、内门/记名弟子分流、七绝堂优选，以及黄枫谷筑基后登记和待遇发放，属于考核、晋升和身份变更任务。\n\n发布者：七玄门由岳堂主宣布测试事项并安排后续分流，王护法、张均、吴铭瑞等执行；黄枫谷由钟灵道掌门为筑基成功弟子登记。\n\n接取者：七玄门 7 至 12 岁、由外门弟子举荐的孩童候选者；黄枫谷中已筑基成功并向掌门禀告的弟子。\n\n接取条件：七玄门外门弟子可举荐 7 至 12 岁孩童参加内门弟子考验；测试从竹林小路到炼骨崖，正午前到达者有正式入门资格，表现可圈可点但未按时到达者可成为记名弟子。正式入门测试还包括绕彩霞山脉跑、组队格斗、抵挡师兄进攻。黄枫谷筑基晋升条件是弟子已筑基成功并向掌门请求授予开辟洞府权利。\n\n任务来源：七玄门通过定期测试筛选内门弟子、七绝堂核心和记名弟子；黄枫谷按筑基结果改变弟子层级，筑基者不再承担杂务并获得洞府和资助。\n\n任务目标：七玄门候选者需按时到崖顶，通过体力、格斗和抗压测试；优秀者入百锻堂或七绝堂，未按时但表现突出者先打根基，半年后再考核决定内外门。黄枫谷筑基者目标是登记为筑基弟子并获得开辟洞府权利。\n\n行动流程：候选孩童先到清客院休息，次日参加选拔；岳堂主宣布路线和规则，师兄在后方护持防危险；测试后宣布六人进百锻堂、舞岩直入七绝堂、韩立张铁先打根基，未过关者由王护法发银遣返；过关者由张均、吴铭瑞送交顾副堂主和李教习。黄枫谷中韩立向钟灵道禀告筑基，钟灵道用白色玉牒和金漆笔登册，并发放资源。\n\n所需资源：七玄门考核需要炼骨崖路线、清客院、护持师兄和分堂接收人员；黄枫谷筑基登记需要白色玉牒、金漆笔和门派奖励资源。报名费、考核令牌、医疗资源和失败冷却期，原文未说明。\n\n成功奖励：七玄门合格者成为内门弟子，进入百锻堂；第一名且表现杰出的舞岩进入七绝堂学习本门绝技；普通内门弟子先两年基础训练，再拜师学习高深武功并出师任职。黄枫谷筑基成功弟子可在太岳山脉选择灵气充足之地开辟洞府，不承担杂务，每年获稀有材料和灵石资助；韩立登记时获得三块中阶灵石和五杆带白雾的小旗。\n\n奖励来源：七玄门奖励来自门内培养体系和七绝堂/百锻堂名额；黄枫谷奖励来自筑基弟子制度和掌门登记发放。\n\n失败后果：七玄门未过关者发银遣返；未按时但表现突出者只得记名弟子身份并需半年后复核。黄枫谷筑基失败的后果原文在本证据组中未说明。\n\n追责方式：七玄门以现场宣布、分流和遣返处理考核结果；黄枫谷以掌门登记确认身份。作弊、伤人或考核事故追责，原文未说明。\n\n对宗门的回流：考核把潜在弟子分层投入百锻堂、七绝堂、记名岗位和遣返渠道；筑基登记把成长成功者转化为洞府修士，仅在门派遇大敌时承担出手义务。\n\n结束方式与后续影响：韩立未成为正式内门，转入记名弟子和神手谷路线；筑基后则脱离杂务，取得洞府资格和筑基弟子待遇，身份任务从基层劳务转向战时义务。",
+      "evidence_ids": [
+        "evidence:chunk-0003:008",
+        "evidence:chunk-0005:009",
+        "evidence:chunk-0006:001",
+        "evidence:chunk-0006:002",
+        "evidence:chunk-0006:003",
+        "evidence:chunk-0006:004",
+        "evidence:chunk-0007:002",
+        "evidence:chunk-0007:003",
+        "evidence:chunk-0007:004",
+        "evidence:chunk-0007:005",
+        "evidence:chunk-0007:006",
+        "evidence:chunk-0009:0004",
+        "evidence:chunk-0019:002",
+        "evidence:chunk-0019:003",
+        "evidence:chunk-0019:004",
+        "evidence:chunk-0150:016",
+        "evidence:chunk-0150:018",
+        "evidence:chunk-0150:019",
+        "evidence:chunk-0150:021",
+        "evidence:chunk-0223:001",
+        "evidence:chunk-0223:008",
+        "evidence:chunk-0223:009"
+      ],
+      "requirement_ids": [
+        "宗门任务体系.案例.06.考核晋升宗门大比任务",
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 7：情报、卧底、护送与组织控制类任务",
+      "markdown": "任务名和类型：七玄门反卧底与历练名单保密、王门主令牌指挥任务、韩立控制四平帮问询神仙线索、妙音门文思月危险护送任务，属于情报、卧底、护送、组织控制和派系压迫任务。\n\n发布者：七玄门中有七绝堂总管、王门主令牌持有者和外刃堂相关指挥；韩立作为实际控制者向孙二狗、席铁牛等四平帮成员下令；妙音门中文思月的差事由其师父一位至亲吩咐。\n\n接取者：厉飞雨等七玄门弟子、外刃堂弟子、孙二狗和四平帮成员、席铁牛、白发老道、妙音门文思月。\n\n接取条件：七玄门令牌是王门主贴身信物，可暂时向长老以下弟子发号施令，胖子凭令夺取外刃堂指挥权；韩立对四平帮任务以更换帮主作为威慑；文思月因拒绝双修，被安排到与妙音门不对头的毒龙会地盘护送珍贵货物。具体情报堂资格、保密契约、撤离路线和奖励制度，原文未说明。\n\n任务来源：七玄门与野狼帮冲突下，下山弟子历练名单被卧底盗取；七玄门内乱时家属需要集中保护、是否外出侦查形成指挥冲突；韩立需要找到见过男女神仙的人并掌控四平帮资源；妙音门内部亲缘和双修压力导致文思月被派往危险护送。\n\n任务目标：厉飞雨识破并生擒野狼帮两名卧底；胖子凭令要求李长老上山议事并紧缩外刃堂不动；韩立命孙二狗接管四平帮后，把见到男女神仙的人毫发无损送来问话，并让席铁牛复述见闻，承诺满意后给副帮主位置；韩立要求白发老道监视小王爷和王总管行踪；文思月任务是在毒龙会地盘护送珍贵货物。\n\n行动流程：厉飞雨外出可能被七绝堂总管发现，仍带出原剑谱并参与线索行动；野狼帮卧底被识破后与同门生擒；胖子出示金色腰牌取得服从，派李长老上山并留守李宅，马荣请求外刃堂集中保护家属但侦查提议被压制；韩立通过命令、承诺和恐吓调动四平帮；文思月按师门关系被派去护送，而消息被毒龙会得知。\n\n所需资源：王门主金色腰牌、七玄门帮规威慑、四平帮人手、曲魂作为震慑、承诺的副帮主职位、监视人手和护送货物。具体传讯暗号、伪装法器、押运路线和护卫配置，原文未说明。\n\n成功奖励：厉飞雨此前因门外行动立功获得“厉虎”名声并听说将特例进入七绝堂；席铁牛若复述让韩立满意，可成为孙二狗副手、四平帮副帮主，韩立后来兑现命令。文思月护送任务奖励原文未说明。\n\n奖励来源：七玄门战功和七绝堂资格、韩立对四平帮职位的任命权；文思月任务可能来自妙音门内部安排，奖励来源未说明。\n\n失败后果：七玄门违令罪名严厉，马荣明知本门可能生死攸关也无法行动；四平帮若办不好韩立交代的事可被更换帮主；文思月护送消息泄露至毒龙会，风险显著上升。具体罚款、灭口、救援或宗门否认机制，原文未说明。\n\n追责方式：七玄门通过帮规和门主令牌压制行动；韩立以更换帮主和不得用曲魂招惹是非的禁令控制四平帮；妙音门护送任务的追责方式原文未说明。\n\n对组织的回流：情报和反卧底维护七玄门下山弟子名单安全；令牌调度保护门内家属并集中权力；韩立借帮会完成情报收集；妙音门派系任务则显示组织内部可把成员推入危险外勤。\n\n结束方式与后续影响：卧底被生擒使七玄门掌握敌方渗透线索；韩立兑现席铁牛副帮主承诺并把曲魂长期寄放在孙二狗处，形成持续可调用的世俗情报网络；文思月护送线因消息泄露，天然升级为危险冲突任务。",
+      "evidence_ids": [
+        "evidence:chunk-0036:004",
+        "evidence:chunk-0045:001",
+        "evidence:chunk-0081:009",
+        "evidence:chunk-0081:010",
+        "evidence:chunk-0082:001",
+        "evidence:chunk-0082:002",
+        "evidence:chunk-0082:003",
+        "evidence:chunk-0082:005",
+        "evidence:chunk-0082:006",
+        "evidence:chunk-0123:008",
+        "evidence:chunk-0127:011",
+        "evidence:chunk-0127:013",
+        "evidence:chunk-0128:007",
+        "evidence:chunk-0128:011",
+        "evidence:chunk-0298:009",
+        "evidence:chunk-0435:016",
+        "evidence:chunk-0435:017",
+        "evidence:chunk-0435:018",
+        "evidence:chunk-0436:004",
+        "evidence:chunk-0436:005"
+      ],
+      "requirement_ids": [
+        "宗门任务体系.案例.07.外交情报卧底任务",
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    }
+  ],
+  "evidence_citations": [
+    "evidence:chunk-0149:009",
+    "evidence:chunk-0149:010",
+    "evidence:chunk-0149:011",
+    "evidence:chunk-0152:010",
+    "evidence:chunk-0152:011",
+    "evidence:chunk-0152:012",
+    "evidence:chunk-0152:013",
+    "evidence:chunk-0152:014",
+    "evidence:chunk-0152:015",
+    "evidence:chunk-0153:001",
+    "evidence:chunk-0153:002",
+    "evidence:chunk-0153:004",
+    "evidence:chunk-0153:005",
+    "evidence:chunk-0153:009",
+    "evidence:chunk-0154:003",
+    "evidence:chunk-0154:006",
+    "evidence:chunk-0154:008",
+    "evidence:chunk-0154:009",
+    "evidence:chunk-0154:010",
+    "evidence:chunk-0154:011",
+    "evidence:chunk-0155:023",
+    "evidence:chunk-0382:003",
+    "evidence:chunk-0382:004",
+    "evidence:chunk-0382:005",
+    "evidence:chunk-0382:006",
+    "evidence:chunk-0382:007",
+    "evidence:chunk-0383:001",
+    "evidence:chunk-0383:006",
+    "evidence:chunk-0383:007",
+    "evidence:chunk-0384:001",
+    "evidence:chunk-0384:006",
+    "evidence:chunk-0384:008",
+    "evidence:chunk-0384:009",
+    "evidence:chunk-0384:010",
+    "evidence:chunk-0385:001",
+    "evidence:chunk-0385:003",
+    "evidence:chunk-0385:004",
+    "evidence:chunk-0385:010",
+    "evidence:chunk-0385:012",
+    "evidence:chunk-0385:016",
+    "evidence:chunk-0385:017",
+    "evidence:chunk-0386:001",
+    "evidence:chunk-0386:004",
+    "evidence:chunk-0387:010",
+    "evidence:chunk-0263:011",
+    "evidence:chunk-0263:012",
+    "evidence:chunk-0267:005",
+    "evidence:chunk-0267:006",
+    "evidence:chunk-0275:008",
+    "evidence:chunk-0275:009",
+    "evidence:chunk-0276:003",
+    "evidence:chunk-0276:006",
+    "evidence:chunk-0276:009",
+    "evidence:chunk-0277:011",
+    "evidence:chunk-0278:008",
+    "evidence:chunk-0278:009",
+    "evidence:chunk-0278:010",
+    "evidence:chunk-0278:011",
+    "evidence:chunk-0278:012",
+    "evidence:chunk-0278:013",
+    "evidence:chunk-0278:014",
+    "evidence:chunk-0285:009",
+    "evidence:chunk-0305:004",
+    "evidence:chunk-0335:009",
+    "evidence:chunk-0335:010",
+    "evidence:chunk-0335:011",
+    "evidence:chunk-0335:013",
+    "evidence:chunk-0163:006",
+    "evidence:chunk-0163:010",
+    "evidence:chunk-0176:004",
+    "evidence:chunk-0176:010",
+    "evidence:chunk-0176:015",
+    "evidence:chunk-0180:009",
+    "evidence:chunk-0180:016",
+    "evidence:chunk-0181:012",
+    "evidence:chunk-0185:002",
+    "evidence:chunk-0186:009",
+    "evidence:chunk-0200:009",
+    "evidence:chunk-0215:010",
+    "evidence:chunk-0216:007",
+    "evidence:chunk-0007:012",
+    "evidence:chunk-0007:016",
+    "evidence:chunk-0067:005",
+    "evidence:chunk-0067:007",
+    "evidence:chunk-0067:010",
+    "evidence:chunk-0067:011",
+    "evidence:chunk-0067:013",
+    "evidence:chunk-0067:014",
+    "evidence:chunk-0068:001",
+    "evidence:chunk-0068:008",
+    "evidence:chunk-0068:012",
+    "evidence:chunk-0068:016",
+    "evidence:chunk-0003:008",
+    "evidence:chunk-0005:009",
+    "evidence:chunk-0006:001",
+    "evidence:chunk-0006:002",
+    "evidence:chunk-0006:003",
+    "evidence:chunk-0006:004",
+    "evidence:chunk-0007:002",
+    "evidence:chunk-0007:003",
+    "evidence:chunk-0007:004",
+    "evidence:chunk-0007:005",
+    "evidence:chunk-0007:006",
+    "evidence:chunk-0009:0004",
+    "evidence:chunk-0019:002",
+    "evidence:chunk-0019:003",
+    "evidence:chunk-0019:004",
+    "evidence:chunk-0150:016",
+    "evidence:chunk-0150:018",
+    "evidence:chunk-0150:019",
+    "evidence:chunk-0150:021",
+    "evidence:chunk-0223:001",
+    "evidence:chunk-0223:008",
+    "evidence:chunk-0223:009",
+    "evidence:chunk-0036:004",
+    "evidence:chunk-0045:001",
+    "evidence:chunk-0081:009",
+    "evidence:chunk-0081:010",
+    "evidence:chunk-0082:001",
+    "evidence:chunk-0082:002",
+    "evidence:chunk-0082:003",
+    "evidence:chunk-0082:005",
+    "evidence:chunk-0082:006",
+    "evidence:chunk-0123:008",
+    "evidence:chunk-0127:011",
+    "evidence:chunk-0127:013",
+    "evidence:chunk-0128:007",
+    "evidence:chunk-0128:011",
+    "evidence:chunk-0298:009",
+    "evidence:chunk-0435:016",
+    "evidence:chunk-0435:017",
+    "evidence:chunk-0435:018",
+    "evidence:chunk-0436:004",
+    "evidence:chunk-0436:005",
+    "evidence:chunk-0373:012",
+    "evidence:chunk-0407:007"
+  ],
+  "gap_items": [
+    {
+      "requirement_id": "faction_society_economy_task.evidence.02.task_system_closure",
+      "status": "partial",
+      "content": "部分任务案例的准入条件、失败追责、奖励来源和行政流程只有间接或缺失证据；已在正文和待核验中标注原文未说明。",
+      "evidence_ids": [
+        "evidence:chunk-0149:010",
+        "evidence:chunk-0153:002",
+        "evidence:chunk-0275:009",
+        "evidence:chunk-0385:004"
+      ]
+    }
+  ],
+  "render_target": "drafts",
+  "overwrite_policy": "draft",
+  "provenance": {
+    "semantic_generation": "agent-produced",
+    "agent_role": "stage2-template-document-agent",
+    "batch_id": "template-batch-0017-5ad68aa79f29",
+    "source_artifacts": [
+      "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\intermediate\\stage2\\task-packets\\template-batch-0017-5ad68aa79f29.json",
+      "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\graphify-out\\graph.json",
+      "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\coverage\\evidence-index.json",
+      "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\requirements\\template-requirements.json"
+    ],
+    "selection_rule": "优先使用 supports_templates[].template_name == 宗门任务体系 的 Stage 1 节点、事件与证据；只在字段覆盖说明中补充同 category 的已知支撑。"
+  }
+}

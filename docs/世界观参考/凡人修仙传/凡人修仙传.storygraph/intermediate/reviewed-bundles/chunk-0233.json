@@ -1,0 +1,4239 @@
+{
+  "chunk_id": "chunk-0233",
+  "source_range": [
+    541313,
+    544197
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "task_packet_id": "chunk-0233:comprehensive_extraction:attempt-001",
+      "chunk_id": "chunk-0233",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "produced_at": "2026-06-23T21:30:00+08:00",
+      "extracted_nodes": [
+        {
+          "id": "node:chunk-0233:character:001",
+          "node_type": "character",
+          "label": "韩立",
+          "aliases": [],
+          "fact_summary": "韩立依仗神风舟和青火瘴在高空隐匿观察千竹教魁梧男子与被困修士的战斗，并判断巨型傀儡虎消耗灵石发动重击。",
+          "evidence_ids": [
+            "evidence:chunk-0233:001",
+            "evidence:chunk-0233:002",
+            "evidence:chunk-0233:003",
+            "evidence:chunk-0233:012"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            541829,
+            544029
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              541829,
+              544029
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0233:character:002",
+          "node_type": "character",
+          "label": "被围困的筑基期修士",
+          "aliases": [
+            "几名修士",
+            "元武国数家门派的弟子"
+          ],
+          "fact_summary": "几名筑基期修士跟踪魁梧男子探查傀儡兽秘密，被反设陷阱困住；他们试图威胁、求和、合力抵挡，最终溃散并有两人被光柱击落。",
+          "evidence_ids": [
+            "evidence:chunk-0233:004",
+            "evidence:chunk-0233:006",
+            "evidence:chunk-0233:010",
+            "evidence:chunk-0233:013",
+            "evidence:chunk-0233:014"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            542405,
+            544194
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              542405,
+              544194
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0233:character:003",
+          "node_type": "character",
+          "label": "魁梧男子",
+          "aliases": [
+            "带着斗篷的魁梧男子",
+            "千竹教的家伙"
+          ],
+          "fact_summary": "魁梧男子在秘店竞卖会后察觉修士跟踪，反设陷阱，指挥傀儡部下和巨型傀儡虎杀人灭口；当前 chunk 未透露其姓名。",
+          "evidence_ids": [
+            "evidence:chunk-0233:005",
+            "evidence:chunk-0233:006",
+            "evidence:chunk-0233:007",
+            "evidence:chunk-0233:008",
+            "evidence:chunk-0233:011",
+            "evidence:chunk-0233:014"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            542667,
+            544194
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              542667,
+              544194
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0233:faction:001",
+          "node_type": "faction",
+          "label": "千竹教",
+          "aliases": [
+            "千竹教总坛"
+          ],
+          "fact_summary": "千竹教是魁梧男子关联的外地势力，他以千竹教总坛回应元武国修仙界威胁；韩立还据傀儡虎消耗灵石推测其财力雄厚。",
+          "evidence_ids": [
+            "evidence:chunk-0233:005",
+            "evidence:chunk-0233:006",
+            "evidence:chunk-0233:012"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            542667,
+            544029
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              542667,
+              544029
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0233:faction:002",
+          "node_type": "faction",
+          "label": "元武国修仙界",
+          "aliases": [
+            "元武国数家门派"
+          ],
+          "fact_summary": "被围困修士自称来自元武国数家门派，试图用得罪整个元武国修仙界的后果迫使对方停手。",
+          "evidence_ids": [
+            "evidence:chunk-0233:004",
+            "evidence:chunk-0233:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            542405,
+            542800
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              542405,
+              542800
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0233:tool:001",
+          "node_type": "tool",
+          "label": "青火瘴",
+          "aliases": [
+            "护身云瘴",
+            "青红色云团"
+          ],
+          "fact_summary": "青火瘴是由蛟目炼制的顶阶法器，能掩饰韩立身形并让接触云雾者缓慢中毒，韩立借它藏入灰云继续观战。",
+          "evidence_ids": [
+            "evidence:chunk-0233:002",
+            "evidence:chunk-0233:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            542040,
+            542265
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              542040,
+              542265
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0233:tool:002",
+          "node_type": "tool",
+          "label": "神风舟",
+          "aliases": [],
+          "fact_summary": "神风舟速度过人，韩立依仗它即使暴露也能及时逃命，因此留在空中观战。",
+          "evidence_ids": [
+            "evidence:chunk-0233:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            541829,
+            541875
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              541829,
+              541875
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0233:tool:003",
+          "node_type": "tool",
+          "label": "巨型傀儡虎",
+          "aliases": [
+            "傀儡虎",
+            "巨虎"
+          ],
+          "fact_summary": "巨型傀儡虎高约五六丈，由魁梧男子坐在虎头上指挥，可从虎口凝聚并射出巨大白色光柱，且需投入中阶火属性灵石再次发动。",
+          "evidence_ids": [
+            "evidence:chunk-0233:008",
+            "evidence:chunk-0233:009",
+            "evidence:chunk-0233:010",
+            "evidence:chunk-0233:011",
+            "evidence:chunk-0233:014"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            543219,
+            544194
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              543219,
+              544194
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0233:tool:004",
+          "node_type": "tool",
+          "label": "傀儡部下",
+          "aliases": [
+            "机关傀儡",
+            "其他傀儡"
+          ],
+          "fact_summary": "魁梧男子拥有傀儡部下，正攻打护罩；巨型傀儡虎蓄力时，其他傀儡立即停手并整齐后退。",
+          "evidence_ids": [
+            "evidence:chunk-0233:007",
+            "evidence:chunk-0233:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            543042,
+            543465
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              543042,
+              543465
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0233:material:001",
+          "node_type": "material",
+          "label": "蛟目",
+          "aliases": [
+            "两颗蛟目"
+          ],
+          "fact_summary": "两颗蛟目是炼制顶阶法器青火瘴的材料。",
+          "evidence_ids": [
+            "evidence:chunk-0233:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            542040,
+            542136
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              542040,
+              542136
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0233:material:002",
+          "node_type": "material",
+          "label": "墨蛟残余丹液",
+          "aliases": [],
+          "fact_summary": "墨蛟残余丹液被掺入青火瘴的青红色迷雾内，使接触者头晕脑胀并缓慢中毒。",
+          "evidence_ids": [
+            "evidence:chunk-0233:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            542040,
+            542136
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              542040,
+              542136
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0233:material:003",
+          "node_type": "material",
+          "label": "中阶火属性灵石",
+          "aliases": [
+            "中阶灵石"
+          ],
+          "fact_summary": "魁梧男子把一颗中阶火属性灵石投入傀儡虎头部暗门，使虎口白光重新亮起；韩立认为傀儡虎全力一击消耗一颗中阶灵石。",
+          "evidence_ids": [
+            "evidence:chunk-0233:011",
+            "evidence:chunk-0233:012"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            543842,
+            544029
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              543842,
+              544029
+            ]
+          }
+        }
+      ],
+      "extracted_edges": [
+        {
+          "id": "edge:chunk-0233:001",
+          "edge_type": "uses_for_hidden_observation",
+          "source": "node:chunk-0233:character:001",
+          "target": "node:chunk-0233:tool:001",
+          "fact_summary": "韩立借青火瘴和灰色低云掩盖行迹，在空中继续观察地面战局。",
+          "evidence_ids": [
+            "evidence:chunk-0233:002",
+            "evidence:chunk-0233:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            542040,
+            542265
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              542040,
+              542265
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0233:002",
+          "edge_type": "relies_on_escape_tool",
+          "source": "node:chunk-0233:character:001",
+          "target": "node:chunk-0233:tool:002",
+          "fact_summary": "韩立因神风舟速度过人，认为即使暴露也能逃命。",
+          "evidence_ids": [
+            "evidence:chunk-0233:001"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            541829,
+            541875
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              541829,
+              541875
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0233:003",
+          "edge_type": "commands",
+          "source": "node:chunk-0233:character:003",
+          "target": "node:chunk-0233:tool:003",
+          "fact_summary": "魁梧男子坐在巨型傀儡虎头上，拍虎头并投入灵石指挥其再次发动光柱攻击。",
+          "evidence_ids": [
+            "evidence:chunk-0233:008",
+            "evidence:chunk-0233:011",
+            "evidence:chunk-0233:014"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            543219,
+            544194
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              543219,
+              544194
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0233:004",
+          "edge_type": "commands",
+          "source": "node:chunk-0233:character:003",
+          "target": "node:chunk-0233:tool:004",
+          "fact_summary": "魁梧男子称修士们连他的傀儡部下都打不赢，巨型傀儡虎蓄力时其他傀儡随之停手后退。",
+          "evidence_ids": [
+            "evidence:chunk-0233:007",
+            "evidence:chunk-0233:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            543042,
+            543465
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              543042,
+              543465
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0233:005",
+          "edge_type": "associated_with_faction",
+          "source": "node:chunk-0233:character:003",
+          "target": "node:chunk-0233:faction:001",
+          "fact_summary": "魁梧男子以千竹教总坛回应对方威胁，韩立也将其称为千竹教的家伙。",
+          "evidence_ids": [
+            "evidence:chunk-0233:005",
+            "evidence:chunk-0233:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            542667,
+            542977
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              542667,
+              542977
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0233:006",
+          "edge_type": "claims_affiliation",
+          "source": "node:chunk-0233:character:002",
+          "target": "node:chunk-0233:faction:002",
+          "fact_summary": "被围困修士自称来自元武国数家门派，试图借元武国修仙界施压。",
+          "evidence_ids": [
+            "evidence:chunk-0233:004"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            542405,
+            542514
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              542405,
+              542514
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0233:007",
+          "edge_type": "powered_by_consumption",
+          "source": "node:chunk-0233:tool:003",
+          "target": "node:chunk-0233:material:003",
+          "fact_summary": "魁梧男子把中阶火属性灵石投入傀儡虎头部暗门后，虎口白光再次亮起。",
+          "evidence_ids": [
+            "evidence:chunk-0233:011",
+            "evidence:chunk-0233:012"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            543842,
+            544029
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              543842,
+              544029
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0233:008",
+          "edge_type": "made_from",
+          "source": "node:chunk-0233:tool:001",
+          "target": "node:chunk-0233:material:001",
+          "fact_summary": "青火瘴由两颗蛟目炼制而成。",
+          "evidence_ids": [
+            "evidence:chunk-0233:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            542040,
+            542136
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              542040,
+              542136
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0233:009",
+          "edge_type": "contains_toxic_material",
+          "source": "node:chunk-0233:tool:001",
+          "target": "node:chunk-0233:material:002",
+          "fact_summary": "青火瘴的青红色迷雾掺入墨蛟残余丹液，可让接触者缓慢中毒。",
+          "evidence_ids": [
+            "evidence:chunk-0233:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            542040,
+            542136
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              542040,
+              542136
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0233:010",
+          "edge_type": "kills_with_puppet_attack",
+          "source": "node:chunk-0233:character:003",
+          "target": "node:chunk-0233:character:002",
+          "fact_summary": "魁梧男子指挥巨虎用巨大光柱扫射逃散修士，其中两人被击落。",
+          "evidence_ids": [
+            "evidence:chunk-0233:014"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            544128,
+            544194
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              544128,
+              544194
+            ]
+          }
+        }
+      ],
+      "extracted_events": [
+        {
+          "id": "event:chunk-0233:001",
+          "event_type": "hidden_observation_event",
+          "label": "韩立借青火瘴藏入灰云观战",
+          "fact_summary": "韩立依仗神风舟速度和青火瘴隐匿能力，连人带云瘴钻入灰色低云，继续观察地面争斗。",
+          "participants": [
+            "node:chunk-0233:character:001",
+            "node:chunk-0233:tool:002",
+            "node:chunk-0233:tool:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0233:001",
+            "evidence:chunk-0233:002",
+            "evidence:chunk-0233:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            541829,
+            542265
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              541829,
+              542265
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0233:002",
+          "event_type": "ambush_and_silencing_dialogue",
+          "label": "魁梧男子确认反设陷阱并意图灭口",
+          "fact_summary": "被围困修士以元武国修仙界威胁求停手；魁梧男子指出他们跟踪自己、自己来自千竹教，并表示要杀人灭口。",
+          "participants": [
+            "node:chunk-0233:character:003",
+            "node:chunk-0233:character:002",
+            "node:chunk-0233:faction:001",
+            "node:chunk-0233:faction:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0233:004",
+            "evidence:chunk-0233:005",
+            "evidence:chunk-0233:006",
+            "evidence:chunk-0233:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            542405,
+            543125
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              542405,
+              543125
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0233:003",
+          "event_type": "giant_puppet_tiger_attack",
+          "label": "巨型傀儡虎现身并以白色光柱压制护罩",
+          "fact_summary": "巨型傀儡虎从树林中现身，魁梧男子坐在虎头上指挥其凝聚白光并发射巨大光柱，几名修士合力借护罩暂时僵持。",
+          "participants": [
+            "node:chunk-0233:character:003",
+            "node:chunk-0233:tool:003",
+            "node:chunk-0233:character:002",
+            "node:chunk-0233:tool:004"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0233:008",
+            "evidence:chunk-0233:009",
+            "evidence:chunk-0233:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            543219,
+            543611
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              543219,
+              543611
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0233:004",
+          "event_type": "puppet_recharge_event",
+          "label": "魁梧男子投入中阶火属性灵石重启虎口白光",
+          "fact_summary": "光柱熄灭后，魁梧男子打开虎头暗门投入中阶火属性灵石，使虎口白光再次亮起。",
+          "participants": [
+            "node:chunk-0233:character:003",
+            "node:chunk-0233:tool:003",
+            "node:chunk-0233:material:003"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0233:011",
+            "evidence:chunk-0233:012"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            543842,
+            544029
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              543842,
+              544029
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0233:005",
+          "event_type": "routed_cultivators_event",
+          "label": "被困修士溃逃后两人被巨虎光柱击落",
+          "fact_summary": "几名修士在巨大威胁下溃散逃跑；魁梧男子指挥巨虎两次发射巨大光柱，将其中两人扫射下来。",
+          "participants": [
+            "node:chunk-0233:character:003",
+            "node:chunk-0233:tool:003",
+            "node:chunk-0233:character:002"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0233:013",
+            "evidence:chunk-0233:014",
+            "evidence:chunk-0233:015"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            541490,
+            544194
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              541490,
+              544194
+            ]
+          }
+        }
+      ],
+      "extracted_evidence": [
+        {
+          "evidence_id": "evidence:chunk-0233:001",
+          "chunk_id": "chunk-0233",
+          "source_range": [
+            541829,
+            541875
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              541829,
+              541875
+            ]
+          },
+          "excerpt": "于是自恃刚到手的神风舟速度过人。即使被发现了也能来得及逃命。韩立就仍停留在空中注视着这一切！",
+          "fact_summary": "韩立依仗神风舟速度，认为即使被发现也能逃命，因此继续停在空中观察地面战局。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0233:001"
+        },
+        {
+          "evidence_id": "evidence:chunk-0233:002",
+          "chunk_id": "chunk-0233",
+          "source_range": [
+            542040,
+            542136
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              542040,
+              542136
+            ]
+          },
+          "excerpt": "更何况两颗蛟目所炼制的顶阶法器“青火瘴”，不但有掩饰身形，让人无法抓住准确位置地奇效。而且这些青红色迷雾中，还掺入了墨蛟的残余丹液在其内，可让不经意接触此云雾的人，头晕脑胀，缓缓中毒而不自知！",
+          "fact_summary": "青火瘴由两颗蛟目炼制，能掩饰身形、干扰定位，并因掺入墨蛟残余丹液而具有缓慢中毒效果。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0233:002"
+        },
+        {
+          "evidence_id": "evidence:chunk-0233:003",
+          "chunk_id": "chunk-0233",
+          "source_range": [
+            542169,
+            542265
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              542169,
+              542265
+            ]
+          },
+          "excerpt": "于是情急之下，韩立忽然看见了在自己上方的不远处。竟有一朵灰色的低云漂浮在那里。顿时心中大喜，立即缓缓向其靠拢了去。最后。干脆将连人带护身云瘴一齐钻入了其中。\n　　这下，韩立的行迹彻底掩盖住了！",
+          "fact_summary": "韩立把自己和护身云瘴一起藏入灰色低云，彻底掩盖行迹后继续观察。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "动态事件与机会点",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0233:003"
+        },
+        {
+          "evidence_id": "evidence:chunk-0233:004",
+          "chunk_id": "chunk-0233",
+          "source_range": [
+            542405,
+            542514
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              542405,
+              542514
+            ]
+          },
+          "excerpt": "韩立正在暗自摇头之际，护罩内的一位较年长的修士似乎也意识到了不妥，就忽然间冲着树林内大声喊道：“阁下真的要斩尽杀绝吗？我等可是元武国数家门派的弟子，你杀了我们可就相当于同时得罪了整个元武国修仙界，就不怕招惹杀身之祸？”",
+          "fact_summary": "被围困修士中一名较年长者试图以元武国数家门派和元武国修仙界的报复风险劝阻对方。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0233:004"
+        },
+        {
+          "evidence_id": "evidence:chunk-0233:005",
+          "chunk_id": "chunk-0233",
+          "source_range": [
+            542667,
+            542800
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              542667,
+              542800
+            ]
+          },
+          "excerpt": "“哼！发誓？这一套我可不信！你们鬼鬼祟祟的跟在我身后这么长的时间。还说没有恶意，难道还想请我吃饭不成？再者说，我本就不是你们元武国的人，就算真得罪了你们国家的修仙界，那又怎样？难道还想跟我回千竹教总坛讨要公道去吗？若真是如此的话，某家倒真佩服你们师门长辈的胆量了！”",
+          "fact_summary": "树林中的魁梧男子不信修士们保密誓言，指出他们一路跟踪，并以千竹教总坛回应元武国修仙界威胁。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0233:005"
+        },
+        {
+          "evidence_id": "evidence:chunk-0233:006",
+          "chunk_id": "chunk-0233",
+          "source_range": [
+            542854,
+            542977
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              542854,
+              542977
+            ]
+          },
+          "excerpt": "听声音没错，绝对是在那竞卖会上，买走了傀儡机关兽的魁梧男子！听他们的对话，明显是这几人从竞卖会一结束后，就偷偷跟上了此人，妄想采用某些不光彩的手法，来弄明白傀儡兽的秘密！谁知道这个千竹教的家伙早已察觉，反设下了陷进，一下将他们几人活活困在了这儿。",
+          "fact_summary": "韩立从声音辨认出对方是竞卖会上买走傀儡机关兽的魁梧男子，并判断几名修士跟踪探秘却被其反设陷阱困住。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "拍卖坊市与交易",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0233:006"
+        },
+        {
+          "evidence_id": "evidence:chunk-0233:007",
+          "chunk_id": "chunk-0233",
+          "source_range": [
+            543042,
+            543125
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              543042,
+              543125
+            ]
+          },
+          "excerpt": "“跟我拼命，你们有这资格吗！连我的傀儡部下都打不赢，还谈什么拼命！我也和你们几位玩够了，还是及早送你们上路吧！”魁梧男子的声音还是如此的生硬，但话里的杀机却流露无疑！",
+          "fact_summary": "魁梧男子称修士们连傀儡部下都打不赢，明确表示要杀死他们。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0233:007"
+        },
+        {
+          "evidence_id": "evidence:chunk-0233:008",
+          "chunk_id": "chunk-0233",
+          "source_range": [
+            543219,
+            543313
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              543219,
+              543313
+            ]
+          },
+          "excerpt": "脚步声虽然很沉重，但速度却很快，眨眼间就来到了树林边上的位置，这下所有人都看清楚了！一个高约五六丈的巨型傀儡虎，从树林边上一挤就出来了。而那位还带着斗篷的魁梧男子，则就坐在巨大的虎头之上。",
+          "fact_summary": "高约五六丈的巨型傀儡虎从树林中出现，带斗篷的魁梧男子坐在虎头之上。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0233:008"
+        },
+        {
+          "evidence_id": "evidence:chunk-0233:009",
+          "chunk_id": "chunk-0233",
+          "source_range": [
+            543399,
+            543465
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              543399,
+              543465
+            ]
+          },
+          "excerpt": "顿时让身下的傀儡虎，慢慢的张开了下颚，巨口中开始有白光点点凝聚了起来！而那些正攻打护罩的其他傀儡，则立即纷纷停手，整齐的后退了几步！",
+          "fact_summary": "魁梧男子一拍虎头后，傀儡虎开始在口中凝聚白光，其他傀儡停手后退。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0233:009"
+        },
+        {
+          "evidence_id": "evidence:chunk-0233:010",
+          "chunk_id": "chunk-0233",
+          "source_range": [
+            543557,
+            543611
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              543557,
+              543611
+            ]
+          },
+          "excerpt": "巨大的白色光柱重新出现了！这一次超级光柱在几名修士的合力下，竟借助护罩硬生生的抵挡住了冲击，一时成僵持之势！",
+          "fact_summary": "巨型傀儡虎再次射出巨大白色光柱，几名修士合力借护罩暂时抵挡住冲击。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0233:010"
+        },
+        {
+          "evidence_id": "evidence:chunk-0233:011",
+          "chunk_id": "chunk-0233",
+          "source_range": [
+            543842,
+            543932
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              543842,
+              543932
+            ]
+          },
+          "excerpt": "可是，魁梧男子见此，冷笑了一声。突然一揭虎头脑门上的一个暗门，然后一扬手，一个中阶的火属性灵石，抛了进去。接着虎口中原本熄灭的白光，再次亮了起来让对面看到这一幕的修士们，彻底惊呆！",
+          "fact_summary": "魁梧男子打开傀儡虎头部暗门并投入中阶火属性灵石，使原本熄灭的虎口白光再次亮起。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0233:011"
+        },
+        {
+          "evidence_id": "evidence:chunk-0233:012",
+          "chunk_id": "chunk-0233",
+          "source_range": [
+            543935,
+            544029
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              543935,
+              544029
+            ]
+          },
+          "excerpt": "而韩立更是看得咋了咋嘴，对这位傀儡虎全力一击就要消耗中阶灵石一颗的败家举动。韩立是无话可说了！这哪是斗法，分明是拿一堆堆的灵石硬砸这些修士。看来远处他国的千竹教还真的富得冒油，灵石大把啊！",
+          "fact_summary": "韩立认为傀儡虎每次全力一击要消耗一颗中阶灵石，并据此感叹千竹教灵石充足。",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "材料分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0233:012"
+        },
+        {
+          "evidence_id": "evidence:chunk-0233:013",
+          "chunk_id": "chunk-0233",
+          "source_range": [
+            544032,
+            544072
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              544032,
+              544072
+            ]
+          },
+          "excerpt": "韩立正胡思乱想之际，那几位原先还能齐心协力的修士，终于在巨大威胁下，一哄而散了。",
+          "fact_summary": "几名原本还能齐心合力的修士在巨大威胁下溃散逃跑。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0233:013"
+        },
+        {
+          "evidence_id": "evidence:chunk-0233:014",
+          "chunk_id": "chunk-0233",
+          "source_range": [
+            544128,
+            544194
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              544128,
+              544194
+            ]
+          },
+          "excerpt": "果然，魁梧男子指挥着巨虎，让其一前一后，分别两口将其中的两人，用巨大光柱扫射了下来。其下场和第一位差不多，同样的惨不忍睹和浑身焦黑。",
+          "fact_summary": "魁梧男子指挥巨虎先后两次发射巨大光柱，将逃散修士中的两人扫射下来，结局惨重且浑身焦黑。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "冲突事件分析",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0233:014"
+        },
+        {
+          "evidence_id": "evidence:chunk-0233:015",
+          "chunk_id": "chunk-0233",
+          "source_range": [
+            541490,
+            541538
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              541490,
+              541538
+            ]
+          },
+          "excerpt": "其身上这么多防护法术，还有手持防御的法器，竟然还没能没抵挡住光柱丝毫，这怎能不让他们心惊肉跳呢！",
+          "fact_summary": "先前逃跑者的防护法术和防御法器都未能抵挡光柱，使剩余修士心惊。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0233:015"
+        }
+      ],
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "uncertainties": [
+        {
+          "id": "uncertainty:chunk-0233:001",
+          "kind": "masked_man_name_not_revealed",
+          "fact_summary": "当前 chunk 只把操纵傀儡者称为魁梧男子、带斗篷的魁梧男子或千竹教的家伙，没有明示姓名，不能补写后文身份。",
+          "evidence_ids": [
+            "evidence:chunk-0233:005",
+            "evidence:chunk-0233:006",
+            "evidence:chunk-0233:008"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            542667,
+            543313
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              542667,
+              543313
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0233:002",
+          "kind": "puppet_tiger_cost_from_hanli_observation",
+          "fact_summary": "傀儡虎全力一击消耗一颗中阶灵石是韩立观看后得出的判断；当前 chunk 展示了投入灵石重启白光，但未给出正式操作说明。",
+          "evidence_ids": [
+            "evidence:chunk-0233:011",
+            "evidence:chunk-0233:012"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            543842,
+            544029
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              543842,
+              544029
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0233:003",
+          "kind": "qianzhu_wealth_is_subjective_judgment",
+          "fact_summary": "千竹教富得冒油、灵石大把是韩立基于傀儡虎消耗灵石的感叹，宜作为视角性判断而非独立财务事实。",
+          "evidence_ids": [
+            "evidence:chunk-0233:012"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "势力设定",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            543935,
+            544029
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              543935,
+              544029
+            ]
+          }
+        }
+      ],
+      "rejected_candidates": [
+        {
+          "id": "rejected:chunk-0233:001",
+          "candidate": "先前逃跑者",
+          "reason": "此人只作为被光柱击杀的前车之鉴被提及，当前 chunk 未给出姓名、门派或独立后续行动；合并到被围困修士群体证据中，不单独建节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "not_found_in_source",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "rejected"
+            }
+          ],
+          "source_range": [
+            541490,
+            541538
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              541490,
+              541538
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0233:002",
+          "candidate": "灰色低云",
+          "reason": "灰色低云只是韩立临时借用的自然遮蔽物，没有专属名称、设施功能或后续机制；不建地点或物品节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            542169,
+            542265
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              542169,
+              542265
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0233:003",
+          "candidate": "护罩",
+          "reason": "护罩在本段只是几名修士合力防御的泛称，未给出名称、来源或法器归属；保留为战斗事件背景，不单独建具名物品节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "法宝分析",
+              "requirement_id": "resource_item_craft_profession",
+              "requirement_status": "not_found_in_source",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "rejected"
+            }
+          ],
+          "source_range": [
+            543557,
+            543611
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0233",
+            "source_path": "intermediate/chunks/chunk-0233.txt",
+            "source_range": [
+              543557,
+              543611
+            ]
+          }
+        }
+      ],
+      "structured_failures": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0233/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "id": "node:chunk-0233:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立依仗神风舟和青火瘴在高空隐匿观察千竹教魁梧男子与被困修士的战斗，并判断巨型傀儡虎消耗灵石发动重击。",
+      "evidence_ids": [
+        "evidence:chunk-0233:001",
+        "evidence:chunk-0233:002",
+        "evidence:chunk-0233:003",
+        "evidence:chunk-0233:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        541829,
+        544029
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          541829,
+          544029
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0233:character:002",
+      "node_type": "character",
+      "label": "被围困的筑基期修士",
+      "aliases": [
+        "几名修士",
+        "元武国数家门派的弟子"
+      ],
+      "fact_summary": "几名筑基期修士跟踪魁梧男子探查傀儡兽秘密，被反设陷阱困住；他们试图威胁、求和、合力抵挡，最终溃散并有两人被光柱击落。",
+      "evidence_ids": [
+        "evidence:chunk-0233:004",
+        "evidence:chunk-0233:006",
+        "evidence:chunk-0233:010",
+        "evidence:chunk-0233:013",
+        "evidence:chunk-0233:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        542405,
+        544194
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          542405,
+          544194
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0233:character:003",
+      "node_type": "character",
+      "label": "魁梧男子",
+      "aliases": [
+        "带着斗篷的魁梧男子",
+        "千竹教的家伙"
+      ],
+      "fact_summary": "魁梧男子在秘店竞卖会后察觉修士跟踪，反设陷阱，指挥傀儡部下和巨型傀儡虎杀人灭口；当前 chunk 未透露其姓名。",
+      "evidence_ids": [
+        "evidence:chunk-0233:005",
+        "evidence:chunk-0233:006",
+        "evidence:chunk-0233:007",
+        "evidence:chunk-0233:008",
+        "evidence:chunk-0233:011",
+        "evidence:chunk-0233:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        542667,
+        544194
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          542667,
+          544194
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0233:faction:001",
+      "node_type": "faction",
+      "label": "千竹教",
+      "aliases": [
+        "千竹教总坛"
+      ],
+      "fact_summary": "千竹教是魁梧男子关联的外地势力，他以千竹教总坛回应元武国修仙界威胁；韩立还据傀儡虎消耗灵石推测其财力雄厚。",
+      "evidence_ids": [
+        "evidence:chunk-0233:005",
+        "evidence:chunk-0233:006",
+        "evidence:chunk-0233:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        542667,
+        544029
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          542667,
+          544029
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0233:faction:002",
+      "node_type": "faction",
+      "label": "元武国修仙界",
+      "aliases": [
+        "元武国数家门派"
+      ],
+      "fact_summary": "被围困修士自称来自元武国数家门派，试图用得罪整个元武国修仙界的后果迫使对方停手。",
+      "evidence_ids": [
+        "evidence:chunk-0233:004",
+        "evidence:chunk-0233:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        542405,
+        542800
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          542405,
+          542800
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0233:tool:001",
+      "node_type": "tool",
+      "label": "青火瘴",
+      "aliases": [
+        "护身云瘴",
+        "青红色云团"
+      ],
+      "fact_summary": "青火瘴是由蛟目炼制的顶阶法器，能掩饰韩立身形并让接触云雾者缓慢中毒，韩立借它藏入灰云继续观战。",
+      "evidence_ids": [
+        "evidence:chunk-0233:002",
+        "evidence:chunk-0233:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        542040,
+        542265
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          542040,
+          542265
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0233:tool:002",
+      "node_type": "tool",
+      "label": "神风舟",
+      "aliases": [],
+      "fact_summary": "神风舟速度过人，韩立依仗它即使暴露也能及时逃命，因此留在空中观战。",
+      "evidence_ids": [
+        "evidence:chunk-0233:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        541829,
+        541875
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          541829,
+          541875
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0233:tool:003",
+      "node_type": "tool",
+      "label": "巨型傀儡虎",
+      "aliases": [
+        "傀儡虎",
+        "巨虎"
+      ],
+      "fact_summary": "巨型傀儡虎高约五六丈，由魁梧男子坐在虎头上指挥，可从虎口凝聚并射出巨大白色光柱，且需投入中阶火属性灵石再次发动。",
+      "evidence_ids": [
+        "evidence:chunk-0233:008",
+        "evidence:chunk-0233:009",
+        "evidence:chunk-0233:010",
+        "evidence:chunk-0233:011",
+        "evidence:chunk-0233:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        543219,
+        544194
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          543219,
+          544194
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0233:tool:004",
+      "node_type": "tool",
+      "label": "傀儡部下",
+      "aliases": [
+        "机关傀儡",
+        "其他傀儡"
+      ],
+      "fact_summary": "魁梧男子拥有傀儡部下，正攻打护罩；巨型傀儡虎蓄力时，其他傀儡立即停手并整齐后退。",
+      "evidence_ids": [
+        "evidence:chunk-0233:007",
+        "evidence:chunk-0233:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        543042,
+        543465
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          543042,
+          543465
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0233:material:001",
+      "node_type": "material",
+      "label": "蛟目",
+      "aliases": [
+        "两颗蛟目"
+      ],
+      "fact_summary": "两颗蛟目是炼制顶阶法器青火瘴的材料。",
+      "evidence_ids": [
+        "evidence:chunk-0233:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        542040,
+        542136
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          542040,
+          542136
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0233:material:002",
+      "node_type": "material",
+      "label": "墨蛟残余丹液",
+      "aliases": [],
+      "fact_summary": "墨蛟残余丹液被掺入青火瘴的青红色迷雾内，使接触者头晕脑胀并缓慢中毒。",
+      "evidence_ids": [
+        "evidence:chunk-0233:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        542040,
+        542136
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          542040,
+          542136
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0233:material:003",
+      "node_type": "material",
+      "label": "中阶火属性灵石",
+      "aliases": [
+        "中阶灵石"
+      ],
+      "fact_summary": "魁梧男子把一颗中阶火属性灵石投入傀儡虎头部暗门，使虎口白光重新亮起；韩立认为傀儡虎全力一击消耗一颗中阶灵石。",
+      "evidence_ids": [
+        "evidence:chunk-0233:011",
+        "evidence:chunk-0233:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        543842,
+        544029
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          543842,
+          544029
+        ]
+      }
+    }
+  ],
+  "normalized_edges": [
+    {
+      "id": "edge:chunk-0233:001",
+      "edge_type": "uses_for_hidden_observation",
+      "source": "node:chunk-0233:character:001",
+      "target": "node:chunk-0233:tool:001",
+      "fact_summary": "韩立借青火瘴和灰色低云掩盖行迹，在空中继续观察地面战局。",
+      "evidence_ids": [
+        "evidence:chunk-0233:002",
+        "evidence:chunk-0233:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        542040,
+        542265
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          542040,
+          542265
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0233:002",
+      "edge_type": "relies_on_escape_tool",
+      "source": "node:chunk-0233:character:001",
+      "target": "node:chunk-0233:tool:002",
+      "fact_summary": "韩立因神风舟速度过人，认为即使暴露也能逃命。",
+      "evidence_ids": [
+        "evidence:chunk-0233:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        541829,
+        541875
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          541829,
+          541875
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0233:003",
+      "edge_type": "commands",
+      "source": "node:chunk-0233:character:003",
+      "target": "node:chunk-0233:tool:003",
+      "fact_summary": "魁梧男子坐在巨型傀儡虎头上，拍虎头并投入灵石指挥其再次发动光柱攻击。",
+      "evidence_ids": [
+        "evidence:chunk-0233:008",
+        "evidence:chunk-0233:011",
+        "evidence:chunk-0233:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        543219,
+        544194
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          543219,
+          544194
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0233:004",
+      "edge_type": "commands",
+      "source": "node:chunk-0233:character:003",
+      "target": "node:chunk-0233:tool:004",
+      "fact_summary": "魁梧男子称修士们连他的傀儡部下都打不赢，巨型傀儡虎蓄力时其他傀儡随之停手后退。",
+      "evidence_ids": [
+        "evidence:chunk-0233:007",
+        "evidence:chunk-0233:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        543042,
+        543465
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          543042,
+          543465
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0233:005",
+      "edge_type": "associated_with_faction",
+      "source": "node:chunk-0233:character:003",
+      "target": "node:chunk-0233:faction:001",
+      "fact_summary": "魁梧男子以千竹教总坛回应对方威胁，韩立也将其称为千竹教的家伙。",
+      "evidence_ids": [
+        "evidence:chunk-0233:005",
+        "evidence:chunk-0233:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        542667,
+        542977
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          542667,
+          542977
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0233:006",
+      "edge_type": "claims_affiliation",
+      "source": "node:chunk-0233:character:002",
+      "target": "node:chunk-0233:faction:002",
+      "fact_summary": "被围困修士自称来自元武国数家门派，试图借元武国修仙界施压。",
+      "evidence_ids": [
+        "evidence:chunk-0233:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        542405,
+        542514
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          542405,
+          542514
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0233:007",
+      "edge_type": "powered_by_consumption",
+      "source": "node:chunk-0233:tool:003",
+      "target": "node:chunk-0233:material:003",
+      "fact_summary": "魁梧男子把中阶火属性灵石投入傀儡虎头部暗门后，虎口白光再次亮起。",
+      "evidence_ids": [
+        "evidence:chunk-0233:011",
+        "evidence:chunk-0233:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        543842,
+        544029
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          543842,
+          544029
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0233:008",
+      "edge_type": "made_from",
+      "source": "node:chunk-0233:tool:001",
+      "target": "node:chunk-0233:material:001",
+      "fact_summary": "青火瘴由两颗蛟目炼制而成。",
+      "evidence_ids": [
+        "evidence:chunk-0233:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        542040,
+        542136
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          542040,
+          542136
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0233:009",
+      "edge_type": "contains_toxic_material",
+      "source": "node:chunk-0233:tool:001",
+      "target": "node:chunk-0233:material:002",
+      "fact_summary": "青火瘴的青红色迷雾掺入墨蛟残余丹液，可让接触者缓慢中毒。",
+      "evidence_ids": [
+        "evidence:chunk-0233:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        542040,
+        542136
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          542040,
+          542136
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0233:010",
+      "edge_type": "kills_with_puppet_attack",
+      "source": "node:chunk-0233:character:003",
+      "target": "node:chunk-0233:character:002",
+      "fact_summary": "魁梧男子指挥巨虎用巨大光柱扫射逃散修士，其中两人被击落。",
+      "evidence_ids": [
+        "evidence:chunk-0233:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        544128,
+        544194
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          544128,
+          544194
+        ]
+      }
+    }
+  ],
+  "normalized_events": [
+    {
+      "id": "event:chunk-0233:001",
+      "event_type": "hidden_observation_event",
+      "label": "韩立借青火瘴藏入灰云观战",
+      "fact_summary": "韩立依仗神风舟速度和青火瘴隐匿能力，连人带云瘴钻入灰色低云，继续观察地面争斗。",
+      "participants": [
+        "node:chunk-0233:character:001",
+        "node:chunk-0233:tool:002",
+        "node:chunk-0233:tool:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0233:001",
+        "evidence:chunk-0233:002",
+        "evidence:chunk-0233:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        541829,
+        542265
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          541829,
+          542265
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0233:002",
+      "event_type": "ambush_and_silencing_dialogue",
+      "label": "魁梧男子确认反设陷阱并意图灭口",
+      "fact_summary": "被围困修士以元武国修仙界威胁求停手；魁梧男子指出他们跟踪自己、自己来自千竹教，并表示要杀人灭口。",
+      "participants": [
+        "node:chunk-0233:character:003",
+        "node:chunk-0233:character:002",
+        "node:chunk-0233:faction:001",
+        "node:chunk-0233:faction:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0233:004",
+        "evidence:chunk-0233:005",
+        "evidence:chunk-0233:006",
+        "evidence:chunk-0233:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        542405,
+        543125
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          542405,
+          543125
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0233:003",
+      "event_type": "giant_puppet_tiger_attack",
+      "label": "巨型傀儡虎现身并以白色光柱压制护罩",
+      "fact_summary": "巨型傀儡虎从树林中现身，魁梧男子坐在虎头上指挥其凝聚白光并发射巨大光柱，几名修士合力借护罩暂时僵持。",
+      "participants": [
+        "node:chunk-0233:character:003",
+        "node:chunk-0233:tool:003",
+        "node:chunk-0233:character:002",
+        "node:chunk-0233:tool:004"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0233:008",
+        "evidence:chunk-0233:009",
+        "evidence:chunk-0233:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        543219,
+        543611
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          543219,
+          543611
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0233:004",
+      "event_type": "puppet_recharge_event",
+      "label": "魁梧男子投入中阶火属性灵石重启虎口白光",
+      "fact_summary": "光柱熄灭后，魁梧男子打开虎头暗门投入中阶火属性灵石，使虎口白光再次亮起。",
+      "participants": [
+        "node:chunk-0233:character:003",
+        "node:chunk-0233:tool:003",
+        "node:chunk-0233:material:003"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0233:011",
+        "evidence:chunk-0233:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        543842,
+        544029
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          543842,
+          544029
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0233:005",
+      "event_type": "routed_cultivators_event",
+      "label": "被困修士溃逃后两人被巨虎光柱击落",
+      "fact_summary": "几名修士在巨大威胁下溃散逃跑；魁梧男子指挥巨虎两次发射巨大光柱，将其中两人扫射下来。",
+      "participants": [
+        "node:chunk-0233:character:003",
+        "node:chunk-0233:tool:003",
+        "node:chunk-0233:character:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0233:013",
+        "evidence:chunk-0233:014",
+        "evidence:chunk-0233:015"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        541490,
+        544194
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          541490,
+          544194
+        ]
+      }
+    }
+  ],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0233:001",
+      "chunk_id": "chunk-0233",
+      "source_range": [
+        541829,
+        541875
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          541829,
+          541875
+        ]
+      },
+      "excerpt": "于是自恃刚到手的神风舟速度过人。即使被发现了也能来得及逃命。韩立就仍停留在空中注视着这一切！",
+      "fact_summary": "韩立依仗神风舟速度，认为即使被发现也能逃命，因此继续停在空中观察地面战局。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0233:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0233:002",
+      "chunk_id": "chunk-0233",
+      "source_range": [
+        542040,
+        542136
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          542040,
+          542136
+        ]
+      },
+      "excerpt": "更何况两颗蛟目所炼制的顶阶法器“青火瘴”，不但有掩饰身形，让人无法抓住准确位置地奇效。而且这些青红色迷雾中，还掺入了墨蛟的残余丹液在其内，可让不经意接触此云雾的人，头晕脑胀，缓缓中毒而不自知！",
+      "fact_summary": "青火瘴由两颗蛟目炼制，能掩饰身形、干扰定位，并因掺入墨蛟残余丹液而具有缓慢中毒效果。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0233:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0233:003",
+      "chunk_id": "chunk-0233",
+      "source_range": [
+        542169,
+        542265
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          542169,
+          542265
+        ]
+      },
+      "excerpt": "于是情急之下，韩立忽然看见了在自己上方的不远处。竟有一朵灰色的低云漂浮在那里。顿时心中大喜，立即缓缓向其靠拢了去。最后。干脆将连人带护身云瘴一齐钻入了其中。\n　　这下，韩立的行迹彻底掩盖住了！",
+      "fact_summary": "韩立把自己和护身云瘴一起藏入灰色低云，彻底掩盖行迹后继续观察。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0233:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0233:004",
+      "chunk_id": "chunk-0233",
+      "source_range": [
+        542405,
+        542514
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          542405,
+          542514
+        ]
+      },
+      "excerpt": "韩立正在暗自摇头之际，护罩内的一位较年长的修士似乎也意识到了不妥，就忽然间冲着树林内大声喊道：“阁下真的要斩尽杀绝吗？我等可是元武国数家门派的弟子，你杀了我们可就相当于同时得罪了整个元武国修仙界，就不怕招惹杀身之祸？”",
+      "fact_summary": "被围困修士中一名较年长者试图以元武国数家门派和元武国修仙界的报复风险劝阻对方。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0233:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0233:005",
+      "chunk_id": "chunk-0233",
+      "source_range": [
+        542667,
+        542800
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          542667,
+          542800
+        ]
+      },
+      "excerpt": "“哼！发誓？这一套我可不信！你们鬼鬼祟祟的跟在我身后这么长的时间。还说没有恶意，难道还想请我吃饭不成？再者说，我本就不是你们元武国的人，就算真得罪了你们国家的修仙界，那又怎样？难道还想跟我回千竹教总坛讨要公道去吗？若真是如此的话，某家倒真佩服你们师门长辈的胆量了！”",
+      "fact_summary": "树林中的魁梧男子不信修士们保密誓言，指出他们一路跟踪，并以千竹教总坛回应元武国修仙界威胁。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0233:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0233:006",
+      "chunk_id": "chunk-0233",
+      "source_range": [
+        542854,
+        542977
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          542854,
+          542977
+        ]
+      },
+      "excerpt": "听声音没错，绝对是在那竞卖会上，买走了傀儡机关兽的魁梧男子！听他们的对话，明显是这几人从竞卖会一结束后，就偷偷跟上了此人，妄想采用某些不光彩的手法，来弄明白傀儡兽的秘密！谁知道这个千竹教的家伙早已察觉，反设下了陷进，一下将他们几人活活困在了这儿。",
+      "fact_summary": "韩立从声音辨认出对方是竞卖会上买走傀儡机关兽的魁梧男子，并判断几名修士跟踪探秘却被其反设陷阱困住。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "拍卖坊市与交易",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0233:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0233:007",
+      "chunk_id": "chunk-0233",
+      "source_range": [
+        543042,
+        543125
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          543042,
+          543125
+        ]
+      },
+      "excerpt": "“跟我拼命，你们有这资格吗！连我的傀儡部下都打不赢，还谈什么拼命！我也和你们几位玩够了，还是及早送你们上路吧！”魁梧男子的声音还是如此的生硬，但话里的杀机却流露无疑！",
+      "fact_summary": "魁梧男子称修士们连傀儡部下都打不赢，明确表示要杀死他们。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0233:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0233:008",
+      "chunk_id": "chunk-0233",
+      "source_range": [
+        543219,
+        543313
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          543219,
+          543313
+        ]
+      },
+      "excerpt": "脚步声虽然很沉重，但速度却很快，眨眼间就来到了树林边上的位置，这下所有人都看清楚了！一个高约五六丈的巨型傀儡虎，从树林边上一挤就出来了。而那位还带着斗篷的魁梧男子，则就坐在巨大的虎头之上。",
+      "fact_summary": "高约五六丈的巨型傀儡虎从树林中出现，带斗篷的魁梧男子坐在虎头之上。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0233:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0233:009",
+      "chunk_id": "chunk-0233",
+      "source_range": [
+        543399,
+        543465
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          543399,
+          543465
+        ]
+      },
+      "excerpt": "顿时让身下的傀儡虎，慢慢的张开了下颚，巨口中开始有白光点点凝聚了起来！而那些正攻打护罩的其他傀儡，则立即纷纷停手，整齐的后退了几步！",
+      "fact_summary": "魁梧男子一拍虎头后，傀儡虎开始在口中凝聚白光，其他傀儡停手后退。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0233:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0233:010",
+      "chunk_id": "chunk-0233",
+      "source_range": [
+        543557,
+        543611
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          543557,
+          543611
+        ]
+      },
+      "excerpt": "巨大的白色光柱重新出现了！这一次超级光柱在几名修士的合力下，竟借助护罩硬生生的抵挡住了冲击，一时成僵持之势！",
+      "fact_summary": "巨型傀儡虎再次射出巨大白色光柱，几名修士合力借护罩暂时抵挡住冲击。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0233:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0233:011",
+      "chunk_id": "chunk-0233",
+      "source_range": [
+        543842,
+        543932
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          543842,
+          543932
+        ]
+      },
+      "excerpt": "可是，魁梧男子见此，冷笑了一声。突然一揭虎头脑门上的一个暗门，然后一扬手，一个中阶的火属性灵石，抛了进去。接着虎口中原本熄灭的白光，再次亮了起来让对面看到这一幕的修士们，彻底惊呆！",
+      "fact_summary": "魁梧男子打开傀儡虎头部暗门并投入中阶火属性灵石，使原本熄灭的虎口白光再次亮起。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0233:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0233:012",
+      "chunk_id": "chunk-0233",
+      "source_range": [
+        543935,
+        544029
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          543935,
+          544029
+        ]
+      },
+      "excerpt": "而韩立更是看得咋了咋嘴，对这位傀儡虎全力一击就要消耗中阶灵石一颗的败家举动。韩立是无话可说了！这哪是斗法，分明是拿一堆堆的灵石硬砸这些修士。看来远处他国的千竹教还真的富得冒油，灵石大把啊！",
+      "fact_summary": "韩立认为傀儡虎每次全力一击要消耗一颗中阶灵石，并据此感叹千竹教灵石充足。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0233:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0233:013",
+      "chunk_id": "chunk-0233",
+      "source_range": [
+        544032,
+        544072
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          544032,
+          544072
+        ]
+      },
+      "excerpt": "韩立正胡思乱想之际，那几位原先还能齐心协力的修士，终于在巨大威胁下，一哄而散了。",
+      "fact_summary": "几名原本还能齐心合力的修士在巨大威胁下溃散逃跑。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0233:013"
+    },
+    {
+      "evidence_id": "evidence:chunk-0233:014",
+      "chunk_id": "chunk-0233",
+      "source_range": [
+        544128,
+        544194
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          544128,
+          544194
+        ]
+      },
+      "excerpt": "果然，魁梧男子指挥着巨虎，让其一前一后，分别两口将其中的两人，用巨大光柱扫射了下来。其下场和第一位差不多，同样的惨不忍睹和浑身焦黑。",
+      "fact_summary": "魁梧男子指挥巨虎先后两次发射巨大光柱，将逃散修士中的两人扫射下来，结局惨重且浑身焦黑。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0233:014"
+    },
+    {
+      "evidence_id": "evidence:chunk-0233:015",
+      "chunk_id": "chunk-0233",
+      "source_range": [
+        541490,
+        541538
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0233",
+        "source_path": "intermediate/chunks/chunk-0233.txt",
+        "source_range": [
+          541490,
+          541538
+        ]
+      },
+      "excerpt": "其身上这么多防护法术，还有手持防御的法器，竟然还没能没抵挡住光柱丝毫，这怎能不让他们心惊肉跳呢！",
+      "fact_summary": "先前逃跑者的防护法术和防御法器都未能抵挡光柱，使剩余修士心惊。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0233:015"
+    }
+  ]
+}

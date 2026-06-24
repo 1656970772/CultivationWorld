@@ -1,0 +1,303 @@
+{
+  "chunk_id": "chunk-0002",
+  "source_range": [
+    71,
+    81
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "task_packet_id": "chunk-0002:comprehensive_extraction:attempt-001",
+      "chunk_id": "chunk-0002",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "produced_at": "2025-07-17T00:00:00.000Z",
+      "extracted_nodes": [
+        {
+          "id": "n-ch0002-001",
+          "node_type": "location",
+          "label": "神墓",
+          "aliases": [],
+          "properties": {
+            "node_nature": "volume_title_location",
+            "first_mention_context": "第一卷标题'走出神墓'",
+            "explicit_as_location": true,
+            "location_clue": "可被'走出'，表明是一个可进入和离开的封闭空间或区域",
+            "volume_context": "第一卷 走出神墓"
+          },
+          "confidence": "INFERRED",
+          "verification_status": "needs_review",
+          "source_location": {
+            "chunk_id": "chunk-0002",
+            "source_range": [
+              71,
+              81
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0002-001"
+          ],
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "cat_loc_002"
+            },
+            {
+              "template_name": "地点与设施",
+              "requirement_id": "cat_loc_002"
+            }
+          ],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0002"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        }
+      ],
+      "extracted_edges": [],
+      "extracted_events": [
+        {
+          "id": "evt-ch0002-001",
+          "event_type": "event",
+          "label": "走出神墓（卷名预示）",
+          "participants": [],
+          "confidence": "INFERRED",
+          "verification_status": "needs_review",
+          "source_location": {
+            "chunk_id": "chunk-0002",
+            "source_range": [
+              71,
+              81
+            ]
+          },
+          "evidence_ids": [
+            "evidence:ev-ch0002-001"
+          ],
+          "supports_templates": [
+            {
+              "template_name": "事件因果链（长程因果图）",
+              "requirement_id": "cat_evt_005"
+            }
+          ],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0002"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        }
+      ],
+      "extracted_evidence": [
+        {
+          "evidence_id": "evidence:ev-ch0002-001",
+          "source_location": {
+            "chunk_id": "chunk-0002",
+            "source_range": [
+              0,
+              8
+            ]
+          },
+          "source_range": [
+            71,
+            81
+          ],
+          "fact_summary": "第一卷标题为'走出神墓'。'神墓'被明确表述为一个可以'走出'的场所，暗示这是一处可进入、可离开的封闭空间或墓地类地点，且故事第一卷的核心事件与离开神墓有关。",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "cat_loc_002"
+            },
+            {
+              "template_name": "地点与设施",
+              "requirement_id": "cat_loc_002"
+            }
+          ],
+          "provenance": {
+            "semantic_generation": "agent-produced",
+            "chunk_ids": [
+              "chunk-0002"
+            ],
+            "lane_output_paths": [],
+            "conflicts": []
+          }
+        }
+      ],
+      "uncertainties": [
+        {
+          "uncertainty_id": "unc-ch0002-001",
+          "description": "'神墓'的具体性质尚未明确：是一座埋葬神明的墓穴、一处封印之地、一个独立空间/秘境，还是其他形式的场所。目前仅从卷名'走出神墓'推断其为可进出的封闭空间。",
+          "related_nodes": [
+            "n-ch0002-001"
+          ],
+          "related_evidence": [
+            "evidence:ev-ch0002-001"
+          ],
+          "resolution_strategy": "待正文描述神墓的环境、结构、位置时确认其具体类型（location/secret_realm/facility）"
+        },
+        {
+          "uncertainty_id": "unc-ch0002-002",
+          "description": "'走出神墓'作为卷标题，是叙事层面的预告而非当前chunk内发生的具体故事事件。实际'走出'的剧情将在后续正文chunk中展开。当前无法确定参与角色、具体过程与后果。",
+          "related_nodes": [],
+          "related_evidence": [
+            "evidence:ev-ch0002-001"
+          ],
+          "resolution_strategy": "待正文中角色实际执行'走出神墓'行为时，抽取具体事件与参与角色"
+        },
+        {
+          "uncertainty_id": "unc-ch0002-003",
+          "description": "本chunk只有卷标题一行正文，无任何故事叙述内容。chunk-0001的'神墓'（标题）与本chunk的'神墓'（卷名）疑似指向同一实体，但当前阶段各chunk独立处理，由merge阶段合并确认。",
+          "related_nodes": [
+            "n-ch0002-001"
+          ],
+          "related_evidence": [],
+          "resolution_strategy": "merge阶段将跨chunk合并'神墓'实体，确认同一性"
+        }
+      ],
+      "rejected_candidates": [
+        {
+          "candidate": "第一卷（作为独立实体）",
+          "reason": "'第一卷'是书籍结构分卷标识，非故事内实体、地点或事件",
+          "node_type_considered": "event",
+          "rejection_rule": "Rule 1: 非故事内容，属于书籍叙事结构元数据"
+        }
+      ],
+      "structured_failures": [],
+      "supports_templates": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0002/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "id": "n-ch0002-001",
+      "node_type": "location",
+      "label": "神墓",
+      "aliases": [],
+      "properties": {
+        "node_nature": "volume_title_location",
+        "first_mention_context": "第一卷标题'走出神墓'",
+        "explicit_as_location": true,
+        "location_clue": "可被'走出'，表明是一个可进入和离开的封闭空间或区域",
+        "volume_context": "第一卷 走出神墓"
+      },
+      "confidence": "INFERRED",
+      "verification_status": "needs_review",
+      "source_location": {
+        "chunk_id": "chunk-0002",
+        "source_range": [
+          71,
+          81
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0002-001"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "cat_loc_002"
+        },
+        {
+          "template_name": "地点与设施",
+          "requirement_id": "cat_loc_002"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0002"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "normalized_edges": [],
+  "normalized_events": [
+    {
+      "id": "evt-ch0002-001",
+      "event_type": "event",
+      "label": "走出神墓（卷名预示）",
+      "participants": [],
+      "confidence": "INFERRED",
+      "verification_status": "needs_review",
+      "source_location": {
+        "chunk_id": "chunk-0002",
+        "source_range": [
+          71,
+          81
+        ]
+      },
+      "evidence_ids": [
+        "evidence:ev-ch0002-001"
+      ],
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "cat_evt_005"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0002"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:ev-ch0002-001",
+      "source_location": {
+        "chunk_id": "chunk-0002",
+        "source_range": [
+          0,
+          8
+        ]
+      },
+      "source_range": [
+        71,
+        81
+      ],
+      "fact_summary": "第一卷标题为'走出神墓'。'神墓'被明确表述为一个可以'走出'的场所，暗示这是一处可进入、可离开的封闭空间或墓地类地点，且故事第一卷的核心事件与离开神墓有关。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "cat_loc_002"
+        },
+        {
+          "template_name": "地点与设施",
+          "requirement_id": "cat_loc_002"
+        }
+      ],
+      "provenance": {
+        "semantic_generation": "agent-produced",
+        "chunk_ids": [
+          "chunk-0002"
+        ],
+        "lane_output_paths": [],
+        "conflicts": []
+      }
+    }
+  ]
+}

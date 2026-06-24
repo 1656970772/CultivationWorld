@@ -1,0 +1,1770 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0275:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0275",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T00:00:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0275:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立在本段探索地下洞穴、收取大挪移令与蜘蛛卵，返回黄枫谷后查证大挪移令用途并谋求修复传送阵。",
+      "evidence_ids": [
+        "evidence:chunk-0275:002",
+        "evidence:chunk-0275:005",
+        "evidence:chunk-0275:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        666098,
+        666153
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          666098,
+          666153
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0275:tool:001",
+      "node_type": "tool",
+      "label": "大挪移令",
+      "aliases": [
+        "蓝灿灿的令牌"
+      ],
+      "fact_summary": "大挪移令是蓝灿灿的上古令牌，书中说明它是古修士进行超距离传送时必须具备的法器，可避免空间压力挤压至死。",
+      "evidence_ids": [
+        "evidence:chunk-0275:001",
+        "evidence:chunk-0275:013",
+        "evidence:chunk-0275:014"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        665918,
+        665962
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          665918,
+          665962
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0275:formation:001",
+      "node_type": "formation",
+      "label": "地下传送阵",
+      "aliases": [
+        "传送阵",
+        "古传送阵"
+      ],
+      "fact_summary": "地下传送阵一角破损而无法正常使用，韩立复制其样式花纹并怀疑它是古传送阵。",
+      "evidence_ids": [
+        "evidence:chunk-0275:003",
+        "evidence:chunk-0275:004",
+        "evidence:chunk-0275:016"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        666266,
+        666304
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          666266,
+          666304
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0275:beast:001",
+      "node_type": "beast",
+      "label": "蜘蛛妖兽卵",
+      "aliases": [
+        "蜘蛛卵",
+        "两枚晶莹透明的圆卵"
+      ],
+      "fact_summary": "韩立在石柱后发现两枚拳头大小的透明圆卵，并判断它们是蜘蛛妖兽的卵，随后带回洞府用灵眼之泉滋育。",
+      "evidence_ids": [
+        "evidence:chunk-0275:005",
+        "evidence:chunk-0275:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        666414,
+        666478
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          666414,
+          666478
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0275:material:001",
+      "node_type": "material",
+      "label": "五彩小珠子",
+      "aliases": [],
+      "fact_summary": "五色骸骨被烈火熔烧后凝结出七八颗五彩小珠子，韩立将其收存，但其性质未在本段说明。",
+      "evidence_ids": [
+        "evidence:chunk-0275:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        666688,
+        666737
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          666688,
+          666737
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0275:faction:001",
+      "node_type": "faction",
+      "label": "黄枫谷",
+      "aliases": [],
+      "fact_summary": "韩立七八日后返回黄枫谷，向门内轮值管事简略汇报遭遇并回洞府待命。",
+      "evidence_ids": [
+        "evidence:chunk-0275:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        666926,
+        666974
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          666926,
+          666974
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0275:faction:002",
+      "node_type": "faction",
+      "label": "七派",
+      "aliases": [],
+      "fact_summary": "七派在战时对临阵退缩、躲避任务征调或逾时未归的弟子施加严厉处罚。",
+      "evidence_ids": [
+        "evidence:chunk-0275:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        667118,
+        667173
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          667118,
+          667173
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0275:facility:001",
+      "node_type": "facility",
+      "label": "灵眼之泉",
+      "aliases": [],
+      "fact_summary": "韩立把蜘蛛卵浸泡在灵眼之泉内，让灵气慢慢滋育其孵化。",
+      "evidence_ids": [
+        "evidence:chunk-0275:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        667464,
+        667503
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          667464,
+          667503
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0275:cultivation_method:001",
+      "node_type": "cultivation_method",
+      "label": "大衍诀",
+      "aliases": [],
+      "fact_summary": "韩立闭关两日后练成大衍诀第一层。",
+      "evidence_ids": [
+        "evidence:chunk-0275:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        667517,
+        667573
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          667517,
+          667573
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0275:cultivation_method:002",
+      "node_type": "cultivation_method",
+      "label": "青元剑诀",
+      "aliases": [],
+      "fact_summary": "韩立的青元剑诀同时突破至第五层，并让他迈进筑基中期水平。",
+      "evidence_ids": [
+        "evidence:chunk-0275:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        667517,
+        667573
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          667517,
+          667573
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0275:realm:001",
+      "node_type": "realm",
+      "label": "筑基中期",
+      "aliases": [],
+      "fact_summary": "韩立因青元剑诀突破至第五层而迈进筑基中期水平。",
+      "evidence_ids": [
+        "evidence:chunk-0275:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        667517,
+        667573
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          667517,
+          667573
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0275:facility:002",
+      "node_type": "facility",
+      "label": "天知阁",
+      "aliases": [],
+      "fact_summary": "韩立在黄枫谷天知阁内翻找两天，从《洞玄解》中找到大挪移令的简单介绍。",
+      "evidence_ids": [
+        "evidence:chunk-0275:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        667855,
+        667904
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          667855,
+          667904
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0275:tool:002",
+      "node_type": "tool",
+      "label": "《洞玄解》",
+      "aliases": [],
+      "fact_summary": "《洞玄解》记载了大挪移令的简单介绍，是韩立获知其用途的信息来源。",
+      "evidence_ids": [
+        "evidence:chunk-0275:012",
+        "evidence:chunk-0275:013"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        667855,
+        667904
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          667855,
+          667904
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0275:rule:001",
+      "node_type": "rule",
+      "label": "七派战时归队惩罚规则",
+      "aliases": [],
+      "fact_summary": "七派要求无任务或完成任务弟子按规定时间回本门报到，临阵退缩或借口躲避任务征调会受灵石处罚、废去法力乃至执法队终生追杀。",
+      "evidence_ids": [
+        "evidence:chunk-0275:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "世界状态与灾变",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        667118,
+        667173
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          667118,
+          667173
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0275:001",
+      "edge_type": "obtained_item",
+      "source": "node:chunk-0275:character:001",
+      "target": "node:chunk-0275:tool:001",
+      "fact_summary": "韩立将大挪移令取到手并收进储物袋。",
+      "evidence_ids": [
+        "evidence:chunk-0275:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        666098,
+        666153
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          666098,
+          666153
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0275:002",
+      "edge_type": "enables_safe_transmission",
+      "source": "node:chunk-0275:tool:001",
+      "target": "node:chunk-0275:formation:001",
+      "fact_summary": "《洞玄解》说明大挪移令用于古修士超距离传送，韩立据此推测地下传送阵若为古传送阵，修复后可借令牌传送到千万里之外。",
+      "evidence_ids": [
+        "evidence:chunk-0275:013",
+        "evidence:chunk-0275:014",
+        "evidence:chunk-0275:017"
+      ],
+      "confidence": "INFERRED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "INFERRED",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "status": "needs_review",
+          "confidence": "INFERRED",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        668455,
+        668499
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          668455,
+          668499
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0275:003",
+      "edge_type": "copied_formation_pattern",
+      "source": "node:chunk-0275:character:001",
+      "target": "node:chunk-0275:formation:001",
+      "fact_summary": "韩立把传送阵的样式和花纹复制进玉简，准备找人判断能否修复。",
+      "evidence_ids": [
+        "evidence:chunk-0275:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        666307,
+        666361
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          666307,
+          666361
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0275:004",
+      "edge_type": "obtained_creature_egg",
+      "source": "node:chunk-0275:character:001",
+      "target": "node:chunk-0275:beast:001",
+      "fact_summary": "韩立发现蜘蛛妖兽卵后用盛装灵兽的皮袋将其收走。",
+      "evidence_ids": [
+        "evidence:chunk-0275:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        666414,
+        666478
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          666414,
+          666478
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0275:005",
+      "edge_type": "uses_facility_to_nurture",
+      "source": "node:chunk-0275:character:001",
+      "target": "node:chunk-0275:facility:001",
+      "fact_summary": "韩立把蜘蛛卵浸泡在灵眼之泉内，让灵气慢慢滋育其孵化。",
+      "evidence_ids": [
+        "evidence:chunk-0275:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        667464,
+        667503
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          667464,
+          667503
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0275:006",
+      "edge_type": "practices_method",
+      "source": "node:chunk-0275:character:001",
+      "target": "node:chunk-0275:cultivation_method:001",
+      "fact_summary": "韩立闭关两日后练成大衍诀第一层。",
+      "evidence_ids": [
+        "evidence:chunk-0275:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        667517,
+        667573
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          667517,
+          667573
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0275:007",
+      "edge_type": "advances_to_realm",
+      "source": "node:chunk-0275:character:001",
+      "target": "node:chunk-0275:realm:001",
+      "fact_summary": "青元剑诀突破至第五层后，韩立迈进筑基中期水平。",
+      "evidence_ids": [
+        "evidence:chunk-0275:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        667517,
+        667573
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          667517,
+          667573
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0275:008",
+      "edge_type": "researched_in_facility",
+      "source": "node:chunk-0275:character:001",
+      "target": "node:chunk-0275:facility:002",
+      "fact_summary": "韩立在黄枫谷天知阁内翻找两天，查到大挪移令的简单介绍。",
+      "evidence_ids": [
+        "evidence:chunk-0275:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        667855,
+        667904
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          667855,
+          667904
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0275:009",
+      "edge_type": "enforces_rule",
+      "source": "node:chunk-0275:faction:002",
+      "target": "node:chunk-0275:rule:001",
+      "fact_summary": "七派以处罚灵石、废去法力等方式执行战时归队和任务征调规则。",
+      "evidence_ids": [
+        "evidence:chunk-0275:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        667118,
+        667173
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          667118,
+          667173
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0275:001",
+      "event_type": "discovery_and_collection",
+      "label": "韩立收取大挪移令并试探灵力反应",
+      "fact_summary": "韩立取得大挪移令后尝试注入灵力，因令牌产生庞大吸力而立刻切断灵力并收好令牌。",
+      "participants": [
+        "node:chunk-0275:character:001",
+        "node:chunk-0275:tool:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0275:001",
+        "evidence:chunk-0275:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        665918,
+        666153
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          665918,
+          666153
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0275:002",
+      "event_type": "formation_survey",
+      "label": "韩立复制并掩藏地下传送阵",
+      "fact_summary": "韩立发现传送阵破损后复制其样式花纹，并在离开洞穴时堵住洞口，留下暗记以便日后寻找。",
+      "participants": [
+        "node:chunk-0275:character:001",
+        "node:chunk-0275:formation:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0275:003",
+        "evidence:chunk-0275:004",
+        "evidence:chunk-0275:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        666266,
+        666798
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          666266,
+          666798
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0275:003",
+      "event_type": "resource_collection",
+      "label": "韩立收取蜘蛛妖兽卵与五彩小珠子",
+      "fact_summary": "韩立在洞穴内收取蜘蛛妖兽卵，又焚烧五色骸骨后得到七八颗五彩小珠子。",
+      "participants": [
+        "node:chunk-0275:character:001",
+        "node:chunk-0275:beast:001",
+        "node:chunk-0275:material:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0275:005",
+        "evidence:chunk-0275:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        666414,
+        666737
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          666414,
+          666737
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0275:004",
+      "event_type": "return_to_faction",
+      "label": "韩立返回黄枫谷待命",
+      "fact_summary": "韩立七八日后返回黄枫谷，向门内轮值管事讲述删减过的遭遇并回洞府待命。",
+      "participants": [
+        "node:chunk-0275:character:001",
+        "node:chunk-0275:faction:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0275:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        666926,
+        666974
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          666926,
+          666974
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0275:005",
+      "event_type": "cultivation_breakthrough",
+      "label": "韩立练成大衍诀并进入筑基中期",
+      "fact_summary": "韩立闭关两日练成大衍诀第一层，青元剑诀也突破至第五层，使其迈进筑基中期。",
+      "participants": [
+        "node:chunk-0275:character:001",
+        "node:chunk-0275:cultivation_method:001",
+        "node:chunk-0275:cultivation_method:002",
+        "node:chunk-0275:realm:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0275:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        667517,
+        667573
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          667517,
+          667573
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0275:006",
+      "event_type": "information_discovery",
+      "label": "韩立查明大挪移令用途",
+      "fact_summary": "韩立在天知阁从《洞玄解》中查到大挪移令是古修士超距离传送时必须具备的法器，并据此联想到地下传送阵可能是古传送阵。",
+      "participants": [
+        "node:chunk-0275:character:001",
+        "node:chunk-0275:facility:002",
+        "node:chunk-0275:tool:002",
+        "node:chunk-0275:tool:001",
+        "node:chunk-0275:formation:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0275:012",
+        "evidence:chunk-0275:013",
+        "evidence:chunk-0275:014",
+        "evidence:chunk-0275:017"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        667855,
+        668499
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          667855,
+          668499
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0275:001",
+      "chunk_id": "chunk-0275",
+      "source_range": [
+        665918,
+        665962
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          665918,
+          665962
+        ]
+      },
+      "excerpt": "令牌蓝灿灿的，放射着淡淡的莹光，从那古朴的花纹及上面铭印的古文字来看，明显是个上古之物。",
+      "fact_summary": "大挪移令外观为蓝灿灿令牌，花纹和古文字显示其为上古之物。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0275:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0275:002",
+      "chunk_id": "chunk-0275",
+      "source_range": [
+        666098,
+        666153
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          666098,
+          666153
+        ]
+      },
+      "excerpt": "但随之一股庞大的吸力从令牌上传来，让他体内的灵力大量脱体而出，吓得韩立赶紧切断了灵力的输送，这才让吸力消失了。",
+      "fact_summary": "韩立向令牌注入灵力后遭遇庞大吸力，立即切断灵力输送。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0275:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0275:003",
+      "chunk_id": "chunk-0275",
+      "source_range": [
+        666266,
+        666304
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          666266,
+          666304
+        ]
+      },
+      "excerpt": "因为传送阵的一角已破损掉了，虽然损坏的不多，但也足以让传送阵无法正常使用了。",
+      "fact_summary": "地下传送阵一角破损，无法正常使用。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0275:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0275:004",
+      "chunk_id": "chunk-0275",
+      "source_range": [
+        666307,
+        666361
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          666307,
+          666361
+        ]
+      },
+      "excerpt": "韩立眨了眨眼睛，突然摸出了块玉简，开始将传送阵的样式、花纹复制了下来，准备找一些人看看，还能否修复此传送阵。",
+      "fact_summary": "韩立复制传送阵样式和花纹，准备找人判断能否修复。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "阵法师",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0275:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0275:005",
+      "chunk_id": "chunk-0275",
+      "source_range": [
+        666414,
+        666478
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          666414,
+          666478
+        ]
+      },
+      "excerpt": "结果在一根粗状的石柱后面，发现了两枚晶莹透明的圆卵，足有拳头般大小。\n　　一见它们，韩立惊喜异常，不用猜就知道是那蜘蛛妖兽的卵。",
+      "fact_summary": "韩立发现两枚拳头大小的透明圆卵，并判断它们是蜘蛛妖兽卵。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0275:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0275:006",
+      "chunk_id": "chunk-0275",
+      "source_range": [
+        666688,
+        666737
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          666688,
+          666737
+        ]
+      },
+      "excerpt": "结果烈火熔烧过后，骸骨竟然凝结出了七八颗五彩的小珠子出来。这让韩立惊讶之余，自然好奇的收存了起来。",
+      "fact_summary": "五色骸骨经火烧后凝结出七八颗五彩小珠子，韩立将其收存。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "材料分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0275:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0275:007",
+      "chunk_id": "chunk-0275",
+      "source_range": [
+        666753,
+        666798
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          666753,
+          666798
+        ]
+      },
+      "excerpt": "为了不让传送阵再被他人发现，他干脆离开此洞时，用青元剑芒将洞口扫的稀巴烂，彻底堵住了入口。",
+      "fact_summary": "韩立为隐藏传送阵而破坏洞口并堵住入口。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "秘境遗迹与机缘",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0275:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0275:008",
+      "chunk_id": "chunk-0275",
+      "source_range": [
+        666926,
+        666974
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          666926,
+          666974
+        ]
+      },
+      "excerpt": "七八日后，韩立就返回了黄枫谷。他向门内轮值管事讲述了一番减删过的遭遇后，就先回自己的洞府待命了。",
+      "fact_summary": "韩立返回黄枫谷，向轮值管事删减汇报遭遇后回洞府待命。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0275:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0275:009",
+      "chunk_id": "chunk-0275",
+      "source_range": [
+        667118,
+        667173
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          667118,
+          667173
+        ]
+      },
+      "excerpt": "现在七派对临阵退缩、借口躲避任务征调的弟子，处罚的十分严厉，轻则处罚灵石，重则要废去法力，这一点是毫不容情的！",
+      "fact_summary": "七派严惩临阵退缩或躲避征调的弟子，处罚可从灵石到废去法力。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "宗门任务体系",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0275:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0275:010",
+      "chunk_id": "chunk-0275",
+      "source_range": [
+        667464,
+        667503
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          667464,
+          667503
+        ]
+      },
+      "excerpt": "回到洞府的第一件事，就是将那对蜘蛛卵浸泡在了灵眼之泉内，让灵气慢慢滋育其孵化。",
+      "fact_summary": "韩立将蜘蛛卵浸泡于灵眼之泉，用灵气滋育其孵化。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "妖兽与修士关系分析",
+          "requirement_id": "creature_deviant_practice_ecology",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0275:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0275:011",
+      "chunk_id": "chunk-0275",
+      "source_range": [
+        667517,
+        667573
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          667517,
+          667573
+        ]
+      },
+      "excerpt": "终于将大衍诀第一层练成了。不知是否巧合，好久未有进展的青元剑诀，竟同时突破至了第五层，让韩立迈进筑基中期的水平。",
+      "fact_summary": "韩立练成大衍诀第一层，青元剑诀突破第五层，修为迈进筑基中期。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "境界提升与功法分析",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0275:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0275:012",
+      "chunk_id": "chunk-0275",
+      "source_range": [
+        667855,
+        667904
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          667855,
+          667904
+        ]
+      },
+      "excerpt": "在黄枫谷的天知阁内，经过两天的四处翻找，终于在一本叫《洞玄解》书中，找到了“大挪移令”的简单介绍。",
+      "fact_summary": "韩立在黄枫谷天知阁从《洞玄解》中找到大挪移令介绍。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "信息传播与情报",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0275:012"
+    },
+    {
+      "evidence_id": "evidence:chunk-0275:013",
+      "chunk_id": "chunk-0275",
+      "source_range": [
+        667907,
+        667961
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          667907,
+          667961
+        ]
+      },
+      "excerpt": "据书上记载，这蓝灿灿的令牌，竟然是古修士们进行超距离传送时，必须具备的一个法器，否则就无法保证传送时的安全。",
+      "fact_summary": "《洞玄解》记载大挪移令是古修士超距离传送时必须具备的安全法器。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0275:013"
+    },
+    {
+      "evidence_id": "evidence:chunk-0275:014",
+      "chunk_id": "chunk-0275",
+      "source_range": [
+        667964,
+        668009
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          667964,
+          668009
+        ]
+      },
+      "excerpt": "只有拥有“大挪移令”，古修士才不会因为传送距离过远，而被传送时形成的空间压力，给挤压至死。",
+      "fact_summary": "大挪移令可避免超距离传送形成的空间压力将传送者挤压至死。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0275:014"
+    },
+    {
+      "evidence_id": "evidence:chunk-0275:015",
+      "chunk_id": "chunk-0275",
+      "source_range": [
+        668088,
+        668147
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          668088,
+          668147
+        ]
+      },
+      "excerpt": "制作“大挪移令”的方法，早已在久远的修仙界动乱中失传了。已有的“大挪移令”也随着一件件的销声匿迹，到了今天成了传说之物",
+      "fact_summary": "大挪移令制作方法早已失传，现有令牌也销声匿迹成为传说。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "法宝分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0275:015"
+    },
+    {
+      "evidence_id": "evidence:chunk-0275:016",
+      "chunk_id": "chunk-0275",
+      "source_range": [
+        668194,
+        668246
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          668194,
+          668246
+        ]
+      },
+      "excerpt": "古传送阵比“大挪移令”，更早就成为了传说中的东西。别的地方不知道，但在这天南地区，表面上是见不到一座了。",
+      "fact_summary": "古传送阵比大挪移令更早成为传说，在天南地区表面上已见不到。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "id": "evidence:chunk-0275:016"
+    },
+    {
+      "evidence_id": "evidence:chunk-0275:017",
+      "chunk_id": "chunk-0275",
+      "source_range": [
+        668455,
+        668499
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0275",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          668455,
+          668499
+        ]
+      },
+      "excerpt": "若是如此的话，他有了这大挪移令，再修复了那个传送阵，岂不立即可到至少千万里之外的地方了。",
+      "fact_summary": "韩立推想若地下传送阵是古传送阵，凭大挪移令并修复传送阵后可到千万里外。",
+      "confidence": "INFERRED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "动态事件与机会点",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "status": "needs_review",
+          "confidence": "INFERRED",
+          "verification_status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0275:017"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "法宝分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "summary": "大挪移令的外观、用途、安全机制和失传状态有明确证据。"
+    },
+    {
+      "template_name": "秘境遗迹与机缘",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "summary": "地下传送阵作为潜在古传送阵和逃离战局机会点被韩立记录、隐藏并计划修复。"
+    },
+    {
+      "template_name": "境界提升与功法分析",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "summary": "韩立练成大衍诀第一层，青元剑诀突破第五层并进入筑基中期。"
+    }
+  ],
+  "uncertainties": [
+    {
+      "uncertainty_id": "uncertainty:chunk-0275:001",
+      "description": "地下传送阵是否确为古传送阵、目的地为何、能否修复，当前 chunk 只有韩立推测和期待。",
+      "evidence_ids": [
+        "evidence:chunk-0275:016",
+        "evidence:chunk-0275:017"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review"
+    },
+    {
+      "uncertainty_id": "uncertainty:chunk-0275:002",
+      "description": "五彩小珠子的具体属性、用途和来源机制未在当前 chunk 说明。",
+      "evidence_ids": [
+        "evidence:chunk-0275:006"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review"
+    },
+    {
+      "uncertainty_id": "uncertainty:chunk-0275:003",
+      "description": "大挪移令如何保证传送安全，原文明确说书上没有说明。",
+      "evidence_ids": [
+        "evidence:chunk-0275:014"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review"
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "candidate": "将 chunk 末尾“有一人也许能帮自己修复此阵”直接标注为齐云霄",
+      "reason": "chunk-0275 未明示该人姓名；按质量规则不回填后文身份。"
+    },
+    {
+      "candidate": "将五彩小珠子确定为某种丹药或法宝",
+      "reason": "当前 chunk 只说明其由骸骨熔烧后凝结并被韩立收存，具体类型和用途不明。"
+    }
+  ],
+  "structured_failures": []
+}

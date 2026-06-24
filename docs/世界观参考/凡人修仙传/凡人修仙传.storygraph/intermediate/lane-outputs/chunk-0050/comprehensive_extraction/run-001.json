@@ -1,0 +1,1339 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0050:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0050",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T00:00:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0050:character:001",
+      "node_type": "character",
+      "label": "墨大夫",
+      "aliases": [],
+      "fact_summary": "墨大夫追击韩立后改用温和言语劝降；劝说失败后施展咫尺天涯逼近，并试图以银手夹住和击碎韩立短剑。",
+      "evidence_ids": [
+        "evidence:chunk-0050:001",
+        "evidence:chunk-0050:003",
+        "evidence:chunk-0050:004",
+        "evidence:chunk-0050:005",
+        "evidence:chunk-0050:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        95735,
+        97751
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          95735,
+          97751
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0050:character:002",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立因罗烟步透支体力且左手麻痹，改用右手短剑作战，并通过诈语和奇怪姿势诱使墨大夫迟疑后发起高速反击。",
+      "evidence_ids": [
+        "evidence:chunk-0050:001",
+        "evidence:chunk-0050:002",
+        "evidence:chunk-0050:003",
+        "evidence:chunk-0050:005",
+        "evidence:chunk-0050:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        95824,
+        97751
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          95824,
+          97751
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0050:technique:001",
+      "node_type": "technique",
+      "label": "罗烟步",
+      "aliases": [],
+      "fact_summary": "罗烟步是韩立刚才用于保命的步法；当前 chunk 明示它很神奇但负荷大，已透支韩立大部分体力并可能难以再次顺利施展。",
+      "evidence_ids": [
+        "evidence:chunk-0050:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        95933,
+        96190
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          95933,
+          96190
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0050:technique:002",
+      "node_type": "technique",
+      "label": "左手剑",
+      "aliases": [],
+      "fact_summary": "韩立故意苦练的左手剑因左手麻痹暂时被废，导致他只能用右手单手作战。",
+      "evidence_ids": [
+        "evidence:chunk-0050:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        96023,
+        96104
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          96023,
+          96104
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0050:weapon:001",
+      "node_type": "weapon",
+      "label": "半尺带鞘短剑",
+      "aliases": [
+        "短剑",
+        "匕首"
+      ],
+      "fact_summary": "韩立另取半尺长带鞘短剑，尺寸近似匕首；该短剑锋利明亮，后续青光闪闪并幻化十几柄真假难辨的利刃。",
+      "evidence_ids": [
+        "evidence:chunk-0050:002",
+        "evidence:chunk-0050:005",
+        "evidence:chunk-0050:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        96278,
+        97751
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          96278,
+          97751
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0050:technique:003",
+      "node_type": "technique",
+      "label": "咫尺天涯",
+      "aliases": [],
+      "fact_summary": "咫尺天涯是墨大夫当前吐出的身法或招式名称；施展后他轻飘飘来到离韩立只有数步远的位置，如同缩地。",
+      "evidence_ids": [
+        "evidence:chunk-0050:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        96907,
+        96994
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          96907,
+          96994
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0050:001",
+      "edge_type": "uses_technique",
+      "source": "node:chunk-0050:character:002",
+      "target": "node:chunk-0050:technique:001",
+      "fact_summary": "韩立刚才使用罗烟步保命，但该步法对肌肉造成重大负荷并大量透支体力。",
+      "evidence_ids": [
+        "evidence:chunk-0050:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        95933,
+        96190
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          95933,
+          96190
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0050:002",
+      "edge_type": "uses_weapon",
+      "source": "node:chunk-0050:character:002",
+      "target": "node:chunk-0050:weapon:001",
+      "fact_summary": "韩立取出半尺带鞘短剑，换成右手持剑并用它实施诈语后的高速反击。",
+      "evidence_ids": [
+        "evidence:chunk-0050:002",
+        "evidence:chunk-0050:005",
+        "evidence:chunk-0050:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        96278,
+        97751
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          96278,
+          97751
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0050:003",
+      "edge_type": "uses_technique",
+      "source": "node:chunk-0050:character:001",
+      "target": "node:chunk-0050:technique:003",
+      "fact_summary": "墨大夫在怒意中吐出咫尺天涯，并瞬间逼近韩立。",
+      "evidence_ids": [
+        "evidence:chunk-0050:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        96907,
+        96994
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          96907,
+          96994
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0050:004",
+      "edge_type": "deceives",
+      "source": "node:chunk-0050:character:002",
+      "target": "node:chunk-0050:character:001",
+      "fact_summary": "韩立以轻笑、诈语和奇怪持剑姿势诱使墨大夫迟疑并查看短剑。",
+      "evidence_ids": [
+        "evidence:chunk-0050:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        97137,
+        97457
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          97137,
+          97457
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0050:005",
+      "edge_type": "conflicts_with",
+      "source": "node:chunk-0050:character:001",
+      "target": "node:chunk-0050:character:002",
+      "fact_summary": "墨大夫持续逼迫韩立投降并发动近身攻势，韩立拒绝后以短剑反击。",
+      "evidence_ids": [
+        "evidence:chunk-0050:003",
+        "evidence:chunk-0050:004",
+        "evidence:chunk-0050:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        96422,
+        97751
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          96422,
+          97751
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0050:001",
+      "event_type": "state_change",
+      "label": "韩立因罗烟步透支并改用右手作战",
+      "participants": [
+        "node:chunk-0050:character:002",
+        "node:chunk-0050:technique:001",
+        "node:chunk-0050:technique:002",
+        "node:chunk-0050:weapon:001"
+      ],
+      "fact_summary": "韩立因罗烟步消耗过大、左手麻痹，判断无法正常提剑，只能改用右手并准备最后一招。",
+      "evidence_ids": [
+        "evidence:chunk-0050:001",
+        "evidence:chunk-0050:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        95735,
+        96421
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          95735,
+          96421
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0050:002",
+      "event_type": "dialogue_event",
+      "label": "墨大夫劝降韩立失败",
+      "participants": [
+        "node:chunk-0050:character:001",
+        "node:chunk-0050:character:002"
+      ],
+      "fact_summary": "墨大夫改用和蔼温和语气劝韩立投降，韩立判断其是在哄骗并用短剑动作表示拒绝。",
+      "evidence_ids": [
+        "evidence:chunk-0050:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        96422,
+        96848
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          96422,
+          96848
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0050:003",
+      "event_type": "technique_use",
+      "label": "墨大夫施展咫尺天涯逼近韩立",
+      "participants": [
+        "node:chunk-0050:character:001",
+        "node:chunk-0050:character:002",
+        "node:chunk-0050:technique:003"
+      ],
+      "fact_summary": "墨大夫因韩立拒绝而发怒，施展咫尺天涯瞬间拉近距离并分双掌袭击。",
+      "evidence_ids": [
+        "evidence:chunk-0050:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        96849,
+        97136
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          96849,
+          97136
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0050:004",
+      "event_type": "counterattack_event",
+      "label": "韩立诈语诱敌并以短剑高速反击",
+      "participants": [
+        "node:chunk-0050:character:001",
+        "node:chunk-0050:character:002",
+        "node:chunk-0050:weapon:001"
+      ],
+      "fact_summary": "韩立用诈语让墨大夫看短剑，摆出挽弓射箭姿态后突然弹射冲出，使短剑幻化成十几柄真假难辨的利刃。",
+      "evidence_ids": [
+        "evidence:chunk-0050:005",
+        "evidence:chunk-0050:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        97137,
+        97751
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          97137,
+          97751
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0050:001",
+      "chunk_id": "chunk-0050",
+      "excerpt": "　　墨大夫轻轻的落到了韩立原本站立之处，没有丝毫的停顿，就幽灵一般的倒转过身子，又把面孔朝向了他，脸上原本的傲然之色已完全褪去，只剩下一脸的木然，眼中却露出一丝不易察觉的异样。\n　　此时韩立的情况也不太妙，他不停的喘着粗气，脸色有些苍白，额上渗出了丝丝冷汗，面颊上有了一道不正常的红晕。\n　　种种这一切都已说明，韩立刚才的保命手段，已透支了他大部分的体力，很可能下一次，就无法再使出相同的技巧。\n　　深深呼出了一口气，韩立让身体尽量放松，以减轻刚才“罗烟步”的使用对肌肉造成的重大负荷，如今的他，只能抓紧一切机会，让自己多恢复一些体力，好在下一轮搏斗中，多有几分获胜的希望。\n　　韩立又低头望了一眼，还在微微颤抖的左手，这手已完全麻痹了，至今还没有知觉，根本无法再去提剑，看来自己故意苦练的左手剑，暂时是被废掉了，只能用余下的右手来战斗。\n　　想到这里，他心中苦笑了一下，现如今他体力丧失了大半，无法再使出奥妙的“罗烟步”，更糟糕的是，还只能单手去作战，这真是坏的不能再坏的处境，看来只有动用秘藏的最后一招了。",
+      "fact_summary": "墨大夫迅速转身面对韩立；韩立因刚才罗烟步透支体力，左手麻痹无法提剑，只能考虑动用秘藏的最后一招。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        95735,
+        96190
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          95735,
+          96190
+        ]
+      },
+      "id": "evidence:chunk-0050:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0050:002",
+      "chunk_id": "chunk-0050",
+      "excerpt": "　　韩立望了望屋外的太阳，估计了一下，觉得时候倒是差不多，正适合施展此招。\n　　他又瞅了一眼插在墙上的短剑，这把武器看来是没有机会取回，对方不会让自己大模大样的去拔回短剑。\n　　韩立沉吟了一下，从怀中另取出了一件武器，这同样是把半尺长的带鞘短剑，因为尺寸过短，说是短剑不如说是匕首还比较恰当一些，把剑抽出鞘后，看起来比普通的匕首宽厚了许多，也是明亮无比，很锋利的样子。\n　　韩立把剑鞘扔在一旁，换成右手持剑，把手臂伸展开来，用剑尖斜指向对方，摆了个进攻的姿势。",
+      "fact_summary": "韩立判断时机适合施展最后一招，放弃取回插墙短剑，另取半尺带鞘短剑/匕首并换右手持剑进攻。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        96191,
+        96421
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          96191,
+          96421
+        ]
+      },
+      "id": "evidence:chunk-0050:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0050:003",
+      "chunk_id": "chunk-0050",
+      "excerpt": "　　墨大夫把这一切看进眼里，却没有急着上前抢攻，他倒背起双手，神色忽然变得和蔼起来，用温和的声音劝道：“韩立，你三番两次的躲了过去，的确出乎了我的意料之外，不过你认为还能像上一次那么走运，能再次从我的掌下逃脱掉吗？你刚才使用的步法很神奇不错，但看起来有不小的限制，光从体力上看，就无法支撑你再顺利的施展出来。还是乖乖的投降吧！你应该看得出来，我没有重伤你的意思，顺从我的话，也许不像你想象的那么糟糕。”\n　　墨大夫如同变色龙一般的态度大变，让韩立起了一身的鸡皮疙瘩，对方一会儿扮慈师，一会儿冷酷无情，现在又语重心长的劝自己束手待毙，真让韩立不知说些什么好，他真以为自己这时会晕头，能上这种狗血喷头的大当？\n　　不过对方的这番言语，反而让他增长了几分自信，如果不是对他有了忌惮之心，又怎会用这种幼稚的手段来哄骗于他。\n　　韩立一瞬间，就把这些想得透彻无比，他叹了口气，轻轻的摇了摇头，没言语一句，只用手中的短剑往对方身上比划了几下，就把一切意思都表明了。",
+      "fact_summary": "墨大夫改用温和语气劝韩立投降，强调自己没有重伤之意；韩立判断这是哄骗并以短剑比划拒绝。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        96422,
+        96848
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          96422,
+          96848
+        ]
+      },
+      "id": "evidence:chunk-0050:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0050:004",
+      "chunk_id": "chunk-0050",
+      "excerpt": "　　墨大夫额上的青筋，突突的蹦跳了几下，见韩立根本不理会自己的劝说，反而用手中的武器挑衅，就再也压不住心中的怒火。\n　　“不知好歹！”他猛然向前大跨了一步，嘴中又接着狠狠吐道：“咫尺天涯”。\n　　然后整个人就忽的一下子，轻飘飘的来到离韩立只有数步远的地方，如同会缩地大法一般，让人惊叹不已。\n　　韩立仿佛也受惊不小，一脸的惊慌之色，急忙倒退了两步，和对方拉开了一段距离，才把手中的短剑横在身前，又舞成一小片寒光，挡住了墨大夫的去路，似乎已完全忘却了上次交手时所吃的苦头。\n　　墨大夫暗自冷笑了一声，自然不会好心的提醒对手，他把双掌一分，兵分两路的朝韩立袭来，对寒芒视若无睹。",
+      "fact_summary": "墨大夫因劝说失败而发怒，吐出“咫尺天涯”后瞬间逼近韩立；韩立倒退并舞短剑寒光阻路，墨大夫分双掌攻来。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        96849,
+        97136
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          96849,
+          97136
+        ]
+      },
+      "id": "evidence:chunk-0050:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0050:005",
+      "chunk_id": "chunk-0050",
+      "excerpt": "　　眼见两只银手，即将抢入到了剑光之中，却忽从对面传来一声轻笑，这笑声畅快淋漓，似乎猎人见到猎物踏进陷阱时，所有的得意之笑。\n　　墨大夫心中一凛，不觉放慢了去势，身形呆滞了几分，却接着又听到一句冷冰冰的话语：“现在的你，才是真的上了大当，你看看我手中的短剑！”\n　　听到话声，墨大夫不由自主的向短剑望去，只见对方不知什么时候，已停止了手上的舞动，而摆出了一个奇怪的姿势，上半身微微后仰，单手所持短剑平放于腰间，下半身则是一个一触即发的绷紧弓步，整个人成了一副挽弓射箭的怪摸样。\n　　而话语中提及的短剑上，除了有些青光闪闪之外，没有丝毫异常之处，这让墨大夫有些愕然，难道对方摆出这么一个怪姿势，再加上诈语欺他，就想扰乱他的心神，好从中取巧吗？",
+      "fact_summary": "韩立以轻笑和“看看我手中的短剑”诈语使墨大夫迟滞，并摆出挽弓射箭般姿势；短剑只有青光闪闪，墨大夫怀疑韩立在扰乱心神。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        97137,
+        97457
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          97137,
+          97457
+        ]
+      },
+      "id": "evidence:chunk-0050:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0050:006",
+      "chunk_id": "chunk-0050",
+      "excerpt": "　　想到这里，墨大夫心中有些好笑，不由得想开口嘲笑对方几句，却忽见韩立整个人往前一冲，如同被强弓射出一般，化为一只利箭，从对面弹射了过来，其来势之快，令墨大夫也不禁颜色一变。\n　　墨大夫急忙把分开的双手往中间一合，打算用手掌夹住对方的剑刃，却见对面的短剑轻轻一晃，幻化成了十几柄一般模样的利刃，从不同方位、真假难辨的直刺过来。\n　　墨大夫哼了一声，心中韩立的评价又低了几分，在他这样的高手面前，使用这样华而不实的招式，那不是找死吗？他一眼就能看得出真剑刃的所在。\n　　于是他瞪大了双目，认准了真剑的来处，同时双手招式不变，反而加快了几分去势，企图一招就击碎这把利刃，让对方只能空手就擒。",
+      "fact_summary": "韩立突然如利箭般弹射冲来，短剑幻化出十几柄真假难辨的利刃；墨大夫认准真剑来处并试图击碎利刃。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "冲突事件分析",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        97458,
+        97751
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          97458,
+          97751
+        ]
+      },
+      "id": "evidence:chunk-0050:006"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "功法术法神通",
+      "requirement_id": "cultivation_system_method_progression",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_range": [
+        95933,
+        97136
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          95933,
+          97136
+        ]
+      }
+    },
+    {
+      "template_name": "战斗与保命机制",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_range": [
+        95735,
+        97751
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          95735,
+          97751
+        ]
+      }
+    },
+    {
+      "template_name": "冲突事件分析",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_range": [
+        96422,
+        97751
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          96422,
+          97751
+        ]
+      }
+    },
+    {
+      "template_name": "武器分析",
+      "requirement_id": "resource_item_craft_profession",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_range": [
+        96278,
+        97751
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          96278,
+          97751
+        ]
+      }
+    },
+    {
+      "template_name": "角色AI行为参考",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_range": [
+        96422,
+        97457
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          96422,
+          97457
+        ]
+      }
+    },
+    {
+      "template_name": "角色修炼历程",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_range": [
+        95824,
+        96421
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          95824,
+          96421
+        ]
+      }
+    },
+    {
+      "template_name": "有限视角与叙事日志",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "source_range": [
+        96422,
+        96779
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          96422,
+          96779
+        ]
+      }
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0050:001",
+      "kind": "hidden_final_move_unnamed",
+      "fact_summary": "韩立准备动用“秘藏的最后一招”，并结合太阳时机与短剑反击，但当前 chunk 尚未说明该招正式名称、完整机制或成败结果。",
+      "evidence_ids": [
+        "evidence:chunk-0050:001",
+        "evidence:chunk-0050:002",
+        "evidence:chunk-0050:005",
+        "evidence:chunk-0050:006"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        96105,
+        97751
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          96105,
+          97751
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0050:002",
+      "kind": "short_sword_blue_light_mechanism_unknown",
+      "fact_summary": "短剑青光和十几柄真假难辨利刃的形成原因、是否依赖武器特性或招式机制，当前 chunk 未完全揭示。",
+      "evidence_ids": [
+        "evidence:chunk-0050:005",
+        "evidence:chunk-0050:006"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "武器分析",
+          "requirement_id": "resource_item_craft_profession",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        97376,
+        97621
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          97376,
+          97621
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0050:003",
+      "kind": "mo_doctor_no_heavy_injury_motive_unclear",
+      "fact_summary": "墨大夫自称没有重伤韩立的意思，韩立也由此判断对方有所忌惮，但当前 chunk 未说明墨大夫保留韩立的真实目的。",
+      "evidence_ids": [
+        "evidence:chunk-0050:003"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        96422,
+        96779
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          96422,
+          96779
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0050:001",
+      "candidate": "剑鞘",
+      "reason": "剑鞘仅被韩立扔在一旁，没有名称、独立功能或后续资源流转；短剑本体已作为武器节点抽取。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        96278,
+        96421
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          96278,
+          96421
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0050:002",
+      "candidate": "屋外的太阳",
+      "reason": "太阳只作为韩立判断施展最后一招时机的环境条件，不是当前需要单独建模的地点、器物或规则节点。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        96191,
+        96228
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          96191,
+          96228
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0050:003",
+      "candidate": "缩地大法",
+      "reason": "“如同会缩地大法一般”是对咫尺天涯移动效果的比喻描写，当前未明示存在独立的缩地大法实体。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        96945,
+        96994
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0050",
+        "source_path": "intermediate/chunks/chunk-0050.txt",
+        "source_range": [
+          96945,
+          96994
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

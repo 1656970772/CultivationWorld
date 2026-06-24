@@ -1,0 +1,1729 @@
+{
+  "run_id": "run-001",
+  "task_packet_id": "chunk-0117:comprehensive_extraction:attempt-001",
+  "chunk_id": "chunk-0117",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "produced_at": "2026-06-23T14:30:00+08:00",
+  "extracted_nodes": [
+    {
+      "id": "node:chunk-0117:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立在墨府后宅厢房戒备留宿，随后由燕歌带去见墨府几位夫人，并在花园中对吴剑鸣掩饰身份。",
+      "evidence_ids": [
+        "evidence:chunk-0117:002",
+        "evidence:chunk-0117:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        227910,
+        227951
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          227910,
+          227951
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0117:character:002",
+      "node_type": "character",
+      "label": "墨彩环",
+      "aliases": [],
+      "fact_summary": "墨彩环在韩立安歇后识趣离开，当前 chunk 未进一步展开她的行动。",
+      "evidence_ids": [
+        "evidence:chunk-0117:001"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        227842,
+        227883
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          227842,
+          227883
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0117:facility:001",
+      "node_type": "facility",
+      "label": "墨府后宅厢房",
+      "aliases": [],
+      "fact_summary": "墨府后宅厢房是韩立本 chunk 开始时安歇但保持戒备的地点。",
+      "evidence_ids": [
+        "evidence:chunk-0117:001",
+        "evidence:chunk-0117:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        227842,
+        227883
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          227842,
+          227883
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0117:character:003",
+      "node_type": "character",
+      "label": "燕歌",
+      "aliases": [
+        "燕师兄",
+        "燕大师兄"
+      ],
+      "fact_summary": "燕歌是墨大夫大弟子，自称韩立大师兄；他奉几位师母之命来叫韩立，并对墨玉珠痴情。",
+      "evidence_ids": [
+        "evidence:chunk-0117:003",
+        "evidence:chunk-0117:004",
+        "evidence:chunk-0117:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        228185,
+        228214
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          228185,
+          228214
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0117:character:004",
+      "node_type": "character",
+      "label": "墨大夫",
+      "aliases": [
+        "师傅"
+      ],
+      "fact_summary": "墨大夫在本 chunk 中作为燕歌师傅和大弟子关系的参照出现。",
+      "evidence_ids": [
+        "evidence:chunk-0117:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        228185,
+        228214
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          228185,
+          228214
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0117:faction:001",
+      "node_type": "faction",
+      "label": "墨府几位夫人",
+      "aliases": [
+        "几位师母",
+        "墨大夫的几位夫人"
+      ],
+      "fact_summary": "墨府几位夫人命燕歌来叫韩立，并在小楼等待韩立到来。",
+      "evidence_ids": [
+        "evidence:chunk-0117:005",
+        "evidence:chunk-0117:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        228335,
+        228365
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          228335,
+          228365
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0117:location:001",
+      "node_type": "location",
+      "label": "后院花园",
+      "aliases": [
+        "园中"
+      ],
+      "fact_summary": "后院花园是韩立、燕歌意外遇见墨玉珠和吴剑鸣的地点。",
+      "evidence_ids": [
+        "evidence:chunk-0117:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        228466,
+        228536
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          228466,
+          228536
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0117:character:005",
+      "node_type": "character",
+      "label": "墨玉珠",
+      "aliases": [
+        "玉珠",
+        "墨大小姐"
+      ],
+      "fact_summary": "墨玉珠与吴剑鸣在花园并行；她对燕歌明目张胆的爱慕很不耐，燕歌自述她只把自己当兄妹。",
+      "evidence_ids": [
+        "evidence:chunk-0117:006",
+        "evidence:chunk-0117:010",
+        "evidence:chunk-0117:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        228466,
+        228536
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          228466,
+          228536
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0117:character:006",
+      "node_type": "character",
+      "label": "吴剑鸣",
+      "aliases": [
+        "吴公子"
+      ],
+      "fact_summary": "吴剑鸣与墨玉珠在花园同行，并被叙事称为墨玉珠名义上的未婚夫；他询问韩立身份且对燕歌不悦。",
+      "evidence_ids": [
+        "evidence:chunk-0117:006",
+        "evidence:chunk-0117:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        228466,
+        228536
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          228466,
+          228536
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0117:facility:002",
+      "node_type": "facility",
+      "label": "小楼",
+      "aliases": [
+        "韩立昨夜待过的小楼"
+      ],
+      "fact_summary": "韩立与燕歌最后来到韩立昨夜待过的小楼，墨大夫几位夫人在那里等待。",
+      "evidence_ids": [
+        "evidence:chunk-0117:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        229841,
+        229897
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          229841,
+          229897
+        ]
+      }
+    }
+  ],
+  "extracted_edges": [
+    {
+      "id": "edge:chunk-0117:001",
+      "edge_type": "stayed_at",
+      "source": "node:chunk-0117:character:001",
+      "target": "node:chunk-0117:facility:001",
+      "fact_summary": "韩立在墨府后宅厢房安歇，但因不明墨府态度而保持戒备。",
+      "evidence_ids": [
+        "evidence:chunk-0117:001",
+        "evidence:chunk-0117:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        227910,
+        227951
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          227910,
+          227951
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0117:002",
+      "edge_type": "disciple_of",
+      "source": "node:chunk-0117:character:003",
+      "target": "node:chunk-0117:character:004",
+      "fact_summary": "燕歌是墨大夫的大弟子。",
+      "evidence_ids": [
+        "evidence:chunk-0117:004"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        228185,
+        228214
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          228185,
+          228214
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0117:003",
+      "edge_type": "senior_fellow_of",
+      "source": "node:chunk-0117:character:003",
+      "target": "node:chunk-0117:character:001",
+      "fact_summary": "燕歌见到韩立时自称算是韩立的大师兄。",
+      "evidence_ids": [
+        "evidence:chunk-0117:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        228158,
+        228181
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          228158,
+          228181
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0117:004",
+      "edge_type": "summoned",
+      "source": "node:chunk-0117:faction:001",
+      "target": "node:chunk-0117:character:001",
+      "fact_summary": "墨府几位夫人让燕歌来请韩立过去。",
+      "evidence_ids": [
+        "evidence:chunk-0117:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        228335,
+        228365
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          228335,
+          228365
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0117:005",
+      "edge_type": "nominal_fiance_of",
+      "source": "node:chunk-0117:character:005",
+      "target": "node:chunk-0117:character:006",
+      "fact_summary": "叙事说明墨玉珠是吴剑鸣名义上的未婚妻。",
+      "evidence_ids": [
+        "evidence:chunk-0117:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        229043,
+        229061
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          229043,
+          229061
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0117:006",
+      "edge_type": "infatuated_with",
+      "source": "node:chunk-0117:character:003",
+      "target": "node:chunk-0117:character:005",
+      "fact_summary": "燕歌当众痴望墨玉珠，随后又向韩立承认自己对玉珠仍无法自拔。",
+      "evidence_ids": [
+        "evidence:chunk-0117:008",
+        "evidence:chunk-0117:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "记忆情绪与执念",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        229519,
+        229648
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          229519,
+          229648
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0117:007",
+      "edge_type": "rejected_romantic_interest",
+      "source": "node:chunk-0117:character:005",
+      "target": "node:chunk-0117:character:003",
+      "fact_summary": "墨玉珠对燕歌明目张胆的爱慕不耐；燕歌自述她只将自己视为兄妹并几度拒绝。",
+      "evidence_ids": [
+        "evidence:chunk-0117:010",
+        "evidence:chunk-0117:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "记忆情绪与执念",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        229094,
+        229130
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          229094,
+          229130
+        ]
+      }
+    }
+  ],
+  "extracted_events": [
+    {
+      "id": "event:chunk-0117:001",
+      "event_type": "lodging_caution_event",
+      "label": "韩立在墨府后宅厢房戒备留宿",
+      "fact_summary": "韩立在墨府后宅厢房安歇，墨彩环告辞离开；韩立因不明墨府态度与危险，一夜没有真正入睡。",
+      "participants": [
+        "node:chunk-0117:character:001",
+        "node:chunk-0117:character:002",
+        "node:chunk-0117:facility:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0117:001",
+        "evidence:chunk-0117:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        227910,
+        227951
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          227910,
+          227951
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0117:002",
+      "event_type": "summons_event",
+      "label": "燕歌传达师母召见",
+      "fact_summary": "燕歌登门热情见韩立，自称大师兄，并说明几位师母要韩立过去。",
+      "participants": [
+        "node:chunk-0117:character:001",
+        "node:chunk-0117:character:003",
+        "node:chunk-0117:faction:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0117:003",
+        "evidence:chunk-0117:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        228335,
+        228365
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          228335,
+          228365
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0117:003",
+      "event_type": "encounter_event",
+      "label": "花园偶遇墨玉珠和吴剑鸣",
+      "fact_summary": "韩立与燕歌经过后院花园时，遇见墨玉珠和吴剑鸣；吴剑鸣询问韩立身份，韩立自称三夫人远房堂侄来掩饰。",
+      "participants": [
+        "node:chunk-0117:character:001",
+        "node:chunk-0117:character:003",
+        "node:chunk-0117:character:005",
+        "node:chunk-0117:character:006",
+        "node:chunk-0117:location:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0117:006",
+        "evidence:chunk-0117:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        228466,
+        228536
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          228466,
+          228536
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0117:004",
+      "event_type": "social_tension_event",
+      "label": "燕歌痴望墨玉珠引发尴尬",
+      "fact_summary": "燕歌当众痴迷望着墨玉珠出神；吴剑鸣因墨玉珠是其名义未婚妻而不悦，墨玉珠也对燕歌的爱慕不耐。",
+      "participants": [
+        "node:chunk-0117:character:003",
+        "node:chunk-0117:character:005",
+        "node:chunk-0117:character:006",
+        "node:chunk-0117:character:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0117:008",
+        "evidence:chunk-0117:009",
+        "evidence:chunk-0117:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        228781,
+        228823
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          228781,
+          228823
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0117:005",
+      "event_type": "confession_event",
+      "label": "燕歌向韩立袒露痴情",
+      "fact_summary": "燕歌告诉韩立自己与墨玉珠从小相识、感情很深，但墨玉珠只把他当兄妹并几度拒绝；他仍无法自拔。",
+      "participants": [
+        "node:chunk-0117:character:003",
+        "node:chunk-0117:character:001",
+        "node:chunk-0117:character:005"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0117:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "记忆情绪与执念",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        229519,
+        229648
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          229519,
+          229648
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0117:006",
+      "event_type": "arrival_event",
+      "label": "韩立被带到小楼见夫人们",
+      "fact_summary": "韩立与燕歌说笑着来到韩立昨夜待过的小楼，墨大夫几位夫人在那里等待韩立。",
+      "participants": [
+        "node:chunk-0117:character:001",
+        "node:chunk-0117:character:003",
+        "node:chunk-0117:faction:001",
+        "node:chunk-0117:facility:002"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0117:012"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        229841,
+        229897
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          229841,
+          229897
+        ]
+      }
+    }
+  ],
+  "extracted_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0117:001",
+      "chunk_id": "chunk-0117",
+      "source_range": [
+        227842,
+        227883
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          227842,
+          227883
+        ]
+      },
+      "excerpt": "韩立总算在墨府后宅的厢房内安歇了下来，墨彩环识趣的并未在这儿多待，就很快告辞回去了",
+      "fact_summary": "韩立在墨府后宅厢房安歇，墨彩环很快告辞离开。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0117:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0117:002",
+      "chunk_id": "chunk-0117",
+      "source_range": [
+        227910,
+        227951
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          227910,
+          227951
+        ]
+      },
+      "excerpt": "因尚弄不清墨府的人对自己持什么态度，不知是否还有危险？所以韩立一晚上都没有真正入睡",
+      "fact_summary": "韩立因不清楚墨府态度和潜在危险，一夜没有真正入睡，保持戒备。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0117:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0117:003",
+      "chunk_id": "chunk-0117",
+      "source_range": [
+        228158,
+        228181
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          228158,
+          228181
+        ]
+      },
+      "excerpt": "是韩师弟吧！在下燕歌，算起来也是阁下的大师兄！",
+      "fact_summary": "燕歌热情向韩立自称师兄，并说自己算是韩立的大师兄。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0117:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0117:004",
+      "chunk_id": "chunk-0117",
+      "source_range": [
+        228185,
+        228214
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          228185,
+          228214
+        ]
+      },
+      "excerpt": "“燕歌！”韩立脑中想起了此人的信息，这人是墨大夫的大弟子。",
+      "fact_summary": "韩立想起燕歌是墨大夫的大弟子。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0117:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0117:005",
+      "chunk_id": "chunk-0117",
+      "source_range": [
+        228335,
+        228365
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          228335,
+          228365
+        ]
+      },
+      "excerpt": "几位师母叫我来此的，她们老人家有事找韩师弟，要师弟过去一趟。",
+      "fact_summary": "燕歌说明几位师母有事找韩立，要韩立过去。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0117:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0117:006",
+      "chunk_id": "chunk-0117",
+      "source_range": [
+        228466,
+        228536
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          228466,
+          228536
+        ]
+      },
+      "excerpt": "当二人经过后院的花园时，竟然意外的遇见了一对青年男女——正是韩立昨日远远望见过的墨玉珠和吴剑鸣。他们二人正在园中并立而行，一副郎情妾意的模样",
+      "fact_summary": "韩立与燕歌经过后院花园时遇见墨玉珠和吴剑鸣，二人在园中并行，显出亲密情态。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0117:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0117:007",
+      "chunk_id": "chunk-0117",
+      "source_range": [
+        228843,
+        228880
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          228843,
+          228880
+        ]
+      },
+      "excerpt": "小弟是三夫人的远房堂侄，奉父母之命来看望三夫人的，顺便想求夫人给谋个差事！",
+      "fact_summary": "韩立面对吴剑鸣询问时，自称是三夫人的远房堂侄并想谋差事，以此掩饰身份。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0117:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0117:008",
+      "chunk_id": "chunk-0117",
+      "source_range": [
+        228781,
+        228823
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          228781,
+          228823
+        ]
+      },
+      "excerpt": "此时的燕师兄，竟然一脸的痴迷，正呆呆的望着墨玉珠墨大小姐出神，完全进入到了忘我的境界",
+      "fact_summary": "燕歌当场痴迷地望着墨玉珠出神，无法回应吴剑鸣的问题。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0117:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0117:009",
+      "chunk_id": "chunk-0117",
+      "source_range": [
+        229043,
+        229061
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          229043,
+          229061
+        ]
+      },
+      "excerpt": "毕竟身边的美人可是他名义上的未婚妻。",
+      "fact_summary": "叙事明示墨玉珠是吴剑鸣名义上的未婚妻。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0117:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0117:010",
+      "chunk_id": "chunk-0117",
+      "source_range": [
+        229094,
+        229130
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          229094,
+          229130
+        ]
+      },
+      "excerpt": "她微皱着眉头，脸上有些不愉之色，显然对燕歌的这种明目张胆的爱慕很是不耐。",
+      "fact_summary": "墨玉珠对燕歌明目张胆的爱慕表现出不耐和不愉。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0117:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0117:011",
+      "chunk_id": "chunk-0117",
+      "source_range": [
+        229519,
+        229648
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          229519,
+          229648
+        ]
+      },
+      "excerpt": "从小我就和玉珠一块长大，这期间虽然说不上什么青梅竹马，两小无猜，但也有了很深的感情。但可惜的是，长大后的玉珠似乎对我只有兄妹之情，而无其他的意思，因此在被她几度拒绝之后，我就再无他想了，只是希望她找个好夫君，能让她一辈子幸福！可如今一见到玉珠，我还是无法自拔",
+      "fact_summary": "燕歌向韩立说明自己与墨玉珠从小相识、有深厚感情，但墨玉珠只将他视作兄妹并数次拒绝；他希望她幸福，却仍无法自拔。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "记忆情绪与执念",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "NPC性格与代表事件",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0117:011"
+    },
+    {
+      "evidence_id": "evidence:chunk-0117:012",
+      "chunk_id": "chunk-0117",
+      "source_range": [
+        229841,
+        229897
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          229841,
+          229897
+        ]
+      },
+      "excerpt": "两人又说说笑笑的来到了韩立昨夜待过的小楼，在那里墨大夫的几位夫人正隆重的等待韩立的到来，准备给韩立一个大的惊喜。",
+      "fact_summary": "韩立与燕歌来到昨夜小楼，墨大夫几位夫人正等待韩立并准备给他一个惊喜。",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "事件因果链（长程因果图）",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "建筑设施与场所功能",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "势力设定",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0117:012"
+    }
+  ],
+  "supports_templates": [
+    {
+      "template_name": "人物关系与事件分析",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "相遇剧情与对话设计",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "NPC性格与代表事件",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "记忆情绪与执念",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "角色AI行为参考",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "有限视角与叙事日志",
+      "requirement_id": "character_relationship_perspective",
+      "requirement_status": "needs_review",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review"
+    },
+    {
+      "template_name": "建筑设施与场所功能",
+      "requirement_id": "world_region_state_place",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    },
+    {
+      "template_name": "势力设定",
+      "requirement_id": "faction_society_economy_task",
+      "requirement_status": "needs_review",
+      "confidence": "EXTRACTED",
+      "verification_status": "needs_review"
+    },
+    {
+      "template_name": "事件因果链（长程因果图）",
+      "requirement_id": "event_conflict_combat_opportunity",
+      "requirement_status": "covered",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified"
+    }
+  ],
+  "uncertainties": [
+    {
+      "id": "uncertainty:chunk-0117:001",
+      "kind": "false_identity_not_fact",
+      "fact_summary": "韩立自称三夫人的远房堂侄并想谋差事是面对吴剑鸣时的掩饰说法，不能抽作真实亲属关系或真实求职目标。",
+      "evidence_ids": [
+        "evidence:chunk-0117:007"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        228843,
+        228880
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          228843,
+          228880
+        ]
+      }
+    },
+    {
+      "id": "uncertainty:chunk-0117:002",
+      "kind": "subjective_relationship_account",
+      "fact_summary": "燕歌关于墨玉珠只把自己当兄妹、几度拒绝的说法由燕歌自述和当前反应支撑，但墨玉珠的完整内心与后续关系边界仍需后续复核。",
+      "evidence_ids": [
+        "evidence:chunk-0117:010",
+        "evidence:chunk-0117:011"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        },
+        {
+          "template_name": "记忆情绪与执念",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "source_range": [
+        229519,
+        229648
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          229519,
+          229648
+        ]
+      }
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rejected:chunk-0117:001",
+      "candidate": "小妖精",
+      "reason": "该称呼只出现在韩立猜测敲门者时，当前片段未直接明示为可独立抽取的新实体；不另建节点。",
+      "evidence_ids": [],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [],
+      "source_range": [
+        228006,
+        228015
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          228006,
+          228015
+        ]
+      }
+    },
+    {
+      "id": "rejected:chunk-0117:002",
+      "candidate": "三夫人的远房堂侄",
+      "reason": "这是韩立临场编造或至少用于掩饰的身份说法，不能作为真实人物关系建边。",
+      "evidence_ids": [
+        "evidence:chunk-0117:007"
+      ],
+      "confidence": "AMBIGUOUS",
+      "verification_status": "rejected",
+      "supports_templates": [
+        {
+          "template_name": "有限视角与叙事日志",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "source_range": [
+        228843,
+        228880
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0117",
+        "source_path": "intermediate/chunks/chunk-0117.txt",
+        "source_range": [
+          228843,
+          228880
+        ]
+      }
+    }
+  ],
+  "structured_failures": []
+}

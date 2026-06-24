@@ -1,0 +1,1623 @@
+{
+  "schema": "stage2-extraction-record.v1",
+  "task_batch_id": "template-batch-0029-454e0f8e3f2d",
+  "task_packet_id": "template-batch-0029-454e0f8e3f2d",
+  "category_id": "faction_society_economy_task",
+  "category_name": "势力社会、经济与任务",
+  "template_name": "物资产出与消耗",
+  "template_file": "物资产出与消耗模板.md",
+  "template_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\模板\\物资产出与消耗模板.md",
+  "template_sha256": "741f139fac4a7c6d5c9fc30bf31acdecd3236283da38eec1934d245443550321",
+  "source_graph": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\graphify-out\\graph.json",
+  "source_novel": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+  "output_language": "zh-CN",
+  "stage2_policy": {
+    "stage2_categories": {
+      "facts": "原作事实",
+      "judgments": "我的判断",
+      "pending_verifications": "待核验",
+      "not_found_items": "未见可靠证据"
+    },
+    "stage2_output_policy": {
+      "default_dir": "drafts",
+      "allow_overwrite_existing_docs": false,
+      "existing_document_action": "write_versioned_draft",
+      "allowed_policies": [
+        "draft",
+        "backup-and-overwrite",
+        "merge"
+      ],
+      "draft_action": "write_draft"
+    },
+    "stage2_render_policy": {
+      "citation_format": "[{evidence_id}]",
+      "draft_entry_policy": {
+        "source_sections": [
+          "facts"
+        ],
+        "field_aliases": {
+          "name": [
+            "name",
+            "title",
+            "item_name",
+            "entity_name",
+            "名称"
+          ],
+          "classification": [
+            "classification",
+            "type",
+            "category_label",
+            "类别",
+            "分类"
+          ],
+          "usage": [
+            "usage",
+            "purpose",
+            "effect",
+            "effects",
+            "用途",
+            "功效"
+          ],
+          "formula": [
+            "formula",
+            "materials",
+            "ingredients",
+            "components",
+            "recipe",
+            "方方",
+            "材料",
+            "成分"
+          ],
+          "source_excerpt": [
+            "source_excerpt",
+            "original_excerpt",
+            "quote",
+            "原文摘录"
+          ],
+          "review_status": [
+            "review_status",
+            "verification_status",
+            "审核状态"
+          ]
+        },
+        "fallback_name": "未命名条目",
+        "kept_fields": [
+          "name",
+          "classification",
+          "usage",
+          "formula",
+          "source_range",
+          "source_excerpt",
+          "evidence_ids",
+          "confidence",
+          "review_status"
+        ]
+      },
+      "final_entry_policy": {
+        "allowed_confidence": [
+          "EXTRACTED"
+        ],
+        "min_evidence_count": 1,
+        "require_explicit_name": true,
+        "require_source_excerpt": true,
+        "required_any_fields": [
+          "usage",
+          "formula"
+        ],
+        "unstable_name_prefixes": [
+          "未名",
+          "未命名",
+          "未知",
+          "不明"
+        ],
+        "unstable_name_contains": [
+          "某种",
+          "某类"
+        ],
+        "composite_name_markers": [
+          "与",
+          "或",
+          "/",
+          "、"
+        ],
+        "review_only_statuses": [
+          "needs_review",
+          "pending_review",
+          "rejected",
+          "ambiguous"
+        ],
+        "allow_missing_review_status": true
+      },
+      "dedupe_policy": {
+        "key_fields": [
+          "name",
+          "classification"
+        ],
+        "merge_text_fields": [
+          "usage",
+          "formula",
+          "source_excerpt"
+        ],
+        "confidence_strategy": "most_conservative",
+        "review_status_strategy": "review_only_wins"
+      },
+      "final_template_policy": {
+        "case_section_names": [
+          "案例",
+          "典型案例",
+          "案例清单",
+          "示例"
+        ],
+        "excluded_section_names": [
+          "待复核",
+          "缺口",
+          "资料来源",
+          "说明"
+        ],
+        "fallback_to_first_non_root_heading": true
+      }
+    }
+  },
+  "coverage_scope": {
+    "scope": "whole_novel",
+    "stage1_chunk_ledger": "coverage/chunk-ledger.json",
+    "chunk_ranges": [
+      {
+        "chunk_id": "chunk-0029",
+        "source_ranges": [
+          [
+            54292,
+            54397
+          ],
+          [
+            55768,
+            55855
+          ],
+          [
+            55976,
+            56029
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0029:002",
+          "evidence:chunk-0029:010",
+          "evidence:chunk-0029:011"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0134",
+        "source_ranges": [
+          [
+            268027,
+            268119
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0134:001"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0153",
+        "source_ranges": [
+          [
+            317348,
+            317374
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0153:001"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0154",
+        "source_ranges": [
+          [
+            321304,
+            321357
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0154:006"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0155",
+        "source_ranges": [
+          [
+            323945,
+            323985
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0155:011"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0158",
+        "source_ranges": [
+          [
+            331237,
+            331281
+          ],
+          [
+            331325,
+            331340
+          ],
+          [
+            331505,
+            331537
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0158:002",
+          "evidence:chunk-0158:003",
+          "evidence:chunk-0158:007"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0161",
+        "source_ranges": [
+          [
+            341732,
+            341832
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0161:013"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0165",
+        "source_ranges": [
+          [
+            350014,
+            350097
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0165:005"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0216",
+        "source_ranges": [
+          [
+            491799,
+            492080
+          ],
+          [
+            492499,
+            492870
+          ],
+          [
+            492873,
+            493052
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0216:004",
+          "evidence:chunk-0216:006",
+          "evidence:chunk-0216:007"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0218",
+        "source_ranges": [
+          [
+            498911,
+            499009
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0218:011"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0225",
+        "source_ranges": [
+          [
+            519470,
+            519543
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0225:013"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0226",
+        "source_ranges": [
+          [
+            521374,
+            521427
+          ],
+          [
+            523020,
+            523055
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0226:006",
+          "evidence:chunk-0226:016"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0235",
+        "source_ranges": [
+          [
+            547565,
+            547618
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0235:002"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0242",
+        "source_ranges": [
+          [
+            568392,
+            568621
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0242:003"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0246",
+        "source_ranges": [
+          [
+            580931,
+            580974
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0246:007"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0247",
+        "source_ranges": [
+          [
+            584710,
+            584824
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0247:015"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0363",
+        "source_ranges": [
+          [
+            922807,
+            922860
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0363:009"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0366",
+        "source_ranges": [
+          [
+            932572,
+            932711
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0366:006"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0377",
+        "source_ranges": [
+          [
+            960871,
+            960931
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0377:005"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0394",
+        "source_ranges": [
+          [
+            1010352,
+            1010387
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0394:020"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0401",
+        "source_ranges": [
+          [
+            1030101,
+            1030203
+          ],
+          [
+            1030779,
+            1030809
+          ],
+          [
+            1030627,
+            1030683
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0401:010",
+          "evidence:chunk-0401:018",
+          "evidence:chunk-0401:016"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0402",
+        "source_ranges": [
+          [
+            1031968,
+            1032014
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0402:012"
+        ]
+      },
+      {
+        "chunk_id": "chunk-0418",
+        "source_ranges": [
+          [
+            1079697,
+            1079836
+          ],
+          [
+            1077957,
+            1078244
+          ]
+        ],
+        "evidence_ids": [
+          "evidence:chunk-0418:011",
+          "evidence:chunk-0418:004"
+        ]
+      }
+    ],
+    "ledger_path": "coverage/template-run-ledger.json"
+  },
+  "fulfilled_sections": [
+    {
+      "requirement_id": "faction_society_economy_task",
+      "requirement_kind": "template_document",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0134:001",
+        "evidence:chunk-0165:005",
+        "evidence:chunk-0226:006",
+        "evidence:chunk-0235:002",
+        "evidence:chunk-0377:005",
+        "evidence:chunk-0418:011",
+        "evidence:chunk-0029:002",
+        "evidence:chunk-0029:010",
+        "evidence:chunk-0029:011",
+        "evidence:chunk-0153:001",
+        "evidence:chunk-0154:006",
+        "evidence:chunk-0155:011",
+        "evidence:chunk-0158:002",
+        "evidence:chunk-0158:003",
+        "evidence:chunk-0158:007",
+        "evidence:chunk-0161:013",
+        "evidence:chunk-0218:011",
+        "evidence:chunk-0216:004",
+        "evidence:chunk-0216:006",
+        "evidence:chunk-0216:007",
+        "evidence:chunk-0242:003",
+        "evidence:chunk-0401:010",
+        "evidence:chunk-0401:018",
+        "evidence:chunk-0402:012",
+        "evidence:chunk-0401:016",
+        "evidence:chunk-0394:020",
+        "evidence:chunk-0418:004",
+        "evidence:chunk-0246:007",
+        "evidence:chunk-0247:015",
+        "evidence:chunk-0225:013",
+        "evidence:chunk-0226:016",
+        "evidence:chunk-0363:009",
+        "evidence:chunk-0366:006"
+      ],
+      "notes": [
+        "优先筛选 supports_templates.template_name == 物资产出与消耗 的 Stage1 证据。",
+        "按来源、加工、交易、消耗、回收或损耗组织案例，避免补写未见价格、产能和数量。"
+      ]
+    }
+  ],
+  "fulfilled_fields": [
+    {
+      "requirement_id": "faction_society_economy_task",
+      "requirement_kind": "template_document",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0134:001",
+        "evidence:chunk-0165:005",
+        "evidence:chunk-0226:006",
+        "evidence:chunk-0235:002",
+        "evidence:chunk-0377:005",
+        "evidence:chunk-0418:011",
+        "evidence:chunk-0029:002",
+        "evidence:chunk-0029:010",
+        "evidence:chunk-0029:011",
+        "evidence:chunk-0153:001",
+        "evidence:chunk-0154:006",
+        "evidence:chunk-0155:011",
+        "evidence:chunk-0158:002",
+        "evidence:chunk-0158:003",
+        "evidence:chunk-0158:007",
+        "evidence:chunk-0161:013",
+        "evidence:chunk-0218:011",
+        "evidence:chunk-0216:004",
+        "evidence:chunk-0216:006",
+        "evidence:chunk-0216:007",
+        "evidence:chunk-0242:003",
+        "evidence:chunk-0401:010",
+        "evidence:chunk-0401:018",
+        "evidence:chunk-0402:012",
+        "evidence:chunk-0401:016",
+        "evidence:chunk-0394:020",
+        "evidence:chunk-0418:004",
+        "evidence:chunk-0246:007",
+        "evidence:chunk-0247:015",
+        "evidence:chunk-0225:013",
+        "evidence:chunk-0226:016",
+        "evidence:chunk-0363:009",
+        "evidence:chunk-0366:006"
+      ],
+      "notes": [
+        "优先筛选 supports_templates.template_name == 物资产出与消耗 的 Stage1 证据。",
+        "按来源、加工、交易、消耗、回收或损耗组织案例，避免补写未见价格、产能和数量。"
+      ]
+    }
+  ],
+  "fulfilled_tables": [],
+  "fulfilled_cards": [],
+  "fulfilled_cases": [
+    {
+      "requirement_id": "物资产出与消耗.案例.01.灵石资源流转",
+      "requirement_kind": "template_document",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0134:001",
+        "evidence:chunk-0165:005",
+        "evidence:chunk-0226:006",
+        "evidence:chunk-0235:002",
+        "evidence:chunk-0377:005",
+        "evidence:chunk-0418:011"
+      ],
+      "notes": [
+        "优先筛选 supports_templates.template_name == 物资产出与消耗 的 Stage1 证据。",
+        "按来源、加工、交易、消耗、回收或损耗组织案例，避免补写未见价格、产能和数量。"
+      ]
+    },
+    {
+      "requirement_id": "物资产出与消耗.案例.02.灵草与丹药资源流转",
+      "requirement_kind": "template_document",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0029:002",
+        "evidence:chunk-0029:010",
+        "evidence:chunk-0029:011",
+        "evidence:chunk-0153:001",
+        "evidence:chunk-0154:006",
+        "evidence:chunk-0155:011",
+        "evidence:chunk-0158:002",
+        "evidence:chunk-0158:003",
+        "evidence:chunk-0158:007",
+        "evidence:chunk-0161:013",
+        "evidence:chunk-0218:011"
+      ],
+      "notes": [
+        "优先筛选 supports_templates.template_name == 物资产出与消耗 的 Stage1 证据。",
+        "按来源、加工、交易、消耗、回收或损耗组织案例，避免补写未见价格、产能和数量。"
+      ]
+    },
+    {
+      "requirement_id": "物资产出与消耗.案例.03.妖兽材料资源流转",
+      "requirement_kind": "template_document",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0394:020",
+        "evidence:chunk-0401:010",
+        "evidence:chunk-0401:018",
+        "evidence:chunk-0402:012",
+        "evidence:chunk-0418:004",
+        "evidence:chunk-0401:016"
+      ],
+      "notes": [
+        "优先筛选 supports_templates.template_name == 物资产出与消耗 的 Stage1 证据。",
+        "按来源、加工、交易、消耗、回收或损耗组织案例，避免补写未见价格、产能和数量。"
+      ]
+    },
+    {
+      "requirement_id": "物资产出与消耗.案例.04.宗门贡献与权限流转",
+      "requirement_kind": "template_document",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0216:004",
+        "evidence:chunk-0216:006",
+        "evidence:chunk-0216:007",
+        "evidence:chunk-0242:003"
+      ],
+      "notes": [
+        "优先筛选 supports_templates.template_name == 物资产出与消耗 的 Stage1 证据。",
+        "按来源、加工、交易、消耗、回收或损耗组织案例，避免补写未见价格、产能和数量。"
+      ]
+    },
+    {
+      "requirement_id": "物资产出与消耗.案例.05.材料生产与工程消耗",
+      "requirement_kind": "template_document",
+      "status": "covered",
+      "linked_node_ids": [],
+      "linked_edge_ids": [],
+      "linked_event_ids": [],
+      "evidence_ids": [
+        "evidence:chunk-0225:013",
+        "evidence:chunk-0363:009",
+        "evidence:chunk-0366:006"
+      ],
+      "notes": [
+        "优先筛选 supports_templates.template_name == 物资产出与消耗 的 Stage1 证据。",
+        "按来源、加工、交易、消耗、回收或损耗组织案例，避免补写未见价格、产能和数量。"
+      ]
+    }
+  ],
+  "facts": [
+    {
+      "name": "灵石货币",
+      "classification": "通用等价物",
+      "usage": "在修仙者交易中作为买卖物品的货币，也可作为坊市摆摊费用、购买法器符箓的价格单位和阵法/炼化的消耗性能源。",
+      "formula": "太南小会以灵石买卖；黄枫谷坊市外来者缴一块低阶灵石可摆摊一日并获得保护；顶阶法器动辄数百低阶灵石；阵法和丹火运转会消耗中阶或深青色灵石。",
+      "content": "灵石货币：在修仙者交易中作为买卖物品的货币，也可作为坊市摆摊费用、购买法器符箓的价格单位和阵法/炼化的消耗性能源。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0134:001",
+        "evidence:chunk-0165:005",
+        "evidence:chunk-0226:006",
+        "evidence:chunk-0235:002",
+        "evidence:chunk-0418:011"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0134:001",
+          "chunk_id": "chunk-0134",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            268027,
+            268119
+          ],
+          "chapter_hint": "第一百三十一章 灵石与灵符"
+        },
+        {
+          "evidence_id": "evidence:chunk-0165:005",
+          "chunk_id": "chunk-0165",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            350014,
+            350097
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0226:006",
+          "chunk_id": "chunk-0226",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            521374,
+            521427
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0235:002",
+          "chunk_id": "chunk-0235",
+          "source_path": "intermediate/chunks/chunk-0235.txt",
+          "source_range": [
+            547565,
+            547618
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0418:011",
+          "chunk_id": "chunk-0418",
+          "source_path": "intermediate/chunks/chunk-0418.txt",
+          "source_range": [
+            1079697,
+            1079836
+          ]
+        }
+      ],
+      "source_range": "chunk-0134:[268027, 268119]; chunk-0165:[350014, 350097]; chunk-0226:[521374, 521427]; chunk-0235:[547565, 547618]; chunk-0418:[1079697, 1079836]",
+      "source_excerpt": "太南小会交易的另一种大众方式是用灵石作为修仙者之间买卖物品的交易货币。；只要上交给管理此处的黄枫谷弟子一块低阶灵石，外来之人就可在两侧空地处摆摊一整天而不受任何干扰，甚至在摆摊期间还会受到这些弟子的保护，不用害怕有仇家会趁此机会对你报复。；顶阶法器可不是一般人买得起的，动不动就要数百低阶灵石。一般修仙者即使攒了一辈子灵石，也不见得能买下一件来。；韩立将法器按照要求该插的插好，该深埋的埋下，然后一咬牙将几块中阶灵石镶嵌了上去。这可是他全部灵石的一半啊！；丹火对灵力的消耗比较大，但幸亏韩立对此早就有了准备，在一放出丹火的同时，两只手就同时抓着一块深青色的灵石，同开始吸纳其中的灵气，并在连灵石也开始补充不及时，他就随手从掏出一颗丹药服下去。\n　　这些丹药即使不能马上转化为法力，但其蕴含的充足灵力，足以让准备打持久战的韩立有恃无恐。",
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "黄枫谷坊市摊位费",
+      "classification": "组织收费 / 市场秩序",
+      "usage": "外来修仙者向管理坊市的黄枫谷弟子上交一块低阶灵石，可在两侧空地摆摊一整天并获得摆摊期间保护。",
+      "formula": "外来修士 -> 黄枫谷管理弟子：一块低阶灵石；黄枫谷 -> 外来修士：摊位使用权与安全保护。",
+      "content": "黄枫谷坊市摊位费：外来修仙者向管理坊市的黄枫谷弟子上交一块低阶灵石，可在两侧空地摆摊一整天并获得摆摊期间保护。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0165:005"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0165:005",
+          "chunk_id": "chunk-0165",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            350014,
+            350097
+          ]
+        }
+      ],
+      "source_range": "chunk-0165:[350014, 350097]",
+      "source_excerpt": "只要上交给管理此处的黄枫谷弟子一块低阶灵石，外来之人就可在两侧空地处摆摊一整天而不受任何干扰，甚至在摆摊期间还会受到这些弟子的保护，不用害怕有仇家会趁此机会对你报复。",
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "阵法灵石消耗",
+      "classification": "能源消耗 / 公共防护",
+      "usage": "防护阵和私人布阵都会消耗灵石：小寰岛居民上交灵石不足以支撑防护阵，韩立布阵也一次镶嵌数块中阶灵石。",
+      "formula": "小寰岛居民上交灵石 -> 防护阵消耗，不足部分曾由魁星岛承担；韩立布阵 -> 镶嵌中阶灵石 -> 占自身灵石约一半。",
+      "content": "阵法灵石消耗：防护阵和私人布阵都会消耗灵石：小寰岛居民上交灵石不足以支撑防护阵，韩立布阵也一次镶嵌数块中阶灵石。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0377:005",
+        "evidence:chunk-0235:002"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0377:005",
+          "chunk_id": "chunk-0377",
+          "source_path": "intermediate/chunks/chunk-0377.txt",
+          "source_range": [
+            960871,
+            960931
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0235:002",
+          "chunk_id": "chunk-0235",
+          "source_path": "intermediate/chunks/chunk-0235.txt",
+          "source_range": [
+            547565,
+            547618
+          ]
+        }
+      ],
+      "source_range": "chunk-0377:[960871, 960931]; chunk-0235:[547565, 547618]",
+      "source_excerpt": "中年修士说明小寰岛居民上交灵石不足以支撑防护阵，过去由魁星岛承担消耗。；韩立将法器按照要求该插的插好，该深埋的埋下，然后一咬牙将几块中阶灵石镶嵌了上去。这可是他全部灵石的一半啊！",
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "绿液催生药材",
+      "classification": "资源增产 / 灵草加工",
+      "usage": "韩立用神秘绿液有计划地催生对自己有用的草药，并按珍稀配方调配药物；早期结果包括黄龙丹、清灵散、金髓丸和养精丹。",
+      "formula": "绿液 -> 催生珍贵药材 -> 按配方调配珍稀药物；配制过程存在失败损耗，成品装入多个小瓶。",
+      "content": "绿液催生药材：韩立用神秘绿液有计划地催生对自己有用的草药，并按珍稀配方调配药物；早期结果包括黄龙丹、清灵散、金髓丸和养精丹。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0029:002",
+        "evidence:chunk-0029:010",
+        "evidence:chunk-0029:011"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0029:002",
+          "chunk_id": "chunk-0029",
+          "source_path": "intermediate/chunks/chunk-0029.txt",
+          "source_range": [
+            54292,
+            54397
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0029:010",
+          "chunk_id": "chunk-0029",
+          "source_path": "intermediate/chunks/chunk-0029.txt",
+          "source_range": [
+            55768,
+            55855
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0029:011",
+          "chunk_id": "chunk-0029",
+          "source_path": "intermediate/chunks/chunk-0029.txt",
+          "source_range": [
+            55976,
+            56029
+          ]
+        }
+      ],
+      "source_range": "chunk-0029:[54292, 54397]; chunk-0029:[55768, 55855]; chunk-0029:[55976, 56029]",
+      "source_excerpt": "现在离墨大夫下山已经过了近半年，估计他再有六七个月就该回到七玄门了。在他回来之前的这些日子里，韩立只有尽可能的多催生一些对自己有用的草药，要有计划的按照他知道的几个珍稀配方来获取药材，不能盲目的乱浪费这些绿液。；在接下来的数月里，韩立偷偷的用瓶子中的绿液，催生了大批的珍贵药材。他用这些药材，按照配方调配了不少的珍稀药物，但在配制过程中也发生了不少次的失败，每次的失败都让韩立肉疼了好久；“黄龙丹”“清灵散”“金髓丸”“养精丹”这些外面难得一见的稀世之药全都放在十几个小瓶内，一一摆在了韩立面前",
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "百药园上交草药",
+      "classification": "宗门杂务 / 药材回流",
+      "usage": "青石岭百药园任务要求维持药园规模、避免药草夭折，并按期上交珍稀药材或草药；韩立凭稀释绿液可快速催熟，降低上交压力。",
+      "formula": "接管百药园 -> 维持规模和药草存活 -> 每年/每月上交规定药材；稀释绿液 -> 一夜催熟药草 -> 支撑任务完成。",
+      "content": "百药园上交草药：青石岭百药园任务要求维持药园规模、避免药草夭折，并按期上交珍稀药材或草药；韩立凭稀释绿液可快速催熟，降低上交压力。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0153:001",
+        "evidence:chunk-0154:006",
+        "evidence:chunk-0155:011"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0153:001",
+          "chunk_id": "chunk-0153",
+          "source_path": "intermediate/chunks/chunk-0153.txt",
+          "source_range": [
+            317348,
+            317374
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0154:006",
+          "chunk_id": "chunk-0154",
+          "source_path": "intermediate/chunks/chunk-0154.txt",
+          "source_range": [
+            321304,
+            321357
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0155:011",
+          "chunk_id": "chunk-0155",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            323945,
+            323985
+          ]
+        }
+      ],
+      "source_range": "chunk-0153:[317348, 317374]; chunk-0154:[321304, 321357]; chunk-0155:[323945, 323985]",
+      "source_excerpt": "接管青石岭百药园一座，每年需上交规定数量的珍稀药材。；是不是药园规模要维持不变，不能将药草弄夭折，每月还需上交一定数量的草药！如果是这样的话，晚辈倒还有些信心！；有了这稀释后的绿液帮助，什么样的药草他不能一夜之间就把它催熟，这完全是小事一桩。",
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "筑基丹炼制链",
+      "classification": "丹药生产 / 技术门槛",
+      "usage": "筑基丹有完整炼制方法，但原料、火候和境界条件同时构成门槛；百药园有三十一种辅药材但需数百年火候，三味主药缺失，炼制还需先天真火。",
+      "formula": "三十一种辅药材 + 三味主药 + 数百年火候 + 筑基后先天真火 -> 凝练筑基丹；韩立准备足够百余次炼制的灵药以承受失败。",
+      "content": "筑基丹炼制链：筑基丹有完整炼制方法，但原料、火候和境界条件同时构成门槛；百药园有三十一种辅药材但需数百年火候，三味主药缺失，炼制还需先天真火。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0158:002",
+        "evidence:chunk-0158:003",
+        "evidence:chunk-0158:007",
+        "evidence:chunk-0161:013",
+        "evidence:chunk-0218:011"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0158:002",
+          "chunk_id": "chunk-0158",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            331237,
+            331281
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0158:003",
+          "chunk_id": "chunk-0158",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            331325,
+            331340
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0158:007",
+          "chunk_id": "chunk-0158",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            331505,
+            331537
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0161:013",
+          "chunk_id": "chunk-0161",
+          "source_path": "intermediate/chunks/chunk-0161.txt",
+          "source_range": [
+            341732,
+            341832
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0218:011",
+          "chunk_id": "chunk-0218",
+          "source_path": "intermediate/chunks/chunk-0218.txt",
+          "source_range": [
+            498911,
+            499009
+          ]
+        }
+      ],
+      "source_range": "chunk-0158:[331237, 331281]; chunk-0158:[331325, 331340]; chunk-0158:[331505, 331537]; chunk-0161:[341732, 341832]; chunk-0218:[498911, 499009]",
+      "source_excerpt": "竟然是韩立梦寐以求的筑基丹炼制方法，从原料到如何凝练成丹整套过程丝毫不少，让他又惊又喜。；必须用先天真火加以淬炼才能成丹；筑基就必须炼成筑基丹才行，而炼成筑基丹又不能缺少筑基后的先天真火；“千结花、黑芍草、金精参等三十一种辅药材倒没什么，这药园内全都有，只是要求年份长久一些，要有数百年的火候罢了。但是作为主药的玉髓芝、紫猴花、天灵果就有些麻烦了！这里竟然一株都没有，而且也从未听闻过。”；所以他一开始就计划好了，准备一颗颗的来炼制筑基丹！\n　　这样一来，即使前面失败的次数再多，他也不会过于心痛灵药。而他所准备的灵药份量，足可以炼制百余次还多，相信这么多的原料，足够他前面积累经验了。",
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "血色试炼灵药贡品",
+      "classification": "宗门贡品 / 奖赏折算",
+      "usage": "韩立从禁地上交二十多株灵药，按十株左右换一枚筑基丹的口径本可换两枚；黄枫谷师徒规矩使师傅可抽取徒弟上交贡品一半，韩立实际只得一枚。",
+      "formula": "禁地采药 -> 上交宗门贡品 -> 筑基丹奖赏；明确师徒关系 -> 师傅抽取一半贡品作谢师礼 -> 奖赏折半。",
+      "content": "血色试炼灵药贡品：韩立从禁地上交二十多株灵药，按十株左右换一枚筑基丹的口径本可换两枚；黄枫谷师徒规矩使师傅可抽取徒弟上交贡品一半，韩立实际只得一枚。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0216:004",
+        "evidence:chunk-0216:006",
+        "evidence:chunk-0216:007",
+        "evidence:chunk-0242:003"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0216:004",
+          "chunk_id": "chunk-0216",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            491799,
+            492080
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0216:006",
+          "chunk_id": "chunk-0216",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            492499,
+            492870
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0216:007",
+          "chunk_id": "chunk-0216",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            492873,
+            493052
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0242:003",
+          "chunk_id": "chunk-0242",
+          "source_path": "intermediate/chunks/chunk-0242.txt",
+          "source_range": [
+            568392,
+            568621
+          ]
+        }
+      ],
+      "source_range": "chunk-0216:[491799, 492080]; chunk-0216:[492499, 492870]; chunk-0216:[492873, 493052]; chunk-0242:[568392, 568621]",
+      "source_excerpt": "黄枫谷百药园内的一间茅屋内，小老头马师伯瞪大了双眼，如同见了鬼一样的死死盯着韩立，嘴里还不停的喃喃道：“这不可能，你不但没死，还在禁地中捡了个漏，一下上交了二十多株灵药，还被李师叔收为了记名弟子！”\n　　“是啊，马师伯！我这算不算是福源深厚，造化惊人啊！”韩立坐在小老头的对面，似笑非笑的说道，仿佛很是得意。\n　　小老头听了韩立此言，脸色恢复了正常，却换上了一种古怪的眼神直瞅着韩立，看的韩立心里毛毛的，不知对方是何用意。\n　　“韩小子，你这次禁地之行，的确收获不少，远出乎我的意料之外啊！”小老头长叹了一口气，说道。\n　　“我自己也没想到啊！”韩立随口应付道。；“你觉得这次上交这么多灵药，能得到什么奖赏？”小老头话头一转，忽然问道。\n　　“能换取两枚筑基丹吧！我事先打听过，凡是上交十株左右灵药的，就可换取一枚筑基丹。”韩立知道，对方既然如此一问，肯定有其目的，就老实的回答道。\n　　“哼！等几天后奖赏下来时，你就只有一枚筑基丹的福分，两枚的事，就不要做梦了！”小老头略微讥讽的说道。\n　　“什么？怎么会这样！难道还有人克扣奖赏不成？”韩立差点蹦了起来，一脸难以置信之色。\n　　“克扣倒没有，也没人敢这么做！奖赏变少的，只是你一人而已，其他人都应是全额拿到的。否则，下次谁还参加血色试炼！”小老头撇撇嘴说道。\n　　“难道是因为李师祖的缘故？”韩立歪着头想了一下后，神情认真的说道。\n　　“你也不算太笨，这么快就找到点子上了。的确是因为李师叔收你为徒，才会如此的！”小老头眼中赞赏之色一闪而过，点点头道。；“本门有个不成文的规矩，凡是有明确师徒关系的，做师傅的有权抽取徒弟上交师门贡品的一半，作为谢师礼，当然这仅限于一次而已，下不为例。而你禁地中采到的灵药，也算是对师门某种贡品。所以据我估计，李师叔之所以这么热心收你为徒，八成是看上了你那十来株谢师礼了。灵药到了上面只有一半，你的奖赏自然也只有一半了，所以筑基丹你就不要再奢望两枚了。”小老头仔细的给韩立解释道。；李化元听了少妇之言后，微微一笑，点点头就对韩立说道：“韩立啊！你现在应该知道，当日我收你为徒的原因了吧！这没什么不好意思说的，我这位做长辈的的确是贪图上了那些天地灵药，所以才借收徒的名义，从你那里硬收走了一半的份额，否则你应该得到两粒筑基丹。而不是仅仅一颗了！不过，我自认虽然让你奖赏无缘无故变少了。但也让你在以后的日子里，可以用我的名义做靠山，而不会受人轻易欺辱，这也算对的起你了。毕竟以你当时的资质而言，即使再多一粒筑基丹，似乎也没希望筑基成功的样子！”",
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "外星海猎妖材料",
+      "classification": "妖兽产出 / 交易回收",
+      "usage": "外星海修士可斩杀妖兽取妖丹回天星城换卖灵石；韩立以霓裳草诱妖，五年间取得数百颗五级妖丹和大量妖兽材料，并把用不上的材料分批售出换取灵石。",
+      "formula": "霓裳草诱妖 -> 击杀五级妖兽 -> 取得妖丹和妖兽材料 -> 自用或分批卖给小商家 -> 回收大量灵石。",
+      "content": "外星海猎妖材料：外星海修士可斩杀妖兽取妖丹回天星城换卖灵石；韩立以霓裳草诱妖，五年间取得数百颗五级妖丹和大量妖兽材料，并把用不上的材料分批售出换取灵石。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0394:020",
+        "evidence:chunk-0401:010",
+        "evidence:chunk-0401:018",
+        "evidence:chunk-0402:012"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0394:020",
+          "chunk_id": "chunk-0394",
+          "source_path": "intermediate/chunks/chunk-0394.txt",
+          "source_range": [
+            1010352,
+            1010387
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0401:010",
+          "chunk_id": "chunk-0401",
+          "source_path": "intermediate/chunks/chunk-0401.txt",
+          "source_range": [
+            1030101,
+            1030203
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0401:018",
+          "chunk_id": "chunk-0401",
+          "source_path": "intermediate/chunks/chunk-0401.txt",
+          "source_range": [
+            1030779,
+            1030809
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0402:012",
+          "chunk_id": "chunk-0402",
+          "source_path": "intermediate/chunks/chunk-0402.txt",
+          "source_range": [
+            1031968,
+            1032014
+          ]
+        }
+      ],
+      "source_range": "chunk-0394:[1010352, 1010387]; chunk-0401:[1030101, 1030203]; chunk-0401:[1030779, 1030809]; chunk-0402:[1031968, 1032014]",
+      "source_excerpt": "修士们就可在附近的海面斩杀各类的妖兽，夺取妖丹再拿回天星城换卖灵石了。；韩立在这红瑚岛一呆就是一个多月。\n　　他先后数次向那株“霓裳草”滴上绿液，迫使其展叶发出气味，来渐渐增大其诱妖的范围。如此一来，几乎每隔两三日就会有妖兽被吸引而来，让他和曲魂两人一口气灭杀了十几头五级妖兽；除了得到数百颗五级妖丹外，韩立得到的珍稀妖兽材料更是不计其数；将手中用不上的各种妖兽材料，捡那些不在天星城常驻的小商家慢慢放了出去，倒也换了大量的灵石回来",
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "妖兽皮制符消耗",
+      "classification": "材料加工 / 失败损耗",
+      "usage": "韩立用较次妖兽皮练习制符，状态好时才用珍稀材料炼制特殊中级符箓；中级符箓需求高但成功率低，约二三十张才成功一次。",
+      "formula": "较次妖兽皮 -> 练手符箓；珍稀材料 -> 特殊中级符箓；大量失败消耗 -> 少量成品 -> 低阶修士用灵石购买。",
+      "content": "妖兽皮制符消耗：韩立用较次妖兽皮练习制符，状态好时才用珍稀材料炼制特殊中级符箓；中级符箓需求高但成功率低，约二三十张才成功一次。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0418:004",
+        "evidence:chunk-0246:007",
+        "evidence:chunk-0247:015"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0418:004",
+          "chunk_id": "chunk-0418",
+          "source_path": "intermediate/chunks/chunk-0418.txt",
+          "source_range": [
+            1077957,
+            1078244
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0246:007",
+          "chunk_id": "chunk-0246",
+          "source_path": "intermediate/chunks/chunk-0246.txt",
+          "source_range": [
+            580931,
+            580974
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0247:015",
+          "chunk_id": "chunk-0247",
+          "source_path": "intermediate/chunks/chunk-0247.txt",
+          "source_range": [
+            584710,
+            584824
+          ]
+        }
+      ],
+      "source_range": "chunk-0418:[1077957, 1078244]; chunk-0246:[580931, 580974]; chunk-0247:[584710, 584824]",
+      "source_excerpt": "韩立先用较次的妖兽皮练手，等哪天觉得状态不错后，才会用珍稀的材料炼制几种特殊的符箓。\n　　那些练手的符箓，基本都是一些攻击型的法术，韩立每隔一两个月会放上那么一两张上去，到时侯谁先看到了就归谁。\n　　以韩立结丹期的修为看，这些符箓和法宝的威力一比，实在成了鸡肋一样的东西，留着也没什么用处。\n　　但韩立显然低估了中级符箓对那些炼气期和筑基期修士的诱惑，即使接二连三的将符箓的价钱提了上去，仍然有修士毫不犹豫的掏灵石买下它们，让韩立颇发一笔小财。\n　　但可惜的是，中级符箓实在是难炼制之极，即使韩立有这么多妖兽皮练手，成功率还是低的可怜，几乎每炼制二三十张才能成功一次的样子。；有了工具，和原料的源源不绝，对制符师限制最大的材料消耗问题。对他来说根本就不是问题了。；他每日都抽出小半日的时间，先从低级的已能瞬发的法术练习起，丝毫不珍惜材料的狂炼制符箓个不停。如此让其他制符师根本无法想象的奢侈浪费之法，让韩立的制符水平一路高涨而升，现在已可勉强制作出初级高阶的符箓了，虽然成功的几率还低得可怜！",
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "阵旗阵盘生产流通",
+      "classification": "宗门/门派生产",
+      "usage": "天星宗每年炼制阵旗阵盘等禁法类法器并流入修仙界，用以换取灵石和材料，体现专长门派的稳定物资产出。",
+      "formula": "天星宗阵法专长 -> 年度炼制阵旗阵盘 -> 流入修仙界 -> 换取灵石、材料等资源。",
+      "content": "阵旗阵盘生产流通：天星宗每年炼制阵旗阵盘等禁法类法器并流入修仙界，用以换取灵石和材料，体现专长门派的稳定物资产出。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0225:013"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0225:013",
+          "chunk_id": "chunk-0225",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            519470,
+            519543
+          ]
+        }
+      ],
+      "source_range": "chunk-0225:[519470, 519543]",
+      "source_excerpt": "凑巧的是，元武国的天星宗，就是以阵法扬名附近几国修仙界。阵旗阵盘这样的禁法类法器，每年都会炼制不少流入到修仙界，好用于换取所需的灵石，材料等东西。",
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    },
+    {
+      "name": "传送阵修复材料",
+      "classification": "工程消耗 / 材料补缺",
+      "usage": "韩立修复古传送阵七天仅完成小半，事先购买材料耗尽；后向南宫屏索得和元玉，才凑齐修复材料。",
+      "formula": "购买材料 -> 修复古传送阵 -> 材料耗尽 -> 索要和元玉 -> 补齐关键材料。",
+      "content": "传送阵修复材料：韩立修复古传送阵七天仅完成小半，事先购买材料耗尽；后向南宫屏索得和元玉，才凑齐修复材料。",
+      "category": "原作事实",
+      "evidence_ids": [
+        "evidence:chunk-0363:009",
+        "evidence:chunk-0366:006"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0363:009",
+          "chunk_id": "chunk-0363",
+          "source_path": "intermediate/chunks/chunk-0363.txt",
+          "source_range": [
+            922807,
+            922860
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0366:006",
+          "chunk_id": "chunk-0366",
+          "source_path": "intermediate/chunks/chunk-0366.txt",
+          "source_range": [
+            932572,
+            932711
+          ]
+        }
+      ],
+      "source_range": "chunk-0363:[922807, 922860]; chunk-0366:[932572, 932711]",
+      "source_excerpt": "整整七天的时间过去了，传送阵只不过完成了一小半的修复，而这时一个大麻烦出现了，事先买的材料竟然耗尽一空了。；忽然，韩立露出一点喜色，抬首向南宫屏急切的问道：“前辈手里是否还有和元玉，能否再多给晚辈几块？”\n　　韩立这话，让女子眼中闪过一分讶色。但她一声不吭的在身上摸索了一会儿后，就扔出了几块白色的玉石过来，韩立欣喜异常的接下了。\n　　如此一来，他修复传送阵的材料，不用寻找便已凑齐了。",
+      "confidence": "EXTRACTED",
+      "review_status": "verified"
+    }
+  ],
+  "judgments": [
+    {
+      "content": "本模板最稳定的抽取单位不是单个物品，而是“来源 -> 加工/制度折算 -> 交易或上交 -> 消耗/损耗/回收”的闭合链条；灵石、灵草丹药和妖兽材料分别对应货币能源、药材加工、狩猎材料三种资源流。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0134:001",
+        "evidence:chunk-0029:010",
+        "evidence:chunk-0402:012"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0134:001",
+          "chunk_id": "chunk-0134",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            268027,
+            268119
+          ],
+          "chapter_hint": "第一百三十一章 灵石与灵符"
+        },
+        {
+          "evidence_id": "evidence:chunk-0029:010",
+          "chunk_id": "chunk-0029",
+          "source_path": "intermediate/chunks/chunk-0029.txt",
+          "source_range": [
+            55768,
+            55855
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0402:012",
+          "chunk_id": "chunk-0402",
+          "source_path": "intermediate/chunks/chunk-0402.txt",
+          "source_range": [
+            1031968,
+            1032014
+          ]
+        }
+      ],
+      "confidence": "INFERRED",
+      "review_status": "verified"
+    },
+    {
+      "content": "黄枫谷相关证据显示宗门资源回流具有制度性：百药园日常上交维持药材供给，血色试炼灵药则可折算为筑基丹奖赏，但师徒关系会改变贡品分配。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0153:001",
+        "evidence:chunk-0216:006",
+        "evidence:chunk-0216:007"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0153:001",
+          "chunk_id": "chunk-0153",
+          "source_path": "intermediate/chunks/chunk-0153.txt",
+          "source_range": [
+            317348,
+            317374
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0216:006",
+          "chunk_id": "chunk-0216",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            492499,
+            492870
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0216:007",
+          "chunk_id": "chunk-0216",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            492873,
+            493052
+          ]
+        }
+      ],
+      "confidence": "INFERRED",
+      "review_status": "verified"
+    },
+    {
+      "content": "高价值资源通常伴随显性损耗：炼丹会失败，制符成功率低，猎妖会损坏傀儡和阵具，阵法与丹火会持续吞吐灵石或丹药。正式设定应保留这些损耗，不把资源流写成无成本循环。",
+      "category": "我的判断",
+      "evidence_ids": [
+        "evidence:chunk-0029:010",
+        "evidence:chunk-0418:004",
+        "evidence:chunk-0401:016",
+        "evidence:chunk-0418:011"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0029:010",
+          "chunk_id": "chunk-0029",
+          "source_path": "intermediate/chunks/chunk-0029.txt",
+          "source_range": [
+            55768,
+            55855
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0418:004",
+          "chunk_id": "chunk-0418",
+          "source_path": "intermediate/chunks/chunk-0418.txt",
+          "source_range": [
+            1077957,
+            1078244
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0401:016",
+          "chunk_id": "chunk-0401",
+          "source_path": "intermediate/chunks/chunk-0401.txt",
+          "source_range": [
+            1030627,
+            1030683
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0418:011",
+          "chunk_id": "chunk-0418",
+          "source_path": "intermediate/chunks/chunk-0418.txt",
+          "source_range": [
+            1079697,
+            1079836
+          ]
+        }
+      ],
+      "confidence": "INFERRED",
+      "review_status": "verified"
+    }
+  ],
+  "pending_verifications": [
+    {
+      "content": "百药园每月上交草药和每年上交珍稀药材之间的口径、具体数量、验收标准与失败罚额未在本批证据中完全闭合。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0153:001",
+        "evidence:chunk-0154:006"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0153:001",
+          "chunk_id": "chunk-0153",
+          "source_path": "intermediate/chunks/chunk-0153.txt",
+          "source_range": [
+            317348,
+            317374
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0154:006",
+          "chunk_id": "chunk-0154",
+          "source_path": "intermediate/chunks/chunk-0154.txt",
+          "source_range": [
+            321304,
+            321357
+          ]
+        }
+      ],
+      "confidence": "AMBIGUOUS",
+      "review_status": "needs_review"
+    },
+    {
+      "content": "筑基丹三味主药的后续稳定来源、单炉实际成丹率和每次炼制具体损耗，需要结合更后续炼丹段落复核。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0161:013",
+        "evidence:chunk-0218:011"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0161:013",
+          "chunk_id": "chunk-0161",
+          "source_path": "intermediate/chunks/chunk-0161.txt",
+          "source_range": [
+            341732,
+            341832
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0218:011",
+          "chunk_id": "chunk-0218",
+          "source_path": "intermediate/chunks/chunk-0218.txt",
+          "source_range": [
+            498911,
+            499009
+          ]
+        }
+      ],
+      "confidence": "AMBIGUOUS",
+      "review_status": "needs_review"
+    },
+    {
+      "content": "外星海妖兽材料出售给非常驻小商家的具体价格、批次、商家身份和天星城回收规则，在本批证据中只见结果性描述。",
+      "category": "待核验",
+      "evidence_ids": [
+        "evidence:chunk-0402:012"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0402:012",
+          "chunk_id": "chunk-0402",
+          "source_path": "intermediate/chunks/chunk-0402.txt",
+          "source_range": [
+            1031968,
+            1032014
+          ]
+        }
+      ],
+      "confidence": "AMBIGUOUS",
+      "review_status": "needs_review"
+    }
+  ],
+  "not_found_items": [
+    {
+      "content": "未见可靠证据支持把黄枫谷资源体系写成统一贡献点商城；现有证据是灵石、灵药贡品、筑基丹奖赏、杂务上交和师徒抽成等分散制度。",
+      "category": "未见可靠证据",
+      "evidence_ids": [
+        "evidence:chunk-0153:001",
+        "evidence:chunk-0216:007"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0153:001",
+          "chunk_id": "chunk-0153",
+          "source_path": "intermediate/chunks/chunk-0153.txt",
+          "source_range": [
+            317348,
+            317374
+          ]
+        },
+        {
+          "evidence_id": "evidence:chunk-0216:007",
+          "chunk_id": "chunk-0216",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            492873,
+            493052
+          ]
+        }
+      ],
+      "confidence": "AMBIGUOUS",
+      "review_status": "not_found_in_source"
+    },
+    {
+      "content": "未见当前证据给出灵石矿脉开采、宗门铸币或灵石自然生成机制；灵石在本记录中只能作为交易、费用、能源和补偿物处理。",
+      "category": "未见可靠证据",
+      "evidence_ids": [
+        "evidence:chunk-0134:001",
+        "evidence:chunk-0235:002"
+      ],
+      "source_locations": [
+        {
+          "evidence_id": "evidence:chunk-0134:001",
+          "chunk_id": "chunk-0134",
+          "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+          "source_range": [
+            268027,
+            268119
+          ],
+          "chapter_hint": "第一百三十一章 灵石与灵符"
+        },
+        {
+          "evidence_id": "evidence:chunk-0235:002",
+          "chunk_id": "chunk-0235",
+          "source_path": "intermediate/chunks/chunk-0235.txt",
+          "source_range": [
+            547565,
+            547618
+          ]
+        }
+      ],
+      "confidence": "AMBIGUOUS",
+      "review_status": "not_found_in_source"
+    }
+  ],
+  "document_sections": [
+    {
+      "heading": "案例 1：灵石资源流转",
+      "markdown": "灵石在已选证据中同时承担货币、费用和能源三种角色。太南小会中，灵石是修仙者买卖物品的大众交易货币；黄枫谷坊市则把一块低阶灵石转化为外来修士一整天的摊位权和摆摊保护。法器价格也以灵石衡量，顶阶法器动辄数百低阶灵石，一般修仙者难以购买。\n\n灵石不是只在交易中周转，也会被直接消耗。韩立按要求布阵时一次镶嵌数块中阶灵石，约占其全部灵石的一半；丹火长期炼化时，他双手抓深青色灵石吸纳灵气，灵石补充不及时再服丹药。小寰岛防护阵也需要灵石维持，居民上交不足时过去由魁星岛承担消耗。",
+      "evidence_ids": [
+        "evidence:chunk-0134:001",
+        "evidence:chunk-0165:005",
+        "evidence:chunk-0226:006",
+        "evidence:chunk-0235:002",
+        "evidence:chunk-0377:005",
+        "evidence:chunk-0418:011"
+      ],
+      "requirement_ids": [
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 2：灵草与丹药资源流转",
+      "markdown": "灵草资源的核心链条是“种源或药园 -> 年份/火候 -> 催生或采集 -> 配方加工 -> 成丹消耗”。韩立早期用绿液按珍稀配方催生有用草药，数月内获得大批珍贵药材，并调配出黄龙丹、清灵散、金髓丸、养精丹等稀世之药；但配制过程并不稳定，发生过多次失败。\n\n黄枫谷百药园把这一链条制度化：弟子接管药园后要维持规模、避免药草夭折，并按年或按月上交规定药材。筑基丹链条更严格，玉筒中虽有从原料到凝练成丹的完整方法，却需要数百年火候药材、三味主药和先天真火。韩立后来准备足够百余次炼制的灵药，正是为了用大量原料吸收失败损耗。",
+      "evidence_ids": [
+        "evidence:chunk-0029:002",
+        "evidence:chunk-0029:010",
+        "evidence:chunk-0029:011",
+        "evidence:chunk-0153:001",
+        "evidence:chunk-0154:006",
+        "evidence:chunk-0155:011",
+        "evidence:chunk-0158:002",
+        "evidence:chunk-0158:003",
+        "evidence:chunk-0158:007",
+        "evidence:chunk-0161:013",
+        "evidence:chunk-0218:011"
+      ],
+      "requirement_ids": [
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 3：妖兽材料资源流转",
+      "markdown": "外星海妖兽材料的流转从猎取开始。修士可在妖兽岛附近海面斩杀妖兽，夺取妖丹后带回天星城换卖灵石；韩立则用绿液催动霓裳草诱妖，一个多月内与曲魂灭杀十几头五级妖兽，五年猎妖后得到数百颗五级妖丹和大量珍稀妖兽材料。\n\n这些材料并非全部直接出售。韩立把用不上的妖兽材料分批卖给非常驻小商家，换回大量灵石；又用较次妖兽皮练习制符，状态好时才动用珍稀材料炼制特殊中级符箓。中级符箓对低阶修士很有吸引力，但成功率极低，约二三十张才成一次，因此妖兽皮在此处也是被大量消耗的加工材料。长期猎妖还会反向损耗傀儡和布阵器具。",
+      "evidence_ids": [
+        "evidence:chunk-0394:020",
+        "evidence:chunk-0401:010",
+        "evidence:chunk-0401:018",
+        "evidence:chunk-0402:012",
+        "evidence:chunk-0418:004",
+        "evidence:chunk-0401:016"
+      ],
+      "requirement_ids": [
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 4：宗门贡献与权限流转",
+      "markdown": "血色试炼后的灵药上交流程展示了宗门内部的资源折算规则。韩立在禁地中上交二十多株灵药，并事先打听到十株左右灵药可换一枚筑基丹，因此原以为能得两枚筑基丹。但马师伯指出，因李师叔收徒，韩立只能得到一枚。\n\n关键规则是不成文的师徒贡品抽取：有明确师徒关系时，师傅可抽取徒弟上交师门贡品的一半作为谢师礼，且仅限一次。李化元后来也承认自己是贪图天地灵药，借收徒名义从韩立处硬收走一半份额。这个案例说明宗门资源流不是单纯按数量兑换，还会被身份关系和庇护关系重新分配。",
+      "evidence_ids": [
+        "evidence:chunk-0216:004",
+        "evidence:chunk-0216:006",
+        "evidence:chunk-0216:007",
+        "evidence:chunk-0242:003"
+      ],
+      "requirement_ids": [
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    },
+    {
+      "heading": "案例 5：材料生产与工程消耗",
+      "markdown": "除灵草、丹药和妖兽材料外，门派专长也会形成稳定产出。元武国天星宗以阵法扬名，每年炼制不少阵旗阵盘等禁法类法器流入修仙界，用来换取灵石和材料。\n\n工程类消耗则以古传送阵修复为例。韩立事先购买的材料在七天修复后已经耗尽，传送阵却只完成小半；他随后向南宫屏索要和元玉，取得几块白色玉石后才凑齐材料。这类证据适合写成“材料清单/缺口/补齐来源”，不宜在缺证时补写具体材料数量。",
+      "evidence_ids": [
+        "evidence:chunk-0225:013",
+        "evidence:chunk-0363:009",
+        "evidence:chunk-0366:006"
+      ],
+      "requirement_ids": [
+        "faction_society_economy_task"
+      ],
+      "confidence": "EXTRACTED"
+    }
+  ],
+  "evidence_citations": [
+    "evidence:chunk-0134:001",
+    "evidence:chunk-0165:005",
+    "evidence:chunk-0226:006",
+    "evidence:chunk-0235:002",
+    "evidence:chunk-0377:005",
+    "evidence:chunk-0418:011",
+    "evidence:chunk-0029:002",
+    "evidence:chunk-0029:010",
+    "evidence:chunk-0029:011",
+    "evidence:chunk-0153:001",
+    "evidence:chunk-0154:006",
+    "evidence:chunk-0155:011",
+    "evidence:chunk-0158:002",
+    "evidence:chunk-0158:003",
+    "evidence:chunk-0158:007",
+    "evidence:chunk-0161:013",
+    "evidence:chunk-0218:011",
+    "evidence:chunk-0216:004",
+    "evidence:chunk-0216:006",
+    "evidence:chunk-0216:007",
+    "evidence:chunk-0242:003",
+    "evidence:chunk-0401:010",
+    "evidence:chunk-0401:018",
+    "evidence:chunk-0402:012",
+    "evidence:chunk-0401:016",
+    "evidence:chunk-0394:020",
+    "evidence:chunk-0418:004",
+    "evidence:chunk-0246:007",
+    "evidence:chunk-0247:015",
+    "evidence:chunk-0225:013",
+    "evidence:chunk-0226:016",
+    "evidence:chunk-0363:009",
+    "evidence:chunk-0366:006"
+  ],
+  "gap_items": [
+    {
+      "requirement_id": "物资产出与消耗.价格产能精确量化",
+      "status": "needs_review",
+      "evidence_ids": [
+        "evidence:chunk-0153:001",
+        "evidence:chunk-0402:012"
+      ],
+      "notes": [
+        "上交数量、商家收购价格、单次产能和损耗率多处只有间接或局部证据。"
+      ]
+    }
+  ],
+  "render_target": "drafts",
+  "overwrite_policy": "draft",
+  "provenance": {
+    "agent_role": "stage2-template-document-agent",
+    "batch_id": "template-batch-0029-454e0f8e3f2d",
+    "task_packet": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph\\intermediate\\stage2\\task-packets\\template-batch-0029-454e0f8e3f2d.json",
+    "graph_dir": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.storygraph",
+    "selection_rule": "优先使用 supports_templates.template_name == 物资产出与消耗 的 Stage 1 证据，并按模板案例标题组织资源流。",
+    "created_at": "2026-06-23T18:43:48.879809+00:00"
+  }
+}

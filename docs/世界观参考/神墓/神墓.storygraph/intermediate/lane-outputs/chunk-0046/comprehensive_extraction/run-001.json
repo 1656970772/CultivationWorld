@@ -1,0 +1,36 @@
+{
+  "run_id": "run-001",
+  "lane_id": "comprehensive_extraction",
+  "agent_role": "comprehensive-stage1-extraction-agent",
+  "model_or_agent_identity": "codex-subagent",
+  "output_status": "completed",
+  "chunk_id": "chunk-0046",
+  "source_info": {
+    "chapter_title": "第五卷卷首语（作者非叙事文本）",
+    "chunk_lines": 2,
+    "preceding_context": "chunk-0045结尾：虎王载着辰南向东方飞去"
+  },
+  "extracted_evidence": [],
+  "extracted_nodes": [],
+  "extracted_edges": [],
+  "extracted_events": [],
+  "uncertainties": [
+    {
+      "id": "unc_ch0046_001",
+      "description": "chunk-0046 仅含一行作者卷首调侃/预告（'第五卷，主角将被某女华丽的推倒……我仿佛已经看到无数色狼在对着电脑流着口水……'），属于非故事叙事的元文本/作者互动，不包含可抽取的角色、地点、物品、事件或世界观要素。",
+      "related_entities": [],
+      "confidence": "AMBIGUOUS"
+    }
+  ],
+  "rejected_candidates": [
+    {
+      "id": "rej_ch0046_001",
+      "entity_or_relation": "整个chunk内容（作者卷首调侃）",
+      "reason": "属于作者面向读者的元文本/戏谑预告，非故事世界观内容。其中'某女'无具体身份，'电脑''色狼'等为打破第四面墙的现代梗语，不属于《神墓》世界观。"
+    }
+  ],
+  "supports_templates": [],
+  "task_packet_id": "chunk-0046:comprehensive_extraction:attempt-001",
+  "produced_at": "2026-06-23T18:00:00Z",
+  "structured_failures": []
+}

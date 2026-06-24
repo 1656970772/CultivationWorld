@@ -1,0 +1,431 @@
+{
+  "producer": "template-requirements-analysis-agent",
+  "templates": [
+    {
+      "template_name": "NPC性格与代表事件",
+      "template_file": "NPC性格与代表事件模板.md",
+      "required_fields": [
+        "character_name",
+        "character_positioning",
+        "core_personality_traits",
+        "representative_event_description",
+        "event_context_scenario",
+        "event_action_decision",
+        "event_outcome_consequence",
+        "personality_change_trigger",
+        "personality_change_before_after",
+        "behavioral_consequence_type",
+        "behavioral_consequence_detail",
+        "desire_tendency",
+        "decision_scenario_type",
+        "representative_behavior_type",
+        "change_reason_type",
+        "role_identity",
+        "realm_level_at_event_time"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "完整性格案例卡（per character）"
+      ],
+      "required_case_patterns": [
+        "谨慎隐忍型角色案例",
+        "贪婪冒险型角色案例",
+        "忠诚守护型角色案例",
+        "复杂矛盾型角色案例"
+      ],
+      "required_evidence_fields": [
+        "character_name",
+        "character_identity_role",
+        "character_affiliation_faction",
+        "character_realm",
+        "event_description_from_source",
+        "character_action_in_event",
+        "character_decision_motive",
+        "outcome_of_action",
+        "personality_trait_manifested",
+        "change_trigger_event",
+        "before_change_behavior",
+        "after_change_behavior",
+        "consequence_to_self",
+        "consequence_to_others",
+        "source_chapter_reference"
+      ],
+      "graph_node_mapping": [
+        "character",
+        "faction",
+        "location",
+        "realm",
+        "event",
+        "conflict",
+        "opportunity"
+      ],
+      "graph_event_mapping": [
+        "event",
+        "conflict",
+        "opportunity"
+      ],
+      "graph_relation_mapping": [
+        "character_allies_with_character",
+        "character_enemy_of_character",
+        "character_mentors_character",
+        "character_betrays_character",
+        "character_member_of_faction",
+        "character_opposes_faction",
+        "character_participates_in_event",
+        "character_causes_event",
+        "character_affected_by_event",
+        "event_triggers_event",
+        "event_occurs_at_location",
+        "character_changes_personality_from_event"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": ["covered", "needs_review", "not_found_in_source"]
+      }
+    },
+    {
+      "template_name": "世界状态与灾变",
+      "template_file": "世界状态与灾变模板.md",
+      "required_fields": [
+        "state_change_chain_name",
+        "state_change_type",
+        "start_time",
+        "location_area",
+        "scope_range",
+        "initial_symptoms",
+        "cause_origin",
+        "intensity_change_curve",
+        "resource_change_detail",
+        "character_behavior_change",
+        "faction_behavior_change",
+        "disaster_or_benefit",
+        "subsidence_or_deterioration_result",
+        "duration",
+        "affected_population",
+        "affected_resources",
+        "economic_impact",
+        "subsequent_events",
+        "chain_step_index"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "完整世界状态变化链案例卡（per state chain）"
+      ],
+      "required_case_patterns": [
+        "魔气上涨导致区域污染与修士迁徙案例",
+        "灵脉枯竭引发宗门资源压力案例",
+        "兽潮爆发改变边境区域状态案例"
+      ],
+      "required_evidence_fields": [
+        "state_name",
+        "affected_region",
+        "start_time_from_source",
+        "cause_from_source",
+        "intensity_progression",
+        "resource_change_specifics",
+        "faction_response_action",
+        "character_migration_pattern",
+        "casualty_figures",
+        "price_changes",
+        "duration_from_source",
+        "resolution_event",
+        "long_term_aftermath",
+        "source_chapter_reference"
+      ],
+      "graph_node_mapping": [
+        "location",
+        "faction",
+        "realm",
+        "event",
+        "conflict",
+        "beast",
+        "secret_realm",
+        "rule"
+      ],
+      "graph_event_mapping": [
+        "event",
+        "conflict"
+      ],
+      "graph_relation_mapping": [
+        "state_affects_location",
+        "state_affects_faction",
+        "state_affects_resource",
+        "state_causes_migration",
+        "state_causes_conflict",
+        "state_is_caused_by_event",
+        "state_transforms_into_state",
+        "state_at_location",
+        "faction_responds_to_state",
+        "resource_depletes_due_to_state",
+        "beast_migration_due_to_state",
+        "event_triggers_state_change"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": ["covered", "needs_review", "not_found_in_source"]
+      }
+    },
+    {
+      "template_name": "世界观设定",
+      "template_file": "世界观设定模板.md",
+      "required_fields": [
+        "region_name",
+        "region_positioning_type",
+        "map_position_description",
+        "adjacent_regions",
+        "terrain_type",
+        "climate_type",
+        "natural_environment_detail",
+        "qi_density_type",
+        "settlement_type",
+        "architecture_style",
+        "customs_clothing_style",
+        "customs_language_terms",
+        "customs_lifestyle",
+        "customs_trade_habits",
+        "mortal_attitude_to_cultivators",
+        "cultivator_intervention_style",
+        "beast_species_list",
+        "flora_species_list",
+        "cultivation_trace_type",
+        "visual_keywords",
+        "background_timeline_event",
+        "world_rule_description",
+        "realm_hierarchy_level"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "区域风貌卡（per region）",
+        "背景时间线条目",
+        "底层世界规则条目"
+      ],
+      "required_case_patterns": [
+        "区域风貌卡写作方式"
+      ],
+      "required_evidence_fields": [
+        "region_name",
+        "region_type_from_source",
+        "geographic_description",
+        "neighboring_region_reference",
+        "climate_terrain_detail",
+        "settlement_name",
+        "building_description",
+        "cultural_description",
+        "clothing_description",
+        "local_species_mentioned",
+        "local_flora_mentioned",
+        "cultivation_landmark",
+        "world_rule_statement",
+        "historical_event_affecting_region",
+        "source_chapter_reference"
+      ],
+      "graph_node_mapping": [
+        "location",
+        "facility",
+        "realm",
+        "faction",
+        "beast",
+        "secret_realm",
+        "formation",
+        "rule"
+      ],
+      "graph_event_mapping": [
+        "event"
+      ],
+      "graph_relation_mapping": [
+        "location_adjacent_to_location",
+        "location_contains_facility",
+        "location_contains_settlement",
+        "location_has_climate",
+        "location_has_terrain",
+        "location_inhabited_by_faction",
+        "location_inhabited_by_beast",
+        "location_has_qi_type",
+        "location_has_cultivation_trace",
+        "realm_contains_location",
+        "realm_hierarchy_parent_child",
+        "faction_controls_location",
+        "formation_protects_location",
+        "rule_governs_location"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": ["covered", "needs_review", "not_found_in_source"]
+      }
+    },
+    {
+      "template_name": "丹药分析",
+      "template_file": "丹药分析模板.md",
+      "required_fields": [
+        "pill_name",
+        "rarity_level",
+        "effect_description",
+        "usage_description",
+        "formula_ingredients",
+        "refining_method",
+        "source_acquisition",
+        "limitation_side_effect",
+        "applicable_realm",
+        "pill_type_category"
+      ],
+      "required_tables": [
+        "丹药总表"
+      ],
+      "required_cards": [],
+      "required_case_patterns": [
+        "丹药表行示例（聚气丹、筑基丹、疗伤丹、毒丹、天地灵液）"
+      ],
+      "required_evidence_fields": [
+        "pill_name_from_source",
+        "rarity_description_from_source",
+        "effect_description_from_source",
+        "usage_context_from_source",
+        "ingredient_list_from_source",
+        "refining_process_description",
+        "acquisition_method_from_source",
+        "side_effect_description",
+        "realm_requirement_from_source",
+        "source_chapter_reference"
+      ],
+      "graph_node_mapping": [
+        "pill",
+        "medicine",
+        "material",
+        "formula",
+        "realm",
+        "faction",
+        "location",
+        "character"
+      ],
+      "graph_event_mapping": [
+        "event",
+        "opportunity"
+      ],
+      "graph_relation_mapping": [
+        "pill_composed_of_material",
+        "pill_follows_formula",
+        "pill_applicable_to_realm",
+        "pill_produced_by_faction",
+        "pill_produced_by_character",
+        "pill_obtained_from_location",
+        "pill_has_rarity",
+        "pill_has_side_effect",
+        "pill_used_in_event",
+        "material_used_in_formula",
+        "character_consumes_pill",
+        "character_refines_pill"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": ["covered", "needs_review", "not_found_in_source"]
+      }
+    },
+    {
+      "template_name": "事件因果链（长程因果图）",
+      "template_file": "事件因果链（长程因果图）模板.md",
+      "required_fields": [
+        "causal_chain_name",
+        "causal_chain_type",
+        "starting_event_description",
+        "deep_background",
+        "stage_1_origin_how_happened",
+        "stage_2_message_spread",
+        "stage_3_party_reactions",
+        "stage_4_conflict_escalation",
+        "stage_5_location_trajectory",
+        "stage_6_resource_flow",
+        "stage_7_relationship_changes",
+        "stage_8_phase_settlement",
+        "long_term_aftermath",
+        "impact_scope",
+        "information_propagation_chain",
+        "resource_flow_chain",
+        "relationship_change_chain",
+        "opportunity_points",
+        "missed_opportunity_points",
+        "final_result",
+        "reference_value_points",
+        "time_span",
+        "participating_characters",
+        "participating_factions",
+        "involved_locations"
+      ],
+      "required_tables": [],
+      "required_cards": [
+        "完整因果链案例卡（per causal chain）"
+      ],
+      "required_case_patterns": [
+        "早期夺舍因果链案例",
+        "秘境开启与宝物争夺因果链案例",
+        "区域战争与宗门迁移因果链案例"
+      ],
+      "required_evidence_fields": [
+        "chain_identifier",
+        "starting_event_from_source",
+        "background_cause_from_source",
+        "actor_list",
+        "victim_list",
+        "witness_list",
+        "information_carrier",
+        "information_recipient",
+        "spread_method",
+        "escalation_trigger",
+        "location_sequence_from_source",
+        "resource_items_transferred",
+        "resource_source_character",
+        "resource_destination_character",
+        "relationship_before",
+        "relationship_after",
+        "death_list",
+        "survivor_list",
+        "beneficiary_list",
+        "new_conflict_spawned",
+        "scope_of_impact_from_source",
+        "time_span_from_source",
+        "source_chapter_references"
+      ],
+      "graph_node_mapping": [
+        "event",
+        "conflict",
+        "opportunity",
+        "character",
+        "faction",
+        "location",
+        "artifact",
+        "pill",
+        "technique",
+        "beast",
+        "secret_realm",
+        "weapon",
+        "material"
+      ],
+      "graph_event_mapping": [
+        "event",
+        "conflict",
+        "opportunity"
+      ],
+      "graph_relation_mapping": [
+        "event_causes_event",
+        "event_triggers_conflict",
+        "event_creates_opportunity",
+        "event_involves_character",
+        "event_involves_faction",
+        "event_occurs_at_location",
+        "event_transfers_resource",
+        "character_dies_in_event",
+        "character_survives_event",
+        "character_gains_from_event",
+        "character_loses_from_event",
+        "information_flows_from_to",
+        "resource_flows_from_to",
+        "relationship_changes_from_to",
+        "location_sequence_in_chain",
+        "faction_enters_conflict",
+        "conflict_escalates_from_to",
+        "event_has_phase",
+        "phase_follows_phase",
+        "character_changes_allegiance"
+      ],
+      "coverage_rules": {
+        "requirement_statuses": ["covered", "needs_review", "not_found_in_source"]
+      }
+    }
+  ],
+  "template_count": 5
+}

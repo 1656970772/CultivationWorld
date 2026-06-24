@@ -1,0 +1,2602 @@
+{
+  "chunk_id": "chunk-0039",
+  "source_range": [
+    74145,
+    75895
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "task_packet_id": "chunk-0039:comprehensive_extraction:attempt-001",
+      "chunk_id": "chunk-0039",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "produced_at": "2026-06-23T14:46:45+08:00",
+      "extracted_nodes": [
+        {
+          "id": "node:chunk-0039:character:001",
+          "node_type": "character",
+          "label": "韩立",
+          "aliases": [],
+          "fact_summary": "韩立迅速浏览十余本眨眼剑谱秘籍，随后运用长春功在脑海里回放内容，并向厉飞雨说明眨眼剑法的性质、原理和三不能练限制。",
+          "evidence_ids": [
+            "evidence:chunk-0039:002",
+            "evidence:chunk-0039:003",
+            "evidence:chunk-0039:005",
+            "evidence:chunk-0039:006",
+            "evidence:chunk-0039:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            74443,
+            75432
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              74443,
+              75432
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0039:character:002",
+          "node_type": "character",
+          "label": "厉飞雨",
+          "aliases": [],
+          "fact_summary": "厉飞雨在水潭边练刀，随后追问韩立秘籍结果；得知眨眼剑法第一条限制后，因自身内家真气已有不浅火候而放弃窥视，并叮嘱韩立抄录秘籍后归还原件。",
+          "evidence_ids": [
+            "evidence:chunk-0039:001",
+            "evidence:chunk-0039:008",
+            "evidence:chunk-0039:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            74238,
+            75590
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              74238,
+              75590
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0039:tool:001",
+          "node_type": "tool",
+          "label": "眨眼剑谱秘籍",
+          "aliases": [
+            "眨眼剑谱",
+            "这些秘籍"
+          ],
+          "fact_summary": "韩立浏览的一批眨眼剑谱秘籍被他判断为大杂烩，没有成套内容，东凑西拼而成；厉飞雨要求韩立尽快抄录，并在下次会面时带回原件。",
+          "evidence_ids": [
+            "evidence:chunk-0039:002",
+            "evidence:chunk-0039:004",
+            "evidence:chunk-0039:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            74443,
+            75590
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              74443,
+              75590
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0039:cultivation_method:001",
+          "node_type": "cultivation_method",
+          "label": "长春功",
+          "aliases": [],
+          "fact_summary": "韩立在读完十余本书后运用长春功回放内容；夜间赶路时也因自持长春功在身而双目更加敏锐。",
+          "evidence_ids": [
+            "evidence:chunk-0039:003",
+            "evidence:chunk-0039:011"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            74543,
+            75844
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              74543,
+              75844
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0039:technique:001",
+          "node_type": "technique",
+          "label": "眨眼剑法",
+          "aliases": [],
+          "fact_summary": "眨眼剑法在秘籍中确实存在，但只占这些大杂烩内容的一小部分；据书上所说，它利用各种光线和人的视觉错误克敌制胜，常令对手眨眼之间失去性命。",
+          "evidence_ids": [
+            "evidence:chunk-0039:005",
+            "evidence:chunk-0039:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            75089,
+            75329
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              75089,
+              75329
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0039:rule:001",
+          "node_type": "rule",
+          "label": "眨眼剑法三不能练",
+          "aliases": [
+            "三不能练"
+          ],
+          "fact_summary": "眨眼剑法有三项不能练条件：真气略有小成者不能练、无大毅力者不能练、无天赋者不能练。",
+          "evidence_ids": [
+            "evidence:chunk-0039:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            75392,
+            75432
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              75392,
+              75432
+            ]
+          }
+        },
+        {
+          "id": "node:chunk-0039:location:001",
+          "node_type": "location",
+          "label": "神手谷",
+          "aliases": [],
+          "fact_summary": "韩立离开后在昏暗山路上急匆匆往神手谷方向赶去。",
+          "evidence_ids": [
+            "evidence:chunk-0039:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            75738,
+            75766
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              75738,
+              75766
+            ]
+          }
+        }
+      ],
+      "extracted_edges": [
+        {
+          "id": "edge:chunk-0039:001",
+          "edge_type": "studied_item",
+          "source": "node:chunk-0039:character:001",
+          "target": "node:chunk-0039:tool:001",
+          "fact_summary": "韩立迅速浏览了一本本眨眼剑谱秘籍。",
+          "evidence_ids": [
+            "evidence:chunk-0039:002"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            74443,
+            74473
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              74443,
+              74473
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0039:002",
+          "edge_type": "used_method_for_review",
+          "source": "node:chunk-0039:character:001",
+          "target": "node:chunk-0039:cultivation_method:001",
+          "fact_summary": "韩立运用长春功，把刚刚看完的十余本书内容在脑海里回放。",
+          "evidence_ids": [
+            "evidence:chunk-0039:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            74543,
+            74597
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              74543,
+              74597
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0039:003",
+          "edge_type": "contains_technique",
+          "source": "node:chunk-0039:tool:001",
+          "target": "node:chunk-0039:technique:001",
+          "fact_summary": "眨眼剑法确实存在，但只是这些大杂烩秘籍的一小部分。",
+          "evidence_ids": [
+            "evidence:chunk-0039:005"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            75089,
+            75142
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              75089,
+              75142
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0039:004",
+          "edge_type": "governed_by_rule",
+          "source": "node:chunk-0039:technique:001",
+          "target": "node:chunk-0039:rule:001",
+          "fact_summary": "眨眼剑法受三不能练规则限制。",
+          "evidence_ids": [
+            "evidence:chunk-0039:007"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            75392,
+            75432
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              75392,
+              75432
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0039:005",
+          "edge_type": "abandoned_interest_due_to_condition",
+          "source": "node:chunk-0039:character:002",
+          "target": "node:chunk-0039:technique:001",
+          "fact_summary": "厉飞雨因自身内家真气已有不浅火候，听到第一条不能练条件后放弃对眨眼剑法的窥视。",
+          "evidence_ids": [
+            "evidence:chunk-0039:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            75435,
+            75501
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              75435,
+              75501
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0039:006",
+          "edge_type": "requested_copy_and_return",
+          "source": "node:chunk-0039:character:002",
+          "target": "node:chunk-0039:character:001",
+          "fact_summary": "厉飞雨叮嘱韩立尽快抄录秘籍，并说明下次会面时会把原件带回去。",
+          "evidence_ids": [
+            "evidence:chunk-0039:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            75548,
+            75590
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              75548,
+              75590
+            ]
+          }
+        },
+        {
+          "id": "edge:chunk-0039:007",
+          "edge_type": "traveled_toward",
+          "source": "node:chunk-0039:character:001",
+          "target": "node:chunk-0039:location:001",
+          "fact_summary": "韩立在离开后沿诡异山路急匆匆往神手谷方向赶去。",
+          "evidence_ids": [
+            "evidence:chunk-0039:010"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            75738,
+            75766
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              75738,
+              75766
+            ]
+          }
+        }
+      ],
+      "extracted_events": [
+        {
+          "id": "event:chunk-0039:001",
+          "event_type": "study_event",
+          "label": "韩立浏览眨眼剑谱秘籍",
+          "fact_summary": "韩立以很快速度浏览一本本眨眼剑谱，并在读完十余本书后运用长春功回放其中内容。",
+          "participants": [
+            "node:chunk-0039:character:001",
+            "node:chunk-0039:tool:001",
+            "node:chunk-0039:cultivation_method:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0039:002",
+            "evidence:chunk-0039:003"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            74443,
+            74597
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              74443,
+              74597
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0039:002",
+          "event_type": "revelation_event",
+          "label": "韩立说明眨眼剑法",
+          "fact_summary": "韩立向厉飞雨说明这些秘籍是大杂烩，眨眼剑法确实存在但只占一小部分，并解释它利用光线和视觉错误克敌制胜。",
+          "participants": [
+            "node:chunk-0039:character:001",
+            "node:chunk-0039:character:002",
+            "node:chunk-0039:tool:001",
+            "node:chunk-0039:technique:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0039:004",
+            "evidence:chunk-0039:005",
+            "evidence:chunk-0039:006"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "相遇剧情与对话设计",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            74988,
+            75329
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              74988,
+              75329
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0039:003",
+          "event_type": "decision_event",
+          "label": "厉飞雨放弃眨眼剑法",
+          "fact_summary": "韩立说明眨眼剑法三不能练后，厉飞雨因自身内家真气已有不浅火候，立刻放弃对这门剑法的窥视。",
+          "participants": [
+            "node:chunk-0039:character:001",
+            "node:chunk-0039:character:002",
+            "node:chunk-0039:technique:001",
+            "node:chunk-0039:rule:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0039:007",
+            "evidence:chunk-0039:008"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            75392,
+            75501
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              75392,
+              75501
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0039:004",
+          "event_type": "resource_return_arrangement",
+          "label": "厉飞雨要求抄录并归还秘籍原件",
+          "fact_summary": "厉飞雨临走前叮嘱韩立尽快抄录这些秘籍，并要求下次会面时把原件带回去，以免秘籍消失太久惹人注意。",
+          "participants": [
+            "node:chunk-0039:character:001",
+            "node:chunk-0039:character:002",
+            "node:chunk-0039:tool:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0039:009"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            },
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "source_range": [
+            75548,
+            75590
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              75548,
+              75590
+            ]
+          }
+        },
+        {
+          "id": "event:chunk-0039:005",
+          "event_type": "travel_event",
+          "label": "韩立夜路赶往神手谷",
+          "fact_summary": "厉飞雨离开后韩立也离开此地，天黑后仍沿险要昏暗山路往神手谷方向赶去，并因长春功在身而夜间双目更加敏锐。",
+          "participants": [
+            "node:chunk-0039:character:001",
+            "node:chunk-0039:location:001",
+            "node:chunk-0039:cultivation_method:001"
+          ],
+          "evidence_ids": [
+            "evidence:chunk-0039:010",
+            "evidence:chunk-0039:011"
+          ],
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "source_range": [
+            75738,
+            75844
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              75738,
+              75844
+            ]
+          }
+        }
+      ],
+      "extracted_evidence": [
+        {
+          "evidence_id": "evidence:chunk-0039:001",
+          "chunk_id": "chunk-0039",
+          "source_range": [
+            74238,
+            74282
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              74238,
+              74282
+            ]
+          },
+          "excerpt": "韩立用视角斜瞥了他一眼，看他精力如此旺盛，便不再理会他的举动，把心神又放回到手中之物上。",
+          "fact_summary": "厉飞雨精力旺盛地在旁活动，韩立没有理会而继续专注手中之物。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色AI行为参考",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0039:001"
+        },
+        {
+          "evidence_id": "evidence:chunk-0039:002",
+          "chunk_id": "chunk-0039",
+          "source_range": [
+            74443,
+            74473
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              74443,
+              74473
+            ]
+          },
+          "excerpt": "时间过的飞快，一本本的“眨眼剑谱”也被韩立迅速的浏览了一遍。",
+          "fact_summary": "韩立迅速浏览了一本本眨眼剑谱。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0039:002"
+        },
+        {
+          "evidence_id": "evidence:chunk-0039:003",
+          "chunk_id": "chunk-0039",
+          "source_range": [
+            74543,
+            74597
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              74543,
+              74597
+            ]
+          },
+          "excerpt": "等精神稍微恢复了一些后，他就在原地盘膝坐下，运用起长春功，把刚刚看完的十余本书中的东西，在脑海里回放了起来。",
+          "fact_summary": "韩立运用长春功，在脑海里回放刚刚看完的十余本书内容。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "角色修炼历程",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0039:003"
+        },
+        {
+          "evidence_id": "evidence:chunk-0039:004",
+          "chunk_id": "chunk-0039",
+          "source_range": [
+            74988,
+            75034
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              74988,
+              75034
+            ]
+          },
+          "excerpt": "“具体的讲，这些秘籍是一个大杂烩，没有什么成套的东西，都是东凑西拼而成的。”韩立缓缓的说道。",
+          "fact_summary": "韩立判断这些秘籍是大杂烩，没有成套内容，东凑西拼而成。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0039:004"
+        },
+        {
+          "evidence_id": "evidence:chunk-0039:005",
+          "chunk_id": "chunk-0039",
+          "source_range": [
+            75089,
+            75142
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              75089,
+              75142
+            ]
+          },
+          "excerpt": "“眨眼剑法还真是确实存在，只不过它是这些大杂烩的一部分，在这些书中只占了很小的一部分。”韩立很有耐性的说。",
+          "fact_summary": "韩立说明眨眼剑法确实存在，但只是这些大杂烩书中的一小部分。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0039:005"
+        },
+        {
+          "evidence_id": "evidence:chunk-0039:006",
+          "chunk_id": "chunk-0039",
+          "source_range": [
+            75274,
+            75329
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              75274,
+              75329
+            ]
+          },
+          "excerpt": "“这种剑法据书上所说，是利用各种光线和人的视觉错误来克敌制胜，往往让人眨眼之间就失去性命，所以才叫眨眼剑法。”",
+          "fact_summary": "眨眼剑法利用光线和人的视觉错误克敌制胜，常令对手眨眼之间失去性命。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0039:006"
+        },
+        {
+          "evidence_id": "evidence:chunk-0039:007",
+          "chunk_id": "chunk-0039",
+          "source_range": [
+            75392,
+            75432
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              75392,
+              75432
+            ]
+          },
+          "excerpt": "“这种剑法有三不能练，真气略有小成者不能练；无大毅力者不能练；无天赋者不能练。”",
+          "fact_summary": "眨眼剑法有三不能练：真气略有小成者、无大毅力者、无天赋者不能练。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0039:007"
+        },
+        {
+          "evidence_id": "evidence:chunk-0039:008",
+          "chunk_id": "chunk-0039",
+          "source_range": [
+            75435,
+            75501
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              75435,
+              75501
+            ]
+          },
+          "excerpt": "厉飞雨听到第一个条件后，就立刻放弃了对它的窥视，他的内家真气已有了不浅的火候，总不能废弃掉自己功力，去学这个威力还不知如何的功夫吧。",
+          "fact_summary": "厉飞雨因内家真气已有不浅火候，听到第一条限制后放弃窥视眨眼剑法。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0039:008"
+        },
+        {
+          "evidence_id": "evidence:chunk-0039:009",
+          "chunk_id": "chunk-0039",
+          "source_range": [
+            75548,
+            75590
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              75548,
+              75590
+            ]
+          },
+          "excerpt": "临走之前，他叮嘱韩立：尽快的把这些秘籍抄录下来，在下次会面时，他会把原件再都带回去。",
+          "fact_summary": "厉飞雨要求韩立尽快抄录秘籍，并在下次会面时让原件带回去。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "人物关系与事件分析",
+              "requirement_id": "character_relationship_perspective",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0039:009"
+        },
+        {
+          "evidence_id": "evidence:chunk-0039:010",
+          "chunk_id": "chunk-0039",
+          "source_range": [
+            75738,
+            75766
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              75738,
+              75766
+            ]
+          },
+          "excerpt": "韩立走在这样有些诡异的山路上，急匆匆的往神手谷方向赶去。",
+          "fact_summary": "韩立在诡异山路上急匆匆往神手谷方向赶去。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            }
+          ],
+          "id": "evidence:chunk-0039:010"
+        },
+        {
+          "evidence_id": "evidence:chunk-0039:011",
+          "chunk_id": "chunk-0039",
+          "source_range": [
+            75804,
+            75844
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              75804,
+              75844
+            ]
+          },
+          "excerpt": "要不是自持长春功在身，在夜晚反而使双目更加敏锐，韩立绝不会在如此昏暗的环境下赶路",
+          "fact_summary": "长春功使韩立在夜晚双目更加敏锐，支撑他在昏暗环境赶路。",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "covered",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "covered"
+            },
+            {
+              "template_name": "战斗与保命机制",
+              "requirement_id": "event_conflict_combat_opportunity",
+              "requirement_status": "needs_review",
+              "confidence": "EXTRACTED",
+              "verification_status": "verified",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0039:011"
+        }
+      ],
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        },
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified"
+        }
+      ],
+      "uncertainties": [
+        {
+          "id": "uncertainty:chunk-0039:001",
+          "kind": "source_and_system_missing",
+          "fact_summary": "眨眼剑谱秘籍的来源、编纂者、完整体系、品阶和原件具体归属未在本 chunk 明示。",
+          "evidence_ids": [
+            "evidence:chunk-0039:004",
+            "evidence:chunk-0039:009"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            },
+            {
+              "template_name": "物资产出与消耗",
+              "requirement_id": "faction_society_economy_task",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            74988,
+            75590
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              74988,
+              75590
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0039:002",
+          "kind": "mechanism_boundary_missing",
+          "fact_summary": "眨眼剑法利用光线和视觉错误的具体招式、修炼方式、威力边界和三不能练背后的机制未在本 chunk 展开。",
+          "evidence_ids": [
+            "evidence:chunk-0039:006",
+            "evidence:chunk-0039:007"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "功法术法神通",
+              "requirement_id": "cultivation_system_method_progression",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            75274,
+            75432
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              75274,
+              75432
+            ]
+          }
+        },
+        {
+          "id": "uncertainty:chunk-0039:003",
+          "kind": "travel_outcome_missing",
+          "fact_summary": "韩立往神手谷方向夜行，但本 chunk 尚未交代是否顺利抵达或途中是否发生事件。",
+          "evidence_ids": [
+            "evidence:chunk-0039:010",
+            "evidence:chunk-0039:011"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            75738,
+            75844
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              75738,
+              75844
+            ]
+          }
+        }
+      ],
+      "rejected_candidates": [
+        {
+          "id": "rejected:chunk-0039:001",
+          "candidate": "长刀",
+          "reason": "只是厉飞雨练刀时使用的泛指武器，未给出专名、来源、效果或归属变化；不按具名武器建节点。",
+          "confidence": "EXTRACTED",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            74238,
+            74282
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              74238,
+              74282
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0039:002",
+          "candidate": "镇上老夫子",
+          "reason": "仅作为厉飞雨调侃韩立说话方式的类比对象，没有当前剧情功能。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            75274,
+            75329
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              75274,
+              75329
+            ]
+          }
+        },
+        {
+          "id": "rejected:chunk-0039:003",
+          "candidate": "针叶林和山风",
+          "reason": "仅承担夜路氛围和环境烘托，未形成独立地点功能、资源、风险规则或事件结果。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [],
+          "source_range": [
+            75738,
+            75844
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0039",
+            "source_path": "intermediate/chunks/chunk-0039.txt",
+            "source_range": [
+              75738,
+              75844
+            ]
+          }
+        }
+      ],
+      "structured_failures": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0039/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [
+    {
+      "id": "node:chunk-0039:character:001",
+      "node_type": "character",
+      "label": "韩立",
+      "aliases": [],
+      "fact_summary": "韩立迅速浏览十余本眨眼剑谱秘籍，随后运用长春功在脑海里回放内容，并向厉飞雨说明眨眼剑法的性质、原理和三不能练限制。",
+      "evidence_ids": [
+        "evidence:chunk-0039:002",
+        "evidence:chunk-0039:003",
+        "evidence:chunk-0039:005",
+        "evidence:chunk-0039:006",
+        "evidence:chunk-0039:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        74443,
+        75432
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          74443,
+          75432
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0039:character:002",
+      "node_type": "character",
+      "label": "厉飞雨",
+      "aliases": [],
+      "fact_summary": "厉飞雨在水潭边练刀，随后追问韩立秘籍结果；得知眨眼剑法第一条限制后，因自身内家真气已有不浅火候而放弃窥视，并叮嘱韩立抄录秘籍后归还原件。",
+      "evidence_ids": [
+        "evidence:chunk-0039:001",
+        "evidence:chunk-0039:008",
+        "evidence:chunk-0039:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        74238,
+        75590
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          74238,
+          75590
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0039:tool:001",
+      "node_type": "tool",
+      "label": "眨眼剑谱秘籍",
+      "aliases": [
+        "眨眼剑谱",
+        "这些秘籍"
+      ],
+      "fact_summary": "韩立浏览的一批眨眼剑谱秘籍被他判断为大杂烩，没有成套内容，东凑西拼而成；厉飞雨要求韩立尽快抄录，并在下次会面时带回原件。",
+      "evidence_ids": [
+        "evidence:chunk-0039:002",
+        "evidence:chunk-0039:004",
+        "evidence:chunk-0039:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        74443,
+        75590
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          74443,
+          75590
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0039:cultivation_method:001",
+      "node_type": "cultivation_method",
+      "label": "长春功",
+      "aliases": [],
+      "fact_summary": "韩立在读完十余本书后运用长春功回放内容；夜间赶路时也因自持长春功在身而双目更加敏锐。",
+      "evidence_ids": [
+        "evidence:chunk-0039:003",
+        "evidence:chunk-0039:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        74543,
+        75844
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          74543,
+          75844
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0039:technique:001",
+      "node_type": "technique",
+      "label": "眨眼剑法",
+      "aliases": [],
+      "fact_summary": "眨眼剑法在秘籍中确实存在，但只占这些大杂烩内容的一小部分；据书上所说，它利用各种光线和人的视觉错误克敌制胜，常令对手眨眼之间失去性命。",
+      "evidence_ids": [
+        "evidence:chunk-0039:005",
+        "evidence:chunk-0039:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        75089,
+        75329
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          75089,
+          75329
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0039:rule:001",
+      "node_type": "rule",
+      "label": "眨眼剑法三不能练",
+      "aliases": [
+        "三不能练"
+      ],
+      "fact_summary": "眨眼剑法有三项不能练条件：真气略有小成者不能练、无大毅力者不能练、无天赋者不能练。",
+      "evidence_ids": [
+        "evidence:chunk-0039:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        75392,
+        75432
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          75392,
+          75432
+        ]
+      }
+    },
+    {
+      "id": "node:chunk-0039:location:001",
+      "node_type": "location",
+      "label": "神手谷",
+      "aliases": [],
+      "fact_summary": "韩立离开后在昏暗山路上急匆匆往神手谷方向赶去。",
+      "evidence_ids": [
+        "evidence:chunk-0039:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        75738,
+        75766
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          75738,
+          75766
+        ]
+      }
+    }
+  ],
+  "normalized_edges": [
+    {
+      "id": "edge:chunk-0039:001",
+      "edge_type": "studied_item",
+      "source": "node:chunk-0039:character:001",
+      "target": "node:chunk-0039:tool:001",
+      "fact_summary": "韩立迅速浏览了一本本眨眼剑谱秘籍。",
+      "evidence_ids": [
+        "evidence:chunk-0039:002"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        74443,
+        74473
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          74443,
+          74473
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0039:002",
+      "edge_type": "used_method_for_review",
+      "source": "node:chunk-0039:character:001",
+      "target": "node:chunk-0039:cultivation_method:001",
+      "fact_summary": "韩立运用长春功，把刚刚看完的十余本书内容在脑海里回放。",
+      "evidence_ids": [
+        "evidence:chunk-0039:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        74543,
+        74597
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          74543,
+          74597
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0039:003",
+      "edge_type": "contains_technique",
+      "source": "node:chunk-0039:tool:001",
+      "target": "node:chunk-0039:technique:001",
+      "fact_summary": "眨眼剑法确实存在，但只是这些大杂烩秘籍的一小部分。",
+      "evidence_ids": [
+        "evidence:chunk-0039:005"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        75089,
+        75142
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          75089,
+          75142
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0039:004",
+      "edge_type": "governed_by_rule",
+      "source": "node:chunk-0039:technique:001",
+      "target": "node:chunk-0039:rule:001",
+      "fact_summary": "眨眼剑法受三不能练规则限制。",
+      "evidence_ids": [
+        "evidence:chunk-0039:007"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        75392,
+        75432
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          75392,
+          75432
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0039:005",
+      "edge_type": "abandoned_interest_due_to_condition",
+      "source": "node:chunk-0039:character:002",
+      "target": "node:chunk-0039:technique:001",
+      "fact_summary": "厉飞雨因自身内家真气已有不浅火候，听到第一条不能练条件后放弃对眨眼剑法的窥视。",
+      "evidence_ids": [
+        "evidence:chunk-0039:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        75435,
+        75501
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          75435,
+          75501
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0039:006",
+      "edge_type": "requested_copy_and_return",
+      "source": "node:chunk-0039:character:002",
+      "target": "node:chunk-0039:character:001",
+      "fact_summary": "厉飞雨叮嘱韩立尽快抄录秘籍，并说明下次会面时会把原件带回去。",
+      "evidence_ids": [
+        "evidence:chunk-0039:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        75548,
+        75590
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          75548,
+          75590
+        ]
+      }
+    },
+    {
+      "id": "edge:chunk-0039:007",
+      "edge_type": "traveled_toward",
+      "source": "node:chunk-0039:character:001",
+      "target": "node:chunk-0039:location:001",
+      "fact_summary": "韩立在离开后沿诡异山路急匆匆往神手谷方向赶去。",
+      "evidence_ids": [
+        "evidence:chunk-0039:010"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        75738,
+        75766
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          75738,
+          75766
+        ]
+      }
+    }
+  ],
+  "normalized_events": [
+    {
+      "id": "event:chunk-0039:001",
+      "event_type": "study_event",
+      "label": "韩立浏览眨眼剑谱秘籍",
+      "fact_summary": "韩立以很快速度浏览一本本眨眼剑谱，并在读完十余本书后运用长春功回放其中内容。",
+      "participants": [
+        "node:chunk-0039:character:001",
+        "node:chunk-0039:tool:001",
+        "node:chunk-0039:cultivation_method:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0039:002",
+        "evidence:chunk-0039:003"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        74443,
+        74597
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          74443,
+          74597
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0039:002",
+      "event_type": "revelation_event",
+      "label": "韩立说明眨眼剑法",
+      "fact_summary": "韩立向厉飞雨说明这些秘籍是大杂烩，眨眼剑法确实存在但只占一小部分，并解释它利用光线和视觉错误克敌制胜。",
+      "participants": [
+        "node:chunk-0039:character:001",
+        "node:chunk-0039:character:002",
+        "node:chunk-0039:tool:001",
+        "node:chunk-0039:technique:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0039:004",
+        "evidence:chunk-0039:005",
+        "evidence:chunk-0039:006"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "相遇剧情与对话设计",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        74988,
+        75329
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          74988,
+          75329
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0039:003",
+      "event_type": "decision_event",
+      "label": "厉飞雨放弃眨眼剑法",
+      "fact_summary": "韩立说明眨眼剑法三不能练后，厉飞雨因自身内家真气已有不浅火候，立刻放弃对这门剑法的窥视。",
+      "participants": [
+        "node:chunk-0039:character:001",
+        "node:chunk-0039:character:002",
+        "node:chunk-0039:technique:001",
+        "node:chunk-0039:rule:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0039:007",
+        "evidence:chunk-0039:008"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        75392,
+        75501
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          75392,
+          75501
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0039:004",
+      "event_type": "resource_return_arrangement",
+      "label": "厉飞雨要求抄录并归还秘籍原件",
+      "fact_summary": "厉飞雨临走前叮嘱韩立尽快抄录这些秘籍，并要求下次会面时把原件带回去，以免秘籍消失太久惹人注意。",
+      "participants": [
+        "node:chunk-0039:character:001",
+        "node:chunk-0039:character:002",
+        "node:chunk-0039:tool:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0039:009"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        },
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "source_range": [
+        75548,
+        75590
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          75548,
+          75590
+        ]
+      }
+    },
+    {
+      "id": "event:chunk-0039:005",
+      "event_type": "travel_event",
+      "label": "韩立夜路赶往神手谷",
+      "fact_summary": "厉飞雨离开后韩立也离开此地，天黑后仍沿险要昏暗山路往神手谷方向赶去，并因长春功在身而夜间双目更加敏锐。",
+      "participants": [
+        "node:chunk-0039:character:001",
+        "node:chunk-0039:location:001",
+        "node:chunk-0039:cultivation_method:001"
+      ],
+      "evidence_ids": [
+        "evidence:chunk-0039:010",
+        "evidence:chunk-0039:011"
+      ],
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "source_range": [
+        75738,
+        75844
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          75738,
+          75844
+        ]
+      }
+    }
+  ],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0039:001",
+      "chunk_id": "chunk-0039",
+      "source_range": [
+        74238,
+        74282
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          74238,
+          74282
+        ]
+      },
+      "excerpt": "韩立用视角斜瞥了他一眼，看他精力如此旺盛，便不再理会他的举动，把心神又放回到手中之物上。",
+      "fact_summary": "厉飞雨精力旺盛地在旁活动，韩立没有理会而继续专注手中之物。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色AI行为参考",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0039:001"
+    },
+    {
+      "evidence_id": "evidence:chunk-0039:002",
+      "chunk_id": "chunk-0039",
+      "source_range": [
+        74443,
+        74473
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          74443,
+          74473
+        ]
+      },
+      "excerpt": "时间过的飞快，一本本的“眨眼剑谱”也被韩立迅速的浏览了一遍。",
+      "fact_summary": "韩立迅速浏览了一本本眨眼剑谱。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0039:002"
+    },
+    {
+      "evidence_id": "evidence:chunk-0039:003",
+      "chunk_id": "chunk-0039",
+      "source_range": [
+        74543,
+        74597
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          74543,
+          74597
+        ]
+      },
+      "excerpt": "等精神稍微恢复了一些后，他就在原地盘膝坐下，运用起长春功，把刚刚看完的十余本书中的东西，在脑海里回放了起来。",
+      "fact_summary": "韩立运用长春功，在脑海里回放刚刚看完的十余本书内容。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "角色修炼历程",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0039:003"
+    },
+    {
+      "evidence_id": "evidence:chunk-0039:004",
+      "chunk_id": "chunk-0039",
+      "source_range": [
+        74988,
+        75034
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          74988,
+          75034
+        ]
+      },
+      "excerpt": "“具体的讲，这些秘籍是一个大杂烩，没有什么成套的东西，都是东凑西拼而成的。”韩立缓缓的说道。",
+      "fact_summary": "韩立判断这些秘籍是大杂烩，没有成套内容，东凑西拼而成。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0039:004"
+    },
+    {
+      "evidence_id": "evidence:chunk-0039:005",
+      "chunk_id": "chunk-0039",
+      "source_range": [
+        75089,
+        75142
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          75089,
+          75142
+        ]
+      },
+      "excerpt": "“眨眼剑法还真是确实存在，只不过它是这些大杂烩的一部分，在这些书中只占了很小的一部分。”韩立很有耐性的说。",
+      "fact_summary": "韩立说明眨眼剑法确实存在，但只是这些大杂烩书中的一小部分。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0039:005"
+    },
+    {
+      "evidence_id": "evidence:chunk-0039:006",
+      "chunk_id": "chunk-0039",
+      "source_range": [
+        75274,
+        75329
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          75274,
+          75329
+        ]
+      },
+      "excerpt": "“这种剑法据书上所说，是利用各种光线和人的视觉错误来克敌制胜，往往让人眨眼之间就失去性命，所以才叫眨眼剑法。”",
+      "fact_summary": "眨眼剑法利用光线和人的视觉错误克敌制胜，常令对手眨眼之间失去性命。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0039:006"
+    },
+    {
+      "evidence_id": "evidence:chunk-0039:007",
+      "chunk_id": "chunk-0039",
+      "source_range": [
+        75392,
+        75432
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          75392,
+          75432
+        ]
+      },
+      "excerpt": "“这种剑法有三不能练，真气略有小成者不能练；无大毅力者不能练；无天赋者不能练。”",
+      "fact_summary": "眨眼剑法有三不能练：真气略有小成者、无大毅力者、无天赋者不能练。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0039:007"
+    },
+    {
+      "evidence_id": "evidence:chunk-0039:008",
+      "chunk_id": "chunk-0039",
+      "source_range": [
+        75435,
+        75501
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          75435,
+          75501
+        ]
+      },
+      "excerpt": "厉飞雨听到第一个条件后，就立刻放弃了对它的窥视，他的内家真气已有了不浅的火候，总不能废弃掉自己功力，去学这个威力还不知如何的功夫吧。",
+      "fact_summary": "厉飞雨因内家真气已有不浅火候，听到第一条限制后放弃窥视眨眼剑法。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0039:008"
+    },
+    {
+      "evidence_id": "evidence:chunk-0039:009",
+      "chunk_id": "chunk-0039",
+      "source_range": [
+        75548,
+        75590
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          75548,
+          75590
+        ]
+      },
+      "excerpt": "临走之前，他叮嘱韩立：尽快的把这些秘籍抄录下来，在下次会面时，他会把原件再都带回去。",
+      "fact_summary": "厉飞雨要求韩立尽快抄录秘籍，并在下次会面时让原件带回去。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "人物关系与事件分析",
+          "requirement_id": "character_relationship_perspective",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "物资产出与消耗",
+          "requirement_id": "faction_society_economy_task",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0039:009"
+    },
+    {
+      "evidence_id": "evidence:chunk-0039:010",
+      "chunk_id": "chunk-0039",
+      "source_range": [
+        75738,
+        75766
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          75738,
+          75766
+        ]
+      },
+      "excerpt": "韩立走在这样有些诡异的山路上，急匆匆的往神手谷方向赶去。",
+      "fact_summary": "韩立在诡异山路上急匆匆往神手谷方向赶去。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        }
+      ],
+      "id": "evidence:chunk-0039:010"
+    },
+    {
+      "evidence_id": "evidence:chunk-0039:011",
+      "chunk_id": "chunk-0039",
+      "source_range": [
+        75804,
+        75844
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0039",
+        "source_path": "intermediate/chunks/chunk-0039.txt",
+        "source_range": [
+          75804,
+          75844
+        ]
+      },
+      "excerpt": "要不是自持长春功在身，在夜晚反而使双目更加敏锐，韩立绝不会在如此昏暗的环境下赶路",
+      "fact_summary": "长春功使韩立在夜晚双目更加敏锐，支撑他在昏暗环境赶路。",
+      "confidence": "EXTRACTED",
+      "verification_status": "verified",
+      "supports_templates": [
+        {
+          "template_name": "功法术法神通",
+          "requirement_id": "cultivation_system_method_progression",
+          "requirement_status": "covered",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "covered"
+        },
+        {
+          "template_name": "战斗与保命机制",
+          "requirement_id": "event_conflict_combat_opportunity",
+          "requirement_status": "needs_review",
+          "confidence": "EXTRACTED",
+          "verification_status": "verified",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0039:011"
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "chunk_id": "chunk-0368",
+  "source_range": [
+    936699,
+    936710
+  ],
+  "lane_outputs": [
+    {
+      "run_id": "run-001",
+      "task_packet_id": "chunk-0368:comprehensive_extraction:attempt-001",
+      "chunk_id": "chunk-0368",
+      "lane_id": "comprehensive_extraction",
+      "agent_role": "comprehensive-stage1-extraction-agent",
+      "model_or_agent_identity": "codex-subagent",
+      "output_status": "completed",
+      "produced_at": "2026-06-23T22:58:04+08:00",
+      "extracted_nodes": [],
+      "extracted_edges": [],
+      "extracted_events": [],
+      "extracted_evidence": [
+        {
+          "evidence_id": "evidence:chunk-0368:001",
+          "chunk_id": "chunk-0368",
+          "source_range": [
+            936699,
+            936707
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0368",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              936699,
+              936707
+            ]
+          },
+          "excerpt": "第四卷 风起海外",
+          "fact_summary": "当前 chunk 仅包含卷标题“第四卷 风起海外”，可弱提示后续叙事方向，但未给出具体人物、地点或事件事实。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review",
+              "status": "needs_review"
+            }
+          ],
+          "id": "evidence:chunk-0368:001"
+        }
+      ],
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review"
+        }
+      ],
+      "uncertainties": [
+        {
+          "id": "uncertainty:chunk-0368:001",
+          "kind": "title_only_chunk",
+          "fact_summary": "本 chunk 只有卷标题，不能据此把“海外”硬建为已验证地点，也不能补写后续海外势力、区域或事件。",
+          "evidence_ids": [
+            "evidence:chunk-0368:001"
+          ],
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "needs_review",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "needs_review"
+            }
+          ],
+          "source_range": [
+            936699,
+            936707
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0368",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              936699,
+              936707
+            ]
+          }
+        }
+      ],
+      "rejected_candidates": [
+        {
+          "id": "rejected:chunk-0368:001",
+          "candidate": "海外",
+          "reason": "“海外”仅出现在卷标题中，当前 chunk 未说明它的地理层级、具体范围、入口或事件，不建地点节点。",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "rejected",
+          "supports_templates": [
+            {
+              "template_name": "世界观设定",
+              "requirement_id": "world_region_state_place",
+              "requirement_status": "not_found_in_source",
+              "confidence": "AMBIGUOUS",
+              "verification_status": "rejected"
+            }
+          ],
+          "source_range": [
+            936705,
+            936707
+          ],
+          "source_location": {
+            "chunk_id": "chunk-0368",
+            "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+            "source_range": [
+              936705,
+              936707
+            ]
+          }
+        }
+      ],
+      "structured_failures": []
+    }
+  ],
+  "review_findings": [],
+  "errors": [],
+  "ready_for_merge": true,
+  "merge_gate_status": "unreviewed_usable",
+  "review_state": "unreviewed_usable",
+  "review_policy_mode": "post_merge_incremental",
+  "lane_output_paths": [
+    "intermediate/lane-outputs/chunk-0368/comprehensive_extraction/run-001.json"
+  ],
+  "normalized_nodes": [],
+  "normalized_edges": [],
+  "normalized_events": [],
+  "normalized_evidence": [
+    {
+      "evidence_id": "evidence:chunk-0368:001",
+      "chunk_id": "chunk-0368",
+      "source_range": [
+        936699,
+        936707
+      ],
+      "source_location": {
+        "chunk_id": "chunk-0368",
+        "source_path": "E:\\AI_Projects\\CultivationWorld\\docs\\世界观参考\\凡人修仙传\\凡人修仙传.txt",
+        "source_range": [
+          936699,
+          936707
+        ]
+      },
+      "excerpt": "第四卷 风起海外",
+      "fact_summary": "当前 chunk 仅包含卷标题“第四卷 风起海外”，可弱提示后续叙事方向，但未给出具体人物、地点或事件事实。",
+      "confidence": "AMBIGUOUS",
+      "verification_status": "needs_review",
+      "supports_templates": [
+        {
+          "template_name": "世界观设定",
+          "requirement_id": "world_region_state_place",
+          "requirement_status": "needs_review",
+          "confidence": "AMBIGUOUS",
+          "verification_status": "needs_review",
+          "status": "needs_review"
+        }
+      ],
+      "id": "evidence:chunk-0368:001"
+    }
+  ]
+}
