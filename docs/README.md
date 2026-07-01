@@ -199,7 +199,7 @@ docs/
 | 信息传播与机会点 | `systems/opportunity-system.md`、`decisions/adr-024-info-propagation-opportunity.md` |
 | 世界观 Wiki | `worldbuilding/wiki/README.md` |
 | 世界观参考调研模板 | `世界观参考/模板/README.md` |
-| 多小说模板抽取可恢复调度设计 | `superpowers/specs/2026-07-02-多小说模板抽取可恢复调度设计.md` |
+| 多小说模板抽取 Skill 可恢复调度设计 | `superpowers/specs/2026-07-02-多小说模板抽取可恢复调度设计.md` |
 | 世界观参考原文补充修正计划 | `superpowers/plans/2026-06-05-世界观参考原文补充修正计划.md` |
 | StoryGraph 小说图谱设计 | `superpowers/specs/2026-06-05-StoryGraph小说图谱设计.md` |
 | StoryGraph 单作品本地索引库规格 | `superpowers/specs/2026-06-05-StoryGraph单作品本地索引库规格.md` |
